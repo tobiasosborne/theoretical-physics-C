@@ -1,0 +1,218 @@
+% fig_vl21_kontakt.tex — Zwei Systeme in thermischem Kontakt: wo die
+% Gesamtentropie ihr Maximum hat, und wie scharf dieses Maximum wird.
+%
+% WHY THIS FIGURE.  The lecture derives dS_1/dE_1 = dS_2/dE_2 by
+% differentiating w(E_1) and then *defines* 1/T by it.  Two things stay
+% invisible in the prose.  First, the condition is a statement about
+% SLOPES: the sum is maximal where the rising curve climbs exactly as
+% fast as the falling one drops — and that place is in general NOT at
+% E_1 = E/2.  Second, the whole argument only means something because
+% the maximum of w is sharp; how sharp is a scaling statement
+% (width ~ 1/sqrt(N)) that a sentence cannot show.
+%
+% GEOMETRY FROM THE FORMULA.  Nothing is sketched.  The lecture leaves
+% N_E abstract, so the plate fixes the simplest counting with a closed
+% form — N oscillators sharing E/eps quanta (Einstein solid), whose
+% state count in the Stirling form is
+%
+%       S(N,E)/k = N f(E/(N eps)),   f(x) = (1+x)log(1+x) - x log x.
+%
+% System 1 gets N_1 = 1, system 2 gets N_2 = 3 (three times as large),
+% and the total energy is E = 2 eps.  Then, with u = E_1/E,
+%
+%       S_1/k = f(2u),        S_2/k = 3 f(2(1-u)/3).
+%
+% Because f'(x) = log(1 + 1/x), the stationarity condition
+% dS_1/dE_1 = dS_2/dE_2 reduces to E_1/N_1 = E_2/N_2, so the maximum
+% sits exactly at
+%
+%       E_1^* = E N_1/(N_1+N_2) = E/4,
+%
+% and the common slope there is f'(1/2) = log 3 (in units 1/eps); in the
+% plotted variable u the two tangents therefore have the exactly mirrored
+% slopes +2log3 and -2log3.  Every coordinate in panel (a) — the peak
+% position, the tangency points, the tangent slopes, the value of
+% S_1+S_2 at E/2 — is that arithmetic, not a drawing.
+%
+% Panel (b) is panel (a) exponentiated.  Scaling both systems by the
+% same factor lambda (N_i -> lambda N_i, E -> lambda E) leaves u^* and
+% the shape function g(u) = S_tot(u)/k untouched, so
+%
+%       w(E_1) ∝ N^{(1)} N^{(2)} = e^{S_tot/k} = e^{lambda g(u)},
+%
+% which is *exactly* the w(E_1) of eq. (eq:probenergy), normalised to its
+% own maximum — panel (a) is the lambda = 1 member of that family.  The
+% width shrinks like 1/sqrt(lambda): with g''(u^*) = -64/9 the Gaussian
+% width is 0.375/sqrt(lambda).
+%
+% NUMERICS.  Writing that exponent as lambda*(S_1+S_2-Smax) is fatal at
+% lambda = 100: pgfmath's log carries an absolute error of order 1e-4,
+% the subtraction of two numbers near 3.82 keeps it, and multiplying by
+% 100 turns it into a visibly ragged crest that falls ~2% short of 1.
+% So the difference is formed analytically first.  With d = 2u - 1/2
+% (zero at the maximum) the linear terms cancel exactly and
+%
+%   g(u) - g(u^*) = (3/2+d)log(1+d/(3/2)) - (1/2+d)log(1+d/(1/2))
+%                 + (9/2-d)log(1-d/(9/2)) - (3/2-d)log(1-d/(3/2)),
+%
+% every logarithm now of the form log(1+small).  This vanishes at d = 0
+% by construction, so all three curves reach 1 exactly, and its second
+% derivative there is -16/9 in d, i.e. g''(u^*) = -64/9 as above.
+%
+% DECISIONS.
+%   * colour carries which system a curve belongs to: system 1 blue,
+%     system 2 orange, the sum red.  A tangent is dashed in the colour
+%     of its own curve; construction lines that belong to no system
+%     (the verticals at E_1^* and E/2) are neutral grey;
+%   * panel (b) is an ordered ramp of the *same* red as the sum in (a),
+%     because w = exp(S_tot/k) is that curve and nothing else;
+%   * E_1 < 0 and E_2 < 0 are unreachable and hatched, not filled — the
+%     constraint E_1 + E_2 = E is what makes this a one-parameter
+%     problem at all;
+%   * the y axis of (a) carries no ticks: the counting behind the shape
+%     is a stand-in, only the slopes and the position of the maximum
+%     are the physics.  It is labelled S, not S/k, so that a tangent's
+%     slope is the lecture's own 1/T = dS/dE rather than 1/(kT).  The
+%     numbers behind the curve are S/k; with no ticks and k > 0 that is
+%     the same curve up to a scale, and the scale is what the axis name
+%     fixes;
+%   * E/2 is marked in grey solely so that one can see the maximum is
+%     not there — temperatures equalise, energies do not;
+%   * every label sits on its own object; the panels were laid out by
+%     first computing the gaps between the curves, so no annotation
+%     crosses a curve.
+
+\begin{center}
+\begin{tikzpicture}
+
+% ─────────────────────────────────────────────────────────────
+%  Shared abbreviations.  f(x) = (1+x)ln(1+x) - x ln x, evaluated at
+%  x = 2u (system 1) and x = 2(1-u)/3 (system 2).
+% ─────────────────────────────────────────────────────────────
+\def\Sone{((1+2*x)*ln(1+2*x)-2*x*ln(2*x))}
+\def\Stwo{(3*((1+(2-2*x)/3)*ln(1+(2-2*x)/3)-((2-2*x)/3)*ln((2-2*x)/3)))}
+\def\ustar{0.25}          % E_1^*/E = N_1/(N_1+N_2)
+\def\Sonestar{0.9547713}  % f(1/2)
+\def\Stwostar{2.8643138}  % 3 f(1/2)
+\def\Smax{3.8190851}      % 4 f(1/2)
+\def\slp{2.1972246}       % d(S_1/k)/du = 2 log 3
+\def\Shalf{3.6355738}     % S_1+S_2 at E_1 = E/2
+
+% g(u) - g(u^*), formed analytically so that no large exponent ever
+% amplifies a cancellation (see NUMERICS above).  d = 2u - 1/2.
+\def\dd{(2*x-0.5)}
+\def\Gdiff{( (1.5+\dd)*ln(1+\dd/1.5) - (0.5+\dd)*ln(1+\dd/0.5)
+             +(4.5-\dd)*ln(1-\dd/4.5) - (1.5-\dd)*ln(1-\dd/1.5) )}
+
+% ─────────────────────────────────────────────────────────────
+%  (a)  The two entropies and their sum against E_1
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    name=ent,
+    tpcpotential,
+    width=9.0cm, height=6.6cm,
+    enlargelimits=false,
+    xmin=-0.20, xmax=1.18, ymin=-0.45, ymax=4.80,
+    xtick={0.25,0.5,1}, xticklabels={$E_1^{*}$,$E/2$,$E$},
+    ytick=\empty,
+    xlabel={$E_1$}, ylabel={$S$},
+    clip=false,
+    domain=0.0015:0.9985, samples=241,
+    title={(a) \tpcifenglish{The two entropies and their sum}%
+                            {Die beiden Entropien und ihre Summe}},
+]
+
+  % Unreachable: E_1 < 0 on the left, E_2 = E - E_1 < 0 on the right
+  \fill[forbidden] (axis cs:-0.20,0) rectangle (axis cs:0,4.60);
+  \fill[forbidden] (axis cs:1,0)     rectangle (axis cs:1.12,4.60);
+  \node[lbl, text=birrengray, font=\scriptsize, rotate=90]
+    at (axis cs:-0.10,2.3) {$E_1<0$};
+  \node[lbl, text=birrengray, font=\scriptsize, rotate=90]
+    at (axis cs:1.06,2.3)  {$E_2<0$};
+
+  % Reference verticals: equal energies (dotted) and the maximum (dashed)
+  \draw[classicallim]  (axis cs:0.5,0)     -- (axis cs:0.5,\Shalf);
+  \draw[levellinegrey] (axis cs:\ustar,0)  -- (axis cs:\ustar,\Smax);
+
+  % The three curves
+  \addplot[wavefn, cgblue]              {\Sone};
+  \addplot[wavefn, birrenorange]        {\Stwo};
+  \addplot[line width=1.3pt, birrenred] {\Sone+\Stwo};
+
+  % Tangents at E_1^*: slopes +2log3, -2log3 and 0 — mirror images
+  \addplot[cgblue, line width=0.7pt, densely dashed, domain=0.14:0.56,
+           samples=2] {\Sonestar+\slp*(x-\ustar)};
+  \addplot[birrenorange, line width=0.7pt, densely dashed,
+           domain=0.14:0.56, samples=2] {\Stwostar-\slp*(x-\ustar)};
+  \addplot[birrenred, line width=0.7pt, densely dashed, domain=0.14:0.56,
+           samples=2] {\Smax};
+
+  % Points of tangency, and where the naive guess E_1 = E/2 would sit
+  \node[statepoint, inner sep=1.3pt] at (axis cs:\ustar,\Sonestar) {};
+  \node[statepoint, fill=birrenorange, inner sep=1.3pt]
+    at (axis cs:\ustar,\Stwostar) {};
+  \node[statepoint, fill=birrenred, inner sep=1.3pt]
+    at (axis cs:\ustar,\Smax) {};
+  \node[statepoint, fill=birrengray, inner sep=1.1pt]
+    at (axis cs:0.5,\Shalf) {};
+
+  % Labels, each in the gap belonging to its own curve
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north east]
+    at (axis cs:0.99,4.55) {$N_2=3\,N_1$};
+  \node[lbl, anchor=south] at (axis cs:\ustar,3.92) {$T_1=T_2$};
+  \node[lbl, text=birrenred, anchor=south west]
+    at (axis cs:0.64,3.50) {$S_1+S_2$};
+  \node[lbl, text=birrenorange, anchor=south west]
+    at (axis cs:0.52,2.42) {$S_2(E-E_1)$};
+  % The slope labels start just right of E_1^*, where the slopes are
+  % taken.  Their heights are set by the two things they must not touch:
+  % the label of S_2 clears the falling S_2 curve at its right end, the
+  % label of S_1 clears the rising +1/T_1 tangent at the same place.
+  \node[lbl, text=birrenorange, font=\scriptsize, anchor=north west]
+    at (axis cs:0.28,2.36) {$-1/T_2$};
+  \node[lbl, text=cgblue, font=\scriptsize, anchor=south west]
+    at (axis cs:0.28,1.42) {$+1/T_1$};
+  \node[lbl, text=cgblue, anchor=north west]
+    at (axis cs:0.52,1.15) {$S_1(E_1)$};
+
+  \node[lbl, anchor=north east] at (axis cs:-0.02,-0.05) {$0$};
+\end{axis}
+
+% ─────────────────────────────────────────────────────────────
+%  (b)  The same total entropy, exponentiated: w(E_1) and its width
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    tpcplot,
+    at={(ent.south east)}, anchor=south west, xshift=13mm,
+    width=5.4cm, height=6.6cm,
+    xmin=0, xmax=1, ymin=0, ymax=1.4,
+    xtick={0,0.25,1}, xticklabels={$0$,$E_1^{*}$,$E$},
+    ytick={0,0.5,1},
+    xlabel={$E_1$}, ylabel={$w/w_{\max}$},
+    every axis y label/.style={at={(axis description cs:-0.19,0.5)},
+                               rotate=90, anchor=south, font=\small},
+    domain=0.0015:0.9985, samples=1201,
+    legend pos=north east,
+    legend style={font=\scriptsize, draw=light-gray},
+    title={(b) \tpcifenglish{How sharp the maximum is}%
+                            {Wie scharf das Maximum wird}},
+]
+  \draw[levellinegrey] (axis cs:\ustar,0) -- (axis cs:\ustar,1.02);
+
+  \addplot[birrenred!50, line width=1.0pt, line join=round]
+    {exp(max(1*\Gdiff,-16))};
+  \addlegendentry{$N$}
+  \addplot[birrenred!72, line width=1.0pt, line join=round]
+    {exp(max(10*\Gdiff,-16))};
+  \addlegendentry{$10\,N$}
+  \addplot[birrenred, line width=1.1pt, line join=round]
+    {exp(max(100*\Gdiff,-16))};
+  \addlegendentry{$100\,N$}
+
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north east]
+    at (axis cs:0.99,1.00) {\tpcifenglish{width}{Breite}
+                            $\propto 1/\sqrt{N}$};
+\end{axis}
+
+\end{tikzpicture}
+\end{center}

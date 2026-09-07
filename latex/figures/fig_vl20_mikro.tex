@@ -1,0 +1,247 @@
+% fig_vl20_mikro.tex — Die Energieschale: das Abzählen der Mikrozustände
+% in [E, E+\Delta], und was aus dem Zählen wird, wenn N wächst.
+%
+% WHY THIS FIGURE.  The lecture writes down
+%       rho = sum_{E_j in [E,E+Delta]} (1/N_E) |E_j><E_j|,   S = k log(N_E)
+% and makes N_E concrete only on a three-level toy, where N_E = 2.  Two
+% things stay invisible there, and both are shapes rather than sentences:
+%   (i)  what "counting the states in the shell" looks like when the
+%        states are degenerate — the count is a binomial coefficient, and
+%        the multiplicities are wildly unequal from level to level;
+%   (ii) that this toy count IS the thermodynamic entropy: k log(N_E)
+%        divided by N converges to a smooth concave curve of the energy
+%        per particle, with maximum log 2, whose slope is what the next
+%        lecture calls 1/T.
+% Panel (a) can be counted with the finger; panel (b) says that the same
+% count, done for 10^23 spins, is the entropy of thermodynamics.
+%
+% GEOMETRY FROM THE FORMULA.  Nothing is drawn by eye.  The model is N
+% non-interacting spins in a field, single-spin energies 0 and epsilon,
+%
+%       H |s> = k epsilon |s>,   k = number of up spins in s,
+%
+% so the spectrum is the equally spaced ladder E_k = k epsilon, and the
+% degeneracy of level k is the number of strings with k up spins,
+%
+%       g_k = C(N,k).
+%
+% Panel (a), N = 6:  g = (1,6,15,20,15,6,1), sum = 2^6 = 64 dots, one dot
+% per microstate, placed at height E_k = k epsilon and spread horizontally
+% at unit spacing about x = 0 — so the width of a row IS its degeneracy
+% and the rows may be compared by eye.  The shell is E = 1.5 epsilon,
+% Delta = 2 epsilon, i.e. [1.5, 3.5] epsilon, which admits exactly the
+% levels k = 2 and k = 3:
+%
+%       N_E = C(6,2) + C(6,3) = 15 + 20 = 35,   p_j = 1/35,
+%       S   = k log(35).
+%
+% Deliberately two levels, not one: N_E counts eigenvalues in an interval,
+% and the interval need not respect the level structure — that is exactly
+% what the lecture's own example does (E_2 and E_3 both fall in [0.9,1.2]).
+%
+% Panel (b), the same count for a shell holding one level, per spin:
+%
+%       S/(kN) = (1/N) log C(N,k),   e = E/(N epsilon) = k/N,
+%
+% plotted from exact binomial coefficients for N = 6 and N = 24, against
+% its N -> infinity limit, the binary entropy
+%
+%       s(e) = -e log(e) - (1-e) log(1-e),
+%
+% whose maximum s(1/2) = log 2 is the ceiling S <= k log(d) of the
+% previous lecture, here d = 2^N.  The finite-N clouds sit below the
+% curve and creep up towards it: the correction is -log(N)/(2N), which is
+% why N = 6 is already the right shape and 10^23 is indistinguishable
+% from the limit.
+%
+% DESIGN DECISIONS
+%   * colour is probability, and nothing else: cgblue = the states that
+%     actually occur (p_j = 1/N_E), grey open circles = the states with
+%     p_j = 0.  The same filled/open distinction is repeated in (b), where
+%     the two filled points are precisely the two levels of the shell of
+%     (a) — that is the link between the panels, and it needs no words;
+%   * energies outside the shell are hatched, not filled, exactly as the
+%     classically forbidden region of fig_vl11 is: unreachable is
+%     unreachable, and hatching survives greyscale;
+%   * the energy levels themselves are neutral grey dashed rules; the two
+%     shell edges are solid spacecadet, because they are the one piece of
+%     input information the ensemble is built from;
+%   * in (b) the finite sizes are dot clouds (the energy really is
+%     discrete there, e = k/N) and only the thermodynamic limit is drawn
+%     as a continuous curve.  The three sizes N = 6, 24, infinity are the
+%     ordered ramp cgblue -> birrenorange -> birrenred of `tpclevels`;
+%     munsell is skipped for N = 24 for the reason fig_vl11 gives — beside
+%     cgblue it is the same teal, so it could not carry the code.  N = 6
+%     keeps the cgblue of panel (a), because it IS the system of panel (a);
+%   * (b) plots shells that hold a single level, so there N_E = C(N,k),
+%     whereas the shell of (a) straddles two.  The corner of (b) says so:
+%     otherwise the reader would expect log(35) where log(20) is drawn;
+%   * the degeneracy column on the right of (a) is ruled off and summed,
+%     so that sum_k g_k = 2^N = dim(H) is on the plate: the shell keeps 35
+%     of 64, and the reader can check both numbers by counting dots;
+%   * every curve is labelled where it is, no legend box.
+
+\begin{center}
+\begin{tikzpicture}
+
+% ─────────────────────────────────────────────────────────────
+%  (a)  All 2^6 microstates, sorted by energy; the shell picks two rows
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    name=schale,
+    tpclevelplot,
+    width=7.4cm, height=4.8cm, scale only axis,
+    xmin=-15.4, xmax=13.8,
+    ymin=-2.5,  ymax=7.3,
+    title={(a) \tpcifenglish{energy shell of $N=6$ spins}%
+                             {Energieschale von $N=6$ Spins}},
+]
+
+  % Energies outside [E, E+Delta]: p_j = 0, hatched like a forbidden region
+  \fill[forbidden] (axis cs:-11,-0.55) rectangle (axis cs:11,1.5);
+  \fill[forbidden] (axis cs:-11,3.5)   rectangle (axis cs:11,6.55);
+
+  % The ladder E_k = k epsilon: neutral reference rules
+  \draw[levellinegrey] (axis cs:-10.6,0) -- (axis cs:10.6,0);
+  \draw[levellinegrey] (axis cs:-10.6,1) -- (axis cs:10.6,1);
+  \draw[levellinegrey] (axis cs:-10.6,2) -- (axis cs:10.6,2);
+  \draw[levellinegrey] (axis cs:-10.6,3) -- (axis cs:10.6,3);
+  \draw[levellinegrey] (axis cs:-10.6,4) -- (axis cs:10.6,4);
+  \draw[levellinegrey] (axis cs:-10.6,5) -- (axis cs:10.6,5);
+  \draw[levellinegrey] (axis cs:-10.6,6) -- (axis cs:10.6,6);
+
+  % Which way is up: energy increases along the page
+  \draw[axisstyle] (axis cs:-14.4,4.25) -- (axis cs:-14.4,6.5);
+  \node[lbl, text=birrengray, font=\scriptsize, rotate=90]
+    at (axis cs:-13.5,5.35) {\tpcifenglish{energy}{Energie}};
+
+  % The two edges of the shell — the whole input to the ensemble
+  \draw[potential] (axis cs:-11,1.5) -- (axis cs:11,1.5);
+  \draw[potential] (axis cs:-11,3.5) -- (axis cs:11,3.5);
+  \node[lbl, anchor=east] at (axis cs:-11.3,1.5) {$E$};
+  \node[lbl, anchor=east] at (axis cs:-11.3,3.5) {$E+\Delta$};
+
+  % Microstates outside the shell: p_j = 0
+  \addplot[only marks, mark=o, mark size=1.25pt,
+           mark options={draw=birrengray, fill=white, line width=0.4pt}]
+    coordinates {
+      (0.0,0) (-2.5,1) (-1.5,1) (-0.5,1) (0.5,1) (1.5,1) (2.5,1)
+      (-7.0,4) (-6.0,4) (-5.0,4) (-4.0,4) (-3.0,4) (-2.0,4) (-1.0,4)
+      (0.0,4) (1.0,4) (2.0,4) (3.0,4) (4.0,4) (5.0,4) (6.0,4) (7.0,4)
+      (-2.5,5) (-1.5,5) (-0.5,5) (0.5,5) (1.5,5) (2.5,5) (0.0,6)
+    };
+
+  % Microstates inside the shell: p_j = 1/N_E
+  \addplot[only marks, mark=*, mark size=1.35pt,
+           mark options={draw=cgblue, fill=cgblue}]
+    coordinates {
+      (-7.0,2) (-6.0,2) (-5.0,2) (-4.0,2) (-3.0,2) (-2.0,2) (-1.0,2)
+      (0.0,2) (1.0,2) (2.0,2) (3.0,2) (4.0,2) (5.0,2) (6.0,2) (7.0,2)
+      (-9.5,3) (-8.5,3) (-7.5,3) (-6.5,3) (-5.5,3) (-4.5,3) (-3.5,3)
+      (-2.5,3) (-1.5,3) (-0.5,3) (0.5,3) (1.5,3) (2.5,3) (3.5,3)
+      (4.5,3) (5.5,3) (6.5,3) (7.5,3) (8.5,3) (9.5,3)
+    };
+
+  % Probabilities, written where they hold
+  \node[lbl, text=cgblue] at (axis cs:0,2.5) {$p_j=1/35$};
+  \node[lbl, text=birrengray, fill=white, inner sep=1.5pt]
+    at (axis cs:0,5.5) {$p_j=0$};
+  \node[lbl, text=birrengray, fill=white, inner sep=1.5pt]
+    at (axis cs:0,0.5) {$p_j=0$};
+
+  % Degeneracies g_k = C(6,k), read off as the width of each row
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=west]
+    at (axis cs:11.25,6.9) {$g_k=\tbinom{6}{k}$};
+  \node[lbl, text=birrengray, anchor=west] at (axis cs:11.3,0) {$1$};
+  \node[lbl, text=birrengray, anchor=west] at (axis cs:11.3,1) {$6$};
+  \node[lbl, text=cgblue,     anchor=west] at (axis cs:11.3,2) {$15$};
+  \node[lbl, text=cgblue,     anchor=west] at (axis cs:11.3,3) {$20$};
+  \node[lbl, text=birrengray, anchor=west] at (axis cs:11.3,4) {$15$};
+  \node[lbl, text=birrengray, anchor=west] at (axis cs:11.3,5) {$6$};
+  \node[lbl, text=birrengray, anchor=west] at (axis cs:11.3,6) {$1$};
+
+  % The column of degeneracies adds up to the dimension of the Hilbert space
+  \draw[birrengray!70, line width=0.4pt]
+    (axis cs:11.2,-0.5) -- (axis cs:12.9,-0.5);
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north west]
+    at (axis cs:11.2,-0.55) {$2^6=64$};
+
+  % What the model is, and what one dot means
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=west]
+    at (axis cs:-15.4,7.0)
+    {$E_k=k\varepsilon$; \tpcifenglish{one dot $=$ one microstate}%
+                                     {ein Punkt $=$ ein Mikrozustand}};
+
+  % The count itself
+  \node[lbl, anchor=north] at (axis cs:-0.7,-0.95)
+    {$N_E=\tbinom{6}{2}+\tbinom{6}{3}=15+20=35$};
+  \node[lbl, anchor=north] at (axis cs:-0.7,-1.80)
+    {$S=k\log(N_E)=k\log(35)$};
+\end{axis}
+
+% ─────────────────────────────────────────────────────────────
+%  (b)  The same count per spin, and its thermodynamic limit
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    at={(schale.south east)}, anchor=south west, xshift=20mm,
+    tpcplot,
+    width=4.2cm, height=4.8cm, scale only axis,
+    xmin=-0.03, xmax=1.03, ymin=0, ymax=0.79,
+    xtick={0,0.5,1}, xticklabels={$0$,$\tfrac12$,$1$},
+    ytick={0,0.2,0.4,0.6},
+    xlabel={$e=E/(N\varepsilon)$},
+    ylabel={$S/(kN)$},
+    every axis x label/.style={at={(0.5,-0.115)}, anchor=north, font=\small},
+    every axis y label/.style={at={(axis description cs:-0.17,0.5)},
+                               rotate=90, anchor=south, font=\small},
+    title={(b) \tpcifenglish{entropy per spin}{Entropie pro Spin}},
+]
+  % Ceiling S <= k log(d), d = 2^N: one log(2) per spin
+  \addplot[levellinegrey, domain=0:1, samples=2] {0.6931};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=south west]
+    at (axis cs:0.025,0.70) {$\log 2$};
+
+  % N -> infinity: the binary entropy
+  \addplot[birrenred, line width=1.1pt, domain=0.0008:0.9992, samples=241]
+    {-x*ln(x)-(1-x)*ln(1-x)};
+  \node[lbl, text=birrenred, anchor=west] at (axis cs:0.70,0.655)
+    {$N\to\infty$};
+
+  % N = 24, exact binomials
+  \addplot[only marks, mark=*, mark size=0.9pt,
+           mark options={draw=birrenorange, fill=birrenorange}]
+    coordinates {
+      (0.0000,0.0000) (0.0417,0.1324) (0.0833,0.2342) (0.1250,0.3172)
+      (0.1667,0.3863) (0.2083,0.4441) (0.2500,0.4921) (0.2917,0.5314)
+      (0.3333,0.5628) (0.3750,0.5868) (0.4167,0.6037) (0.4583,0.6138)
+      (0.5000,0.6171) (0.5417,0.6138) (0.5833,0.6037) (0.6250,0.5868)
+      (0.6667,0.5628) (0.7083,0.5314) (0.7500,0.4921) (0.7917,0.4441)
+      (0.8333,0.3863) (0.8750,0.3172) (0.9167,0.2342) (0.9583,0.1324)
+      (1.0000,0.0000)
+    };
+  \node[lbl, text=birrenorange, font=\scriptsize, anchor=north]
+    at (axis cs:0.5,0.585) {$N=24$};
+
+  % N = 6 — the system of panel (a).  Filled: the two levels of the shell.
+  \addplot[only marks, mark=o, mark size=1.4pt,
+           mark options={draw=cgblue, fill=white, line width=0.5pt}]
+    coordinates {
+      (0.0000,0.0000) (0.1667,0.2986) (0.6667,0.4513) (0.8333,0.2986)
+      (1.0000,0.0000)
+    };
+  \addplot[only marks, mark=*, mark size=1.4pt,
+           mark options={draw=cgblue, fill=cgblue}]
+    coordinates {(0.3333,0.4513) (0.5000,0.4993)};
+  \node[lbl, text=cgblue, font=\scriptsize, anchor=north]
+    at (axis cs:0.5,0.425) {$N=6$};
+
+  % What is plotted
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=south]
+    at (axis cs:0.5,0.10) {\tpcifenglish{shell $=$ one level}%
+                                        {Schale $=$ ein Niveau}};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=south]
+    at (axis cs:0.5,0.025) {$N_E=\tbinom{N}{k}$, $e=k/N$};
+\end{axis}
+
+\end{tikzpicture}
+\end{center}

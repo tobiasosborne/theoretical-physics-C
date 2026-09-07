@@ -46,12 +46,23 @@
 %     Kurve tut das nicht — sie biegt nur ab und koennte als saettigend
 %     missverstanden werden.  Deshalb steht ihr Wachstumsgesetz
 %     (~ ln N bzw. ~ 2 ln X) als dritte Zeile an ihrer Beschriftung.
+%   * Der Abstand der beiden Panels ist 17mm, wie in der Referenz
+%     fig_vl11_kasten: die y-Beschriftung von (b) ist ein Integral mit
+%     Grenzen und ragt entsprechend weit nach links.  Bei 11mm stand sie
+%     im Rahmen von (a), quer über der Referenzlinie und der letzten
+%     Datenspalte.
 %   * ymax = 5 statt 4.6: die Vorlesung setzt 12pt, dort werden
 %     \footnotesize-Knoten spuerbar groesser als in der 10pt-Vorschau.
 %     Die Beschriftungen wurden gegen eine 12pt-Vorschau gesetzt, nicht
 %     gegen scripts/tikz-preview.sh allein — bei 10pt sah eine Kollision
 %     zwischen der blauen Kurvenbeschriftung und der C^n-Randnotiz noch
 %     harmlos aus, im Satz ueberlappten die beiden.
+%   * height = 6.8cm (wie in der Referenz) statt 5.9cm: der dreizeilige
+%     orangene Block muss in den Korridor zwischen die blaue Plateau-
+%     Kurve und die orangene Kurve passen.  Bei 5.9cm war dieser Korridor
+%     im 12pt-Satz nur so hoch wie der Block selbst, und „~ ln N“ lag auf
+%     der grauen pi^2/6-Linie.  Die Achsenskala aendert das nicht, nur
+%     das Verhaeltnis von Schriftgroesse zu Zeichenflaeche.
 %   * C^n erscheint als graue Randnotiz statt als vierte Kurve: dort hat
 %     die Summe n Terme und ist immer endlich — es gibt nichts zu prüfen.
 %     Das ist der ganze Unterschied zwischen C^2 und den beiden anderen
@@ -66,7 +77,7 @@
 \begin{axis}[
     name=seq,
     tpcplot,
-    width=6.6cm, height=5.9cm,
+    width=6.6cm, height=6.8cm,
     xlabel={$N$},
     ylabel={$\sum_{j=1}^{N}|v_j|^{2}$},
     every axis y label/.style={at={(axis description cs:-0.14,0.5)},
@@ -133,8 +144,8 @@
 % ─────────────────────────────────────────────────────────────
 \begin{axis}[
     tpcplot,
-    at={(seq.south east)}, anchor=south west, xshift=11mm,
-    width=6.6cm, height=5.9cm,
+    at={(seq.south east)}, anchor=south west, xshift=17mm,
+    width=6.6cm, height=6.8cm,
     xlabel={$X$},
     ylabel={$\int_{-X}^{X}|f|^{2}\,dx$},
     every axis y label/.style={at={(axis description cs:-0.14,0.5)},

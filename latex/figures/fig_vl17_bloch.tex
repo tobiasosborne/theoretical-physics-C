@@ -53,12 +53,26 @@
 %     orange, and so is the entanglement curve in (b) — the blue curve in
 %     (b) is the length of a blue-and-navy object, the arrow.  Axes,
 %     equator and the EPR rule are neutral grey: reference structure.
+%     The ket *labels* take the same colour as their dots, and they have
+%     to: the six points lie where the equator, an axis and the outline
+%     all cross, so no label may stand exactly beside its dot without
+%     sitting on a line.  Several are therefore set a little away —
+%     |+-i> outside the ball altogether — and colour, not proximity, is
+%     what says which dot each one names.
 %   * near/far is coded by fill, not by colour: a point of the near
 %     hemisphere is a filled disc, one of the far hemisphere an open
 %     circle, and the far halves of the axes are dashed.  This survives
 %     greyscale printing and makes the antipodal pairs read as pairs.
+%   * the arrow in (a) is named twice, |psi> and (2/hbar)<S>, because
+%     panel (b) plots the length of the second: without that name the
+%     ordinate of (b) has nothing in (a) to attach itself to.
 %   * (b) separates its curves by dash pattern as well as by colour, for
-%     the same reason.
+%     the same reason.  It is the one plate in the notes that keeps a
+%     legend rather than labelling its curves where they run: both
+%     entries are two-sided identities four centimetres wide, and the
+%     only gaps between the curves are narrow wedges.  A direct label
+%     here would have to be an abbreviation of the very identity that is
+%     the point.
 %
 % Panel (a) the state space of one spin 1/2.
 % Panel (b) what becomes of that arrow when the spin is one of a pair.
@@ -90,7 +104,7 @@
 % ─────────────────────────────────────────────────────────────
 %  (a)  The Bloch sphere of one spin 1/2
 % ─────────────────────────────────────────────────────────────
-\node[font=\sf\small\bfseries, text=cgblue] at (0,3.00)
+\node[font=\sf\small\bfseries, text=cgblue] at (0,2.65)
   {(a) \tpcifenglish{one spin: the Bloch sphere}{ein Spin: die Blochkugel}};
 
 % Every named point is placed by the parametrisation, nothing by eye.
@@ -133,7 +147,9 @@
 \draw[blochaxis] (O) -- (Axc);
 \node[lbl, anchor=north east, xshift=-1pt] at (Axa) {$\widehat{S}_1$};
 \node[lbl, anchor=west, xshift=2pt]        at (Axb) {$\widehat{S}_2$};
-\node[lbl, anchor=south, yshift=1pt]       at (Axc) {$\widehat{S}_3$};
+% left of the tip, so that |up> can have the clear space to its right
+\node[lbl, anchor=south east, xshift=-2pt, yshift=1pt]
+                                           at (Axc) {$\widehat{S}_3$};
 
 % The general state: its arrow, its foot in the equatorial plane, and the
 % two angles of the parametrisation.
@@ -161,16 +177,32 @@
 \node[sdot=munsell]     at (Spi)  {};
 \node[sdotb=munsell]    at (Smi)  {};
 
-\node[lbl, anchor=west, xshift=3pt]       at (Sup)  {$\ket{\uparrow}$};
-\node[lbl, anchor=west, xshift=3pt]       at (Sdn)  {$\ket{\downarrow}$};
-\node[lbl, anchor=east, xshift=-4pt]      at (Splu) {$\ket{+}$};
-\node[lbl, anchor=south west, xshift=2pt] at (Smin) {$\ket{-}$};
-\node[lbl, font=\scriptsize, text=birrengray, anchor=north, yshift=-4pt]
+% Each ket takes the colour of its observable, exactly as its dot does:
+% the six points sit on lines (equator, axes, outline) that a label may
+% not stand on, so several labels have to be set a little away from
+% their dot, and it is the colour that says which dot they belong to.
+% |up>,|down>: clear of the outline, which passes through the poles.
+\node[lbl, text=spacecadet, anchor=south west, xshift=1pt, yshift=3pt]
+                                          at (Sup)  {$\ket{\uparrow}$};
+\node[lbl, text=spacecadet, anchor=north west, xshift=1pt, yshift=-3pt]
+                                          at (Sdn)  {$\ket{\downarrow}$};
+% |+>: below its dot, in the free sector between equator and S_1 axis.
+\node[lbl, text=cgblue, anchor=north, xshift=7pt, yshift=-7pt]
+                                          at (Splu) {$\ket{+}$};
+\node[lbl, text=cgblue, anchor=south west, xshift=2pt]
+                                          at (Smin) {$\ket{-}$};
+% |+-i>: just outside the ball, above the S_2 axis — the only clear
+% space near dots that lie on the equator, the axis and the outline all
+% at once.
+\node[lbl, text=munsell, anchor=south west, xshift=6pt, yshift=2pt]
                                           at (Spi)  {$\ket{{+}i}$};
-\node[lbl, font=\scriptsize, text=birrengray, anchor=south, yshift=4pt]
+\node[lbl, text=munsell, anchor=south east, xshift=-6pt, yshift=2pt]
                                           at (Smi)  {$\ket{{-}i}$};
-\node[lbl, text=birrenorange, anchor=south east, yshift=1pt]
-                                          at (Spsi) {$\ket{\psi}$};
+% The arrow is named twice: as the state, and as the vector of
+% expectation values whose length panel (b) plots.
+\node[lbl, text=birrenorange, anchor=south east, align=right, yshift=1pt]
+      at (Spsi) {$\ket{\psi}$\\[-2pt]
+                 $\tfrac{2}{\hbar}\langle\widehat{\mathbf{S}}\rangle$};
 
 % The formula the whole panel is drawn from, and how to read it.
 \node[lbl, font=\scriptsize] at (0,-2.38)
@@ -195,12 +227,14 @@
     xlabel={$\alpha$},
     title={(b) \tpcifenglish{a pair: arrow vs.\ entanglement}%
                             {ein Paar: Pfeil gegen Verschränkung}},
+    % lifts (b)'s banner onto the height of (a)'s, which is set by the ball
+    title style={yshift=16.5pt},
     legend style={font=\scriptsize, draw=light-gray,
                   at={(0.5,-0.26)}, anchor=north, legend columns=2},
 ]
 
   % The EPR point alpha = pi/4: a neutral reference rule
-  \addplot[levellinegrey] coordinates {(45,0) (45,1)};
+  \addplot[levellinegrey, forget plot] coordinates {(45,0) (45,1)};
 
   % Length of spin 1's Bloch arrow
   \addplot[cgblue, line width=1.0pt, domain=0:90, samples=181]
@@ -212,10 +246,10 @@
            domain=0:90, samples=181] {abs(sin(2*x))};
   \addlegendentry{$2|c_{11}c_{22}-c_{12}c_{21}|=|\sin 2\alpha|$}
 
-  \addplot[only marks, mark=*, mark size=2pt, cgblue, draw=none]
-    coordinates {(45,0)};
-  \addplot[only marks, mark=*, mark size=2pt, birrenorange, draw=none]
-    coordinates {(45,1)};
+  \addplot[only marks, mark=*, mark size=2pt, cgblue, draw=none,
+           forget plot] coordinates {(45,0)};
+  \addplot[only marks, mark=*, mark size=2pt, birrenorange, draw=none,
+           forget plot] coordinates {(45,1)};
 
   % The family the panel is drawn from
   \node[lbl, font=\scriptsize] at (axis cs:45,1.26)

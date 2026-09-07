@@ -4,26 +4,34 @@
 % Follows the conventions of fig_vl11_kasten.tex (the reference plate).
 %
 %   * geometry comes from the lecture's own worked example and nothing
-%     else.  Vorlesung 5 diagonalises sigma_x = [[0,1],[1,0]] with the
+%     else.  Vorlesung 5 diagonalises A = sigma_x = [[0,1],[1,0]] with the
 %     Hadamard matrix U = (1/sqrt2)[[1,1],[1,-1]].  Drawn as it stands,
 %     sigma_x is a reflection: it maps the unit circle onto itself and
-%     there is no shape to see.  So the plate uses
-%         A = 2*Id + sigma_x = [[2,1],[1,2]],
+%     there is no shape to see.  So the plate draws the shifted operator
+%         Atilde = A + 2*Id = [[2,1],[1,2]],
 %     which has exactly the same eigenvectors and is diagonalised by
-%     exactly the same U from the lecture's Beispiel:
-%         |phi_1> = (1,1)/sqrt2,  a_1 = 3
-%         |phi_2> = (1,-1)/sqrt2, a_2 = 1
-%         U A U^dag = diag(3,1).
+%     exactly the same U from the lecture's Beispiel, its eigenvalues
+%     merely raised by 2:
+%         |phi_1> = (1,1)/sqrt2,  a_1 =  1 + 2 = 3
+%         |phi_2> = (1,-1)/sqrt2, a_2 = -1 + 2 = 1
+%         U Atilde U^dag = diag(3,1).
+%     Every label on the plate says \tilde A and never A, because the
+%     lecture's A is sigma_x and stands three lines above the figure; the
+%     prose that introduces the figure defines the shift.
 %     Every curve below is that matrix applied to the unit circle,
 %     plotted parametrically, not sketched:
 %         panel (a)  t |-> (2cos t + sin t,  cos t + 2 sin t)
 %         panel (b)  t |-> (3cos t,          sin t)
-%     and the two are the same ellipse, seen from the two bases — (b) is
-%     (a) turned by -45 degrees.  Semi-axes 3 and 1 are the eigenvalues,
-%     principal axes are the eigenvectors; both follow from A = A^dag.
-%     The arrow tips are the images of the basis vectors and therefore
-%     the columns of the matrix: A|1> = (2,1), A|2> = (1,2) in (a),
-%     A|phi_1> = 3|phi_1>, A|phi_2> = |phi_2> in (b).
+%     and the two are the same ellipse, seen from the two bases: U carries
+%     (a) into (b).  (U is a reflection, det U = -1, not a rotation.  On
+%     the centrally symmetric ellipse a -45 degree turn would give the
+%     same curve, but not the same arrows: it sends |phi_2> to -e_2, where
+%     U sends it to +e_2, and +e_2 is what is drawn.)  Semi-axes 3 and 1
+%     are the eigenvalues, principal axes are the eigenvectors; both
+%     follow from Atilde = Atilde^dag.
+%     The arrow tips are the images of the basis vectors and therefore the
+%     columns of the matrix: Atilde|1> = (2,1), Atilde|2> = (1,2) in (a),
+%     Atilde|phi_1> = 3|phi_1>, Atilde|phi_2> = |phi_2> in (b).
 %
 %   * both panels are drawn at the same units-per-cm and on the same
 %     ranges, because the whole claim of the figure is that the object is
@@ -74,7 +82,7 @@
 ]
 
 % ─────────────────────────────────────────────────────────────
-%  (a)  Standard basis: A = [[2,1],[1,2]] is not diagonal
+%  (a)  Standard basis: Atilde = [[2,1],[1,2]] is not diagonal
 % ─────────────────────────────────────────────────────────────
 \begin{axis}[
     name=std,
@@ -126,13 +134,17 @@
   \node[ketlbl, text=birrenorange, anchor=east]
     at (axis cs:-0.12,0.70) {$|2\rangle$};
   \node[lbl, text=cgblue, font=\scriptsize, anchor=west]
-    at (axis cs:2.10,0.92) {$A|1\rangle$};
+    at (axis cs:2.10,0.92) {$\tilde A|1\rangle$};
   \node[lbl, text=birrenorange, font=\scriptsize, anchor=south]
-    at (axis cs:1.00,2.14) {$A|2\rangle$};
+    at (axis cs:1.00,2.14) {$\tilde A|2\rangle$};
 
   % ---- the matrix this frame produces ----
-  \node[lbl, anchor=north west] at (axis cs:-3.30,3.20)
-    {$A = \begin{pmatrix} 2 & 1 \\ 1 & 2\end{pmatrix}$};
+  % Two lines: on one line the definition and the matrix together reach
+  % as far as the note in the opposite corner.
+  \node[lbl, anchor=north west, align=left]
+    at (axis cs:-3.30,3.22)
+    {$\tilde A = A + 2\mathbb{I}$\\[3pt]
+     $\phantom{\tilde A} = \begin{pmatrix} 2 & 1 \\ 1 & 2\end{pmatrix}$};
 
   \node[lbl, text=birrengray, font=\scriptsize, anchor=north east]
     at (axis cs:3.30,3.18)
@@ -145,7 +157,7 @@
 \end{axis}
 
 % ─────────────────────────────────────────────────────────────
-%  (b)  Eigenbasis: same ellipse, U A U^dag = diag(3,1)
+%  (b)  Eigenbasis: same ellipse, U Atilde U^dag = diag(3,1)
 % ─────────────────────────────────────────────────────────────
 \begin{axis}[
     tpcplot,
@@ -185,13 +197,14 @@
     at (axis cs:-0.10,0.58) {$|\phi_2\rangle$};
 
   \node[lbl, text=cgblue, font=\scriptsize, anchor=north]
-    at (axis cs:1.75,-1.10) {$A|\phi_1\rangle = 3\,|\phi_1\rangle$};
+    at (axis cs:1.75,-1.10) {$\tilde A|\phi_1\rangle = 3\,|\phi_1\rangle$};
   \node[lbl, text=birrenorange, font=\scriptsize, anchor=south west]
-    at (axis cs:0.14,1.10) {$A|\phi_2\rangle = |\phi_2\rangle$};
+    at (axis cs:0.14,1.10) {$\tilde A|\phi_2\rangle = |\phi_2\rangle$};
 
   % ---- the matrix this frame produces ----
-  \node[lbl, anchor=north west] at (axis cs:-3.30,3.20)
-    {$UAU^\dagger = \begin{pmatrix} 3 & 0 \\ 0 & 1\end{pmatrix}$};
+  \node[lbl, anchor=north west] at (axis cs:-3.30,3.22)
+    {$U\tilde AU^\dagger
+       = \begin{pmatrix} 3 & 0 \\ 0 & 1\end{pmatrix}$};
 
   \node[lbl, text=birrengray, font=\scriptsize, anchor=north]
     at (axis cs:0,-2.74)

@@ -52,6 +52,23 @@
 %     Faktor sqrt(2) — im Bild sofort zu sehen, in Prosa eine Fußnote.
 %   * Der Streifen sitzt bei c = -1.8 und nicht dichter am Intervall,
 %     damit er nicht als dessen Rand missverstanden wird.
+%   * Die Achse reicht bis xmax = 4.2, gezeichnet wird aber nur bis 3.75:
+%     die Pfeilspitze ist 5pt lang, das sind hier 0.29 Einheiten, und eine
+%     Kurve, die durch sie hindurchlaeuft, sieht nach Versehen aus.  Bei
+%     3.75 ist die Einhuellende auf 0.019 abgeklungen, die Kurve laeuft
+%     also ohnehin in die Achse hinein.  Beide Panels teilen diesen
+%     Bereich, sonst waeren die Breiten nicht vergleichbar.
+%   * Das eps-Label steht ueber dem Streifen, nicht neben ihm.  Die Dichte
+%     steigt links steil an: auf Hoehe des Streifendachs (p(c) = 0.079)
+%     liegt die Kurve nur 0.1 Einheiten rechts von c, ein Label klebte
+%     dort an ihr.  Der Anker liegt bei (-1.67, 0.083); die Glyphe selbst
+%     sitzt um den inneren Rand des Knotens versetzt darueber und haelt so
+%     rund 15 pt Abstand zur Kurve und zum Streifendach.
+%   * In (a) steht bewusst keine Null am linken Achsenende.  Eine Zahl am
+%     Ende eines mit x beschrifteten Pfeils liest sich als Ort, nicht als
+%     Funktionswert -- der Leser verschoebe den Schwerpunkt des Pakets ans
+%     rechte Ende und verloere den Bezug zu (b).  Dass die Waagerechte die
+%     Null ist, sagt bereits die symmetrische Einhuellende +-|Psi|.
 
 \begin{center}
 \begin{tikzpicture}
@@ -68,10 +85,10 @@
     axis y line=none,
     axis line style={-{Stealth[length=5pt]}, spacecadet, line width=0.6pt},
     xtick=\empty,
-    xmin=-3.6, xmax=3.9,
+    xmin=-3.9, xmax=4.2,
     ymin=-0.94, ymax=0.94,
     clip=false,
-    domain=-3.6:3.75, samples=401,
+    domain=-3.9:3.75, samples=421,
     title={(a) $\Psi$ \tpcifenglish{is complex}{ist komplex}},
 ]
 
@@ -95,17 +112,14 @@
 
   % Einhüllende ansprechen, ohne sie zu berühren
   \node[lbl, text=birrengray, font=\scriptsize, anchor=west]
-    at (axis cs:-3.55,0.44) {$\pm|\Psi|$};
+    at (axis cs:-3.85,0.44) {$\pm|\Psi|$};
   \draw[birrengray!85, line width=0.4pt]
     (axis cs:-2.90,0.42) -- (axis cs:-2.45,0.155);
-
-  \node[lbl, text=birrengray, font=\scriptsize, anchor=east]
-    at (axis cs:-3.62,0.02) {$0$};
 
   % Achsenbeschriftung als Knoten unter der Pfeilspitze, nicht als xlabel:
   % ein xlabel ragt rechts aus dem Rahmen und stößt im 12pt-Satz gegen
   % die y-Beschriftung von (b).
-  \node[lbl, anchor=north] at (axis cs:3.55,-0.06) {$x$};
+  \node[lbl, anchor=north] at (axis cs:3.85,-0.06) {$x$};
 \end{axis}
 
 % ─────────────────────────────────────────────────────────────
@@ -119,12 +133,12 @@
     ylabel={$p(x)$},
     every axis y label/.style={at={(axis description cs:-0.17,0.5)},
                                rotate=90, anchor=south, font=\small},
-    xmin=-3.6, xmax=3.9,
+    xmin=-3.9, xmax=4.2,
     ymin=0, ymax=0.52,
     xtick={-1.8,-0.5,1.5}, xticklabels={$c$,$a$,$b$},
     ytick={0,0.1,0.2,0.3,0.4},
     clip=false,
-    domain=-3.6:3.75, samples=301,
+    domain=-3.9:3.75, samples=321,
     title={(b) $p=|\Psi|^{2}$ \tpcifenglish{is the density}{ist die Dichte}},
 ]
 
@@ -143,21 +157,21 @@
   \addplot[spacecadet, line width=1.1pt] {exp(-x^2/2)/sqrt(2*pi)};
 
   % Was die Fläche ist, steht in der Fläche
-  \node[lbl, anchor=center] at (axis cs:0.5,0.15) {$\int_a^b p\,dx$};
+  \node[lbl, anchor=center] at (axis cs:0.40,0.15) {$\int_a^b p\,dx$};
 
   % Die Fläche beziffert: die Aussage steht über der Fläche, die sie meint
   \node[lbl, anchor=center] at (axis cs:0.5,0.455)
     {$\mathbb{P}\bigl[x\in[a,b]\bigr]=\tpcifenglish{0.62}{0{,}62}$};
 
-  \node[lbl, anchor=north] at (axis cs:3.55,-0.012) {$x$};
+  \node[lbl, anchor=north] at (axis cs:3.85,-0.012) {$x$};
 
   % Der schmale Streifen und seine Pointe
-  \node[lbl, text=spacecadet, font=\scriptsize, anchor=south]
-    at (axis cs:-1.8,0.095) {$\varepsilon$};
-  \node[lbl, font=\scriptsize, anchor=west, align=left] at (axis cs:-3.40,0.275)
+  \node[lbl, text=spacecadet, font=\scriptsize, anchor=south east]
+    at (axis cs:-1.67,0.083) {$\varepsilon$};
+  \node[lbl, font=\scriptsize, anchor=west, align=left] at (axis cs:-3.70,0.275)
     {$\varepsilon\to0$\\[-1pt]$\Rightarrow\mathbb{P}\to0$};
   \draw[birrengray!85, line width=0.4pt]
-    (axis cs:-2.14,0.225) -- (axis cs:-1.90,0.130);
+    (axis cs:-2.45,0.230) -- (axis cs:-2.13,0.142);
 \end{axis}
 
 \end{tikzpicture}

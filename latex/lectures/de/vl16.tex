@@ -58,19 +58,19 @@ mit \emph{Hauptquantenzahl} $n=1,2,\ldots$ und \emph{Bohrradius}
 \end{equation}
 Die Zählung beginnt bei $n=1$, ein $n=0$ gibt es nicht; im Termschema häufen sich
 die unendlich vielen Niveaus an der Ionisationsschwelle $E=0$.
-\begin{center}
-	\begin{tikzpicture}
-		\draw[levellinegrey] (0,0) -- (5.4,0) node[lbl,right] {$E=0$};
-		\foreach \y in {-4,-1,-0.44,-0.25,-0.16,-0.11,-0.08}{\draw[potential] (0,\y) -- (4.4,\y);}
-		\foreach \y/\n in {-4/1,-1/2,-0.44/3}{\node[lbl,right] at (4.5,\y) {$n=\n$};}
-		\draw[vecstyle] (1.4,-1) -- (1.4,-4) node[lbl,right,midway] {$E_2-E_1$};
-	\end{tikzpicture}
-\end{center}
 \begin{merksatz}
 Beobachtbar sind nicht die Eigenwerte, sondern ihre Differenzen: beim Übergang
 $n \to n'$ mit $n'<n$ emittiert das Elektron ein Photon der Energie $E_n-E_{n'}$,
 und das sind die Spektrallinien.
 \end{merksatz}
+
+\input{figures/fig_vl16_termschema}
+
+Farbig sind hier nicht die Niveaus, sondern die Übergänge: die Pfeillänge ist
+maßstäblich die Photonenenergie, die Lyman-Pfeile sind rund viermal so lang wie
+die Balmer-Pfeile. Rechts kehrt die Häufung bei $E=0$ als Gedränge an der
+Seriengrenze wieder.
+
 Die vollständige Eigenfunktionen lauten
 \begin{equation}
 	\psi_{n\ell m}(r,\theta,\phi) = R_{n\ell}(r)\text{Y}_{\ell}^m(\theta,\phi).

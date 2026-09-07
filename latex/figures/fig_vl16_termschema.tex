@@ -12,9 +12,11 @@
 %         n  = 1      2       3       4       5       6      ...
 %         E  = -13.61 -3.401 -1.512  -0.850  -0.544  -0.378  ... -> 0
 %     so the 1/n^2 accumulation at the ionisation threshold is forced by
-%     the formula and not drawn by eye.  Levels up to n = 20 are drawn;
-%     from n ~ 8 they can no longer be resolved on the plate, which is
-%     precisely the statement "infinitely many levels pile up at E = 0".
+%     the formula and not drawn by eye.  Levels n = 1..16 are drawn, every
+%     one of them at its computed height; from n ~ 8 they can no longer be
+%     told apart on the plate and beyond n ~ 14 they run into the
+%     threshold rule itself, which is precisely the statement
+%     "infinitely many levels pile up at E = 0".
 %   * the transition arrows carry the Merksatz of the lecture: observable
 %     are not the eigenvalues but their differences.  Hence the levels are
 %     neutral grey reference rules and the *arrows* are the coloured data.
@@ -58,7 +60,7 @@
     axis y line=left, axis x line=none,
     grid=none, clip=false,
     xmin=0, xmax=1.20,
-    ymin=-16.4, ymax=1.6,
+    ymin=-14.4, ymax=1.6,
     ytick={0,-3.4014,-13.6057},
     yticklabels={$0$,$-3.4$,$-13.6$},
     ylabel={$E$ [eV]},
@@ -67,8 +69,8 @@
     title={(a) \tpcifenglish{Term scheme}{Termschema}},
 ]
 
-  % Bound levels E_n = -13.6057/n^2.  Written out rather than looped:
-  % \foreach defers expansion inside a pgfplots axis.
+  % Bound levels E_n = -13.6057/n^2, n = 1..16.  Written out rather than
+  % looped: \foreach defers expansion inside a pgfplots axis.
   \draw[levellinegrey] (axis cs:0.02,-13.6057) -- (axis cs:0.88,-13.6057);
   \draw[levellinegrey] (axis cs:0.02, -3.4014) -- (axis cs:0.88, -3.4014);
   \draw[levellinegrey] (axis cs:0.02, -1.5117) -- (axis cs:0.88, -1.5117);
@@ -79,7 +81,12 @@
   \draw[levellinegrey] (axis cs:0.02, -0.2126) -- (axis cs:0.88, -0.2126);
   \draw[levellinegrey] (axis cs:0.02, -0.1680) -- (axis cs:0.88, -0.1680);
   \draw[levellinegrey] (axis cs:0.02, -0.1361) -- (axis cs:0.88, -0.1361);
+  \draw[levellinegrey] (axis cs:0.02, -0.1124) -- (axis cs:0.88, -0.1124);
   \draw[levellinegrey] (axis cs:0.02, -0.0945) -- (axis cs:0.88, -0.0945);
+  \draw[levellinegrey] (axis cs:0.02, -0.0805) -- (axis cs:0.88, -0.0805);
+  \draw[levellinegrey] (axis cs:0.02, -0.0694) -- (axis cs:0.88, -0.0694);
+  \draw[levellinegrey] (axis cs:0.02, -0.0605) -- (axis cs:0.88, -0.0605);
+  \draw[levellinegrey] (axis cs:0.02, -0.0531) -- (axis cs:0.88, -0.0531);
 
   % The ionisation threshold: a real boundary, so heavy ink.  It needs no
   % "E = 0" tag at its right end — the y tick already reads 0 — and that
@@ -99,9 +106,13 @@
   \draw[trans, birrenorange] (axis cs:0.67,-0.8504) -- (axis cs:0.67,-3.4014);
   \draw[trans, birrenorange] (axis cs:0.74,-0.5442) -- (axis cs:0.74,-3.4014);
 
-  % Series labels, directly under the level each series ends on
-  \node[lbl, text=cgblue, anchor=north, align=center]
-    at (axis cs:0.30,-13.90) {Lyman ($n\to1$)\\[-1pt] UV};
+  % Direct labels instead of a legend, each set beside the arrows it
+  % names.  The Lyman label sits in the empty field to the right of its
+  % own arrows rather than under n = 1, where it would be stranded in the
+  % axis gutter; for Balmer that field is taken by the n = ... column, so
+  % its label goes under the level the series ends on.
+  \node[lbl, text=cgblue, anchor=west, align=left]
+    at (axis cs:0.34,-8.30) {Lyman ($n\to1$)\\[-1pt] UV};
   \node[lbl, text=birrenorange, anchor=north, align=center]
     at (axis cs:0.70,-3.72)
     {Balmer ($n\to2$)\\[-1pt] \tpcifenglish{visible}{sichtbar}};
@@ -151,6 +162,7 @@
   \draw[cgblue, line width=0.7pt] (axis cs: 92.57,0) -- (axis cs: 92.57,1);
   \draw[cgblue, line width=0.7pt] (axis cs: 92.27,0) -- (axis cs: 92.27,1);
   \draw[cgblue, line width=0.7pt] (axis cs: 92.05,0) -- (axis cs: 92.05,1);
+  \draw[cgblue, line width=0.7pt] (axis cs: 91.89,0) -- (axis cs: 91.89,1);
   \draw[cgblue, line width=0.7pt] (axis cs: 91.76,0) -- (axis cs: 91.76,1);
 
   % Balmer, n = 3..12 -> 2.  lambda = 91.127 nm / (1/4 - 1/n^2)
@@ -162,6 +174,7 @@
   \draw[birrenorange, line width=0.7pt] (axis cs:388.81,0) -- (axis cs:388.81,1);
   \draw[birrenorange, line width=0.7pt] (axis cs:383.44,0) -- (axis cs:383.44,1);
   \draw[birrenorange, line width=0.7pt] (axis cs:379.69,0) -- (axis cs:379.69,1);
+  \draw[birrenorange, line width=0.7pt] (axis cs:376.98,0) -- (axis cs:376.98,1);
   \draw[birrenorange, line width=0.7pt] (axis cs:374.92,0) -- (axis cs:374.92,1);
 
   % Series limits lambda = n'^2 / R_inf, where n -> infinity accumulates —
@@ -169,10 +182,15 @@
   % the empty band between the series, so no label sits on a line.
   \draw[levellinegrey] (axis cs: 91.13,0) -- (axis cs: 91.13,1.20);
   \draw[levellinegrey] (axis cs:364.51,0) -- (axis cs:364.51,1.20);
+  % Both tags are set the same way — just longward of their own line, on
+  % one baseline above the sticks — so the parallel between the two
+  % series is visible at a glance.  The word is long: on this log axis it
+  % spans about a quarter decade, which is why they must both open to the
+  % right and not face each other across the empty band.
   \node[lbl, text=birrengray, font=\scriptsize, anchor=south west]
-    at (axis cs:93.5,1.20) {\tpcifenglish{series limit}{Seriengrenze}};
-  \node[lbl, text=birrengray, font=\scriptsize, anchor=south east]
-    at (axis cs:358,1.02) {\tpcifenglish{series limit}{Seriengrenze}};
+    at (axis cs:93.5,1.19) {\tpcifenglish{series limit}{Seriengrenze}};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=south west]
+    at (axis cs:374,1.19) {\tpcifenglish{series limit}{Seriengrenze}};
 
   % The band between the two series is empty, and that emptiness is a
   % result, not a gap in the drawing — hence it is labelled.

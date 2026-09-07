@@ -58,6 +58,9 @@
 %     Farben in beiden Panels: die Parabel in (a) ist als Punkt in (b)
 %     wiederzufinden.  Rot und gestrichelt ist der Fall, den es nicht
 %     gibt;
+%   * `axis on top' in (a): die Schraffur ist unbeschnitten (clip=false,
+%     damit die Direktbeschriftung rechts stehen kann) und übermalt sonst
+%     die Achslinie, die dann gestrichelt aussieht;
 %   * grau ist ausschließlich Referenz: die Nulllinie, die Scheitel-
 %     senkrechte lambda_*, und in (b) die Senkrechte Delta x = a, auf der
 %     die drei Zustände aus (a) liegen;
@@ -95,7 +98,7 @@
                                rotate=90, anchor=south, font=\small},
     title={(a) \tpcifenglish{A parabola that may not dip}%
                             {Eine Parabel, die nicht eintauchen darf}},
-    samples=181, clip=false,
+    samples=181, clip=false, axis on top,
 ]
 
   % Verbotener Halbraum: M = C^dag C ist positiv, also tr(rho M) >= 0.
@@ -126,7 +129,7 @@
     {$\hbar$};
   \node[lbl, text=spacecadet, anchor=west] at (axis cs:0.42,0.7225)
     {$\hbar/2$};
-  \node[lbl, text=birrenred,  anchor=west] at (axis cs:0.42,0.4600)
+  \node[lbl, text=birrenred,  anchor=west] at (axis cs:0.42,0.5350)
     {$\hbar/4$};
 
   % Wo der Scheitel liegt und wie hoch er ist -- ein Block über der
@@ -135,13 +138,14 @@
   % damit als Bild da: der Scheitel sinkt mit dem Produkt.
   \node[lbl, text=birrengray, font=\scriptsize, anchor=south, align=center]
     at (axis cs:-0.5,1.12)
-    {$\lambda_{*}=-\hbar/2(\Delta x)^{2}$\\[-1pt]
+    {$\lambda_{*}(\Delta x)^{2}=-\hbar/2$\\[-1pt]
      \tpcifenglish{vertex height}{Scheitelhöhe}\\[-1pt]
      $(\Delta x\,\Delta p/\hbar)^{2}-\tfrac14$};
 
   % Warum der schraffierte Halbraum leer ist.
-  \node[lbl, text=birrenred, font=\scriptsize, anchor=south east]
-    at (axis cs:1.13,-0.38)
+  \node[lbl, text=birrenred, font=\scriptsize, anchor=south east,
+        fill=white, fill opacity=0.85, text opacity=1, inner sep=2pt]
+    at (axis cs:1.13,-0.36)
     {$M=C^{\dag}C\ge 0$: \tpcifenglish{impossible}{unmöglich}};
 \end{axis}
 
@@ -150,8 +154,8 @@
 % ─────────────────────────────────────────────────────────────
 \begin{axis}[
     tpcplot,
-    at={(parab.south east)}, anchor=south west, xshift=13mm,
-    width=5.6cm, height=6.0cm,
+    at={(parab.south east)}, anchor=south west, xshift=10mm,
+    width=6.5cm, height=6.0cm,
     xmin=0, xmax=2.62, ymin=0, ymax=1.85,
     xtick={0,1,2}, ytick={0,0.5,1,1.5},
     grid=major,
@@ -159,7 +163,7 @@
     ylabel={$\Delta p\,a/\hbar$},
     every axis x label/.style={at={(axis description cs:0.5,-0.15)},
                                anchor=north, font=\small},
-    every axis y label/.style={at={(axis description cs:-0.19,0.5)},
+    every axis y label/.style={at={(axis description cs:-0.125,0.5)},
                                rotate=90, anchor=south, font=\small},
     title={(b) \tpcifenglish{Which pairs survive}{Welche Paare übrig bleiben}},
     clip=false,
@@ -176,14 +180,15 @@
     {0.5/x};
 
   % Die Senkrechte Delta x = a trägt die drei Zustände aus (a).
-  \draw[classicallim] (axis cs:1,0) -- (axis cs:1,1.14);
+  \draw[classicallim] (axis cs:1,0) -- (axis cs:1,1.02);
 
   \addplot[only marks, mark=*, mark size=2.2pt, munsell]
     coordinates {(1,1)};
   \addplot[only marks, mark=*, mark size=2.2pt, spacecadet]
     coordinates {(1,0.5)};
-  \addplot[only marks, mark=o, mark size=2.6pt, birrenred,
-           mark options={line width=1.0pt}]
+  % Ring thickness goes on the plot itself: nested inside mark options it
+  % is typeset rather than applied, which shows up as nullfont warnings.
+  \addplot[only marks, mark=o, mark size=2.6pt, birrenred, line width=1.0pt]
     coordinates {(1,0.25)};
 
   % Dieselbe Gauß-Familie bei anderer Breite: quetschen heißt die
@@ -195,7 +200,7 @@
     (axis cs:0.60,0.96);
 
   \node[lbl, text=spacecadet, font=\scriptsize, anchor=south west]
-    at (axis cs:0.56,1.06) {\tpcifenglish{squeeze $x$}{$x$ quetschen}};
+    at (axis cs:0.58,1.08) {\tpcifenglish{squeeze $x$}{$x$ quetschen}};
   \node[lbl, anchor=south east, align=right] at (axis cs:2.58,0.40)
     {\tpcifenglish{Gaussian: equality}{Gauß: Gleichheit}\\[-1pt]
      $\Delta x\,\Delta p=\hbar/2$};
@@ -207,7 +212,7 @@
 
   % Die Brücke zu Panel (a): gleiche Farben, gleiche drei Zustände.
   \node[lbl, text=birrengray, font=\scriptsize, anchor=west]
-    at (axis cs:1.07,0.96) {\tpcifenglish{the three of (a)}{die drei aus (a)}};
+    at (axis cs:1.07,0.87) {\tpcifenglish{the three of (a)}{die drei aus (a)}};
 
   % Größenordnung, damit die Einheit a etwas bedeutet.
   \node[lbl, text=birrengray, font=\scriptsize, anchor=north east,

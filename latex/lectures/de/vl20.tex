@@ -34,6 +34,11 @@ Die Entropie des mikrokanonischen Ensembles wird wie folgt berechnet:
   S(\rho) = -k\sum_{E_j\in [E,E+\Delta]} \frac{1}{N_E} \log\left(\frac{1}{N_E}\right) = k \log(N_E).
 \end{equation}
 Kurz ist die Rechnung, weil $\rho$ hier schon diagonal ist; das Minuszeichen hebt sich gegen $\log(1/N_E) = -\log(N_E)$ auf. Im Beispiel oben ist $S(\rho) = k\log(2)$.
+
+\input{figures/fig_vl20_mikro}
+
+Wie groß $N_E$ tatsächlich wird, sieht man erst bei entarteten Niveaus. Tafel (a) zählt alle $2^6$ Mikrozustände von sechs Spins ab; die Schale $[E,E+\Delta]$ lässt genau $35$ übrig, jeden mit demselben Gewicht $1/35$, alle übrigen mit Gewicht null. Tafel (b) zeigt dieselbe Abzählung pro Spin -- gefüllt sind die beiden Niveaus aus (a) -- und wohin sie für große $N$ läuft.
+
 Diesen Zustand \emph{maximiert} die Entropie unter den Nebenbedingungen, dass die Energie in $[E,E+\Delta]$ liegt (und die Teilchenzahl und Volumen des Systems fest bleibt). Das ist zunächst nur eine Beobachtung; man kann sie aber umdrehen und zum Prinzip erheben.
 
 Die Methode, bei der man die Hypothese so aufstellt, dass der Systemzustand die Entropie \emph{maximiert} wird, wurde 1957 von Edwin Thompson Jaynes in Anlehnung an Methoden der statistischen Mechanik und der Shannon'schen Informationstheorie eingeführt. Grundlage ist, in Abwesenheit von Information die Entropie der A-priori-Wahrscheinlichkeit zu maximieren, da jede andere Zuweisung willkürliche Einschränkungen der betrachteten Situation träfe. Die Maximum-Entropie-Methode legt sich so wenig wie möglich fest. Jaynes zufolge ist dies aber nur der letzte Schritt, um nach Einfüllen aller vorhandenen Information etwaige noch bestehende Lücken zu schließen.

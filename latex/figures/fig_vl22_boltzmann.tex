@@ -1,0 +1,238 @@
+% fig_vl22_boltzmann.tex — Was der Faktor e^{-beta E_n} mit einem festen
+% Niveauschema macht, wenn man die Temperatur dreht: von der Spitze im
+% Grundzustand bis in die Gleichverteilung.
+%
+% WHY THIS FIGURE.  The lecture derives rho = e^{-beta H}/Z and then
+% names e^{-E_j/kT} the Boltzmann factors — but the whole physical
+% content of that formula is a *shape*, and a shape is what prose is
+% worst at.  Two things the text states but never shows:
+%   * the same fixed ladder of levels is occupied completely differently
+%     at different T, and the two ends of the temperature scale are the
+%     two states this course already knows — the pure ground state
+%     (S = 0) and the maximally mixed state (S = k log d);
+%   * the boxed entropy formula S = k beta <H> + k log(Z) is a curve.
+%     Read at T -> 0 it is the third law that closes this lecture:
+%     S -> 0.  Read at T -> infinity it saturates at k log d.
+% Panel (a) is the microscopic side (which level carries what weight),
+% panel (b) the macroscopic side (what a thermometer and a calorimeter
+% would report).  That is the contrast the two panels exist for.
+%
+% GEOMETRY FROM THE FORMULA.  Nothing is drawn by eye; every bar, curve
+% and asymptote is evaluated from the closed forms of this lecture on
+% one concrete spectrum: the equally spaced ladder of Vorlesung 12,
+% truncated to d = 6 levels and counted from the ground state,
+%
+%       E_n = n Delta,   n = 0,1,...,5,
+%
+% (equal spacing, because then Z is a finite geometric series and the
+% populations are an exact geometric sequence — the constant ratio
+% p_{n+1}/p_n = e^{-beta Delta} is what makes the fanning-out of the
+% bars readable).  With x = e^{-Delta/kT} = e^{-beta Delta},
+%
+%       Z    = sum_{n=0}^{5} x^n = (1 - x^6)/(1 - x),
+%       p_n  = x^n / Z = e^{-n Delta/kT} (1-x)/(1-x^6),
+%       <H>/Delta = (sum_n n x^n)/Z,
+%       S/k  = beta <H> + log(Z)          [the boxed formula of the lecture]
+%
+% and both limits are exact:
+%       T -> 0        p_0 -> 1,   <H> -> 0,        S -> 0,
+%       T -> infinity p_n -> 1/d, <H> -> (d-1)Delta/2, S -> k log d.
+%
+% The three temperatures drawn are kT/Delta = 0.3, 1, 3.  Their exact
+% populations (the bar lengths) are
+%
+%   kT/Delta   x        Z        p_0     p_1     p_2     p_3    p_4    p_5
+%     0.3   0.035674  1.036994  0.9643  0.0344  0.0012  4.4e-5  2e-6   6e-8
+%     1     0.367879  1.578055  0.6337  0.2331  0.0858  0.0315  0.0116 0.0043
+%     3     0.716531  3.050300  0.3278  0.2349  0.1683  0.1206  0.0864 0.0619
+%   (1/d = 0.1667 is the T -> infinity value of every one of them.)
+%
+% and the points marked on the curves of (b) are
+%
+%   kT/Delta      0.3       1        3      -> limit
+%   <H>/Delta   0.0370   0.5671   1.5886      2.5
+%   S/k         0.1596   1.0233   1.6448      log 6 = 1.7918
+%
+% The bars are drawn by pgfplots from these formulas (xcomb at samples
+% n = 0..5), not typed in; the numbers above are recorded so the plate
+% can be checked without re-running LaTeX.
+%
+% DESIGN DECISIONS
+%   * colour is temperature and nothing else, on the ORDERED ramp the
+%     templates keep for ordered parameters (tpclevels):
+%     spacecadet -> cgblue -> birrenorange, cold to hot.  It was chosen
+%     over the obvious blue-orange-red because those three are NOT
+%     monotone in luminance: printed grey, cgblue (0.40) and birrenred
+%     (0.34) come out the same, and the legend of (a) would then have
+%     two identical rows.  This ramp runs 0.15 -> 0.40 -> 0.54, so cold
+%     stays darkest in grey as well.  The same three colours mark the
+%     same three temperatures on the curves of (b), which is how one
+%     reads off what the hot distribution costs in entropy;
+%   * the two curves of (b) are therefore NOT on that ramp: they are
+%     birrenred, a colour the plate uses nowhere else, and they share
+%     it, because they are two quantities of one and the same state —
+%     what tells them apart is the dash pattern and the label written
+%     on each.  The temperature dots on them carry a white ring so they
+%     read against the curve in colour and in grey alike, and the two
+%     dots belonging to one temperature are joined by a short stroke in
+%     that temperature's colour — without it the pair at kT = 3 Delta,
+%     0.06 apart, fuses into a single blob;
+%   * within every level of (a) the bars run cold-top to hot-bottom,
+%     always in that order, so the grouping can be read without the
+%     legend;
+%   * the energy levels are neutral grey rules (levellinegrey): they are
+%     the reference scheme, the populations are the data;
+%   * grey dotted verticals (classicallim) mark the two limits of the
+%     probability axis, p = 1/d and p = 1, and are labelled by the
+%     limit that produces them, not by their value.  They are reference
+%     lines, hence grey, hence the same style as the asymptotes of (b);
+%   * a thin exponential envelope p(E) = e^{-beta E}/Z accompanies each
+%     bar group, over exactly the range of the spectrum.  It is the
+%     continuous function the levels sample, and it carries the same
+%     vertical offset as the bars it belongs to, so it
+%     passes exactly through their tips (the offset is legibility only —
+%     the true energies are the grey rules);
+%   * probability runs horizontally and energy vertically, so the level
+%     scheme stands the way every other level diagram in these notes
+%     does (Vorlesungen 11, 12, 16).
+
+\begin{center}
+\begin{tikzpicture}
+
+% ─────────────────────────────────────────────────────────────
+%  The formulas of the lecture, once, as macros.  #1 is kT/Delta.
+%  \boltzP is p_n with n as the plot variable x (so it doubles as the
+%  continuous envelope p(E) with E = x Delta).
+% ─────────────────────────────────────────────────────────────
+\def\boltzP#1{ exp(-x/#1)*(1-exp(-1/#1))/(1-exp(-6/#1)) }
+% Z, <H>/Delta and S/k with kT/Delta as the plot variable x.
+\def\partZ{ ((1-exp(-6/x))/(1-exp(-1/x))) }
+\def\meanU{ ((exp(-1/x)+2*exp(-2/x)+3*exp(-3/x)+4*exp(-4/x)+5*exp(-5/x))/\partZ ) }
+\def\entrS{ ((1/x)*\meanU + ln(\partZ)) }
+
+% ─────────────────────────────────────────────────────────────
+%  (a)  The populations on a fixed ladder, at three temperatures
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    name=pop,
+    tpcplot,
+    width=7.2cm, height=5.2cm,
+    grid=none,
+    clip=false,
+    xmin=0, xmax=1.13, ymin=-0.55, ymax=6.25,
+    xtick={0,0.1666667,0.5,1},
+    xticklabels={$0$,$1/d$,$0.5$,$1$},
+    ytick={0,1,2,3,4,5},
+    xlabel={$p_n$},
+    ylabel={$E_n/\Delta$},
+    every axis y label/.style={at={(axis description cs:-0.11,0.5)},
+                               rotate=90, anchor=south, font=\small},
+    title={(a) \tpcifenglish{populations}{Besetzungen}
+              $p_n\propto e^{-\beta E_n}$},
+    legend style={at={(0.99,0.99)}, anchor=north east, font=\scriptsize},
+    legend cell align=left,
+]
+
+  % The level scheme E_n = n Delta: reference rules, not data.
+  \draw[levellinegrey] (axis cs:0,0) -- (axis cs:1.10,0);
+  \draw[levellinegrey] (axis cs:0,1) -- (axis cs:1.10,1);
+  \draw[levellinegrey] (axis cs:0,2) -- (axis cs:1.10,2);
+  \draw[levellinegrey] (axis cs:0,3) -- (axis cs:1.10,3);
+  \draw[levellinegrey] (axis cs:0,4) -- (axis cs:1.10,4);
+  \draw[levellinegrey] (axis cs:0,5) -- (axis cs:1.10,5);
+
+  % The two limits of the probability axis.
+  \draw[classicallim] (axis cs:0.1666667,-0.45) -- (axis cs:0.1666667,5.65);
+  \draw[classicallim] (axis cs:1,-0.45)         -- (axis cs:1,5.65);
+
+  % Envelopes p(E) = e^{-beta E}/Z, each on its own group's offset.
+  \addplot[spacecadet,   line width=0.6pt, forget plot,
+           domain=0:5, samples=140] ({\boltzP{0.3}}, {x+0.26});
+  \addplot[cgblue,       line width=0.6pt, forget plot,
+           domain=0:5, samples=140] ({\boltzP{1}},   {x});
+  \addplot[birrenorange, line width=0.6pt, forget plot,
+           domain=0:5, samples=140] ({\boltzP{3}},   {x-0.26});
+
+  % The populations themselves, sampled at n = 0,...,5.
+  \addplot[xcomb, mark=none, spacecadet,   line width=3.4pt,
+           domain=0:5, samples=6] ({\boltzP{0.3}}, {x+0.26});
+  \addlegendentry{$kT=0.3\,\Delta$}
+  \addplot[xcomb, mark=none, cgblue,       line width=3.4pt,
+           domain=0:5, samples=6] ({\boltzP{1}},   {x});
+  \addlegendentry{$kT=\Delta$}
+  \addplot[xcomb, mark=none, birrenorange, line width=3.4pt,
+           domain=0:5, samples=6] ({\boltzP{3}},   {x-0.26});
+  \addlegendentry{$kT=3\,\Delta$}
+
+  % What the spectrum is.
+  \node[lbl, font=\scriptsize, text=birrengray, anchor=west]
+    at (axis cs:0.02,5.95) {$E_n=n\Delta$, $d=6$};
+
+  % The limits, written under the value they force.
+  \node[lbl, font=\scriptsize, text=birrengray, anchor=north]
+    at (axis cs:0.1666667,-1.22) {$T\to\infty$};
+  \node[lbl, font=\scriptsize, text=birrengray, anchor=north]
+    at (axis cs:1,-1.22) {$T\to0$};
+\end{axis}
+
+% ─────────────────────────────────────────────────────────────
+%  (b)  The same state seen from outside: <H> and S against T
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    tpcplot,
+    at={(pop.south east)}, anchor=south west, xshift=14mm,
+    width=5.6cm, height=5.2cm,
+    xmin=0, xmax=6.4, ymin=0, ymax=2.85,
+    xtick={0,1,2,3,4,5,6}, ytick={0,1,2},
+    xlabel={$kT/\Delta$},
+    title={(b) \tpcifenglish{energy and entropy}{Energie und Entropie}},
+]
+  % Saturation values, the T -> infinity ends of both curves.
+  \addplot[levellinegrey, domain=0:6.4, samples=2] {2.5};
+  \addplot[levellinegrey, domain=0:6.4, samples=2] {1.7917595};
+  \node[lbl, font=\scriptsize, text=birrengray, anchor=south west]
+    at (axis cs:0.15,2.5) {$(d{-}1)/2$};
+  \node[lbl, font=\scriptsize, text=birrengray, anchor=south west]
+    at (axis cs:0.15,1.7917595) {$\log d$};
+
+  % At each of the three temperatures of (a), the two curves are read at
+  % once; a short stroke in that temperature's colour joins the pair, so
+  % it reads as one temperature with two values.  Needed most at
+  % kT = 3 Delta, where the readings differ by 0.06 and two bare dots
+  % fuse into a single blob — the stroke turns that near-coincidence
+  % into what it is: the two curves about to cross.  Kept short on
+  % purpose; a full-height vertical would run through the annotations.
+  \draw[spacecadet,   line width=0.6pt] (axis cs:0.3,0.00) -- (axis cs:0.3,0.20);
+  \draw[cgblue,       line width=0.6pt] (axis cs:1,0.53)   -- (axis cs:1,1.06);
+  \draw[birrenorange, line width=0.6pt] (axis cs:3,1.56)   -- (axis cs:3,1.67);
+
+  % <H>/Delta and S/k.  Neutral: these are quantities, not temperatures.
+  \addplot[birrenred, line width=1.0pt, domain=0.05:6.4, samples=220]
+    {\meanU};
+  \addplot[birrenred, line width=1.0pt, densely dashed,
+           domain=0.05:6.4, samples=220] {\entrS};
+
+  \node[lbl, anchor=south east] at (axis cs:6.35,2.06)
+    {$\langle\widehat{H}\rangle/\Delta$};
+  \node[lbl, anchor=north east] at (axis cs:6.35,1.70) {$S/k$};
+
+  % The readings themselves, at the ends of those strokes.
+  \node[circle, fill=spacecadet,   inner sep=0.9pt, draw=white, line width=0.4pt] at (axis cs:0.3,0.0370) {};
+  \node[circle, fill=spacecadet,   inner sep=0.9pt, draw=white, line width=0.4pt] at (axis cs:0.3,0.1596) {};
+  \node[circle, fill=cgblue,       inner sep=0.9pt, draw=white, line width=0.4pt] at (axis cs:1,0.5671) {};
+  \node[circle, fill=cgblue,       inner sep=0.9pt, draw=white, line width=0.4pt] at (axis cs:1,1.0233) {};
+  \node[circle, fill=birrenorange, inner sep=0.9pt, draw=white, line width=0.4pt] at (axis cs:3,1.5886) {};
+  \node[circle, fill=birrenorange, inner sep=0.9pt, draw=white, line width=0.4pt] at (axis cs:3,1.6448) {};
+
+  \node[lbl, font=\scriptsize, text=birrengray, anchor=east, align=right]
+    at (axis cs:6.30,0.74)
+    {\tpcifenglish{marks: the three}{Marken: die drei}\\
+     \tpcifenglish{temperatures of (a)}{Temperaturen aus (a)}};
+
+  % The third law, where this lecture ends.
+  \node[lbl, font=\scriptsize, text=birrengray, anchor=west]
+    at (axis cs:0.55,0.13) {$T\to0\ \Rightarrow\ S\to0$};
+\end{axis}
+
+\end{tikzpicture}
+\end{center}

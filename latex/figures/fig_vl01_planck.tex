@@ -40,20 +40,29 @@
 %     Die eine Kurve in (b) ist temperaturunabhängig, also bekommt sie mit
 %     birrengreen bewusst eine Farbe, die im Temperaturverlauf von (a)
 %     nicht vorkommt.
-%   * Rayleigh-Jeans ist für die *kälteste* der drei Temperaturen
-%     gezeichnet, also für die flachste der drei klassischen Parabeln.
-%     Sie verlässt den Rahmen trotzdem, bevor das zugehörige
-%     Planck-Spektrum überhaupt sein Maximum erreicht, und übertrifft bei
-%     nu = 2e14 Hz bereits das 6000-K-Spektrum: die Katastrophe hängt
-%     nicht an der Temperatur.  Bei kleinen nu liegt die graue Kurve exakt
-%     auf der navy Planck-Kurve — klassisch ist eben nicht alles falsch,
-%     und genau das sagt (b) noch einmal quantitativ.
+%   * Rayleigh-Jeans ist für die *heißeste* der drei Temperaturen
+%     gezeichnet, für 6000 K, und damit für dieselbe Temperatur wie die
+%     orange Planck-Kurve.  Das ist keine Kosmetik: U_RJ und U stimmen
+%     nur für h nu << kT überein, also für s << 1/a_T, und dieses Fenster
+%     ist bei der höchsten Temperatur am breitesten (1/a = 1.25 statt
+%     0.83).  Nur so sieht man die Übereinstimmung im Bild überhaupt.
+%     Zeichnet man stattdessen Rayleigh-Jeans für 4000 K, so liegt die
+%     graue Kurve zwischen s = 0.6 und 1.2 versehentlich auf der
+%     *6000-K*-Kurve (0.19 vs 0.22 bei s = 0.6, 0.52 vs 0.50 bei s = 1)
+%     und weit über der 4000-K-Kurve, zu der sie gehört — das Bild sagt
+%     dann das Gegenteil dessen, was es sagen soll.
+%     Die Parabel verlässt den Rahmen bei nu = 1.83e14 Hz, lange bevor
+%     das zugehörige Planck-Spektrum bei 3.53e14 Hz sein Maximum
+%     erreicht.  Dass die Katastrophe nicht an der Temperatur hängt,
+%     steht in der Formel: U_RJ ~ nu^2 für jedes T.
 %   * Die Lücke zwischen kT und <E> in (b) ist schraffiert, nicht gefüllt
 %     (Graustufendruck).  Sie ist als TikZ-Pfad gezeichnet und nicht mit
 %     `fill between`: diese Bibliothek zerstört hier die Bounding Box der
 %     tikzpicture, das rechte Panel wird dann abgeschnitten.
 %   * Echte Einheiten (1e14 Hz, 1e-15 J m^-3 Hz^-1, Kelvin), damit die
 %     Größenordnung mitkommt; 6000 K liegt bei der Sonnenoberfläche.
+%   * Beschriftungen, die über dem Gitternetz liegen, bekommen eine weiße
+%     Hinterlegung: sonst laufen die Gitterlinien durch die Buchstaben.
 %   * Beschriftung direkt am Objekt statt in einer Legende.  Die
 %     Achsenbeschriftungen stehen mittig unter bzw. neben der Achse statt
 %     am Achsenende (tpcplot-Voreinstellung): am Achsenende würde die von
@@ -88,13 +97,14 @@
   \addplot[birrenorange, line width=1.1pt, domain=0.01:8.8, samples=220]
     {0.61806*x^3/(exp(0.799867*x)-1)};
 
-  % Rayleigh-Jeans für T = 4000 K, U_RJ = 8 pi nu^2 kT/c^3: der Grenzfall
-  % h nu << kT der Planck-Formel.  Grau, weil klassische Referenz.  Sie
-  % wird zuletzt gezeichnet, damit man sie bis nu ~ 1e14 Hz genau auf der
-  % navy Planck-Kurve liegen sieht, bevor sie sich löst und oben aus dem
-  % Rahmen läuft.
+  % Rayleigh-Jeans für T = 6000 K, U_RJ = 8 pi nu^2 kT/c^3 = 0.77272 s^2:
+  % der Grenzfall h nu << kT derselben Planck-Formel, also die klassische
+  % Fassung der *orangen* Kurve.  Grau, weil gescheiterte Referenz.  Sie
+  % wird zuletzt gezeichnet, damit man sie bis nu ~ 0.4e14 Hz auf der
+  % orangen Planck-Kurve liegen sieht, bevor sie sich löst und oben aus
+  % dem Rahmen läuft.
   \addplot[birrengray, line width=0.9pt, densely dashed,
-           domain=0:2.30, samples=60] {0.515144*x^2};
+           domain=0:1.84, samples=60] {0.772716*x^2};
 
   % Temperaturen direkt an ihren Maxima (h nu_max = 2.8214 kT)
   \node[lbl, font=\scriptsize, text=birrenorange, anchor=south]
@@ -106,9 +116,10 @@
 
   % Die klassische Kurve und ihr Schicksal
   \node[lbl, font=\scriptsize, text=birrengray, anchor=north west,
-        align=left, inner sep=1pt]
-    at (axis cs:2.45,2.58)
-    {Rayleigh--Jeans ($4000\,\mathrm{K}$)\\
+        align=left, fill=white, fill opacity=1,
+        inner sep=1.5pt]
+    at (axis cs:2.10,2.58)
+    {Rayleigh--Jeans ($6000\,\mathrm{K}$)\\
      $U\propto\nu^{2}$: \tpcifenglish{UV catastrophe}{UV-Katastrophe}};
 \end{axis}
 
@@ -147,13 +158,13 @@
   \addplot[birrengreen, line width=1.2pt, domain=0.02:6, samples=200]
     {x/(exp(x)-1)};
   \node[lbl, font=\scriptsize, text=birrengreen, anchor=center,
-        fill=white, fill opacity=0.92, text opacity=1, inner sep=1.5pt]
+        fill=white, fill opacity=1, inner sep=1.5pt]
     at (axis cs:3.45,0.63)
     {$\langle E\rangle=\dfrac{h\nu}{e^{h\nu/kT}-1}$};
 
   % Was die Schraffur bedeutet
   \node[lbl, font=\scriptsize, text=birrengray, anchor=east,
-        fill=white, fill opacity=0.92, text opacity=1, inner sep=1.5pt]
+        fill=white, fill opacity=1, inner sep=1.5pt]
     at (axis cs:5.9,0.28)
     {\tpcifenglish{frozen out}{eingefroren}};
 \end{axis}

@@ -82,7 +82,7 @@
   \node[lbl, text=birrengreen, font=\scriptsize, align=left, anchor=north west]
     at (1.04,-0.10) {\tpcifenglish{positive}{positiv}\\$\lambda\ge 0$};
   \node[lbl, text=birrengray, font=\scriptsize, anchor=north west]
-    at (0.12,-1.14) {normal: \tpcifenglish{all of}{ganz} $\C$};
+    at (0.12,-1.14) {\tpcifenglish{normal: all of}{normal: ganz} $\C$};
 
   \node[lbl head, anchor=south] at (0,2.02)
     {(a) \tpcifenglish{where the eigenvalues lie}{wo die Eigenwerte liegen}};
@@ -119,7 +119,8 @@
   % Eigenvalue readings
   \node[lbl, font=\scriptsize, anchor=north]      at ({-sqrt(2)},-0.09) {$-\sqrt{2}$};
   \node[lbl, font=\scriptsize, anchor=north]      at ({ sqrt(2)},-0.09) {$\sqrt{2}$};
-  \node[lbl, font=\scriptsize, anchor=north]      at (1,-0.19)          {$1$};
+  \node[lbl, font=\scriptsize, anchor=north,
+        fill=white, inner sep=1pt]                at (1,-0.17)          {$1$};
   \node[lbl, font=\scriptsize, anchor=north east] at (-0.05,-0.12)      {$0$};
 
   % Operator labels, in the colour of the class each one belongs to
@@ -133,8 +134,8 @@
   \draw[birrenred, line width=0.4pt] (1.14,0.32) -- (1.05,0.09);
 
   % Why the lecture bothers to compute <psi|A|psi> = -sqrt(2)
-  \node[lbl, text=birrengray, font=\scriptsize, anchor=north]
-    at ({-sqrt(2)},-0.70) {\tpcifenglish{not positive}{nicht positiv}};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north, align=center]
+    at ({-sqrt(2)},-0.42) {\tpcifenglish{not}{nicht}\\\tpcifenglish{positive}{positiv}};
 
   \node[lbl head, anchor=south] at (0,2.02)
     {(b) \tpcifenglish{the example's $\widehat A,\widehat B,\widehat C$}%

@@ -46,16 +46,31 @@
 %     set in grey too: the verticals at <x>(t), whose EQUAL SPACING is
 %     uniform motion; the dashed envelope through the peaks, which
 %     falls as 1/Dx(t) exactly as fast as the widths grow, so the
-%     conserved area is shown rather than asserted; the initial width
+%     conserved area is shown rather than asserted, and whose label is
+%     set in the empty strip immediately above it rather than in the
+%     right margin, where it crowded the t=3tau label; the initial width
 %     and the classical asymptote in (b);
 %   * time labels sit to the RIGHT of each peak rather than above it,
 %     which is the only side on which the descending envelope leaves
 %     room;
-%   * panel (b) uses `scale only axis` with a 4.2 x 4.6 cm box on ranges
-%     4.2 x 4.6, i.e. 1 cm per unit on both axes.  The asymptote is then
-%     a true 45-degree line and its label can be set along it;
-%   * the two numbers at the foot of (b) give the order of magnitude
-%     that decides whether the spreading is ever observable at all.
+%   * panel (b) uses `scale only axis` with a 4.2 x 5.4 cm box on ranges
+%     4.2 x 5.4, i.e. 1 cm per unit on both axes.  The asymptote is then
+%     a true 45-degree line and its label can be set along it.  The y
+%     range runs to 5.4 although the curve reaches only sqrt(1+4.2^2) =
+%     4.32 inside the frame: that headroom is where the three annotation
+%     lines sit, so none of them is written over the curve.  The widest
+%     of them, the green formula, is 3.8 cm in the fonts of the notes —
+%     wider than in the cmfonts preview, which is why the panel is sized
+%     against the former;
+%   * both panels are 5.4 cm tall so that titles and x axes line up;
+%   * the orders of magnitude for tau — 10^-16 s for an electron
+%     localised to an angstrom, 10^13 s for a microgram grain — are
+%     NOT in the panel.  They were, at its foot, and in the fonts of the
+%     notes (wider than the cmfonts preview) the grey asymptote ran
+%     straight through them; a 4.2 cm panel crossed by two reference
+%     lines has no free region 3.4 cm wide, so the numbers now stand in
+%     the sentence below the figure, where the definition of tau in (b)
+%     hands them straight over.
 
 \begin{center}
 \begin{tikzpicture}
@@ -66,7 +81,7 @@
 \begin{axis}[
     name=packets,
     tpcplot,
-    scale only axis, width=6.4cm, height=4.6cm,
+    scale only axis, width=6.4cm, height=5.4cm,
     grid=none,
     xmin=-3.2, xmax=16.8,
     ymin=0,    ymax=0.47,
@@ -79,7 +94,7 @@
     every axis y label/.style={at={(axis description cs:-0.16,0.5)},
                                rotate=90, anchor=south, font=\small},
     title={(a) \tpcifenglish{The packet spreads}{Das Paket zerfließt}},
-    samples=241,
+    samples=401,
 ]
 
   % Centres <x>(t) = 3 t/tau, each rule drawn only up to the peak it
@@ -94,11 +109,13 @@
   \addplot[envelope, domain=0:12.6, samples=140]
       {1/(sqrt(2*pi)*sqrt(1+x^2/9))};
 
-  % The packets.  Widths sqrt(1+(t/tau)^2) = 1, sqrt2, sqrt5, sqrt10;
-  % each is drawn only over the range where it is still visible.
-  \addplot[wavefn, spacecadet,   domain=-3.2:6.6]
+  % The packets.  Widths sqrt(1+(t/tau)^2) = 1, sqrt2, sqrt5, sqrt10.
+  % Each runs across the whole panel: a curve stopped short leaves a
+  % blunt end lying on the axis, which reads as a cut-off rather than
+  % as a tail that has died away.
+  \addplot[wavefn, spacecadet,   domain=-3.2:16.8]
       {exp(-(x)^2/2)/sqrt(2*pi)};
-  \addplot[wavefn, cgblue,       domain=-3.2:10.5]
+  \addplot[wavefn, cgblue,       domain=-3.2:16.8]
       {exp(-(x-3)^2/4)/sqrt(2*pi*2)};
   \addplot[wavefn, birrenorange, domain=-3.2:16.8]
       {exp(-(x-6)^2/10)/sqrt(2*pi*5)};
@@ -121,11 +138,11 @@
   \node[lbl, text=birrengray, font=\scriptsize, anchor=north east,
         align=right] at (axis cs:16.6,0.468)
     {\tpcifenglish{centres}{Zentren}:
-     $\langle\widehat{x}\rangle(t)=\langle\widehat{p}\rangle\,t/m$\\[-2pt]
+     $\langle\widehat{x}\rangle(t)=\langle\widehat{p}\rangle\,t/m$\\[1pt]
      \tpcifenglish{area}{Fl\"ache}: $\int|\Psi|^2dx=1$};
-  \node[lbl, text=birrengray, font=\scriptsize, anchor=south east]
-    at (axis cs:16.6,0.152)
-    {\tpcifenglish{peaks}{H\"ohe} $\propto 1/\Delta x(t)$};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=south west]
+    at (axis cs:4.7,0.232)
+    {\tpcifenglish{peak height}{H\"ohe} $\propto 1/\Delta x(t)$};
 \end{axis}
 
 % ─────────────────────────────────────────────────────────────
@@ -135,8 +152,8 @@
     name=widths,
     tpcplot,
     at={(packets.south east)}, anchor=south west, xshift=17mm,
-    scale only axis, width=4.2cm, height=4.6cm,
-    xmin=0, xmax=4.2, ymin=0, ymax=4.6,
+    scale only axis, width=4.2cm, height=5.4cm,
+    xmin=0, xmax=4.2, ymin=0, ymax=5.4,
     xtick={0,1,2,3,4}, ytick={0,1,2,3,4},
     grid=major,
     xlabel={$t/\tau$},
@@ -170,25 +187,19 @@
   % The curve names itself, in its own colour; the grey lines below it
   % state the asymptotics and fix the time scale.
   \node[text=birrengreen, font=\scriptsize, anchor=north west]
-    at (axis cs:0.08,4.52)
+    at (axis cs:0.08,5.32)
     {$\Delta x(t)=\Delta x(0)\sqrt{1+(t/\tau)^{2}}$};
   \node[lbl, text=birrengray, font=\scriptsize, anchor=north west]
-    at (axis cs:0.08,3.95)
+    at (axis cs:0.08,4.68)
     {$\longrightarrow\ \Delta p\,t/m$ \tpcifenglish{for}{f\"ur} $t\gg\tau$};
   \node[lbl, text=birrengray, font=\scriptsize, anchor=north west]
-    at (axis cs:0.08,3.55) {$\tau=2m\,\Delta x(0)^2/\hbar$};
+    at (axis cs:0.08,4.14) {$\tau=2m\,\Delta x(0)^2/\hbar$};
 
   % The asymptote, labelled along itself — the panel is drawn at
   % 1 cm per unit on both axes, so the line really does run at 45 deg.
   \node[lbl, text=birrengray, font=\scriptsize, rotate=45,
         anchor=north west, inner sep=1.5pt] at (axis cs:1.65,1.50)
     {\tpcifenglish{classical swarm}{klassischer Schwarm}};
-
-  % Order of magnitude: when is the spreading observable at all?
-  \node[lbl, text=birrengray, font=\scriptsize, anchor=south east,
-        align=right] at (axis cs:4.15,0.06)
-    {$e^-$, $10^{-10}$\,m: $\tau\sim10^{-16}$\,s\\[-2pt]
-     $1\,\mu$g, $10^{-6}$\,m: $\tau\sim10^{13}$\,s};
 \end{axis}
 
 \end{tikzpicture}

@@ -9,23 +9,36 @@
 %         Phi(p)  proportional to exp(-sigma^2 p^2 / hbar^2),
 %     so the two densities are Gaussians of standard deviation
 %         sigma_x = sigma        and      sigma_p = hbar / (2 sigma).
-%     Every curve, every bar length and every peak height in the plate is
-%     evaluated from those two numbers:
+%     Every curve, every bar length and every drop line in the plate is
+%     evaluated from those two numbers.  The centre a only shifts panel
+%     (a) and drops out of |Phi|^2 altogether, so it is set to zero: the
+%     plate is about widths.
+%   * the three states are sigma_x = sigma/2, sigma, 2 sigma, spaced by a
+%     factor of two so that the reciprocal factor of two in (b) can be
+%     read off the ruler rather than believed;
+%
+%   * plotted are the *densities* |Psi|^2 and |Phi|^2, because those are
+%     what the lecture integrates in <p> = int p |Phi(p,t)|^2 dp.  Within
+%     a panel the peaks are the true normalised ones,
 %         |Psi|^2 peak = 1/(sigma_x sqrt(2 pi)),
 %         |Phi|^2 peak = 1/(sigma_p sqrt(2 pi)),
 %     which is why the tallest curve of (a) is the flattest of (b).  The
-%     three states are sigma_x = sigma/2, sigma, 2 sigma, spaced by a
-%     factor of two so that the reciprocal factor of two in (b) can be
-%     read off the ruler rather than believed.
-%
-%   * plotted are the *densities* |Psi|^2 and |Phi|^2, because those are
-%     what the lecture integrates in <p> = int p |Phi(p,t)|^2 dp;
+%     two panels measure in different units (1/length against 1/momentum),
+%     so their vertical scales are independent; panel (a) is drawn at
+%     twice the unit of panel (b) — written as an explicit factor in the
+%     plot expressions — purely so that the two panels fill the same
+%     height.  Both y axes are unnumbered: the message is the width, not
+%     the height;
 %   * colour encodes the state (which packet), nothing else — the same
 %     three colours in the same order appear in both panels, so the eye
-%     can carry a packet across the Fourier transform;
-%   * the +/- sigma rulers sit in a strip above the curves, clear of the
-%     data: their lengths are the whole point of the plate, and their
-%     order reverses from (a) to (b);
+%     can carry a packet across the Fourier transform.  Grey is reserved
+%     for what is said *about* the plate: the strip captions, the drop
+%     lines, the transform arrow and the uncertainty product, none of
+%     which belong to any one packet;
+%   * the rulers sit in a strip above the curves, clear of the data, each
+%     headed by the grey caption that says what its bars mark (+/- sigma,
+%     not the full width): their lengths are the whole point of the
+%     plate, and their order reverses from (a) to (b);
 %   * dotted grey drop lines take the middle packet's ruler down onto its
 %     own flank in both panels, so the bars are visibly *measured* off a
 %     curve rather than asserted; that packet is the worked example, the
@@ -33,8 +46,7 @@
 %   * the grey double arrow in the gap carries the only thing the two
 %     panels do not say separately: they are one state, not two;
 %   * axis units are sigma and hbar/sigma, so the plate carries no
-%     arbitrary numbers, and the y axes are unnumbered — the message is
-%     the width, not the height.
+%     arbitrary numbers.
 %
 % Panel (a) three packets in position space, narrow to wide.
 % Panel (b) the same three in momentum space, wide to narrow, with the
@@ -56,7 +68,7 @@
     tpcplot,
     width=6.4cm, height=5.9cm,
     grid=none,
-    xmin=-5, xmax=5, ymin=0, ymax=2.62,
+    xmin=-5, xmax=5, ymin=0, ymax=3.0,
     xtick={-4,-2,0,2,4}, ytick=\empty,
     xlabel={$x/\sigma$},
     ylabel={$|\Psi(x)|^2$},
@@ -68,31 +80,34 @@
     domain=-5:5, samples=201,
     clip=false,
 ]
-  % |Psi|^2 = exp(-x^2/(2 sigma_x^2)) / (sigma_x sqrt(2 pi))
-  \addplot[wavefn, spacecadet]   {1.59577*exp(-2*x^2)};       % sigma_x = sigma/2
-  \addplot[wavefn, cgblue]       {0.79788*exp(-0.5*x^2)};     % sigma_x = sigma
-  \addplot[wavefn, birrenorange] {0.39894*exp(-0.125*x^2)};   % sigma_x = 2 sigma
+  % |Psi|^2 = exp(-x^2/(2 sigma_x^2)) / (sigma_x sqrt(2 pi)), times the
+  % panel's own vertical unit (the leading 2, see header).
+  \addplot[wavefn, spacecadet]   {2*0.79788*exp(-2*x^2)};      % sigma_x = sigma/2
+  \addplot[wavefn, cgblue]       {2*0.39894*exp(-0.5*x^2)};    % sigma_x = sigma
+  \addplot[wavefn, birrenorange] {2*0.19947*exp(-0.125*x^2)};  % sigma_x = 2 sigma
 
   % Width rulers, +/- sigma_x, in the state's own colour
-  \draw[dimbar, spacecadet]   (axis cs:-0.5,2.40) -- (axis cs:0.5,2.40);
-  \draw[dimbar, cgblue]       (axis cs:-1,  2.15) -- (axis cs:1,  2.15);
-  \draw[dimbar, birrenorange] (axis cs:-2,  1.90) -- (axis cs:2,  1.90);
+  \draw[dimbar, spacecadet]   (axis cs:-0.5,2.45) -- (axis cs:0.5,2.45);
+  \draw[dimbar, cgblue]       (axis cs:-1,  2.20) -- (axis cs:1,  2.20);
+  \draw[dimbar, birrenorange] (axis cs:-2,  1.95) -- (axis cs:2,  1.95);
 
   \node[lbl, font=\scriptsize, text=spacecadet,   anchor=west]
-    at (axis cs:0.65,2.40) {$\sigma/2$};
+    at (axis cs:0.65,2.45) {$\sigma/2$};
   \node[lbl, font=\scriptsize, text=cgblue,       anchor=west]
-    at (axis cs:1.15,2.15) {$\sigma$};
+    at (axis cs:1.15,2.20) {$\sigma$};
   \node[lbl, font=\scriptsize, text=birrenorange, anchor=west]
-    at (axis cs:2.15,1.90) {$2\sigma$};
+    at (axis cs:2.15,1.95) {$2\sigma$};
 
   % The ruler really is read off the curve: drop the middle packet's
   % +/- sigma_x onto its own flank, where |Psi|^2 has fallen to e^{-1/2}
   % of its peak.  The same packet is worked in panel (b).
-  \draw[classicallim] (axis cs:-1,2.15) -- (axis cs:-1,0.484);
-  \draw[classicallim] (axis cs: 1,2.15) -- (axis cs: 1,0.484);
+  \draw[classicallim] (axis cs:-1,2.20) -- (axis cs:-1,0.484);
+  \draw[classicallim] (axis cs: 1,2.20) -- (axis cs: 1,0.484);
 
-  \node[lbl, font=\scriptsize, text=birrengray, anchor=west]
-    at (axis cs:-4.9,2.54) {$\pm\sigma_x$};
+  % Strip caption: what the bars mark, centred over the strip so that it
+  % cannot be mistaken for an annotation of the vertical axis.
+  \node[lbl, font=\scriptsize, text=birrengray, anchor=south]
+    at (axis cs:0,2.70) {$\pm\sigma_x$};
 \end{axis}
 
 % ─────────────────────────────────────────────────────────────
@@ -104,7 +119,7 @@
     at={(posspace.south east)}, anchor=south west, xshift=19mm,
     width=6.4cm, height=5.9cm,
     grid=none,
-    xmin=-2.5, xmax=2.5, ymin=0, ymax=2.62,
+    xmin=-2.5, xmax=2.5, ymin=0, ymax=3.0,
     xtick={-2,-1,0,1,2}, ytick=\empty,
     xlabel={$p\,\sigma/\hbar$},
     ylabel={$|\Phi(p)|^2$},
@@ -121,26 +136,24 @@
   \addplot[wavefn, cgblue]       {0.79788*exp(-2*x^2)};       % sigma_p = hbar/(2 sigma)
   \addplot[wavefn, birrenorange] {1.59577*exp(-8*x^2)};       % sigma_p = hbar/(4 sigma)
 
-  \draw[dimbar, spacecadet]   (axis cs:-1,   2.40) -- (axis cs:1,   2.40);
-  \draw[dimbar, cgblue]       (axis cs:-0.5, 2.15) -- (axis cs:0.5, 2.15);
-  \draw[dimbar, birrenorange] (axis cs:-0.25,1.90) -- (axis cs:0.25,1.90);
+  \draw[dimbar, spacecadet]   (axis cs:-1,   2.45) -- (axis cs:1,   2.45);
+  \draw[dimbar, cgblue]       (axis cs:-0.5, 2.20) -- (axis cs:0.5, 2.20);
+  \draw[dimbar, birrenorange] (axis cs:-0.25,1.95) -- (axis cs:0.25,1.95);
 
   \node[lbl, font=\scriptsize, text=spacecadet,   anchor=west]
-    at (axis cs:1.15,2.40) {$\hbar/\sigma$};
+    at (axis cs:1.15,2.45) {$\hbar/\sigma$};
   \node[lbl, font=\scriptsize, text=cgblue,       anchor=west]
-    at (axis cs:0.65,2.15) {$\hbar/(2\sigma)$};
+    at (axis cs:0.65,2.20) {$\hbar/(2\sigma)$};
+  % 0.58, not 0.40: the drop line at p sigma/hbar = 0.5 runs through this
+  % row, so the label has to start to the right of it.
   \node[lbl, font=\scriptsize, text=birrenorange, anchor=west]
-    at (axis cs:0.40,1.90) {$\hbar/(4\sigma)$};
+    at (axis cs:0.58,1.95) {$\hbar/(4\sigma)$};
 
-  \draw[classicallim] (axis cs:-0.5,2.15) -- (axis cs:-0.5,0.484);
-  \draw[classicallim] (axis cs: 0.5,2.15) -- (axis cs: 0.5,0.484);
+  \draw[classicallim] (axis cs:-0.5,2.20) -- (axis cs:-0.5,0.484);
+  \draw[classicallim] (axis cs: 0.5,2.20) -- (axis cs: 0.5,0.484);
 
-  \node[lbl, font=\scriptsize, text=birrengray, anchor=west]
-    at (axis cs:-2.45,2.54) {$\pm\sigma_p$};
-
-  % What the two rulers measure together
-  \node[lbl, font=\small, text=cgblue, anchor=west]
-    at (axis cs:-2.45,1.30) {$\sigma_x\,\sigma_p = \hbar/2$};
+  \node[lbl, font=\scriptsize, text=birrengray, anchor=south]
+    at (axis cs:0,2.70) {$\pm\sigma_p$};
 \end{axis}
 
 % The two panels are one state, not two: the transform lives in the gap.
@@ -150,6 +163,13 @@
   ($(fmid)+(-4mm,0)$) -- ($(fmid)+(4mm,0)$);
 \node[lbl, font=\scriptsize, text=birrengray, anchor=south]
   at ($(fmid)+(0,0.7mm)$) {$\mathcal{F}$};
+
+% What the two rulers measure together.  It belongs to neither panel and
+% to no single packet, so it sits grey on the axis of symmetry, below the
+% transform arrow and level with the two x labels.
+\node[lbl, font=\small, text=birrengray, anchor=base]
+  at ($(posspace.south east)!0.5!(momspace.south west)+(0,-9mm)$)
+  {$\sigma_x\,\sigma_p = \hbar/2$};
 
 \end{tikzpicture}
 \end{center}

@@ -1,0 +1,205 @@
+% fig_vl19_entropie.tex — Die von-Neumann-Entropie als Summe der Terme
+% -r log r: der einzelne Term, und die Entropie eines Qubits.
+%
+% WHY THIS FIGURE.  The lecture states three things it never shows: that
+% -x log x runs into zero at x = 0 (the text says the curve does so
+% "sichtbar", so the curve had better be there — it is the one picture
+% Osborne draws at the board, v23 [64:14]), that S = 0 for a pure state
+% and S = k log d at the other extreme, and that only the spectrum
+% enters.  What prose cannot hand over is the SHAPE between those two
+% extremes: that S rises with infinite slope out of the pure state — a
+% one-percent admixture already buys eight percent of the maximum — and
+% then flattens off, so that near the maximally mixed state the entropy
+% hardly notices how the weight is distributed.  That shape, and the
+% fact that the whole reachable range of a qubit is the strip below
+% k log 2, is the content of the plate.
+%
+% GEOMETRY FROM THE FORMULA.  Nothing is drawn by eye.  Both curves are
+% the lecture's own expression S(rho) = -k sum_j r_j log(r_j) evaluated
+% on a spectrum, in units of k:
+%
+%   (a)  eta(r) = -r log r          one eigenvalue's contribution,
+%   (b)  S/k    = eta(p) + eta(1-p) a qubit with spectrum {p, 1-p}.
+%
+% Every marked value is exact, not eyeballed:
+%   * eta has its maximum at r = 1/e, of height 1/e = 0.36788 — the
+%     y tick and the grey guide are placed there;
+%   * eta(1/2) = (1/2) log 2 = 0.34657, and twice that is the peak of
+%     panel (b): the red dot in (a) is literally half the red dot in
+%     (b).  That is why both are red — same physical situation, two
+%     eigenvalues of equal weight;
+%   * S/k at p = 1/2 is log 2 = 0.69315 = log d for d = 2, the ceiling
+%     of the lecture's second example;
+%   * S/k at p = 3/4 is -(3/4)log(3/4) - (1/4)log(1/4) = 0.56234, the
+%     value of the worked example in the text, whose two matrices
+%     (1/4)diag(3,1) and (1/4)[[2,1],[1,2]] share the spectrum {3/4,1/4}
+%     and therefore land on the SAME dot.  Drawing them arriving at one
+%     point is the unitary invariance S(rho) = S(U rho U^dagger) shown
+%     rather than restated;
+%   * the dotted rule between p = 1/4 and p = 3/4 is the same statement
+%     one level down: a spectrum is a set, so p and 1-p are one state
+%     and must have one entropy.
+%
+% DESIGN DECISIONS
+%   * colour ramps with the entropy value, and carries nothing else:
+%     open circle (spacecadet on white) where the term vanishes —
+%     r = 0 never occurs, r = 1 occurs for certain, neither hides any
+%     information; birrenorange for the intermediate example; birrenred
+%     for the maximum.  The curves themselves are the house data colour
+%     cgblue in both panels because they are the same function;
+%   * the band above log 2 is hatched, not filled: it is unreachable for
+%     d = 2, and hatching survives greyscale printing.  The grey rule
+%     bounding it is a reference line, so it is neutral, like the guide
+%     to the maximum of eta;
+%   * no y labels: the panel titles already name the plotted quantity,
+%     and the width saved goes into the annotations, which sit on their
+%     objects rather than in a legend;
+%   * the words under the p axis ("rein", "maximal gemischt") name the
+%     states, not the numbers — the reading of the figure is physical;
+%   * annotation positions were set against the 12pt amsart build, not
+%     against scripts/tikz-preview.sh: the preview is a 10pt standalone,
+%     so every \scriptsize label is noticeably smaller there and
+%     clearances that look ample in the PNG can close up on the page.
+%     The eta(1/2) label therefore sits above the curve, centred on
+%     r = 1/2 and tied to its dot by a hairline leader (to the right of
+%     the dot the label grew into panel (b); a rule carried down to the
+%     axis instead crossed the words of the limit annotation), and the
+%     annotation block of (b) is centred on p = 1/2, the axis of symmetry
+%     of the curve, which is where the free space is widest;
+%   * grey does two jobs and they are kept apart: dashed rules are
+%     levels (1/e, log 2), solid hairlines are leaders from a label to
+%     the thing it names.
+
+\begin{center}
+\begin{tikzpicture}
+
+% ─────────────────────────────────────────────────────────────
+%  Exact constants (see header)
+% ─────────────────────────────────────────────────────────────
+\def\einve{0.3678794}       % 1/e             — maximum of eta
+\def\halflogtwo{0.3465736}  % (1/2)log 2      — eta(1/2)
+\def\logtwo{0.6931472}      % log 2           — S/k of the mixed qubit
+\def\Sdreiviertel{0.5623351}% S({3/4,1/4})/k  — the worked example
+
+% ─────────────────────────────────────────────────────────────
+%  (a)  The single term eta(r) = -r log r
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    name=term,
+    tpcplot,
+    width=5.8cm, height=5.4cm,
+    grid=none, clip=false,
+    xmin=-0.05, xmax=1.12, ymin=-0.035, ymax=0.50,
+    xtick={0,0.5,1}, xticklabels={$0$,$\tfrac12$,$1$},
+    ytick={0,\einve}, yticklabels={$0$,$1/e$},
+    xlabel={$r$},
+    title={(a) \tpcifenglish{one term}{ein Term}: $\eta(r)=-r\log r$},
+    domain=0.0002:1, samples=300,
+]
+  % One reference line only: the height of the maximum.  The equal-weight
+  % point gets a leader down from its label instead of a rule through the
+  % whole panel — a full-height rule at r = 1/2 runs straight through the
+  % words of the limit annotation below, and dashed grey is reserved here
+  % for level lines, solid hairlines for leaders.
+  \draw[levellinegrey] (axis cs:-0.05,\einve) -- (axis cs:\einve,\einve);
+
+  \addplot[wavefn, cgblue] {-x*ln(x)};
+
+  % Both zeros of eta: nothing is missing there
+  \node[circle, draw=spacecadet, fill=white, line width=0.7pt,
+        inner sep=1.1pt] at (axis cs:0,0) {};
+  \node[circle, draw=spacecadet, fill=white, line width=0.7pt,
+        inner sep=1.1pt] at (axis cs:1,0) {};
+
+  % Equal weights: half of the qubit maximum in (b)
+  \node[circle, fill=birrenred, inner sep=1.55pt]
+    at (axis cs:0.5,\halflogtwo) {};
+  \node[lbl, font=\scriptsize, anchor=south]
+    at (axis cs:0.5,0.405) {$\eta(\tfrac12)=\tfrac12\log 2$};
+  \draw[birrengray, line width=0.4pt]
+    (axis cs:0.5,0.399) -- (axis cs:0.5,0.357);
+
+  % The limit that defines 0 log 0
+  \node[lbl, font=\scriptsize, anchor=west]
+    at (axis cs:0.085,0.055) {$\lim_{r\to0} r\log r = 0$};
+  \draw[birrengray, line width=0.4pt]
+    (axis cs:0.078,0.047) -- (axis cs:0.022,0.013);
+
+  % The state names hang a fixed 6.2 mm below the axis line, here and in
+  % (b).  In axis units the same drop would land at two different heights
+  % on the page: the panels cover 0.535 and 0.945 units in the same
+  % 5.4 cm, so one unit is nearly twice as long in (a) as in (b).
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north, yshift=-6.2mm]
+    at (axis cs:0,-0.035) {\tpcifenglish{never}{nie}};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north, yshift=-6.2mm]
+    at (axis cs:1,-0.035) {\tpcifenglish{certain}{sicher}};
+\end{axis}
+
+% ─────────────────────────────────────────────────────────────
+%  (b)  A qubit: S/k = eta(p) + eta(1-p)
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    name=qubit,
+    at={(term.south east)}, anchor=south west, xshift=12mm,
+    tpcplot,
+    width=6.8cm, height=5.4cm,
+    grid=none, clip=false,
+    xmin=-0.04, xmax=1.07, ymin=-0.045, ymax=0.90,
+    xtick={0,0.25,0.5,0.75,1},
+    xticklabels={$0$,$\tfrac14$,$\tfrac12$,$\tfrac34$,$1$},
+    ytick={0,\logtwo}, yticklabels={$0$,$\log 2$},
+    xlabel={$p$},
+    title={(b) \tpcifenglish{qubit}{Qubit}: $S/k=\eta(p)+\eta(1-p)$},
+    domain=0.0004:0.9996, samples=320,
+]
+  % Unreachable for d = 2: hatched, bounded by a neutral reference rule
+  \fill[forbidden] (axis cs:-0.04,\logtwo) rectangle (axis cs:1.07,0.90);
+  \draw[levellinegrey] (axis cs:-0.04,\logtwo) -- (axis cs:1.07,\logtwo);
+  % the backing is `tpcplot`'s legend style, but opaque: at the legend's
+  % 0.88 the hatching still shows through the words
+  \node[lbl, text=birrengray, font=\scriptsize, inner sep=2.5pt,
+        fill=white, rounded corners=1.5pt]
+    at (axis cs:0.5,0.795)
+    {\tpcifenglish{unreachable}{unerreichbar}: $S_{\max}=k\log d$};
+
+  \addplot[wavefn, cgblue] {-x*ln(x)-(1-x)*ln(1-x)};
+
+  % One spectrum, two places on the p axis
+  \draw[classicallim] (axis cs:0.25,\Sdreiviertel)
+                   -- (axis cs:0.75,\Sdreiviertel);
+  \node[circle, fill=birrenorange, inner sep=1.55pt]
+    at (axis cs:0.25,\Sdreiviertel) {};
+  \node[circle, fill=birrenorange, inner sep=1.55pt]
+    at (axis cs:0.75,\Sdreiviertel) {};
+
+  % Maximum and the two pure states
+  \node[circle, fill=birrenred, inner sep=1.55pt]
+    at (axis cs:0.5,\logtwo) {};
+  \node[circle, draw=spacecadet, fill=white, line width=0.7pt,
+        inner sep=1.1pt] at (axis cs:0,0) {};
+  \node[circle, draw=spacecadet, fill=white, line width=0.7pt,
+        inner sep=1.1pt] at (axis cs:1,0) {};
+
+  % The two matrices of the worked example arrive at the same dot
+  \node[lbl, font=\footnotesize, anchor=north] (mats) at (axis cs:0.5,0.44)
+    {$\tfrac14\!\left(\begin{smallmatrix}3&0\\0&1\end{smallmatrix}\right)$
+     \tpcifenglish{and}{und}
+     $\tfrac14\!\left(\begin{smallmatrix}2&1\\1&2\end{smallmatrix}\right)$};
+  \draw[-{Stealth[length=4pt]}, birrengray, line width=0.5pt,
+        shorten >=2.5pt] (mats.north east) -- (axis cs:0.75,\Sdreiviertel);
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north, align=center]
+    at (axis cs:0.5,0.315)
+    {\tpcifenglish{same spectrum,}{gleiches Spektrum,}\\
+     \tpcifenglish{same entropy}{gleiche Entropie}};
+
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north, yshift=-6.2mm]
+    at (axis cs:0,-0.045) {\tpcifenglish{pure}{rein}};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north, yshift=-6.2mm]
+    at (axis cs:1,-0.045) {\tpcifenglish{pure}{rein}};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north, yshift=-6.2mm]
+    at (axis cs:0.5,-0.045)
+    {\tpcifenglish{max.\ mixed}{maximal gemischt}};
+\end{axis}
+
+\end{tikzpicture}
+\end{center}

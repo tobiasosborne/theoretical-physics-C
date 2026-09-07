@@ -36,9 +36,12 @@
 %     computed, not placed.
 %
 %   * colour encodes ell and nothing else, using the ordered ramp
-%     `tpclevels` (ell = 0,1,2,3 -> spacecadet, cgblue, munsell,
-%     birrenorange), so the cgblue curve in (a) is the same state as the
-%     cgblue curve in (b).  The two ingredients V(r) and the centrifugal
+%     `tpclevels` (ell = 0,1,2,3 -> spacecadet, cgblue, birrenorange,
+%     birrenred), so the cgblue curve in (a) is the same state as the
+%     cgblue curve in (b).  Entry 3 of the ramp, munsell, is skipped for
+%     the reason the reference plate fig_vl11_kasten gives: beside cgblue
+%     it is the same teal to the eye, so it would break the very code it
+%     is meant to carry.  The two ingredients V(r) and the centrifugal
 %     term are neutral grey and distinguished by dash pattern, because
 %     they are not separate states; likewise the level E and the locus
 %     1/2 V(r) are grey reference lines.
@@ -68,7 +71,7 @@
 \begin{axis}[
     name=build,
     tpcplot,
-    width=6.6cm, height=6.3cm,
+    width=6.4cm, height=6.3cm,
     grid=none,
     xmin=0, xmax=10, ymin=-1.0, ymax=0.95,
     enlarge x limits=false, enlarge y limits=false,
@@ -139,7 +142,8 @@
     {$V_{\mathrm{eff}}$};
 
   % Name the strip the barrier closes off
-  \node[lbl, text=birrengray, font=\scriptsize, rotate=90]
+  \node[lbl, text=birrengray, font=\scriptsize, rotate=90,
+        fill=white, fill opacity=0.85, text opacity=1, inner sep=1pt]
     at (axis cs:0.55,-0.50)
     {\tpcifenglish{classically forbidden}{klassisch verboten}};
 \end{axis}
@@ -149,8 +153,8 @@
 % ─────────────────────────────────────────────────────────────
 \begin{axis}[
     tpcplot,
-    at={(build.south east)}, anchor=south west, xshift=14mm,
-    width=6.5cm, height=6.3cm,
+    at={(build.south east)}, anchor=south west, xshift=20mm,
+    width=6.3cm, height=6.3cm,
     grid=none,
     xmin=0, xmax=18, ymin=-0.62, ymax=0.30,
     enlarge x limits=false, enlarge y limits=false,
@@ -159,6 +163,8 @@
     yticklabels={$-0.6$,$-0.4$,$-0.2$,$0$,$0.2$},
     xlabel={$r/a_0$},
     ylabel={$V_{\mathrm{eff}}\,[\mathrm{Ry}]$},
+    every axis x label/.style={at={(ticklabel cs:0.5)},
+                               anchor=near ticklabel, font=\small},
     every axis y label/.style={at={(axis description cs:-0.20,0.5)},
                                rotate=90, anchor=south, font=\small},
     domain=0.05:18, samples=600,
@@ -173,30 +179,30 @@
   % V_eff for ell = 0,1,2,3 — colour is the ordered ramp `tpclevels`
   \addplot[wavefn, spacecadet]   {-2/x};
   \addplot[wavefn, cgblue]       {2/x^2  - 2/x};
-  \addplot[wavefn, munsell]      {6/x^2  - 2/x};
-  \addplot[wavefn, birrenorange] {12/x^2 - 2/x};
+  \addplot[wavefn, birrenorange] {6/x^2  - 2/x};
+  \addplot[wavefn, birrenred]    {12/x^2 - 2/x};
 
   % Their minima, at x = ell(ell+1) with depth -1/[ell(ell+1)]
   \addplot[only marks, mark=*, mark size=1.8pt, cgblue]
     coordinates {(2,-0.5)};
-  \addplot[only marks, mark=*, mark size=1.8pt, munsell]
-    coordinates {(6,-0.16667)};
   \addplot[only marks, mark=*, mark size=1.8pt, birrenorange]
+    coordinates {(6,-0.16667)};
+  \addplot[only marks, mark=*, mark size=1.8pt, birrenred]
     coordinates {(12,-0.08333)};
 
   % Direct labels, no legend
   \node[lbl, text=cgblue, font=\scriptsize, anchor=north]
     at (axis cs:2.0,-0.53)  {$\ell=1$};
-  \node[lbl, text=munsell, font=\scriptsize, anchor=south]
-    at (axis cs:6,-0.135)   {$\ell=2$};
   \node[lbl, text=birrenorange, font=\scriptsize, anchor=south]
+    at (axis cs:6,-0.135)   {$\ell=2$};
+  \node[lbl, text=birrenred, font=\scriptsize, anchor=south]
     at (axis cs:12,-0.050)  {$\ell=3$};
   \node[lbl, text=spacecadet, font=\scriptsize, anchor=west]
     at (axis cs:4.3,-0.565) {$\ell=0$: $V(r)$};
 
   % The grey curve through the minima, with a short leader
   \draw[birrengray!70, line width=0.4pt]
-    (axis cs:14.6,0.052) -- (axis cs:15.5,-0.058);
+    (axis cs:14.6,0.052) -- (axis cs:15.5,-0.0645);
   \node[lbl, text=birrengray, font=\scriptsize, anchor=south west]
     at (axis cs:13.9,0.055) {$\tfrac12 V(r)$};
 

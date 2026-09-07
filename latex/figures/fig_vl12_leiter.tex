@@ -24,8 +24,13 @@
 %     No curve touches a neighbouring level line.
 %   * colour encodes the quantum number n (the ordered ramp of `tpclevels`),
 %     in both panels and nothing else: rung n in (b) has the colour of
-%     curve n in (a).  Level rules in (a) are neutral grey — reference
-%     lines, not data — and so are the turning-point dots.
+%     curve n in (a).  Entries 1, 2, 4, 5 (navy, teal, orange, red);
+%     entry 3, munsell, is skipped on purpose — beside cgblue it is the
+%     same teal to the eye, so it would break the very code it is
+%     supposed to carry.  This is the choice fig_vl11_kasten makes, and
+%     the two plates are meant to be read against each other.  Level
+%     rules in (a) are neutral grey — reference lines, not data — and so
+%     are the turning-point dots.
 %   * both axes share ymin/ymax and height, so E_n in (a) sits at exactly
 %     the height of |phi_n> in (b): the panels are one energy axis, read
 %     twice.
@@ -77,17 +82,19 @@
     coordinates {(-1.0000,0.5) (1.0000,0.5) (-1.7321,1.5) (1.7321,1.5)
                  (-2.2361,2.5) (2.2361,2.5) (-2.6458,3.5) (2.6458,3.5)};
 
-  % Eigenfunctions about their own levels.  Each is drawn out to one unit
-  % beyond its own turning point, where the tail has decayed to a few per
-  % cent: the curves then nest like the level rules they belong to, and no
-  % state trails a long flat line across the whole plate.
+  % Eigenfunctions about their own levels.  Each is drawn out towards one
+  % unit beyond its own turning point, where the tail has decayed to a few
+  % per cent — and, for the upper two, as far beyond it as the plate
+  % allows while still ending clear of the boundary.  The curves then nest
+  % like the level rules they belong to, no state trails a long flat line
+  % across the whole plate, and none runs off the edge.
   \addplot[wavefn, spacecadet,   domain=-2.10:2.10]
     {0.5 + 0.6*0.751126*exp(-x^2/2)};
-  \addplot[wavefn, cgblue,       domain=-2.75:2.75]
+  \addplot[wavefn, cgblue,       domain=-2.60:2.60]
     {1.5 + 0.6*0.531126*(2*x)*exp(-x^2/2)};
-  \addplot[wavefn, munsell,      domain=-3.10:3.10]
+  \addplot[wavefn, birrenorange, domain=-2.85:2.85]
     {2.5 + 0.6*0.265562*(4*x^2-2)*exp(-x^2/2)};
-  \addplot[wavefn, birrenorange, domain=-3.20:3.20]
+  \addplot[wavefn, birrenred,    domain=-3.05:3.05]
     {3.5 + 0.6*0.108416*x*(8*x^2-12)*exp(-x^2/2)};
 
   % Level labels, in the left margin.  Written out rather than looped:
@@ -112,7 +119,10 @@
   % grey of the hatching: label and object match, so neither needs a leader.
   \node[lbl, text=birrengray!85!black] at (axis cs:0,4.65)
     {$V(x)=\tfrac{1}{2}m\omega^2x^2$};
-  \node[lbl, text=birrengray, font=\scriptsize] at (axis cs:-2.30,0.28) {$E<V$};
+  % Named on clean paper: grey glyphs on grey hatching are unreadable, so
+  % the node punches a small white hole for itself.
+  \node[lbl, text=birrengray, font=\scriptsize, fill=white, inner sep=1.6pt]
+    at (axis cs:-2.30,0.28) {$E<V$};
   \node[lbl, anchor=north] at (axis cs:0,-0.24) {$x\sqrt{m\omega/\hbar}$};
 \end{axis}
 
@@ -121,7 +131,7 @@
 % ─────────────────────────────────────────────────────────────
 \begin{axis}[
     tpclevelplot,
-    at={(parabel.south east)}, anchor=south west, xshift=12mm,
+    at={(parabel.south east)}, anchor=south west, xshift=16mm,
     width=4.6cm, height=5.8cm,
     xmin=-1.0, xmax=1.75,
     ymin=0,    ymax=5.12,
@@ -132,8 +142,8 @@
   \draw[classicallim] (axis cs:-0.62,0) -- (axis cs:1.25,0);
   \draw[wavefn, spacecadet]   (axis cs:0,0.5) -- (axis cs:1.25,0.5);
   \draw[wavefn, cgblue]       (axis cs:0,1.5) -- (axis cs:1.25,1.5);
-  \draw[wavefn, munsell]      (axis cs:0,2.5) -- (axis cs:1.25,2.5);
-  \draw[wavefn, birrenorange] (axis cs:0,3.5) -- (axis cs:1.25,3.5);
+  \draw[wavefn, birrenorange] (axis cs:0,2.5) -- (axis cs:1.25,2.5);
+  \draw[wavefn, birrenred]    (axis cs:0,3.5) -- (axis cs:1.25,3.5);
   \draw[levellinegrey]        (axis cs:0,4.5) -- (axis cs:1.25,4.5);
   \node[lbl, text=birrengray, font=\large] at (axis cs:0.625,4.82) {$\vdots$};
 

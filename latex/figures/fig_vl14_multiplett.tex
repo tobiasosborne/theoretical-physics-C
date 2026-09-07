@@ -37,7 +37,10 @@
 %
 %   * the region |L_3| > |L|, which no state can reach, is hatched rather
 %     than filled, so it survives greyscale printing; the bound itself is
-%     a neutral grey rule, a reference line rather than data.
+%     a neutral grey rule, a reference line rather than data.  Following
+%     fig_vl11_kasten, the hatch is a band beside that rule rather than a
+%     full-bleed field, so the two L_pm|ell,+-ell> = 0 labels stand on
+%     clean paper instead of on the hatch.
 %
 % Panel (a) the 2ell+1 rungs with L_+ and L_- between them, and the two
 %           blocked arrows at the ends where the ladder terminates.
@@ -63,8 +66,8 @@
 ]
 
   % |L_3| > |L| is unreachable for every state: hatched, not filled.
-  \fill[forbidden] (axis cs:-1.75,2.4495)  rectangle (axis cs:1.45,3.6);
-  \fill[forbidden] (axis cs:-1.75,-2.4495) rectangle (axis cs:1.45,-3.6);
+  \fill[forbidden] (axis cs:-1.75,2.4495)  rectangle (axis cs:1.45,3.16);
+  \fill[forbidden] (axis cs:-1.75,-2.4495) rectangle (axis cs:1.45,-3.16);
 
   % The bound itself, a neutral reference rule at |L|/hbar = sqrt6.
   \draw[levellinegrey] (axis cs:-1.75,2.4495)  -- (axis cs:1.45,2.4495);
@@ -107,7 +110,7 @@
 
   % Where the ladder breaks off: the next rung would need |m| > sqrt6.
   \draw[-{Stealth[length=5pt,width=3.5pt]}, birrengray, line width=0.9pt,
-        densely dashed] (axis cs:0.42,2.14) -- (axis cs:0.42,2.78);
+        densely dashed] (axis cs:0.42,2.14) -- (axis cs:0.42,2.70);
   \draw[birrengray, line width=0.9pt]
     ([xshift=-1.4mm,yshift=-1.4mm]axis cs:0.42,2.70) --
     ([xshift=1.4mm,yshift=1.4mm]axis cs:0.42,2.70);
@@ -116,7 +119,7 @@
     ([xshift=1.4mm,yshift=-1.4mm]axis cs:0.42,2.70);
 
   \draw[-{Stealth[length=5pt,width=3.5pt]}, birrengray, line width=0.9pt,
-        densely dashed] (axis cs:-0.52,-2.14) -- (axis cs:-0.52,-2.78);
+        densely dashed] (axis cs:-0.52,-2.14) -- (axis cs:-0.52,-2.70);
   \draw[birrengray, line width=0.9pt]
     ([xshift=-1.4mm,yshift=-1.4mm]axis cs:-0.52,-2.70) --
     ([xshift=1.4mm,yshift=1.4mm]axis cs:-0.52,-2.70);
@@ -124,17 +127,15 @@
     ([xshift=-1.4mm,yshift=1.4mm]axis cs:-0.52,-2.70) --
     ([xshift=1.4mm,yshift=-1.4mm]axis cs:-0.52,-2.70);
 
-  \node[lbl, anchor=north, fill=white, fill opacity=0.9, text opacity=1,
-        inner sep=1.5pt] at (axis cs:0.42,3.54)
+  \node[lbl, anchor=south] at (axis cs:0.42,3.24)
     {$\widehat{L}_+\ket{\ell,\ell}=0$};
-  \node[lbl, anchor=south, fill=white, fill opacity=0.9, text opacity=1,
-        inner sep=1.5pt] at (axis cs:-0.52,-3.54)
+  \node[lbl, anchor=north] at (axis cs:-0.52,-3.24)
     {$\widehat{L}_-\ket{\ell,-\ell}=0$};
 
   % What the grey rules are
   \node[lbl, font=\scriptsize, anchor=south west, fill=white,
-        fill opacity=0.9, text opacity=1, inner sep=1.5pt]
-    at (axis cs:-1.73,2.50) {$|\mathbf{L}|/\hbar=\sqrt{\ell(\ell+1)}=\sqrt{6}$};
+        fill opacity=1, inner sep=2pt]
+    at (axis cs:-1.73,2.53) {$|\mathbf{L}|/\hbar=\sqrt{\ell(\ell+1)}=\sqrt{6}$};
 
   % The multiplet is 2ell+1 states long
   \draw[{Stealth[length=4pt]}-{Stealth[length=4pt]}, birrengray,
@@ -175,7 +176,7 @@
     ({2.44949*cos(x)}, {2.44949*sin(x)});
 
   % The axis the multiplet is quantised along
-  \draw[axisstyle] (axis cs:0,-3.05) -- (axis cs:0,3.30);
+  \draw[axisstyle] (axis cs:0,-2.66) -- (axis cs:0,3.30);
   \node[lbl, anchor=west] at (axis cs:0.10,3.22) {$L_3/\hbar$};
 
   % The second generator of the top cone, so it reads as a cone
@@ -202,23 +203,22 @@
   % drawn in the gap between the m = 1 and m = 2 cones.
   \addplot[birrengray, line width=0.7pt, domain=54.7356:90, samples=40]
     ({1.68*cos(x)}, {1.68*sin(x)});
-  \node[lbl, anchor=west, fill=white, fill opacity=0.9, text opacity=1,
-        inner sep=1.5pt] at (axis cs:0.60,1.52) {$\theta_{\min}$};
+  \node[lbl, font=\scriptsize, anchor=west] at (axis cs:0.07,1.13)
+    {$\theta_{\min}$};
 
   % Its pole: the length the top cone falls short of, sqrt6 against m = 2
   \draw[birrengray, line width=0.5pt]
     (axis cs:-0.09,2.4495) -- (axis cs:0.09,2.4495);
-  \node[lbl, font=\scriptsize, text=birrengray, anchor=east, fill=white,
-        fill opacity=0.9, text opacity=1, inner sep=1pt]
-    at (axis cs:-0.13,2.4495) {$\sqrt{6}$};
+  \node[lbl, font=\scriptsize, text=birrengray, anchor=south east,
+        inner sep=1pt] at (axis cs:-0.11,2.53) {$\sqrt{6}$};
 
   % What the dashed circle is
-  \node[lbl, anchor=north] at (axis cs:0,-2.58)
+  \node[lbl, anchor=north] at (axis cs:0,-2.72)
     {$|\mathbf{L}|=\hbar\sqrt{\ell(\ell+1)}=\sqrt{6}\,\hbar$};
 
   % The classical limit as a number, not as an assertion
   \node[lbl, font=\scriptsize, text=birrengray, anchor=north, align=center]
-    at (axis cs:0,-3.12)
+    at (axis cs:0,-3.28)
     {\tpcifenglish{never along the axis}{nie entlang der Achse}:\\[-1pt]
      $\ell=2$: $35^\circ$\quad $\ell=10$: $18^\circ$\quad
      $\ell=100$: $6^\circ$};

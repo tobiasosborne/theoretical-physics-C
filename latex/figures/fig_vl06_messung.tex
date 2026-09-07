@@ -48,9 +48,16 @@
 % in (a) has the colour of the state that runs on it.  Construction lines
 % (radius, projection onto p) are neutral grey.
 %
+% Line style is the second channel, so the plate still reads in greyscale
+% and ties the panels together: the mixed state is dotted in both (a) and
+% (b), the pure state solid in both.
+%
 % Both axes of (a) carry the same unit length (scale only axis with matched
 % width/height), otherwise the circle -- the whole content of the panel --
-% would render as an ellipse.
+% would render as an ellipse.  The x range runs past p = 1 to leave the
+% |0><0| dot room for its label OUTSIDE the disc: every point inside is
+% crossed by one of the two orbits, so a label placed there would sit on
+% a curve.
 
 \begin{center}
 \begin{tikzpicture}
@@ -62,8 +69,8 @@
     name=disc,
     tpcplot,
     scale only axis,
-    width=4.61cm, height=5.11cm,     % 1.28 x 1.42 units at 3.6 cm/unit
-    xmin=-0.14, xmax=1.14,
+    width=5.40cm, height=5.11cm,     % 1.50 x 1.42 units at 3.6 cm/unit
+    xmin=-0.14, xmax=1.36,
     ymin=-0.68, ymax=0.74,
     grid=none, clip=false, axis on top,
     xtick={0,0.5,1}, xticklabels={$0$,$\tfrac12$,$1$},
@@ -73,7 +80,7 @@
 ]
 
   % Hermitesch, Spur eins, aber nicht positiv: kein Zustand.
-  \fill[forbidden] (axis cs:-0.14,-0.68) rectangle (axis cs:1.14,0.74);
+  \fill[forbidden] (axis cs:-0.14,-0.68) rectangle (axis cs:1.36,0.74);
 
   % Das Innere der Scheibe freistellen: det rho >= 0.
   \addplot[fill=white, draw=none, domain=0:360, samples=181]
@@ -112,7 +119,8 @@
   \node[circle, fill=munsell,      inner sep=1.7pt] at (axis cs:0.6026,0.2819) {};
   \node[circle, fill=spacecadet,   inner sep=1.7pt] at (axis cs:0.5,0) {};
 
-  \node[lbl, anchor=east]  at (axis cs:0.975,0) {$\ketbra{0}{0}$};
+  \node[lbl, anchor=west, fill=white, fill opacity=0.9, text opacity=1,
+        inner sep=1.5pt] at (axis cs:1.05,0) {$\ketbra{0}{0}$};
   \node[lbl, anchor=west]  at (axis cs:0.645,0.295) {$\rho$};
   \node[lbl, anchor=north east] at (axis cs:0.49,-0.05) {$\tfrac{\mathbb{I}}{2}$};
 
@@ -124,7 +132,7 @@
         align=left, inner sep=1pt]
     at (axis cs:-0.10,-0.655) {$\det\rho<0$\\ \tpcifenglish{no state}{kein Zustand}};
   \node[lbl, font=\scriptsize, text=birrengray, anchor=north east]
-    at (axis cs:1.14,0.72) {$\real x=0$};
+    at (axis cs:1.36,0.72) {$\real x=0$};
   \node[lbl, font=\scriptsize, text=birrengray, anchor=north west]
     at (axis cs:0.125,0.315) {$U_t$};
 \end{axis}
@@ -151,7 +159,7 @@
   % tr(rho_t F) = 1/2 + r cos(2t/hbar + phi), Amplitude r = Radius aus (a)
   \addplot[birrenorange, line width=1.1pt, domain=0:6.2832, samples=241]
     {0.5+0.5*cos(deg(2*x))};
-  \addplot[munsell, line width=1.1pt, domain=0:6.2832, samples=241]
+  \addplot[munsell, line width=1.1pt, densely dotted, domain=0:6.2832, samples=241]
     {0.5+0.3*cos(deg(2*x)+70)};
   \addplot[spacecadet, line width=1.1pt, domain=0:6.2832, samples=2]
     {0.5};

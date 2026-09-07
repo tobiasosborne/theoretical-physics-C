@@ -33,6 +33,16 @@
 %     print at the same grey value as birrenorange and swallowed the
 %     orange component vectors lying on top of them.
 %
+%   * the state is printed on the plate, not only implied by it: without
+%     |Psi> = (2|e_0> + |e_1>)/sqrt5 in (a), the four weights in (b) are
+%     numbers the reader has to take on trust.  The coordinate window of
+%     (a) is square and its box is square, so the 45 degrees of |e_±>
+%     measure 45 degrees on paper.
+%
+%   * (b) is a categorical chart: its vertical direction lists two bases
+%     and measures nothing, so that axis is a plain baseline — an arrow
+%     tip there would promise a quantity that does not exist.
+%
 % Panel (a) the two decompositions of the same |Psi>.  Two different
 %           rectangles, one diagonal.
 % Panel (b) the weights |c_j|^2 those rectangles imply.  4/5 : 1/5 against
@@ -59,10 +69,10 @@
     name=geom,
     tpcplot,
     scale only axis,
-    width=5.4cm, height=5.4cm,
+    width=6.0cm, height=6.0cm,
     axis lines=none, grid=none,
-    xmin=-0.38, xmax=1.38,
-    ymin=-0.64, ymax=1.12,     % same span as x: 45 degrees looks like 45
+    xmin=-0.52, xmax=1.44,     % square window, square box:
+    ymin=-0.64, ymax=1.32,     % 45 degrees therefore looks like 45
     clip=false,
     title={(a) \tpcifenglish{One vector, two bases}%
                             {Ein Vektor, zwei Basen}},
@@ -112,8 +122,12 @@
   \node[lbl, text=birrenorange, font=\scriptsize, anchor=north east]
     at (axis cs:0.155,-0.255) {$c_-|e_-\rangle$};
 
+  % The state actually drawn, and the shorthand for its coefficients.
+  % Without the first line the weights in (b) cannot be checked.
+  \node[lbl, anchor=north east] at (axis cs:1.44,1.32)
+    {$|\Psi\rangle = \dfrac{2|e_0\rangle + |e_1\rangle}{\sqrt{5}}$};
   \node[lbl, text=birrengray, font=\scriptsize, anchor=north east]
-    at (axis cs:1.38,1.12) {$c_j \equiv \langle \phi_j|\Psi\rangle$};
+    at (axis cs:1.44,1.03) {$c_j \equiv \langle \phi_j|\Psi\rangle$};
 \end{axis}
 
 % ─────────────────────────────────────────────────────────────
@@ -122,9 +136,13 @@
 \begin{axis}[
     tpcplot,
     scale only axis,
-    at={(geom.north east)}, anchor=north west, xshift=22mm,
-    width=5.0cm, height=4.2cm,
+    at={(geom.north east)}, anchor=north west, xshift=26mm,
+    width=5.0cm, height=5.2cm,   % same visual depth as (a) once ticks
+                                 % and the x label are counted
     axis lines=left, grid=none,
+    % the vertical direction lists two bases, it measures nothing:
+    % a plain baseline, no arrow tip promising a quantity.
+    y axis line style={-},
     xmin=0, xmax=1.58, ymin=0.42, ymax=2.55,
     xtick={0,0.5,1}, xticklabels={$0$,$1/2$,$1$},
     ytick={1,2},
