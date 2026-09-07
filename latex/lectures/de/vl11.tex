@@ -74,6 +74,15 @@ Anschaulich ist $\phi_1$ eine halbe Sinuswelle über dem Intervall, $\phi_2$ ein
 	Für ein freies Teilchen war jede Energie erlaubt. Im Kasten bleibt von diesem Kontinuum nur die diskrete Folge $E_n\propto n^2$ übrig: Einschränkung des Ortes führt in der Regel zur \emph{Quantisierung} der Energieeigenwerte -- daher der Name der ganzen Theorie.
 \end{merksatz}
 
+\input{figures/fig_vl11_kasten}
+
+Die Abbildung zeigt beides auf einmal: links sitzt jede Eigenfunktion auf ihrem
+eigenen Energieniveau, und man liest ab, dass $\phi_n$ genau $n-1$ Nullstellen im
+Inneren hat; rechts steht das Spektrum. Die Niveaus laufen mit $n^2$ auseinander --
+im Gegensatz zum harmonischen Oszillator, dessen Niveaus wir später als
+\emph{gleichabständig} finden werden. Die Form des Potentials bestimmt also nicht
+nur, \emph{dass} quantisiert wird, sondern auch \emph{wie}.
+
 Die $\phi_n$ bilden eine Basis von unseren Hilbertraum $\mathcal{H} = L^2([0,L])$ und damit einen unitären
 Operator $U:\mathcal{H} \rightarrow \ell^2(\mathbb{N})$, nämlich $(U\Psi)(n) = \langle \phi_n|\Psi\rangle$, der $H$ diagonalisiert. Den Zeitentwicklungsoperator $U_t = e^{-itH/\hbar}$ bekommt man also durch Entwickeln nach der Basis $\phi_n$ (=Anwendung von $U$), triviale Anwendung von $U_t$ auf die Basisvektoren (=Multiplikation mit einer Funktion von $n$) und Aufsummation der Reihe mit den neuen Komponenten (=Anwendung von $U^\dag$):
 \begin{equation}

@@ -15,7 +15,11 @@ original ``archive/skript-2022/VorlesungenN.tex`` and checks:
   labels   every \\label of v0.1 survives, spelled the same
   sections every \\section / \\subsection heading of v0.1 survives
   envs     no theorem-like environment of v0.1 was dropped
-  growth   the lecture grew, but stayed within --max-growth
+  growth   the lecture grew, but stayed within --max-growth.  The default
+           allows a little over twice the original prose: several lectures
+           started at only a few hundred words, and each also gains a
+           sentence or two introducing its figure, so a tight ratio would
+           punish exactly the lectures that needed the most help.
 
 Deliberate departures are recorded in ENRICHMENT_EXCEPTIONS below, each
 with the reason, so a fix made on purpose does not read as a regression.
@@ -290,8 +294,8 @@ def main():
     ap = argparse.ArgumentParser(
         description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--only", nargs="*", type=int)
-    ap.add_argument("--max-growth", type=float, default=2.0,
-                    help="largest allowed v0.2/v0.1 prose ratio (default 2.0)")
+    ap.add_argument("--max-growth", type=float, default=2.2,
+                    help="largest allowed v0.2/v0.1 prose ratio (default 2.2)")
     ap.add_argument("--json", action="store_true")
     args = ap.parse_args()
 

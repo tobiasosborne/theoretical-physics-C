@@ -257,4 +257,20 @@
 
 \newcommand{\red}[1]{\textcolor{birrenred}{#1}}
 
+% ══════════════════════════════════════════════════════════════
+%  BILINGUAL TEXT
+% ══════════════════════════════════════════════════════════════
+% \tpcifenglish{English text}{deutscher Text}
+%
+% A figure is one file included by both editions, but its axis labels and
+% captions are prose and have to follow the language of the build.  Wrap
+% those — and only those — in this macro:
+%
+%   title={\tpcifenglish{Spectrum}{Spektrum}}
+%
+% Symbols stay bare: $E_n$, $\psi_n$ and $\hbar$ read the same either way.
+% Keeping one figure file per figure is also what lets check_parity.py
+% compare the two editions' \input{figures/...} sets directly.
+\newcommand{\tpcifenglish}[2]{\iftpc@english #1\else #2\fi}
+
 \endinput
