@@ -1,0 +1,122 @@
+% fig_vl11_kasten.tex — Teilchen im Kasten: Eigenfunktionen auf ihren
+% Energieniveaus, und die quadratische Aufspreizung des Spektrums.
+%
+% Reference figure for the notes: the other lecture figures follow the
+% conventions established here.
+%
+%   * geometry and curves come from the closed-form solution derived in
+%     the lecture, never from a freehand sketch:
+%         psi_n(x) = sqrt(2/L) sin(n pi x / L),
+%         E_n      = n^2 pi^2 hbar^2 / (2 m L^2),
+%     so the node count, the symmetry and the level spacing are forced
+%     to be right rather than drawn by eye;
+%   * each eigenfunction is drawn about its own energy — the standard way
+%     of showing that psi_n belongs to E_n;
+%   * colour encodes the quantum number n (the ordered ramp of
+%     `tpclevels`), and nothing else.  The energy levels themselves are
+%     neutral grey rules: they are reference lines, not data;
+%   * the classically forbidden region is hatched, not filled, so it
+%     survives greyscale printing.
+%
+% Panel (a) the first four eigenfunctions in the well.
+% Panel (b) the spectrum E_n/E_1, with the oscillator's evenly spaced
+%           ladder alongside it — the contrast between a quadratic and a
+%           linear spectrum is the point students should carry away.
+
+\begin{center}
+\begin{tikzpicture}
+
+% ─────────────────────────────────────────────────────────────
+%  (a)  Eigenfunctions drawn about their levels
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    name=wells,
+    tpcplot,
+    width=8.2cm, height=6.8cm,
+    axis lines=none,
+    xmin=-0.34, xmax=1.34,
+    ymin=-1.2,  ymax=19.4,
+    clip=false,
+    title={(a) $\psi_n$ auf ihren Niveaus},
+    domain=0:1, samples=201,
+]
+
+  % Classically forbidden regions, x<0 and x>L, where V = infinity
+  \addplot[forbidden, draw=none, domain=-0.34:0, samples=2] {19.4} \closedcycle;
+  \addplot[forbidden, draw=none, domain=1:1.34,  samples=2] {19.4} \closedcycle;
+
+  % The well itself
+  \draw[potential] (axis cs:0,-1.2) -- (axis cs:0,19.4);
+  \draw[potential] (axis cs:1,-1.2) -- (axis cs:1,19.4);
+  \draw[potential] (axis cs:0,0)    -- (axis cs:1,0);
+
+  % Energy levels E_n = n^2 E_1: neutral reference rules
+  \addplot[levellinegrey, domain=0:1, samples=2] {1};
+  \addplot[levellinegrey, domain=0:1, samples=2] {4};
+  \addplot[levellinegrey, domain=0:1, samples=2] {9};
+  \addplot[levellinegrey, domain=0:1, samples=2] {16};
+
+  % Eigenfunctions about those levels.  Amplitude 1.3 is the largest that
+  % keeps psi_2 clear of E_1, the tightest gap (E_2 - E_1 = 3 E_1).
+  \addplot[wavefn, spacecadet]   {1  + 1.3*sin(deg(1*pi*x))};
+  \addplot[wavefn, cgblue]       {4  + 1.3*sin(deg(2*pi*x))};
+  \addplot[wavefn, munsell]      {9  + 1.3*sin(deg(3*pi*x))};
+  \addplot[wavefn, birrenorange] {16 + 1.3*sin(deg(4*pi*x))};
+
+  % Level labels.  Written out rather than looped: \foreach defers
+  % expansion inside a pgfplots axis.
+  \node[lbl, anchor=east] at (axis cs:-0.06,1)  {$E_{1}$};
+  \node[lbl, anchor=east] at (axis cs:-0.06,4)  {$E_{2}$};
+  \node[lbl, anchor=east] at (axis cs:-0.06,9)  {$E_{3}$};
+  \node[lbl, anchor=east] at (axis cs:-0.06,16) {$E_{4}$};
+
+  % Node counts: psi_n has n-1 interior nodes
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=west]
+    at (axis cs:1.03,1)  {$n=1$};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=west]
+    at (axis cs:1.03,4)  {$n=2$};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=west]
+    at (axis cs:1.03,9)  {$n=3$};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=west]
+    at (axis cs:1.03,16) {$n=4$};
+
+  % Axis furniture
+  \node[lbl, anchor=north] at (axis cs:0,-0.3)    {$0$};
+  \node[lbl, anchor=north] at (axis cs:1,-0.3)    {$L$};
+  \node[lbl, anchor=north] at (axis cs:0.5,-0.62) {$x$};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=south]
+    at (axis cs:-0.17,17.6) {$V=\infty$};
+\end{axis}
+
+% ─────────────────────────────────────────────────────────────
+%  (b)  Spectrum: the n^2 ladder against the oscillator's linear one
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    tpcplot,
+    at={(wells.south east)}, anchor=south west, xshift=17mm,
+    width=6.2cm, height=6.8cm,
+    xlabel={$n$},
+    ylabel={$E_n/E_1$},
+    every axis y label/.style={at={(axis description cs:-0.16,0.5)},
+                               rotate=90, anchor=south, font=\small},
+    xmin=0.4, xmax=5.6, ymin=0, ymax=26.5,
+    xtick={1,2,3,4,5}, ytick={0,5,10,15,20,25},
+    grid=major,
+    legend pos=north west,
+    legend style={font=\scriptsize, draw=light-gray},
+    title={(b) Spektrum},
+]
+  % Kasten: E_n / E_1 = n^2
+  \addplot[cgblue, line width=1.0pt, mark=*, mark size=1.9pt,
+           domain=1:5, samples=5] {x^2};
+  \addlegendentry{Kasten, $n^2$}
+
+  % Oscillator, normalised the same way: E_n/E_1 = (n + 1/2)/(3/2)
+  \addplot[birrenorange, line width=1.0pt, densely dashed,
+           mark=o, mark size=1.9pt, mark options={solid},
+           domain=1:5, samples=5] {(2*x+1)/3};
+  \addlegendentry{Oszillator, $\tfrac{2n+1}{3}$}
+\end{axis}
+
+\end{tikzpicture}
+\end{center}
