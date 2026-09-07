@@ -68,6 +68,15 @@ in `vl17`, and `vl21` — previously 152 words for a 90-minute lecture — now
 derives the equilibrium condition from it and explains why logarithmic
 derivatives appear.
 
+### English edition
+
+22 lectures translated from the German, which leads. Prose 20,193 → 23,309
+words. `scripts/check_parity.py` holds the two editions together: same
+sectioning, same display equations symbol for symbol (after stripping
+`\text{...}`, which is legitimately translated), same environments under
+the German/English name pairs, same labels, references, figures and
+key-equation boxes, and no untranslated German.
+
 ### Errors found in v0.1
 
 Ten in total. Each is recorded in `ENRICHMENT_EXCEPTIONS` in
@@ -96,14 +105,8 @@ to the wrong equation; the photoelectric-effect box in `vl01` using $\nu$
 for both velocity and frequency; and literal Unicode `Ψ`, `∈`, `−` with no
 glyph in the maths font.
 
-**Still unfixed, reported by the agents but left alone under the
-no-deletion rule** — worth a pass:
-
-- `vl01` "eine endliche Menge ist.Menge ist." (doubled), "die Summer der
-  Messwerte" (typo), "Dividiert durch N" outside maths mode
-- `vl02` "einen unendlich dimensionalen Vektorraumes" (case)
-- `vl03` the expansion formula writes $|\psi_j\rangle$ for $|\phi_j\rangle$;
-  Gram-Schmidt says $|\Phi_k\rangle = 0$ for $|\Psi_k\rangle = 0$
+Three wording slips were left alone under the no-deletion rule; they are
+listed under "Next".
 
 ## Next
 
@@ -136,7 +139,7 @@ Nothing is outstanding for the course itself. Worth doing at some point:
 ```
 latex/
   TheoretischePhysikC.tex     German master — the leading edition
-  TheoreticalPhysicsC.tex     English master (lectures not written yet)
+  TheoreticalPhysicsC.tex     English master
   tpc-style.sty               [german]/[english]/[cmfonts]; theorem envs
                               exist under both language names, one counter;
                               \tpcifenglish{EN}{DE} for figure prose
@@ -144,8 +147,8 @@ latex/
                               notation (\widehat, \mathcal{H}, \tr)
   tpc-tikz-templates.sty      tpcplot / tpcpotential / tpclevelplot / tpc3d
   lectures/de/vl01–vl22.tex   German lectures (v0.2)
-  lectures/en/                empty
-  figures/fig_vlNN_*.tex      18 figures, one file serving both editions
+  lectures/en/lec01–lec22.tex English lectures
+  figures/fig_vlNN_*.tex      22 figures, one file serving both editions
 transcripts/
   raw/                        auto-captions (gitignored, regenerable)
   clean/v01–v25.md            reconstructed lectures
@@ -153,7 +156,7 @@ transcripts/
 archive/                      the original materials, sorted
 scripts/
   fetch_transcripts.py  check_parity.py  check_enrichment.py
-  tikz-preview.sh       check_lecture.sh
+  check_figures.py      tikz-preview.sh   check_lecture.sh
 build.sh   ci.sh   README.md
 ```
 
