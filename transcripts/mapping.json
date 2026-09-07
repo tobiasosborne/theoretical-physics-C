@@ -1,0 +1,714 @@
+{
+  "_meta": {
+    "kurs": "Theoretische Physik C",
+    "stand": "2026-09-07",
+    "videos": 25,
+    "skript_vorlesungen": 22,
+    "methode": "Primaerzuordnung aus den Ablauf-Tabellen der Transkripte (Zeilenauszaehlung je Skript-Tag), Konflikte gegen latex/lectures/de/vlNN.tex geprueft. Sekundaerbezuege (Rueckblick, Vorgriff, Werkzeug-Rueckgriff) zaehlen nicht fuer die Monotonie.",
+    "monoton": true,
+    "faktor_definition": "zugeordnete Videowoerter je Skriptwort; Kursmittel ca. 5.9",
+    "prioritaet_definition": "1 = Anreicherung bringt am meisten, 3 = gut abgebildet"
+  },
+  "video_to_script": {
+    "v01": {
+      "video_id": "cpW-1hTTwOs",
+      "titel": "Die Geburt der QM, Wahrscheinlichkeitstheorie",
+      "primaer": [
+        "vl01"
+      ],
+      "sekundaer": [],
+      "abdeckung": {
+        "vl01": "anfang"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "Vorgeschichte, Wahrscheinlichkeit, Stichprobenraeume bis Erwartungswert."
+    },
+    "v02": {
+      "video_id": "HFr7ToUXtm4",
+      "titel": "Probability Theory",
+      "primaer": [
+        "vl01",
+        "vl02"
+      ],
+      "sekundaer": [],
+      "abdeckung": {
+        "vl01": "ende",
+        "vl02": "anfang"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "vl01 Masse/Momente/Varianz; ab ca. 75:00 vl02 komplexe Vektorraeume, C^n."
+    },
+    "v03": {
+      "video_id": "jKsPIgMb6OU",
+      "titel": "Hilbertraum",
+      "primaer": [
+        "vl02",
+        "vl03"
+      ],
+      "sekundaer": [],
+      "abdeckung": {
+        "vl02": "ende",
+        "vl03": "anfang"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "vl02 Kreuz-Operation, Skalarprodukt, l^2, L^2(R); ab ca. 43:00 vl03 Dirac-Notation, Hilbertraum."
+    },
+    "v04": {
+      "video_id": "YpK1CnrLtaM",
+      "titel": "Basis, Operators",
+      "primaer": [
+        "vl03",
+        "vl04"
+      ],
+      "sekundaer": [],
+      "abdeckung": {
+        "vl03": "ende",
+        "vl04": "grossteil"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "vl03 Schwarz, Basis, Gram-Schmidt, Operatoren; ab ca. 48:00 vl04 Adjungierte, Operatorklassen, Matrixelemente."
+    },
+    "v05": {
+      "video_id": "8eR3oW8u5GA",
+      "titel": "Operatoren, Positions-Basis, Spur",
+      "primaer": [
+        "vl04",
+        "vl05"
+      ],
+      "sekundaer": [
+        "vl03"
+      ],
+      "abdeckung": {
+        "vl04": "ende",
+        "vl05": "anfang"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "vl04 Bra-Ket als Operatoren, Ket-Bra, Beispiel 4.1; ab ca. 56:00 vl05 Position-Basis und Spur."
+    },
+    "v06": {
+      "video_id": "zH82Xu6kDVw",
+      "titel": "Diagonalization, Eigenvalue, Eigenvector, Functional Calculus",
+      "primaer": [
+        "vl05"
+      ],
+      "sekundaer": [
+        "vl04"
+      ],
+      "abdeckung": {
+        "vl05": "ende"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "Diagonalisierung, Eigenwert/Eigenvektor, Funktionalkalkuel. Schliesst vl05 ab."
+    },
+    "v07": {
+      "video_id": "7tl6Qo550Oc",
+      "titel": "Die Postulate der QM",
+      "primaer": [
+        "vl06"
+      ],
+      "sekundaer": [
+        "vl04",
+        "vl05"
+      ],
+      "abdeckung": {
+        "vl06": "grossteil"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "Einleitung und Postulate 1-5."
+    },
+    "v08": {
+      "video_id": "DDcagPiQF9s",
+      "titel": "Quantisierung",
+      "primaer": [
+        "vl06",
+        "vl07"
+      ],
+      "sekundaer": [
+        "vl05"
+      ],
+      "abdeckung": {
+        "vl06": "ende",
+        "vl07": "anfang"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "vl06 Observable/POVM, F(S), Heisenberg-/Schroedingerbild; ab ca. 44:00 vl07 Teilchen in 1D bis p(x)=|Psi|^2."
+    },
+    "v09": {
+      "video_id": "bQHybtKRi1k",
+      "titel": "Die Schroedingergleichung",
+      "primaer": [
+        "vl07",
+        "vl08"
+      ],
+      "sekundaer": [
+        "vl06"
+      ],
+      "abdeckung": {
+        "vl07": "ende",
+        "vl08": "anfang"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "vl07 Ortsoperator, Impulsoperator, H=p^2/2m; ab ca. 62:00 vl08 Schroedingergleichung und Fourier-Transformation."
+    },
+    "v10": {
+      "video_id": "ASVMmniPdH8",
+      "titel": "Die Schroedingergleichung (Loesung)",
+      "primaer": [
+        "vl08"
+      ],
+      "sekundaer": [
+        "vl07",
+        "vl06"
+      ],
+      "abdeckung": {
+        "vl08": "grossteil"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "Loesung fuer das freie Teilchen, Impuls-Raum, Impulsstatistik, Teilchen in 3D, Quantisierungsregeln."
+    },
+    "v11": {
+      "video_id": "6SkMWsectPw",
+      "titel": "Unschaerfe",
+      "primaer": [
+        "vl08",
+        "vl09"
+      ],
+      "sekundaer": [
+        "vl07"
+      ],
+      "abdeckung": {
+        "vl08": "ende",
+        "vl09": "vollstaendig"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "vl08 kanonische Vertauschungsrelationen und Kommutator; ab 49:58 vl09 vollstaendig."
+    },
+    "v12": {
+      "video_id": "aV8zHVAeFPQ",
+      "titel": "Zerfliessen des Wellenpakets",
+      "primaer": [
+        "vl10"
+      ],
+      "sekundaer": [
+        "vl09",
+        "vl08",
+        "vl05",
+        "vl03"
+      ],
+      "abdeckung": {
+        "vl10": "anfang"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "vl09-Korrektur (lambda reell); vl08 Impuls-Raum wird systematisch neu hergeleitet (Osborne zieht diesen Weg dem Skript vor); ab ca. 43:00 vl10, abgebrochen."
+    },
+    "v13": {
+      "video_id": "mLG5tOLcGxs",
+      "titel": "Teilchen im Kasten",
+      "primaer": [
+        "vl10",
+        "vl11"
+      ],
+      "sekundaer": [
+        "vl08",
+        "vl09"
+      ],
+      "abdeckung": {
+        "vl10": "ende",
+        "vl11": "grossteil"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "vl10 x(t)=x(0)+p_x t/m und klassischer Limes; ab ca. 51:00 vl11 Modell, Randbedingungen, E_n."
+    },
+    "v14": {
+      "video_id": "Hc2TBqJoF9U",
+      "titel": "Harmonischer Oszillator",
+      "primaer": [
+        "vl11",
+        "vl12"
+      ],
+      "sekundaer": [
+        "vl06"
+      ],
+      "abdeckung": {
+        "vl11": "ende",
+        "vl12": "anfang"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "vl11 Eigenfunktionen, U_t, 3D-Separation; ab ca. 52:00 vl12 Leiteroperatoren bis a|phi_0>=0."
+    },
+    "v15": {
+      "video_id": "-NYFmrZRpNY",
+      "titel": "Harmonischer Oszillator 2",
+      "primaer": [
+        "vl12"
+      ],
+      "sekundaer": [],
+      "abdeckung": {
+        "vl12": "grossteil"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "Grundzustand, Kommutatoren, Eigenwertleiter, Matrixdarstellung, Hermite-Polynome."
+    },
+    "v16": {
+      "video_id": "4HRtW19M5so",
+      "titel": "Endlich hoher Potentialtopf",
+      "primaer": [
+        "vl12",
+        "vl13"
+      ],
+      "sekundaer": [
+        "vl11",
+        "vl06"
+      ],
+      "abdeckung": {
+        "vl12": "ende",
+        "vl13": "grossteil"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "vl12 Dynamik, Periodizitaet, Heisenbergbild; ab ca. 40:00 vl13 bis zu den Anschlussbedingungen."
+    },
+    "v17": {
+      "video_id": "Sm8Q3CLuGiM",
+      "titel": "Endlich hoher Potentialtopf & Drehimpuls",
+      "primaer": [
+        "vl13",
+        "vl14"
+      ],
+      "sekundaer": [
+        "vl09"
+      ],
+      "abdeckung": {
+        "vl13": "ende",
+        "vl14": "anfang"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "vl13 transzendente Gleichungen, graphische Loesung, gebundene Zustaende; ab ca. 42:00 vl14 Bahndrehimpuls."
+    },
+    "v18": {
+      "video_id": "dkB7Y6uvDlw",
+      "titel": "Drehimpuls",
+      "primaer": [
+        "vl14"
+      ],
+      "sekundaer": [
+        "vl15",
+        "vl17",
+        "vl09",
+        "vl05",
+        "vl12"
+      ],
+      "abdeckung": {
+        "vl14": "grossteil"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "Beweis der Kommutatoren, |l,m>, Kugelkoordinaten, Kugelflaechenfunktionen. vl15/vl17 nur als Vorgriff."
+    },
+    "v19": {
+      "video_id": "46Fk9etPD7g",
+      "titel": "Zentralpotential und Wasserstoffatom",
+      "primaer": [
+        "vl15",
+        "vl16"
+      ],
+      "sekundaer": [
+        "vl14"
+      ],
+      "abdeckung": {
+        "vl15": "vollstaendig",
+        "vl16": "vollstaendig"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "Zwei Skript-Vorlesungen in einem Video; beide zusammen kuerzer als eine normale Vorlesung."
+    },
+    "v20": {
+      "video_id": "Sh-PZWQzBKs",
+      "titel": "Spin und zusammengesetzte Systeme",
+      "primaer": [
+        "vl17"
+      ],
+      "sekundaer": [
+        "vl14",
+        "vl16"
+      ],
+      "abdeckung": {
+        "vl17": "vollstaendig"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "Spin, Pauli-Matrizen, Tensorprodukt von Hilbertraeumen und Operatoren, Rechenregeln."
+    },
+    "v21": {
+      "video_id": "vmjabH1hcFU",
+      "titel": "Identical Particles",
+      "primaer": [
+        "vl18"
+      ],
+      "sekundaer": [
+        "vl17",
+        "vl06"
+      ],
+      "abdeckung": {
+        "vl18": "anfang"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "Identische Teilchen, Permutationen, U_pi, H^{otimes N}_pm, Postulat 6."
+    },
+    "v22": {
+      "video_id": "lzHecvyo_VA",
+      "titel": "Statistische Physik",
+      "primaer": [
+        "vl18",
+        "vl19"
+      ],
+      "sekundaer": [
+        "vl17",
+        "vl06",
+        "vl20"
+      ],
+      "abdeckung": {
+        "vl18": "ende",
+        "vl19": "anfang"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "vl18 Anhang 'Statistische Physik' (Mikro-/Makrozustand, Ensemble, Grundannahme); ab ca. 65:00 vl19 bis zur Definition von S(rho)."
+    },
+    "v23": {
+      "video_id": "WJOJaWIPj_I",
+      "titel": "Entropie",
+      "primaer": [
+        "vl19"
+      ],
+      "sekundaer": [
+        "vl05",
+        "vl18",
+        "vl20",
+        "vl06"
+      ],
+      "abdeckung": {
+        "vl19": "ende"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "log(rho), Rechenbeispiele, reiner und vollstaendig gemischter Zustand. Schliesst vl19 ab."
+    },
+    "v24": {
+      "video_id": "2bsJ0bKwRtw",
+      "titel": "Das mikrokanonische Ensemble",
+      "primaer": [
+        "vl20",
+        "vl21"
+      ],
+      "sekundaer": [
+        "vl17",
+        "vl19"
+      ],
+      "abdeckung": {
+        "vl20": "vollstaendig",
+        "vl21": "vollstaendig"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "Zwei Skript-Vorlesungen in einem Video. Der vl17-Bezug ist zugleich eine Lueckenfuellung (H_1 tensor I + I tensor H_2)."
+    },
+    "v25": {
+      "video_id": "2Uwd-2YgOTo",
+      "titel": "Kanonisches Ensemble",
+      "primaer": [
+        "vl22"
+      ],
+      "sekundaer": [
+        "vl19",
+        "vl20",
+        "vl21"
+      ],
+      "abdeckung": {
+        "vl22": "vollstaendig"
+      },
+      "konfidenz": "hoch",
+      "kommentar": "Kanonisches Ensemble, Zustandssumme, Hauptsaetze der Thermodynamik."
+    }
+  },
+  "script_to_video": {
+    "vl01": {
+      "thema": "Der Geburt der Quantenmechanik",
+      "skript_woerter": 1509,
+      "videos": [
+        "v01",
+        "v02"
+      ],
+      "haupt_video": "v01",
+      "faktor": 4.5,
+      "abbildung": "gut",
+      "prioritaet": 3,
+      "kommentar": "Historischer Teil ausfuehrlich. Es fehlen Rahmung (Drei-Schritt-Modell) und didaktische Kommentare."
+    },
+    "vl02": {
+      "thema": "Hilbertraum",
+      "skript_woerter": 490,
+      "videos": [
+        "v02",
+        "v03"
+      ],
+      "haupt_video": "v03",
+      "faktor": 4.6,
+      "abbildung": "mittel",
+      "prioritaet": 3,
+      "kommentar": "l^2 fehlt als Begriff vollstaendig (Osborne sagt das selbst), ebenso das Skalarprodukt auf L^2(R) und die Zuordnung der drei Raeume zu drei Systemen."
+    },
+    "vl03": {
+      "thema": "Hilbertraum, Basis, Operatoren",
+      "skript_woerter": 1109,
+      "videos": [
+        "v03",
+        "v04"
+      ],
+      "haupt_video": "v04",
+      "faktor": 5.4,
+      "abbildung": "mittel",
+      "prioritaet": 3,
+      "kommentar": "Vollstaendigkeitsrelation fehlt als eigenstaendige benannte Formel; Gram-Schmidt ohne Beispiel."
+    },
+    "vl04": {
+      "thema": "Operatoren",
+      "skript_woerter": 1013,
+      "videos": [
+        "v04",
+        "v05"
+      ],
+      "haupt_video": "v04",
+      "faktor": 4.6,
+      "abbildung": "gut",
+      "prioritaet": 3,
+      "kommentar": "Nulloperator, Hut-Notation und die physikalische Deutung der Operatorklassen fehlen."
+    },
+    "vl05": {
+      "thema": "Position-Basis, Spur, Diagonalisierung",
+      "skript_woerter": 1041,
+      "videos": [
+        "v05",
+        "v06"
+      ],
+      "haupt_video": "v06",
+      "faktor": 6.3,
+      "abbildung": "duenn",
+      "prioritaet": 2,
+      "kommentar": "Rueckrichtung Eigenvektoren -> unitaere Matrix fehlt ganz, ebenso Orthogonalitaetsbeweis und Qubit-Beispiel."
+    },
+    "vl06": {
+      "thema": "Postulate der Quantenmechanik",
+      "skript_woerter": 1157,
+      "videos": [
+        "v07",
+        "v08"
+      ],
+      "haupt_video": "v07",
+      "faktor": 5.1,
+      "abbildung": "gut",
+      "prioritaet": 3,
+      "kommentar": "Ohne Beispiele. Hermitezitaet von H fehlt in Postulat 5 (Osborne merkt das selbst an)."
+    },
+    "vl07": {
+      "thema": "Quantisierung",
+      "skript_woerter": 946,
+      "videos": [
+        "v08",
+        "v09"
+      ],
+      "haupt_video": "v09",
+      "faktor": 5.8,
+      "abbildung": "mittel",
+      "prioritaet": 3,
+      "kommentar": "Die Warnung zu |x><x| steht, die zugehoerige Rechnung nicht."
+    },
+    "vl08": {
+      "thema": "Die Schroedingergleichung",
+      "skript_woerter": 1453,
+      "videos": [
+        "v09",
+        "v10",
+        "v11",
+        "v12"
+      ],
+      "haupt_video": "v10",
+      "faktor": 6.6,
+      "abbildung": "mittel",
+      "prioritaet": 2,
+      "kommentar": "Laengstes Kapitel, ueber vier Videos verteilt. Fourier-Konventionen und Normierungsbedingung in 3D fehlen."
+    },
+    "vl09": {
+      "thema": "Unschaerfe",
+      "skript_woerter": 324,
+      "videos": [
+        "v11",
+        "v12"
+      ],
+      "haupt_video": "v11",
+      "faktor": 7.4,
+      "abbildung": "sehr duenn",
+      "prioritaet": 1,
+      "kommentar": "lambda in R unbegruendet; Interpretation nur positiv formuliert, ohne die pruefungsrelevante Zurueckweisung der Fehldeutung."
+    },
+    "vl10": {
+      "thema": "Zerfliessen des Wellenpakets",
+      "skript_woerter": 567,
+      "videos": [
+        "v12",
+        "v13"
+      ],
+      "haupt_video": "v13",
+      "faktor": 6.3,
+      "abbildung": "duenn",
+      "prioritaet": 2,
+      "kommentar": "i hbar d/dp_x wird benutzt, aber nie hergeleitet. Der Vortrag zieht den Weg ueber die Vollstaendigkeitsrelation vor."
+    },
+    "vl11": {
+      "thema": "Teilchen im Kasten",
+      "skript_woerter": 826,
+      "videos": [
+        "v13",
+        "v14"
+      ],
+      "haupt_video": "v14",
+      "faktor": 4.6,
+      "abbildung": "gut",
+      "prioritaet": 3,
+      "kommentar": "Motivation (Quantenpunkt, Resonator) und die Einordnung der Eigenzustaende als Idealisierung fehlen."
+    },
+    "vl12": {
+      "thema": "Harmonischer Oszillator",
+      "skript_woerter": 1183,
+      "videos": [
+        "v14",
+        "v15",
+        "v16"
+      ],
+      "haupt_video": "v15",
+      "faktor": 5.2,
+      "abbildung": "gut",
+      "prioritaet": 3,
+      "kommentar": "Leibniz-Regel fuer Kommutatoren und die Warnung zu e^{A+B} fehlen, obwohl beides gebraucht wird."
+    },
+    "vl13": {
+      "thema": "Endlich hoher Potentialtopf",
+      "skript_woerter": 561,
+      "videos": [
+        "v16",
+        "v17"
+      ],
+      "haupt_video": "v17",
+      "faktor": 7.6,
+      "abbildung": "duenn",
+      "prioritaet": 1,
+      "kommentar": "Stetigkeit/Differenzierbarkeit ohne Begruendung angenommen; Streuzustaende und die Deutung von alpha fehlen."
+    },
+    "vl14": {
+      "thema": "Drehimpuls",
+      "skript_woerter": 555,
+      "videos": [
+        "v17",
+        "v18"
+      ],
+      "haupt_video": "v18",
+      "faktor": 8.0,
+      "abbildung": "sehr duenn",
+      "prioritaet": 1,
+      "kommentar": "Konstruktion ueber Leiteroperatoren L_pm und der Beweis des Lemmas ueber kommutierende Operatoren fehlen ganz."
+    },
+    "vl15": {
+      "thema": "Zentralpotential",
+      "skript_woerter": 401,
+      "videos": [
+        "v19"
+      ],
+      "haupt_video": "v19",
+      "faktor": 6.4,
+      "abbildung": "duenn",
+      "prioritaet": 2,
+      "kommentar": "Noether-Zusammenhang und die Begruendung, warum Separationsansaetze funktionieren, fehlen."
+    },
+    "vl16": {
+      "thema": "Das Coulombpotential (Wasserstoffatom)",
+      "skript_woerter": 335,
+      "videos": [
+        "v19"
+      ],
+      "haupt_video": "v19",
+      "faktor": 4.9,
+      "abbildung": "sehr duenn (absolut)",
+      "prioritaet": 3,
+      "kommentar": "Nur 335 Woerter. Termschema, Spektroskopie und Frobenius-Methode fehlen."
+    },
+    "vl17": {
+      "thema": "Spin",
+      "skript_woerter": 789,
+      "videos": [
+        "v20",
+        "v24"
+      ],
+      "haupt_video": "v20",
+      "faktor": 4.7,
+      "abbildung": "mittel",
+      "prioritaet": 2,
+      "kommentar": "Hamiltonoperator zusammengesetzter Systeme H_1 tensor I + I tensor H_2 fehlt, obwohl vl21 ihn braucht. Auch keine Verschraenkung, kein EPR, kein Stern-Gerlach."
+    },
+    "vl18": {
+      "thema": "Identische Teilchen + Statistische Physik",
+      "skript_woerter": 908,
+      "videos": [
+        "v21",
+        "v22"
+      ],
+      "haupt_video": "v21",
+      "faktor": 6.4,
+      "abbildung": "mittel",
+      "prioritaet": 2,
+      "kommentar": "Kein einziges konkretes Beispiel; das Argument ueber die globale Phase fehlt."
+    },
+    "vl19": {
+      "thema": "Entropie",
+      "skript_woerter": 444,
+      "videos": [
+        "v22",
+        "v23"
+      ],
+      "haupt_video": "v23",
+      "faktor": 6.6,
+      "abbildung": "duenn",
+      "prioritaet": 2,
+      "kommentar": "Warnung zum eintragsweisen Logarithmus, unitaere Invarianz und Additivitaet fehlen; letztere wird in vl21 benutzt."
+    },
+    "vl20": {
+      "thema": "Mikrokanonisches Ensemble",
+      "skript_woerter": 380,
+      "videos": [
+        "v24"
+      ],
+      "haupt_video": "v24",
+      "faktor": 5.6,
+      "abbildung": "duenn",
+      "prioritaet": 2,
+      "kommentar": "Kein Zahlenbeispiel; die Begruendung, warum Maximum-Entropie in der QM dem Abzaehlen ueberlegen ist, fehlt."
+    },
+    "vl21": {
+      "thema": "Temperatur",
+      "skript_woerter": 152,
+      "videos": [
+        "v24"
+      ],
+      "haupt_video": "v24",
+      "faktor": 8.2,
+      "abbildung": "sehr duenn",
+      "prioritaet": 1,
+      "kommentar": "Kuerzeste Vorlesung. Setzt Diagonalisierung von H_1 tensor I + I tensor H_2 und Additivitaet der Entropie voraus, die beide nirgends im Skript stehen."
+    },
+    "vl22": {
+      "thema": "Kanonisches Ensemble",
+      "skript_woerter": 484,
+      "videos": [
+        "v25"
+      ],
+      "haupt_video": "v25",
+      "faktor": 8.4,
+      "abbildung": "sehr duenn",
+      "prioritaet": 1,
+      "kommentar": "Hoechster Faktor. Lagrange-Multiplikatoren nur beim Namen; Nebenbedingungen tr(rho)=1 und rho>=0 fehlen; 3. Hauptsatz ohne Ausnahmen."
+    }
+  }
+}
