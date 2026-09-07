@@ -1,0 +1,75 @@
+%!TEX root = TheoretischePhysikC.tex
+\section{Vorlesung: Postulate der Quantenmechanik}
+Die Zahlen, die die Quantenmechanik als Ergebnis liefert, sind Wahrscheinlichkeiten oder, etwas allgemeiner Erwartungswerte. Da in den bisherigen Theorievorlesungen von solchen Größen wohl wenig die Rede war, müssen wir kurz darauf eingehen, wie solche Ergebnisse zu interpretieren, d.h., mit dem Experiment zu vergleichen sind. Die allgemeine Vorschrift für statistische Experimente ist, dass ein solches Experiment genügend häufig zu wiederholen
+ist.
+
+Für ein Wahrscheinlichkeitsexperiment muss dabei im Voraus festgelegt sein, welche Ergebnisse als ,,Treffer`` zu werten sind. Die von der Theorie gelieferte \emph{Wahrscheinlichkeit} ist dann zu vergleichen mit der Anzahl der Treffer, dividiert durch die Gesamtzahl der Wiederholungen. Entsprechend werden Erwartungswerte von Experimenten gemessen, bei denen jedes einzelne Experiment einen Zahlenwert liefert: Der Erwartungswert ist zu vergleichen mit der Summe der Messwerte, dividiert durch die Gesamtzahl der Wiederholungen. Was dabei als ,,genügend häufige`` Wiederholung für eine angestrebte Genauigkeit gilt, wird in dem als Statistik bekannten Zweig der Wahrscheinlichkeitstheorie behandelt. Die Berechnung der statistischen Konfidenzintervalle entbindet aber den Experimentalphysiker nicht von der Pflicht, sich zu vergewissern, dass die Theorie überhaupt anwendbar ist, dass also die so gewonnenen Häufigkeiten tatsächlich reproduzierbar und frei von systematischen Fluktuationen
+sind, also zum Beispiel nicht abhängig von irgendwelchen Aktivitäten im Nachbarlabor schwanken. Das ist bei Wahrscheinlichkeitsmessungen nicht anders als bei allen anderen Messungen auch.
+
+Zu erläutern wäre noch, was denn nun eigentlich als Wiederholung ,,des gleichen`` Experiments gilt. Hier gelten die Kriterien der Experimentalphysik: zwei innerhalb gegebener Toleranzen nach den gleichen Plänen aufgebaute Experimente gelten als gleich. Es muss also nicht etwa dieselbe Apparatur verwendet werden. Entscheidend ist also das experimentelle \emph{Verfahren}. Dies muss natürlich genügend präzise spezifiziert sein, wenn Reproduzierbarkeit von Wahrscheinichkeiten gewährleistet werden soll.
+
+In den Experimenten der Quantenmechanik sind grundsätzlich zwei Teile zu unterscheiden: die \emph{Präparation} und die \emph{Messung}. Zum Beispiel für die Polarisationsexperimente bestand die Präparation in der Herstellung des Strahls, und die Messung in der Anwendung der Filter, zusammen mit dem Photonenzähler. Das Ziel der Theorie ist nun die Berechnung der Wahrscheinlichkeiten für praktisch beliebige Kombinationen von Präparation und Messung. Die Theorie muss also mindestens enthalten: (1) Größen zur Beschreibung der Präparierverfahren, (2) Größen zur Beschreibung der Messverfahren und (3) eine Formel zur Berechnung der Wahrscheinlichkeiten für jede Kombination.
+
+\subsection{Die Postulate}
+
+\begin{center}
+\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Postulat 1}. Jeder Sorte quantenmechanischer Systeme wird ein Hilbertraum $\mathcal{H}$ zugeordnet.}\end{tcolorbox}}
+\end{center}
+Dies ist der Raum der sogenannten \emph{Wellenfunktionen} $\Psi$. Für ein \emph{Qubit}, bzw.\ \emph{Qudit}, ist $\mathcal{H}\equiv \mathbb{C}^2$, bzw.\ $\mathcal{H}\equiv \mathbb{C}^d$. Für ein freies Teilchen in drei Dimensionen ist $\mathcal{H} \equiv L^2(\mathbb{R}^{3})$, der Raum der quadratintegriebare Funktionen $\Psi:\mathbb{R}^3\rightarrow \mathbb{C}$, mit
+\begin{equation}
+	\iiint |\Psi(x,y,z)|^2\, dxdydz  <\infty.
+\end{equation} 
+Das Skalarprodukt zweier Vektoren $|\Phi\rangle, |\Psi\rangle \in \mathcal{H}$ lautet
+\begin{equation}
+	\langle \Phi|\Psi\rangle \equiv \iiint \Phi^*(x,y,z)\Psi(x,y,z)\, dxdydz.
+\end{equation}
+
+\begin{center}
+\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Postulat 2}. Ein Präparierverfahren wird charakterisiert durch einen \emph{Zustand}, bzw. eine \emph{Dichtematrix}. Das ist ein positiver Operator $\rho$ auf $\mathcal{H}$, mit $\tr(\rho) = 1$. Speziell für reine Zustände ist $\rho$ ein eindimensionaler Projektor $\rho = |\Psi\rangle\langle \Psi|$, also gegeben durch einen Vektor $|\Psi\rangle \in \mathcal{H}$.}\end{tcolorbox}}
+\end{center}
+
+\begin{center}
+\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Postulat 3}. Ein Detektor, das heisst ein Messapparat mit den beiden Ansprechmöglichkeiten ,,ja`` (Treffer) und ,,nein``, ist gegeben durch einen Operator $F$ mit $0 \le F \le \mathbb{I}$.}\end{tcolorbox}}
+\end{center}
+
+\begin{center}
+\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Postulat 4}. Die Ansprechhäufigkeit eines Detektors $F$ an gemäß $\rho$ präparierten System ist
+$\tr(\rho F)$. In einem reinen Zustand $|\Psi\rangle$ spezialisiert sich dieser Ausdruck zu $\langle \Psi|F|\Psi\rangle$.}\end{tcolorbox}}
+\end{center}
+
+Im Allgemeinen kann ein Messapparat in jedem Einzelexperiment ein komplexeres Ergebnis liefern als eine einzelne ja/nein-Entscheidung. Diesen Fall kann man aber auf ja/nein Entscheidungen zurückführen. Nennen wir die Menge der möglichen Ausgänge einer Messung $X$. Für jede Teilmenge $S \subset X$ können wir nun die Frage stellen: Liegt der Messwert $x$ in $S$? Dazu muss es also nach Postulat 3 einen Detektoroperator $F(S)$ geben. Die
+Menge der Operatoren $F(S)$ nennen wir dann eine \emph{Observable}. Es gilt für disjunkte Mengen $S_1, S_2 \subset X$ 
+\begin{equation}
+	F(S_1 \cup S_2) = F(S_1) + F(S_2)
+\end{equation}
+das heißt, $F$ ist ein ,,Maß`` mit Werten in den positiven Operatoren. Wir setzen normalerweise $F(X) = \mathbb{I}$, das heißt, auch Misserfolg wird als ein mögliches Ergebnis betrachtet. Häufig reicht es, endliche Ausgangsmengen $X$ zu betrachten. Dann ist wegen der Maßeigenschaft alles durch die Operatoren $F_x = F(\{x\})$ bestimmt, die einfach die Relationen 
+\begin{equation}
+	F_x \ge 0, \quad \text{und}\quad \sum_{x\in X} F_x = \mathbb{I}.
+\end{equation}
+erfüllen müssen.
+
+Wenn jedes $F(S)$ ein Projektor ist, also $F(S)^2 = F(S)$ erfüllt, nennen wir die Observable \emph{projektionswertig}. Ein weiterer wichtiger Spezialfall sind Observable, die als Ergebnisse reelle Zahlen liefern. Dann können wir den Erwartungswert $\langle A\rangle$ der Verteilung als
+\begin{equation}
+	\langle A \rangle = \tr(\rho A)
+\end{equation}
+schreiben, wobei 
+\begin{equation}\label{eq:observableA}
+	A = \sum_{x\in X} x F_x
+\end{equation}
+ein hermitescher Operator ist. Im projektionswertigen Fall ist nach dem sogenannten Spektralsatz die ganze Observable schon aus $A$ bestimmt. Man liest deshalb häufig als Definition, dass die Observablen genau die hermiteschen Operatoren sind. 
+
+Ein Zustand charakterisiert ja nicht ein einzelnes System mit irgendwie veränderlichen Eigenschaften, sondern ein Präparierverfahren, das (schon allein zur Wiederholung des statistischen Häufigkeitsexperiments) zu jeder beliebigen Zeit in Gang gesetzt werden können muss. Nach der Annahme der Reproduzierbarkeit muss es auch egal sein, ob sowohl Präparation als auch Messung etwas später durchgeführt werden. Das Einzige was zählt ist ein \emph{relativer} Zeitversatz.
+
+\begin{center}
+\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Postulat 5}. Jede Systemsorte ist weiter charakterisiert durch einen \emph{Hamiltonoperator} $H$, der den \emph{Zeitentwicklungsoperator} $U_t = e^{-\frac{it}{\hbar} H}$ bestimmt. Wendet man in einem Experiment mit gegebenem Präparier- und Messverfahren die Messung mit einer Verzögerung von $t$ Sekunden an, so erhält man den Erwartungswert
+\begin{equation}
+	\langle A\rangle (t) \equiv \tr(U_t\rho U_t^\dag A) = \tr(\rho U_t^\dag A U_t).
+\end{equation}
+}\end{tcolorbox}}
+\end{center}
+Diese Gleichung folgt einfach aus der Eigenschaft $\tr(AB) = \tr(BA)$ der Spur. Sie ist hier aufgenommen, weil die beiden Seiten unterschiedlichen, aber offensichtlich äquivalenten Auffassungen der Zeitentwicklung entsprechen: auf
+der linken Seite liegt es nahe, $\rho_t \equiv U_t \rho U_t^\dag$ als zeitabhängige Dichtematrix einzuführen, und die Observablen als zeitunabhängig zu betrachten. Dies nennt sich das \emph{Schrödingerbild}. Für reine Zustände ergibt sich dann auch für Wellenfunktionen: $|\Psi_t\rangle = U_t |\Psi_0\rangle$. Die rechte Seite legt die Einführung zeitabhängiger Observablen $A_t\equiv U_t^\dag A U_t$, bei festgehaltenen Zuständen nahe. Dies nennt sich
+das \emph{Heisenbergbild}. Die mathematisch ohnehin evidente Äquivalenz dieser Bilder bedeutet physikalisch, dass nur die relative Zeit zwischen den Teilen des Experiments wichtig ist.
+
+Eine bedeutende Lücke bleibt in diesen Postulaten: nirgends ist gesagt, welche Operatoren $\rho$ oder $F$ man einem gegebenem Experiment zuordnen soll. Dies ist eine Frage, die man tatsächlich nicht durch ein paar allgemeine Postulate klären kann. Der häufigste Zugang ist, ein paar ,,Standardobservablen`` auszuzeichnen, in der Regel durch ihr Transformationsverhalten unter raumzeitlichen Symmetrien. Dies sind dann Größen mit engem Bezug zu klassischen Größen, und heißen auch so: Ort, Impuls, Energie, Drehimpuls und so weiter. Wer eine genauere Zuordnung von Messgeräten und Operatoren wünscht, muss auch den konkreten Messprozess genauer analysieren, besonders die quantenmechanische Wechselwirkung zwischen dem gegebenen System und Teilen des Apparates, wie zum Beispiel ionisierbaren Testteilchen im Apparat. Für fast alle Fragen in dieser Vorlesung werden wir aber mit der Untersuchung der Standardobservablen auskommen.
+

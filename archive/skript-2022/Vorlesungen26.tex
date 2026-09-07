@@ -1,0 +1,175 @@
+%!TEX root = TheoretischePhysikA.tex
+
+\section{Vorlesung: Starrer Körper}
+Ein Vielteilchensystem mit festen Abständen zwischen Teilchen wird als \emph{starrer Körper} bezeichnet.
+\figbox
+$3N$ Zahlen werden benötigt um ein allgemeines Vielteilchensystem zu beschreiben. Wegen der Zwangsbedingungen, dass
+\begin{equation}
+  \|\mbf{r}_{jk}\| = \|\mbf{r}_{j}-\mbf{r}_{k}\| = \text{Konst.,} \quad \forall j\not= k,
+\end{equation}
+sind allerdings nur $6$ unabhängige Koordinaten übrig. Ein starrer Körper ist durch Angabe von den folgenden Größen beschrieben:
+\begin{enumerate}
+  \item $3$ Zahlen für die Schwerpunktsposition $\mbf{R}(t)$ und
+  \item $3$ Zahlen für die Drehung relativ zum Bezugssystem (z.B.\ Eulerwinkel.)
+\end{enumerate}
+Für den Gesamtimpuls und den Drehimpuls gilt:
+\begin{equation}
+  \eqbox{\left(\frac{d\mbf{P}}{dt}\right)_{\Sigma} =\mbf{F}^{\text{ext.}}\quad\text{und}\quad \left(\frac{d\mbf{L}}{dt}\right)_{\Sigma} =\mbf{M}^{\text{ext.}}.}
+\end{equation}
+
+Wir führen ein zweites Bezugssystem $\Sigma'$ ein, das sich mit dem Körper rotiert. Das heisst, $(\mbf{v}_j)_{\Sigma'} = \mbf{0}$. Der Gesamtdrehimpuls in $\Sigma$ lautet
+\begin{equation}
+  \begin{split}
+    \mbf{L} &= \sum_{j=1}^N m_j\mbf{r}_j\times (\mbf{v}_j)_{\Sigma} \\
+    &= \sum_{j=1}^N m_j\mbf{r}_j\times [(\mbf{v}_j)_{\Sigma'} + \boldsymbol{\omega}\times \mbf{r}_j)] \\
+    &= \sum_{j=1}^N m_j\mbf{r}_j\times (\boldsymbol{\omega}\times \mbf{r}_j) \\
+    &= \sum_{j=1}^N m_j[(\mbf{r}_j\cdot \mbf{r}_j)\boldsymbol{\omega} -  (\mbf{r}_j\cdot \boldsymbol{\omega}) \mbf{r}_j].
+  \end{split}
+\end{equation}
+Man kann dieses Gleichungssystem als eine Matrixgleichung darstellen:
+\begin{equation}
+  \begin{pmatrix}
+    L_x \\ L_y \\ L_z
+  \end{pmatrix} = \sum_{j=1}^N m_j
+  \begin{pmatrix}
+    y_j^2 + z_j^2 & -x_jy_j & -x_jz_j \\
+    -x_jy_j & x_j^2 + z_j^2 & -y_jz_j \\
+    -x_jz_j & -y_jz_j &  x_j^2 + y_j^2
+  \end{pmatrix}
+  \begin{pmatrix}
+    \omega_x \\ \omega_y \\ \omega_z
+  \end{pmatrix}.
+\end{equation}
+Wir definieren dazu die Matrix
+\begin{equation}
+  \mbf{J}\equiv\sum_{j=1}^N m_j
+  \begin{pmatrix}
+    y_j^2 + z_j^2 & -x_jy_j & -x_jz_j \\
+    -x_jy_j & x_j^2 + z_j^2 & -y_jz_j \\
+    -x_jz_j & -y_jz_j &  x_j^2 + y_j^2
+  \end{pmatrix}
+\end{equation}
+und erhalten die Matrixgleichung
+\begin{equation}
+  \eqbox{\mbf{L} = \mbf{J}\boldsymbol{\omega}.}
+\end{equation}
+
+Die symmetrische Matrix $\mbf{J}$ hat die folgenden Eigenschaften:
+\begin{enumerate}
+  \item $\mbf{J}$ hat nicht-negative Eigenwerte $(J_x,J_z,J_y)$.
+  \item Es gibt ein Drehmatrix $\mbf{D}$, so dass
+  \begin{equation}
+    \mbf{J} = \mbf{D}\boldsymbol{\Delta}\mbf{D}^{-1} \quad \text{mit}\quad \boldsymbol{\Delta}=\begin{pmatrix}
+      J_x & 0 & 0 \\
+      0 & J_y & 0 \\
+      0 & 0 & J_z
+    \end{pmatrix}.
+  \end{equation}
+  \item Die Drehmatrix gibt die Richtungen der Hauptträgheitsachsen an:
+  \begin{equation}
+    \mbf{j}_x \equiv \mbf{D}\hat{\mbf{x}}, \quad \mbf{j}_y \equiv \mbf{D}\hat{\mbf{y}} \quad \text{und}\quad \mbf{j}_z \equiv \mbf{D}\hat{\mbf{z}}.
+  \end{equation}
+  Für Rotationen um die Haupträgheitsachsen gilt
+  \begin{equation}
+    \mbf{L} \| \boldsymbol{\omega}.
+  \end{equation}  
+\end{enumerate}
+
+Für eine beliebige Rotation mit Winkelgeschwindigkeitsvektoren
+\begin{equation}
+  \boldsymbol{\omega} = \omega_x \mbf{j}_x +\omega_y \mbf{j}_y +\omega_z \mbf{j}_z
+\end{equation}
+ist 
+\begin{equation}
+  \begin{split}
+    \mbf{L} &= \mbf{J}\boldsymbol{\omega}\\
+    &= \omega_x \mbf{J}\mbf{j}_x +\omega_y \mbf{J}\mbf{j}_y +\omega_z \mbf{J}\mbf{j}_z \\
+    &= \omega_x J_x\mbf{j}_x +\omega_y J_y\mbf{j}_y +\omega_z J_z\mbf{j}_z.
+  \end{split}
+\end{equation}
+Im Körperfesten rotierenden Bezugssystem gilt
+\begin{equation}
+  \left(\frac{d\mbf{L}}{dt}\right)_{\Sigma}  + \boldsymbol{\omega}\times \mbf{L} = \mbf{M}.
+\end{equation}
+Im Hauptachsensystem lautet diese Gleichung
+\begin{equation}
+  \begin{pmatrix}
+    \dot{\omega}_x J_x \\
+    \dot{\omega}_y J_y \\
+    \dot{\omega}_z J_z 
+  \end{pmatrix}
+  +
+  \begin{pmatrix}
+    \omega_x \\
+    \omega_y \\
+    \omega_z 
+  \end{pmatrix}
+  \times 
+  \begin{pmatrix}
+    \omega_x J_x \\
+    \omega_y J_y \\
+    \omega_z J_z
+  \end{pmatrix}
+  =
+  \begin{pmatrix}
+    M_x \\
+    M_y \\ 
+    M_z
+  \end{pmatrix}.
+\end{equation}
+In Komponentenform wird diese Matrixgleichung durch 
+\begin{equation}
+  \begin{split}
+    \dot{\omega}_x J_x + \omega_y\omega_z(J_z-J_y) &= M_x \\
+    \dot{\omega}_y J_y + \omega_x\omega_z(J_x-J_z) &= M_y \\
+    \dot{\omega}_z J_z + \omega_x\omega_y(J_y-J_x) &= M_z \\
+  \end{split}
+\end{equation}
+gegeben. Dieses System wird als die \emph{Euler'sche Gleichungen} bezeichnet und stellt die Bewegungsgleichung für die Drehbewegung eines starren Körpers dar. 
+
+\begin{beispiel}
+  Angenommen es sei ein Körper mit $J_j\not=J_k$, $j\not=k$, zum Beispiel ein Quader. Der Körper bewege sich mit konstanten Winkelgeschwindigkeit $\boldsymbol{\omega}=\mbf{0}$ ohne äußere Drehmoment ($\mbf{M}^{\text{ext}}=\mbf{0}$). Die Euler'schen Gleichungen lauten 
+  \begin{equation}
+    \begin{split}
+    \omega_y\omega_z(J_z-J_y) &= 0 \\
+    \omega_x\omega_z(J_x-J_z) &= 0 \\
+    \omega_x\omega_y(J_y-J_x) &= 0. \\
+  \end{split}
+  \end{equation}
+  Es gibt drei Lösungen:
+  \begin{enumerate}
+    \item $\omega_x = \text{Konst.}$ und $\omega_y=\omega_z  = 0$.
+    \item $\omega_y = \text{Konst.}$ und $\omega_x=\omega_z  = 0$.
+    \item $\omega_z = \text{Konst.}$ und $\omega_x=\omega_y  = 0$.
+  \end{enumerate}
+  Dies entspricht Rotationen um die Hauptträgheitsachsen.
+\end{beispiel}
+
+\begin{beispiel}(Symmetrischer Kreisel)
+  In diesem Fall wird $J_x = J_y \not= J_z$. Die Euler'schen Gleichungen lauten
+  \begin{equation}
+    \begin{split}
+    \dot{\omega}_x J_x + \omega_y\omega_z(J_z-J_y) &= 0 \\
+    \dot{\omega}_y J_y + \omega_x\omega_z(J_x-J_z) &= 0 \\
+    \dot{\omega}_z J_z  &= 0. \\
+  \end{split}
+  \end{equation}
+  Zum ersten stellen wir fest, dass $\omega_z = \text{Konst.}$. Die anderen Komponenten erfüllen die Differentialgleichungen
+  \begin{equation}
+    \dot{\omega}_x = \Omega \omega_y\quad\text{und}\quad \dot{\omega}_y = \Omega \omega_x,
+  \end{equation}
+  wobei $\Omega = \omega_z(J_x-J_z)/J_x$. Die Lösung lautet
+  \begin{equation}
+    \begin{pmatrix}
+      \omega_x(t) \\
+      \omega_y(t) \\
+      \omega_z(t) 
+    \end{pmatrix}
+    =
+    \begin{pmatrix}
+      \omega_0 \sin(\Omega t) \\
+      \omega_0 \cos(\Omega t) \\
+      0
+    \end{pmatrix}.
+  \end{equation}
+\end{beispiel}

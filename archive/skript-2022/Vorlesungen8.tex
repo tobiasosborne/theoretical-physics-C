@@ -1,0 +1,226 @@
+%!TEX root = TheoretischePhysikC.tex
+
+\section{Vorlesung: Die Schrödingergleichung}
+
+
+
+\subsection{Die Schrödingergleichung}
+Gemäß Postulat 5 wird die Zeitentwicklung eines Systems durch den Zeitentwicklungsoperator
+\begin{equation}
+	U_t \equiv e^{-\frac{it}{\hbar}\widehat{H}}
+\end{equation}
+berechnet. Angenommen, dass sich das System in einem reinen Zustand $|\Psi\rangle$ mit dazugehörigem Wellenfunktion $\Psi$  befindet: Wie wird die Zeitentwicklung 
+\begin{equation}
+	|\Psi(t)\rangle \equiv U_t|\Psi\rangle
+\end{equation}
+berechnet? Im Allgemeinen wird der Zeitentwicklungsoperator $\widehat{H}$ durch einen Operator, der auf einen unendlichen dimensionalen Hilbertraum wirkt, gegeben. Solche Operatoren sind nur schwer zu diagonalisieren. Deshalb wird eine indirekte Methode verwendet, um $|\Psi(t)\rangle$ zu berechnen: Man bildet die erste Ableitung von $|\Psi(t)\rangle$ bezüglich der Zeit:
+\begin{equation}
+	\frac{\partial}{\partial t} |\Psi(t)\rangle = \frac{\partial}{\partial t} e^{-\frac{it}{\hbar}\widehat{H}} |\Psi\rangle = -\frac{i}{\hbar}\widehat{H} e^{-\frac{it}{\hbar}\widehat{H}} |\Psi\rangle = -\frac{i}{\hbar}\widehat{H}|\Psi(t)\rangle.
+\end{equation}
+Um die Berechnungen zu vereinfachen, nehmen wir das Beispeil eines Teilchens in einer Dimension. Wir berechnen nun das Skalarprodukt von dieser Gleichung und $|x\rangle$:
+\begin{equation}
+	\begin{split}
+		i\hbar \langle x|\frac{\partial}{\partial t} |\Psi(t)\rangle  &= \langle x|\frac{\widehat{p}^2}{2m}|\Psi(t)\rangle \\
+		&= \frac{1}{2m}\langle x|\widehat{p}^2|\Psi(t)\rangle 
+	\end{split}
+\end{equation}
+Wir wenden jetzt die von
+\begin{equation}
+	\langle x|\widehat{p}^2|\Psi\rangle = -\hbar^2\frac{d^2}{dx^2}\Psi(x)
+\end{equation}
+gegebenen Matrixelemente von $\widehat{H}$ an und setzen die Wellenfunktion-Darstellung ein, um 
+\begin{equation}\label{eq:1dfpschr}
+	\eqbox{i\hbar\frac{\partial}{\partial t}\Psi(x,t) = -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}\Psi(x,t)}
+\end{equation}
+zu erhalten. Diese Gleichung ist als die \emph{Schrödingergleichung} (für ein freies Teilchen in einer Dimension) bekannt.
+
+Die Lösung der Schrödingergleichung beschreibt die Zeitentwicklung des Zustandes eines Teilchens. 
+\begin{beispiel}
+	Angenommen, ein Teilchen befindet sich zum Zeitpunkt $t=0$ in einem reinen Zustand -- einem \emph{Gauß'schen Wellenpaket}:
+	\begin{equation}
+		\Psi(x,t=0) = \sqrt{\frac{1}{\sigma\sqrt{2\pi}}}e^{-\frac14 \frac{(x-a)^2}{\sigma^2}}.
+	\end{equation}
+	Wie entwickelt sich die Wellenfunktion bezüglich der Zeit? Die Lösung der Schrödingergleichung (\ref{eq:1dfpschr}) in diesem Fall lautet
+	\begin{equation}
+		\Psi(x,t) = \sqrt{\frac{1}{\sigma(1+i(t/\tau))\sqrt{2\pi}}}e^{-\frac14 \frac{(x-a)^2}{\sigma^2(1+i(t/\tau))}},
+	\end{equation}
+	wobei
+	\begin{equation}
+		\tau \equiv \frac{2m\sigma^2}{\hbar}.
+	\end{equation}	
+\end{beispiel}
+
+Bei Problemen mit Teilchen, die sich in Potentialen bewegen, ist es oft einfacher, ihre Dynamik zu berechnen, indem man, wie oben beschrieben, die Schrödingergleichung löst.
+
+
+\subsection{Fourier Transformation}
+Um die Dynamik freien Teilchen im Allgemeinen zu verstehen, ist es hilfreich eine neue mathematische Methode einzuführen. Angenommen, wir haben eine Funktion $f:\mathbb{R}\rightarrow\mathbb{C}$. Die \emph{Fourier-Transformierte} der Funktion $f(x)$ wird definiert als 
+\begin{equation}
+	\eqbox{F(k)\equiv \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(x)e^{-ikx}\, dx.}
+\end{equation}
+Die \emph{inverse Transformation} lautet
+\begin{equation}\label{eq:invfourier}
+	\eqbox{f(x)\equiv \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty F(k)e^{ikx}\, dk.}
+\end{equation}
+Die Funktionen $f(x)$ und $F(k)$ sind \emph{Fourier-Paare}. Beide Funktionen beinhalten dieselbe Information. Um diese Äquivalenz zu zeigen, setzen wir die beiden Gleichungen ineinander ein:
+\begin{equation}
+	\begin{split}
+		f(x) &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty \left(\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(y)e^{-iky}\, dy\right)e^{ikx}\, dk \\
+		&= \int_{-\infty}^\infty f(y)\left(\frac{1}{2\pi}\int_{-\infty}^\infty e^{ik(x-y)}\, dk \right)dy \\
+		&= \int_{-\infty}^\infty f(y)\delta(x-y)\,dy.
+	\end{split}
+\end{equation}
+Hierbei haben wir in der zweiten Reihe die Darstellung der Dirac'sche Deltafunktion als 
+\begin{equation}
+	\delta(x) = \frac{1}{2\pi}\int_{-\infty}^\infty e^{ikx}\, dk
+\end{equation}
+eigesetzt.
+
+\subsection{Lösung der Schrödingergleichung für ein freies Teilchen in $1D$}
+Die Schrödingergleichung eines Teilchens in einer Dimension lautet
+\begin{equation}
+	i\hbar\frac{\partial}{\partial t}\Psi(x,t) = -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}\Psi(x,t).
+\end{equation}
+Wie löst man eine Gleichung dieser Form? Weil die Schrödingergleichung linear ist, suchen wir nach Lösungen der Form ebener Wellen: $\Psi(x,t) \propto e^{i(kx-\omega t)}$. Einsetzen in die Schrödingergleichung liefert
+\begin{equation}
+	i\hbar (-i\omega)e^{i(kx-\omega t)} = -\frac{\hbar^2}{2m}(-k^2)e^{i(kx-\omega t)}.
+\end{equation}
+Wir erhalten dabei eine Ebene-Welle Lösung nur dann, wenn
+\begin{equation}
+	\eqbox{\hbar\omega = \frac{\hbar^2k^2}{2m}.}
+\end{equation} 
+Diese Bedingung wird \emph{Dispersionsrelation} bezeichnet. Wenn die Dispersionsrelation erfüllt ist, dann bildet 
+\begin{equation}
+	\Psi_{k}(x,t) = e^{i\left(kx-\frac{\hbar k^2}{2m} t\right)}
+\end{equation}
+eine Familie von Lösungen, die mit $k$ bezeichnet sind.
+
+Wegen der Linearität der Schrödingergleichung können wir neue Lösungen nach dem Superpositionsprinzip bilden:
+\begin{equation}
+	\eqbox{\Psi(x,t) = \int_{-\infty}^{\infty} \Phi(k)e^{i\left(kx-\frac{\hbar k^2}{2m} t\right)}\, dk.}
+\end{equation}
+Um die Schrödingergleichung vollständig zu lösen, ist es nötig, die Anfangsbedingungen zu beachten:
+\begin{equation}
+	\Psi(x,t=0) = \int_{-\infty}^{\infty} \Phi(k)e^{ikx}\, dk.
+\end{equation}
+Hierbei wird $\Psi(x,0)$ vorgegeben und wir müssen für $\Phi(k)$ lösen. Um dies zu tun vergleichen wir diese Gleichung mit der inversen Transformation Gl.~(\ref{eq:invfourier}): Wir betrachten $\Phi(k)$ als die Fourier-Transformierte von $\Psi(x,0)$ und wenden die Fourier Transformation an, um
+\begin{equation}
+	\eqbox{\Phi(k) = \frac{1}{2\pi}\int_{-\infty}^{\infty} \Psi(x,0)e^{-ikx}\, dx}
+\end{equation}
+zu erhalten.
+
+Warnung: Eine ebene Welle ist \emph{nicht} ein Element von $L^2(\mathbb{R})$, weil die Wellenfunktion $\Psi_{k}(x,t)$ nicht quadratintegriebar ist. Die Funktion $\Psi_{k}(x,t)$ bildet zwar eine Lösung, ist aber selbst nicht ein Element von dem Hilbertraum $\mathcal{H}$. Diese Beobachtung schließt nicht die Möglichkeit aus, dass wir durch lineare Kombinationen von ebenen Wellen quadratintegriebare Funktionen bilden können.
+
+Obwohl die ,,stationäre`` ebene Welle $\Psi_{k}(x) \equiv e^{ikx}$ keinem Vektor im Hilbertraum entspricht,  können wir dennoch eine Ket-Notation einführen: Der ,,Ket-Vektor`` $|\Psi_{k}\rangle$ steht für die ebene Welle. Die dazugehörige Wellenfunktion wird durch
+\begin{equation}
+	\langle x| \Psi_{k}\rangle = e^{ikx}
+\end{equation} 
+gegeben.
+
+
+\subsection{Impuls-Raum}
+Wir haben bisher nur Messungen von der Teilchenposition berücksichtigt. Wie kann aus der Wellenfunktion $\Psi(x,t)$ die Statistik für \emph{Impulsmessungen} oder für Größen, die nur vom Impuls abhängen, gewonnen werden? Für eine stationäre ebene Welle $\Psi(x,t) = e^{ikx}$ ist der Impuls durch
+\begin{equation}
+	\langle x|\widehat{p}|\Psi_k\rangle \overset{!}{=}  -i\hbar \frac{d}{dx} e^{ikx}  \overset{!}{=} \hbar k   e^{ikx} \overset{!}{=} \hbar k \langle x|\Psi_k\rangle
+\end{equation}
+zu interpretieren: Obwohl der Ket $|\Psi_k\rangle$ nicht als Element in $\mathcal{H}$ existiert, behandeln wir $|\Psi_k\rangle$ trotzdem als einen fiktiven Vektoren. Nach dieser Berechnung ist es sinnvoll $|\Psi_k\rangle$ als eine Art ,,Eigenvektor`` für $\widehat{p}$ zu interpretieren. Daraus ergibt sich, dass eine ebene Welle $\Psi(x,t) = e^{ikx}$ einen bestimmen Impuls von $\hbar k$ hat. Der Vektorgröße $|\Psi_k\rangle$ spielt für $\widehat{p}$ genau diesselbe Rolle, dass $|x\rangle$ für $\widehat{x}$ spielt.
+
+Mit Hilfe dieser Überlegungen führen wir jetzt die folgende Wellenfunktion im Impulsraum ein:
+\begin{equation}
+	\Phi(p,t) \equiv \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^\infty \Psi(x,t)e^{-i\frac{px}{\hbar}}\,dx.	
+\end{equation} 
+Man kann sehen, dass diese neue \emph{Impulswellenfunktion} einfach durch die Fourier-Transformation der ursprünglichen Ortswellenfunktion gegeben wird. Daraus schließen wir, dass die Impulswellenfunktion die gleiche Information enthält wie die Ortswellenfunktion; sie beschreiben in unterschiedlichen Darstellungen den gleichen Zustand des Teilchens. Angenommen, wir haben nur die Impulswellenfunktion, können wir die Ortswellenfunktion  mit der inversen Fourier transformation rekonstruieren:
+\begin{equation}
+	\Psi(x,t) \equiv \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^\infty \Phi(p,t)e^{i\frac{px}{\hbar}}\,dp.	
+\end{equation} 
+
+\subsubsection{Statistik von Impulsmessungen}
+Die Statistik der Impulsmessungen kann von der Positionsraum-Wellenfunktion abgelesen werden:
+\begin{align}
+	\langle \widehat{p}\rangle &= \int_{-\infty}^{\infty} \Psi^*(x,t) \left(-i\hbar \frac{\partial}{\partial x} \Psi(x,t)\right)\,dx \\
+	\langle \widehat{p}^2\rangle &= \int_{-\infty}^{\infty} \Psi^*(x,t) \left(-\hbar^2 \frac{\partial^2}{\partial x^2} \Psi(x,t)\right)\,dx.
+\end{align}
+Alternativ können wir die Impulsstatistik mit Hilfe der Impulswellenfunktion berechnen, z.B.:
+\begin{equation}
+	\begin{split}
+		\langle \widehat{p}\rangle &= \frac{1}{2\pi\hbar}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty} \Phi(p',t)e^{-i\frac{p'x}{\hbar}} \left(-i\hbar \frac{\partial}{\partial x} \Phi^*(p,t)e^{i\frac{px}{\hbar}}\right)\,dxdpdp' \\
+		&= \frac{1}{2\pi\hbar}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty} \Phi^*(p',t)e^{-i\frac{p'x}{\hbar}} \left(p \Phi(p,t)e^{i\frac{px}{\hbar}}\right)\,dxdpdp' \\
+		&= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty} p \Phi^*(p',t) \Phi(p,t) \left(\frac{1}{2\pi\hbar}\int_{-\infty}^{\infty} e^{i\frac{(p-p')x}{\hbar}}\,dx\right)\,dpdp' \\
+		&= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty} p \Phi^*(p',t) \Phi(p,t) \left(\frac{1}{2\pi}\int_{-\infty}^{\infty} e^{i{(p-p')x}}\,dx'\right)\,dpdp' \\
+		&= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty} p \Phi^*(p',t) \Phi(p,t) \delta(p-p') \,dpdp'\\
+		&= \int_{-\infty}^{\infty} p |\Phi(p,t)|^2 \,dp.
+	\end{split}
+\end{equation}
+Nach einem ähnlichen Verfahren erhalten wir:
+\begin{equation}
+		\langle \widehat{p}^2\rangle = \int_{-\infty}^{\infty} p^2 |\Phi(p,t)|^2 \,dp.
+\end{equation}
+Das heißt, die Statistik der Impulsmessungen ist wesentlich einfacher bezüglich Impulswellenfunktionen zu berechnen.
+
+
+\subsection{Ein Teilchen in drei Dimensionen}
+Ein Teilchen in drei Dimensionen wird in der Quantenmechanik wie folgt beschrieben
+\begin{enumerate}
+	\item Hilbertraum: $L^2(\mathbb{R}^3)$.
+	\item Präparationen von reinen Zuständen $\rho \equiv |\Psi\rangle\langle\Psi|$: Wellenfunktionen $\Psi:\mathbb{R}^3\rightarrow \mathbb{C}$, wobei
+	\begin{equation}
+		|\Psi\rangle \equiv \iiint_{-\infty}^\infty \Psi(x,y,z) |x,y,z\rangle \, dxdydz
+	\end{equation}
+	und
+	\begin{equation}
+		\langle x',y',z'|x,y,z\rangle = \delta(x'-x)\delta(y'-y)\delta(z'-z).
+	\end{equation}
+	\item Detektoren: Sei $S\subset \mathbb{R}^3$ ein Bereich. Der Messoperator, der die Messung, ob sich das Teilchen in einer Region S befindet, modelliert, ist durch 
+	\begin{equation}
+		F_{S} \equiv \iiint_S  	|x,y,z\rangle \langle x,y,z|\, dxdydz
+	\end{equation} 
+	gegeben.
+	\item Ansprechhäufigkeit des Detektors $F_S$: 
+	\begin{equation}
+		\mathbb{P}[\text{,,$(x,y,z)\in S$``}] \equiv \tr(\rho F_S) = \iiint_S |\Psi(x,y,z)|^2 \, dxdydz.
+	\end{equation}
+	\item Hamiltonoperator:
+	\begin{equation}
+		\begin{split}
+			\widehat{H} \equiv \frac{\widehat{P}^2_{\text{ges.}}}{2m} &= \frac{\widehat{p}_x^2}{2m}+\frac{\widehat{p}_y^2}{2m}+\frac{\widehat{p}_z^2}{2m} \\ &= -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial y^2}-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial z^2}.
+		\end{split}
+	\end{equation}
+\end{enumerate}
+
+
+\subsection{Die Quantisierungsregeln für das Teilchen}
+Die Ableitung des Hamiltonoperators für das freie Teilchen ist ein Beispiel für ein Verfahren, wie
+aus klassischen Größen ,,entsprechende`` quantenmechanische gewonnen werden können: Dabei werden aus Funktionen der klassischen Variablen Ort und Impuls Operatoren im Raum der Wellenfunktionen. Die folgende Korrespondenz-Tabelle stellt ein Paar Quantisierungsregeln für das Teilchen (in drei Dimensionen) dar
+\begin{center}
+\begin{tabular}{lcc}    \toprule
+{\bf klassisch} & & {\bf quantenmechanischer Operator wirkt nach}  \\\midrule
+Ort ($j$-Koord.): &$x_j$ & $\widehat{x}_j \Psi(x,y,z) = x_j \Psi(x,y,z)$  \\ 
+\rowcolor{isabelline} Impuls ($j$-Koord.):& $p_j$ & $\widehat{p}_j \Psi(x,y,z) = -i \hbar \frac{\partial}{\partial x_j}\Psi(x,y,z)$  \\ 
+kinetische Energie: & $K$ & $\widehat{K}\Psi(x,y,z) = -\frac{\hbar^2}{2m} \nabla^2 \Psi(x,y,z)$ \\
+\rowcolor{isabelline} potentielle Energie & $V(x,y,z)$ & $\widehat{V} \Psi(x,y,z) = V(x,y,z)\Psi(x,y,z)$ \\
+gesamte Energie & $E$ & $\widehat{H}\Psi(x,y,z) = \left(-\frac{\hbar^2}{2m} \nabla^2+ V(x,y,z)\right)\Psi(x,y,z)$ \\
+\rowcolor{isabelline} Drehimpuls & $\mathbf{L}$ & $\widehat{L}_1\Psi(x,y,z) = -i \hbar (y \frac{\partial}{\partial z} - z \frac{\partial}{\partial y})\Psi(x,y,z)$  \\
+allgemein & $f$ & ??? \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Kurz gesagt also, lautet die Regel: Ersetze in jedem klassischen Ausdruck die Ortskoordinaten durch Multiplikationsoperatoren, und die Impulskoordinaten durch ($-i\hbar \times$) Differentiationsoperatoren. Diese Regel ist recht nützlich, und man sollte sie sich unbedingt merken. Es gibt aber eine entscheidende Einschränkung: Klassisch ist der Ausdruck 
+\begin{equation*}
+	p_j x_k - x_k p_j = 0.
+\end{equation*}
+Mit den oben eingeführten Operatoren dagegen erhält man
+\begin{equation}
+	\begin{split}
+		-i \hbar \left(\frac{\partial}{\partial x_j}x_k - x_k \frac{\partial}{\partial x_j}\right)\Psi(x,y,z) &= -i \hbar \left(x_k\frac{\partial}{\partial x_j}  + \delta_{jk} - x_k \frac{\partial}{\partial x_j} \right)\Psi(x,y,z) \\
+		&= -i\hbar \delta_{jk} \Psi(x,y,z).
+	\end{split}
+\end{equation}
+Das heißt, der entsprechende quantenmechanische Operator wirkt wie $-i\hbar\delta_{jk}\mathbb{I}$. Zusammengefasst schreiben wir
+\begin{equation}
+	[\widehat{p}_j,\widehat{x}_k]\equiv\widehat{p}_j\widehat{x}_k - \widehat{x}_k  \widehat{p}_j = -i\hbar\delta_{jk}\mathbb{I},
+\end{equation} 
+wobei $[\widehat{A},\widehat{B}] = \widehat{A}\widehat{B} - \widehat{B}\widehat{A}$ den \emph{Kommutator} zweier Operatoren bezeichnet. Diese Operatorgleichung wird als kanonische Vertauschungsrelationen bezeichnet.
+
+Für das Ausfüllen der obigen Korrespondenztabelle bedeuten sie einfach, dass es keine allgemein gültige ,,Quantisierungsvorschrift`` für klassische Größen gibt. Die konkreten Einträge in der Tabelle sind übrigens gerade solche Funktionen von $x$ und $p$, bei denen solche \emph{Operatorordnungsprobleme} keine Rolle spielen.
+

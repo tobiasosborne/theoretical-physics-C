@@ -1,0 +1,99 @@
+%!TEX root = TheoretischePhysikC.tex
+
+\section{Vorlesung: Teilchen im Kasten}
+Wenn die Bewegungsfreiheit eines Teilchens durch äußere Wände eingeschränkt wird, äußert sich das zunächst einmal in der Einschränkung in den möglichen Werten der Ortsvariablen $x$. Wenn sich das Teilchen nur in einem Gebiet $G \subset \mathbb{R}^3$ bewegen kann, modifizieren wir den Hilbertraum erst einmal zu $\mathcal{H}\equiv L^2(G)$, d.h.\ Wellenfunktionen sind nur noch auf $G$ definiert und im
+Skalarprodukt wird die Integration 
+\begin{equation}
+	\langle \Phi|\Psi\rangle \equiv \iiint_G \Phi^*(x,y,z)\Psi(x,y,z)\, dxdydz
+\end{equation}
+ebenfalls auf $G$ eingeschränkt. 
+
+Den Hamiltonoperator versuchen wir erst einmal wieder als 
+\begin{equation}
+	H = -\frac{\hbar^2}{2m}\nabla^2
+\end{equation}
+anzusetzen. Das geht allerdings schief ($H$ wird nicht hermitesch sein). Man kann die Hermitizität von $H$ wieder herstellen, wenn man den Definitionsbereich von $H$ auf solche Funktionen einschränkt, die gewisse \emph{Randbedingungen} erfüllen. Diese Randbedingungen sind letztlich eine idealisierte Beschreibung der Wechselwirkung zwischen Teilchen und Wand. Eine häufig benutzte Randbedingung für den Hamiltonoperator ist die so genannte \emph{Dirichlet-Randbedingung}: im Definitionsbereich von $H$ werden nur Funktionen zugelassen, die auf dem Rand von $G$ verschwinden.
+
+Um die Dynamik von $H$ zu lösen, ist es extrem hilfreich, die Eigenwerte und dazugehörigen Eigenvektoren von $H$ zu berechnen. (Dann ist $U_t=e^{-\frac{it}{\hbar}\widehat{H}}$ durch nur einen Multiplikationsoperator gegeben.) Wir beginnen mit der Berechnung der Eigenfunktionen für den einfachsten Fall: ein ,,eindimensionales`` Teilchen im Intervall $[0,L] \subset \mathbb{R}$. Das heißt, wir berechnen zuerst die Lösungen der Gleichung
+\begin{equation}
+	\widehat{H}|\Psi\rangle = E|\Psi\rangle
+\end{equation}
+für alle mögliche Eigenwerte $E$. Um weiter zu kommen werden wir diese Gleichung als eine Wellenfunktion-Gleichung umschreiben 
+\begin{equation}
+	\langle x|\widehat{H}|\Psi\rangle = -\frac{\hbar^2}{2m}\frac{d}{dx}\Psi(x) = E\Psi(x) = E\langle x|\Psi\rangle.
+\end{equation}
+Ohne weitere Begrenzungen ist der Hamiltonoperator nicht hermitesch. Wir müssen auch die folgende Randbedingung 
+\begin{equation}
+	\Psi(0) = \Psi(L) = 0
+\end{equation} 
+einführen. Dies ist eine lineare Differentialgleichung mit konstanten Koeffizienten, wird
+also gelöst durch den Ansatz 
+\begin{equation}
+	\Psi(x) = e^{\mu x}, \quad\text{mit}\quad \mu\in \mathbb{C}.
+\end{equation}
+Einsetzen ergibt die Gleichung
+\begin{equation}
+	-\frac{\hbar^2}{2m} \mu^2 e^{\mu x} = E e^{\mu x},
+\end{equation}
+also
+\begin{equation}
+	\mu = \pm i \sqrt{\frac{2mE}{\hbar^2}}, 
+\end{equation}
+und damit zwei linear unabhängige Lösungen.
+
+Die allgemeine Lösung der Differentialgleichung ist damit: 
+\begin{equation}
+	\Psi(x) = A e^{\mu x} + B e^{-\mu x},
+\end{equation}
+wobei $\mu$ eine der beiden Lösungen ist, und $A,B \in \mathbb{C}$. Die Randbedingung $\Psi(0)= 0$ erzwingt $B = −A$. Es bleibt also die Gleichung 
+\begin{equation}
+	\Psi(L) =A e^{\mu L} + B e^{-\mu L} = 0,
+\end{equation}
+oder äquivalent: 
+\begin{equation}
+	e^{2\mu L} = 1,
+\end{equation}
+aus der sich die möglichen Werte für $\mu$ (und damit für $E$) ergeben. Zunächst scheiden reelle $\mu$ aus,
+also ist $E \ge 0$. Für imaginäre $\mu$ gibt es Lösungen, nämlich 
+\begin{equation}
+	2\mu L = 2\pi i n,
+\end{equation}
+wobei $n \in \mathbb{Z}$. Also ist $\mu = n\pi i/L$, und die Eigenfunktion $Ψ(x) = A \sin(n\pi x/L)$.
+Offensichtlich geben $n$ und $−n$ die gleiche Eigenfunktion, und $n = 0$ scheidet aus (Dort ist $\Psi'' =0$, also $
+\Psi(x) = ax+b$ linear, was sich nicht mit den Randbedingungen verträgt). Nach Normierung bekommen wir also die Eigenfunktionen und Eigenwerte
+\begin{equation}
+	\phi_n(x) = \sqrt{\frac{2}{L}}\sin\left(\frac{n\pi}{L} x\right)\quad \text{und}\quad E_n = \frac{\hbar^2 \pi^2}{2mL^2}n^2\quad \text{für $n=1,2,\ldots$.}
+\end{equation}
+
+Die $\phi_n$ bilden eine Basis von unseren Hilbertraum $\mathcal{H} = L^2([0,L])$ und damit einen unitären
+Operator $U:\mathcal{H} \rightarrow \ell^2(\mathbb{N})$, nämlich $(U\Psi)(n) = \langle \phi_n|\Psi\rangle$, der $H$ diagonalisiert. Den Zeitentwicklungsoperator $U_t = e^{−itH/\hbar}$ bekommt man also durch Entwickeln nach der Basis $\phi_n$ (=Anwendung von $U$), triviale Anwendung von $U_t$ auf die Basisvektoren (=Multiplikation mit einer Funktion von $n$) und Aufsummation der Reihe mit den neuen Komponenten (=Anwendung von $U^\dag$):
+\begin{equation}
+	U_t |\Psi\rangle = \sum_{n=1}^{\infty} e^{-\frac{it}{\hbar} E_n} |\phi_n\rangle \langle \phi_n|\Psi\rangle. 
+\end{equation}
+Als Merkregel in der Dirac'schen Bra-Ket Schreibweise gilt also wiederum
+\begin{equation}
+	\eqbox{U_t = \sum_{n=1}^{\infty} e^{-\frac{it}{\hbar} E_n} |\phi_n\rangle \langle \phi_n|.}
+\end{equation}
+
+Für ein dreidimensionales Teilchen in einer quaderförmigen Kiste ist damit die
+wesentliche Arbeit schon geleistet. Wir betrachten also das Gebiet
+\begin{equation}
+	G = \left\{(x,y,z)\,\middle| \,  0\le x \le L_x, 0\le y \le L_y, 0\le z \le L_z  \right\},
+\end{equation}
+wobei $L_x$, $L_y$ und $L_z$ die Kantenlängen des Quaders sind. Der Hamiltonoperator ist
+nun 
+\begin{equation}
+	\widehat{H} = -\frac{\hbar^2}{2m}\nabla^2,
+\end{equation}
+wieder mit der Randbedingung, dass Funktionen im Definitionsbereich von $H$ auf dem Rand des Gebietes verschwinden. Zur Lösung der Eigenwertgleichung macht man einen \emph{Separationsansatz}
+\begin{equation}
+	\Psi(x,y,z) = \Phi_x(x)\Phi_y(y)\Phi_z(z)
+\end{equation}
+und erfährt, dass die Funktion $\Phi_x''/\Phi_x$ nicht mehr von $x$ abhängt (analog für $\Phi_y$ und $\Phi_z$), also eine Eigenfunktion für das eben diskutierte Problem eines eindimensionalen Intervalls sein muss. Damit bekommen wir also Eigenfunktionen und Eigenwerte
+\begin{align}
+	\phi_{n_x,n_y,n_z}(x,y,z) &= \sqrt{\frac{8}{L_xL_yL_z}} \sin\left(\frac{n_x\pi}{L_x} x\right)\sin\left(\frac{n_y\pi}{L_y} y\right)\sin\left(\frac{n_z\pi}{L_z} z\right) \\
+	E_{n_x,n_y,n_z}&=\frac{\hbar^2\pi^2}{2m} \left(\frac{n_x^2}{L_x^2} + \frac{n_y^2}{L_y^2} + \frac{n_z^2}{L_z^2} \right).
+\end{align}
+Was kann man über anders geformte Kisten sagen? Ein Separationsansatz funktioniert nur in wenigen Fällen, in denen man Koordinaten finden kann, in denen sich die Form der Kiste leicht beschreiben lässt, und in der der
+Laplace-Operator außerdem in eine Summe von zweiter Ableitungen zerfällt. Außer dem Quader kann man so noch die Kugel behandeln und auch noch Ellipsoide. Für allgemeine Gebiete $G$ ist die Bestimmung der Eigenfunktionen
+und Eigenwerte des Laplace-Operators nicht geschlossen möglich, aber ein Problem, das bei verschiedenen Wellenphänomenen in der Physik eine Rolle spielt (Hohlraum-Resonanz).

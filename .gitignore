@@ -1,0 +1,40 @@
+# ── LaTeX build artefacts ────────────────────────────────────
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.synctex(busy)
+latex/*.pdf
+
+# ── Generated data (regenerable from scripts/) ───────────────
+latex/data/
+latex/figures/*.png
+latex/figures/*.pdf
+
+# ── Transcripts: raw caption dumps are regenerable ───────────
+transcripts/raw/
+
+# ── Archive: large binaries + third-party material ───────────
+# 128 MB source zip
+archive/original/
+# Prof. Hammerer's script — not ours to redistribute
+archive/third-party/
+# large compiled PDFs of earlier script versions
+archive/pdf/
+archive/skript-2021/Skript.zip
+
+# ── Working scratch ──────────────────────────────────────────
+_work/
+_unzip_tmp/
+
+# ── Editor / OS ──────────────────────────────────────────────
+.DS_Store
+*~
+*.swp
+*.swo
+.claude/

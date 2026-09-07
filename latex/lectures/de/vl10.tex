@@ -1,0 +1,59 @@
+%!TEX root = TheoretischePhysikC.tex
+
+
+\section{Vorlesung: Zerfließen des Wellenpakets}
+Der Ausdruck ,,Wellenpaket`` wird für räumlich begrenzte Funktionen verwendet, wie etwa $\Psi\in L^2(\mathbb{R}^3)$, nicht für ebene Wellen. Vom Standpunkt der statistischen Interpretation gibt es also nur solche ,,Pakete``, und die Diskussion ebener Wellen ist bestenfalls eine etwas verkürzte Art, über die Fourier-Transformation zu sprechen. In der Frühzeit der Quantenmechanik galten gut lokalisierte Wellenpakete außerdem als eine Art Ersatz für Teilchen. Gemessen
+daran war eine Eigenschaft der Wellenpakete etwas störend: sie ,,flossen auseinander``,  was für Teilchen ja wirklich ein ungebührliches Betragen ist. Das Zerfließen des Wellenpakets galt danach als typisch quantenmechanischer Effekt. Wenn man allerdings $\Psi$ konsequent statistisch deutet, ist nichts Paradoxes an diesem Vorgang: warum soll schließlich eine Wahrscheinlichkeitsverteilung
+nicht mit der Zeit breiter werden? Wir werden hier sehen, dass das Zerfließen der Wellenpakete gerade ein klassischer Effekt ist: er wird asymptotisch genau durch die Impulsverteilung bestimmt, wie bei einem Schwarm klassischer Teilchen.
+
+Wir betrachten also jetzt Teilchen in $\mathbb{R}^3$ mit Hamiltonoperator
+\begin{equation}
+	H = \frac{\widehat{p}_\text{ges.}^2}{2m} = \frac{\widehat{p}_{x}^2}{2m}+\frac{\widehat{p}_{y}^2}{2m}+\frac{\widehat{p}_{z}^2}{2m}.
+\end{equation}
+In diesem Fall entspricht wie üblich in der QM $H$ der Energie eines freien Teilchens. 
+
+Wir interessieren uns für die Wahrscheinlichkeitsverteilung des Ortes zu verschiedenen Zeiten, besonders zu großer Zeit, das heißt, für die Ergebnisse von
+Ortsmessungen, wenn zwischen Präparation und Messung eine große Zeit $t$ verstrichen ist. Wir haben zwei äquivalente Alternativen, um dieses Problem anzugehen: das Heisenbergbild und das Schrödingerbild. Im Schrödingerbild würden wir die Schrödingergleichung 
+\begin{equation}
+	i\hbar \frac{\partial}{\partial t}\Psi = \widehat{H}\Psi
+\end{equation}
+lösen, und dann das Ergebnis als 
+\begin{equation}
+	p_t(x) \equiv |\Psi(x,t)|^2
+\end{equation}
+ablesen. Wir werden die Rechnung im Heisenbergbild durchführen, d.h. wir halten $\Psi$ (und dabei
+die Dichtematix $\rho$) fest und berechnen die Operatoren
+\begin{equation}
+	\widehat{x}(t) \equiv e^{\frac{it}{\hbar} \widehat{H}}\widehat{x} e^{-\frac{it}{\hbar} \widehat{H}}, \quad \widehat{y}(t) \equiv e^{\frac{it}{\hbar} \widehat{H}}\widehat{y} e^{-\frac{it}{\hbar} \widehat{H}} \quad \text{und} \quad \widehat{y}(t) \equiv e^{\frac{it}{\hbar} \widehat{H}}\widehat{y} e^{-\frac{it}{\hbar} \widehat{H}}.
+\end{equation}
+
+Als nächstes suchen wir passende ,,Koordinaten``, in denen wir unsere Rechnung duchführen können. Wegen des Auftretens der Exponentialfunktion ist es naheliegend, eine Darstellug des Hilbertraums zu wählen, in der $H$ ein Multiplikationsoperator ist, also die Impulsdarstellung:
+\begin{equation}
+	\Phi(\mathbf{p})\equiv \Phi(p_x,p_y,p_z) \equiv \frac{1}{\sqrt{2\pi\hbar}} \iiint_{-\infty}^\infty \Psi(x)e^{-\frac{i}{\hbar}(p_x x+ p_y y+ p_z z)}\,dxdydz.	
+\end{equation} 
+Dann ist
+\begin{equation}\label{eq:timedepx}
+	\begin{split}
+		(\widehat{x}(t)\Phi)(\mathbf{p}) &= e^{\frac{it}{\hbar} \frac{|\mathbf{p}|^2}{2m}}\left(\widehat{x}(t)e^{-\frac{it}{\hbar}\widehat{H}}\Phi\right)(\mathbf{p}) \\
+		&= e^{\frac{it}{\hbar} \frac{|\mathbf{p}|^2}{2m}}\left(i\hbar \frac{\partial}{\partial p_x}\right)\left(e^{-\frac{it}{\hbar}\frac{|\mathbf{p}|^2}{2m}}\Phi(\mathbf{p})\right) \\
+		&= t \frac{p_x}{m}\Phi(\mathbf{p}) + i\hbar \frac{\partial}{\partial p_x} \Phi(\mathbf{p}), \\ 
+	\end{split}
+\end{equation}
+also
+\begin{equation}
+	\widehat{x}(t) = t \frac{\widehat{p}_x}{m} + \widehat{x}(0),
+\end{equation}
+wobei $\frac{\widehat{p}_x}{m}$ den \emph{Geschwindigkeitsoperator} (in der $x$-Richtung) darstellt. Es gelten ähnliche Ausdrücke für $\widehat{y}(t)$ und $\widehat{z}(t)$. Den Ausdruck $\frac{p_\mu}{m} = \frac{\partial}{\partial p_\mu} \frac{|\mathbf{p}|^2}{2m}$, $\mu = x,y,z$, bezeichnet man auch als \emph{Gruppengeschwindigkeit}, weil er die Geschwindigkeit von \emph{Gruppen}, also Wellenpaketen beschreibt.
+
+Um die Zeitabhängigkeit des Erwartungswertes von $\widehat{x}(t)$ zu bekommen, braucht man nun nur noch auf beiden Seiten von (\ref{eq:timedepx}) die Spur mit $\rho =  |\Psi\rangle\langle\Psi|$ zu nehmen. Wir erhalten dabei
+\begin{equation}
+	\begin{split}
+		\langle\widehat{x}\rangle(t) &= \tr(\rho \widehat{x}(t)) \\
+		&= \tr\left(\rho \left(t \frac{\widehat{p}_x}{m} + \widehat{x}(0)\right)\right)\\
+		&= t \frac{\langle\widehat{p}_x \rangle(0)}{m} + \langle\widehat{x}\rangle(0).
+	\end{split}
+\end{equation}
+
+Die Operatorgleichung enthält aber viel mehr Information als nur das: Die Diagonalisierung der Operatoren $\widehat{x}(t)$ enthält ja alle Information über die Wahrscheinlichkeitsverteilungen des Ortes zur Zeit $t$ in beliebigen Zuständen. Das Aussehen der Ortswahrscheinlichkeitsverteilung zu großen Zeiten ist also völlig von der gemeinsamen Verteilung der Operatoren $\frac{\widehat{p}_\mu}{m}$ bestimmt. Am Verhalten von $\widehat{x}$, $\widehat{y}$ und $\widehat{z}$  ist also überhaupt kein Unterschied zwischen klassischen und quantenmechanischen Teilchen zu sehen.
+
+Die interessanteren Unterschiede zwischen klassischer Mechanik und Quantenmechanik (und die wichtigeren Anwendungen der Quantenmechanik) finden sich allerdings bei Teilchen in äußeren Potentialen, oder in Wechselwirkung miteinander.

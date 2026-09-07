@@ -1,0 +1,119 @@
+%!TEX root = TheoretischePhysikC.tex
+
+\section{Vorlesung: Endlich hoher Potentialtopf}
+Wir betrachten nun ein Teilchen in einem endlich hohen Potentialtopf mit Tiefe $V_0$ und Breite $L$:
+\begin{equation}
+	V(x) = \begin{cases}
+		-V_0, \quad &|x|\le \frac{L}{2}\\
+		0, \quad &|x| > \frac{L}{2}.
+	\end{cases}
+\end{equation}
+Wir werden uns mit den folgenden Fragen beschäftigen: (a) Gibt es gebundene Zustände (d.h.\ Energieeigenvektoren mit Eigenenergie $E\le 0$)? (b) Welche Unterschiede zum unendlich hohen Potentialtopf sind zu beobachten?
+
+Es ist hilfreich, um die Lösung der Eigenvektorgleichung  
+\begin{equation}
+	\widehat{H}|\Psi\rangle = E|\Psi\rangle
+\end{equation}
+zu erhalten, die Konstanten
+\begin{equation}
+	\kappa = \frac{\sqrt{2m|E|}}{\hbar}\quad \text{und}\quad q = \frac{\sqrt{2m(E+V_0)}}{\hbar}
+\end{equation}
+zu definieren. 
+
+Die dazugehörigen Wellenfunktionen erhalten wir mittels
+\begin{equation}
+	\langle x|\widehat{H}|\Psi\rangle = \left(-\frac{\hbar^2}{2m}\frac{d}{dx} + V(x)\right)\Psi(x) = E\Psi(x) = E\langle x|\Psi\rangle.
+\end{equation}
+Nach Umformung und Einsetzen erhalten wir
+\begin{equation}
+	\begin{cases}
+		\frac{d^2}{dx^2}\Psi(x) = -q^2 \Psi(x), \quad &\text{für $|x|<\frac{L}{2}$}\\
+		\frac{d^2}{dx^2}\Psi(x) = \kappa^2 \Psi(x), \quad &\text{für $|x|>\frac{L}{2}$}.
+	\end{cases}
+\end{equation}
+Wegen Symmetrie können die Eigenfunktionen gerade oder ungerade gewählt werden. Die geraden Lösungen lauten
+\begin{equation}
+	\Psi(x) = \begin{cases}
+		A_1 e^{\kappa x}, \quad & x< -\frac{L}{2} \\
+		A_2 \cos(qx), \quad & |x| \le \frac{L}{2} \\
+		A_1 e^{-\kappa x}, \quad & x> \frac{L}{2}
+	\end{cases}
+\end{equation}
+und die ungeraden Lösungen
+\begin{equation}
+	\Psi(x) = \begin{cases}
+		-B_1 e^{\kappa x}, \quad & x< -\frac{L}{2} \\
+		B_2 \sin(qx), \quad & |x| \le \frac{L}{2} \\
+		B_1 e^{-\kappa x}, \quad & x> \frac{L}{2}.
+	\end{cases}
+\end{equation}
+Alle Wellenfunktionen werden als \emph{stetig} und \emph{differenzierbar} angenommen. Dies liefert Anschlussbedingungen bei $x = \pm L/2$. Für die geraden Lösungen erhalten wir wegen
+\begin{enumerate}
+	\item Stetigkeit: $A_1 e^{-\frac{\kappa L}{2}} = A_2 \cos\left(\frac{qL}{2}\right)$,
+	\item Differenzierbarkeit: $-A_1\kappa e^{-\frac{\kappa L}{2}} = -A_2 q\sin\left(\frac{qL}{2}\right)$.
+\end{enumerate}
+Dividieren wir die zweite Bedingung durch die erste, erhalten wir
+\begin{equation}\label{eq:symmcond}
+	\kappa = q\tan\left(\frac{qL}{2}\right).
+\end{equation}
+Für die ungeraden Lösungen erfolgt die Bedingung  
+\begin{enumerate}
+	\item Stetigkeit: $B_1 e^{-\frac{\kappa L}{2}} = B_2 \sin\left(\frac{qL}{2}\right)$,
+	\item Differenzierbarkeit: $-B_1\kappa e^{-\frac{\kappa L}{2}} = B_2 q\cos\left(\frac{qL}{2}\right)$.
+\end{enumerate}
+Dabei wird analog die Folgerung erhalten werden:
+\begin{equation}\label{eq:unsymm}
+	\kappa = -q\cot\left(\frac{qL}{2}\right).
+\end{equation}
+
+Wir betrachten nun die Bedingung (\ref{eq:symmcond}) für gerade Lösungen: Die Quadratur beider Seiten ergibt
+\begin{equation}
+	\kappa^2 = q^2\tan^2\left(\frac{qL}{2}\right).
+\end{equation}
+Nach der Definition $\kappa$ erhalten wir
+\begin{equation}
+	\kappa^2 = \frac{2m|E|}{\hbar^2} = \frac{2mV_0}{\hbar^2} - \frac{2m(V_0+E)}{\hbar^2} = \frac{2mV_0}{\hbar^2} - q^2.
+\end{equation}
+Führen wir die Konstanten
+\begin{equation}
+	u\equiv \frac{qL}{2}\quad \text{und}\quad \alpha^2 \equiv \frac{m V_0 L^2}{2\hbar^2}
+\end{equation}
+ein, ergibt sich
+\begin{equation}
+	\alpha^2-u^2 = u^2\tan^2(u).
+\end{equation}
+Nach Umformung:
+\begin{equation}
+	\frac{\alpha^2}{u^2} = 1+\tan^2(u) = \frac{1}{\cos^2(u)}.
+\end{equation}
+sodass
+\begin{equation}
+	|\cos(u)| = \frac{u}{\alpha}.
+\end{equation}
+Die Lösung dieser \emph{transzendenten} Gleichung erfolgt graphisch. Wegen der Bedingungung $\kappa>0$, $q>0$ und $\kappa = q\tan(u)$ muss $\tan(u)>0$ gelten, sodass nur Lösungen in $0<u<\frac{\pi}{2}$ und $\pi < u < \frac{3\pi}{2}$ korrekt sind. Zusammengefasst: Es gibt mindestens einen gebundenen Zustand und insgesamt endlich viele Zustände mit gerader Wellenfunktion. 
+
+
+Die Bedingung (\ref{eq:unsymm}) für ungerade Lösungen wird analog behandelt: Die Quadratur beider Seiten ergibt in diesem Fall
+\begin{equation}
+	\kappa^2 = q^2\cot^2\left(u\right).
+\end{equation}
+Daher ergibt sich
+\begin{equation}
+	\alpha^2-u^2 = u^2\cot^2(u).
+\end{equation}
+Nach Umformung:
+\begin{equation}
+	\frac{\alpha^2}{u^2} = 1+\cot^2(u) = \frac{1}{\sin^2(u)}.
+\end{equation}
+sodass
+\begin{equation}
+	|\sin(u)| = \frac{u}{\alpha}.
+\end{equation}
+Lösung dieser Gleichung erfolgt auch graphisch: Wegen $\kappa>0$, $q>0$ und $\kappa = -q\cot(u)$ muss $\cot(u)<0$ gelten, sodass nur Lösungen in $\frac{\pi}{2}<u< \pi$ und $\frac{3\pi}{2} < u < 2\pi$ in Frage kommen. 
+
+Aus den gefundenen Lösungen für $u$ folgt $q = \frac{2u}{L}$ und $E = \frac{\hbar^2q^2}{2m}-V_0$. Wir können den Grenzübergang zum unendlich tiefen Potentialtopf erhalten, indem wir den Grenzwert
+\begin{equation}
+	V_0\rightarrow \infty\quad \text{d.h.} \quad \alpha\rightarrow\infty
+\end{equation}
+nehmen. In diesem Limes werden wir unendlich viele Schnittpunkte für (\ref{eq:symmcond}) und (\ref{eq:unsymm}) beobachten. Diese liefern uns unendlich viele gebundene Lösungen.
+

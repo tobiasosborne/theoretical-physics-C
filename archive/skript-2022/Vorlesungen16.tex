@@ -1,0 +1,67 @@
+%!TEX root = TheoretischePhysikC.tex
+
+\section{Vorlesung: Das Coulombpotential (Wasserstoffatom)}
+
+\begin{center}
+	\begin{tikzpicture}
+		\begin{axis}[width=\columnwidth, height=8cm,hide axis, tick style={color=black}, domain=0:12, xtick=\empty, ytick=\empty, samples =200, xmin = -0.5, xmax = 8, ymin = -3, ymax = 2]
+		\addplot[cgblue, dashed] {1/x^2-2/x};
+		\addplot[cgblue] {-2/x};
+		\draw[->] (axis cs: -0.5, 0) -- (axis cs: 8, 0);
+		\draw (axis cs: 7.8, -0.2) node[below] {$r$};
+		\draw (axis cs: 6, 1.5) node[below] {$U_\ell(r) = \frac{\hbar^2 \ell(\ell+1)}{2m_{\text{e}}r^2}+V(r)$};
+		\draw[->] (axis cs: 0, -3) -- (axis cs: 0, 2);
+    	\draw (axis cs: 0.5,1.5) node[right] {$\ell = 1$};
+   		\draw (axis cs:3.5,-1.25) node[above] {$\ell=0$};
+		\end{axis}
+	\end{tikzpicture}
+\end{center} 
+
+Das Wasserstoffatom besteht aus einem Proton und einem Elektron. Ein erstes grobes Modell für das Atom erfolgt indem man das Proton als eine unendlichen massiven Punktmasse annähert. Nach dieser Annäherung kann nun das Wasserstoffatom als ein Teilchen (das Elektron), das sich in einem Zentralpotential 
+\begin{equation}
+	V(r) = -\frac{Ze^2}{4\pi \epsilon_0 r}
+\end{equation}
+bewegen, modelliert werden.
+
+Die Lösungen der Radialgleichung 
+\begin{equation}
+	\left(-\frac{\hbar^2}{2m_{\text{e}}}\frac{d^2}{dr^2} + \frac{\hbar^2\ell(\ell+1)}{2m_{\text{e}}r^2} + V(r) - E\right)u(r) = 0.
+\end{equation}
+sind der Form
+\begin{equation}
+	R_{n\ell}(r) = \sqrt{\frac{(n-\ell-1)!(2\kappa)^3}{2n(n+\ell)!}}(2\kappa r)^\ell e^{-\kappa r}\text{L}_{n-\ell-1}^{2\ell +1}(2\kappa r),	
+\end{equation}
+wobei 
+\begin{equation}
+	\kappa = \frac{\sqrt{2m_{\text{e}}|E|}}{\hbar} = \frac{Z}{n a_0}
+\end{equation}
+und $L_r^s$ die Laguerre-Polynomen sind. Die dazugehörige Eigenwerte lauten
+\begin{equation}
+	\eqbox{E_n = -\frac{(Ze)^2}{4\pi\epsilon_0}\frac{1}{a_0}\frac{1}{2n^2},}
+\end{equation}
+mit \emph{Hauptquantenzahl} $n=1,2,\ldots$ und \emph{Bohrradius} 
+\begin{equation}
+	a_0 = \frac{4\pi\epsilon_0\hbar^2}{m_{\text{e}}e^2} = 5.29177210903(80) \times 10^{−11} \text{m}.
+\end{equation}
+Die vollständige Eigenfunktionen lauten
+\begin{equation}
+	\psi_{n\ell m}(r,\theta,\phi) = R_{n\ell}(r)\text{Y}_{\ell}^m(\theta,\phi).
+\end{equation}
+Zu jedem $n$ gibt es mögliche Drehimpulsquantenzahlen $\ell = 0,1,2, \ldots, n-1$ ($\equiv \text{s}, \text{p}, \text{d}, \text{f}, \ldots $). Zu jedem $\ell$ gehören $2\ell +1$ mögliche Werte der magnetischen Quantenzahahl $m = -\ell, -\ell+1, \ldots, \ell$. Eine wichtige Bemerkung: die Energie ist von $m$ und $\ell$ unabhängig. 
+
+Die ersten Laguerre-Polynomen lauten
+\begin{equation}
+	\begin{split}
+		L_0^s(x) &= 1 \\
+		L_1^s(x) &= -x+(s+1) \\
+		L_2^s(x) &= -\frac{x^2}{2}-(s+2)x + \frac{1}{2}(s+1)(s+2) \\
+		&\vdots
+	\end{split}
+\end{equation}
+Daher erhalten wir die folgende Eigenwellenfunktionen $\psi_{n\ell m}(r,\theta,\phi)$ bis $n=2$:
+\begin{align*}
+	\psi_{100}(r,\theta,\phi) &= \frac{1}{\sqrt{\pi}}\left(\frac{Z}{a_0}\right)^{\frac{3}{2}}e^{-\frac{Zr}{a_0}} &\quad & 1\text{s} \\
+	\psi_{200}(r,\theta,\phi) &= \frac{1}{4\sqrt{2\pi}}\left(\frac{Z}{a_0}\right)^{\frac{3}{2}}\left(2-\frac{Zr}{a_0}\right)e^{-\frac{Zr}{2a_0}} &\quad & 2\text{s} \\
+	\psi_{210}(r,\theta,\phi) &= \frac{1}{4\sqrt{2\pi}}\left(\frac{Z}{a_0}\right)^{\frac{3}{2}}\frac{Zr}{a_0}e^{-\frac{Zr}{2a_0}}\cos(\theta) &\quad & 2\text{p} \quad (m=0) \\
+	\psi_{21\pm1}(r,\theta,\phi) &= \frac{1}{8\sqrt{2\pi}}\left(\frac{Z}{a_0}\right)^{\frac{3}{2}}\frac{Zr}{a_0}e^{-\frac{Zr}{2a_0}}\sin(\theta)e^{\pm i\phi} &\quad & 2\text{p} \quad (m=\pm1). \\
+\end{align*}

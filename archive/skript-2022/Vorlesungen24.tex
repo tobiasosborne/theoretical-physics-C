@@ -1,0 +1,305 @@
+%!TEX root = TheoretischePhysikA.tex
+
+\section{Vorlesung: Eigenwertprobleme}
+\subsection{Eigenwerte}
+
+Sei $\mbf{A}$ eine $n\times n$ Matrix entweder mit reellen oder komplexen Einträgen. Gesucht wird einen Vektor $\mbf{x}$ und eine (komplexe) Zahl $\lambda$, damit die folgende Relation erfüllt ist:
+\begin{equation}
+  \mbf{A}\mbf{x} = \lambda \mbf{x}.
+\end{equation}
+Solche \emph{Eigenvektoren} $\mbf{x}$ und dazugehörige \emph{Eigenwerte} $\lambda$ spielen eine wichtige Rolle, sowohl in der Physik der Mehrteilchensysteme, der Elektrodynamik, als auch in der Quantenmechanik.
+
+\begin{beispiel}
+  Angenommen 
+  \begin{equation}
+    \mbf{A} = \begin{pmatrix}
+      4 & -1 \\ 5 & -2
+    \end{pmatrix},
+  \end{equation}
+  überprüfen Sie, dass 
+  \begin{equation}
+    \mbf{x} = \begin{pmatrix}
+      1 \\ 5
+    \end{pmatrix}
+  \end{equation}
+  einen Eigenvektor bildet, mit dazugehörigem Eigenwert
+  \begin{equation}
+    \lambda = -1.
+  \end{equation}
+\end{beispiel}
+\begin{lösung}
+  Wenden wir $\mbf{A}$ auf $\mbf{x}$ an, erhalten wir
+  \begin{equation}
+    \mbf{A}\mbf{x} = 
+    \begin{pmatrix}
+      4 & -1 \\ 5 & -2
+    \end{pmatrix}\begin{pmatrix}
+      1 \\ 5
+    \end{pmatrix} = -\begin{pmatrix}
+      1 \\ 5
+    \end{pmatrix} = \lambda \mbf{x}.
+  \end{equation}
+\end{lösung}
+
+Die Eigenwerte einer Matrix $\mbf{A}$ werden wie folgt bestimmt. Wir fangen mit der Relation 
+\begin{equation}
+  \mbf{A}\mbf{x} = \lambda \mbf{x}
+\end{equation}
+an. Formen wir diese Gleichung um, erhalten wir
+\begin{equation}
+  \begin{split}
+    \mbf{A}\mbf{x} - \lambda \mbf{x} &= \mbf{0}\\
+    (\mbf{A} - \lambda \mathbb{I}_n) \mbf{x} &= \mbf{0} \\
+    \mbf{A}(\lambda) \mbf{x} = \mbf{0}.
+  \end{split}
+\end{equation}
+Das heisst, gesucht wird eine \emph{nicht-triviale} Lösung für ein \emph{homogenes} lineares Gleichungssytem. Im Fall, dass $\det(\mbf{A}(\lambda)) \not= 0$ ist, hat das System nur eine triviale Lösung (diese Lösung erfolgt nach Multiplikation mit $\mbf{A}^{-1}$). Daher erhalten wir die wichtige Bedingung, dass ein Eigenwert $\lambda$ die Gleichung
+\begin{equation}
+  \det(\mbf{A} - \lambda \mathbb{I}_n) = 0
+\end{equation}
+erfüllen muss. Dies ist ein Polynom (bezüglich $\lambda$) $n$-ten Grades.
+
+\begin{beispiel}\label{ex:22eigs}
+  Berechnen Sie die Eigenwerte der Matrix
+  \begin{equation}
+    \mbf{A} = \begin{pmatrix}
+      -2 & 2 \\ 2 & 1
+    \end{pmatrix}.
+  \end{equation}
+\end{beispiel}
+\begin{lösung}
+  Die Determinante von $\mbf{A} - \lambda \mathbb{I}_2$ lautet
+  \begin{equation}
+    \begin{split}
+      \det\begin{pmatrix}
+      -2 -\lambda & 2 \\ 2 & 1 -\lambda
+    \end{pmatrix} &= 0\\
+      (-2-\lambda)(1-\lambda)-4 &=0 \\
+      \lambda^2+\lambda - 6 &= 0. 
+    \end{split}
+  \end{equation}
+  Dies ist eine quadratische Gleichung. Die Lösungen lauten
+  \begin{equation}
+    \lambda_{\pm} = -\tfrac12 \pm \sqrt{\tfrac14+6} = -\tfrac12 \pm \tfrac{5}{2}.
+  \end{equation}
+  Daher lauten die Eigenwerte
+  \begin{equation}
+    \lambda_+ = 2 \quad \text{und} \quad \lambda_- = -3
+  \end{equation}
+\end{lösung}
+
+In der Physik sind vor allem zwei Klassen von Matrizen wichtig:
+\begin{enumerate}
+  \item \emph{Symmetrische, reelle Matrizen} $\mbf{A}$:
+    \begin{equation}
+      [\mbf{A}]_{jk} \in \mathbb{R}\quad \text{und}\quad [\mbf{A}]_{kj} = [\mbf{A}]_{jk}.
+    \end{equation}
+  \item \emph{Hermitische, komplexe Matrizen} $\mbf{A}$:
+    \begin{equation}
+      [\mbf{A}]_{jk} \in \mathbb{C}\quad \text{und}\quad [\mbf{A}]_{kj}^* = [\mbf{A}]_{jk}.
+    \end{equation}
+\end{enumerate}
+Die Eigenwerte einer symmetrischen oder hermitischen Matrix werden immer reell.
+
+Im Allgemeinen sind Eigenwerte nicht notwendigerweise verschieden: Tritt ein Eigenwert mehrfach auf, so heisst er \emph{entartet}.
+
+\subsection{Eigenvektoren}
+Die Eigenvektoren einer Matrix $\mbf{A}$ werden wie folgt berechnet. Bevor dieses Verfahren erläutert wird, eine wichtige Bemerkung: Wenn $\mbf{x}$ ein Eigenvektor von $\mbf{A}$ zum Eigenwert $\lambda$ ist, dann wird auch $\mbf{y} = \alpha\mbf{x}$ mit $\alpha\in \mathbb{C}$ einen Eigenvektor bilden:
+\begin{equation}
+  \mbf{A}\mbf{y} = \mbf{A}(\alpha \mbf{x}) = \alpha\mbf{A}\mbf{x} = \alpha\lambda\mbf{x} = \lambda \mbf{y}.   
+\end{equation}  
+Das heisst, Eigenvektoren sind nur bis auf eine Proportionalitätskonstante bestimmt. Sind eine (hermitische) Matrix $\mbf{A}$ und ein Eigenwert $\lambda_j$ gegeben, wird der zugehöriger Eigenvektor $\mbf{x}^{(j)}$ die folgende Relation erfüllen:
+\begin{equation}
+  (\mbf{A}-\lambda_j \mathbb{I}_n)\mbf{x}^{(j)} = \mbf{0}.
+\end{equation}
+Hierbei gilt die Gleichung
+\begin{equation}
+  \det(\mbf{A}-\lambda_j\mathbb{I}_n) = 0.
+\end{equation}
+
+\begin{beispiel}
+  Sei $\mbf{A}$ die symmetrische Matrix 
+  \begin{equation}
+    \mbf{A} = \begin{pmatrix}
+      -2 & 2 \\ 2 & 1
+    \end{pmatrix}.
+  \end{equation}
+  Wie lauten die Eigenvektoren von $\mbf{A}$?
+\end{beispiel}
+\begin{lösung}
+  Wir haben in Beispiel~\ref{ex:22eigs} die Eigenwerte dieser Matrix berechnet. Für $\lambda_+=2$ muss der dazugehörige Eigenvektor das folgende homogene Gleichungssystem lösen
+  \begin{equation}
+    \begin{split}
+      \left[\begin{pmatrix}
+      -2 & 2 \\ 2 & 1
+    \end{pmatrix}-2\begin{pmatrix}
+      1 & 0 \\ 0 & 1
+    \end{pmatrix}\right] \begin{pmatrix}
+      x_1^+ \\ 
+      x_2^+
+    \end{pmatrix} &= \begin{pmatrix}
+    0\\ 0
+    \end{pmatrix} \\
+    \begin{pmatrix}
+      -4 & 2 \\ 2 & -1
+    \end{pmatrix}\begin{pmatrix}
+      x_1^+ \\ 
+      x_2^+
+    \end{pmatrix} &= \begin{pmatrix}
+    0\\ 0
+    \end{pmatrix}.
+    \end{split}
+  \end{equation}
+  Das heisst, wir müssen die folgenden linearen Gleichungen lösen:
+  \begin{equation}
+    \begin{split}
+      -4x_1^+ +2x_2^+ &= 0 \\
+      -2x_1^+ + x_2^+ &= 0.
+    \end{split}
+  \end{equation}
+  Daher erfüllen die Variablen die Gleichung $x_2^+ = 2x_1^+$. Eine nicht-triviale Lösung lautet
+  \begin{equation}
+    x_1^+ = 1 \quad \text{und} \quad x_2^+ = 2
+  \end{equation}
+  und damit bilden wir den Eigenvektor
+  \begin{equation}
+    \mbf{x}^+ = \begin{pmatrix}
+      1 \\ 2
+    \end{pmatrix}.
+  \end{equation}
+  Analog für $\lambda_- = -3$:
+  \begin{equation}
+    \begin{split}
+      \left[\begin{pmatrix}
+      -2 & 2 \\ 2 & 1
+    \end{pmatrix}+3\begin{pmatrix}
+      1 & 0 \\ 0 & 1
+    \end{pmatrix}\right] \begin{pmatrix}
+      x_1^- \\ 
+      x_2^-
+    \end{pmatrix} &= \begin{pmatrix}
+    0\\ 0
+    \end{pmatrix} \\
+    \begin{pmatrix}
+      1 & 2 \\ 2 & 4
+    \end{pmatrix}\begin{pmatrix}
+      x_1^- \\ 
+      x_2^-
+    \end{pmatrix} &= \begin{pmatrix}
+    0\\ 0
+    \end{pmatrix}.
+    \end{split}
+  \end{equation}
+  In diesem Fall müssen die folgenden linearen Gleichungen gelöst werden:
+  \begin{equation}
+    \begin{split}
+      x_1^- +2x_2^- &= 0 \\
+      2x_1^- + 4x_2^- &= 0.
+    \end{split}
+  \end{equation}
+  Daher erfüllen die Variablen die Gleichung $x_1^- = -2x_2^-$. Eine nicht-triviale Lösung lautet
+  \begin{equation}
+    x_1^- = 2 \quad \text{und} \quad x_2^- = -1
+  \end{equation}
+  und damit bilden wir den Eigenvektor
+  \begin{equation}
+    \mbf{x}^- = \begin{pmatrix}
+      2 \\ -1
+    \end{pmatrix}.
+  \end{equation}
+\end{lösung}
+
+\begin{beispiel}[Anwendung: gekoppelte Oszillatoren]
+
+
+  \figbox
+  Wir definieren die neuen Koordinaten 
+  \begin{equation}
+    y_j = x_j-x_j^{0},\quad j = 1,2,
+  \end{equation}
+  wobei $x_j^{0}$ die Position des Oszillators im Ruhe beschreibt. Die Newton'schen Bewegungsgleichungen lauten
+  \begin{equation}
+    \begin{split}
+      m\ddot{y}_1 &= -k_1 y_1 - k_{12} (y_1-y_2) \\
+      m\ddot{y}_2 &= -k_1 y_2 + k_{21} (y_1-y_2). \\
+    \end{split}
+  \end{equation}
+  Um dieses Gleichungssystem zu lösen verwenden wir den Exponentialansatz
+  \begin{equation}
+    y_j(t) = a_j e^{i\omega t},
+  \end{equation}
+  wobei $a_j$ und $\omega$ Konstanten sind. Nach Einsetzen in das Gleichungssystem erhalten wir
+  \begin{equation}
+    \begin{split}
+      (k_1+k_{12})a_1 - k_{12} a_2 &= m\omega^2 a_1 \\ 
+      -k_{12}a_1 + (k_2+k_{12})a_2 &= m\omega^2a_2.
+    \end{split}
+  \end{equation}
+  Daher haben wir ein Eigenwertproblem erhalten: Gesucht wird ein Vektor $\mbf{x} \equiv \left( \begin{smallmatrix}
+  a_1 \\ a_2
+  \end{smallmatrix} \right)$ und ein dazugehöriger Eigenwert $\lambda = m\omega^2$ damit
+  \begin{equation}
+    \begin{pmatrix}
+      k_1 + k_{12} & -k_{12} \\ -k_{12} & k_2+k_{12}
+    \end{pmatrix} \begin{pmatrix}
+      a_1 \\ a_2
+    \end{pmatrix} = m\omega^2 \begin{pmatrix}
+      a_1 \\ a_2
+    \end{pmatrix}.
+    \end{equation}
+    Die Matrix $\mbf{A} =  \left(\begin{smallmatrix}
+      k_1 + k_{12} & -k_{12} \\ -k_{12} & k_2+k_{12}
+    \end{smallmatrix}\right)$ ist symmetrisch and hat daher reelle Eigenwerte $\lambda = m\omega^2$.
+
+    Man bilde $\mbf{A}-\lambda \mathbb{I}_2$, um die Eigenwerte zu berechnen. Setzen wir $\det(\mbf{A}-\lambda \mathbb{I}_2) = 0$, erhalten wir  
+    \begin{equation}
+      0=(k_1+k_{12}-\lambda)(k_2+k_{12}-\lambda)-k_{12}^2.
+    \end{equation} 
+    Diese quadratische Gleichung hat die folgende Lösungen (Übung)
+    \begin{equation}
+      \lambda_{\pm} = \frac12\left(k_1+k_2 + 2k_{12}\pm \sqrt{(k_1-k_2)^2+4k_{12}^2}\right).
+    \end{equation}
+    Das heisst, es gibt zwei Frequenzen  
+    \begin{equation}
+      \omega_{\pm} = \sqrt{\frac{\lambda_{\pm}}{m}}
+    \end{equation}
+    nach Einsetzen in den Ansatz $y_j(t) = a_j e^{i\omega t}$, welche dem Bewegungsgleichungssystem eine Lösung bilden. 
+
+    Im Spezialfall $k_1=k_2=k$ haben wir (Übung)
+    \begin{equation}
+        \omega_{+} = \sqrt{\frac{k+2k_{12}}{m}} \quad\text{und}\quad \omega_- = \sqrt{\frac{k}{m}}.
+    \end{equation}
+    Ohne Kopplung ($k_{12} = 0$) wären die Schwingungsfrequenzen gleich: $\omega_{\pm}=\sqrt{\frac{k}{m}}$. Mit Kopplung wird eine Schwingung zu einer höheren Frequenz $\omega_+$ verschoben. 
+
+    Die dazugehörigen Eigenvektoren bestimmen, wie jede Masse sich mit den Schingungsfrequenzen verhält. Im Fall $k_1=k_2=k$ wird die Matrix $\mbf{A}$ durch
+    \begin{equation}
+      \mbf{A} = \begin{pmatrix}
+        k+k_{12} & -k_{12} \\ -k_{12} & k+k_{12}
+      \end{pmatrix} 
+    \end{equation} 
+    gegeben werden. Die entsprechenden Eigenvektoren für $\lambda_{\pm}$ lauten
+    \begin{equation}
+      \mbf{x}_{+} = a_+ \begin{pmatrix}
+        1 \\ 1
+      \end{pmatrix} \quad \text{und}\quad \mbf{x}_{-} = a_- \begin{pmatrix}
+        1 \\ -1
+      \end{pmatrix}.
+    \end{equation} 
+
+    Zusammengefasst: die \emph{komplexen} Lösungen des gekoppelten harmonischen Oszillators lauten
+    \begin{equation}
+      \mbf{y}_{+}(t) = a_+\begin{pmatrix}
+        1 \\ 1
+      \end{pmatrix} e^{i\omega_+ t}\quad\text{und}\quad \mbf{y}_{-}(t) = a_-\begin{pmatrix}
+        1 \\ -1
+      \end{pmatrix} e^{i\omega_- t}.
+    \end{equation}
+    Um eine physikalische, reelle Lösung zu erhalten, nehmen wir den reellen Teil davon
+    \begin{equation}
+      \mbf{y}_{+}^{\text{R}}(t) = a_+\begin{pmatrix}
+        1 \\ 1
+      \end{pmatrix} \cos(\omega_+ t)\quad\text{und}\quad \mbf{y}_{-}^{\text{R}}(t) = a_-\begin{pmatrix}
+        1 \\ -1
+      \end{pmatrix} \cos(\omega_- t).
+    \end{equation}
+\end{beispiel}

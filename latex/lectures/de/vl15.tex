@@ -1,0 +1,73 @@
+%!TEX root = TheoretischePhysikC.tex
+
+\section{Vorlesung: Zentralpotential}
+Man betrachte Kugelsymmetrisches Potential in drei Dimensionen:
+\begin{equation}
+	V(\mathbf{r}) = V(r) \quad\text{mit $r = |\mathbf{r}|$.}
+\end{equation}
+Das Ziel ist es, die Kinematik und Dynamik eines Teilchens, das sich in dem Potential bewegt, zu lösen. Mittels Schrödingergleichung ist
+\begin{equation}
+	\widehat{H}|\Psi\rangle = E|\Psi\rangle
+\end{equation}
+zu lösen. Diese Eigenvektorgleichung liefert uns die Eigenwerte und Eigenvektoren $\widehat{H}$, die man verwenden kann, um den Unitäroperator $U_t$ zu berechnen. 
+
+\subsection{Separation der Variablen}
+Die Matrixelemente des Impulsoperators in Kugelkoordinaten lauten $\forall |\Psi\rangle \in \mathcal{H}$:
+\begin{equation}
+	\begin{split}
+		\langle r,\theta,\phi|\frac{\widehat{\mathbf{p}}^2}{2m}|\Psi\rangle &= -\frac{\hbar^2}{2m}\nabla^2 \Psi(r,\theta,\phi) \\
+		&= -\frac{\hbar^2}{2m} \left[\left(\frac{\partial}{\partial r} + \frac1r\right)^2 + \frac{1}{r^2\sin(\theta)}\left(\sin(\theta)\frac{\partial}{\partial \theta}\right)^2 +  \frac{1}{r^2\sin^2(\theta)}\frac{\partial^2}{\partial \phi^2}\right]\Psi(r,\theta,\phi) \\
+		&= \langle r,\theta,\phi|\frac{1}{2m}\left(\widehat{p_r}^2 + \frac{\widehat{\mathbf{L}}^2}{r^2}\right)|\Psi\rangle,
+	\end{split}
+\end{equation}
+wobei $\Psi(r,\theta,\phi) \equiv \langle r,\theta,\phi|\Psi\rangle$ und $\langle r,\theta,\phi|\widehat{p_r}|\Psi\rangle = -i\hbar \left(\frac{\partial}{\partial r} + \frac1r\right)\Psi(r,\theta,\phi)$ den radialen Impulsoperator darstellt.
+
+Daher werden die Eigenwerte und Eigenvektoren $\widehat{H}$ durch 
+\begin{equation}\label{eq:centralpotsse}
+	\langle r,\theta,\phi|\widehat{H}|\Psi\rangle = \left(\frac{\widehat{p_r}^2}{2m} + \frac{\widehat{\mathbf{L}}^2}{2mr^2} + V(\widehat{\mathbf{r}})\right)\Psi(r,\theta,\phi) = E\Psi(r,\theta,\phi)
+\end{equation}
+gegeben. 
+
+Es gilt:
+\begin{equation}
+	[\widehat{H}, \widehat{\mathbf{L}}^2] = [\widehat{H}, \widehat{L}_z] = [\widehat{\mathbf{L}}^2,\widehat{L}_z] = 0.
+\end{equation}
+Diese Beobachtung hat eine wichtige Auswirkung: Es gibt gemeinsame Eigenvektoren für die Operatoren $\widehat{H}$, $\widehat{L}_z$ und $\widehat{\mathbf{L}}^2$ (dies ist eine allgemeine Implikation, die für alle Mengen von kommutierenden Operatoren gilt).
+
+Ziel ist es, die gemeinsame Eigenfunktionen von $\widehat{H}$ von $\widehat{H}$, $\widehat{L}_z$ und $\widehat{\mathbf{L}}^2$ zu finden. Wenn auf diese Weise eine eindeutige Wahl von Basiszuständen des Hilbertraums erreicht wird, spricht man von einem vollständigen Satz kommutierender Observablen. 
+
+Um die Eigenvektoren und Eigenwerte von $\widehat{H}$ zu berechnen, wenden wir einen Separationsansatz an:
+\begin{equation}
+	\Psi(r,\theta,\phi) = \text{Y}_{\ell}^m(\theta,\phi) R(r) 
+\end{equation}
+mit
+\begin{equation}
+	\widehat{\mathbf{L}}^2\text{Y}_{\ell}^m(\theta,\phi) = \hbar^2 \ell(\ell+1)\text{Y}_{\ell}^m(\theta,\phi).
+\end{equation}
+Wegen Normierung der $\text{Y}_{\ell}^m(\theta,\phi)$ gilt
+\begin{equation}
+	\iiint |\Psi(\mathbf{r})|^2\,dxdydz = \int_0^{\infty} |R(r)|^2 r^2\, dr.
+\end{equation}
+Setzen wir den Separationsansatz in (\ref{eq:centralpotsse}) ein, erhalten wir
+\begin{equation}
+	\left(\frac{\widehat{p_r}^2}{2m} + \frac{\hbar^2\ell(\ell+1)}{2mr^2} + V(r)\right)R(r) = E R(r).
+\end{equation}
+Der Operator $\widehat{p}_r^2$ hat die Matrixelemente 
+\begin{equation}
+	\begin{split}
+		\langle r,\theta,\phi|\widehat{p}_r^2|\Psi\rangle &= -\hbar^2\left(\frac{\partial}{\partial r} + \frac{1}{r}\right)\left(\frac{\partial}{\partial r} + \frac{1}{r}\right)\Psi(r,\theta,\phi) \\
+		&= -\hbar^2\left(\frac{1}{r}\frac{\partial}{\partial r} r\right)\left(\frac{1}{r}\frac{\partial}{\partial r} r\right)\Psi(r,\theta,\phi) \\ 
+		&= -\hbar^2 \frac{1}{r}\frac{\partial^2}{\partial r^2}\left(r \Psi(r,\theta,\phi)\right).
+	\end{split}
+\end{equation}
+Mit Hilfe von der Definition $u(r)\equiv rR(r)$ können wir die radiale Wirkung wie folgt erhalten
+\begin{equation}
+	\left(-\frac{\hbar^2}{2m}\frac{d^2}{dr^2} + \frac{\hbar^2\ell(\ell+1)}{2mr^2} + V(r) - E\right)u(r) = 0.
+\end{equation}
+
+Man kann zeigen, dass nur Lösungen mit $u(0)=0$ physikalisch sinnvoll sind, da sonst entweder das Normquadrat 
+\begin{equation}
+	\int_0^\infty |u(r)|^2\, dr = \infty
+\end{equation}
+beträgt, oder den Erwartungswert der kinetischen Energie wegen $\langle \widehat{p_r}^2\rangle = \infty$ unendlich werden lässt. Daher ist die Radialgleichung äquivalent zu einem eindimensionalen Problem auf $x>0$ mit Randbedingung bei $x=0$.
+

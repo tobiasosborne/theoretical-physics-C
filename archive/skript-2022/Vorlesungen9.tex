@@ -1,0 +1,38 @@
+%!TEX root = TheoretischePhysikC.tex
+\section{Vorlesung: Unschärfe}
+Wir betrachten nun freie Teilchen, die im Hilbertraum $\mathcal{H}\equiv L^2(\mathbb{R}^3)$ beschrieben werden. Der Raum $\mathbb{R}^3$ ist hier als Ortsraum interpretiert, das heißt, in dieser Darstellung des Hilbertraums sind die Funktionen der Ortsobservable als Multiplikationsoperatoren dargestellt. In einem reinen Zustand $\rho = |\Psi\rangle\langle \Psi|$ ist daher die Wahrscheinlichkeitsdichte für die Ergebnisse von Ortsmessungen $p(\mathbf{x})\equiv |\Psi(\mathbf{x})|^2$.
+
+Der Erwartungswert der Ortskomponente $\widehat{x}_j$ ergibt sich durch Integration:
+\begin{equation}
+	\mathbb{E}[x_j] = \iiint x_j |\Psi(\mathbf{x})|^2\, dxdydz = \tr(\rho \widehat{x}_j),
+\end{equation}
+und entsprechend für höhere Momente. Speziell ist also die Varianz der Verteilung von $x_j$:
+\begin{equation}
+	\text{var}(x_j) = \tr(\rho \widehat{x}_j^2) - \tr(\rho \widehat{x}_j)^2.
+\end{equation}
+
+Für den Impulsoperator erhalten wir analog
+\begin{align}
+	\mathbb{E}[p_j] &= \tr(\rho \widehat{p}_j) \\
+	\text{var}(p_j) &= \tr(\rho \widehat{p}_j^2) - \tr(\rho \widehat{p}_j)^2
+\end{align}
+
+Es stellte sich heraus, dass nicht beide Verteilungen zugleich scharf konzentriert sein können. Das heißt: beide Varianzen können nicht beliebig klein werden. Seien $A$ und $B$ beliebige hermitesche Operatoren. Dann ist für alle 
+$\lambda \in \mathbb{R}$ der Operator $M = (A+i\lambda B)^\dag (A+i\lambda B)$ (per definition) positiv,
+hat also positive Erwartungswerte. Damit ist für $\lambda\in \mathbb{R}$ und eine beliebige
+Dichtematrix $\rho$:
+\begin{equation}
+	\tr(\rho M) = \tr(\rho A^2)+\lambda^2\tr(\rho B^2) + \lambda\tr(\rho i[A,B])\ge 0.
+\end{equation}
+Setzt man hier für $\lambda$ den Wert ein, bei dem die linke Seite am kleinsten wird (Übung),
+bekommt man:
+\begin{equation}
+	\tr(\rho A^2)\tr(\rho B^2) \ge \frac14 \tr(\rho i[A,B])^2.
+\end{equation}
+Setzt man hier ein: $A=\widehat{p}_j - \tr(\rho \widehat{p}_j )\mathbb{I}$ und $B=\widehat{x}_j - \tr(\rho \widehat{x}_j )\mathbb{I}$, und benutzt die kanonischen Vertauschungsrelationen für die rechte Seite, so bekommt man
+\begin{equation}
+	\eqbox{\text{var}(p_j)\text{var}(x_j) \ge \frac{\hbar^2}{4}, \quad\text{oder}\quad (\Delta p_j)(\Delta x_j) \ge \frac{\hbar}{2},}
+\end{equation}
+wenn man die $(\Delta A)$ als Wurzel der Varianz (Standardabweichung) einführt. Dies ist die \emph{Heisenberg'sche Unschärferelation}, die in dieser Form von Kennard stammt.
+
+Die Interpretation der Heisenberg'schen Unschärferelation lautet: Es ist unmöglich, quantenmechanische Teilchen so zu präparieren, dass die Varianzen bei Impuls-und Ortsmessungen beide beliebig klein ausfallen. Die Größen $(\Delta p_j)$ und $(\Delta x_j)$ beziehen sich also auf völlig verschiedene statistische Experimente.

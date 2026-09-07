@@ -1,0 +1,52 @@
+%!TEX root = TheoretischePhysikC.tex
+
+\section{Vorlesung: Entropie}
+Wie wird der Begriff ,,gleich wahrscheinlich verteilte Mikrozustände`` in der Quantenmechanik definiert? Um diese Frage zu beantworten müssen wir das Konzept von \emph{Entropie} einführen. Diese Größe wird als Maß für die \emph{Informationsinhalt} eines Zustandes betrachtet. Oder als ein Maß an \emph{fehlender Information}. Je mehr Informationsgehalt ein Zustand besitzt, desto weniger wissen wir, welcher Mikrozustand auftritt. 
+
+Sei $\mathcal{H} \equiv \mathbb{C}^d$ ein Hilbertraum und $\rho$ ein Dichteoperator, der das statistische Ensemble $\{(p_j,\rho_j)\,|\, j=1,2, \ldots, N\}$ darstellt:
+\begin{equation}
+  \rho \equiv \sum_{j=1}^N p_j \rho_j.
+\end{equation}
+
+Die von Neumann-Entropie von $\rho$ wird wie folgt definiert
+\begin{equation}
+  \eqbox{S(\rho) = -k\tr(\rho\log(\rho)) = -k\langle \log(\rho)\rangle,}    
+\end{equation} 
+wobei $k=1,38064852 \times 10^{-23} \, \text{m}^2 \,\text{kg} \,\text{s}^{-2} \,\text{K}^{-1}$ die Boltzmann-Konstante ist und $\log(\rho)$ wird mit Hilfe vom Funktionalkalkül berechnet. 
+
+Weil jeder Dichteoperator $\rho$ hermitesch ist, können wir $\rho$ bezüglich einer Eigenwert-Eigenvektor-Zerlegung darstellen:
+\begin{equation}
+  \rho = \sum_{j=1}^d r_j |r_j\rangle\langle r_j|,
+\end{equation}
+wobei $r_j\ge 0$ und $\langle r_j|r_k\rangle = \delta_{jk}$. Der Logarithmus von $\rho$ wird als
+\begin{equation}
+  \log(\rho) = \sum_{j=1}^d \log(r_j) |r_j\rangle\langle r_j|
+\end{equation}
+berechnet. Daher wird die von Neumann-Entropie von $\rho$ wie folgt berechnet:
+\begin{equation}
+  S(\rho) = -k\sum_{j=1}^d \log(r_j) \tr(|r_j\rangle\langle r_j|\rho) = -k\sum_{j=1}^d r_j\log(r_j).
+\end{equation}
+
+\begin{beispiel}
+  Ein reiner Zustand $|\psi\rangle$ entspricht einem statischen Ensemble, in dem $|\psi\rangle$ mit Wahrscheinlichkeit $1$ auftritt. Der dazugehörige Dichteoperator ist durch
+  \begin{equation}
+    \rho = |\psi\rangle\langle \psi|
+  \end{equation}
+  gegeben. Dieser Operator befindet sich bereits in diagonaler Form wobei $r_1 = 1$ (und $r_2 = r_3 = \cdots = r_d =0$). Daher lautet die von Neumann-Entropie
+  \begin{equation}
+    S(\rho) = -k\sum_{j=1}^d r_j\log(r_j) = -k r_1\log(r_1) = 0.
+  \end{equation}
+  Hierbei nimmt die Funktion $f(x) = -x\log(x)$ den Wert $0$ an der Stelle $x=0$ an. In diesem Beispiel beträgt die von Neumann-Entropie Null. Die Interpretation ist hier, dass das statistische Ensemble keine Informationen enthält. Man weiß immer, in welchem Zustand sich das System befindet. Es fehlt keine Information über den Zustand des Systems.
+\end{beispiel}
+
+\begin{beispiel}
+  Angenommen, $\mathcal{H}$ ist der Hilbertraum $\mathbb{C}^d$. Nehmen wir weiter an, dass $\{|j\rangle \}_{j=1}^d$ eine Orthonormalbasis für $\mathcal{H}$ ist. Der vollständig gemischte Zustand $\rho$ ist gegeben durch
+  \begin{equation}
+    \rho \equiv \sum_{j=1}^d \frac{1}{d} |j\rangle\langle j|.
+  \end{equation}
+  Dieser Zustand entspricht einem statischen Ensemble, in dem $|j\rangle$ mit gleich verteilter Wahrscheinlichkeit $1/d$ auftritt. Dieser Operator befindet sich auch bereits in diagonaler Form wobei $r_1 = 1/d = r_2 = \cdots = r_d$. Die von Neumann-Entropie wird wie folgt berechnet:
+  \begin{equation}
+    S(\rho) = -k\sum_{j=1}^d r_j\log(r_j) = -k \times d \times  (1/d) \times \log(1/d) = k \log(d).
+  \end{equation}
+  Die von Neumann-Entropie erreicht in diesem Fall den maximal möglichen Wert. Die Interpretation ist hier, dass das statistische Ensemble die maximale Information enthält. Man weiß nicht, in welchem Zustand sich das System befindet. Es fehlen alle Information über den Zustand des Systems.
+\end{beispiel}

@@ -1,0 +1,96 @@
+%!TEX root = TheoretischePhysikC.tex
+
+\section{Vorlesung: Spin}
+Die Drehimpulsoperatoren erfüllen die folgende Vertauschungsrelationen:
+\begin{equation}\label{eq:amcr}
+	[\widehat{L}_1,\widehat{L}_2] = i\hbar \widehat{L}_3, \quad [\widehat{L}_2,\widehat{L}_3] = i\hbar \widehat{L}_1\quad\text{und}\quad [\widehat{L}_3,\widehat{L}_1] = i\hbar \widehat{L}_2.
+\end{equation}
+Es folgt, dass
+\begin{equation}
+	[\widehat{\mathbf{L}}^2, \widehat{L}_j]=0, \quad \text{für alle $j=1,2,3$,}
+\end{equation}
+wobei
+\begin{equation}
+	\widehat{\mathbf{L}}^2 \equiv \widehat{L}_1^2+\widehat{L}_2^2+\widehat{L}_3^2.
+\end{equation}
+Wir haben gesehen, dass die Bahndrehimpulsoperatoren $\widehat{\mathbf{L}} \equiv \widehat{\mathbf{r}}\times \widehat{\mathbf{p}}$ diese Kommutatoren erfüllen. Man sagt, dass $\widehat{\mathbf{r}}\times \widehat{\mathbf{p}}$ uns eine \emph{Darstellung} dieser Kommutatoren liefert. Eine wichtige Eigenschaft dieser Darstellung ist, dass den Gesamtdrehimpuls \emph{quantisiert} ist, im Sinne, dass die Eigenwerte des Gesamtdrehimpulsoperators $\widehat{\mathbf{L}}^2$ nur die Werte $\hbar^2 \ell(\ell+1)$ annehmen können, wobei $\ell = 0, \frac12, 1, \ldots$. Allerdings für die Bahndrehimpulsoperatoren $\widehat{\mathbf{r}}\times \widehat{\mathbf{p}}$ tauchen nur ganzzahlige Werte auf: $\ell = 0,1,2,\ldots$.
+
+Eine faszinierende Frage bleibt offen: Gibt es Quantensysteme, die halb-ganzzahlige Eigenwerte aufweisen? Um diese Frage zu bejahen benötigen wir einen Hilbertraum $\mathcal{H}$ und drei Operatoren $\widehat{S}_j:\mathcal{H}\rightarrow \mathcal{H}$, $j=1,2,3$, die die Relationen (\ref{eq:amcr}) erfüllen:
+\begin{equation}\label{eq:amcr}
+	\eqbox{[\widehat{S}_1,\widehat{S}_2] = i\hbar \widehat{S}_3, \quad [\widehat{S}_2,\widehat{S}_3] = i\hbar \widehat{S}_1\quad\text{und}\quad [\widehat{S}_3,\widehat{S}_1] = i\hbar \widehat{S}_2.}
+\end{equation}
+Falls ein solcher Hilbertraum und solche Operatoren existieren, können wir zumindest feststellen, dass es keine \emph{mathematische} Hindernisse gibt die die Existenz von Quantensystemen mit halb-ganzzahligem gesamten Drehimpuls verhindern. Selbst wenn ein solches Quantensystem mathematisch existieren kann, ist es noch ein weiterer Schritt, festzustellen, ob ein solches System in der Natur vorkommen kann.
+
+Es zeigt sich, dass Quantensysteme mit halbzahligen Eigenwerten für den gesamten Drehimpulsoperator tatsächlich existieren. Wir untersuchen nun den Fall $\ell = \frac12$. Der dazugehörige Hilbertraum ist durch $\mathcal{H} \equiv \mathbb{C}^2$ gegeben. Wir definieren dazu die Matrizen
+\begin{equation}
+	\widehat{S}_1 = \frac{\hbar}{2} \begin{pmatrix}
+		0 & 1 \\ 1 & 0
+	\end{pmatrix}, \quad \widehat{S}_2 = \frac{\hbar}{2} \begin{pmatrix}
+		0 & -i \\ i & 0
+	\end{pmatrix} \quad \text{und} \quad \widehat{S}_3 = \frac{\hbar}{2} \begin{pmatrix}
+		1 & 0 \\ 0 & -1
+	\end{pmatrix}.
+\end{equation}
+Der Gesamtdrehimpulsoperator $\widehat{\mathbf{S}}^2$ lautet
+\begin{equation}
+	\widehat{\mathbf{S}}^2 = \frac{3\hbar^2}{4} \mathbb{I}.
+\end{equation}
+Dieser Operator besitzt zwei (entartete) Eigenwerte, nämlich, $\frac{3\hbar^2}{4}$ und $\frac{3\hbar^2}{4}$. Vergleichen wir die Wirkung von $\widehat{\mathbf{S}}^2$ mit 
+\begin{equation}
+	\widehat{\mathbf{S}}^2|\ell,m\rangle = \hbar^2\ell(\ell+1)|\ell,m\rangle
+\end{equation}
+stellen wir fest, dass $\ell=\frac12$ sein muss. 
+
+Bezüglich dieser Darstellung ist $\widehat{S}_3$ bereits diagonal. Das heisst, die Eigenbasis von $\widehat{S}_3$ darf mit $|\ell,m\rangle$ identifiziert werden:
+\begin{equation}
+	|\ell=\tfrac12,m=\tfrac12\rangle \equiv \begin{pmatrix}
+		1 \\ 0
+	\end{pmatrix}\quad\text{und}\quad 
+	|\ell=\tfrac12,m=-\tfrac12\rangle \equiv\begin{pmatrix}
+		0 \\ 1
+	\end{pmatrix}.
+\end{equation}
+
+\section*{Zusammengesetzte Systeme}
+Oft müssen wir bei der Modellierung eines quantenmechanischen Systems das System aus mehreren Teilsystemen aufbauen: aus einem Elektron und einem Proton wird dann ein Wasserstoff-Atom und so weiter; oder wir verfeinern unsere Beschreibung durch Hinzunahme weiterer Freiheitsgrade: Aus einem ``Elektron ohne Spin'', wird zusammen mit einer Beschreibung eines isolierten Spinfreiheitsgrads eine Theorie für Elektronen, die den Spin einschließt.
+
+In all diesen Fällen verfahren wir nach der Regel, dass jeder Sorte quantenmechanischer
+Systeme ein Hilbertraum zugeordnet wird. Sei also $\mathcal{H}_1$ der Hilbertraum der Systemsorte ``1'' und ebenso $\mathcal{H}_2$. Die Frage lautet also: Wie und in welchem Hilbertraum ``$\mathcal{H}_{\text{$1$\&$2$}}$'' sollen wir die Systemsorte ``1 \& 2'' von Systemen beschreiben, die aus einem Paar von Teilchen/Freiheitsgraden der Sorten 1 und 2 besteht? Die Antwort ist mit Hilfe durch das \emph{Tensorprodukt} $\mathcal{H}_1\otimes \mathcal{H}_2$ von $\mathcal{H}_1$ und $\mathcal{H}_2$ gegeben.
+
+\begin{center}
+\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{Das Tensorprodukt $\mathcal{H}_1\otimes \mathcal{H}_2$ zweier Hilberträume $\mathcal{H}_1$ und $\mathcal{H}_2$ ist \emph{der} Hilbertraum, der Vektoren $\phi_1\otimes \phi_2$ mit $\phi_1\in \mathcal{H}_1$ und $\phi_2\in \mathcal{H}_2$ enthält, und von ihnen erzeugt wird, und in dem die Rechenregel 
+\begin{equation}
+	\langle \phi_1\otimes \phi_2|\psi_1\otimes\psi_2\rangle \equiv \langle\phi_1| \psi_1\rangle\langle\phi_2| \psi_2\rangle
+\end{equation}
+für Skalarprodukte gilt.
+}\end{tcolorbox}}
+\end{center}
+
+Betrachten wir also als nächstes das Tensorprodukt von Operatoren. Für $A_1:\mathcal{H}_1 \rightarrow \mathcal{H}_1$ und $A_2:\mathcal{H}_2 \rightarrow \mathcal{H}_2$ definieren wir den Operator $A_1\otimes A_2:\mathcal{H}_1 \otimes\mathcal{H}_2 \rightarrow \mathcal{H}_1 \otimes\mathcal{H}_2$ durch die Gleichung
+\begin{equation}
+	\eqbox{(A_1\otimes A_2)(\phi_1\otimes \phi_2) \equiv (A_1\phi_1)\otimes (A_2\phi_2).}
+\end{equation}
+Da $A_1\otimes A_2$ ja ein linearer Operator sein soll, ist er damit auch auf allen
+Linearkombinationen von Produktvektoren definiert.
+
+Ein Tensorprodukt von Operatoren lässt sich natürlich auch durch seine Matrixelemente angeben. Direkt aus der Definition folgt
+\begin{equation}
+	\begin{split}
+			[A_1\otimes A_2]_{jj',kk'} &\equiv \langle \phi_j\otimes \phi_{j'}|\left(A_1\otimes A_2\right) \phi_k\otimes\phi_{k'}\rangle \\
+			&= \langle \phi_j\otimes \phi_{j'}| (A_1\phi_k)\otimes (A_2\phi_{k'})\rangle \\
+			&= \langle \phi_j|A_1\phi_k\rangle \langle \phi_{j'}|A_2\phi_{k'}\rangle \\
+			&= [A_1]_{j,k}[A_2]_{j',k'}.
+	\end{split}
+\end{equation}
+Die Indizes an der Produktmatrix, sind also Paare von Indizes. Das Tensorprodukt einer $3\times 3$-Matrix mit einer $7\times 7$-Matrix ergibt also eine $21\times 21$-Matrix. Zur numerischen Verarbeitung solcher Produkte ist es nötig, aus den Paaren von Indizes wieder einfache Indizes zu machen, also alle möglichen Paare irgendwie durchzunummerieren.
+
+Rechenregeln für das Tensorprodukt von Operatoren folgen meist leichter aus der Definition. Wir bekommen neben der Linearität in jedem Faktor, die für alle Tensorprodukte (auch von Vektoren) gilt:
+\begin{align}
+	(A_1\otimes A_2)(B_1\otimes B_2) &= A_1B_1\otimes A_2B_2 \\
+	(A_1\otimes A_2)^\dag &= A_1^\dag \otimes A_2^\dag \\
+	\text{$A_1\ge 0$ und $A_2\ge 0$} &\Rightarrow A_1\otimes A_2 \ge 0 \\
+	\|A_1\otimes A_2\| &= \|A_1\|\| A_2\| \\
+	\tr(A_1\otimes A_2) &= \tr(A_1)\tr(A_2).
+\end{align}
+
+Schließlich sollte noch erwähnt werden, dass alles, was hier über das Tensorprodukt aus zwei Faktoren gesagt wurde, sofort auf endlich viele Faktoren übertragbar ist.

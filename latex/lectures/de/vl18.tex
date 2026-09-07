@@ -1,0 +1,77 @@
+%!TEX root = TheoretischePhysikC.tex
+
+\section{Vorlesung: Identische Teilchen}
+Sei $\mathcal{H}$ der Hilbertraum eines Teilchens. Nach unseren bisherigen Regeln ist
+\begin{equation}
+  \mathcal{H}^{\otimes N} \underbrace{\equiv \mathcal{H}\otimes \cdots \otimes \mathcal{H}}_{\text{$N$ Faktoren}}
+\end{equation}
+der Hilbertraum für $N$ solcher Teilchen. Um eine \emph{Vertauschung} darzustellen führen wir eine Symmetrieoperation für diese Vertauschung ein: Sei also $\pi$ eine \emph{Permutation} der $N$ Symbole $\{1,2, \ldots,N\}$, das heißt eine bijektive Abbildung dieser Menge in sich. Zu jeder solchen \emph{Umordnungsabbildung} definieren
+wir einen unitären Operator $U_\pi$ auf $\mathcal{H}^{\otimes N}$ durch
+\begin{equation}
+  U_\pi (\phi_1\otimes\phi_2\otimes \cdots\otimes \phi_N) \equiv \phi_{\pi^{-1}(1)}\otimes\phi_{\pi^{-1}(2)}\otimes \cdots\otimes \phi_{\pi^{-1}(N)}.
+\end{equation}
+Wie üblich ist dieser Operator durch Linearität von den Produktvektoren auf ganz $\mathcal{H}^{\otimes N}$fortzusetzen.
+
+Jede Permutation lässt sich als Produkt von Paarvertauschungen $\theta_{jk}$ schreiben, wobei $\theta_{jk}$
+die Vertauschung von $j$ und $k\not=j$ bezeichnet. Das heißt, wir können immer eine beliebige Permutation $\pi$ als Produkt $\pi = \theta_{j_mk_m}\cdots\theta_{j_2k_2}\theta_{j_1k_1}$ schreiben. Mit Hilfe von dieser Zerlegung führen wir die Funktion $\text{sign}(\pi)$ ein als das ,,Vorzeichen`` einer Permutation, also genau
+dann $-1$, wenn $\pi$ das Produkt einer ungeraden Anzahl von Paarvertauschungen ist und $+1$, wenn diese Anzahl gerade ist.
+
+Man kann nun überprüfen, dass die Operatoren
+\begin{align}
+  P_{+} &\equiv \frac{1}{N!}\sum_{\pi} U_\pi \\
+  P_{-} &\equiv \frac{1}{N!}\sum_{\pi} \text{sign}(\pi)U_\pi 
+\end{align}
+die Projektoren auf die Teilräume von Vektoren sind, die auf den
+Raum 
+\begin{equation}
+  P_{+}\mathcal{H}^{\otimes N} \equiv \mathcal{H}^{\otimes N}_{+}
+\end{equation}
+von \emph{symmetrischen Vektoren} und auf den Raum
+\begin{equation}
+  P_{-}\mathcal{H}^{\otimes N} \equiv \mathcal{H}^{\otimes N}_{-}
+\end{equation}
+von antisymmetrischen Vektoren projektieren. Der Hilbertraum für $N$ gleicher Elementarteilchen ist entweder $\mathcal{H}^{\otimes N}_{+}$ für sogenannte \emph{Bosonen} oder $\mathcal{H}^{\otimes N}_{-}$ für \emph{Fermionen}.
+
+\begin{center}
+\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Postulat 6}: Als Wellenfunktionen eines Vielteilchensystems kommen nur solche Funktionen in Frage, die gemeinsame Eigenfunktionen aller Vertauschungen von je zwei gleichen Elementarteilchen sind. Der Eigenwert zu einer solchen Vertauschung ist
+der gleiche Faktor, mit dem die Wellenfunktion eines Teilchens dieser Sorte bei der Drehung um $2\pi$ multipliziert wird, also $+1$ für Teilchen mit ganzzahligem Spin und $-1$ für Teilchen mit halbzahligem Spin.}\end{tcolorbox}}
+\end{center}
+
+\section*{Statistische Physik}
+Wir betrachten nun makroskopische Objekte, die aus üblicherweise $10^{19}$-$10^{23}$ Teilchen pro $\text{cm}^3$ bestehen. Daher ist es praktisch nicht möglich, den \emph{mikroskopischen Zustand} -- den Quantenmechanischen Zustand des Gesamtsystems -- aller Teilchen zu messen oder sogar anzugeben. 
+
+Eine vollständige Beschreibung des Systemzustands ist zwar nicht möglich, aber das hindert uns nicht daran, interessante physikalische Vorhersagen zu treffen. Das liegt daran, dass wir in der Praxis nur makroskopische Größen wie Druck, Volumen usw. messen können. Deshalb suchen wir nun nach einer grobkörnigen Beschreibung des Systems, die nur die makroskopisch relevanten Größen beschreibt. Die Angabe von einigen wenigen makroskopischen Größen wird als \emph{Makrozustand} bezeichnet.
+
+Der tatsächlich realisierte Mikrozustand ist unbekannt, aber es ist gegenenfalls möglich die \emph{Wahrscheinlichkeiten} der Mikrozustände anzugeben, die mit einem Makrozustand verträglich sind. Die Menge aller Mikrozustände, die einen gegebenen Makrozustand repräsentieren, heißt zusammen mit der Angabe der Wahrscheinlichkeiten: \emph{statistisches Ensemble} oder \emph{statistische Gesamtheit}.
+
+\begin{beispiel}
+  Angenommen, 10 Münzen liegen in einer Reihe auf dem Tisch. Der Mikrozustand ist durch z.B.\ $KKZZZZKZKZ$ gegeben. D.h.\ der Mikrozustand beschreibt den vollständigen Zustand. Eine mögliche makroskopische Größe ist z.B.\ die Anzahl der Münzen, die Kopf zeigen. In diesem Beispiel lautet dieser Zahl $4$. Der Makrozustand in diesem Fall wird durch dieser Zahl beschrieben. Es gibt mehrere Mikrozustände die zu diesem Makrozustand gehören, z.B.\ $KKKKZZZZZZ$ und $KZKZKZKZZZ$ usw.
+\end{beispiel}
+
+Statistische Ensemblen werden in der Quantenmechanik wie folgt beschrieben. Ein statistisches Ensemble ist durch angabe von eine Liste von Zustände $\rho_j$ und dazugehörigen Wahrscheinlichkeiten $p_j$ gegeben: $\{(p_j,\rho_j)\,|\, j=1,2, \ldots, N\}$. Das \emph{Präparierverfahren} $\rho$ das dieses Ensemble darstellt wird mit einem Dichteoperator beschrieben:
+\begin{equation}
+  \rho \equiv \sum_{j=1}^N p_j \rho_j.
+\end{equation}
+
+\begin{beispiel}
+  Ein Qubit ($\mathcal{H}\equiv \mathbb{C}^2$) wird in dem folgenden statistischen Ensemble präpariert: Der Zustand $\rho_1 = |0\rangle\langle 0|$ taucht mit Wahrscheinlichkeit $p_1=1/2$ auf und $\rho_2 = |+\rangle\langle +|$ mit $p_2 = 1/2$. Der dazugehörige Zustand wird durch
+  \begin{equation}
+    \rho = \frac12 |0\rangle\langle 0| + \frac12|+\rangle\langle+| \equiv \begin{pmatrix}
+      \frac34 & \frac14 \\ \frac14 & \frac14
+    \end{pmatrix}
+  \end{equation}
+  gegeben.
+\end{beispiel}
+
+Eine makroskopische Größe wird als Erwartungswert einer Observable erhalten: Man identifiziert eine Observable $\widehat{A}$, d.h., einen hermiteschen Operator, der eine physikalische Größe darstellt und berechnet
+\begin{equation}
+  \langle \widehat{A}\rangle \equiv \tr(\widehat{A} \rho),
+\end{equation} 
+wobei $\rho$ das statistische Ensemble darstellt.
+
+Ziel der statistischen Physik ist es, Systeme mit vielen Teilchen statistisch zu modellieren, wobei nur die Informationen aus einer Reihe makroskopischer Größen (z.B.\ Energie, Magnetisierung) zur Verfügung stehen. Es gibt eine Vielzahl von Herausforderungen, die es zu bewältigen gilt. Die größte Herausforderung besteht darin, die Wahrscheinlichkeiten zu bestimmen, mit denen Mikrozustände bei einem bestimmten Makrozustand auftreten. Dabei wird die Grundannahme der statistischen Mechanik eingeführt:
+\begin{center}
+\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{In einem isolierten System im thermischen Gleichgewicht sind alle zugänglichen Mikrozustände gleich wahrscheinlich.}\end{tcolorbox}}
+\end{center}
+
+Man kann diese Annahme (noch) nicht beweisen. Auf der mikroskopischen Ebene erwarten wir, dass jeder Prozess, der das System von Zustand $X$ in den Zustand $Y$ bringt, reversibel sein sollte, sodass das System genauso leicht von Zustand $Y$ in den Zustand $X$ gelangen kann. In diesem Fall sollte das System keinen Zustand einem anderen bevorzugen. Trotzdem ist es nicht offensichtlich, dass alle der als „zugänglich“ angenommenen Mikrozustände tatsächlich in einer vernünftigen Zeitspanne erreicht werden können. Wir werden in der Tat sehen, dass in einem großen System die Zahl der „zugänglichen“ Mikrozustände so groß ist, dass in einer typischen Lebensdauer nur ein winziger Bruchteil von ihnen tatsächlich vorkommen kann. Was wir also annehmen, ist, dass die Mikrozustände, die tatsächlich über einen hinreichend langen, aber nicht unvorstellbar großen Zeitraum vorkommen, einen repräsentativen Querschnitt darstellen. Wir nehmen an, dass die Übergänge „zufällig“ sind, in dem Sinne, dass es kein Muster gibt, über das wir uns Gedanken machen müssten.

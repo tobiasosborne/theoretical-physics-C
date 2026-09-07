@@ -1,0 +1,377 @@
+%!TEX root = TheoretischePhysikA.tex
+
+\section{Vorlesung: Zweikörperstoß und Lineare Algebra}
+
+\begin{beispiel}[Zweikörperstoß]
+Man betrachte zwei Körper, die zu einem Zeitpunkt zusammenstoßen: Die initialen und finalen Zustände werden wie folgt beschrieben:
+\figbox
+Es gilt 
+\begin{equation}
+  \begin{split}
+    &\text{Impulserhaltung:}\quad \mbf{p}_1+\mbf{p}_2 = \mbf{p}_1'+\mbf{p}_2'\quad \text{und} \\
+    &\text{Energieerhaltung:}\quad \frac{1}{2m_1}\mbf{p}_1\cdot \mbf{p}_1 +\frac{1}{2m_2}\mbf{p}_2\cdot \mbf{p}_2 = \frac{1}{2m_1}\mbf{p}_1'\cdot \mbf{p}_1' +\frac{1}{2m_2}\mbf{p}_2'\cdot \mbf{p}_2' + Q,
+  \end{split}
+\end{equation}
+wobei $Q$ die deformations-Energie darstellt. Im Fall, dass $Q=0$ wird die Kollision als \emph{elastisch} bezeichnet, sonst als \emph{inelastisch}. Wir unterteilen inelastische Kollisionen in zwei Klassen, nämlich: endotherm $Q>0$ und exotherm $Q<0$.
+
+Die Erhaltungsgleichungen liefern $4$ Gleichungen für $13$ Variablen ($12$ Impulskomponenten und $Q$). Aus gegebenen Anfangsimpulsen $\mbf{p}_1$ und $\mbf{p}_2$ können die Impulse nach dem Stoß und $Q$ (insgesamt $7$ Variablen) nicht eindeutig aus Energie- und Impulserhaltung bestimmt werden. Dafür müsste das Wechselwirkungspotential bestimmt sein, oder weitere Information über die Positionen der Teilchen vorliegen.
+\end{beispiel}
+
+\begin{beispiel}[Spezialfall: elastischer Stoß in $1D$]
+Hierbei wird $Q=0$. Die Erhaltungsgleichungen lauten
+\begin{equation}
+	\begin{split}
+		p_1+p_2 &= p_1'+p_2'\\
+		\frac{p_1^2}{2m_1} + \frac{p_2^2}{2m_2} &= \frac{{p_1'}^2}{2m_1} + \frac{{p_2'}^2}{2m_2}.
+	\end{split}
+\end{equation}
+Dieses Gleichungssystem bildet zwei Gleichungen für $2$ Unbekannte $p_1'$ und $p_2'$. Formen wir diese Gleichungen um, erhalten wir
+\begin{equation}
+	\begin{split}
+		m_1(p_1-p_1') &= m_2(p_2'-p_2) \\
+		m_1(p_1^2-{p_1'}^2) &= m_2({p_2'}^2-p_2^2).
+	\end{split}
+\end{equation}
+Es gibt eine triviale Lösung, nämlich $p_1 = p_1'$ und $p_2 = p_2'$, die keiner Kollision entspricht. Gesucht wird allerdings eine nicht-triviale Lösung. Wir erhalten eine solche Lösung indem wir die Gleichungen teilen:
+\begin{equation}
+	\begin{split}
+		\frac{p_1^2-{p_1'}^2}{p_1-p_1'} &= \frac{{p_2'}^2-p_2^2}{p_2'-p_2} \\
+		p_1+p_1' &= p_2'+p_2.
+	\end{split}
+\end{equation}
+Also
+\begin{equation}
+	p_2' = p_1+p_1'-p_2.
+\end{equation}
+Nach einsetzen in die Impulserhaltungsgleichung erhalten wir
+\begin{equation}
+	m_1p_1 + m_2p_2 = m_1p_1' + m_2(p_1+p_1'-p_2).
+\end{equation}
+Also
+\begin{equation}
+	\begin{split}
+		p_1' &= \frac{m_1-m_2}{m_1+m_2}p_1 + \frac{2m_1}{m_1+m_2}p_2 \\
+		p_2' &= \frac{2m_1}{m_1+m_2}p_1 + \frac{m_2-m_1}{m_1+m_2}p_2.
+	\end{split}
+\end{equation}
+Insbesondere, für $m_1=m_2$ gilt $p_1'=p_2$ und $p_2'=p_1$: Die Stoßpartner tauschen ihre Impulse aus.
+
+Es gibt ein alternatives Vorgehen: Man betrachte das System in einem Bezugssystem $\Sigma$, das sich in gleichförmiger Bewegung mit dem Schwerpunkt mitbewegt. 
+Wir definieren dazu die \emph{Schwerpunktsposition}, \emph{Schwerpunktsgeschwindigkeit} und \emph{Schwerpunktsimpuls}:
+\begin{equation}
+	\begin{split}
+		R &= \frac{m_1}{m_1+m_2}r_1 + \frac{m_2}{m_1+m_2}r_2 \\
+		v &= \frac{m_1}{m_1+m_2}v_1 + \frac{m_2}{m_1+m_2}v_2 \\
+		P &= (m_1+m_2)v = p_1+p_2. 
+	\end{split}
+\end{equation}
+Es gilt
+\begin{equation}
+v = \frac{1}{m_1+m_2}p_1 + \frac{1}{m_1+m_2}p_2.
+\end{equation}
+\end{beispiel}
+
+\subsection{Lineare Algebra: Matrizenrechnung}
+
+Ein \emph{Vektor} $\mbf{v}\in \mathbb{R}^n$ ist eine Spalte von $n$ reellen Zahlen
+\begin{equation}
+	\mbf{v} = 
+	\begin{pmatrix}
+		v_1 \\ v_2 \\ \vdots \\ v_n
+	\end{pmatrix}.
+\end{equation}
+Es gelten die folgenden Rechenoperationen
+\begin{enumerate}
+	\item Multiplikation mit Skalar $a\in\mathbb{R}$
+	\begin{equation}
+		a\mbf{v} = 
+	\begin{pmatrix}
+		av_1 \\ av_2 \\ \vdots \\ av_n
+	\end{pmatrix}.
+	\end{equation}
+	\item Addition
+	\begin{equation}
+		\mbf{v}+\mbf{w} = \begin{pmatrix}
+		v_1 \\ v_2 \\ \vdots \\ v_n
+	\end{pmatrix} + \begin{pmatrix}
+		w_1 \\ w_2 \\ \vdots \\ w_n
+	\end{pmatrix} =
+	\begin{pmatrix}
+		v_1+w_1 \\ v_2+w_2 \\ \vdots \\ v_n+w_n
+	\end{pmatrix}.
+	\end{equation}
+	\item Skalarprodukt
+	\begin{equation}
+		\mbf{v}\cdot\mbf{w} = \begin{pmatrix}
+		v_1 \\ v_2 \\ \vdots \\ v_n
+	\end{pmatrix} \cdot \begin{pmatrix}
+		w_1 \\ w_2 \\ \vdots \\ w_n
+	\end{pmatrix} =
+	\sum_{j=1}^n v_jw_j.
+	\end{equation}
+\end{enumerate}
+
+Wir führen ein verallgemeinertes Konzept des Vektoren ein: Eine \emph{Matrix} $\mbf{A}$ mit $m$ Reihen und $n$ Spalten definiert man als die folgende Anordnung von $n\cdot m$ reellen Zahlen:
+\begin{equation}
+	\mbf{A} \equiv \begin{pmatrix}
+		A_{11} & A_{12} & A_{13} & \cdots & A_{1n} \\
+		A_{21} & A_{22} & A_{23} & \cdots & A_{2n} \\
+		\vdots & \vdots & &  \ddots  & \vdots \\
+		A_{m1} & A_{m2} & A_{m3} & \cdots & A_{mn} \\
+	\end{pmatrix}.
+\end{equation} 
+Zum Beispiel, ein $2\times 3$ Matrix besteht aus $2\cdot 3$ Zahlen angeordnet in $3$ Spalten und $2$ Reihen:
+\begin{equation}
+	\mbf{A} = \begin{pmatrix}
+		1 & 3 & 2 \\ 1 & 9 & 0
+	\end{pmatrix} = \begin{pmatrix}
+		A_{11} & A_{12} & A_{13} \\ A_{21} & A_{22} & A_{23}
+	\end{pmatrix}. 
+\end{equation}
+Das $j$-$k$ Element von $\mbf{A}$ wird $[\mbf{A}]_{jk}$ oder $A_{jk}$ geschrieben und steht in der $k$-ten Spalte und der $j$-ten Zeile. Zum Beispiel $[\mbf{A}]_{22} = 9$.
+
+Es gelten die folgenden Rechenoperationen
+\begin{enumerate}
+	\item Multiplikation mit Skalar
+	\begin{equation}
+	a\mbf{A} \equiv \begin{pmatrix}
+		aA_{11} & aA_{12} & aA_{13} & \cdots & aA_{1n} \\
+		aA_{21} & aA_{22} & aA_{23} & \cdots & aA_{2n} \\
+		\vdots & \vdots & &  \ddots  & \vdots \\
+		aA_{m1} & aA_{m2} & aA_{m3} & \cdots & aA_{mn} \\
+	\end{pmatrix}.
+	\end{equation} 
+	Also $[a\mbf{A}]_{jk} \equiv aA_{jk}$.
+	\item Addition
+	\item Matrixprodukt zwischen $n\times m$ Matrix $\mbf{A}$ und $m\times l$ Matrix $\mbf{B}$: das Matrixprodukt ergibt eine $n\times l$ Matrix $\mbf{C}$ mit Elementen
+	\begin{equation}
+		[\mbf{C}]_{jk} \equiv \sum_{a = 1}^m [\mbf{A}]_{ja}[\mbf{B}]_{ak}.
+	\end{equation}
+	Man kann das $j-k$-Element der Matrix $\mbf{C} = \mbf{A}\mbf{B}$ als das Skalarprodukt des $j$-ten Reihenvektors von $\mbf{A}$ und dem $k$-ten Spaltenvektor von $\mbf{B}$ betrachten.
+\end{enumerate}
+
+Das Matrixprodukt ist assoziativ, das heisst
+\begin{equation}
+	\mbf{A}\mbf{B}\mbf{C} = (\mbf{A}\mbf{B})\mbf{C} = \mbf{A}(\mbf{B}\mbf{C}).
+\end{equation}
+Das Matrixprodukt ist aber nicht kommutativ im Allgemeinen: es ist möglich, dass
+\begin{equation}
+	\mbf{A}\mbf{B} \not= \mbf{B}\mbf{A}.
+\end{equation}
+
+\begin{beispiel}
+	Seien 
+	\begin{equation}
+		\mbf{A} = \begin{pmatrix}
+			1 & 2 \\ 3 & 4
+		\end{pmatrix} \quad\text{und}\quad \mbf{B} = \begin{pmatrix}
+			5 & 6 & 7 \\ 8 & 9 & 10
+		\end{pmatrix}
+	\end{equation}
+	zwei Matrizen. Wie lautet das Matrixprodukt $\mbf{A}\mbf{B}$?
+\end{beispiel}
+\begin{lösung}
+	\begin{equation}
+		\begin{split}
+			\mbf{A}\mbf{B} &= \begin{pmatrix}
+			1 & 2 \\ 3 & 4
+		\end{pmatrix}\begin{pmatrix}
+			5 & 6 & 7 \\ 8 & 9 & 10
+		\end{pmatrix} \\
+		&= \begin{pmatrix}
+			1\times 5 + 2\times 8 & 1\times 6 + 2\times 9 & 1\times 7 + 2\times 10  \\
+			3\times 5 + 4\times 8 & 3\times 6 + 4\times 9 & 3\times 7 + 4\times 10 
+		\end{pmatrix} \\
+		&= \begin{pmatrix}
+			21 & 24 & 27 \\
+			47 & 54 & 61
+		\end{pmatrix} = \mbf{C}.
+		\end{split}
+	\end{equation}
+\end{lösung}
+
+\subsection{Lösen von linearen inhomogenen Gleichungssystemen}
+Man betrachte ein inhomogenes System aus $2$ linearen Gleichungen mit $2$ Unbekannten $x_1$ und $x_2$:
+\begin{equation}\label{eq:lin2}
+	\begin{split}
+		ax_1 + d x_2 &= y_1 \\
+		cx_1 + b x_2 &= y_2
+	\end{split}.
+\end{equation}
+Hierbei sind $a,b,c,d$ sowie $y_1,y_2$ gegeben. Wir können dieses Gleichungssystem als Matrixgleichung beschreiben
+\begin{equation}
+	\begin{pmatrix}
+		a & d \\ c & b
+	\end{pmatrix} \begin{pmatrix}
+		x_1\\ x_2
+	\end{pmatrix} = \begin{pmatrix}
+		y_1\\ y_2
+	\end{pmatrix}.
+\end{equation} 
+Diese Gleichung, welche wir als 
+\begin{equation}
+	\mbf{A}\mbf{x} = \mbf{y}
+\end{equation}
+schreiben, enthält dieselbe Information wie das System (\ref{eq:lin2}). Um diese Matrixgleichung zu lösen, bilden wir die \emph{inverse Matrix}
+\begin{equation}
+	\mbf{A}^{-1} \equiv \frac{1}{ab-cd} \begin{pmatrix}
+	b & -d \\ -c & a
+	\end{pmatrix}.
+\end{equation}
+Diese Matrix erfüllt die Relation
+\begin{equation}
+	\mbf{A}^{-1}\mbf{A} = \frac{1}{ab-cd} \begin{pmatrix}
+	b & -d \\ -c & a
+	\end{pmatrix} \begin{pmatrix}
+		a & d \\ c & b
+	\end{pmatrix} = \frac{1}{ab-cd} \begin{pmatrix}
+	ba-dc & 0 \\ 0 & -cd+ab
+	\end{pmatrix}  = \begin{pmatrix}
+	1 & 0\\ 0 & 1
+	\end{pmatrix} 
+\end{equation}
+Wir definieren dazu die sogenannte \emph{Einheitsmatrix}:
+\begin{equation}
+	\mathbb{I}_2\equiv\begin{pmatrix}
+	1 & 0\\ 0 & 1
+	\end{pmatrix}.
+\end{equation}
+
+Multiplizieren wir die Matrixgleichung mit $\mbf{A}^{-1}$ links mit dem Matrixprodukt, erhalten wir
+\begin{equation}
+	\begin{split}
+		\mbf{A}^{-1}\mbf{A}\mbf{x} &= \mbf{A}^{-1}\mbf{y} \\
+		\mathbb{I}_2 \mbf{x} &= \mbf{A}^{-1}\mbf{y} \\ 
+		\begin{pmatrix}
+	1 & 0\\ 0 & 1
+	\end{pmatrix} \begin{pmatrix}
+		x_1\\ x_2
+	\end{pmatrix} &= \frac{1}{ab-cd} \begin{pmatrix}
+	b & -d \\ -c & a
+	\end{pmatrix} \begin{pmatrix}
+		y_1 \\ y_2
+	\end{pmatrix} \\
+	\begin{pmatrix}
+		x_1\\ x_2
+	\end{pmatrix} &= \frac{1}{ab-cd} \begin{pmatrix}
+		by_1 - dy_2 \\ -cy_1 + ay_2
+	\end{pmatrix}.
+	\end{split}
+\end{equation}
+Zusammengefasst: die Inverse Matrix $\mbf{A}^{-1}$ liefert die Lösung eines linearen Gleichungssystems.
+
+Die Inverse Matrix 
+\begin{equation}\label{eq:22inverse}
+	\mbf{A}^{-1} \equiv \frac{1}{ab-cd} \begin{pmatrix}
+	b & -d \\ -c & a
+	\end{pmatrix}
+\end{equation}
+existiert nur dann, wenn $ab-cd\not=0$. Diese Größe wird als die \emph{Determinante der Matrix}
+\begin{equation}
+	\det(\mbf{A}) \equiv \det \begin{pmatrix}
+		a & d \\ c & b
+	\end{pmatrix} = ab-cd
+\end{equation}
+bezeichnet.
+
+
+Dieses Verfahren wird folgendermaßen verallgemeinert. Ein inhomogenes Gleichungssystem aus $n$ Gleichungen mit $n$ Unbekannten 
+\begin{equation}
+	\begin{split}
+		A_{11} x_1 + A_{12} x_2 + \cdots + A_{1n}x_n &= y_1 \\
+		A_{21} x_1 + A_{22} x_2 + \cdots + A_{2n}x_n &= y_2 \\
+		&\vdots  \\
+		A_{n1} x_1 + A_{n2} x_2 + \cdots + A_{nn}x_n &= y_n 
+	\end{split}
+\end{equation}
+kann wie folgt als Matrixgleichung beschrieben werden:
+\begin{equation}\label{eq:linsysmat}
+	\mbf{A}\mbf{x} = \mbf{y},
+\end{equation}
+wobei
+\begin{equation}
+	\mbf{A} = \begin{pmatrix}
+		A_{11} & A_{12} & A_{13} & \cdots & A_{1n} \\
+		A_{21} & A_{22} & A_{23} & \cdots & A_{2n} \\
+		\vdots & \vdots & &  \ddots  & \vdots \\
+		A_{n1} & A_{n2} & A_{n3} & \cdots & A_{nn} \\
+	\end{pmatrix}, \quad \mbf{x} = \begin{pmatrix}
+		x_1 \\ x_2 \\ \vdots \\ x_n
+	\end{pmatrix}
+\end{equation}
+und
+\begin{equation}
+	\mbf{y} = \begin{pmatrix}
+		y_1 \\ y_2 \\ \vdots \\ y_n
+	\end{pmatrix}.
+\end{equation}
+
+Angenommen, es existiert eine Matrix $\mbf{A}^{-1}$ die die relation
+\begin{equation}
+	\mbf{A}^{-1} \mbf{A} = \begin{pmatrix}
+		1 & 0 & 0 & \cdots & 0 \\
+		0 & 1 & 0 & \cdots & 0 \\
+		\vdots & \vdots & &  \ddots  & \vdots \\
+		0 & 0 & 0 & \cdots & 1
+	\end{pmatrix} \equiv \mathbb{I}_n
+\end{equation}
+erfüllt. Dann wird man eine Lösung des Gleichungssystems erhalten, indem man (\ref{eq:linsysmat}) von links mit $\mbf{A}^{-1}$ multipliziert:
+\begin{equation}
+ 	\mbf{A}^{-1}\mbf{A}\mbf{x} = \mathbb{I}_n \mbf{x} = \mbf{x} = \mbf{A}^{-1}\mbf{y}.
+\end{equation} 
+
+Es stellt sich heraus, dass eine solche inverse Matrix $\mbf{A}^{-1}$ nur dann existiert, wenn $\det(\mbf{A})\not=0$. Hierbei definiert man die Determinante einer Matrix durch
+\begin{equation}\label{}
+	\det(\mbf{A}) = \sum_{j=1}^n (-1)^{j+k} [\mbf{A}]_{jk} \det(\mbf{A}_{jk}),
+\end{equation}
+wobei $\mbf{A}_{jk}$ die $(n-1)\times (n-1)$-Untermatrix von $\mbf{A}$ ist, die durch Streichen der $j$-ten Zeile und $k$-ten Spalte entsteht. Die Unterdeterminanten 
+\begin{equation}
+	\det (\mbf{A}_{jk})
+\end{equation}
+werden auch als \emph{Minoren} von $\mbf{A}$ bezeichnet. Die Zahlen
+\begin{equation}
+	\tilde {a}_{jk}=(-1)^{j+k}\cdot \det (\mbf{A}_{jk})
+\end{equation}
+heißen auch \emph{Kofaktoren} von $\mbf{A}$ und bilden als Matrix zusammengefasst die \emph{Kofaktormatrix} 
+\begin{equation}
+[\text{cof}(\mbf{A})]_{jk}={\tilde {a}}_{jk}.
+\end{equation}
+Die \emph{Transponierte} der Kofaktormatrix wird auch \emph{Adjunkte} $\text{adj}(\mbf{A})$ von $\mbf{A}$ genannt. Mit der Adjunkten hat die Inverse einer Matrix dann die explizite Darstellung
+\begin{equation}\label{eq:inverse}
+\mbf{A}^{-1}={\frac {1}{\det(\mbf{A})}}\cdot \text{adj}(\mbf{A}).
+\end{equation}
+
+In diesem Kurs werden nur $2\times 2$ und $3\times 3$ Matrizen untersucht. Wir haben schon die inverse Matrix im $2\times 2$ Fall aufgeschrieben. Der $3\times 3$ Fall ist etwas umständlicher: wenn man die Gleichung (\ref{eq:inverse}) für eine beliebige $3\times 3$ Matrix 
+\begin{equation}
+	\mbf{A} = \begin{pmatrix}
+		a&b&c \\
+		d&e&f \\
+		g&h&i \\
+	\end{pmatrix}
+\end{equation}
+aufschreibt, erhält man
+\begin{equation}
+	\mbf{A}^{-1} = \frac{1}{\det(\mbf{A})}\begin{pmatrix}
+		A & D & G \\
+		B & E & H \\
+		C & F & I \\		
+	\end{pmatrix},
+\end{equation}
+wobei
+\begin{equation}
+	\begin{split}
+		A &= (ei-fh)\\
+		B &= -(di-fg)\\
+		C &= (dh-eg)\\
+		D &= -(bi-ch)\\
+		E &= (ai-cg)\\
+		F &= -(ah-bg)\\
+		G &= (bf-ce)\\
+		H &= -(af-cd)\\
+		I &= (ae-bd)\\
+	\end{split}
+\end{equation}
+und
+\begin{equation}
+	\det(\mbf{A}) = aA+bB+cC.
+\end{equation}

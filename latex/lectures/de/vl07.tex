@@ -1,0 +1,116 @@
+%!TEX root = TheoretischePhysikC.tex
+\section{Vorlesung: ,,Quantisierung``}
+
+Wie indentifiziert man den richtigen Hilbertraum, Hamiltonoperator und Observablen für ein gegebenes System? Leider gibt es keine systematische Methode, um diese Information für ein physikalisches System zu bestimmen. Das bedeutet, dass es bei einer klassischen Beschreibung eines Systems keine mathematisch gut definierte Abbildung gibt, die ihm automatisch das richtige Quantensystem zuordnet. Der Grund dafür ist der folgende. Die klassische Physik stellt eine gute Annäherung an die Physik quantenmechanischer Systeme dar, die Wechselwirkungen mit der Umgebung ausgesetzt sind. Diese schädlichen Auswirkungen der Umwelt auf ein Quantensystem sind als Dekohärenz bekannt. Die Dekohärenz ist der Grund dafür, dass die klassische Mechanik eine so gute Annäherung an die Alltagsphysik darstellt. 
+
+Im Idealfall möchte man eine Möglichkeit haben, das ursprüngliche Quantensystem allein aufgrund der Beschreibung des Systems durch die klassische Mechanik aufzudecken. Das heißt, wir wollen eine Möglichkeit, die Dekohärenz umzukehren. Leider ist dies im Allgemeinen unmöglich. Ein solches fiktives Umkehrverfahren ist unter dem Begriff ,,Quantisierung`` bekannt geworden. 
+
+Wir umgehen die Schwierigkeiten der Dekohärenz durch Versuch und Irrtum. Jahrzehntelange Erfahrung hat uns eine Liste von Hilberträumen, Hamiltonoperatoren und Observablen beschert, von denen wir inzwischen wissen, dass sie die korrekte physikalische Beschreibungen für breite Klassen von Systemen liefern. Tatsächlich sind alle fundamentalen Wechselwirkungen (mit Ausnahme der Gravitation) auf diese Weise verstanden worden. Ziel dieser Vorlesung ist es, eine Liste der grundlegenden Quantensysteme zu erstellen, von denen bekannt ist, dass sie bestimmte ideale Systeme korrekt modellieren. 
+
+
+\subsection{Ein Teilchen in einer Dimension}
+Das wichtigste System, das erfolgreich mit der Quantenmechanik modelliert wurde, ist das Teilchen in einer Dimension. Der Hilbertraum (Postulat 1) lautet in diesem Fall $\mathcal{H}\equiv L^2(\mathbb{R})$. Das heißt, wir beschreiben Präparationen (Postulat 2) von reinen Zuständen eines Teilchens mit Hilfe von komplexen Funktionen -- \emph{Wellenfunktionen} -- $\Psi:\mathbb{R}\rightarrow \mathbb{C}$. Wellenfunktionen werden mit der Ket-Notation nach
+\begin{equation}
+	|\Psi\rangle \equiv \int_{-\infty}^\infty \Psi(x) |x\rangle \, dx
+\end{equation}
+beschrieben.
+
+Gemäß Postulat 3 werden Detektoren mit Operatoren modelliert. Wir beschreiben hier nur Orts-Detektoren. Solche Detektoren liefern ,,ja``/,,nein``-Ergebnisse, d.H.\ das Teilchen befindet sich in einem gegebenem Ort oder nicht. Um solche Detektoren zu beschreiben benötigen wir ein Intervall $[a,b]\subset \mathbb{R}$, wobei $a<b$. Der entsprechende Detektor wird durch den Operator
+\begin{equation}
+	F_{[a,b]} \equiv \int_{a}^b |x\rangle\langle x|\, dx
+\end{equation}
+definiert. Solche Operatoren decken zwar nicht alle physikalisch möglichen Detektoren ab, dienen aber als physikalisch relevante Grundlage. 
+
+Angenommen, das System befindet sich in einem reinen Zustand $|\Psi\rangle$ und wir werden die Messung $F_{[a,b]}$ durchführen. Mit welcher Wahrscheinlichkeit werden wir das Teilchen im Bereich $a \le x \le b$ finden? Postulat 4 liefert uns die Ansprechhäufigkeit des Detektors $F_{[a,b]}$ gemäß einer Präparation $\rho \equiv |\Psi\rangle\langle \Psi|$ nach 
+\begin{equation}
+	\begin{split}
+		\mathbb{P}[\text{,,$x\in [a,b]$``}] &= \tr(\rho F_{[a,b]}) \\
+		&= \tr (|\Psi\rangle\langle \Psi|F_{[a,b]})\\
+		&= \tr (\langle \Psi|F_{[a,b]}|\Psi\rangle) \\
+		&= \langle \Psi|F_{[a,b]}|\Psi\rangle \\
+		&= \int_{-\infty}^\infty dx \int_{-\infty}^\infty dy\, \Psi^*(x)\Psi(y) \langle x|F_{[a,b]}|y\rangle   \\
+		&= \int_{-\infty}^\infty dx \int_{-\infty}^\infty dy \int_{a}^b dz\, \Psi^*(x)\Psi(y) \langle x|z\rangle\langle z|y\rangle \\
+		&= \int_{-\infty}^\infty dx \int_{-\infty}^\infty dy \int_{a}^b dz\, \Psi^*(x)\Psi(y) \delta(x-z)\delta(z-y) \\
+		&= \int_{a}^b dz\, \Psi^*(z)\Psi(z) \\
+		&= \int_{a}^b |\Psi(z)|^2 \, dz.
+	\end{split}
+\end{equation}
+Im Fall, dass $a\rightarrow -\infty$ und $b\rightarrow \infty$ erhalten wir die Bedingung
+\begin{equation}
+	1 = \mathbb{P}[\text{,,$x\in \mathbb{R}$``}].
+\end{equation} 
+Weil die Größe $|\Psi(x)|^2$ ist nicht negativ ist, können wir daher die Größe 
+\begin{equation}
+	\eqbox{p(x) \equiv |\Psi(x)|^2}
+\end{equation}
+als eine Wahrscheinlichtkeitsdichte interpretieren. 
+
+Warnung: Das Objekt 
+\begin{equation}
+	F_{\{x\}} \equiv |x\rangle \langle x|,
+\end{equation}
+stellt einen Operator \emph{nicht} dar. Dies hat mit der Interpretation von $p(x) \, (\equiv \tr(F_{\{x\}}\rho))$ zu tun: Die Wahrscheinlichkeit, dass wir das Teilchen \emph{genau} an der Stelle $x$ finden, ist immer gleich Null. Man muss immer ein Intervall angeben um eine nicht verschwindende Wahrscheinlichkeit zu erhalten. Trotzdem arbeitet man manchmal rein informell mit solchen ,,Projektoren``. Insbesondere ist es hilfreich, sich den ,,Projektor`` $|x\rangle\langle x|$ so vorzustellen, dass er das Ereignis darstellt, dass sich das Teilchen an der Position $x$ befindet. Nach dieser Art und Weise führt man die Positionsoperator (gemäß Gl.~(\ref{eq:observableA}))
+\begin{equation}
+	\eqbox{\widehat{x} \equiv \int_{-\infty}^{\infty} x |x\rangle \langle x|\, dx}
+\end{equation}
+ein.
+
+Eine wichtige Bermerkung: Es ist physikalisch unmöglich, das Teilchen in dem ,,klassischem Zustand`` $|\Psi\rangle = |x\rangle$ zu präparieren. Man bräuchte ein Gerät mit unendlicher Präzision. Wir werden auf dieses Thema in einer späteren Vorlesung zurückkommen. Natürlich vorkommende reine Zustände befinden sich im Allgemeinen immer in Superposition:
+\begin{equation}
+	\Psi(x) \not= \delta(x-y).
+\end{equation}
+
+
+Der Erwartungswert von $\widehat{x}$ stellt die durchschnittliche Position des Teilchens dar:
+\begin{equation}
+	\begin{split}
+		\langle \widehat{x}\rangle &= \tr(\widehat{x}\rho) \\
+		&= \int x|\Psi(x)|^2\, dx,\\
+		&= \int x p(x)\, dx.
+	\end{split}
+\end{equation}
+(Diese Gleichung gilt nur im Fall, dass sich das Teilchen in dem reinen Zustand $\rho \equiv |\Psi\rangle\langle \Psi|$ sich befindet.)
+
+Der Impulsoperator eines eindimensionalen quantenmechanischen Teilchens wird durch
+\begin{equation}
+	\eqbox{\widehat{p} \equiv -i\hbar \frac{d}{dx}}
+\end{equation}
+definiert. Warum? Man kann zwar viele heuristische Argumente für diese Identifizierung anführen, aber die ehrliche Antwort ist, dass die Natur es einfach so gewollt hat.  Wie wirkt $\widehat{p}$ auf einen Zustand $|\Psi\rangle$? Diese Wirkung wird durch die folgende ,,Matrixelemente`` gegeben (diese gelten für alle $|\Psi\rangle \in \mathcal{H}$):
+\begin{equation}
+	\langle x|\widehat{p}|\Psi\rangle \equiv -i\hbar \frac{d}{dx}\Psi(x).
+\end{equation}
+
+Postulat 5: Zeitentwicklung eines Teilchens wird mit Hilfe des Hamiltonoperators (entspricht der \emph{kinetischen Energie})
+\begin{equation}
+	\widehat{H} \equiv \frac{\widehat{p}^2}{2m} = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}
+\end{equation}
+mit Matrixelemente
+\begin{equation}
+	\langle x|\widehat{H}|\Psi\rangle = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\Psi(x)
+\end{equation}
+gegeben. Hierbei bezeichnet $m$ die Masse des Teilchens.
+
+\begin{beispiel}
+	Angenommen, ein Teilchen wurde in \emph{gleicher Superposition} über ein Intervall $[-1,1]$ präpariert: Der entsprechende Zustand/Wellenfunktion lautet
+	\begin{equation}
+		\Psi(x) \equiv \begin{cases}
+			\frac{1}{\sqrt2}, \quad x\in [-1,1] \\
+			0, \quad \text{sonst}.
+		\end{cases}
+	\end{equation}
+	Die Normierung $\tr(\rho) = \tr(|\Psi\rangle\langle \Psi|) = \langle \Psi|\Psi\rangle$ des Zustandes wird durch
+	\begin{equation}
+		\begin{split}
+			\langle \Psi|\Psi\rangle &= \int_{-\infty}^\infty |\Psi(x)|^2 \, dx \\
+			&= \int_{-1}^1  \frac{1}{2} \, dx \\
+			&= 1
+		\end{split}
+	\end{equation} 
+	gegeben. Den Erwartungswert des Positionsoperators $\widehat{x}$ berechnet man wie folgt:
+	\begin{equation}
+		\begin{split}
+			\langle \widehat{x}\rangle = \tr(\widehat{x}\rho) &= \langle \Psi|\widehat{x}|\Psi\rangle \\
+		&= \int_{-1}^1 x \times \frac{1}{2}\, dx = \frac12\left[\frac{x^2}{2}\right]_{x= -1}^1 = 0.
+		\end{split}
+	\end{equation}
+\end{beispiel}

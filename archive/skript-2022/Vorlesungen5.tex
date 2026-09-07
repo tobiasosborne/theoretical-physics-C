@@ -1,0 +1,142 @@
+%!TEX root = TheoretischePhysikC.tex
+
+\section{Vorlesung: Position-Basis, Spur, Diagonalisierung}
+\subsection{Position-Basis}
+Dirac und mit ihm viele Physiker gehen mit der Ket-Notation noch einen Schritt weiter. Wir betrachten zuerst den Fall, dass $\mathcal{H} \equiv \ell^2(\mathbb{N})$. Das heisst, die Vektoren $|\Psi\rangle \in \mathcal{H}$ sind lineare Kombinationen 
+\begin{equation}
+	|\Psi\rangle = \sum_{n=1}^{\infty} \Psi(n)|\phi_n\rangle \equiv \sum_{n=1}^{\infty} \Psi(n)|n\rangle,
+\end{equation}
+wobei $\Psi(n)\in \mathbb{C}$ und
+\begin{equation}
+	\sum_{n=1}^{\infty} |\Psi(n)|^2 < \infty.
+\end{equation}
+Die Ket-Notation wird dann erweitert, indem man den Wert $\Psi(n)$ einer ,,Wellenfunktion`` $\Psi\in \ell^2(\mathbb{N})$ an der Stelle $n\in\mathbb{N}$ als
+\begin{equation}
+	\langle n|\Psi\rangle \equiv \Psi(n)
+\end{equation}
+definiert. 
+
+Sei jetzt $\mathcal{H}\equiv L^2(\mathbb{R})$. Dieser Hilbertraum besteht aus quadratintegrierbaren Funktionen $f:\mathbb{R}\rightarrow\mathbb{C}$, welche die Bedingung
+\begin{equation}
+	\int_{-\infty}^{\infty} |f(x)|^2\,dx < \infty
+\end{equation}
+erfüllen. Die Ket-Notation bedeutet in diesem Fall folgendes: $|\Psi\rangle$ steht für die quadratintegrierbare Funktion $\Psi$. Man führt jetzt das ,,uneigentliche`` Bra $\langle x|$ ein, indem man 
+\begin{equation}
+	\langle x|\Psi\rangle \equiv \Psi(x)
+\end{equation}
+definiert. Warnung: Das Bra $\langle x|$ ist nun beim besten Willen kein Vektor im Hilbertraum mehr. Trotzdem arbeiten wir mit solchen ,,Bra-Vektoren`` als ob sie tatsächlich Vektoren darstellen. Bei den Bra-Vektoren handelt es sich um eine Gratwanderung zwischen Stringenz und Unsinn. Um Kohärente Rechenregeln zu erstellen, führen wir die  sogenannten ,,Position-Basis`` ein: die Ket-Vektoren $|x\rangle$, $x\in \mathbb{R}$ werden mit Hilfe den Bra-Vektoren $\langle x|$ durch
+\begin{equation}
+	\langle x|y\rangle \equiv \delta(x-y)
+\end{equation}
+gegeben, wobei $\delta(z)$ die Dirac-Delta-Funktion darstellt. Wir definieren auch $(|x\rangle)^\dag\equiv \langle x|$ und (kontinuierliche) lineare Kombinationen von $|x\rangle$-Vektoren sind explizit erlaubt. Daher kann man eine quadratintegrierbare Funktion $\Psi \in L^2(\mathbb{R})$ als eine (kontinuierliche) lineare Kombination von den $|x\rangle$ darstellen\footnote{Diese Schreibweise erinnert uns an die Darstellung, die in dem endlichen dimensionalen Fall gilt:
+\begin{equation}
+	|\Phi\rangle = \sum_{n\in X} \Phi(n)|n\rangle.
+\end{equation}}:
+\begin{equation}
+	|\Psi\rangle \equiv \int_{-\infty}^{\infty} \Psi(x)|x\rangle \, dx.
+\end{equation}
+Diese Notation erlaubt uns mehrere Rechnungen analog mit dem endlichen dimensionalen Fall durchzuführen. Zum Beispiel kann man die Norm von $|\Psi\rangle$ wie folgt erhalten:
+\begin{equation}
+	\begin{split}
+		\|\Psi\|^2 &= \langle \Psi|\Psi\rangle \\
+		&= \left(\int_{-\infty}^{\infty} \Psi(x)|x\rangle \, dx\right)^\dag \left(\int_{-\infty}^{\infty} \Psi(y)|y\rangle \, dy\right) \\
+		&= \left(\int_{-\infty}^{\infty} \Psi^*(x) \langle x| \, dx\right)\left(\int_{-\infty}^{\infty} \Psi(y)|y\rangle \, dy\right) \\
+		&= \int_{-\infty}^{\infty} \Psi^*(x)\Psi(y) \langle x|y\rangle\,dxdy \\
+		&= \int_{-\infty}^{\infty} \Psi^*(x)\Psi(y) \delta(x-y)\,dxdy\\
+		&= \int_{-\infty}^{\infty} \Psi^*(x)\Psi(x) \,dx \\
+		&= \int_{-\infty}^{\infty} |\Psi(x)|^2 \,dx.
+	\end{split}
+\end{equation} 
+
+\subsection{Spur}
+Die Spur eines Operators spielt in der Quantenmechanik eine wichtige Rolle. Die Spur eines Operators $A$ auf einem endlich dimensionalen Hilbertraum $\mathcal{H}$ definieren wir als 
+\begin{equation}
+	\tr(A) \equiv \sum_{x\in X} \langle x|A|x\rangle,
+\end{equation}
+wobei $x$ über die Indizes einer Orthonormalbasis $\{|\phi_x\rangle\}_{x\in X}$ läuft. Wenn $A : \mathcal{H}_1 \rightarrow \mathcal{H}_2$ und $B : \mathcal{H}_2 \rightarrow \mathcal{H}_1$ rechnet man nach, dass
+\begin{equation}
+	\tr_2(AB) = \tr_1(BA)
+\end{equation}
+wobei der Index an der Spur nur daran erinnert, auf welchem der beiden Hilberträume die Spur zu nehmen ist.
+
+\subsection{Diagonalisierung}
+Für viele Rechnungen in der Quantenmechanik müssen Operatoren \emph{diagonalisiert} werden. Wie allgemein in der linearen Algebra bedeutet dies die Transformation auf eine besonders einfache Gestalt. Der einfachste Fall ist  wieder endliche Matrizen, also Operatoren in einem Raum $\mathcal{H}\equiv \mathbb{C}^N$ für endliches $N$. Ein \emph{diagonaler Operator} $A$ hat per Definition Matrixelemente der Form
+\begin{equation}
+	[A]_{nm} = \langle\phi_n|A|\phi_m\rangle = \delta_{nm} a_m,
+\end{equation}
+wobei $a_1, \ldots, a_N$ die diagonalen Matrixelemente sind. Der Operator $A$ wirkt auf Vektoren $|\Psi\rangle$ wie folgt:
+\begin{equation}
+	A|\Psi\rangle = \sum_{n,m} |n\rangle\langle n|A|m\rangle\langle m|\Psi\rangle = \sum_{m} a_{m}\Psi(m) |m\rangle,
+\end{equation}
+wobei $\Psi(m) = \langle m|\Psi\rangle$.  
+
+\emph{Diagonalisierung} bedeutet nun das Auffinden einer invertierbaren Matrix $S$ so, dass $SAS^{-1}$ ein diagonaler Operator ist. Wir werden uns (fast) ausschließlich für den Fall interessieren, in dem diese Transformation sogar durch einen unitären Operator $S$ geschieht (dann ist $S^{−1} = S^\dag$). Allgemein bedeutet für uns also
+\emph{diagonalisieren} von $A$ das Auffinden eines unitären Operators $U : \mathcal{H} \rightarrow L^2(\mathbb{R})$, so dass 
+\begin{equation}
+	\langle x|(UAU^\dag )|\Psi\rangle = a(x)\Psi(x).
+\end{equation}
+Jeder hermitesche und jeder unitäre Operator ist diagonalisierbar.
+
+\subsection{Eigenwert, Eigenvektor}
+Ist $V$ ein komplexer Vektorraum und $A:V\rightarrow A$ eine lineare Abbildung von $V$ in sich selbst, so bezeichnet man als \emph{Eigenvektor} einen Vektor $\mathbf{v}\not=\mathbf{0}$, der durch $A$ auf ein Vielfaches 
+$\alpha\mathbf{v}$ von sich selbst mit $\alpha\in\mathbb{C}$ abgebildet wird:
+\begin{equation}
+	A\mathbf{v} = \alpha \mathbf{v}.
+\end{equation}
+Den Faktor $\alpha$ nennt man dann den zugehörigen Eigenwert. 
+
+Eine Diagonalisierung von einem Operator (Matrix) $A$ liefert uns die Eigenwerte und Eigenvektoren. Sei zum Beispiel $\mathcal{H} \equiv \mathbb{C}^N$. Angenommen wir haben eine unitäre Matrix $U$ gefunden, so dass $UAU^\dag$ diagonal ist. Man bildet die Basis 
+\begin{equation}
+	\phi_1 \equiv U^\dag \begin{pmatrix}
+	1\\0\\ \vdots \\ 0
+	\end{pmatrix}, \quad  \phi_2 \equiv U^\dag \begin{pmatrix}
+	0\\1\\ \vdots \\ 0
+	\end{pmatrix}, \quad \ldots, \quad \phi_N \equiv U^\dag \begin{pmatrix}
+	0\\0\\ \vdots \\ 1
+	\end{pmatrix}.
+\end{equation}
+(Übung: Bildet diese Reihenfolge eine Basis?) Der Operator $A$ wirkt auf diesen Vektoren wie folgt:
+\begin{equation}
+	A\phi_1 \equiv AU^\dag \begin{pmatrix}
+	1\\0\\ \vdots \\ 0
+	\end{pmatrix} = U^\dag U AU^\dag \begin{pmatrix}
+	1\\0\\ \vdots \\ 0
+	\end{pmatrix} = U^\dag \begin{pmatrix}
+		a_1 & 0 & 0 & \cdots & 0 \\
+		0 & a_2 & 0 & \cdots & 0 \\
+		\vdots & \vdots &  & \ddots & \vdots \\
+		0 & 0 & 0 & \cdots & a_N
+	\end{pmatrix} \begin{pmatrix}
+	1\\0\\ \vdots \\ 0
+	\end{pmatrix} = a_1 \phi_1.
+\end{equation}
+Genau analog wirkt $A$ auf $\phi_j$ als
+\begin{equation}
+	A\phi_j = a_j\phi_j.
+\end{equation}
+Nach dieser Art und Weise indentifiziert man $\phi_j$ als die Eigenvektoren von $A$ mit dazugehörigen Eigenwerten $a_j$. 
+
+Dieses Verfahren funktioniert auch im unendlichen dimensionalen Fall, ist jedoch aufwendiger, allerdings werden wir immer nur von Fall zu Fall unendlich dimensionale Hilberträume behandeln.
+
+\subsection{Funktionalkalkül}
+Wenn $H$ ein hermitescher Operator ist, dann ist die diagonalisierung $SHS^{-1} = SHS^{\dag}$ von $H$ auch hermitesch, also die Multiplikation mit einer reellen Funktion $a_x$ (bezüglich der Eigenvektor-Basis $\{|\phi_x\rangle\}_{x\in X}$):
+\begin{equation}
+	SHS^\dag |\phi_x\rangle = a_x |\phi_x\rangle,
+\end{equation}
+wobei $|\phi_x\rangle$ die Eigenvektoren von $A$ mit dazugehörigen Eigenwerten $a_x$ bilden. 
+
+Wir definieren von diesem Operator die Funktion 
+\begin{equation}
+	U_t \equiv e^{\frac{−it}{\hbar}H}
+\end{equation}
+die durch
+\begin{equation}
+	U_t |\phi_x\rangle \equiv e^{\frac{−it}{\hbar}a_x} |\phi_x\rangle, \quad \forall x\in X,
+\end{equation}
+gegeben wird. (Wenn $A$ auf einen Eigenvektor angewandt wird, wird der Operator $H$ mit der reellen Zahl $a_x$ ersetzt.) Der Operator $U_t$ ist auch (bezüglich die Eigenvektor-Basis) ein Multiplikationsoperator, allerdings wird der Skalar $a_x$ durch eine (x-abhängige) \emph{Phase} $e^{\frac{−it}{\hbar}a_x}$ ersetzt. 
+
+Im Fall, dass $\mathcal{H}$ endlich-dimensional ist, ist die Operator-Funktion $e^{\frac{−it}{\hbar}H}$ das gleiche wie eine Potenzreihe 
+\begin{equation}
+	e^{\frac{−it}{\hbar}H} \equiv \sum_{n=0}^\infty \frac{1}{n!} \left(\frac{−it}{\hbar}\right)^n H^n.
+\end{equation}
+Übrigens ist die Definition der Exponentialfunktion durch Diagonalisierung auch noch bei unbeschränkten selbst-adjungierten Operatoren $H$ vernünftig, während die Potenzen eines unendlich-dimensionalen Operators und erst recht die Potenzreihe nur unter sehr einschränkenden Bedingungen einen Sinn ergeben.

@@ -1,0 +1,314 @@
+%!TEX root = TheoretischePhysikA.tex
+
+\section{Vorlesung: Lineare Koordinatentransformationen}
+Wir betrachten zwei Koordinatensysteme $\Sigma$ und $\Sigma'$, deren Ursprung übereinstimmt und deren Achsen gegeneinander verdreht sind.
+\figbox
+Der Punkt $P_0$ mit den Koordinaten
+\begin{equation}
+  \begin{pmatrix}
+    1 \\ 0
+  \end{pmatrix}
+\end{equation}
+in $\Sigma'$ hat in $\Sigma$ die Koordinaten
+\begin{equation}
+  \begin{pmatrix}
+    \cos(\theta) \\ \sin(\theta)
+  \end{pmatrix}.
+\end{equation}
+Analog, der Punkt $P_1$ mit Koordinaten in $\Sigma'$
+\begin{equation}
+  \begin{pmatrix}
+    0 \\ 1
+  \end{pmatrix}
+\end{equation}
+hat die Koordinaten
+\begin{equation}
+  \begin{pmatrix}
+    -\sin(\theta) \\ \cos(\theta)
+  \end{pmatrix}
+\end{equation}
+in $\Sigma$.
+
+Ein beliebiger Punkt $P$ mit Koordinaten in $\Sigma'$
+\begin{equation}
+  \begin{pmatrix}
+    x' \\ y'
+  \end{pmatrix} = x'\begin{pmatrix}
+    1 \\ 0
+  \end{pmatrix}+ y'\begin{pmatrix}
+    0 \\ 1
+  \end{pmatrix}
+\end{equation}
+hat in $\Sigma$ die folgenden Koordinaten
+\begin{equation}
+  \begin{split}
+    \begin{pmatrix}
+    x \\ y
+  \end{pmatrix} &= x'\begin{pmatrix}
+    \cos(\theta) \\ \sin(\theta)
+  \end{pmatrix}+ y'\begin{pmatrix}
+    -\sin(\theta) \\ \cos(\theta)
+  \end{pmatrix} \\
+  &=\begin{pmatrix}
+    x'\cos(\theta)-y'\sin(\theta) \\ x'\sin(\theta)+y'\cos(\theta)
+  \end{pmatrix}\\
+  &= \begin{pmatrix}
+    \cos(\theta) & -\sin(\theta) \\ 
+    \sin(\theta) & \cos(\theta) 
+  \end{pmatrix} \begin{pmatrix}
+    x' \\ y'
+  \end{pmatrix}. 
+  \end{split}
+\end{equation}
+Mit $\mbf{r} \equiv \left( \begin{smallmatrix}
+x \\ y
+\end{smallmatrix}\right)$ in $\Sigma$ und $\mbf{r}'' \equiv \left( \begin{smallmatrix}
+x' \\ y'
+\end{smallmatrix}\right)$ in $\Sigma'$ erhalten wir also
+\begin{equation}
+  \eqbox{\mbf{r} = \mbf{R}(\theta )\mbf{r}',}
+\end{equation}
+wobei
+\begin{equation}
+  \eqbox{\mbf{R}(\theta ) \equiv \begin{pmatrix}
+    \cos(\theta) & -\sin(\theta) \\ 
+    \sin(\theta) & \cos(\theta) 
+  \end{pmatrix}.}
+\end{equation}
+Die sogenannte \emph{Drehmatrix} oder \emph{Rotationsmatrix} $\mbf{R}(\theta )$ hat die folgenden Eigenschaften.
+\begin{enumerate}
+  \item Für $\theta=0$ ist die Rotationsmatrix die Einheitsmatrix:
+  \begin{equation}
+    \mbf{R}(0) \equiv \begin{pmatrix}
+    \cos(0) & -\sin(0) \\ 
+    \sin(0) & \cos(0) 
+  \end{pmatrix} = \begin{pmatrix}
+    1 & 0 \\ 
+    0 & 1 
+  \end{pmatrix} = \mathbb{I}.
+  \end{equation}
+  Dies entspricht der trivialen Transformation.
+  \item Wird von $\Sigma$ nach $\Sigma'$ mit Drehmatrix $\mbf{R}(\alpha)$ gedreht und dann von $\Sigma'$ nach $\Sigma''$ mit $\mbf{R}(\beta)$, dann gilt
+  \begin{equation}
+    \begin{split}
+      \mbf{r} &= \mbf{R}(\alpha)\mbf{r}' \\
+      \mbf{r}' &= \mbf{R}(\beta)\mbf{r}''.
+    \end{split}
+  \end{equation}
+  Also 
+  \begin{equation}
+      \mbf{r} = \mbf{R}(\alpha)\mbf{R}(\beta)\mbf{r}''.
+  \end{equation}
+  Hierbei berechnen wir
+  \begin{equation}
+    \begin{split}
+      \mbf{R}(\alpha)\mbf{R}(\beta) &= \begin{pmatrix}
+    \cos(\alpha) & -\sin(\alpha) \\ 
+    \sin(\alpha) & \cos(\alpha) 
+  \end{pmatrix}\begin{pmatrix}
+    \cos(\beta) & -\sin(\beta) \\ 
+    \sin(\beta) & \cos(\beta) 
+  \end{pmatrix}\\
+  &= \begin{pmatrix}
+    \cos(\alpha)\cos(\beta)- \sin(\alpha)\sin(\beta)& -\cos(\alpha)\sin(\beta)-\sin(\alpha)\cos(\beta) \\ 
+    \cos(\alpha)\sin(\beta)+\sin(\alpha)\cos(\beta) & - \sin(\alpha)\sin(\beta)+\cos(\alpha)\cos(\beta) 
+  \end{pmatrix}\\
+  &=\begin{pmatrix}
+    \cos(\alpha+\beta) & -\sin(\alpha+\beta) \\ 
+    \sin(\alpha+\beta) & \cos(\alpha+\beta) 
+  \end{pmatrix}\\
+  &= \mbf{R}(\alpha+\beta).
+    \end{split}
+  \end{equation}
+  Also, $\mbf{r} = \mbf{R}(\alpha+\beta)\mbf{r}''$. 
+  \item Falls die zweite Drehung um einen Winkel $\beta = -\alpha$ dreht, so gilt
+  \begin{equation}
+    \mbf{R}(\alpha)\mbf{R}(-\alpha) = \mbf{R}(0) = \mathbb{I}.
+  \end{equation}
+  Daher bildet $\mbf{R}(-\alpha)$ die inverse Matrix zu $\mbf{R}(\alpha)$:
+  \begin{equation}
+    \eqbox{\mbf{R}(\alpha)^{-1}=\mbf{R}(-\alpha).}
+  \end{equation}
+\end{enumerate}
+
+Die Drehung in $2$ Dimensionen kann als eine Drehung um die $z$-Achse in $3$ Dimensionen interpretiert werden. Hier wird die $z$-Koordinate der Vektoren nicht verändert:
+\begin{equation}
+  \mbf{r} = \begin{pmatrix}
+    \cos(\theta) & -\sin(\theta) & 0 \\ 
+    \sin(\theta) & \cos(\theta) & 0 \\ 
+    0 & 0 & 1
+  \end{pmatrix}\mbf{r}'.
+\end{equation}
+\figbox
+Wir bezeichnen die Drehmatrix, die diese Drehung darstellt als $\mbf{R}_z(\theta)$:
+\begin{equation}
+  \mbf{R}_z(\theta) = \begin{pmatrix}
+    \cos(\theta) & -\sin(\theta) & 0 \\ 
+    \sin(\theta) & \cos(\theta) & 0 \\ 
+    0 & 0 & 1
+  \end{pmatrix}.
+\end{equation}
+Drehungen um die $x-$ und $y-$ Achsen können auch konstruiert werden:
+\begin{equation}
+  \mbf{R}_x(\theta) = \begin{pmatrix}
+    1&  0 & 0 \\
+    0& \cos(\theta) & -\sin(\theta) \\ 
+    0& \sin(\theta) & \cos(\theta)
+  \end{pmatrix}
+\end{equation}
+und
+\begin{equation}
+  \mbf{R}_z(\theta) = \begin{pmatrix}
+    \cos(\theta) & 0 &-\sin(\theta) \\ 
+    0 & 1 & 0 \\
+    \sin(\theta) & 0 & \cos(\theta) 
+  \end{pmatrix}.
+\end{equation}
+
+Eine allgemeine Drehung in drei Dimensionen kann als Folge von drei Drehungen um verschiedene Achsen aufgefasst werden, zum Beispiel:
+\begin{equation}
+  \mbf{r} = \mbf{R}_z(\gamma)\mbf{R}_x(\beta)\mbf{R}_z(\alpha) \mbf{r}',
+\end{equation}
+wobei $\alpha$, $\beta$ und $\gamma$  als \emph{Eulerwinkel} bezeichnet werden.
+
+Eine allgemeine, zeitunabhängige Transformation zwischen einem Bezugssystem $\Sigma$ und einem Bezugssystem $\Sigma'$, besteht aus einer Drehung und einem Versatz
+\figbox
+\begin{equation}
+  \eqbox{\mbf{r} = \mbf{D}(\alpha,\beta,\gamma)\mbf{r}' + \mbf{r}_0.}
+\end{equation}
+Wie ändern sich die Bewegungsgleichungen? Wenn in $\Sigma'$
+\begin{equation}
+  m\ddot{\mbf{r}}' = \mbf{F}'
+\end{equation}
+ gilt, dann gilt in $\Sigma$
+\begin{equation}
+  m\ddot{\mbf{r}} = m\mbf{D}(\alpha,\beta,\gamma)\ddot{\mbf{r}}' = \mbf{D}(\alpha,\beta,\gamma)\mbf{F}' \equiv \mbf{F}
+\end{equation}
+mit dem Kraftfeld in $\Sigma$:
+\begin{equation}
+  \mbf{F} = \mbf{D}(\alpha,\beta,\gamma)\mbf{F}'.
+\end{equation}
+Ist $\Sigma'$ ein Inertialsystem, so ist auch $\Sigma$ ein Inertialsystem. (Kräftefreie Bewegung verläuft gleichförmig, das heisst, $\mbf{F}'=\mbf{0}\Rightarrow \mbf{F}=\mbf{0}$.)
+
+Dieses Ergebnis gilt auch für gleichförmig gegeneinander bewegte Bezugssysteme: Sei
+\begin{equation}\label{eq:gal}
+  \eqbox{\mbf{r} = \mbf{D}\mbf{r}' + \mbf{v}_0 t + \mbf{r}_0}
+\end{equation}
+dann gilt
+\begin{equation}
+  m\ddot{\mbf{r}}' = \mbf{F}'
+\end{equation}
+und daher 
+\begin{equation}
+  m\ddot{\mbf{r}} = m \mbf{D}\ddot{\mbf{r}}' = \mbf{D}\mbf{F}' \equiv \mbf{F}.
+\end{equation}
+
+Eine Koordinatentransformation der Art (\ref{eq:gal}) wird als \emph{Galilei-Transformation} bezeichnet. Es gilt: Ist $\Sigma'$ ein Inertialsystem, so ist auch jedes durch eine Galilei-Transformation verbundenes Bezugssystem $\Sigma$ wieder ein Inertialsystem.
+
+Für allgemeinere Transformationen gilt dies nicht mehr, das heisst, dass sich die Form der Bewegungsgleichungen ändert. Insbesondere können in beliebig bewegten Bezugssystemen \emph{Scheinkräfte} auftreten. Zwei wichtige Beispiele sind:
+\begin{enumerate}
+  \item \emph{Gleichförmig beschleunigte Bezugssysteme}
+  \begin{equation}
+    \begin{split}
+      \mbf{r} &= \mbf{D}\mbf{r}' + \mbf{a}_0 \frac{t^2}{2}  + \mbf{v}_0 t + \mbf{r}_0 \\
+      \dot{\mbf{r}} &= \mbf{D}\dot{\mbf{r}}' + \mbf{a}_0 t \\
+      \ddot{\mbf{r}} &= \mbf{D}\ddot{\mbf{r}}' + \mbf{a}_0.
+    \end{split}
+  \end{equation}
+  Falls in $\Sigma'$ die Gleichung $m\ddot{\mbf{r}}' = \mbf{F}'$ gilt, so gilt in $\Sigma$
+  \begin{equation}
+    m\ddot{\mbf{r}} = \mbf{D}\mbf{F}' + m\mbf{a}_0 \equiv \mbf{F} + \mbf{F}_a.
+  \end{equation}
+  In $\Sigma$ tritt $\mbf{F}_a = m\mbf{a}_0$ als eine zusätzliche Kraft auf, die proportional zur Masse $m$ ist.
+  \item \emph{Gleichförmig rotierendes Bezugssystem}. In Inertialsystem $\Sigma$ rotiere ein Punkt $P$ mit Vektor $\mbf{e}$ (in $\Sigma$) um eine Drehachse $\mbf{n}$ (mit $\|\mbf{n}\| =1$) mit konstanter Winkelgeschwindigkeit $\omega$:
+  \figbox
+  Die Änderung von $\mbf{e}$ in einer kleinen Zeit $\Delta t$ wird $\Delta \mbf{e}$ genannt. Es gilt
+  \begin{equation}
+    \begin{split}
+      \|\Delta \mbf{e}\| &= \|\mbf{e}\|\sin(\theta) \Delta \phi \\
+      &= \|\mbf{e}\|\sin(\theta) \omega \Delta t. 
+    \end{split}
+  \end{equation}
+  Der Vektor $\Delta \mbf{e}$ steht senkrecht zur $\mbf{e}$ und $\mbf{r}$:
+  \begin{equation}
+    \begin{split}
+      \Delta \mbf{e} &\perp \mbf{e}\quad \text{und} \\
+      \Delta \mbf{e} &\perp \mbf{n}.
+    \end{split}
+  \end{equation}
+  Also 
+  \begin{equation}
+    \Delta\mbf{e} = (\mbf{n}\times \mbf{e}) \omega \Delta t.
+  \end{equation}
+  Formen wir diese Gleichung um, erhalten wir
+  \begin{equation}
+    \frac{\Delta \mbf{e}}{\Delta t} = \omega \mbf{n}\times \mbf{e}.
+  \end{equation}
+  Damit erhalten wir
+  \begin{equation}
+    \eqbox{\dot{\mbf{e}} = \boldsymbol{\omega}\times \mbf{e},}
+  \end{equation}
+  wobei 
+  \begin{equation}
+    \eqbox{\boldsymbol{\omega} \equiv \omega \mbf{n}}
+  \end{equation}
+  den \emph{Geschwindigkeitsvektoren} bildet.
+
+Wir betrachten in einem Inertialsystem $\Sigma$ die Bahnkurve eines Teilchens  mit Positionsvektor
+\begin{equation}
+  \mbf{r}(t) = x(t) \hat{\mbf{x}} + y(t) \hat{\mbf{y}} +z(t) \hat{\mbf{z}}.
+\end{equation}
+In einem um eine Drehachse $\mbf{n}$ mit Winkelgeschwindigkeit $\omega$ rotierendes Bezugssystem $\Sigma'$ ist dieselbe Bahnkurve durch
+\begin{equation}
+  \mbf{r}(t) = x'(t) \mbf{e}_x'(t) + y'(t) \mbf{e}_y'(t) + z'(t) \mbf{e}_z'(t)
+\end{equation}
+gegeben, wobei $\mbf{e}_x'(t)$ der rotierende Einheitsvektor, der in die $x'$-Richtung bezüglich $\Sigma'$ zeigt, usw.
+
+Wir berechnen den Geschwindigkeitsvektoren $\dot{\mbf{r}}$ wie folgt:
+\begin{equation}
+  \begin{split}
+    \left(\frac{d\mbf{r}(t)}{dt}\right)_{\Sigma} &= \dot{x}'(t) \mbf{e}_x'(t) + \dot{y}'(t) \mbf{e}_y'(t) + \dot{z}'(t) \mbf{e}_z'(t) + x'(t) \dot{\mbf{e}}_x'(t) + y'(t) \dot{\mbf{e}}_y'(t) + z'(t) \dot{\mbf{e}}_z'(t) \\
+    &= \left(\frac{d\mbf{r}(t)}{dt}\right)_{\Sigma'} + x'(t)(\boldsymbol{\omega}\times \mbf{e}_x') +z'(t)(\boldsymbol{\omega}\times \mbf{e}_z')+z'(t)(\boldsymbol{\omega}\times \mbf{e}_z') \\
+    &= \left(\frac{d\mbf{r}(t)}{dt}\right)_{\Sigma'} + \boldsymbol{\omega}\times \mbf{r}.
+  \end{split}
+\end{equation}
+Zusammengefasst: Der Geschwindigkeitsvektor bezüglich $\Sigma$ wird als die Summe von dem Geschwindigkeitsvektoren bezüglich $\Sigma'$ und einer Geschwindigkeit aufgrund der Rotation berechnet:
+\begin{equation}
+  \mbf{v}_{\Sigma} = \mbf{v}_{\Sigma'} + \boldsymbol{\omega}\times \mbf{r}.
+\end{equation}
+Damit folgt für die Beschleunigung in $\Sigma$
+\begin{equation}
+  \begin{split}
+    \mbf{a}_{\Sigma} &\equiv \left(\frac{d\mbf{v}(t)}{dt}\right)_{\Sigma} = \left[\frac{d}{dt}(\mbf{v}_{\Sigma'} + \boldsymbol{\omega}\times \mbf{r})\right]_{\Sigma} \\
+    &= \left(\frac{d\mbf{v}_{\Sigma'}(t)}{dt}\right)_{\Sigma'} + \boldsymbol{\omega}\times \left(\frac{d\mbf{r}(t)}{dt}\right)_{\Sigma} + \boldsymbol{\omega}\times \mbf{v}_{\Sigma'} + \boldsymbol{\omega}\times (\boldsymbol{\omega}\times \mbf{r}) \\
+    &= \left(\frac{d\mbf{v}_{\Sigma'}(t)}{dt}\right)_{\Sigma'} + 2\boldsymbol{\omega}\times \mbf{v}_{\Sigma'}  + \boldsymbol{\omega}\times (\boldsymbol{\omega}\times \mbf{r})\\
+    &= \mbf{a}_{\Sigma'} + 2\boldsymbol{\omega}\times \mbf{v}_{\Sigma'}  + \boldsymbol{\omega}\times (\boldsymbol{\omega}\times \mbf{r}).
+  \end{split}
+\end{equation}
+Falls im Inertialsystem eine kräftefreie Bewegung verläuft
+\begin{equation}
+  m\mbf{a}_{\Sigma} = \mbf{0}
+\end{equation}
+so gilt in $\Sigma'$
+\begin{equation}
+  m(\mbf{a}_{\Sigma'} + 2\boldsymbol{\omega}\times \mbf{v}_{\Sigma'}  + \boldsymbol{\omega}\times (\boldsymbol{\omega}\times \mbf{r})) = \mbf{0}.
+\end{equation}
+Das heisst, die Bewegungsgleichung in $\Sigma'$ lautet
+\begin{equation}
+  \eqbox{m\ddot{\mbf{r}} = -2m\boldsymbol{\omega}\times \dot{\mbf{r}} - m\boldsymbol{\omega}\times (\boldsymbol{\omega}\times \mbf{r}).}
+\end{equation}
+\end{enumerate}
+
+In rotierenden Bezugssystemen treten zwei Trägheitskräfte auf:
+\begin{enumerate}
+  \item \emph{Zentrifugalkraft}. Diese Kraft bezeichnet den Ausdruck
+  \begin{equation}
+    \mbf{F}_{\text{Z}} = - m\boldsymbol{\omega}\times (\boldsymbol{\omega}\times \mbf{r}).
+  \end{equation}
+  Die Zentrifugalkraft steht normal auf der Drehachse und zeigt radial nach aussen.
+  \item \emph{Corioliskraft}. Diese Kraft beschreibt den Term
+  \begin{equation}
+    \mbf{F}_{\text{C}} = -2m\boldsymbol{\omega}\times \dot{\mbf{r}}.
+  \end{equation}
+  Die Corioliskraft steht normal auf der Drehachse und der Geschwindigkeit in $\Sigma'$.
+\end{enumerate}

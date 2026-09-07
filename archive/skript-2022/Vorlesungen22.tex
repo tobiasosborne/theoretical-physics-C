@@ -1,0 +1,78 @@
+%!TEX root = TheoretischePhysikC.tex
+
+
+\section{Vorlesung: Kanonisches Ensemble}
+Man betrachte ein System im kontakt mit der Umgebung (,,Wärmebad``), so dass Energie mit der Umgebung ausgetauscht werden kann. Angenommen, das System wird mit Hilbertraum $\mathcal{H}$ and Hamiltonoperator $\widehat{H}$ modelliert. Der Austausch von Energie kann mathematisch modelliert in dem die Energie des Systems einen festen Mittelwert $E = \langle \widehat{H}\rangle$ besitzen.
+
+Gesucht wird ein Zustand $\rho$, der die Entropie unter der Bedingung maximiert, dass der Mittelwert der Energie konstant gehalten wird. Dieses Problem wird wie folgt mathematisch nach dem Prinzip der maximalen Entropie beschrieben:
+\begin{equation}
+	\begin{split}
+		\max_{\rho} &\,S(\rho) \\
+		\text{so dass} &\, E=\tr(\rho \widehat{H}).
+	\end{split}
+\end{equation}
+
+Solche Maximierungsprobleme können mit Hilfe von Lagrange-Multiplikatoren gelöst werden: 
+\begin{equation}
+	\max_{\rho} f(\rho) = -k\tr(\rho\log(\rho)) + \beta \tr(\rho \widehat{H})
+\end{equation}
+Die Lösung wird als Funktion von $\beta$ dargestellt: $\rho \equiv \rho(\beta)$. Danach wird $\beta$ gesucht, damit die Bedingung $E=\tr(\rho \widehat{H})$ erfüllt wird. 
+
+Um das Maximierungsproblem zu lösen, muss die Variation von $f(\rho)$ bezüglich aller möglichen Variationen $\delta \rho$ von $\rho$ stationär sein:
+\begin{equation}
+	0= f(\rho + \delta\rho) -f(\rho)
+\end{equation}
+Man kann zeigen, dass die Funktion ihren Maximalwert nur dann erhält, wenn
+\begin{equation}
+	\log(\rho) + \beta \widehat{H} + \log(\mathcal{Z})\mathbb{I} = 0,
+\end{equation}
+wobei $\mathcal{Z}$ eine Konstante ist.
+Die Lösung dieser Gleichung wird daher durch eine Exponentialfunktion gegeben:
+\begin{equation}
+	\rho \propto e^{-\beta \widehat{H}}.
+\end{equation}
+Die Proportionalitätskonstante ist genau durch $\mathcal{Z}$ gegeben und dadurch erhalten wir
+\begin{equation}
+	\rho = \frac{e^{-\beta \widehat{H}}}{\mathcal{Z}},
+\end{equation}
+wobei die Bedingung $\tr(\rho) = 1$ bedeutet, dass die \emph{Zustandssumme} $\mathcal{Z}$ durch
+\begin{equation}
+	\mathcal{Z} = \tr\left(e^{-\beta \widehat{H}}\right) = \sum_{j=1}^d e^{-\beta E_j},
+\end{equation}
+gegeben wird, wobei $E_j$ die Energieeigenwerte von $\widehat{H}$ sind. Der Mittelwert $\langle \widehat{H}\rangle$ wird wie folgt berechnet
+\begin{equation}
+	\langle \widehat{H}\rangle = \sum_{j=1}^d E_j \frac{e^{-\beta E_j}}{\mathcal{Z}} = \frac{1}{\mathcal{Z}}\frac{\partial \mathcal{Z}}{\partial \beta}.
+\end{equation}
+
+Die Entropie von $\rho=\frac{e^{-\beta \widehat{H}}}{\mathcal{Z}}$ wird wie folgt berechnet
+\begin{equation}
+	\eqbox{S(\rho) = k\beta\langle\widehat{H}\rangle + k\log(\mathcal{Z}).}
+\end{equation}
+Definiere Temperatur analog zum mikrokanonischen Ensemble:
+\begin{equation}
+	\frac{1}{T} = \frac{\partial S}{\partial \langle\widehat{H}\rangle} = k\beta \Rightarrow \beta = \frac{1}{kT}.
+\end{equation}
+Daher
+\begin{equation}
+	\eqbox{\rho = \frac{e^{-\frac{\widehat{H}}{kT}}}{\mathcal{Z}}.}
+\end{equation}
+Die Faktoren $e^{-E_j/kT}$ heißen \emph{Boltzmann-Faktoren}.
+
+\section*{Hauptsätze der Thermodynamik}
+
+\begin{center}
+\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Hauptsatz 0}. Ist System $A$ im thermischen Gleichgewicht mit System $B$ und System $B$ im thermischen Gleichgewicht mit System $C$, so ist System $A$ im thermischen Gleichgewicht mit System $C$.}\end{tcolorbox}}
+\end{center}
+\begin{center}
+\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Hauptsatz 1}. Es gibt eine Größe $U$: ,,Innere Energie``. Die Änderung $\Delta U = Q+W$ der inneren Energie entspricht der zugeführten Wärme $Q$ plus der verrichteten Arbeit $W$. (Energieerhaltung.)}\end{tcolorbox}}
+\end{center}
+Hierbei ist \emph{Wärme} $Q$ als jeder spontane Energiefluss von einem Objekt zu einem anderen definiert, der von einer Temperaturdifferenz zwischen den beiden Objekten herrührt. \emph{Arbeit} $W$ ist in der Thermodynamik als jeder andere Transfer von Energie in ein System oder aus einem System heraus definiert. 
+\begin{center}
+\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Hauptsatz 2}. Es gibt eine Größe ,,Entropie`` und bei adiabatischen Prozessen gilt $\Delta S \ge 0$. (Adiabatisch bedeutet: ohne Austausch von Wärme mit der Umgebung.)}\end{tcolorbox}}
+\end{center}
+\begin{center}
+\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Hauptsatz 3}. Man kann den absoluten Temperaturnullpunkt $T=0$ nicht vollständig erreichen.}\end{tcolorbox}}
+\end{center}
+ 
+
+

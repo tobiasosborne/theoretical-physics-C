@@ -1,0 +1,138 @@
+\documentclass[12pt,oneside]{amsart}
+
+%\usepackage[T1]{fontenc}
+%\usepackage[utf8]{inputenc}
+\usepackage[german]{babel}
+\usepackage{geometry}                % See geometry.pdf to learn the layout options. There are lots.
+\geometry{a4paper}                   % ... or a4paper or a5paper or ... 
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage[mtphrb,mtpcal,mtpfrak]{mtpro2}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{enumerate}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{arrows.meta}
+\usepackage[shortalphabetic]{amsrefs}
+\usepackage{wrapfig}
+\usepackage[textsize=tiny]{todonotes}
+\usepackage[many]{tcolorbox}
+\usepackage{pgfplots}
+\usepgfplotslibrary{patchplots}
+\usepgfplotslibrary{fillbetween}
+
+%\usepackage[no-math]{fontspec}
+%\setsansfont[Scale=0.92]{Helvetica Neue LT Std 65 Medium}
+%\usepackage[scaled=0.92]{helvet}
+%\usepackage{times}
+
+
+
+\usepackage{mathspec}
+\setmathrm{Times LT Std}
+\setmainfont[BoldFont=Times LT Std Bold, ItalicFont=Times LT Std Italic, BoldItalicFont=Times LT Std Bold Italic, Ligatures=TeX]{Times LT Std}
+
+%\setmainfont{Baskerville URW}
+
+%\setsansfont[Scale=0.92,BoldFont=Helvetica Neue LT Std 65 Medium,
+%    ItalicFont=Helvetica Neue LT Std 56 Italic,
+%    BoldItalicFont=Helvetica Neue LT Std 66 Medium Italic,
+%    Ligatures=TeX]{Helvetica Neue LT Std 55 Roman}
+\setsansfont[BoldFont=Whitney-Semibold.otf,ItalicFont=Whitney-MediumItalic.otf,Ligatures=TeX]{Whitney-Medium.otf}
+\setboldmathrm[BoldFont={Times LT Std Bold}]{Times LT Std Bold}
+
+\newcommand{\red}[1]{\textcolor{red}{#1}}
+\definecolor{light-gray}{gray}{0.85}
+
+%%% here we define our palette
+
+\definecolor{spacecadet}{HTML}{0D284C}
+\definecolor{munsell}{HTML}{008FA8}
+\definecolor{banana}{HTML}{FFD932}
+\definecolor{cgblue}{HTML}{007CA5}
+\definecolor{isabelline}{HTML}{EAEDEA}
+
+%%%
+
+\makeatletter
+\def\@secnumfont{\bfseries}
+\def\part{\@startsection{part}{0}%
+  \z@{\linespacing\@plus\linespacing}{.5\linespacing}%
+  {\normalfont\bfseries\raggedright}}
+\def\specialsection{\@startsection{section}{1}%
+  \z@{\linespacing\@plus\linespacing}{.5\linespacing}%
+  {\color{cgblue}\normalfont\centering}}
+\def\section{\@startsection{section}{1}%
+  \z@{.7\linespacing\@plus\linespacing}{.5\linespacing}%
+  {\color{cgblue}\normalfont\sf\bfseries\large\centering}}
+\def\subsection{\@startsection{subsection}{2}%
+  \z@{.5\linespacing\@plus.7\linespacing}{-.5em}%
+  {\color{cgblue}\normalfont\sf\bfseries}}
+\def\subsubsection{\@startsection{subsubsection}{3}%
+  \z@{.5\linespacing\@plus.7\linespacing}{-.5em}%
+  {\color{cgblue}\normalfont\sf\itshape}}
+\def\paragraph{\@startsection{paragraph}{4}%
+  \z@\z@{-\fontdimen2\font}%
+  \color{cgblue}\sf\normalfont}
+\def\subparagraph{\@startsection{subparagraph}{5}%
+  \z@\z@{-\fontdimen2\font}%
+  \color{cgblue}\sf\normalfont}
+\makeatother
+
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\conf}{conf}
+\DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\vspan}{span}
+\DeclareMathOperator{\res}{res}
+\DeclareMathOperator{\real}{Re}
+\DeclareMathOperator{\imag}{Im}
+\DeclareMathOperator{\diff}{diff}
+\DeclareMathOperator{\homeo}{Homeo}
+\DeclareMathOperator{\Mor}{Mor}
+\DeclareMathOperator{\Ob}{Ob}
+\DeclareMathOperator{\target}{Target}
+\DeclareMathOperator{\source}{Source}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\Sch}{Sch}
+
+\theoremstyle{plain}% default
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem*{corollary}{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}{\color{cgblue}Definition}[section]
+\newtheorem{prototypedefinition}{Prototype Definition}[section]
+\newtheorem{physicalintuition}{Physical intuition}[section]
+\newtheorem{conjecture}{Conjecture}[section]
+\newtheorem{beispiel}{\color{cgblue}Beispiel}[section]
+\newtheorem{übung}{\color{cgblue}Übung}[section]
+
+
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{note}{Note}
+
+\newenvironment{lösung}
+  {\begin{proof}[\color{cgblue}Lösung]\color{spacecadet}}
+  {\end{proof}}
+
+\def\eqbox#1{\tcboxmath[colback=banana,arc=0cm,frame hidden,enhanced]{#1}}
+\def\figbox{\begin{center}\tcboxmath[colback=white,boxrule=0.5pt,enhanced,sharp corners]{\parbox[c][7cm][c]{10cm}{\ }}\end{center}}
+
+\title[Theoretische Physik C: Vorlesung 3]{Theoretische Physik C: Vorlesung 3}
+\author{Tobias J.\ Osborne}
+\date{\today}                                           % Activate to display a given date or no date
+
+\begin{document}
+
+\maketitle
+
+\setcounter{section}{2}
+\input{Vorlesungen3}
+
+\end{document}

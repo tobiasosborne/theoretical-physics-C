@@ -1,0 +1,34 @@
+%!TEX root = TheoretischePhysikC.tex
+
+\section{Vorlesung: Temperatur}
+Man betrachte zwei Systeme $1$ und $2$ in Kontakt, so dass Energie, aber keine Teilchen ausgetauscht werden können. Das Gesamtsystems ist isoliert. Die Gesamtenergie beträgt $E$. Die Wahrscheinlichkeit, System $1$ bei Energie $E_1$ zu finden ist durch
+\begin{equation}\label{eq:probenergy}
+	w(E_1) \propto N_{E_1}^{(1)}N_{E-E_1}^{(2)}
+\end{equation}
+gegeben. Hierbei sollen $N_{E}^{(1)}$ und $N_{E}^{(2)}$ als Funktionen von $E_1$ betrachtet werden. 
+
+Die Maximum-Wahrscheinlichkeit wird mit Hilfe der Ableitung gefunden werden:
+\begin{equation}
+	\frac{d}{dE_1} w(E_1) = 0.
+\end{equation}
+Nach Einsetzen von (\ref{eq:probenergy}) erhalten wir
+\begin{equation}
+	N_{E-E_1}^{(2)}\left(\frac{d}{dE_1}N_{E_1}^{(1)}\right) - N_{E_1}^{(1)}\left(\frac{d}{d(E-E_1)}N_{E-E_1}^{(2)}\right) = 0.
+\end{equation}
+Umgeformt:
+\begin{equation}
+	\frac{1}{N_{E_1}^{(1)}}\frac{d}{dE_1}N_{E_1}^{(1)} =  \frac{1}{N_{E-E_1}^{(2)}}\frac{d}{d(E-E_1)}N_{E-E_1}^{(2)}.
+\end{equation}
+Mit 
+\begin{equation}
+	S_1(E_1) = k\log(N_{E_1}^{(1)})\quad \text{und} \quad S_2(E-E_1) = k\log(N_{E-E_1}^{(2)})
+\end{equation}
+wird diese Relation wie folgt aussehen
+\begin{equation}
+	\frac{dS_1(E_1)}{dE_1} = \frac{dS_2(E_2)}{dE_2}\bigg|_{E_2 = E-E_1}.
+\end{equation}
+Daher wird die \emph{Temperatur} $T$ durch 
+\begin{equation}
+	\frac{1}{T} = \frac{\partial S(E)}{\partial E}
+\end{equation}
+definiert. Gemäß dieser Definition wird festgestellt, dass thermisches Gleichgewicht zwischen den Systemen $1$ und $2$ bedeutet, dass die Temperaturen gleich sind.

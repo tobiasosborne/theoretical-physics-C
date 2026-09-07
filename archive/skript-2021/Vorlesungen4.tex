@@ -1,0 +1,189 @@
+%!TEX root = TheoretischePhysikC.tex
+
+\section{Vorlesung: Operatoren}
+
+\begin{definition}
+	Sei $\mathcal{H}$ einen Hilbertraum.
+	Der \emph{Einsoperator} $\mathbb{I}$ wird durch
+	\begin{equation}
+		\mathbb{I} |\psi\rangle = |\psi\rangle, \quad \forall |\psi\rangle\in\mathcal{H},
+	\end{equation}
+	gegeben. Im Fall, dass $\mathcal{H}$ endlich dimensional ist, wird $\mathbb{I}$ mit der Einheitsmatrix
+	\begin{equation}
+		\mathbb{I} \equiv \begin{pmatrix}
+			1 & 0 & 0 & \cdots & 0 \\
+			0 & 1 & 0 & \cdots & 0 \\
+			\vdots & \vdots &  & \ddots & \vdots \\
+			0 & 0 & 0 & \cdots & 1 
+		\end{pmatrix}
+	\end{equation}
+	dargestellt.
+\end{definition}
+
+Der zu $A$ \emph{adjungierte Operator} $A^\dag$ ist durch die Gleichung
+\begin{equation}
+	\langle A^\dag\Phi|\Psi\rangle = \langle \Phi|A\Psi\rangle, \quad \Phi,\Psi\in \mathcal{H},
+\end{equation}
+definiert. In der Matrizenrechnung mit reellen Einträgen entspricht die Bildung des adjungierten Operators dem Transponieren, bei komplexen Einträgen dem (komplex) Konjugieren und Transponieren der Ausgangsmatrix. Daher, im dem endlich-dimensionalen Fall wird die adjungierte Matrix wie folgt dargestellt:
+\begin{equation}
+	A^\dag = \begin{pmatrix}
+		a_{11} & a_{12} & \cdots & a_{1n} \\
+		a_{21} & a_{22} & \cdots & a_{2n} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		a_{n1} & a_{n2} & \cdots & a_{nn} 
+	\end{pmatrix}^\dag \equiv \begin{pmatrix}
+		a_{11}^* & a_{21}^* & \cdots & a_{n1}^* \\
+		a_{12}^* & a_{22}^* & \cdots & a_{n2}^* \\
+		\vdots & \vdots & \ddots & \vdots \\
+		a_{1n}^* & a_{2n}^* & \cdots & a_{nn}^* 
+	\end{pmatrix}.
+\end{equation}
+
+Die Rechenregeln für adjungierte Operatoren sind
+\begin{align}
+	(A+B)^\dag &= A^\dag + B^\dag,  & \quad & (zA)^\dag = z^* A^\dag \\
+	(AB)^\dag &= B^\dag A^\dag,  & \quad & (A^\dag)^\dag = A.
+\end{align}
+
+Mit Hilfe adjungierter Operatoren und Identitätsoperatoren können wir mehrere wichtige Klassen von Operatoren definieren. Ein Operator $A$ heißt
+\begin{enumerate}
+	\item \emph{hermitesch}, wenn $A^\dag = A$,
+	\item \emph{positiv}, wenn $\langle \psi|A\psi\rangle \ge 0$ für alle $\psi \in \mathcal{H}$,
+	\item \emph{Projektor}, wenn $A^2 = A^\dag = A$,
+	\item \emph{isometrisch}, wenn $A^\dag A = \mathbb{I}$,
+	\item \emph{unitär}, wenn $A^\dag A = AA^\dag = \mathbb{I}$ und
+	\item \emph{normal}, wenn $A^\dag A = AA^\dag$.
+\end{enumerate}
+Die hermiteschen Operatoren (Synonym: selbstadjugierte Operatoren) entsprechen den \emph{Observablen} der QM, da 
+\begin{equation}
+	\langle \psi|A\psi\rangle \in \mathbb{R}
+\end{equation}
+immer eine reelle Zahl ist. Positive Operatoren sind automatisch hermitesch. Operatoren der Form $A = B^\dag B$ sind automatisch positiv:
+\begin{equation}
+	\langle \psi|A\psi\rangle = \langle \psi|B^\dag B\psi\rangle = \langle B\psi| B\psi\rangle \ge 0.
+\end{equation}
+Da $P = P^\dag P$, sind Projektoren positiv. Isometrische Operatoren sind gerade die, die das Skalarprodukt und damit die Norm invariant lassen.
+
+Wenn man eine Basis $\{|\phi_x\}_{x\in X}$ fixiert hat, kann man jeden Operator $A$ durch seine \emph{Matrixelemente}
+\begin{equation}
+	[A]_{xy} \equiv \langle \phi_x|A\phi_y\rangle
+\end{equation}
+charakterisieren. Wegen der Linearität von A ist dann
+\begin{equation}\label{eq:completenessA}
+	A|\Psi\rangle = \sum_{x,y\in X} |\phi_x\rangle \langle \phi_x|A\phi_y\rangle \langle\phi_y|\Psi\rangle.
+\end{equation}
+Die Bildung des Adjungierten entspricht also der Abbildung 
+\begin{equation}
+	[A]_{xy} \mapsto [A]_{yx}^*,
+\end{equation}
+also Transposition mit Komplexkonjugation.
+
+Die Entwicklungsformel (\ref{eq:completenessA}) für A und viele ähnliche Ausdrücke lässt sich durch die Bra-Ket Notation etwas übersichtlicher schreiben. In vielen Büchern (und bisher) wird ein Hilbertraumvektor von vorne herein als Ket $|\Psi\rangle$ anstatt einfach $\Psi$ geschrieben. Es ist aber praktisch, hier einen subtilen Unterschied zu machen: Ab sofort ist 
+\begin{equation}
+	|\Psi\rangle: \mathbb{C}\rightarrow \mathcal{H}
+\end{equation}
+der lineare Operator $z\mapsto z\Psi$ zu interpretieren, wobei $\Psi\in \mathcal{H}$. Man rechnet nach, dass der adjungierte Operator dazu der ,,Bra``-Operator 
+\begin{equation}
+\langle\Psi| = (|\Psi\rangle)^\dag: \mathcal{H}\rightarrow \mathbb{C}
+\end{equation}
+mit 
+\begin{equation}
+\langle \Psi|\Phi \equiv \langle \Psi|\Phi\rangle, \quad \forall \Phi\in \mathcal{H}
+\end{equation}
+ist. Wenn wir ein Bra und ein Ket als solchen Operatoren multiplizieren, erhalten wir einen Operator von $\mathbb{C}$ nach $\mathbb{C}$, nämlich 
+\begin{equation}
+	z\mapsto \langle \Phi| |\Psi\rangle z = \langle \Phi|\Psi\rangle z. 
+\end{equation}
+Wenn wir in der Notation nun keinen Unterschied machen zwischen einem linearen Operator $\mathbb{C}\rightarrow \mathbb{C}$ und der Zahl, mit der er multipliziert, werden die Ausdrücke $\langle \Phi| |\Psi\rangle$ und $\langle \Phi|\Psi\rangle$ gleichbedeutend. 
+
+Häufig brauchen wir auch die Kombination \emph{Ket-Bra}, also
+den Operator
+\begin{equation}
+	|\Psi\rangle\langle \Phi|:\mathcal{H}\rightarrow \mathcal{H}
+\end{equation}
+mit 
+\begin{equation}
+	|\Psi\rangle\langle \Phi|\chi\rangle = \langle\Phi|\chi\rangle |\Psi\rangle, \quad \forall \Psi\in \mathcal{H}.
+\end{equation}
+
+Wir gehen in der Vereinfachung noch einen Schritt weiter: Sobald wir eine Basis $\{|\phi_x\rangle\,|\, x\in X\}$ fixiert haben, sie also aus dem Kontext klar ist, trägt das Symbol ,,$\phi$`` in den häufig vorkommenden $\langle 
+\phi_x|$ und $|\phi_x\rangle$ keine Information mehr. Wir lassen diesen Buchstaben also einfach weg, und schreiben dafür $\langle x|$ und $|x\rangle$. Damit werden die Entwicklungsformeln für Vektoren und für Operatoren in der Operatorgleichung
+\begin{equation}
+	\mathbb{I} = \sum_{x\in X} |x\rangle\langle x|
+\end{equation}
+zusammengefasst. Matrixelemente schreiben sich einfach als 
+\begin{equation}
+	[A]_{xy} \equiv \langle x|A|y\rangle.
+\end{equation}
+
+\begin{beispiel}
+	Angenommen, $\mathcal{H}\equiv \mathbb{C}^3$. Seien $A$, $B$ und $C$ die folgenden Operatoren
+	\begin{equation}
+		A \equiv \begin{pmatrix}
+			0 & 1 & 0 \\
+			1 & 0 & 1 \\
+			0 & 1 & 0
+		\end{pmatrix}, \quad B = \frac13\begin{pmatrix}
+			1 & 1 & 1 \\
+			1 & 1 & 1 \\
+			1 & 1 & 1
+		\end{pmatrix}\quad\text{und}\quad 
+		C = \begin{pmatrix}
+			0 & 1 & 0 \\
+			0 & 0 & i \\
+			-1 & 0 & 0
+		\end{pmatrix}.
+	\end{equation}
+	Die Matrizen $A$ und $B$ sind hermitesch, weil
+	\begin{equation}
+		A^\dag = A\quad \text{und}\quad B^\dag = B.
+	\end{equation}
+	Die Matrix $B$ is auch positiv, und bildet einen Projektor. Die Matrix $A$ ist \emph{nicht} positiv, weil
+	\begin{equation}
+		\langle \psi|A|\psi\rangle = 
+		\begin{pmatrix}
+			\frac12 & -\frac1{\sqrt2} & \frac12
+		\end{pmatrix}
+		\begin{pmatrix}
+			0 & 1 & 0 \\
+			1 & 0 & 1 \\
+			0 & 1 & 0
+		\end{pmatrix}
+		\begin{pmatrix}
+			\frac12 \\ -\frac1{\sqrt2} \\ \frac12
+		\end{pmatrix} = -\sqrt{2},
+	\end{equation}
+	wobei $|\psi\rangle$ den Vektor $\left(\begin{smallmatrix}
+			\frac12 \\ -\frac1{\sqrt2} \\ \frac12
+		\end{smallmatrix}\right)$ darstellt.
+	Die Matrix $C$ stellt einen Unitärmatrix dar, da
+	\begin{equation}
+		C^\dag C = \begin{pmatrix}
+			0 & 0 & -1 \\
+			1 & 0 & 0 \\
+			0 & -i & 0
+		\end{pmatrix}\begin{pmatrix}
+			0 & 1 & 0 \\
+			0 & 0 & i \\
+			-1 & 0 & 0
+		\end{pmatrix}
+		= 
+		\begin{pmatrix}
+			1 & 0 & 0 \\
+			0 & 1 & 0 \\
+			0 & 0 & 1
+		\end{pmatrix}.
+	\end{equation}
+	(Es gilt auch, dass $CC^\dag = \mathbb{I}$.)
+	Fixieren wir die Basis $|\phi_0\rangle \mapsto \left(\begin{smallmatrix}
+			1 \\ 0 \\ 0
+		\end{smallmatrix}\right)$, $|\phi_1\rangle \mapsto \left(\begin{smallmatrix}
+			0 \\ 1 \\ 0
+		\end{smallmatrix}\right)$ und $|\phi_2\rangle \mapsto \left(\begin{smallmatrix}
+			0 \\ 0 \\ 1
+		\end{smallmatrix}\right)$, können wir $A$ wie folgt darstellen:
+		\begin{equation}
+			C = |0\rangle\langle 1| + i|1\rangle\langle 2| - |2\rangle\langle 0|,
+		\end{equation}
+		wobei wir $|0\rangle$ für $|\phi_0\rangle$ schreiben, usw.
+\end{beispiel}
