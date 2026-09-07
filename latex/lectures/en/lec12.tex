@@ -1,0 +1,250 @@
+%!TEX root = TheoreticalPhysicsC.tex
+
+\section{Lecture: The Harmonic Oscillator}
+The energy of a \emph{classical} one-dimensional oscillator is given by
+\begin{equation}
+	E = \frac{1}{2m}p^2 + \frac{m\omega^2}{2}x^2,
+\end{equation}
+where $\omega$ is the frequency of the classical oscillator with the same
+potential.
+
+According to our quantisation table, the Hamiltonian of the quantum mechanical oscillator reads:
+\begin{equation}
+	\widehat{H} = \frac{1}{2m}\widehat{p}^2 + \frac{m\omega^2}{2}\widehat{x}^2.
+\end{equation}	
+
+
+The oscillator turns up in many contexts in physics: namely whenever one treats small motions about an equilibrium position approximately. A free quantum field can be analysed as a system of infinitely
+many oscillators. It is worth getting to know this system thoroughly, and for that reason we shall look at it from several points of view.
+
+Please do not picture a tiny little spring. As an \emph{effective} model of small displacements the oscillator is an approximation; for light quanta and for some optomechanical systems --- minute ``drums'' machined out of silicon --- it holds \emph{exactly}. Quantise the field of a resonator and you land precisely here: this system carries the whole of quantum optics.
+
+The most direct method of obtaining the spectrum rests on the observation that $H$ can (essentially) be written as the square of a complex linear combination of $\widehat{p}$ and $\widehat{x}$. We set
+\begin{equation}
+	\widehat{a} = \sqrt{\frac{m\omega}{2\hbar}}\widehat{x} + i \sqrt{\frac{1}{2m\omega\hbar}}\widehat{p},
+\end{equation}
+so that
+\begin{align}
+	\widehat{a} \widehat{a}^\dag &= \frac{m\omega}{2\hbar}\widehat{x}^2 + \frac{1}{2m\omega\hbar}\widehat{p}^2 + \frac{i}{2\hbar} (\widehat{p}\widehat{x} - \widehat{x}\widehat{p}) \\
+	\widehat{a}^\dag \widehat{a} &= \frac{m\omega}{2\hbar}\widehat{x}^2 + \frac{1}{2m\omega\hbar}\widehat{p}^2 - \frac{i}{2\hbar} (\widehat{p}\widehat{x} - \widehat{x}\widehat{p}).
+\end{align}
+Two warnings. First, it is by no means obvious that one should write down such a thing: the definition of $\widehat{a}$ comes out of nowhere and justifies itself solely through the identities that follow in a moment. Second, $\widehat{a}$ is not self-adjoint, and so is \emph{not an observable} --- no detector measures it; it is merely an aid to diagonalisation.
+
+Using the canonical commutation relations $[\widehat{p},\widehat{x}] = -i\hbar\mathbb{I}$ we thus have
+\begin{equation}\label{eq:ccra}
+	\eqbox{ [\widehat{a}, \widehat{a}^\dag] = \mathbb{I}}
+\end{equation}
+and
+\begin{equation}\label{eq:qho}
+	\eqbox{\widehat{H} = \hbar \omega \left(\widehat{a}^\dag \widehat{a} + \tfrac{1}{2}\mathbb{I}\right).}
+\end{equation}
+The gain lies in the shape: an operator is positive exactly when it can be written as $\widehat{M}^\dag\widehat{M}$ --- and that is precisely what stands there explicitly in (\ref{eq:qho}), whereas in the original form it stays hidden.
+
+To begin with, it is clear from this form of $H$ that $H \ge \hbar\omega/2 \mathbb{I}$. The oscillator is
+therefore never ``at rest'': because of the uncertainty relation, $x=0$ and $p = 0$ cannot both be prepared to arbitrary accuracy. 
+
+Is the ``zero-point energy'' $\hbar \omega/2$ itself an eigenvalue? The corresponding eigenvector $|\phi_0\rangle$ would have to satisfy the equation 
+\begin{equation}
+	\widehat{a}^\dag \widehat{a}|\phi_0\rangle = 0,
+\end{equation}
+that is, $\|\widehat{a}|\phi_0\rangle\|=0$, and hence $\widehat{a}|\phi_0\rangle = 0$. In the position representation this
+is the ordinary differential equation $\langle x|\widehat{a}|\phi_0\rangle = 0$:
+\begin{equation}
+	\sqrt{\frac{m\omega}{2\hbar}}x\phi_0(x) + i\sqrt{\frac{1}{2m\omega\hbar}} \frac{\hbar}{i}\frac{d}{dx} \phi_0(x) = 0,
+\end{equation}
+that is, 
+\begin{equation}
+	\frac{d\phi_0}{dx}  = -\frac{m\omega}{\hbar} x\phi_0,
+\end{equation}
+with the solution
+\begin{equation}
+	\phi_0(x) = Ne^{-\frac{m\omega}{\hbar} \frac{x^2}{2}},
+\end{equation}
+where $N$ is the normalisation 
+\begin{equation}
+	N = \left(\frac{m\omega}{\pi\hbar}\right)^{\frac{1}{4}}
+\end{equation}
+
+Now one sees what all the effort was good for: by way of $\widehat{a}|\phi_0\rangle = 0$, a differential equation of \emph{second} order has become one of \emph{first} order. Until it is normalised, $\phi_0$ is only a function; it becomes a \emph{state} only through $\|\phi_0\| = 1$.
+
+In deriving the uncertainty relation we used, exactly as here, the \emph{positivity} of the operator $\widehat{a}^\dag \widehat{a}$. There too the case of equality leads to the condition $\widehat{a}|\Psi\rangle = 0$. The ground state of the oscillator is therefore precisely a state of minimal uncertainty.
+
+\begin{greybox}[Product rule for commutators]
+In the next step a rule comes into play that you may not yet know. For arbitrary operators $\widehat{A}, \widehat{B}, \widehat{C}$ one has
+\begin{equation}\label{eq:leibnizkomm}
+	[\widehat{A}\widehat{B},\widehat{C}] = \widehat{A}[\widehat{B},\widehat{C}] + [\widehat{A},\widehat{C}]\widehat{B}
+	\qquad \text{and} \qquad
+	[\widehat{A},\widehat{B}\widehat{C}] = [\widehat{A},\widehat{B}]\widehat{C} + \widehat{B}[\widehat{A},\widehat{C}].
+\end{equation}
+The first identity is checked in a single line by adding and subtracting $\widehat{A}\widehat{C}\widehat{B}$:
+\begin{equation}
+	[\widehat{A}\widehat{B},\widehat{C}] = \widehat{A}\widehat{B}\widehat{C} - \widehat{C}\widehat{A}\widehat{B}
+	= \widehat{A}\widehat{B}\widehat{C} - \widehat{A}\widehat{C}\widehat{B} + \widehat{A}\widehat{C}\widehat{B} - \widehat{C}\widehat{A}\widehat{B}
+	= \widehat{A}[\widehat{B},\widehat{C}] + [\widehat{A},\widehat{C}]\widehat{B}.
+\end{equation}
+The proof of the second we leave to you. The commutator thus acts like a derivative --- only one has to keep an eye on the ordering.
+\end{greybox}
+
+For the calculation that follows we need the relations
+\begin{align}
+	[\widehat{H},\widehat{a}^\dag] &= \hbar \omega \widehat{a}^\dag \\
+	[\widehat{H},\widehat{a}] &= -\hbar \omega \widehat{a}, 
+\end{align}
+which follow from (\ref{eq:ccra}) and (\ref{eq:qho}). The summand $\tfrac{1}{2}\hbar\omega\mathbb{I}$ in $\widehat{H}$ commutes with everything and drops out; with (\ref{eq:leibnizkomm}) there remains
+\begin{equation}
+	[\widehat{H},\widehat{a}^\dag] = \hbar\omega[\widehat{a}^\dag\widehat{a},\widehat{a}^\dag]
+	= \hbar\omega\left(\widehat{a}^\dag[\widehat{a},\widehat{a}^\dag] + [\widehat{a}^\dag,\widehat{a}^\dag]\widehat{a}\right)
+	= \hbar\omega \widehat{a}^\dag,
+\end{equation}
+and the second relation goes in just the same way.
+
+If now $\widehat{H}|\Psi\rangle = E|\Psi\rangle$ is an eigenvector, then 
+\begin{equation}
+	\widehat{H}\widehat{a}^\dag|\Psi\rangle = (E  + \hbar \omega)\widehat{a}^\dag|\Psi\rangle
+\end{equation}
+So $\widehat{a}^\dag|\Psi\rangle$ satisfies the eigenvalue equation with eigenvalue $E + \hbar \omega$. One checks this by adding and subtracting $\widehat{a}^\dag\widehat{H}|\Psi\rangle$ --- a trick used again and again, for in this way a familiar commutator appears. Because 
+\begin{equation}
+	\|\widehat{a}^\dag|\Psi\rangle\|^2 = \langle \Psi|\widehat{a}\widehat{a}^\dag|\Psi\rangle = \langle \Psi|\widehat{a}^\dag\widehat{a}+\mathbb{I}|\Psi\rangle \ge \langle \Psi|\Psi\rangle \ge 0
+\end{equation}
+the vector $\widehat{a}^\dag|\Psi\rangle$ cannot be zero either: we really do
+obtain a new eigenvector. Starting from $|\phi_0\rangle$ we obtain in this way the
+eigenvectors 
+\begin{equation}\label{eq:qhoeigenstates}
+	\eqbox{|\phi_n\rangle = \frac{(\widehat{a}^\dag)^n|\phi_0\rangle}{\|(\widehat{a}^\dag)^n|\phi_0\rangle \|}}
+\end{equation}
+and eigenvalues
+\begin{equation}
+	\eqbox{E_n = \hbar\omega(n+\tfrac{1}{2}).}
+\end{equation}
+
+It is because of this procedure, incidentally, that the operators $\widehat{a}$ and $\widehat{a}^\dag$ are also called \emph{ladder operators}, or ``lowering operator'' and ``raising operator'' respectively. We use the lowering operator $\widehat{a}$ to show that there are no further eigenvalues either. For if $|\Psi\rangle$ is an eigenvector with eigenvalue $E$, then $(\widehat{a})^n|\Psi\rangle$ satisfies the eigenvalue equation with eigenvalue $E - n\hbar \omega$. For large enough $n$ this expression becomes negative, and so cannot be an eigenvalue of the positive operator
+$H$. For large $n$ we must therefore have $(\widehat{a})^n|\Psi\rangle=0$. Let $n$ be the smallest number for which this holds. Then $|\Phi\rangle = (\widehat{a})^{n-1}|\Psi\rangle$ is a non-zero solution
+of the equation $\widehat{a}|\Phi\rangle = 0$, and hence, by our calculation above, proportional to $|\phi_0\rangle$. By the commutation relation for $\widehat{a}$ and $\widehat{a}^\dag$, $|\Psi\rangle$ is then a multiple of
+$(\widehat{a}^\dag)^n|\Phi_0\rangle$. The complete list of eigenfunctions given here is therefore a basis of the Hilbert space.
+
+The denominator in (\ref{eq:qhoeigenstates}) is not a blemish: $\widehat{a}^\dag|\Psi\rangle$ is indeed an eigenvector again, but it is not normalised; only the division by the norm turns it into a state. Do not expect, by the way, that the procedure carries over in general --- essentially it works only here. The ladder operators made their real career under different names, as \emph{creation} and \emph{annihilation operators} in many-body theory.
+
+The norm $\|(\widehat{a}^\dag)^n|\Phi_0\rangle\|$ can likewise be computed from the commutation relation
+alone. We have
+\begin{equation}
+	\|\widehat{a}^\dag|\phi_n\rangle\|^2 = \langle\phi_n|\widehat{a}\widehat{a}^\dag|\phi_n\rangle =  \langle\phi_n|\left(\frac{1}{\hbar\omega}\widehat{H}+\frac12\mathbb{I}\right)|\phi_n\rangle=(n+1)\|\phi_n\|^2 = (n+1).
+\end{equation}
+Hence 
+\begin{equation}
+	\widehat{a}^\dag|\phi_n\rangle = \sqrt{n+1}|\phi_{n+1}\rangle,
+\end{equation}
+and (by induction)
+\begin{equation}
+	|\phi_n\rangle = \frac{1}{\sqrt{n!}}(\widehat{a}^\dag)^n|\Phi_0\rangle.
+\end{equation}
+
+Since the $|\phi_n\rangle$ form a basis of the Hilbert space, every operator can be expressed in terms of its matrix elements with respect to this basis. This is worth doing whenever time-dependent quantities are to be studied, since the time evolution operators are then multiplication operators. We obtain
+(with the matrix notation $[\widehat{C}]_{nm} = \langle\phi_n|\widehat{C}|\phi_m\rangle$)
+\begin{equation}
+	[\widehat{a}^\dag]_{nm} = \sqrt{n}\delta_{n,m+1} \quad \text{and} \quad [\widehat{a}]_{nm} = \sqrt{m}\delta_{n+1,m}.
+\end{equation}
+With 
+\begin{equation}
+	\widehat{p} = \frac{\sqrt{2m\omega\hbar}}{2i}(\widehat{a}-\widehat{a}^\dag) 
+\end{equation}
+one obtains at once the matrix for $\widehat{p}$, and correspondingly the matrix for $\widehat{x}$. Written out in full, they are:
+\begin{equation}
+	\widehat{p} = \frac{\sqrt{2m\omega\hbar}}{2i}
+	\begin{pmatrix}
+		0 & \sqrt{1} & 0 & 0 & 0 & 0 & \hdots \\
+		-\sqrt{1} & 0 & \sqrt{2} & 0 & 0 & 0 & \\
+		0 & -\sqrt{2} & 0 & \sqrt{3} & 0 & 0 & \\
+		0 & 0 & -\sqrt{3} & 0 & \sqrt{4} & 0 & \\
+		0 & 0 & 0 & -\sqrt{4} & 0 & \sqrt{5} & \\
+		0 & 0 & 0 & 0 & -\sqrt{5} & 0 & \\
+		\vdots & & & & & & \ddots \\
+	\end{pmatrix}
+\end{equation}
+and
+\begin{equation}
+	\widehat{x} = \sqrt{\frac{\hbar}{2m\omega}}
+	\begin{pmatrix}
+		0 & \sqrt{1} & 0 & 0 & 0 & 0 & \hdots \\
+		\sqrt{1} & 0 & \sqrt{2} & 0 & 0 & 0 & \\
+		0 & \sqrt{2} & 0 & \sqrt{3} & 0 & 0 & \\
+		0 & 0 & \sqrt{3} & 0 & \sqrt{4} & 0 & \\
+		0 & 0 & 0 & \sqrt{4} & 0 & \sqrt{5} & \\
+		0 & 0 & 0 & 0 & \sqrt{5} & 0 & \\
+		\vdots & & & & & & \ddots \\
+	\end{pmatrix}.
+\end{equation}
+
+An important advantage of the \emph{algebraic method} of the ladder operators mentioned above is
+that the results are immediately available in every representation of the Hilbert space. For example, formula (\ref{eq:qhoeigenstates}) delivers the wave functions/eigenfunctions $\phi_n(x) \in L^2(\mathbb{R})$ in the position representation as soon as $\widehat{a}$ is written out explicitly in that representation. By induction one sees that 
+\begin{equation}
+	\phi_n(x) = c_n \mathrm{H}_n(\lambda x)  e^{-\frac{\lambda^2 x^2}{2}}
+\end{equation}
+with
+\begin{equation}
+	\lambda = \sqrt{\frac{m\omega}{\hbar}}\quad \text{and} \quad c_n = \sqrt{\frac{\lambda}{2^n n!\sqrt{\pi}}},
+\end{equation}
+where
+$\mathrm{H}_n(\lambda x)$ are the so-called \emph{Hermite polynomials}. The first $3$ Hermite polynomials
+read
+\begin{align}
+	\mathrm{H}_0(z) &= 1,\\
+	\mathrm{H}_1(z) &= 2z,\\
+	\mathrm{H}_2(z) &= 4z^2-2,
+\end{align}
+and so on.
+
+\input{figures/fig_vl12_leiter}
+
+On the left, each grey level line ends where the parabola cuts it: at the
+classical turning point, beyond which $\phi_n$ nevertheless still reaches into
+the hatched region. On the right the same levels as a ladder ---
+equally spaced, and breaking off at the bottom.
+
+Before we come to the time evolution, a warning.
+
+\begin{merksatz}[Take care when exponentiating operators]
+For operators, $e^{\widehat{A}+\widehat{B}} = e^{\widehat{A}}e^{\widehat{B}}$ holds \emph{only} when $[\widehat{A},\widehat{B}] = 0$.
+\end{merksatz}
+
+It is easy to see where this fails: already the quadratic term no longer agrees, since
+\begin{equation}
+	(\widehat{A}+\widehat{B})^2 = \widehat{A}^2 + \widehat{A}\widehat{B} + \widehat{B}\widehat{A} + \widehat{B}^2
+	\neq \widehat{A}^2 + 2\widehat{A}\widehat{B} + \widehat{B}^2.
+\end{equation}
+If, on the other hand, the two commute, then they behave like numbers and the series agree term by term. For the oscillator we are allowed to do so: with $\widehat{P}_n = |\phi_n\rangle\langle\phi_n|$ we have $\widehat{H} = \sum_n E_n\widehat{P}_n$, and for $n \neq m$
+\begin{equation}
+	[\widehat{P}_n,\widehat{P}_m] = |\phi_n\rangle\langle\phi_n|\phi_m\rangle\langle\phi_m|
+	- |\phi_m\rangle\langle\phi_m|\phi_n\rangle\langle\phi_n| = 0
+\end{equation}
+because of the orthonormality $\langle\phi_n|\phi_m\rangle = \delta_{nm}$. That is exactly what justifies writing $U_t$ down term by term.
+
+With the diagonalisation of the Hamiltonian we have of course also gained detailed information about the time evolution of the oscillator. Like the classical oscillator, the quantum mechanical one is periodic with period $T = 2\pi/\omega$. This follows from the list of eigenvalues alone: by the functional calculus the eigenvalues of the time evolution operator $U_T = e^{-\frac{iT}{\hbar} \widehat{H}}$ are
+\begin{equation}
+	e^{-\frac{iT}{\hbar} \hbar\omega(n+\frac12)} = e^{-2\pi i (n+\frac12)} = -1,
+\end{equation}
+so independent of $n$, and $U_T = -\mathbb{I}$ is a multiple of the identity operator $\mathbb{I}$.
+
+Thus for the time dependence of all expectation values, that is, by Postulate 5, for the functions of the form $f(t) = \tr(U_t \rho U_t^\dag A)$:
+\begin{equation}
+	f(t+T) = \tr(U_tU_T \rho U_T^\dag U_t^\dag A) =f(t).
+\end{equation}	
+The minus sign in $U_T = -\mathbb{I}$ does no harm: in $\rho_T = U_T\rho_0U_T^\dag$ the signs cancel, the global phase drops out of its own accord --- an advantage of the density matrix formalism. Nothing at all was assumed about the initial state.
+
+The analogy with the classical evolution goes much further still. The simplest way to see this here is to compute the time dependence of the ladder operator $\widehat{a}$. We have 
+\begin{equation}
+	\frac{d}{dt} U_t^\dag \widehat{a} U_t = U_t^\dag \left(\frac{i}{\hbar} [\widehat{H},\widehat{a}] \right) U_t = -i\omega U_t^\dag \widehat{a} U_t
+\end{equation}
+hence
+\begin{equation}
+	U_t^\dag \widehat{a} U_t = e^{-i\omega t}\widehat{a}.
+\end{equation}
+Along the way one finds that the quantum mechanical position and momentum operators follow exactly the classical equations of motion:
+\begin{equation}
+	\begin{split}
+		\widehat{p}(t) &= U_t^\dag \widehat{p} U_t  = \cos(\omega t) \widehat{p}  - m\omega\sin(\omega t) \widehat{x} \\
+		\widehat{x}(t) &= U_t^\dag \widehat{x} U_t  = \frac{1}{m\omega}\sin(\omega t) \widehat{p}  + \cos(\omega t) \widehat{x}
+	\end{split}
+\end{equation}
+
+We are working here in the \emph{Heisenberg picture}: it is not the states that move but the measurements, and $U_t^\dag \widehat{A} U_t$ is ``the same measurement, $t$ seconds later''. With that the oscillator is finished --- there are whole books about this one system.
+

@@ -1,0 +1,207 @@
+%!TEX root = TheoreticalPhysicsC.tex
+
+\section{Lecture: Operators}
+
+The vectors of the Hilbert space describe the states of a system, the operators its observables; and whoever has states and observables has a physical theory. That is what this chapter is driving at, and it begins with two operators that are trivial, but indispensable as building blocks.
+
+\begin{definition}
+	Let $\mathcal{H}$ be a Hilbert space.
+	The \emph{identity operator} $\mathbb{I}$ is given by
+	\begin{equation}
+		\mathbb{I} |\psi\rangle = |\psi\rangle, \quad \forall |\psi\rangle\in\mathcal{H},
+	\end{equation}
+	and in the case that $\mathcal{H}$ is finite-dimensional, $\mathbb{I}$ is represented by the matrix
+	\begin{equation}
+		\mathbb{I} \equiv \begin{pmatrix}
+			1 & 0 & 0 & \cdots & 0 \\
+			0 & 1 & 0 & \cdots & 0 \\
+			\vdots & \vdots &  & \ddots & \vdots \\
+			0 & 0 & 0 & \cdots & 1 
+		\end{pmatrix}
+	\end{equation}
+	known as the identity matrix.
+\end{definition}
+
+Just as useful is the \emph{zero operator} $\widehat{0}$,
+\begin{equation}
+	\widehat{0}\,|\psi\rangle = 0, \quad \forall |\psi\rangle\in\mathcal{H},
+\end{equation}
+in the finite-dimensional case, the matrix all of whose entries are zero. Here, though, a problem of notation arises: looking at a zero written down, you cannot tell whether an operator, a number or a vector is meant. We therefore agree on the following:
+
+\begin{merksatz}[Notation]
+	A \emph{hat} always means an operator, $\widehat{A}$; the \emph{bar} of the ket notation a vector, $|\psi\rangle$; a symbol without any adornment a number.
+\end{merksatz}
+
+The operator \emph{adjoint} to $A$ is the operator $A^\dag$ for which the equation
+\begin{equation}
+	\langle A^\dag\Phi|\Psi\rangle = \langle \Phi|A\Psi\rangle, \quad \Phi,\Psi\in \mathcal{H},
+\end{equation}
+holds. This equation really is a definition: it pins $A^\dag$ down not by a recipe for computing it, but by its behaviour under the inner product. For matrices with real entries, forming the adjoint operator corresponds to transposition; for complex entries, to (complex) conjugation together with transposition of the original matrix. Hence, in the finite-dimensional case, the adjoint matrix is represented as follows:
+\begin{equation}
+	A^\dag = \begin{pmatrix}
+		a_{11} & a_{12} & \cdots & a_{1n} \\
+		a_{21} & a_{22} & \cdots & a_{2n} \\
+		\vdots & \vdots & \ddots & \vdots \\
+		a_{n1} & a_{n2} & \cdots & a_{nn} 
+	\end{pmatrix}^\dag \equiv \begin{pmatrix}
+		a_{11}^* & a_{21}^* & \cdots & a_{n1}^* \\
+		a_{12}^* & a_{22}^* & \cdots & a_{n2}^* \\
+		\vdots & \vdots & \ddots & \vdots \\
+		a_{1n}^* & a_{2n}^* & \cdots & a_{nn}^* 
+	\end{pmatrix}.
+\end{equation}
+
+The rules for calculating with adjoint operators are
+\begin{align}
+	(A+B)^\dag &= A^\dag + B^\dag,  & \quad & (zA)^\dag = z^* A^\dag \\
+	(AB)^\dag &= B^\dag A^\dag,  & \quad & (A^\dag)^\dag = A.
+\end{align}
+
+With the help of adjoint operators and identity operators we can define several important classes of operators. An operator $A$ is called
+\begin{enumerate}
+	\item \emph{Hermitian}, if $A^\dag = A$,
+	\item \emph{positive}, if $\langle \psi|A\psi\rangle \ge 0$ for all $\psi \in \mathcal{H}$,
+	\item a \emph{projector}, if $A^2 = A^\dag = A$,
+	\item \emph{isometric}, if $A^\dag A = \mathbb{I}$,
+	\item \emph{unitary}, if $A^\dag A = AA^\dag = \mathbb{I}$ and
+	\item \emph{normal}, if $A^\dag A = AA^\dag$.
+\end{enumerate}
+Each of these classes has a very specific physical role: the Hermitian operators describe the observables, the positive ones the states, the projectors the measurements with the two outcomes zero and one (event or no event), the isometric and unitary ones the dynamics; the normal operators form the superclass that comprises the Hermitian and positive operators, the projectors and the unitary operators --- isometric ones are automatically normal only in the finite-dimensional case.
+The Hermitian operators (synonym: self-adjoint operators) correspond to the \emph{observables} of QM, since 
+\begin{equation}
+	\langle \psi|A\psi\rangle \in \mathbb{R}
+\end{equation}
+is always a real number. Positive operators are automatically Hermitian. Operators of the form $A = B^\dag B$ are automatically positive:
+\begin{equation}
+	\langle \psi|A\psi\rangle = \langle \psi|B^\dag B\psi\rangle = \langle B\psi| B\psi\rangle \ge 0.
+\end{equation}
+Strictly speaking, our way of talking is sloppy: the condition admits the value zero, so such an operator ought to be called \emph{non-negative}; \emph{positive} would be the strict inequality.
+Since $P = P^\dag P$, projectors are positive. The isometric operators are precisely those that leave the inner product, and with it the norm, invariant.
+
+Once a basis $\{|\phi_x\}_{x\in X}$ has been fixed, every operator $A$ can be characterised by the numbers
+\begin{equation}
+	[A]_{xy} \equiv \langle \phi_x|A\phi_y\rangle
+\end{equation}
+known as its \emph{matrix elements}. Because of the linearity of A we then have
+\begin{equation}\label{eq:completenessA}
+	A|\Psi\rangle = \sum_{x,y\in X} |\phi_x\rangle \langle \phi_x|A\phi_y\rangle \langle\phi_y|\Psi\rangle.
+\end{equation}
+This formula comes about by inserting the expansion formula twice; the sums over $x$ and $y$ therefore run independently. Note that nowhere in it does a matrix appear, only basis vectors and numbers: that is exactly why it carries over to the infinite-dimensional case as well.
+Taking the adjoint thus corresponds to the map
+\begin{equation}
+	[A]_{xy} \mapsto [A]_{yx}^*,
+\end{equation}
+that is, transposition together with complex conjugation.
+
+The expansion formula (\ref{eq:completenessA}) for A, and many similar expressions, can be written somewhat more clearly in the bra-ket notation. In many books (and up to now here) a Hilbert-space vector is written as a ket $|\Psi\rangle$ from the outset instead of simply as $\Psi$. It is convenient, though, to draw a subtle distinction at this point: from now on 
+\begin{equation}
+	|\Psi\rangle: \mathbb{C}\rightarrow \mathcal{H}
+\end{equation}
+is to be interpreted as the linear operator $z\mapsto z\Psi$, where $\Psi\in \mathcal{H}$. One checks that the operator adjoint to it is the ``bra'' operator 
+\begin{equation}
+\langle\Psi| = (|\Psi\rangle)^\dag: \mathcal{H}\rightarrow \mathbb{C}
+\end{equation}
+for which
+\begin{equation}
+\langle \Psi|\Phi \equiv \langle \Psi|\Phi\rangle, \quad \forall \Phi\in \mathcal{H}
+\end{equation}
+holds. If we multiply a bra and a ket together as operators of this kind, we obtain an operator from $\mathbb{C}$ to $\mathbb{C}$, namely 
+\begin{equation}
+	z\mapsto \langle \Phi| |\Psi\rangle z = \langle \Phi|\Psi\rangle z. 
+\end{equation}
+If we now make no notational distinction between a linear operator $\mathbb{C}\rightarrow \mathbb{C}$ and the number by which it multiplies, the expressions $\langle \Phi| |\Psi\rangle$ and $\langle \Phi|\Psi\rangle$ come to mean the same thing. 
+
+We also often need the \emph{ket-bra} combination, that is,
+the operator
+\begin{equation}
+	|\Psi\rangle\langle \Phi|:\mathcal{H}\rightarrow \mathcal{H}
+\end{equation}
+with 
+\begin{equation}
+	|\Psi\rangle\langle \Phi|\chi\rangle = \langle\Phi|\chi\rangle |\Psi\rangle, \quad \forall \Psi\in \mathcal{H}.
+\end{equation}
+
+Let us take the simplification one step further: as soon as we have fixed a basis $\{|\phi_x\rangle\,|\, x\in X\}$, so that it is clear from the context, the symbol ``$\phi$'' in the frequently occurring $\langle 
+\phi_x|$ and $|\phi_x\rangle$ no longer carries any information. So we simply drop that letter and write $\langle x|$ and $|x\rangle$ instead. The expansion formulae for vectors and for operators are thereby summarised in the operator equation
+\begin{equation}
+	\mathbb{I} = \sum_{x\in X} |x\rangle\langle x|
+\end{equation}
+which is one of the most useful equations in quantum mechanics: physically it says no more than that one equals one, but you are allowed to slip this complicated one into a calculation at any point you like. Matrix elements are then written simply as
+\begin{equation}
+	[A]_{xy} \equiv \langle x|A|y\rangle.
+\end{equation}
+
+\begin{example}
+	Suppose $\mathcal{H}\equiv \mathbb{C}^3$. Let $A$, $B$ and $C$ be the following operators
+	\begin{equation}
+		A \equiv \begin{pmatrix}
+			0 & 1 & 0 \\
+			1 & 0 & 1 \\
+			0 & 1 & 0
+		\end{pmatrix}, \quad B = \frac13\begin{pmatrix}
+			1 & 1 & 1 \\
+			1 & 1 & 1 \\
+			1 & 1 & 1
+		\end{pmatrix}\quad\text{and}\quad 
+		C = \begin{pmatrix}
+			0 & 1 & 0 \\
+			0 & 0 & i \\
+			-1 & 0 & 0
+		\end{pmatrix}.
+	\end{equation}
+	The matrices $A$ and $B$ are Hermitian, because
+	\begin{equation}
+		A^\dag = A\quad \text{and}\quad B^\dag = B.
+	\end{equation}
+	The matrix $B$ is also positive and forms a projector. Projectors describe measurements; this one serves as a model for measurements of the photon number in optical-fibre networks. The matrix $A$ is \emph{not} positive, because
+	\begin{equation}
+		\langle \psi|A|\psi\rangle = 
+		\begin{pmatrix}
+			\frac12 & -\frac1{\sqrt2} & \frac12
+		\end{pmatrix}
+		\begin{pmatrix}
+			0 & 1 & 0 \\
+			1 & 0 & 1 \\
+			0 & 1 & 0
+		\end{pmatrix}
+		\begin{pmatrix}
+			\frac12 \\ -\frac1{\sqrt2} \\ \frac12
+		\end{pmatrix} = -\sqrt{2},
+	\end{equation}
+	where $|\psi\rangle$ stands for the vector $\left(\begin{smallmatrix}
+			\frac12 \\ -\frac1{\sqrt2} \\ \frac12
+		\end{smallmatrix}\right)$.
+	The matrix $C$ is unitary, since
+	\begin{equation}
+		C^\dag C = \begin{pmatrix}
+			0 & 0 & -1 \\
+			1 & 0 & 0 \\
+			0 & -i & 0
+		\end{pmatrix}\begin{pmatrix}
+			0 & 1 & 0 \\
+			0 & 0 & i \\
+			-1 & 0 & 0
+		\end{pmatrix}
+		= 
+		\begin{pmatrix}
+			1 & 0 & 0 \\
+			0 & 1 & 0 \\
+			0 & 0 & 1
+		\end{pmatrix}.
+	\end{equation}
+	(It also holds that $CC^\dag = \mathbb{I}$.)
+	If we fix the basis $|\phi_0\rangle \mapsto \left(\begin{smallmatrix}
+			1 \\ 0 \\ 0
+		\end{smallmatrix}\right)$, $|\phi_1\rangle \mapsto \left(\begin{smallmatrix}
+			0 \\ 1 \\ 0
+		\end{smallmatrix}\right)$ and $|\phi_2\rangle \mapsto \left(\begin{smallmatrix}
+			0 \\ 0 \\ 1
+		\end{smallmatrix}\right)$, we can write $A$ as follows:
+		\begin{equation}
+			C = |0\rangle\langle 1| + i|1\rangle\langle 2| - |2\rangle\langle 0|,
+		\end{equation}
+		where we write $|0\rangle$ for $|\phi_0\rangle$, and so on.
+\end{example}
+\input{figures/fig_vl04_spektren}
+
+What the three calculations have in common only becomes visible once you plot the eigenvalues: for normal operators the defining equation passes verbatim to every eigenvalue --- $A^\dag = A$ becomes $\lambda^* = \lambda$, and $A^\dag A = \mathbb{I}$ becomes $|\lambda| = 1$. Part (a) records the loci in the complex plane that arise in this way, part (b) marks the spectra of $A$, $B$ and $C$ on them. In (b), $-\sqrt{2}$ lies to the left of zero --- and that is precisely where the positivity of $A$ fails.

@@ -1,0 +1,56 @@
+%!TEX root = TheoreticalPhysicsC.tex
+
+\section{Lecture: Temperature}
+Consider two systems $1$ and $2$ in contact, so that energy, but no particles, can be exchanged. The total system is isolated. The total energy is $E$. The probability of finding system $1$ at energy $E_1$ is given by
+\begin{equation}\label{eq:probenergy}
+	w(E_1) \propto N_{E_1}^{(1)}N_{E-E_1}^{(2)}
+\end{equation}
+Here $N_{E}^{(1)}$ and $N_{E}^{(2)}$ are to be regarded as functions of $E_1$. 
+
+The reason lies in the total system: by (\ref{eq:H-tensor}) its Hamiltonian is the sum $\widehat{H} = \widehat{H}_1\otimes \mathbb{I} + \mathbb{I}\otimes \widehat{H}_2$, and energies add:
+\begin{equation}
+	\widehat{H}\left(|E_j\rangle\otimes |E_k\rangle\right) = (E_j+E_k)\,|E_j\rangle\otimes |E_k\rangle.
+\end{equation}
+Only the sum $E_j+E_k$ is fixed; what we are after is how it is divided up. At fixed $E_1$ each subsystem is microcanonical, and the total ensemble is the product of the two,
+\begin{equation}
+	\rho = \rho_1\otimes \rho_2, \qquad p_{jk} = \frac{1}{N_{E_1}^{(1)}}\cdot\frac{1}{N_{E-E_1}^{(2)}},
+\end{equation}
+and counting the states yields $w(E_1)$.
+
+The maximum of the probability is found with the help of the derivative:
+\begin{equation}
+	\frac{d}{dE_1} w(E_1) = 0.
+\end{equation}
+Inserting (\ref{eq:probenergy}) we obtain
+\begin{equation}
+	N_{E-E_1}^{(2)}\left(\frac{d}{dE_1}N_{E_1}^{(1)}\right) - N_{E_1}^{(1)}\left(\frac{d}{d(E-E_1)}N_{E-E_1}^{(2)}\right) = 0.
+\end{equation}
+Rearranged:
+\begin{equation}
+	\frac{1}{N_{E_1}^{(1)}}\frac{d}{dE_1}N_{E_1}^{(1)} =  \frac{1}{N_{E-E_1}^{(2)}}\frac{d}{d(E-E_1)}N_{E-E_1}^{(2)}.
+\end{equation}
+It is no accident that logarithmic derivatives appear here: under tensor products the entropy is additive,
+\begin{equation}
+	S(\rho_1\otimes \rho_2) = S(\rho_1)+S(\rho_2).
+\end{equation}
+With 
+\begin{equation}
+	S_1(E_1) = k\log(N_{E_1}^{(1)})\quad \text{and} \quad S_2(E-E_1) = k\log(N_{E-E_1}^{(2)})
+\end{equation}
+this relation will take the following form
+\begin{equation}
+	\frac{dS_1(E_1)}{dE_1} = \frac{dS_2(E_2)}{dE_2}\bigg|_{E_2 = E-E_1}.
+\end{equation}
+The \emph{temperature}\footnote{It is really the \emph{inverse} temperature that is being defined here; that is how things have gone in physics.} $T$ is therefore defined by 
+\begin{equation}
+	\frac{1}{T} = \frac{\partial S(E)}{\partial E}
+\end{equation}
+According to this definition thermal equilibrium between systems $1$ and $2$ turns out to mean that the temperatures are equal.
+
+\input{figures/fig_vl21_kontakt}
+
+The figure shows the maximum as an equality of slopes: $S_1$ rises exactly as fast as $S_2$ falls. It does not lie at $E_1=E/2$, and it becomes extremely sharp as the system grows.
+
+\begin{merksatz}
+	In equilibrium the temperatures equalise, not the energies -- derived, not assumed.
+\end{merksatz}

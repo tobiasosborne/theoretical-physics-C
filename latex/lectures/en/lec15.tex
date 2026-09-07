@@ -1,0 +1,94 @@
+%!TEX root = TheoreticalPhysicsC.tex
+
+\section{Lecture: Central Potentials}
+Consider a spherically symmetric potential in three dimensions:
+\begin{equation}
+	V(\mathbf{r}) = V(r) \quad\text{with $r = |\mathbf{r}|$.}
+\end{equation}
+The aim is to solve the kinematics and the dynamics of a particle moving in this potential. The Schrödinger equation makes that concrete: we have to solve
+\begin{equation}
+	\widehat{H}|\Psi\rangle = E|\Psi\rangle
+\end{equation}
+This eigenvector equation supplies us with the eigenvalues and eigenvectors of $\widehat{H}$, which one can use to compute the unitary operator $U_t$. Eigenvalues here are more than a computational device: measured against the atomic excitation energies, room temperature is tiny, so the electron almost always sits in the ground state.
+
+\subsection{Separation of Variables}
+The position basis $x,y,z$ would not be wrong, only badly chosen: one aligns the representation with the symmetry.
+
+The matrix elements of the momentum operator in spherical coordinates read $\forall |\Psi\rangle \in \mathcal{H}$:
+\begin{equation}
+	\begin{split}
+		\langle r,\theta,\phi|\frac{\widehat{\mathbf{p}}^2}{2m}|\Psi\rangle &= -\frac{\hbar^2}{2m}\nabla^2 \Psi(r,\theta,\phi) \\
+		&= -\frac{\hbar^2}{2m} \left[\left(\frac{\partial}{\partial r} + \frac1r\right)^2 + \frac{1}{r^2\sin(\theta)}\left(\sin(\theta)\frac{\partial}{\partial \theta}\right)^2 +  \frac{1}{r^2\sin^2(\theta)}\frac{\partial^2}{\partial \phi^2}\right]\Psi(r,\theta,\phi) \\
+		&= \langle r,\theta,\phi|\frac{1}{2m}\left(\widehat{p_r}^2 + \frac{\widehat{\mathbf{L}}^2}{r^2}\right)|\Psi\rangle,
+	\end{split}
+\end{equation}
+where $\Psi(r,\theta,\phi) \equiv \langle r,\theta,\phi|\Psi\rangle$, and $\langle r,\theta,\phi|\widehat{p_r}|\Psi\rangle = -i\hbar \left(\frac{\partial}{\partial r} + \frac1r\right)\Psi(r,\theta,\phi)$ defines the radial momentum operator. The extra term $\frac1r$ is essential -- the radial momentum is \emph{not} $-i\hbar\frac{\partial}{\partial r}$.
+
+The third line is the pivot on which this chapter turns: the angular part of the kinetic energy \emph{is} $\widehat{\mathbf{L}}^2/(2mr^2)$.
+
+The eigenvalues and eigenvectors of $\widehat{H}$ are therefore given by
+\begin{equation}\label{eq:centralpotsse}
+	\langle r,\theta,\phi|\widehat{H}|\Psi\rangle = \left(\frac{\widehat{p_r}^2}{2m} + \frac{\widehat{\mathbf{L}}^2}{2mr^2} + V(\widehat{\mathbf{r}})\right)\Psi(r,\theta,\phi) = E\Psi(r,\theta,\phi)
+\end{equation}
+Mind the hat: inside the matrix element the operator $V(\widehat{\mathbf{r}})$ turns into the number $V(r)$.
+
+\begin{greybox}[Symmetry and a conserved quantity]
+	A rotation maps the system onto itself, and every symmetry comes with a conserved quantity -- Noether's theorem, which you know from Theoretical Physics B as the conservation of charge. The angular momentum operators \emph{generate} the rotations; because $\widehat{H}$ is rotationally invariant, the angular momentum must be conserved.
+\end{greybox}
+
+We have:
+\begin{equation}
+	[\widehat{H}, \widehat{\mathbf{L}}^2] = [\widehat{H}, \widehat{L}_z] = [\widehat{\mathbf{L}}^2,\widehat{L}_z] = 0.
+\end{equation}
+This observation has an important consequence: there are common eigenvectors for the operators $\widehat{H}$, $\widehat{L}_z$ and $\widehat{\mathbf{L}}^2$ (this is a general implication, one that holds for every set of commuting operators).
+
+The aim is to find the common eigenfunctions of $\widehat{H}$, $\widehat{L}_z$ and $\widehat{\mathbf{L}}^2$. If a unique choice of basis states of the Hilbert space is reached in this way, one speaks of a complete set of commuting observables.
+
+\begin{intuition}
+	Normally a problem becomes harder when one demands more; here it becomes easier. Commuting observables can be given sharp values at the same time and behave, roughly speaking, like independent subsystems -- which is why the solution separates. A separation ansatz is no stroke of luck, but the computational form of a symmetry.
+\end{intuition}
+
+To compute the eigenvectors and eigenvalues of $\widehat{H}$ we make a separation ansatz:
+\begin{equation}
+	\Psi(r,\theta,\phi) = \text{Y}_{\ell}^m(\theta,\phi) R(r) 
+\end{equation}
+with
+\begin{equation}
+	\widehat{\mathbf{L}}^2\text{Y}_{\ell}^m(\theta,\phi) = \hbar^2 \ell(\ell+1)\text{Y}_{\ell}^m(\theta,\phi).
+\end{equation}
+Because of the normalisation of the $\text{Y}_{\ell}^m(\theta,\phi)$ we have
+\begin{equation}
+	\iiint |\Psi(\mathbf{r})|^2\,dxdydz = \int_0^{\infty} |R(r)|^2 r^2\, dr.
+\end{equation}
+Substituting the separation ansatz into (\ref{eq:centralpotsse}), we obtain
+\begin{equation}
+	\left(\frac{\widehat{p_r}^2}{2m} + \frac{\hbar^2\ell(\ell+1)}{2mr^2} + V(r)\right)R(r) = E R(r).
+\end{equation}
+The operator $\widehat{p}_r^2$ has the matrix elements 
+\begin{equation}
+	\begin{split}
+		\langle r,\theta,\phi|\widehat{p}_r^2|\Psi\rangle &= -\hbar^2\left(\frac{\partial}{\partial r} + \frac{1}{r}\right)\left(\frac{\partial}{\partial r} + \frac{1}{r}\right)\Psi(r,\theta,\phi) \\
+		&= -\hbar^2\left(\frac{1}{r}\frac{\partial}{\partial r} r\right)\left(\frac{1}{r}\frac{\partial}{\partial r} r\right)\Psi(r,\theta,\phi) \\ 
+		&= -\hbar^2 \frac{1}{r}\frac{\partial^2}{\partial r^2}\left(r \Psi(r,\theta,\phi)\right).
+	\end{split}
+\end{equation}
+Using the definition $u(r)\equiv rR(r)$, we can bring the radial equation into the form
+\begin{equation}
+	\left(-\frac{\hbar^2}{2m}\frac{d^2}{dr^2} + \frac{\hbar^2\ell(\ell+1)}{2mr^2} + V(r) - E\right)u(r) = 0.
+\end{equation}
+This is a one-dimensional problem: $r$ plays the role of the position, and the extra term $\hbar^2\ell(\ell+1)/(2mr^2)$ is the centrifugal barrier -- just as for planetary orbits.
+
+\input{figures/fig_vl15_effpot}
+
+The figure already shows the Coulomb potential of the next lecture, with $r$
+in Bohr radii $a_0$ and energies in Rydbergs. Note in (a) that the
+barrier is purely kinetic: it keeps $u(r)$ away from the origin even though $V(r)$
+is attractive there. In (b) the bottom of every well lies exactly
+on the grey curve $\tfrac12 V(r)$.
+
+One can show that only solutions with $u(0)=0$ are physically sensible, since otherwise either the squared norm comes out as 
+\begin{equation}
+	\int_0^\infty |u(r)|^2\, dr = \infty
+\end{equation}
+or else the expectation value of the kinetic energy diverges, because $\langle \widehat{p_r}^2\rangle = \infty$. The radial equation is therefore equivalent to a one-dimensional problem on $x>0$ with a boundary condition at $x=0$. This does not yet pin $V(r)$ down; the most important choice, the Coulomb potential, follows in the next lecture.
+

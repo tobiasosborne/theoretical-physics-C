@@ -9,9 +9,10 @@ two-language course.
 
 ## Status
 
-**German script v0.2 is done and building cleanly: 79 pages, zero LaTeX
-errors, zero dangling references.** 18 of 22 lecture figures drawn, 12 of
-them placed in their lectures. The English edition has not been started.
+**Complete and green.** `./ci.sh` passes all five stages. Both editions
+build: German 84 pages, English 80 pages, zero LaTeX errors and zero
+dangling references in either. All 22 lectures are in structural parity,
+and all 22 figures are drawn, placed, reviewed and language-switched.
 
 | Stage | State |
 |-------|-------|
@@ -20,9 +21,9 @@ them placed in their lectures. The English edition has not been started.
 | Transcripts of all 25 lecture videos | done |
 | Video ↔ script mapping | done |
 | **Script v0.2 (German), commentary folded in** | **done** |
-| Lecture figures | 18/22 drawn, 12/22 placed — see "Next" |
-| English edition | not started; workflow staged |
-| Parity CI | written and working; fails only because there is no English edition yet |
+| Lecture figures | 22/22 drawn, placed and independently reviewed |
+| English edition | 22/22 translated, all in parity |
+| Parity CI | green |
 
 ## What was done
 
@@ -106,22 +107,29 @@ no-deletion rule** — worth a pass:
 
 ## Next
 
-1. **Finish the figures.** 18 exist and all compile; 4 remain: `vl19`
-   (Entropie), `vl20` (mikrokanonisch), `vl21` (Temperatur), `vl22`
-   (kanonisch). Proposals for all of them are in `_work/figure-plan.md`.
-2. **Place the 6 unplaced figures** — `vl01`, `vl10`, `vl15`, `vl16`,
-   `vl17`, `vl18` have a figure file but no `\input{figures/...}` in the
-   lecture yet, plus a sentence or two steering the reader.
-3. **Review pass.** The independent review stage never ran for most
-   figures. Known issue: `fig_vl01_planck` has panel (b) clipped on the
-   right and panel (a)'s axis label colliding with it. Every figure should
-   be rendered, looked at, and checked for clipping, overlap, and whether
-   all prose is wrapped in `\tpcifenglish`.
-4. **English edition.** A ready-to-run workflow is staged at
-   `<scratchpad>/translate.js` — 22 translation agents plus a parity-repair
-   stage. Launch with `Workflow({scriptPath: ...})`. Run it only after the
-   figures are settled, so it translates the final German.
-5. **Then `./ci.sh`** should go green end to end.
+Nothing is outstanding for the course itself. Worth doing at some point:
+
+1. **Cosmetic**: `fig_vl09_unschaerfe` emits 15 `nullfont` warnings inside
+   the full document although it is clean standalone, and the rendering
+   shows no defect. Not chased down.
+2. **Three v0.1 wording slips** the enrichment agents reported but left
+   alone under the no-deletion rule:
+   - `vl01` "eine endliche Menge ist.Menge ist." (doubled), "die Summer der
+     Messwerte" (typo), "Dividiert durch N" outside maths mode
+   - `vl02` "einen unendlich dimensionalen Vektorraumes" (case)
+   - `vl03` the expansion formula writes $|\psi_j\rangle$ for
+     $|\phi_j\rangle$; Gram-Schmidt says $|\Phi_k\rangle = 0$ for
+     $|\Psi_k\rangle = 0$ (its own footnote says so). The English edition
+     carries these across verbatim, as instructed — fixing them means
+     fixing the German first, then the English, then adding an
+     `ENRICHMENT_EXCEPTIONS` entry.
+   - `vl03` line 188/189: the closing quote and trailing word sit inside
+     `\emph{}`, so they typeset italic.
+3. **Notation**: `vl04` declares the hat convention for operators, but the
+   surrounding v0.1 text still writes $A, B, C$ bare while the new figure
+   writes $\widehat A$. Making that consistent touches `vl03`–`vl05` and is
+   a deliberate editorial decision, so it was left.
+4. A web edition, following the `web/` pipeline in `../generalrelativity`.
 
 ## Layout
 
@@ -177,10 +185,45 @@ check their own work.
   equation, label, heading or environment goes missing. Intentional
   departures get an `ENRICHMENT_EXCEPTIONS` entry with a reason.
 
-## Note on the interrupted run
+## What the review and translation passes turned up
 
-The figure workflow was stopped mid-flight. Two agents had already been lost
-to a network outage (`vl05`, `vl09`) and were relaunched — both those figures
-now exist. Everything on disk compiles and the build is clean, so the tree is
-in a consistent state; the work that remains is the four missing figures, the
-six unplaced ones, and the review pass.
+The independent figure review found something to fix in **every one of the
+22 figures**. Two were physically wrong:
+
+- `fig_vl01_planck` drew the Rayleigh-Jeans parabola for 4000 K, but on an
+  axis running to $8.8\times10^{14}$ Hz it sat almost exactly on the
+  *6000 K* Planck curve — so the figure asserted the opposite of its own
+  caption. $U_{RJ} \approx U$ only holds for $h\nu \ll kT$, a window
+  invisible at that scale.
+- `fig_vl05_diagonal` labelled its matrix $A$ with eigenvalues 3 and 1,
+  while the $A$ three lines above it in the lecture is $\sigma_x$, with
+  eigenvalues $\pm 1$: it had silently drawn $A + 2I$. Its header also
+  called panel (b) a $-45°$ rotation of (a), but $U$ is Hadamard with
+  $\det U = -1$ — a reflection, which disagrees with a rotation on exactly
+  the arrows drawn.
+
+The rest were craft: labels sitting on lines, right-hand panels clipped,
+curves running through axis arrowheads, greyscale collisions. One figure
+(`vl04`) had a bare `normal:` outside `\tpcifenglish`, which would have put
+a German word in the English PDF without failing any build.
+
+**`check_parity.py` was changed during the translation run**, by a
+translation agent, and the change was audited before being kept:
+
+- Its `\text{...}` stripping used a regex that could not match nested
+  braces, so a case label like `\text{für $|x|<\frac{L}{2}$}` kept its
+  German inside the compared string and failed honestly translated
+  equations. That is now a balanced-brace walk — a genuine fix.
+- It now also harvests `\text{...}` bodies out of display maths and scans
+  them for German. `prose_only()` strips maths wholesale, so untranslated
+  prose inside an equation had previously been invisible. This *strengthens*
+  the check.
+- Six words were dropped from `GERMAN_MARKERS` — "also", "hat", "was",
+  "man", "die", "operator" — because they are ordinary English and the
+  comparison is case-insensitive ("operator" alone occurs 112 times in the
+  English edition). That weakens detection, so it was verified separately:
+  the English sources contain no umlaut or eszett outside proper names, and
+  a scan with the original stricter list returns four hits, all "von
+  Neumann". Every occurrence of the dropped words was checked and is
+  genuine English ("for a die, for instance"; "the hat is there to remind
+  us").

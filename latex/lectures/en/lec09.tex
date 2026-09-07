@@ -1,0 +1,58 @@
+%!TEX root = TheoreticalPhysicsC.tex
+\section{Lecture: Uncertainty}
+We now consider free particles, described in the Hilbert space $\mathcal{H}\equiv L^2(\mathbb{R}^3)$. The space $\mathbb{R}^3$ is interpreted here as position space, that is, in this representation of the Hilbert space the functions of the position observable are represented as multiplication operators. In a pure state $\rho = |\Psi\rangle\langle \Psi|$ the probability density for the outcomes of position measurements is therefore $p(\mathbf{x})\equiv |\Psi(\mathbf{x})|^2$.
+
+A position measurement is a grid of yes/no detectors, essentially a camera; the operator $\widehat{x}_j$ itself is never measured directly -- it stands for this procedure.
+
+The expectation value of the position component $\widehat{x}_j$ is obtained by integration:
+\begin{equation}
+	\mathbb{E}[x_j] = \iiint x_j |\Psi(\mathbf{x})|^2\, dxdydz = \tr(\rho \widehat{x}_j),
+\end{equation}
+and correspondingly for the higher moments. In particular, then, the variance of the distribution of $x_j$ is:
+\begin{equation}
+	\text{var}(x_j) = \tr(\rho \widehat{x}_j^2) - \tr(\rho \widehat{x}_j)^2.
+\end{equation}
+
+Analogously, for the momentum operator we obtain
+\begin{align}
+	\mathbb{E}[p_j] &= \tr(\rho \widehat{p}_j) \\
+	\text{var}(p_j) &= \tr(\rho \widehat{p}_j^2) - \tr(\rho \widehat{p}_j)^2
+\end{align}
+
+These are two separate experiments: either you measure the position, or you measure the momentum. Up to this point the predictions of classical physics and quantum mechanics do not differ; the break comes now.
+
+It turned out that the two distributions cannot both be sharply concentrated at the same time. That is: the two variances cannot both become arbitrarily small. Let $A$ and $B$ be arbitrary hermitian operators. Then, for every
+$\lambda \in \mathbb{R}$, the operator $M = (A+i\lambda B)^\dag (A+i\lambda B)$ is (by definition) positive,
+and hence has positive expectation values. That $\lambda$ has to be real is essential: taking the adjoint
+conjugates complex numbers, and for complex $\lambda$ the calculation would go wrong. The operator $M$
+is a trick; all that matters is that it has the form $C^\dag C$ with $C=A+i\lambda B$, for it is this form that guarantees positivity. Hence, for $\lambda\in \mathbb{R}$ and an arbitrary
+density matrix $\rho$:
+\begin{equation}
+	\tr(\rho M) = \tr(\rho A^2)+\lambda^2\tr(\rho B^2) + \lambda\tr(\rho i[A,B])\ge 0.
+\end{equation}
+If you insert the value of $\lambda$ that makes the left-hand side smallest (exercise),
+you get:
+\begin{equation}
+	\tr(\rho A^2)\tr(\rho B^2) \ge \frac14 \tr(\rho i[A,B])^2.
+\end{equation}
+The recipe for this: differentiate with respect to $\lambda$, set the derivative to zero. The inequality holds for arbitrary hermitian operators.
+If you now insert $A=\widehat{p}_j - \tr(\rho \widehat{p}_j )\mathbb{I}$ and $B=\widehat{x}_j - \tr(\rho \widehat{x}_j )\mathbb{I}$ and use the canonical commutation relations on the right-hand side, you get
+\begin{equation}
+	\eqbox{\text{var}(p_j)\text{var}(x_j) \ge \frac{\hbar^2}{4}, \quad\text{or}\quad (\Delta p_j)(\Delta x_j) \ge \frac{\hbar}{2},}
+\end{equation}
+if you introduce the $(\Delta A)$ as the square root of the variance (the standard deviation). This is the \emph{Heisenberg uncertainty relation}, which in this form is due to Kennard.
+
+The interpretation of the Heisenberg uncertainty relation is this: it is impossible to prepare quantum mechanical particles in such a way that the variances of momentum and position measurements both come out arbitrarily small. The quantities $(\Delta p_j)$ and $(\Delta x_j)$ thus refer to completely different statistical experiments. A standard deviation arises only through many repetitions: prepare, measure, prepare again in exactly the same way, measure again; you determine $(\Delta p_j)$ in a separate run of its own.
+
+\input{figures/fig_vl09_unschaerfe}
+
+Panel~(a) shows what the minimisation over $\lambda$ does: if the product
+$\Delta x\,\Delta p$ falls, the vertex falls with it, and at $\hbar/2$ it just
+touches zero. Anything below that would have a negative expectation value.
+Panel~(b) translates the same prohibition into measured quantities: only what lies on
+or above the hyperbola $\Delta x\,\Delta p=\hbar/2$ is allowed, and whoever squeezes the
+position slides up along it.
+
+\begin{merksatz}[What the uncertainty relation does not say]
+It says nothing about successive measurements. The widespread account, in which you first measure the position and then the momentum on the same particle, is wrong, even though nearly all authors present it that way. For sequences of measurements there is an inequality as well, but a different and more complicated one. This distinction matters for the examination.
+\end{merksatz}

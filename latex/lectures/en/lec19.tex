@@ -1,0 +1,100 @@
+%!TEX root = TheoreticalPhysicsC.tex
+
+\section{Lecture: Entropy}
+How is the notion of ``equally probable microstates'' defined in quantum mechanics? To answer this question, we must introduce the concept of \emph{entropy}. This quantity is regarded as a measure of the \emph{information content} of a state. Or as a measure of \emph{missing information}. The more information content a state possesses, the less we know about which microstate occurs.
+
+Three readings run alongside one another: missing information, disorder, information content -- the same number, read in different ways. We need it because in Hilbert space the classical counting of microstates fails: owing to superposition there are infinitely many of them.
+
+\begin{intuition}
+	Let a memory hold ten bits. If we do not know its contents, ten bits are missing; if all the bits are set to zero, no information is missing any more -- and there is no free storage space left either.
+\end{intuition}
+
+Let $\mathcal{H} \equiv \mathbb{C}^d$ be a Hilbert space and $\rho$ a density operator representing the statistical ensemble $\{(p_j,\rho_j)\,|\, j=1,2, \ldots, N\}$:
+\begin{equation}
+  \rho \equiv \sum_{j=1}^N p_j \rho_j.
+\end{equation}
+
+The von Neumann entropy of $\rho$ is defined as follows
+\begin{equation}
+  \eqbox{S(\rho) = -k\tr(\rho\log(\rho)) = -k\langle \log(\rho)\rangle,}    
+\end{equation} 
+where $k=1.38064852 \times 10^{-23} \, \text{m}^2 \,\text{kg} \,\text{s}^{-2} \,\text{K}^{-1}$ is Boltzmann's constant and $\log(\rho)$ is worked out with the help of the functional calculus. The logarithm here is, as everywhere in physics, the natural one; and $\log(\rho)$ must itself be an operator, otherwise the product $\rho\log(\rho)$ would not exist at all.
+
+Because every density operator $\rho$ is Hermitian, we can write $\rho$ in terms of an eigenvalue--eigenvector decomposition:
+\begin{equation}
+  \rho = \sum_{j=1}^d r_j |r_j\rangle\langle r_j|,
+\end{equation}
+where $r_j\ge 0$ and $\langle r_j|r_k\rangle = \delta_{jk}$. The logarithm of $\rho$ is worked out as
+\begin{equation}
+  \log(\rho) = \sum_{j=1}^d \log(r_j) |r_j\rangle\langle r_j|
+\end{equation}
+If an eigenvalue $r_j = 0$, then $\log(r_j) = -\infty$; we shall come back to this in the first example.
+
+\begin{merksatz}[Take care with the logarithm of a matrix]
+	$\log(\rho)$ is \emph{not} the entrywise logarithm of the entries of $\rho$. First diagonalise, then apply the logarithm to the eigenvalues. You may compute entry by entry only when $\rho$ is already diagonal.
+\end{merksatz}
+
+An example: for
+\begin{equation}
+	\rho = \begin{pmatrix} \frac{1}{2} & \frac{1}{4}\\[2pt] \frac{1}{4} & \frac{1}{2}\end{pmatrix}
+	\quad \text{we have} \quad
+	\log(\rho) = \frac{1}{2}\begin{pmatrix} \log\frac{3}{16} & \log 3\\[2pt] \log 3 & \log\frac{3}{16}\end{pmatrix}
+	\neq \begin{pmatrix} \log\frac{1}{2} & \log\frac{1}{4}\\[2pt] \log\frac{1}{4} & \log\frac{1}{2}\end{pmatrix},
+\end{equation}
+since the eigenvalues are $3/4$ and $1/4$.
+
+The von Neumann entropy of $\rho$ is therefore worked out as follows:
+\begin{equation}
+  S(\rho) = -k\sum_{j=1}^d \log(r_j) \tr(|r_j\rangle\langle r_j|\rho) = -k\sum_{j=1}^d r_j\log(r_j).
+\end{equation}
+That is the decisive stroke: the entropy depends \emph{only} on the eigenvalues; the eigenvectors no longer appear. A unitary rotation does not change the spectrum, and hence does not change the entropy either:
+\begin{equation}
+	\eqbox{S(\rho) = S(U\rho U^{\dagger}) \quad \text{for all unitary } U.}
+\end{equation}
+
+\begin{exercise}
+	Prove the unitary invariance $S(\rho) = S(U\rho U^{\dagger})$.
+\end{exercise}
+
+\begin{example}
+  A pure state $|\psi\rangle$ corresponds to a statistical ensemble in which $|\psi\rangle$ occurs with probability $1$. The corresponding density operator is given by
+  \begin{equation}
+    \rho = |\psi\rangle\langle \psi|
+  \end{equation}
+  This operator is already in diagonal form, with $r_1 = 1$ (and $r_2 = r_3 = \cdots = r_d =0$). The entropy therefore reads
+  \begin{equation}
+    S(\rho) = -k\sum_{j=1}^d r_j\log(r_j) = -k r_1\log(r_1) = 0.
+  \end{equation}
+  Here the function $f(x) = -x\log(x)$ takes the value $0$ at the point $x=0$. More precisely, $0\log(0)$ is to be read as the limit $\lim_{x\to 0} x\log(x)$; the curve $-x\log(x)$ visibly runs down to zero at $x=0$. In this example the entropy is zero. The interpretation here is that the statistical ensemble contains no information. We always know which state the system is in. No information about the state of the system is missing. A pure state is simply not an ensemble.
+\end{example}
+
+\begin{example}
+  Suppose that $\mathcal{H}$ is the Hilbert space $\mathbb{C}^d$. Suppose further that $\{|j\rangle \}_{j=1}^d$ is an orthonormal basis for $\mathcal{H}$. The completely mixed state $\rho$ is given by
+  \begin{equation}
+    \rho \equiv \sum_{j=1}^d \frac{1}{d} |j\rangle\langle j|.
+  \end{equation}
+  This state corresponds to a statistical ensemble in which $|j\rangle$ occurs with the uniform probability $1/d$. This operator too is already in diagonal form, with $r_1 = 1/d = r_2 = \cdots = r_d$. The von Neumann entropy is worked out as follows:
+  \begin{equation}
+    S(\rho) = -k\sum_{j=1}^d r_j\log(r_j) = -k \times d \times  (1/d) \times \log(1/d) = k \log(d).
+  \end{equation}
+  In this case the entropy attains the largest possible value. The interpretation here is that the statistical ensemble contains the maximum information. We do not know which state the system is in. All information about the state of the system is missing.
+\end{example}
+
+\input{figures/fig_vl19_entropie}
+
+On the left the figure shows the single term $\eta(r)=-r\log r$: it vanishes
+at both ends -- at $r=0$ the state never occurs, at $r=1$ it occurs with certainty.
+On the right is the sum of two such terms, the entropy of a qubit. Watch
+the steep flank: an admixture of just one per cent to the pure state already buys eight
+per cent of the maximum $k\log 2$; the two matrices with the same spectrum, by contrast,
+land on one and the same point.
+
+Because of the prefactor $k$ the entropy of a single qubit is tiny; it only becomes large for very many particles.
+
+\begin{exercise}\label{ex:entropie-additiv}
+	Let $\rho = \rho_1\otimes\rho_2\otimes\cdots\otimes\rho_N$ be the state of $N$ particles. Show the additivity
+	\begin{equation}
+		S(\rho) = \sum_{j=1}^N S(\rho_j).
+	\end{equation}
+	For identical factors this is $N$ times the entropy of a single particle -- the entropy is \emph{extensive}.
+\end{exercise}

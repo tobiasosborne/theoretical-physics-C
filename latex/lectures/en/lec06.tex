@@ -1,0 +1,165 @@
+%!TEX root = TheoreticalPhysicsC.tex
+\section{Lecture: The Postulates of Quantum Mechanics}
+The numbers that quantum mechanics delivers as its results are probabilities or, somewhat more generally, expectation values. Since quantities of this kind will have come up only rarely in your theory lectures so far, we must say a few words about how such results are to be interpreted, i.e., how they are to be compared with experiment. The general prescription for statistical experiments is that such an experiment has to be repeated
+sufficiently often.
+
+That the theory delivers probabilities at all, and nothing more, is the real break with classical physics. Classically a probability is always an expression of missing information; there, in principle, everything can be as precise as you please. Quantum mechanically it is fundamental, and there are measurements that cannot be carried out jointly with full precision.
+
+For a probability experiment it must be settled in advance which outcomes are to count as a ``hit''. The \emph{probability} delivered by the theory is then to be compared with the number of hits, divided by the total number of repetitions. Expectation values are measured correspondingly, in experiments where every single run delivers a numerical value: the expectation value is to be compared with the sum of the measured values, divided by the total number of repetitions. What counts as repeating the experiment ``sufficiently often'' for a desired accuracy is treated in the branch of probability theory known as statistics. Computing statistical confidence intervals does not, however, relieve the experimental physicist of the duty of making sure that the theory applies at all, i.e., that the frequencies obtained in this way really are reproducible and free of systematic fluctuations,
+so that they do not, for instance, drift along with whatever the laboratory next door happens to be doing. In this respect probability measurements are no different from any other measurement.
+
+One thing still calls for explanation: what actually counts as a repetition of ``the same'' experiment. Here the criteria of experimental physics hold: two experiments built to the same plans within given tolerances count as the same. So the very same apparatus need not be used. What is decisive is thus the experimental \emph{procedure}. This must of course be specified precisely enough if reproducibility of probabilities is to be guaranteed.
+
+In the experiments of quantum mechanics two parts are to be distinguished as a matter of principle: the \emph{preparation} and the \emph{measurement}. For the polarisation experiments, for example, the preparation consisted in producing the beam, and the measurement in applying the filters, together with the photon counter. The aim of the theory is now to compute the probabilities for practically arbitrary combinations of preparation and measurement. The theory must therefore contain at least: (1) quantities describing the preparation procedures, (2) quantities describing the measurement procedures and (3) a formula for computing the probabilities for each combination.
+
+\subsection{The Postulates}
+
+\begin{greybox}[On the status of the postulates]
+You often hear that we do not understand quantum mechanics. That misses the point: we have mastered the formalism, and for over fifty years we have had postulates that give us the best models of the universe. What we cannot do is \emph{justify} them any further --- they are handed to us by nature.
+\end{greybox}
+
+\begin{center}
+\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Postulate 1}. Every kind of quantum mechanical system is assigned a Hilbert space $\mathcal{H}$.}\end{tcolorbox}}
+\end{center}
+This is the space of the so-called \emph{wave functions} $\Psi$. For a \emph{qubit} we have $\mathcal{H}\equiv \mathbb{C}^2$, and for a \emph{qudit} $\mathcal{H}\equiv \mathbb{C}^d$. For a free particle in three dimensions $\mathcal{H} \equiv L^2(\mathbb{R}^{3})$, the space of square-integrable functions $\Psi:\mathbb{R}^3\rightarrow \mathbb{C}$, with
+\begin{equation}
+	\iiint |\Psi(x,y,z)|^2\, dxdydz  <\infty.
+\end{equation} 
+The inner product of two vectors $|\Phi\rangle, |\Psi\rangle \in \mathcal{H}$ reads
+\begin{equation}
+	\langle \Phi|\Psi\rangle \equiv \iiint \Phi^*(x,y,z)\Psi(x,y,z)\, dxdydz.
+\end{equation}
+
+$L^2(\mathbb{R}^3)$ becomes a Hilbert space only with this inner product, and with completeness, which we leave aside here. Note in addition: Postulate 1 describes \emph{one} particle --- building the Hilbert space of several particles calls for a further recipe, which we shall supply later.
+
+\begin{center}
+\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Postulate 2}. A preparation procedure is characterised by a \emph{state}, or \emph{density matrix}. This is a positive operator $\rho$ on $\mathcal{H}$, with $\tr(\rho) = 1$. For pure states in particular $\rho$ is a one-dimensional projector $\rho = |\Psi\rangle\langle \Psi|$, hence given by a vector $|\Psi\rangle \in \mathcal{H}$.}\end{tcolorbox}}
+\end{center}
+
+A warning is in order here: the Hilbert space does \emph{not} directly describe the states. Many books say the states are the wave functions; that is not quite right. It is the space \emph{in which} we define states --- the states themselves are operators. Pure states describe closed systems, and there are no closed systems in physics: the electromagnetic field always couples in. Mixed states are the normal case.
+
+The word ``one-dimensional'' here refers to no spatial dimension, but to the rank: $\tr(P)$ counts the ket-bra terms of a projector, and because $\tr(\rho)=1$ there is exactly one of them. The normalisation of the wave functions follows from this too, since with $\tr(AB) = \tr(BA)$ we have
+\begin{equation}
+	1 = \tr(\rho) = \tr(|\Psi\rangle\langle \Psi|) = \tr(\langle \Psi|\Psi\rangle) = \langle \Psi|\Psi\rangle.
+\end{equation}
+Only normalised vectors therefore represent pure states.
+
+\begin{example}[States of a qubit]
+For $\mathcal{H} = \mathbb{C}^2$, $\rho$ is a positive $2\times 2$ matrix with trace one. Positivity gives $\rho_{00} \equiv p \ge 0$, the trace condition forces $\rho_{11} = 1-p$, and because $\rho_{11}\ge 0$ has to hold as well, $p$ lies between zero and one. Hermiticity finally makes the off-diagonal entries complex conjugates of each other:
+\begin{equation}\label{eq:qubitzustand}
+	\rho = \begin{pmatrix} p & x \\ x^* & 1-p\end{pmatrix}, \qquad 0 \le p \le 1, \quad x \in \mathbb{C}.
+\end{equation}
+This does not yet exhaust positivity; it demands that \emph{all} eigenvalues be non-negative, which here means
+\begin{equation}
+	\det \rho = p(1-p) - |x|^2 \ge 0.
+\end{equation}
+A qubit state thus depends on exactly three real numbers.
+\end{example}
+
+\begin{exercise}
+Compute the two eigenvalues of the matrix in Eq.~(\ref{eq:qubitzustand}) and derive from them the condition $p(1-p) - |x|^2 \ge 0$.
+\end{exercise}
+
+\begin{center}
+\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Postulate 3}. A detector, that is a measuring apparatus with the two possible responses ``yes'' (hit) and ``no'', is given by an operator $F$ with $0 \le F \le \mathbb{I}$.}\end{tcolorbox}}
+\end{center}
+
+The notation $0 \le F \le \mathbb{I}$ calls for a word of explanation: for operators, $A \le B$ means that $B-A$ is positive. Postulate 3 therefore demands \emph{two} conditions, $F \ge 0$ \emph{and} $\mathbb{I} - F \ge 0$, and what stands on the right is the identity operator, not the number one.
+
+\begin{example}[The Z measurement on a qubit]
+The standard measurement on today's quantum computers is the Z measurement,
+\begin{equation}
+	F \equiv |0\rangle\langle 0| = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}.
+\end{equation}
+Both conditions have to be checked. First, $F$ is positive, since an operator is positive precisely when it can be written as $A^\dag A$, and here $F = F^\dag F$. Secondly --- to be shown separately ---
+\begin{equation}
+	\mathbb{I} - F = \begin{pmatrix} 0 & 0 \\ 0 & 1\end{pmatrix} = |1\rangle\langle 1|
+\end{equation}
+is of the same form, hence positive as well. Only now may we call $F$ a detector; physically it asks whether the angular momentum points along the $z$ direction.
+\end{example}
+
+\begin{center}
+\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Postulate 4}. The response frequency of a detector $F$ on a system prepared according to $\rho$ is
+$\tr(\rho F)$. In a pure state $|\Psi\rangle$ this expression specialises to $\langle \Psi|F|\Psi\rangle$.}\end{tcolorbox}}
+\end{center}
+
+\begin{example}[Response frequency of the Z measurement]
+With the state from Eq.~(\ref{eq:qubitzustand}) and $F = |0\rangle\langle 0|$ we get
+\begin{equation}
+	\rho F = \begin{pmatrix} p & x \\ x^* & 1-p\end{pmatrix}\begin{pmatrix} 1 & 0 \\ 0 & 0\end{pmatrix} = \begin{pmatrix} p & 0 \\ x^* & 0\end{pmatrix}, \qquad \mathbb{P}[\text{``yes''}] = \tr(\rho F) = p.
+\end{equation}
+We thus obtain a hit with probability $p$ --- which justifies reading the diagonal entries of a density matrix as probabilities.
+\end{example}
+
+The addendum about pure states is not a further assumption, but a calculation: with $\rho = |\Psi\rangle\langle \Psi|$ and the cyclicity of the trace,
+\begin{equation}
+	\tr(\rho F) = \tr(|\Psi\rangle\langle \Psi|F) = \tr(\langle \Psi|F|\Psi\rangle) = \langle \Psi|F|\Psi\rangle.
+\end{equation}
+Early on, make it a habit to state explicitly, in every calculation, which postulate you are using at each step.
+
+In general a measuring apparatus can deliver, in each individual run, a more complex result than a single yes/no decision. This case can, however, be reduced to yes/no decisions. Let us call the set of possible outcomes of a measurement $X$. For every subset $S \subset X$ we can now ask: does the measured value $x$ lie in $S$? By Postulate 3 there must then be a detector operator $F(S)$ for this question. The
+set of operators $F(S)$ is what we then call an \emph{observable}. For disjoint sets $S_1, S_2 \subset X$ we have
+\begin{equation}
+	F(S_1 \cup S_2) = F(S_1) + F(S_2)
+\end{equation}
+that is, $F$ is a ``measure'' with values in the positive operators. We normally set $F(X) = \mathbb{I}$, which means that failure counts as a possible outcome too. It is often enough to consider finite outcome sets $X$. Then, by the measure property, everything is fixed by the operators $F_x = F(\{x\})$, which simply have to satisfy the relations
+\begin{equation}
+	F_x \ge 0, \quad \text{and}\quad \sum_{x\in X} F_x = \mathbb{I}.
+\end{equation}
+
+If every $F(S)$ is a projector, i.e., satisfies $F(S)^2 = F(S)$, we call the observable \emph{projection valued}. Another important special case is that of observables that deliver real numbers as their results. Then we can write the expectation value $\langle A\rangle$ of the distribution as
+\begin{equation}
+	\langle A \rangle = \tr(\rho A)
+\end{equation}
+where
+\begin{equation}\label{eq:observableA}
+	A = \sum_{x\in X} x F_x
+\end{equation}
+is a Hermitian operator. In the projection-valued case the so-called spectral theorem already determines the whole observable from $A$ alone. That is why one often reads, as a definition, that the observables are exactly the Hermitian operators.
+
+A state, after all, does not characterise an individual system with somehow variable properties; what it characterises is a preparation procedure, and that procedure must be one we can set going at any time whatsoever --- if only so that the statistical frequency experiment can be repeated. By the assumption of reproducibility it must make no difference either whether both preparation and measurement are carried out somewhat later. The only thing that counts is a \emph{relative} shift in time.
+
+With Postulates 1 to 4 we would in principle be finished; but because shifts in time keep turning up, we want a convenient auxiliary postulate.
+
+\begin{center}
+\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Postulate 5}. Every kind of system is further characterised by a \emph{Hamiltonian} $H$, which determines the \emph{time-evolution operator} $U_t = e^{-\frac{it}{\hbar} H}$. If, in an experiment with a given preparation and measurement procedure, the measurement is applied with a delay of $t$ seconds, one obtains the expectation value
+\begin{equation}
+	\langle A\rangle (t) \equiv \tr(U_t\rho U_t^\dag A) = \tr(\rho U_t^\dag A U_t).
+\end{equation}
+}\end{tcolorbox}}
+\end{center}
+This equation follows simply from the property $\tr(AB) = \tr(BA)$ of the trace. It is included here because the two sides correspond to different, but evidently equivalent, conceptions of time evolution: on
+the left-hand side it is natural to introduce $\rho_t \equiv U_t \rho U_t^\dag$ as a time-dependent density matrix, and to regard the observables as time independent. This is called the \emph{Schrödinger picture}. For pure states this yields the corresponding statement for wave functions: $|\Psi_t\rangle = U_t |\Psi_0\rangle$. The right-hand side suggests introducing time-dependent observables $A_t\equiv U_t^\dag A U_t$, with the states held fixed. This is called
+the \emph{Heisenberg picture}. The equivalence of these pictures, mathematically evident in any case, means physically that only the relative time between the parts of the experiment matters.
+
+One prerequisite is missing from the postulate, and we supply it here: the Hamiltonian $H$ is always \emph{Hermitian}. Only then is $U_t$ unitary, and only then is $U_t^\dag F U_t$ again an admissible measurement procedure with $0 \le U_t^\dag F U_t \le \mathbb{I}$. An experiment with a delayed measurement is then simply an experiment with a different measurement; in that sense Postulate 5 is compatible with the rest. Even so, it cannot be proved from them, and the essential point remains: $H$ is an \emph{additional} piece of information about the kind of system.
+
+\begin{example}[Time evolution of a qubit]
+Let us work out $U_t$ for a qubit with the Hamiltonian
+\begin{equation}
+	H \equiv \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+\end{equation}
+which is plainly Hermitian. In general one computes functions of operators through eigenvalues and eigenvectors; here the Taylor series is more convenient:
+\begin{equation}
+	U_t = e^{-\frac{it}{\hbar}H} = \sum_{n=0}^\infty \frac{1}{n!}\left(\frac{-it}{\hbar}\right)^n H^n, \qquad H^0 \equiv \mathbb{I}.
+\end{equation}
+The trick is $H^2 = \mathbb{I}$, hence $H^{2n} = \mathbb{I}$ and $H^{2n+1} = H$. Sorting the terms into those with $\mathbb{I}$ and those with $H$, and using $(-i)^{2n} = (-1)^n$, you recognise two series from the first semester:
+\begin{equation}
+	U_t = \left[\sum_{n=0}^\infty \frac{(-1)^n}{(2n)!}\left(\frac{t}{\hbar}\right)^{2n}\right]\mathbb{I} - i\left[\sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}\left(\frac{t}{\hbar}\right)^{2n+1}\right] H,
+\end{equation}
+that is,
+\begin{equation}
+	\eqbox{U_t = \cos\left(\frac{t}{\hbar}\right)\mathbb{I} - i\sin\left(\frac{t}{\hbar}\right) H}
+\end{equation}
+or equivalently
+\begin{equation}
+	U_t = \begin{pmatrix} \cos\left(\frac{t}{\hbar}\right) & -i\sin\left(\frac{t}{\hbar}\right) \\ -i\sin\left(\frac{t}{\hbar}\right) & \cos\left(\frac{t}{\hbar}\right)\end{pmatrix}.
+\end{equation}
+A warning: $H^2 = \mathbb{I}$ is a peculiarity of this example and by no means holds in general.
+\end{example}
+
+\input{figures/fig_vl06_messung}
+
+The figure gathers Postulates 2, 4 and 5 together: positivity cuts a disc out of the matrices~(\ref{eq:qubitzustand}) --- part~(a) shows it in the plane $\real x = 0$, which $U_t$ does not leave here ---, $U_t$ rotates inside it about the maximally mixed state $\mathbb{I}/2$, and the detector reads off only its horizontal coordinate, part~(b). The distance $r$ from the centre is therefore the amplitude of the measured signal: a pure state swings between zero and one, while $\mathbb{I}/2$ answers $\tfrac12$ forever.
+
+A considerable gap remains in these postulates: nowhere is it said which operators $\rho$ or $F$ one should assign to a given experiment. This is a question that really cannot be settled by a handful of general postulates. The most common approach is to single out a few ``standard observables'', as a rule by their transformation behaviour under space-time symmetries. These are then quantities closely related to classical ones, and they carry the same names: position, momentum, energy, angular momentum and so forth. Anyone who wants a more precise assignment of measuring devices to operators must also analyse the concrete measurement process more closely, in particular the quantum mechanical interaction between the given system and parts of the apparatus, such as ionisable test particles inside it. For almost all questions in these lectures, however, studying the standard observables will see us through.

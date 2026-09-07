@@ -67,17 +67,21 @@ THEOREM_ENVS = {
 
 # Words that should never survive into an English source file.  Chosen to
 # be unambiguous: no German word here is also an English word, and none
-# appears inside a LaTeX control sequence we use.
+# appears inside a LaTeX control sequence we use.  Words that *are* also
+# ordinary English ("also", "die", "hat", "man", "operator", "was") were
+# dropped from this list: the comparison is case-insensitive, so they fire
+# on correct English prose — "operator" alone appears twenty times in a
+# faithful translation of a lecture on operators.
 GERMAN_MARKERS = {
     "und", "oder", "nicht", "sind", "wird", "werden", "durch", "eine",
     "einen", "einem", "einer", "sich", "auch", "noch", "schon", "aber",
-    "dass", "diese", "dieser", "dieses", "wenn", "dann", "also", "somit",
-    "wobei", "damit", "haben", "hat", "kann", "können", "müssen", "muss",
-    "soll", "sollen", "sehr", "immer", "nur", "wie", "was", "wir",
-    "man", "es", "der", "die", "das", "den", "dem", "des", "für",
+    "dass", "diese", "dieser", "dieses", "wenn", "dann", "somit",
+    "wobei", "damit", "haben", "kann", "können", "müssen", "muss",
+    "soll", "sollen", "sehr", "immer", "nur", "wie", "wir",
+    "es", "der", "das", "den", "dem", "des", "für",
     "mit", "von", "zum", "zur", "bei", "aus", "nach", "über", "unter",
     "zwischen", "gleichung", "vorlesung", "beispiel", "übung", "lösung",
-    "wahrscheinlichkeit", "zustand", "zustände", "operator", "wellenfunktion",
+    "wahrscheinlichkeit", "zustand", "zustände", "wellenfunktion",
 }
 
 
@@ -154,6 +158,63 @@ def math_blocks(text):
     return [(env, body) for _, env, body in blocks]
 
 
+TEXTLIKE = re.compile(
+    r"\\(?:text|textrm|textit|mbox|intertext|shortintertext)\s*\{"
+)
+
+
+def strip_textlike(s):
+    """Replace every \\text{...} and friend by \\text{}, braces balanced."""
+    out, i, n = [], 0, len(s)
+    while True:
+        m = TEXTLIKE.search(s, i)
+        if not m:
+            out.append(s[i:])
+            return "".join(out)
+        out.append(s[i:m.start()])
+        out.append(r"\text{}")
+        j, depth = m.end() - 1, 0          # j indexes the opening brace
+        while j < n:
+            c = s[j]
+            if c == "\\":
+                j += 2
+                continue
+            if c == "{":
+                depth += 1
+            elif c == "}":
+                depth -= 1
+                if depth == 0:
+                    j += 1
+                    break
+            j += 1
+        i = j
+
+
+def textlike_bodies(s):
+    """Return the arguments of every \\text{...} and friend, braces balanced."""
+    bodies, i, n = [], 0, len(s)
+    while True:
+        m = TEXTLIKE.search(s, i)
+        if not m:
+            return bodies
+        j, depth, start = m.end() - 1, 0, m.end()
+        while j < n:
+            c = s[j]
+            if c == "\\":
+                j += 2
+                continue
+            if c == "{":
+                depth += 1
+            elif c == "}":
+                depth -= 1
+                if depth == 0:
+                    bodies.append(s[start:j])
+                    j += 1
+                    break
+            j += 1
+        i = j
+
+
 def normalise_math(s):
     """
     Reduce a maths body to what must be identical across languages.
@@ -161,9 +222,13 @@ def normalise_math(s):
     \\text{...} and friends hold prose ("und" vs "and") and \\label{...}
     holds a name that need not match character for character, so both are
     replaced by a placeholder rather than compared.
+
+    The argument of \\text{...} is matched with balanced braces, because a
+    case label such as \\text{für $|x|<\\frac{L}{2}$} carries maths inside
+    the prose; matching only up to the first brace would leave the German
+    word in place and fail an honestly translated equation.
     """
-    for macro in ("text", "textrm", "textit", "mbox", "intertext", "shortintertext"):
-        s = re.sub(r"\\" + macro + r"\s*\{[^{}]*\}", r"\\text{}", s)
+    s = strip_textlike(s)
     s = re.sub(r"\\label\s*\{[^{}]*\}", "", s)
     s = re.sub(r"%.*", "", s)
     s = re.sub(r"\s+", "", s)
@@ -323,7 +388,11 @@ def check_lecture(n, de_path, en_path):
         fail("eqbox", f"{db} \\eqbox in de, {eb} in en")
 
     # ── untranslated German ───────────────────────────────────
-    words = re.findall(r"[A-Za-zÄÖÜäöüß]+", prose_only(en).lower())
+    # prose_only() strips display maths wholesale, which would hide the
+    # \text{...} labels inside it — and those are prose that has to be
+    # translated ("für" vs "for").  Harvest them and scan them too.
+    en_prose = prose_only(en) + " " + prose_only(" ".join(textlike_bodies(en)))
+    words = re.findall(r"[A-Za-zÄÖÜäöüß]+", en_prose.lower())
     hits = {}
     for w in words:
         if w in GERMAN_MARKERS:

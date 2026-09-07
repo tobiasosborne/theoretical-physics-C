@@ -1,0 +1,150 @@
+%!TEX root = TheoreticalPhysicsC.tex
+
+\section{Lecture: Identical Particles}
+All known elementary particles of a given kind are identical: nothing whatsoever distinguishes one electron from another. This is not a result of the theory but an empirical finding -- it need not have been so, but so it is. Composite particles such as atoms, by contrast, are usually distinguishable, since they carry internal degrees of freedom. The decisive point is that ``identical'' is not a new interaction but a \emph{restriction on the admissible states}: what remains in the end are two subspaces of $\mathcal{H}^{\otimes N}$, and they describe bosons and fermions.
+
+Let $\mathcal{H}$ be the Hilbert space of one particle. By the rules we have so far,
+\begin{equation}
+  \mathcal{H}^{\otimes N} \underbrace{\equiv \mathcal{H}\otimes \cdots \otimes \mathcal{H}}_{\text{$N$ factors}}
+\end{equation}
+is the Hilbert space for $N$ such particles. To represent an \emph{exchange} we introduce a symmetry operation for it: let $\pi$ be a \emph{permutation} of the $N$ symbols $\{1,2, \ldots,N\}$, that is, a bijective map of this set onto itself. So far this is pure mathematics. It becomes physics only with Postulate 5, according to which physical processes are described by unitary operators: an exchange is physically realisable only once we can write down a unitary operator that represents it. For every such \emph{reordering map} we define
+a unitary operator $U_\pi$ on $\mathcal{H}^{\otimes N}$ by
+\begin{equation}
+  U_\pi (\phi_1\otimes\phi_2\otimes \cdots\otimes \phi_N) \equiv \phi_{\pi^{-1}(1)}\otimes\phi_{\pi^{-1}(2)}\otimes \cdots\otimes \phi_{\pi^{-1}(N)}.
+\end{equation}
+As usual this operator is extended by linearity from the product vectors to the whole of $\mathcal{H}^{\otimes N}$. Note the \emph{inverse} permutation in this definition -- $U_\pi$ moves the factors to new places; it does not map the indices. In our experience this is the most common source of confusion here.
+
+Every permutation can be written as a product of transpositions $\theta_{jk}$, where $\theta_{jk}$
+denotes the exchange of $j$ and $k\not=j$. That is, an arbitrary permutation $\pi$ can always be written as a product $\pi = \theta_{j_mk_m}\cdots\theta_{j_2k_2}\theta_{j_1k_1}$. Using this decomposition we introduce the function $\text{sign}(\pi)$, the ``sign'' of a permutation: it is
+$-1$ precisely when $\pi$ is the product of an odd number of transpositions, and $+1$ when that number is even. That this is well defined is not obvious: the same permutation can be decomposed in different ways, and only the \emph{parity} of the number of factors is fixed.
+
+\begin{example}
+  For three qubits, that is $\mathcal{H}\equiv \mathbb{C}^2$, the space $\mathcal{H}^{\otimes 3}$ has the $2^3 = 8$ basis vectors
+  \begin{equation}
+    |000\rangle,\ |001\rangle,\ |010\rangle,\ |011\rangle,\ |100\rangle,\ |101\rangle,\ |110\rangle,\ |111\rangle.
+  \end{equation}
+  The inverse of a transposition is itself, $\theta_{12}^{-1} = \theta_{12}$, so $U_{\theta_{12}}$ exchanges the first two factors:
+  \begin{equation}
+    \begin{array}{llll}
+      |000\rangle \mapsto |000\rangle, & |001\rangle \mapsto |001\rangle, & |010\rangle \mapsto |100\rangle, & |011\rangle \mapsto |101\rangle,\\
+      |100\rangle \mapsto |010\rangle, & |101\rangle \mapsto |011\rangle, & |110\rangle \mapsto |110\rangle, & |111\rangle \mapsto |111\rangle.
+    \end{array}
+  \end{equation}
+  Four basis vectors stay put, two pairs are swapped; as a matrix this is
+  \begin{equation}
+    U_{\theta_{12}} = \begin{pmatrix}
+      1&0&0&0&0&0&0&0\\
+      0&1&0&0&0&0&0&0\\
+      0&0&0&0&1&0&0&0\\
+      0&0&0&0&0&1&0&0\\
+      0&0&1&0&0&0&0&0\\
+      0&0&0&1&0&0&0&0\\
+      0&0&0&0&0&0&1&0\\
+      0&0&0&0&0&0&0&1
+    \end{pmatrix}.
+  \end{equation}
+  Every row and every column contains exactly one $1$ -- that is what every permutation matrix looks like. The remaining four permutations make a good exercise.
+\end{example}
+
+We can now say which states identical particles are allowed to occupy. By Postulate 2 states are described by density operators; $\rho$ is called \emph{invariant} if
+\begin{equation}
+  U_\pi \rho\, U_\pi^\dagger = \rho \qquad \text{for all permutations $\pi$}
+\end{equation}
+holds, and precisely these are the admissible ones. In the three-qubit example two of them are visible at once, namely $|000\rangle\langle 000|$ and $|111\rangle\langle 111|$ -- but it would be a mistake to think that these are all of them.
+
+\begin{example}
+  We take two qubits and in them the \emph{singlet state}
+  \begin{equation}
+    |\psi^-\rangle \equiv \frac{1}{\sqrt{2}}\left(|01\rangle - |10\rangle\right),
+  \end{equation}
+  a cleverly chosen superposition. The exchange $\theta_{12}$ swaps $|01\rangle$ and $|10\rangle$, hence
+  \begin{equation}
+    U_{\theta_{12}}|\psi^-\rangle = \frac{1}{\sqrt{2}}\left(|10\rangle - |01\rangle\right) = -|\psi^-\rangle.
+  \end{equation}
+  The \emph{vector} is therefore not invariant. The \emph{state} is invariant all the same: in the density operator the sign occurs twice and cancels:
+  \begin{equation}
+    U_{\theta_{12}}|\psi^-\rangle\langle \psi^-|U_{\theta_{12}}^\dagger = (-1)(-1)|\psi^-\rangle\langle \psi^-| = |\psi^-\rangle\langle \psi^-|.
+  \end{equation}
+\end{example}
+
+This little calculation is the heart of the lecture. Because the global phase of a vector is physically meaningless and only the density operator counts, there are \emph{two} sorts of admissible states instead of one: the exactly invariant ones, and those that are invariant only up to a sign. Without this argument there would be no fermions.
+
+One can now check that the operators
+\begin{align}
+  P_{+} &\equiv \frac{1}{N!}\sum_{\pi} U_\pi \\
+  P_{-} &\equiv \frac{1}{N!}\sum_{\pi} \text{sign}(\pi)U_\pi 
+\end{align}
+are the projectors onto the
+space 
+\begin{equation}
+  P_{+}\mathcal{H}^{\otimes N} \equiv \mathcal{H}^{\otimes N}_{+}
+\end{equation}
+of \emph{symmetric vectors} and onto the space
+\begin{equation}
+  P_{-}\mathcal{H}^{\otimes N} \equiv \mathcal{H}^{\otimes N}_{-}
+\end{equation}
+of antisymmetric vectors. The Hilbert space for $N$ identical elementary particles is either $\mathcal{H}^{\otimes N}_{+}$ for so-called \emph{bosons} or $\mathcal{H}^{\otimes N}_{-}$ for \emph{fermions}.
+
+The same spaces can also be described directly, which is usually more illuminating:
+\begin{align}
+  \mathcal{H}^{\otimes N}_{+} &= \left\{|\psi\rangle \in \mathcal{H}^{\otimes N}\ \middle|\ U_\pi|\psi\rangle = |\psi\rangle\ \text{for all $\pi$}\right\},\\
+  \mathcal{H}^{\otimes N}_{-} &= \left\{|\psi\rangle \in \mathcal{H}^{\otimes N}\ \middle|\ U_\pi|\psi\rangle = \text{sign}(\pi)|\psi\rangle\ \text{for all $\pi$}\right\}.
+\end{align}
+This fits the singlet state exactly, since $\text{sign}(\theta_{12}) = -1$. As an exercise, check that for two qubits $\dim \mathcal{H}^{\otimes 2}_{+} = 3$ and $\dim \mathcal{H}^{\otimes 2}_{-} = 1$.
+
+What the sign does shows up as a statement about a surface. To display it, the figure takes two particles in the box from Lecture 11, fills the orbitals $n=1$ and $n=2$ and plots the pair density in units of its distinguishable maximum. Note that both maps show the same two hills -- only that in one case they sit on the diagonal $x_1=x_2$ and in the other beside it; section (c) measures the difference at coincidence as $2:1:0$.
+
+\input{figures/fig_vl18_statistik}
+
+\begin{center}
+\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Postulate 6}: The only functions admissible as wavefunctions of a many-particle system are those that are joint eigenfunctions of all exchanges of any two identical elementary particles. The eigenvalue belonging to such an exchange is
+the same factor by which the wavefunction of a single particle of that kind is multiplied under a rotation through $2\pi$, that is, $+1$ for particles with integer spin and $-1$ for particles with half-integer spin.}\end{tcolorbox}}
+\end{center}
+
+Read the postulate against what we have just worked out: the vectors in $\mathcal{H}^{\otimes N}_{\pm}$ are joint eigenvectors of all the $U_\pi$, with eigenvalue $+1$ in the bosonic and $\text{sign}(\pi)$ in the fermionic case. That this eigenvalue is connected with the spin, of all things, is by no means obvious -- it is a deep result of quantum field theory, the \emph{spin-statistics connection}. Postulate 6 cannot be proved; it has to be assumed. That completes the six postulates, and we can in principle model any system in quantum mechanics.
+
+\section*{Statistical Physics}
+``In principle'' is the decisive restriction here. We now turn to macroscopic objects, which typically consist of $10^{19}$-$10^{23}$ particles per $\text{cm}^3$. For these it is practically impossible to measure, or even to write down, the \emph{microscopic state} of all the particles -- the quantum mechanical state of the whole system. 
+
+\begin{greybox}[Why a cubic centimetre is already too much]
+Let us model each particle as simply as we possibly can, as a qubit with $\mathcal{H}\equiv \mathbb{C}^2$. Because dimensions multiply in the tensor product, the Hilbert space of a ball of $N\approx 10^{23}$ particles then has dimension $2^N = 2^{10^{23}}$; that many complex numbers would have to be written down for a \emph{pure} state alone. A quantum computer is no help either: it would need just as many qubits as the system has particles.
+\end{greybox}
+
+A complete description of the state of the system is admittedly out of reach, but that does not prevent us from making interesting physical predictions. The reason is that in practice we can measure only macroscopic quantities such as pressure, volume and so on. We therefore look for a coarse-grained description of the system, one that captures only the macroscopically relevant quantities. Such a specification of a few macroscopic quantities is called a \emph{macrostate}. Take care: a macrostate is \emph{not} a quantum state, but merely a list of numbers -- it is written neither in ket notation nor with a density operator. The words sound similar, the objects are completely different.
+
+The microstate actually realised is unknown, but it may still be possible to specify the \emph{probabilities} of those microstates that are compatible with a given macrostate. The set of all microstates representing a given macrostate, together with these probabilities, is called a \emph{statistical ensemble}, or \emph{statistical aggregate}.
+
+\begin{example}
+  Suppose 10 coins are lying in a row on the table. A microstate is given by, say, $HHTTTTHTHT$; that is, the microstate describes the configuration completely. One possible macroscopic quantity is the number of coins showing heads, which in this example is $4$. The macrostate is then described by that single number. Several microstates belong to this one macrostate, for instance $HHHHTTTTTT$ and $HTHTHTHTTT$, and so on.
+\end{example}
+
+In quantum mechanics statistical ensembles are described as follows. A statistical ensemble is given by a list of states $\rho_j$ together with associated probabilities $p_j$: $\{(p_j,\rho_j)\,|\, j=1,2, \ldots, N\}$. The \emph{preparation procedure} $\rho$ that represents this ensemble is described by a density operator:
+\begin{equation}
+  \rho \equiv \sum_{j=1}^N p_j \rho_j.
+\end{equation}
+
+\begin{example}
+  A qubit ($\mathcal{H}\equiv \mathbb{C}^2$) is prepared in the following statistical ensemble: the state $\rho_1 = |0\rangle\langle 0|$ occurs with probability $p_1=1/2$ and $\rho_2 = |+\rangle\langle +|$ with $p_2 = 1/2$. The associated state is given by
+  \begin{equation}
+    \rho = \frac12 |0\rangle\langle 0| + \frac12|+\rangle\langle+| \equiv \begin{pmatrix}
+      \frac34 & \frac14 \\ \frac14 & \frac14
+    \end{pmatrix}
+  \end{equation}
+\end{example}
+
+As a rule, infinitely many compatible ensembles belong to one and the same macrostate -- instead of $p_1 = p_2 = \frac12$, the values $\frac34$ and $\frac14$ would do just as well. Quantum mechanics does not tell us which of them is the right one; for that we need a principle.
+
+A macroscopic quantity is obtained as the expectation value of an observable: one identifies an observable $\widehat{A}$, i.e.\ a Hermitian operator that represents a physical quantity, and computes
+\begin{equation}
+  \langle \widehat{A}\rangle \equiv \tr(\widehat{A} \rho),
+\end{equation} 
+where $\rho$ represents the statistical ensemble.
+
+The aim of statistical physics is to model many-particle systems statistically, when the only information available comes from a handful of macroscopic quantities (e.g.\ energy, magnetisation). A whole range of challenges has to be mastered. The greatest of them is to determine the probabilities with which microstates occur for a given macrostate. At this point the fundamental assumption of statistical mechanics is introduced:
+\begin{center}
+\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{In an isolated system in thermal equilibrium all accessible microstates are equally probable.}\end{tcolorbox}}
+\end{center}
+
+This assumption cannot (yet) be proved. At the microscopic level we expect that every process which takes the system from state $X$ into state $Y$ ought to be reversible, so that the system can pass just as easily from state $Y$ into state $X$. In that case the system should not prefer one state over another. Even so, it is not obvious that all the microstates taken to be ``accessible'' can actually be reached within a reasonable span of time. We shall indeed see that in a large system the number of ``accessible'' microstates is so great that in a typical lifetime only a tiny fraction of them can actually occur. What we assume, then, is that the microstates which do occur over a sufficiently long, but not unimaginably long, period of time represent a typical cross-section. We assume that the transitions are ``random'', in the sense that there is no pattern we need worry about.
+
+Classically, ``equally probable'' is harmless: one counts the accessible microstates and divides by their number. In quantum mechanics, however, superpositions give infinitely many states -- which of them are we to count? The answer calls for a new quantity, the \emph{entropy}, and the next lecture begins with it.

@@ -1,0 +1,105 @@
+%!TEX root = TheoreticalPhysicsC.tex
+
+
+\section{Lecture: The Canonical Ensemble}
+Consider a system in contact with its environment (a ``heat bath''), so that energy can be exchanged with it. Suppose the system is modelled with Hilbert space $\mathcal{H}$ and Hamiltonian $\widehat{H}$. The exchange of energy can be modelled mathematically by letting the energy of the system have a fixed mean value $E = \langle \widehat{H}\rangle$.
+
+This situation is the normal case: the electromagnetic field in this lecture hall is in a thermal state, and every system in the room interacts with it. We could not determine the true state even in principle; what we set up is a \emph{hypothesis} with the same expectation values.
+
+We are looking for a state $\rho$ which maximises the entropy under the constraint that the mean value of the energy is held constant. Following the principle of maximum entropy, this problem is described mathematically as follows:
+\begin{equation}
+	\begin{split}
+		\max_{\rho} &\,S(\rho) \\
+		\text{subject to} &\, E=\tr(\rho \widehat{H}).
+	\end{split}
+\end{equation}
+
+Two constraints are still missing here: for $\rho$ to describe a state at all, we must have $\tr(\rho)=1$ and $\rho \ge 0$. In full, the task therefore reads
+\begin{equation}
+	\max_{\rho} S(\rho) \quad\text{subject to}\quad E=\tr(\rho \widehat{H}),\quad \tr(\rho)=1,\quad \rho\ge 0.
+\end{equation}
+We are looking for a matrix with $d^2$ degrees of freedom, and $S$ is non-linear in these entries; that a closed-form solution exists at all is a piece of luck.
+
+Such maximisation problems can be solved with the help of Lagrange multipliers: 
+\begin{equation}
+	\max_{\rho} f(\rho) = -k\tr(\rho\log(\rho)) + \beta \tr(\rho \widehat{H})
+\end{equation}
+Each constraint has its own multiplier; above, only the one for the energy is written down. Normalisation contributes the term $\gamma\tr(\rho)$, which returns in a moment as $\log(\mathcal{Z})\mathbb{I}$; positivity we check at the end.
+
+\begin{greybox}[Lagrange multipliers]
+	Suppose we want the maximum of $f(x,y)$ subject to the constraint $g(x,y)=0$. We introduce a constant $\lambda$ and maximise instead the unconstrained function $F(x,y,\lambda) = f(x,y) + \lambda g(x,y)$; the solution still depends on $\lambda$, which we determine at the end from the constraint. For intuition, think of $\lambda$ as very large, and of its sign as chosen so that a violation is penalised: the maximum can then only lie where the constraint holds.
+\end{greybox}
+
+We write the solution as a function of $\beta$: $\rho \equiv \rho(\beta)$. Afterwards we look for the $\beta$ for which the condition $E=\tr(\rho \widehat{H})$ is satisfied. 
+
+To solve the maximisation problem, the variation of $f(\rho)$ must be stationary with respect to all possible variations $\delta \rho$ of $\rho$:
+\begin{equation}
+	0= f(\rho + \delta\rho) -f(\rho)
+\end{equation}
+One can show that the function attains its maximal value only if
+\begin{equation}
+	\log(\rho) + \beta \widehat{H} + \log(\mathcal{Z})\mathbb{I} = 0,
+\end{equation}
+where $\mathcal{Z}$ is a constant.
+The solution of this equation is therefore given by an exponential function:
+\begin{equation}
+	\rho \propto e^{-\beta \widehat{H}}.
+\end{equation}
+This step is allowed because $\log(\mathcal{Z})$ was multiplied by the identity: $\mathbb{I}$ commutes with everything, and only for that reason does $e^{-\beta \widehat{H}-\log(\mathcal{Z})\mathbb{I}}$ factorise into a product.
+The constant of proportionality is precisely $\mathcal{Z}$, and so we obtain
+\begin{equation}
+	\rho = \frac{e^{-\beta \widehat{H}}}{\mathcal{Z}},
+\end{equation}
+where the condition $\tr(\rho) = 1$ means that the \emph{partition function} $\mathcal{Z}$ is given by
+\begin{equation}
+	\mathcal{Z} = \tr\left(e^{-\beta \widehat{H}}\right) = \sum_{j=1}^d e^{-\beta E_j},
+\end{equation}
+where the $E_j$ are the energy eigenvalues of $\widehat{H}$. That settles positivity as well, since $e^{-\beta \widehat{H}}$ has only positive eigenvalues. The mean value $\langle \widehat{H}\rangle$ is calculated as follows
+\begin{equation}
+	\langle \widehat{H}\rangle = \sum_{j=1}^d E_j \frac{e^{-\beta E_j}}{\mathcal{Z}} = -\frac{1}{\mathcal{Z}}\frac{\partial \mathcal{Z}}{\partial \beta}.
+\end{equation}
+The minus sign in the last equality comes from the differentiation: every term $e^{-\beta E_j}$ brings down a factor $-E_j$. Written more compactly, then, $\langle \widehat{H}\rangle = -\frac{\partial}{\partial \beta}\log(\mathcal{Z})$.
+
+The entropy of $\rho=\frac{e^{-\beta \widehat{H}}}{\mathcal{Z}}$ is calculated as follows
+\begin{equation}
+	\eqbox{S(\rho) = k\beta\langle\widehat{H}\rangle + k\log(\mathcal{Z}).}
+\end{equation}
+Define the temperature in analogy with the microcanonical ensemble:
+\begin{equation}
+	\frac{1}{T} = \frac{\partial S}{\partial \langle\widehat{H}\rangle} = k\beta \Rightarrow \beta = \frac{1}{kT}.
+\end{equation}
+Hence
+\begin{equation}
+	\eqbox{\rho = \frac{e^{-\frac{\widehat{H}}{kT}}}{\mathcal{Z}}.}
+\end{equation}
+The factors $e^{-E_j/kT}$ are called \emph{Boltzmann factors}.
+
+The Boltzmann factors are a shape, not a mere formula: on the left they occupy the same level scheme at three temperatures, from the spike in the ground state to almost the uniform distribution $1/d$. On the right, the mean energy and the entropy meanwhile climb from $0$ up to $(d-1)\Delta/2$ and $k\log(d)$ -- from the pure state to the maximally mixed one.
+
+\input{figures/fig_vl22_boltzmann}
+
+Practically every system in thermal contact with a heat bath is modelled with this \emph{canonical state}, classically as well as quantum mechanically. From now on we also take the following as a definition: \emph{thermal equilibrium} means that the state is given by this equation.
+
+\section*{The Laws of Thermodynamics}
+
+\begin{center}
+\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Zeroth Law}. If system $A$ is in thermal equilibrium with system $B$, and system $B$ is in thermal equilibrium with system $C$, then system $A$ is in thermal equilibrium with system $C$.}\end{tcolorbox}}
+\end{center}
+\begin{center}
+\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{First Law}. There is a quantity $U$: the ``internal energy''. The change $\Delta U = Q+W$ of the internal energy equals the heat $Q$ supplied plus the work $W$ done. (Conservation of energy.)}\end{tcolorbox}}
+\end{center}
+Here \emph{heat} $Q$ is defined as any spontaneous flow of energy from one object to another that stems from a difference in temperature between the two objects. \emph{Work} $W$ is defined in thermodynamics as any other transfer of energy into or out of a system. 
+\begin{center}
+\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Second Law}. There is a quantity ``entropy'', and in adiabatic processes $\Delta S \ge 0$ holds. (Adiabatic means: without exchange of heat with the environment.)}\end{tcolorbox}}
+\end{center}
+\begin{merksatz}[The perspective of this course]
+	Thermodynamics is not fundamental. It is a consequence of quantum mechanics -- a coarse-grained description of the laws of nature for large systems.
+\end{merksatz}
+\begin{center}
+\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Third Law}. One cannot fully reach the absolute zero of temperature $T=0$.}\end{tcolorbox}}
+\end{center}
+
+This law is not quite right, however, for there are exceptions. It is equivalent to a statement about the entropy: normally the entropy vanishes as $T\to 0$. In some systems -- glass, certain ice crystals, spin glasses -- there is entropy left over at absolute zero; for these the third law does not hold.
+ 
+
+

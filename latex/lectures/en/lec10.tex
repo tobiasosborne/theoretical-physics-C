@@ -1,0 +1,115 @@
+%!TEX root = TheoreticalPhysicsC.tex
+
+
+\section{Lecture: Spreading of the Wave Packet}
+The term ``wave packet'' is used for spatially confined functions, such as $\Psi\in L^2(\mathbb{R}^3)$, and not for plane waves. From the standpoint of the statistical interpretation there are therefore only such ``packets'', and the discussion of plane waves is at best a slightly abbreviated way of talking about the Fourier transform. In the early days of quantum mechanics, well-localised wave packets were moreover regarded as a kind of substitute for particles. Judged by that
+standard, one property of the wave packets proved rather troublesome: they ``flowed apart'', which for particles is really quite unseemly behaviour. The spreading of the wave packet was thereafter seen as a typically quantum mechanical effect. If, however, you read $\Psi$ statistically throughout, there is nothing paradoxical about this process: why, after all, should a probability distribution
+not grow broader with time? We shall see here that the spreading of wave packets is precisely a classical effect: asymptotically it is determined exactly by the momentum distribution, just as for a swarm of classical particles.
+
+\begin{greybox}[Why real particles nevertheless do not spread]
+	A particle is rarely alone. Matter consists of charged constituents, and the electromagnetic field asks them incessantly ``are you there?'' -- the particle answers by producing a little field, and this ceaseless position measurement localises it again and again. Keyword: \emph{decoherence}.
+\end{greybox}
+
+Let us therefore now consider particles in $\mathbb{R}^3$ with Hamiltonian
+\begin{equation}
+	H = \frac{\widehat{p}_\text{tot.}^2}{2m} = \frac{\widehat{p}_{x}^2}{2m}+\frac{\widehat{p}_{y}^2}{2m}+\frac{\widehat{p}_{z}^2}{2m}.
+\end{equation}
+In this case $H$ corresponds, as usual in QM, to the energy of a free particle. 
+
+We are interested in the probability distribution of position at various times, especially at large times, that is, in the results of
+position measurements when a long time $t$ has elapsed between preparation and measurement. We have two equivalent alternatives for tackling this problem: the Heisenberg picture and the Schrödinger picture. In the Schrödinger picture we would solve the Schrödinger equation 
+\begin{equation}
+	i\hbar \frac{\partial}{\partial t}\Psi = \widehat{H}\Psi
+\end{equation}
+and then read off the result as 
+\begin{equation}
+	p_t(x) \equiv |\Psi(x,t)|^2
+\end{equation}
+-- a cloud in space, gathered up detector click by detector click. The difference between the pictures is pure bookkeeping: there the state moves, here the measurement, and because $\tr(\rho_t\widehat{F}) = \tr(\rho\,\widehat{F}(t))$, both deliver the same numbers. We shall carry out the calculation in the Heisenberg picture, i.e. we hold $\Psi$ (and with it
+the density matrix $\rho$) fixed and compute the operators
+\begin{equation}
+	\widehat{x}(t) \equiv e^{\frac{it}{\hbar} \widehat{H}}\widehat{x} e^{-\frac{it}{\hbar} \widehat{H}}, \quad \widehat{y}(t) \equiv e^{\frac{it}{\hbar} \widehat{H}}\widehat{y} e^{-\frac{it}{\hbar} \widehat{H}} \quad \text{and} \quad \widehat{y}(t) \equiv e^{\frac{it}{\hbar} \widehat{H}}\widehat{y} e^{-\frac{it}{\hbar} \widehat{H}}.
+\end{equation}
+
+Next we look for suitable ``coordinates'' in which we can carry out our calculation. Because the exponential function appears, it is natural to choose a representation of the Hilbert space in which $H$ is a multiplication operator, i.e. the momentum representation:
+\begin{equation}
+	\Phi(\mathbf{p})\equiv \Phi(p_x,p_y,p_z) \equiv \frac{1}{\sqrt{2\pi\hbar}} \iiint_{-\infty}^\infty \Psi(x)e^{-\frac{i}{\hbar}(p_x x+ p_y y+ p_z z)}\,dxdydz.	
+\end{equation} 
+Attached to each $\mathbf{p}$ is the plane wave $|\Psi_{\mathbf{p}}\rangle$ from Lecture 8, normalised here so that $\langle\Psi_{\mathbf{p}}|\Psi_{\mathbf{p}'}\rangle = \delta^{(3)}(\mathbf{p}-\mathbf{p}')$:
+\begin{equation}
+	\langle \mathbf{x}|\Psi_{\mathbf{p}}\rangle = \frac{1}{(2\pi\hbar)^{3/2}}e^{\frac{i}{\hbar}(p_x x + p_y y + p_z z)},
+\end{equation}
+and these improper kets furnish a resolution of the identity:
+\begin{equation}\label{eq:eins-impuls}
+	\mathbb{I} = \iiint_{-\infty}^\infty |\Psi_{\mathbf{p}}\rangle\langle\Psi_{\mathbf{p}}|\,dp_xdp_ydp_z.
+\end{equation}
+The coefficients $\langle\Psi_{\mathbf{p}}|\Psi\rangle$ in this basis are precisely $\Phi(\mathbf{p})$.\footnote{The prefactor above in $\Phi(\mathbf{p})$ is the one-dimensional one; in three dimensions it should be $(2\pi\hbar)^{-3/2}$.} Inserting an identity like this is our most important computational tool; we shall need it again in a moment.
+
+This basis is chosen because the plane waves are eigenvectors of $\widehat{H}$,
+\begin{equation}\label{eq:heigen}
+	\widehat{H}|\Psi_{\mathbf{p}}\rangle = \frac{|\mathbf{p}|^2}{2m}|\Psi_{\mathbf{p}}\rangle,
+\end{equation}
+so that in the power series every $\widehat{H}$ turns into a number:
+\begin{equation}
+	e^{-\frac{it}{\hbar}\widehat{H}}|\Psi_{\mathbf{p}}\rangle = \sum_{n=0}^{\infty}\frac{1}{n!}\left(-\frac{it}{\hbar}\right)^n \widehat{H}^n|\Psi_{\mathbf{p}}\rangle = e^{-\frac{it}{\hbar}\frac{|\mathbf{p}|^2}{2m}}|\Psi_{\mathbf{p}}\rangle.
+\end{equation}
+In the exponent there was an operator; now there is a number -- hence our obsession with eigenvectors. This is permitted \emph{only} on an eigenvector: replacing a matrix by a number is something you have to earn.
+
+We shall also need in a moment that $\widehat{x}$ acts in the momentum representation as $i\hbar\frac{\partial}{\partial p_x}$. To see this in one dimension you insert the position resolution of the identity,
+\begin{equation}
+	\langle \Psi_p|\widehat{x}|\Psi\rangle = \int_{-\infty}^\infty \langle \Psi_p|x\rangle\, x\, \Psi(x)\,dx = \frac{1}{\sqrt{2\pi\hbar}}\int_{-\infty}^\infty x\, e^{-\frac{i}{\hbar}px}\,\Psi(x)\,dx,
+\end{equation}
+produce the factor $x$ as a derivative with respect to $p$,
+\begin{equation}
+	i\hbar\frac{\partial}{\partial p}e^{-\frac{i}{\hbar}px} = i\hbar\left(-\frac{ix}{\hbar}\right)e^{-\frac{i}{\hbar}px} = x\,e^{-\frac{i}{\hbar}px},
+\end{equation}
+and pull it out in front of the integral:
+\begin{equation}\label{eq:xinp}
+	\langle \Psi_p|\widehat{x}|\Psi\rangle = i\hbar\frac{\partial}{\partial p}\Phi(p).
+\end{equation}
+For $\widehat{y}$ and $\widehat{z}$ it goes exactly the same way -- a nice symmetry with the position representation, where conversely $\widehat{p}$ acts as $-i\hbar\frac{\partial}{\partial x}$: the same structure with the roles interchanged, up to the sign.
+
+Then
+\begin{equation}\label{eq:timedepx}
+	\begin{split}
+		(\widehat{x}(t)\Phi)(\mathbf{p}) &= e^{\frac{it}{\hbar} \frac{|\mathbf{p}|^2}{2m}}\left(\widehat{x}(t)e^{-\frac{it}{\hbar}\widehat{H}}\Phi\right)(\mathbf{p}) \\
+		&= e^{\frac{it}{\hbar} \frac{|\mathbf{p}|^2}{2m}}\left(i\hbar \frac{\partial}{\partial p_x}\right)\left(e^{-\frac{it}{\hbar}\frac{|\mathbf{p}|^2}{2m}}\Phi(\mathbf{p})\right) \\
+		&= t \frac{p_x}{m}\Phi(\mathbf{p}) + i\hbar \frac{\partial}{\partial p_x} \Phi(\mathbf{p}), \\ 
+	\end{split}
+\end{equation}
+hence
+\begin{equation}
+	\widehat{x}(t) = t \frac{\widehat{p}_x}{m} + \widehat{x}(0),
+\end{equation}
+where $\frac{\widehat{p}_x}{m}$ represents the \emph{velocity operator} (in the $x$-direction). Similar expressions hold for $\widehat{y}(t)$ and $\widehat{z}(t)$. The expression $\frac{p_\mu}{m} = \frac{\partial}{\partial p_\mu} \frac{|\mathbf{p}|^2}{2m}$, $\mu = x,y,z$, is also called the \emph{group velocity}, because it describes the velocity of \emph{groups}, that is, of wave packets. The calculation is laborious; what you should remember is its result, not the sequence of steps.
+
+To obtain the time dependence of the expectation value of $\widehat{x}(t)$, all you now have to do is take the trace with $\rho =  |\Psi\rangle\langle\Psi|$ on both sides of (\ref{eq:timedepx}). We thereby obtain
+\begin{equation}
+	\begin{split}
+		\langle\widehat{x}\rangle(t) &= \tr(\rho \widehat{x}(t)) \\
+		&= \tr\left(\rho \left(t \frac{\widehat{p}_x}{m} + \widehat{x}(0)\right)\right)\\
+		&= t \frac{\langle\widehat{p}_x \rangle(0)}{m} + \langle\widehat{x}\rangle(0).
+	\end{split}
+\end{equation}
+That is exactly the newtonian rule ``position equals initial position plus velocity times time''.
+
+\begin{intuition}
+	The same formula, different physics: classically a particle \emph{has} a position, and expectation values are not needed at all. Here only the mean runs classically, while the width grows -- a classical cloud with sharp position and momentum does not spread, a quantum mechanical one must. Classical mechanics is the limiting case $\hbar\to 0$.
+\end{intuition}
+
+The operator equation contains far more information than just that, however: the diagonalisation of the operators $\widehat{x}(t)$ does after all contain all the information about the probability distributions of position at time $t$ in arbitrary states. The appearance of the position probability distribution at large times is therefore completely determined by the joint distribution of the operators $\frac{\widehat{p}_\mu}{m}$. The behaviour of $\widehat{x}$, $\widehat{y}$ and $\widehat{z}$ therefore shows no difference whatever between classical and quantum mechanical particles.
+
+\input{figures/fig_vl10_zerfliessen}
+
+In~(a) the grey marks of the centres advance in equal steps, while
+the height falls exactly as far as the width grows. In~(b) notice
+how early the curve swings onto the classical straight line: after only a few
+$\tau$ the difference can no longer be seen. Whether you ever set eyes
+on the spreading at all is decided by the time scale $\tau$: for an electron with
+$\Delta x(0) = 10^{-10}$\,m it is $\tau \sim 10^{-16}$\,s, whereas for a grain of dust of
+$1\,\mu$g with $\Delta x(0) = 10^{-6}$\,m it is $\tau \sim 10^{13}$\,s, i.e.
+roughly $300\,000$ years.
+
+The more interesting differences between classical mechanics and quantum mechanics (and the more important applications of quantum mechanics) are to be found, however, with particles in external potentials, or in interaction with one another.
+
+The next step in that direction is a modest one: a particle in a box of \emph{finite} size -- our first example of what ``quantum'' in quantum mechanics means.

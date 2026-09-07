@@ -1,0 +1,98 @@
+%!TEX root = TheoreticalPhysicsC.tex
+
+\section{Lecture: The Coulomb Potential (Hydrogen Atom)}
+
+\begin{center}
+	\begin{tikzpicture}
+		\begin{axis}[width=\columnwidth, height=8cm,hide axis, tick style={color=black}, domain=0:12, xtick=\empty, ytick=\empty, samples =200, xmin = -0.5, xmax = 8, ymin = -3, ymax = 2]
+		\addplot[cgblue, dashed] {1/x^2-2/x};
+		\addplot[cgblue] {-2/x};
+		\draw[->] (axis cs: -0.5, 0) -- (axis cs: 8, 0);
+		\draw (axis cs: 7.8, -0.2) node[below] {$r$};
+		\draw (axis cs: 6, 1.5) node[below] {$U_\ell(r) = \frac{\hbar^2 \ell(\ell+1)}{2m_{\text{e}}r^2}+V(r)$};
+		\draw[->] (axis cs: 0, -3) -- (axis cs: 0, 2);
+    	\draw (axis cs: 0.5,1.5) node[right] {$\ell = 1$};
+   		\draw (axis cs:3.5,-1.25) node[above] {$\ell=0$};
+		\end{axis}
+	\end{tikzpicture}
+\end{center} 
+
+The hydrogen atom consists of a proton and an electron. A first crude model of the atom is obtained by approximating the proton as an infinitely massive point mass. With this approximation the hydrogen atom can be modelled as a single particle (the electron) moving in the central potential 
+\begin{equation}
+	V(r) = -\frac{Ze^2}{4\pi \epsilon_0 r}
+\end{equation}
+of the proton.
+
+The electron here is not a point on an orbit but a cloud; the proton likewise,
+though the difference in mass lets it pass as a point mass. The reduction to one
+particle is not an approximation: relative coordinates and the reduced mass
+$\mu = m_{\text{e}}m_{\text{p}}/(m_{\text{e}}+m_{\text{p}})$ make it exact; the
+approximation enters only with $\mu \approx m_{\text{e}}$. Calculations of this
+kind determined the hydrogen lines, and those lines were used to measure the
+distances to distant galaxies.
+
+The radial equation is a one-dimensional problem in the effective potential
+$U_\ell(r)$ shown in the figure above. It can be solved with a power series ansatz,
+the Frobenius method; that is so laborious that we shall simply write the solutions
+down and check them by substitution.
+
+The solutions of the radial equation 
+\begin{equation}
+	\left(-\frac{\hbar^2}{2m_{\text{e}}}\frac{d^2}{dr^2} + \frac{\hbar^2\ell(\ell+1)}{2m_{\text{e}}r^2} + V(r) - E\right)u(r) = 0.
+\end{equation}
+are of the form
+\begin{equation}
+	R_{n\ell}(r) = \sqrt{\frac{(n-\ell-1)!(2\kappa)^3}{2n(n+\ell)!}}(2\kappa r)^\ell e^{-\kappa r}\text{L}_{n-\ell-1}^{2\ell +1}(2\kappa r),	
+\end{equation}
+where 
+\begin{equation}
+	\kappa = \frac{\sqrt{2m_{\text{e}}|E|}}{\hbar} = \frac{Z}{n a_0}
+\end{equation}
+and the $L_r^s$ are the Laguerre polynomials. The associated eigenvalues read
+\begin{equation}
+	\eqbox{E_n = -\frac{(Ze)^2}{4\pi\epsilon_0}\frac{1}{a_0}\frac{1}{2n^2},}
+\end{equation}
+with \emph{principal quantum number} $n=1,2,\ldots$ and \emph{Bohr radius} 
+\begin{equation}
+	a_0 = \frac{4\pi\epsilon_0\hbar^2}{m_{\text{e}}e^2} = 5.29177210903(80) \times 10^{-11} \text{m}.
+\end{equation}
+The counting starts at $n=1$; there is no $n=0$. In the term scheme the
+infinitely many levels pile up at the ionisation threshold $E=0$.
+\begin{merksatz}
+It is not the eigenvalues that are observable, but their differences: in a
+transition $n \to n'$ with $n'<n$ the electron emits a photon of energy
+$E_n-E_{n'}$, and these are the spectral lines.
+\end{merksatz}
+
+\input{figures/fig_vl16_termschema}
+
+It is not the levels that are coloured here, but the transitions: the length of
+each arrow is the photon energy, drawn to scale, and the Lyman arrows are about four
+times as long as the Balmer arrows. On the right the pile-up at $E=0$ returns as the
+crowding at the series limit.
+
+The complete eigenfunctions read
+\begin{equation}
+	\psi_{n\ell m}(r,\theta,\phi) = R_{n\ell}(r)\text{Y}_{\ell}^m(\theta,\phi).
+\end{equation}
+For each $n$ the possible angular momentum quantum numbers are $\ell = 0,1,2, \ldots, n-1$ ($\equiv \text{s}, \text{p}, \text{d}, \text{f}, \ldots $). For each $\ell$ there are $2\ell +1$ possible values of the magnetic quantum number $m = -\ell, -\ell+1, \ldots, \ell$. One important remark: the energy is independent of $m$ and $\ell$. 
+
+The first few Laguerre polynomials read
+\begin{equation}
+	\begin{split}
+		L_0^s(x) &= 1 \\
+		L_1^s(x) &= -x+(s+1) \\
+		L_2^s(x) &= -\frac{x^2}{2}-(s+2)x + \frac{1}{2}(s+1)(s+2) \\
+		&\vdots
+	\end{split}
+\end{equation}
+We therefore obtain the following eigenfunctions $\psi_{n\ell m}(r,\theta,\phi)$ up to $n=2$:
+\begin{align*}
+	\psi_{100}(r,\theta,\phi) &= \frac{1}{\sqrt{\pi}}\left(\frac{Z}{a_0}\right)^{\frac{3}{2}}e^{-\frac{Zr}{a_0}} &\quad & 1\text{s} \\
+	\psi_{200}(r,\theta,\phi) &= \frac{1}{4\sqrt{2\pi}}\left(\frac{Z}{a_0}\right)^{\frac{3}{2}}\left(2-\frac{Zr}{a_0}\right)e^{-\frac{Zr}{2a_0}} &\quad & 2\text{s} \\
+	\psi_{210}(r,\theta,\phi) &= \frac{1}{4\sqrt{2\pi}}\left(\frac{Z}{a_0}\right)^{\frac{3}{2}}\frac{Zr}{a_0}e^{-\frac{Zr}{2a_0}}\cos(\theta) &\quad & 2\text{p} \quad (m=0) \\
+	\psi_{21\pm1}(r,\theta,\phi) &= \frac{1}{8\sqrt{2\pi}}\left(\frac{Z}{a_0}\right)^{\frac{3}{2}}\frac{Zr}{a_0}e^{-\frac{Zr}{2a_0}}\sin(\theta)e^{\pm i\phi} &\quad & 2\text{p} \quad (m=\pm1). \\
+\end{align*}
+
+The usual colourful orbital pictures show only $|\psi_{n\ell m}|^2$, not the
+phase.

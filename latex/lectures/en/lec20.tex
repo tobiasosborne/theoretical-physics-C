@@ -1,0 +1,55 @@
+%!TEX root = TheoreticalPhysicsC.tex
+
+\section{Lecture: The Microcanonical Ensemble}
+Systems in nature consist of $10^{16}$ to $10^{23}$ particles; their Hilbert space becomes so large that an exact treatment is all but impossible -- even in principle. The way out is statistical physics, and it costs us information.
+
+Suppose a closed quantum system (Hilbert space: $\mathcal{H}\equiv \mathbb{C}^d$, Hamiltonian: $\widehat{H}$) is prepared with a fixed particle number, a fixed volume, and an energy lying only in the interval $[E, E+\Delta]$ with small $\Delta$. We have too little information -- just the particle number and so on -- and that does not suffice to describe the state of the system completely. How can we model the state of the system? According to the central assumption of statistical physics, all states with an energy in $[E, E+\Delta]$ are taken to occur with the same statistical weight. That is a principle, not the truth: without it we could not get at the probabilities at all.
+
+The energy eigenstates $|E_j\rangle$ and the associated energy eigenvalues $E_j$ of the system give us a diagonalisation of $H$:
+\begin{equation}
+  \widehat{H} = \sum_{j=1}^d E_j |E_j\rangle \langle E_j|.
+\end{equation}
+This involves no loss of generality: every Hamiltonian is Hermitian and therefore diagonalisable. Working in finite dimensions merely keeps the presentation simple.
+With the help of $\{E_j, |E_j\rangle \}_{j=1}^d$ we identify the following statistical ensemble as a model for the state of the system. The eigenstate $|E_j\rangle$ appears with probability $0$ when $E_j\not\in [E,E+\Delta]$. If instead $E_j\in [E,E+\Delta]$, then $|E_j\rangle$ appears with probability $1/N_E$, where $N_E$ is the number of states in $[E, E+\Delta]$. We therefore put forward the hypothesis that the following quantum state models the system best (in view of the information available to us):
+\begin{equation}
+  \rho = \sum_{E_j\in [E,E+\Delta]} \frac{1}{N_E} |E_j\rangle \langle E_j|.
+\end{equation} 
+This statistical ensemble is called the \emph{microcanonical ensemble}. The microcanonical ensemble is used as a model for the state of a system whenever we know the particle number, the volume and the energy of the system exactly.
+
+\begin{example}
+  A three-level system whose Hamiltonian is already in diagonal form:
+  \begin{equation}
+    \widehat{H} = \begin{pmatrix} 0 & 0 & 0\\ 0 & 1 & 0\\ 0 & 0 & 1{,}1\end{pmatrix},
+  \end{equation}
+  with the standard basis vectors as energy eigenstates, $E_1 = 0$, $E_2 = 1$ and $E_3 = 1{,}1$. Let the energy be measured in the range $[0{,}9;\, 1{,}2]$, so $E = 0{,}9$ and $\Delta = 0{,}3$. $E_2$ and $E_3$ lie inside it, but $E_1$ does not, so $N_E = 2$ and
+  \begin{equation}
+    \rho = \frac{1}{2}|E_2\rangle\langle E_2| + \frac{1}{2}|E_3\rangle\langle E_3|
+         = \begin{pmatrix} 0 & 0 & 0\\ 0 & \frac{1}{2} & 0\\ 0 & 0 & \frac{1}{2}\end{pmatrix}.
+  \end{equation}
+  Note what the measurement achieves: the ground state occurs with probability exactly zero; the system is simply never there.
+\end{example}
+
+The entropy of the microcanonical ensemble is calculated as follows:
+\begin{equation}
+  S(\rho) = -k\sum_{E_j\in [E,E+\Delta]} \frac{1}{N_E} \log\left(\frac{1}{N_E}\right) = k \log(N_E).
+\end{equation}
+The calculation is short because $\rho$ is already diagonal here; the minus sign is cancelled by $\log(1/N_E) = -\log(N_E)$. In the example above, $S(\rho) = k\log(2)$.
+
+\input{figures/fig_vl20_mikro}
+
+Just how large $N_E$ actually becomes is only apparent once the levels are degenerate. Panel (a) counts all $2^6$ microstates of six spins; the shell $[E,E+\Delta]$ leaves exactly $35$ of them, each carrying the same weight $1/35$, all the rest weight zero. Panel (b) shows the same count per spin -- the two levels filled in are those from (a) -- and where it tends as $N$ grows large.
+
+This state \emph{maximises} the entropy subject to the constraints that the energy lies in $[E,E+\Delta]$ (and that the particle number and the volume of the system stay fixed). At first this is no more than an observation; but one can turn it around and elevate it to a principle.
+
+The method of framing the hypothesis so that the state of the system \emph{maximises} the entropy was introduced in 1957 by Edwin Thompson Jaynes, drawing on methods from statistical mechanics and from Shannon's information theory. Its basis is that, in the absence of information, one maximises the entropy of the a priori probability, since any other assignment would impose arbitrary restrictions on the situation under consideration. The maximum-entropy method commits itself as little as possible. According to Jaynes, however, this is only the final step, taken to close whatever gaps still remain after all the available information has been filled in.
+
+In statistical physics this means: 
+\begin{center}
+\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{Of all the states of a physical system compatible with what is known about it, the one to choose is the one that maximises the entropy.}\end{tcolorbox}}
+\end{center}
+
+Why is this trade worth making? The basic assumption speaks of \emph{equally probable} microstates. Classically these form a well-defined set; quantum mechanically, entire continuous families of superpositions are admitted, and it is then unclear what ought to be counted at all. The maximum-entropy principle never runs into this, since all it needs is an objective function and constraints:
+\begin{equation}
+  \max_{\rho}\, S(\rho) \quad \text{subject to the constraints that quantify our knowledge,}
+\end{equation}
+which here means that the energy lies in $[E,E+\Delta]$. This is how we shall proceed from now on: first the constraints, then the maximisation.

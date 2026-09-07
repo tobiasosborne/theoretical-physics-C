@@ -1,0 +1,125 @@
+%!TEX root = TheoreticalPhysicsC.tex
+
+\section{Lecture: Particle in a Box}
+A single particle all alone in the universe models no real system. A particle in a box of finite size, by contrast, is a serviceable effective model: for an electron in a quantum dot, say, or for a photon in a cavity resonator. Along the way we see here for the first time where the word ``quantum'' comes from.
+
+If the freedom of motion of a particle is restricted by external walls, this shows up first of all as a restriction on the possible values of the position variable $x$. If the particle can move only inside a region $G \subset \mathbb{R}^3$, we first modify the Hilbert space to $\mathcal{H}\equiv L^2(G)$, i.e.\ wave functions are defined only on $G$, and in the
+inner product the integration 
+\begin{equation}
+	\langle \Phi|\Psi\rangle \equiv \iiint_G \Phi^*(x,y,z)\Psi(x,y,z)\, dxdydz
+\end{equation}
+is likewise restricted to $G$. 
+
+For the Hamiltonian we again try the ansatz 
+\begin{equation}
+	H = -\frac{\hbar^2}{2m}\nabla^2
+\end{equation}
+This, however, goes wrong ($H$ will not be Hermitian). One can restore the Hermiticity of $H$ by restricting the domain of $H$ to those functions which satisfy certain \emph{boundary conditions}. These boundary conditions are ultimately an idealised description of the interaction between particle and wall. A frequently used boundary condition for the Hamiltonian is the so-called \emph{Dirichlet boundary condition}: only functions which vanish on the boundary of $G$ are admitted into the domain of $H$.
+
+How crude this idealisation is becomes clear if one tries to describe the wall honestly: it consists of an astronomical number of atoms, every single one of which would have to be modelled as well -- that is surface physics. Strictly speaking the boundary condition is even wrong: a tiny probability of finding the particle outside $G$ always remains, in the gaps between the atoms, for instance. The procedure is a familiar one, though: in electrodynamics too, certain field components vanish at conductor surfaces.
+
+In order to solve the dynamics of $H$ it is extremely helpful to compute the eigenvalues and the associated eigenvectors of $H$. (Then $U_t=e^{-\frac{it}{\hbar}\widehat{H}}$ is given by nothing but a multiplication operator.) Our old eigenvectors are of no further use for this: a plane wave is non-zero everywhere and cannot possibly satisfy the boundary condition. What worked for the free particle fails here as a matter of principle. We begin by computing the eigenfunctions for the simplest case: a ``one-dimensional'' particle in the interval $[0,L] \subset \mathbb{R}$. That is, we first compute the solutions of the equation
+\begin{equation}
+	\widehat{H}|\Psi\rangle = E|\Psi\rangle
+\end{equation}
+for all possible eigenvalues $E$. In the literature it is usually called the \emph{stationary Schrödinger equation} -- really an unnecessary name for a plain eigenvector equation. To get any further we shall rewrite this equation as an equation for the wave function
+\begin{equation}
+	\langle x|\widehat{H}|\Psi\rangle = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\Psi(x) = E\Psi(x) = E\langle x|\Psi\rangle.
+\end{equation}
+Without further restrictions the Hamiltonian is not Hermitian. We must also impose the boundary condition 
+\begin{equation}
+	\Psi(0) = \Psi(L) = 0
+\end{equation} 
+This is a linear differential equation with constant coefficients, and is therefore
+solved by the ansatz
+\begin{equation}
+	\Psi(x) = e^{\mu x}, \quad\text{with}\quad \mu\in \mathbb{C}.
+\end{equation}
+Substituting gives the equation
+\begin{equation}
+	-\frac{\hbar^2}{2m} \mu^2 e^{\mu x} = E e^{\mu x},
+\end{equation}
+so
+\begin{equation}
+	\mu = \pm i \sqrt{\frac{2mE}{\hbar^2}}, 
+\end{equation}
+and hence two linearly independent solutions.
+
+The general solution of the differential equation is therefore: 
+\begin{equation}
+	\Psi(x) = A e^{\mu x} + B e^{-\mu x},
+\end{equation}
+where $\mu$ is one of the two solutions, and $A,B \in \mathbb{C}$. The boundary condition $\Psi(0)= 0$ forces $B = -A$. So we are left with the equation 
+\begin{equation}
+	\Psi(L) =A e^{\mu L} + B e^{-\mu L} = 0,
+\end{equation}
+or equivalently: 
+\begin{equation}
+	e^{2\mu L} = 1,
+\end{equation}
+from which the possible values of $\mu$ (and with them of $E$) follow. Real $\mu$ are ruled out at once,
+so $E \ge 0$. For imaginary $\mu$ there are solutions, namely 
+\begin{equation}
+	2\mu L = 2\pi i n,
+\end{equation}
+where $n \in \mathbb{Z}$. Thus $\mu = n\pi i/L$, and the eigenfunction $\Psi(x) = A \sin(n\pi x/L)$.
+Clearly $n$ and $-n$ give the same eigenfunction, and $n = 0$ is excluded (there $\Psi'' =0$, so that $
+\Psi(x) = ax+b$ is linear, which does not sit well with the boundary conditions). After normalisation we therefore obtain the eigenfunctions and eigenvalues
+\begin{equation}
+	\phi_n(x) = \sqrt{\frac{2}{L}}\sin\left(\frac{n\pi}{L} x\right)\quad \text{and}\quad E_n = \frac{\hbar^2 \pi^2}{2mL^2}n^2\quad \text{for $n=1,2,\ldots$.}
+\end{equation}
+Pictorially, $\phi_1$ is half a sine wave across the interval, $\phi_2$ a whole one, and so on; you had best check the normalisation integral for yourself.
+
+\begin{merksatz}[Where the name ``quantum mechanics'' comes from]
+	For a free particle every energy was allowed. In the box, all that survives of this continuum is the discrete sequence $E_n\propto n^2$: restricting the position leads as a rule to the \emph{quantisation} of the energy eigenvalues -- hence the name of the whole theory.
+\end{merksatz}
+
+\input{figures/fig_vl11_kasten}
+
+The figure shows both at once: on the left each eigenfunction sits on its own
+energy level, and one reads off that $\phi_n$ has exactly $n-1$ zeros in the
+interior; on the right is the spectrum, both sequences normalised to their
+respective $E_1$. The levels spread apart as $n^2$ -- in contrast to the
+harmonic oscillator, whose levels we shall later find to be
+\emph{evenly spaced}. So the shape of the potential determines not only
+\emph{that} there is quantisation, but also \emph{how}.
+
+The $\phi_n$ form a basis of our Hilbert space $\mathcal{H} = L^2([0,L])$ and thereby define a unitary
+operator $U:\mathcal{H} \rightarrow \ell^2(\mathbb{N})$, namely $(U\Psi)(n) = \langle \phi_n|\Psi\rangle$, which diagonalises $H$. The time-evolution operator $U_t = e^{-itH/\hbar}$ is therefore obtained by expanding in the basis $\phi_n$ (= applying $U$), applying $U_t$ trivially to the basis vectors (= multiplication by a function of $n$) and summing the series with the new components (= applying $U^\dag$):
+\begin{equation}
+	U_t |\Psi\rangle = \sum_{n=1}^{\infty} e^{-\frac{it}{\hbar} E_n} |\phi_n\rangle \langle \phi_n|\Psi\rangle. 
+\end{equation}
+So as a mnemonic in Dirac's bra-ket notation we have once again
+\begin{equation}
+	\eqbox{U_t = \sum_{n=1}^{\infty} e^{-\frac{it}{\hbar} E_n} |\phi_n\rangle \langle \phi_n|.}
+\end{equation}
+With that, all five postulates have been ticked off for this system. The energy expectation value $\tr(\rho\widehat{H})$ can never fall below $E_1$, the energy of the \emph{ground state} $|\phi_1\rangle$; in the eigenstate $|\phi_n\rangle$ the variance moreover vanishes, $\tr(\rho\widehat{H}^2) - (\tr(\rho\widehat{H}))^2 = E_n^2 - E_n^2 = 0$. In the laboratory these levels are almost never observed directly, but rather as \emph{differences}: through photons given off in transitions between eigenstates.
+
+\begin{intuition}
+	One often reads that the $\phi_n$ are ``the'' states of the system. That is an idealisation. An energy eigenstate has no dynamics: up to a phase the particle would stay in it forever. In nature, however, there are always interactions, first and foremost with the electromagnetic field; after a while one has a superposition of several eigenstates. The eigenvectors are a computational device, not a typical state.
+\end{intuition}
+
+For a three-dimensional particle in a box shaped like a rectangular cuboid, the
+essential work has already been done. Let us therefore consider the region
+\begin{equation}
+	G = \left\{(x,y,z)\,\middle| \,  0\le x \le L_x, 0\le y \le L_y, 0\le z \le L_z  \right\},
+\end{equation}
+where $L_x$, $L_y$ and $L_z$ are the edge lengths of the cuboid. The Hamiltonian is
+now 
+\begin{equation}
+	\widehat{H} = -\frac{\hbar^2}{2m}\nabla^2,
+\end{equation}
+again with the boundary condition that functions in the domain of $H$ vanish on the boundary of the region. To solve the eigenvalue equation one makes a \emph{separation ansatz}
+\begin{equation}
+	\Psi(x,y,z) = \Phi_x(x)\Phi_y(y)\Phi_z(z)
+\end{equation}
+and finds that the function $\Phi_x''/\Phi_x$ no longer depends on $x$ (similarly for $\Phi_y$ and $\Phi_z$), so that $\Phi_x$ must be an eigenfunction for the problem of a one-dimensional interval just discussed. In this way we obtain the eigenfunctions and eigenvalues
+\begin{align}
+	\phi_{n_x,n_y,n_z}(x,y,z) &= \sqrt{\frac{8}{L_xL_yL_z}} \sin\left(\frac{n_x\pi}{L_x} x\right)\sin\left(\frac{n_y\pi}{L_y} y\right)\sin\left(\frac{n_z\pi}{L_z} z\right) \\
+	E_{n_x,n_y,n_z}&=\frac{\hbar^2\pi^2}{2m} \left(\frac{n_x^2}{L_x^2} + \frac{n_y^2}{L_y^2} + \frac{n_z^2}{L_z^2} \right).
+\end{align}
+What can one say about boxes of other shapes? A separation ansatz works only in the few cases where one can find coordinates in which the shape of the box is easy to describe and in which the
+Laplace operator moreover splits into a sum of second derivatives. Besides the cuboid one can treat the sphere in this way, and ellipsoids too. For general regions $G$ the determination of the eigenfunctions
+and eigenvalues of the Laplace operator is not possible in closed form, but it is a problem that plays a role in various wave phenomena in physics (cavity resonance).
+
+Let us take note: here, for once, a system has been worked through completely. That this succeeds is more a matter of luck than of rule -- the harmonic oscillator and the hydrogen atom are still to come, and then it stops.

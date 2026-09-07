@@ -1,0 +1,152 @@
+%!TEX root = TheoreticalPhysicsC.tex
+\section{Lecture: ``Quantisation''}
+
+How does one identify the right Hilbert space, Hamiltonian and observables for a given system? Unfortunately there is no systematic method for determining this information for a physical system. That means that, given a classical description of a system, there is no mathematically well-defined map which automatically assigns to it the correct quantum system. The reason for this is the following. Classical physics represents a good approximation to the physics of quantum mechanical systems which are exposed to interactions with their surroundings. These damaging effects of the environment on a quantum system are known as decoherence. Decoherence is the reason why classical mechanics is such a good approximation to everyday physics. Closed systems, after all, hardly exist at all: every charged object couples to the electromagnetic field, which is itself a quantum system. If we move such an object back and forth it radiates, and the radiation carries the information off to infinity at the speed of light.
+
+Ideally one would like a way of uncovering the original quantum system from its classical mechanical description alone. That is, we want a way of undoing decoherence. Unfortunately this is impossible in general. Such a fictitious inversion procedure has become known as ``quantisation''.
+
+\begin{greybox}[An inverse problem]
+	Decoherence maps different quantum systems onto one and the same classical system -- two points land on top of each other. Nor can a face be reconstructed from the noisy image of a surveillance camera.
+\end{greybox}
+
+We evade the difficulties of decoherence by trial and error. Decades of experience have handed us a list of Hilbert spaces, Hamiltonians and observables which we now know to give the correct physical description of broad classes of systems. Indeed, all of the fundamental interactions (with the exception of gravity) have been understood in this way. The aim of this lecture is to draw up a list of the basic quantum systems known to model certain idealised systems correctly. Never think that there is a simple recipe for it -- if it were that easy we would need no experimental physics.
+
+
+\subsection{A particle in one dimension}
+The most important system to have been successfully modelled with quantum mechanics is the particle in one dimension. As always we dutifully work our way through all five postulates. The Hilbert space (Postulate 1) is in this case $\mathcal{H}\equiv L^2(\mathbb{R})$. That is, we describe preparations (Postulate 2) of pure states of a particle with the help of complex functions -- \emph{wavefunctions} -- $\Psi:\mathbb{R}\rightarrow \mathbb{C}$. Wavefunctions are written in ket notation as
+\begin{equation}
+	|\Psi\rangle \equiv \int_{-\infty}^\infty \Psi(x) |x\rangle \, dx
+\end{equation}
+The restriction to pure states is no arbitrary choice: every density matrix is a mixture of pure states. Only normalised vectors are allowed, $\langle \Psi|\Psi\rangle = 1$.
+
+So far the wavefunction is nothing but notation; it acquires meaning only through measurement. A theory needs both: states \emph{and} detectors.
+
+According to Postulate 3, detectors are modelled by operators. Here we describe position detectors only. Such detectors deliver ``yes''/``no'' results, i.e.\ either the particle is at a given location or it is not. In order to describe such detectors we need an interval $[a,b]\subset \mathbb{R}$, where $a<b$. The corresponding detector is defined by the operator
+\begin{equation}
+	F_{[a,b]} \equiv \int_{a}^b |x\rangle\langle x|\, dx
+\end{equation}
+Such operators do not cover all physically possible detectors, but they do serve as a physically relevant foundation. Why a region and not a point? Because the question of the exact location always has the answer ``probability zero''. We are not tied to intervals: more complicated regions are taken care of by additivity -- for disjoint sets $S_1$, $S_2$ we have $F(S_1\cup S_2) = F(S_1)+F(S_2)$.
+
+Suppose that the system is in a pure state $|\Psi\rangle$ and that we are about to carry out the measurement $F_{[a,b]}$. With what probability will we find the particle in the region $a \le x \le b$? Postulate 4 gives us the response rate of the detector $F_{[a,b]}$ for a preparation $\rho \equiv |\Psi\rangle\langle \Psi|$ as
+\begin{equation}
+	\begin{split}
+		\mathbb{P}[\text{``$x\in [a,b]$''}] &= \tr(\rho F_{[a,b]}) \\
+		&= \tr (|\Psi\rangle\langle \Psi|F_{[a,b]})\\
+		&= \tr (\langle \Psi|F_{[a,b]}|\Psi\rangle) \\
+		&= \langle \Psi|F_{[a,b]}|\Psi\rangle \\
+		&= \int_{-\infty}^\infty dx \int_{-\infty}^\infty dy\, \Psi^*(x)\Psi(y) \langle x|F_{[a,b]}|y\rangle   \\
+		&= \int_{-\infty}^\infty dx \int_{-\infty}^\infty dy \int_{a}^b dz\, \Psi^*(x)\Psi(y) \langle x|z\rangle\langle z|y\rangle \\
+		&= \int_{-\infty}^\infty dx \int_{-\infty}^\infty dy \int_{a}^b dz\, \Psi^*(x)\Psi(y) \delta(x-z)\delta(z-y) \\
+		&= \int_{a}^b dz\, \Psi^*(z)\Psi(z) \\
+		&= \int_{a}^b |\Psi(z)|^2 \, dz.
+	\end{split}
+\end{equation}
+In the case that $a\rightarrow -\infty$ and $b\rightarrow \infty$ we obtain the condition
+\begin{equation}
+	1 = \mathbb{P}[\text{``$x\in \mathbb{R}$''}].
+\end{equation} 
+Since the quantity $|\Psi(x)|^2$ is non-negative, we may interpret the quantity
+\begin{equation}
+	\eqbox{p(x) \equiv |\Psi(x)|^2}
+\end{equation}
+as a probability density.
+
+\begin{intuition}
+	The wavefunction assigns a \emph{complex} number to every possible position and delivers the position only indirectly: the probability of finding the particle between $a$ and $b$ is the area under the curve $p(x)$. You should resist the temptation to picture $\Psi$ itself as a density.
+\end{intuition}
+
+\input{figures/fig_vl07_dichte}
+
+On the left of the figure $\Psi$ swings through zero and carries a sign; on the right only the smooth bell $p$ remains. Watch the narrow strip: as its width shrinks, the area shrinks with it.
+
+Warning: the object
+\begin{equation}
+	F_{\{x\}} \equiv |x\rangle \langle x|,
+\end{equation}
+does \emph{not} represent an operator. This has to do with the interpretation of $p(x) \, (\equiv \tr(F_{\{x\}}\rho))$: the probability of finding the particle \emph{exactly} at the point $x$ is always equal to zero. One must always specify an interval in order to obtain a non-vanishing probability.
+
+Mathematically one sees the same thing in the failure of $F_{\{x\}}$ to have the projector property $F^2 = F$:
+\begin{equation}
+	F_{\{x\}}^2 = |x\rangle \langle x|x\rangle \langle x| = \langle x|x\rangle\, |x\rangle\langle x| = \delta(0)\, F_{\{x\}},
+\end{equation}
+and $\delta(0)$ is by definition infinite: instead of $F_{\{x\}}$ we get $\infty\cdot F_{\{x\}}$. For an interval, by contrast, what sits in the middle is $\langle x|y\rangle = \delta(x-y)$:
+\begin{equation}
+	\begin{split}
+		F_{[a,b]}^2 &= \int_a^b \int_a^b |x\rangle \langle x|y\rangle \langle y|\, dx\, dy \\
+		&= \int_a^b \int_a^b |x\rangle\, \delta(x-y)\, \langle y|\, dx\, dy \\
+		&= \int_a^b |x\rangle\langle x|\, dx = F_{[a,b]}.
+	\end{split}
+\end{equation}
+The delta function disposes of one of the integrals, and what is left over is the operator we started with: $F_{[a,b]}$ really is a projector.
+\begin{merksatz}
+	Stand-alone ket-bra combinations of the position basis are to be avoided -- they are not operators. Under an integral the very same expressions are harmless.
+\end{merksatz}
+All the same, one sometimes works with such ``projectors'' on a purely informal level. In particular it is helpful to picture the ``projector'' $|x\rangle\langle x|$ as representing the event that the particle sits at the position $x$. In this manner one introduces the position operator (following Eq.~(\ref{eq:observableA}))
+\begin{equation}
+	\eqbox{\widehat{x} \equiv \int_{-\infty}^{\infty} x |x\rangle \langle x|\, dx}
+\end{equation}
+We read it as the \emph{first moment} of the position measurement; the hat is there to remind us that this is an operator and not a number. It acts as a multiplication operator,
+\begin{equation}
+	\widehat{x}|\Psi\rangle = \int_{-\infty}^{\infty} x\, |x\rangle \langle x|\Psi\rangle\, dx = \int_{-\infty}^{\infty} x\, \Psi(x)\, |x\rangle\, dx,
+\end{equation}
+so $\Psi(x)$ turns into $x\,\Psi(x)$.
+
+An important remark: it is physically impossible to prepare the particle in the ``classical state'' $|\Psi\rangle = |x\rangle$. You would need a device of infinite precision. The search for eigenvectors tells us the same thing: a $|u\rangle$ with $\widehat{x}|u\rangle = \lambda|u\rangle$ would have a delta function as its wavefunction and would therefore be an element of the position basis. One nevertheless speaks of ``position eigenvectors'' all the time -- they are simply idealised objects, not elements of $\mathcal{H}$. We will come back to this topic in a later lecture. Naturally occurring pure states are in general always in superposition:
+\begin{equation}
+	\Psi(x) \not= \delta(x-y).
+\end{equation}
+
+
+The expectation value of $\widehat{x}$ represents the average position of the particle:
+\begin{equation}
+	\begin{split}
+		\langle \widehat{x}\rangle &= \tr(\widehat{x}\rho) \\
+		&= \int x|\Psi(x)|^2\, dx,\\
+		&= \int x p(x)\, dx.
+	\end{split}
+\end{equation}
+(This equation holds only in the case that the particle is in the pure state $\rho \equiv |\Psi\rangle\langle \Psi|$.) Behind the symbol $\langle \widehat{x}\rangle$ there lies a whole procedure: prepare, measure, write down -- many times over, until the average settles.
+
+The momentum operator of a one-dimensional quantum mechanical particle is defined by
+\begin{equation}
+	\eqbox{\widehat{p} \equiv -i\hbar \frac{d}{dx}}
+\end{equation}
+Why? One can indeed put forward many heuristic arguments for this identification, but the honest answer is that nature simply wanted it this way. How does $\widehat{p}$ act on a state $|\Psi\rangle$? This action is given by the following ``matrix elements'' (these hold for all $|\Psi\rangle \in \mathcal{H}$):
+\begin{equation}
+	\langle x|\widehat{p}|\Psi\rangle \equiv -i\hbar \frac{d}{dx}\Psi(x).
+\end{equation}
+
+Postulate 5: the time evolution of a particle is given in terms of the Hamiltonian (corresponding to the \emph{kinetic energy})
+\begin{equation}
+	\widehat{H} \equiv \frac{\widehat{p}^2}{2m} = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}
+\end{equation}
+with matrix elements
+\begin{equation}
+	\langle x|\widehat{H}|\Psi\rangle = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\Psi(x)
+\end{equation}
+Here $m$ denotes the mass of the particle. Where does this expression come from? From the only quantisation rule we have: the Hamiltonian is the classical energy, with a hat on it. Classically $E = p^2/2m$; we put the hat on. This is a rule of thumb, not a procedure -- every quantisation remains a guess, and only experiment can decide.
+
+\begin{example}
+	Suppose a particle has been prepared in an \emph{equal superposition} over an interval $[-1,1]$: the corresponding state/wavefunction reads
+	\begin{equation}
+		\Psi(x) \equiv \begin{cases}
+			\frac{1}{\sqrt2}, \quad x\in [-1,1] \\
+			0, \quad \text{otherwise}.
+		\end{cases}
+	\end{equation}
+	Before we calculate, let us guess: by symmetry the mean value should be exactly zero. The normalisation $\tr(\rho) = \tr(|\Psi\rangle\langle \Psi|) = \langle \Psi|\Psi\rangle$ of the state is given by
+	\begin{equation}
+		\begin{split}
+			\langle \Psi|\Psi\rangle &= \int_{-\infty}^\infty |\Psi(x)|^2 \, dx \\
+			&= \int_{-1}^1  \frac{1}{2} \, dx \\
+			&= 1
+		\end{split}
+	\end{equation} 
+	The expectation value of the position operator $\widehat{x}$ is calculated as follows:
+	\begin{equation}
+		\begin{split}
+			\langle \widehat{x}\rangle = \tr(\widehat{x}\rho) &= \langle \Psi|\widehat{x}|\Psi\rangle \\
+		&= \int_{-1}^1 x \times \frac{1}{2}\, dx = \frac12\left[\frac{x^2}{2}\right]_{x= -1}^1 = 0.
+		\end{split}
+	\end{equation}
+\end{example}

@@ -1,0 +1,135 @@
+%!TEX root = TheoreticalPhysicsC.tex
+
+\section{Lecture: The Finite Potential Well}
+We now consider a particle in a potential well of finite depth $V_0$ and width $L$:
+\begin{equation}
+	V(x) = \begin{cases}
+		-V_0, \quad &|x|\le \frac{L}{2}\\
+		0, \quad &|x| > \frac{L}{2}.
+	\end{cases}
+\end{equation}
+We shall take up the following questions: (a) Are there bound states (i.e.\ energy eigenvectors with eigenenergy $E\le 0$)? (b) What differences from the infinitely high potential well do we observe?
+
+\begin{intuition}
+	If we fire a wave packet at the well from outside, then part of it flows through, part is reflected, and a remainder stays sitting in the well. A scattering process, then, in principle the same one as at the LHC, where the bound states are new particles.
+\end{intuition}
+
+The full dynamics $U_t$ mixes bound and free states and is too complicated; a bound state, however, does not move in time and is therefore an eigenvector of $\widehat{H}$.
+
+In order to obtain the solution of the eigenvector equation  
+\begin{equation}
+	\widehat{H}|\Psi\rangle = E|\Psi\rangle
+\end{equation}
+it is helpful to define the constants
+\begin{equation}
+	\kappa = \frac{\sqrt{2m|E|}}{\hbar}\quad \text{and}\quad q = \frac{\sqrt{2m(E+V_0)}}{\hbar}
+\end{equation}
+
+
+We obtain the associated wave functions from
+\begin{equation}
+	\langle x|\widehat{H}|\Psi\rangle = \left(-\frac{\hbar^2}{2m}\frac{d^2}{dx^2} + V(x)\right)\Psi(x) = E\Psi(x) = E\langle x|\Psi\rangle.
+\end{equation}
+After rearranging and substituting we obtain
+\begin{equation}
+	\begin{cases}
+		\frac{d^2}{dx^2}\Psi(x) = -q^2 \Psi(x), \quad &\text{for $|x|<\frac{L}{2}$}\\
+		\frac{d^2}{dx^2}\Psi(x) = \kappa^2 \Psi(x), \quad &\text{for $|x|>\frac{L}{2}$}.
+	\end{cases}
+\end{equation}
+By symmetry the eigenfunctions may be chosen to be even or odd. Even means: replace $x$ by $-x$ and the same function comes back. We restrict ourselves to $E<0$; the infinitely many solutions with $E>0$ are \emph{scattering states}, plane waves outside, and are left to the exercises. The even solutions read
+\begin{equation}
+	\Psi(x) = \begin{cases}
+		A_1 e^{\kappa x}, \quad & x< -\frac{L}{2} \\
+		A_2 \cos(qx), \quad & |x| \le \frac{L}{2} \\
+		A_1 e^{-\kappa x}, \quad & x> \frac{L}{2}
+	\end{cases}
+\end{equation}
+and the odd solutions
+\begin{equation}
+	\Psi(x) = \begin{cases}
+		-B_1 e^{\kappa x}, \quad & x< -\frac{L}{2} \\
+		B_2 \sin(qx), \quad & |x| \le \frac{L}{2} \\
+		B_1 e^{-\kappa x}, \quad & x> \frac{L}{2}.
+	\end{cases}
+\end{equation}
+Outside they fall off exponentially, but they do not vanish: the particle is to be found with small probability in the classically forbidden region, and it does so in a state that does not change in time.
+
+All wave functions are assumed to be \emph{continuous} and \emph{differentiable}. This yields matching conditions at $x = \pm L/2$. The justification is physical, not mathematical: a jump in $\Psi$ means an infinite first derivative, and that is tied to the momentum operator -- the particle would have infinite momentum there, and infinite kinetic energy. Impossible this is not -- such systems exist -- but we demand finite kinetic energy. That is precisely where the quantisation lies. For the even solutions we have
+\begin{enumerate}
+	\item continuity: $A_1 e^{-\frac{\kappa L}{2}} = A_2 \cos\left(\frac{qL}{2}\right)$,
+	\item differentiability: $-A_1\kappa e^{-\frac{\kappa L}{2}} = -A_2 q\sin\left(\frac{qL}{2}\right)$.
+\end{enumerate}
+Dividing the second condition by the first, we obtain
+\begin{equation}\label{eq:symmcond}
+	\kappa = q\tan\left(\frac{qL}{2}\right).
+\end{equation}
+For the odd solutions the conditions read  
+\begin{enumerate}
+	\item continuity: $B_1 e^{-\frac{\kappa L}{2}} = B_2 \sin\left(\frac{qL}{2}\right)$,
+	\item differentiability: $-B_1\kappa e^{-\frac{\kappa L}{2}} = B_2 q\cos\left(\frac{qL}{2}\right)$.
+\end{enumerate}
+In the same way one is led to the conclusion:
+\begin{equation}\label{eq:unsymm}
+	\kappa = -q\cot\left(\frac{qL}{2}\right).
+\end{equation}
+
+Let us now consider condition (\ref{eq:symmcond}) for the even solutions: squaring both sides gives
+\begin{equation}
+	\kappa^2 = q^2\tan^2\left(\frac{qL}{2}\right).
+\end{equation}
+By the definition of $\kappa$ we obtain
+\begin{equation}
+	\kappa^2 = \frac{2m|E|}{\hbar^2} = \frac{2mV_0}{\hbar^2} - \frac{2m(V_0+E)}{\hbar^2} = \frac{2mV_0}{\hbar^2} - q^2.
+\end{equation}
+If we introduce the constants
+\begin{equation}
+	u\equiv \frac{qL}{2}\quad \text{and}\quad \alpha^2 \equiv \frac{m V_0 L^2}{2\hbar^2}
+\end{equation}
+we obtain
+\begin{equation}
+	\alpha^2-u^2 = u^2\tan^2(u).
+\end{equation}
+After rearranging:
+\begin{equation}
+	\frac{\alpha^2}{u^2} = 1+\tan^2(u) = \frac{1}{\cos^2(u)}.
+\end{equation}
+so that
+\begin{equation}
+	|\cos(u)| = \frac{u}{\alpha}.
+\end{equation}
+This \emph{transcendental} equation is solved graphically. Because of the conditions $\kappa>0$, $q>0$ and $\kappa = q\tan(u)$ we must have $\tan(u)>0$, so that only solutions in $0<u<\frac{\pi}{2}$ and $\pi < u < \frac{3\pi}{2}$ are admissible. To sum up: there is at least one bound state, and altogether finitely many states with an even wave function.
+
+\begin{merksatz}
+	Everything turns on $\alpha$ alone: small for a light particle, a shallow or a narrow well, large for a heavy particle, a deep or a wide well. The larger $\alpha$, the more bound states -- an even one is always there.
+\end{merksatz}
+
+
+Condition (\ref{eq:unsymm}) for the odd solutions is treated in the same way: in this case squaring both sides gives
+\begin{equation}
+	\kappa^2 = q^2\cot^2\left(u\right).
+\end{equation}
+Hence we obtain
+\begin{equation}
+	\alpha^2-u^2 = u^2\cot^2(u).
+\end{equation}
+After rearranging:
+\begin{equation}
+	\frac{\alpha^2}{u^2} = 1+\cot^2(u) = \frac{1}{\sin^2(u)}.
+\end{equation}
+so that
+\begin{equation}
+	|\sin(u)| = \frac{u}{\alpha}.
+\end{equation}
+This equation is likewise solved graphically: because $\kappa>0$, $q>0$ and $\kappa = -q\cot(u)$ we must have $\cot(u)<0$, so that only solutions in $\frac{\pi}{2}<u< \pi$ and $\frac{3\pi}{2} < u < 2\pi$ are possible. Unlike $|\cos(u)|$, $|\sin(u)|$ starts at zero at the origin; for small $\alpha$ there can therefore be no odd solution at all. The intersection at $u=0$ does not count: there we would have $q=0$ and the sine solution would vanish identically -- the usual trap when solving graphically.
+
+\input{figures/fig_vl13_topf}
+
+On the right the straight line $u/\alpha$ cuts only the descending arcs: for $\alpha=4$ three times; the fourth it no longer reaches. On the left the same three states in the well -- the more weakly bound, the further the tail creeps into the forbidden region.
+
+From the solutions found for $u$ it follows that $q = \frac{2u}{L}$ and $E = \frac{\hbar^2q^2}{2m}-V_0$. We can pass to the infinitely deep potential well by taking the limit
+\begin{equation}
+	V_0\rightarrow \infty\quad \text{i.e.} \quad \alpha\rightarrow\infty
+\end{equation}
+in which we shall observe infinitely many intersection points for (\ref{eq:symmcond}) and (\ref{eq:unsymm}). These give us infinitely many bound solutions.
+

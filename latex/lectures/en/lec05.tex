@@ -1,0 +1,207 @@
+%!TEX root = TheoretischePhysikC.tex
+
+\section{Lecture: Position Basis, Trace, Diagonalisation}
+\subsection{Position Basis}
+Dirac and, with him, many physicists take the ket notation one step further. Let us first consider the case that $\mathcal{H} \equiv \ell^2(\mathbb{N})$. That is, the vectors $|\Psi\rangle \in \mathcal{H}$ are linear combinations 
+\begin{equation}
+	|\Psi\rangle = \sum_{n=1}^{\infty} \Psi(n)|\phi_n\rangle \equiv \sum_{n=1}^{\infty} \Psi(n)|n\rangle,
+\end{equation}
+where $\Psi(n)\in \mathbb{C}$ and
+\begin{equation}
+	\sum_{n=1}^{\infty} |\Psi(n)|^2 < \infty.
+\end{equation}
+The ket notation is then extended by writing
+\begin{equation}
+	\langle n|\Psi\rangle \equiv \Psi(n)
+\end{equation}
+for the value $\Psi(n)$ of a ``wave function'' $\Psi\in \ell^2(\mathbb{N})$ at the point $n\in\mathbb{N}$. Watch out for a subtlety here: $\ell^2(\mathbb{N})$ demands only square summability; the \emph{normalised} wave functions with $\sum_{n} |\Psi(n)|^2 = 1$ form only a subset of it.
+
+Now comes the most important, and at the same time the most unpleasant, definition of this chapter. Everything up to now has been mathematically perfectly sound; from here on we deliberately leave that safe ground.
+
+Let now $\mathcal{H}\equiv L^2(\mathbb{R})$. This Hilbert space consists of the square-integrable functions $f:\mathbb{R}\rightarrow\mathbb{C}$, that is, of those functions for which
+\begin{equation}
+	\int_{-\infty}^{\infty} |f(x)|^2\,dx < \infty
+\end{equation}
+holds. In this case the ket notation means the following: $|\Psi\rangle$ stands for the square-integrable function $\Psi$. One now introduces the ``improper'' bra $\langle x|$ by taking
+\begin{equation}
+	\langle x|\Psi\rangle \equiv \Psi(x)
+\end{equation}
+as its definition. Warning: with the best will in the world, the bra $\langle x|$ is no longer a vector in the Hilbert space. Nevertheless we work with such ``bra vectors'' as if they really did represent vectors. These bra vectors are a balancing act between rigour and nonsense. In order to set up coherent rules of calculation, we introduce the so-called ``position basis'': the ket vectors $|x\rangle$, $x\in \mathbb{R}$, are given with the help of the bra vectors $\langle x|$ by
+\begin{equation}
+	\langle x|y\rangle \equiv \delta(x-y)
+\end{equation}
+where $\delta(z)$ denotes the Dirac delta function.\footnote{The place of the Kronecker delta $\langle n|m\rangle = \delta_{nm}$ is taken here by a distribution which, regarded as a function, does not exist at all. Hence the typical mistake: for $y=x$ the right-hand side is not one, but $\delta(0)=\infty$. Such expressions must be avoided.} We also define $(|x\rangle)^\dag\equiv \langle x|$, and (continuous) linear combinations of $|x\rangle$ vectors are explicitly allowed. A square-integrable function $\Psi \in L^2(\mathbb{R})$ can therefore be represented as a (continuous) linear combination of the $|x\rangle$\footnote{This notation recalls the representation that holds in the finite-dimensional case:
+\begin{equation}
+	|\Phi\rangle = \sum_{n\in X} \Phi(n)|n\rangle.
+\end{equation}}:
+\begin{equation}
+	|\Psi\rangle \equiv \int_{-\infty}^{\infty} \Psi(x)|x\rangle \, dx.
+\end{equation}
+\begin{intuition}
+	What is $|x\rangle$ physically? The state of a particle that is located at the point $x$ with certainty. What is remarkable about this is that in nature a position is never completely sharp: there is always an uncertainty.
+\end{intuition}
+
+This notation allows us to carry out several calculations in analogy with the finite-dimensional case. For example, the norm of $|\Psi\rangle$ can be obtained as follows:
+\begin{equation}
+	\begin{split}
+		\|\Psi\|^2 &= \langle \Psi|\Psi\rangle \\
+		&= \left(\int_{-\infty}^{\infty} \Psi(x)|x\rangle \, dx\right)^\dag \left(\int_{-\infty}^{\infty} \Psi(y)|y\rangle \, dy\right) \\
+		&= \left(\int_{-\infty}^{\infty} \Psi^*(x) \langle x| \, dx\right)\left(\int_{-\infty}^{\infty} \Psi(y)|y\rangle \, dy\right) \\
+		&= \int_{-\infty}^{\infty} \Psi^*(x)\Psi(y) \langle x|y\rangle\,dxdy \\
+		&= \int_{-\infty}^{\infty} \Psi^*(x)\Psi(y) \delta(x-y)\,dxdy\\
+		&= \int_{-\infty}^{\infty} \Psi^*(x)\Psi(x) \,dx \\
+		&= \int_{-\infty}^{\infty} |\Psi(x)|^2 \,dx.
+	\end{split}
+\end{equation} 
+
+\subsection{Trace}
+The trace of an operator plays an important role in quantum mechanics. We define the trace of an operator $A$ on a finite-dimensional Hilbert space $\mathcal{H}$ as 
+\begin{equation}
+	\tr(A) \equiv \sum_{x\in X} \langle x|A|x\rangle,
+\end{equation}
+where $x$ runs over the indices of an orthonormal basis $\{|\phi_x\rangle\}_{x\in X}$. What is meant is an ordinary orthonormal basis, not the position basis of the previous section. If $A : \mathcal{H}_1 \rightarrow \mathcal{H}_2$ and $B : \mathcal{H}_2 \rightarrow \mathcal{H}_1$, one checks that
+\begin{equation}
+	\tr_2(AB) = \tr_1(BA)
+\end{equation}
+where the index on the trace merely reminds us on which of the two Hilbert spaces the trace is to be taken. We use this cyclicity constantly. In the position basis one also writes the trace as
+\begin{equation}
+	\tr(A) = \int_{-\infty}^{\infty} \langle x|A|x\rangle \, dx;
+\end{equation}
+you will often meet it in the literature.
+
+\subsection{Diagonalisation}
+For many calculations in quantum mechanics operators have to be \emph{diagonalised}. As in linear algebra generally, this means bringing them into a particularly simple form. The reason for the effort: general matrices do not commute and are cumbersome to handle, whereas diagonal operators are as good as numbers. Making all operators diagonal at the same time is, however, usually not possible. The simplest case is again that of finite matrices, that is, operators on a space $\mathcal{H}\equiv \mathbb{C}^N$ for finite $N$. By definition, a \emph{diagonal operator} $A$ has matrix elements of the form
+\begin{equation}
+	[A]_{nm} = \langle\phi_n|A|\phi_m\rangle = \delta_{nm} a_m,
+\end{equation}
+where $a_1, \ldots, a_N$ are the diagonal matrix elements. The operator $A$ acts on vectors $|\Psi\rangle$ as follows:
+\begin{equation}
+	A|\Psi\rangle = \sum_{n,m} |n\rangle\langle n|A|m\rangle\langle m|\Psi\rangle = \sum_{m} a_{m}\Psi(m) |m\rangle,
+\end{equation}
+where $\Psi(m) = \langle m|\Psi\rangle$.  
+
+\emph{Diagonalisation} now means finding an invertible matrix $S$ such that $SAS^{-1}$ is a diagonal operator. We shall (almost) exclusively be interested in the case in which this transformation is even effected by a unitary operator $S$ (so that $S^{−1} = S^\dag$). In general, then, for us
+\emph{diagonalising} $A$ means finding a unitary operator $U : \mathcal{H} \rightarrow L^2(\mathbb{R})$ such that 
+\begin{equation}
+	\langle x|(UAU^\dag )|\Psi\rangle = a(x)\Psi(x).
+\end{equation}
+Every hermitian and every unitary operator is diagonalisable. For arbitrary operators this is not true; there certainly are matrices that cannot be diagonalised. In quantum mechanics we are lucky in this respect.
+
+\subsection{Eigenvalue, Eigenvector}
+If $V$ is a complex vector space and $A:V\rightarrow A$ a linear map of $V$ into itself, then an \emph{eigenvector} is a vector $\mathbf{v}\not=\mathbf{0}$ which is mapped by $A$ onto a multiple 
+$\alpha\mathbf{v}$ of itself, with $\alpha\in\mathbb{C}$:
+\begin{equation}
+	A\mathbf{v} = \alpha \mathbf{v}.
+\end{equation}
+The factor $\alpha$ is then called the corresponding eigenvalue. 
+
+A diagonalisation of an operator (matrix) $A$ gives us the eigenvalues and eigenvectors. Take, for example, $\mathcal{H} \equiv \mathbb{C}^N$. Suppose we have found a unitary matrix $U$ such that $UAU^\dag$ is diagonal. One forms the basis 
+\begin{equation}
+	\phi_1 \equiv U^\dag \begin{pmatrix}
+	1\\0\\ \vdots \\ 0
+	\end{pmatrix}, \quad  \phi_2 \equiv U^\dag \begin{pmatrix}
+	0\\1\\ \vdots \\ 0
+	\end{pmatrix}, \quad \ldots, \quad \phi_N \equiv U^\dag \begin{pmatrix}
+	0\\0\\ \vdots \\ 1
+	\end{pmatrix}.
+\end{equation}
+(Exercise: does this sequence form a basis?) A hint: $\langle\phi_j|\phi_k\rangle = e_j^\dag UU^\dag e_k = \delta_{jk}$ with the canonical basis vector $e_j$, and this is exactly where unitarity enters. The operator $A$ acts on these vectors as follows:
+\begin{equation}
+	A\phi_1 \equiv AU^\dag \begin{pmatrix}
+	1\\0\\ \vdots \\ 0
+	\end{pmatrix} = U^\dag U AU^\dag \begin{pmatrix}
+	1\\0\\ \vdots \\ 0
+	\end{pmatrix} = U^\dag \begin{pmatrix}
+		a_1 & 0 & 0 & \cdots & 0 \\
+		0 & a_2 & 0 & \cdots & 0 \\
+		\vdots & \vdots &  & \ddots & \vdots \\
+		0 & 0 & 0 & \cdots & a_N
+	\end{pmatrix} \begin{pmatrix}
+	1\\0\\ \vdots \\ 0
+	\end{pmatrix} = a_1 \phi_1.
+\end{equation}
+In exactly the same way $A$ acts on $\phi_j$ as
+\begin{equation}
+	A\phi_j = a_j\phi_j.
+\end{equation}
+In this way one identifies the $\phi_j$ as the eigenvectors of $A$ with the corresponding eigenvalues $a_j$. 
+
+Just as important is the converse direction: from a list of eigenvectors one obtains the unitary matrix. Let $A$ be hermitian on $\mathcal{H}\equiv\mathbb{C}^N$ with
+\begin{equation}
+	A|\phi_j\rangle = a_j |\phi_j\rangle, \qquad j = 1,\ldots,N.
+\end{equation}
+Two preliminaries. First, normalisation: an eigenvector obtained from a system of equations almost never has norm one; one then divides by the norm and again obtains an eigenvector with the same eigenvalue. Secondly, orthogonality, which by no means holds automatically. If all the eigenvalues are distinct, we compute $\langle\phi_j|A|\phi_k\rangle$ in two ways: acting to the right it is
+\begin{equation}
+	\langle\phi_j|A|\phi_k\rangle = a_k \langle\phi_j|\phi_k\rangle.
+\end{equation}
+The trick is to let $A$ act to the left. This is where $A^\dag = A$ and the reality of the eigenvalues come in --- the latter because $a_j = \langle\phi_j|A|\phi_j\rangle$ is real for hermitian $A$ from Lecture 4. We thus have
+\begin{equation}
+	\langle\phi_j|A = \left(A^\dag|\phi_j\rangle\right)^\dag = \left(a_j|\phi_j\rangle\right)^\dag = a_j^*\langle\phi_j| = a_j \langle\phi_j|,
+\end{equation}
+so that $\langle\phi_j|A|\phi_k\rangle = a_j\langle\phi_j|\phi_k\rangle$. Comparison gives
+\begin{equation}
+	(a_j - a_k)\langle\phi_j|\phi_k\rangle = 0,
+\end{equation}
+and since the eigenvalues are distinct, the only possibility left is $\langle\phi_j|\phi_k\rangle = 0$ for $j\neq k$: the eigenvectors form an orthonormal basis. We therefore set
+\begin{equation}
+	U \equiv \sum_{j} |j\rangle\langle\phi_j|,
+\end{equation}
+with the canonical basis vector $|j\rangle$, which carries a one in the $j$-th row. Orthonormality and the completeness relation give
+\begin{equation}
+	UU^\dag = \sum_{j,k} |j\rangle\langle\phi_j|\phi_k\rangle\langle k| = \sum_{j,k} \delta_{jk}|j\rangle\langle k| = \sum_{j} |j\rangle\langle j| = \mathbb{I},
+\end{equation}
+and the same calculation with $A$ in the middle yields
+\begin{equation}
+	UAU^\dag = \sum_{j,k} |j\rangle\langle\phi_j|A|\phi_k\rangle\langle k| = \sum_{j} a_j |j\rangle\langle j|,
+\end{equation}
+that is, a diagonal operator with the eigenvalues on the diagonal. (Exercise: show in the same way that $U^\dag U = \mathbb{I}$.)
+
+\begin{example}
+	Let $\mathcal{H}\equiv\mathbb{C}^2$, in quantum information theory a \emph{qubit}, and
+	\begin{equation}
+		A \equiv \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}.
+	\end{equation}
+	The characteristic polynomial $\det(A - \lambda\mathbb{I}) = \lambda^2 - 1$ gives $\lambda = \pm 1$ with the normalised eigenvectors
+	\begin{equation}
+		|\phi_1\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ 1 \end{pmatrix}, \qquad |\phi_2\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ -1 \end{pmatrix}.
+	\end{equation}
+	A ket is a column vector, a bra a row vector, so their product is a matrix:
+	\begin{equation}
+		U = |1\rangle\langle\phi_1| + |2\rangle\langle\phi_2| = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix} + \frac{1}{\sqrt{2}}\begin{pmatrix} 0 & 0 \\ 1 & -1 \end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix},
+	\end{equation}
+	the \emph{Hadamard matrix}; one checks that $UAU^\dag = \diag(1,-1)$. If the two eigenvectors are interchanged, the same recipe gives a different unitary matrix $U'$ with $U'AU'^\dag = \diag(-1,1)$: the diagonalisation is not unique.
+\end{example}
+
+\input{figures/fig_vl05_diagonal}
+
+The figure draws this example, though not $A$ itself: being a reflection, $A$ maps the unit circle onto itself, so there would be nothing to see. What is drawn instead is $\tilde A = A + 2\mathbb{I}$ --- the same eigenvectors, the same matrix $U$, only the eigenvalues raised by $2$ to $3$ and $1$. The same operator is shown side by side in the two bases: on the left the image ellipse lies askew in its frame, on the right it coincides with the coordinate axes. Its principal axes are the eigenvectors, its semi-axes the eigenvalues.
+
+This procedure works in the infinite-dimensional case as well, though it is more laborious; in any case we shall treat infinite-dimensional Hilbert spaces only case by case.
+
+\subsection{Functional Calculus}
+If $H$ is a hermitian operator, then the diagonalisation $SHS^{-1} = SHS^{\dag}$ of $H$ is hermitian as well, hence multiplication by a real function $a_x$ (with respect to the eigenvector basis $\{|\phi_x\rangle\}_{x\in X}$):
+\begin{equation}
+	SHS^\dag |\phi_x\rangle = a_x |\phi_x\rangle,
+\end{equation}
+where the $|\phi_x\rangle$ are the eigenvectors of $A$ with the corresponding eigenvalues $a_x$. 
+That the $a_x$ are real is seen at once: for unitary $S$ we have $(SHS^\dag)^\dag = SH^\dag S^\dag = SHS^\dag$, so the diagonal form is again hermitian, and for a diagonal matrix that means $a_x^* = a_x$.
+
+For this operator we now define the function
+\begin{equation}
+	U_t \equiv e^{\frac{−it}{\hbar}H}
+\end{equation}
+by declaring
+\begin{equation}
+	U_t |\phi_x\rangle \equiv e^{\frac{−it}{\hbar}a_x} |\phi_x\rangle, \quad \forall x\in X,
+\end{equation}
+to be its action on the eigenvectors. (When $A$ is applied to an eigenvector, the operator $H$ is replaced by the real number $a_x$.) The operator $U_t$ is a multiplication operator as well (with respect to the eigenvector basis), except that the scalar $a_x$ is replaced by an (x-dependent) \emph{phase} $e^{\frac{−it}{\hbar}a_x}$. Because the $a_x$ are real, every phase has modulus one; precisely for that reason $U_t$ is unitary and leaves the norm of a state unchanged. 
+
+In the case that $\mathcal{H}$ is finite-dimensional, the operator function $e^{\frac{−it}{\hbar}H}$ is the same as the power series 
+\begin{equation}
+	e^{\frac{−it}{\hbar}H} \equiv \sum_{n=0}^\infty \frac{1}{n!} \left(\frac{−it}{\hbar}\right)^n H^n.
+\end{equation}
+Incidentally, the definition of the exponential function by diagonalisation is still reasonable for unbounded self-adjoint operators $H$, whereas the powers of an infinite-dimensional operator, and all the more so the power series, make sense only under very restrictive conditions.
+
+\begin{merksatz}
+	The operator $U_t$ describes the time evolution of a quantum system. So the solution of the Schrödinger equation is already in our hands, before the equation itself has even appeared.
+\end{merksatz}

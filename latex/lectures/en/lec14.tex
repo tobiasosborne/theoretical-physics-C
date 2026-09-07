@@ -1,0 +1,151 @@
+%!TEX root = TheoreticalPhysicsC.tex
+\section{Lecture: Angular Momentum}
+
+\subsection{Orbital Angular Momentum}
+After the three solvable models comes the hydrogen atom: a particle in a central potential.
+
+We now study quantum systems which display an orbital angular momentum in the classical limit. The canonical example is that of a particle able to move in three spatial dimensions. We shall therefore assign the Hilbert space $\mathcal{H} \equiv L^2(\mathbb{R}^3)$ to model the states. Our aim is to work out the right quantum observables and their properties.
+
+Following our quantisation table, we identify the operators below as the observables belonging to the classical angular momentum components.
+\begin{definition}
+	The \emph{orbital angular momentum operators} are $\widehat{\mathbf{L}} \equiv \widehat{\mathbf{r}}\times \widehat{\mathbf{p}}$, where 
+	\begin{equation}
+		\mathbf{r} \equiv \begin{pmatrix}
+			\widehat{x} \\
+			\widehat{y} \\
+			\widehat{z} 
+		\end{pmatrix}\quad
+		\mathbf{p} \equiv \begin{pmatrix}
+			\widehat{p}_x \\
+			\widehat{p}_y \\
+			\widehat{p}_z 
+		\end{pmatrix}\quad\text{and}\quad \widehat{\mathbf{L}} \equiv \begin{pmatrix}
+			\widehat{L}_x \\
+			\widehat{L}_y \\
+			\widehat{L}_z 
+		\end{pmatrix} \equiv \begin{pmatrix}
+			\widehat{L}_1 \\
+			\widehat{L}_2 \\
+			\widehat{L}_3 
+		\end{pmatrix}.
+	\end{equation}
+	The position-basis matrix elements read  
+	\begin{align}
+		\langle x,y,z|\widehat{L}_x|\Psi\rangle &= -i{\hbar} \left(y\frac{\partial}{\partial z} - z\frac{\partial}{\partial y} \right)\Psi(x,y,z) \\
+		\langle x,y,z|\widehat{L}_y|\Psi\rangle &=  i{\hbar} \left(x\frac{\partial}{\partial z} - z\frac{\partial}{\partial x} \right)\Psi(x,y,z) \\
+		\langle x,y,z|\widehat{L}_z|\Psi\rangle &=  -i{\hbar} \left(x\frac{\partial}{\partial y} - y\frac{\partial}{\partial x} \right)\Psi(x,y,z),
+	\end{align}
+	where $\Psi(x,y,z) = \langle x,y,z|\Psi\rangle$ is an arbitrary wave function. 
+\end{definition}
+
+One can show the following commutators:
+\begin{equation}
+	\eqbox{[\widehat{L}_1,\widehat{L}_2] = i\hbar \widehat{L}_3, \quad [\widehat{L}_2,\widehat{L}_3] = i\hbar \widehat{L}_1\quad\text{and}\quad [\widehat{L}_3,\widehat{L}_1] = i\hbar \widehat{L}_2.}
+\end{equation}
+It also follows that
+\begin{equation}
+	\eqbox{[\widehat{\mathbf{L}}^2, \widehat{L}_j]=0, \quad \text{for all $j=1,2,3$,}}
+\end{equation}
+where
+\begin{equation}
+	\widehat{\mathbf{L}}^2 \equiv \widehat{L}_1^2+\widehat{L}_2^2+\widehat{L}_3^2.
+\end{equation}
+
+The whole commutator hangs on a single point: $\frac{\partial}{\partial z}$ commutes with $x$, but not with $z$; forget the product rule and you get zero.
+
+The commutators are proved as follows. Let $\Psi(x,y,z)$ be an arbitrary wave function and consider
+\begin{equation}
+	\begin{split}
+		\langle x,y,z|\widehat{L}_1\widehat{L}_2|\Psi\rangle &= {\hbar}^2 \left(y\frac{\partial}{\partial z} - z\frac{\partial}{\partial y} \right)\left(x\frac{\partial}{\partial z} - z\frac{\partial}{\partial x} \right)\Psi(x,y,z) \\
+		&= {\hbar}^2 \left(xy\frac{\partial^2}{\partial z^2} - y\frac{\partial}{\partial x} - yz\frac{\partial^2}{\partial x \partial z} - xz\frac{\partial^2}{\partial y\partial z}  + z^2\frac{\partial^2}{\partial x\partial y} \right)\Psi(x,y,z)
+	\end{split}
+\end{equation}
+and 
+\begin{equation}
+	\begin{split}
+		\langle x,y,z|\widehat{L}_2\widehat{L}_1|\Psi\rangle &= {\hbar}^2 \left(x\frac{\partial}{\partial z} - z\frac{\partial}{\partial x} \right)\left(y\frac{\partial}{\partial z} - z\frac{\partial}{\partial y} \right)\Psi(x,y,z) \\
+		&= {\hbar}^2 \left(xy\frac{\partial^2}{\partial z^2} - x\frac{\partial}{\partial y} - xz\frac{\partial^2}{\partial y \partial z} - yz\frac{\partial^2}{\partial x\partial z}  + z^2\frac{\partial^2}{\partial x\partial y} \right)\Psi(x,y,z).
+	\end{split}
+\end{equation}
+We therefore compute the commutator
+\begin{equation}
+	\langle x,y,z|\widehat{L}_1\widehat{L}_2 - \widehat{L}_2\widehat{L}_1|\Psi\rangle = {\hbar}^2 \left(- y\frac{\partial}{\partial x} + x\frac{\partial}{\partial y} \right)\Psi(x,y,z) = i\hbar \langle x,y,z|\widehat{L}_3|\Psi\rangle.
+\end{equation}
+Since this holds for every $|\Psi\rangle$, it is an operator identity.
+
+That $\widehat{\mathbf{L}}^2$ and $\widehat{L}_3$ possess common eigenstates is a special case of a general fact.
+\begin{lemma}
+	If $\widehat{A},\widehat{B}:\mathcal{H}\to\mathcal{H}$ are Hermitian with $[\widehat{A},\widehat{B}]=0$, then they possess common eigenvectors.
+\end{lemma}
+\begin{proof}
+	Finite dimension, no degeneracy: from $\widehat{A}|\phi_j\rangle = a_j|\phi_j\rangle$ and $|\psi_j\rangle \equiv \widehat{B}|\phi_j\rangle$ it follows that
+	\begin{equation}
+		\widehat{A}|\psi_j\rangle = \widehat{A}\widehat{B}|\phi_j\rangle = \widehat{B}\widehat{A}|\phi_j\rangle = a_j\widehat{B}|\phi_j\rangle = a_j|\psi_j\rangle.
+	\end{equation}
+	The eigenspace belonging to $a_j$ is one-dimensional, so $|\psi_j\rangle \propto |\phi_j\rangle$, i.e.\ $\widehat{B}|\phi_j\rangle = b_j|\phi_j\rangle$. If there is degeneracy one diagonalises $\widehat{B}$ inside the eigenspace; the statement holds in general too, but is harder to justify.
+\end{proof}
+The common eigenstates of $\widehat{\mathbf{L}}^2$ and $\widehat{L}_3$ are denoted $|\ell,m\rangle$ and satisfy the following eigenvalue equations 
+\begin{equation}
+	\eqbox{
+	\begin{aligned}
+		\widehat{\mathbf{L}}^2|\ell,m\rangle &= \hbar^2\ell(\ell+1)|\ell,m\rangle, \\
+		\widehat{L}_3|\ell,m\rangle &= \hbar m|\ell,m\rangle,
+	\end{aligned}
+	}
+\end{equation}
+where $\ell = 0, \frac12, 1, \frac32, \ldots$ and $m = -\ell, -\ell + 1, \ldots, \ell$. Here $\ell$ is called the \emph{angular momentum quantum number} and $m$ the \emph{magnetic quantum number}.
+
+The eigenvalues are obtained just as for the harmonic oscillator. With
+\begin{equation}
+	\eqbox{\widehat{L}_\pm \equiv \widehat{L}_1 \pm i\widehat{L}_2}
+\end{equation}
+the commutation relations above give
+\begin{equation}
+	[\widehat{L}_3,\widehat{L}_\pm] = \pm\hbar\widehat{L}_\pm, \quad [\widehat{L}_+,\widehat{L}_-] = 2\hbar\widehat{L}_3 \quad\text{and}\quad [\widehat{\mathbf{L}}^2,\widehat{L}_\pm] = 0.
+\end{equation}
+The $\widehat{L}_\pm$ act as ladder operators: they shift the eigenvalue of $\widehat{L}_3$ by $\pm\hbar$ and leave that of $\widehat{\mathbf{L}}^2$ untouched. Since $\widehat{L}_3^2$ can never grow larger than $\widehat{\mathbf{L}}^2$, the ladder breaks off at the top and at the bottom, and that forces the list above.
+
+\input{figures/fig_vl14_multiplett}
+
+Note in (a) the gap between the topmost rung $m=\ell$ and the
+dashed bound $\sqrt{\ell(\ell+1)}$: that is precisely where the ladder breaks off.
+In (b) the same gap is an angle -- the vector never lies along the axis.
+
+\begin{merksatz}
+	Position and momentum are not quantised, angular momentum is: there is a smallest step, of size $\hbar$. Invisible in everyday life, but demonstrated spectroscopically.
+\end{merksatz}
+
+We shall now derive the position representation of the eigenfunctions. With the help of the spherical coordinates $r$, $\theta$, $\phi$ we obtain (exercise)
+\begin{equation}
+	\begin{split}
+		\langle r,\theta,\phi|\widehat{L}_3|\Psi\rangle &= -i\hbar \frac{\partial}{\partial \phi} \Psi(r,\theta,\phi), \\
+		\langle r,\theta,\phi|\widehat{\mathbf{L}}^2|\Psi\rangle &= -\hbar^2\frac{1}{\sin^2(\theta)}\left(\sin(\theta)\frac{\partial}{\partial \theta}\left(\sin(\theta)\frac{\partial}{\partial \theta}\right) + \frac{\partial^2}{\partial \phi^2}\right) \Psi(r,\theta,\phi),
+	\end{split}
+\end{equation}
+where $|\Psi\rangle \in L^2(\mathbb{R}^3)$ is an arbitrary pure state. 
+
+The eigenfunctions of $\widehat{L}_3$ are given by $e^{im\phi}$:
+\begin{equation}
+	-i\hbar \frac{\partial}{\partial \phi}e^{im\phi} = \hbar m e^{im\phi}.
+\end{equation}
+Single-valuedness of the wave function $\Psi(r,\theta,\phi)$ under the shift $\phi\mapsto \phi+2\pi$ demands $m\in \mathbb{Z}$, so that only $\ell = 0,1,2, \ldots$ occurs. (The eigenvectors for half-integer $\ell$ will be constructed later by a different method.) The common eigenfunctions of $\widehat{\mathbf{L}}^2$ and $\widehat{L}_3$ read
+\begin{equation}
+	\eqbox{\text{Y}_\ell^m (\theta,\phi) \equiv (-1)^m\left(\frac{2\ell + 1}{4\pi}\frac{(\ell-m)!}{(\ell+m)!}\right)^{\frac12} \text{P}_\ell^m(\cos(\theta))e^{im\phi},}
+\end{equation}
+where, for $m\ge 0$,
+\begin{equation}
+	\eqbox{\text{P}^m_\ell(x) = (1-x^2)^{\frac{m}{2}}\frac{d^m}{dx^m}\text{P}_\ell(x)}
+\end{equation}
+are the \emph{associated Legendre functions}, which are defined with the help of the \emph{Legendre polynomials}
+\begin{equation}
+	\eqbox{\text{P}_\ell(x)=\frac{1}{2^\ell \ell!} \frac{d^\ell}{dx^\ell}(x^2-1)^\ell}
+\end{equation}
+The functions $\text{Y}_\ell^m$ are known as the \emph{spherical harmonics}. They do not depend on $r$ -- the angular momentum does not see the radial component, and that is what makes the separation ansatz work later on.
+
+The first three spherical harmonics are
+\begin{align}
+	\text{Y}^0_0(\theta,\phi) &= \frac{1}{\sqrt{4\pi}}, \\
+	\text{Y}^0_1(\theta,\phi) &= \sqrt{\frac{3}{4\pi}}\cos(\theta), \\
+	\text{Y}^1_1(\theta,\phi) &= -\sqrt{\frac{3}{8\pi}}\sin(\theta)e^{i\phi}.
+\end{align}
+$\text{Y}^0_0$ is constant: the particle then has no angular momentum at all.
