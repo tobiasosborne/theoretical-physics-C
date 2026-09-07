@@ -1,0 +1,195 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tpc-tikz-templates}[2026/09/07 TPC TikZ/pgfplots templates]
+
+% Requires tpc-style.sty (colours) and tpc-macros.sty (TikZ styles) first.
+%
+% Every lecture figure is built from the styles below rather than from
+% ad-hoc settings, so the plates share dimensions, line weights, tick
+% sizes and colour order.  A figure that needs something unusual should
+% still start from `tpcplot` and override a key, not start from scratch.
+
+\RequirePackage{pgfplotstable}
+
+% ══════════════════════════════════════════════════════════════
+%  STANDARD DIMENSIONS
+% ══════════════════════════════════════════════════════════════
+\newlength{\tpcfigwidth}      \setlength{\tpcfigwidth}{7cm}
+\newlength{\tpcfigheight}     \setlength{\tpcfigheight}{5cm}
+\newlength{\tpcwidefigwidth}  \setlength{\tpcwidefigwidth}{12cm}
+\newlength{\tpcwidefigheight} \setlength{\tpcwidefigheight}{6cm}
+\newlength{\tpcsmallwidth}    \setlength{\tpcsmallwidth}{5.2cm}
+\newlength{\tpcsmallheight}   \setlength{\tpcsmallheight}{4cm}
+
+% ══════════════════════════════════════════════════════════════
+%  LINE WEIGHTS
+% ══════════════════════════════════════════════════════════════
+\tikzset{
+  tpc thin/.style  ={line width=0.4pt},
+  tpc std/.style   ={line width=0.8pt},
+  tpc thick/.style ={line width=1.2pt},
+  tpc axis/.style  ={line width=0.6pt},
+}
+
+% ══════════════════════════════════════════════════════════════
+%  COLOUR CYCLE
+% ══════════════════════════════════════════════════════════════
+\pgfplotscreateplotcyclelist{tpccolors}{
+  {cgblue,           line width=1.0pt},
+  {birrenred,        line width=1.0pt},
+  {spacecadet,       line width=1.0pt},
+  {birrenorange,     line width=1.0pt},
+  {munsell,          line width=1.0pt},
+  {cgblue,           line width=1.0pt, dashed},
+  {birrenred,        line width=1.0pt, dashed},
+  {spacecadet,       line width=1.0pt, dashed},
+}
+
+% Discrete quantum numbers n = 0,1,2,3,... want an ordered ramp rather
+% than a categorical cycle: eigenstate n gets colour n of this list.
+\pgfplotscreateplotcyclelist{tpclevels}{
+  {spacecadet,        line width=1.0pt},
+  {cgblue,            line width=1.0pt},
+  {munsell,           line width=1.0pt},
+  {birrenorange,      line width=1.0pt},
+  {birrenred,         line width=1.0pt},
+  {birrenred!60!black,line width=1.0pt},
+}
+
+% ══════════════════════════════════════════════════════════════
+%  COLORMAPS
+% ══════════════════════════════════════════════════════════════
+\pgfplotsset{
+  % Probability density: white → teal → navy
+  colormap={tpcdensity}{
+    rgb255(0cm)=(255,255,255)
+    rgb255(3cm)=(0,143,168)
+    rgb255(5cm)=(13,40,76)
+  },
+  % Signed quantity (wavefunction, real part): red → white → blue
+  colormap={tpcsigned}{
+    rgb255(0cm)=(196,57,47)
+    rgb255(2.5cm)=(255,255,255)
+    rgb255(5cm)=(0,124,165)
+  },
+  % Flat neutral fill for surfaces that should not carry data by colour
+  colormap={tpcflat}{
+    rgb255(0cm)=(234,237,234)
+    rgb255(1cm)=(234,237,234)
+  },
+}
+
+% ══════════════════════════════════════════════════════════════
+%  PGFPLOTS STYLES
+% ══════════════════════════════════════════════════════════════
+\pgfplotsset{
+  % Base 2D plot
+  tpcplot/.style={
+    width=\tpcfigwidth,
+    height=\tpcfigheight,
+    axis lines=left,
+    every axis x label/.style={at={(ticklabel* cs:1.0)}, anchor=west,
+      font=\small},
+    every axis y label/.style={at={(ticklabel* cs:1.0)}, anchor=south,
+      font=\small},
+    every axis title/.style={at={(0.5,1.05)}, anchor=south,
+      font=\sf\small\bfseries, text=cgblue},
+    tick label style={font=\footnotesize, text=spacecadet},
+    axis line style={spacecadet, line width=0.6pt},
+    major grid style={light-gray, very thin},
+    grid=major,
+    cycle list name=tpccolors,
+    legend cell align=left,
+    legend style={
+      font=\footnotesize, draw=light-gray,
+      fill=white, fill opacity=0.85, text opacity=1,
+      rounded corners=2pt, inner sep=3pt,
+    },
+    clip=true,
+  },
+  tpcplotwide/.style={tpcplot, width=\tpcwidefigwidth, height=\tpcwidefigheight},
+  tpcplotsmall/.style={tpcplot, width=\tpcsmallwidth,  height=\tpcsmallheight},
+  % Potential-landscape plot: box axes, no grid — the potential curve is
+  % the structure, gridlines only compete with it.
+  tpcpotential/.style={
+    tpcplot,
+    axis lines=middle,
+    grid=none,
+    axis line style={-{Stealth[length=5pt]}, spacecadet, line width=0.6pt},
+    enlargelimits=0.06,
+  },
+  % Energy-level diagram: no axes at all, levels carry the information.
+  tpclevelplot/.style={
+    tpcplot,
+    axis lines=none,
+    grid=none,
+    xtick=\empty, ytick=\empty,
+    cycle list name=tpclevels,
+    clip=false,
+  },
+  % 3D surface
+  tpc3d/.style={
+    width=\tpcwidefigwidth,
+    height=\tpcwidefigheight,
+    every axis x label/.style={at={(ticklabel* cs:1.0)}, anchor=west, font=\small},
+    every axis y label/.style={at={(ticklabel* cs:1.0)}, anchor=south, font=\small},
+    every axis z label/.style={at={(ticklabel* cs:1.0)}, anchor=south, font=\small},
+    every axis title/.style={at={(0.5,1.05)}, anchor=south,
+      font=\sf\small\bfseries, text=cgblue},
+    tick label style={font=\tiny, text=spacecadet},
+    axis line style={spacecadet, line width=0.6pt},
+    cycle list name=tpccolors,
+    colormap name=tpcflat,
+  },
+  % Density plot, viewed from above
+  tpcdensityplot/.style={
+    tpcplotwide,
+    view={0}{90},
+    colormap name=tpcdensity,
+    colorbar,
+    colorbar style={tick label style={font=\tiny}, width=0.2cm},
+  },
+}
+
+% ══════════════════════════════════════════════════════════════
+%  REUSABLE \pic DEFINITIONS
+% ══════════════════════════════════════════════════════════════
+
+% Energy level with label:  \pic at (0,1) {level={E_1}};
+\tikzset{
+  level width/.store in=\tpclevelwidth,
+  level width=3cm,
+  level/.pic={
+    \draw[levelline] (0,0) -- (\tpclevelwidth,0);
+    \node[lbl, anchor=west] at (\tpclevelwidth,0) {$#1$};
+  },
+}
+
+% Ket vector in a 2D Hilbert-space sketch: \pic at (0,0) {ketvec={30/\ket{\psi}}};
+\tikzset{
+  ketvec/.pic={\tpc@ketvec#1\relax},
+}
+\def\tpc@ketvec#1/#2\relax{%
+  \draw[vecstyle] (0,0) -- (#1:1.6);
+  \node[lbl, anchor=south west] at (#1:1.6) {$#2$};
+}
+
+% Measurement box:  \pic at (0,0) {meterbox={\widehat{A}}};
+\tikzset{
+  meterbox/.pic={
+    \draw[tpc std, spacecadet, fill=isabelline, rounded corners=2pt]
+      (-0.55,-0.4) rectangle (0.55,0.4);
+    \node[lbl] at (0,0) {$#1$};
+  },
+}
+
+% Bloch-sphere outline (spin lectures): \pic at (0,0) {blochsphere};
+\tikzset{
+  blochsphere/.pic={
+    \draw[tpc std, birrengray] (0,0) circle (1.4);
+    \draw[tpc thin, birrengray, dashed] (-1.4,0) arc (180:360:1.4 and 0.42);
+    \draw[tpc thin, birrengray]         (-1.4,0) arc (180:0:1.4 and 0.42);
+    \draw[axisstyle] (0,-1.4) -- (0,1.75);
+  },
+}
+
+\endinput
