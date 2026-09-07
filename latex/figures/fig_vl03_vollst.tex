@@ -1,0 +1,169 @@
+% fig_vl03_vollst.tex — Vollständigkeitsrelation: ein Vektor, zerlegt in
+% zwei verschiedenen Orthonormalbasen desselben Raumes.
+%
+% Follows the conventions of fig_vl11_kasten.tex (the reference plate).
+%
+%   * geometry comes from the expansion derived in the lecture,
+%         |Psi> = sum_j <phi_j|Psi> |phi_j>,
+%     evaluated for the two orthonormal bases the lecture has already
+%     introduced in C^2,
+%         {|e_0>, |e_1>}   and   |e_±> = (|e_0> ± |e_1>)/sqrt(2),
+%     on the concrete unit vector
+%         |Psi> = (2|e_0> + |e_1>)/sqrt(5)   (real, so it fits in a plane).
+%     Every coordinate below is that expansion, not a sketch:
+%         c_0 = 2/sqrt5,  c_1 = 1/sqrt5   ->  |c|^2 = 4/5, 1/5
+%         c_± = (2 ± 1)/sqrt10            ->  |c|^2 = 9/10, 1/10
+%     and the two component rectangles therefore share |Psi> as their
+%     diagonal exactly, because sum_j c_j |phi_j> = |Psi> in both bases.
+%
+%   * colour encodes *which basis*, and nothing else: cgblue for
+%     {|e_0>,|e_1>}, birrenorange for {|e_+>,|e_->}.  The state |Psi>
+%     itself is neutral navy — it belongs to no basis, which is the whole
+%     point.  The coordinate rays are thin neutral grey: reference lines,
+%     not data.
+%
+%   * within one basis the two members are told apart by tint (full
+%     colour / 35%), not by a second hue, so the bars survive greyscale
+%     printing; the numbers are printed as well, so nothing depends on
+%     colour at all.  In (a) the same redundancy is carried by the dash
+%     pattern — the first basis closes its rectangle with dashes, the
+%     second with dots — and every arrow carries its own label, so the
+%     two decompositions stay separable with the colour thrown away.
+%     The neutral rays are held at birrengray!60: at full strength they
+%     print at the same grey value as birrenorange and swallowed the
+%     orange component vectors lying on top of them.
+%
+% Panel (a) the two decompositions of the same |Psi>.  Two different
+%           rectangles, one diagonal.
+% Panel (b) the weights |c_j|^2 those rectangles imply.  4/5 : 1/5 against
+%           9/10 : 1/10 — the split is basis-dependent, the total is not.
+%           This is the content of the completeness axiom
+%           ||psi||^2 = sum_j |<phi_j|psi>|^2, and the reason the numbers
+%           can later be read as probabilities.
+
+\begin{center}
+\begin{tikzpicture}[
+    projvec/.style   ={-{Stealth[length=5pt,width=3.5pt]}, line width=1.3pt},
+    statevec/.style  ={-{Stealth[length=6pt,width=4pt]}, line width=1.6pt,
+                       spacecadet},
+    basisray/.style  ={-{Stealth[length=4pt,width=3pt]}, line width=0.5pt,
+                       birrengray!60},
+    projdash/.style  ={line width=0.6pt, densely dashed},
+    projdot/.style   ={line width=0.7pt, densely dotted},
+]
+
+% ─────────────────────────────────────────────────────────────
+%  (a)  |Psi> resolved in two orthonormal bases
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    name=geom,
+    tpcplot,
+    scale only axis,
+    width=5.4cm, height=5.4cm,
+    axis lines=none, grid=none,
+    xmin=-0.38, xmax=1.38,
+    ymin=-0.64, ymax=1.12,     % same span as x: 45 degrees looks like 45
+    clip=false,
+    title={(a) \tpcifenglish{One vector, two bases}%
+                            {Ein Vektor, zwei Basen}},
+]
+
+  % ---- coordinate rays of the two bases (reference lines, neutral) ----
+  \draw[basisray] (axis cs:-0.18,0)      -- (axis cs:1.24,0);
+  \draw[basisray] (axis cs:0,-0.18)      -- (axis cs:0,1.00);
+  \draw[basisray] (axis cs:-0.127,-0.127) -- (axis cs:0.721,0.721);
+  \draw[basisray] (axis cs:-0.127,0.127)  -- (axis cs:0.424,-0.424);
+
+  \node[lbl, anchor=west]       at (axis cs:1.27,0)      {$|e_0\rangle$};
+  \node[lbl, anchor=south]      at (axis cs:0,1.03)      {$|e_1\rangle$};
+  \node[lbl, anchor=south west] at (axis cs:0.74,0.74)   {$|e_+\rangle$};
+  \node[lbl, anchor=north west] at (axis cs:0.44,-0.44)  {$|e_-\rangle$};
+
+  % ---- the two component rectangles: same diagonal, different sides ----
+  % basis {e_0,e_1}:  feet at (2/sqrt5, 0) and (0, 1/sqrt5)
+  \draw[projdash, cgblue] (axis cs:0.894427,0)
+                       -- (axis cs:0.894427,0.447214);
+  \draw[projdash, cgblue] (axis cs:0,0.447214)
+                       -- (axis cs:0.894427,0.447214);
+  % basis {e_+,e_-}:  feet at 3/sqrt10 along e_+ and 1/sqrt10 along e_-
+  \draw[projdot, birrenorange] (axis cs:0.670820,0.670820)
+                            -- (axis cs:0.894427,0.447214);
+  \draw[projdot, birrenorange] (axis cs:0.223607,-0.223607)
+                            -- (axis cs:0.894427,0.447214);
+
+  % ---- the component vectors c_j |phi_j> ----
+  \draw[projvec, cgblue]       (axis cs:0,0) -- (axis cs:0.894427,0);
+  \draw[projvec, cgblue]       (axis cs:0,0) -- (axis cs:0,0.447214);
+  \draw[projvec, birrenorange] (axis cs:0,0) -- (axis cs:0.670820,0.670820);
+  \draw[projvec, birrenorange] (axis cs:0,0) -- (axis cs:0.223607,-0.223607);
+
+  % ---- the state itself ----
+  \draw[statevec] (axis cs:0,0) -- (axis cs:0.894427,0.447214);
+  \node[lbl, text=spacecadet, font=\small, anchor=south west]
+    at (axis cs:0.91,0.47) {$|\Psi\rangle$};
+
+  % ---- component labels, each beside its own arrow ----
+  \node[lbl, text=cgblue, font=\scriptsize, anchor=north]
+    at (axis cs:0.72,-0.045) {$c_0|e_0\rangle$};
+  \node[lbl, text=cgblue, font=\scriptsize, anchor=east]
+    at (axis cs:-0.04,0.22)  {$c_1|e_1\rangle$};
+  \node[lbl, text=birrenorange, font=\scriptsize, anchor=south east]
+    at (axis cs:0.58,0.685)  {$c_+|e_+\rangle$};
+  \node[lbl, text=birrenorange, font=\scriptsize, anchor=north east]
+    at (axis cs:0.155,-0.255) {$c_-|e_-\rangle$};
+
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north east]
+    at (axis cs:1.38,1.12) {$c_j \equiv \langle \phi_j|\Psi\rangle$};
+\end{axis}
+
+% ─────────────────────────────────────────────────────────────
+%  (b)  The weights those two decompositions carry
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    tpcplot,
+    scale only axis,
+    at={(geom.north east)}, anchor=north west, xshift=22mm,
+    width=5.0cm, height=4.2cm,
+    axis lines=left, grid=none,
+    xmin=0, xmax=1.58, ymin=0.42, ymax=2.55,
+    xtick={0,0.5,1}, xticklabels={$0$,$1/2$,$1$},
+    ytick={1,2},
+    yticklabels={{$\{|e_+\rangle,|e_-\rangle\}$},{$\{|e_0\rangle,|e_1\rangle\}$}},
+    ytick style={draw=none},
+    xlabel={$|c_j|^2$},
+    clip=false,
+    title={(b) \tpcifenglish{Weights}{Gewichte}},
+]
+
+  % the common total, drawn first so it does not sit on the bar borders
+  \draw[levellinegrey] (axis cs:1,0.50) -- (axis cs:1,2.46);
+
+  % basis {e_0,e_1}:  4/5 and 1/5
+  \fill[cgblue]     (axis cs:0,1.74)  rectangle (axis cs:0.8,2.26);
+  \fill[cgblue!35]  (axis cs:0.8,1.74) rectangle (axis cs:1.0,2.26);
+  \draw[spacecadet, line width=0.5pt]
+                    (axis cs:0,1.74)  rectangle (axis cs:1.0,2.26);
+
+  % basis {e_+,e_-}:  9/10 and 1/10
+  \fill[birrenorange]    (axis cs:0,0.74)  rectangle (axis cs:0.9,1.26);
+  \fill[birrenorange!35] (axis cs:0.9,0.74) rectangle (axis cs:1.0,1.26);
+  \draw[spacecadet, line width=0.5pt]
+                         (axis cs:0,0.74) rectangle (axis cs:1.0,1.26);
+
+  \node[font=\footnotesize, text=white] at (axis cs:0.40,2.00)
+    {$|c_0|^2=\tfrac45$};
+  \node[lbl, text=cgblue, font=\footnotesize, anchor=west]
+    at (axis cs:1.04,2.00) {$|c_1|^2=\tfrac15$};
+
+  \node[font=\footnotesize, text=white] at (axis cs:0.45,1.00)
+    {$|c_+|^2=\tfrac{9}{10}$};
+  \node[lbl, text=birrenorange, font=\footnotesize, anchor=west]
+    at (axis cs:1.04,1.00) {$|c_-|^2=\tfrac{1}{10}$};
+
+  \node[lbl, text=birrengray, font=\scriptsize]
+    at (axis cs:0.50,1.50)
+    {$\textstyle\sum_j |c_j|^2 = \|\Psi\|^2 = 1$};
+\end{axis}
+
+\end{tikzpicture}
+\end{center}

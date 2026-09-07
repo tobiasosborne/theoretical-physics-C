@@ -1,0 +1,205 @@
+% fig_vl16_termschema.tex — Das Termschema des Wasserstoffs und die
+% Spektrallinien, die aus seinen Niveaudifferenzen folgen.
+%
+% Follows the conventions of fig_vl11_kasten (the reference plate).
+%
+%   * geometry comes from the closed form derived in the lecture, never
+%     from a freehand sketch.  With the Rydberg energy
+%         E_R = e^2/(4 pi eps_0 a_0) / 2 = 13.6057 eV,
+%     the lecture's eigenvalue (Z = 1)
+%         E_n = -E_R / n^2
+%     fixes every level height in panel (a):
+%         n  = 1      2       3       4       5       6      ...
+%         E  = -13.61 -3.401 -1.512  -0.850  -0.544  -0.378  ... -> 0
+%     so the 1/n^2 accumulation at the ionisation threshold is forced by
+%     the formula and not drawn by eye.  Levels up to n = 20 are drawn;
+%     from n ~ 8 they can no longer be resolved on the plate, which is
+%     precisely the statement "infinitely many levels pile up at E = 0".
+%   * the transition arrows carry the Merksatz of the lecture: observable
+%     are not the eigenvalues but their differences.  Hence the levels are
+%     neutral grey reference rules and the *arrows* are the coloured data.
+%     Arrow length is literally the photon energy E_n - E_n', to scale:
+%     the Lyman arrows are ~4x the Balmer arrows, which is the whole
+%     reason the one series is deep UV and the other visible light.
+%   * colour encodes the final state n' of the series, and nothing else:
+%     n' = 1 (Lyman) cgblue, n' = 2 (Balmer) birrenorange — the same two
+%     colours in both panels, so a stick in (b) can be traced back to an
+%     arrow in (a).
+%   * panel (b) plots the wavelengths that follow from the same formula,
+%         1/lambda = R_inf (1/n'^2 - 1/n^2),  1/R_inf = 91.127 nm,
+%     on a logarithmic axis, because only a log axis holds Lyman
+%     (91-122 nm) and Balmer (365-656 nm) in one frame.  Consequences
+%     that are therefore forced: the two series never overlap, the band
+%     122-365 nm carries no hydrogen line at all, and the lines of each
+%     series crowd at their series limit lambda = n'^2 / R_inf exactly as
+%     the levels crowd at E = 0.  The visible window 380-750 nm is drawn
+%     as a plain grey bracket, not a coloured band: it is reference
+%     furniture and must survive greyscale printing.
+%
+% Panel (a) the term scheme with the Lyman and Balmer transitions.
+% Panel (b) the same transitions as spectral lines on a wavelength axis —
+%           the order of magnitude prose cannot deliver: Balmer lands in
+%           the visible, Lyman does not.
+
+\begin{center}
+\begin{tikzpicture}
+
+\tikzset{
+  trans/.style={-{Stealth[length=5pt,width=3.5pt]}, line width=0.9pt},
+}
+
+% ─────────────────────────────────────────────────────────────
+%  (a)  Term scheme E_n = -13.6 eV / n^2
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    name=terme,
+    tpcplot,
+    width=6.2cm, height=6.9cm,
+    axis y line=left, axis x line=none,
+    grid=none, clip=false,
+    xmin=0, xmax=1.20,
+    ymin=-16.4, ymax=1.6,
+    ytick={0,-3.4014,-13.6057},
+    yticklabels={$0$,$-3.4$,$-13.6$},
+    ylabel={$E$ [eV]},
+    every axis y label/.style={at={(axis description cs:-0.20,0.5)},
+                               rotate=90, anchor=south, font=\small},
+    title={(a) \tpcifenglish{Term scheme}{Termschema}},
+]
+
+  % Bound levels E_n = -13.6057/n^2.  Written out rather than looped:
+  % \foreach defers expansion inside a pgfplots axis.
+  \draw[levellinegrey] (axis cs:0.02,-13.6057) -- (axis cs:0.88,-13.6057);
+  \draw[levellinegrey] (axis cs:0.02, -3.4014) -- (axis cs:0.88, -3.4014);
+  \draw[levellinegrey] (axis cs:0.02, -1.5117) -- (axis cs:0.88, -1.5117);
+  \draw[levellinegrey] (axis cs:0.02, -0.8504) -- (axis cs:0.88, -0.8504);
+  \draw[levellinegrey] (axis cs:0.02, -0.5442) -- (axis cs:0.88, -0.5442);
+  \draw[levellinegrey] (axis cs:0.02, -0.3779) -- (axis cs:0.88, -0.3779);
+  \draw[levellinegrey] (axis cs:0.02, -0.2777) -- (axis cs:0.88, -0.2777);
+  \draw[levellinegrey] (axis cs:0.02, -0.2126) -- (axis cs:0.88, -0.2126);
+  \draw[levellinegrey] (axis cs:0.02, -0.1680) -- (axis cs:0.88, -0.1680);
+  \draw[levellinegrey] (axis cs:0.02, -0.1361) -- (axis cs:0.88, -0.1361);
+  \draw[levellinegrey] (axis cs:0.02, -0.0945) -- (axis cs:0.88, -0.0945);
+
+  % The ionisation threshold: a real boundary, so heavy ink.  It needs no
+  % "E = 0" tag at its right end — the y tick already reads 0 — and that
+  % end is where the accumulating levels have to be labelled.
+  \draw[potential] (axis cs:0.02,0) -- (axis cs:0.88,0);
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=south]
+    at (axis cs:0.58,0.10)
+    {\tpcifenglish{ionisation threshold}{Ionisationsschwelle}};
+
+  % Lyman series, n -> 1.  Arrow length = E_n - E_1, to scale.
+  \draw[trans, cgblue] (axis cs:0.16, -3.4014) -- (axis cs:0.16,-13.6057);
+  \draw[trans, cgblue] (axis cs:0.23, -1.5117) -- (axis cs:0.23,-13.6057);
+  \draw[trans, cgblue] (axis cs:0.30, -0.8504) -- (axis cs:0.30,-13.6057);
+
+  % Balmer series, n -> 2
+  \draw[trans, birrenorange] (axis cs:0.60,-1.5117) -- (axis cs:0.60,-3.4014);
+  \draw[trans, birrenorange] (axis cs:0.67,-0.8504) -- (axis cs:0.67,-3.4014);
+  \draw[trans, birrenorange] (axis cs:0.74,-0.5442) -- (axis cs:0.74,-3.4014);
+
+  % Series labels, directly under the level each series ends on
+  \node[lbl, text=cgblue, anchor=north, align=center]
+    at (axis cs:0.30,-13.90) {Lyman ($n\to1$)\\[-1pt] UV};
+  \node[lbl, text=birrenorange, anchor=north, align=center]
+    at (axis cs:0.70,-3.72)
+    {Balmer ($n\to2$)\\[-1pt] \tpcifenglish{visible}{sichtbar}};
+
+  % Quantum numbers, only where the levels are still resolved
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=west]
+    at (axis cs:0.90,-13.6057) {$n=1$};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=west]
+    at (axis cs:0.90, -3.4014) {$n=2$};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=west]
+    at (axis cs:0.90, -1.5117) {$n=3$};
+
+  % The accumulation at the threshold: labelled exactly like the resolved
+  % levels, in the same column, because that is what it is — the rest of
+  % the same sequence, no longer separable on the plate.
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=west]
+    at (axis cs:0.90,-0.30) {$n\to\infty$};
+\end{axis}
+
+% ─────────────────────────────────────────────────────────────
+%  (b)  The same transitions as spectral lines
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    tpcplot,
+    at={(terme.north east)}, anchor=north west, xshift=13mm,
+    width=7.4cm, height=5.7cm,
+    axis y line=none, axis x line=bottom,
+    grid=none, clip=false,
+    xmode=log, log ticks with fixed point,
+    xmin=82, xmax=900,
+    ymin=0,   ymax=1.42,
+    xtick={100,200,400,800},
+    minor xtick={90,300,500,600,700},
+    xlabel={$\lambda$ [nm]},
+    every axis x label/.style={at={(axis description cs:0.5,-0.26)},
+                               anchor=north, font=\small},
+    title={(b) \tpcifenglish{Spectral lines}{Spektrallinien}},
+]
+
+  % Lyman, n = 2..12 -> 1.  lambda = 91.127 nm / (1 - 1/n^2)
+  \draw[cgblue, line width=0.7pt] (axis cs:121.50,0) -- (axis cs:121.50,1);
+  \draw[cgblue, line width=0.7pt] (axis cs:102.52,0) -- (axis cs:102.52,1);
+  \draw[cgblue, line width=0.7pt] (axis cs: 97.20,0) -- (axis cs: 97.20,1);
+  \draw[cgblue, line width=0.7pt] (axis cs: 94.92,0) -- (axis cs: 94.92,1);
+  \draw[cgblue, line width=0.7pt] (axis cs: 93.73,0) -- (axis cs: 93.73,1);
+  \draw[cgblue, line width=0.7pt] (axis cs: 93.03,0) -- (axis cs: 93.03,1);
+  \draw[cgblue, line width=0.7pt] (axis cs: 92.57,0) -- (axis cs: 92.57,1);
+  \draw[cgblue, line width=0.7pt] (axis cs: 92.27,0) -- (axis cs: 92.27,1);
+  \draw[cgblue, line width=0.7pt] (axis cs: 92.05,0) -- (axis cs: 92.05,1);
+  \draw[cgblue, line width=0.7pt] (axis cs: 91.76,0) -- (axis cs: 91.76,1);
+
+  % Balmer, n = 3..12 -> 2.  lambda = 91.127 nm / (1/4 - 1/n^2)
+  \draw[birrenorange, line width=0.7pt] (axis cs:656.11,0) -- (axis cs:656.11,1);
+  \draw[birrenorange, line width=0.7pt] (axis cs:486.01,0) -- (axis cs:486.01,1);
+  \draw[birrenorange, line width=0.7pt] (axis cs:433.94,0) -- (axis cs:433.94,1);
+  \draw[birrenorange, line width=0.7pt] (axis cs:410.07,0) -- (axis cs:410.07,1);
+  \draw[birrenorange, line width=0.7pt] (axis cs:396.91,0) -- (axis cs:396.91,1);
+  \draw[birrenorange, line width=0.7pt] (axis cs:388.81,0) -- (axis cs:388.81,1);
+  \draw[birrenorange, line width=0.7pt] (axis cs:383.44,0) -- (axis cs:383.44,1);
+  \draw[birrenorange, line width=0.7pt] (axis cs:379.69,0) -- (axis cs:379.69,1);
+  \draw[birrenorange, line width=0.7pt] (axis cs:374.92,0) -- (axis cs:374.92,1);
+
+  % Series limits lambda = n'^2 / R_inf, where n -> infinity accumulates —
+  % the image of the pile-up at E = 0 in panel (a).  Annotated once, from
+  % the empty band between the series, so no label sits on a line.
+  \draw[levellinegrey] (axis cs: 91.13,0) -- (axis cs: 91.13,1.20);
+  \draw[levellinegrey] (axis cs:364.51,0) -- (axis cs:364.51,1.20);
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=south west]
+    at (axis cs:93.5,1.20) {\tpcifenglish{series limit}{Seriengrenze}};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=south east]
+    at (axis cs:358,1.02) {\tpcifenglish{series limit}{Seriengrenze}};
+
+  % The band between the two series is empty, and that emptiness is a
+  % result, not a gap in the drawing — hence it is labelled.
+  \node[lbl, text=birrengray, font=\scriptsize, align=center]
+    at (axis cs:210,0.46)
+    {\tpcifenglish{no hydrogen}{keine}\\[-1pt]
+     \tpcifenglish{lines here}{Wasserstofflinien}};
+
+  % The one hydrogen line everybody has seen: red H-alpha, n = 3 -> 2.
+  \node[lbl, text=birrenorange, font=\scriptsize, anchor=south]
+    at (axis cs:656.11,1.00) {$\mathrm{H}\alpha$};
+
+  % Spectral windows, as neutral grey brackets under the axis: reference
+  % furniture, so no colour, and greyscale-safe.  The visible window
+  % starts just longward of the Balmer limit — which is why that whole
+  % series, and only that series, is a laboratory-bench phenomenon.
+  \draw[birrengray, line width=0.5pt]
+    (axis cs:84,-0.145) -- (axis cs:84,-0.18) -- (axis cs:378,-0.18)
+      -- (axis cs:378,-0.145);
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north]
+    at (axis cs:178,-0.19) {UV};
+  \draw[birrengray, line width=0.5pt]
+    (axis cs:384,-0.145) -- (axis cs:384,-0.18) -- (axis cs:750,-0.18)
+      -- (axis cs:750,-0.145);
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north]
+    at (axis cs:537,-0.19) {\tpcifenglish{visible}{sichtbar}};
+\end{axis}
+
+\end{tikzpicture}
+\end{center}

@@ -1,0 +1,155 @@
+% fig_vl08_fourier.tex — Das Fourier-Paar: dasselbe Wellenpaket im Orts-
+% und im Impulsraum, und die reziproke Breite der beiden Darstellungen.
+%
+% Follows the conventions of fig_vl11_kasten.tex.
+%
+%   * geometry from the closed form, not freehand.  The lecture's packet
+%         Psi(x,0) = (sigma sqrt(2 pi))^{-1/2} exp(-(x-a)^2 / (4 sigma^2))
+%     has the momentum wave function (Fourier transform, p = hbar k)
+%         Phi(p)  proportional to exp(-sigma^2 p^2 / hbar^2),
+%     so the two densities are Gaussians of standard deviation
+%         sigma_x = sigma        and      sigma_p = hbar / (2 sigma).
+%     Every curve, every bar length and every peak height in the plate is
+%     evaluated from those two numbers:
+%         |Psi|^2 peak = 1/(sigma_x sqrt(2 pi)),
+%         |Phi|^2 peak = 1/(sigma_p sqrt(2 pi)),
+%     which is why the tallest curve of (a) is the flattest of (b).  The
+%     three states are sigma_x = sigma/2, sigma, 2 sigma, spaced by a
+%     factor of two so that the reciprocal factor of two in (b) can be
+%     read off the ruler rather than believed.
+%
+%   * plotted are the *densities* |Psi|^2 and |Phi|^2, because those are
+%     what the lecture integrates in <p> = int p |Phi(p,t)|^2 dp;
+%   * colour encodes the state (which packet), nothing else — the same
+%     three colours in the same order appear in both panels, so the eye
+%     can carry a packet across the Fourier transform;
+%   * the +/- sigma rulers sit in a strip above the curves, clear of the
+%     data: their lengths are the whole point of the plate, and their
+%     order reverses from (a) to (b);
+%   * dotted grey drop lines take the middle packet's ruler down onto its
+%     own flank in both panels, so the bars are visibly *measured* off a
+%     curve rather than asserted; that packet is the worked example, the
+%     other two are the trend;
+%   * the grey double arrow in the gap carries the only thing the two
+%     panels do not say separately: they are one state, not two;
+%   * axis units are sigma and hbar/sigma, so the plate carries no
+%     arbitrary numbers, and the y axes are unnumbered — the message is
+%     the width, not the height.
+%
+% Panel (a) three packets in position space, narrow to wide.
+% Panel (b) the same three in momentum space, wide to narrow, with the
+%           product sigma_x sigma_p = hbar/2 that the two panels measure.
+
+\begin{center}
+\begin{tikzpicture}
+
+% Dimension ruler: bar–arrow–arrow–bar, the width of one packet.
+\tikzset{
+  dimbar/.style={line width=0.7pt, >={Stealth[length=4pt,width=3pt]}, |<->|},
+}
+
+% ─────────────────────────────────────────────────────────────
+%  (a)  Position space
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    name=posspace,
+    tpcplot,
+    width=6.4cm, height=5.9cm,
+    grid=none,
+    xmin=-5, xmax=5, ymin=0, ymax=2.62,
+    xtick={-4,-2,0,2,4}, ytick=\empty,
+    xlabel={$x/\sigma$},
+    ylabel={$|\Psi(x)|^2$},
+    every axis x label/.style={at={(axis description cs:0.5,-0.13)},
+                               anchor=north, font=\small},
+    every axis y label/.style={at={(axis description cs:-0.045,0.5)},
+                               rotate=90, anchor=south, font=\small},
+    title={(a) \tpcifenglish{position space}{Ortsraum}},
+    domain=-5:5, samples=201,
+    clip=false,
+]
+  % |Psi|^2 = exp(-x^2/(2 sigma_x^2)) / (sigma_x sqrt(2 pi))
+  \addplot[wavefn, spacecadet]   {1.59577*exp(-2*x^2)};       % sigma_x = sigma/2
+  \addplot[wavefn, cgblue]       {0.79788*exp(-0.5*x^2)};     % sigma_x = sigma
+  \addplot[wavefn, birrenorange] {0.39894*exp(-0.125*x^2)};   % sigma_x = 2 sigma
+
+  % Width rulers, +/- sigma_x, in the state's own colour
+  \draw[dimbar, spacecadet]   (axis cs:-0.5,2.40) -- (axis cs:0.5,2.40);
+  \draw[dimbar, cgblue]       (axis cs:-1,  2.15) -- (axis cs:1,  2.15);
+  \draw[dimbar, birrenorange] (axis cs:-2,  1.90) -- (axis cs:2,  1.90);
+
+  \node[lbl, font=\scriptsize, text=spacecadet,   anchor=west]
+    at (axis cs:0.65,2.40) {$\sigma/2$};
+  \node[lbl, font=\scriptsize, text=cgblue,       anchor=west]
+    at (axis cs:1.15,2.15) {$\sigma$};
+  \node[lbl, font=\scriptsize, text=birrenorange, anchor=west]
+    at (axis cs:2.15,1.90) {$2\sigma$};
+
+  % The ruler really is read off the curve: drop the middle packet's
+  % +/- sigma_x onto its own flank, where |Psi|^2 has fallen to e^{-1/2}
+  % of its peak.  The same packet is worked in panel (b).
+  \draw[classicallim] (axis cs:-1,2.15) -- (axis cs:-1,0.484);
+  \draw[classicallim] (axis cs: 1,2.15) -- (axis cs: 1,0.484);
+
+  \node[lbl, font=\scriptsize, text=birrengray, anchor=west]
+    at (axis cs:-4.9,2.54) {$\pm\sigma_x$};
+\end{axis}
+
+% ─────────────────────────────────────────────────────────────
+%  (b)  Momentum space — the same three packets
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    name=momspace,
+    tpcplot,
+    at={(posspace.south east)}, anchor=south west, xshift=19mm,
+    width=6.4cm, height=5.9cm,
+    grid=none,
+    xmin=-2.5, xmax=2.5, ymin=0, ymax=2.62,
+    xtick={-2,-1,0,1,2}, ytick=\empty,
+    xlabel={$p\,\sigma/\hbar$},
+    ylabel={$|\Phi(p)|^2$},
+    every axis x label/.style={at={(axis description cs:0.5,-0.13)},
+                               anchor=north, font=\small},
+    every axis y label/.style={at={(axis description cs:-0.045,0.5)},
+                               rotate=90, anchor=south, font=\small},
+    title={(b) \tpcifenglish{momentum space}{Impulsraum}},
+    domain=-2.5:2.5, samples=201,
+    clip=false,
+]
+  % |Phi|^2 with sigma_p = hbar/(2 sigma_x): the order of the widths flips
+  \addplot[wavefn, spacecadet]   {0.39894*exp(-0.5*x^2)};     % sigma_p = hbar/sigma
+  \addplot[wavefn, cgblue]       {0.79788*exp(-2*x^2)};       % sigma_p = hbar/(2 sigma)
+  \addplot[wavefn, birrenorange] {1.59577*exp(-8*x^2)};       % sigma_p = hbar/(4 sigma)
+
+  \draw[dimbar, spacecadet]   (axis cs:-1,   2.40) -- (axis cs:1,   2.40);
+  \draw[dimbar, cgblue]       (axis cs:-0.5, 2.15) -- (axis cs:0.5, 2.15);
+  \draw[dimbar, birrenorange] (axis cs:-0.25,1.90) -- (axis cs:0.25,1.90);
+
+  \node[lbl, font=\scriptsize, text=spacecadet,   anchor=west]
+    at (axis cs:1.15,2.40) {$\hbar/\sigma$};
+  \node[lbl, font=\scriptsize, text=cgblue,       anchor=west]
+    at (axis cs:0.65,2.15) {$\hbar/(2\sigma)$};
+  \node[lbl, font=\scriptsize, text=birrenorange, anchor=west]
+    at (axis cs:0.40,1.90) {$\hbar/(4\sigma)$};
+
+  \draw[classicallim] (axis cs:-0.5,2.15) -- (axis cs:-0.5,0.484);
+  \draw[classicallim] (axis cs: 0.5,2.15) -- (axis cs: 0.5,0.484);
+
+  \node[lbl, font=\scriptsize, text=birrengray, anchor=west]
+    at (axis cs:-2.45,2.54) {$\pm\sigma_p$};
+
+  % What the two rulers measure together
+  \node[lbl, font=\small, text=cgblue, anchor=west]
+    at (axis cs:-2.45,1.30) {$\sigma_x\,\sigma_p = \hbar/2$};
+\end{axis}
+
+% The two panels are one state, not two: the transform lives in the gap.
+\coordinate (fmid) at ($(posspace.north east)!0.5!(momspace.north west)+(0,-11mm)$);
+\draw[{Stealth[length=4pt,width=3pt]}-{Stealth[length=4pt,width=3pt]},
+      birrengray, line width=0.7pt]
+  ($(fmid)+(-4mm,0)$) -- ($(fmid)+(4mm,0)$);
+\node[lbl, font=\scriptsize, text=birrengray, anchor=south]
+  at ($(fmid)+(0,0.7mm)$) {$\mathcal{F}$};
+
+\end{tikzpicture}
+\end{center}

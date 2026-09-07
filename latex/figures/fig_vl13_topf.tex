@@ -1,0 +1,225 @@
+% fig_vl13_topf.tex — Endlich hoher Potentialtopf: die gebundenen
+% Zustaende mit ihren exponentiellen Auslaeufern, und die graphische
+% Loesung, die abzaehlt, wie viele es davon gibt.
+%
+% GEOMETRY FROM THE FORMULA.  Nothing here is drawn by eye.  With the
+% abbreviations of the lecture,
+%
+%       u = qL/2 ,   alpha^2 = m V_0 L^2 / (2 hbar^2) ,
+%
+% the matching conditions kappa = q tan(u) and kappa = -q cot(u) reduce
+% to the two transcendental equations
+%
+%       |cos u| = u/alpha   (even)      |sin u| = u/alpha   (odd),
+%
+% each restricted to the branch on which the sign condition holds:
+% tan u > 0 on (0,pi/2) and (pi,3pi/2), cot u < 0 on (pi/2,pi) and
+% (3pi/2,2pi).  Those four intervals are exactly the four DESCENDING
+% half-arches of |cos u| and |sin u|, alternating even/odd — which is
+% why panel (b) can be read off as "count the arches the straight line
+% u/alpha still reaches".  The ascending halves are the branches the
+% sign conditions throw away, the crossing at u = 0 among them.
+%
+% For alpha = 4 there are ceil(2 alpha/pi) = 3 bound states, with roots
+%
+%       u_1 = 1.25235   u_2 = 2.47458   u_3 = 3.59530 ,
+%
+% and with v = kappa L/2 = sqrt(alpha^2 - u^2),
+%
+%       v_1 = 3.79890   v_2 = 3.14269   v_3 = 1.75322 .
+%
+% Panel (a) then follows without any further choice:
+%
+%       E_n / V_0 = u_n^2/alpha^2 - 1  = -0.90198, -0.61728, -0.19211 ,
+%       psi_n(x)  = cos(2 u_n x/L)  or  sin(2 u_n x/L)      inside,
+%                   (+-) (u_n/alpha) exp(-2 v_n (|x|/L - 1/2))  outside,
+%
+% the amplitude at the wall being u_n/alpha = |cos u_n| resp. |sin u_n|
+% — the transcendental equation itself.  So the tail of the topmost
+% state starts almost three times as high AND decays 2.2x more slowly
+% than the ground state's (1/kappa_3 = 0.285 L against 1/kappa_1 =
+% 0.132 L): the weaker the binding, the further the particle leaks out.
+% That comparison is what the picture is for; prose cannot do it.
+%
+% DESIGN DECISIONS
+%   * colour encodes the quantum number n and nothing else, and it is
+%     the SAME code in both panels, so the arch a state comes from in
+%     (b) can be found again as a wavefunction in (a).  Entries 1, 2, 4,
+%     5 of the ordered `tpclevels` ramp (navy, teal, orange, red);
+%     entry 3, munsell, is skipped on purpose — beside cgblue it is the
+%     same teal to the eye, and arches 2 and 3 in (b) are neighbours;
+%   * the fourth colour appears only in (b): arch 4 is the state that
+%     alpha = 4 does not yet support.  It is drawn, not omitted, because
+%     the empty arch is the point — increase alpha, the line flattens,
+%     and the fourth state appears;
+%   * everything that is reference rather than data is neutral grey: the
+%     energy levels, the -V_0 guide, the straight line u/alpha, and the
+%     dotted ascending half-arches;
+%   * classically forbidden region hatched, not filled, so the leakage
+%     of psi into it survives greyscale printing;
+%   * amplitude 0.12 V_0 in (a) is the largest that keeps psi_2 clear of
+%     E_1, the tightest gap (E_2 - E_1 = 0.285 V_0).
+
+\begin{center}
+\begin{tikzpicture}
+
+% Roots of |cos u| = u/alpha and |sin u| = u/alpha at alpha = 4, and the
+% quantities that follow from them.  Local to this tikzpicture.
+\def\uA{1.25235}\def\vA{3.79890}\def\EA{-0.90198}\def\bA{0.31309}
+\def\uB{2.47458}\def\vB{3.14269}\def\EB{-0.61728}\def\bB{0.61864}
+\def\uC{3.59530}\def\vC{1.75322}\def\EC{-0.19211}\def\bC{-0.89883}
+\def\amp{0.12}
+
+% ─────────────────────────────────────────────────────────────
+%  (a)  The three bound states, each on its own level
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    name=well,
+    tpcplot,
+    width=7.6cm, height=6.6cm,
+    axis lines=none,
+    xmin=-1.30, xmax=1.30,
+    ymin=-1.24, ymax=0.24,
+    clip=false,
+    title={(a) \tpcifenglish{Bound states, $\alpha=4$}%
+                            {Gebundene Zust\"ande, $\alpha=4$}},
+    domain=-1.24:1.24, samples=401,
+]
+
+  % Classically forbidden for every bound state: outside the well V = 0
+  % lies above E < 0.  Hatched, so psi can be drawn straight over it.
+  \addplot[forbidden, draw=none, domain=-1.24:-0.5, samples=2] {-1.24} \closedcycle;
+  \addplot[forbidden, draw=none, domain=0.5:1.24,   samples=2] {-1.24} \closedcycle;
+
+  % The well itself
+  \draw[potential] (axis cs:-1.24,0)  -- (axis cs:-0.5,0);
+  \draw[potential] (axis cs:-0.5,0)   -- (axis cs:-0.5,-1);
+  \draw[potential] (axis cs:-0.5,-1)  -- (axis cs:0.5,-1);
+  \draw[potential] (axis cs:0.5,-1)   -- (axis cs:0.5,0);
+  \draw[potential, -{Stealth[length=5pt]}] (axis cs:0.5,0) -- (axis cs:1.30,0);
+
+  % Energy levels E_n/V_0 = u_n^2/alpha^2 - 1, and the floor -V_0.
+  % Reference rules, hence grey: colour is already carrying n.
+  \addplot[levellinegrey, domain=-1.24:1.24, samples=2] {\EA};
+  \addplot[levellinegrey, domain=-1.24:1.24, samples=2] {\EB};
+  \addplot[levellinegrey, domain=-1.24:1.24, samples=2] {\EC};
+  \addplot[levellinegrey, domain=-1.24:-0.5, samples=2] {-1};
+
+  % Eigenfunctions about their levels.  Inside: cos/sin(2 u_n x/L).
+  % Outside: amplitude at the wall +-u_n/alpha, times exp(-2 v_n (|x|/L - 1/2)).
+  \addplot[wavefn, spacecadet] {\EA + \amp*(
+       (abs(x)<0.5)*cos(deg(2*\uA*x))
+     + (abs(x)>=0.5)*\bA*exp(-2*\vA*(abs(x)-0.5)) )};
+  \addplot[wavefn, cgblue]     {\EB + \amp*(
+       (abs(x)<0.5)*sin(deg(2*\uB*x))
+     + (abs(x)>=0.5)*((x>0)*2-1)*\bB*exp(-2*\vB*(abs(x)-0.5)) )};
+  \addplot[wavefn, birrenorange] {\EC + \amp*(
+       (abs(x)<0.5)*cos(deg(2*\uC*x))
+     + (abs(x)>=0.5)*\bC*exp(-2*\vC*(abs(x)-0.5)) )};
+
+  % Level labels
+  \node[lbl, anchor=east] at (axis cs:-1.30,\EA) {$E_{1}$};
+  \node[lbl, anchor=east] at (axis cs:-1.30,\EB) {$E_{2}$};
+  \node[lbl, anchor=east] at (axis cs:-1.30,\EC) {$E_{3}$};
+  \node[lbl, anchor=east] at (axis cs:-1.30,-1)  {$-V_{0}$};
+
+  % Axis furniture
+  \node[lbl, anchor=west]       at (axis cs:1.32,0)     {$x$};
+  \node[lbl, anchor=south east] at (axis cs:1.24,0.03)  {$V=0$};
+  \node[lbl, anchor=south]      at (axis cs:-0.5,0.04)  {$-\tfrac{L}{2}$};
+  \node[lbl, anchor=south]      at (axis cs:0.5,0.04)   {$\tfrac{L}{2}$};
+
+  % Well width
+  \draw[{Stealth[length=4pt]}-{Stealth[length=4pt]}, birrengray, thin]
+    (axis cs:-0.5,-1.14) -- (axis cs:0.5,-1.14)
+    node[midway, lbl, fill=white, inner sep=1pt] {$L$};
+
+  % Penetration depth 1/kappa_n = L/(2 v_n): 0.132 L for the ground state
+  % against 0.285 L for the topmost one.  White underlay so the measure
+  % reads over the hatching.
+  \draw[white, line width=2.6pt] (axis cs:0.5,-0.96) -- (axis cs:0.632,-0.96);
+  \draw[white, line width=2.6pt] (axis cs:0.5,-0.40) -- (axis cs:0.785,-0.40);
+  \draw[{Stealth[length=3pt]}-{Stealth[length=3pt]}, birrengray!60!black, thin]
+    (axis cs:0.5,-0.96) -- (axis cs:0.632,-0.96);
+  \draw[{Stealth[length=3pt]}-{Stealth[length=3pt]}, birrengray!60!black, thin]
+    (axis cs:0.5,-0.40) -- (axis cs:0.785,-0.40);
+  \node[lbl, font=\scriptsize, anchor=west, fill=white, inner sep=1pt]
+    at (axis cs:0.66,-0.96) {$1/\kappa_{1}$};
+  \node[lbl, font=\scriptsize, anchor=west, fill=white, inner sep=1pt]
+    at (axis cs:0.82,-0.40) {$1/\kappa_{3}$};
+
+  % The hatched zone, named once
+  \node[lbl, text=birrengray, font=\scriptsize, align=center,
+        fill=white, inner sep=1pt]
+    at (axis cs:-0.87,-1.13)
+    {\tpcifenglish{classically\\forbidden}{klassisch\\verboten}};
+\end{axis}
+
+% ─────────────────────────────────────────────────────────────
+%  (b)  |cos u| = u/alpha and |sin u| = u/alpha: counting the states
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    tpcplot,
+    at={(well.south east)}, anchor=south west, xshift=12mm,
+    width=5.9cm, height=6.6cm,
+    xlabel={$u=\tfrac{qL}{2}$},
+    xmin=0, xmax=5.45, ymin=0, ymax=1.55,
+    xtick={0,1.5707963,3.1415927,4.712389},
+    xticklabels={$0$,$\tfrac{\pi}{2}$,$\pi$,$\tfrac{3\pi}{2}$},
+    ytick={0,0.5,1},
+    grid=major,
+    samples=120,
+    title={(b) \tpcifenglish{Graphical solution}{Grafische L\"osung}},
+]
+
+  % Branches killed by the sign conditions tan u > 0 / cot u < 0: the
+  % ascending half-arches.  Dotted grey — they are not solutions.
+  \addplot[birrengray!75, line width=0.7pt, densely dotted,
+           domain=0:1.5707963]          {abs(sin(deg(x)))};
+  \addplot[birrengray!75, line width=0.7pt, densely dotted,
+           domain=1.5707963:3.1415927]  {abs(cos(deg(x)))};
+  \addplot[birrengray!75, line width=0.7pt, densely dotted,
+           domain=3.1415927:4.712389]   {abs(sin(deg(x)))};
+  \addplot[birrengray!75, line width=0.7pt, densely dotted,
+           domain=4.712389:5.45]        {abs(cos(deg(x)))};
+
+  % The straight line u/alpha.  Reference, not data: grey.
+  \addplot[birrengray!55!black, line width=0.9pt,
+           domain=0:5.45, samples=2] {x/4};
+
+  % The four admissible branches, coloured by the state they carry.
+  \addplot[spacecadet,   line width=1.0pt, domain=0:1.5707963]         {abs(cos(deg(x)))};
+  \addplot[cgblue,       line width=1.0pt, domain=1.5707963:3.1415927] {abs(sin(deg(x)))};
+  \addplot[birrenorange, line width=1.0pt, domain=3.1415927:4.712389]  {abs(cos(deg(x)))};
+  \addplot[birrenred,    line width=1.0pt, domain=4.712389:5.45]       {abs(sin(deg(x)))};
+
+  % The three roots
+  \addplot[only marks, mark=*, mark size=2pt, spacecadet]
+    coordinates {(1.25235,0.31309)};
+  \addplot[only marks, mark=*, mark size=2pt, cgblue]
+    coordinates {(2.47458,0.61864)};
+  \addplot[only marks, mark=*, mark size=2pt, birrenorange]
+    coordinates {(3.59530,0.89883)};
+
+  \node[lbl, text=spacecadet,   font=\scriptsize, fill=white, inner sep=1pt]
+    at (axis cs:1.25235,0.17) {$n=1$};
+  \node[lbl, text=cgblue,       font=\scriptsize, fill=white, inner sep=1pt]
+    at (axis cs:2.47458,0.47) {$n=2$};
+  \node[lbl, text=birrenorange, font=\scriptsize, fill=white, inner sep=1pt]
+    at (axis cs:3.30000,0.56) {$n=3$};
+
+  % Curve identities, at the top of the first two arches
+  \node[lbl, anchor=south west] at (axis cs:0.06,1.02) {$|\cos u|$};
+  \node[lbl, anchor=south west] at (axis cs:1.63,1.02) {$|\sin u|$};
+
+  % The straight line, named where it runs alone under the top border
+  \node[lbl, anchor=east] at (axis cs:4.95,1.30) {$u/\alpha$, $\alpha=4$};
+
+  % The excluded branches, named once, on the row above
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=west]
+    at (axis cs:0.10,1.46)
+    {\tpcifenglish{dotted: excluded branches}{gepunktet: verworfene Zweige}};
+\end{axis}
+
+\end{tikzpicture}
+\end{center}

@@ -1,0 +1,220 @@
+% fig_vl09_unschaerfe.tex — Woher die Schranke kommt: die Positivität von
+% M = C^dag C ist eine Parabel in lambda, die die Nulllinie nicht
+% unterschreiten darf, und genau ihre Scheitelhöhe ist Kennards
+% Ungleichung.
+%
+% Follows the conventions of fig_vl11_kasten.tex.
+%
+% WARUM NICHT DIE GAUSS-PAKETE.  Die naheliegende Tafel — schmales
+% Ortspaket, breites Impulspaket — steht bereits in vl08
+% (fig_vl08_fourier): dort sind drei Pakete in beiden Darstellungen
+% nebeneinandergestellt und mit sigma_x sigma_p = hbar/2 beschriftet.
+% Sie hier zu wiederholen hieße, die vorige Vorlesung noch einmal zu
+% zeichnen.  Neu in vl09 ist der *Beweis*: der Kunstgriff mit M, das
+% Minimieren über lambda, und was daraus für zulässige Paare
+% (Delta x, Delta p) folgt.  Genau das ist hier gezeichnet — Panel (a)
+% der Mechanismus, Panel (b) sein Ergebnis.
+%
+% GEOMETRIE AUS DER FORMEL.  Alles folgt aus der Ungleichung der
+% Vorlesung, mit A = p - <p> und B = x - <x>:
+%
+%       tr(rho M) = tr(rho A^2) + lambda^2 tr(rho B^2)
+%                                       + lambda tr(rho i[A,B]) >= 0 .
+%
+% Hier ist tr(rho A^2) = (Delta p)^2, tr(rho B^2) = (Delta x)^2 und,
+% wegen [x,p] = i hbar, tr(rho i[A,B]) = i[p,x] = hbar.  Also
+%
+%       f(lambda) = (Delta p)^2 + lambda^2 (Delta x)^2 + lambda hbar .
+%
+% In den dimensionslosen Variablen
+%
+%       mu    = lambda (Delta x)^2 / hbar ,
+%       g(mu) = f (Delta x)^2 / hbar^2 ,
+%       kappa = Delta x Delta p / hbar
+%
+% lautet das
+%
+%       g(mu) = mu^2 + mu + kappa^2 ,
+%
+% eine Parabelschar, die NUR vom Produkt kappa abhängt — die einzige
+% dimensionslose Größe des Problems.  Scheitel bei mu = -1/2, das heißt
+% lambda_* = -hbar / 2 (Delta x)^2, genau der Wert, den die Vorlesung als
+% Übung ausrechnen lässt; Scheitelhöhe kappa^2 - 1/4.  Positivität heißt
+% also kappa >= 1/2, und das ist Delta x Delta p >= hbar/2.  Die drei
+% Kurven sind demnach nicht gewählt, sondern abgelesen: kappa = 1
+% (Ungleichung strikt), kappa = 1/2 (Gleichheit, Gauß), kappa = 1/4
+% (Scheitel unter null — kann kein Zustand sein).
+%
+% ENTSCHEIDUNGEN
+%   * die y-Achse ist so eng gefasst, dass der Höhenunterschied
+%     kappa^2 = 1/4 vs 1/16 (also 0.19) noch gut 5 mm misst: die drei
+%     Parabeln sind exakte Vertikalverschiebungen voneinander, weiter
+%     lassen sie sich nicht trennen, und die Aussage steckt allein in
+%     der Scheitelhöhe;
+%   * schraffiert ist in (a) der Halbraum tr(rho M) < 0 und in (b) das
+%     Gebiet Delta x Delta p < hbar/2 — zweimal dasselbe Verbot, einmal
+%     als Operatoraussage, einmal als Aussage über Messstatistiken;
+%   * Farbe kodiert das Produkt kappa und sonst nichts, dieselben drei
+%     Farben in beiden Panels: die Parabel in (a) ist als Punkt in (b)
+%     wiederzufinden.  Rot und gestrichelt ist der Fall, den es nicht
+%     gibt;
+%   * grau ist ausschließlich Referenz: die Nulllinie, die Scheitel-
+%     senkrechte lambda_*, und in (b) die Senkrechte Delta x = a, auf der
+%     die drei Zustände aus (a) liegen;
+%   * die beiden zusätzlichen Punkte auf der Hyperbel in (b) sind
+%     dieselbe Gauß-Familie bei anderer Breite: quetscht man den Ort,
+%     rutscht der Punkt die Hyperbel hinauf — das ist der Pfeil.  Die
+%     Größenordnungsnotiz macht aus der willkürlichen Einheit a eine
+%     Aussage über ein Elektron: auf einen Atomdurchmesser eingesperrt,
+%     streut seine Geschwindigkeit um einige hundert km/s.
+%
+% Panel (a) die Parabelschar g(mu) = mu^2 + mu + kappa^2.
+% Panel (b) die zulässigen Paare (Delta x, Delta p).
+
+\begin{center}
+\begin{tikzpicture}
+
+% ─────────────────────────────────────────────────────────────
+%  (a)  Die Positivitätsparabel
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    name=parab,
+    tpcplot,
+    width=7.5cm, height=6.0cm,
+    grid=none,
+    xmin=-1.35, xmax=1.15,
+    ymin=-0.40, ymax=1.78,
+    xtick={-1,-0.5,0,0.5},
+    xticklabels={$-1$,$-\frac12$,$0$,$\frac12$},
+    ytick={0,0.5,1,1.5},
+    xlabel={$\lambda\,(\Delta x)^{2}/\hbar$},
+    ylabel={$\tr(\rho M)\,(\Delta x)^{2}/\hbar^{2}$},
+    every axis x label/.style={at={(axis description cs:0.5,-0.15)},
+                               anchor=north, font=\small},
+    every axis y label/.style={at={(axis description cs:-0.14,0.5)},
+                               rotate=90, anchor=south, font=\small},
+    title={(a) \tpcifenglish{A parabola that may not dip}%
+                            {Eine Parabel, die nicht eintauchen darf}},
+    samples=181, clip=false,
+]
+
+  % Verbotener Halbraum: M = C^dag C ist positiv, also tr(rho M) >= 0.
+  \path[forbidden] (axis cs:-1.35,-0.40) rectangle (axis cs:1.15,0);
+  \draw[levellinegrey] (axis cs:-1.35,0) -- (axis cs:1.15,0);
+
+  % Scheitelsenkrechte mu = -1/2, also lambda_* = -hbar/2(Delta x)^2.
+  \draw[classicallim] (axis cs:-0.5,-0.40) -- (axis cs:-0.5,1.10);
+
+  % g(mu) = mu^2 + mu + kappa^2, kappa = Delta x Delta p / hbar.
+  \addplot[wavefn, munsell,    domain=-1.35:0.35] {x^2 + x + 1};
+  \addplot[wavefn, spacecadet, domain=-1.35:0.35] {x^2 + x + 0.25};
+  \addplot[wavefn, birrenred, densely dashed, domain=-1.35:0.35]
+    {x^2 + x + 0.0625};
+
+  % Die Scheitel: das ist die ganze Information.
+  \addplot[only marks, mark=*, mark size=2.0pt, munsell]
+    coordinates {(-0.5,0.75)};
+  \addplot[only marks, mark=*, mark size=2.0pt, spacecadet]
+    coordinates {(-0.5,0)};
+  \addplot[only marks, mark=*, mark size=2.0pt, birrenred]
+    coordinates {(-0.5,-0.1875)};
+
+  % Direktbeschriftung am rechten Kurvenende, in der Kurvenfarbe.
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=west]
+    at (axis cs:0.42,1.66) {$\Delta x\,\Delta p$:};
+  \node[lbl, text=munsell,    anchor=west] at (axis cs:0.42,1.4725)
+    {$\hbar$};
+  \node[lbl, text=spacecadet, anchor=west] at (axis cs:0.42,0.7225)
+    {$\hbar/2$};
+  \node[lbl, text=birrenred,  anchor=west] at (axis cs:0.42,0.4600)
+    {$\hbar/4$};
+
+  % Wo der Scheitel liegt und wie hoch er ist -- ein Block über der
+  % Scheitelsenkrechten, im freien Feld über der munsell-Parabel.  Das
+  % Minimieren über lambda, das die Vorlesung als Übung stellt, steht
+  % damit als Bild da: der Scheitel sinkt mit dem Produkt.
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=south, align=center]
+    at (axis cs:-0.5,1.12)
+    {$\lambda_{*}=-\hbar/2(\Delta x)^{2}$\\[-1pt]
+     \tpcifenglish{vertex height}{Scheitelhöhe}\\[-1pt]
+     $(\Delta x\,\Delta p/\hbar)^{2}-\tfrac14$};
+
+  % Warum der schraffierte Halbraum leer ist.
+  \node[lbl, text=birrenred, font=\scriptsize, anchor=south east]
+    at (axis cs:1.13,-0.38)
+    {$M=C^{\dag}C\ge 0$: \tpcifenglish{impossible}{unmöglich}};
+\end{axis}
+
+% ─────────────────────────────────────────────────────────────
+%  (b)  Die zulässigen Paare (Delta x, Delta p)
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    tpcplot,
+    at={(parab.south east)}, anchor=south west, xshift=13mm,
+    width=5.6cm, height=6.0cm,
+    xmin=0, xmax=2.62, ymin=0, ymax=1.85,
+    xtick={0,1,2}, ytick={0,0.5,1,1.5},
+    grid=major,
+    xlabel={$\Delta x/a$},
+    ylabel={$\Delta p\,a/\hbar$},
+    every axis x label/.style={at={(axis description cs:0.5,-0.15)},
+                               anchor=north, font=\small},
+    every axis y label/.style={at={(axis description cs:-0.19,0.5)},
+                               rotate=90, anchor=south, font=\small},
+    title={(b) \tpcifenglish{Which pairs survive}{Welche Paare übrig bleiben}},
+    clip=false,
+]
+  % Verboten: Delta x Delta p < hbar/2.  Links von x = 1/(2 ymax) hat die
+  % Hyperbel den Rahmen schon verlassen, dort wird der Streifen ganz
+  % schraffiert.
+  \path[forbidden] (axis cs:0,0) rectangle (axis cs:0.27027,1.85);
+  \addplot[forbidden, draw=none, domain=0.27027:2.62, samples=200]
+    {0.5/x} \closedcycle;
+
+  % Die Schranke selbst.
+  \addplot[spacecadet, line width=1.1pt, domain=0.27027:2.62, samples=200]
+    {0.5/x};
+
+  % Die Senkrechte Delta x = a trägt die drei Zustände aus (a).
+  \draw[classicallim] (axis cs:1,0) -- (axis cs:1,1.14);
+
+  \addplot[only marks, mark=*, mark size=2.2pt, munsell]
+    coordinates {(1,1)};
+  \addplot[only marks, mark=*, mark size=2.2pt, spacecadet]
+    coordinates {(1,0.5)};
+  \addplot[only marks, mark=o, mark size=2.6pt, birrenred,
+           mark options={line width=1.0pt}]
+    coordinates {(1,0.25)};
+
+  % Dieselbe Gauß-Familie bei anderer Breite: quetschen heißt die
+  % Hyperbel entlangrutschen.
+  \addplot[only marks, mark=*, mark size=2.2pt, spacecadet]
+    coordinates {(0.5,1) (2,0.25)};
+  \draw[-{Stealth[length=4pt]}, spacecadet, line width=0.7pt]
+    (axis cs:1.05,0.60) .. controls (axis cs:0.76,0.74) ..
+    (axis cs:0.60,0.96);
+
+  \node[lbl, text=spacecadet, font=\scriptsize, anchor=south west]
+    at (axis cs:0.56,1.06) {\tpcifenglish{squeeze $x$}{$x$ quetschen}};
+  \node[lbl, anchor=south east, align=right] at (axis cs:2.58,0.40)
+    {\tpcifenglish{Gaussian: equality}{Gauß: Gleichheit}\\[-1pt]
+     $\Delta x\,\Delta p=\hbar/2$};
+
+  % Das Verbot beschriftet den Streifen, in dem es gilt, statt die Mitte
+  % der Tafel zu belegen.
+  \node[lbl, text=birrengray, font=\scriptsize, rotate=90, anchor=center]
+    at (axis cs:0.135,1.00) {\tpcifenglish{no state}{kein Zustand}};
+
+  % Die Brücke zu Panel (a): gleiche Farben, gleiche drei Zustände.
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=west]
+    at (axis cs:1.07,0.96) {\tpcifenglish{the three of (a)}{die drei aus (a)}};
+
+  % Größenordnung, damit die Einheit a etwas bedeutet.
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north east,
+        align=right] at (axis cs:2.60,1.82)
+    {$e^{-}$, $a=10^{-10}\,$m:\\[-1pt]
+     $\Delta v\gtrsim 6\cdot10^{5}\,$m/s};
+\end{axis}
+
+\end{tikzpicture}
+\end{center}

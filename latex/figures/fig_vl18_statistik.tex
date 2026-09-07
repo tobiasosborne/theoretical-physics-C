@@ -1,0 +1,206 @@
+% fig_vl18_statistik.tex — Was das Vorzeichen in P_- kostet: die
+% gemeinsame Aufenthaltsdichte zweier identischer Teilchen im Kasten,
+% symmetrisiert gegen antisymmetrisiert.
+%
+% WHY THIS FIGURE.  The lecture proves that H^{\otimes N} splits into
+% H_+ and H_-, and that the sign of U_pi cancels in rho.  What it never
+% shows is what the sign DOES.  It does something drastic, and it is a
+% statement about a two-dimensional shape, which is exactly what prose
+% handles badly: bosons pile up on the diagonal x_1 = x_2, fermions are
+% expelled from it, and the two densities are otherwise the same lumps
+% in mirrored places.
+%
+% GEOMETRY FROM THE FORMULA.  Nothing is drawn by eye.  The two
+% particles sit in the box of Vorlesung 11, orbitals n = 1 and n = 2,
+%
+%       psi_n(x) = sqrt(2/L) sin(n pi x / L),
+%
+% and the two-particle vectors are the ones the projectors P_\pm of this
+% lecture produce out of psi_1 (x) psi_2 (x):
+%
+%   Psi_\pm(x_1,x_2) = [psi_1(x_1)psi_2(x_2) \pm psi_2(x_1)psi_1(x_2)]/sqrt2,
+%
+% so with L = 1
+%
+%   |Psi_\pm|^2 = 2 [ sin(pi x_1) sin(2pi x_2) \pm sin(2pi x_1) sin(pi x_2) ]^2.
+%
+% Expanding the square splits it into a direct part and an exchange
+% part; the direct part alone is the distinguishable case
+%
+%   P_u = (|Psi_+|^2 + |Psi_-|^2)/2,
+%
+% i.e. the grey curve of panel (c) is the exact arithmetic mean of the
+% blue and the red one.  The exchange term is the whole difference.
+%
+% The exact numbers the plate is built on:
+%   * both densities have exactly two maxima, of the SAME height
+%         max |Psi_\pm|^2 = 128/27 = 4.7407... ,
+%     attained at cos(pi x) = 1/sqrt3, i.e. at
+%         x^* = arccos(1/sqrt3)/pi = 0.304087 ,   1 - x^* = 0.695913 ;
+%     for Psi_+ they sit at (x^*,x^*) and (1-x^*,1-x^*) — ON the
+%     diagonal — for Psi_- at (x^*,1-x^*) and (1-x^*,x^*) — OFF it.
+%     Same two lumps, moved.  That is why one colour scale serves both
+%     maps and both actually reach its top.
+%   * the distinguishable density peaks at 64/27, exactly half.
+% Everything is therefore plotted in units of 64/27 (factor 27/64 =
+% 0.84375 in front of the brackets), which puts the three numbers that
+% matter on the axis ticks: 2 (boson), 1 (distinguishable), 0 (Pauli).
+%
+% Panel (c) is the horizontal dashed cut x_2 = x^* through both maps —
+% particle 2 pinned where the pair density is largest, particle 1 free.
+% There
+%       |Psi_+|^2 = 2, |Psi_-|^2 = 0  at coincidence x_1 = x^*,
+%       |Psi_+|^2 = 0, |Psi_-|^2 = 2  at the mirror point 1 - x^*,
+% with the distinguishable reference equal to 1 at both, and all three
+% curves meeting at x_1 = 1/2.  So the antibunching is not a lack of
+% probability: the weight fermions take off the diagonal reappears,
+% undiminished, on the other side.
+%
+% DESIGN DECISIONS
+%   * colour codes the SIGN of the exchange and nothing else: cgblue for
+%     the symmetric state, birrenred for the antisymmetric one.  The
+%     panel titles are set in those two colours, which is what makes the
+%     legend in (c) unnecessary — the curves are identified by the
+%     titles above the maps they belong to;
+%   * inside a map colour is the density itself (the neutral tpcdensity
+%     ramp), on the same scale in both, so the maps may be compared
+%     lump for lump;
+%   * dotted grey means coincidence x_1 = x_2 in every panel: the
+%     diagonal of the maps and the vertical marker of (c) are the same
+%     line.  Dashed grey means the cut, and it appears only where the
+%     cut is taken;
+%   * the distinguishable reference is grey and dashed because it is a
+%     reference, not a third species;
+%   * the maps are square, with equal x and y ranges, because the
+%     exchange symmetry of |Psi|^2 about the diagonal is the point and a
+%     stretched box would hide it.
+
+\begin{center}
+\begin{tikzpicture}
+
+% ─────────────────────────────────────────────────────────────
+%  Shared abbreviations.  x^* = arccos(1/sqrt3)/pi, and the values of
+%  the two orbitals there: sin(pi x^*) = sqrt(2/3), sin(2 pi x^*) = 2sqrt2/3.
+% ─────────────────────────────────────────────────────────────
+\def\xstar{0.3040867}
+\def\sxstar{0.8164966}   % sin(pi x^*)
+\def\dxstar{0.9428090}   % sin(2 pi x^*)
+
+% ─────────────────────────────────────────────────────────────
+%  (a)  Bosons: the symmetric density, bunched on the diagonal
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    name=bos,
+    tpcplot,
+    width=3.2cm, height=3.2cm, scale only axis,
+    view={0}{90},
+    colormap name=tpcdensity,
+    point meta min=0, point meta max=2,
+    grid=none,
+    xmin=0, xmax=1, ymin=0, ymax=1,
+    enlargelimits=false,
+    xtick={0,1}, xticklabels={$0$,$L$},
+    ytick={0,\xstar,1}, yticklabels={$0$,$x^{*}$,$L$},
+    ztick=\empty,
+    xlabel={$x_1$}, ylabel={$x_2$},
+    every axis x label/.style={at={(0.5,-0.13)}, anchor=north, font=\small},
+    every axis y label/.style={at={(-0.30,0.5)}, rotate=90,
+                               anchor=south, font=\small},
+    title={(a) \tpcifenglish{bosons}{Bosonen} $|\Psi_+|^2$},
+    title style={text=cgblue, at={(0.5,1.04)}},
+]
+  \addplot3[surf, shader=interp, samples=61, domain=0:1, y domain=0:1]
+    {0.84375*( sin(deg(pi*x))*sin(deg(2*pi*y))
+             + sin(deg(2*pi*x))*sin(deg(pi*y)) )^2};
+
+  % coincidence line x_1 = x_2 (dotted grey in every panel)
+  \addplot3[classicallim, no marks] coordinates {(0,0,3) (1,1,3)};
+  % the cut of panel (c)
+  \addplot3[envelope, no marks] coordinates {(0,\xstar,3) (1,\xstar,3)};
+\end{axis}
+
+% ─────────────────────────────────────────────────────────────
+%  (b)  Fermions: the same lumps, moved off the diagonal
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    name=fer,
+    at={(bos.south east)}, anchor=south west, xshift=9mm,
+    tpcplot,
+    width=3.2cm, height=3.2cm, scale only axis,
+    view={0}{90},
+    colormap name=tpcdensity,
+    point meta min=0, point meta max=2,
+    grid=none,
+    xmin=0, xmax=1, ymin=0, ymax=1,
+    enlargelimits=false,
+    xtick={0,1}, xticklabels={$0$,$L$},
+    ytick={0,\xstar,1}, yticklabels={,,},
+    ztick=\empty,
+    xlabel={$x_1$},
+    every axis x label/.style={at={(0.5,-0.13)}, anchor=north, font=\small},
+    title={(b) \tpcifenglish{fermions}{Fermionen} $|\Psi_-|^2$},
+    title style={text=birrenred, at={(0.5,1.04)}},
+    colorbar,
+    colorbar style={width=0.17cm, ytick={0,1,2},
+                    tick label style={font=\tiny, text=spacecadet},
+                    axis line style={spacecadet, line width=0.4pt}},
+]
+  \addplot3[surf, shader=interp, samples=61, domain=0:1, y domain=0:1]
+    {0.84375*( sin(deg(pi*x))*sin(deg(2*pi*y))
+             - sin(deg(2*pi*x))*sin(deg(pi*y)) )^2};
+
+  \addplot3[classicallim, no marks] coordinates {(0,0,3) (1,1,3)};
+  \addplot3[envelope, no marks] coordinates {(0,\xstar,3) (1,\xstar,3)};
+
+  \node[lbl, font=\scriptsize, text=spacecadet, anchor=center, rotate=45]
+    at (axis cs:0.62,0.62,3) {\tpcifenglish{Pauli hole}{Pauli-Loch}};
+\end{axis}
+
+% ─────────────────────────────────────────────────────────────
+%  (c)  The cut x_2 = x^*: 2 : 1 : 0 at coincidence
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    at={(fer.south east)}, anchor=south west, xshift=21mm,
+    tpcplot,
+    width=3.9cm, height=3.2cm, scale only axis,
+    xmin=0, xmax=1, ymin=0, ymax=2.62,
+    xtick={0,\xstar,1}, xticklabels={$0$,$x^{*}$,$L$},
+    ytick={0,1,2},
+    grid=none,
+    xlabel={$x_1$},
+    ylabel={$|\Psi(x_1,x^{*})|^{2}$},
+    every axis x label/.style={at={(0.5,-0.13)}, anchor=north, font=\small},
+    every axis y label/.style={at={(-0.26,0.5)}, rotate=90,
+                               anchor=south, font=\small},
+    title={(c) \tpcifenglish{cut at}{Schnitt bei} $x_2=x^{*}$},
+    domain=0:1, samples=201,
+]
+  % coincidence marker, same dotted grey as the diagonal of (a),(b)
+  \draw[classicallim] (axis cs:\xstar,0) -- (axis cs:\xstar,2.62);
+
+  % distinguishable reference = mean of the two
+  \addplot[envelope]
+    {0.84375*( sin(deg(pi*x))^2*\dxstar^2 + sin(deg(2*pi*x))^2*\sxstar^2 )};
+  % symmetric and antisymmetric
+  \addplot[wavefn, cgblue]
+    {0.84375*( sin(deg(pi*x))*\dxstar + sin(deg(2*pi*x))*\sxstar )^2};
+  \addplot[wavefn, birrenred]
+    {0.84375*( sin(deg(pi*x))*\dxstar - sin(deg(2*pi*x))*\sxstar )^2};
+
+  % the three values at coincidence
+  \node[circle, fill=cgblue,    inner sep=1.3pt] at (axis cs:\xstar,2) {};
+  \node[circle, fill=birrengray,inner sep=1.3pt] at (axis cs:\xstar,1) {};
+  \node[circle, draw=birrenred, fill=white, line width=0.7pt,
+        inner sep=1.1pt] at (axis cs:\xstar,0) {};
+
+  \node[lbl, text=cgblue,    anchor=south east] at (axis cs:0.28,2.03) {$\Psi_+$};
+  \node[lbl, text=birrenred, anchor=south west] at (axis cs:0.72,2.03) {$\Psi_-$};
+
+  % inline key for the grey reference
+  \draw[envelope] (axis cs:0.30,2.40) -- (axis cs:0.40,2.40);
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=west]
+    at (axis cs:0.43,2.40) {\tpcifenglish{distinguishable}{unterscheidbar}};
+\end{axis}
+
+\end{tikzpicture}
+\end{center}

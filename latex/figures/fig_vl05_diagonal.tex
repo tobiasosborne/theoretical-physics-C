@@ -1,0 +1,212 @@
+% fig_vl05_diagonal.tex — Diagonalisierung als Basiswechsel: derselbe
+% Operator, einmal in der Standardbasis, einmal in der Eigenbasis.
+%
+% Follows the conventions of fig_vl11_kasten.tex (the reference plate).
+%
+%   * geometry comes from the lecture's own worked example and nothing
+%     else.  Vorlesung 5 diagonalises sigma_x = [[0,1],[1,0]] with the
+%     Hadamard matrix U = (1/sqrt2)[[1,1],[1,-1]].  Drawn as it stands,
+%     sigma_x is a reflection: it maps the unit circle onto itself and
+%     there is no shape to see.  So the plate uses
+%         A = 2*Id + sigma_x = [[2,1],[1,2]],
+%     which has exactly the same eigenvectors and is diagonalised by
+%     exactly the same U from the lecture's Beispiel:
+%         |phi_1> = (1,1)/sqrt2,  a_1 = 3
+%         |phi_2> = (1,-1)/sqrt2, a_2 = 1
+%         U A U^dag = diag(3,1).
+%     Every curve below is that matrix applied to the unit circle,
+%     plotted parametrically, not sketched:
+%         panel (a)  t |-> (2cos t + sin t,  cos t + 2 sin t)
+%         panel (b)  t |-> (3cos t,          sin t)
+%     and the two are the same ellipse, seen from the two bases — (b) is
+%     (a) turned by -45 degrees.  Semi-axes 3 and 1 are the eigenvalues,
+%     principal axes are the eigenvectors; both follow from A = A^dag.
+%     The arrow tips are the images of the basis vectors and therefore
+%     the columns of the matrix: A|1> = (2,1), A|2> = (1,2) in (a),
+%     A|phi_1> = 3|phi_1>, A|phi_2> = |phi_2> in (b).
+%
+%   * both panels are drawn at the same units-per-cm and on the same
+%     ranges, because the whole claim of the figure is that the object is
+%     the same and only the frame moved.  A different scale in the two
+%     panels would destroy exactly that reading.
+%
+%   * colour encodes *which basis vector*, and nothing else: cgblue for
+%     the first, birrenorange for the second.  Input and image are told
+%     apart by tint and weight rather than by hue — the incoming unit
+%     vector is a wide pale arrow, its image a narrower saturated one, so
+%     the pair survives greyscale printing and, where the two coincide
+%     (a_2 = 1 in panel (b)), the pale halo shows the coincidence instead
+%     of hiding it.  The unit circle, the coordinate rays and the
+%     principal axes are neutral grey: they are reference lines, not
+%     data.  The image ellipse is neutral navy — it belongs to no basis,
+%     which is the point.
+%
+%   * the dotted tip-to-tip segments in (a) say which point of the circle
+%     goes to which point of the ellipse.  In (b) they are omitted: there
+%     the displacement runs along the image arrow itself and a dotted
+%     line on top of it would only be noise.
+%
+% Panel (a) standard basis.  The matrix has off-diagonal entries, the
+%           ellipse lies askew, and neither basis vector comes back
+%           parallel to itself.
+% Panel (b) eigenbasis.  Same ellipse, axes now on the coordinate axes,
+%           matrix diagonal, and the arrows only stretch: |phi_1> by the
+%           factor 3, |phi_2> not at all.  Circle and ellipse touch at
+%           +/- |phi_2> precisely because a_2 = 1.
+
+\begin{center}
+\begin{tikzpicture}[
+    refray/.style   ={-{Stealth[length=4pt,width=3pt]}, line width=0.5pt,
+                      birrengray!60},
+    refcurve/.style ={line width=0.7pt, birrengray!70, densely dashed},
+    princ/.style    ={line width=0.6pt, birrengray!70,
+                      dash pattern=on 3.5pt off 1.5pt on 0.8pt off 1.5pt},
+    imgcurve/.style ={line width=1.2pt, spacecadet},
+    invec/.style    ={-{Stealth[length=6pt,width=5.5pt]}, line width=2.4pt},
+    outvec/.style   ={-{Stealth[length=5.5pt,width=4pt]}, line width=1.3pt},
+    movedot/.style  ={line width=0.7pt, densely dotted},
+    % The four ket labels sit inside the unit circle, where the circle and
+    % the principal axes leave no gap wide enough for a two-glyph label.
+    % They therefore carry the same faint white backing the house legend
+    % style uses, so a reference line never runs through a bracket.
+    ketlbl/.style   ={lbl, font=\scriptsize, inner sep=0.9pt,
+                      fill=white, fill opacity=0.85, text opacity=1},
+]
+
+% ─────────────────────────────────────────────────────────────
+%  (a)  Standard basis: A = [[2,1],[1,2]] is not diagonal
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    name=std,
+    tpcplot,
+    scale only axis,
+    width=5.7cm, height=5.7cm,     % equal spans below: 45 degrees looks like 45
+    axis lines=none, grid=none,
+    xmin=-3.35, xmax=3.35,
+    ymin=-3.35, ymax=3.35,
+    clip=false,
+    title={(a) \tpcifenglish{Standard basis}{Standardbasis}},
+]
+
+  % ---- coordinate frame (reference) ----
+  \draw[refray] (axis cs:-2.60,0) -- (axis cs:3.15,0);
+  \draw[refray] (axis cs:0,-2.60) -- (axis cs:0,3.15);
+
+  % ---- unit circle (reference): the input ----
+  \addplot[refcurve, variable=t, domain=0:360, samples=181]
+    ({cos(t)},{sin(t)});
+
+  % ---- principal axes of the image ellipse = the eigen-directions,
+  %      drawn only over the ellipse: semi-axes a_1 = 3, a_2 = 1 ----
+  \draw[princ] (axis cs:-2.1213,-2.1213) -- (axis cs:2.1213,2.1213);
+  \draw[princ] (axis cs:-0.7071,0.7071)  -- (axis cs:0.7071,-0.7071);
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north east]
+    at (axis cs:-2.16,-2.16) {$|\phi_1\rangle$};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north west]
+    at (axis cs:0.74,-0.78) {$|\phi_2\rangle$};
+
+  % ---- image of the unit circle under A ----
+  \addplot[imgcurve, variable=t, domain=0:360, samples=181]
+    ({2*cos(t)+sin(t)},{cos(t)+2*sin(t)});
+
+  % ---- where the tips of the basis vectors go ----
+  \draw[movedot, cgblue]       (axis cs:1,0) -- (axis cs:2,1);
+  \draw[movedot, birrenorange] (axis cs:0,1) -- (axis cs:1,2);
+
+  % ---- the basis vectors and their images ----
+  \draw[invec,  cgblue!30]       (axis cs:0,0) -- (axis cs:1,0);
+  \draw[invec,  birrenorange!30] (axis cs:0,0) -- (axis cs:0,1);
+  \draw[outvec, cgblue]          (axis cs:0,0) -- (axis cs:2,1);
+  \draw[outvec, birrenorange]    (axis cs:0,0) -- (axis cs:1,2);
+
+  % |1> sits outside the ellipse to the lower right of its own arrowhead:
+  % every spot nearer the origin is crossed by a ray or by the ellipse.
+  \node[ketlbl, text=cgblue, anchor=north west]
+    at (axis cs:1.32,-0.08) {$|1\rangle$};
+  \node[ketlbl, text=birrenorange, anchor=east]
+    at (axis cs:-0.12,0.70) {$|2\rangle$};
+  \node[lbl, text=cgblue, font=\scriptsize, anchor=west]
+    at (axis cs:2.10,0.92) {$A|1\rangle$};
+  \node[lbl, text=birrenorange, font=\scriptsize, anchor=south]
+    at (axis cs:1.00,2.14) {$A|2\rangle$};
+
+  % ---- the matrix this frame produces ----
+  \node[lbl, anchor=north west] at (axis cs:-3.30,3.20)
+    {$A = \begin{pmatrix} 2 & 1 \\ 1 & 2\end{pmatrix}$};
+
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north east]
+    at (axis cs:3.30,3.18)
+    {\tpcifenglish{circle $\mapsto$ ellipse}{Kreis $\mapsto$ Ellipse}};
+
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north]
+    at (axis cs:0,-2.74)
+    {\tpcifenglish{no basis vector is an eigenvector}%
+                  {kein Basisvektor ist Eigenvektor}};
+\end{axis}
+
+% ─────────────────────────────────────────────────────────────
+%  (b)  Eigenbasis: same ellipse, U A U^dag = diag(3,1)
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    tpcplot,
+    scale only axis,
+    at={(std.south east)}, anchor=south west, xshift=20mm,
+    width=5.7cm, height=5.7cm,
+    axis lines=none, grid=none,
+    xmin=-3.35, xmax=3.35,
+    ymin=-3.35, ymax=3.35,
+    clip=false,
+    title={(b) \tpcifenglish{Eigenbasis}{Eigenbasis}},
+]
+
+  % ---- coordinate frame: now the eigen-directions ----
+  \draw[refray] (axis cs:-2.60,0) -- (axis cs:3.25,0);
+  \draw[refray] (axis cs:0,-2.60) -- (axis cs:0,3.15);
+
+  % ---- unit circle (reference) ----
+  \addplot[refcurve, variable=t, domain=0:360, samples=181]
+    ({cos(t)},{sin(t)});
+
+  % ---- the same ellipse, now axis-aligned: semi-axes a_1 = 3, a_2 = 1 ----
+  \addplot[imgcurve, variable=t, domain=0:360, samples=181]
+    ({3*cos(t)},{sin(t)});
+
+  % ---- the basis vectors and their images: pure stretching ----
+  \draw[invec,  cgblue!30]       (axis cs:0,0) -- (axis cs:1,0);
+  \draw[invec,  birrenorange!30] (axis cs:0,0) -- (axis cs:0,1);
+  \draw[outvec, cgblue]          (axis cs:0,0) -- (axis cs:3,0);
+  \draw[outvec, birrenorange]    (axis cs:0,0) -- (axis cs:0,1);
+
+  % Both labels are kept inside the unit circle: at their old places the
+  % dashed circle ran straight through the ket brackets.
+  \node[ketlbl, text=cgblue, anchor=north]
+    at (axis cs:0.45,-0.14) {$|\phi_1\rangle$};
+  \node[ketlbl, text=birrenorange, anchor=east]
+    at (axis cs:-0.10,0.58) {$|\phi_2\rangle$};
+
+  \node[lbl, text=cgblue, font=\scriptsize, anchor=north]
+    at (axis cs:1.75,-1.10) {$A|\phi_1\rangle = 3\,|\phi_1\rangle$};
+  \node[lbl, text=birrenorange, font=\scriptsize, anchor=south west]
+    at (axis cs:0.14,1.10) {$A|\phi_2\rangle = |\phi_2\rangle$};
+
+  % ---- the matrix this frame produces ----
+  \node[lbl, anchor=north west] at (axis cs:-3.30,3.20)
+    {$UAU^\dagger = \begin{pmatrix} 3 & 0 \\ 0 & 1\end{pmatrix}$};
+
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north]
+    at (axis cs:0,-2.74)
+    {\tpcifenglish{every basis vector is an eigenvector}%
+                  {jeder Basisvektor ist Eigenvektor}};
+\end{axis}
+
+% ─────────────────────────────────────────────────────────────
+%  The basis change between the two frames.  U is the Hadamard matrix
+%  the lecture's Beispiel already computed.
+% ─────────────────────────────────────────────────────────────
+\draw[-{Stealth[length=5pt,width=3.5pt]}, spacecadet, line width=0.8pt]
+  ([xshift=6mm,yshift=8mm]std.east) -- ([xshift=14mm,yshift=8mm]std.east);
+\node[lbl, font=\scriptsize, anchor=south]
+  at ([xshift=10mm,yshift=8.6mm]std.east) {$U$};
+
+\end{tikzpicture}
+\end{center}

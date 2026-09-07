@@ -1,0 +1,193 @@
+% fig_vl12_leiter.tex — Der harmonische Oszillator: Eigenfunktionen in der
+% Parabel und dieselben Niveaus als Leiter mit a und a^dagger.
+%
+% Follows the conventions of fig_vl11_kasten (the reference plate); the two
+% figures are meant to be read against each other, box versus oscillator.
+%
+%   * geometry and curves come from the closed-form solution derived in the
+%     lecture, never from a freehand sketch.  In the natural units
+%     xi = x sqrt(m omega / hbar) and E/(hbar omega):
+%         V(xi)     = xi^2 / 2                        (the parabola)
+%         E_n       = n + 1/2                         (equally spaced)
+%         phi_n(xi) = c_n H_n(xi) exp(-xi^2/2),
+%                     c_n = (2^n n! sqrt(pi))^{-1/2}
+%                     c_0..c_3 = 0.751126, 0.531126, 0.265562, 0.108416
+%     Consequences that are therefore forced rather than drawn by eye:
+%     the node count (phi_n has n zeros), the parity, the constant gap,
+%     and the classical turning points E_n = V(xi)  =>  xi = ±sqrt(2n+1),
+%     which is why the grey level rules get longer like sqrt(2n+1) and
+%     end exactly on the parabola.  The plot corners are chosen so that
+%     the parabola exits precisely there: ymax = xmax^2/2 = 5.12.
+%   * amplitude factor 0.6: the largest |phi_n| is phi_0(0) = 0.7511, so
+%     0.6 keeps every curve within 0.45 of its own level, i.e. 45% of the
+%     gap hbar omega — the same clearance the box figure uses (1.3 of 3).
+%     No curve touches a neighbouring level line.
+%   * colour encodes the quantum number n (the ordered ramp of `tpclevels`),
+%     in both panels and nothing else: rung n in (b) has the colour of
+%     curve n in (a).  Level rules in (a) are neutral grey — reference
+%     lines, not data — and so are the turning-point dots.
+%   * both axes share ymin/ymax and height, so E_n in (a) sits at exactly
+%     the height of |phi_n> in (b): the panels are one energy axis, read
+%     twice.
+%   * the classically forbidden region E < V is the area *under* the
+%     parabola; it is hatched, not filled, so it survives greyscale
+%     printing, and one sees the tails of phi_n reaching into it — the
+%     one thing the infinite well cannot show.
+%
+% Panel (a) phi_0..phi_3 on their levels inside the parabola.
+% Panel (b) the same levels as a ladder: a^dagger up, a down, both with
+%           weight sqrt(n+1) on the gap between phi_n and phi_{n+1}, and
+%           the bottom rung where a|phi_0> = 0 ends the ladder.
+
+\begin{center}
+\begin{tikzpicture}
+
+% ─────────────────────────────────────────────────────────────
+%  (a)  Eigenfunctions on their levels inside the parabola
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    name=parabel,
+    tpclevelplot,
+    width=7.2cm, height=5.8cm,
+    xmin=-3.2, xmax=3.2,
+    ymin=0,    ymax=5.12,
+    title={(a) \tpcifenglish{$\phi_n$ in the parabola}%
+                            {$\phi_n$ in der Parabel}},
+    domain=-3.2:3.2, samples=201,
+]
+
+  % Classically forbidden region E < V: everything below the parabola.
+  \addplot[forbidden, draw=none, samples=161] {x^2/2} \closedcycle;
+
+  % The potential itself.  Neutral heavy grey, not the usual dark ink:
+  % the parabola is the boundary of the hatched region, i.e. reference
+  % structure, and spacecadet is already taken by the n=0 eigenfunction —
+  % two navy curves crossing at the turning point cannot be told apart.
+  \addplot[potential, birrengray!85!black, line width=1.4pt] {x^2/2};
+
+  % Energy levels E_n = (n + 1/2) hbar omega, drawn from turning point to
+  % turning point, xi = ±sqrt(2n+1): neutral reference rules.
+  \addplot[levellinegrey, domain=-1.0000:1.0000, samples=2] {0.5};
+  \addplot[levellinegrey, domain=-1.7321:1.7321, samples=2] {1.5};
+  \addplot[levellinegrey, domain=-2.2361:2.2361, samples=2] {2.5};
+  \addplot[levellinegrey, domain=-2.6458:2.6458, samples=2] {3.5};
+
+  % Classical turning points, where the levels meet the parabola
+  \addplot[only marks, mark=*, mark size=1.2pt, birrengray, draw=none]
+    coordinates {(-1.0000,0.5) (1.0000,0.5) (-1.7321,1.5) (1.7321,1.5)
+                 (-2.2361,2.5) (2.2361,2.5) (-2.6458,3.5) (2.6458,3.5)};
+
+  % Eigenfunctions about their own levels.  Each is drawn out to one unit
+  % beyond its own turning point, where the tail has decayed to a few per
+  % cent: the curves then nest like the level rules they belong to, and no
+  % state trails a long flat line across the whole plate.
+  \addplot[wavefn, spacecadet,   domain=-2.10:2.10]
+    {0.5 + 0.6*0.751126*exp(-x^2/2)};
+  \addplot[wavefn, cgblue,       domain=-2.75:2.75]
+    {1.5 + 0.6*0.531126*(2*x)*exp(-x^2/2)};
+  \addplot[wavefn, munsell,      domain=-3.10:3.10]
+    {2.5 + 0.6*0.265562*(4*x^2-2)*exp(-x^2/2)};
+  \addplot[wavefn, birrenorange, domain=-3.20:3.20]
+    {3.5 + 0.6*0.108416*x*(8*x^2-12)*exp(-x^2/2)};
+
+  % Level labels, in the left margin.  Written out rather than looped:
+  % \foreach defers expansion inside a pgfplots axis.
+  \node[lbl, anchor=east] at (axis cs:-3.3,0.5) {$E_{0}$};
+  \node[lbl, anchor=east] at (axis cs:-3.3,1.5) {$E_{1}$};
+  \node[lbl, anchor=east] at (axis cs:-3.3,2.5) {$E_{2}$};
+  \node[lbl, anchor=east] at (axis cs:-3.3,3.5) {$E_{3}$};
+
+  % Node counts: phi_n has n zeros
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=west]
+    at (axis cs:3.3,0.5) {$n=0$};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=west]
+    at (axis cs:3.3,1.5) {$n=1$};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=west]
+    at (axis cs:3.3,2.5) {$n=2$};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=west]
+    at (axis cs:3.3,3.5) {$n=3$};
+
+  % Axis furniture
+  % The potential is named in its own colour, the hatched wedge in the
+  % grey of the hatching: label and object match, so neither needs a leader.
+  \node[lbl, text=birrengray!85!black] at (axis cs:0,4.65)
+    {$V(x)=\tfrac{1}{2}m\omega^2x^2$};
+  \node[lbl, text=birrengray, font=\scriptsize] at (axis cs:-2.30,0.28) {$E<V$};
+  \node[lbl, anchor=north] at (axis cs:0,-0.24) {$x\sqrt{m\omega/\hbar}$};
+\end{axis}
+
+% ─────────────────────────────────────────────────────────────
+%  (b)  The same levels as a ladder
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    tpclevelplot,
+    at={(parabel.south east)}, anchor=south west, xshift=12mm,
+    width=4.6cm, height=5.8cm,
+    xmin=-1.0, xmax=1.75,
+    ymin=0,    ymax=5.12,
+    title={(b) \tpcifenglish{ladder operators}{Leiteroperatoren}},
+]
+
+  % E = 0 and the rungs.  Colour = n, exactly as in panel (a).
+  \draw[classicallim] (axis cs:-0.62,0) -- (axis cs:1.25,0);
+  \draw[wavefn, spacecadet]   (axis cs:0,0.5) -- (axis cs:1.25,0.5);
+  \draw[wavefn, cgblue]       (axis cs:0,1.5) -- (axis cs:1.25,1.5);
+  \draw[wavefn, munsell]      (axis cs:0,2.5) -- (axis cs:1.25,2.5);
+  \draw[wavefn, birrenorange] (axis cs:0,3.5) -- (axis cs:1.25,3.5);
+  \draw[levellinegrey]        (axis cs:0,4.5) -- (axis cs:1.25,4.5);
+  \node[lbl, text=birrengray, font=\large] at (axis cs:0.625,4.82) {$\vdots$};
+
+  % a^dagger raises, a lowers; the weight sqrt(n+1) belongs to the gap.
+  \draw[-{Stealth[length=5pt,width=3.5pt]}, spacecadet, line width=0.9pt]
+    (axis cs:0.30,0.56) -- (axis cs:0.30,1.44);
+  \draw[-{Stealth[length=5pt,width=3.5pt]}, spacecadet, line width=0.9pt]
+    (axis cs:0.30,1.56) -- (axis cs:0.30,2.44);
+  \draw[-{Stealth[length=5pt,width=3.5pt]}, spacecadet, line width=0.9pt]
+    (axis cs:0.30,2.56) -- (axis cs:0.30,3.44);
+  \draw[-{Stealth[length=5pt,width=3.5pt]}, spacecadet, line width=0.9pt]
+    (axis cs:0.30,3.56) -- (axis cs:0.30,4.44);
+
+  \draw[-{Stealth[length=5pt,width=3.5pt]}, spacecadet, line width=0.9pt]
+    (axis cs:0.95,1.44) -- (axis cs:0.95,0.56);
+  \draw[-{Stealth[length=5pt,width=3.5pt]}, spacecadet, line width=0.9pt]
+    (axis cs:0.95,2.44) -- (axis cs:0.95,1.56);
+  \draw[-{Stealth[length=5pt,width=3.5pt]}, spacecadet, line width=0.9pt]
+    (axis cs:0.95,3.44) -- (axis cs:0.95,2.56);
+  \draw[-{Stealth[length=5pt,width=3.5pt]}, spacecadet, line width=0.9pt]
+    (axis cs:0.95,4.44) -- (axis cs:0.95,3.56);
+
+  \node[lbl] at (axis cs:0.625,1.0) {$\sqrt{1}$};
+  \node[lbl] at (axis cs:0.625,2.0) {$\sqrt{2}$};
+  \node[lbl] at (axis cs:0.625,3.0) {$\sqrt{3}$};
+  \node[lbl] at (axis cs:0.625,4.0) {$\sqrt{4}$};
+
+  \node[lbl, anchor=east] at (axis cs:0.24,2.0) {$\widehat{a}^\dag$};
+  \node[lbl, anchor=west] at (axis cs:1.01,2.0) {$\widehat{a}$};
+
+  % The gap and the zero-point offset, measured off to the left
+  \draw[classicallim] (axis cs:0,0.5) -- (axis cs:-0.62,0.5);
+  \draw[classicallim] (axis cs:0,1.5) -- (axis cs:-0.62,1.5);
+  \draw[{Stealth[length=4pt]}-{Stealth[length=4pt]}, spacecadet,
+        line width=0.6pt] (axis cs:-0.45,0.5) -- (axis cs:-0.45,1.5);
+  \draw[{Stealth[length=4pt]}-{Stealth[length=4pt]}, spacecadet,
+        line width=0.6pt] (axis cs:-0.45,0.02) -- (axis cs:-0.45,0.48);
+  \node[lbl, anchor=east] at (axis cs:-0.50,1.0)  {$\hbar\omega$};
+  \node[lbl, anchor=east] at (axis cs:-0.50,0.25) {$\tfrac{1}{2}\hbar\omega$};
+
+  % State labels
+  \node[lbl, anchor=west] at (axis cs:1.31,0.5) {$|\phi_0\rangle$};
+  \node[lbl, anchor=west] at (axis cs:1.31,1.5) {$|\phi_1\rangle$};
+  \node[lbl, anchor=west] at (axis cs:1.31,2.5) {$|\phi_2\rangle$};
+  \node[lbl, anchor=west] at (axis cs:1.31,3.5) {$|\phi_3\rangle$};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=west]
+    at (axis cs:1.31,0) {$E=0$};
+
+  % Legend for the arrows: the rule the weights come from.
+  \node[lbl, font=\scriptsize, align=center, anchor=north]
+    at (axis cs:0.35,-0.20)
+    {$\widehat{a}^\dag|\phi_n\rangle=\sqrt{n+1}\,|\phi_{n+1}\rangle$\\[-1pt]
+     $\widehat{a}|\phi_0\rangle=0$};
+\end{axis}
+
+\end{tikzpicture}
+\end{center}

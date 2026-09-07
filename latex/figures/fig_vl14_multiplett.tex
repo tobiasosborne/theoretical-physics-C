@@ -1,0 +1,228 @@
+% fig_vl14_multiplett.tex — Das Drehimpuls-Multiplett: die Leiter in m und
+% der Kegel fester Länge, beide für ell = 2.
+%
+%   * geometry comes from the eigenvalue equations derived in the lecture,
+%     never from a freehand sketch:
+%         L^2 |ell,m> = hbar^2 ell(ell+1) |ell,m>,
+%         L_3 |ell,m> = hbar m |ell,m>,   m = -ell, ..., +ell,
+%         [L_3, L_pm] = +- hbar L_pm,     L_+|ell,ell> = L_-|ell,-ell> = 0.
+%     Both panels are drawn in units of hbar, with ell = 2, so
+%     |L|/hbar = sqrt(ell(ell+1)) = sqrt6 = 2.4495 is a fixed length and
+%     the rungs sit at the integers -2,...,2.  The rung spacing is 1
+%     because [L_3,L_pm] = +- hbar L_pm; nothing is spaced by eye.
+%
+%   * the point of the plate is the number sqrt6 = 2.4495 against the
+%     number 2.  The top rung of the ladder falls SHORT of the length of
+%     the vector, and that gap is what forces the ladder to break off and
+%     what keeps the vector off the axis.  Panel (a) shows the gap as a
+%     distance, panel (b) shows the same gap as an angle:
+%         cos theta_min = ell / sqrt(ell(ell+1)) = sqrt(ell/(ell+1)),
+%     i.e. 35 deg at ell = 2 and only 6 deg at ell = 100 — the classical
+%     limit, as an order of magnitude rather than as an assertion.
+%
+%   * in panel (b) the vector of state m is drawn to the right rim of its
+%     cone, at (sqrt(ell(ell+1)-m^2), m).  That point lies exactly on the
+%     circle of radius sqrt6: the arrows END on the dashed circle by
+%     construction, they are not fitted to it.  The cones are ellipses
+%     with vertical semi-axis 0.15 times the horizontal one — the flattest
+%     perspective that still reads as a cone, chosen because at 0.24 the
+%     m = 0 and m = 1 cones would already overlap near the axis.
+%
+%   * colour encodes the magnetic quantum number m and nothing else: one
+%     m, one colour, both panels, so the top rung in (a) and the top cone
+%     in (b) are the same state.  The ramp runs m = -2,...,+2 through
+%     `tpclevels` (spacecadet, cgblue, munsell, birrenorange, birrenred).
+%     Ladder arrows and construction arcs are neutral: the operators are
+%     not quantum numbers.
+%
+%   * the region |L_3| > |L|, which no state can reach, is hatched rather
+%     than filled, so it survives greyscale printing; the bound itself is
+%     a neutral grey rule, a reference line rather than data.
+%
+% Panel (a) the 2ell+1 rungs with L_+ and L_- between them, and the two
+%           blocked arrows at the ends where the ladder terminates.
+% Panel (b) the same five states as cones of fixed slant length: the
+%           vector never lies along L_3, and the minimum tilt shrinks
+%           only slowly with ell.
+
+\begin{center}
+\begin{tikzpicture}
+
+% ─────────────────────────────────────────────────────────────
+%  (a)  The ladder in m:  L_3 |ell,m> = hbar m |ell,m>
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    name=ladder,
+    tpclevelplot,
+    scale only axis,
+    width=5.4cm, height=5.8cm,
+    xmin=-1.75, xmax=1.45,
+    ymin=-3.6,  ymax=3.6,
+    title={(a) $\ell=2$: \tpcifenglish{multiplet and ladder}%
+                                      {Multiplett und Leiter}},
+]
+
+  % |L_3| > |L| is unreachable for every state: hatched, not filled.
+  \fill[forbidden] (axis cs:-1.75,2.4495)  rectangle (axis cs:1.45,3.6);
+  \fill[forbidden] (axis cs:-1.75,-2.4495) rectangle (axis cs:1.45,-3.6);
+
+  % The bound itself, a neutral reference rule at |L|/hbar = sqrt6.
+  \draw[levellinegrey] (axis cs:-1.75,2.4495)  -- (axis cs:1.45,2.4495);
+  \draw[levellinegrey] (axis cs:-1.75,-2.4495) -- (axis cs:1.45,-2.4495);
+
+  % The 2ell+1 = 5 rungs, at L_3/hbar = m.  Colour = m.
+  \draw[line width=1.1pt, birrenred]    (axis cs:-0.75,2)  -- (axis cs:0.65,2);
+  \draw[line width=1.1pt, birrenorange] (axis cs:-0.75,1)  -- (axis cs:0.65,1);
+  \draw[line width=1.1pt, munsell]      (axis cs:-0.75,0)  -- (axis cs:0.65,0);
+  \draw[line width=1.1pt, cgblue]       (axis cs:-0.75,-1) -- (axis cs:0.65,-1);
+  \draw[line width=1.1pt, spacecadet]   (axis cs:-0.75,-2) -- (axis cs:0.65,-2);
+
+  \node[lbl, anchor=east] at (axis cs:-0.82,2)  {$m=+2$};
+  \node[lbl, anchor=east] at (axis cs:-0.82,1)  {$m=+1$};
+  \node[lbl, anchor=east] at (axis cs:-0.82,0)  {$m=0$};
+  \node[lbl, anchor=east] at (axis cs:-0.82,-1) {$m=-1$};
+  \node[lbl, anchor=east] at (axis cs:-0.82,-2) {$m=-2$};
+
+  % L_+ raises m by one:  [L_3,L_+] = +hbar L_+
+  \draw[-{Stealth[length=5pt,width=3.5pt]}, spacecadet, line width=0.9pt]
+    (axis cs:0.42,-1.86) -- (axis cs:0.42,-1.14);
+  \draw[-{Stealth[length=5pt,width=3.5pt]}, spacecadet, line width=0.9pt]
+    (axis cs:0.42,-0.86) -- (axis cs:0.42,-0.14);
+  \draw[-{Stealth[length=5pt,width=3.5pt]}, spacecadet, line width=0.9pt]
+    (axis cs:0.42,0.14)  -- (axis cs:0.42,0.86);
+  \draw[-{Stealth[length=5pt,width=3.5pt]}, spacecadet, line width=0.9pt]
+    (axis cs:0.42,1.14)  -- (axis cs:0.42,1.86);
+  \node[lbl, anchor=west] at (axis cs:0.50,1.5) {$\widehat{L}_+$};
+
+  % L_- lowers m by one:  [L_3,L_-] = -hbar L_-
+  \draw[-{Stealth[length=5pt,width=3.5pt]}, spacecadet, line width=0.9pt]
+    (axis cs:-0.52,1.86)  -- (axis cs:-0.52,1.14);
+  \draw[-{Stealth[length=5pt,width=3.5pt]}, spacecadet, line width=0.9pt]
+    (axis cs:-0.52,0.86)  -- (axis cs:-0.52,0.14);
+  \draw[-{Stealth[length=5pt,width=3.5pt]}, spacecadet, line width=0.9pt]
+    (axis cs:-0.52,-0.14) -- (axis cs:-0.52,-0.86);
+  \draw[-{Stealth[length=5pt,width=3.5pt]}, spacecadet, line width=0.9pt]
+    (axis cs:-0.52,-1.14) -- (axis cs:-0.52,-1.86);
+  \node[lbl, anchor=east] at (axis cs:-0.60,-1.5) {$\widehat{L}_-$};
+
+  % Where the ladder breaks off: the next rung would need |m| > sqrt6.
+  \draw[-{Stealth[length=5pt,width=3.5pt]}, birrengray, line width=0.9pt,
+        densely dashed] (axis cs:0.42,2.14) -- (axis cs:0.42,2.78);
+  \draw[birrengray, line width=0.9pt]
+    ([xshift=-1.4mm,yshift=-1.4mm]axis cs:0.42,2.70) --
+    ([xshift=1.4mm,yshift=1.4mm]axis cs:0.42,2.70);
+  \draw[birrengray, line width=0.9pt]
+    ([xshift=-1.4mm,yshift=1.4mm]axis cs:0.42,2.70) --
+    ([xshift=1.4mm,yshift=-1.4mm]axis cs:0.42,2.70);
+
+  \draw[-{Stealth[length=5pt,width=3.5pt]}, birrengray, line width=0.9pt,
+        densely dashed] (axis cs:-0.52,-2.14) -- (axis cs:-0.52,-2.78);
+  \draw[birrengray, line width=0.9pt]
+    ([xshift=-1.4mm,yshift=-1.4mm]axis cs:-0.52,-2.70) --
+    ([xshift=1.4mm,yshift=1.4mm]axis cs:-0.52,-2.70);
+  \draw[birrengray, line width=0.9pt]
+    ([xshift=-1.4mm,yshift=1.4mm]axis cs:-0.52,-2.70) --
+    ([xshift=1.4mm,yshift=-1.4mm]axis cs:-0.52,-2.70);
+
+  \node[lbl, anchor=north, fill=white, fill opacity=0.9, text opacity=1,
+        inner sep=1.5pt] at (axis cs:0.42,3.54)
+    {$\widehat{L}_+\ket{\ell,\ell}=0$};
+  \node[lbl, anchor=south, fill=white, fill opacity=0.9, text opacity=1,
+        inner sep=1.5pt] at (axis cs:-0.52,-3.54)
+    {$\widehat{L}_-\ket{\ell,-\ell}=0$};
+
+  % What the grey rules are
+  \node[lbl, font=\scriptsize, anchor=south west, fill=white,
+        fill opacity=0.9, text opacity=1, inner sep=1.5pt]
+    at (axis cs:-1.73,2.50) {$|\mathbf{L}|/\hbar=\sqrt{\ell(\ell+1)}=\sqrt{6}$};
+
+  % The multiplet is 2ell+1 states long
+  \draw[{Stealth[length=4pt]}-{Stealth[length=4pt]}, birrengray,
+        line width=0.6pt] (axis cs:0.95,-2) -- (axis cs:0.95,2);
+  \node[lbl, font=\scriptsize, text=birrengray, rotate=90, anchor=south]
+    at (axis cs:1.05,0) {$2\ell+1$ \tpcifenglish{states}{Zustände}};
+\end{axis}
+
+% ─────────────────────────────────────────────────────────────
+%  (b)  The vector model: |L| fixed, L_3 quantised, L_1,L_2 undecided
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    name=cones,
+    tpclevelplot,
+    scale only axis,
+    width=4.78cm, height=5.8cm,      % 6.1 x 7.4 units, equal unit lengths
+    at={(ladder.south east)}, anchor=south west, xshift=14mm,
+    xmin=-3.05, xmax=3.05,
+    ymin=-3.9,  ymax=3.5,
+    title={(b) \tpcifenglish{vector model}{Vektormodell}},
+]
+
+  % The cones: |L| = sqrt6 hbar with L_3 = m hbar fixed, so the tip runs
+  % on a circle of radius sqrt(6 - m^2) at height m.
+  \addplot[line width=0.6pt, densely dotted, birrenred,
+           domain=0:360, samples=121] ({1.41421*cos(x)}, {2+0.21213*sin(x)});
+  \addplot[line width=0.6pt, densely dotted, birrenorange,
+           domain=0:360, samples=121] ({2.23607*cos(x)}, {1+0.33541*sin(x)});
+  \addplot[line width=0.6pt, densely dotted, munsell,
+           domain=0:360, samples=121] ({2.44949*cos(x)}, {0.36742*sin(x)});
+  \addplot[line width=0.6pt, densely dotted, cgblue,
+           domain=0:360, samples=121] ({2.23607*cos(x)}, {-1+0.33541*sin(x)});
+  \addplot[line width=0.6pt, densely dotted, spacecadet,
+           domain=0:360, samples=121] ({1.41421*cos(x)}, {-2+0.21213*sin(x)});
+
+  % The sphere of fixed length: every arrow below ends on it.
+  \addplot[levellinegrey, domain=0:360, samples=181]
+    ({2.44949*cos(x)}, {2.44949*sin(x)});
+
+  % The axis the multiplet is quantised along
+  \draw[axisstyle] (axis cs:0,-3.05) -- (axis cs:0,3.30);
+  \node[lbl, anchor=west] at (axis cs:0.10,3.22) {$L_3/\hbar$};
+
+  % The second generator of the top cone, so it reads as a cone
+  \draw[line width=0.6pt, densely dotted, birrenred]
+    (axis cs:0,0) -- (axis cs:-1.41421,2);
+
+  % One representative vector per cone, ending on the circle at
+  % (sqrt(6-m^2), m).  Colour = m, as in panel (a).
+  \draw[-{Stealth[length=5pt,width=3.5pt]}, birrenred, line width=1.0pt]
+    (axis cs:0,0) -- (axis cs:1.41421,2);
+  \draw[-{Stealth[length=5pt,width=3.5pt]}, birrenorange, line width=1.0pt]
+    (axis cs:0,0) -- (axis cs:2.23607,1);
+  \draw[-{Stealth[length=5pt,width=3.5pt]}, munsell, line width=1.0pt]
+    (axis cs:0,0) -- (axis cs:2.44949,0);
+  \draw[-{Stealth[length=5pt,width=3.5pt]}, cgblue, line width=1.0pt]
+    (axis cs:0,0) -- (axis cs:2.23607,-1);
+  \draw[-{Stealth[length=5pt,width=3.5pt]}, spacecadet, line width=1.0pt]
+    (axis cs:0,0) -- (axis cs:1.41421,-2);
+
+  \node[lbl, anchor=west] at (axis cs:1.52,2)  {$m=\ell$};
+  \node[lbl, anchor=west] at (axis cs:1.52,-2) {$m=-\ell$};
+
+  % The tilt that never vanishes: cos theta_min = ell/sqrt(ell(ell+1)),
+  % drawn in the gap between the m = 1 and m = 2 cones.
+  \addplot[birrengray, line width=0.7pt, domain=54.7356:90, samples=40]
+    ({1.68*cos(x)}, {1.68*sin(x)});
+  \node[lbl, anchor=west, fill=white, fill opacity=0.9, text opacity=1,
+        inner sep=1.5pt] at (axis cs:0.60,1.52) {$\theta_{\min}$};
+
+  % Its pole: the length the top cone falls short of, sqrt6 against m = 2
+  \draw[birrengray, line width=0.5pt]
+    (axis cs:-0.09,2.4495) -- (axis cs:0.09,2.4495);
+  \node[lbl, font=\scriptsize, text=birrengray, anchor=east, fill=white,
+        fill opacity=0.9, text opacity=1, inner sep=1pt]
+    at (axis cs:-0.13,2.4495) {$\sqrt{6}$};
+
+  % What the dashed circle is
+  \node[lbl, anchor=north] at (axis cs:0,-2.58)
+    {$|\mathbf{L}|=\hbar\sqrt{\ell(\ell+1)}=\sqrt{6}\,\hbar$};
+
+  % The classical limit as a number, not as an assertion
+  \node[lbl, font=\scriptsize, text=birrengray, anchor=north, align=center]
+    at (axis cs:0,-3.12)
+    {\tpcifenglish{never along the axis}{nie entlang der Achse}:\\[-1pt]
+     $\ell=2$: $35^\circ$\quad $\ell=10$: $18^\circ$\quad
+     $\ell=100$: $6^\circ$};
+\end{axis}
+
+\end{tikzpicture}
+\end{center}

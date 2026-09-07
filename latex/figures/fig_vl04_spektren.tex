@@ -1,0 +1,145 @@
+% fig_vl04_spektren.tex — Operatorklassen an ihren Spektren erkannt:
+% wo in der komplexen Ebene die Eigenwerte einer Klasse liegen dürfen,
+% und wo die Eigenwerte der drei Beispielmatrizen der Vorlesung landen.
+%
+% Follows the conventions of fig_vl11_kasten.tex.
+%
+%   * geometry comes from the defining relations of the lecture, not from
+%     a sketch.  For a normal operator the defining equation passes
+%     verbatim to each eigenvalue, and that is the whole content of
+%     panel (a):
+%         A^dag = A          =>  lambda^* = lambda   (the real axis)
+%         A^dag A = I        =>  |lambda|  = 1       (the unit circle)
+%         A^2 = A^dag = A    =>  lambda^2  = lambda  (the points 0 and 1)
+%         <psi|A psi> >= 0   =>  lambda   >= 0       (the half-axis)
+%     so the nesting projector < positive < Hermitian is not asserted,
+%     it is visible: two points inside a half-line inside a line;
+%   * panel (b) plots the spectra of exactly the three matrices of the
+%     lecture's Beispiel, from their characteristic polynomials:
+%         det(A - lambda) = -lambda(lambda^2 - 2)  =>  0, +-sqrt(2)
+%         B = |u><u|, u = (1,1,1)/sqrt(3)          =>  1, 0, 0
+%         det(C - lambda) = -(lambda^3 + i)        =>  lambda^3 = -i,
+%             i.e. exp(-i pi/6), exp(i pi/2), exp(i 7pi/6) — three points
+%             120 degrees apart on the unit circle.
+%     The vector psi = (1/2, -1/sqrt2, 1/2) for which the lecture
+%     computes <psi|A|psi> = -sqrt(2) is the eigenvector of that
+%     eigenvalue, so the number computed in the text is the leftmost blue
+%     point: that is why A fails to be positive, and the point is
+%     labelled accordingly;
+%   * colour encodes the operator class and nothing else — blue
+%     Hermitian, green positive, red projector, orange unitary — and it
+%     is the same code in both panels, which is what lets the eye carry
+%     the map of (a) over to the data of (b);
+%   * in (a) the loci ARE the statement, so they are drawn in colour; in
+%     (b) they drop back to being reference lines and are drawn neutral
+%     grey (`levellinegrey`), with the eigenvalues as the only coloured
+%     objects.  Marker shape (disc / ring / diamond) repeats the class
+%     distinction, so the plate survives greyscale printing — it also
+%     lets the shared eigenvalue 0 of A and B be drawn where it belongs,
+%     as a blue disc inside a red ring, instead of being nudged apart;
+%   * the classification is a statement about NORMAL operators (the
+%     spectral theorem); the grey note in (a) records that normality
+%     itself constrains nothing, and the accompanying prose says it.
+
+\begin{center}
+\begin{tikzpicture}[x=1.45cm, y=1.45cm,
+    % The axes of the complex plane are reference furniture, not data:
+    % neutral grey, so the coloured loci of (a) carry the eye.
+    cplane axis/.style={-{Stealth[length=4.5pt,width=3pt]},
+                        birrengray, line width=0.5pt}]
+
+% ─────────────────────────────────────────────────────────────
+%  (a)  The loci: which eigenvalues each class allows
+% ─────────────────────────────────────────────────────────────
+
+  % Axes of the complex plane
+  \draw[cplane axis] (-2.02,0) -- (2.08,0);
+  \draw[cplane axis] (0,-1.50) -- (0,1.88);
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=south east]
+    at (2.06,0.05) {$\real\lambda$};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=west]
+    at (0.09,1.78) {$\imag\lambda$};
+
+  % positive:  lambda >= 0 — a highlighter stroke under the Hermitian line
+  \draw[line width=6pt, birrengreen!55, line cap=butt] (0,0) -- (1.80,0);
+  % Hermitian: lambda^* = lambda
+  \draw[line width=1.4pt, cgblue] (-1.80,0) -- (1.80,0);
+  % unitary:   |lambda| = 1
+  \draw[line width=1.3pt, birrenorange] (0,0) circle (1);
+  % projector: lambda^2 = lambda
+  \fill[birrenred] (0,0) circle (3pt);
+  \fill[birrenred] (1,0) circle (3pt);
+  \node[lbl, text=birrenred, font=\scriptsize, anchor=north east] at (-0.04,-0.04) {$0$};
+  \node[lbl, text=birrenred, font=\scriptsize, anchor=south west] at ( 1.05, 0.04) {$1$};
+
+  % Class labels, each in its own colour, each outside the unit circle
+  \node[lbl, text=birrenorange, font=\scriptsize, align=center, anchor=south]
+    at (0,1.07) {\tpcifenglish{unitary}{unitär}\\$|\lambda|=1$};
+  \node[lbl, text=birrenred, font=\scriptsize, align=right, anchor=south east]
+    at (-1.04,0.12) {\tpcifenglish{projector}{Projektor}\\$\lambda\in\{0,1\}$};
+  \node[lbl, text=cgblue, font=\scriptsize, align=right, anchor=north east]
+    at (-1.04,-0.10) {\tpcifenglish{Hermitian}{hermitesch}\\$\lambda^{*}=\lambda$};
+  \node[lbl, text=birrengreen, font=\scriptsize, align=left, anchor=north west]
+    at (1.04,-0.10) {\tpcifenglish{positive}{positiv}\\$\lambda\ge 0$};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north west]
+    at (0.12,-1.14) {normal: \tpcifenglish{all of}{ganz} $\C$};
+
+  \node[lbl head, anchor=south] at (0,2.02)
+    {(a) \tpcifenglish{where the eigenvalues lie}{wo die Eigenwerte liegen}};
+
+% ─────────────────────────────────────────────────────────────
+%  (b)  The same plane, with the spectra of the lecture's example
+% ─────────────────────────────────────────────────────────────
+\begin{scope}[xshift=6.95cm]
+
+  % Reference loci, now neutral: the unit circle and the real axis
+  \draw[levellinegrey] (0,0) circle (1);
+  \draw[cplane axis] (-2.02,0) -- (2.08,0);
+  \draw[cplane axis] (0,-1.50) -- (0,1.88);
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=south east]
+    at (2.06,0.05) {$\real\lambda$};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=west]
+    at (0.09,1.78) {$\imag\lambda$};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north west]
+    at (0.10,-1.06) {$|\lambda|=1$};
+
+  % C:  lambda^3 = -i  — three points 120 degrees apart on the circle
+  \foreach \a in {-30,90,210}{
+    \fill[birrenorange] (\a:1) ++(0,3.4pt) -- ++(3.4pt,-3.4pt)
+                        -- ++(-3.4pt,-3.4pt) -- ++(-3.4pt,3.4pt) -- cycle;
+  }
+  % A:  lambda = 0, +-sqrt(2)
+  \fill[cgblue] ({-sqrt(2)},0) circle (2.5pt);
+  \fill[cgblue] (0,0)          circle (2.5pt);
+  \fill[cgblue] ({ sqrt(2)},0) circle (2.5pt);
+  % B:  lambda = 1, 0, 0  — the ring at 0 encircles A's disc
+  \draw[birrenred, line width=1.1pt] (0,0) circle (4.3pt);
+  \draw[birrenred, line width=1.1pt] (1,0) circle (4.3pt);
+
+  % Eigenvalue readings
+  \node[lbl, font=\scriptsize, anchor=north]      at ({-sqrt(2)},-0.09) {$-\sqrt{2}$};
+  \node[lbl, font=\scriptsize, anchor=north]      at ({ sqrt(2)},-0.09) {$\sqrt{2}$};
+  \node[lbl, font=\scriptsize, anchor=north]      at (1,-0.19)          {$1$};
+  \node[lbl, font=\scriptsize, anchor=north east] at (-0.05,-0.12)      {$0$};
+
+  % Operator labels, in the colour of the class each one belongs to
+  \node[lbl, text=cgblue, font=\scriptsize, align=right, anchor=south east]
+    at (-1.06,0.44) {$\widehat A$\\\tpcifenglish{Hermitian}{hermitesch}};
+  \draw[cgblue, line width=0.4pt] (-1.45,0.42) -- (-1.42,0.08);
+  \node[lbl, text=birrenorange, font=\scriptsize, align=center, anchor=south]
+    at (0,1.10) {$\widehat C$\\\tpcifenglish{unitary}{unitär}};
+  \node[lbl, text=birrenred, font=\scriptsize, align=left, anchor=south west]
+    at (1.06,0.34) {$\widehat B$\\\tpcifenglish{projector}{Projektor}};
+  \draw[birrenred, line width=0.4pt] (1.14,0.32) -- (1.05,0.09);
+
+  % Why the lecture bothers to compute <psi|A|psi> = -sqrt(2)
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north]
+    at ({-sqrt(2)},-0.70) {\tpcifenglish{not positive}{nicht positiv}};
+
+  \node[lbl head, anchor=south] at (0,2.02)
+    {(b) \tpcifenglish{the example's $\widehat A,\widehat B,\widehat C$}%
+                      {$\widehat A$, $\widehat B$, $\widehat C$ aus dem Beispiel}};
+
+\end{scope}
+\end{tikzpicture}
+\end{center}

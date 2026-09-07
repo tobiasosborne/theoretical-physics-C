@@ -1,0 +1,195 @@
+% fig_vl10_zerfliessen.tex — Zerfliessen des Wellenpakets: the packet
+% drifts uniformly while it spreads, and its width settles onto exactly
+% the straight line a swarm of classical particles with the same
+% momentum spread would follow.
+%
+% GEOMETRY FROM THE FORMULA.  Everything here follows from the operator
+% identity this lecture derives,
+%
+%       x(t) = x(0) + (t/m) p ,
+%
+% by taking mean and variance in a state with no initial x-p
+% correlation:
+%
+%       <x>(t)  = <x>(0) + <p> t/m ,
+%       Dx(t)^2 = Dx(0)^2 + (Dp t/m)^2 .
+%
+% With tau = m Dx(0)/Dp — and for a minimum-uncertainty packet,
+% Dx(0) Dp = hbar/2, hence tau = 2 m Dx(0)^2/hbar — the second line is
+%
+%       Dx(t) = Dx(0) sqrt(1 + (t/tau)^2),
+%
+% the hyperbola of panel (b).  Its asymptote Dp t/m is precisely how a
+% classical swarm with momentum spread Dp comes apart, so the claim of
+% the lecture — that the spreading is asymptotically fixed by the
+% momentum distribution alone — is the statement that the two curves in
+% (b) merge.  Panel (a) plots the Gaussian carrying those two moments,
+%
+%       |Psi(x,t)|^2 = exp(-(x-<x>(t))^2/(2 Dx(t)^2)) / (sqrt(2 pi) Dx(t)),
+%
+% so every centre, width and height is forced by the formula rather than
+% drawn by eye.  Lengths in units of Dx(0), times in units of tau, drift
+% fixed by <p> = 3 Dp: the centres then sit at 0, 3, 6, 9 and the widths
+% at 1, sqrt2, sqrt5, sqrt10.
+%
+% DESIGN DECISIONS
+%   * colour encodes TIME and nothing else — entries 1, 2, 4, 5 of the
+%     ordered `tpclevels` ramp (navy, blue, orange, red), the same four
+%     in both panels, so a curve in (a) can be found again as a dot in
+%     (b).  Entry 3 (munsell) is skipped on purpose: next to cgblue it
+%     is the same teal to the eye, and here the two would be neighbours
+%     in time rather than well separated as in fig_vl11;
+%   * the width curve in (b) is green because it is a different
+%     QUANTITY, not a fifth time; its formula is set in the same green,
+%     which spares the panel a legend;
+%   * grey is reference furniture only, and every grey annotation is
+%     set in grey too: the verticals at <x>(t), whose EQUAL SPACING is
+%     uniform motion; the dashed envelope through the peaks, which
+%     falls as 1/Dx(t) exactly as fast as the widths grow, so the
+%     conserved area is shown rather than asserted; the initial width
+%     and the classical asymptote in (b);
+%   * time labels sit to the RIGHT of each peak rather than above it,
+%     which is the only side on which the descending envelope leaves
+%     room;
+%   * panel (b) uses `scale only axis` with a 4.2 x 4.6 cm box on ranges
+%     4.2 x 4.6, i.e. 1 cm per unit on both axes.  The asymptote is then
+%     a true 45-degree line and its label can be set along it;
+%   * the two numbers at the foot of (b) give the order of magnitude
+%     that decides whether the spreading is ever observable at all.
+
+\begin{center}
+\begin{tikzpicture}
+
+% ─────────────────────────────────────────────────────────────
+%  (a)  |Psi(x,t)|^2 at four times
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    name=packets,
+    tpcplot,
+    scale only axis, width=6.4cm, height=4.6cm,
+    grid=none,
+    xmin=-3.2, xmax=16.8,
+    ymin=0,    ymax=0.47,
+    xtick={0,3,6,9,12,15},
+    ytick={0,0.1,0.2,0.3,0.4},
+    xlabel={$x/\Delta x(0)$},
+    ylabel={$\Delta x(0)\,|\Psi(x,t)|^2$},
+    every axis x label/.style={at={(axis description cs:0.5,-0.15)},
+                               anchor=north, font=\small},
+    every axis y label/.style={at={(axis description cs:-0.16,0.5)},
+                               rotate=90, anchor=south, font=\small},
+    title={(a) \tpcifenglish{The packet spreads}{Das Paket zerfließt}},
+    samples=241,
+]
+
+  % Centres <x>(t) = 3 t/tau, each rule drawn only up to the peak it
+  % belongs to.  Their equal spacing is the newtonian rule.
+  \draw[levellinegrey] (axis cs:0,0) -- (axis cs:0,0.3989);
+  \draw[levellinegrey] (axis cs:3,0) -- (axis cs:3,0.2821);
+  \draw[levellinegrey] (axis cs:6,0) -- (axis cs:6,0.1784);
+  \draw[levellinegrey] (axis cs:9,0) -- (axis cs:9,0.1262);
+
+  % Envelope of the peaks: 1/(sqrt(2 pi) Dx(t)) with t/tau = s/3.  It
+  % passes exactly through the four maxima.
+  \addplot[envelope, domain=0:12.6, samples=140]
+      {1/(sqrt(2*pi)*sqrt(1+x^2/9))};
+
+  % The packets.  Widths sqrt(1+(t/tau)^2) = 1, sqrt2, sqrt5, sqrt10;
+  % each is drawn only over the range where it is still visible.
+  \addplot[wavefn, spacecadet,   domain=-3.2:6.6]
+      {exp(-(x)^2/2)/sqrt(2*pi)};
+  \addplot[wavefn, cgblue,       domain=-3.2:10.5]
+      {exp(-(x-3)^2/4)/sqrt(2*pi*2)};
+  \addplot[wavefn, birrenorange, domain=-3.2:16.8]
+      {exp(-(x-6)^2/10)/sqrt(2*pi*5)};
+  \addplot[wavefn, birrenred,    domain=-3.2:16.8]
+      {exp(-(x-9)^2/20)/sqrt(2*pi*10)};
+
+  % Direct labels beside the peaks, each in the colour of its curve and
+  % set just above the peak height, where the envelope has already
+  % dropped away.
+  \node[lbl, text=spacecadet,   anchor=south west]
+    at (axis cs:0.55,0.410) {$t=0$};
+  \node[lbl, text=cgblue,       anchor=south west]
+    at (axis cs:3.45,0.293) {$t=\tau$};
+  \node[lbl, text=birrenorange, anchor=south west]
+    at (axis cs:6.45,0.189) {$t=2\tau$};
+  \node[lbl, text=birrenred,    anchor=south west]
+    at (axis cs:9.45,0.136) {$t=3\tau$};
+
+  % What the grey verticals say, and what the grey envelope says.
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north east,
+        align=right] at (axis cs:16.6,0.468)
+    {\tpcifenglish{centres}{Zentren}:
+     $\langle\widehat{x}\rangle(t)=\langle\widehat{p}\rangle\,t/m$\\[-2pt]
+     \tpcifenglish{area}{Fl\"ache}: $\int|\Psi|^2dx=1$};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=south east]
+    at (axis cs:16.6,0.152)
+    {\tpcifenglish{peaks}{H\"ohe} $\propto 1/\Delta x(t)$};
+\end{axis}
+
+% ─────────────────────────────────────────────────────────────
+%  (b)  The width: hyperbola against its classical asymptote
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    name=widths,
+    tpcplot,
+    at={(packets.south east)}, anchor=south west, xshift=17mm,
+    scale only axis, width=4.2cm, height=4.6cm,
+    xmin=0, xmax=4.2, ymin=0, ymax=4.6,
+    xtick={0,1,2,3,4}, ytick={0,1,2,3,4},
+    grid=major,
+    xlabel={$t/\tau$},
+    ylabel={$\Delta x(t)/\Delta x(0)$},
+    every axis x label/.style={at={(axis description cs:0.5,-0.15)},
+                               anchor=north, font=\small},
+    every axis y label/.style={at={(axis description cs:-0.21,0.5)},
+                               rotate=90, anchor=south, font=\small},
+    title={(b) \tpcifenglish{Width}{Breite} $\Delta x(t)$},
+]
+
+  % Reference furniture: the classical asymptote Dp t/m and the width
+  % the packet started with.  They cross at t = tau.
+  \addplot[levellinegrey, domain=0:4.2, samples=2] {x};
+  \draw[levellinegrey] (axis cs:0,1) -- (axis cs:1,1);
+
+  % Dx(t)/Dx(0) = sqrt(1+(t/tau)^2)
+  \addplot[birrengreen, line width=1.1pt, domain=0:4.2, samples=140]
+      {sqrt(1+x^2)};
+
+  % The four times of panel (a), in their colours.
+  \addplot[only marks, mark=*, mark size=2.0pt, spacecadet]
+      coordinates {(0,1)};
+  \addplot[only marks, mark=*, mark size=2.0pt, cgblue]
+      coordinates {(1,1.41421)};
+  \addplot[only marks, mark=*, mark size=2.0pt, birrenorange]
+      coordinates {(2,2.23607)};
+  \addplot[only marks, mark=*, mark size=2.0pt, birrenred]
+      coordinates {(3,3.16228)};
+
+  % The curve names itself, in its own colour; the grey lines below it
+  % state the asymptotics and fix the time scale.
+  \node[text=birrengreen, font=\scriptsize, anchor=north west]
+    at (axis cs:0.08,4.52)
+    {$\Delta x(t)=\Delta x(0)\sqrt{1+(t/\tau)^{2}}$};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north west]
+    at (axis cs:0.08,3.95)
+    {$\longrightarrow\ \Delta p\,t/m$ \tpcifenglish{for}{f\"ur} $t\gg\tau$};
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=north west]
+    at (axis cs:0.08,3.55) {$\tau=2m\,\Delta x(0)^2/\hbar$};
+
+  % The asymptote, labelled along itself — the panel is drawn at
+  % 1 cm per unit on both axes, so the line really does run at 45 deg.
+  \node[lbl, text=birrengray, font=\scriptsize, rotate=45,
+        anchor=north west, inner sep=1.5pt] at (axis cs:1.65,1.50)
+    {\tpcifenglish{classical swarm}{klassischer Schwarm}};
+
+  % Order of magnitude: when is the spreading observable at all?
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=south east,
+        align=right] at (axis cs:4.15,0.06)
+    {$e^-$, $10^{-10}$\,m: $\tau\sim10^{-16}$\,s\\[-2pt]
+     $1\,\mu$g, $10^{-6}$\,m: $\tau\sim10^{13}$\,s};
+\end{axis}
+
+\end{tikzpicture}
+\end{center}

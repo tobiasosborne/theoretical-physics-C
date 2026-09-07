@@ -1,0 +1,164 @@
+% fig_vl07_dichte.tex — Warum $\Psi$ keine Dichte ist und $|\Psi|^2$ eine:
+% dieselbe Wellenfunktion einmal als Real-/Imaginärteil und einmal als
+% Wahrscheinlichkeitsdichte, deren Fläche über einem Intervall die
+% Ansprechwahrscheinlichkeit des Detektors $F_{[a,b]}$ ist.
+%
+% Folgt den Konventionen von fig_vl11_kasten.tex.
+%
+% Geometrie aus der Formel, nicht freihand.  Beide Panels zeigen ein und
+% denselben normierten Zustand — ein Gaußsches Wellenpaket, den einfachsten
+% Zustand mit $\Psi(x)\ne\delta(x-y)$, den die Vorlesung fordert:
+%
+%     Psi(x) = (2 pi sigma^2)^(-1/4) exp(-(x-x0)^2/(4 sigma^2)) exp(i k x),
+%
+% mit sigma = 1, x0 = 0, k = 3.  Daraus folgt alles Gezeichnete:
+%
+%   Re Psi  = A exp(-x^2/4) cos(3x),   A = (2 pi)^(-1/4) = 0.63162,
+%   Im Psi  = A exp(-x^2/4) sin(3x),
+%   |Psi|   = A exp(-x^2/4)                      (die Einhüllende),
+%   p(x)    = |Psi(x)|^2 = exp(-x^2/2)/sqrt(2 pi),  Maximum 0.39894.
+%
+% Die Trägerwelle exp(ikx) hebt sich im Betragsquadrat exakt weg: die
+% Oszillation in (a) hat in (b) keine Spur hinterlassen.  Genau das ist
+% in Prosa mühsam und im Bild eine Sekunde.
+%
+% Die eingefärbte Fläche ist keine Schätzung, sondern
+%     P[x in [a,b]] = Phi(1.5) - Phi(-0.5) = 0.62466,
+% mit a = -0.5, b = 1.5 und der Standardnormalverteilung Phi.
+% Der schmale Streifen bei c = -1.8 hat Breite eps = 0.2 und damit
+% Fläche p(c) eps = 0.0158: dieselbe Konstruktion, nur schmaler.  Er ist
+% der Grund, warum F_{x} = |x><x| kein Operator ist — schrumpft eps auf
+% null, schrumpft die Fläche mit.
+%
+% Entwurfsentscheidungen:
+%   * Farbe trägt genau zwei Bedeutungen.  In (a) unterscheidet sie die
+%     beiden reellen Komponenten desselben komplexen Objekts (Blau/Orange);
+%     in (b) ist alles, was Wahrscheinlichkeit ist, blau — der breite und
+%     der schmale Streifen unterscheiden sich nur in der Sättigung, weil
+%     sie dieselbe Größe sind, nur verschieden breit.
+%   * Referenzen sind neutral grau: die Einhüllende +-|Psi| in (a) ist
+%     gepunktet grau, keine Daten.
+%   * Die beiden Wahrscheinlichkeiten sind gefüllt und nicht schraffiert:
+%     schraffiert wird hier, was verboten ist; hier ist die Fläche selbst
+%     die Größe, die man ablesen soll, und eine Schraffur würde ihren
+%     Inhalt (die Integralformel) unlesbar machen.
+%   * Im Sinne des Graustufendrucks ist Im Psi gestrichelt und Re Psi
+%     durchgezogen; die beiden Flächen unterscheiden sich zusätzlich
+%     durch ihre Breite, nicht nur durch den Grauwert.
+%   * Beide Panels benutzen denselben x-Bereich und denselben Maßstab,
+%     damit die Breiten vergleichbar sind: die Einhüllende von Psi ist eine
+%     Gaußkurve der Breite sqrt(2) sigma, die Dichte p eine der Breite
+%     sigma.  Das Quadrieren verschmälert die Glocke um genau diesen
+%     Faktor sqrt(2) — im Bild sofort zu sehen, in Prosa eine Fußnote.
+%   * Der Streifen sitzt bei c = -1.8 und nicht dichter am Intervall,
+%     damit er nicht als dessen Rand missverstanden wird.
+
+\begin{center}
+\begin{tikzpicture}
+
+% ─────────────────────────────────────────────────────────────
+%  (a)  Die Wellenfunktion selbst: komplex, vorzeichenbehaftet
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    name=psi,
+    tpcplot,
+    width=6.6cm, height=6.2cm,
+    grid=none,
+    axis x line=middle,
+    axis y line=none,
+    axis line style={-{Stealth[length=5pt]}, spacecadet, line width=0.6pt},
+    xtick=\empty,
+    xmin=-3.6, xmax=3.9,
+    ymin=-0.94, ymax=0.94,
+    clip=false,
+    domain=-3.6:3.75, samples=401,
+    title={(a) $\Psi$ \tpcifenglish{is complex}{ist komplex}},
+]
+
+  % Einhüllende +-|Psi| = +-A exp(-x^2/4): Referenz, daher grau
+  \addplot[birrengray!85, line width=0.7pt, densely dotted]
+    { 0.63162*exp(-x^2/4)};
+  \addplot[birrengray!85, line width=0.7pt, densely dotted]
+    {-0.63162*exp(-x^2/4)};
+
+  % Real- und Imaginärteil derselben Wellenfunktion
+  \addplot[wavefn, cgblue]
+    {0.63162*exp(-x^2/4)*cos(deg(3*x))};
+  \addplot[birrenorange, line width=1.1pt, densely dashed]
+    {0.63162*exp(-x^2/4)*sin(deg(3*x))};
+
+  % Direkte Beschriftung statt Legende: jeweils am eigenen Extremum.
+  % Re Psi hat sein Maximum A bei x = 0, Im Psi sein Minimum -0.58978
+  % bei x = -pi/6 = -0.5236.
+  \node[lbl, text=cgblue, anchor=south]      at (axis cs:0,0.66)       {$\real\Psi$};
+  \node[lbl, text=birrenorange, anchor=north] at (axis cs:-0.524,-0.68) {$\imag\Psi$};
+
+  % Einhüllende ansprechen, ohne sie zu berühren
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=west]
+    at (axis cs:-3.55,0.44) {$\pm|\Psi|$};
+  \draw[birrengray!85, line width=0.4pt]
+    (axis cs:-2.90,0.42) -- (axis cs:-2.45,0.155);
+
+  \node[lbl, text=birrengray, font=\scriptsize, anchor=east]
+    at (axis cs:-3.62,0.02) {$0$};
+
+  % Achsenbeschriftung als Knoten unter der Pfeilspitze, nicht als xlabel:
+  % ein xlabel ragt rechts aus dem Rahmen und stößt im 12pt-Satz gegen
+  % die y-Beschriftung von (b).
+  \node[lbl, anchor=north] at (axis cs:3.55,-0.06) {$x$};
+\end{axis}
+
+% ─────────────────────────────────────────────────────────────
+%  (b)  Das Betragsquadrat: Fläche = Wahrscheinlichkeit
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    tpcplot,
+    at={(psi.south east)}, anchor=south west, xshift=22mm,
+    width=6.6cm, height=6.2cm,
+    grid=none,
+    ylabel={$p(x)$},
+    every axis y label/.style={at={(axis description cs:-0.17,0.5)},
+                               rotate=90, anchor=south, font=\small},
+    xmin=-3.6, xmax=3.9,
+    ymin=0, ymax=0.52,
+    xtick={-1.8,-0.5,1.5}, xticklabels={$c$,$a$,$b$},
+    ytick={0,0.1,0.2,0.3,0.4},
+    clip=false,
+    domain=-3.6:3.75, samples=301,
+    title={(b) $p=|\Psi|^{2}$ \tpcifenglish{is the density}{ist die Dichte}},
+]
+
+  % P[x in [a,b]] = Flaeche unter p zwischen a und b
+  \addplot[draw=none, fill=cgblue!20, domain=-0.5:1.5, samples=101]
+    {exp(-x^2/2)/sqrt(2*pi)} \closedcycle;
+  \draw[cgblue!55, line width=0.5pt] (axis cs:-0.5,0) -- (axis cs:-0.5,0.35207);
+  \draw[cgblue!55, line width=0.5pt] (axis cs: 1.5,0) -- (axis cs: 1.5,0.12952);
+
+  % Derselbe Schnitt, nur um eps = 0.2 breit: gleiche Farbe, dunkler,
+  % weil es dieselbe Größe ist.
+  \addplot[draw=none, fill=cgblue!60, domain=-1.9:-1.7, samples=11]
+    {exp(-x^2/2)/sqrt(2*pi)} \closedcycle;
+
+  % Die Dichte
+  \addplot[spacecadet, line width=1.1pt] {exp(-x^2/2)/sqrt(2*pi)};
+
+  % Was die Fläche ist, steht in der Fläche
+  \node[lbl, anchor=center] at (axis cs:0.5,0.15) {$\int_a^b p\,dx$};
+
+  % Die Fläche beziffert: die Aussage steht über der Fläche, die sie meint
+  \node[lbl, anchor=center] at (axis cs:0.5,0.455)
+    {$\mathbb{P}\bigl[x\in[a,b]\bigr]=\tpcifenglish{0.62}{0{,}62}$};
+
+  \node[lbl, anchor=north] at (axis cs:3.55,-0.012) {$x$};
+
+  % Der schmale Streifen und seine Pointe
+  \node[lbl, text=spacecadet, font=\scriptsize, anchor=south]
+    at (axis cs:-1.8,0.095) {$\varepsilon$};
+  \node[lbl, font=\scriptsize, anchor=west, align=left] at (axis cs:-3.40,0.275)
+    {$\varepsilon\to0$\\[-1pt]$\Rightarrow\mathbb{P}\to0$};
+  \draw[birrengray!85, line width=0.4pt]
+    (axis cs:-2.14,0.225) -- (axis cs:-1.90,0.130);
+\end{axis}
+
+\end{tikzpicture}
+\end{center}

@@ -1,0 +1,235 @@
+% fig_vl17_bloch.tex — Spin 1/2: die Blochkugel eines einzelnen Spins, und
+% was aus dem Blochpfeil wird, sobald der Spin zu einem verschränkten Paar
+% gehört.
+%
+% Follows the conventions of fig_vl11_kasten (the reference plate).
+%
+%   * geometry comes from the formulae of the lecture, never freehand.
+%
+%     Panel (a).  Every pure state of H = C^2 is, up to a global phase,
+%         |psi(theta,phi)> = cos(theta/2)|up> + e^{i phi} sin(theta/2)|down>,
+%     and with the S_j of the lecture its vector of expectation values is
+%         (2/hbar)(<S_1>,<S_2>,<S_3>)
+%             = (sin th cos ph, sin th sin ph, cos th),
+%     a unit vector.  The panel therefore draws the unit sphere of that
+%     vector, and every marked point sits where the formula puts it:
+%     |up>,|down> at th = 0,pi — antipodal, not perpendicular, because the
+%     half angle th/2 turns the 90 degrees of orthogonality in C^2 into
+%     180 degrees in R^3; |+>,|-> at th = pi/2, ph = 0,pi;  |+i>,|-i> at
+%     th = pi/2, ph = +-pi/2.  The projection is a genuine orthographic
+%     one, camera azimuth psi = 25 deg and elevation eps with sin eps = 0.3:
+%         x^ -> (-0.42262, -0.27189)
+%         y^ -> ( 0.90631, -0.12679)
+%         z^ -> ( 0.00000,  0.95394)
+%     Consequences that are therefore forced rather than drawn by eye: the
+%     equator projects to an ellipse of axis ratio 0.3; its *near* half is
+%     the lower one, hence solid, the far half dashed; and the poles land
+%     at 0.954 R, just inside the outline, which is what an orthographic
+%     projection of a sphere actually does.  \tpcbx/\tpcby implement the
+%     projection, so no coordinate in the panel was typed by hand.
+%
+%     Panel (b).  The one-parameter family
+%         |psi_a> = cos(a)|up up> + sin(a)|down down>
+%     runs from a product state through the EPR state of the lecture
+%     (a = pi/4) to another product state.  Both curves are exact:
+%         (2/hbar)|<S (x) 1>| = |cos^2 a - sin^2 a| = |cos 2a|,
+%             the length of spin 1's arrow in panel (a) — for this family
+%             <S_1 (x) 1> = <S_2 (x) 1> = 0 and <S_3 (x) 1> = (hbar/2)cos 2a,
+%             all three computable with the tensor-product rules of the
+%             lecture alone;
+%         2|c_11 c_22 - c_12 c_21| = 2|cos a sin a| = |sin 2a|,
+%             exactly the obstruction the lecture computes: a product needs
+%             a_1 b_2 = a_2 b_1 = 0, i.e. a vanishing determinant of the
+%             coefficient matrix.
+%     Since cos^2 + sin^2 = 1 the two readings trade off exactly, and the
+%     crossing points at a = pi/8, 3pi/8 are at 1/sqrt(2).  At the EPR
+%     point the arrow of panel (a) has length zero: it has retreated from
+%     the surface of the ball to its centre.  That is the whole content of
+%     the plate — the two panels are one picture, read twice.
+%
+%   * colour carries the observable and nothing else: eigenstates of S_3
+%     navy, of S_1 blue, of S_2 teal (the ordered ramp of `tpclevels`);
+%     the one state that is not a basis state, the general |psi>, is
+%     orange, and so is the entanglement curve in (b) — the blue curve in
+%     (b) is the length of a blue-and-navy object, the arrow.  Axes,
+%     equator and the EPR rule are neutral grey: reference structure.
+%   * near/far is coded by fill, not by colour: a point of the near
+%     hemisphere is a filled disc, one of the far hemisphere an open
+%     circle, and the far halves of the axes are dashed.  This survives
+%     greyscale printing and makes the antipodal pairs read as pairs.
+%   * (b) separates its curves by dash pattern as well as by colour, for
+%     the same reason.
+%
+% Panel (a) the state space of one spin 1/2.
+% Panel (b) what becomes of that arrow when the spin is one of a pair.
+
+% Orthographic projection of the sphere of radius #1, see the header.
+% #2 = polar angle theta, #3 = azimuth phi, both in degrees.
+\def\tpcbx#1#2#3{#1*(-0.42262*sin(#2)*cos(#3)+0.90631*sin(#2)*sin(#3))}
+\def\tpcby#1#2#3{#1*(-0.27189*sin(#2)*cos(#3)-0.12679*sin(#2)*sin(#3)%
+                     +0.95394*cos(#2))}
+% \tpcbc{name}{radius}{theta}{phi} — name a point on that sphere.
+\newcommand{\tpcbc}[4]{%
+  \coordinate (#1) at ({\tpcbx{#2}{#3}{#4}},{\tpcby{#2}{#3}{#4}});}
+\def\tpcRb{1.7}
+
+\begin{center}
+\begin{tikzpicture}[
+    % near hemisphere: filled disc;  far hemisphere: open circle
+    sdot/.style ={circle, inner sep=0pt, minimum size=3.4pt,
+                  fill=#1, draw=#1},
+    sdot/.default=cgblue,
+    sdotb/.style={circle, inner sep=0pt, minimum size=3.4pt,
+                  fill=white, draw=#1, line width=0.65pt},
+    sdotb/.default=cgblue,
+    blochaxis/.style={-{Stealth[length=5pt,width=3.5pt]}, birrengray,
+                      line width=0.7pt},
+    blochback/.style={birrengray, line width=0.7pt, densely dashed},
+  ]
+
+% ─────────────────────────────────────────────────────────────
+%  (a)  The Bloch sphere of one spin 1/2
+% ─────────────────────────────────────────────────────────────
+\node[font=\sf\small\bfseries, text=cgblue] at (0,3.00)
+  {(a) \tpcifenglish{one spin: the Bloch sphere}{ein Spin: die Blochkugel}};
+
+% Every named point is placed by the parametrisation, nothing by eye.
+\coordinate (O) at (0,0);
+\tpcbc{Sup}  {\tpcRb}{0}  {0}      % |up>      = eigenstate of S_3, +
+\tpcbc{Sdn}  {\tpcRb}{180}{0}      % |down>    = eigenstate of S_3, -
+\tpcbc{Splu} {\tpcRb}{90} {0}      % |+>       = eigenstate of S_1, +
+\tpcbc{Smin} {\tpcRb}{90} {180}    % |->       = eigenstate of S_1, -
+\tpcbc{Spi}  {\tpcRb}{90} {90}     % |+i>      = eigenstate of S_2, +
+\tpcbc{Smi}  {\tpcRb}{90} {270}    % |-i>      = eigenstate of S_2, -
+\tpcbc{Spsi} {\tpcRb}{55} {-55}    % a general |psi(theta,phi)>
+\tpcbc{Sfoo} {\tpcRb*sin(55)}{90}{-55}   % its foot in the equatorial plane
+% Axis tips, all three at the same distance on the page (1.95 cm).
+\tpcbc{Axa}  {3.880}{90}{0}
+\tpcbc{Axb}  {2.131}{90}{90}
+\tpcbc{Axc}  {2.044}{0} {0}
+% Far ends of the three axes, just past the far surface.
+\tpcbc{Bxa}  {1.05*\tpcRb}{90} {180}
+\tpcbc{Bxb}  {1.05*\tpcRb}{90} {270}
+\tpcbc{Bxc}  {1.05*\tpcRb}{180}{0}
+
+% Far halves of the axes: dashed, they run behind the ball
+\draw[blochback] (O) -- (Bxa);
+\draw[blochback] (O) -- (Bxb);
+\draw[blochback] (O) -- (Bxc);
+
+% Equator: far (upper) half dashed, near (lower) half solid.  The axis
+% ratio 0.3 = sin(eps) is forced by the projection, not chosen.
+\draw[birrengray, line width=0.55pt, densely dashed]
+  (-\tpcRb,0) arc (180:0:{\tpcRb} and {0.3*\tpcRb});
+\draw[birrengray, line width=0.55pt]
+  (-\tpcRb,0) arc (180:360:{\tpcRb} and {0.3*\tpcRb});
+
+% Outline
+\draw[birrengray, line width=0.9pt] (0,0) circle (\tpcRb);
+
+% Near halves of the axes
+\draw[blochaxis] (O) -- (Axa);
+\draw[blochaxis] (O) -- (Axb);
+\draw[blochaxis] (O) -- (Axc);
+\node[lbl, anchor=north east, xshift=-1pt] at (Axa) {$\widehat{S}_1$};
+\node[lbl, anchor=west, xshift=2pt]        at (Axb) {$\widehat{S}_2$};
+\node[lbl, anchor=south, yshift=1pt]       at (Axc) {$\widehat{S}_3$};
+
+% The general state: its arrow, its foot in the equatorial plane, and the
+% two angles of the parametrisation.
+\draw[tpc thin, birrengray, densely dotted] (O)    -- (Sfoo);
+\draw[tpc thin, birrengray, densely dotted] (Sfoo) -- (Spsi);
+\draw[-{Stealth[length=6pt,width=4pt]}, birrenorange, line width=1.1pt]
+  (O) -- (Spsi);
+
+\draw[birrengray, line width=0.55pt]
+  plot[domain=0:55, samples=30, variable=\s]
+    ({\tpcbx{0.62}{\s}{-55}},{\tpcby{0.62}{\s}{-55}});
+\node[lbl, font=\scriptsize] at (-0.37,0.66) {$\theta$};
+
+\draw[birrengray, line width=0.55pt]
+  plot[domain=0:-55, samples=30, variable=\p]
+    ({\tpcbx{0.55}{90}{\p}},{\tpcby{0.55}{90}{\p}});
+\node[lbl, font=\scriptsize] at (-0.70,-0.25) {$\varphi$};
+
+% The six eigenstates of S_1, S_2, S_3.  Colour = observable;
+% filled = near hemisphere, open = far hemisphere.
+\node[sdot=spacecadet]  at (Sup)  {};
+\node[sdotb=spacecadet] at (Sdn)  {};
+\node[sdot=cgblue]      at (Splu) {};
+\node[sdotb=cgblue]     at (Smin) {};
+\node[sdot=munsell]     at (Spi)  {};
+\node[sdotb=munsell]    at (Smi)  {};
+
+\node[lbl, anchor=west, xshift=3pt]       at (Sup)  {$\ket{\uparrow}$};
+\node[lbl, anchor=west, xshift=3pt]       at (Sdn)  {$\ket{\downarrow}$};
+\node[lbl, anchor=east, xshift=-4pt]      at (Splu) {$\ket{+}$};
+\node[lbl, anchor=south west, xshift=2pt] at (Smin) {$\ket{-}$};
+\node[lbl, font=\scriptsize, text=birrengray, anchor=north, yshift=-4pt]
+                                          at (Spi)  {$\ket{{+}i}$};
+\node[lbl, font=\scriptsize, text=birrengray, anchor=south, yshift=4pt]
+                                          at (Smi)  {$\ket{{-}i}$};
+\node[lbl, text=birrenorange, anchor=south east, yshift=1pt]
+                                          at (Spsi) {$\ket{\psi}$};
+
+% The formula the whole panel is drawn from, and how to read it.
+\node[lbl, font=\scriptsize] at (0,-2.38)
+  {$\ket{\psi}=\cos\tfrac{\theta}{2}\,\ket{\uparrow}
+    +e^{i\varphi}\sin\tfrac{\theta}{2}\,\ket{\downarrow}$};
+\node[lbl, font=\scriptsize, text=birrengray] at (0,-2.82)
+  {\tpcifenglish{half angle: orthogonal $\Rightarrow$ antipodal}%
+                {halber Winkel: orthogonal $\Rightarrow$ antipodal}};
+
+% ─────────────────────────────────────────────────────────────
+%  (b)  The same arrow, for one spin of an entangled pair
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    tpcplot,
+    at={(4.30cm,-1.70cm)}, anchor=south west,
+    width=7.0cm, height=4.9cm,
+    clip=false,
+    xmin=0, xmax=90, ymin=0, ymax=1.42,
+    xtick={0,22.5,45,67.5,90},
+    xticklabels={$0$,$\pi/8$,$\pi/4$,$3\pi/8$,$\pi/2$},
+    ytick={0,0.5,1},
+    xlabel={$\alpha$},
+    title={(b) \tpcifenglish{a pair: arrow vs.\ entanglement}%
+                            {ein Paar: Pfeil gegen Verschränkung}},
+    legend style={font=\scriptsize, draw=light-gray,
+                  at={(0.5,-0.26)}, anchor=north, legend columns=2},
+]
+
+  % The EPR point alpha = pi/4: a neutral reference rule
+  \addplot[levellinegrey] coordinates {(45,0) (45,1)};
+
+  % Length of spin 1's Bloch arrow
+  \addplot[cgblue, line width=1.0pt, domain=0:90, samples=181]
+    {abs(cos(2*x))};
+  \addlegendentry{$\tfrac{2}{\hbar}\bigl|\langle\widehat{\mathbf{S}}\otimes\mathbb{I}\rangle\bigr|=|\cos 2\alpha|$}
+
+  % Failure of the product condition c_11 c_22 = c_12 c_21
+  \addplot[birrenorange, line width=1.0pt, densely dashed,
+           domain=0:90, samples=181] {abs(sin(2*x))};
+  \addlegendentry{$2|c_{11}c_{22}-c_{12}c_{21}|=|\sin 2\alpha|$}
+
+  \addplot[only marks, mark=*, mark size=2pt, cgblue, draw=none]
+    coordinates {(45,0)};
+  \addplot[only marks, mark=*, mark size=2pt, birrenorange, draw=none]
+    coordinates {(45,1)};
+
+  % The family the panel is drawn from
+  \node[lbl, font=\scriptsize] at (axis cs:45,1.26)
+    {$\ket{\psi_\alpha}=\cos\alpha\,\ket{\uparrow\uparrow}
+      +\sin\alpha\,\ket{\downarrow\downarrow}$};
+
+  % What the three marked values of alpha are
+  \node[lbl, font=\scriptsize, text=birrengray, anchor=north]
+    at (axis cs:0,-0.15)  {$\ket{\uparrow\uparrow}$};
+  \node[lbl, font=\scriptsize, text=birrengray, anchor=north]
+    at (axis cs:45,-0.15) {$\ket{\text{EPR}}$};
+  \node[lbl, font=\scriptsize, text=birrengray, anchor=north]
+    at (axis cs:90,-0.15) {$\ket{\downarrow\downarrow}$};
+\end{axis}
+
+\end{tikzpicture}
+\end{center}

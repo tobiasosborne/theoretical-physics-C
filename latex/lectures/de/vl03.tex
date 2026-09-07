@@ -200,6 +200,13 @@ Diese Gleichung ist eine Form der sogenannten \emph{Vollständigkeitsrelation}; 
 \end{equation}
 Sie sieht harmlos aus, wird aber ständig angewandt.
 
+\input{figures/fig_vl03_vollst}
+
+In (a) schließt sich jede der beiden Zerlegungen desselben $|\Psi\rangle$ zu
+einem eigenen Rechteck -- verschiedene Seiten, dieselbe Diagonale. In (b) steht,
+was von der Basis unabhängig bleibt: nicht die einzelnen Gewichte, sondern ihre
+Summe.
+
 Für unendlich-dimensionale Vektorräume ist die Existenz von Basen nur schwer zu beweisen. Wir nehmen ab jetzt an, dass wir immer eine Basis haben; beliebig gewählte Vektoren bilden nämlich normalerweise \emph{keine} Basis. Praktisch werden Basen oft mit dem sogenannten Orthonormierungsverfahren gewonnen: man startet mit irgendeiner Liste von Vektoren $|\Phi_1\rangle$, $|\Phi_2\rangle$, $|\Phi_3\rangle$, $\ldots$. Daraus bestimmt man sukzessiv ein System von paarweise orthogonalen Vektoren $|\Psi_n\rangle$ nach der Formel
 \begin{equation}
 	|\Psi_n\rangle \equiv |\Phi_n\rangle - \sum_{k=1}^{n-1} |\Psi_k\rangle \frac{\langle \Psi_k|\Phi_n\rangle}{\|\Psi_k\|^2},

@@ -1,0 +1,165 @@
+% fig_vl06_messung.tex — Was die Postulate 2, 4 und 5 zusammen festlegen:
+% der Zustandsraum eines Qubits ist eine Scheibe, die Zeitentwicklung dreht
+% darin, und der Detektor liest die waagerechte Koordinate ab.
+%
+% Chosen over the obvious "measurement cycle" flow chart because these
+% postulates contain NO state-update rule -- there is no projection
+% postulate in this lecture, so a "state after the measurement" panel would
+% illustrate something the text does not claim.  What the text does claim
+% has a shape, and the shape is nowhere drawn:
+%
+%   * Postulat 2 + Hermitezitaet + Spur eins give the lecture's
+%         rho = ( p , x ; x^* , 1-p ),
+%     and positivity is exactly det rho = p(1-p) - |x|^2 >= 0, i.e.
+%         (p - 1/2)^2 + |x|^2 <= (1/2)^2 :
+%     a disc of radius 1/2 about (1/2, 0).  Panel (a) is that inequality,
+%     drawn in the slice Re x = 0 -- the plane the lecture's own
+%     Hamiltonian preserves.  The boundary det rho = 0 is the pure states,
+%     the centre is I/2, everything outside is a Hermitian trace-one
+%     matrix that is NOT a state: hatched, not filled, so it survives
+%     greyscale printing (and hatching is the right mark for "excluded").
+%   * Postulat 5 with the lecture's H = ( 0,1 ; 1,0 ) and
+%         U_t = cos(t/hbar) I - i sin(t/hbar) H
+%     gives, for rho_t = U_t rho U_t^dag,
+%         p_t  - 1/2 = r cos(2t/hbar + phi),   Im x_t = r sin(2t/hbar + phi),
+%     with (p-1/2, Im x) = r(cos phi, sin phi).  So U_t is a rotation about
+%     the centre of the disc at angular velocity 2/hbar: the radius r --
+%     equivalently det rho -- is conserved.  The circles in (a) are those
+%     orbits, not decoration.
+%   * Postulat 4 with the lecture's detector F = |0><0| gives
+%         tr(rho_t F) = p_t = 1/2 + r cos(2t/hbar + phi),
+%     the horizontal coordinate of the rotating point.  Panel (b) is that
+%     function.  Hence the point of the plate: the DISTANCE FROM THE CENTRE
+%     in (a) is the AMPLITUDE of the measured frequency in (b).  The pure
+%     state swings the full 0..1, the maximally mixed state answers 1/2
+%     forever -- it is deaf to this experiment.
+%
+% The three marked states, all in the slice Re x = 0 (numbers used below):
+%   |0><0|   r = 1/2, phi =  0     -> (p, Im x) = (1     , 0     )
+%   rho      r = 0.3, phi = 70 deg -> (p, Im x) = (0.6026, 0.2819)
+%   I/2      r = 0                 -> (p, Im x) = (0.5   , 0     )
+% and their curves in (b) are 1/2 + r cos(2t/hbar + phi) with the same
+% r and phi, so tr(rho F) at t = 0 is the p of the dot in (a) -- the
+% lecture's own "Ansprechhaeufigkeit der Z-Messung" example.
+%
+% Colour encodes one thing only: the state, ordered by purity r
+% (spacecadet r=0, munsell r=0.3, birrenorange r=1/2, the ramp of
+% `tpclevels`).  A state has the same colour in both panels, and its orbit
+% in (a) has the colour of the state that runs on it.  Construction lines
+% (radius, projection onto p) are neutral grey.
+%
+% Both axes of (a) carry the same unit length (scale only axis with matched
+% width/height), otherwise the circle -- the whole content of the panel --
+% would render as an ellipse.
+
+\begin{center}
+\begin{tikzpicture}
+
+% ─────────────────────────────────────────────────────────────
+%  (a)  The state disc  det rho = p(1-p) - |x|^2 >= 0
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    name=disc,
+    tpcplot,
+    scale only axis,
+    width=4.61cm, height=5.11cm,     % 1.28 x 1.42 units at 3.6 cm/unit
+    xmin=-0.14, xmax=1.14,
+    ymin=-0.68, ymax=0.74,
+    grid=none, clip=false, axis on top,
+    xtick={0,0.5,1}, xticklabels={$0$,$\tfrac12$,$1$},
+    ytick={-0.5,0,0.5}, yticklabels={$-\tfrac12$,$0$,$\tfrac12$},
+    xlabel={$p$}, ylabel={$\imag x$},
+    title={(a) \tpcifenglish{state disc}{Zustandsscheibe}},
+]
+
+  % Hermitesch, Spur eins, aber nicht positiv: kein Zustand.
+  \fill[forbidden] (axis cs:-0.14,-0.68) rectangle (axis cs:1.14,0.74);
+
+  % Das Innere der Scheibe freistellen: det rho >= 0.
+  \addplot[fill=white, draw=none, domain=0:360, samples=181]
+    ({0.5+0.5*cos(x)}, {0.5*sin(x)});
+
+  % Bahn des gemischten Zustands unter U_t: det rho bleibt erhalten.
+  \addplot[munsell, densely dotted, line width=0.8pt,
+           domain=0:360, samples=181]
+    ({0.5+0.3*cos(x)}, {0.3*sin(x)});
+  \addplot[munsell, densely dotted, line width=0.8pt,
+           -{Stealth[length=5pt]}, domain=118:152, samples=20]
+    ({0.5+0.3*cos(x)}, {0.3*sin(x)});
+
+  % Rand det rho = 0: die reinen Zustaende, ebenfalls eine Bahn.
+  \addplot[birrenorange, line width=1.2pt, domain=0:360, samples=181]
+    ({0.5+0.5*cos(x)}, {0.5*sin(x)});
+  \addplot[birrenorange, line width=1.2pt, -{Stealth[length=5pt]},
+           domain=175:205, samples=20]
+    ({0.5+0.5*cos(x)}, {0.5*sin(x)});
+
+  % Postulat 4: der Detektor liest die waagerechte Koordinate ab.
+  \draw[-{Stealth[length=4pt]}, birrengray!75, line width=0.5pt, densely dotted]
+    (axis cs:0.6026,0.2819) -- (axis cs:0.6026,-0.66);
+  \node[lbl, font=\scriptsize, text=birrengray, anchor=north west,
+        fill=white, fill opacity=0.9, text opacity=1, inner sep=1pt]
+    at (axis cs:0.635,-0.52) {$\tr(\rho F)$};
+
+  % Radius r = Abstand vom maximal gemischten Zustand.
+  \draw[-{Stealth[length=5pt]}, birrengray, line width=0.7pt]
+    (axis cs:0.5,0) -- (axis cs:0.6026,0.2819);
+  \node[lbl, font=\scriptsize, text=birrengray, anchor=east]
+    at (axis cs:0.525,0.175) {$r$};
+
+  % Die drei Zustaende
+  \node[circle, fill=birrenorange, inner sep=1.7pt] at (axis cs:1,0) {};
+  \node[circle, fill=munsell,      inner sep=1.7pt] at (axis cs:0.6026,0.2819) {};
+  \node[circle, fill=spacecadet,   inner sep=1.7pt] at (axis cs:0.5,0) {};
+
+  \node[lbl, anchor=east]  at (axis cs:0.975,0) {$\ketbra{0}{0}$};
+  \node[lbl, anchor=west]  at (axis cs:0.645,0.295) {$\rho$};
+  \node[lbl, anchor=north east] at (axis cs:0.49,-0.05) {$\tfrac{\mathbb{I}}{2}$};
+
+  % Rand und Umgebung benennen
+  \draw[birrengray, line width=0.5pt] (axis cs:0.235,0.545) -- (axis cs:0.185,0.405);
+  \node[lbl, font=\scriptsize, anchor=south west, inner sep=1pt]
+    at (axis cs:-0.02,0.55) {\tpcifenglish{pure}{rein}: $\det\rho=0$};
+  \node[lbl, font=\scriptsize, text=birrengray, anchor=south west,
+        align=left, inner sep=1pt]
+    at (axis cs:-0.10,-0.655) {$\det\rho<0$\\ \tpcifenglish{no state}{kein Zustand}};
+  \node[lbl, font=\scriptsize, text=birrengray, anchor=north east]
+    at (axis cs:1.14,0.72) {$\real x=0$};
+  \node[lbl, font=\scriptsize, text=birrengray, anchor=north west]
+    at (axis cs:0.125,0.315) {$U_t$};
+\end{axis}
+
+% ─────────────────────────────────────────────────────────────
+%  (b)  Postulat 4 + 5:  tr(rho_t F) = 1/2 + r cos(2t/hbar + phi)
+% ─────────────────────────────────────────────────────────────
+\begin{axis}[
+    tpcplot,
+    at={(disc.south east)}, anchor=south west, xshift=15mm,
+    scale only axis,
+    width=5.7cm, height=5.11cm,
+    xmin=0, xmax=6.2832, ymin=-0.06, ymax=1.10,
+    clip=false,
+    xtick={0,1.5708,3.1416,4.7124,6.2832},
+    xticklabels={$0$,$\tfrac{\pi}{2}$,$\pi$,$\tfrac{3\pi}{2}$,$2\pi$},
+    ytick={0,0.5,1}, yticklabels={$0$,$\tfrac12$,$1$},
+    xlabel={$t/\hbar$},
+    ylabel={$\tr(\rho_t F)$},
+    every axis y label/.style={at={(axis description cs:-0.17,0.5)},
+                               rotate=90, anchor=south, font=\small},
+    title={(b) $Z$-\tpcifenglish{measurement}{Messung}, $F=\ketbra{0}{0}$},
+]
+  % tr(rho_t F) = 1/2 + r cos(2t/hbar + phi), Amplitude r = Radius aus (a)
+  \addplot[birrenorange, line width=1.1pt, domain=0:6.2832, samples=241]
+    {0.5+0.5*cos(deg(2*x))};
+  \addplot[munsell, line width=1.1pt, domain=0:6.2832, samples=241]
+    {0.5+0.3*cos(deg(2*x)+70)};
+  \addplot[spacecadet, line width=1.1pt, domain=0:6.2832, samples=2]
+    {0.5};
+
+  \node[lbl, anchor=west] at (axis cs:6.40,1.00)  {$r=\tfrac12$};
+  \node[lbl, anchor=west] at (axis cs:6.40,0.603) {$r=0.3$};
+  \node[lbl, anchor=west] at (axis cs:6.40,0.50)  {$r=0$};
+\end{axis}
+
+\end{tikzpicture}
+\end{center}
