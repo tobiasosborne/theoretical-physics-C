@@ -9,7 +9,8 @@
 #       labels, references, figures, key-equation boxes, stray German)
 #   3. enrichment   the v0.2 German lectures still contain every equation,
 #      label, heading and environment the archived v0.1 had
-#   4. figures      every TikZ figure compiles on its own
+#   4. figures      every TikZ figure compiles on its own, is included
+#      by its lecture, and has all its prose behind \tpcifenglish
 #   5. build        both editions compile with zero LaTeX errors
 #
 # Usage:
@@ -182,6 +183,15 @@ check_figures() {
         fail_stage "$bad of ${#figs[@]} figure(s) failed to compile"
     else
         pass_stage "all ${#figs[@]} figure(s) compile"
+    fi
+
+    # Compiling is not enough: a figure serves both editions, so its prose
+    # must be language-switched and it must actually be included somewhere.
+    echo
+    if python3 scripts/check_figures.py; then
+        pass_stage "figures included and language-switched"
+    else
+        fail_stage "figure inclusion or bilingual problems"
     fi
 }
 
