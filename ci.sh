@@ -7,12 +7,14 @@
 #   2. parity       German and English editions agree structurally
 #      (scripts/check_parity.py: sections, display maths, environments,
 #       labels, references, figures, key-equation boxes, stray German)
-#   3. figures      every TikZ figure compiles on its own
-#   4. build        both editions compile with zero LaTeX errors
+#   3. enrichment   the v0.2 German lectures still contain every equation,
+#      label, heading and environment the archived v0.1 had
+#   4. figures      every TikZ figure compiles on its own
+#   5. build        both editions compile with zero LaTeX errors
 #
 # Usage:
 #   ./ci.sh              Run everything
-#   ./ci.sh --fast       Skip the full PDF builds (checks 1-3 only)
+#   ./ci.sh --fast       Skip the full PDF builds (checks 1-4 only)
 #   ./ci.sh --parity     Parity check only
 #   ./ci.sh --install-hook   Install as .git/hooks/pre-commit
 #
@@ -141,6 +143,22 @@ check_parity() {
 }
 
 # ══════════════════════════════════════════════════════════════
+#  2b. Enrichment — v0.2 still contains everything v0.1 had
+# ══════════════════════════════════════════════════════════════
+check_enrichment() {
+    stage "Enrichment (v0.2 vs archived v0.1)"
+    if [[ ! -d archive/skript-2022 ]]; then
+        echo -e "  ${YELLOW}skipped${NC}: no archived v0.1 to compare against"
+        return 0
+    fi
+    if python3 scripts/check_enrichment.py; then
+        pass_stage "v0.1 content preserved"
+    else
+        fail_stage "enrichment dropped content from v0.1"
+    fi
+}
+
+# ══════════════════════════════════════════════════════════════
 #  3. Figures — each compiles standalone
 # ══════════════════════════════════════════════════════════════
 check_figures() {
@@ -224,6 +242,7 @@ if [[ $PARITY_ONLY -eq 1 ]]; then
 else
     check_structure
     check_parity
+    check_enrichment
     check_figures
     [[ $FAST -eq 0 ]] && check_build
 fi
