@@ -1,25 +1,31 @@
 %!TEX root = TheoretischePhysikC.tex
 \section{Vorlesung: ,,Quantisierung``}
 
-Wie indentifiziert man den richtigen Hilbertraum, Hamiltonoperator und Observablen für ein gegebenes System? Leider gibt es keine systematische Methode, um diese Information für ein physikalisches System zu bestimmen. Das bedeutet, dass es bei einer klassischen Beschreibung eines Systems keine mathematisch gut definierte Abbildung gibt, die ihm automatisch das richtige Quantensystem zuordnet. Der Grund dafür ist der folgende. Die klassische Physik stellt eine gute Annäherung an die Physik quantenmechanischer Systeme dar, die Wechselwirkungen mit der Umgebung ausgesetzt sind. Diese schädlichen Auswirkungen der Umwelt auf ein Quantensystem sind als Dekohärenz bekannt. Die Dekohärenz ist der Grund dafür, dass die klassische Mechanik eine so gute Annäherung an die Alltagsphysik darstellt. 
+Wie indentifiziert man den richtigen Hilbertraum, Hamiltonoperator und Observablen für ein gegebenes System? Leider gibt es keine systematische Methode, um diese Information für ein physikalisches System zu bestimmen. Das bedeutet, dass es bei einer klassischen Beschreibung eines Systems keine mathematisch gut definierte Abbildung gibt, die ihm automatisch das richtige Quantensystem zuordnet. Der Grund dafür ist der folgende. Die klassische Physik stellt eine gute Annäherung an die Physik quantenmechanischer Systeme dar, die Wechselwirkungen mit der Umgebung ausgesetzt sind. Diese schädlichen Auswirkungen der Umwelt auf ein Quantensystem sind als Dekohärenz bekannt. Die Dekohärenz ist der Grund dafür, dass die klassische Mechanik eine so gute Annäherung an die Alltagsphysik darstellt. Geschlossene Systeme gibt es nämlich praktisch nicht: Alle geladenen Objekte koppeln an das elektromagnetische Feld, das selbst ein Quantensystem ist. Bewegen wir ein solches Objekt hin und her, so strahlt es, und die Strahlung trägt die Information mit Lichtgeschwindigkeit ins Unendliche.
 
-Im Idealfall möchte man eine Möglichkeit haben, das ursprüngliche Quantensystem allein aufgrund der Beschreibung des Systems durch die klassische Mechanik aufzudecken. Das heißt, wir wollen eine Möglichkeit, die Dekohärenz umzukehren. Leider ist dies im Allgemeinen unmöglich. Ein solches fiktives Umkehrverfahren ist unter dem Begriff ,,Quantisierung`` bekannt geworden. 
+Im Idealfall möchte man eine Möglichkeit haben, das ursprüngliche Quantensystem allein aufgrund der Beschreibung des Systems durch die klassische Mechanik aufzudecken. Das heißt, wir wollen eine Möglichkeit, die Dekohärenz umzukehren. Leider ist dies im Allgemeinen unmöglich. Ein solches fiktives Umkehrverfahren ist unter dem Begriff ,,Quantisierung`` bekannt geworden.
 
-Wir umgehen die Schwierigkeiten der Dekohärenz durch Versuch und Irrtum. Jahrzehntelange Erfahrung hat uns eine Liste von Hilberträumen, Hamiltonoperatoren und Observablen beschert, von denen wir inzwischen wissen, dass sie die korrekte physikalische Beschreibungen für breite Klassen von Systemen liefern. Tatsächlich sind alle fundamentalen Wechselwirkungen (mit Ausnahme der Gravitation) auf diese Weise verstanden worden. Ziel dieser Vorlesung ist es, eine Liste der grundlegenden Quantensysteme zu erstellen, von denen bekannt ist, dass sie bestimmte ideale Systeme korrekt modellieren. 
+\begin{greybox}[Ein inverses Problem]
+	Die Dekohärenz bildet verschiedene Quantensysteme auf dasselbe klassische System ab -- zwei Punkte landen auf einem. Ebenso wenig lässt sich aus dem verrauschten Bild einer Überwachungskamera ein Gesicht rekonstruieren.
+\end{greybox}
+
+Wir umgehen die Schwierigkeiten der Dekohärenz durch Versuch und Irrtum. Jahrzehntelange Erfahrung hat uns eine Liste von Hilberträumen, Hamiltonoperatoren und Observablen beschert, von denen wir inzwischen wissen, dass sie die korrekte physikalische Beschreibungen für breite Klassen von Systemen liefern. Tatsächlich sind alle fundamentalen Wechselwirkungen (mit Ausnahme der Gravitation) auf diese Weise verstanden worden. Ziel dieser Vorlesung ist es, eine Liste der grundlegenden Quantensysteme zu erstellen, von denen bekannt ist, dass sie bestimmte ideale Systeme korrekt modellieren. Denken Sie dabei nie, es gäbe ein einfaches Rezept dafür -- wäre es so leicht, bräuchten wir keine Experimentalphysik.
 
 
 \subsection{Ein Teilchen in einer Dimension}
-Das wichtigste System, das erfolgreich mit der Quantenmechanik modelliert wurde, ist das Teilchen in einer Dimension. Der Hilbertraum (Postulat 1) lautet in diesem Fall $\mathcal{H}\equiv L^2(\mathbb{R})$. Das heißt, wir beschreiben Präparationen (Postulat 2) von reinen Zuständen eines Teilchens mit Hilfe von komplexen Funktionen -- \emph{Wellenfunktionen} -- $\Psi:\mathbb{R}\rightarrow \mathbb{C}$. Wellenfunktionen werden mit der Ket-Notation nach
+Das wichtigste System, das erfolgreich mit der Quantenmechanik modelliert wurde, ist das Teilchen in einer Dimension. Wie immer gehen wir dabei pflichtgemäß alle fünf Postulate durch. Der Hilbertraum (Postulat 1) lautet in diesem Fall $\mathcal{H}\equiv L^2(\mathbb{R})$. Das heißt, wir beschreiben Präparationen (Postulat 2) von reinen Zuständen eines Teilchens mit Hilfe von komplexen Funktionen -- \emph{Wellenfunktionen} -- $\Psi:\mathbb{R}\rightarrow \mathbb{C}$. Wellenfunktionen werden mit der Ket-Notation nach
 \begin{equation}
 	|\Psi\rangle \equiv \int_{-\infty}^\infty \Psi(x) |x\rangle \, dx
 \end{equation}
-beschrieben.
+beschrieben. Die Beschränkung auf reine Zustände ist keine Willkür: Jede Dichtematrix ist ein Gemisch reiner Zustände. Erlaubt sind nur normierte Vektoren, $\langle \Psi|\Psi\rangle = 1$.
+
+Die Wellenfunktion ist bislang nur Notation; Bedeutung bekommt sie erst durch die Messungen. Eine Theorie braucht beides, Zustände \emph{und} Detektoren.
 
 Gemäß Postulat 3 werden Detektoren mit Operatoren modelliert. Wir beschreiben hier nur Orts-Detektoren. Solche Detektoren liefern ,,ja``/,,nein``-Ergebnisse, d.H.\ das Teilchen befindet sich in einem gegebenem Ort oder nicht. Um solche Detektoren zu beschreiben benötigen wir ein Intervall $[a,b]\subset \mathbb{R}$, wobei $a<b$. Der entsprechende Detektor wird durch den Operator
 \begin{equation}
 	F_{[a,b]} \equiv \int_{a}^b |x\rangle\langle x|\, dx
 \end{equation}
-definiert. Solche Operatoren decken zwar nicht alle physikalisch möglichen Detektoren ab, dienen aber als physikalisch relevante Grundlage. 
+definiert. Solche Operatoren decken zwar nicht alle physikalisch möglichen Detektoren ab, dienen aber als physikalisch relevante Grundlage. Warum ein Bereich und nicht ein Punkt? Weil die Frage nach der genauen Stelle immer die Antwort ,,Wahrscheinlichkeit null`` hat. Auf Intervalle sind wir nicht festgelegt: Für kompliziertere Bereiche sorgt die Additivität -- für disjunkte Mengen $S_1$, $S_2$ gilt $F(S_1\cup S_2) = F(S_1)+F(S_2)$.
 
 Angenommen, das System befindet sich in einem reinen Zustand $|\Psi\rangle$ und wir werden die Messung $F_{[a,b]}$ durchführen. Mit welcher Wahrscheinlichkeit werden wir das Teilchen im Bereich $a \le x \le b$ finden? Postulat 4 liefert uns die Ansprechhäufigkeit des Detektors $F_{[a,b]}$ gemäß einer Präparation $\rho \equiv |\Psi\rangle\langle \Psi|$ nach 
 \begin{equation}
@@ -43,19 +49,45 @@ Weil die Größe $|\Psi(x)|^2$ ist nicht negativ ist, können wir daher die Grö
 \begin{equation}
 	\eqbox{p(x) \equiv |\Psi(x)|^2}
 \end{equation}
-als eine Wahrscheinlichtkeitsdichte interpretieren. 
+als eine Wahrscheinlichtkeitsdichte interpretieren.
 
-Warnung: Das Objekt 
+\begin{intuition}
+	Die Wellenfunktion ordnet jeder möglichen Position eine \emph{komplexe} Zahl zu und liefert die Position nur indirekt: Die Wahrscheinlichkeit, das Teilchen zwischen $a$ und $b$ zu finden, ist die Fläche unter der Kurve $p(x)$. Der Versuchung, sich schon $\Psi$ selbst als Dichte vorzustellen, soll man widerstehen.
+\end{intuition}
+
+Warnung: Das Objekt
 \begin{equation}
 	F_{\{x\}} \equiv |x\rangle \langle x|,
 \end{equation}
-stellt einen Operator \emph{nicht} dar. Dies hat mit der Interpretation von $p(x) \, (\equiv \tr(F_{\{x\}}\rho))$ zu tun: Die Wahrscheinlichkeit, dass wir das Teilchen \emph{genau} an der Stelle $x$ finden, ist immer gleich Null. Man muss immer ein Intervall angeben um eine nicht verschwindende Wahrscheinlichkeit zu erhalten. Trotzdem arbeitet man manchmal rein informell mit solchen ,,Projektoren``. Insbesondere ist es hilfreich, sich den ,,Projektor`` $|x\rangle\langle x|$ so vorzustellen, dass er das Ereignis darstellt, dass sich das Teilchen an der Position $x$ befindet. Nach dieser Art und Weise führt man die Positionsoperator (gemäß Gl.~(\ref{eq:observableA}))
+stellt einen Operator \emph{nicht} dar. Dies hat mit der Interpretation von $p(x) \, (\equiv \tr(F_{\{x\}}\rho))$ zu tun: Die Wahrscheinlichkeit, dass wir das Teilchen \emph{genau} an der Stelle $x$ finden, ist immer gleich Null. Man muss immer ein Intervall angeben um eine nicht verschwindende Wahrscheinlichkeit zu erhalten.
+
+Mathematisch sieht man dasselbe daran, dass $F_{\{x\}}$ die Projektoreigenschaft $F^2 = F$ verfehlt:
+\begin{equation}
+	F_{\{x\}}^2 = |x\rangle \langle x|x\rangle \langle x| = \langle x|x\rangle\, |x\rangle\langle x| = \delta(0)\, F_{\{x\}},
+\end{equation}
+und $\delta(0)$ ist per Definition unendlich: Statt $F_{\{x\}}$ kommt $\infty\cdot F_{\{x\}}$ heraus. Für ein Intervall dagegen steht in der Mitte $\langle x|y\rangle = \delta(x-y)$:
+\begin{equation}
+	\begin{split}
+		F_{[a,b]}^2 &= \int_a^b \int_a^b |x\rangle \langle x|y\rangle \langle y|\, dx\, dy \\
+		&= \int_a^b \int_a^b |x\rangle\, \delta(x-y)\, \langle y|\, dx\, dy \\
+		&= \int_a^b |x\rangle\langle x|\, dx = F_{[a,b]}.
+	\end{split}
+\end{equation}
+Die Delta-Funktion erledigt eines der Integrale, und übrig bleibt der Ausgangsoperator: $F_{[a,b]}$ ist wirklich ein Projektor.
+\begin{merksatz}
+	Alleinstehende Ket-Bra-Kombinationen der Positionsbasis sind zu vermeiden -- sie sind keine Operatoren. Unter einem Integral sind dieselben Ausdrücke harmlos.
+\end{merksatz}
+Trotzdem arbeitet man manchmal rein informell mit solchen ,,Projektoren``. Insbesondere ist es hilfreich, sich den ,,Projektor`` $|x\rangle\langle x|$ so vorzustellen, dass er das Ereignis darstellt, dass sich das Teilchen an der Position $x$ befindet. Nach dieser Art und Weise führt man die Positionsoperator (gemäß Gl.~(\ref{eq:observableA}))
 \begin{equation}
 	\eqbox{\widehat{x} \equiv \int_{-\infty}^{\infty} x |x\rangle \langle x|\, dx}
 \end{equation}
-ein.
+ein. Man liest ihn als \emph{erstes Moment} der Ortsmessung; das Hütchen erinnert daran, dass hier ein Operator steht und keine Zahl. Er wirkt als Multiplikationsoperator,
+\begin{equation}
+	\widehat{x}|\Psi\rangle = \int_{-\infty}^{\infty} x\, |x\rangle \langle x|\Psi\rangle\, dx = \int_{-\infty}^{\infty} x\, \Psi(x)\, |x\rangle\, dx,
+\end{equation}
+aus $\Psi(x)$ wird also $x\,\Psi(x)$.
 
-Eine wichtige Bermerkung: Es ist physikalisch unmöglich, das Teilchen in dem ,,klassischem Zustand`` $|\Psi\rangle = |x\rangle$ zu präparieren. Man bräuchte ein Gerät mit unendlicher Präzision. Wir werden auf dieses Thema in einer späteren Vorlesung zurückkommen. Natürlich vorkommende reine Zustände befinden sich im Allgemeinen immer in Superposition:
+Eine wichtige Bermerkung: Es ist physikalisch unmöglich, das Teilchen in dem ,,klassischem Zustand`` $|\Psi\rangle = |x\rangle$ zu präparieren. Man bräuchte ein Gerät mit unendlicher Präzision. Dasselbe sagt die Suche nach Eigenvektoren: Ein $|u\rangle$ mit $\widehat{x}|u\rangle = \lambda|u\rangle$ hätte als Wellenfunktion eine Delta-Funktion, wäre also ein Positionsbasiselement. Von ,,Positionseigenvektoren`` spricht man trotzdem ständig -- nur sind es idealisierte Objekte, keine Elemente von $\mathcal{H}$. Wir werden auf dieses Thema in einer späteren Vorlesung zurückkommen. Natürlich vorkommende reine Zustände befinden sich im Allgemeinen immer in Superposition:
 \begin{equation}
 	\Psi(x) \not= \delta(x-y).
 \end{equation}
@@ -69,7 +101,7 @@ Der Erwartungswert von $\widehat{x}$ stellt die durchschnittliche Position des T
 		&= \int x p(x)\, dx.
 	\end{split}
 \end{equation}
-(Diese Gleichung gilt nur im Fall, dass sich das Teilchen in dem reinen Zustand $\rho \equiv |\Psi\rangle\langle \Psi|$ sich befindet.)
+(Diese Gleichung gilt nur im Fall, dass sich das Teilchen in dem reinen Zustand $\rho \equiv |\Psi\rangle\langle \Psi|$ sich befindet.) Hinter dem Symbol $\langle \widehat{x}\rangle$ steckt ein ganzes Verfahren: präparieren, messen, notieren -- viele Male, bis der Mittelwert steht.
 
 Der Impulsoperator eines eindimensionalen quantenmechanischen Teilchens wird durch
 \begin{equation}
@@ -88,7 +120,7 @@ mit Matrixelemente
 \begin{equation}
 	\langle x|\widehat{H}|\Psi\rangle = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\Psi(x)
 \end{equation}
-gegeben. Hierbei bezeichnet $m$ die Masse des Teilchens.
+gegeben. Hierbei bezeichnet $m$ die Masse des Teilchens. Woher kommt dieser Ausdruck? Aus der einzigen Quantisierungsregel, die wir haben: Der Hamiltonoperator ist die klassische Energie, mit Hütchen. Klassisch ist $E = p^2/2m$; wir setzen das Hütchen auf. Das ist eine Faustregel, kein Verfahren -- jede Quantisierung bleibt eine Vermutung, über die erst das Experiment entscheidet.
 
 \begin{beispiel}
 	Angenommen, ein Teilchen wurde in \emph{gleicher Superposition} über ein Intervall $[-1,1]$ präpariert: Der entsprechende Zustand/Wellenfunktion lautet
@@ -98,7 +130,7 @@ gegeben. Hierbei bezeichnet $m$ die Masse des Teilchens.
 			0, \quad \text{sonst}.
 		\end{cases}
 	\end{equation}
-	Die Normierung $\tr(\rho) = \tr(|\Psi\rangle\langle \Psi|) = \langle \Psi|\Psi\rangle$ des Zustandes wird durch
+	Bevor wir rechnen, raten wir: Aus Symmetriegründen sollte der Mittelwert genau null sein. Die Normierung $\tr(\rho) = \tr(|\Psi\rangle\langle \Psi|) = \langle \Psi|\Psi\rangle$ des Zustandes wird durch
 	\begin{equation}
 		\begin{split}
 			\langle \Psi|\Psi\rangle &= \int_{-\infty}^\infty |\Psi(x)|^2 \, dx \\

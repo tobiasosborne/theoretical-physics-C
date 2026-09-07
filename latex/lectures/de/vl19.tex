@@ -1,7 +1,13 @@
 %!TEX root = TheoretischePhysikC.tex
 
 \section{Vorlesung: Entropie}
-Wie wird der Begriff ,,gleich wahrscheinlich verteilte Mikrozustände`` in der Quantenmechanik definiert? Um diese Frage zu beantworten müssen wir das Konzept von \emph{Entropie} einführen. Diese Größe wird als Maß für die \emph{Informationsinhalt} eines Zustandes betrachtet. Oder als ein Maß an \emph{fehlender Information}. Je mehr Informationsgehalt ein Zustand besitzt, desto weniger wissen wir, welcher Mikrozustand auftritt. 
+Wie wird der Begriff ,,gleich wahrscheinlich verteilte Mikrozustände`` in der Quantenmechanik definiert? Um diese Frage zu beantworten müssen wir das Konzept von \emph{Entropie} einführen. Diese Größe wird als Maß für die \emph{Informationsinhalt} eines Zustandes betrachtet. Oder als ein Maß an \emph{fehlender Information}. Je mehr Informationsgehalt ein Zustand besitzt, desto weniger wissen wir, welcher Mikrozustand auftritt.
+
+Drei Lesarten laufen nebeneinander her: fehlende Information, Unordnung, Informationsgehalt -- dieselbe Zahl, verschieden gelesen. Nötig wird sie, weil im Hilbertraum das klassische Abzählen der Mikrozustände versagt: wegen der Superpositionen gibt es unendlich viele.
+
+\begin{intuition}
+	Ein Speicher fasse zehn Bit. Kennen wir seinen Inhalt nicht, so fehlen uns zehn Bit; stehen alle Bits auf Null, fehlt uns keine Information mehr -- und es ist auch kein Speicherplatz mehr frei.
+\end{intuition}
 
 Sei $\mathcal{H} \equiv \mathbb{C}^d$ ein Hilbertraum und $\rho$ ein Dichteoperator, der das statistische Ensemble $\{(p_j,\rho_j)\,|\, j=1,2, \ldots, N\}$ darstellt:
 \begin{equation}
@@ -12,7 +18,7 @@ Die von Neumann-Entropie von $\rho$ wird wie folgt definiert
 \begin{equation}
   \eqbox{S(\rho) = -k\tr(\rho\log(\rho)) = -k\langle \log(\rho)\rangle,}    
 \end{equation} 
-wobei $k=1,38064852 \times 10^{-23} \, \text{m}^2 \,\text{kg} \,\text{s}^{-2} \,\text{K}^{-1}$ die Boltzmann-Konstante ist und $\log(\rho)$ wird mit Hilfe vom Funktionalkalkül berechnet. 
+wobei $k=1,38064852 \times 10^{-23} \, \text{m}^2 \,\text{kg} \,\text{s}^{-2} \,\text{K}^{-1}$ die Boltzmann-Konstante ist und $\log(\rho)$ wird mit Hilfe vom Funktionalkalkül berechnet. Der Logarithmus ist hier, wie überall in der Physik, der natürliche; und $\log(\rho)$ muss selbst ein Operator sein, sonst gäbe es das Produkt $\rho\log(\rho)$ gar nicht.
 
 Weil jeder Dichteoperator $\rho$ hermitesch ist, können wir $\rho$ bezüglich einer Eigenwert-Eigenvektor-Zerlegung darstellen:
 \begin{equation}
@@ -22,10 +28,33 @@ wobei $r_j\ge 0$ und $\langle r_j|r_k\rangle = \delta_{jk}$. Der Logarithmus von
 \begin{equation}
   \log(\rho) = \sum_{j=1}^d \log(r_j) |r_j\rangle\langle r_j|
 \end{equation}
-berechnet. Daher wird die von Neumann-Entropie von $\rho$ wie folgt berechnet:
+berechnet. Ist ein Eigenwert $r_j = 0$, so ist $\log(r_j) = -\infty$; darauf kommen wir im ersten Beispiel zurück.
+
+\begin{merksatz}[Vorsicht mit dem Logarithmus einer Matrix]
+	$\log(\rho)$ ist \emph{nicht} der eintragsweise Logarithmus der Einträge von $\rho$. Erst diagonalisieren, dann den Logarithmus auf die Eigenwerte anwenden. Eintragsweise rechnen darf man nur, wenn $\rho$ bereits diagonal ist.
+\end{merksatz}
+
+Ein Beispiel: für
+\begin{equation}
+	\rho = \begin{pmatrix} \frac{1}{2} & \frac{1}{4}\\[2pt] \frac{1}{4} & \frac{1}{2}\end{pmatrix}
+	\quad \text{ist} \quad
+	\log(\rho) = \frac{1}{2}\begin{pmatrix} \log\frac{3}{16} & \log 3\\[2pt] \log 3 & \log\frac{3}{16}\end{pmatrix}
+	\neq \begin{pmatrix} \log\frac{1}{2} & \log\frac{1}{4}\\[2pt] \log\frac{1}{4} & \log\frac{1}{2}\end{pmatrix},
+\end{equation}
+denn die Eigenwerte sind $3/4$ und $1/4$.
+
+Daher wird die von Neumann-Entropie von $\rho$ wie folgt berechnet:
 \begin{equation}
   S(\rho) = -k\sum_{j=1}^d \log(r_j) \tr(|r_j\rangle\langle r_j|\rho) = -k\sum_{j=1}^d r_j\log(r_j).
 \end{equation}
+Das ist der Befreiungsschlag: die Entropie hängt \emph{nur} von den Eigenwerten ab, die Eigenvektoren tauchen nicht mehr auf. Eine unitäre Drehung ändert das Spektrum nicht, also auch nicht die Entropie:
+\begin{equation}
+	\eqbox{S(\rho) = S(U\rho U^{\dagger}) \quad \text{für alle unitären } U.}
+\end{equation}
+
+\begin{übung}
+	Beweisen Sie die unitäre Invarianz $S(\rho) = S(U\rho U^{\dagger})$.
+\end{übung}
 
 \begin{beispiel}
   Ein reiner Zustand $|\psi\rangle$ entspricht einem statischen Ensemble, in dem $|\psi\rangle$ mit Wahrscheinlichkeit $1$ auftritt. Der dazugehörige Dichteoperator ist durch
@@ -36,7 +65,7 @@ berechnet. Daher wird die von Neumann-Entropie von $\rho$ wie folgt berechnet:
   \begin{equation}
     S(\rho) = -k\sum_{j=1}^d r_j\log(r_j) = -k r_1\log(r_1) = 0.
   \end{equation}
-  Hierbei nimmt die Funktion $f(x) = -x\log(x)$ den Wert $0$ an der Stelle $x=0$ an. In diesem Beispiel beträgt die von Neumann-Entropie Null. Die Interpretation ist hier, dass das statistische Ensemble keine Informationen enthält. Man weiß immer, in welchem Zustand sich das System befindet. Es fehlt keine Information über den Zustand des Systems.
+  Hierbei nimmt die Funktion $f(x) = -x\log(x)$ den Wert $0$ an der Stelle $x=0$ an. Genauer ist $0\log(0)$ als Grenzwert $\lim_{x\to 0} x\log(x)$ zu lesen; die Kurve $-x\log(x)$ läuft bei $x=0$ sichtbar auf Null zu. In diesem Beispiel beträgt die von Neumann-Entropie Null. Die Interpretation ist hier, dass das statistische Ensemble keine Informationen enthält. Man weiß immer, in welchem Zustand sich das System befindet. Es fehlt keine Information über den Zustand des Systems. Ein reiner Zustand ist eben kein Ensemble.
 \end{beispiel}
 
 \begin{beispiel}
@@ -50,3 +79,13 @@ berechnet. Daher wird die von Neumann-Entropie von $\rho$ wie folgt berechnet:
   \end{equation}
   Die von Neumann-Entropie erreicht in diesem Fall den maximal möglichen Wert. Die Interpretation ist hier, dass das statistische Ensemble die maximale Information enthält. Man weiß nicht, in welchem Zustand sich das System befindet. Es fehlen alle Information über den Zustand des Systems.
 \end{beispiel}
+
+Wegen des Vorfaktors $k$ ist die Entropie eines einzelnen Qubits winzig; groß wird sie erst bei sehr vielen Teilchen.
+
+\begin{übung}\label{ex:entropie-additiv}
+	Es sei $\rho = \rho_1\otimes\rho_2\otimes\cdots\otimes\rho_N$ der Zustand von $N$ Teilchen. Zeigen Sie die Additivität
+	\begin{equation}
+		S(\rho) = \sum_{j=1}^N S(\rho_j).
+	\end{equation}
+	Für gleiche Faktoren ist das $N$-fache der Entropie eines einzelnen Teilchens -- die Entropie ist \emph{extensiv}.
+\end{übung}

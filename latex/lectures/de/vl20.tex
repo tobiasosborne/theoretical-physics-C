@@ -1,23 +1,40 @@
 %!TEX root = TheoretischePhysikC.tex
 
 \section{Vorlesung: Mikrokanonisches Ensemble}
-Angenommen, ein abgeschlossenes Quantensystem (Hilbertraum: $\mathcal{H}\equiv \mathbb{C}^d$, Hamiltonoperator: $\widehat{H}$) wird mit fester Teilchenzahl, festem Volumen und Energie nur im Intervall $[E, E+\Delta]$ mit kleinem $\Delta$ präpariert. Wir besitzen zu wenig Information: die Teilchenzahl usw. Diese Informationen reicht nicht, um den Zustand des Systems vollständig zu beschreiben. Wie können wir den Zustand des Systems modellieren? Laut zentraler Annahme der statistischen Physik sollen alle Zustände mit einer Energie in $[E, E+\Delta]$ mit gleichem statistischen Gewicht auftreten. 
+Systeme in der Natur bestehen aus $10^{16}$ bis $10^{23}$ Teilchen; ihr Hilbertraum wird so groß, dass eine exakte Behandlung so gut wie unmöglich wird -- selbst im Prinzip. Der Ausweg ist die statistische Physik, und sie kostet Information.
+
+Angenommen, ein abgeschlossenes Quantensystem (Hilbertraum: $\mathcal{H}\equiv \mathbb{C}^d$, Hamiltonoperator: $\widehat{H}$) wird mit fester Teilchenzahl, festem Volumen und Energie nur im Intervall $[E, E+\Delta]$ mit kleinem $\Delta$ präpariert. Wir besitzen zu wenig Information: die Teilchenzahl usw. Diese Informationen reicht nicht, um den Zustand des Systems vollständig zu beschreiben. Wie können wir den Zustand des Systems modellieren? Laut zentraler Annahme der statistischen Physik sollen alle Zustände mit einer Energie in $[E, E+\Delta]$ mit gleichem statistischen Gewicht auftreten. Das ist ein Prinzip, nicht die Wahrheit: ohne diese Annahme kämen wir an die Wahrscheinlichkeiten gar nicht heran.
 
 Die Energie-Eigenzustände $|E_j\rangle$ und dazugehörige Energie-Eigenwerte $E_j$ des Systems liefern uns eine Diagonalisierung von $H$:
 \begin{equation}
   \widehat{H} = \sum_{j=1}^d E_j |E_j\rangle \langle E_j|.
 \end{equation}
+Damit ist keine Einschränkung verbunden: jeder Hamiltonoperator ist hermitesch und deshalb diagonalisierbar. Endlichdimensional zu rechnen erleichtert nur die Darstellung.
 Mithilfe von $\{E_j, |E_j\rangle \}_{j=1}^d$ identifizierung wir das folgende statistische Ensemble als Modell für den Zustand des Systems. Der Eigenzustand $|E_j\rangle$ taucht mit Wahrscheinlichkeit $0$ auf, wenn $E_j\not\in [E,E+\Delta]$. Im Fall, dass $E_j\in [E,E+\Delta]$ taucht $|E_j\rangle$ mit Wahrscheinlichkeit $1/N_E$ auf, wobei $N_E$ die Anzahl der Zustände in $[E, E+\Delta]$ ist. Wir stellen daher die Hypothese auf, dass der folgende Quantenzustand das System am besten modelliert (angesichts der uns vorliegenden Informationen):
 \begin{equation}
   \rho = \sum_{E_j\in [E,E+\Delta]} \frac{1}{N_E} |E_j\rangle \langle E_j|.
 \end{equation} 
 Dieses statistische Ensemble wird als \emph{mikrokanonisches Ensemble} bezeichnet. Das mikrokanonische Ensemble wird als Modell für den Zustand eines Systems verwendet, wenn wir die Teilchenzahl, das Volumen und die Energie des Systems genau kennen.
 
+\begin{beispiel}
+  Ein Dreiniveausystem, dessen Hamiltonoperator bereits diagonal vorliegt:
+  \begin{equation}
+    \widehat{H} = \begin{pmatrix} 0 & 0 & 0\\ 0 & 1 & 0\\ 0 & 0 & 1{,}1\end{pmatrix},
+  \end{equation}
+  mit den Standardbasisvektoren als Energieeigenzuständen, $E_1 = 0$, $E_2 = 1$ und $E_3 = 1{,}1$. Gemessen sei die Energie im Bereich $[0{,}9;\, 1{,}2]$, also $E = 0{,}9$ und $\Delta = 0{,}3$. Darin liegen $E_2$ und $E_3$, nicht aber $E_1$, also ist $N_E = 2$ und
+  \begin{equation}
+    \rho = \frac{1}{2}|E_2\rangle\langle E_2| + \frac{1}{2}|E_3\rangle\langle E_3|
+         = \begin{pmatrix} 0 & 0 & 0\\ 0 & \frac{1}{2} & 0\\ 0 & 0 & \frac{1}{2}\end{pmatrix}.
+  \end{equation}
+  Beachten Sie, was die Messung leistet: der Grundzustand tritt mit Wahrscheinlichkeit genau null auf, dort ist das System nie.
+\end{beispiel}
+
 Die Entropie des mikrokanonischen Ensembles wird wie folgt berechnet:
 \begin{equation}
   S(\rho) = -k\sum_{E_j\in [E,E+\Delta]} \frac{1}{N_E} \log\left(\frac{1}{N_E}\right) = k \log(N_E).
 \end{equation}
-Diesen Zustand \emph{maximiert} die Entropie unter den Nebenbedingungen, dass die Energie in $[E,E+\Delta]$ liegt (und die Teilchenzahl und Volumen des Systems fest bleibt).
+Kurz ist die Rechnung, weil $\rho$ hier schon diagonal ist; das Minuszeichen hebt sich gegen $\log(1/N_E) = -\log(N_E)$ auf. Im Beispiel oben ist $S(\rho) = k\log(2)$.
+Diesen Zustand \emph{maximiert} die Entropie unter den Nebenbedingungen, dass die Energie in $[E,E+\Delta]$ liegt (und die Teilchenzahl und Volumen des Systems fest bleibt). Das ist zunächst nur eine Beobachtung; man kann sie aber umdrehen und zum Prinzip erheben.
 
 Die Methode, bei der man die Hypothese so aufstellt, dass der Systemzustand die Entropie \emph{maximiert} wird, wurde 1957 von Edwin Thompson Jaynes in Anlehnung an Methoden der statistischen Mechanik und der Shannon'schen Informationstheorie eingeführt. Grundlage ist, in Abwesenheit von Information die Entropie der A-priori-Wahrscheinlichkeit zu maximieren, da jede andere Zuweisung willkürliche Einschränkungen der betrachteten Situation träfe. Die Maximum-Entropie-Methode legt sich so wenig wie möglich fest. Jaynes zufolge ist dies aber nur der letzte Schritt, um nach Einfüllen aller vorhandenen Information etwaige noch bestehende Lücken zu schließen.
 
@@ -25,3 +42,9 @@ In der statistischen Physik bedeutet dies:
 \begin{center}
 \parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{Unter allen Zuständen eines physikalischen Systems, die kompatibel mit dem vorhandenen Wissen über das System sind, ist jener zu wählen, welcher die Entropie maximiert.}\end{tcolorbox}}
 \end{center}
+
+Warum lohnt dieser Tausch? Die Grundannahme spricht von \emph{gleich wahrscheinlichen} Mikrozuständen. Klassisch bilden diese eine wohlbestimmte Menge; quantenmechanisch sind ganze kontinuierliche Familien von Superpositionen zugelassen, und dann ist unklar, was überhaupt abgezählt werden soll. Das Maximum-Entropie-Prinzip kennt dieses Problem nicht, denn es braucht nur eine Zielfunktion und Nebenbedingungen:
+\begin{equation}
+  \max_{\rho}\, S(\rho) \quad \text{unter den Nebenbedingungen, die unser Wissen quantifizieren,}
+\end{equation}
+hier also, dass die Energie in $[E,E+\Delta]$ liegt. So gehen wir von nun an vor: erst die Nebenbedingungen, dann die Maximierung.

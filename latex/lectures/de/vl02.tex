@@ -3,6 +3,8 @@
 \section{Vorlesung: Hilbertraum}
 Um die Zustände der Quantenmechanik zu beschreiben wird der \emph{Hilbertraum} eine größere Rolle spielen. Um diesen mathematischen Raum zu definieren, benötigen wir erst \emph{komplexe Vektorräume}. Solche Räume werden analog mit dem reellen Fall definiert. 
 
+Warum hier \emph{komplexe} und nicht reelle Vektoren auftreten, wissen wir nicht: die Natur ist nun einmal so gebaut, und eine bessere Alternative wurde bisher nicht gefunden.
+
 Ein \emph{komplexer Vektor} $\mbf{v}\in \mathbb{C}^n$ ist eine Spalte von $n$ komplexen Zahlen
 \begin{equation}
 	\mbf{v} = 
@@ -50,6 +52,8 @@ Es gelten die folgenden Rechenoperationen
 \end{enumerate}
 Der Raum $V$ aller solcher Vektoren mit festem $n$ wird als \emph{komplexer Vektorraum} bezeichnet. 
 
+Für den Vektorraum selbst genügen die ersten beiden Regeln; Kreuz-Operation und Skalarprodukt sind Zusatzstruktur, die ihn erst zum Hilbertraum macht.
+
 Hierbei wird $n$ als \emph{Dimension} von $V$ definiert. Oft verwendet wird die Notation $\mathbb{C}^n$ für den oben definierten Vektorraum $V$.
 
 \begin{beispiel}
@@ -78,7 +82,7 @@ Hierbei wird $n$ als \emph{Dimension} von $V$ definiert. Oft verwendet wird die 
 	\end{equation}
 \end{beispiel}
 
-Unendlich dimensionale Vektorräume sind ebenfalls möglich und spielen eine sehr wichtige Rolle in der Beschreibung quantenmechanischer Systeme. Wie sind solche Vektorräume zu verstehen? Man kann sich unendlich dimensionale Vektoren als Spalten mit unendlich vielen Einträge vorstellen, z.B.:
+Unendlich dimensionale Vektorräume sind ebenfalls möglich und spielen eine sehr wichtige Rolle in der Beschreibung quantenmechanischer Systeme. Der Grund ist physikalisch: unsere besten Modelle sind Felder, und Felder haben unendlich viele Freiheitsgrade. Wie sind solche Vektorräume zu verstehen? Man kann sich unendlich dimensionale Vektoren als Spalten mit unendlich vielen Einträge vorstellen, z.B.:
 \begin{equation}
 	\mbf{v} = \begin{pmatrix}
 		v_1 \\ v_2 \\ \vdots \\
@@ -91,17 +95,41 @@ Alle Rechenregeln für Vektorräume gelten auch in den unendlichen dimensionalen
 \end{equation}
 Das heißt, in der Regel, dass man in allen Gleichungen $n=\infty$ setzt. Es gibt mehrere subtile Aspekte, die man in Betracht ziehen müsste, um rigorös mit unendlich dimensionalen Vektorräumen zu arbeiten. Allerdings werden wir in dieser Vorlesung diese Aspekte nur nebenbei erwähnen.
 
+Einer davon tritt sofort auf. Der Vektor mit lauter Einsen,
+\begin{equation}
+	\mbf{v} = \begin{pmatrix}
+		1 \\ 1 \\ 1 \\ \vdots
+	\end{pmatrix},
+\end{equation}
+ist eine legale unendliche Liste, aber sein Skalarprodukt mit sich selbst divergiert:
+\begin{equation}
+	\mbf{v}^\dag\mbf{v} = \sum_{j=1}^\infty 1 = \infty.
+\end{equation}
+Physikalisch ist die Antwort darauf einfach --- wir lassen solche Vektoren nicht zu. Erlaubt ist ein Vektor genau dann, wenn
+\begin{equation}
+	\eqbox{\mbf{v}^\dag\mbf{v} = \sum_{j=1}^\infty |v_j|^2 < \infty}
+\end{equation}
+gilt. Diese Menge ist wieder ein komplexer Vektorraum; man bezeichnet ihn mit $\ell^2$, wobei die Zwei vom Quadrat in der Summe kommt. Damit kann bei der Berechnung von Wahrscheinlichkeiten nichts unendlich groß werden.
+
 Für uns ist das wichtigste Beispiel einen unendlich dimensionalen Vektorraumes der Raum der \emph{quadratintegrierbaren Funktionen} (der als $L^{2}(\mathbb{R})$ bezeichnet wird) welcher $\mathbb{R}$ auf $\mathbb{C}$ abbildet. Hierbei bedeutet quadratintegrierbar, dass
 \begin{equation}
 	\int_{-\infty}^\infty |f(x)|^2 \, dx < \infty.
 \end{equation}
-Quadratintegrierbare Funktionen können addiert, subtrahiert, und mit Skalargrößen multipliziert werden. Bezüglich dieser Operationen bleiben die Ergebnisse immer quadratintegrierbar. Daher bildet die Menge aller quadratintegrierbaren Funktionen einen abstrakten Vektorraum. Man betrachtet eine quadratintegrierbare Funktion $f(x)$ als einen Vektor. 
+Quadratintegrierbare Funktionen können addiert, subtrahiert, und mit Skalargrößen multipliziert werden. Bezüglich dieser Operationen bleiben die Ergebnisse immer quadratintegrierbar. Daher bildet die Menge aller quadratintegrierbaren Funktionen einen abstrakten Vektorraum. Man betrachtet eine quadratintegrierbare Funktion $f(x)$ als einen Vektor. Auch hier gibt es ein Skalarprodukt; an die Stelle der Summe tritt ein Integral:
+\begin{equation}
+	\langle f, g\rangle \equiv \int_{-\infty}^\infty f^*(x)\, g(x)\, dx.
+\end{equation}
 
 \begin{beispiel}
 	Ein \emph{Nicht}-Beispiel von einer quadratintegrierbaren Funktion wird von der konstanten Funktion $f(x) = 1$ geliefert:
 	\begin{equation}
 		\int_{-\infty}^\infty |f(x)|^2\, dx = \int_{-\infty}^\infty 1\, dx = \infty.
 	\end{equation}
+	Das ist das Gegenstück zum Vektor mit lauter Einsen von vorhin.
 \end{beispiel}
+
+\begin{greybox}[Drei Räume, drei Systeme]
+	Damit haben wir praktisch alle Hilberträume beisammen, die wir brauchen werden: $\mathbb{C}^2$ gehört zum \emph{Qubit}, $\ell^2$ zum \emph{harmonischen Oszillator} (etwa einem Photon in einer Glasfaser) und $L^2(\mathbb{R})$ zu einem \emph{Teilchen in einer Dimension}.
+\end{greybox}
 
 

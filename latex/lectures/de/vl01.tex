@@ -20,14 +20,18 @@ Wir müssen ein ganzes Spektrum von Themen abdecken und zwar
 \item Ideale (Quanten-)Gase
 \end{itemize}
 
-\section{Vorlesung: Der Geburt der Quantenmechanik}
-Wir befinden uns in einem Quanten-Universum. Allerdings haben wir bis 1900 die Quantenaspekte des Universums nicht bemerkt, weil uns die klassische Physik eine sehr gute Annäherung der Physik des Alltags geliefert hat. Die Quantenmechanik wäre viel einfacher zu verstehen, wenn wir Quantenaspekte jeden Tag beobachten könnten! (Eine der größten Herausforderungen beim Erlernen der Quantenmechanik, ist zu verstehen, warum die Näherung durch die klassische Physik so gut funktioniert.)
+Ein Lehrbuch empfehle ich Ihnen nicht: Das beste Buch über Quantenmechanik existiert meiner Meinung nach noch nicht. Es gibt kein schlechtes, aber eben auch kein perfektes --- verbindlich ist dieses Skript. Da es während des Semesters entsteht, enthält es Fehler; Fundmeldungen per E-Mail werden am Semesterende prämiert.
 
-Vor kurzem konnten wir eine sensationelle Entwicklung in der Physik beobachten: Die ersten Quantencomputer sind entwickelt worden. Jetzt haben wir die Möglichkeit, zum ersten Mal, direkt mit Quantensystemen zu experimentieren (mit Hilfe von Cloud Services, z.B. IBM Q experience). Quantenaspekte werden langsam sichtbar werden. 
+\section{Vorlesung: Der Geburt der Quantenmechanik}
+Wir befinden uns in einem Quanten-Universum. Allerdings haben wir bis 1900 die Quantenaspekte des Universums nicht bemerkt, weil uns die klassische Physik eine sehr gute Annäherung der Physik des Alltags geliefert hat. Die Quantenmechanik wäre viel einfacher zu verstehen, wenn wir Quantenaspekte jeden Tag beobachten könnten! (Eine der größten Herausforderungen beim Erlernen der Quantenmechanik, ist zu verstehen, warum die Näherung durch die klassische Physik so gut funktioniert.) Das Stichwort dazu heißt \emph{Dekohärenz}; sie gehört in die fortgeschrittene Quantenmechanik, die wir hier nicht behandeln. Erklärungsbedürftig ist also nicht die Quantenmechanik, sondern die Güte der klassischen Näherung.
+
+Vor kurzem konnten wir eine sensationelle Entwicklung in der Physik beobachten: Die ersten Quantencomputer sind entwickelt worden. Jetzt haben wir die Möglichkeit, zum ersten Mal, direkt mit Quantensystemen zu experimentieren (mit Hilfe von Cloud Services, z.B. IBM Q experience). Quantenaspekte werden langsam sichtbar werden. Gegen Ende des Semesters möchte ich Ihnen ein paar Übungen auf echten Quantenrechnern anbieten.
 
 Bevor wir uns mit den neuesten Ergebnissen in der Anwendung befassen können, betrachten wir zunächst die Entwicklung der QM und ihren formalen Aufbau. 
 
 \subsection{Vorgeschichte}
+Vorweg eine Bemerkung zur Methode, die für den ganzen Kurs gilt. Man kann Quantenmechanik so lehren, dass man erst die falschen --- klassischen oder halbklassischen --- Modelle durchrechnet, um dann zu zeigen, dass sie nicht funktionieren. Ich bin kein Freund dieses Weges: Wir betrachten von Anfang an alles richtig; das Bohrsche Atommodell rechnen wir nirgends durch. Die historischen Experimente nenne ich trotzdem, aber nur als Liste.
+
 Die Vorgeschichte der Quantenmechanik umfasst eine Reihe von Beobachtungen, die die These, dass unser Universum durch die klassische Mechanik beschrieben wird, allmählich in Frage stellten. Einige der wichtigsten dieser Beiträge sind
 \begin{enumerate}
 	\item \emph{Schwarzkörperstrahlung}. Das Spektrum der emittierten Strahlung ist nicht mit klassischer Physik erklärbar. Die Annahme von Lichtquanten mit Energie $E=h\nu$ liefert das richtiges Spektrum. Die konstante ,,h`` (ursprünglich ,,Hilfsgröße``) wurde von Planck zur Herleitung des Strahlungsgesetzes:
@@ -39,14 +43,16 @@ Die Vorgeschichte der Quantenmechanik umfasst eine Reihe von Beobachtungen, die 
 		\eqbox{\hbar = \frac{h}{2\pi}}
 	\end{equation*}
 	verwendet.
+
+	Ein Schwarzkörper reflektiert keine einfallende Strahlung, strahlt bei einer Temperatur $T$ wegen der thermisch angeregten Atome aber dennoch. Die übliche Realisierung ist eine Kiste mit kleinem Loch: Einfallende Strahlung verschwindet innen durch Vielfachreflexion, aus dem Loch tritt Schwarzkörperstrahlung aus. Dieses Gesetz leiten wir im statistischen Teil selbst her --- aus der Annahme, dass Licht quantisiert ist.
 	\item \emph{Photoeffekt}. Die Energie der durch Licht ausgelösten Elektronen (Photoelektronen) ist nur durch die Lichtfrequenz bestimmt (Lenard, 1899; Einstein 1905):
 	\begin{equation*}
-		\eqbox{E_{\text{el}} = \frac12 m\nu^2 = h\nu -W}
+		\eqbox{E_{\text{el}} = \frac12 m v^2 = h\nu -W}
 	\end{equation*}
-	mit Bindungsenergie $W$. Diese Beobachung war ein Hinweis auf \emph{Lichtquanten} mit Energie $E=h\nu$.
-	\item \emph{Stabilität der Atome}, \emph{Linienspektren}, \emph{Franck-Hertz-Versuch} ($\sim$1911). In der klassischen Physik wären Elektronenbahnen in einem Atom wegen Strahlungsverlusten instabil. Strahlung wäre kontinuierlich über alle Frequenzen verteilt. Linienspektren und Franck-Hertz-Versuche deuten darauf hin, dass in Atomen nur bestimmte, diskrete Energieniveaus erlaubt sind. 
+	mit Bindungsenergie $W$. Diese Beobachung war ein Hinweis auf \emph{Lichtquanten} mit Energie $E=h\nu$. Klassisch ist das merkwürdig: Sonst bedeutet mehr Intensität mehr Energie; hier hängt die Energie allein an der Frequenz.
+	\item \emph{Stabilität der Atome}, \emph{Linienspektren}, \emph{Franck-Hertz-Versuch} ($\sim$1911). In der klassischen Physik wären Elektronenbahnen in einem Atom wegen Strahlungsverlusten instabil. Strahlung wäre kontinuierlich über alle Frequenzen verteilt. Linienspektren und Franck-Hertz-Versuche deuten darauf hin, dass in Atomen nur bestimmte, diskrete Energieniveaus erlaubt sind. Der Grund für die Instabilität ist ein Ergebnis der Elektrodynamik, das Sie schon gesehen haben: Nach den Liénard-Wiechert-Potentialen strahlt jede beschleunigte Punktladung. Ein Elektron auf einer Bahn um das Proton verliert also ständig Energie und müsste in den Kern stürzen --- was es nicht tut. Erklären lässt sich das erst mit der Quantenmechanik; das Linienspektrum des Wasserstoffs diskutieren wir später ausführlich.
 	\item \emph{Compton-Effekt}. Die Streuung von Licht an Elektronen wird durch Annahme von Lichtquanten mit $E=h\nu$ und Impuls $p=h/\lambda$ sowie Energie- und Impulserhaltung richtig beschrieben. 
-	\item \emph{Stern-Gerlach-Versuch} (1922). Der Drehimpuls hat endlich viele Möglichkeiten der Ausrichtung relativ zu einem angelegten Magnetfeld (Richtungsquantelung).
+	\item \emph{Stern-Gerlach-Versuch} (1922). Der Drehimpuls hat endlich viele Möglichkeiten der Ausrichtung relativ zu einem angelegten Magnetfeld (Richtungsquantelung). Dieser Versuch ist uns besonders wichtig: Gerade weil der Drehimpuls quantisiert ist, können wir heute Qubits bauen.
 	\item \emph{Interferenz bei Elektronen} (Davisson-Germer-Experiment, 1929; Beugung an Kristallen). Dieses Experiment lieferte einen Hinweis auf die Welleneigenschaften des Elektrons (postuliert 1924 von de Broglie).
 \end{enumerate}
 
@@ -56,11 +62,18 @@ Die Vorgeschichte der Quantenmechanik umfasst eine Reihe von Beobachtungen, die 
 
 
 
-Das Geburtsjahr der Quantenmechanik ist 1926. In diesem Jahr veröffentlichte Schrödinger eine spannende Reihe von Arbeiten über die Wellenmechanik und Quantisierung. Ein paralleler Zugang begann 1925 mit Überlegungen von Heisenberg über die Messbarkeit von Phasenbeziehungen von Teilchen im Bohrschen Atommodell. Diese Arbeit hat zwei Teams zur Aufstellung von Versionen der Quantenmechanik inspiriert. Einerseits Born und Jordan mit Heisenberg zur sogenannten Matrizenmechanik und andererseits Dirac. Noch 1926 zeigt Schrödinger die Äquivalenz beider Zugänge. Die statistische Interpretation der Theorie wird von Born (ebenfalls 1926) geliefert. Damit ist die Grundlage der Theorie abgeschlossen und Begriffe wie ,,Welle-Teilchen Dualismus`` sind entstanden. 
+Das Geburtsjahr der Quantenmechanik ist 1926. In diesem Jahr veröffentlichte Schrödinger eine spannende Reihe von Arbeiten über die Wellenmechanik und Quantisierung. Ein paralleler Zugang begann 1925 mit Überlegungen von Heisenberg über die Messbarkeit von Phasenbeziehungen von Teilchen im Bohrschen Atommodell. Diese Arbeit hat zwei Teams zur Aufstellung von Versionen der Quantenmechanik inspiriert. Einerseits Born und Jordan mit Heisenberg zur sogenannten Matrizenmechanik und andererseits Dirac. Noch 1926 zeigt Schrödinger die Äquivalenz beider Zugänge. Die statistische Interpretation der Theorie wird von Born (ebenfalls 1926) geliefert. Damit ist die Grundlage der Theorie abgeschlossen und Begriffe wie ,,Welle-Teilchen Dualismus`` sind entstanden. Borns Beitrag ist meiner Ansicht nach der wichtigste Aspekt der ganzen Theorie.
+
+\begin{historical}
+Sie haben übrigens das Glück, Deutsch zu sprechen: Die Originalarbeiten von Planck, Schrödinger, Heisenberg und Born sind auf Deutsch geschrieben. Diese Möglichkeit hatte ich beim Erlernen der Quantenmechanik nicht.
+\end{historical}
+
 
 \begin{center}
 \parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]Die Quantenmechanik ist eine \emph{probabilistische Theorie}. Sie liefert uns somit nur Vorhersagen in Form von \emph{Wahrscheinlichkeiten}.\end{tcolorbox}}
 \end{center}
+
+Diese zweite Aussage ist der ersten übergeordnet: ,,Wellen- und Teilcheneigenschaften`` bleibt ein wenig schwammig, die probabilistische Aussage dagegen ist präzise und liegt allen Quantenphänomenen zugrunde. Klassisch lauten die Vorhersagen definitiv --- das Teilchen ist zu dieser Zeit an dieser Stelle, und Wahrscheinlichkeiten treten dort allein wegen fehlender Information auf. Nehmen Sie den Satz bitte mit: In jeder mündlichen Prüfung frage ich, was die wichtigste Aussage über die Quantenmechanik ist.
 
 Fast gleichzeitig wurde die Theorie in ihre heutige mathematische Form gebracht. So ließ sich Born von Norbert Wiener dabei beraten, aus Matrizen Operatoren zu machen und so auch ,,aperiodische Probleme`` ohne vorgegebene Basis (z.B.\ ein freies Teilchen) zu behandeln. Hilbert hielt im WS 1926/27 in Göttingen eine Vorlesung über Quantenmechanik. Nebenbei führte sein junger Assistent John von Neumann den Hilbertraum, Dichtematrizen und die Entropie für Quantenzustände mit einer Publikation in den Göttinger Mathematischen Nachrichten ein. Diese wurde von Physikern zunächst nicht gelesen. Die Rolle der Gruppentheorie wurde von Wigner und Weyl geklärt.
 
@@ -71,14 +84,14 @@ Wir verlassen nun die spannende Geschichte der Quantenmechanik. Unsere Annahme i
 Unser nächstes Ziel ist es, die mathematischen Grundlagen der Quantenmechanik zusammenzufassen. Um dieses Ziel zu erreichen, müssen wir erst die \emph{Wahrscheinlichkeit} mathematisch behandeln. 
 
 \subsection{Wahrscheinlichkeit}
-Die Zahlen, welche die Quantenmechanik als Ergebnis liefert, sind \emph{Wahrscheinlichkeiten}. Wie sind solche Größen zu verstehen und wie arbeiten wir damit? Die \emph{Wahrscheinlichkeitstheorie} ist der richtige Rahmen, um zufällige Ereignisse und ihre Interpretation zu verstehen. Diese Theorie wird demnächst aufgebaut. 
+Die Zahlen, welche die Quantenmechanik als Ergebnis liefert, sind \emph{Wahrscheinlichkeiten}. Wie sind solche Größen zu verstehen und wie arbeiten wir damit? Die \emph{Wahrscheinlichkeitstheorie} ist der richtige Rahmen, um zufällige Ereignisse und ihre Interpretation zu verstehen. Diese Theorie wird demnächst aufgebaut. Erwarten Sie nichts konzeptionell Neues: Ein intuitives Verständnis setze ich voraus, es geht um die \emph{Notation}, in der wir später die Quantenmechanik formulieren.
 
 
 \subsubsection{Stichprobenräume, Maße, Momente}
 In der Wahrscheinlichkeitstheorie wird jedem System eine Menge $X$ zugeordnet, die man \emph{Elementarereignisraum} oder \emph{Stichprobenraum} nennt. 
 
 \begin{beispiel}
-	Nehmen wir den einfachsten Fall, in dem $X$ eine endliche Menge ist.Menge ist. Beispielsweise bei einem Würfel besteht der Elementarereignisraum aus den möglichen Augenzahlen. Somit gilt $X = \{1, 2, 3, 4, 5, 6\}$.
+	Nehmen wir den einfachsten Fall, in dem $X$ eine endliche Menge ist. Beispielsweise bei einem Würfel besteht der Elementarereignisraum aus den möglichen Augenzahlen. Somit gilt $X = \{1, 2, 3, 4, 5, 6\}$.
 \end{beispiel}
 
 \begin{übung}
@@ -96,20 +109,30 @@ Die einzigen Einschränkungen an die Wahrscheinlichkeitsverteilung $p(x)$ sind
 	p(x) \ge 0 \quad \text{und}\quad \sum_{x\in X} p(x)  = 1.
 \end{equation}
 
-Eine \emph{Messung} (Observable) wird durch eine Funktion 
+\begin{greybox}[Jedes Experiment in drei Schritten]
+Für den Theoretiker sehen \emph{alle} Experimente der Physik gleich aus; sie bestehen aus drei Stadien:
+\begin{enumerate}
+\item \emph{Präparation}: Etwas wird hergerichtet --- der Würfel, im Labor etwa ein Lichtstrahl. Präparationen sind Wahrscheinlichkeitsfunktionen $p$.
+\item \emph{Durchführung}: Das Experiment läuft. Es bildet Wahrscheinlichkeitsfunktionen auf Wahrscheinlichkeitsfunktionen ab.
+\item \emph{Messung}: Am Ende schauen wir hin und erhalten eines der möglichen Ereignisse. Messungen sind Funktionen $f$.
+\end{enumerate}
+Ein Experimentalphysiker würde diese Vereinfachung nicht anerkennen; abstrakt sieht aber jedes Experiment so aus. Die ersten beiden Schritte lassen sich dabei zu \emph{einer} komplizierteren Präparation zusammenfassen --- ein gezinkter Würfel ist ja nichts anderes als ein normaler Würfel, an dem man vorher etwas gemacht hat.
+\end{greybox}
+
+Eine \emph{Messung} (Observable) wird durch eine Funktion
 \begin{equation}
 	f:X\rightarrow \mathbb{R}
 \end{equation}
-beschrieben. 
+beschrieben. Beachten Sie, wie großzügig das ist: An eine Messung stellen wir keine Bedingung, quasi jede Funktion darf als Messung gelten --- an die Präparation dagegen zwei.
 \begin{beispiel}
 	Für einen Würfel ist die \emph{Augenzahl} $f(x) = x$ eine Messung.
 \end{beispiel}
-Solche Messungen werden in der Wahrscheinlichkeitstheorie als \emph{Zufallsvariablen} bezeichnet. Der Wert $f(x)$ wird als der Messwert interpretiert, der sich ergibt, wenn man sicher weiß, dass das Elementarereignis $x$ vorliegt. Wenn dieses Ereignis bei $N$ Messungen vorliegt ($Np(x)$), ergibt sich die Summer der Messwerte mit $\sum_x N p(x) \cdot f(x)$. Dividiert durch N erhalten wir die Formel für den Erwartungswert:
+Auch ,,ist die Augenzahl gerade?`` ist eine Messung. Solche Messungen werden in der Wahrscheinlichkeitstheorie als \emph{Zufallsvariablen} bezeichnet. Der Wert $f(x)$ wird als der Messwert interpretiert, der sich ergibt, wenn man sicher weiß, dass das Elementarereignis $x$ vorliegt. Wenn dieses Ereignis bei $N$ Messungen vorliegt ($Np(x)$), ergibt sich die Summe der Messwerte mit $\sum_x N p(x) \cdot f(x)$. Dividiert durch $N$ erhalten wir die Formel für den Erwartungswert:
 \begin{equation}
 	\text{Erwartungswert} = \mathbb{E}[f] = \sum_{x\in X} p(x)f(x).
 \end{equation}
 
-Eine wichtige Rolle spielt in der Quantenmechanik der Spezialfall der Zufallsvariablen $f$, die nur Ergebnisse $0$ oder $1$ liefern können. Solche Messungen dienen als Modell für Experimente, z.B. Photonendetektoren, die das Vorhandensein oder Nichtvorhandensein eines Teilchens messen. Diese Messungen sind durch eine Menge $S=\{x\in X\,|\, f(x) =1\}$ charakterisiert. Wir verwenden oft die Notation 
+Eine wichtige Rolle spielt in der Quantenmechanik der Spezialfall der Zufallsvariablen $f$, die nur Ergebnisse $0$ oder $1$ liefern können. Solche Messungen dienen als Modell für Experimente, z.B. Photonendetektoren, die das Vorhandensein oder Nichtvorhandensein eines Teilchens messen. Der Detektor sagt Klick oder kein Klick; gerade an diesen zweiwertigen Messungen hängt die Quantenmechanik. Diese Messungen sind durch eine Menge $S=\{x\in X\,|\, f(x) =1\}$ charakterisiert. Wir verwenden oft die Notation 
 \begin{equation}
 	\chi_S(x) = \begin{cases}
 		1, \quad x\in S, \\
@@ -117,7 +140,9 @@ Eine wichtige Rolle spielt in der Quantenmechanik der Spezialfall der Zufallsvar
 	\end{cases}
 \end{equation}
 Solche Funktionen nennt man \emph{Indikatorfunktionen}. Die Teilmengen $S\subset X$
-nennt man auch Ereignisse (nicht mehr Elementarereignisse). Der Erwartungswert 
+nennt man auch Ereignisse (nicht mehr Elementarereignisse). Halten Sie fest: Indikatorfunktionen \emph{sind} Messungen, kein eigenes Objekt daneben. Die Menge $S$ darf beliebig sein; drei Grenzfälle: $S = X$ gibt die konstante Funktion $1$, $S = \emptyset$ die konstante Funktion $0$, und für ein einzelnes Elementarereignis ist $\chi_{\{j\}}(x) = \delta_{x,j}$ das Kronecker-Delta.
+
+Der Erwartungswert
 \begin{equation}\label{eq:indicatorfunction}
 	\mathbb{E}[\chi_S] = \sum_{x\in X} p(x)\chi_S(x) = \sum_{x\in S} p(x) \equiv \mathbb{P}[S]
 \end{equation}
@@ -127,7 +152,7 @@ Die Funktion $\mathbb{P}$ hat charakteristische Eigenschaften, die sich sofort a
 \begin{equation}
 	\mathbb{P}\left[\bigcup_j S_j \right] = \sum_{j} \mathbb{P}[S_j].
 \end{equation}
-Mathematisch gesprochen: $P$ ist ein Maß, bzw. ein Wahrscheinlichkeitsmaß, wenn man die Normierung $\mathbb{P}[X] = 1$ betonen will. Wenn man die \emph{Mengenfunktion} $\mathbb{P}$ kennt, kann man auch das Erwartungswertfunktional $\mathbb{E}$ ausrechnen. 
+Die Disjunktheit ist wesentlich: Überlappen sich die $S_j$, so zählt man Beiträge doppelt und die Gleichung wird falsch. Mathematisch gesprochen: $P$ ist ein Maß, bzw. ein Wahrscheinlichkeitsmaß, wenn man die Normierung $\mathbb{P}[X] = 1$ betonen will. Mehr Maßtheorie brauchen wir nicht; die Notation soll nur die Literatur lesbar machen. Wenn man die \emph{Mengenfunktion} $\mathbb{P}$ kennt, kann man auch das Erwartungswertfunktional $\mathbb{E}$ ausrechnen. 
 
 Im Fall, dass $X$ eine endliche Menge ist, können wir das Erwartungswertfunktional wie folgt berechnen
 \begin{equation}
@@ -141,6 +166,8 @@ Das heißt, $p(x) = \mathbb{P}[\{x\}]$.
 	\end{equation}
 \end{übung} 
 
+Bisher war $X$ endlich. Für die Quantenmechanik ist aber $X = \mathbb{R}$ entscheidend: Ein Teilchen in einer Dimension hat eine Position, und die möglichen Positionen sind die reellen Zahlen; über einer überabzählbaren Menge hat $\sum_{x\in X}$ dann keine Bedeutung mehr.
+
 Wenn $X = \mathbb{R}$, verwenden wir eine andere Notation:
 \begin{equation}
 	\mathbb{E}[f] = \int \mathbb{P}(dx)\, f(x).
@@ -150,7 +177,7 @@ Diese Notation wird oft auch als
 \begin{equation}\label{eq:ctsprob}
 	\mathbb{E}[f] = \int p(x) f(x) \, dx
 \end{equation}
-geschrieben, wobei $p(x)\,dx \equiv \mathbb{P}(dx)$ die Wahrscheinlichkeitsverteilung darstellt.
+geschrieben, wobei $p(x)\,dx \equiv \mathbb{P}(dx)$ die Wahrscheinlichkeitsverteilung darstellt. Die erste Schreibweise mag ich nicht besonders und werde sie kaum verwenden; Sie sollen sie nur erkennen können.
 
 \begin{beispiel}
 	Die Wahrscheinlichkeitsverteilung
@@ -165,14 +192,18 @@ geschrieben, wobei $p(x)\,dx \equiv \mathbb{P}(dx)$ die Wahrscheinlichkeitsverte
 	\end{equation}
 \end{beispiel}
 
+Anschaulich war das Ergebnis schon vorher klar: die Hälfte, weil die Gauß-Verteilung symmetrisch ist. Seien Sie mit dem Argument aber vorsichtig --- es funktioniert \emph{nur} für symmetrische Dichten. Physikalisch gefragt: Ist das Teilchen links oder rechts vom Ursprung?
+
 Für Maße auf $\mathbb{R}$ ist es oft besonders einfach, die Erwartungswerte der Koordinatenfunktion und ihrer Potenzen zu berechnen. Diese werden \emph{Momente} genannt. Für ein Wahrscheinlichkeitsmaß $\mathbb{P}(dx) = p(x)dx$ auf $\mathbb{R}$ nennt man
 \begin{equation}
 	M_n = \int x^n p(x)\, dx 
 \end{equation}
-das \emph{$n$-te Moment} von $\mathbb{P}$. Es ist immer $M_0 = 1$, wegen der Normierung auf Gesamtwahrscheinlichkeit 1. (Warnung: Alle anderen Momente brauchen nicht zu existieren, bzw.\ ergeben unter Umständen divergente Integrale.) 
+das \emph{$n$-te Moment} von $\mathbb{P}$. Es ist immer $M_0 = 1$, wegen der Normierung auf Gesamtwahrscheinlichkeit 1. (Warnung: Alle anderen Momente brauchen nicht zu existieren, bzw.\ ergeben unter Umständen divergente Integrale.) Geometrisch ist $M_0$ die Fläche unter der Kurve.
 
 Die praktisch wichtigsten Momente sind $M_1$ (\emph{Mittelwert}), und $M_2$. In der Praxis wird das zweite Moment oft mit der \emph{Varianz} ersetzt:
 \begin{equation}
 	\text{Var}[\mathbb{P}] \equiv \mathbb{E}[(x-M_1)^2] \equiv \int (x^2-2M_1 x +M_1^2) p(x)\, dx \underset{\text{Übung!}}{=} M_2-M_1^2.
 \end{equation}
 Aufgrund der Definition ist klar, dass Varianzen stets $\ge 0$ sind und nur dann verschwinden, wenn $\mathbb{P}$ auf einen Punkt konzentriert ist.
+
+In der Quantenmechanik spielt die Varianz eine größere Rolle als das zweite Moment; sie wird uns bei der Unschärferelation wieder begegnen. Mittelwert und Varianz tragen dabei dieselbe Information wie $M_1$ und $M_2$.

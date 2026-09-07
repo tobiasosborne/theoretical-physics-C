@@ -3,6 +3,8 @@
 Die Zahlen, die die Quantenmechanik als Ergebnis liefert, sind Wahrscheinlichkeiten oder, etwas allgemeiner Erwartungswerte. Da in den bisherigen Theorievorlesungen von solchen Größen wohl wenig die Rede war, müssen wir kurz darauf eingehen, wie solche Ergebnisse zu interpretieren, d.h., mit dem Experiment zu vergleichen sind. Die allgemeine Vorschrift für statistische Experimente ist, dass ein solches Experiment genügend häufig zu wiederholen
 ist.
 
+Dass die Theorie überhaupt nur Wahrscheinlichkeiten liefert, ist der eigentliche Bruch mit der klassischen Physik. Klassisch ist eine Wahrscheinlichkeit stets Ausdruck fehlender Information; im Prinzip kann dort alles beliebig präzise sein. Quantenmechanisch ist sie fundamental, und es gibt Messungen, die sich nicht gemeinsam mit voller Präzision durchführen lassen.
+
 Für ein Wahrscheinlichkeitsexperiment muss dabei im Voraus festgelegt sein, welche Ergebnisse als ,,Treffer`` zu werten sind. Die von der Theorie gelieferte \emph{Wahrscheinlichkeit} ist dann zu vergleichen mit der Anzahl der Treffer, dividiert durch die Gesamtzahl der Wiederholungen. Entsprechend werden Erwartungswerte von Experimenten gemessen, bei denen jedes einzelne Experiment einen Zahlenwert liefert: Der Erwartungswert ist zu vergleichen mit der Summe der Messwerte, dividiert durch die Gesamtzahl der Wiederholungen. Was dabei als ,,genügend häufige`` Wiederholung für eine angestrebte Genauigkeit gilt, wird in dem als Statistik bekannten Zweig der Wahrscheinlichkeitstheorie behandelt. Die Berechnung der statistischen Konfidenzintervalle entbindet aber den Experimentalphysiker nicht von der Pflicht, sich zu vergewissern, dass die Theorie überhaupt anwendbar ist, dass also die so gewonnenen Häufigkeiten tatsächlich reproduzierbar und frei von systematischen Fluktuationen
 sind, also zum Beispiel nicht abhängig von irgendwelchen Aktivitäten im Nachbarlabor schwanken. Das ist bei Wahrscheinlichkeitsmessungen nicht anders als bei allen anderen Messungen auch.
 
@@ -11,6 +13,10 @@ Zu erläutern wäre noch, was denn nun eigentlich als Wiederholung ,,des gleiche
 In den Experimenten der Quantenmechanik sind grundsätzlich zwei Teile zu unterscheiden: die \emph{Präparation} und die \emph{Messung}. Zum Beispiel für die Polarisationsexperimente bestand die Präparation in der Herstellung des Strahls, und die Messung in der Anwendung der Filter, zusammen mit dem Photonenzähler. Das Ziel der Theorie ist nun die Berechnung der Wahrscheinlichkeiten für praktisch beliebige Kombinationen von Präparation und Messung. Die Theorie muss also mindestens enthalten: (1) Größen zur Beschreibung der Präparierverfahren, (2) Größen zur Beschreibung der Messverfahren und (3) eine Formel zur Berechnung der Wahrscheinlichkeiten für jede Kombination.
 
 \subsection{Die Postulate}
+
+\begin{greybox}[Zum Status der Postulate]
+Man hört oft, wir verstünden die Quantenmechanik nicht. Das trifft es nicht: Wir beherrschen den Formalismus, und wir haben seit über fünfzig Jahren Postulate, die uns die besten Modelle des Universums liefern. Was wir nicht können, ist, sie weiter zu \emph{begründen} --- sie sind uns von der Natur gegeben.
+\end{greybox}
 
 \begin{center}
 \parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Postulat 1}. Jeder Sorte quantenmechanischer Systeme wird ein Hilbertraum $\mathcal{H}$ zugeordnet.}\end{tcolorbox}}
@@ -24,18 +30,72 @@ Das Skalarprodukt zweier Vektoren $|\Phi\rangle, |\Psi\rangle \in \mathcal{H}$ l
 	\langle \Phi|\Psi\rangle \equiv \iiint \Phi^*(x,y,z)\Psi(x,y,z)\, dxdydz.
 \end{equation}
 
+Zum Hilbertraum wird $L^2(\mathbb{R}^3)$ erst mit diesem Skalarprodukt, und mit der Vollständigkeit, die wir hier weglassen. Beachten Sie außerdem: Postulat 1 beschreibt \emph{ein} Teilchen --- den Hilbertraum mehrerer Teilchen zu bauen verlangt ein weiteres Rezept, das wir später nachreichen.
+
 \begin{center}
 \parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Postulat 2}. Ein Präparierverfahren wird charakterisiert durch einen \emph{Zustand}, bzw. eine \emph{Dichtematrix}. Das ist ein positiver Operator $\rho$ auf $\mathcal{H}$, mit $\tr(\rho) = 1$. Speziell für reine Zustände ist $\rho$ ein eindimensionaler Projektor $\rho = |\Psi\rangle\langle \Psi|$, also gegeben durch einen Vektor $|\Psi\rangle \in \mathcal{H}$.}\end{tcolorbox}}
 \end{center}
+
+Hier ist eine Warnung angebracht: Der Hilbertraum beschreibt \emph{nicht} unmittelbar die Zustände. Viele Bücher sagen, die Zustände seien die Wellenfunktionen; das stimmt so nicht. Er ist der Raum, \emph{in dem} wir Zustände definieren --- die Zustände selbst sind Operatoren. Reine Zustände beschreiben geschlossene Systeme, und die gibt es in der Physik nicht: Das elektromagnetische Feld koppelt immer an. Gemischte Zustände sind der Normalfall.
+
+Das Wort ,,eindimensional`` meint dabei keine Raumdimension, sondern den Rang: $\tr(P)$ zählt die Ket-Bra-Terme eines Projektors, und wegen $\tr(\rho)=1$ steht dort genau einer. Daraus folgt auch die Normierung der Wellenfunktionen, denn mit $\tr(AB) = \tr(BA)$ ist
+\begin{equation}
+	1 = \tr(\rho) = \tr(|\Psi\rangle\langle \Psi|) = \tr(\langle \Psi|\Psi\rangle) = \langle \Psi|\Psi\rangle.
+\end{equation}
+Nur normierte Vektoren stellen also reine Zustände dar.
+
+\begin{beispiel}[Zustände eines Qubits]
+Für $\mathcal{H} = \mathbb{C}^2$ ist $\rho$ eine positive $2\times 2$-Matrix mit Spur eins. Positivität liefert $\rho_{00} \equiv p \ge 0$, die Spurbedingung erzwingt $\rho_{11} = 1-p$, und weil auch $\rho_{11}\ge 0$ sein muss, liegt $p$ zwischen null und eins. Hermitezität macht schließlich die Nebendiagonaleinträge zueinander komplex konjugiert:
+\begin{equation}\label{eq:qubitzustand}
+	\rho = \begin{pmatrix} p & x \\ x^* & 1-p\end{pmatrix}, \qquad 0 \le p \le 1, \quad x \in \mathbb{C}.
+\end{equation}
+Ausgeschöpft ist die Positivität damit nicht; sie verlangt, dass \emph{alle} Eigenwerte nichtnegativ sind, hier also
+\begin{equation}
+	\det \rho = p(1-p) - |x|^2 \ge 0.
+\end{equation}
+Ein Qubit-Zustand hängt somit von genau drei reellen Zahlen ab.
+\end{beispiel}
+
+\begin{übung}
+Berechnen Sie die beiden Eigenwerte der Matrix in Gl.~(\ref{eq:qubitzustand}) und leiten Sie daraus die Bedingung $p(1-p) - |x|^2 \ge 0$ her.
+\end{übung}
 
 \begin{center}
 \parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Postulat 3}. Ein Detektor, das heisst ein Messapparat mit den beiden Ansprechmöglichkeiten ,,ja`` (Treffer) und ,,nein``, ist gegeben durch einen Operator $F$ mit $0 \le F \le \mathbb{I}$.}\end{tcolorbox}}
 \end{center}
 
+Die Schreibweise $0 \le F \le \mathbb{I}$ ist erklärungsbedürftig: Für Operatoren bedeutet $A \le B$, dass $B-A$ positiv ist. Postulat 3 verlangt also \emph{zwei} Bedingungen, $F \ge 0$ \emph{und} $\mathbb{I} - F \ge 0$, und rechts steht der Einsoperator, nicht die Zahl eins.
+
+\begin{beispiel}[Die Z-Messung am Qubit]
+Die Standardmessung auf heutigen Quantenrechnern ist die Z-Messung,
+\begin{equation}
+	F \equiv |0\rangle\langle 0| = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}.
+\end{equation}
+Beide Bedingungen sind zu prüfen. Erstens ist $F$ positiv, denn ein Operator ist genau dann positiv, wenn er sich als $A^\dag A$ schreiben lässt, und hier ist $F = F^\dag F$. Zweitens --- getrennt zu zeigen --- ist
+\begin{equation}
+	\mathbb{I} - F = \begin{pmatrix} 0 & 0 \\ 0 & 1\end{pmatrix} = |1\rangle\langle 1|
+\end{equation}
+von derselben Form, also ebenfalls positiv. Erst jetzt dürfen wir $F$ einen Detektor nennen; physikalisch fragt er, ob der Drehimpuls in die $z$-Richtung zeigt.
+\end{beispiel}
+
 \begin{center}
 \parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Postulat 4}. Die Ansprechhäufigkeit eines Detektors $F$ an gemäß $\rho$ präparierten System ist
 $\tr(\rho F)$. In einem reinen Zustand $|\Psi\rangle$ spezialisiert sich dieser Ausdruck zu $\langle \Psi|F|\Psi\rangle$.}\end{tcolorbox}}
 \end{center}
+
+\begin{beispiel}[Ansprechhäufigkeit der Z-Messung]
+Mit dem Zustand aus Gl.~(\ref{eq:qubitzustand}) und $F = |0\rangle\langle 0|$ ist
+\begin{equation}
+	\rho F = \begin{pmatrix} p & x \\ x^* & 1-p\end{pmatrix}\begin{pmatrix} 1 & 0 \\ 0 & 0\end{pmatrix} = \begin{pmatrix} p & 0 \\ x^* & 0\end{pmatrix}, \qquad \mathbb{P}[\text{,,ja``}] = \tr(\rho F) = p.
+\end{equation}
+Wir erhalten also mit Wahrscheinlichkeit $p$ einen Treffer --- womit gerechtfertigt ist, die Diagonaleinträge einer Dichtematrix als Wahrscheinlichkeiten zu lesen.
+\end{beispiel}
+
+Der Zusatz über reine Zustände ist keine weitere Annahme, sondern eine Rechnung: mit $\rho = |\Psi\rangle\langle \Psi|$ und der Zyklizität der Spur ist
+\begin{equation}
+	\tr(\rho F) = \tr(|\Psi\rangle\langle \Psi|F) = \tr(\langle \Psi|F|\Psi\rangle) = \langle \Psi|F|\Psi\rangle.
+\end{equation}
+Machen Sie es sich am Anfang zur Gewohnheit, bei jeder Rechnung ausdrücklich zu sagen, welches Postulat Sie gerade benutzen.
 
 Im Allgemeinen kann ein Messapparat in jedem Einzelexperiment ein komplexeres Ergebnis liefern als eine einzelne ja/nein-Entscheidung. Diesen Fall kann man aber auf ja/nein Entscheidungen zurückführen. Nennen wir die Menge der möglichen Ausgänge einer Messung $X$. Für jede Teilmenge $S \subset X$ können wir nun die Frage stellen: Liegt der Messwert $x$ in $S$? Dazu muss es also nach Postulat 3 einen Detektoroperator $F(S)$ geben. Die
 Menge der Operatoren $F(S)$ nennen wir dann eine \emph{Observable}. Es gilt für disjunkte Mengen $S_1, S_2 \subset X$ 
@@ -60,6 +120,8 @@ ein hermitescher Operator ist. Im projektionswertigen Fall ist nach dem sogenann
 
 Ein Zustand charakterisiert ja nicht ein einzelnes System mit irgendwie veränderlichen Eigenschaften, sondern ein Präparierverfahren, das (schon allein zur Wiederholung des statistischen Häufigkeitsexperiments) zu jeder beliebigen Zeit in Gang gesetzt werden können muss. Nach der Annahme der Reproduzierbarkeit muss es auch egal sein, ob sowohl Präparation als auch Messung etwas später durchgeführt werden. Das Einzige was zählt ist ein \emph{relativer} Zeitversatz.
 
+Mit den Postulaten 1 bis 4 wären wir im Prinzip fertig; weil aber ständig Zeitverschiebungen auftreten, wollen wir ein bequemes Hilfspostulat.
+
 \begin{center}
 \parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Postulat 5}. Jede Systemsorte ist weiter charakterisiert durch einen \emph{Hamiltonoperator} $H$, der den \emph{Zeitentwicklungsoperator} $U_t = e^{-\frac{it}{\hbar} H}$ bestimmt. Wendet man in einem Experiment mit gegebenem Präparier- und Messverfahren die Messung mit einer Verzögerung von $t$ Sekunden an, so erhält man den Erwartungswert
 \begin{equation}
@@ -70,6 +132,32 @@ Ein Zustand charakterisiert ja nicht ein einzelnes System mit irgendwie verände
 Diese Gleichung folgt einfach aus der Eigenschaft $\tr(AB) = \tr(BA)$ der Spur. Sie ist hier aufgenommen, weil die beiden Seiten unterschiedlichen, aber offensichtlich äquivalenten Auffassungen der Zeitentwicklung entsprechen: auf
 der linken Seite liegt es nahe, $\rho_t \equiv U_t \rho U_t^\dag$ als zeitabhängige Dichtematrix einzuführen, und die Observablen als zeitunabhängig zu betrachten. Dies nennt sich das \emph{Schrödingerbild}. Für reine Zustände ergibt sich dann auch für Wellenfunktionen: $|\Psi_t\rangle = U_t |\Psi_0\rangle$. Die rechte Seite legt die Einführung zeitabhängiger Observablen $A_t\equiv U_t^\dag A U_t$, bei festgehaltenen Zuständen nahe. Dies nennt sich
 das \emph{Heisenbergbild}. Die mathematisch ohnehin evidente Äquivalenz dieser Bilder bedeutet physikalisch, dass nur die relative Zeit zwischen den Teilen des Experiments wichtig ist.
+
+Im Postulat fehlt eine Voraussetzung, die wir hier nachtragen: Der Hamiltonoperator $H$ ist stets \emph{hermitesch}. Nur dann ist $U_t$ unitär, und nur dann ist $U_t^\dag F U_t$ wieder ein zulässiges Messverfahren mit $0 \le U_t^\dag F U_t \le \mathbb{I}$. Ein Experiment mit verzögerter Messung ist damit einfach ein Experiment mit einer anderen Messung; insofern ist Postulat 5 mit den übrigen verträglich. Beweisen lässt es sich aus ihnen trotzdem nicht, und wesentlich bleibt: $H$ ist eine \emph{zusätzliche} Information über die Systemsorte.
+
+\begin{beispiel}[Zeitentwicklung eines Qubits]
+Rechnen wir $U_t$ für ein Qubit mit
+\begin{equation}
+	H \equiv \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+\end{equation}
+aus; dass $H$ hermitesch ist, sieht man sofort. Im Allgemeinen berechnet man Operatorfunktionen über Eigenwerte und Eigenvektoren, hier ist die Taylorreihe bequemer:
+\begin{equation}
+	U_t = e^{-\frac{it}{\hbar}H} = \sum_{n=0}^\infty \frac{1}{n!}\left(\frac{-it}{\hbar}\right)^n H^n, \qquad H^0 \equiv \mathbb{I}.
+\end{equation}
+Der Trick ist $H^2 = \mathbb{I}$, also $H^{2n} = \mathbb{I}$ und $H^{2n+1} = H$. Sortiert man die Reihe nach Termen mit $\mathbb{I}$ und mit $H$, erkennt man wegen $(-i)^{2n} = (-1)^n$ die Reihen aus dem ersten Semester wieder:
+\begin{equation}
+	U_t = \left[\sum_{n=0}^\infty \frac{(-1)^n}{(2n)!}\left(\frac{t}{\hbar}\right)^{2n}\right]\mathbb{I} - i\left[\sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}\left(\frac{t}{\hbar}\right)^{2n+1}\right] H,
+\end{equation}
+also
+\begin{equation}
+	\eqbox{U_t = \cos\left(\frac{t}{\hbar}\right)\mathbb{I} - i\sin\left(\frac{t}{\hbar}\right) H}
+\end{equation}
+beziehungsweise
+\begin{equation}
+	U_t = \begin{pmatrix} \cos\left(\frac{t}{\hbar}\right) & -i\sin\left(\frac{t}{\hbar}\right) \\ -i\sin\left(\frac{t}{\hbar}\right) & \cos\left(\frac{t}{\hbar}\right)\end{pmatrix}.
+\end{equation}
+Eine Warnung: $H^2 = \mathbb{I}$ ist eine Besonderheit dieses Beispiels und gilt keineswegs allgemein.
+\end{beispiel}
 
 Eine bedeutende Lücke bleibt in diesen Postulaten: nirgends ist gesagt, welche Operatoren $\rho$ oder $F$ man einem gegebenem Experiment zuordnen soll. Dies ist eine Frage, die man tatsächlich nicht durch ein paar allgemeine Postulate klären kann. Der häufigste Zugang ist, ein paar ,,Standardobservablen`` auszuzeichnen, in der Regel durch ihr Transformationsverhalten unter raumzeitlichen Symmetrien. Dies sind dann Größen mit engem Bezug zu klassischen Größen, und heißen auch so: Ort, Impuls, Energie, Drehimpuls und so weiter. Wer eine genauere Zuordnung von Messgeräten und Operatoren wünscht, muss auch den konkreten Messprozess genauer analysieren, besonders die quantenmechanische Wechselwirkung zwischen dem gegebenen System und Teilen des Apparates, wie zum Beispiel ionisierbaren Testteilchen im Apparat. Für fast alle Fragen in dieser Vorlesung werden wir aber mit der Untersuchung der Standardobservablen auskommen.
 

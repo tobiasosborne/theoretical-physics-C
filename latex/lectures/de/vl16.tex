@@ -23,6 +23,19 @@ Das Wasserstoffatom besteht aus einem Proton und einem Elektron. Ein erstes grob
 \end{equation}
 bewegen, modelliert werden.
 
+Das Elektron ist dabei kein Punkt auf einer Bahn, sondern eine Wolke; das Proton
+ebenso, nur lässt der Massenunterschied es als Punktmasse durchgehen. Die Reduktion
+auf ein Teilchen ist keine Näherung: Relativkoordinaten und die reduzierte Masse
+$\mu = m_{\text{e}}m_{\text{p}}/(m_{\text{e}}+m_{\text{p}})$ machen sie exakt;
+genähert wird erst mit $\mu \approx m_{\text{e}}$. Aus solchen Rechnungen wurden
+die Wasserstofflinien bestimmt, mit denen man Entfernungen zu fernen Galaxien
+vermaß.
+
+Die Radialgleichung ist ein eindimensionales Problem im effektiven Potential
+$U_\ell(r)$ des Bildes oben. Lösen lässt sie sich mit dem Potenzreihenansatz, der
+Frobenius-Methode; das ist so aufwendig, dass wir die Lösungen einfach
+hinschreiben und durch Einsetzen prüfen.
+
 Die Lösungen der Radialgleichung 
 \begin{equation}
 	\left(-\frac{\hbar^2}{2m_{\text{e}}}\frac{d^2}{dr^2} + \frac{\hbar^2\ell(\ell+1)}{2m_{\text{e}}r^2} + V(r) - E\right)u(r) = 0.
@@ -41,8 +54,23 @@ und $L_r^s$ die Laguerre-Polynomen sind. Die dazugehörige Eigenwerte lauten
 \end{equation}
 mit \emph{Hauptquantenzahl} $n=1,2,\ldots$ und \emph{Bohrradius} 
 \begin{equation}
-	a_0 = \frac{4\pi\epsilon_0\hbar^2}{m_{\text{e}}e^2} = 5.29177210903(80) \times 10^{−11} \text{m}.
+	a_0 = \frac{4\pi\epsilon_0\hbar^2}{m_{\text{e}}e^2} = 5.29177210903(80) \times 10^{-11} \text{m}.
 \end{equation}
+Die Zählung beginnt bei $n=1$, ein $n=0$ gibt es nicht; im Termschema häufen sich
+die unendlich vielen Niveaus an der Ionisationsschwelle $E=0$.
+\begin{center}
+	\begin{tikzpicture}
+		\draw[levellinegrey] (0,0) -- (5.4,0) node[lbl,right] {$E=0$};
+		\foreach \y in {-4,-1,-0.44,-0.25,-0.16,-0.11,-0.08}{\draw[potential] (0,\y) -- (4.4,\y);}
+		\foreach \y/\n in {-4/1,-1/2,-0.44/3}{\node[lbl,right] at (4.5,\y) {$n=\n$};}
+		\draw[vecstyle] (1.4,-1) -- (1.4,-4) node[lbl,right,midway] {$E_2-E_1$};
+	\end{tikzpicture}
+\end{center}
+\begin{merksatz}
+Beobachtbar sind nicht die Eigenwerte, sondern ihre Differenzen: beim Übergang
+$n \to n'$ mit $n'<n$ emittiert das Elektron ein Photon der Energie $E_n-E_{n'}$,
+und das sind die Spektrallinien.
+\end{merksatz}
 Die vollständige Eigenfunktionen lauten
 \begin{equation}
 	\psi_{n\ell m}(r,\theta,\phi) = R_{n\ell}(r)\text{Y}_{\ell}^m(\theta,\phi).
@@ -65,3 +93,6 @@ Daher erhalten wir die folgende Eigenwellenfunktionen $\psi_{n\ell m}(r,\theta,\
 	\psi_{210}(r,\theta,\phi) &= \frac{1}{4\sqrt{2\pi}}\left(\frac{Z}{a_0}\right)^{\frac{3}{2}}\frac{Zr}{a_0}e^{-\frac{Zr}{2a_0}}\cos(\theta) &\quad & 2\text{p} \quad (m=0) \\
 	\psi_{21\pm1}(r,\theta,\phi) &= \frac{1}{8\sqrt{2\pi}}\left(\frac{Z}{a_0}\right)^{\frac{3}{2}}\frac{Zr}{a_0}e^{-\frac{Zr}{2a_0}}\sin(\theta)e^{\pm i\phi} &\quad & 2\text{p} \quad (m=\pm1). \\
 \end{align*}
+
+Die üblichen bunten Orbitalbilder zeigen nur $|\psi_{n\ell m}|^2$, nicht die
+Phase.

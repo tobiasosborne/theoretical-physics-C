@@ -1,20 +1,73 @@
 %!TEX root = TheoretischePhysikC.tex
 
 \section{Vorlesung: Identische Teilchen}
+Alle bekannten Elementarteilchen einer Sorte sind identisch: zwei Elektronen unterscheiden sich durch nichts. Das ist kein Ergebnis der Theorie, sondern ein empirischer Befund -- es müsste nicht so sein, aber es ist so. Zusammengesetzte Teilchen wie Atome sind dagegen in der Regel unterscheidbar, denn sie tragen innere Freiheitsgrade. Entscheidend ist nun, dass ,,identisch`` keine neue Wechselwirkung ist, sondern eine \emph{Einschränkung an die erlaubten Zustände}: am Ende bleiben zwei Unterräume von $\mathcal{H}^{\otimes N}$ übrig, die Bosonen und Fermionen beschreiben.
+
 Sei $\mathcal{H}$ der Hilbertraum eines Teilchens. Nach unseren bisherigen Regeln ist
 \begin{equation}
   \mathcal{H}^{\otimes N} \underbrace{\equiv \mathcal{H}\otimes \cdots \otimes \mathcal{H}}_{\text{$N$ Faktoren}}
 \end{equation}
-der Hilbertraum für $N$ solcher Teilchen. Um eine \emph{Vertauschung} darzustellen führen wir eine Symmetrieoperation für diese Vertauschung ein: Sei also $\pi$ eine \emph{Permutation} der $N$ Symbole $\{1,2, \ldots,N\}$, das heißt eine bijektive Abbildung dieser Menge in sich. Zu jeder solchen \emph{Umordnungsabbildung} definieren
+der Hilbertraum für $N$ solcher Teilchen. Um eine \emph{Vertauschung} darzustellen führen wir eine Symmetrieoperation für diese Vertauschung ein: Sei also $\pi$ eine \emph{Permutation} der $N$ Symbole $\{1,2, \ldots,N\}$, das heißt eine bijektive Abbildung dieser Menge in sich. Bis hierher ist das reine Mathematik. Physik wird daraus erst mit Postulat 5, nach dem physikalische Prozesse durch unitäre Operatoren beschrieben werden: Eine Vertauschung ist erst dann physikalisch realisierbar, wenn wir einen unitären Operator angeben können, der sie darstellt. Zu jeder solchen \emph{Umordnungsabbildung} definieren
 wir einen unitären Operator $U_\pi$ auf $\mathcal{H}^{\otimes N}$ durch
 \begin{equation}
   U_\pi (\phi_1\otimes\phi_2\otimes \cdots\otimes \phi_N) \equiv \phi_{\pi^{-1}(1)}\otimes\phi_{\pi^{-1}(2)}\otimes \cdots\otimes \phi_{\pi^{-1}(N)}.
 \end{equation}
-Wie üblich ist dieser Operator durch Linearität von den Produktvektoren auf ganz $\mathcal{H}^{\otimes N}$fortzusetzen.
+Wie üblich ist dieser Operator durch Linearität von den Produktvektoren auf ganz $\mathcal{H}^{\otimes N}$ fortzusetzen. Beachten Sie die \emph{inverse} Permutation in dieser Definition -- $U_\pi$ schiebt die Faktoren an neue Plätze, er bildet nicht die Indizes ab. Erfahrungsgemäß ist das hier die häufigste Verwirrungsquelle.
 
 Jede Permutation lässt sich als Produkt von Paarvertauschungen $\theta_{jk}$ schreiben, wobei $\theta_{jk}$
 die Vertauschung von $j$ und $k\not=j$ bezeichnet. Das heißt, wir können immer eine beliebige Permutation $\pi$ als Produkt $\pi = \theta_{j_mk_m}\cdots\theta_{j_2k_2}\theta_{j_1k_1}$ schreiben. Mit Hilfe von dieser Zerlegung führen wir die Funktion $\text{sign}(\pi)$ ein als das ,,Vorzeichen`` einer Permutation, also genau
-dann $-1$, wenn $\pi$ das Produkt einer ungeraden Anzahl von Paarvertauschungen ist und $+1$, wenn diese Anzahl gerade ist.
+dann $-1$, wenn $\pi$ das Produkt einer ungeraden Anzahl von Paarvertauschungen ist und $+1$, wenn diese Anzahl gerade ist. Dass das wohldefiniert ist, ist nicht selbstverständlich: dieselbe Permutation lässt sich verschieden zerlegen, eindeutig ist nur die \emph{Parität} der Anzahl.
+
+\begin{beispiel}
+  Für drei Qubits, also $\mathcal{H}\equiv \mathbb{C}^2$, hat $\mathcal{H}^{\otimes 3}$ die $2^3 = 8$ Basisvektoren
+  \begin{equation}
+    |000\rangle,\ |001\rangle,\ |010\rangle,\ |011\rangle,\ |100\rangle,\ |101\rangle,\ |110\rangle,\ |111\rangle.
+  \end{equation}
+  Die Inverse einer Paarvertauschung ist sie selbst, $\theta_{12}^{-1} = \theta_{12}$, also vertauscht $U_{\theta_{12}}$ die ersten beiden Faktoren:
+  \begin{equation}
+    \begin{array}{llll}
+      |000\rangle \mapsto |000\rangle, & |001\rangle \mapsto |001\rangle, & |010\rangle \mapsto |100\rangle, & |011\rangle \mapsto |101\rangle,\\
+      |100\rangle \mapsto |010\rangle, & |101\rangle \mapsto |011\rangle, & |110\rangle \mapsto |110\rangle, & |111\rangle \mapsto |111\rangle.
+    \end{array}
+  \end{equation}
+  Vier Basisvektoren bleiben stehen, zwei Paare werden getauscht; als Matrix ist das
+  \begin{equation}
+    U_{\theta_{12}} = \begin{pmatrix}
+      1&0&0&0&0&0&0&0\\
+      0&1&0&0&0&0&0&0\\
+      0&0&0&0&1&0&0&0\\
+      0&0&0&0&0&1&0&0\\
+      0&0&1&0&0&0&0&0\\
+      0&0&0&1&0&0&0&0\\
+      0&0&0&0&0&0&1&0\\
+      0&0&0&0&0&0&0&1
+    \end{pmatrix}.
+  \end{equation}
+  In jeder Zeile und jeder Spalte steht genau eine $1$ -- so sieht jede Permutationsmatrix aus. Die übrigen vier Permutationen sind eine gute Übung.
+\end{beispiel}
+
+Damit lässt sich sagen, welche Zustände identische Teilchen annehmen dürfen. Nach Postulat 2 werden Zustände mit Dichteoperatoren beschrieben; $\rho$ heißt \emph{invariant}, wenn
+\begin{equation}
+  U_\pi \rho\, U_\pi^\dagger = \rho \qquad \text{für alle Permutationen $\pi$}
+\end{equation}
+gilt, und genau diese sind die erlaubten. Im Drei-Qubit-Beispiel sieht man sofort zwei davon, nämlich $|000\rangle\langle 000|$ und $|111\rangle\langle 111|$ -- es wäre aber ein Fehler zu glauben, das seien schon alle.
+
+\begin{beispiel}
+  Wir nehmen zwei Qubits und darin den \emph{Singulett-Zustand}
+  \begin{equation}
+    |\psi^-\rangle \equiv \frac{1}{\sqrt{2}}\left(|01\rangle - |10\rangle\right),
+  \end{equation}
+  eine geschickt gewählte Superposition. Die Vertauschung $\theta_{12}$ tauscht $|01\rangle$ und $|10\rangle$, also
+  \begin{equation}
+    U_{\theta_{12}}|\psi^-\rangle = \frac{1}{\sqrt{2}}\left(|10\rangle - |01\rangle\right) = -|\psi^-\rangle.
+  \end{equation}
+  Der \emph{Vektor} ist demnach nicht invariant. Der \emph{Zustand} ist es trotzdem: im Dichteoperator tritt das Vorzeichen zweimal auf und kürzt sich weg:
+  \begin{equation}
+    U_{\theta_{12}}|\psi^-\rangle\langle \psi^-|U_{\theta_{12}}^\dagger = (-1)(-1)|\psi^-\rangle\langle \psi^-| = |\psi^-\rangle\langle \psi^-|.
+  \end{equation}
+\end{beispiel}
+
+Diese kleine Rechnung ist der Kern der Vorlesung. Weil die globale Phase eines Vektors physikalisch bedeutungslos ist und allein der Dichteoperator zählt, gibt es \emph{zwei} Sorten erlaubter Zustände statt einer: exakt invariante und solche, die es nur bis auf ein Vorzeichen sind. Ohne dieses Argument gäbe es Fermionen nicht.
 
 Man kann nun überprüfen, dass die Operatoren
 \begin{align}
@@ -32,15 +85,28 @@ von \emph{symmetrischen Vektoren} und auf den Raum
 \end{equation}
 von antisymmetrischen Vektoren projektieren. Der Hilbertraum für $N$ gleicher Elementarteilchen ist entweder $\mathcal{H}^{\otimes N}_{+}$ für sogenannte \emph{Bosonen} oder $\mathcal{H}^{\otimes N}_{-}$ für \emph{Fermionen}.
 
+Äquivalent, und meist anschaulicher, sind dieselben Räume direkt beschrieben:
+\begin{align}
+  \mathcal{H}^{\otimes N}_{+} &= \left\{|\psi\rangle \in \mathcal{H}^{\otimes N}\ \middle|\ U_\pi|\psi\rangle = |\psi\rangle\ \text{für alle $\pi$}\right\},\\
+  \mathcal{H}^{\otimes N}_{-} &= \left\{|\psi\rangle \in \mathcal{H}^{\otimes N}\ \middle|\ U_\pi|\psi\rangle = \text{sign}(\pi)|\psi\rangle\ \text{für alle $\pi$}\right\}.
+\end{align}
+Für den Singulett-Zustand passt das exakt, denn $\text{sign}(\theta_{12}) = -1$. Rechnen Sie als Übung nach, dass für zwei Qubits $\dim \mathcal{H}^{\otimes 2}_{+} = 3$ und $\dim \mathcal{H}^{\otimes 2}_{-} = 1$ gilt.
+
 \begin{center}
 \parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Postulat 6}: Als Wellenfunktionen eines Vielteilchensystems kommen nur solche Funktionen in Frage, die gemeinsame Eigenfunktionen aller Vertauschungen von je zwei gleichen Elementarteilchen sind. Der Eigenwert zu einer solchen Vertauschung ist
 der gleiche Faktor, mit dem die Wellenfunktion eines Teilchens dieser Sorte bei der Drehung um $2\pi$ multipliziert wird, also $+1$ für Teilchen mit ganzzahligem Spin und $-1$ für Teilchen mit halbzahligem Spin.}\end{tcolorbox}}
 \end{center}
 
-\section*{Statistische Physik}
-Wir betrachten nun makroskopische Objekte, die aus üblicherweise $10^{19}$-$10^{23}$ Teilchen pro $\text{cm}^3$ bestehen. Daher ist es praktisch nicht möglich, den \emph{mikroskopischen Zustand} -- den Quantenmechanischen Zustand des Gesamtsystems -- aller Teilchen zu messen oder sogar anzugeben. 
+Lesen Sie das Postulat gegen das eben Erarbeitete: die Vektoren aus $\mathcal{H}^{\otimes N}_{\pm}$ sind gemeinsame Eigenvektoren aller $U_\pi$, mit Eigenwert $+1$ im bosonischen und $\text{sign}(\pi)$ im fermionischen Fall. Dass dieser Eigenwert ausgerechnet mit dem Spin zusammenhängt, ist keineswegs offensichtlich -- es ist ein tiefliegendes Ergebnis der Quantenfeldtheorie, der \emph{Spin-Statistik-Zusammenhang}. Beweisen lässt sich Postulat 6 nicht; es muss angenommen werden. Damit sind die sechs Postulate beisammen, und wir können im Prinzip jedes System der Quantenmechanik modellieren.
 
-Eine vollständige Beschreibung des Systemzustands ist zwar nicht möglich, aber das hindert uns nicht daran, interessante physikalische Vorhersagen zu treffen. Das liegt daran, dass wir in der Praxis nur makroskopische Größen wie Druck, Volumen usw. messen können. Deshalb suchen wir nun nach einer grobkörnigen Beschreibung des Systems, die nur die makroskopisch relevanten Größen beschreibt. Die Angabe von einigen wenigen makroskopischen Größen wird als \emph{Makrozustand} bezeichnet.
+\section*{Statistische Physik}
+,,Im Prinzip`` ist dabei die entscheidende Einschränkung. Wir betrachten nun makroskopische Objekte, die aus üblicherweise $10^{19}$-$10^{23}$ Teilchen pro $\text{cm}^3$ bestehen. Daher ist es praktisch nicht möglich, den \emph{mikroskopischen Zustand} -- den Quantenmechanischen Zustand des Gesamtsystems -- aller Teilchen zu messen oder sogar anzugeben. 
+
+\begin{greybox}[Warum ein Kubikzentimeter schon zu viel ist]
+Modellieren wir jedes Teilchen so einfach wie irgend möglich, als Qubit mit $\mathcal{H}\equiv \mathbb{C}^2$. Weil sich die Dimensionen im Tensorprodukt multiplizieren, hat der Hilbertraum eines Balls aus $N\approx 10^{23}$ Teilchen dann die Dimension $2^N = 2^{10^{23}}$; so viele komplexe Zahlen wären schon für einen \emph{reinen} Zustand hinzuschreiben. Auch ein Quantenrechner hilft nicht: er bräuchte ebenso viele Qubits, wie das System Teilchen hat.
+\end{greybox}
+
+Eine vollständige Beschreibung des Systemzustands ist zwar nicht möglich, aber das hindert uns nicht daran, interessante physikalische Vorhersagen zu treffen. Das liegt daran, dass wir in der Praxis nur makroskopische Größen wie Druck, Volumen usw. messen können. Deshalb suchen wir nun nach einer grobkörnigen Beschreibung des Systems, die nur die makroskopisch relevanten Größen beschreibt. Die Angabe von einigen wenigen makroskopischen Größen wird als \emph{Makrozustand} bezeichnet. Vorsicht: ein Makrozustand ist \emph{kein} Quantenzustand, sondern nur eine Liste von Zahlen -- er wird weder in Ket-Notation noch mit einem Dichteoperator geschrieben. Die Wörter klingen ähnlich, die Objekte sind völlig verschieden.
 
 Der tatsächlich realisierte Mikrozustand ist unbekannt, aber es ist gegenenfalls möglich die \emph{Wahrscheinlichkeiten} der Mikrozustände anzugeben, die mit einem Makrozustand verträglich sind. Die Menge aller Mikrozustände, die einen gegebenen Makrozustand repräsentieren, heißt zusammen mit der Angabe der Wahrscheinlichkeiten: \emph{statistisches Ensemble} oder \emph{statistische Gesamtheit}.
 
@@ -63,6 +129,8 @@ Statistische Ensemblen werden in der Quantenmechanik wie folgt beschrieben. Ein 
   gegeben.
 \end{beispiel}
 
+Zu einem Makrozustand gehören in aller Regel unendlich viele verträgliche Ensembles -- statt $p_1 = p_2 = \frac12$ wären ebenso gut $\frac34$ und $\frac14$ möglich. Welches das richtige ist, sagt uns die Quantenmechanik nicht; dafür brauchen wir ein Prinzip.
+
 Eine makroskopische Größe wird als Erwartungswert einer Observable erhalten: Man identifiziert eine Observable $\widehat{A}$, d.h., einen hermiteschen Operator, der eine physikalische Größe darstellt und berechnet
 \begin{equation}
   \langle \widehat{A}\rangle \equiv \tr(\widehat{A} \rho),
@@ -75,3 +143,5 @@ Ziel der statistischen Physik ist es, Systeme mit vielen Teilchen statistisch zu
 \end{center}
 
 Man kann diese Annahme (noch) nicht beweisen. Auf der mikroskopischen Ebene erwarten wir, dass jeder Prozess, der das System von Zustand $X$ in den Zustand $Y$ bringt, reversibel sein sollte, sodass das System genauso leicht von Zustand $Y$ in den Zustand $X$ gelangen kann. In diesem Fall sollte das System keinen Zustand einem anderen bevorzugen. Trotzdem ist es nicht offensichtlich, dass alle der als „zugänglich“ angenommenen Mikrozustände tatsächlich in einer vernünftigen Zeitspanne erreicht werden können. Wir werden in der Tat sehen, dass in einem großen System die Zahl der „zugänglichen“ Mikrozustände so groß ist, dass in einer typischen Lebensdauer nur ein winziger Bruchteil von ihnen tatsächlich vorkommen kann. Was wir also annehmen, ist, dass die Mikrozustände, die tatsächlich über einen hinreichend langen, aber nicht unvorstellbar großen Zeitraum vorkommen, einen repräsentativen Querschnitt darstellen. Wir nehmen an, dass die Übergänge „zufällig“ sind, in dem Sinne, dass es kein Muster gibt, über das wir uns Gedanken machen müssten.
+
+Klassisch ist ,,gleich wahrscheinlich`` dabei harmlos: man zählt die zugänglichen Mikrozustände ab und teilt durch ihre Anzahl. Wegen der Superpositionen gibt es in der Quantenmechanik aber unendlich viele Zustände -- welche sollen wir zählen? Die Antwort verlangt eine neue Größe, die \emph{Entropie}, und mit ihr beginnt die nächste Vorlesung.

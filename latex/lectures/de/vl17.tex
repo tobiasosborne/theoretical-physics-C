@@ -15,13 +15,15 @@ wobei
 \end{equation}
 Wir haben gesehen, dass die Bahndrehimpulsoperatoren $\widehat{\mathbf{L}} \equiv \widehat{\mathbf{r}}\times \widehat{\mathbf{p}}$ diese Kommutatoren erfüllen. Man sagt, dass $\widehat{\mathbf{r}}\times \widehat{\mathbf{p}}$ uns eine \emph{Darstellung} dieser Kommutatoren liefert. Eine wichtige Eigenschaft dieser Darstellung ist, dass den Gesamtdrehimpuls \emph{quantisiert} ist, im Sinne, dass die Eigenwerte des Gesamtdrehimpulsoperators $\widehat{\mathbf{L}}^2$ nur die Werte $\hbar^2 \ell(\ell+1)$ annehmen können, wobei $\ell = 0, \frac12, 1, \ldots$. Allerdings für die Bahndrehimpulsoperatoren $\widehat{\mathbf{r}}\times \widehat{\mathbf{p}}$ tauchen nur ganzzahlige Werte auf: $\ell = 0,1,2,\ldots$.
 
+Zu jeder Darstellung gehört ein Hilbertraum, auf dem die Operatoren wirken; ausführlich diskutiert haben wir bisher allein $\mathcal{H}=L^2(\mathbb{R}^3)$.
+
 Eine faszinierende Frage bleibt offen: Gibt es Quantensysteme, die halb-ganzzahlige Eigenwerte aufweisen? Um diese Frage zu bejahen benötigen wir einen Hilbertraum $\mathcal{H}$ und drei Operatoren $\widehat{S}_j:\mathcal{H}\rightarrow \mathcal{H}$, $j=1,2,3$, die die Relationen (\ref{eq:amcr}) erfüllen:
 \begin{equation}\label{eq:amcr-spin}
 	\eqbox{[\widehat{S}_1,\widehat{S}_2] = i\hbar \widehat{S}_3, \quad [\widehat{S}_2,\widehat{S}_3] = i\hbar \widehat{S}_1\quad\text{und}\quad [\widehat{S}_3,\widehat{S}_1] = i\hbar \widehat{S}_2.}
 \end{equation}
 Falls ein solcher Hilbertraum und solche Operatoren existieren, können wir zumindest feststellen, dass es keine \emph{mathematische} Hindernisse gibt die die Existenz von Quantensystemen mit halb-ganzzahligem gesamten Drehimpuls verhindern. Selbst wenn ein solches Quantensystem mathematisch existieren kann, ist es noch ein weiterer Schritt, festzustellen, ob ein solches System in der Natur vorkommen kann.
 
-Es zeigt sich, dass Quantensysteme mit halbzahligen Eigenwerten für den gesamten Drehimpulsoperator tatsächlich existieren. Wir untersuchen nun den Fall $\ell = \frac12$. Der dazugehörige Hilbertraum ist durch $\mathcal{H} \equiv \mathbb{C}^2$ gegeben. Wir definieren dazu die Matrizen
+Es zeigt sich, dass Quantensysteme mit halbzahligen Eigenwerten für den gesamten Drehimpulsoperator tatsächlich existieren. Wir untersuchen nun den Fall $\ell = \frac12$. Der dazugehörige Hilbertraum ist durch $\mathcal{H} \equiv \mathbb{C}^2$ gegeben. Dass wir die Operatoren jetzt $\widehat{S}_j$ statt $\widehat{L}_j$ nennen, ist eine reine Umbenennung. Wir definieren dazu die Matrizen
 \begin{equation}
 	\widehat{S}_1 = \frac{\hbar}{2} \begin{pmatrix}
 		0 & 1 \\ 1 & 0
@@ -31,17 +33,29 @@ Es zeigt sich, dass Quantensysteme mit halbzahligen Eigenwerten für den gesamte
 		1 & 0 \\ 0 & -1
 	\end{pmatrix}.
 \end{equation}
+Bis auf den Faktor $\frac{\hbar}{2}$ sind das die \emph{Pauli-Matrizen} $\sigma_1,\sigma_2,\sigma_3$. Zu prüfen bleibt, ob sie (\ref{eq:amcr-spin}) erfüllen:
+\begin{equation}
+	[\widehat{S}_1,\widehat{S}_2] = \frac{\hbar^2}{4}\left(\sigma_1\sigma_2-\sigma_2\sigma_1\right) = \frac{\hbar^2}{4}\cdot 2i \begin{pmatrix}
+		1 & 0 \\ 0 & -1
+	\end{pmatrix} = i\hbar\, \widehat{S}_3.
+\end{equation}
+Die beiden übrigen Relationen folgen nach demselben Muster.
+
+\begin{historical}
+	Damit ist erst die \emph{mathematische} Frage beantwortet: Man kann wilde Hilberträume definieren, die alle Bedingungen erfüllen und trotzdem kein System in der Natur beschreiben. Beim Spin geht es gut -- im Stern-Gerlach-Experiment, das einen Silberatomstrahl in genau zwei Teilstrahlen aufspaltete, wurde eines gefunden: Das Elektron besitzt einen \emph{internen} Freiheitsgrad mit Gesamtdrehimpuls $\frac12$.
+\end{historical}
+
 Der Gesamtdrehimpulsoperator $\widehat{\mathbf{S}}^2$ lautet
 \begin{equation}
 	\widehat{\mathbf{S}}^2 = \frac{3\hbar^2}{4} \mathbb{I}.
 \end{equation}
-Dieser Operator besitzt zwei (entartete) Eigenwerte, nämlich, $\frac{3\hbar^2}{4}$ und $\frac{3\hbar^2}{4}$. Vergleichen wir die Wirkung von $\widehat{\mathbf{S}}^2$ mit 
+Die Rechnung passt in eine Zeile, denn $\sigma_1^2 = \sigma_2^2 = \sigma_3^2 = \mathbb{I}$. Dieser Operator besitzt zwei (entartete) Eigenwerte, nämlich, $\frac{3\hbar^2}{4}$ und $\frac{3\hbar^2}{4}$. Vergleichen wir die Wirkung von $\widehat{\mathbf{S}}^2$ mit
 \begin{equation}
 	\widehat{\mathbf{S}}^2|\ell,m\rangle = \hbar^2\ell(\ell+1)|\ell,m\rangle
 \end{equation}
-stellen wir fest, dass $\ell=\frac12$ sein muss. 
+stellen wir fest, dass $\ell=\frac12$ sein muss, denn $\frac34 = \frac12\left(\frac12+1\right)$.
 
-Bezüglich dieser Darstellung ist $\widehat{S}_3$ bereits diagonal. Das heisst, die Eigenbasis von $\widehat{S}_3$ darf mit $|\ell,m\rangle$ identifiziert werden:
+Dass $[\widehat{\mathbf{S}}^2,\widehat{S}_j]=0$ gilt, ist hier trivial: Ein Vielfaches des Einsoperators vertauscht mit allem. Bezüglich dieser Darstellung ist $\widehat{S}_3$ bereits diagonal. Das heisst, die Eigenbasis von $\widehat{S}_3$ darf mit $|\ell,m\rangle$ identifiziert werden:
 \begin{equation}
 	|\ell=\tfrac12,m=\tfrac12\rangle \equiv \begin{pmatrix}
 		1 \\ 0
@@ -50,12 +64,21 @@ Bezüglich dieser Darstellung ist $\widehat{S}_3$ bereits diagonal. Das heisst, 
 		0 \\ 1
 	\end{pmatrix}.
 \end{equation}
+Man schreibt dafür auch kurz $|\uparrow\rangle$ und $|\downarrow\rangle$.
+
+Darstellungen zu $\ell=\frac32,\frac52,\ldots$ lassen sich ebenso angeben, \emph{fundamentale} Teilchen mit $\ell=\frac32$ hat aber noch niemand entdeckt. \emph{Aufbauen} lassen sich solche Drehimpulse allerdings: Ein System mit $\ell=\frac12$ und eines mit $\ell=1$ zusammengebracht sieht von fern aus wie $\ell=\frac32$. Damit sind wir bei zusammengesetzten Systemen.
 
 \section*{Zusammengesetzte Systeme}
 Oft müssen wir bei der Modellierung eines quantenmechanischen Systems das System aus mehreren Teilsystemen aufbauen: aus einem Elektron und einem Proton wird dann ein Wasserstoff-Atom und so weiter; oder wir verfeinern unsere Beschreibung durch Hinzunahme weiterer Freiheitsgrade: Aus einem ``Elektron ohne Spin'', wird zusammen mit einer Beschreibung eines isolierten Spinfreiheitsgrads eine Theorie für Elektronen, die den Spin einschließt.
 
 In all diesen Fällen verfahren wir nach der Regel, dass jeder Sorte quantenmechanischer
 Systeme ein Hilbertraum zugeordnet wird. Sei also $\mathcal{H}_1$ der Hilbertraum der Systemsorte ``1'' und ebenso $\mathcal{H}_2$. Die Frage lautet also: Wie und in welchem Hilbertraum ``$\mathcal{H}_{\text{$1$\&$2$}}$'' sollen wir die Systemsorte ``1 \& 2'' von Systemen beschreiben, die aus einem Paar von Teilchen/Freiheitsgraden der Sorten 1 und 2 besteht? Die Antwort ist mit Hilfe durch das \emph{Tensorprodukt} $\mathcal{H}_1\otimes \mathcal{H}_2$ von $\mathcal{H}_1$ und $\mathcal{H}_2$ gegeben.
+
+Aus zwei Hilberträumen lässt sich auf mehrere Weisen ein dritter bauen; nur eine davon ist die physikalisch richtige. Die Forderung lautet: Die Teilsysteme müssen sich \emph{unabhängig} voneinander präparieren lassen -- ob neben dem einen Wasserstoffatom noch ein zweites steht, darf keine Rolle spielen. Also muss jede Kombination von Zuständen einem Vektor in $\mathcal{H}_{\text{$1$\&$2$}}$ entsprechen, und daraus folgt
+\begin{equation}
+	\dim\left(\mathcal{H}_{\text{$1$\&$2$}}\right) = \dim(\mathcal{H}_1)\cdot \dim(\mathcal{H}_2):
+\end{equation}
+Die Dimensionen \emph{multiplizieren} sich, sie addieren sich nicht -- wie bei klassischen Bits, wo drei Bits acht Zustände besitzen.
 
 \begin{center}
 \parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{Das Tensorprodukt $\mathcal{H}_1\otimes \mathcal{H}_2$ zweier Hilberträume $\mathcal{H}_1$ und $\mathcal{H}_2$ ist \emph{der} Hilbertraum, der Vektoren $\phi_1\otimes \phi_2$ mit $\phi_1\in \mathcal{H}_1$ und $\phi_2\in \mathcal{H}_2$ enthält, und von ihnen erzeugt wird, und in dem die Rechenregel 
@@ -94,3 +117,30 @@ Rechenregeln für das Tensorprodukt von Operatoren folgen meist leichter aus der
 \end{align}
 
 Schließlich sollte noch erwähnt werden, dass alles, was hier über das Tensorprodukt aus zwei Faktoren gesagt wurde, sofort auf endlich viele Faktoren übertragbar ist.
+
+\section*{Dynamik zusammengesetzter Systeme}
+Laufen beide Teilsysteme unabhängig voneinander, so ist die Zeitentwicklung des Gesamtsystems durch $U_t = U^{(1)}_t\otimes U^{(2)}_t$ gegeben. Beim Hamiltonoperator lauert dagegen eine Falle: Man würde vermuten, er sei das Produkt $\widehat{H}_1\otimes\widehat{H}_2$ -- das ist falsch. Richtig ist
+\begin{equation}\label{eq:H-tensor}
+	\eqbox{\widehat{H} = \widehat{H}_1\otimes \mathbb{I} + \mathbb{I}\otimes \widehat{H}_2.}
+\end{equation}
+Der Grund ist die Produktregel: Ableiten von $U_t$ nach der Zeit gibt
+\begin{equation}
+	\frac{d}{dt}\left(U^{(1)}_t\otimes U^{(2)}_t\right) = \left(\frac{dU^{(1)}_t}{dt}\right)\otimes U^{(2)}_t + U^{(1)}_t\otimes\left(\frac{dU^{(2)}_t}{dt}\right),
+\end{equation}
+und daraus liest man mit $i\hbar\frac{dU^{(j)}_t}{dt} = \widehat{H}_j U^{(j)}_t$ und $i\hbar\frac{dU_t}{dt} = \widehat{H}U_t$ genau (\ref{eq:H-tensor}) ab. Energien addieren sich, sie multiplizieren sich nicht. Mit gelösten Teilproblemen $\widehat{H}_1|E_j\rangle = E_j|E_j\rangle$ und $\widehat{H}_2|E_k\rangle = E_k|E_k\rangle$ ist auch $\widehat{H}$ diagonalisiert:
+\begin{equation}
+	\begin{split}
+		\widehat{H}\left(|E_j\rangle\otimes |E_k\rangle\right) &= \left(\widehat{H}_1|E_j\rangle\right)\otimes |E_k\rangle + |E_j\rangle \otimes \left(\widehat{H}_2|E_k\rangle\right) \\
+		&= (E_j+E_k)\, |E_j\rangle\otimes |E_k\rangle.
+	\end{split}
+\end{equation}
+\begin{übung}
+	Zeigen Sie, dass diese Produktvektoren eine \emph{vollständige} Eigenbasis von $\widehat{H}$ bilden.
+\end{übung}
+
+\section*{Verschränkung}
+Eine letzte Bemerkung, und sie ist die folgenreichste. Für $\mathcal{H} = \mathbb{C}^2\otimes\mathbb{C}^2$ mit Orthonormalbasen $\{\psi_1,\psi_2\}$, $\{\phi_1,\phi_2\}$ ist jeder reine Zustand eine Linearkombination der vier Produktvektoren $\psi_j\otimes\phi_k$ -- aber nicht jede ist selbst ein Produkt. Ein Beispiel ist der Einstein-Podolsky-Rosen-Zustand ($\psi_1=\phi_1=|\uparrow\rangle$, $\psi_2=\phi_2=|\downarrow\rangle$):
+\begin{equation}
+	|\text{EPR}\rangle = \frac{1}{\sqrt{2}}\left(\psi_1\otimes\phi_1 + \psi_2\otimes\phi_2\right) = \frac{1}{\sqrt{2}}\left(|\uparrow\uparrow\rangle + |\downarrow\downarrow\rangle\right).
+\end{equation}
+Er lässt sich nicht als $\psi\otimes\phi$ schreiben: Ein solches Produkt $(a_1\psi_1+a_2\psi_2)\otimes(b_1\phi_1+b_2\phi_2)$ hat die Koeffizienten $a_jb_k$, und aus $a_1b_2 = a_2b_1 = 0$ folgt $a_1b_1 = 0$ oder $a_2b_2 = 0$ -- beide können nicht $\tfrac{1}{\sqrt{2}}$ sein. Also lässt er sich nicht als unabhängige Präparation zweier Systeme auffassen -- obwohl es gerade die unabhängige Präparierbarkeit war, die uns zum Tensorprodukt geführt hat. Das Tensorprodukt liefert also mehr, als wir von ihm verlangt haben. Solche Zustände heissen \emph{verschränkt}, und sie werden heute im Labor routinemässig erzeugt.

@@ -10,6 +10,12 @@ Wir betrachten nun ein Teilchen in einem endlich hohen Potentialtopf mit Tiefe $
 \end{equation}
 Wir werden uns mit den folgenden Fragen beschäftigen: (a) Gibt es gebundene Zustände (d.h.\ Energieeigenvektoren mit Eigenenergie $E\le 0$)? (b) Welche Unterschiede zum unendlich hohen Potentialtopf sind zu beobachten?
 
+\begin{intuition}
+	Schießen wir ein Wellenpaket von außen auf den Topf, so fließt später ein Teil hindurch, ein Teil wird reflektiert, und ein Rest bleibt im Topf sitzen. Ein Streuprozess also, im Prinzip derselbe wie am LHC, wo die gebundenen Zustände neue Teilchen sind.
+\end{intuition}
+
+Die volle Dynamik $U_t$ mischt gebundene und freie Zustände und ist zu kompliziert; ein gebundener Zustand aber bewegt sich zeitlich nicht und ist damit ein Eigenvektor von $\widehat{H}$.
+
 Es ist hilfreich, um die Lösung der Eigenvektorgleichung  
 \begin{equation}
 	\widehat{H}|\Psi\rangle = E|\Psi\rangle
@@ -22,7 +28,7 @@ zu definieren.
 
 Die dazugehörigen Wellenfunktionen erhalten wir mittels
 \begin{equation}
-	\langle x|\widehat{H}|\Psi\rangle = \left(-\frac{\hbar^2}{2m}\frac{d}{dx} + V(x)\right)\Psi(x) = E\Psi(x) = E\langle x|\Psi\rangle.
+	\langle x|\widehat{H}|\Psi\rangle = \left(-\frac{\hbar^2}{2m}\frac{d^2}{dx^2} + V(x)\right)\Psi(x) = E\Psi(x) = E\langle x|\Psi\rangle.
 \end{equation}
 Nach Umformung und Einsetzen erhalten wir
 \begin{equation}
@@ -31,7 +37,7 @@ Nach Umformung und Einsetzen erhalten wir
 		\frac{d^2}{dx^2}\Psi(x) = \kappa^2 \Psi(x), \quad &\text{für $|x|>\frac{L}{2}$}.
 	\end{cases}
 \end{equation}
-Wegen Symmetrie können die Eigenfunktionen gerade oder ungerade gewählt werden. Die geraden Lösungen lauten
+Wegen Symmetrie können die Eigenfunktionen gerade oder ungerade gewählt werden. Gerade heißt: ersetzt man $x$ durch $-x$, kommt dieselbe Funktion zurück. Wir beschränken uns auf $E<0$; die unendlich vielen Lösungen mit $E>0$ sind \emph{Streuzustände}, außerhalb ebene Wellen, und bleiben den Übungen überlassen. Die geraden Lösungen lauten
 \begin{equation}
 	\Psi(x) = \begin{cases}
 		A_1 e^{\kappa x}, \quad & x< -\frac{L}{2} \\
@@ -47,7 +53,9 @@ und die ungeraden Lösungen
 		B_1 e^{-\kappa x}, \quad & x> \frac{L}{2}.
 	\end{cases}
 \end{equation}
-Alle Wellenfunktionen werden als \emph{stetig} und \emph{differenzierbar} angenommen. Dies liefert Anschlussbedingungen bei $x = \pm L/2$. Für die geraden Lösungen erhalten wir wegen
+Außerhalb fallen sie exponentiell ab, verschwinden aber nicht: das Teilchen ist mit kleiner Wahrscheinlichkeit im klassisch verbotenen Bereich zu finden, und das in einem zeitlich unveränderlichen Zustand.
+
+Alle Wellenfunktionen werden als \emph{stetig} und \emph{differenzierbar} angenommen. Dies liefert Anschlussbedingungen bei $x = \pm L/2$. Die Begründung ist physikalisch, nicht mathematisch: ein Sprung in $\Psi$ bedeutet eine unendliche erste Ableitung, und die hängt am Impulsoperator -- das Teilchen hätte dort unendlichen Impuls und unendliche kinetische Energie. Unmöglich ist das nicht -- es gibt solche Systeme --, aber wir verlangen endliche kinetische Energie. Genau darin steckt die Quantisierung. Für die geraden Lösungen erhalten wir wegen
 \begin{enumerate}
 	\item Stetigkeit: $A_1 e^{-\frac{\kappa L}{2}} = A_2 \cos\left(\frac{qL}{2}\right)$,
 	\item Differenzierbarkeit: $-A_1\kappa e^{-\frac{\kappa L}{2}} = -A_2 q\sin\left(\frac{qL}{2}\right)$.
@@ -90,7 +98,11 @@ sodass
 \begin{equation}
 	|\cos(u)| = \frac{u}{\alpha}.
 \end{equation}
-Die Lösung dieser \emph{transzendenten} Gleichung erfolgt graphisch. Wegen der Bedingungung $\kappa>0$, $q>0$ und $\kappa = q\tan(u)$ muss $\tan(u)>0$ gelten, sodass nur Lösungen in $0<u<\frac{\pi}{2}$ und $\pi < u < \frac{3\pi}{2}$ korrekt sind. Zusammengefasst: Es gibt mindestens einen gebundenen Zustand und insgesamt endlich viele Zustände mit gerader Wellenfunktion. 
+Die Lösung dieser \emph{transzendenten} Gleichung erfolgt graphisch. Wegen der Bedingungung $\kappa>0$, $q>0$ und $\kappa = q\tan(u)$ muss $\tan(u)>0$ gelten, sodass nur Lösungen in $0<u<\frac{\pi}{2}$ und $\pi < u < \frac{3\pi}{2}$ korrekt sind. Zusammengefasst: Es gibt mindestens einen gebundenen Zustand und insgesamt endlich viele Zustände mit gerader Wellenfunktion.
+
+\begin{merksatz}
+	Auf $\alpha$ allein kommt es an: klein bei leichtem Teilchen, flachem oder schmalem Topf, groß bei schwerem Teilchen, tiefem oder breitem Topf. Je größer $\alpha$, desto mehr gebundene Zustände -- einen geraden gibt es immer.
+\end{merksatz}
 
 
 Die Bedingung (\ref{eq:unsymm}) für ungerade Lösungen wird analog behandelt: Die Quadratur beider Seiten ergibt in diesem Fall
@@ -109,7 +121,7 @@ sodass
 \begin{equation}
 	|\sin(u)| = \frac{u}{\alpha}.
 \end{equation}
-Lösung dieser Gleichung erfolgt auch graphisch: Wegen $\kappa>0$, $q>0$ und $\kappa = -q\cot(u)$ muss $\cot(u)<0$ gelten, sodass nur Lösungen in $\frac{\pi}{2}<u< \pi$ und $\frac{3\pi}{2} < u < 2\pi$ in Frage kommen. 
+Lösung dieser Gleichung erfolgt auch graphisch: Wegen $\kappa>0$, $q>0$ und $\kappa = -q\cot(u)$ muss $\cot(u)<0$ gelten, sodass nur Lösungen in $\frac{\pi}{2}<u< \pi$ und $\frac{3\pi}{2} < u < 2\pi$ in Frage kommen. Anders als $|\cos(u)|$ startet $|\sin(u)|$ im Ursprung bei Null; für kleines $\alpha$ kann es deshalb gar keine ungerade Lösung geben. Der Schnittpunkt bei $u=0$ zählt nicht: dort wäre $q=0$ und die Sinuslösung identisch Null -- die typische Falle beim graphischen Lösen.
 
 Aus den gefundenen Lösungen für $u$ folgt $q = \frac{2u}{L}$ und $E = \frac{\hbar^2q^2}{2m}-V_0$. Wir können den Grenzübergang zum unendlich tiefen Potentialtopf erhalten, indem wir den Grenzwert
 \begin{equation}

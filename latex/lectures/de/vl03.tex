@@ -6,9 +6,11 @@ Sei $V$ ein komplexer Vektorraum. In der Quantemechanik wird die folgende Schrei
 \begin{equation}
 	v \mapsto |v\rangle.  
 \end{equation} 
-Diese Notation bedeutet nicht mehr als: ,,$|v\rangle$ steht für einen Vektor in einem Vektorraum $V$``. Warum diese ungewöhnliche Notation eingeführt haben wird demnächst klar. 
+Diese Notation bedeutet nicht mehr als: ,,$|v\rangle$ steht für einen Vektor in einem Vektorraum $V$``. Warum diese ungewöhnliche Notation eingeführt haben wird demnächst klar.
 
-Wir werden einige Berechnungen durchführen, um uns mit dieser Notation vertraut zu machen. 
+Der Aufwand lohnt sich: Die Zustände eines quantenmechanischen Systems werden durch Vektoren in einem Hilbertraum modelliert. Die eigentliche Hürde am Anfang ist dabei nicht die Physik, sondern die Notation.
+
+Wir werden einige Berechnungen durchführen, um uns mit dieser Notation vertraut zu machen.
 \begin{beispiel}
 	Angenommen, $V\equiv \mathbb{C}^2$. (In der QM werden wir später diesen Hilbertraum als \emph{Zustandsraum} eines Qubits interpretieren.) Die Dimension von $V$ ist $2$. Ein Paar Beispielvektoren lauten
 	\begin{equation}
@@ -69,6 +71,10 @@ Mit dieser Notation lässt sich das Skalarprodukt zweier Vektoren $|v\rangle$ un
 \end{equation}
 (Die Schreibweise ,,Bra-Ket`` geht auf diese Definition zurück.)
 
+\begin{historical}
+	Die Notation stammt von Paul Dirac. Englisch \emph{bracket} heißt Klammer: links steht der ,,bra``, rechts der ,,ket``, das ,,c`` ist verlorengegangen.
+\end{historical}
+
 \begin{beispiel}
 	Im Fall $V\equiv \mathbb{C}^2$ wird das Skalarprodukt von $|e_0\rangle$ und $|e_+\rangle$ wie folgt berechnet:
 	\begin{equation}
@@ -84,6 +90,7 @@ Es ist wichtig zu beachten, dass sich eine Linearkombination von zwei Ket-Vektor
 \begin{equation}
 	(\alpha |v\rangle +\beta |w\rangle)^\dag = \alpha^* \langle v| + \beta^*\langle w|.
 \end{equation}
+Genau diese Regel macht die Notation nützlich: Wir rechnen Skalarprodukte aus, ohne die Vektoren je als Spalten hinzuschreiben -- in unendlich-dimensionalen Räumen die einzige Möglichkeit, überhaupt zu rechnen.
 
 \begin{beispiel}
 	Das Skalarprodukt $\langle v|w\rangle$ von
@@ -117,8 +124,12 @@ Es ist wichtig zu beachten, dass sich eine Linearkombination von zwei Ket-Vektor
 	\end{equation}
 \end{beispiel}
 
+Seien wir ehrlich: In zwei Dimensionen ist der erste Weg aufwendiger. Ab fünf oder sechs Dimensionen kippt das Verhältnis.
+
 \subsection{Skalarprodukte}
 Bevor wir die Definition eines Hilbertraums vorstellen, müssen wir die formale Definition und einige Eigenschaften von allgemeinen Skalarprodukten erklären.
+
+Skalarprodukte gibt es unendlich viele, und ein Vektorraum kann durchaus ohne eines existieren. Wir brauchen eines, weil die Quantenmechanik probabilistisch ist: Es ist unser Werkzeug für Wahrscheinlichkeiten.
 
 Ein \emph{Skalarprodukt} für einen komplexen Vektorraum $V$ ordnet je zwei Vektoren $|\phi\rangle, |\psi\rangle \in V$ eine komplexe Zahl $\langle \phi|\psi\rangle \in \mathbb{C}$ zu. Es ist per Definition additiv in jedem Argument (z.B., $\langle \phi_1 + \phi_2|\psi\rangle = \langle \phi_1|\psi\rangle + \phi_2|\psi\rangle$). Für das Herausziehen skalarer Faktoren $z\in \mathbb{C}$ gelten die Regeln
 \begin{align}
@@ -150,11 +161,13 @@ Daraus folgt auch die Dreiecksungleichung
 \begin{equation}
 	\left\|\sum_{j} |\psi_j\rangle \right\| \le \sum_{j} \|\psi_j\|.
 \end{equation}
+Beide sind Arbeitsgeräte: Die Schwarz'sche Ungleichung steckt hinter der Heisenbergschen Unschärferelation (Vorlesung 9), mit der Dreiecksungleichung schätzen wir Größen ab.
 
 Man nennt zwei Vektoren \emph{orthogonal} (in Symbolen $|\phi\rangle \perp |\psi\rangle$), wenn
 \begin{equation}
 	\langle\phi|\psi\rangle = 0.
 \end{equation}
+Achtung: Ein verschwindendes Skalarprodukt heißt \emph{nicht}, dass einer der Vektoren null ist -- das erzwingt nur der Fall $|\phi\rangle = |\psi\rangle$.
 
 
 \subsection{Hilbertraum}
@@ -162,33 +175,75 @@ Man nennt zwei Vektoren \emph{orthogonal} (in Symbolen $|\phi\rangle \perp |\psi
 
 \begin{definition}
 	Hilbertraum $\mathcal{H}$ ist als ein komplexer Vektorraum mit Skalarprodukt $\langle \cdot | \cdot  \rangle$, der bezüglich der Norm $\|\psi\|^2 \equiv \langle \psi|\psi\rangle$ vollständig\footnote{Der subtile Aspekt der Vollständigkeit wird in unserer Vorlesung keine große Rolle spielen.} ist, definiert.   
-\end{definition} 
+\end{definition}
+
+Für uns ist ein Hilbertraum also schlicht ein komplexer Vektorraum mit Skalarprodukt.
 
 
 \subsection{Basis}
+Basen brauchen wir aus einem praktischen Grund: Die meisten Rechnungen der Quantenmechanik werden erst dann explizit, wenn eine Basis fixiert ist.
+
 Eine \emph{Basis} eines Hilbertraums $\mathcal{H}$ ist ein System von Vektoren $|\phi_j\rangle \in \mathcal{H}$, wobei $j$ über irgendeine \emph{Indexmenge} $X$ läuft, mit den Eigenschaften
 \begin{align}
 	\langle \phi_j|\phi_k\rangle &=\delta_{jk}, \quad &\text{für alle $j,k\in X$ (,,$\{|\phi_j\rangle\}$ ist \emph{orthonormal``) und}} \\
-	\|\psi\|^2 &= \sum_{j\in X} |\langle \phi_j|\psi\rangle|^2, \quad &\text{für alle $j,k\in X$ (,,$\{|\phi_j\rangle\}$ ist \emph{vollständig``).}} 
+	\|\psi\|^2 &= \sum_{j\in X} |\langle \phi_j|\psi\rangle|^2, \quad &\text{für alle $j,k\in X$ (,,$\{|\phi_j\rangle\}$ ist \emph{vollständig``).}}
 \end{align}
+Achtung: Diese Vollständigkeit hat nichts mit der Vollständigkeit des Hilbertraums zu tun, und $\delta_{jk}$ ist das Kronecker-Delta, nicht die Diracsche Delta-Funktion.
 
 Die wichtigste Eigenschaft einer solchen Basis ist, dass jeder Vektor $|\psi\rangle \in \mathcal{H}$ danach entwickelt werden kann: es gilt
 \begin{equation}
 	|\Psi\rangle = \sum_{j\in X} \langle \psi_j|\Psi\rangle |\psi_j\rangle.
 \end{equation}
+Diese Gleichung ist eine Form der sogenannten \emph{Vollständigkeitsrelation}; mit den Basisvektoren $|\phi_j\rangle$ geschrieben lautet sie
+\begin{equation}
+	\eqbox{|\Psi\rangle = \sum_{j\in X} \langle \phi_j|\Psi\rangle\, |\phi_j\rangle.}
+\end{equation}
+Sie sieht harmlos aus, wird aber ständig angewandt.
 
-Für unendlich-dimensionale Vektorräume ist die Existenz von Basen nur schwer zu beweisen. Praktisch werden Basen oft mit dem sogenannten Orthonormierungsverfahren gewonnen: man startet mit irgendeiner Liste von Vektoren $|\Phi_1\rangle$, $|\Phi_2\rangle$, $|\Phi_3\rangle$, $\ldots$. Daraus bestimmt man sukzessiv ein System von paarweise orthogonalen Vektoren $|\Psi_n\rangle$ nach der Formel
+Für unendlich-dimensionale Vektorräume ist die Existenz von Basen nur schwer zu beweisen. Wir nehmen ab jetzt an, dass wir immer eine Basis haben; beliebig gewählte Vektoren bilden nämlich normalerweise \emph{keine} Basis. Praktisch werden Basen oft mit dem sogenannten Orthonormierungsverfahren gewonnen: man startet mit irgendeiner Liste von Vektoren $|\Phi_1\rangle$, $|\Phi_2\rangle$, $|\Phi_3\rangle$, $\ldots$. Daraus bestimmt man sukzessiv ein System von paarweise orthogonalen Vektoren $|\Psi_n\rangle$ nach der Formel
 \begin{equation}
 	|\Psi_n\rangle \equiv |\Phi_n\rangle - \sum_{k=1}^{n-1} |\Psi_k\rangle \frac{\langle \Psi_k|\Phi_n\rangle}{\|\Psi_k\|^2},
 \end{equation}
-wobei Summanden mit $|\Phi_k\rangle= 0$ ausgelassen werden. Dieser Vektor ist orthogonal auf den $|\Psi_k
+wobei Summanden mit $|\Phi_k\rangle= 0$ ausgelassen werden.\footnote{Gemeint ist $|\Psi_k\rangle = 0$: Sonst stünde $\|\Psi_k\|^2 = 0$ im Nenner, und wir würden durch null teilen.} Dieser Vektor ist orthogonal auf den $|\Psi_k
 \rangle$ mit $k < n$. Die Vektoren
 \begin{equation}
 	\left\{\frac{|\Psi_n\rangle}{\|\Psi_n\|}\middle| |\Psi_n\rangle\not=0\right\}
 \end{equation}
 bilden dann ein Orthonormalsystem, das den gleichen Teilraum aufspannt wie die ursprüngliche Liste. Wenn es keinen Vektor gibt, der auf allen $|\Phi_n\rangle$ senkrecht steht, so ist diese Liste auch eine Basis.
 
+Rechnen wir das Verfahren einmal ganz durch.
+
+\begin{beispiel}
+	Wir arbeiten in $\mathbb{C}^2$ und starten mit zwei ausgedachten Vektoren
+	\begin{equation}
+		|\Phi_1\rangle \equiv \begin{pmatrix}
+			1 \\ 0
+		\end{pmatrix} \quad\text{und}\quad |\Phi_2\rangle \equiv \begin{pmatrix}
+			1 \\ 1
+		\end{pmatrix}.
+	\end{equation}
+	Im ersten Schritt läuft die Summe von $1$ bis $0$, es wird also gar nicht summiert:
+	\begin{equation}
+		|\Psi_1\rangle = |\Phi_1\rangle = \begin{pmatrix}
+			1 \\ 0
+		\end{pmatrix}.
+	\end{equation}
+	Im zweiten Schritt bleibt nur der Term $k=1$ übrig. Mit $\langle \Psi_1|\Phi_2\rangle = 1$ und $\|\Psi_1\|^2 = 1$ erhalten wir
+	\begin{equation}
+		|\Psi_2\rangle = |\Phi_2\rangle - |\Psi_1\rangle \frac{\langle \Psi_1|\Phi_2\rangle}{\|\Psi_1\|^2} = \begin{pmatrix}
+			1 \\ 1
+		\end{pmatrix} - \begin{pmatrix}
+			1 \\ 0
+		\end{pmatrix} = \begin{pmatrix}
+			0 \\ 1
+		\end{pmatrix}.
+	\end{equation}
+	Beide Vektoren haben schon die Norm eins: Aus einer beliebigen Liste ist die kanonische Basis $\{|e_0\rangle, |e_1\rangle\}$ geworden. In höheren Dimensionen wird die Rechnung nur aufwendiger, funktionieren tut sie immer.
+\end{beispiel}
+
 \subsection{Operatoren}
+Nun zum zweiten Standbein der Theorie. Die Vektoren beschreiben die \emph{Zustände}, die Operatoren die \emph{Observablen} -- und sobald man Zustände und Observablen hat, hat man eine physikalische Theorie.
+
 Sei $\mathcal{H}$ einen Hilbertraum. Ein \emph{Operator} $A$ auf $\mathcal{H}$ ist eine \emph{lineare Abbildung}
 \begin{equation}
 	A:\mathcal{H}\rightarrow \mathcal{H}.

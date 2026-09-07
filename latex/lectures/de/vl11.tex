@@ -1,6 +1,8 @@
 %!TEX root = TheoretischePhysikC.tex
 
 \section{Vorlesung: Teilchen im Kasten}
+Ein einzelnes Teilchen allein im Universum modelliert kein reales System. Ein Teilchen in einem endlich großen Kasten dagegen ist ein brauchbares effektives Modell: für ein Elektron in einem Quantenpunkt etwa, oder für ein Photon in einem Hohlraumresonator. Nebenbei sehen wir hier zum ersten Mal, woher das Wort ,,Quanten`` kommt.
+
 Wenn die Bewegungsfreiheit eines Teilchens durch äußere Wände eingeschränkt wird, äußert sich das zunächst einmal in der Einschränkung in den möglichen Werten der Ortsvariablen $x$. Wenn sich das Teilchen nur in einem Gebiet $G \subset \mathbb{R}^3$ bewegen kann, modifizieren wir den Hilbertraum erst einmal zu $\mathcal{H}\equiv L^2(G)$, d.h.\ Wellenfunktionen sind nur noch auf $G$ definiert und im
 Skalarprodukt wird die Integration 
 \begin{equation}
@@ -14,20 +16,22 @@ Den Hamiltonoperator versuchen wir erst einmal wieder als
 \end{equation}
 anzusetzen. Das geht allerdings schief ($H$ wird nicht hermitesch sein). Man kann die Hermitizität von $H$ wieder herstellen, wenn man den Definitionsbereich von $H$ auf solche Funktionen einschränkt, die gewisse \emph{Randbedingungen} erfüllen. Diese Randbedingungen sind letztlich eine idealisierte Beschreibung der Wechselwirkung zwischen Teilchen und Wand. Eine häufig benutzte Randbedingung für den Hamiltonoperator ist die so genannte \emph{Dirichlet-Randbedingung}: im Definitionsbereich von $H$ werden nur Funktionen zugelassen, die auf dem Rand von $G$ verschwinden.
 
-Um die Dynamik von $H$ zu lösen, ist es extrem hilfreich, die Eigenwerte und dazugehörigen Eigenvektoren von $H$ zu berechnen. (Dann ist $U_t=e^{-\frac{it}{\hbar}\widehat{H}}$ durch nur einen Multiplikationsoperator gegeben.) Wir beginnen mit der Berechnung der Eigenfunktionen für den einfachsten Fall: ein ,,eindimensionales`` Teilchen im Intervall $[0,L] \subset \mathbb{R}$. Das heißt, wir berechnen zuerst die Lösungen der Gleichung
+Wie grob diese Idealisierung ist, sieht man am Versuch, die Wand ehrlich zu beschreiben: Sie besteht aus einer astronomischen Zahl von Atomen, die man allesamt mitmodellieren müsste -- das ist Oberflächenphysik. Streng genommen ist die Randbedingung sogar falsch: Eine winzige Wahrscheinlichkeit, das Teilchen außerhalb von $G$ anzutreffen, bleibt immer, etwa in den Lücken zwischen den Atomen. Vertraut ist das Vorgehen aber: Auch in der Elektrodynamik verschwinden an Leiteroberflächen bestimmte Feldkomponenten.
+
+Um die Dynamik von $H$ zu lösen, ist es extrem hilfreich, die Eigenwerte und dazugehörigen Eigenvektoren von $H$ zu berechnen. (Dann ist $U_t=e^{-\frac{it}{\hbar}\widehat{H}}$ durch nur einen Multiplikationsoperator gegeben.) Unsere alten Eigenvektoren taugen dafür nicht mehr: Eine ebene Welle ist überall von null verschieden und kann die Randbedingung unmöglich erfüllen. Was beim freien Teilchen funktioniert hat, scheitert hier prinzipiell. Wir beginnen mit der Berechnung der Eigenfunktionen für den einfachsten Fall: ein ,,eindimensionales`` Teilchen im Intervall $[0,L] \subset \mathbb{R}$. Das heißt, wir berechnen zuerst die Lösungen der Gleichung
 \begin{equation}
 	\widehat{H}|\Psi\rangle = E|\Psi\rangle
 \end{equation}
-für alle mögliche Eigenwerte $E$. Um weiter zu kommen werden wir diese Gleichung als eine Wellenfunktion-Gleichung umschreiben 
+für alle mögliche Eigenwerte $E$. In der Literatur heißt sie meist \emph{stationäre Schrödingergleichung} -- ein eigentlich unnötiger Name für eine schlichte Eigenvektorgleichung. Um weiter zu kommen werden wir diese Gleichung als eine Wellenfunktion-Gleichung umschreiben 
 \begin{equation}
-	\langle x|\widehat{H}|\Psi\rangle = -\frac{\hbar^2}{2m}\frac{d}{dx}\Psi(x) = E\Psi(x) = E\langle x|\Psi\rangle.
+	\langle x|\widehat{H}|\Psi\rangle = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\Psi(x) = E\Psi(x) = E\langle x|\Psi\rangle.
 \end{equation}
 Ohne weitere Begrenzungen ist der Hamiltonoperator nicht hermitesch. Wir müssen auch die folgende Randbedingung 
 \begin{equation}
 	\Psi(0) = \Psi(L) = 0
 \end{equation} 
 einführen. Dies ist eine lineare Differentialgleichung mit konstanten Koeffizienten, wird
-also gelöst durch den Ansatz 
+also gelöst durch den Ansatz
 \begin{equation}
 	\Psi(x) = e^{\mu x}, \quad\text{mit}\quad \mu\in \mathbb{C}.
 \end{equation}
@@ -45,7 +49,7 @@ Die allgemeine Lösung der Differentialgleichung ist damit:
 \begin{equation}
 	\Psi(x) = A e^{\mu x} + B e^{-\mu x},
 \end{equation}
-wobei $\mu$ eine der beiden Lösungen ist, und $A,B \in \mathbb{C}$. Die Randbedingung $\Psi(0)= 0$ erzwingt $B = −A$. Es bleibt also die Gleichung 
+wobei $\mu$ eine der beiden Lösungen ist, und $A,B \in \mathbb{C}$. Die Randbedingung $\Psi(0)= 0$ erzwingt $B = -A$. Es bleibt also die Gleichung 
 \begin{equation}
 	\Psi(L) =A e^{\mu L} + B e^{-\mu L} = 0,
 \end{equation}
@@ -59,14 +63,19 @@ also ist $E \ge 0$. Für imaginäre $\mu$ gibt es Lösungen, nämlich
 	2\mu L = 2\pi i n,
 \end{equation}
 wobei $n \in \mathbb{Z}$. Also ist $\mu = n\pi i/L$, und die Eigenfunktion $\Psi(x) = A \sin(n\pi x/L)$.
-Offensichtlich geben $n$ und $−n$ die gleiche Eigenfunktion, und $n = 0$ scheidet aus (Dort ist $\Psi'' =0$, also $
+Offensichtlich geben $n$ und $-n$ die gleiche Eigenfunktion, und $n = 0$ scheidet aus (Dort ist $\Psi'' =0$, also $
 \Psi(x) = ax+b$ linear, was sich nicht mit den Randbedingungen verträgt). Nach Normierung bekommen wir also die Eigenfunktionen und Eigenwerte
 \begin{equation}
 	\phi_n(x) = \sqrt{\frac{2}{L}}\sin\left(\frac{n\pi}{L} x\right)\quad \text{und}\quad E_n = \frac{\hbar^2 \pi^2}{2mL^2}n^2\quad \text{für $n=1,2,\ldots$.}
 \end{equation}
+Anschaulich ist $\phi_1$ eine halbe Sinuswelle über dem Intervall, $\phi_2$ eine volle, und so fort; das Normierungsintegral rechnen Sie am besten selbst nach.
+
+\begin{merksatz}[Woher der Name ,,Quantenmechanik`` kommt]
+	Für ein freies Teilchen war jede Energie erlaubt. Im Kasten bleibt von diesem Kontinuum nur die diskrete Folge $E_n\propto n^2$ übrig: Einschränkung des Ortes führt in der Regel zur \emph{Quantisierung} der Energieeigenwerte -- daher der Name der ganzen Theorie.
+\end{merksatz}
 
 Die $\phi_n$ bilden eine Basis von unseren Hilbertraum $\mathcal{H} = L^2([0,L])$ und damit einen unitären
-Operator $U:\mathcal{H} \rightarrow \ell^2(\mathbb{N})$, nämlich $(U\Psi)(n) = \langle \phi_n|\Psi\rangle$, der $H$ diagonalisiert. Den Zeitentwicklungsoperator $U_t = e^{−itH/\hbar}$ bekommt man also durch Entwickeln nach der Basis $\phi_n$ (=Anwendung von $U$), triviale Anwendung von $U_t$ auf die Basisvektoren (=Multiplikation mit einer Funktion von $n$) und Aufsummation der Reihe mit den neuen Komponenten (=Anwendung von $U^\dag$):
+Operator $U:\mathcal{H} \rightarrow \ell^2(\mathbb{N})$, nämlich $(U\Psi)(n) = \langle \phi_n|\Psi\rangle$, der $H$ diagonalisiert. Den Zeitentwicklungsoperator $U_t = e^{-itH/\hbar}$ bekommt man also durch Entwickeln nach der Basis $\phi_n$ (=Anwendung von $U$), triviale Anwendung von $U_t$ auf die Basisvektoren (=Multiplikation mit einer Funktion von $n$) und Aufsummation der Reihe mit den neuen Komponenten (=Anwendung von $U^\dag$):
 \begin{equation}
 	U_t |\Psi\rangle = \sum_{n=1}^{\infty} e^{-\frac{it}{\hbar} E_n} |\phi_n\rangle \langle \phi_n|\Psi\rangle. 
 \end{equation}
@@ -74,6 +83,11 @@ Als Merkregel in der Dirac'schen Bra-Ket Schreibweise gilt also wiederum
 \begin{equation}
 	\eqbox{U_t = \sum_{n=1}^{\infty} e^{-\frac{it}{\hbar} E_n} |\phi_n\rangle \langle \phi_n|.}
 \end{equation}
+Damit sind alle fünf Postulate für dieses System abgehakt. Der Energieerwartungswert $\tr(\rho\widehat{H})$ kann nie unter $E_1$ fallen, die Energie des \emph{Grundzustands} $|\phi_1\rangle$; im Eigenzustand $|\phi_n\rangle$ verschwindet zudem die Varianz, $\tr(\rho\widehat{H}^2) - (\tr(\rho\widehat{H}))^2 = E_n^2 - E_n^2 = 0$. Beobachtet werden diese Niveaus im Labor fast nie direkt, sondern als \emph{Differenzen}: über Photonen, die bei Übergängen zwischen Eigenzuständen abgehen.
+
+\begin{intuition}
+	Man liest oft, die $\phi_n$ seien ,,die`` Zustände des Systems. Das ist eine Idealisierung. Ein Energieeigenzustand hat keine Dynamik: Bis auf eine Phase bliebe das Teilchen für immer darin. In der Natur gibt es aber immer Wechselwirkungen, allen voran mit dem elektromagnetischen Feld; nach einiger Zeit liegt eine Überlagerung mehrerer Eigenzustände vor. Die Eigenvektoren sind ein Rechenmittel, kein typischer Zustand.
+\end{intuition}
 
 Für ein dreidimensionales Teilchen in einer quaderförmigen Kiste ist damit die
 wesentliche Arbeit schon geleistet. Wir betrachten also das Gebiet
@@ -97,3 +111,5 @@ und erfährt, dass die Funktion $\Phi_x''/\Phi_x$ nicht mehr von $x$ abhängt (a
 Was kann man über anders geformte Kisten sagen? Ein Separationsansatz funktioniert nur in wenigen Fällen, in denen man Koordinaten finden kann, in denen sich die Form der Kiste leicht beschreiben lässt, und in der der
 Laplace-Operator außerdem in eine Summe von zweiter Ableitungen zerfällt. Außer dem Quader kann man so noch die Kugel behandeln und auch noch Ellipsoide. Für allgemeine Gebiete $G$ ist die Bestimmung der Eigenfunktionen
 und Eigenwerte des Laplace-Operators nicht geschlossen möglich, aber ein Problem, das bei verschiedenen Wellenphänomenen in der Physik eine Rolle spielt (Hohlraum-Resonanz).
+
+Halten wir fest: Hier ist ein System einmal vollständig durchgerechnet worden. Dass das gelingt, ist eher Glück als Regel -- es folgen noch der harmonische Oszillator und das Wasserstoffatom, und dann hört es auf.

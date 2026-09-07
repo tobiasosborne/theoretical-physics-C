@@ -2,6 +2,8 @@
 
 \section{Vorlesung: Operatoren}
 
+Die Vektoren des Hilbertraums beschreiben die Zustände eines Systems, die Operatoren seine Observablen; und wer Zustände und Observablen hat, hat eine physikalische Theorie. Darauf läuft dieses Kapitel hinaus, und es beginnt mit zwei Operatoren, die trivial, als Bausteine aber unentbehrlich sind.
+
 \begin{definition}
 	Sei $\mathcal{H}$ einen Hilbertraum.
 	Der \emph{Einsoperator} $\mathbb{I}$ wird durch
@@ -20,11 +22,21 @@
 	dargestellt.
 \end{definition}
 
+Ebenso nützlich ist der \emph{Nulloperator} $\widehat{0}$,
+\begin{equation}
+	\widehat{0}\,|\psi\rangle = 0, \quad \forall |\psi\rangle\in\mathcal{H},
+\end{equation}
+im endlich-dimensionalen Fall die Matrix mit lauter Nulleinträgen. Hier entsteht allerdings ein Notationsproblem: einer hingeschriebenen Null sieht man nicht an, ob ein Operator, eine Zahl oder ein Vektor gemeint ist. Wir vereinbaren deshalb:
+
+\begin{merksatz}[Notation]
+	Ein \emph{Hut} bedeutet immer einen Operator, $\widehat{A}$; der \emph{Strich} der Ket-Notation einen Vektor, $|\psi\rangle$; ein Symbol ohne Verzierung eine Zahl.
+\end{merksatz}
+
 Der zu $A$ \emph{adjungierte Operator} $A^\dag$ ist durch die Gleichung
 \begin{equation}
 	\langle A^\dag\Phi|\Psi\rangle = \langle \Phi|A\Psi\rangle, \quad \Phi,\Psi\in \mathcal{H},
 \end{equation}
-definiert. In der Matrizenrechnung mit reellen Einträgen entspricht die Bildung des adjungierten Operators dem Transponieren, bei komplexen Einträgen dem (komplex) Konjugieren und Transponieren der Ausgangsmatrix. Daher, im dem endlich-dimensionalen Fall wird die adjungierte Matrix wie folgt dargestellt:
+definiert. Diese Gleichung ist tatsächlich eine Definition: sie legt $A^\dag$ nicht durch eine Rechenvorschrift fest, sondern durch sein Verhalten unter dem Skalarprodukt. In der Matrizenrechnung mit reellen Einträgen entspricht die Bildung des adjungierten Operators dem Transponieren, bei komplexen Einträgen dem (komplex) Konjugieren und Transponieren der Ausgangsmatrix. Daher, im dem endlich-dimensionalen Fall wird die adjungierte Matrix wie folgt dargestellt:
 \begin{equation}
 	A^\dag = \begin{pmatrix}
 		a_{11} & a_{12} & \cdots & a_{1n} \\
@@ -54,6 +66,7 @@ Mit Hilfe adjungierter Operatoren und Identitätsoperatoren können wir mehrere 
 	\item \emph{unitär}, wenn $A^\dag A = AA^\dag = \mathbb{I}$ und
 	\item \emph{normal}, wenn $A^\dag A = AA^\dag$.
 \end{enumerate}
+Jede dieser Klassen hat eine sehr spezifische physikalische Rolle: die hermiteschen Operatoren beschreiben die Observablen, die positiven die Zustände, die Projektoren die Messungen mit den beiden Ausgängen null und eins (Ereignis oder kein Ereignis), die isometrischen und unitären die Dynamik; die normalen Operatoren bilden die Oberklasse, die hermitesche und positive Operatoren, Projektoren und unitäre Operatoren umfasst --- isometrische sind erst im endlich-dimensionalen Fall automatisch normal.
 Die hermiteschen Operatoren (Synonym: selbstadjugierte Operatoren) entsprechen den \emph{Observablen} der QM, da 
 \begin{equation}
 	\langle \psi|A\psi\rangle \in \mathbb{R}
@@ -62,6 +75,7 @@ immer eine reelle Zahl ist. Positive Operatoren sind automatisch hermitesch. Ope
 \begin{equation}
 	\langle \psi|A\psi\rangle = \langle \psi|B^\dag B\psi\rangle = \langle B\psi| B\psi\rangle \ge 0.
 \end{equation}
+Genau genommen ist unsere Sprechweise nachlässig: die Bedingung lässt den Wert null zu, ein solcher Operator müsste \emph{nicht negativ} heißen; \emph{positiv} wäre die strikte Ungleichung.
 Da $P = P^\dag P$, sind Projektoren positiv. Isometrische Operatoren sind gerade die, die das Skalarprodukt und damit die Norm invariant lassen.
 
 Wenn man eine Basis $\{|\phi_x\}_{x\in X}$ fixiert hat, kann man jeden Operator $A$ durch seine \emph{Matrixelemente}
@@ -72,7 +86,8 @@ charakterisieren. Wegen der Linearität von A ist dann
 \begin{equation}\label{eq:completenessA}
 	A|\Psi\rangle = \sum_{x,y\in X} |\phi_x\rangle \langle \phi_x|A\phi_y\rangle \langle\phi_y|\Psi\rangle.
 \end{equation}
-Die Bildung des Adjungierten entspricht also der Abbildung 
+Diese Formel entsteht, indem man die Entwicklungsformel zweimal einsetzt; über $x$ und $y$ wird deshalb unabhängig summiert. Beachten Sie, dass darin nirgends eine Matrix vorkommt, sondern nur Basisvektoren und Zahlen: genau deshalb trägt sie auch im unendlich-dimensionalen Fall.
+Die Bildung des Adjungierten entspricht also der Abbildung
 \begin{equation}
 	[A]_{xy} \mapsto [A]_{yx}^*,
 \end{equation}
@@ -111,7 +126,7 @@ Wir gehen in der Vereinfachung noch einen Schritt weiter: Sobald wir eine Basis 
 \begin{equation}
 	\mathbb{I} = \sum_{x\in X} |x\rangle\langle x|
 \end{equation}
-zusammengefasst. Matrixelemente schreiben sich einfach als 
+zusammengefasst. Diese Operatorgleichung ist eine der nützlichsten der Quantenmechanik: physikalisch sagt sie nur, dass Eins gleich Eins ist, aber man darf diese komplizierte Eins an jeder Stelle einer Rechnung einschieben. Matrixelemente schreiben sich einfach als
 \begin{equation}
 	[A]_{xy} \equiv \langle x|A|y\rangle.
 \end{equation}
@@ -138,7 +153,7 @@ zusammengefasst. Matrixelemente schreiben sich einfach als
 	\begin{equation}
 		A^\dag = A\quad \text{und}\quad B^\dag = B.
 	\end{equation}
-	Die Matrix $B$ is auch positiv, und bildet einen Projektor. Die Matrix $A$ ist \emph{nicht} positiv, weil
+	Die Matrix $B$ is auch positiv, und bildet einen Projektor. Projektoren beschreiben Messungen; dieser hier dient als Modell für Messungen der Photonenzahl in Glasfasernetzwerken. Die Matrix $A$ ist \emph{nicht} positiv, weil
 	\begin{equation}
 		\langle \psi|A|\psi\rangle = 
 		\begin{pmatrix}

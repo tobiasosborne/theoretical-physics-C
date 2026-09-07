@@ -5,6 +5,8 @@
 
 
 \subsection{Die Schrödingergleichung}
+Von den fünf Postulaten sind die ersten vier meist schnell identifiziert; die eigentliche Arbeit steckt in Postulat 5, und analytisch lösbar ist dort nur eine Handvoll Systeme -- etwa fünf.
+
 Gemäß Postulat 5 wird die Zeitentwicklung eines Systems durch den Zeitentwicklungsoperator
 \begin{equation}
 	U_t \equiv e^{-\frac{it}{\hbar}\widehat{H}}
@@ -17,7 +19,13 @@ berechnet? Im Allgemeinen wird der Zeitentwicklungsoperator $\widehat{H}$ durch 
 \begin{equation}
 	\frac{\partial}{\partial t} |\Psi(t)\rangle = \frac{\partial}{\partial t} e^{-\frac{it}{\hbar}\widehat{H}} |\Psi\rangle = -\frac{i}{\hbar}\widehat{H} e^{-\frac{it}{\hbar}\widehat{H}} |\Psi\rangle = -\frac{i}{\hbar}\widehat{H}|\Psi(t)\rangle.
 \end{equation}
-Um die Berechnungen zu vereinfachen, nehmen wir das Beispeil eines Teilchens in einer Dimension. Wir berechnen nun das Skalarprodukt von dieser Gleichung und $|x\rangle$:
+Dass man so rechnen darf, liegt an der Potenzreihe: Nur die Exponentialfunktion hängt von der Zeit ab, und in ihrer Reihe verhält sich $\widehat{H}$ wie eine Zahl. Umgestellt steht dort
+\begin{equation}
+	i\hbar\frac{\partial}{\partial t}|\Psi(t)\rangle = \widehat{H}|\Psi(t)\rangle,
+\end{equation}
+die Schrödingergleichung in allgemeiner Form -- eine für jedes System. Fundamental ist bei uns aber Postulat 5; die Gleichung ist bloß das Mittel, $U_t|\Psi\rangle$ auszurechnen.
+
+Um die Berechnungen zu vereinfachen, nehmen wir das Beispeil eines Teilchens in einer Dimension. Weil die Schrödingergleichung eine Vektorgleichung ist, dürfen wir beide Seiten mit demselben Bra multiplizieren; links vertauscht $\langle x|$ dabei mit der Zeitableitung. Wir berechnen nun das Skalarprodukt von dieser Gleichung und $|x\rangle$:
 \begin{equation}
 	\begin{split}
 		i\hbar \langle x|\frac{\partial}{\partial t} |\Psi(t)\rangle  &= \langle x|\frac{\widehat{p}^2}{2m}|\Psi(t)\rangle \\
@@ -33,6 +41,8 @@ gegebenen Matrixelemente von $\widehat{H}$ an und setzen die Wellenfunktion-Dars
 	\eqbox{i\hbar\frac{\partial}{\partial t}\Psi(x,t) = -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}\Psi(x,t)}
 \end{equation}
 zu erhalten. Diese Gleichung ist als die \emph{Schrödingergleichung} (für ein freies Teilchen in einer Dimension) bekannt.
+
+Es lohnt sich, kurz bei ihrer Form zu verweilen: Streicht man das $i$, so steht dort -- bis auf ein Vorzeichen -- die Wärmeleitungsgleichung. Solche Gleichungen sind gründlich untersucht -- darin liegt der Gewinn der Herleitung: Wir dürfen den ganzen alten Werkzeugkasten anwenden.
 
 Die Lösung der Schrödingergleichung beschreibt die Zeitentwicklung des Zustandes eines Teilchens. 
 \begin{beispiel}
@@ -50,11 +60,13 @@ Die Lösung der Schrödingergleichung beschreibt die Zeitentwicklung des Zustand
 	\end{equation}	
 \end{beispiel}
 
+Wir fangen mit einer reellen Wellenfunktion an; der Faktor $1+i(t/\tau)$ macht sie komplex. Das Betragsquadrat bleibt eine Glockenkurve, nur eine immer breitere -- das Wellenpaket \emph{zerfließt}.
+
 Bei Problemen mit Teilchen, die sich in Potentialen bewegen, ist es oft einfacher, ihre Dynamik zu berechnen, indem man, wie oben beschrieben, die Schrödingergleichung löst.
 
 
 \subsection{Fourier Transformation}
-Um die Dynamik freien Teilchen im Allgemeinen zu verstehen, ist es hilfreich eine neue mathematische Methode einzuführen. Angenommen, wir haben eine Funktion $f:\mathbb{R}\rightarrow\mathbb{C}$. Die \emph{Fourier-Transformierte} der Funktion $f(x)$ wird definiert als 
+Um die Dynamik freien Teilchen im Allgemeinen zu verstehen, ist es hilfreich eine neue mathematische Methode einzuführen. Rein mathematisch liefert die Fourier-Transformation eine \emph{alternative Darstellung} einer Funktion: dieselbe Information, andere Form -- zum Lösen von Gleichungen oft bequemer. In der Musik heißt die Transformierte eines Signals sein \emph{Spektrum}. Angenommen, wir haben eine Funktion $f:\mathbb{R}\rightarrow\mathbb{C}$. Die \emph{Fourier-Transformierte} der Funktion $f(x)$ wird definiert als 
 \begin{equation}
 	\eqbox{F(k)\equiv \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(x)e^{-ikx}\, dx.}
 \end{equation}
@@ -74,14 +86,14 @@ Hierbei haben wir in der zweiten Reihe die Darstellung der Dirac'sche Deltafunkt
 \begin{equation}
 	\delta(x) = \frac{1}{2\pi}\int_{-\infty}^\infty e^{ikx}\, dk
 \end{equation}
-eigesetzt.
+eigesetzt. Diese Integraldarstellung der Deltafunktion ist nur \emph{eine} von mehreren möglichen; wir übernehmen sie hier ohne Beweis.
 
 \subsection{Lösung der Schrödingergleichung für ein freies Teilchen in $1D$}
 Die Schrödingergleichung eines Teilchens in einer Dimension lautet
 \begin{equation}
 	i\hbar\frac{\partial}{\partial t}\Psi(x,t) = -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}\Psi(x,t).
 \end{equation}
-Wie löst man eine Gleichung dieser Form? Weil die Schrödingergleichung linear ist, suchen wir nach Lösungen der Form ebener Wellen: $\Psi(x,t) \propto e^{i(kx-\omega t)}$. Einsetzen in die Schrödingergleichung liefert
+Wie löst man eine Gleichung dieser Form? Der erste Schritt ist bei Differentialgleichungen immer derselbe: Man probiert die Exponentialfunktion. Weil die Schrödingergleichung linear ist, suchen wir nach Lösungen der Form ebener Wellen: $\Psi(x,t) \propto e^{i(kx-\omega t)}$. Einsetzen in die Schrödingergleichung liefert
 \begin{equation}
 	i\hbar (-i\omega)e^{i(kx-\omega t)} = -\frac{\hbar^2}{2m}(-k^2)e^{i(kx-\omega t)}.
 \end{equation}
@@ -93,7 +105,7 @@ Diese Bedingung wird \emph{Dispersionsrelation} bezeichnet. Wenn die Dispersions
 \begin{equation}
 	\Psi_{k}(x,t) = e^{i\left(kx-\frac{\hbar k^2}{2m} t\right)}
 \end{equation}
-eine Familie von Lösungen, die mit $k$ bezeichnet sind.
+eine Familie von Lösungen, die mit $k$ bezeichnet sind. Für jedes $k$ gibt es eine solche Lösung, also unendlich viele; addiert werden sie, indem man die Summe durch ein Integral ersetzt -- dabei entdecken wir die Fourier-Transformation quasi wieder.
 
 Wegen der Linearität der Schrödingergleichung können wir neue Lösungen nach dem Superpositionsprinzip bilden:
 \begin{equation}
@@ -107,9 +119,13 @@ Hierbei wird $\Psi(x,0)$ vorgegeben und wir müssen für $\Phi(k)$ lösen. Um di
 \begin{equation}
 	\eqbox{\Phi(k) = \frac{1}{2\pi}\int_{-\infty}^{\infty} \Psi(x,0)e^{-ikx}\, dx}
 \end{equation}
-zu erhalten.
+zu erhalten. Beim Vergleich stört zunächst der Vorfaktor $\frac{1}{\sqrt{2\pi}}$, der in Gl.~(\ref{eq:invfourier}) vor dem Integral steht, in der Anfangsbedingung dagegen fehlt. Die Zuordnung lautet deshalb $f(x)\equiv \Psi(x,0)$ und $F(k)\equiv \sqrt{2\pi}\,\Phi(k)$, und die Hintransformation liefert
+\begin{equation}
+	\sqrt{2\pi}\,\Phi(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \Psi(x,0)e^{-ikx}\, dx.
+\end{equation}
+Der Vorfaktor $\frac{1}{2\pi}$ oben ist also nicht geraten, sondern Buchhaltung. Für die Fourier-Transformation sind viele Konventionen im Umlauf; prüfen Sie in fremden Texten zuerst nach, welche gilt.
 
-Warnung: Eine ebene Welle ist \emph{nicht} ein Element von $L^2(\mathbb{R})$, weil die Wellenfunktion $\Psi_{k}(x,t)$ nicht quadratintegriebar ist. Die Funktion $\Psi_{k}(x,t)$ bildet zwar eine Lösung, ist aber selbst nicht ein Element von dem Hilbertraum $\mathcal{H}$. Diese Beobachtung schließt nicht die Möglichkeit aus, dass wir durch lineare Kombinationen von ebenen Wellen quadratintegriebare Funktionen bilden können.
+Warnung: Eine ebene Welle ist \emph{nicht} ein Element von $L^2(\mathbb{R})$, weil die Wellenfunktion $\Psi_{k}(x,t)$ nicht quadratintegriebar ist. Die Funktion $\Psi_{k}(x,t)$ bildet zwar eine Lösung, ist aber selbst nicht ein Element von dem Hilbertraum $\mathcal{H}$. Diese Beobachtung schließt nicht die Möglichkeit aus, dass wir durch lineare Kombinationen von ebenen Wellen quadratintegriebare Funktionen bilden können. Man sieht das sofort an der Wahrscheinlichkeitsdichte: $|\Psi_{k}(x,t)|^2 = 1$, überall gleich groß, und das Integral darüber divergiert -- auch keine Normierungskonstante macht es endlich.
 
 Obwohl die ,,stationäre`` ebene Welle $\Psi_{k}(x) \equiv e^{ikx}$ keinem Vektor im Hilbertraum entspricht,  können wir dennoch eine Ket-Notation einführen: Der ,,Ket-Vektor`` $|\Psi_{k}\rangle$ steht für die ebene Welle. Die dazugehörige Wellenfunktion wird durch
 \begin{equation}
@@ -125,6 +141,10 @@ Wir haben bisher nur Messungen von der Teilchenposition berücksichtigt. Wie kan
 \end{equation}
 zu interpretieren: Obwohl der Ket $|\Psi_k\rangle$ nicht als Element in $\mathcal{H}$ existiert, behandeln wir $|\Psi_k\rangle$ trotzdem als einen fiktiven Vektoren. Nach dieser Berechnung ist es sinnvoll $|\Psi_k\rangle$ als eine Art ,,Eigenvektor`` für $\widehat{p}$ zu interpretieren. Daraus ergibt sich, dass eine ebene Welle $\Psi(x,t) = e^{ikx}$ einen bestimmen Impuls von $\hbar k$ hat. Der Vektorgröße $|\Psi_k\rangle$ spielt für $\widehat{p}$ genau diesselbe Rolle, dass $|x\rangle$ für $\widehat{x}$ spielt.
 
+\begin{intuition}
+Denken Sie an einen gewöhnlichen Vektor, zerlegt nach zwei verschiedenen Basen: derselbe Vektor, zwei völlig verschiedene Zahlenlisten. Genauso hier -- die Koeffizienten von $|\Psi\rangle$ heißen in der Positionsbasis \emph{Wellenfunktion}, in der Basis der ebenen Wellen \emph{Impulswellenfunktion}.
+\end{intuition}
+
 Mit Hilfe dieser Überlegungen führen wir jetzt die folgende Wellenfunktion im Impulsraum ein:
 \begin{equation}
 	\Phi(p,t) \equiv \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^\infty \Psi(x,t)e^{-i\frac{px}{\hbar}}\,dx.	
@@ -133,6 +153,8 @@ Man kann sehen, dass diese neue \emph{Impulswellenfunktion} einfach durch die Fo
 \begin{equation}
 	\Psi(x,t) \equiv \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^\infty \Phi(p,t)e^{i\frac{px}{\hbar}}\,dp.	
 \end{equation} 
+Der Vorfaktor $\frac{1}{\sqrt{2\pi\hbar}}$ und das $\hbar$ im Exponenten wirken unmotiviert; sie sind der Preis für eine schöne Analogie: Mit dieser Konvention steht der Impulsmittelwert nachher genau dort, wo im Ortsraum $\langle\widehat{x}\rangle = \int x|\Psi(x,t)|^2\,dx$ steht.
+
 
 \subsubsection{Statistik von Impulsmessungen}
 Die Statistik der Impulsmessungen kann von der Positionsraum-Wellenfunktion abgelesen werden:
@@ -155,11 +177,11 @@ Nach einem ähnlichen Verfahren erhalten wir:
 \begin{equation}
 		\langle \widehat{p}^2\rangle = \int_{-\infty}^{\infty} p^2 |\Phi(p,t)|^2 \,dp.
 \end{equation}
-Das heißt, die Statistik der Impulsmessungen ist wesentlich einfacher bezüglich Impulswellenfunktionen zu berechnen.
+Das heißt, die Statistik der Impulsmessungen ist wesentlich einfacher bezüglich Impulswellenfunktionen zu berechnen. Vergleichen Sie den Aufwand: erst ableiten, mit $\Psi^*$ multiplizieren, über $x$ integrieren -- oder nur $|\Phi(p,t)|^2$ mit dem Gewicht $p$ integrieren.
 
 
 \subsection{Ein Teilchen in drei Dimensionen}
-Ein Teilchen in drei Dimensionen wird in der Quantenmechanik wie folgt beschrieben
+Eigentlich ist das Problem schon gelöst: Ein freies Teilchen in drei Dimensionen ist nichts anderes als drei Kopien eines Teilchens in einer Dimension und über den Separationsansatz mitgelöst. Ein Teilchen in drei Dimensionen wird in der Quantenmechanik wie folgt beschrieben
 \begin{enumerate}
 	\item Hilbertraum: $L^2(\mathbb{R}^3)$.
 	\item Präparationen von reinen Zuständen $\rho \equiv |\Psi\rangle\langle\Psi|$: Wellenfunktionen $\Psi:\mathbb{R}^3\rightarrow \mathbb{C}$, wobei
@@ -169,6 +191,10 @@ Ein Teilchen in drei Dimensionen wird in der Quantenmechanik wie folgt beschrieb
 	und
 	\begin{equation}
 		\langle x',y',z'|x,y,z\rangle = \delta(x'-x)\delta(y'-y)\delta(z'-z).
+	\end{equation}
+	Damit eine solche Funktion als Wellenfunktion durchgeht, muss sie -- genau wie in einer Dimension -- auf eins normiert sein:
+	\begin{equation}
+		\langle\Psi|\Psi\rangle = \iiint_{-\infty}^\infty |\Psi(x,y,z)|^2 \, dxdydz = 1.
 	\end{equation}
 	\item Detektoren: Sei $S\subset \mathbb{R}^3$ ein Bereich. Der Messoperator, der die Messung, ob sich das Teilchen in einer Region S befindet, modelliert, ist durch 
 	\begin{equation}
@@ -205,7 +231,7 @@ allgemein & $f$ & ??? \\
 \end{tabular}
 \end{center}
 
-Kurz gesagt also, lautet die Regel: Ersetze in jedem klassischen Ausdruck die Ortskoordinaten durch Multiplikationsoperatoren, und die Impulskoordinaten durch ($-i\hbar \times$) Differentiationsoperatoren. Diese Regel ist recht nützlich, und man sollte sie sich unbedingt merken. Es gibt aber eine entscheidende Einschränkung: Klassisch ist der Ausdruck 
+Kurz gesagt also, lautet die Regel: Ersetze in jedem klassischen Ausdruck die Ortskoordinaten durch Multiplikationsoperatoren, und die Impulskoordinaten durch ($-i\hbar \times$) Differentiationsoperatoren. Diese Regel ist recht nützlich, und man sollte sie sich unbedingt merken. Davor steht immer ein physikalischer Schritt: Zuerst muss man die \emph{klassische} Energie verstehen, erst daraus gewinnt man den Operator. Und die Regel ist kein wohldefiniertes Verfahren, sondern eine Faustregel -- jedes Mal eine Vermutung, über die erst der Vergleich mit dem Experiment entscheidet. Es gibt aber eine entscheidende Einschränkung: Klassisch ist der Ausdruck 
 \begin{equation*}
 	p_j x_k - x_k p_j = 0.
 \end{equation*}
@@ -220,7 +246,7 @@ Das heißt, der entsprechende quantenmechanische Operator wirkt wie $-i\hbar\del
 \begin{equation}
 	[\widehat{p}_j,\widehat{x}_k]\equiv\widehat{p}_j\widehat{x}_k - \widehat{x}_k  \widehat{p}_j = -i\hbar\delta_{jk}\mathbb{I},
 \end{equation} 
-wobei $[\widehat{A},\widehat{B}] = \widehat{A}\widehat{B} - \widehat{B}\widehat{A}$ den \emph{Kommutator} zweier Operatoren bezeichnet. Diese Operatorgleichung wird als kanonische Vertauschungsrelationen bezeichnet.
+wobei $[\widehat{A},\widehat{B}] = \widehat{A}\widehat{B} - \widehat{B}\widehat{A}$ den \emph{Kommutator} zweier Operatoren bezeichnet. Diese Operatorgleichung wird als kanonische Vertauschungsrelationen bezeichnet. Der ganze Unterschied ist dabei die Leibniz-Regel: Einmal multipliziert man zuerst mit $x_k$ und leitet dann das Produkt ab, einmal leitet man zuerst ab und multipliziert danach -- der so entstehende Term $\delta_{jk}$ ist, bis auf den Faktor $-i\hbar$, der ganze Kommutator.
 
-Für das Ausfüllen der obigen Korrespondenztabelle bedeuten sie einfach, dass es keine allgemein gültige ,,Quantisierungsvorschrift`` für klassische Größen gibt. Die konkreten Einträge in der Tabelle sind übrigens gerade solche Funktionen von $x$ und $p$, bei denen solche \emph{Operatorordnungsprobleme} keine Rolle spielen.
+Für das Ausfüllen der obigen Korrespondenztabelle bedeuten sie einfach, dass es keine allgemein gültige ,,Quantisierungsvorschrift`` für klassische Größen gibt. Die konkreten Einträge in der Tabelle sind übrigens gerade solche Funktionen von $x$ und $p$, bei denen solche \emph{Operatorordnungsprobleme} keine Rolle spielen. Quantenmechanisch stehen für die klassische Größe $x\,p_x$ dagegen drei Kandidaten nebeneinander -- $\widehat{x}\widehat{p}_x$, $\widehat{p}_x\widehat{x}$ und das symmetrisierte Mittel --, und nichts zeichnet einen davon aus. Die Differenz $\widehat{x}\widehat{p}_x-\widehat{p}_x\widehat{x}$ ist klassisch exakt null, quantenmechanisch mit $\hbar\approx 10^{-34}\,\mathrm{J\,s}$ nur winzig -- aber eben nicht null, und dieser Unterschied ist beobachtbar. Er läuft unter dem Stichwort \emph{Unschärfe}.
 

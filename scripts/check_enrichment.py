@@ -42,17 +42,60 @@ V01_DIR = ROOT / "archive" / "skript-2022"
 # Departures from v0.1 that are intentional.  Keyed by lecture number;
 # each entry lists label renames and dropped/edited maths with a reason.
 ENRICHMENT_EXCEPTIONS = {
-    11: {
-        "reason": "literal Unicode Ψ replaced by \\Psi (no glyph in the maths font)",
+    1: {
+        "reason": "in the photoelectric-effect box the velocity carried the same "
+                  "symbol \\nu as the frequency (E_el = 1/2 m nu^2 = h nu - W); "
+                  "the kinetic term now reads 1/2 m v^2, which is what Osborne "
+                  "says at the board (v01, Tafelrechnungen)",
         "labels_renamed": {},
-        "math_edited": 0,
+        "math_edited": 1,
+    },
+    11: {
+        "reason": "literal Unicode Ψ replaced by \\Psi (no glyph in the maths font); "
+                  "literal Unicode − replaced by -; the kinetic term of the "
+                  "stationary Schrödinger equation corrected from d/dx to "
+                  "d²/dx² — v0.1 had the first derivative, which contradicts "
+                  "the μ² that the very next line obtains by substitution "
+                  "(Osborne corrects the same slip at the board, v13 [70:10])",
+        "labels_renamed": {},
+        "math_edited": 1,
     },
     12: {
         "reason": "stray \\\\ before \\end{align} removed (arithmetic overflow); "
                   "Hermite polynomials H_1, H_2 restated in z, the variable they "
-                  "are defined in, instead of x; literal Unicode ∈ replaced by \\in",
+                  "are defined in, instead of x; the ground-state ODE gained the "
+                  "missing factor x — v0.1 had dphi_0/dx = -(m omega/hbar) phi_0, "
+                  "which follows neither from <x|a|phi_0> = 0 nor from the solution "
+                  "N exp(-(m omega/hbar) x²/2) printed on the very next line "
+                  "(Osborne flags the same slip at the board, v15 [08:11]); "
+                  "literal Unicode ∈ replaced by \\in and literal Unicode − by -",
         "labels_renamed": {},
         "math_edited": 2,
+    },
+    13: {
+        "reason": "the kinetic term of the stationary Schrödinger equation in the "
+                  "position representation corrected from d/dx to d²/dx² — v0.1 "
+                  "had the first derivative, contradicting the very next display, "
+                  "which solves the same equation with d²/dx² (Osborne writes the "
+                  "second derivative at the board, v16 [54:40])",
+        "labels_renamed": {},
+        "math_edited": 1,
+    },
+    14: {
+        "reason": "in both intermediate lines of the [L_1,L_2] computation the "
+                  "last term read z² d²/(dx dz); the product rule gives "
+                  "z² d²/(dx dy) — that is what Osborne writes at the board "
+                  "(v18, Tafelrechnungen), and the term cancels in the "
+                  "difference, so the commutator itself was never affected",
+        "labels_renamed": {},
+        "math_edited": 2,
+    },
+    16: {
+        "reason": "literal Unicode − in the Bohr-radius value replaced by - "
+                  "(no glyph guarantee in the maths font; the same substitution "
+                  "was already recorded for vl11 and vl12)",
+        "labels_renamed": {},
+        "math_edited": 1,
     },
     17: {
         "reason": "the second \\label{eq:amcr} (spin commutators) renamed to "
@@ -60,6 +103,16 @@ ENRICHMENT_EXCEPTIONS = {
                   "meant for the orbital relations resolved to the wrong equation",
         "labels_renamed": {"eq:amcr": "eq:amcr-spin"},
         "math_edited": 0,
+    },
+    22: {
+        "reason": "sign of the mean energy from the partition function corrected: "
+                  "v0.1 had <H> = sum_j E_j e^{-beta E_j}/Z = (1/Z) dZ/dbeta, but "
+                  "Z = sum_j e^{-beta E_j} gives dZ/dbeta = -sum_j E_j e^{-beta E_j}, "
+                  "so the printed chain equated a quantity with its own negative; "
+                  "it now reads -(1/Z) dZ/dbeta = -d/dbeta log(Z) "
+                  "(the transcript flags the same slip, v25 [48:28], Unsichere Stellen)",
+        "labels_renamed": {},
+        "math_edited": 1,
     },
 }
 

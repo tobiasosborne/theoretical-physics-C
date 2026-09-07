@@ -4,6 +4,8 @@
 \section{Vorlesung: Kanonisches Ensemble}
 Man betrachte ein System im kontakt mit der Umgebung (,,Wärmebad``), so dass Energie mit der Umgebung ausgetauscht werden kann. Angenommen, das System wird mit Hilbertraum $\mathcal{H}$ and Hamiltonoperator $\widehat{H}$ modelliert. Der Austausch von Energie kann mathematisch modelliert in dem die Energie des Systems einen festen Mittelwert $E = \langle \widehat{H}\rangle$ besitzen.
 
+Diese Situation ist der Normalfall: Das elektromagnetische Feld in diesem Hörsaal ist in einem thermischen Zustand, und jedes System im Raum wechselwirkt mit ihm. Den wahren Zustand könnten wir nicht einmal im Prinzip bestimmen; was wir aufstellen, ist eine \emph{Hypothese} mit denselben Erwartungswerten.
+
 Gesucht wird ein Zustand $\rho$, der die Entropie unter der Bedingung maximiert, dass der Mittelwert der Energie konstant gehalten wird. Dieses Problem wird wie folgt mathematisch nach dem Prinzip der maximalen Entropie beschrieben:
 \begin{equation}
 	\begin{split}
@@ -12,10 +14,22 @@ Gesucht wird ein Zustand $\rho$, der die Entropie unter der Bedingung maximiert,
 	\end{split}
 \end{equation}
 
+Zwei Nebenbedingungen fehlen hier noch: Damit $\rho$ überhaupt einen Zustand beschreibt, muss $\tr(\rho)=1$ gelten und $\rho \ge 0$ sein. Vollständig lautet die Aufgabe also
+\begin{equation}
+	\max_{\rho} S(\rho) \quad\text{so dass}\quad E=\tr(\rho \widehat{H}),\quad \tr(\rho)=1,\quad \rho\ge 0.
+\end{equation}
+Gesucht ist eine Matrix mit $d^2$ Freiheitsgraden, und $S$ ist nichtlinear in diesen Einträgen; dass es eine geschlossene Lösung gibt, ist Glück.
+
 Solche Maximierungsprobleme können mit Hilfe von Lagrange-Multiplikatoren gelöst werden: 
 \begin{equation}
 	\max_{\rho} f(\rho) = -k\tr(\rho\log(\rho)) + \beta \tr(\rho \widehat{H})
 \end{equation}
+Zu jeder Nebenbedingung gehört ein Multiplikator; oben steht nur der zur Energie. Die Normierung trägt den Term $\gamma\tr(\rho)$, der gleich als $\log(\mathcal{Z})\mathbb{I}$ wiederkehrt; die Positivität prüfen wir am Ende nach.
+
+\begin{greybox}[Lagrange-Multiplikatoren]
+	Gesucht sei das Maximum von $f(x,y)$ unter der Nebenbedingung $g(x,y)=0$. Man führt eine Konstante $\lambda$ ein und maximiert stattdessen die nebenbedingungsfreie Funktion $F(x,y,\lambda) = f(x,y) + \lambda g(x,y)$; die Lösung hängt noch von $\lambda$ ab, das man zum Schluss aus der Nebenbedingung bestimmt. Zur Anschauung denke man sich $\lambda$ sehr groß und im Vorzeichen so, dass eine Verletzung bestraft wird: Das Maximum kann dann nur dort liegen, wo die Bedingung gilt.
+\end{greybox}
+
 Die Lösung wird als Funktion von $\beta$ dargestellt: $\rho \equiv \rho(\beta)$. Danach wird $\beta$ gesucht, damit die Bedingung $E=\tr(\rho \widehat{H})$ erfüllt wird. 
 
 Um das Maximierungsproblem zu lösen, muss die Variation von $f(\rho)$ bezüglich aller möglichen Variationen $\delta \rho$ von $\rho$ stationär sein:
@@ -31,6 +45,7 @@ Die Lösung dieser Gleichung wird daher durch eine Exponentialfunktion gegeben:
 \begin{equation}
 	\rho \propto e^{-\beta \widehat{H}}.
 \end{equation}
+Erlaubt ist dieser Schritt, weil $\log(\mathcal{Z})$ mit der Identität multipliziert wurde: $\mathbb{I}$ kommutiert mit allem, nur deshalb zerfällt $e^{-\beta \widehat{H}-\log(\mathcal{Z})\mathbb{I}}$ in ein Produkt.
 Die Proportionalitätskonstante ist genau durch $\mathcal{Z}$ gegeben und dadurch erhalten wir
 \begin{equation}
 	\rho = \frac{e^{-\beta \widehat{H}}}{\mathcal{Z}},
@@ -39,10 +54,11 @@ wobei die Bedingung $\tr(\rho) = 1$ bedeutet, dass die \emph{Zustandssumme} $\ma
 \begin{equation}
 	\mathcal{Z} = \tr\left(e^{-\beta \widehat{H}}\right) = \sum_{j=1}^d e^{-\beta E_j},
 \end{equation}
-gegeben wird, wobei $E_j$ die Energieeigenwerte von $\widehat{H}$ sind. Der Mittelwert $\langle \widehat{H}\rangle$ wird wie folgt berechnet
+gegeben wird, wobei $E_j$ die Energieeigenwerte von $\widehat{H}$ sind. Die Positivität ist damit ebenfalls erledigt, denn $e^{-\beta \widehat{H}}$ hat nur positive Eigenwerte. Der Mittelwert $\langle \widehat{H}\rangle$ wird wie folgt berechnet
 \begin{equation}
-	\langle \widehat{H}\rangle = \sum_{j=1}^d E_j \frac{e^{-\beta E_j}}{\mathcal{Z}} = \frac{1}{\mathcal{Z}}\frac{\partial \mathcal{Z}}{\partial \beta}.
+	\langle \widehat{H}\rangle = \sum_{j=1}^d E_j \frac{e^{-\beta E_j}}{\mathcal{Z}} = -\frac{1}{\mathcal{Z}}\frac{\partial \mathcal{Z}}{\partial \beta}.
 \end{equation}
+Das Minuszeichen der letzten Gleichheit stammt vom Ableiten: Jeder Term $e^{-\beta E_j}$ zieht ein $-E_j$ herunter. Kompakter geschrieben ist also $\langle \widehat{H}\rangle = -\frac{\partial}{\partial \beta}\log(\mathcal{Z})$.
 
 Die Entropie von $\rho=\frac{e^{-\beta \widehat{H}}}{\mathcal{Z}}$ wird wie folgt berechnet
 \begin{equation}
@@ -58,6 +74,8 @@ Daher
 \end{equation}
 Die Faktoren $e^{-E_j/kT}$ heißen \emph{Boltzmann-Faktoren}.
 
+Praktisch jedes System in thermischem Kontakt mit einem Wärmebad wird mit diesem \emph{kanonischen Zustand} modelliert, klassisch wie quantenmechanisch. Ab jetzt gilt zudem als Definition: \emph{Thermisches Gleichgewicht} heißt, dass der Zustand durch diese Gleichung gegeben ist.
+
 \section*{Hauptsätze der Thermodynamik}
 
 \begin{center}
@@ -70,9 +88,14 @@ Hierbei ist \emph{Wärme} $Q$ als jeder spontane Energiefluss von einem Objekt z
 \begin{center}
 \parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Hauptsatz 2}. Es gibt eine Größe ,,Entropie`` und bei adiabatischen Prozessen gilt $\Delta S \ge 0$. (Adiabatisch bedeutet: ohne Austausch von Wärme mit der Umgebung.)}\end{tcolorbox}}
 \end{center}
+\begin{merksatz}[Die Perspektive dieses Kurses]
+	Die Thermodynamik ist nicht fundamental. Sie ist eine Folgerung der Quantenmechanik -- eine grobkörnige Beschreibung der Naturgesetze für große Systeme.
+\end{merksatz}
 \begin{center}
 \parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Hauptsatz 3}. Man kann den absoluten Temperaturnullpunkt $T=0$ nicht vollständig erreichen.}\end{tcolorbox}}
 \end{center}
+
+Ganz richtig ist dieser Hauptsatz allerdings nicht, denn es gibt Ausnahmen. Er ist äquivalent zu einer Aussage über die Entropie: Normalerweise verschwindet sie für $T\to 0$. Bei manchen Systemen -- Glas, gewissen Eiskristallen, Spingläsern -- bleibt am Nullpunkt Entropie übrig; für sie gilt der dritte Hauptsatz nicht.
  
 
 

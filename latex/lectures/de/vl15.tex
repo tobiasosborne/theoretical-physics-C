@@ -9,9 +9,11 @@ Das Ziel ist es, die Kinematik und Dynamik eines Teilchens, das sich in dem Pote
 \begin{equation}
 	\widehat{H}|\Psi\rangle = E|\Psi\rangle
 \end{equation}
-zu lösen. Diese Eigenvektorgleichung liefert uns die Eigenwerte und Eigenvektoren $\widehat{H}$, die man verwenden kann, um den Unitäroperator $U_t$ zu berechnen. 
+zu lösen. Diese Eigenvektorgleichung liefert uns die Eigenwerte und Eigenvektoren $\widehat{H}$, die man verwenden kann, um den Unitäroperator $U_t$ zu berechnen. Eigenwerte sind hier mehr als Technik: gegenüber den atomaren Anregungsenergien ist Raumtemperatur winzig, das Elektron sitzt fast immer im Grundzustand.
 
 \subsection{Separation der Variablen}
+Die Positionsbasis $x,y,z$ wäre nicht falsch, nur schlecht gewählt: man richtet die Darstellung nach der Symmetrie.
+
 Die Matrixelemente des Impulsoperators in Kugelkoordinaten lauten $\forall |\Psi\rangle \in \mathcal{H}$:
 \begin{equation}
 	\begin{split}
@@ -20,13 +22,19 @@ Die Matrixelemente des Impulsoperators in Kugelkoordinaten lauten $\forall |\Psi
 		&= \langle r,\theta,\phi|\frac{1}{2m}\left(\widehat{p_r}^2 + \frac{\widehat{\mathbf{L}}^2}{r^2}\right)|\Psi\rangle,
 	\end{split}
 \end{equation}
-wobei $\Psi(r,\theta,\phi) \equiv \langle r,\theta,\phi|\Psi\rangle$ und $\langle r,\theta,\phi|\widehat{p_r}|\Psi\rangle = -i\hbar \left(\frac{\partial}{\partial r} + \frac1r\right)\Psi(r,\theta,\phi)$ den radialen Impulsoperator darstellt.
+wobei $\Psi(r,\theta,\phi) \equiv \langle r,\theta,\phi|\Psi\rangle$ und $\langle r,\theta,\phi|\widehat{p_r}|\Psi\rangle = -i\hbar \left(\frac{\partial}{\partial r} + \frac1r\right)\Psi(r,\theta,\phi)$ den radialen Impulsoperator darstellt. Der Zusatzterm $\frac1r$ ist wesentlich -- der radiale Impuls ist \emph{nicht} $-i\hbar\frac{\partial}{\partial r}$.
 
-Daher werden die Eigenwerte und Eigenvektoren $\widehat{H}$ durch 
+Die dritte Zeile ist der Angelpunkt des Kapitels: der Winkelanteil der kinetischen Energie \emph{ist} $\widehat{\mathbf{L}}^2/(2mr^2)$.
+
+Daher werden die Eigenwerte und Eigenvektoren $\widehat{H}$ durch
 \begin{equation}\label{eq:centralpotsse}
 	\langle r,\theta,\phi|\widehat{H}|\Psi\rangle = \left(\frac{\widehat{p_r}^2}{2m} + \frac{\widehat{\mathbf{L}}^2}{2mr^2} + V(\widehat{\mathbf{r}})\right)\Psi(r,\theta,\phi) = E\Psi(r,\theta,\phi)
 \end{equation}
-gegeben. 
+gegeben. Achten Sie auf den Hut: im Matrixelement wird aus dem Operator $V(\widehat{\mathbf{r}})$ die Zahl $V(r)$.
+
+\begin{greybox}[Symmetrie und Erhaltungsgröße]
+	Eine Drehung führt das System in sich selbst über, und zu jeder Symmetrie gehört eine Erhaltungsgröße -- der Satz von Noether, den Sie aus Theoretische Physik B als Ladungserhaltung kennen. Die Drehimpulsoperatoren \emph{erzeugen} die Rotationen; weil $\widehat{H}$ rotationsinvariant ist, muss der Drehimpuls erhalten sein.
+\end{greybox}
 
 Es gilt:
 \begin{equation}
@@ -34,7 +42,11 @@ Es gilt:
 \end{equation}
 Diese Beobachtung hat eine wichtige Auswirkung: Es gibt gemeinsame Eigenvektoren für die Operatoren $\widehat{H}$, $\widehat{L}_z$ und $\widehat{\mathbf{L}}^2$ (dies ist eine allgemeine Implikation, die für alle Mengen von kommutierenden Operatoren gilt).
 
-Ziel ist es, die gemeinsame Eigenfunktionen von $\widehat{H}$ von $\widehat{H}$, $\widehat{L}_z$ und $\widehat{\mathbf{L}}^2$ zu finden. Wenn auf diese Weise eine eindeutige Wahl von Basiszuständen des Hilbertraums erreicht wird, spricht man von einem vollständigen Satz kommutierender Observablen. 
+Ziel ist es, die gemeinsame Eigenfunktionen von $\widehat{H}$ von $\widehat{H}$, $\widehat{L}_z$ und $\widehat{\mathbf{L}}^2$ zu finden. Wenn auf diese Weise eine eindeutige Wahl von Basiszuständen des Hilbertraums erreicht wird, spricht man von einem vollständigen Satz kommutierender Observablen.
+
+\begin{intuition}
+	Normalerweise wird ein Problem schwerer, wenn man mehr fordert; hier wird es leichter. Kommutierende Observablen sind gleichzeitig scharf messbar und verhalten sich, grob gesagt, wie unabhängige Teilsysteme -- deshalb zerfällt die Lösung. Ein Separationsansatz ist kein Glücksfall, sondern die Rechenform einer Symmetrie.
+\end{intuition}
 
 Um die Eigenvektoren und Eigenwerte von $\widehat{H}$ zu berechnen, wenden wir einen Separationsansatz an:
 \begin{equation}
@@ -64,10 +76,11 @@ Mit Hilfe von der Definition $u(r)\equiv rR(r)$ können wir die radiale Wirkung 
 \begin{equation}
 	\left(-\frac{\hbar^2}{2m}\frac{d^2}{dr^2} + \frac{\hbar^2\ell(\ell+1)}{2mr^2} + V(r) - E\right)u(r) = 0.
 \end{equation}
+Das ist ein eindimensionales Problem: $r$ spielt die Rolle der Position, der Zusatzterm $\hbar^2\ell(\ell+1)/(2mr^2)$ ist die Zentrifugalbarriere -- wie bei den Planetenbahnen.
 
 Man kann zeigen, dass nur Lösungen mit $u(0)=0$ physikalisch sinnvoll sind, da sonst entweder das Normquadrat 
 \begin{equation}
 	\int_0^\infty |u(r)|^2\, dr = \infty
 \end{equation}
-beträgt, oder den Erwartungswert der kinetischen Energie wegen $\langle \widehat{p_r}^2\rangle = \infty$ unendlich werden lässt. Daher ist die Radialgleichung äquivalent zu einem eindimensionalen Problem auf $x>0$ mit Randbedingung bei $x=0$.
+beträgt, oder den Erwartungswert der kinetischen Energie wegen $\langle \widehat{p_r}^2\rangle = \infty$ unendlich werden lässt. Daher ist die Radialgleichung äquivalent zu einem eindimensionalen Problem auf $x>0$ mit Randbedingung bei $x=0$. Festgelegt ist $V(r)$ damit noch nicht; die wichtigste Wahl, das Coulombpotential, folgt in der nächsten Vorlesung.
 

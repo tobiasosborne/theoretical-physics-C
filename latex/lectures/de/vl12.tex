@@ -17,6 +17,8 @@ Nach unserer Quantisierungstabelle lautet der Hamiltonoperator des quantumechani
 Der Oszillator tritt in vielen Kontexten der Physik auf: nämlich immer dann, wenn man kleine Bewegungen um eine Gleichgewichtslage näherungsweise untersucht. Ein freies Quantenfeld lässt sich als System von unendlich
 vielen Oszillatoren analysieren. Es lohnt sich jedenfalls, dieses System genau kennenzulernen. Deshalb werden wir auch mehrere Betrachtungsweisen untersuchen.
 
+Stellen Sie sich dabei bitte keine klitzekleine Feder vor. Als \emph{effektives} Modell kleiner Auslenkungen ist der Oszillator eine Näherung; für Lichtquanten und für manche optomechanische Systeme --- winzige, aus Silizium gefertigte ,,Trommeln`` --- gilt er \emph{exakt}. Quantisiert man das Feld eines Resonators, landet man genau hier: Dieses System trägt die ganze Quantenoptik.
+
 Die direkteste Methode, das Spektrum zu erhalten, basiert auf der Beobachtung, dass sich $H$ (im wesentlichen) als Quadrat einer komplexen Linearkombination von $\widehat{p}$ und $\widehat{x}$ schreiben lässt. Wir setzen
 \begin{equation}
 	\widehat{a} = \sqrt{\frac{m\omega}{2\hbar}}\widehat{x} + i \sqrt{\frac{1}{2m\omega\hbar}}\widehat{p},
@@ -26,6 +28,8 @@ sodass
 	\widehat{a} \widehat{a}^\dag &= \frac{m\omega}{2\hbar}\widehat{x}^2 + \frac{1}{2m\omega\hbar}\widehat{p}^2 + \frac{i}{2\hbar} (\widehat{p}\widehat{x} - \widehat{x}\widehat{p}) \\
 	\widehat{a}^\dag \widehat{a} &= \frac{m\omega}{2\hbar}\widehat{x}^2 + \frac{1}{2m\omega\hbar}\widehat{p}^2 - \frac{i}{2\hbar} (\widehat{p}\widehat{x} - \widehat{x}\widehat{p}).
 \end{align}
+Zwei Warnungen. Erstens ist keineswegs offensichtlich, dass man so etwas hinschreiben sollte: Die Definition von $\widehat{a}$ kommt aus dem Nichts und rechtfertigt sich allein durch die Identitäten, die gleich folgen. Zweitens ist $\widehat{a}$ nicht selbstadjungiert, also \emph{keine Observable} --- kein Detektor misst ihn; er ist bloß ein Hilfsmittel zur Diagonalisierung.
+
 Unter Verwendung der kanonischen Vertauschungsrelationen $[\widehat{p},\widehat{x}] = -i\hbar\mathbb{I}$ ist damit
 \begin{equation}\label{eq:ccra}
 	\eqbox{ [\widehat{a}, \widehat{a}^\dag] = \mathbb{I}}
@@ -34,6 +38,8 @@ und
 \begin{equation}\label{eq:qho}
 	\eqbox{\widehat{H} = \hbar \omega \left(\widehat{a}^\dag \widehat{a} + \tfrac{1}{2}\mathbb{I}\right).}
 \end{equation}
+Der Gewinn steckt in der Gestalt: Ein Operator ist genau dann positiv, wenn er sich als $\widehat{M}^\dag\widehat{M}$ schreiben lässt --- und genau das steht in (\ref{eq:qho}) explizit da, während es in der ursprünglichen Form verborgen bleibt.
+
 Zunächst ist aus dieser Form von $H$ klar, dass $H \ge \hbar\omega/2 \mathbb{I}$. Der Oszillator ist
 also niemals ,,in Ruhe``: $x=0$ und $p = 0$ können wegen der Unschärferelation nicht beide beliebig genau präpariert werden. 
 
@@ -48,7 +54,7 @@ dies die gewöhnliche Differentialgleichung $\langle x|\widehat{a}|\phi_0\rangle
 \end{equation}
 also 
 \begin{equation}
-	\frac{d\phi_0}{dx}  = -\frac{m\omega}{\hbar} \phi_0,
+	\frac{d\phi_0}{dx}  = -\frac{m\omega}{\hbar} x\phi_0,
 \end{equation}
 mit der Lösung
 \begin{equation}
@@ -60,19 +66,44 @@ wobei $N$ die Normierung
 \end{equation}
 ist.
 
+Damit sieht man, wofür der Aufwand gut war: Aus einer Differentialgleichung \emph{zweiter} Ordnung ist über $\widehat{a}|\phi_0\rangle = 0$ eine \emph{erster} Ordnung geworden. Bis zur Normierung ist $\phi_0$ dabei nur eine Funktion; zum \emph{Zustand} wird sie erst durch $\|\phi_0\| = 1$.
 
 In der Ableitung der Unschärferelation hatten wir genau wie hier die \emph{Positivität} das Operators $\widehat{a}^\dag \widehat{a}$ benutzt. Der Fall der Gleichheit führt auch dort auf die Bedingung $\widehat{a}|\Psi\rangle = 0$. Der Oszillator-Grundzustand ist also genau ein Zustand minimaler Unschärfe.
+
+\begin{greybox}[Produktregel für Kommutatoren]
+Im nächsten Schritt kommt eine Regel ins Spiel, die Sie vielleicht noch nicht kennen. Für beliebige Operatoren $\widehat{A}, \widehat{B}, \widehat{C}$ gilt
+\begin{equation}\label{eq:leibnizkomm}
+	[\widehat{A}\widehat{B},\widehat{C}] = \widehat{A}[\widehat{B},\widehat{C}] + [\widehat{A},\widehat{C}]\widehat{B}
+	\qquad \text{und} \qquad
+	[\widehat{A},\widehat{B}\widehat{C}] = [\widehat{A},\widehat{B}]\widehat{C} + \widehat{B}[\widehat{A},\widehat{C}].
+\end{equation}
+Die erste Identität prüft man in einer Zeile nach, indem man $\widehat{A}\widehat{C}\widehat{B}$ addiert und wieder abzieht:
+\begin{equation}
+	[\widehat{A}\widehat{B},\widehat{C}] = \widehat{A}\widehat{B}\widehat{C} - \widehat{C}\widehat{A}\widehat{B}
+	= \widehat{A}\widehat{B}\widehat{C} - \widehat{A}\widehat{C}\widehat{B} + \widehat{A}\widehat{C}\widehat{B} - \widehat{C}\widehat{A}\widehat{B}
+	= \widehat{A}[\widehat{B},\widehat{C}] + [\widehat{A},\widehat{C}]\widehat{B}.
+\end{equation}
+Den Beweis der zweiten überlassen wir Ihnen. Der Kommutator wirkt also wie eine Ableitung --- nur ist auf die Reihenfolge zu achten.
+\end{greybox}
 
 Für die weitere Rechnung brauchen wir die Relationen
 \begin{align}
 	[\widehat{H},\widehat{a}^\dag] &= \hbar \omega \widehat{a}^\dag \\
 	[\widehat{H},\widehat{a}] &= -\hbar \omega \widehat{a}, 
 \end{align}
-die aus (\ref{eq:ccra}) und (\ref{eq:qho}) folgen. Wenn nun $\widehat{H}|\Psi\rangle = E|\Psi\rangle$ ein Eigenvektor ist, dann ist 
+die aus (\ref{eq:ccra}) und (\ref{eq:qho}) folgen. Der Summand $\tfrac{1}{2}\hbar\omega\mathbb{I}$ in $\widehat{H}$ vertauscht mit allem und fällt heraus; mit (\ref{eq:leibnizkomm}) bleibt
+\begin{equation}
+	[\widehat{H},\widehat{a}^\dag] = \hbar\omega[\widehat{a}^\dag\widehat{a},\widehat{a}^\dag]
+	= \hbar\omega\left(\widehat{a}^\dag[\widehat{a},\widehat{a}^\dag] + [\widehat{a}^\dag,\widehat{a}^\dag]\widehat{a}\right)
+	= \hbar\omega \widehat{a}^\dag,
+\end{equation}
+und die zweite Relation geht genauso.
+
+Wenn nun $\widehat{H}|\Psi\rangle = E|\Psi\rangle$ ein Eigenvektor ist, dann ist 
 \begin{equation}
 	\widehat{H}\widehat{a}^\dag|\Psi\rangle = (E  + \hbar \omega)\widehat{a}^\dag|\Psi\rangle
 \end{equation}
-Also erfüllt $\widehat{a}^\dag|\Psi\rangle$ die Eigenwertgleichung zum Eigenwert $E + \hbar \omega$. Wegen 
+Also erfüllt $\widehat{a}^\dag|\Psi\rangle$ die Eigenwertgleichung zum Eigenwert $E + \hbar \omega$. Man rechnet es nach, indem man $\widehat{a}^\dag\widehat{H}|\Psi\rangle$ addiert und wieder abzieht --- ein oft benutzter Trick, denn so entsteht ein bekannter Kommutator. Wegen 
 \begin{equation}
 	\|\widehat{a}^\dag|\Psi\rangle\|^2 = \langle \Psi|\widehat{a}\widehat{a}^\dag|\Psi\rangle = \langle \Psi|\widehat{a}^\dag\widehat{a}+\mathbb{I}|\Psi\rangle \ge \langle \Psi|\Psi\rangle \ge 0
 \end{equation}
@@ -87,10 +118,12 @@ und Eigenwerte
 	\eqbox{E_n = \hbar\omega(n+\tfrac{1}{2}).}
 \end{equation}
 
-Wegen dieses Verfahrens heißen übrigens die Operatoren $\widehat{a}$ und $\widehat{a}^\dag$ auch \emph{Leiteroperatoren}, bzw. ,,Absteigeoperator`` und ,,Aufsteigeoperator``. Den Absteigeoperator $\widehat{a}$ verwenden wir, um zu zeigen, dass es auch keine weiteren Eigenwerte gibt. Denn wenn $|\Psi\rangle$ ein Eigenvektor zum Eigenwert $E$ ist, erfüllt $(\widehat{a})^n|\Psi\rangle$ die Eigenwertgleichung zum Eigenwert $E − n\hbar \omega$. Für genügend große $n$ wird dieser Ausdruck negativ, kann also kein Eigenwert des positiven Operators
+Wegen dieses Verfahrens heißen übrigens die Operatoren $\widehat{a}$ und $\widehat{a}^\dag$ auch \emph{Leiteroperatoren}, bzw. ,,Absteigeoperator`` und ,,Aufsteigeoperator``. Den Absteigeoperator $\widehat{a}$ verwenden wir, um zu zeigen, dass es auch keine weiteren Eigenwerte gibt. Denn wenn $|\Psi\rangle$ ein Eigenvektor zum Eigenwert $E$ ist, erfüllt $(\widehat{a})^n|\Psi\rangle$ die Eigenwertgleichung zum Eigenwert $E - n\hbar \omega$. Für genügend große $n$ wird dieser Ausdruck negativ, kann also kein Eigenwert des positiven Operators
 $H$ sein. Für große $n$ muss also $(\widehat{a})^n|\Psi\rangle=0$ sein. Sei $n$ die kleinste Zahl, für die dies gilt. Dann ist $|\Phi\rangle = (\widehat{a})^{n-1}|\Psi\rangle$ eine von Null verschiedene Lösung
 der Gleichung $\widehat{a}|\Phi\rangle = 0$, also nach unserer obigen Rechnung proportional zu $|\phi_0\rangle$. Nach der Vertauschungsrelation für $\widehat{a}$ und $\widehat{a}^\dag$ ist $|\Psi\rangle$ dann ein Vielfaches von
 $(\widehat{a}^\dag)^n|\Phi_0\rangle$. Die angegebene vollständige Liste von Eigenfunktionen ist also eine Basis des Hilbertraums.
+
+Der Nenner in (\ref{eq:qhoeigenstates}) ist kein Schönheitsfehler: $\widehat{a}^\dag|\Psi\rangle$ ist zwar wieder Eigenvektor, aber nicht normiert; erst die Division durch die Norm macht daraus einen Zustand. Erwarten Sie übrigens nicht, dass das Verfahren allgemein trägt --- es funktioniert im Wesentlichen nur hier. Als \emph{Erzeugungs-} und \emph{Vernichtungsoperatoren} haben die Leiteroperatoren ihre eigentliche Karriere in der Vielteilchentheorie gemacht.
 
 Die Norm $\|(\widehat{a}^\dag)^n|\Phi_0\rangle\|$ lässt sich ebenfalls allein aus der Vertauschungsrelation
 berechnen. Es ist
@@ -161,16 +194,36 @@ lauten
 \end{align}
 usw.
 
+Bevor wir zur Zeitentwicklung kommen, eine Warnung.
+
+\begin{merksatz}[Vorsicht beim Exponentieren von Operatoren]
+Für Operatoren gilt $e^{\widehat{A}+\widehat{B}} = e^{\widehat{A}}e^{\widehat{B}}$ \emph{nur dann}, wenn $[\widehat{A},\widehat{B}] = 0$.
+\end{merksatz}
+
+Woran es sonst scheitert, sieht man schnell: Schon der quadratische Term stimmt nicht mehr, denn
+\begin{equation}
+	(\widehat{A}+\widehat{B})^2 = \widehat{A}^2 + \widehat{A}\widehat{B} + \widehat{B}\widehat{A} + \widehat{B}^2
+	\neq \widehat{A}^2 + 2\widehat{A}\widehat{B} + \widehat{B}^2.
+\end{equation}
+Vertauschen die beiden dagegen, so verhalten sie sich wie Zahlen und die Reihen stimmen Term für Term überein. Beim Oszillator dürfen wir: Mit $\widehat{P}_n = |\phi_n\rangle\langle\phi_n|$ ist $\widehat{H} = \sum_n E_n\widehat{P}_n$, und für $n \neq m$ ist
+\begin{equation}
+	[\widehat{P}_n,\widehat{P}_m] = |\phi_n\rangle\langle\phi_n|\phi_m\rangle\langle\phi_m|
+	- |\phi_m\rangle\langle\phi_m|\phi_n\rangle\langle\phi_n| = 0
+\end{equation}
+wegen der Orthonormalität $\langle\phi_n|\phi_m\rangle = \delta_{nm}$. Genau das rechtfertigt es, $U_t$ termweise hinzuschreiben.
+
 Mit der Diagonalisierung des Hamiltonoperators haben wir natürlich auch detaillierte Informationen über die Zeitentwicklung des Oszillators gewonnen. Wie der klassische Oszillator ist auch der quantenmechanische periodisch mit der Periode $T = 2\pi/\omega$. Das folgt allein schon aus der Liste der Eigenwerte: die Eigenwerte des Zeitentwicklungsoperators $U_T = e^{-\frac{iT}{\hbar} \widehat{H}}$ sind ja nach Funktionalkalkül
 \begin{equation}
 	e^{-\frac{iT}{\hbar} \hbar\omega(n+\frac12)} = e^{-2\pi i (n+\frac12)} = -1,
 \end{equation}
-also unabhängig von $n$, und $U_T = −\mathbb{I}$ ist ein Vielfaches des $\mathbb{I}$-Operators.
+also unabhängig von $n$, und $U_T = -\mathbb{I}$ ist ein Vielfaches des $\mathbb{I}$-Operators.
 
 Damit gilt für die Zeitabhängigkeit aller Erwartungswerte, nach Postulat 5 also für die Funktionen der Form $f(t) = \tr(U_t \rho U_t^\dag A)$:
 \begin{equation}
 	f(t+T) = \tr(U_tU_T \rho U_T^\dag U_t^\dag A) =f(t).
 \end{equation}	
+Dass dort $U_T = -\mathbb{I}$ steht, stört nicht: In $\rho_T = U_T\rho_0U_T^\dag$ heben sich die Vorzeichen weg, die globale Phase fällt von selbst heraus --- ein Vorteil des Dichtematrixformalismus. Über den Anfangszustand wurde nichts vorausgesetzt.
+
 Die Analogie mit der klassischen Entwicklung geht aber noch viel weiter. Am einfachsten sieht man das hier, indem man die Zeitabhängigkeit des Leiteroperators $\widehat{a}$ berechnet. Es gilt 
 \begin{equation}
 	\frac{d}{dt} U_t^\dag \widehat{a} U_t = U_t^\dag \left(\frac{i}{\hbar} [\widehat{H},\widehat{a}] \right) U_t = -i\omega U_t^\dag \widehat{a} U_t
@@ -186,3 +239,6 @@ Dabei findet man, dass die quantenmechanischen Orts-und Impulsoperatoren genau d
 		\widehat{x}(t) &= U_t^\dag \widehat{x} U_t  = \frac{1}{m\omega}\sin(\omega t) \widehat{p}  + \cos(\omega t) \widehat{x}
 	\end{split}
 \end{equation}
+
+Wir rechnen hier im \emph{Heisenbergbild}: Nicht die Zustände bewegen sich, sondern die Messungen, und $U_t^\dag \widehat{A} U_t$ ist ,,dieselbe Messung, $t$ Sekunden später``. Damit ist der Oszillator abgeschlossen --- über dieses eine System gibt es ganze Bücher.
+
