@@ -1,0 +1,84 @@
+% pkg3.tex -- PKG-3 "The lab notebook": print specimen (XeLaTeX).
+% STIX Two Text + STIX Two Math everywhere (OFL); Tufte-descended grid, margin = zoom layer;
+% Paul Tol high-contrast roles (tokens.py, PKG-3 print-light).
+\documentclass[10pt]{article}
+\usepackage[a4paper, left=20mm, textwidth=110mm, marginparsep=7mm, marginparwidth=55mm,
+            top=16mm, bottom=14mm]{geometry}
+\usepackage[ngerman]{babel}
+\usepackage[autostyle]{csquotes}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, patterns}
+\usepackage{amsmath}
+\usepackage{unicode-math}
+\setmainfont[Ligatures=TeX, Extension=.otf, UprightFont=*-Regular, ItalicFont=*-Italic,
+  BoldFont=*-Bold, BoldItalicFont=*-BoldItalic]{STIXTwoText}
+\newfontfamily\pkgcaps[Letters=SmallCaps, LetterSpace=5]{STIXTwoText-Regular.otf}
+\newfontfamily\pkgsemi{STIXTwoText-SemiBold.otf}
+\setmathfont{STIXTwoMath-Regular.otf}
+\usepackage[protrusion=true, expansion=false]{microtype}
+\usepackage[locale=DE]{siunitx}
+\usepackage[font=small, labelfont=sc, labelsep=quad, justification=raggedright,
+            singlelinecheck=false]{caption}
+\fontsize{10.5}{14}\selectfont
+% ---- tokens (PKG-3, print-light = Paul Tol high-contrast) --------------------------------------
+\definecolor{ink}{HTML}{000000}     \definecolor{rule}{HTML}{BEBEBE}
+\definecolor{accent}{HTML}{004488}  \definecolor{link}{HTML}{004488}
+\definecolor{stateC}{HTML}{004488}  \definecolor{effectC}{HTML}{BB5566}
+\definecolor{energyC}{HTML}{DDAA33} \definecolor{envC}{HTML}{000000}
+\definecolor{highlight}{HTML}{FCF0CF} \definecolor{tracktwo}{HTML}{F3F3F3}
+\definecolor{lad1}{HTML}{002244} \definecolor{lad2}{HTML}{1A5998}
+\definecolor{lad3}{HTML}{478CC4} \definecolor{lad4}{HTML}{84C0E4}
+\tikzset{
+  state/.style={draw=stateC, line width=1.0pt}, statefill/.style={fill=stateC},
+  effect/.style={draw=effectC, line width=1.0pt},
+  energy/.style={draw=energyC, line width=1.8pt},
+  boundary/.style={draw=ink, line width=0.7pt},
+  proj/.style={draw=ink, line width=0.35pt, dash pattern=on 1.6pt off 1.4pt},
+  leader/.style={draw=ink, line width=0.3pt},
+  axisstyle/.style={draw=ink, line width=0.45pt, -{Stealth[length=4pt, width=3pt]}},
+  axisline/.style={draw=ink, line width=0.45pt},
+  rulegrey/.style={draw=rule, line width=0.5pt},
+  forbidden/.style={pattern=north east lines, pattern color=envC!55},
+  ladder1/.style={draw=lad1}, ladder2/.style={draw=lad2},
+  ladder3/.style={draw=lad3}, ladder4/.style={draw=lad4},
+  lbl/.style={font=\small, text=ink},
+  lbltext/.style={font=\itshape\footnotesize, text=ink},
+}
+\newcommand{\pkgsmall}{\itshape\footnotesize}
+\newcommand{\pkgvec}[1]{\symbfit{#1}}
+% ---- headings: italic, Tufte-like, number hangs in the margin --------------------------------
+\newcommand{\pkgchapter}[2]{%
+  \noindent\marginpar{\vspace*{-4pt}{\fontsize{26}{26}\selectfont\color{accent}#1}}%
+  {\fontsize{20}{24}\selectfont\itshape #2}\par\vspace{1pt}
+  \renewcommand{\theequation}{#1.\arabic{equation}}\renewcommand{\thefigure}{#1.\arabic{figure}}}
+\newcommand{\pkgkicker}[1]{{\pkgcaps\small #1}\par\vspace{8pt}}
+\newcommand{\pkgcaptionlead}[1]{\textit{#1}}
+\addto\captionsngerman{\renewcommand\figurename{Abb.}}
+% ---- sidenotes: numbered, STIX Two 8.5/11, ragged right ----------------------------------------
+\newcounter{sn}
+\newcommand{\pkgsidenote}[1]{\refstepcounter{sn}\textsuperscript{\thesn}%
+  \marginpar{\raggedright\fontsize{8.5}{11}\selectfont\textsuperscript{\thesn}\,#1}}
+% ---- postulate: 0.5 pt ink frame, small-caps semibold head (a "stamp" in the notebook) ---------
+\newenvironment{pkgpostulate}[2]{%
+  \begin{tcolorbox}[enhanced, breakable, colframe=ink, boxrule=0.5pt, arc=0pt, colback=white,
+    left=7pt, right=7pt, top=4pt, bottom=4pt, before skip=8pt, after skip=8pt]
+  {\pkgsemi\addfontfeatures{Letters=SmallCaps}postulat #1}\enspace\textit{#2.}\enspace\ignorespaces}
+  {\end{tcolorbox}}
+% ---- Vertiefung = the margin.  A short block (<= ~14 margin lines) is set as a long sidenote; on the
+%      web the same block is a disclosure.  Longer blocks fall back to the layered-docs inline device
+%      (outer-margin rule + run-in label).  Deviation from layered-docs 5.4 recorded in PKG-3 section 5.
+\usepackage{marginnote}
+\newcommand{\pkgdepends}[1]{{\itshape #1}\par\smallskip}
+\newcommand{\pkgreturn}[1]{\par\smallskip{\pkgsemi Zurück zum Kern.}\enspace #1}
+\NewDocumentEnvironment{pkgtracktwo}{m m +b}{%
+  \marginnote{\raggedright\fontsize{8.5}{11}\selectfont
+    \colorbox{tracktwo}{\parbox{\dimexpr\marginparwidth-2\fboxsep}{\raggedright
+    {\pkgsemi\color{accent}Vertiefung #1}\par\smallskip
+    \textit{#2.}\enspace #3}}}[2pt]\ignorespaces}{}
+\pagestyle{empty}\emergencystretch=1em
+\begin{document}
+\fontsize{10.5}{14}\selectfont
+\input{body-de}
+\end{document}

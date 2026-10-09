@@ -9,6 +9,63 @@ two-language course.
 
 ## Status
 
+**2026-10-09: a planning campaign for a major upgrade is complete and landed in
+`docs/plan/`.** Read `docs/plan/BRIEF.md` (TJO's requirements, verbatim), then
+`docs/plan/PLAN.md` (the assembled plan, draft v1), then the lane reports under
+`docs/plan/research/<lane>/REPORT.md`. The script itself is unchanged by that campaign
+and the status below still holds for it.
+
+### The upgrade campaign in one paragraph
+
+TJO wants one comprehensive print PDF with a gentle Lehramt route (Kern) and optional
+depth (Vertiefung, Fundament), one HTML page per chapter with three.js demos, real games,
+3D videos, one coherent design, two languages, and physics that is correct and
+ground-truthed everywhere. The physics path runs GPT -> single-system QM -> many
+particles -> Fock space -> statistical mechanics -> thermodynamics. Nine lanes (Opus,
+Sonnet, codex gpt-6.1 xhigh; no Fable) researched it and built evidence: a working
+two-edition LaTeX prototype with a checker (`docs/plan/research/layered-docs/prototype/`),
+five design packages with compiled print and rendered web specimens
+(`docs/plan/research/design-packages-{A,B}/specimens/`), two token compilers, a 22-chapter
+curriculum with hazards and a notation pre-inventory, 105 demo/game/video ideas with
+correctness tests, and architecture and rigour-process designs. `PLAN.md` section 1.2
+lists the ten decisions only TJO can make; nothing in Phase 0 starts before D1-D5.
+
+### Verified defects in the current script (found by the campaign, not yet fixed)
+
+All inherited from v0.1 and present in both editions. Each needs a fix in the German,
+then the English, then an `ENRICHMENT_EXCEPTIONS` entry (or, under the plan, a migration
+record). Verified independently by two lanes and by the codex review:
+
+- `vl16.tex:85` the generalised Laguerre polynomial `L_2^s` has `-x^2/2`; it must be
+  `+x^2/2` (DLMF 18.5.12).
+- `vl16.tex:94` `psi_{21+-1}` has prefactor `1/(8 sqrt(2 pi))`, norm squared 0.5; it must
+  be `1/(8 sqrt(pi))`, and the Condon-Shortley sign for m=+1 is missing.
+- `vl22.tex:25` the canonical-ensemble Lagrangian carries `+beta tr(rho H)`, which gives
+  `rho ~ exp(+beta H/k)`; the sign contradicts the stationarity equation that follows.
+- `vl19.tex:21` `k_B = 1.38064852e-23` is CODATA 2014; since 2019 it is exactly
+  `1.380649e-23 J/K`. `a_0` in `vl16.tex` is likewise a superseded CODATA value.
+- `vl04.tex:70` "hermitesch (Synonym: selbstadjungiert)": true for matrices, false in
+  infinite dimension. The codex review notes the file defines Hermitian as `A^dagger = A`,
+  so this is a scope omission rather than a false equation.
+
+### Pending when the session closed
+
+- The codex hostile review (`docs/plan/research/review/REVIEW.md`) was still running; its
+  prompt is `PROMPT.md` beside it. If `REVIEW.md` is absent, re-run:
+  `timeout 3600 codex exec -s read-only -c model_reasoning_effort="xhigh" -o docs/plan/research/review/REVIEW.md - < docs/plan/research/review/PROMPT.md`
+  then fold its sections A (contradictions), B (verifications), G (corrections) into
+  `PLAN.md` with a dated note.
+- `docs/plan/research/curriculum/plavala-src/` (arXiv source, gitignored) and the Teschl
+  PDF (scratchpad only) must never be committed.
+- Shallow clones of TJO's `presentations`, `mathtime-otf`, `quantumcomputing`,
+  `quantum-noise-and-decoherence` repos and of `mastwood/advancedquantum` (the student
+  notes for TJO's 2016 advanced QM course, playlist
+  https://www.youtube.com/playlist?list=PLDfPUNusx1Eo60qx3Od2KLUL4b7VDPo9F) lived in the
+  session scratchpad and are gone; re-clone when needed.
+
+### The script (unchanged by the campaign)
+
+
 **Complete and green.** `./ci.sh` passes all five stages. Both editions
 build: German 84 pages, English 80 pages, zero LaTeX errors and zero
 dangling references in either. All 22 lectures are in structural parity,

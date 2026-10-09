@@ -38,3 +38,8 @@ _unzip_tmp/
 *.swp
 *.swo
 .claude/
+
+# Third-party sources unpacked for planning (arXiv licence; not redistributed)
+docs/plan/research/curriculum/plavala-src/
+docs/plan/research/*/codex.log
+__pycache__/

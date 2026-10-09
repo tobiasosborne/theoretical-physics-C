@@ -1,0 +1,77 @@
+{
+ "id": "F-16.2",
+ "title": {
+  "de": "Wasserstoff 2p_z: Kontur halber Maximaldichte",
+  "en": "Hydrogen 2p_z: half-maximum contour"
+ },
+ "camera": {
+  "type": "orthographic",
+  "view": "V1",
+  "azimuth_deg": 35.0,
+  "elevation_deg": 20.0,
+  "up": "z"
+ },
+ "units": {
+  "length": "a0",
+  "print_mm_per_unit": 6.0
+ },
+ "objects": [
+  {
+   "id": "nodal-plane",
+   "role": "state",
+   "kind": "plane",
+   "z": 0,
+   "half_width": 3.6,
+   "style": "dashed-outline+tint"
+  },
+  {
+   "id": "lobe+",
+   "role": "state",
+   "kind": "contour-slice",
+   "field": "|psi_210|^2",
+   "level_fraction": 0.5,
+   "slice": "y=0"
+  },
+  {
+   "id": "lobe-",
+   "role": "state",
+   "kind": "contour-slice",
+   "field": "|psi_210|^2",
+   "level_fraction": 0.5,
+   "slice": "y=0"
+  },
+  {
+   "id": "z-axis",
+   "role": "ink",
+   "kind": "axis"
+  },
+  {
+   "id": "gizmo",
+   "role": "ink",
+   "kind": "axis-gizmo",
+   "anchor": "lower-left"
+  }
+ ],
+ "labels": [
+  {
+   "target": "lobe+",
+   "text": {
+    "de": "|ψ₂₁₀|² = ½ max",
+    "en": "|ψ₂₁₀|² = ½ max"
+   },
+   "side": "right"
+  },
+  {
+   "target": "nodal-plane",
+   "text": {
+    "de": "Knotenebene z = 0",
+    "en": "nodal plane z = 0"
+   },
+   "side": "right"
+  }
+ ],
+ "readouts": {
+  "P_inside_contour": 0.1771,
+  "P_total_check": 1.0
+ }
+}

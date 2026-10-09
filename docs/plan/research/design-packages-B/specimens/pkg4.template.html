@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PKG-4 Specimen</title>
+<!-- PKG-4 "Tokens first, dark-ground video": web specimen. Tokens below are pasted by make_html.py
+     from ../tokens/pkg4-tokens.css (generated from pkg4.tokens.json). Fonts: STIX Two Text/Math (OFL),
+     Inter (OFL). In production the fonts are WOFF2 subsets next to the page; here they load from the
+     local TeX tree so the specimen needs no network. -->
+<style>
+/*TOKENS*/
+@font-face { font-family: "STIX Two Text"; src: local("STIX Two Text"), url("file:///usr/share/texlive/texmf-dist/fonts/opentype/public/stix2-otf/STIXTwoText-Regular.otf"); font-style: normal; font-weight: 400; }
+@font-face { font-family: "STIX Two Text"; src: url("file:///usr/share/texlive/texmf-dist/fonts/opentype/public/stix2-otf/STIXTwoText-Italic.otf"); font-style: italic; font-weight: 400; }
+@font-face { font-family: "STIX Two Text"; src: url("file:///usr/share/texlive/texmf-dist/fonts/opentype/public/stix2-otf/STIXTwoText-SemiBold.otf"); font-style: normal; font-weight: 600; }
+@font-face { font-family: "STIX Two Math"; src: local("STIX Two Math"), url("file:///usr/share/texlive/texmf-dist/fonts/opentype/public/stix2-otf/STIXTwoMath-Regular.otf"); }
+:root {
+  --f-text: "STIX Two Text", "STIX Two Math", Times, serif;
+  --f-math: "STIX Two Math", math;
+  --f-sans: "Inter", system-ui, sans-serif;
+  /* type scale: 1.2 minor third on a 19 px body (screen equivalent of 10.5 pt at reading distance) */
+  --fs-body: 1.1875rem; --lh-body: 1.55;
+  --fs-small: 0.875rem; --fs-cap: 0.8125rem; --fs-h1: 2.25rem; --fs-kicker: 0.75rem;
+  --measure: 66ch; --gutter: 15rem; --gap: 2rem;
+  --radius: 3px; --focus: 0 0 0 3px color-mix(in oklch, var(--c-accent) 45%, transparent);
+}
+* { box-sizing: border-box; }
+html { background: var(--c-paper); color: var(--c-ink); }
+body { margin: 0; font: var(--fs-body)/var(--lh-body) var(--f-text); font-kerning: normal; hyphens: auto; }
+math { font-family: var(--f-math); font-size: 1.04em; }
+math[display="block"] { margin: 0.9em 0; }
+.r-state { color: var(--c-state); } .r-effect { color: var(--c-effect); } .r-dyn { color: var(--c-dynamics); }
+@media (prefers-color-scheme: light) { mi.r-effect, .txt-effect { color: color-mix(in oklch, var(--c-effect) 80%, black); } }
+/* grid: Distill-style named columns; gutter holds sidenotes and zoom labels */
+.page { display: grid; grid-template-columns: [screen-start] 1fr [body-start] minmax(0, var(--measure)) [body-end] var(--gap) [gutter-start] var(--gutter) [gutter-end] 1fr [screen-end]; padding: 2.5rem 1rem 4rem; }
+.page > * { grid-column: body; }
+.page > .wide { grid-column: body-start / gutter-end; }
+.side { grid-column: gutter; font: var(--fs-cap)/1.45 var(--f-sans); color: var(--c-ink-muted); align-self: start; margin-top: 0.3em; }
+@media (max-width: 900px) { .page { grid-template-columns: [screen-start body-start] 1fr [body-end gutter-start gutter-end screen-end]; } .side { grid-column: body; border-left: 2px solid var(--c-rule); padding-left: 0.75rem; } }
+.kicker { font: 600 var(--fs-kicker)/1 var(--f-sans); letter-spacing: 0.08em; color: var(--c-accent); text-transform: uppercase; margin: 0; }
+h1 { font-weight: 400; font-size: var(--fs-h1); line-height: 1.15; margin: 0.25rem 0 0.2rem; }
+.dek { font: var(--fs-small)/1.4 var(--f-sans); color: var(--c-ink-muted); margin: 0 0 1.5rem; }
+a { color: var(--c-link); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+/* hover/focus popup (gwern-style preview of a definitions-DB entry) */
+.pop { position: relative; } .pop .card { display: none; position: absolute; left: 0; top: 1.6em; z-index: 5; width: 22rem;
+  background: var(--c-paper-alt); color: var(--c-ink); border: 1px solid var(--c-rule); border-radius: var(--radius);
+  padding: 0.6rem 0.8rem; font: var(--fs-small)/1.45 var(--f-text); box-shadow: 0 6px 18px rgb(0 0 0 / 0.18); }
+.pop:hover .card, .pop:focus-within .card { display: block; }
+.card .tag { font: 600 0.6875rem/1 var(--f-sans); color: var(--c-accent); letter-spacing: 0.06em; }
+.postulat { background: var(--c-paper-alt); border-left: 3px solid var(--c-accent); padding: 0.8rem 1rem; margin: 1.2rem 0; }
+.postulat .lbl { font: 600 var(--fs-small)/1 var(--f-sans); color: var(--c-accent); margin-right: 0.6em; }
+/* Vertiefung (depth) block: in-place expansion (stretchtext), marked by the same outer accent rule as print */
+details.zoom { border-right: 2px solid var(--c-accent); padding-right: 1rem; margin: 1.2rem 0; }
+details.zoom > summary { list-style: none; cursor: pointer; font: 600 var(--fs-small)/1.6 var(--f-sans); color: var(--c-accent); }
+details.zoom > summary::before { content: "+"; display: inline-block; width: 1.2em; height: 1.2em; margin-right: 0.5em; text-align: center; line-height: 1.15em; border: 1px solid currentColor; border-radius: 50%; }
+details.zoom[open] > summary::before { content: "\2212"; }
+details.zoom > summary:focus-visible { outline: none; box-shadow: var(--focus); border-radius: var(--radius); }
+details.zoom .tagline { font: 400 var(--fs-cap)/1 var(--f-sans); color: var(--c-ink-muted); margin-left: 0.6em; }
+details.zoom > div { font-size: 0.95em; }
+/* demo plate + controls */
+.demo { border: 1px solid var(--c-rule); border-radius: var(--radius); padding: 1rem; margin: 1.5rem 0 0.4rem; background: var(--c-paper); }
+.demo svg { width: 100%; height: auto; display: block; }
+.ctl { display: grid; grid-template-columns: 7.5rem 1fr 5.5rem; gap: 0.4rem 0.8rem; align-items: center; font: var(--fs-small)/1.2 var(--f-sans); margin-top: 0.8rem; }
+.ctl output { font-variant-numeric: tabular-nums; text-align: right; }
+input[type=range] { accent-color: var(--c-accent); width: 100%; }
+input[type=range]:focus-visible { outline: none; box-shadow: var(--focus); border-radius: 8px; }
+.readout { font: 600 1rem/1.3 var(--f-sans); font-variant-numeric: tabular-nums; margin-top: 0.6rem; }
+.readout .big { font-size: 1.6rem; color: var(--c-effect); }
+.caption { font: var(--fs-cap)/1.45 var(--f-sans); color: var(--c-ink-muted); margin: 0.4rem 0 1.5rem; }
+.caption b { color: var(--c-ink); }
+/* HUD: always video mode (dark ground), opaque plate, never translucent over 3D */
+.hud { font-family: var(--f-sans); background: var(--c-paper); color: var(--c-ink); border-radius: 6px; padding: 0.9rem 1rem; margin: 1.5rem 0;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.4rem 1rem; font-variant-numeric: tabular-nums; border: 1px solid var(--c-rule); }
+.hud .k { font-size: 0.6875rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c-ink-muted); }
+.hud .v { font-size: 1.35rem; font-weight: 600; }
+.hud .bar { grid-column: 1 / -1; height: 6px; background: var(--c-paper-alt); border-radius: 3px; overflow: hidden; }
+.hud .bar i { display: block; height: 100%; width: 34%; background: var(--c-effect); }
+.hud .msg { grid-column: 1 / -1; font-size: 0.8125rem; color: var(--c-ink-muted); }
+math[display="block"] { overflow-x: auto; overflow-y: hidden; max-width: 100%; padding-bottom: 2px; }
+@media (max-width: 600px) { .hud { grid-template-columns: 1fr 1fr; } .ctl { grid-template-columns: 6.5rem 1fr 3.5rem; } .side { grid-column: body; } }
+</style>
+</head>
+<body>
+<main class="page">
+<p class="kicker">Kapitel 6 &#x2002; Postulate</p>
+<h1>Die Bornsche Regel</h1>
+<p class="dek">Wie ein Zustand und ein Detektor eine Wahrscheinlichkeit ergeben</p>
+
+<p>Eine Präparation liefert einen <em>Zustand</em>, ein Detektor einen
+<span class="pop"><a href="#D-3.2" tabindex="0"><em>Effekt</em></a><span class="card"><span class="tag">DEFINITION D3.2 &#x2002;T-03.2</span><br>
+Ein Effekt ist ein Operator <math><mn>0</mn><mo>≤</mo><mi>E</mi><mo>≤</mo><mn>𝟙</mn></math>. Er beschreibt einen Detektor, der anspricht oder nicht.</span></span>.
+Die Theorie sagt nicht voraus, „was passiert“, sondern mit welcher Wahrscheinlichkeit der Detektor anspricht.
+Im spurklassigen Fall ist der Zustand ein Dichteoperator
+<math><mi class="r-state">ρ</mi><mo>≥</mo><mn>0</mn></math> mit <math><mi>tr</mi><mspace width="0.17em"/><mi class="r-state">ρ</mi><mo>=</mo><mn>1</mn></math>.</p>
+<aside class="side">Lies die Gleichung als Satz: „Wahrscheinlichkeit gleich Spur von Zustand mal Effekt.“ Farbe: <b class="r-state">Zustand</b>, <b class="txt-effect r-effect">Effekt</b>.</aside>
+
+<div class="postulat"><span class="lbl">P4&#x2002;Bornsche Regel</span>Wird ein System im Zustand <math><mi class="r-state">ρ</mi></math> präpariert und mit dem Effekt <math><mi class="r-effect">E</mi></math> getestet, so ist die Wahrscheinlichkeit, dass der Detektor anspricht,
+<math display="block"><mi>p</mi><mo stretchy="false">(</mo><mi class="r-effect">E</mi><mo>∣</mo><mi class="r-state">ρ</mi><mo stretchy="false">)</mo><mo>=</mo><mi>tr</mi><mspace width="0.17em"/><mrow><mo>(</mo><mi class="r-state">ρ</mi><mspace width="0.17em"/><mi class="r-effect">E</mi><mo>)</mo></mrow><mo>∈</mo><mo stretchy="false">[</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false">]</mo><mo>.</mo></math></div>
+
+<p>Für ein Teilchen im Kasten der Breite <math><mi>L</mi></math> im Eigenzustand <math><msub><mi class="r-state">ψ</mi><mi>n</mi></msub></math> und einen Detektor auf <math><mo stretchy="false">[</mo><mi>a</mi><mo>,</mo><mi>b</mi><mo stretchy="false">]</mo></math> gilt</p>
+<math display="block"><mi>p</mi><mo>=</mo><msubsup><mo>∫</mo><mi>a</mi><mi>b</mi></msubsup><msup><mrow><mo stretchy="false">|</mo><msub><mi class="r-state">ψ</mi><mi>n</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo stretchy="false">|</mo></mrow><mn>2</mn></msup><mspace width="0.17em"/><mi mathvariant="normal">d</mi><mi>x</mi><mo>=</mo><mfrac><mrow><mi>b</mi><mo>−</mo><mi>a</mi></mrow><mi>L</mi></mfrac><mo>−</mo><mfrac><mn>1</mn><mrow><mn>2</mn><mi>π</mi><mi>n</mi></mrow></mfrac><msubsup><mrow><mo>[</mo><mi>sin</mi><mo>⁡</mo><mfrac><mrow><mn>2</mn><mi>π</mi><mi>n</mi><mi>x</mi></mrow><mi>L</mi></mfrac><mo>]</mo></mrow><mi>a</mi><mi>b</mi></msubsup><mo>.</mo></math>
+<aside class="side"><b>Live</b> &#x2002;Diese Abbildung ist die Demo. Im PDF steht an dieser Stelle derselbe Rahmen mit <i>n</i> = 2, <i>a</i> = 0,55 <i>L</i>, <i>b</i> = 0,80 <i>L</i>.</aside>
+
+<div class="demo wide" id="demo">
+<svg viewBox="-40 -30 680 210" role="img" aria-label="Wahrscheinlichkeitsdichte im Kasten mit Detektorfenster">
+ <defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="6" stroke="var(--c-ink-muted)" stroke-width="1"/></pattern></defs>
+ <rect x="-30" y="0" width="30" height="160" fill="url(#hatch)"/><rect x="600" y="0" width="30" height="160" fill="url(#hatch)"/>
+ <rect id="win" y="0" height="160" fill="var(--c-effect)" fill-opacity="0.35" stroke="var(--c-effect)"/>
+ <path id="dens" fill="none" stroke="var(--c-state)" stroke-width="2.5"/>
+ <path d="M-30 160 H630 M0 0 V160 M600 0 V160" stroke="var(--c-ink)" stroke-width="1.2" fill="none"/>
+ <g font-family="Inter, sans-serif" font-size="13" fill="var(--c-ink-muted)"><text x="-15" y="-10" text-anchor="middle">V = ∞</text><text x="615" y="-10" text-anchor="middle">V = ∞</text>
+ <text x="0" y="178" text-anchor="middle">0</text><text x="600" y="178" text-anchor="middle">L</text><text id="la" y="178" text-anchor="middle">a</text><text id="lb" y="178" text-anchor="middle">b</text></g>
+</svg>
+<div class="ctl">
+ <label for="n">Zustand n</label><input id="n" type="range" min="1" max="4" step="1" value="2"><output id="no">2</output>
+ <label for="a">Fenster a / L</label><input id="a" type="range" min="0" max="1" step="0.01" value="0.55"><output id="ao">0,55</output>
+ <label for="b">Fenster b / L</label><input id="b" type="range" min="0" max="1" step="0.01" value="0.80"><output id="bo">0,80</output>
+</div>
+<div class="readout">Wahrscheinlichkeit <span class="big" id="p">0,34</span> <span style="font-weight:400;color:var(--c-ink-muted)">= tr(ρE), exakt aus der Formel oben</span></div>
+</div>
+<p class="caption wide"><b>Abb. 1&#x2002;Die schraffierte Fläche ist verboten, die farbige Fläche ist der Detektor.</b> Der Anteil der Fläche unter |ψ<sub>n</sub>|² im Fenster ist <i>p</i>.</p>
+
+<details class="zoom" open><summary>Vertiefung 6.V1: Warum gerade die Spur?<span class="tagline">T-06.3a</span></summary>
+<div><p>Ein Messgerät mit den Ausgängen <math><mi>k</mi><mo>=</mo><mn>1</mn><mo>,</mo><mo>…</mo><mo>,</mo><mi>K</mi></math> wird durch Effekte <math><msub><mi class="r-effect">E</mi><mi>k</mi></msub><mo>≥</mo><mn>0</mn></math> mit <math><msub><mo>∑</mo><mi>k</mi></msub><msub><mi class="r-effect">E</mi><mi>k</mi></msub><mo>=</mo><mn>𝟙</mn></math> beschrieben. Wegen <math><mi class="r-state">ρ</mi><mo>≥</mo><mn>0</mn></math> ist jedes <math><mi>tr</mi><mspace width="0.17em"/><mo stretchy="false">(</mo><mi class="r-state">ρ</mi><msub><mi class="r-effect">E</mi><mi>k</mi></msub><mo stretchy="false">)</mo><mo>≥</mo><mn>0</mn></math>, und die Summe ist <math><mi>tr</mi><mspace width="0.17em"/><mi class="r-state">ρ</mi><mo>=</mo><mn>1</mn></math>.</p></div></details>
+
+<div class="hud mode-video wide" role="group" aria-label="Spiel-HUD">
+ <div><div class="k">Runde</div><div class="v">3 / 10</div></div>
+ <div><div class="k">Fensterbreite</div><div class="v">0,25 L</div></div>
+ <div><div class="k">p (Theorie)</div><div class="v" style="color:var(--c-effect)">0,34</div></div>
+ <div><div class="k">Klicks</div><div class="v">4 / 10</div></div>
+ <div class="bar"><i></i></div>
+ <div class="msg">Detektor-Wette · Lege ein Fenster der Breite 0,25 L so, dass p maximal wird. Erwartet: 3,4 Klicks in 10 Läufen.</div>
+</div>
+</main>
+<script>
+const $ = id => document.getElementById(id);
+const fmt = (x, d=2) => x.toFixed(d).replace('.', ',');
+function upd() {
+  const n = +$('n').value; let a = +$('a').value, b = +$('b').value; if (b < a) [a, b] = [b, a];
+  // p = (b-a) - sin(2 pi n x)/(2 pi n) |_a^b   (L = 1), the closed form of the integral of 2 sin^2(n pi x)
+  const F = x => x - Math.sin(2*Math.PI*n*x)/(2*Math.PI*n);
+  const p = F(b) - F(a);
+  let d = ''; for (let i = 0; i <= 300; i++) { const x = i/300, y = 2*Math.sin(n*Math.PI*x)**2; d += (i ? 'L' : 'M') + (600*x).toFixed(1) + ' ' + (160 - 70*y).toFixed(1); }
+  $('dens').setAttribute('d', d);
+  $('win').setAttribute('x', 600*a); $('win').setAttribute('width', 600*(b-a));
+  $('la').setAttribute('x', 600*a); $('lb').setAttribute('x', 600*b);
+  $('no').textContent = n; $('ao').textContent = fmt(a); $('bo').textContent = fmt(b); $('p').textContent = fmt(p);
+}
+['n','a','b'].forEach(id => $(id).addEventListener('input', upd)); upd();
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+% PKG-5 "Explorable textbook: one scene, three views" -- one-page print specimen (design-packages-B, 2026-10-09)
+% Fonts: Libertinus Serif / Math / Sans / Mono (OFL). Colours: ../tokens/pkg5-tokens.sty (generated).
+% The figure is \input from scene/scene_2pz.tikz, emitted by scene/scene_2pz.py from the scene graph.
+\documentclass[fontsize=11pt,parskip=false]{scrartcl}
+\usepackage[a4paper,inner=24mm,textwidth=112mm,marginparsep=6mm,marginparwidth=44mm,
+  top=22mm,bottom=26mm]{geometry}
+\usepackage{fontspec}
+\usepackage{amsmath}
+\usepackage[math-style=ISO,bold-style=ISO]{unicode-math}
+\setmainfont{LibertinusSerif}[Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,
+  BoldFont=*-Semibold,BoldItalicFont=*-SemiboldItalic]
+\setsansfont{LibertinusSans}[Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,BoldFont=*-Bold]
+\setmonofont{LibertinusMono-Regular.otf}
+\setmathfont{LibertinusMath-Regular.otf}
+\usepackage[ngerman]{babel}
+\usepackage[autostyle]{csquotes}
+\usepackage[protrusion=true,expansion=false]{microtype}
+\usepackage[locale=DE]{siunitx}
+\usepackage{xcolor}
+\input{../tokens/pkg5-tokens.sty}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc}
+\usepackage[most]{tcolorbox}
+\color{tpc-ink}
+\linespread{1.06}  % 11 on about 14.5
+\newcommand{\dd}{\mathrm{d}}\newcommand{\eu}{\mathrm{e}}\newcommand{\iu}{\mathrm{i}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\side}[1]{\marginpar{\raggedright\fontsize{8.5}{11}\selectfont\color{tpc-ink-muted}#1}}
+\newcommand{\live}[1]{\marginpar{\raggedright\sffamily\fontsize{8}{10.5}\selectfont
+  \tikz[baseline=-0.6ex]\fill[tpc-ink](0,-0.9mm)--(1.6mm,0)--(0,0.9mm)--cycle;\ \textbf{Live}\enspace#1}}
+% theorem: hairlines above and below, small-caps label, no fill (colour is reserved for physics)
+\newtcolorbox{postulat}[1]{enhanced,breakable,colback=tpc-paper,colframe=tpc-paper,boxrule=0pt,arc=0pt,
+  left=0pt,right=0pt,top=1.5mm,bottom=1.5mm,
+  borderline north={0.4pt}{0pt}{tpc-ink},borderline south={0.4pt}{0pt}{tpc-ink},
+  before upper={\noindent{\scshape #1.}\enskip}}
+% Vertiefung (depth) block, after layered-docs/REPORT.md: 9.5 pt, 0.4 pt outer hairline, run-in small-caps label, tag in the margin
+\newtcolorbox{zoomin}[2]{enhanced,breakable,colback=tpc-paper,colframe=tpc-paper,boxrule=0pt,arc=0pt,
+  left=0pt,right=0pt,top=0.5mm,bottom=0.5mm,fontupper=\fontsize{9.5}{12.5}\selectfont,
+  overlay={\draw[tpc-ink,line width=0.4pt]([xshift=3mm]frame.north east)--([xshift=3mm]frame.south east);
+    \node[anchor=north west,inner sep=0pt] at ([xshift=6mm]frame.north east)
+      {\tikz[baseline]\node[draw=tpc-ink,circle,line width=0.4pt,inner sep=0.8pt,font=\sffamily\scriptsize\bfseries]{V};%
+       \ \sffamily\fontsize{8}{10}\selectfont\color{tpc-ink-muted}#2};}}
+\pagestyle{empty}
+\begin{document}
+\noindent{\sffamily\fontsize{8.5}{10}\selectfont\color{tpc-ink-muted}16\enspace Das Wasserstoffatom}\\[1.5mm]
+{\fontsize{20}{24}\selectfont Wo ist das Elektron?}
+\vspace{5mm}
+
+\noindent Der Zustand \(2\mathrm{p}_z\) des Wasserstoffatoms ist die Eigenfunktion zu \(n=2\), \(\ell=1\), \(m=0\).
+In atomaren Einheiten (\(a_0=1\)) lautet sie
+\begin{equation}
+  \psi_{210}(r,\vartheta,\varphi) = \frac{1}{4\sqrt{2\pi}}\; r\,\eu^{-r/2}\cos\vartheta ,
+  \qquad
+  \lvert\psi_{210}\rvert^2 = \frac{r^2\,\eu^{-r}\cos^2\vartheta}{32\pi}.
+\end{equation}
+Die Dichte hängt nicht von \(\varphi\) ab, verschwindet in der Ebene \(z=0\) und ist auf der
+\(z\)-Achse bei \(r=2\) maximal.%
+\side{\(\vartheta\) ist der Winkel zur \(z\)-Achse, nicht zur Ebene. Die Knotenebene ist eine
+Eigenschaft des \emph{Zustands}, darum trägt sie dessen Farbe.}
+
+\begin{postulat}{Postulat P4 (Bornsche Regel), Ortsform}
+Ist das System im Zustand \(\rho=\lvert\psi\rangle\langle\psi\rvert\) und spricht der Detektor auf das Gebiet
+\(V\subset\mathbb{R}^3\) an, so ist \(E_V=\chi_V(\hat{\mathbf{x}})\) der Effekt und
+\begin{equation}
+  p(V) = \tr(\rho\,E_V) = \int_V \lvert\psi(\mathbf{x})\rvert^2\,\dd^3x .
+\end{equation}
+\end{postulat}
+
+\begin{center}
+\input{scene/scene_2pz.tikz}\\[2mm]
+\parbox{112mm}{\fontsize{9}{11.5}\selectfont\textbf{Abb. 16.2}\enspace
+\emph{Die Fläche halber Maximaldichte umschließt nur \(\SI{18}{\percent}\) der Wahrscheinlichkeit.}
+Schnitt \(y=0\) durch \(\lvert\psi_{210}\rvert^2\); Kamera V1 (Azimut \ang{35}, Elevation \ang{20}, orthografisch);
+\(1\,a_0=\SI{6}{\milli\metre}\). Die Konturlinie ist aus der Formel berechnet.}
+\end{center}%
+\live{F-16.2}
+
+\noindent Mit \(V\) gleich dem Inneren dieser Fläche ergibt die Bornsche Regel \(p(V)\approx\num{0.177}\);
+mehr als vier Fünftel der Wahrscheinlichkeit liegen in der flachen Dichte außerhalb.
+
+\begin{zoomin}{16.V1}{T-16.2b}
+{\scshape Vertiefung 16.V1} (warum \(\chi_V(\hat{\mathbf x})\) ein Effekt ist). Die Multiplikation mit der Indikatorfunktion
+\(\chi_V\) ist ein Orthogonalprojektor: \(\chi_V^2=\chi_V=\overline{\chi_V}\). Also gilt \(0\le E_V\le\mathbb{1}\),
+und \(E_V+E_{\mathbb{R}^3\setminus V}=\mathbb{1}\) ist ein Messgerät mit zwei Ausgängen.
+Die Spur reduziert sich für \(\rho=\lvert\psi\rangle\langle\psi\rvert\) auf
+\(\langle\psi\vert E_V\psi\rangle=\int_V\lvert\psi\rvert^2\,\dd^3x\). \emph{Zurück:} \(p(V)\) ist das Integral der Dichte über \(V\).
+\end{zoomin}
+\end{document}

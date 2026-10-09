@@ -1,0 +1,86 @@
+% pkg1.tex -- PKG-1 "Times and MathTime, perfected": print specimen (XeLaTeX).
+% Times LT Std + MathTime Pro 2 (Type 1, via mathspec as in latex/tpc-style.sty), Whitney labels,
+% Whitney-teal identity re-stepped for greyscale (tokens.py, print-light mode).
+\documentclass[11pt]{article}
+\usepackage[a4paper, left=22mm, textwidth=114mm, marginparsep=6mm, marginparwidth=46mm,
+            top=15mm, bottom=12mm, includehead=false]{geometry}
+\usepackage[ngerman]{babel}
+\usepackage[autostyle]{csquotes}
+\usepackage{xcolor}
+\usepackage[most]{tcolorbox}       % before mathspec (see tpc-style.sty)
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta, patterns}
+\usepackage{amsmath}
+\usepackage[mtphrb,mtpcal]{mtpro2}
+\usepackage{mathspec}
+\setmainfont[Ligatures=TeX, BoldFont={Times LT Std Bold}, ItalicFont={Times LT Std Italic},
+  BoldItalicFont={Times LT Std Bold Italic}]{Times LT Std}
+\setmathrm{Times LT Std}
+\setsansfont[Ligatures=TeX, BoldFont=Whitney-Semibold.otf, ItalicFont=Whitney-BookItalic.otf]{Whitney-Book.otf}
+\newfontfamily\pkgsemibold[Ligatures=TeX]{Whitney-Semibold.otf}
+\usepackage[protrusion=true, expansion=false]{microtype}
+\usepackage[locale=DE]{siunitx}
+\usepackage[font=small, labelfont={sf,bf}, labelsep=quad, justification=raggedright,
+            singlelinecheck=false]{caption}
+% ---- tokens (PKG-1, print-light) ---------------------------------------------------------------
+\definecolor{ink}{HTML}{000000}     \definecolor{rule}{HTML}{BEBEBE}
+\definecolor{accent}{HTML}{305A75}  \definecolor{link}{HTML}{006387}
+\definecolor{stateC}{HTML}{084066}  \definecolor{effectC}{HTML}{17895B}
+\definecolor{energyC}{HTML}{E4A339} \definecolor{envC}{HTML}{888681}
+\definecolor{highlight}{HTML}{FBF1C7} \definecolor{tracktwo}{HTML}{EEF5F8}
+\definecolor{lad1}{HTML}{013050} \definecolor{lad2}{HTML}{055F89}
+\definecolor{lad3}{HTML}{3792B5} \definecolor{lad4}{HTML}{73C6D9}
+% ---- figure styles (names follow latex/tpc-macros.sty where they exist) -----------------------
+\tikzset{
+  state/.style={draw=stateC, line width=1.1pt}, statefill/.style={fill=stateC},
+  effect/.style={draw=effectC, line width=1.1pt},
+  energy/.style={draw=energyC, line width=1.8pt},
+  boundary/.style={draw=ink, line width=0.8pt},
+  proj/.style={draw=ink, line width=0.4pt, dash pattern=on 1.6pt off 1.4pt},
+  leader/.style={draw=ink, line width=0.3pt},
+  axisstyle/.style={draw=ink, line width=0.5pt, -{Stealth[length=4pt, width=3pt]}},
+  axisline/.style={draw=ink, line width=0.5pt},
+  rulegrey/.style={draw=rule, line width=0.5pt},
+  forbidden/.style={pattern=north east lines, pattern color=envC},
+  ladder1/.style={draw=lad1}, ladder2/.style={draw=lad2},
+  ladder3/.style={draw=lad3}, ladder4/.style={draw=lad4},
+  lbl/.style={font=\small, text=ink},
+  lbltext/.style={font=\sffamily\footnotesize, text=ink},
+}
+\newcommand{\pkgsmall}{\sffamily\footnotesize}
+\newcommand{\pkgvec}[1]{\boldsymbol{#1}}
+% ---- headings -----------------------------------------------------------------------------------
+\newcommand{\pkgchapter}[2]{%
+  \noindent\marginpar{\raggedright\vspace*{-1.2pt}{\fontsize{30}{30}\selectfont\color{accent}\pkgsemibold #1}}%
+  {\fontsize{19}{23}\selectfont\pkgsemibold\color{accent}#2}\par\vspace{2pt}
+  \renewcommand{\theequation}{#1.\arabic{equation}}\renewcommand{\thefigure}{#1.\arabic{figure}}}
+\newcommand{\pkgkicker}[1]{{\sffamily\small\color{accent}#1}\par\vspace{8pt}}
+\newcommand{\pkgcaptionlead}[1]{\textbf{#1}}
+\addto\captionsngerman{\renewcommand\figurename{Abb.}}
+% ---- sidenotes: numbered, Whitney Book 8/10.5, ragged right, aligned with the call line ---------
+\newcounter{sn}
+\newcommand{\pkgsidenote}[1]{\refstepcounter{sn}\textsuperscript{\sffamily\color{accent}\thesn}%
+  \marginpar{\raggedright\fontsize{8}{10.5}\selectfont\sffamily
+  \textsuperscript{\color{accent}\thesn}\,\mathversion{normal}#1}}
+% ---- postulate: no frame, 1.2 pt accent rule on the left, Whitney Semibold head ---------------
+\newenvironment{pkgpostulate}[2]{%
+  \begin{tcolorbox}[enhanced, breakable, frame hidden, boxrule=0pt, arc=0pt, colback=white,
+    left=9pt, right=0pt, top=2pt, bottom=2pt, before skip=8pt, after skip=8pt,
+    borderline west={1.2pt}{0pt}{accent}]
+  {\pkgsemibold\color{accent}Postulat #1\quad}{\sffamily\color{accent}#2}\par\smallskip}
+  {\end{tcolorbox}}
+% ---- Vertiefung (layered-docs 5.4): body size, no tint; 1.5 pt accent rule in the outer margin
+%      over the block's full length; run-in Whitney Semibold label; dependency and return lines.
+\newenvironment{pkgtracktwo}[2]{%
+  \begin{tcolorbox}[enhanced, breakable, frame hidden, arc=0pt, colback=white,
+    left=0pt, right=0pt, top=0pt, bottom=0pt, before skip=9pt, after skip=9pt,
+    overlay={\fill[accent] ([xshift=3mm]frame.north east) rectangle ([xshift=3.53mm]frame.south east);},
+]
+  {\pkgsemibold\color{accent}Vertiefung #1\enspace}{\sffamily\color{accent}#2}\par}
+  {\end{tcolorbox}}
+\newcommand{\pkgdepends}[1]{{\sffamily\footnotesize\color{accent}#1}\par\smallskip}
+\newcommand{\pkgreturn}[1]{\par\smallskip{\pkgsemibold\footnotesize\color{accent}Zurück zum Kern.}\enspace #1}
+\pagestyle{empty}\emergencystretch=1em\setlength{\intextsep}{4pt}\setlength{\abovedisplayskip}{7pt plus 2pt minus 3pt}\setlength{\belowdisplayskip}{7pt plus 2pt minus 3pt}
+\begin{document}
+\input{body-de}
+\end{document}

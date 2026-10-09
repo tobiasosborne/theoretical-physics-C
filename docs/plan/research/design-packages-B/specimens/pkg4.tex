@@ -1,0 +1,112 @@
+% PKG-4 "Tokens first, dark-ground video" -- one-page print specimen (design-packages-B, 2026-10-09)
+% Fonts: STIX Two Text + STIX Two Math (OFL), Inter (OFL), Iosevka (OFL). Colours from ../tokens/pkg4-tokens.sty (generated).
+\documentclass[fontsize=10.5pt,parskip=false]{scrartcl}
+\usepackage[a4paper,inner=22mm,textwidth=108mm,marginparsep=6mm,marginparwidth=50mm,
+  top=22mm,bottom=26mm,twoside=false]{geometry}
+\usepackage{fontspec}
+\usepackage{amsmath}
+\usepackage[math-style=ISO,bold-style=ISO]{unicode-math}
+\setmainfont{STIXTwoText}[Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,
+  BoldFont=*-SemiBold,BoldItalicFont=*-SemiBoldItalic,Numbers=Proportional]
+\setmathfont{STIXTwoMath-Regular.otf}
+\setsansfont{Inter}[UprightFont=* Regular,BoldFont=* SemiBold,ItalicFont=* Italic,Scale=MatchLowercase,Numbers=Tabular]
+\setmonofont{Iosevka}[Scale=MatchLowercase]
+\usepackage[ngerman]{babel}
+\usepackage[autostyle]{csquotes}
+\usepackage[protrusion=true,expansion=false]{microtype}
+\usepackage[locale=DE]{siunitx}
+\usepackage{xcolor}
+\input{../tokens/pkg4-tokens.sty}
+\usepackage{tikz}
+\usetikzlibrary{patterns,arrows.meta,calc}
+\usepackage[most]{tcolorbox}
+\usepackage{marginnote}
+\color{tpc-ink}
+\linespread{1.10}  % 10.5 on about 13.9
+\setlength{\parindent}{1.2em}\setlength{\parskip}{0pt}
+\newcommand{\dd}{\mathrm{d}}\newcommand{\eu}{\mathrm{e}}\newcommand{\iu}{\mathrm{i}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\St}[1]{{\color{tpc-state}#1}}      % state role
+\newcommand{\Ef}[1]{{\color{tpc-effect!80!black}#1}}  % effect role (text-weight variant)
+% margin notes: Inter 8/11, ragged, ink-muted
+\newcommand{\side}[1]{\marginpar{\raggedright\sffamily\fontsize{7.8}{10.6}\selectfont\color{tpc-ink-muted}#1}}
+% theorem: accent rule left, paper-alt fill, sans run-in label
+\newtcolorbox{postulat}[1]{enhanced,breakable,colback=tpc-paper-alt,colframe=tpc-paper-alt,
+  boxrule=0pt,arc=0pt,left=4mm,right=3mm,top=2mm,bottom=2mm,
+  borderline west={2pt}{0pt}{tpc-accent},
+  fonttitle=\sffamily\bfseries\footnotesize,coltitle=tpc-accent,
+  title={#1},attach title to upper={\quad},colbacktitle=tpc-paper-alt}
+% Vertiefung (depth) block, after layered-docs/REPORT.md: outer margin rule + run-in label + tag in the margin
+\newtcolorbox{zoomin}[2]{enhanced,breakable,colback=tpc-paper,colframe=tpc-paper,boxrule=0pt,arc=0pt,
+  left=0pt,right=0pt,top=1mm,bottom=1mm,fontupper=\small,
+  overlay={\draw[tpc-accent,line width=1.2pt]([xshift=3mm]frame.north east)--([xshift=3mm]frame.south east);
+    \node[anchor=north west,inner sep=0pt,font=\sffamily\scriptsize\bfseries,text=tpc-accent,align=left]
+      at ([xshift=6mm]frame.north east){VERTIEFUNG #1\\[-1pt]\mdseries\color{tpc-ink-muted}#2};}}
+\pagestyle{empty}
+\begin{document}
+\noindent{\sffamily\bfseries\fontsize{8}{10}\selectfont\color{tpc-accent}KAPITEL 6 \enspace POSTULATE}\\[2mm]
+{\fontsize{19}{23}\selectfont Die Bornsche Regel}\\[1mm]
+{\sffamily\fontsize{9}{12}\selectfont\color{tpc-ink-muted}Wie ein Zustand und ein Detektor eine Wahrscheinlichkeit ergeben}
+\vspace{5mm}
+
+\noindent Eine Präparation liefert einen \emph{Zustand}, ein Detektor einen \emph{Effekt}. Die Theorie
+sagt nicht voraus, \enquote{was passiert}, sondern mit welcher Wahrscheinlichkeit der Detektor
+anspricht. Im spurklassigen Fall ist der Zustand ein Dichteoperator \(\St{\rho}\ge 0\) mit
+\(\tr\St{\rho}=1\), der Effekt ein Operator \(0\le\Ef{E}\le\mathbb{1}\).%
+\side{Lies die Gleichung als Satz: \enquote{Wahrscheinlichkeit gleich Spur von Zustand mal Effekt.}
+Farbe: \textcolor{tpc-state}{\textbf{Zustand}}, \textcolor{tpc-effect!80!black}{\textbf{Effekt}}.}
+
+\begin{postulat}{P4\enspace Bornsche Regel}
+Wird ein System im Zustand \(\St{\rho}\) präpariert und mit dem Effekt \(\Ef{E}\) getestet, so ist die
+Wahrscheinlichkeit, dass der Detektor anspricht,
+\begin{equation}
+  p(\Ef{E}\mid\St{\rho}) \;=\; \tr\bigl(\St{\rho}\,\Ef{E}\bigr)\in[0,1].
+\end{equation}
+\end{postulat}
+
+\noindent Für ein Teilchen im Kasten der Breite \(L\) im Eigenzustand \(\psi_2\) und einen Detektor, der auf
+das Intervall \([a,b]\) anspricht, gilt
+\begin{equation}
+  p \;=\; \int_a^b \lvert\psi_2(x)\rvert^2\,\dd x
+    \;=\; \frac{b-a}{L} - \frac{1}{4\pi}\Bigl[\sin\frac{4\pi x}{L}\Bigr]_a^b
+    \;\approx\; \num{0.34}
+\end{equation}
+für \(a=\num{0.55}\,L\), \(b=\num{0.80}\,L\). Abbildung~1 zeigt dieselben Zahlen.%
+\side{\textbf{Live:} \texttt{tpc/6.3-born} \\ Schieberegler für \(a\), \(b\) und \(n\); dieselben Farben, dieselbe Achse.}
+
+\begin{center}
+\begin{tikzpicture}[x=78mm,y=9mm,font=\sffamily\scriptsize]
+  % forbidden region (environment role): hatched, grey
+  \fill[pattern=north east lines,pattern color=tpc-ink-muted!70] (-0.07,0) rectangle (0,2.25);
+  \fill[pattern=north east lines,pattern color=tpc-ink-muted!70] (1,0) rectangle (1.07,2.25);
+  \draw[tpc-ink,line width=0.6pt] (-0.07,0)--(1.07,0);
+  \draw[tpc-ink,line width=0.6pt] (0,0)--(0,2.25) (1,0)--(1,2.25);
+  % effect window
+  \fill[tpc-effect,opacity=0.35] (0.55,0) rectangle (0.80,2.25);
+  \draw[tpc-effect,line width=0.8pt] (0.55,0)--(0.55,2.25) (0.80,0)--(0.80,2.25);
+  % state density |psi_2|^2 = 2 sin^2(2 pi x)
+  \draw[tpc-state,line width=1.1pt,domain=0:1,samples=121,smooth] plot (\x,{2*sin(360*\x)^2});
+  % direct labels
+  \node[text=tpc-state,anchor=south west] at (0.27,2.02) {$\lvert\psi_2\rvert^2$};
+  \node[text=tpc-effect!75!black,anchor=south] at (0.675,2.25) {Effekt $E$: Detektor auf $[a,b]$};
+  \node[text=tpc-ink-muted,anchor=south] at (-0.035,2.25) {$V=\infty$};
+  \node[text=tpc-ink-muted,anchor=south] at (1.035,2.25) {$V=\infty$};
+  \foreach \t/\l in {0/0,0.55/a,0.8/b,1/L} \node[anchor=north] at (\t,0) {$\l$};
+  \node[anchor=north] at (0.5,-0.25) {$x$};
+\end{tikzpicture}\\[1mm]
+\parbox{108mm}{\sffamily\fontsize{7.8}{10.4}\selectfont\color{tpc-ink-muted}%
+\textbf{\color{tpc-ink}Abb.~1\enspace Die schraffierte Fläche ist verboten, die farbige Fläche ist der Detektor.}
+Der Anteil der Fläche unter \(\lvert\psi_2\rvert^2\) im Fenster ist \(p\approx\num{0.34}\).}
+\end{center}
+
+\begin{zoomin}{6.V1}{T-06.3a}
+\textbf{Vertiefung 6.V1 (Warum gerade die Spur?).} Ein Messgerät mit den Ausgängen \(k=1,2,\dots,K\) wird durch Effekte
+\(\Ef{E}_k\ge 0\) mit \(\sum_k \Ef{E}_k=\mathbb{1}\) beschrieben (ein POVM). Wegen \(\St{\rho}\ge0\) ist jedes
+\(\tr(\St{\rho}\Ef{E}_k)\ge0\), und \(\sum_k\tr(\St{\rho}\Ef{E}_k)=\tr\St{\rho}=1\): Die Bornsche Regel
+liefert also für jedes Messgerät eine Wahrscheinlichkeitsverteilung. Umgekehrt ist jede
+affine Abbildung von Zuständen nach \([0,1]\) von dieser Form; das ist der Inhalt von P3. \emph{Zurück:} Für den Kasten heißt das nur, dass \(p\) eine Fläche ist.
+\end{zoomin}
+
+\noindent Die Zeitentwicklung ändert \(\St{\rho}\), nicht die Regel:
+\(\St{\rho}(t)=\eu^{-\iu Ht/\hbar}\,\St{\rho}\,\eu^{\iu Ht/\hbar}\), und \(p(t)=\tr(\St{\rho}(t)\Ef{E})\).
+\end{document}

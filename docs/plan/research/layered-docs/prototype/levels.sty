@@ -1,0 +1,17 @@
+% Prototype for docs/plan/research/layered-docs (2026-10-09). Build: xelatex full; xelatex lehramt (twice each).
+% Then: python3 check_levels.py full.log full.aux lehramt.log lehramt.aux
+\NeedsTeXFormat{LaTeX2e}\ProvidesPackage{levels}
+\RequirePackage{versions}
+\newif\iflv@full \lv@fulltrue
+\DeclareOption{lehramt}{\lv@fullfalse}\ProcessOptions
+% deep equations use their own counter so core numbering is identical in both builds
+\newcounter{deepeq}[section]
+\renewcommand{\thedeepeq}{\thesection.V\arabic{deepeq}}
+\newenvironment{tiefeinner}{\par\smallskip\noindent\textsf{[Vertiefung]}\ 
+  \let\c@equation\c@deepeq \let\theequation\thedeepeq}{\par\smallskip}
+\iflv@full \includeversion{tiefe}\else\excludeversion{tiefe}\fi
+\iflv@full
+  \newcommand{\zoomref}[1]{\marginpar{\footnotesize$\searrow$ \ref{#1}}}
+\else
+  \newcommand{\zoomref}[1]{}
+\fi

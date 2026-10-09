@@ -1,0 +1,61 @@
+% body-de.tex -- shared content of the three package specimens (design-packages-A, 2026-10-09).
+% Semantic macros only; each pkgN.tex defines them.  Depth devices follow layered-docs/REPORT.md 5.4
+% (Kern / Vertiefung / Fundament; run-in label, dependency statement, return line).  Physics checked by hand:
+%   rho = (1 + r.sigma)/2, E = (1 + n.sigma)/2 with |n| = 1  =>  tr(rho E) = (1 + r.n)/2;
+%   E_n = - mu e^4 / (2 (4 pi eps0)^2 hbar^2 n^2) ~ -13,6 eV / n^2;  E_3 - E_2 = 1,89 eV.
+\pkgchapter{6}{Die Bornsche Regel}
+
+\pkgkicker{Zoomstufe 1 \textendash\ ein einzelnes Quantensystem}
+
+Eine physikalische Theorie liefert Daten für drei Dinge: Präparationen, Dynamik und Messungen.
+Eine Präparation nennen wir \enquote{Zustand}; im Quantenfall beschreiben wir sie durch einen
+Dichteoperator $\rho\geq 0$ mit $\operatorname{tr}\rho=1$.\pkgsidenote{Für ein Qubit ist jeder
+Dichteoperator von der Form $\rho=\tfrac12(\mathbb{1}+\pkgvec{r}\cdot\pkgvec{\sigma})$ mit
+$\lvert\pkgvec{r}\rvert\leq 1$. Reine Zustände liegen auf dem Rand, $\lvert\pkgvec{r}\rvert=1$.}
+Ein Detektor, der \enquote{klick} macht oder schweigt, wird durch einen Effekt $E$ mit
+$0\leq E\leq\mathbb{1}$ beschrieben. Die Theorie sagt nur Wahrscheinlichkeiten voraus, und zwar
+genau eine Zahl für jedes Paar aus Zustand und Effekt.
+
+\begin{pkgpostulate}{P4}{Bornsche Regel}
+Wird ein System im Zustand $\rho$ präpariert und mit dem Effekt $E$ getestet, so spricht der
+Detektor mit der Wahrscheinlichkeit
+\begin{equation}
+  p(E\,\vert\,\rho)=\operatorname{tr}(\rho E)
+\end{equation}
+an. Insbesondere gilt $0\leq p\leq 1$, und der triviale Effekt $E=\mathbb{1}$ spricht immer an.
+\end{pkgpostulate}
+
+Für ein Qubit lässt sich die Regel zeichnen (Abb.~\ref{fig:born}a). Mit
+$\rho=\tfrac12{(\mathbb{1}+\pkgvec{r}\cdot\pkgvec{\sigma})}$ und dem Projektor
+$E=\tfrac12{(\mathbb{1}+\pkgvec{n}\cdot\pkgvec{\sigma})}$, $\lvert\pkgvec{n}\rvert=1$, folgt
+\begin{equation}
+  \operatorname{tr}(\rho E)=\tfrac12\bigl(1+\pkgvec{r}\cdot\pkgvec{n}\bigr),
+  \qquad
+  E_n=-\frac{\mu e^4}{2(4\pi\varepsilon_0)^2\hbar^2}\,\frac{1}{n^2}\approx-\frac{\qty{13.6}{\electronvolt}}{n^2}.
+\end{equation}
+Die Wahrscheinlichkeit ist also die Projektion des Bloch-Vektors auf die Richtung des
+Detektors, verschoben und halbiert. Die Zeitentwicklung $\rho\mapsto U_t\,\rho\,U_t^{*}$ mit
+$U_t=\mathrm{e}^{-\mathrm{i}Ht/\hbar}$ dreht den Vektor; sie ändert $\lvert\pkgvec{r}\rvert$ nicht.
+
+\begin{figure}[h]
+  \input{fig-born}
+  \caption{\pkgcaptionlead{Die Wahrscheinlichkeit ist eine Projektion.} (a) Zustand $\pkgvec{r}$ im
+  Bloch-Kreis (Schnitt durch die Bloch-Kugel), Detektorrichtung $\pkgvec{n}$; die Projektion
+  liefert $p=\tfrac12(1+\pkgvec{r}\cdot\pkgvec{n})\approx 0{,}74$. Außerhalb des Kreises liegen
+  keine Zustände (schraffiert). (b) Wasserstoff: die Niveaus $E_n$ für $n=1,\dots,4$; der Übergang
+  $3\to2$ setzt $\qty{1.89}{\electronvolt}$ frei.}
+  \label{fig:born}
+\end{figure}
+
+\begin{pkgtracktwo}{6.V2}{Zustände als Funktionale}
+\pkgdepends{Voraussetzung: Kern 6.1. Gebraucht erst bei unendlich vielen Freiheitsgraden.}
+Allgemein ist ein Zustand ein positives, normiertes lineares Funktional $\omega$ auf der Algebra
+$\mathcal{B}(\mathcal{H})$, also $\omega(A^{*}A)\geq 0$ und $\omega(\mathbb{1})=1$. Die
+\emph{normalen} Zustände sind genau die Funktionale $\omega(A)=\operatorname{tr}(\rho A)$ mit einem
+Dichteoperator $\rho$ der Spurklasse. Ist $\dim\mathcal{H}=\infty$, so gibt es auch singuläre Zustände.
+\pkgreturn{Im Folgenden genügen Dichteoperatoren.}
+\end{pkgtracktwo}
+
+Messgeräte sind also Elemente des Dualraums: ein Effekt ordnet jedem Zustand eine Zahl zwischen
+$0$ und $1$ zu, linear in $\rho$. Das ist der Grund, warum Mischungen von Präparationen zu
+Mischungen von Wahrscheinlichkeiten führen.
