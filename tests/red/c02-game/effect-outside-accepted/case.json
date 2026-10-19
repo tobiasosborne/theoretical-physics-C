@@ -1,0 +1,7 @@
+{
+ "gate": "c02-game",
+ "what": "A kernel whose membership test isEffect accepts everything, so effects outside E(K) pass.",
+ "cmd": "GPT_KERNEL=tests/red/c02-game/effect-outside-accepted/kernel.ts bash web/run.sh test tests/kernels/gpt.test.ts",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "membership in E\\(K\\) of \\w+: .*\\(reference: outside\\)"
+}

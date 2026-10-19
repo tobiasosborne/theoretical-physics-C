@@ -1,0 +1,72 @@
+% c02.fig.kegel — the two cones of the square bit, the right way round.
+%
+% (a) States.  A state r = (r_x, r_y) of K_Q = [-1,1]^2 is the vector (r_x, r_y, 1):
+%     K_Q sits at height t = 1.  The cone of unnormalised states A(K)^{*+} is
+%       { (X, Y, t) : t >= max(|X|, |Y|) },
+%     the rays from the origin through K_Q.  Drawn up to t = 1.25.
+% (b) Effects.  An affine function f = b + a_x r_x + a_y r_y is the vector (a_x, a_y, b).
+%     The cone of positive affine functions A(K)^+ is
+%       { (a_x, a_y, b) : b >= |a_x| + |a_y| },
+%     the rays from the origin through the diamond |a_x| + |a_y| <= 1/2 at height 1/2.
+%     Drawn up to b = 1.25.  The effect set E(K) = [0, 1_K] is the double pyramid with
+%     apices 0 and 1_K = (0,0,1) and waist f_x^{+-}, f_y^{+-} at height 1/2.
+% Both panels: ORTHOGRAPHIC projection, azimuth 25 deg, elevation 15 deg, 1.9 cm per unit:
+%   first axis  -> 1.9*(-0.4226,-0.2346) = (-0.8029,-0.4457),
+%   second axis -> 1.9*( 0.9063,-0.1094) = ( 1.7220,-0.2079),
+%   vertical    -> 1.9*( 0, 0.9659)      = ( 0, 1.8352).
+% Viewer direction (0.875, 0.408, 0.259).
+% (a): cone faces have outward normals (+-1,0,-1), (0,+-1,-1); visible iff
+%      +-0.875 - 0.259 > 0 resp. +-0.408 - 0.259 > 0: the faces X = t and Y = t.
+%      Hidden edge: the ray through (-1,-1,1).
+% (b): cone faces have outward normals (sx, sy, -1); visible iff 0.875 sx + 0.408 sy
+%      > 0.259: sx = +1.  Hidden edge: the ray through (-1/2,0,1/2).
+% Greyscale: the state space is the heavy solid square (state role); effects are squares
+% and the double pyramid is drawn dashed (effect role); cones are thin grey.
+\begin{tikzpicture}[x={(-0.8029cm,-0.4457cm)}, y={(1.7220cm,-0.2079cm)}, z={(0cm,1.8352cm)}]
+  % ---------- (a) state cone ----------
+  \begin{scope}
+    \coordinate (O) at (0,0,0);
+    \coordinate (A) at (1,1,1);   \coordinate (A2) at (1.25,1.25,1.25);
+    \coordinate (B) at (-1,1,1);  \coordinate (B2) at (-1.25,1.25,1.25);
+    \coordinate (C) at (-1,-1,1); \coordinate (C2) at (-1.25,-1.25,1.25);
+    \coordinate (D) at (1,-1,1);  \coordinate (D2) at (1.25,-1.25,1.25);
+    \fill[tpc-grey-1] (O) -- (D2) -- (A2) -- (B2) -- cycle;
+    \draw[tpc leader, dash pattern=on 0.8pt off 1.6pt] (O) -- (C2);
+    \draw[tpc leader] (O) -- (A2) (O) -- (B2) (O) -- (D2);
+    \draw[tpc leader] (A2) -- (B2) -- (C2) -- (D2) -- cycle;
+    \draw[tpc state, fill=tpc-state!16!tpc-plate, fill opacity=0.7] (A) -- (B) -- (C) -- (D) -- cycle;
+    \fill[tpc-state] (0.5,0,1) circle (2pt);
+    \draw[tpc leader] (O) -- (0.5,0,1);
+    \node[tpc label, anchor=south] at (0.5,0,1.03) {$x$};
+    \fill[tpc-plate-ink] (O) circle (1.2pt);
+    \node[tpc label, anchor=north] at ($(O)+(0,-2pt)$) {$0$};
+    \node[tpc label, anchor=east] at ($(C)!0.5!(D)+(-0.15cm,0)$) {$t = 1$};
+    \node[tpc label, anchor=south] at ($(C2)+(0.35cm,0.05cm)$) {$A(K)^{*+}$};
+    \node[tpc label, anchor=north west] at ($(A)+(0.05cm,-0.08cm)$) {$K$};
+    \node[tpc label] at ($(O)+(0,-0.85cm)$) {(a) \tpcifenglish{states}{Zustände}};
+  \end{scope}
+  % ---------- (b) effect cone ----------
+  \begin{scope}[shift={(5.75cm,0cm)}]
+    \coordinate (O)  at (0,0,0);
+    \coordinate (U)  at (0,0,1);
+    \coordinate (XP) at (0.5,0,0.5);   \coordinate (XP2) at (1.25,0,1.25);
+    \coordinate (XM) at (-0.5,0,0.5);  \coordinate (XM2) at (-1.25,0,1.25);
+    \coordinate (YP) at (0,0.5,0.5);   \coordinate (YP2) at (0,1.25,1.25);
+    \coordinate (YM) at (0,-0.5,0.5);  \coordinate (YM2) at (0,-1.25,1.25);
+    \fill[tpc-grey-1] (O) -- (YM2) -- (XP2) -- (YP2) -- cycle;
+    \draw[tpc leader, dash pattern=on 0.8pt off 1.6pt] (O) -- (XM2);
+    \draw[tpc leader] (O) -- (XP2) (O) -- (YP2) (O) -- (YM2);
+    \draw[tpc leader] (XP2) -- (YP2) -- (XM2) -- (YM2) -- cycle;
+    \draw[tpc effect, dash pattern=on 0.8pt off 1.6pt] (XM) -- (U) (XM) -- (YP) (XM) -- (YM);
+    \draw[tpc effect] (YM) -- (U) -- (YP) (XP) -- (U) (YM) -- (XP) -- (YP);
+    \foreach \p in {O,U,XP,YP,YM,XM}
+      \fill[tpc-effect] (\p) ++(-1.8pt,-1.8pt) rectangle ++(3.6pt,3.6pt);
+    \node[tpc label, anchor=north] at ($(O)+(0,-2pt)$) {$0$};
+    \node[tpc label, anchor=south west] at ($(U)+(1pt,1pt)$) {$1_K$};
+    \node[tpc label, anchor=north east] at ($(XP)+(-2pt,-1pt)$) {$f_x^{+}$};
+    \node[tpc label, anchor=west] at ($(YP)+(3pt,-2pt)$) {$f_y^{+}$};
+    \node[tpc label, anchor=east] at ($(YM)+(-3pt,-2pt)$) {$f_y^{-}$};
+    \node[tpc label, anchor=south] at ($(XM2)+(0.35cm,0.05cm)$) {$A(K)^{+}$};
+    \node[tpc label] at ($(O)+(0,-0.85cm)$) {(b) \tpcifenglish{effects}{Effekte}};
+  \end{scope}
+\end{tikzpicture}

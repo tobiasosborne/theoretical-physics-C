@@ -1,0 +1,36 @@
+{
+ "schema_version": 1,
+ "key": "brief",
+ "kind": "author-stipulation",
+ "storage": "tracked",
+ "title": "Brief: Theoretische Physik C, major upgrade",
+ "authors": [
+  "Tobias J. Osborne"
+ ],
+ "version": "as stated on 2026-10-09 (file header)",
+ "language": "en",
+ "identifiers": {
+  "git_commit": "88996cf14ba45e2c89474d2896f76711ea3d959d"
+ },
+ "retrieval": {
+  "route": "tracked file docs/plan/BRIEF.md",
+  "date": "2026-10-11"
+ },
+ "identity_check": "header comment and heading (lines 1-5) read on 2026-10-11: 'the user's (TJO's) requirements for the course upgrade, as stated on 2026-10-09'; 'UPDATE POLICY: only TJO changes this'",
+ "files": [
+  {
+   "path": "../docs/plan/BRIEF.md",
+   "role": "text",
+   "media_type": "text/markdown",
+   "sha256": "9b70b3a120262898efc41db8f3c9fd8f1678edce473cc594747159924725ac9e"
+  }
+ ],
+ "authority_for": "TJO's stipulations: the physics approach, P0-P5, the rigour requirements",
+ "limitations": "a stipulation fixes a choice of model or vocabulary; it is not evidence for a mathematical statement (rigour-process C.6). The file says it reproduces TJO's text; the original message is not on disk.",
+ "rights_ref": "rights.json",
+ "supersedes": null,
+ "errata": [],
+ "registry_aliases": [
+  "brief"
+ ]
+}

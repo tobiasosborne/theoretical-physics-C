@@ -1,0 +1,27 @@
+{
+  "name": "tpc-web",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Theoretische Physik C: converter (contract TeX -> HTML), site runtime, demo harness, gates",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "test": "vitest run",
+    "build": "tsx tools/build/main.ts",
+    "check": "bash check.sh"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.5",
+    "@types/three": "0.186.0",
+    "playwright": "1.64.0",
+    "temml": "0.14.0",
+    "three": "0.186.1",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2",
+    "vite": "8.3.4",
+    "vitest": "5.0.3"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "gate": "levels",
+  "what": "\\srcref names the key reed-simon-9, for which no sources/reed-simon-9/source.json exists.",
+  "cmd": "python3 scripts/course/check_levels.py --chapters c99 --content tests/red/levels/srcref-unregistered-key/content --lint-only",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "SR [^\\n]*de\\.tex:\\d+: \\\\srcref\\{reed-simon-9\\}: not a registered source"
+}

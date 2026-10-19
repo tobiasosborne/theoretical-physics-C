@@ -1,0 +1,48 @@
+% c01.fig.simplex — the set of all probability weights for two and for three outcomes.
+%
+% (a) n = 2: the weights (p(1), p(2)) with p(1) + p(2) = 1 form the segment between the
+%     point weights p_1 = (1,0) and p_2 = (0,1); drawn in the plane of the two coordinates.
+%     Marked: p = (1/4, 3/4) = 1/4 p_1 + 3/4 p_2.   Scale 1 = 2.6 cm.
+% (b) n = 3: the weights form a triangle with corners p_1, p_2, p_3.  It is drawn as an
+%     equilateral triangle with corners v_1 = (0,0), v_2 = (1,0), v_3 = (1/2, sqrt(3)/2);
+%     the weight p is the point p(1) v_1 + p(2) v_2 + p(3) v_3 (c01.eq.zerlegung).
+%     Marked: the uniform weight (1/3,1/3,1/3) at (1/2, sqrt(3)/6) = (0.5, 0.288675) and
+%     p = (1/2, 1/3, 1/6) at (1/3 + 1/12, sqrt(3)/12) = (0.416667, 0.144338).
+%     Scale 1 = 3.6 cm.
+% Greyscale: the set of weights in the state role (solid, tinted); point weights are filled
+% discs, mixtures open circles.
+\begin{tikzpicture}[x=1cm, y=1cm]
+  \begin{scope}[x=2.6cm, y=2.6cm]
+    \draw[tpc axis, -{Stealth[length=5pt]}] (0,0) -- (1.3,0);
+    \draw[tpc axis, -{Stealth[length=5pt]}] (0,0) -- (0,1.3);
+    \node[tpc label, anchor=west] at (1.32,0) {$p(1)$};
+    \node[tpc label, anchor=south] at (0,1.32) {$p(2)$};
+    \draw[tpc state] (1,0) -- (0,1);
+    \fill[tpc-state] (1,0) circle (2pt);
+    \fill[tpc-state] (0,1) circle (2pt);
+    \draw[tpc-state, line width=\tpcstrokethin, fill=tpc-plate] (0.25,0.75) circle (2.4pt);
+    \draw[tpc leader] (0.25,0) -- (0.25,0.75) -- (0,0.75);
+    \node[tpc label, anchor=north] at (0.25,-0.02) {$\tfrac14$};
+    \node[tpc label, anchor=east] at (-0.02,0.75) {$\tfrac34$};
+    \node[tpc label, anchor=north] at (1,-0.02) {$1$};
+    \node[tpc label, anchor=east] at (-0.02,1) {$1$};
+    \node[tpc label, anchor=south west] at (1,0.02) {$p_1$};
+    \node[tpc label, anchor=south west] at (0.02,1) {$p_2$};
+    \node[tpc label, anchor=south west] at (0.27,0.76) {$p$};
+    \node[tpc label] at (0.6,-0.42) {(a) \tpcifenglish{two outcomes}{zwei Ergebnisse}};
+  \end{scope}
+  \begin{scope}[shift={(6.0,0)}, x=3.6cm, y=3.6cm]
+    \draw[tpc state, tpc tint state] (0,0) -- (1,0) -- (0.5,0.866025) -- cycle;
+    \fill[tpc-state] (0,0) circle (2pt);
+    \fill[tpc-state] (1,0) circle (2pt);
+    \fill[tpc-state] (0.5,0.866025) circle (2pt);
+    \draw[tpc-state, line width=\tpcstrokethin, fill=tpc-plate] (0.5,0.288675) circle (2.4pt);
+    \draw[tpc-state, line width=\tpcstrokethin, fill=tpc-plate] (0.416667,0.144338) circle (2.4pt);
+    \node[tpc label, anchor=north east] at (0,0) {$p_1$};
+    \node[tpc label, anchor=north west] at (1,0) {$p_2$};
+    \node[tpc label, anchor=south] at (0.5,0.89) {$p_3$};
+    \node[tpc label, anchor=south] at (0.5,0.31) {$(\tfrac13,\tfrac13,\tfrac13)$};
+    \node[tpc label, anchor=west] at (0.45,0.13) {$(\tfrac12,\tfrac13,\tfrac16)$};
+    \node[tpc label] at (0.5,-0.3) {(b) \tpcifenglish{three outcomes}{drei Ergebnisse}};
+  \end{scope}
+\end{tikzpicture}

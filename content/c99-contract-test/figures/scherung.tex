@@ -1,0 +1,18 @@
+% c99.fig.scherung — the unit square and its image under A = M(2).
+% Geometry from the formula (x, y) -> (x + 2y, y): corners
+% (0,0), (1,0), (1,1), (0,1) go to (0,0), (1,0), (3,1), (2,1).
+% Greyscale: the square is outlined, the image is hatched.
+\begin{tikzpicture}[scale=1.5]
+  \draw[tpc-plate-rule, very thin] (-0.4,0) -- (3.6,0);
+  \draw[tpc-plate-rule, very thin] (0,-0.3) -- (0,1.5);
+  \draw[tpc-plate-ink, thick, pattern=north east lines, pattern color=tpc-plate-rule]
+    (0,0) -- (1,0) -- (3,1) -- (2,1) -- cycle;
+  \draw[tpc-plate-ink, thick, densely dashed] (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+  \node[below, font=\footnotesize] at (1,0) {$1$};
+  \node[left,  font=\footnotesize] at (0,1) {$1$};
+  \node[above, font=\footnotesize] at (3,1) {$(3,1)$};
+  \node[font=\footnotesize, anchor=west] at (2.4,0.35)
+    {\tpcifenglish{image under $A$}{Bild unter $A$}};
+  \node[font=\footnotesize, anchor=east] at (-0.1,0.5)
+    {\tpcifenglish{unit square}{Einheitsquadrat}};
+\end{tikzpicture}

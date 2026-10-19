@@ -1,0 +1,331 @@
+{
+ "schema_version": 1,
+ "conventions": [
+  {
+   "id": "CONV-INNER",
+   "name_de": "Skalarprodukt",
+   "name_en": "inner product",
+   "statement_de": "Das Skalarprodukt ist antilinear im ersten und linear im zweiten Argument.",
+   "statement_en": "The inner product is antilinear in the first and linear in the second argument.",
+   "fixed_in": "D14",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:136-137",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\langle \\phi|z\\psi\\rangle &= z \\langle \\phi|\\psi\\rangle \\\\ \\langle z\\phi|\\psi\\rangle &= z^* \\langle \\phi|\\psi\\rangle."
+    },
+    {
+     "source": "tpc-macros",
+     "locus": "tpc-macros.sty:50",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\newcommand{\\braket}[2]{\\langle #1 \\mid #2 \\rangle}"
+    },
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "QT_v3.tex:6",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "it is linear in the second argument"
+    },
+    {
+     "source": "reed-simon-1",
+     "locus": "section II.1, p. 36 (DjVu page 48)",
+     "verified": true,
+     "quote": "(iii) (x, \\alpha y) = \\alpha (x, y)",
+     "how": "read from the page image (ddjvu -format=pnm -page=48 -scale=180), not from the text layer"
+    }
+   ]
+  },
+  {
+   "id": "CONV-PAIRING",
+   "name_de": "Paarung",
+   "name_en": "pairing",
+   "statement_de": "In der Paarung steht der Zustand links und der Effekt rechts; sie ist der Wert des Effekts im Zustand.",
+   "statement_en": "In the pairing the state is on the left and the effect on the right; it is the value of the effect in the state.",
+   "fixed_in": "D59",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "basic_v3.tex:174",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "\\< x, f \\> = f(x)."
+    }
+   ]
+  },
+  {
+   "id": "CONV-TRACE",
+   "name_de": "Spur",
+   "name_en": "trace",
+   "statement_de": "Die Spur ist nicht normiert: Ein eindimensionaler Projektor hat Spur 1.",
+   "statement_en": "The trace is not normalised: a one-dimensional projector has trace 1.",
+   "fixed_in": "D21",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl06.tex:43",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "1 = \\tr(\\rho) = \\tr(|\\Psi\\rangle\\langle \\Psi|) = \\tr(\\langle \\Psi|\\Psi\\rangle) = \\langle \\Psi|\\Psi\\rangle."
+    }
+   ]
+  },
+  {
+   "id": "CONV-UNITS",
+   "name_de": "Einheiten",
+   "name_en": "units",
+   "statement_de": "SI-Einheiten; ℏ, e und ϵ₀ werden ausgeschrieben. Reed-Simon setzen ℏ = 1.",
+   "statement_en": "SI units; ℏ, e and ϵ₀ are written out. Reed-Simon set ℏ = 1.",
+   "fixed_in": "C5",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2.1",
+     "locus": "lectures/de/vl16.tex:57",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "a_0 = \\frac{4\\pi\\epsilon_0\\hbar^2}{m_{\\text{e}}e^2}"
+    },
+    {
+     "source": "reed-simon-3",
+     "locus": "section XI.4, p. 55 (DjVu page 62)",
+     "verified": true,
+     "quote": "\\tilde H_0 = -\\frac{1}{2\\mu_1}\\Delta_1 - \\frac{1}{2\\mu_2}\\Delta_2",
+     "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+    },
+    {
+     "source": "plan",
+     "locus": "PLAN.md, section 1.3",
+     "verified": true,
+     "quote": "Reed-Simon write mu_i for the masses and m for the reduced mass, with",
+     "how": "read in PLAN.md section 1.3 (hydrogen decision of 2026-10-11); the checker searches the whole file because its line numbers move"
+    }
+   ],
+   "notes": "That Reed-Simon set ℏ = 1 is read off the absence of ℏ in the kinetic term on p. 55; the page does not say so in words."
+  },
+  {
+   "id": "CONV-CM",
+   "name_de": "Schwerpunkts- und Relativkoordinaten",
+   "name_en": "centre-of-mass and relative coordinates",
+   "statement_de": "Die Relativkoordinate ist Elektron minus Proton; Teilchen 1 bei Reed-Simon ist das Elektron, Teilchen 2 das Proton.",
+   "statement_en": "The relative coordinate is electron minus proton; particle 1 of Reed-Simon is the electron, particle 2 the proton.",
+   "fixed_in": "D61",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "reed-simon-3",
+     "locus": "section XI.4, p. 55 (DjVu page 62)",
+     "verified": true,
+     "quote": "R = (\\mu_1 + \\mu_2)^{-1}(\\mu_1 r_1 + \\mu_2 r_2), r_{12} = r_1 - r_2",
+     "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+    },
+    {
+     "source": "plan",
+     "locus": "PLAN.md, section 1.3",
+     "verified": true,
+     "quote": "r_e - r_p",
+     "how": "read in PLAN.md section 1.3 (hydrogen decision of 2026-10-11); the checker searches the whole file because its line numbers move"
+    }
+   ]
+  },
+  {
+   "id": "CONV-A0",
+   "name_de": "Bohrscher Radius",
+   "name_en": "Bohr radius",
+   "statement_de": "a₀ enthält die Elektronenmasse (unendlich schwerer Kern); a_μ = a₀ m_e/μ enthält die reduzierte Masse. Jede Formel sagt, welchen sie benutzt.",
+   "statement_en": "a₀ contains the electron mass (infinite nuclear mass); a_μ = a₀ m_e/μ contains the reduced mass. Every formula says which one it uses.",
+   "fixed_in": "D63",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2.1",
+     "locus": "lectures/de/vl16.tex:57",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "a_0 = \\frac{4\\pi\\epsilon_0\\hbar^2}{m_{\\text{e}}e^2}"
+    },
+    {
+     "source": "plan",
+     "locus": "PLAN.md, section 1.3",
+     "verified": true,
+     "quote": "must say which of a_0 (infinite nuclear mass) and a_mu = a_0 m_e/mu each formula uses",
+     "how": "read in PLAN.md section 1.3 (hydrogen decision of 2026-10-11); the checker searches the whole file because its line numbers move"
+    }
+   ]
+  },
+  {
+   "id": "CONV-CS",
+   "name_de": "Condon-Shortley-Phase",
+   "name_en": "Condon-Shortley phase",
+   "statement_de": "Die Kugelflächenfunktionen tragen für m ≥ 0 den Faktor (−1)^m; die zugeordneten Legendrefunktionen tragen keinen Phasenfaktor.",
+   "statement_en": "The spherical harmonics carry the factor (−1)^m for m ≥ 0; the associated Legendre functions carry no phase factor.",
+   "fixed_in": "D67",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl14.tex:133",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\text{Y}_\\ell^m (\\theta,\\phi) \\equiv (-1)^m\\left(\\frac{2\\ell + 1}{4\\pi}\\frac{(\\ell-m)!}{(\\ell+m)!}\\right)^{\\frac12} \\text{P}_\\ell^m(\\cos(\\theta))e^{im\\phi}"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl14.tex:135",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "wobei für $m\\ge 0$"
+    }
+   ],
+   "needs_check": true,
+   "check": "derivation/numerical by codex: the script defines P_ℓ^m only for m ≥ 0 (vl14.tex:135-137) and does not say what Y_ℓ^m is for m < 0; the name 'Condon-Shortley' is not in the script; orthonormality of the stated formula is not checked"
+  },
+  {
+   "id": "CONV-LAGUERRE",
+   "name_de": "Laguerre-Konvention",
+   "name_en": "Laguerre convention",
+   "statement_de": "Verallgemeinerte Laguerre-Polynome in der Konvention $L_k^{(\\alpha)}(x) = \\sum_{i=0}^{k} (-1)^i \\binom{k+\\alpha}{k-i} \\frac{x^i}{i!}$, also Grad $k$ und $L_k^{(\\alpha)}(0) = \\binom{k+\\alpha}{k}$.",
+   "statement_en": "Generalised Laguerre polynomials in the convention $L_k^{(\\alpha)}(x) = \\sum_{i=0}^{k} (-1)^i \\binom{k+\\alpha}{k-i} \\frac{x^i}{i!}$, hence degree $k$ and $L_k^{(\\alpha)}(0) = \\binom{k+\\alpha}{k}$.",
+   "fixed_in": "D68",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2.1",
+     "locus": "lectures/de/vl16.tex:45",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\text{L}_{n-\\ell-1}^{2\\ell +1}(2\\kappa r)"
+    },
+    {
+     "source": "tpc-script-v0.2.1",
+     "locus": "lectures/de/vl16.tex:83-84",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "L_0^s(x) &= 1 \\\\ L_1^s(x) &= -x+(s+1) \\\\"
+    },
+    {
+     "source": "not-on-disk",
+     "locus": "the defining formula of the generalised Laguerre polynomials (for example NIST DLMF chapter 18)",
+     "verified": false,
+     "how": "no local copy; the entry stays proposed until one is registered"
+    }
+   ],
+   "needs_check": true,
+   "check": "derivation/numerical by codex: only the cases k = 0 and k = 1 are on disk (vl16.tex:83-84), which covers hydrogen up to n = 2; the general defining sum is not in any source on disk (DLMF is not on disk). The implementer's exact-arithmetic check scripts/registry/check_special_functions.py confirms that the sum reproduces vl16.tex:83-84 (L_0, L_1), is orthogonal with weight x^α e^{-x}, and normalises the radial functions of D66 for n ≤ 6. vl16.tex:85 (L_2) has the opposite sign of x²/2 and is the known defect listed in PLAN.md section 5."
+  },
+  {
+   "id": "CONV-FOURIER",
+   "name_de": "Fourier-Konvention",
+   "name_en": "Fourier convention",
+   "statement_de": "Symmetrische Konvention: $(2\\pi)^{-1/2}\\int f(x)\\,e^{-ikx}\\,\\mathrm{d}x$ für die Transformierte, $e^{+ikx}$ für die Rücktransformation.",
+   "statement_en": "Symmetric convention: $(2\\pi)^{-1/2}\\int f(x)\\,e^{-ikx}\\,\\mathrm{d}x$ for the transform, $e^{+ikx}$ for the inverse.",
+   "fixed_in": "C5",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl08.tex:71",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\eqbox{F(k)\\equiv \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty f(x)e^{-ikx}\\, dx.}"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl08.tex:75",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\eqbox{f(x)\\equiv \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty F(k)e^{ikx}\\, dk.}"
+    }
+   ],
+   "notes": "Read in the script; not needed by a smoke chapter, so only proposed. The momentum-space version with ℏ (pre-inventory row 26) is not in the script at this locus."
+  },
+  {
+   "id": "CONV-EVOLUTION",
+   "name_de": "Vorzeichen der Zeitentwicklung",
+   "name_en": "sign of the time evolution",
+   "statement_de": "Platzhalter: Vorzeichen im Exponenten der unitären Zeitentwicklung und im Heisenbergbild (Pre-Inventar, Zeilen 24 und 25).",
+   "statement_en": "Placeholder: sign in the exponent of the unitary time evolution and in the Heisenberg picture (pre-inventory rows 24 and 25).",
+   "fixed_in": "D30",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:44 (symbol row 24)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    },
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:45 (symbol row 25)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "needs_check": true,
+   "check": "statement not written; to be read off vl06.tex and Reed-Simon when C9 is authored"
+  },
+  {
+   "id": "CONV-WORK",
+   "name_de": "Vorzeichen von Wärme und Arbeit",
+   "name_en": "sign of heat and work",
+   "statement_de": "Platzhalter: Vorzeichenkonvention des ersten Hauptsatzes (Pre-Inventar, Zeile 59).",
+   "statement_en": "Placeholder: sign convention of the first law (pre-inventory row 59).",
+   "fixed_in": "D51",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:79 (symbol row 59)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "needs_check": true,
+   "check": "statement not written; no thermodynamics source is on disk"
+  },
+  {
+   "id": "CONV-PERM",
+   "name_de": "Permutationsoperator",
+   "name_en": "permutation operator",
+   "statement_de": "Platzhalter: Wirkung des Permutationsoperators auf Produktvektoren (Pre-Inventar, Zeile 39; Skript und Astwood-Notizen widersprechen sich).",
+   "statement_en": "Placeholder: action of the permutation operator on product vectors (pre-inventory row 39; the script and the Astwood notes disagree).",
+   "fixed_in": "D37",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:59 (symbol row 39)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "needs_check": true,
+   "check": "statement not written; to be read off vl18.tex when C13 is authored"
+  },
+  {
+   "id": "CONV-LOG",
+   "name_de": "Logarithmus",
+   "name_en": "logarithm",
+   "statement_de": "Platzhalter: ln bezeichnet den natürlichen Logarithmus (Pre-Inventar, Zeile 52).",
+   "statement_en": "Placeholder: ln denotes the natural logarithm (pre-inventory row 52).",
+   "fixed_in": "C15",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:72 (symbol row 52)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "needs_check": true,
+   "check": "not checked against the script"
+  }
+ ]
+}

@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "The numerical script's result differs from the expected value.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/numerics-wrong-value --private --run-numerics",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[numerics\\] claims\\.json:c98\\.cl\\.4: numerical check failed: got 2\\.0"
+}

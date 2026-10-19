@@ -1,0 +1,7 @@
+{
+  "gate": "web",
+  "what": "A script source uses a data URL.",
+  "cmd": "node --import ./web/node_modules/tsx/dist/loader.mjs web/tools/checks/static.ts --only external --site tests/red/web/data-script-source",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "external: FAIL .*non-local script source: data:text/javascript"
+}

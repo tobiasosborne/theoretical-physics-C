@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "Content drops the proof-omitted declaration of the ledger.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/content-presentation-differs --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[claim-mismatch\\] c98-red/de\\.tex:5: \\\\claim\\{c98\\.cl\\.1\\}: presentation in content is 'None', the ledger says 'proof-omitted'"
+}

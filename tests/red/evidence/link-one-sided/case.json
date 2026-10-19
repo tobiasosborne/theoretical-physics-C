@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A provenance row names a claim that does not list it.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/link-one-sided --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[link\\] provenance\\.json:P-0001: names claim 'c98\\.cl\\.3', which does not list it"
+}

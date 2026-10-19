@@ -1,0 +1,8 @@
+{
+  "gate": "red-runner",
+  "what": "A missing program file must not certify a planted defect.",
+  "cmd": "python3 tests/red/red-runner/no-cases/probe.py missing-file",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "BROKEN .*unexpected No such file",
+  "expect_missing_file": true
+}

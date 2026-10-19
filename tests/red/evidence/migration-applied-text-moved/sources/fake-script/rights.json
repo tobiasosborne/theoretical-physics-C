@@ -1,0 +1,10 @@
+{
+ "schema_version": 1,
+ "key": "fake-script",
+ "holder": "this project",
+ "status": "own-work",
+ "redistribution": "allowed",
+ "quotation": "free",
+ "storage_policy": "tracked fixture",
+ "basis": "made-up fixture text"
+}

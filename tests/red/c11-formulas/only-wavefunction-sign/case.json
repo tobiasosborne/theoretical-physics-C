@@ -1,0 +1,7 @@
+{
+ "gate": "c11-formulas",
+ "what": "Reverse both signs of psi21pm in both languages and formulas.json; the isolated --only check must detect the reference-product phase mismatch.",
+ "cmd": "python3 scripts/c11/check_c11_formulas.py --content tests/red/c11-formulas/only-wavefunction-sign --only c11.eq.psi21pm",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[product\\] c11\\.eq\\.psi21pm:.*reference R_21 times Y_1"
+}

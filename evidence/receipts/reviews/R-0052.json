@@ -1,0 +1,18 @@
+{
+  "id": "R-0052",
+  "reviewer": "codex gpt-6.1-sol, independent review 0e",
+  "date": "2026-10-12",
+  "covers": [
+    "P-0052"
+  ],
+  "verdict": "pass",
+  "method": "Independently rendered sources/reed-simon-3/reed-simon-3.djvu with ddjvu -format=pnm -page=62 into /tmp/smoke-b-review; inspected the rendered page image, printed page 55, and compared quote, context, and supported claim. Scan SHA256 47e47a11d12b6baadfba7c7c78389513ecafedf3af361934ae9dbcab04e45d1c independently matched.",
+  "notes": "The recorded transcription agrees with the rendered page image, with mathematical notation transcribed into TeX. Coverage is this provenance row; the supported chapter claim also needs its own stated hypotheses and derivation. The marked ellipsis skips the intervening free-operator display. The chapter map is the inverse of the printed pullback, as the derivation explicitly explains.",
+  "bindings": [
+    {
+      "provenance_id": "P-0052",
+      "member_sha256": "47e47a11d12b6baadfba7c7c78389513ecafedf3af361934ae9dbcab04e45d1c",
+      "quote_sha256": "f0f7b9e73817ebc593c90c4ec9ad11c024aef8fccbfac0c03bc8810cc62d764d"
+    }
+  ]
+}

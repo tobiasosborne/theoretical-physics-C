@@ -1,0 +1,178 @@
+{
+ "schema_version": 1,
+ "key": "plavala-2103.07469v2",
+ "kind": "paper",
+ "storage": "private",
+ "title": "General probabilistic theories: An introduction",
+ "authors": [
+  "Martin Plávala"
+ ],
+ "version": "arXiv v2 (23 Aug 2021 per the curriculum report's source ledger S01; newest member files are dated 2021-08-23)",
+ "language": "en",
+ "identifiers": {
+  "arxiv": "2103.07469v2",
+  "journal_version_not_on_disk": "Phys. Rep. 1033, 1-64 (2023), doi:10.1016/j.physrep.2023.09.001 (from the curriculum report, S01; not checked here)"
+ },
+ "retrieval": {
+  "route": "arXiv source tarball, unpacked by the curriculum lane into docs/plan/research/curriculum/plavala-src/ (gitignored); registered by path, not moved",
+  "date": "2026-10-09",
+  "original_file": "~/Downloads/arXiv-2103.07469v2.tar.gz",
+  "original_sha256": "67548d09b2acc74f680a77a099d23ceb5a10e7980d883b0f57843e1e2ca8ec64",
+  "check": "2026-10-11: the tarball in ~/Downloads has this sha256, and its extracted members are byte-identical to plavala-src/ (diff -rq, 26 files)"
+ },
+ "identity_check": "master.tex:78 '\\title{General probabilistic theories: An introduction}', master.tex:81 '\\author{Martin Pl\\'{a}vala}', read from the TeX source on 2026-10-11; the arXiv identifier and version come from the tarball's file name, not from inside the source",
+ "files": [
+  {
+   "path": "../docs/plan/research/curriculum/plavala-src/CT_v3.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "d3ce102f7848dd31ff9236730896b0ffa0039a8ecf5ff2b1f9996c46aba6a33f"
+  },
+  {
+   "path": "../docs/plan/research/curriculum/plavala-src/QT_v3.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "41033a5a93a34d1e30021ac15c9675d1aadf2de61c16b724ee405b27c53d6ab1"
+  },
+  {
+   "path": "../docs/plan/research/curriculum/plavala-src/basic_v3.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "ab317d371c85b9f8b3b823300f6746b3947d0e1674e546332a6dd200d72905ec"
+  },
+  {
+   "path": "../docs/plan/research/curriculum/plavala-src/bilinear_v3.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "ef6d91a4306637c924be2fabba864157decc6fb1c48c9dc8a338d7d339bed044"
+  },
+  {
+   "path": "../docs/plan/research/curriculum/plavala-src/boxworld_v3.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "8b596abc9fd790432ddcc53c0249bf341e6b7a69a26306f400b3d88c2fc1b8fc"
+  },
+  {
+   "path": "../docs/plan/research/curriculum/plavala-src/channels_v3.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "132155e8a544faeb0dad92f422f14f3e54a748d6a4ba22b3f55b510d4399c3b0"
+  },
+  {
+   "path": "../docs/plan/research/curriculum/plavala-src/citations.bib",
+   "role": "text",
+   "media_type": "text/x-bibtex",
+   "sha256": "ec99d0b21b904a2f2678691c0ba58eab822804de3eed9eb40a1226704cf11a81"
+  },
+  {
+   "path": "../docs/plan/research/curriculum/plavala-src/compatibility_v3.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "e792c448512435477d6d30c99a435bf6713b18dcf684ab2c8b2d33c235e92c6a"
+  },
+  {
+   "path": "../docs/plan/research/curriculum/plavala-src/cones_v3.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "0a6aa68f25a60d29dde4a2a3a72720719b979ad938d6e424dd835dc50ad410f1"
+  },
+  {
+   "path": "../docs/plan/research/curriculum/plavala-src/duals_v3.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "a2f497ee283e7a38fe56f7af3bb5395bd893ee06965353a59f4fe570caed98b6"
+  },
+  {
+   "path": "../docs/plan/research/curriculum/plavala-src/intro_v5.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "13c71eb6ba2f4fd1a5ae3bb1a42ace7dce5cbd51bfbfce976d6cd9f1f7f66cfc"
+  },
+  {
+   "path": "../docs/plan/research/curriculum/plavala-src/master.bbl",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "859002988404c26a239d16fae8a77a3f133f52f14e6cb05861ff3bebbb8a4870"
+  },
+  {
+   "path": "../docs/plan/research/curriculum/plavala-src/master.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "c2908a6d235ce7af1628820df2b9458d163999c67dcba8cddfe35cb06ccc4244"
+  },
+  {
+   "path": "../docs/plan/research/curriculum/plavala-src/mplmacros.sty",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "1f4d712a4e6db58abcab91bab753a4b0ed795c2129478f285fe572cb263a621c"
+  },
+  {
+   "path": "../docs/plan/research/curriculum/plavala-src/simplex2_effect_algebra.pdf",
+   "role": "binary",
+   "media_type": "application/pdf",
+   "sha256": "8b12d87c59b90d583a4dbcf0c2651907c0bda65736d08d4ff894c3f62f4fdf2c"
+  },
+  {
+   "path": "../docs/plan/research/curriculum/plavala-src/simplex2_state_space.pdf",
+   "role": "binary",
+   "media_type": "application/pdf",
+   "sha256": "5baec5c67f919dc1f85c3ea084c7cfb4e68665a08eff03d02ea39845f52c263a"
+  },
+  {
+   "path": "../docs/plan/research/curriculum/plavala-src/simplex3_effect_algebra.pdf",
+   "role": "binary",
+   "media_type": "application/pdf",
+   "sha256": "75ead7e6b026f08d064c5a1897ea415145fa26d3ab90df95e9b885db38fb76d7"
+  },
+  {
+   "path": "../docs/plan/research/curriculum/plavala-src/simplex3_state_space.pdf",
+   "role": "binary",
+   "media_type": "application/pdf",
+   "sha256": "6211c496bc3d6509761c741ee0c8efae289ef89e2e83d4873c2c668bcf48899e"
+  },
+  {
+   "path": "../docs/plan/research/curriculum/plavala-src/simplex4_state_space.pdf",
+   "role": "binary",
+   "media_type": "application/pdf",
+   "sha256": "4dce2977fa18196122e56ea7a45079aa438822646ae306d3e2ba6e9767c43c9d"
+  },
+  {
+   "path": "../docs/plan/research/curriculum/plavala-src/square_effect_algebra.pdf",
+   "role": "binary",
+   "media_type": "application/pdf",
+   "sha256": "6b9a6c24b8ecfae3f6fcfaffa4e761a714ae0b97b051ac7c4a980103b1677679"
+  },
+  {
+   "path": "../docs/plan/research/curriculum/plavala-src/square_state_space.pdf",
+   "role": "binary",
+   "media_type": "application/pdf",
+   "sha256": "cd425c235a2f20f3cef68e7f7dd0ffaac155cd85f99003f43c8ed14410fcfe5b"
+  },
+  {
+   "path": "../docs/plan/research/curriculum/plavala-src/tensor_v3.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "4d576b54d9173847ada1fb78873a0764d041871e885869cf850d651edb3d111b"
+  },
+  {
+   "path": "../docs/plan/research/curriculum/plavala-src/tikzlibrarydiatikz.code.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "8d395ecf13aba723cff1c9349c81a5a9a5c69d3fd4648ec1866334ddd45a4bf7"
+  },
+  {
+   "path": "../docs/plan/research/curriculum/plavala-src/what_v4.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "a0ed7741d8087e4c79e29e268be88815c91adcfe7bb17fdd6baea7bb2032d151"
+  }
+ ],
+ "authority_for": "finite-dimensional GPT state and effect spaces, cones, duality, tensor products, the finite-dimensional quantum example",
+ "limitations": "finite-dimensional by axiom (what_v4.tex:13-23, S5); the word 'Archimedean' does not occur in the source tree (REVIEW.md section B); theorem numbers must be diffed against the Phys. Rep. version before they are cited",
+ "rights_ref": "rights.json",
+ "supersedes": null,
+ "errata": [],
+ "registry_aliases": [
+  "plavala"
+ ]
+}

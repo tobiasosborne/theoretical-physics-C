@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A changed derivation invalidates the private receipt.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/stale-derivation-public --public",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[receipt\\].*stale receipt: evidence/derivations/d\\.md changed"
+}

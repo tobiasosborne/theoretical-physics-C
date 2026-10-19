@@ -1,0 +1,7 @@
+{
+  "gate": "levels",
+  "what": "The build evidence is older than the sources: a source file changes after the build (the fixture is copied to build/, built, then edited).",
+  "cmd": "rm -rf build/red/levels/stale-build && mkdir -p build/red/levels/stale-build && cp -r tests/red/levels/stale-build/content build/red/levels/stale-build/content && bash scripts/course/build_course.sh --content build/red/levels/stale-build/content --out build/red/levels/stale-build/out --chapters c99 --lang de --all-editions > /dev/null && printf '\\nEin Satz mehr.\\n' >> build/red/levels/stale-build/content/c99-red/de.tex ; python3 scripts/course/check_levels.py --chapters c99 --content build/red/levels/stale-build/content --build build/red/levels/stale-build/out --langs de",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "B0 tpc-de-full: stale build: 1 source file\\(s\\) changed"
+}

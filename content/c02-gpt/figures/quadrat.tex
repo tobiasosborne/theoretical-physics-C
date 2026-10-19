@@ -1,0 +1,40 @@
+% c02.fig.quadrat — the square bit K_Q = [-1,1]^2.
+%
+% Pure states s_ij = (2i-1, 2j-1): s_00 = (-1,-1), s_10 = (1,-1), s_01 = (-1,1), s_11 = (1,1).
+% (a) The centre (0,0) is the midpoint of s_00, s_11 and also of s_10, s_01
+%     (the two diagonals): the decomposition into pure states is not unique.
+% (b) Level lines of the extreme effect f_x^+ = (1 + r_x)/2: vertical lines
+%     r_x = 2f - 1 for f = 0, 1/4, 1/2, 3/4, 1.  f = 1 on the edge s_10 s_11,
+%     f = 0 on the edge s_00 s_01.
+% Greyscale: pure states are squares, the centre an open ring; the diagonals are solid
+% (state role), the level lines dashed (effect role).
+\begin{tikzpicture}[x=1.1cm, y=1.1cm]
+  \begin{scope}
+    \draw[tpc axis, fill=tpc-grey-1] (-1,-1) rectangle (1,1);
+    \draw[tpc state] (-1,-1) -- (1,1);
+    \draw[tpc state] (1,-1) -- (-1,1);
+    \foreach \p in {(-1,-1),(1,-1),(-1,1),(1,1)}
+      \fill[tpc-plate-ink] \p ++(-1.8pt,-1.8pt) rectangle ++(3.6pt,3.6pt);
+    \draw[tpc-state, line width=\tpcstrokethin, fill=tpc-plate] (0,0) circle (2.6pt);
+    \node[tpc label, anchor=north east] at (-1,-1) {$s_{00}$};
+    \node[tpc label, anchor=north west] at (1,-1)  {$s_{10} = (1,-1)$};
+    \node[tpc label, anchor=south east] at (-1,1)  {$s_{01}$};
+    \node[tpc label, anchor=south west] at (1,1)   {$s_{11} = (1,1)$};
+    \node[tpc label, anchor=west] at (0.12,0) {$(0,0)$};
+    \node[tpc label] at (0,-1.95) {(a)};
+  \end{scope}
+  \begin{scope}[shift={(5.3,0)}]
+    \draw[tpc axis, fill=tpc-grey-1] (-1,-1) rectangle (1,1);
+    \foreach \c in {-1,-0.5,0,0.5,1} \draw[tpc effect] (\c,-1) -- (\c,1);
+    \foreach \p in {(-1,-1),(1,-1),(-1,1),(1,1)}
+      \fill[tpc-plate-ink] \p ++(-1.8pt,-1.8pt) rectangle ++(3.6pt,3.6pt);
+    \foreach \c/\l in {-1/0, -0.5/\tfrac14, 0/\tfrac12, 0.5/\tfrac34, 1/1}
+      \node[tpc label, anchor=south] at (\c,1.05) {$\l$};
+    \node[tpc label, anchor=east] at (-1.15,1.25) {$f_x^{+} =$};
+    \draw[tpc axis, -{Stealth[length=4pt]}] (-1,-1.3) -- (1.3,-1.3);
+    \node[tpc label, anchor=west] at (1.3,-1.3) {$r_x$};
+    \node[tpc label, anchor=north] at (-1,-1.33) {$-1$};
+    \node[tpc label, anchor=north] at (1,-1.33) {$1$};
+    \node[tpc label] at (0,-1.95) {(b)};
+  \end{scope}
+\end{tikzpicture}

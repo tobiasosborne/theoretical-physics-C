@@ -1,0 +1,7 @@
+{
+ "gate": "c02-game",
+ "what": "A kernel whose score uses pi_2 e(omega_2) instead of pi_2 (1 - e(omega_2)).",
+ "cmd": "GPT_KERNEL=tests/red/c02-game/score-wrong-complement/kernel.ts bash web/run.sh test tests/kernels/gpt.test.ts",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "golden mismatch: score of level \\w+ at e = "
+}

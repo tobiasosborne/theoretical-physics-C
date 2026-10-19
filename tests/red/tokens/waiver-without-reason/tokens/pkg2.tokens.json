@@ -1,0 +1,331 @@
+{
+  "$description": "Baskerville 10 Pro + Companion Math in local print; Libertinus (the warmest open book face installed) as the open fallback; rubric accent. Lane: design-packages-A/PKG-2-baskerville-companion.md.",
+  "$extensions": {
+    "org.tpc": {
+      "pkg": 2,
+      "title": "PKG-2 Baskerville Companion",
+      "production_ready": false,
+      "waivers": [],
+      "production_ready_reason": "Companion Math v0.140 fails three of its own hard rules, has a low math axis and swash italic Z and N, and needs Storm Type Foundry's permission beyond print (PLAN section 4). The package stays flagged until Companion Math passes its own rules."
+    }
+  },
+  "color": {
+    "ground": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.975, 0.012, 88] },
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.21, 0.01, 60] },
+          "print": { "colorSpace": "oklch", "components": [1.0, 0.0, 0] }
+        }
+      }
+    },
+    "ground-alt": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.95, 0.014, 85] },
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.25, 0.012, 60] }
+        }
+      }
+    },
+    "ink": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.24, 0.014, 60] },
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.92, 0.012, 85] },
+          "print": { "colorSpace": "oklch", "components": [0.0, 0.0, 0] }
+        }
+      }
+    },
+    "ink-muted": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.47, 0.014, 60] },
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.74, 0.012, 85] }
+        }
+      }
+    },
+    "rule": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.84, 0.014, 80] },
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.37, 0.012, 60] }
+        }
+      }
+    },
+    "accent": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.5, 0.15, 30] },
+      "$description": "rubric red: chrome only, never a physics role",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.74, 0.13, 35] }
+        }
+      }
+    },
+    "link": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.42, 0.09, 255] },
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.8, 0.08, 250] }
+        }
+      }
+    },
+    "highlight": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.935, 0.045, 88] },
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.3, 0.035, 80] }
+        }
+      }
+    },
+    "stage": {
+      "$type": "color",
+      "$value": "{color.plate}",
+      "$description": "dark stage: hue of the ground of TJO's 2022 deck (#141C26), darkened from L 0.223 to 0.13 so that all six ladder rungs reach 3:1",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.13, 0.023, 254] }
+        }
+      }
+    }
+  },
+  "font": {
+    "serif": {
+      "$type": "fontFamily",
+      "$value": [
+        "Libertinus Serif",
+        "serif"
+      ],
+      "$extensions": {
+        "org.tpc.tex": {
+          "open": {
+            "font": "LibertinusSerif",
+            "options": "Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,BoldFont=*-Semibold,BoldItalicFont=*-SemiboldItalic,Numbers=OldStyle",
+            "probe": "[LibertinusSerif-Regular.otf]"
+          },
+          "local": {
+            "font": "Baskerville 10 Pro",
+            "options": "Ligatures=TeX,Numbers=OldStyle",
+            "probe": "Baskerville 10 Pro",
+            "licence": "commercial (Storm Type Foundry); local print only"
+          }
+        }
+      }
+    },
+    "sans": {
+      "$type": "fontFamily",
+      "$value": [
+        "Inter",
+        "system-ui",
+        "sans-serif"
+      ],
+      "$extensions": {
+        "org.tpc.tex": {
+          "open": {
+            "font": "Inter",
+            "options": "Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,BoldFont=*-SemiBold,BoldItalicFont=*-SemiBoldItalic,Scale=MatchLowercase,Numbers=Tabular",
+            "probe": "[Inter-Regular.otf]"
+          },
+          "local": {
+            "font": "Whitney-Book.otf",
+            "options": "BoldFont=Whitney-Semibold.otf,ItalicFont=Whitney-BookItalic.otf,BoldItalicFont=Whitney-SemiboldItalic.otf,Scale=MatchLowercase",
+            "probe": "[Whitney-Book.otf]",
+            "licence": "commercial (Hoefler&Co); local print only; lacks U+2192, take arrows from the math font"
+          }
+        }
+      }
+    },
+    "mono": {
+      "$type": "fontFamily",
+      "$value": [
+        "Iosevka",
+        "ui-monospace",
+        "monospace"
+      ],
+      "$extensions": {
+        "org.tpc.tex": {
+          "open": {
+            "font": "Iosevka",
+            "options": "Scale=MatchLowercase",
+            "probe": "Iosevka"
+          }
+        }
+      }
+    },
+    "math": {
+      "$type": "fontFamily",
+      "$value": [
+        "Libertinus Math",
+        "math"
+      ],
+      "$extensions": {
+        "org.tpc.tex": {
+          "open": {
+            "font": "LibertinusMath-Regular.otf",
+            "options": "",
+            "probe": "[LibertinusMath-Regular.otf]"
+          },
+          "local": {
+            "font": "BaskervilleCompanionMath-Regular.otf",
+            "options": "Path=\\tpccompanionmathpath",
+            "probe": "[\\tpccompanionmathpath BaskervilleCompanionMath-Regular.otf]",
+            "licence": "TJO's prototype v0.140, outlines derived from Baskerville 10 Pro; not redistributable; set \\tpccompanionmathpath to its build directory (with trailing slash)"
+          }
+        }
+      }
+    }
+  },
+  "type": {
+    "body": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.serif}",
+        "fontSize": { "value": 11, "unit": "pt" },
+        "lineHeight": 1.2727,
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      }
+    },
+    "small": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.serif}",
+        "fontSize": { "value": 9.5, "unit": "pt" },
+        "lineHeight": 1.3158,
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      }
+    },
+    "label": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.sans}",
+        "fontSize": { "value": 8, "unit": "pt" },
+        "lineHeight": 1.3125,
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      }
+    },
+    "h1": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.serif}",
+        "fontSize": { "value": 20, "unit": "pt" },
+        "lineHeight": 1.2,
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      }
+    },
+    "h2": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.serif}",
+        "fontSize": { "value": 11, "unit": "pt" },
+        "lineHeight": 1.2727,
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      },
+      "$extensions": {
+        "org.tpc.smallcaps": true
+      }
+    },
+    "h3": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.serif}",
+        "fontSize": { "value": 11, "unit": "pt" },
+        "lineHeight": 1.2727,
+        "fontWeight": 400,
+        "fontStyle": "italic"
+      }
+    },
+    "numeral": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.serif}",
+        "fontSize": { "value": 30, "unit": "pt" },
+        "lineHeight": 1.0,
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      }
+    },
+    "mono": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.mono}",
+        "fontSize": { "value": 9, "unit": "pt" },
+        "lineHeight": 1.3333,
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      }
+    },
+    "depth-label": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.serif}",
+        "fontSize": { "value": 11, "unit": "pt" },
+        "lineHeight": 1.2727,
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      },
+      "$extensions": {
+        "org.tpc.smallcaps": true
+      }
+    },
+    "web-body": {
+      "$type": "dimension",
+      "$value": { "value": 1.1875, "unit": "rem" }
+    }
+  },
+  "measure": {
+    "text": {
+      "$type": "dimension",
+      "$value": { "value": 124, "unit": "mm" }
+    },
+    "inner": {
+      "$type": "dimension",
+      "$value": { "value": 24, "unit": "mm" }
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": { "value": 6, "unit": "mm" }
+    },
+    "margin": {
+      "$type": "dimension",
+      "$value": { "value": 40, "unit": "mm" }
+    },
+    "top": {
+      "$type": "dimension",
+      "$value": { "value": 20, "unit": "mm" }
+    },
+    "bottom": {
+      "$type": "dimension",
+      "$value": { "value": 22, "unit": "mm" }
+    },
+    "web-text": {
+      "$type": "dimension",
+      "$value": { "value": 39, "unit": "rem" }
+    },
+    "web-gap": {
+      "$type": "dimension",
+      "$value": { "value": 2.25, "unit": "rem" }
+    },
+    "web-margin": {
+      "$type": "dimension",
+      "$value": { "value": 14, "unit": "rem" }
+    }
+  },
+  "stroke": {
+    "depth-v": {
+      "$type": "dimension",
+      "$value": { "value": 1.2, "unit": "pt" }
+    }
+  }
+}

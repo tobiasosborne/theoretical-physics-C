@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A provenance row records another hash than the manifest's.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/member-hash-differs --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[member\\] provenance\\.json:P-0001: member_sha256 is not the manifest hash"
+}

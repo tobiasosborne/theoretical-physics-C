@@ -1,0 +1,7 @@
+{
+  "gate": "tokens",
+  "what": "A content chapter defines its own colour and selects a font by name instead of using token names.",
+  "cmd": "python3 design/lint_content.py tests/red/tokens/literal-in-content/content",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "de\\.tex:\\d+: literal in content: literal colour definition.*\\n(.*\\n)*.*de\\.tex:\\d+: literal in content: font selection"
+}

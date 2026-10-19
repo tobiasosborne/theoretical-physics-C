@@ -1,0 +1,33 @@
+% c02.fig.aufgabe — the discrimination task as a scheme.  Not a plot.
+% Probabilities of the four cases (c02.eq.erfolg): prepared x_1 and answer yes:
+% lambda_1 f(x_1); prepared x_1 and no: lambda_1 (1 - f(x_1)); prepared x_2 and yes:
+% lambda_2 f(x_2); prepared x_2 and no: lambda_2 (1 - f(x_2)).  The two cases in which
+% the guess is right are marked by a heavy frame.
+\begin{tikzpicture}[x=1cm, y=1cm]
+  \draw[tpc state] (0,1.25) rectangle (1.9,2.15);
+  \draw[tpc state] (0,0) rectangle (1.9,0.9);
+  \node[tpc label, align=center] at (0.95,1.7) {$x_1$\ \tpcifenglish{with}{mit}\ $\lambda_1$};
+  \node[tpc label, align=center] at (0.95,0.45) {$x_2$\ \tpcifenglish{with}{mit}\ $\lambda_2$};
+  \draw[tpc effect] (2.6,0.55) rectangle (4.0,1.6);
+  \node[tpc label, align=center] at (3.3,1.075) {\tpcifenglish{question}{Frage}\\[1pt]$f$};
+  \draw[tpc axis, -{Stealth[length=4pt]}] (1.9,1.7) -- (2.6,1.3);
+  \draw[tpc axis, -{Stealth[length=4pt]}] (1.9,0.45) -- (2.6,0.85);
+  \draw[tpc axis, -{Stealth[length=4pt]}] (4.0,1.3) -- (4.65,1.7);
+  \draw[tpc axis, -{Stealth[length=4pt]}] (4.0,0.85) -- (4.65,0.45);
+  \node[tpc label, anchor=west] at (4.7,1.72) {\tpcifenglish{yes: guess}{Ja: rate} $x_1$};
+  \node[tpc label, anchor=west] at (4.7,0.43) {\tpcifenglish{no: guess}{Nein: rate} $x_2$};
+  % table of the four cases
+  \begin{scope}[shift={(6.72,0)}]
+    \draw[tpc leader] (0,0) rectangle (4.3,2.15);
+    \draw[tpc leader] (2.15,0) -- (2.15,2.15);
+    \draw[tpc leader] (0,1.075) -- (4.3,1.075);
+    \draw[tpc axis, line width=\tpcstrokedynamics] (0,1.075) rectangle (2.15,2.15);
+    \draw[tpc axis, line width=\tpcstrokedynamics] (2.15,0) rectangle (4.3,1.075);
+    \node[tpc label] at (1.075,1.61) {$\lambda_1 f(x_1)$};
+    \node[tpc label] at (3.225,1.61) {$\lambda_2 f(x_2)$};
+    \node[tpc label] at (1.075,0.54) {$\lambda_1 (1 - f(x_1))$};
+    \node[tpc label] at (3.225,0.54) {$\lambda_2 (1 - f(x_2))$};
+    \node[tpc label, anchor=south] at (1.075,2.2) {$x_1$};
+    \node[tpc label, anchor=south] at (3.225,2.2) {$x_2$};
+  \end{scope}
+\end{tikzpicture}

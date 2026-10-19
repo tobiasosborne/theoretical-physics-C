@@ -1,0 +1,7 @@
+{
+  "gate": "web",
+  "what": "chapter.json declares a demo for which no module web/src/demos/<id>.ts exists.",
+  "cmd": "node --import ./web/node_modules/tsx/dist/loader.mjs web/tools/checks/static.ts --only demos --content tests/red/web/i-unregistered-demo/content --chapters c98",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "demos: FAIL .*c98\\.demo\\.nirgends, which is not registered"
+}

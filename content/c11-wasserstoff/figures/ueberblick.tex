@@ -1,0 +1,34 @@
+% c11.fig.ueberblick — the route of the chapter as a diagram.
+%
+% A schematic, not a plot.  Boxes name results of the chapter: the two-body Hamiltonian
+% (definition D60), its exact splitting U H_tot = H_cm + H_rel (Theorem c11.thm.separation), the
+% free centre of mass, the relative problem with the reduced mass, its energies
+% E_n = -Z^2 Ry_mu/n^2 (Theorem c11.thm.spektrum) and wave functions psi_nlm, and the two things
+% compared with the laboratory: spectral lines (differences of the E_n) and densities
+% (rho_e = f*g_b, f = |Phi|^2, g_b(y) = b^-3 g(y/b), g = |psi|^2, b = m_p/M,
+% c11.eq.faltung: convolution with a scaled copy of the relative density).
+% Greyscale: outlines and labels only.
+\begin{tikzpicture}[x=1cm, y=1cm, >={Stealth[length=5pt,width=4pt]},
+    kasten/.style={tpc label, draw=tpc-plate-ink, line width=\tpcstrokethin, rounded corners=2pt,
+                   inner sep=4pt, align=center}]
+  \node[kasten] (tot) at (4.6,4.2)
+    {\tpcifenglish{two particles:}{zwei Teilchen:} $H_{\mathrm{tot}}$ \tpcifenglish{on}{auf} $L^2(\mathbb{R}^6)$};
+  \node[kasten] (cm) at (1.9,2.7)
+    {\tpcifenglish{centre of mass:}{Schwerpunkt:}\\ $H_{\mathrm{cm}}$, \tpcifenglish{free, mass}{frei, Masse} $M$};
+  \node[kasten] (rel) at (7.2,2.7)
+    {\tpcifenglish{relative motion:}{Relativbewegung:}\\ $H_{\mathrm{rel}}$, \tpcifenglish{mass}{Masse} $\mu$};
+  \node[kasten] (eig) at (7.2,1.2)
+    {$E_n = -Z^2\,\mathrm{Ry}_{\mu}/n^2$,\quad $\psi_{n\ell m}$};
+  \node[kasten] (lin) at (7.2,-0.3)
+    {\tpcifenglish{spectral lines:}{Spektrallinien:} $E_n - E_{n'}$};
+  \node[kasten] (dichte) at (1.9,-0.3)
+    {\tpcifenglish{densities in the laboratory:}{Dichten im Labor:}\\
+     $\rho_e = f * g_b$, $b = m_p/M$\\
+     $f = \lvert\Phi\rvert^2$, $g_b(y) = b^{-3}\lvert\psi(y/b)\rvert^2$};
+  \draw[tpc axis, ->] (tot) -- (cm);
+  \draw[tpc axis, ->] (tot) -- (rel);
+  \draw[tpc axis, ->] (rel) -- (eig);
+  \draw[tpc axis, ->] (eig) -- (lin);
+  \draw[tpc axis, ->] (cm) -- (dichte);
+  \draw[tpc axis, ->] (eig.south west) -- (dichte.north east);
+\end{tikzpicture}

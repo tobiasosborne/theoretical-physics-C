@@ -1,0 +1,18 @@
+{
+ "schema_version": 1,
+ "key": "fake-brief",
+ "kind": "author-stipulation",
+ "storage": "tracked",
+ "title": "Fixture source fake-brief",
+ "authors": [
+  "nobody (fixture)"
+ ],
+ "files": [
+  {
+   "path": "fake-brief/brief.md",
+   "role": "text",
+   "sha256": "dc7ff80971f44c23e9c88273a6c5fae3596db9257e9146e4a2dc8ae7ba03e766"
+  }
+ ],
+ "rights_ref": "rights.json"
+}

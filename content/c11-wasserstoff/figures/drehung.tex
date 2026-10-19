@@ -1,0 +1,24 @@
+% c11.fig.drehung — the rotated coordinate of step 2 in the proof of Proposition c11.prop.zweikoerper.
+%
+% Generating formula (REVIEW.md A2; chapter equation c11.eq.drehung), for one Cartesian component:
+%     z = (x_e/sqrt(2 m_e) - x_p/sqrt(2 m_p))/gamma,   gamma = sqrt(1/(2 m_e) + 1/(2 m_p)),
+% that is  z = sqrt(m_p/M) x_e - sqrt(m_e/M) x_p,  a unit vector (sqrt(m_p/M), -sqrt(m_e/M)) in the
+% plane of the scaled coordinates (x_e, x_p).  Drawn with the STATED, NOT PHYSICAL ratio
+% m_p : m_e = 3 : 1:  direction of z = (sqrt 3/2, -1/2), i.e. the x_e-axis turned by -30 degrees;
+% the perpendicular direction is (1/2, sqrt 3/2).  Both new axes and the unit circle are drawn.
+% Greyscale: old axes thin, new axes heavy, labels.
+\begin{tikzpicture}[x=1.7cm, y=1.7cm, >={Stealth[length=5pt,width=4pt]}]
+  \draw[tpc axis, ->] (-1.5,0) -- (1.7,0) node[right, tpc label] {$x_{\mathrm{e}}$};
+  \draw[tpc axis, ->] (0,-1.25) -- (0,1.45) node[above, tpc label] {$x_{\mathrm{p}}$};
+  \draw[tpc leader, dash pattern=on 2pt off 2pt] (0,0) circle (1);
+  \draw[draw=tpc-plate-ink, line width=\tpcstrokestate, ->] ({-1.4*cos(30)},{1.4*sin(30)}) -- ({1.75*cos(30)},{-1.75*sin(30)})
+    node[right, tpc label] {$z$};
+  \draw[draw=tpc-plate-ink, line width=\tpcstrokestate, ->] ({-1.2*sin(30)},{-1.2*cos(30)}) -- ({1.5*sin(30)},{1.5*cos(30)});
+  \fill[tpc-plate-ink] ({cos(30)},{-sin(30)}) circle (1.6pt);
+  \node[tpc label, anchor=west] at (1.12,-0.2)
+    {$\bigl(\sqrt{m_{\mathrm{p}}/M},\,-\sqrt{m_{\mathrm{e}}/M}\bigr)$};
+  \draw[tpc leader] (1.12,-0.22) -- ({cos(30)+0.03},{-sin(30)+0.03});
+  \draw[tpc leader, ->] (0.55,0) arc[start angle=0, end angle=-30, radius=0.55];
+  \node[tpc label, anchor=south west, align=left, text=tpc-plate-muted] at (1.0,0.75)
+    {\tpcifenglish{drawn for}{gezeichnet für}\\ $m_{\mathrm{p}} : m_{\mathrm{e}} = 3 : 1$};
+\end{tikzpicture}

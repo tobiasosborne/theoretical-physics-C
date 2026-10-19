@@ -1,0 +1,7 @@
+{
+  "gate": "levels",
+  "what": "Kern text refers with a plain \\eqref to an equation inside a vertiefung block; the Kern build has an undefined reference.",
+  "cmd": "python3 scripts/course/check_levels.py --chapters c99 --content tests/red/levels/kern-ref-into-vertiefung/content --build build/red/levels/kern-ref-into-vertiefung --langs de --run-build",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "K2 tpc-de-kern: reference 'c99\\.eq\\.tief' is undefined in the Kern build"
+}

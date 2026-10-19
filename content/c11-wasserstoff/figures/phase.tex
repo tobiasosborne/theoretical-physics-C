@@ -1,0 +1,59 @@
+% c11.fig.phase — sign and phase of the 2p wave functions of the relative coordinate.
+%
+% Generating formulas (DERIVATION.md Result 5.1; Z = 1, lengths in the Bohr radius a_mu of the
+% REDUCED mass; Condon-Shortley convention, registry definition D67):
+%     a_mu^{3/2} psi_210 = r exp(-r/2) cos(theta) / (4 sqrt(2 pi)) = z exp(-r/2) / (4 sqrt(2 pi)),
+%         real; positive for z > 0, negative for z < 0, zero on the plane z = 0;
+%     a_mu^{3/2} psi_211 = - r exp(-r/2) sin(theta) exp(i phi) / (8 sqrt(pi)),
+%         in the plane z = 0 (theta = pi/2, r = s = sqrt(x^2 + y^2)):
+%         modulus s exp(-s/2) / (8 sqrt(pi)),  arg psi_211 = phi + pi  (the minus sign is the
+%         Condon-Shortley sign);  psi_21,-1 = - conj(psi_211) has arg = -phi.
+% Left panel:  plane y = 0, grey value = a_mu^3 |psi_210|^2 = z^2 exp(-r)/(32 pi), sign written in.
+% Right panel: plane z = 0, grey value = a_mu^3 |psi_211|^2 = s^2 exp(-s)/(64 pi); the rays are the
+%              lines of constant phase phi = 0, pi/2, pi, 3pi/2, labelled with arg psi_211 = phi + pi.
+% One linear grey scale for both panels, as in c11.fig.schnitt.
+% Greyscale: modulus by lightness, sign and phase by labels.
+\begin{tikzpicture}
+  \pgfplotsset{
+    colormap={c11dens}{color(0cm)=(tpc-plate) color(1cm)=(tpc-state)},
+    c11/.style={
+      view={0}{90}, axis equal image, axis on top, grid=none, clip=true,
+      width=5.6cm, height=5.6cm,
+      xmin=-9, xmax=9, ymin=-9, ymax=9, xtick={-8,-4,0,4,8}, ytick={-8,-4,0,4,8},
+      axis line style={draw=tpc-plate-ink, line width=\tpcstrokethin},
+      tick style={draw=tpc-plate-ink, line width=\tpcstrokehair},
+      tick label style={font=\tpcfontlabel, text=tpc-plate-ink},
+      label style={font=\tpcfontlabel, text=tpc-plate-ink},
+      title style={font=\tpcfontlabel, text=tpc-plate-ink, yshift=-4pt},
+      point meta min=0, point meta max=0.005385}}
+  \begin{axis}[c11, name=links, xlabel={$x/a_{\mu}$}, ylabel={$z/a_{\mu}$},
+               title={$\psi_{210}$, \tpcifenglish{plane}{Ebene} $y = 0$}]
+    \addplot3[surf, shader=flat corner, draw=none, samples=49, domain=-9:9, y domain=-9:9,
+              point meta={y*y*exp(-sqrt(x*x+y*y))/(32*pi)}] {0};
+    \draw[tpc leader, dash pattern=on 2pt off 2pt] (axis cs:-9,0) -- (axis cs:9,0);
+    \node[tpc label, anchor=west] at (axis cs:-8.6,6.6) {$\psi_{210} > 0$};
+    \node[tpc label, anchor=west] at (axis cs:-8.6,-6.6) {$\psi_{210} < 0$};
+    \node[tpc label, anchor=south east] at (axis cs:8.8,0.1) {$\psi_{210} = 0$};
+  \end{axis}
+  \begin{axis}[c11, at={(links.outer east)}, anchor=outer west, xshift=1mm,
+               xlabel={$x/a_{\mu}$}, ylabel={$y/a_{\mu}$}, ylabel shift=-4pt,
+               title={$\psi_{211}$, \tpcifenglish{plane}{Ebene} $z = 0$}]
+    \addplot3[surf, shader=flat corner, draw=none, samples=49, domain=-9:9, y domain=-9:9,
+              point meta={(x*x+y*y)*exp(-sqrt(x*x+y*y))/(64*pi)}] {0};
+    % lines of constant phase
+    \draw[tpc leader] (axis cs:0,0) -- (axis cs:8.6,0);
+    \draw[tpc leader] (axis cs:0,0) -- (axis cs:0,8.6);
+    \draw[tpc leader] (axis cs:0,0) -- (axis cs:-8.6,0);
+    \draw[tpc leader] (axis cs:0,0) -- (axis cs:0,-8.6);
+    \node[tpc label, anchor=south east] at (axis cs:8.8,0.1) {$\pi$};
+    \node[tpc label, anchor=north west] at (axis cs:0.2,8.8) {$\tfrac{3\pi}{2}$};
+    \node[tpc label, anchor=south west] at (axis cs:-8.8,0.1) {$0$};
+    \node[tpc label, anchor=south west] at (axis cs:0.2,-8.8) {$\tfrac{\pi}{2}$};
+    % the phase grows with phi: counter-clockwise (arc of radius 6.7 from phi = -67 deg to -23 deg)
+    \draw[tpc axis, -{Stealth[length=4pt,width=3pt]}]
+      (axis cs:{6.7*cos(-67)},{6.7*sin(-67)}) -- (axis cs:{6.7*cos(-56)},{6.7*sin(-56)})
+      -- (axis cs:{6.7*cos(-45)},{6.7*sin(-45)}) -- (axis cs:{6.7*cos(-34)},{6.7*sin(-34)})
+      -- (axis cs:{6.7*cos(-23)},{6.7*sin(-23)});
+    \node[tpc label, anchor=north east] at (axis cs:8.8,-6.3) {$\arg\psi_{211}$};
+  \end{axis}
+\end{tikzpicture}

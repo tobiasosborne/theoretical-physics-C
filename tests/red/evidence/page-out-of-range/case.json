@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A page-image locus names a page the scan does not have.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/page-out-of-range --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[locus\\] provenance\\.json:P-0002: page-image locus needs page_index"
+}

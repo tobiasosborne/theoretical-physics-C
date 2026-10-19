@@ -1,0 +1,16 @@
+{
+ "id": "R-0001",
+ "reviewer": "fixture reviewer",
+ "date": "2026-10-11",
+ "covers": [
+  "P-0002"
+ ],
+ "verdict": "pass",
+ "bindings": [
+  {
+   "provenance_id": "P-0002",
+   "member_sha256": "4a66ac9199a94a5797770e8db699c91f95113f120fa4506b2bcf060bcf18bc9f",
+   "quote_sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+  }
+ ]
+}

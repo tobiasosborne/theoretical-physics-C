@@ -1,0 +1,3094 @@
+{
+ "_generated": {
+  "by": "scripts/registry/gen_registry.py",
+  "inputs_sha256": {
+   "notation.json": "ac64b8bc61d03c8abe4a9b4a634260088b4f26f4395f994c4358de234f9ab93e",
+   "definitions.json": "08ebd322de01899c868d738519343b833e828dfcaff557a987a470afd1faf4a5",
+   "conventions.json": "a376a57b23b3a84aa2eb310817d70bacf219028f2e639533d9f68856071ebf23",
+   "translation.json": "d83ac8b9bdfbee8cdc381aa08fd443116fb86c02ac3b9a5028bf742810cd0ccb"
+  }
+ },
+ "schema_version": 1,
+ "symbols": [
+  {
+   "symbol_id": "sym.outcome-set",
+   "macro": "Outcomes",
+   "args": 0,
+   "expansion": "X",
+   "tex": "X",
+   "usage": "\\Outcomes",
+   "unicode": "X",
+   "mathml": "<math><mi>X</mi></math>",
+   "name": {
+    "de": "Ergebnismenge",
+    "en": "outcome set"
+   },
+   "meaning": {
+    "de": "Menge der Elementarereignisse (Stichprobenraum) eines Systems",
+    "en": "set of elementary outcomes (sample space) of a system"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D53",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.probability-weight",
+   "macro": "pw",
+   "args": 0,
+   "expansion": "p",
+   "tex": "p",
+   "usage": "\\pw",
+   "unicode": "p",
+   "mathml": "<math><mi>p</mi></math>",
+   "name": {
+    "de": "Wahrscheinlichkeitsgewicht",
+    "en": "probability weight"
+   },
+   "meaning": {
+    "de": "Wahrscheinlichkeitsverteilung p(x) auf der Ergebnismenge; im klassischen Fall die Präparation",
+    "en": "probability distribution p(x) on the outcome set; in the classical case the preparation"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D54",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.indicator",
+   "macro": "ind",
+   "args": 1,
+   "expansion": "\\chi_{#1}",
+   "tex": "\\chi_{{S}}",
+   "usage": "\\ind{S}",
+   "unicode": "χ_S",
+   "mathml": "<math><msub><mi>χ</mi><mi>S</mi></msub></math>",
+   "name": {
+    "de": "Indikatorfunktion",
+    "en": "indicator function"
+   },
+   "meaning": {
+    "de": "Funktion, die auf dem Ereignis S den Wert 1 und sonst 0 hat; die klassische Ja-Nein-Messung",
+    "en": "function equal to 1 on the event S and 0 elsewhere; the classical yes-no measurement"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C1",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.expectation",
+   "macro": "Ex",
+   "args": 0,
+   "expansion": "\\mathbb{E}",
+   "tex": "\\mathbb{E}",
+   "usage": "\\Ex",
+   "unicode": "𝔼",
+   "mathml": "<math><mi>𝔼</mi></math>",
+   "name": {
+    "de": "Erwartungswert",
+    "en": "expectation value"
+   },
+   "meaning": {
+    "de": "Erwartungswertfunktional einer Präparation",
+    "en": "expectation functional of a preparation"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D55",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.probability",
+   "macro": "Prob",
+   "args": 0,
+   "expansion": "\\mathbb{P}",
+   "tex": "\\mathbb{P}",
+   "usage": "\\Prob",
+   "unicode": "ℙ",
+   "mathml": "<math><mi>ℙ</mi></math>",
+   "name": {
+    "de": "Wahrscheinlichkeit",
+    "en": "probability"
+   },
+   "meaning": {
+    "de": "Wahrscheinlichkeit eines Ereignisses S, ℙ[S] = 𝔼[χ_S]",
+    "en": "probability of an event S, ℙ[S] = 𝔼[χ_S]"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D54",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.variance",
+   "macro": "Var",
+   "args": 0,
+   "expansion": "\\operatorname{Var}",
+   "tex": "\\operatorname{Var}",
+   "usage": "\\Var",
+   "unicode": "Var",
+   "mathml": "<math><mi mathvariant=\"normal\">Var</mi></math>",
+   "name": {
+    "de": "Varianz",
+    "en": "variance"
+   },
+   "meaning": {
+    "de": "Varianz einer Wahrscheinlichkeitsverteilung",
+    "en": "variance of a probability distribution"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D56",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.state-space",
+   "macro": "StSp",
+   "args": 0,
+   "expansion": "K",
+   "tex": "K",
+   "usage": "\\StSp",
+   "unicode": "K",
+   "mathml": "<math><mi>K</mi></math>",
+   "name": {
+    "de": "Zustandsraum",
+    "en": "state space"
+   },
+   "meaning": {
+    "de": "Zustandsraum einer allgemeinen probabilistischen Theorie: kompakte konvexe Menge in einem reellen endlichdimensionalen Vektorraum",
+    "en": "state space of a general probabilistic theory: compact convex set in a real finite-dimensional vector space"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D3",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.effect-algebra",
+   "macro": "EffAlg",
+   "args": 1,
+   "expansion": "E(#1)",
+   "tex": "E({K})",
+   "usage": "\\EffAlg{K}",
+   "unicode": "E(K)",
+   "mathml": "<math><mrow><mi>E</mi><mo>(</mo><mi>K</mi><mo>)</mo></mrow></math>",
+   "name": {
+    "de": "Effektalgebra",
+    "en": "effect algebra"
+   },
+   "meaning": {
+    "de": "Menge aller affinen Funktionen K → [0,1]",
+    "en": "set of all affine functions K → [0,1]"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D2",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.affine-functions",
+   "macro": "Aff",
+   "args": 1,
+   "expansion": "A(#1)",
+   "tex": "A({K})",
+   "usage": "\\Aff{K}",
+   "unicode": "A(K)",
+   "mathml": "<math><mrow><mi>A</mi><mo>(</mo><mi>K</mi><mo>)</mo></mrow></math>",
+   "name": {
+    "de": "Raum der affinen Funktionen",
+    "en": "space of affine functions"
+   },
+   "meaning": {
+    "de": "reeller Vektorraum der affinen Funktionen K → ℝ",
+    "en": "real vector space of affine functions K → ℝ"
+   },
+   "depth": "vertiefung",
+   "first_fixed_in": "D57",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.positive-cone",
+   "macro": "AffPos",
+   "args": 1,
+   "expansion": "A(#1)^{+}",
+   "tex": "A({K})^{+}",
+   "usage": "\\AffPos{K}",
+   "unicode": "A(K)⁺",
+   "mathml": "<math><msup><mrow><mi>A</mi><mo>(</mo><mi>K</mi><mo>)</mo></mrow><mo>+</mo></msup></math>",
+   "name": {
+    "de": "positiver Kegel",
+    "en": "positive cone"
+   },
+   "meaning": {
+    "de": "Kegel der nichtnegativen affinen Funktionen auf K",
+    "en": "cone of nonnegative affine functions on K"
+   },
+   "depth": "vertiefung",
+   "first_fixed_in": "D57",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.dual-space",
+   "macro": "AffDual",
+   "args": 1,
+   "expansion": "A(#1)^{*}",
+   "tex": "A({K})^{*}",
+   "usage": "\\AffDual{K}",
+   "unicode": "A(K)*",
+   "mathml": "<math><msup><mrow><mi>A</mi><mo>(</mo><mi>K</mi><mo>)</mo></mrow><mo>*</mo></msup></math>",
+   "name": {
+    "de": "Dualraum von A(K)",
+    "en": "dual space of A(K)"
+   },
+   "meaning": {
+    "de": "Vektorraum aller linearen Funktionale auf A(K)",
+    "en": "vector space of all linear functionals on A(K)"
+   },
+   "depth": "vertiefung",
+   "first_fixed_in": "D59",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.dual-cone",
+   "macro": "AffDualPos",
+   "args": 1,
+   "expansion": "A(#1)^{*+}",
+   "tex": "A({K})^{*+}",
+   "usage": "\\AffDualPos{K}",
+   "unicode": "A(K)*⁺",
+   "mathml": "<math><msup><mrow><mi>A</mi><mo>(</mo><mi>K</mi><mo>)</mo></mrow><mrow><mo>*</mo><mo>+</mo></mrow></msup></math>",
+   "name": {
+    "de": "dualer Kegel",
+    "en": "dual cone"
+   },
+   "meaning": {
+    "de": "Kegel der auf A(K)⁺ nichtnegativen linearen Funktionale",
+    "en": "cone of linear functionals that are nonnegative on A(K)⁺"
+   },
+   "depth": "vertiefung",
+   "first_fixed_in": "D59",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.unit-effect",
+   "macro": "UnitEff",
+   "args": 1,
+   "expansion": "1_{#1}",
+   "tex": "1_{{K}}",
+   "usage": "\\UnitEff{K}",
+   "unicode": "1_K",
+   "mathml": "<math><msub><mn>1</mn><mi>K</mi></msub></math>",
+   "name": {
+    "de": "Einseffekt",
+    "en": "unit effect"
+   },
+   "meaning": {
+    "de": "konstante Funktion 1 auf K",
+    "en": "constant function 1 on K"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D58",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.order-unit",
+   "macro": "OrdUnit",
+   "args": 0,
+   "expansion": "u",
+   "tex": "u",
+   "usage": "\\OrdUnit",
+   "unicode": "u",
+   "mathml": "<math><mi>u</mi></math>",
+   "name": {
+    "de": "Ordnungseinheit",
+    "en": "order unit"
+   },
+   "meaning": {
+    "de": "ausgezeichnetes Element eines geordneten Vektorraums, dessen Vielfache jedes Element majorisieren",
+    "en": "distinguished element of an ordered vector space whose multiples dominate every element"
+   },
+   "depth": "fundament",
+   "first_fixed_in": "D6",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.pairing",
+   "macro": "pair",
+   "args": 2,
+   "expansion": "\\langle #1, #2 \\rangle",
+   "tex": "\\langle {x}, {f} \\rangle",
+   "usage": "\\pair{x}{f}",
+   "unicode": "⟨x, f⟩",
+   "mathml": "<math><mrow><mo>⟨</mo><mi>x</mi><mo>,</mo><mi>f</mi><mo>⟩</mo></mrow></math>",
+   "name": {
+    "de": "Paarung Zustand-Effekt",
+    "en": "state-effect pairing"
+   },
+   "meaning": {
+    "de": "Wert des Effekts f im Zustand x; Zustand im ersten Platz",
+    "en": "value of the effect f in the state x; state in the first slot"
+   },
+   "depth": "vertiefung",
+   "first_fixed_in": "D59",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.channels",
+   "macro": "Chan",
+   "args": 2,
+   "expansion": "\\mathcal{C}(#1, #2)",
+   "tex": "\\mathcal{C}({K_A}, {K_B})",
+   "usage": "\\Chan{K_A}{K_B}",
+   "unicode": "𝒞(K_A, K_B)",
+   "mathml": "<math><mrow><mi>𝒞</mi><mo>(</mo><msub><mi>K</mi><mi>A</mi></msub><mo>,</mo><msub><mi>K</mi><mi>B</mi></msub><mo>)</mo></mrow></math>",
+   "name": {
+    "de": "Menge der Kanäle",
+    "en": "set of channels"
+   },
+   "meaning": {
+    "de": "Menge der affinen Abbildungen K_A → K_B",
+    "en": "set of affine maps K_A → K_B"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D8",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.simplex",
+   "macro": "Simplex",
+   "args": 1,
+   "expansion": "\\Delta_{#1}",
+   "tex": "\\Delta_{{n}}",
+   "usage": "\\Simplex{n}",
+   "unicode": "Δ_n",
+   "mathml": "<math><msub><mi mathvariant=\"normal\">Δ</mi><mi>n</mi></msub></math>",
+   "name": {
+    "de": "Simplex",
+    "en": "simplex"
+   },
+   "meaning": {
+    "de": "klassischer Zustandsraum mit n reinen Zuständen: konvexe Hülle von n affin unabhängigen Punkten",
+    "en": "classical state space with n pure states: convex hull of n affinely independent points"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D11",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.extreme-points",
+   "macro": "ext",
+   "args": 0,
+   "expansion": "\\operatorname{ext}",
+   "tex": "\\operatorname{ext}",
+   "usage": "\\ext",
+   "unicode": "ext",
+   "mathml": "<math><mi mathvariant=\"normal\">ext</mi></math>",
+   "name": {
+    "de": "Extremalpunkte",
+    "en": "extreme points"
+   },
+   "meaning": {
+    "de": "Menge der Extremalpunkte (reinen Zustände) einer konvexen Menge",
+    "en": "set of extreme points (pure states) of a convex set"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D4",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.convex-hull",
+   "macro": "conv",
+   "args": 0,
+   "expansion": "\\operatorname{conv}",
+   "tex": "\\operatorname{conv}",
+   "usage": "\\conv",
+   "unicode": "conv",
+   "mathml": "<math><mi mathvariant=\"normal\">conv</mi></math>",
+   "name": {
+    "de": "konvexe Hülle",
+    "en": "convex hull"
+   },
+   "meaning": {
+    "de": "konvexe Hülle einer Menge",
+    "en": "convex hull of a set"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D11",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.cone-hull",
+   "macro": "cone",
+   "args": 0,
+   "expansion": "\\operatorname{cone}",
+   "tex": "\\operatorname{cone}",
+   "usage": "\\cone",
+   "unicode": "cone",
+   "mathml": "<math><mi mathvariant=\"normal\">cone</mi></math>",
+   "name": {
+    "de": "erzeugter Kegel",
+    "en": "generated cone"
+   },
+   "meaning": {
+    "de": "kleinster Kegel, der eine Menge enthält",
+    "en": "smallest cone containing a set"
+   },
+   "depth": "vertiefung",
+   "first_fixed_in": "D57",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.hilbert-space",
+   "macro": "Hil",
+   "args": 0,
+   "expansion": "\\mathcal{H}",
+   "tex": "\\mathcal{H}",
+   "usage": "\\Hil",
+   "unicode": "ℋ",
+   "mathml": "<math><mi>ℋ</mi></math>",
+   "name": {
+    "de": "Hilbertraum",
+    "en": "Hilbert space"
+   },
+   "meaning": {
+    "de": "Hilbertraum eines quantenmechanischen Systems",
+    "en": "Hilbert space of a quantum-mechanical system"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D14",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.inner-product",
+   "macro": "braket",
+   "args": 2,
+   "expansion": "\\langle #1 \\mid #2 \\rangle",
+   "tex": "\\langle {\\phi} \\mid {\\psi} \\rangle",
+   "usage": "\\braket{\\phi}{\\psi}",
+   "unicode": "⟨φ|ψ⟩",
+   "mathml": "<math><mrow><mo>⟨</mo><mi>ϕ</mi><mo>|</mo><mi>ψ</mi><mo>⟩</mo></mrow></math>",
+   "name": {
+    "de": "Skalarprodukt",
+    "en": "inner product"
+   },
+   "meaning": {
+    "de": "Skalarprodukt, antilinear im ersten und linear im zweiten Argument",
+    "en": "inner product, antilinear in the first and linear in the second argument"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D14",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.bounded-operators",
+   "macro": "BdOp",
+   "args": 1,
+   "expansion": "B(#1)",
+   "tex": "B({\\mathcal{H}})",
+   "usage": "\\BdOp{\\mathcal{H}}",
+   "unicode": "B(ℋ)",
+   "mathml": "<math><mrow><mi>B</mi><mo>(</mo><mi>ℋ</mi><mo>)</mo></mrow></math>",
+   "name": {
+    "de": "beschränkte Operatoren",
+    "en": "bounded operators"
+   },
+   "meaning": {
+    "de": "Algebra der beschränkten Operatoren auf ℋ",
+    "en": "algebra of bounded operators on ℋ"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D15",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.bounded-selfadjoint",
+   "macro": "BdSa",
+   "args": 1,
+   "expansion": "B(#1)_{\\mathrm{sa}}",
+   "tex": "B({\\mathcal{H}})_{\\mathrm{sa}}",
+   "usage": "\\BdSa{\\mathcal{H}}",
+   "unicode": "B(ℋ)_sa",
+   "mathml": "<math><msub><mrow><mi>B</mi><mo>(</mo><mi>ℋ</mi><mo>)</mo></mrow><mi mathvariant=\"normal\">sa</mi></msub></math>",
+   "name": {
+    "de": "beschränkte selbstadjungierte Operatoren",
+    "en": "bounded self-adjoint operators"
+   },
+   "meaning": {
+    "de": "reeller Vektorraum der beschränkten selbstadjungierten Operatoren",
+    "en": "real vector space of bounded self-adjoint operators"
+   },
+   "depth": "vertiefung",
+   "first_fixed_in": "D15",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.trace-class",
+   "macro": "TrCl",
+   "args": 1,
+   "expansion": "T(#1)",
+   "tex": "T({\\mathcal{H}})",
+   "usage": "\\TrCl{\\mathcal{H}}",
+   "unicode": "T(ℋ)",
+   "mathml": "<math><mrow><mi>T</mi><mo>(</mo><mi>ℋ</mi><mo>)</mo></mrow></math>",
+   "name": {
+    "de": "Spurklasseoperatoren",
+    "en": "trace-class operators"
+   },
+   "meaning": {
+    "de": "Raum der Spurklasseoperatoren auf ℋ",
+    "en": "space of trace-class operators on ℋ"
+   },
+   "depth": "vertiefung",
+   "first_fixed_in": "D21",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.density-operators",
+   "macro": "DensOps",
+   "args": 1,
+   "expansion": "\\mathcal{D}(#1)",
+   "tex": "\\mathcal{D}({\\mathcal{H}})",
+   "usage": "\\DensOps{\\mathcal{H}}",
+   "unicode": "𝒟(ℋ)",
+   "mathml": "<math><mrow><mi>𝒟</mi><mo>(</mo><mi>ℋ</mi><mo>)</mo></mrow></math>",
+   "name": {
+    "de": "Menge der Dichteoperatoren",
+    "en": "set of density operators"
+   },
+   "meaning": {
+    "de": "Zustandsraum der Quantentheorie",
+    "en": "state space of quantum theory"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D22",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.effect-operators",
+   "macro": "EffOps",
+   "args": 1,
+   "expansion": "\\mathcal{E}(#1)",
+   "tex": "\\mathcal{E}({\\mathcal{H}})",
+   "usage": "\\EffOps{\\mathcal{H}}",
+   "unicode": "ℰ(ℋ)",
+   "mathml": "<math><mrow><mi>ℰ</mi><mo>(</mo><mi>ℋ</mi><mo>)</mo></mrow></math>",
+   "name": {
+    "de": "Menge der Effektoperatoren",
+    "en": "set of effect operators"
+   },
+   "meaning": {
+    "de": "Operatoren zwischen 0 und der Identität",
+    "en": "operators between 0 and the identity"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D24",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.effect-operator",
+   "macro": "EffOp",
+   "args": 0,
+   "expansion": "F",
+   "tex": "F",
+   "usage": "\\EffOp",
+   "unicode": "F",
+   "mathml": "<math><mi>F</mi></math>",
+   "name": {
+    "de": "Effektoperator",
+    "en": "effect operator"
+   },
+   "meaning": {
+    "de": "einzelner Effekt (Detektor) der Quantentheorie",
+    "en": "single effect (detector) of quantum theory"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D24",
+   "status": "collision-open",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.tensor-min",
+   "macro": "tmin",
+   "args": 0,
+   "expansion": "\\otimes_{\\mathrm{min}}",
+   "tex": "\\otimes_{\\mathrm{min}}",
+   "usage": "\\tmin",
+   "unicode": "⊗_min",
+   "mathml": "<math><msub><mo>⊗</mo><mi mathvariant=\"normal\">min</mi></msub></math>",
+   "name": {
+    "de": "minimales Tensorprodukt",
+    "en": "minimal tensor product"
+   },
+   "meaning": {
+    "de": "minimales Tensorprodukt von Zustandsräumen",
+    "en": "minimal tensor product of state spaces"
+   },
+   "depth": "fundament",
+   "first_fixed_in": "D13",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.tensor-max",
+   "macro": "tmax",
+   "args": 0,
+   "expansion": "\\otimes_{\\mathrm{max}}",
+   "tex": "\\otimes_{\\mathrm{max}}",
+   "usage": "\\tmax",
+   "unicode": "⊗_max",
+   "mathml": "<math><msub><mo>⊗</mo><mi mathvariant=\"normal\">max</mi></msub></math>",
+   "name": {
+    "de": "maximales Tensorprodukt",
+    "en": "maximal tensor product"
+   },
+   "meaning": {
+    "de": "maximales Tensorprodukt von Zustandsräumen",
+    "en": "maximal tensor product of state spaces"
+   },
+   "depth": "fundament",
+   "first_fixed_in": "D13",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.density-operator",
+   "macro": "rho",
+   "args": 0,
+   "expansion": "\\rho",
+   "tex": "\\rho",
+   "usage": "\\rho",
+   "unicode": "ρ",
+   "mathml": "<math><mi>ρ</mi></math>",
+   "name": {
+    "de": "Dichteoperator",
+    "en": "density operator"
+   },
+   "meaning": {
+    "de": "Zustand (Präparation) eines Quantensystems",
+    "en": "state (preparation) of a quantum system"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D22",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.algebraic-state",
+   "macro": "AlgSt",
+   "args": 0,
+   "expansion": "\\omega",
+   "tex": "\\omega",
+   "usage": "\\AlgSt",
+   "unicode": "ω",
+   "mathml": "<math><mi>ω</mi></math>",
+   "name": {
+    "de": "algebraischer Zustand",
+    "en": "algebraic state"
+   },
+   "meaning": {
+    "de": "positives normiertes lineares Funktional auf einer Operatoralgebra",
+    "en": "positive normalised linear functional on an operator algebra"
+   },
+   "depth": "fundament",
+   "first_fixed_in": "D23",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.identity",
+   "macro": "Id",
+   "args": 0,
+   "expansion": "\\mathbb{I}",
+   "tex": "\\mathbb{I}",
+   "usage": "\\Id",
+   "unicode": "𝕀",
+   "mathml": "<math><mi>𝕀</mi></math>",
+   "name": {
+    "de": "Einsoperator",
+    "en": "identity operator"
+   },
+   "meaning": {
+    "de": "Identität auf dem Hilbertraum",
+    "en": "identity on the Hilbert space"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C3",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.trace",
+   "macro": "tr",
+   "args": 0,
+   "expansion": "\\operatorname{tr}",
+   "tex": "\\operatorname{tr}",
+   "usage": "\\tr",
+   "unicode": "tr",
+   "mathml": "<math><mi mathvariant=\"normal\">tr</mi></math>",
+   "name": {
+    "de": "Spur",
+    "en": "trace"
+   },
+   "meaning": {
+    "de": "Spur eines Operators, nicht normiert",
+    "en": "trace of an operator, not normalised"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D21",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.adjoint",
+   "macro": "adj",
+   "args": 0,
+   "expansion": "^{\\dagger}",
+   "tex": "^{\\dagger}",
+   "usage": "\\adj",
+   "unicode": "†",
+   "mathml": "<math><msup><mrow/><mo>†</mo></msup></math>",
+   "name": {
+    "de": "Adjungierte",
+    "en": "adjoint"
+   },
+   "meaning": {
+    "de": "adjungierter Operator, als Suffix geschrieben",
+    "en": "adjoint operator, written as a suffix"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D17",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.operator-hat",
+   "macro": "op",
+   "args": 1,
+   "expansion": "\\widehat{#1}",
+   "tex": "\\widehat{{A}}",
+   "usage": "\\op{A}",
+   "unicode": "Â",
+   "mathml": "<math><mover accent=\"true\"><mi>A</mi><mo>^</mo></mover></math>",
+   "name": {
+    "de": "Operatorhut",
+    "en": "operator hat"
+   },
+   "meaning": {
+    "de": "Kennzeichnung eines Operators durch ein Dach",
+    "en": "marking of an operator by a hat"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C3",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.hbar",
+   "macro": "hbar",
+   "args": 0,
+   "expansion": "\\hbar",
+   "tex": "\\hbar",
+   "usage": "\\hbar",
+   "unicode": "ℏ",
+   "mathml": "<math><mi mathvariant=\"normal\">ℏ</mi></math>",
+   "name": {
+    "de": "reduziertes Plancksches Wirkungsquantum",
+    "en": "reduced Planck constant"
+   },
+   "meaning": {
+    "de": "ℏ wird in SI-Einheiten ausgeschrieben",
+    "en": "ℏ is written out in SI units"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C5",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.time-evolution",
+   "macro": "Ut",
+   "args": 1,
+   "expansion": "U_{#1}",
+   "tex": "U_{{t}}",
+   "usage": "\\Ut{t}",
+   "unicode": "U_t",
+   "mathml": "<math><msub><mi>U</mi><mi>t</mi></msub></math>",
+   "name": {
+    "de": "Zeitentwicklungsoperator",
+    "en": "time-evolution operator"
+   },
+   "meaning": {
+    "de": "unitäre Zeitentwicklung im Schrödingerbild",
+    "en": "unitary time evolution in the Schrödinger picture"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D29",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.heisenberg-picture",
+   "macro": "Heis",
+   "args": 2,
+   "expansion": "#1_{#2}",
+   "tex": "{A}_{{t}}",
+   "usage": "\\Heis{A}{t}",
+   "unicode": "A_t",
+   "mathml": "<math><msub><mi>A</mi><mi>t</mi></msub></math>",
+   "name": {
+    "de": "Heisenbergbild-Observable",
+    "en": "Heisenberg-picture observable"
+   },
+   "meaning": {
+    "de": "zeitentwickelte Observable im Heisenbergbild",
+    "en": "time-evolved observable in the Heisenberg picture"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C9",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.fourier-transform",
+   "macro": "FT",
+   "args": 1,
+   "expansion": "\\widehat{#1}",
+   "tex": "\\widehat{{f}}",
+   "usage": "\\FT{f}",
+   "unicode": "f̂",
+   "mathml": "<math><mover accent=\"true\"><mi>f</mi><mo>^</mo></mover></math>",
+   "name": {
+    "de": "Fouriertransformierte",
+    "en": "Fourier transform"
+   },
+   "meaning": {
+    "de": "Fouriertransformierte einer Funktion",
+    "en": "Fourier transform of a function"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C5",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.position-operator",
+   "macro": "xop",
+   "args": 0,
+   "expansion": "\\widehat{x}",
+   "tex": "\\widehat{x}",
+   "usage": "\\xop",
+   "unicode": "x̂",
+   "mathml": "<math><mover accent=\"true\"><mi>x</mi><mo>^</mo></mover></math>",
+   "name": {
+    "de": "Ortsoperator",
+    "en": "position operator"
+   },
+   "meaning": {
+    "de": "Ortsoperator",
+    "en": "position operator"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C5",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.momentum-operator",
+   "macro": "pop",
+   "args": 0,
+   "expansion": "\\widehat{p}",
+   "tex": "\\widehat{p}",
+   "usage": "\\pop",
+   "unicode": "p̂",
+   "mathml": "<math><mover accent=\"true\"><mi>p</mi><mo>^</mo></mover></math>",
+   "name": {
+    "de": "Impulsoperator",
+    "en": "momentum operator"
+   },
+   "meaning": {
+    "de": "Impulsoperator",
+    "en": "momentum operator"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C5",
+   "status": "collision-open",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.commutator",
+   "macro": "comm",
+   "args": 2,
+   "expansion": "\\left[ #1, #2 \\right]",
+   "tex": "\\left[ {A}, {B} \\right]",
+   "usage": "\\comm{A}{B}",
+   "unicode": "[A, B]",
+   "mathml": "<math><mrow><mo>[</mo><mi>A</mi><mo>,</mo><mi>B</mi><mo>]</mo></mrow></math>",
+   "name": {
+    "de": "Kommutator",
+    "en": "commutator"
+   },
+   "meaning": {
+    "de": "AB − BA",
+    "en": "AB − BA"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C3",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.anticommutator",
+   "macro": "acomm",
+   "args": 2,
+   "expansion": "\\left\\{ #1, #2 \\right\\}",
+   "tex": "\\left\\{ {A}, {B} \\right\\}",
+   "usage": "\\acomm{A}{B}",
+   "unicode": "{A, B}",
+   "mathml": "<math><mrow><mo>{</mo><mi>A</mi><mo>,</mo><mi>B</mi><mo>}</mo></mrow></math>",
+   "name": {
+    "de": "Antikommutator",
+    "en": "anticommutator"
+   },
+   "meaning": {
+    "de": "AB + BA",
+    "en": "AB + BA"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C14",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.orbital-angular-momentum",
+   "macro": "Lj",
+   "args": 1,
+   "expansion": "\\widehat{L}_{#1}",
+   "tex": "\\widehat{L}_{{j}}",
+   "usage": "\\Lj{j}",
+   "unicode": "L̂_j",
+   "mathml": "<math><msub><mover accent=\"true\"><mi>L</mi><mo>^</mo></mover><mi>j</mi></msub></math>",
+   "name": {
+    "de": "Bahndrehimpuls",
+    "en": "orbital angular momentum"
+   },
+   "meaning": {
+    "de": "Komponente des Bahndrehimpulsoperators",
+    "en": "component of the orbital angular momentum operator"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D33",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.angular-momentum-squared",
+   "macro": "Lsq",
+   "args": 0,
+   "expansion": "\\widehat{L}^2",
+   "tex": "\\widehat{L}^2",
+   "usage": "\\Lsq",
+   "unicode": "L̂²",
+   "mathml": "<math><msup><mover accent=\"true\"><mi>L</mi><mo>^</mo></mover><mn>2</mn></msup></math>",
+   "name": {
+    "de": "Drehimpulsquadrat",
+    "en": "squared angular momentum"
+   },
+   "meaning": {
+    "de": "Quadrat des Bahndrehimpulsoperators",
+    "en": "square of the orbital angular momentum operator"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D33",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.ladder-operators",
+   "macro": "Lpm",
+   "args": 0,
+   "expansion": "\\widehat{L}_{\\pm}",
+   "tex": "\\widehat{L}_{\\pm}",
+   "usage": "\\Lpm",
+   "unicode": "L̂_±",
+   "mathml": "<math><msub><mover accent=\"true\"><mi>L</mi><mo>^</mo></mover><mo>±</mo></msub></math>",
+   "name": {
+    "de": "Leiteroperatoren",
+    "en": "ladder operators"
+   },
+   "meaning": {
+    "de": "Auf- und Absteigeoperatoren des Drehimpulses",
+    "en": "raising and lowering operators of angular momentum"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D33",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.spin",
+   "macro": "Sj",
+   "args": 1,
+   "expansion": "\\widehat{S}_{#1}",
+   "tex": "\\widehat{S}_{{j}}",
+   "usage": "\\Sj{j}",
+   "unicode": "Ŝ_j",
+   "mathml": "<math><msub><mover accent=\"true\"><mi>S</mi><mo>^</mo></mover><mi>j</mi></msub></math>",
+   "name": {
+    "de": "Spin",
+    "en": "spin"
+   },
+   "meaning": {
+    "de": "Komponente des Spinoperators",
+    "en": "component of the spin operator"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D34",
+   "status": "collision-open",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.general-angular-momentum",
+   "macro": "Jj",
+   "args": 1,
+   "expansion": "\\widehat{J}_{#1}",
+   "tex": "\\widehat{J}_{{j}}",
+   "usage": "\\Jj{j}",
+   "unicode": "Ĵ_j",
+   "mathml": "<math><msub><mover accent=\"true\"><mi>J</mi><mo>^</mo></mover><mi>j</mi></msub></math>",
+   "name": {
+    "de": "allgemeiner Drehimpuls",
+    "en": "general angular momentum"
+   },
+   "meaning": {
+    "de": "Komponente eines allgemeinen Drehimpulsoperators",
+    "en": "component of a general angular momentum operator"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D33",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.orbital-quantum-number",
+   "macro": "lqn",
+   "args": 0,
+   "expansion": "\\ell",
+   "tex": "\\ell",
+   "usage": "\\lqn",
+   "unicode": "ℓ",
+   "mathml": "<math><mi>ℓ</mi></math>",
+   "name": {
+    "de": "Drehimpulsquantenzahl",
+    "en": "orbital quantum number"
+   },
+   "meaning": {
+    "de": "ℓ = 0, 1, …, n−1",
+    "en": "ℓ = 0, 1, …, n−1"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D65",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.magnetic-quantum-number",
+   "macro": "mqn",
+   "args": 0,
+   "expansion": "m",
+   "tex": "m",
+   "usage": "\\mqn",
+   "unicode": "m",
+   "mathml": "<math><mi>m</mi></math>",
+   "name": {
+    "de": "magnetische Quantenzahl",
+    "en": "magnetic quantum number"
+   },
+   "meaning": {
+    "de": "m = −ℓ, …, ℓ",
+    "en": "m = −ℓ, …, ℓ"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D65",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.principal-quantum-number",
+   "macro": "nqn",
+   "args": 0,
+   "expansion": "n",
+   "tex": "n",
+   "usage": "\\nqn",
+   "unicode": "n",
+   "mathml": "<math><mi>n</mi></math>",
+   "name": {
+    "de": "Hauptquantenzahl",
+    "en": "principal quantum number"
+   },
+   "meaning": {
+    "de": "n = 1, 2, …",
+    "en": "n = 1, 2, …"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D65",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.spherical-harmonic",
+   "macro": "Ylm",
+   "args": 2,
+   "expansion": "Y_{#1}^{#2}",
+   "tex": "Y_{{\\ell}}^{{m}}",
+   "usage": "\\Ylm{\\ell}{m}",
+   "unicode": "Y_ℓ^m",
+   "mathml": "<math><msubsup><mi>Y</mi><mi>ℓ</mi><mi>m</mi></msubsup></math>",
+   "name": {
+    "de": "Kugelflächenfunktion",
+    "en": "spherical harmonic"
+   },
+   "meaning": {
+    "de": "gemeinsame Eigenfunktion von L̂² und L̂_3 auf der Sphäre, mit Condon-Shortley-Phase",
+    "en": "joint eigenfunction of L̂² and L̂_3 on the sphere, with the Condon-Shortley phase"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D67",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.associated-legendre",
+   "macro": "Plm",
+   "args": 2,
+   "expansion": "P_{#1}^{#2}",
+   "tex": "P_{{\\ell}}^{{m}}",
+   "usage": "\\Plm{\\ell}{m}",
+   "unicode": "P_ℓ^m",
+   "mathml": "<math><msubsup><mi>P</mi><mi>ℓ</mi><mi>m</mi></msubsup></math>",
+   "name": {
+    "de": "zugeordnete Legendrefunktion",
+    "en": "associated Legendre function"
+   },
+   "meaning": {
+    "de": "zugeordnete Legendrefunktion, in der Schreibweise des Skripts ohne Phasenfaktor",
+    "en": "associated Legendre function, in the script's form without phase factor"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D67",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.laguerre",
+   "macro": "Lag",
+   "args": 2,
+   "expansion": "L_{#1}^{(#2)}",
+   "tex": "L_{{k}}^{({\\alpha})}",
+   "usage": "\\Lag{k}{\\alpha}",
+   "unicode": "L_k^(α)",
+   "mathml": "<math><msubsup><mi>L</mi><mi>k</mi><mrow><mo>(</mo><mi>α</mi><mo>)</mo></mrow></msubsup></math>",
+   "name": {
+    "de": "verallgemeinertes Laguerre-Polynom",
+    "en": "generalised Laguerre polynomial"
+   },
+   "meaning": {
+    "de": "verallgemeinertes Laguerre-Polynom vom Grad k, Konvention CONV-LAGUERRE",
+    "en": "generalised Laguerre polynomial of degree k, convention CONV-LAGUERRE"
+   },
+   "depth": "vertiefung",
+   "first_fixed_in": "D68",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.bohr-radius",
+   "macro": "aBohr",
+   "args": 0,
+   "expansion": "a_0",
+   "tex": "a_0",
+   "usage": "\\aBohr",
+   "unicode": "a₀",
+   "mathml": "<math><msub><mi>a</mi><mn>0</mn></msub></math>",
+   "name": {
+    "de": "Bohrscher Radius",
+    "en": "Bohr radius"
+   },
+   "meaning": {
+    "de": "Bohrscher Radius für unendlich schweren Kern (mit der Elektronenmasse)",
+    "en": "Bohr radius for infinite nuclear mass (with the electron mass)"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D63",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.bohr-radius-reduced",
+   "macro": "aRed",
+   "args": 0,
+   "expansion": "a_{\\mu}",
+   "tex": "a_{\\mu}",
+   "usage": "\\aRed",
+   "unicode": "a_μ",
+   "mathml": "<math><msub><mi>a</mi><mi>μ</mi></msub></math>",
+   "name": {
+    "de": "Bohrscher Radius mit reduzierter Masse",
+    "en": "Bohr radius with the reduced mass"
+   },
+   "meaning": {
+    "de": "a_μ = a₀ m_e/μ",
+    "en": "a_μ = a₀ m_e/μ"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D63",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.rydberg-energy",
+   "macro": "Ryd",
+   "args": 0,
+   "expansion": "\\mathrm{Ry}",
+   "tex": "\\mathrm{Ry}",
+   "usage": "\\Ryd",
+   "unicode": "Ry",
+   "mathml": "<math><mi mathvariant=\"normal\">Ry</mi></math>",
+   "name": {
+    "de": "Rydberg-Energie",
+    "en": "Rydberg energy"
+   },
+   "meaning": {
+    "de": "Betrag der Grundzustandsenergie für Z = 1 und unendlich schweren Kern",
+    "en": "magnitude of the ground-state energy for Z = 1 and infinite nuclear mass"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D64",
+   "status": "proposed",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.reduced-mass",
+   "macro": "massRed",
+   "args": 0,
+   "expansion": "\\mu",
+   "tex": "\\mu",
+   "usage": "\\massRed",
+   "unicode": "μ",
+   "mathml": "<math><mi>μ</mi></math>",
+   "name": {
+    "de": "reduzierte Masse",
+    "en": "reduced mass"
+   },
+   "meaning": {
+    "de": "reduzierte Masse des Zweikörperproblems",
+    "en": "reduced mass of the two-body problem"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D62",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.electron-mass",
+   "macro": "massE",
+   "args": 0,
+   "expansion": "m_{\\mathrm{e}}",
+   "tex": "m_{\\mathrm{e}}",
+   "usage": "\\massE",
+   "unicode": "m_e",
+   "mathml": "<math><msub><mi>m</mi><mi mathvariant=\"normal\">e</mi></msub></math>",
+   "name": {
+    "de": "Elektronenmasse",
+    "en": "electron mass"
+   },
+   "meaning": {
+    "de": "Masse des Elektrons",
+    "en": "mass of the electron"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D60",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.proton-mass",
+   "macro": "massP",
+   "args": 0,
+   "expansion": "m_{\\mathrm{p}}",
+   "tex": "m_{\\mathrm{p}}",
+   "usage": "\\massP",
+   "unicode": "m_p",
+   "mathml": "<math><msub><mi>m</mi><mi mathvariant=\"normal\">p</mi></msub></math>",
+   "name": {
+    "de": "Protonenmasse",
+    "en": "proton mass"
+   },
+   "meaning": {
+    "de": "Masse des Protons",
+    "en": "mass of the proton"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D60",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.total-mass",
+   "macro": "massTot",
+   "args": 0,
+   "expansion": "M",
+   "tex": "M",
+   "usage": "\\massTot",
+   "unicode": "M",
+   "mathml": "<math><mi>M</mi></math>",
+   "name": {
+    "de": "Gesamtmasse",
+    "en": "total mass"
+   },
+   "meaning": {
+    "de": "M = m_e + m_p",
+    "en": "M = m_e + m_p"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D61",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.electron-position",
+   "macro": "posE",
+   "args": 0,
+   "expansion": "\\boldsymbol{r}_{\\mathrm{e}}",
+   "tex": "\\boldsymbol{r}_{\\mathrm{e}}",
+   "usage": "\\posE",
+   "unicode": "𝒓_e",
+   "mathml": "<math><msub><mi>𝒓</mi><mi mathvariant=\"normal\">e</mi></msub></math>",
+   "name": {
+    "de": "Ort des Elektrons",
+    "en": "position of the electron"
+   },
+   "meaning": {
+    "de": "Ortsvektor des Elektrons",
+    "en": "position vector of the electron"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D60",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.proton-position",
+   "macro": "posP",
+   "args": 0,
+   "expansion": "\\boldsymbol{r}_{\\mathrm{p}}",
+   "tex": "\\boldsymbol{r}_{\\mathrm{p}}",
+   "usage": "\\posP",
+   "unicode": "𝒓_p",
+   "mathml": "<math><msub><mi>𝒓</mi><mi mathvariant=\"normal\">p</mi></msub></math>",
+   "name": {
+    "de": "Ort des Protons",
+    "en": "position of the proton"
+   },
+   "meaning": {
+    "de": "Ortsvektor des Protons",
+    "en": "position vector of the proton"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D60",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.centre-of-mass-coordinate",
+   "macro": "posCM",
+   "args": 0,
+   "expansion": "\\boldsymbol{R}",
+   "tex": "\\boldsymbol{R}",
+   "usage": "\\posCM",
+   "unicode": "𝑹",
+   "mathml": "<math><mi>𝑹</mi></math>",
+   "name": {
+    "de": "Schwerpunktskoordinate",
+    "en": "centre-of-mass coordinate"
+   },
+   "meaning": {
+    "de": "Ort des Schwerpunkts",
+    "en": "position of the centre of mass"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D61",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.relative-coordinate",
+   "macro": "posRel",
+   "args": 0,
+   "expansion": "\\boldsymbol{r}",
+   "tex": "\\boldsymbol{r}",
+   "usage": "\\posRel",
+   "unicode": "𝒓",
+   "mathml": "<math><mi>𝒓</mi></math>",
+   "name": {
+    "de": "Relativkoordinate",
+    "en": "relative coordinate"
+   },
+   "meaning": {
+    "de": "Ort des Elektrons relativ zum Proton",
+    "en": "position of the electron relative to the proton"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D61",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.radial-coordinate",
+   "macro": "rad",
+   "args": 0,
+   "expansion": "r",
+   "tex": "r",
+   "usage": "\\rad",
+   "unicode": "r",
+   "mathml": "<math><mi>r</mi></math>",
+   "name": {
+    "de": "Radialkoordinate",
+    "en": "radial coordinate"
+   },
+   "meaning": {
+    "de": "Betrag der Relativkoordinate",
+    "en": "modulus of the relative coordinate"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D61",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.nuclear-charge",
+   "macro": "Znuc",
+   "args": 0,
+   "expansion": "Z",
+   "tex": "Z",
+   "usage": "\\Znuc",
+   "unicode": "Z",
+   "mathml": "<math><mi>Z</mi></math>",
+   "name": {
+    "de": "Kernladungszahl",
+    "en": "nuclear charge number"
+   },
+   "meaning": {
+    "de": "Kernladungszahl; Z = 1 für Wasserstoff",
+    "en": "nuclear charge number; Z = 1 for hydrogen"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D60",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.elementary-charge",
+   "macro": "echarge",
+   "args": 0,
+   "expansion": "e",
+   "tex": "e",
+   "usage": "\\echarge",
+   "unicode": "e",
+   "mathml": "<math><mi>e</mi></math>",
+   "name": {
+    "de": "Elementarladung",
+    "en": "elementary charge"
+   },
+   "meaning": {
+    "de": "Elementarladung",
+    "en": "elementary charge"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D60",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.vacuum-permittivity",
+   "macro": "epsz",
+   "args": 0,
+   "expansion": "\\epsilon_0",
+   "tex": "\\epsilon_0",
+   "usage": "\\epsz",
+   "unicode": "ϵ₀",
+   "mathml": "<math><msub><mi>ϵ</mi><mn>0</mn></msub></math>",
+   "name": {
+    "de": "elektrische Feldkonstante",
+    "en": "vacuum permittivity"
+   },
+   "meaning": {
+    "de": "elektrische Feldkonstante (SI)",
+    "en": "vacuum permittivity (SI)"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D60",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.potential",
+   "macro": "Vpot",
+   "args": 0,
+   "expansion": "V",
+   "tex": "V",
+   "usage": "\\Vpot",
+   "unicode": "V",
+   "mathml": "<math><mi>V</mi></math>",
+   "name": {
+    "de": "Potential",
+    "en": "potential"
+   },
+   "meaning": {
+    "de": "potentielle Energie als Funktion der Relativkoordinate",
+    "en": "potential energy as a function of the relative coordinate"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D60",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.laplacian",
+   "macro": "Lap",
+   "args": 0,
+   "expansion": "\\Delta",
+   "tex": "\\Delta",
+   "usage": "\\Lap",
+   "unicode": "Δ",
+   "mathml": "<math><mi mathvariant=\"normal\">Δ</mi></math>",
+   "name": {
+    "de": "Laplace-Operator",
+    "en": "Laplacian"
+   },
+   "meaning": {
+    "de": "Laplace-Operator; ein Index nennt die Koordinate",
+    "en": "Laplacian; a subscript names the coordinate"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D60",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.standard-deviation",
+   "macro": "stdev",
+   "args": 1,
+   "expansion": "\\Delta #1",
+   "tex": "\\Delta {x}",
+   "usage": "\\stdev{x}",
+   "unicode": "Δx",
+   "mathml": "<math><mrow><mi mathvariant=\"normal\">Δ</mi><mi>x</mi></mrow></math>",
+   "name": {
+    "de": "Standardabweichung",
+    "en": "standard deviation"
+   },
+   "meaning": {
+    "de": "Wurzel der Varianz",
+    "en": "square root of the variance"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D31",
+   "status": "collision-open",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.hamiltonian",
+   "macro": "Ham",
+   "args": 0,
+   "expansion": "H",
+   "tex": "H",
+   "usage": "\\Ham",
+   "unicode": "H",
+   "mathml": "<math><mi>H</mi></math>",
+   "name": {
+    "de": "Hamiltonoperator",
+    "en": "Hamiltonian"
+   },
+   "meaning": {
+    "de": "Hamiltonoperator eines Systems",
+    "en": "Hamiltonian of a system"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D30",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.hamiltonian-two-body",
+   "macro": "HamTot",
+   "args": 0,
+   "expansion": "H_{\\mathrm{tot}}",
+   "tex": "H_{\\mathrm{tot}}",
+   "usage": "\\HamTot",
+   "unicode": "H_tot",
+   "mathml": "<math><msub><mi>H</mi><mi mathvariant=\"normal\">tot</mi></msub></math>",
+   "name": {
+    "de": "Zweikörper-Hamiltonoperator",
+    "en": "two-body Hamiltonian"
+   },
+   "meaning": {
+    "de": "Hamiltonoperator von Elektron und Proton auf L²(ℝ⁶)",
+    "en": "Hamiltonian of electron and proton on L²(ℝ⁶)"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D60",
+   "status": "proposed",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.hamiltonian-cm",
+   "macro": "HamCM",
+   "args": 0,
+   "expansion": "H_{\\mathrm{cm}}",
+   "tex": "H_{\\mathrm{cm}}",
+   "usage": "\\HamCM",
+   "unicode": "H_cm",
+   "mathml": "<math><msub><mi>H</mi><mi mathvariant=\"normal\">cm</mi></msub></math>",
+   "name": {
+    "de": "Schwerpunkts-Hamiltonoperator",
+    "en": "centre-of-mass Hamiltonian"
+   },
+   "meaning": {
+    "de": "kinetische Energie des Schwerpunkts",
+    "en": "kinetic energy of the centre of mass"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C11",
+   "status": "proposed",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.hamiltonian-relative",
+   "macro": "HamRel",
+   "args": 0,
+   "expansion": "H_{\\mathrm{rel}}",
+   "tex": "H_{\\mathrm{rel}}",
+   "usage": "\\HamRel",
+   "unicode": "H_rel",
+   "mathml": "<math><msub><mi>H</mi><mi mathvariant=\"normal\">rel</mi></msub></math>",
+   "name": {
+    "de": "Hamiltonoperator der Relativbewegung",
+    "en": "Hamiltonian of the relative motion"
+   },
+   "meaning": {
+    "de": "Hamiltonoperator der Relativbewegung mit reduzierter Masse",
+    "en": "Hamiltonian of the relative motion with the reduced mass"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C11",
+   "status": "proposed",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.unitary",
+   "macro": "Uni",
+   "args": 0,
+   "expansion": "U",
+   "tex": "U",
+   "usage": "\\Uni",
+   "unicode": "U",
+   "mathml": "<math><mi>U</mi></math>",
+   "name": {
+    "de": "unitärer Operator",
+    "en": "unitary operator"
+   },
+   "meaning": {
+    "de": "unitärer Operator; in C11 der Koordinatenwechsel auf L²(ℝ⁶)",
+    "en": "unitary operator; in C11 the change of coordinates on L²(ℝ⁶)"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C11",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.radial-function",
+   "macro": "Rnl",
+   "args": 2,
+   "expansion": "R_{#1 #2}",
+   "tex": "R_{{n} {\\ell}}",
+   "usage": "\\Rnl{n}{\\ell}",
+   "unicode": "R_nℓ",
+   "mathml": "<math><msub><mi>R</mi><mrow><mi>n</mi><mi>ℓ</mi></mrow></msub></math>",
+   "name": {
+    "de": "Radialfunktion",
+    "en": "radial function"
+   },
+   "meaning": {
+    "de": "Radialanteil der Eigenfunktion zur Hauptquantenzahl n und Drehimpulsquantenzahl ℓ",
+    "en": "radial part of the eigenfunction with principal quantum number n and orbital quantum number ℓ"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D66",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.hydrogen-eigenfunction",
+   "macro": "psinlm",
+   "args": 3,
+   "expansion": "\\psi_{#1 #2 #3}",
+   "tex": "\\psi_{{n} {\\ell} {m}}",
+   "usage": "\\psinlm{n}{\\ell}{m}",
+   "unicode": "ψ_nℓm",
+   "mathml": "<math><msub><mi>ψ</mi><mrow><mi>n</mi><mi>ℓ</mi><mi>m</mi></mrow></msub></math>",
+   "name": {
+    "de": "Eigenfunktion des Wasserstoffatoms",
+    "en": "hydrogen eigenfunction"
+   },
+   "meaning": {
+    "de": "gebundene Eigenfunktion der Relativbewegung",
+    "en": "bound eigenfunction of the relative motion"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D69",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.energy-level",
+   "macro": "En",
+   "args": 1,
+   "expansion": "E_{#1}",
+   "tex": "E_{{n}}",
+   "usage": "\\En{n}",
+   "unicode": "E_n",
+   "mathml": "<math><msub><mi>E</mi><mi>n</mi></msub></math>",
+   "name": {
+    "de": "Energieniveau",
+    "en": "energy level"
+   },
+   "meaning": {
+    "de": "Energieeigenwert zur Hauptquantenzahl n",
+    "en": "energy eigenvalue with principal quantum number n"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C11",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.total-energy",
+   "macro": "Etot",
+   "args": 0,
+   "expansion": "E_{\\mathrm{tot}}",
+   "tex": "E_{\\mathrm{tot}}",
+   "usage": "\\Etot",
+   "unicode": "E_tot",
+   "mathml": "<math><msub><mi>E</mi><mi mathvariant=\"normal\">tot</mi></msub></math>",
+   "name": {
+    "de": "Gesamtenergie",
+    "en": "total energy"
+   },
+   "meaning": {
+    "de": "Energie des Zweikörpersystems einschließlich der Schwerpunktsbewegung",
+    "en": "energy of the two-body system including the centre-of-mass motion"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C11",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.relative-energy",
+   "macro": "Eint",
+   "args": 0,
+   "expansion": "E_{\\mathrm{rel}}",
+   "tex": "E_{\\mathrm{rel}}",
+   "usage": "\\Eint",
+   "unicode": "E_rel",
+   "mathml": "<math><msub><mi>E</mi><mi mathvariant=\"normal\">rel</mi></msub></math>",
+   "name": {
+    "de": "Energie der Relativbewegung",
+    "en": "energy of the relative motion"
+   },
+   "meaning": {
+    "de": "innere Energie des Atoms: Energie der Relativbewegung ohne Schwerpunktsanteil",
+    "en": "internal energy of the atom: energy of the relative motion without the centre-of-mass part"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C11",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.l2-space",
+   "macro": "Ltwo",
+   "args": 1,
+   "expansion": "L^{2}(#1)",
+   "tex": "L^{2}({\\mathbb{R}^3})",
+   "usage": "\\Ltwo{\\mathbb{R}^3}",
+   "unicode": "L²(ℝ³)",
+   "mathml": "<math><mrow><msup><mi>L</mi><mn>2</mn></msup><mo>(</mo><msup><mi>ℝ</mi><mn>3</mn></msup><mo>)</mo></mrow></math>",
+   "name": {
+    "de": "Raum der quadratintegrierbaren Funktionen",
+    "en": "space of square-integrable functions"
+   },
+   "meaning": {
+    "de": "Hilbertraum der quadratintegrierbaren Funktionen",
+    "en": "Hilbert space of square-integrable functions"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C5",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.sobolev-h2",
+   "macro": "SobTwo",
+   "args": 1,
+   "expansion": "H^{2}(#1)",
+   "tex": "H^{2}({\\mathbb{R}^3})",
+   "usage": "\\SobTwo{\\mathbb{R}^3}",
+   "unicode": "H²(ℝ³)",
+   "mathml": "<math><mrow><msup><mi>H</mi><mn>2</mn></msup><mo>(</mo><msup><mi>ℝ</mi><mn>3</mn></msup><mo>)</mo></mrow></math>",
+   "name": {
+    "de": "Sobolevraum zweiter Ordnung",
+    "en": "second-order Sobolev space"
+   },
+   "meaning": {
+    "de": "Sobolevraum H²",
+    "en": "Sobolev space H²"
+   },
+   "depth": "fundament",
+   "first_fixed_in": "C11",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.test-functions",
+   "macro": "Ccinf",
+   "args": 1,
+   "expansion": "C_{c}^{\\infty}(#1)",
+   "tex": "C_{c}^{\\infty}({\\mathbb{R}^3})",
+   "usage": "\\Ccinf{\\mathbb{R}^3}",
+   "unicode": "C_c^∞(ℝ³)",
+   "mathml": "<math><mrow><msubsup><mi>C</mi><mi>c</mi><mi mathvariant=\"normal\">∞</mi></msubsup><mo>(</mo><msup><mi>ℝ</mi><mn>3</mn></msup><mo>)</mo></mrow></math>",
+   "name": {
+    "de": "Testfunktionen",
+    "en": "test functions"
+   },
+   "meaning": {
+    "de": "glatte Funktionen mit kompaktem Träger",
+    "en": "smooth functions with compact support"
+   },
+   "depth": "vertiefung",
+   "first_fixed_in": "C5",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.schwartz-space",
+   "macro": "Schw",
+   "args": 1,
+   "expansion": "\\mathcal{S}(#1)",
+   "tex": "\\mathcal{S}({\\mathbb{R}^n})",
+   "usage": "\\Schw{\\mathbb{R}^n}",
+   "unicode": "𝒮(ℝⁿ)",
+   "mathml": "<math><mrow><mi>𝒮</mi><mo>(</mo><msup><mi>ℝ</mi><mi>n</mi></msup><mo>)</mo></mrow></math>",
+   "name": {
+    "de": "Schwartzraum",
+    "en": "Schwartz space"
+   },
+   "meaning": {
+    "de": "Raum der schnell fallenden Funktionen",
+    "en": "space of rapidly decreasing functions"
+   },
+   "depth": "vertiefung",
+   "first_fixed_in": "C5",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.partition-function",
+   "macro": "Zcan",
+   "args": 0,
+   "expansion": "\\mathcal{Z}",
+   "tex": "\\mathcal{Z}",
+   "usage": "\\Zcan",
+   "unicode": "𝒵",
+   "mathml": "<math><mi>𝒵</mi></math>",
+   "name": {
+    "de": "kanonische Zustandssumme",
+    "en": "canonical partition function"
+   },
+   "meaning": {
+    "de": "kanonische Zustandssumme",
+    "en": "canonical partition function"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D46",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.grand-partition-function",
+   "macro": "Zgc",
+   "args": 0,
+   "expansion": "\\Xi",
+   "tex": "\\Xi",
+   "usage": "\\Zgc",
+   "unicode": "Ξ",
+   "mathml": "<math><mi mathvariant=\"normal\">Ξ</mi></math>",
+   "name": {
+    "de": "großkanonische Zustandssumme",
+    "en": "grand canonical partition function"
+   },
+   "meaning": {
+    "de": "großkanonische Zustandssumme",
+    "en": "grand canonical partition function"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D47",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.permutation-operator",
+   "macro": "Uperm",
+   "args": 1,
+   "expansion": "U_{#1}",
+   "tex": "U_{{\\pi}}",
+   "usage": "\\Uperm{\\pi}",
+   "unicode": "U_π",
+   "mathml": "<math><msub><mi>U</mi><mi>π</mi></msub></math>",
+   "name": {
+    "de": "Permutationsoperator",
+    "en": "permutation operator"
+   },
+   "meaning": {
+    "de": "unitäre Darstellung einer Permutation auf dem N-Teilchen-Raum",
+    "en": "unitary representation of a permutation on the N-particle space"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D37",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.symmetriser",
+   "macro": "Psym",
+   "args": 0,
+   "expansion": "P_{\\pm}",
+   "tex": "P_{\\pm}",
+   "usage": "\\Psym",
+   "unicode": "P_±",
+   "mathml": "<math><msub><mi>P</mi><mo>±</mo></msub></math>",
+   "name": {
+    "de": "(Anti-)Symmetrisierer",
+    "en": "(anti)symmetriser"
+   },
+   "meaning": {
+    "de": "Projektor auf den (anti)symmetrischen Unterraum",
+    "en": "projector onto the (anti)symmetric subspace"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D38",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.n-particle-space",
+   "macro": "HilN",
+   "args": 1,
+   "expansion": "\\mathcal{H}_{\\pm}^{\\otimes #1}",
+   "tex": "\\mathcal{H}_{\\pm}^{\\otimes {N}}",
+   "usage": "\\HilN{N}",
+   "unicode": "ℋ_±^⊗N",
+   "mathml": "<math><msubsup><mi>ℋ</mi><mo>±</mo><mrow><mo>⊗</mo><mi>N</mi></mrow></msubsup></math>",
+   "name": {
+    "de": "N-Teilchen-Raum",
+    "en": "N-particle space"
+   },
+   "meaning": {
+    "de": "Raum von N Bosonen oder Fermionen",
+    "en": "space of N bosons or fermions"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D38",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.fock-space",
+   "macro": "Fock",
+   "args": 1,
+   "expansion": "\\mathcal{F}_{\\pm}(#1)",
+   "tex": "\\mathcal{F}_{\\pm}({\\mathcal{H}})",
+   "usage": "\\Fock{\\mathcal{H}}",
+   "unicode": "ℱ_±(ℋ)",
+   "mathml": "<math><mrow><msub><mi>ℱ</mi><mo>±</mo></msub><mo>(</mo><mi>ℋ</mi><mo>)</mo></mrow></math>",
+   "name": {
+    "de": "Fockraum",
+    "en": "Fock space"
+   },
+   "meaning": {
+    "de": "bosonischer oder fermionischer Fockraum",
+    "en": "bosonic or fermionic Fock space"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D39",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.vacuum",
+   "macro": "Vac",
+   "args": 0,
+   "expansion": "\\Omega",
+   "tex": "\\Omega",
+   "usage": "\\Vac",
+   "unicode": "Ω",
+   "mathml": "<math><mi mathvariant=\"normal\">Ω</mi></math>",
+   "name": {
+    "de": "Fock-Vakuum",
+    "en": "Fock vacuum"
+   },
+   "meaning": {
+    "de": "Vakuumvektor des Fockraums",
+    "en": "vacuum vector of Fock space"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D39",
+   "status": "collision-open",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.microcanonical-count",
+   "macro": "Nmc",
+   "args": 1,
+   "expansion": "N_{#1}",
+   "tex": "N_{{E}}",
+   "usage": "\\Nmc{E}",
+   "unicode": "N_E",
+   "mathml": "<math><msub><mi>N</mi><mi>E</mi></msub></math>",
+   "name": {
+    "de": "mikrokanonische Zustandszahl",
+    "en": "microcanonical state count"
+   },
+   "meaning": {
+    "de": "Zahl der Zustände in der Energieschale",
+    "en": "number of states in the energy shell"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D45",
+   "status": "collision-open",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.annihilation-operator",
+   "macro": "ann",
+   "args": 1,
+   "expansion": "a(#1)",
+   "tex": "a({f})",
+   "usage": "\\ann{f}",
+   "unicode": "a(f)",
+   "mathml": "<math><mrow><mi>a</mi><mo>(</mo><mi>f</mi><mo>)</mo></mrow></math>",
+   "name": {
+    "de": "Vernichtungsoperator",
+    "en": "annihilation operator"
+   },
+   "meaning": {
+    "de": "Vernichtungsoperator, antilinear in f",
+    "en": "annihilation operator, antilinear in f"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D40",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.creation-operator",
+   "macro": "cre",
+   "args": 1,
+   "expansion": "a^{\\dagger}(#1)",
+   "tex": "a^{\\dagger}({f})",
+   "usage": "\\cre{f}",
+   "unicode": "a†(f)",
+   "mathml": "<math><mrow><msup><mi>a</mi><mo>†</mo></msup><mo>(</mo><mi>f</mi><mo>)</mo></mrow></math>",
+   "name": {
+    "de": "Erzeugungsoperator",
+    "en": "creation operator"
+   },
+   "meaning": {
+    "de": "Erzeugungsoperator, linear in f",
+    "en": "creation operator, linear in f"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D40",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.mode-operator",
+   "macro": "amode",
+   "args": 1,
+   "expansion": "a_{#1}",
+   "tex": "a_{{k}}",
+   "usage": "\\amode{k}",
+   "unicode": "a_k",
+   "mathml": "<math><msub><mi>a</mi><mi>k</mi></msub></math>",
+   "name": {
+    "de": "Modenoperator",
+    "en": "mode operator"
+   },
+   "meaning": {
+    "de": "Vernichtungsoperator einer Mode",
+    "en": "annihilation operator of a mode"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D40",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.mode-number-operator",
+   "macro": "nmode",
+   "args": 1,
+   "expansion": "\\widehat{n}_{#1}",
+   "tex": "\\widehat{n}_{{k}}",
+   "usage": "\\nmode{k}",
+   "unicode": "n̂_k",
+   "mathml": "<math><msub><mover accent=\"true\"><mi>n</mi><mo>^</mo></mover><mi>k</mi></msub></math>",
+   "name": {
+    "de": "Besetzungszahloperator",
+    "en": "occupation number operator"
+   },
+   "meaning": {
+    "de": "Besetzungszahloperator einer Mode",
+    "en": "occupation number operator of a mode"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D40",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.number-operator",
+   "macro": "Nop",
+   "args": 0,
+   "expansion": "\\widehat{N}",
+   "tex": "\\widehat{N}",
+   "usage": "\\Nop",
+   "unicode": "N̂",
+   "mathml": "<math><mover accent=\"true\"><mi>N</mi><mo>^</mo></mover></math>",
+   "name": {
+    "de": "Teilchenzahloperator",
+    "en": "number operator"
+   },
+   "meaning": {
+    "de": "Teilchenzahloperator auf dem Fockraum",
+    "en": "particle number operator on Fock space"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D43",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.second-quantisation",
+   "macro": "Gam",
+   "args": 1,
+   "expansion": "\\Gamma(#1)",
+   "tex": "\\Gamma({A})",
+   "usage": "\\Gam{A}",
+   "unicode": "Γ(A)",
+   "mathml": "<math><mrow><mi mathvariant=\"normal\">Γ</mi><mo>(</mo><mi>A</mi><mo>)</mo></mrow></math>",
+   "name": {
+    "de": "zweite Quantisierung eines Operators",
+    "en": "second quantisation of an operator"
+   },
+   "meaning": {
+    "de": "Fortsetzung eines Einteilchenoperators auf den Fockraum",
+    "en": "lift of a one-particle operator to Fock space"
+   },
+   "depth": "vertiefung",
+   "first_fixed_in": "D43",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.second-quantisation-generator",
+   "macro": "dGam",
+   "args": 1,
+   "expansion": "\\mathrm{d}\\Gamma(#1)",
+   "tex": "\\mathrm{d}\\Gamma({H})",
+   "usage": "\\dGam{H}",
+   "unicode": "dΓ(H)",
+   "mathml": "<math><mrow><mi mathvariant=\"normal\">d</mi><mi mathvariant=\"normal\">Γ</mi><mo>(</mo><mi>H</mi><mo>)</mo></mrow></math>",
+   "name": {
+    "de": "zweite Quantisierung eines Generators",
+    "en": "second quantisation of a generator"
+   },
+   "meaning": {
+    "de": "additive Fortsetzung eines Einteilchengenerators",
+    "en": "additive lift of a one-particle generator"
+   },
+   "depth": "vertiefung",
+   "first_fixed_in": "D43",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.field-operator",
+   "macro": "Field",
+   "args": 1,
+   "expansion": "\\widehat{\\Psi}(#1)",
+   "tex": "\\widehat{\\Psi}({x})",
+   "usage": "\\Field{x}",
+   "unicode": "Ψ̂(x)",
+   "mathml": "<math><mrow><mover accent=\"true\"><mi mathvariant=\"normal\">Ψ</mi><mo>^</mo></mover><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math>",
+   "name": {
+    "de": "Feldoperator",
+    "en": "field operator"
+   },
+   "meaning": {
+    "de": "Feldoperator am Ort x oder verschmiert mit f",
+    "en": "field operator at the point x or smeared with f"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C14",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.normal-ordering",
+   "macro": "nord",
+   "args": 1,
+   "expansion": "{:}#1{:}",
+   "tex": "{:}{A}{:}",
+   "usage": "\\nord{A}",
+   "unicode": ":A:",
+   "mathml": "<math><mrow><mo>:</mo><mi>A</mi><mo>:</mo></mrow></math>",
+   "name": {
+    "de": "Normalordnung",
+    "en": "normal ordering"
+   },
+   "meaning": {
+    "de": "Normalordnung bezüglich eines benannten Vakuums",
+    "en": "normal ordering relative to a named vacuum"
+   },
+   "depth": "vertiefung",
+   "first_fixed_in": "D42",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.von-neumann-entropy",
+   "macro": "SvN",
+   "args": 0,
+   "expansion": "S_{\\mathrm{vN}}",
+   "tex": "S_{\\mathrm{vN}}",
+   "usage": "\\SvN",
+   "unicode": "S_vN",
+   "mathml": "<math><msub><mi>S</mi><mi mathvariant=\"normal\">vN</mi></msub></math>",
+   "name": {
+    "de": "von-Neumann-Entropie",
+    "en": "von Neumann entropy"
+   },
+   "meaning": {
+    "de": "dimensionslose Entropie eines Zustands",
+    "en": "dimensionless entropy of a state"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D44",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.entropy",
+   "macro": "Sth",
+   "args": 0,
+   "expansion": "S",
+   "tex": "S",
+   "usage": "\\Sth",
+   "unicode": "S",
+   "mathml": "<math><mi>S</mi></math>",
+   "name": {
+    "de": "thermodynamische Entropie",
+    "en": "thermodynamic entropy"
+   },
+   "meaning": {
+    "de": "Entropie mit Boltzmann-Konstante",
+    "en": "entropy with the Boltzmann constant"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D44",
+   "status": "collision-open",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.boltzmann-constant",
+   "macro": "kB",
+   "args": 0,
+   "expansion": "k_{\\mathrm{B}}",
+   "tex": "k_{\\mathrm{B}}",
+   "usage": "\\kB",
+   "unicode": "k_B",
+   "mathml": "<math><msub><mi>k</mi><mi mathvariant=\"normal\">B</mi></msub></math>",
+   "name": {
+    "de": "Boltzmann-Konstante",
+    "en": "Boltzmann constant"
+   },
+   "meaning": {
+    "de": "Boltzmann-Konstante",
+    "en": "Boltzmann constant"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C15",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.natural-logarithm",
+   "macro": "ln",
+   "args": 0,
+   "expansion": "\\ln",
+   "tex": "\\ln",
+   "usage": "\\ln",
+   "unicode": "ln",
+   "mathml": "<math><mi mathvariant=\"normal\">ln</mi></math>",
+   "name": {
+    "de": "natürlicher Logarithmus",
+    "en": "natural logarithm"
+   },
+   "meaning": {
+    "de": "natürlicher Logarithmus",
+    "en": "natural logarithm"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C15",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.inverse-temperature",
+   "macro": "beta",
+   "args": 0,
+   "expansion": "\\beta",
+   "tex": "\\beta",
+   "usage": "\\beta",
+   "unicode": "β",
+   "mathml": "<math><mi>β</mi></math>",
+   "name": {
+    "de": "inverse Temperatur",
+    "en": "inverse temperature"
+   },
+   "meaning": {
+    "de": "inverse Temperatur",
+    "en": "inverse temperature"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D46",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.temperature",
+   "macro": "Temp",
+   "args": 0,
+   "expansion": "T",
+   "tex": "T",
+   "usage": "\\Temp",
+   "unicode": "T",
+   "mathml": "<math><mi>T</mi></math>",
+   "name": {
+    "de": "Temperatur",
+    "en": "temperature"
+   },
+   "meaning": {
+    "de": "absolute Temperatur",
+    "en": "absolute temperature"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D49",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.internal-energy",
+   "macro": "Uint",
+   "args": 0,
+   "expansion": "U",
+   "tex": "U",
+   "usage": "\\Uint",
+   "unicode": "U",
+   "mathml": "<math><mi>U</mi></math>",
+   "name": {
+    "de": "innere Energie",
+    "en": "internal energy"
+   },
+   "meaning": {
+    "de": "innere Energie",
+    "en": "internal energy"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C19",
+   "status": "collision-open",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.helmholtz-energy",
+   "macro": "Fhelm",
+   "args": 0,
+   "expansion": "F",
+   "tex": "F",
+   "usage": "\\Fhelm",
+   "unicode": "F",
+   "mathml": "<math><mi>F</mi></math>",
+   "name": {
+    "de": "freie Energie",
+    "en": "Helmholtz free energy"
+   },
+   "meaning": {
+    "de": "freie Energie (Helmholtz)",
+    "en": "Helmholtz free energy"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D52",
+   "status": "collision-open",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.gibbs-energy",
+   "macro": "Ggibbs",
+   "args": 0,
+   "expansion": "G",
+   "tex": "G",
+   "usage": "\\Ggibbs",
+   "unicode": "G",
+   "mathml": "<math><mi>G</mi></math>",
+   "name": {
+    "de": "freie Enthalpie",
+    "en": "Gibbs energy"
+   },
+   "meaning": {
+    "de": "freie Enthalpie (Gibbs)",
+    "en": "Gibbs energy"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D52",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.enthalpy",
+   "macro": "Henth",
+   "args": 0,
+   "expansion": "H_{\\mathrm{enth}}",
+   "tex": "H_{\\mathrm{enth}}",
+   "usage": "\\Henth",
+   "unicode": "H_enth",
+   "mathml": "<math><msub><mi>H</mi><mi mathvariant=\"normal\">enth</mi></msub></math>",
+   "name": {
+    "de": "Enthalpie",
+    "en": "enthalpy"
+   },
+   "meaning": {
+    "de": "Enthalpie",
+    "en": "enthalpy"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D52",
+   "status": "collision-open",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.chemical-potential",
+   "macro": "chempot",
+   "args": 0,
+   "expansion": "\\mu",
+   "tex": "\\mu",
+   "usage": "\\chempot",
+   "unicode": "μ",
+   "mathml": "<math><mi>μ</mi></math>",
+   "name": {
+    "de": "chemisches Potential",
+    "en": "chemical potential"
+   },
+   "meaning": {
+    "de": "chemisches Potential",
+    "en": "chemical potential"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D47",
+   "status": "collision-open",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.particle-number",
+   "macro": "Npart",
+   "args": 0,
+   "expansion": "N",
+   "tex": "N",
+   "usage": "\\Npart",
+   "unicode": "N",
+   "mathml": "<math><mi>N</mi></math>",
+   "name": {
+    "de": "Teilchenzahl",
+    "en": "particle number"
+   },
+   "meaning": {
+    "de": "Teilchenzahl",
+    "en": "particle number"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C13",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.volume",
+   "macro": "Vol",
+   "args": 0,
+   "expansion": "V",
+   "tex": "V",
+   "usage": "\\Vol",
+   "unicode": "V",
+   "mathml": "<math><mi>V</mi></math>",
+   "name": {
+    "de": "Volumen",
+    "en": "volume"
+   },
+   "meaning": {
+    "de": "Volumen",
+    "en": "volume"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C16",
+   "status": "collision-open",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.pressure",
+   "macro": "pres",
+   "args": 0,
+   "expansion": "p",
+   "tex": "p",
+   "usage": "\\pres",
+   "unicode": "p",
+   "mathml": "<math><mi>p</mi></math>",
+   "name": {
+    "de": "Druck",
+    "en": "pressure"
+   },
+   "meaning": {
+    "de": "Druck",
+    "en": "pressure"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C19",
+   "status": "collision-open",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.heat",
+   "macro": "Qheat",
+   "args": 0,
+   "expansion": "Q",
+   "tex": "Q",
+   "usage": "\\Qheat",
+   "unicode": "Q",
+   "mathml": "<math><mi>Q</mi></math>",
+   "name": {
+    "de": "Wärme",
+    "en": "heat"
+   },
+   "meaning": {
+    "de": "dem System zugeführte Wärme",
+    "en": "heat supplied to the system"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D51",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.work",
+   "macro": "Wwork",
+   "args": 0,
+   "expansion": "W",
+   "tex": "W",
+   "usage": "\\Wwork",
+   "unicode": "W",
+   "mathml": "<math><mi>W</mi></math>",
+   "name": {
+    "de": "Arbeit",
+    "en": "work"
+   },
+   "meaning": {
+    "de": "am System verrichtete Arbeit",
+    "en": "work done on the system"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D51",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.inexact-differential",
+   "macro": "dinexact",
+   "args": 0,
+   "expansion": "\\bar{\\mathrm{d}}",
+   "tex": "\\bar{\\mathrm{d}}",
+   "usage": "\\dinexact",
+   "unicode": "đ",
+   "mathml": "<math><mover accent=\"true\"><mi mathvariant=\"normal\">d</mi><mo>¯</mo></mover></math>",
+   "name": {
+    "de": "unvollständiges Differential",
+    "en": "inexact differential"
+   },
+   "meaning": {
+    "de": "Kennzeichnung einer Prozessgröße",
+    "en": "mark of a process quantity"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D51",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.efficiency",
+   "macro": "effic",
+   "args": 0,
+   "expansion": "\\eta",
+   "tex": "\\eta",
+   "usage": "\\effic",
+   "unicode": "η",
+   "mathml": "<math><mi>η</mi></math>",
+   "name": {
+    "de": "Wirkungsgrad",
+    "en": "efficiency"
+   },
+   "meaning": {
+    "de": "Wirkungsgrad einer Maschine",
+    "en": "efficiency of an engine"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D51",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.carnot-efficiency",
+   "macro": "efficC",
+   "args": 0,
+   "expansion": "\\eta_{\\mathrm{C}}",
+   "tex": "\\eta_{\\mathrm{C}}",
+   "usage": "\\efficC",
+   "unicode": "η_C",
+   "mathml": "<math><msub><mi>η</mi><mi mathvariant=\"normal\">C</mi></msub></math>",
+   "name": {
+    "de": "Carnot-Wirkungsgrad",
+    "en": "Carnot efficiency"
+   },
+   "meaning": {
+    "de": "Wirkungsgrad der Carnot-Maschine",
+    "en": "efficiency of the Carnot engine"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C20",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.pauli-matrix",
+   "macro": "pauli",
+   "args": 1,
+   "expansion": "\\sigma_{#1}",
+   "tex": "\\sigma_{{x}}",
+   "usage": "\\pauli{x}",
+   "unicode": "σ_x",
+   "mathml": "<math><msub><mi>σ</mi><mi>x</mi></msub></math>",
+   "name": {
+    "de": "Pauli-Matrix",
+    "en": "Pauli matrix"
+   },
+   "meaning": {
+    "de": "Pauli-Matrix",
+    "en": "Pauli matrix"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C7",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.spectrum",
+   "macro": "spec",
+   "args": 1,
+   "expansion": "\\sigma(#1)",
+   "tex": "\\sigma({A})",
+   "usage": "\\spec{A}",
+   "unicode": "σ(A)",
+   "mathml": "<math><mrow><mi>σ</mi><mo>(</mo><mi>A</mi><mo>)</mo></mrow></math>",
+   "name": {
+    "de": "Spektrum",
+    "en": "spectrum"
+   },
+   "meaning": {
+    "de": "Spektrum eines Operators",
+    "en": "spectrum of an operator"
+   },
+   "depth": "vertiefung",
+   "first_fixed_in": "D25",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.domain",
+   "macro": "dom",
+   "args": 1,
+   "expansion": "D(#1)",
+   "tex": "D({A})",
+   "usage": "\\dom{A}",
+   "unicode": "D(A)",
+   "mathml": "<math><mrow><mi>D</mi><mo>(</mo><mi>A</mi><mo>)</mo></mrow></math>",
+   "name": {
+    "de": "Definitionsbereich",
+    "en": "domain"
+   },
+   "meaning": {
+    "de": "Definitionsbereich eines Operators",
+    "en": "domain of an operator"
+   },
+   "depth": "vertiefung",
+   "first_fixed_in": "D16",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.time-automorphism",
+   "macro": "tauaut",
+   "args": 1,
+   "expansion": "\\tau_{#1}",
+   "tex": "\\tau_{{t}}",
+   "usage": "\\tauaut{t}",
+   "unicode": "τ_t",
+   "mathml": "<math><msub><mi>τ</mi><mi>t</mi></msub></math>",
+   "name": {
+    "de": "Zeitautomorphismus",
+    "en": "time automorphism"
+   },
+   "meaning": {
+    "de": "Automorphismengruppe der Zeitentwicklung",
+    "en": "automorphism group of the time evolution"
+   },
+   "depth": "fundament",
+   "first_fixed_in": "D48",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.kms-state",
+   "macro": "kms",
+   "args": 0,
+   "expansion": "\\omega_{\\beta}",
+   "tex": "\\omega_{\\beta}",
+   "usage": "\\kms",
+   "unicode": "ω_β",
+   "mathml": "<math><msub><mi>ω</mi><mi>β</mi></msub></math>",
+   "name": {
+    "de": "KMS-Zustand",
+    "en": "KMS state"
+   },
+   "meaning": {
+    "de": "KMS-Zustand zur inversen Temperatur β",
+    "en": "KMS state at inverse temperature β"
+   },
+   "depth": "fundament",
+   "first_fixed_in": "D48",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.time-reversal",
+   "macro": "Trev",
+   "args": 0,
+   "expansion": "\\Theta",
+   "tex": "\\Theta",
+   "usage": "\\Trev",
+   "unicode": "Θ",
+   "mathml": "<math><mi mathvariant=\"normal\">Θ</mi></math>",
+   "name": {
+    "de": "Zeitumkehr",
+    "en": "time reversal"
+   },
+   "meaning": {
+    "de": "antiunitäre Zeitumkehr",
+    "en": "antiunitary time reversal"
+   },
+   "depth": "vertiefung",
+   "first_fixed_in": "D27",
+   "status": "proposed",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.complex-conjugation",
+   "macro": "Conj",
+   "args": 0,
+   "expansion": "J",
+   "tex": "J",
+   "usage": "\\Conj",
+   "unicode": "J",
+   "mathml": "<math><mi>J</mi></math>",
+   "name": {
+    "de": "komplexe Konjugation",
+    "en": "complex conjugation"
+   },
+   "meaning": {
+    "de": "antiunitäre komplexe Konjugation in einer Basis (Wigner-Beweise)",
+    "en": "antiunitary complex conjugation in a basis (Wigner proofs)"
+   },
+   "depth": "vertiefung",
+   "first_fixed_in": "D27",
+   "status": "collision-open",
+   "verified": false
+  },
+  {
+   "symbol_id": "sym.electron-density",
+   "macro": "densE",
+   "args": 0,
+   "expansion": "\\rho_{\\mathrm{e}}",
+   "tex": "\\rho_{\\mathrm{e}}",
+   "usage": "\\densE",
+   "unicode": "ρ_e",
+   "mathml": "<math><msub><mi>ρ</mi><mi mathvariant=\"normal\">e</mi></msub></math>",
+   "name": {
+    "de": "Aufenthaltsdichte des Elektrons im Labor",
+    "en": "laboratory density of the electron"
+   },
+   "meaning": {
+    "de": "Randdichte des Elektronenorts im Zweiteilchenzustand",
+    "en": "marginal density of the electron position in the two-particle state"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D70",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.proton-density",
+   "macro": "densP",
+   "args": 0,
+   "expansion": "\\rho_{\\mathrm{p}}",
+   "tex": "\\rho_{\\mathrm{p}}",
+   "usage": "\\densP",
+   "unicode": "ρ_p",
+   "mathml": "<math><msub><mi>ρ</mi><mi mathvariant=\"normal\">p</mi></msub></math>",
+   "name": {
+    "de": "Aufenthaltsdichte des Protons im Labor",
+    "en": "laboratory density of the proton"
+   },
+   "meaning": {
+    "de": "Randdichte des Protonenorts im Zweiteilchenzustand",
+    "en": "marginal density of the proton position in the two-particle state"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D70",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.effective-potential",
+   "macro": "Veff",
+   "args": 1,
+   "expansion": "V_{#1}^{\\mathrm{eff}}",
+   "tex": "V_{{\\ell}}^{\\mathrm{eff}}",
+   "usage": "\\Veff{\\ell}",
+   "unicode": "V_ℓ^eff",
+   "mathml": "<math><msubsup><mi>V</mi><mi>ℓ</mi><mi mathvariant=\"normal\">eff</mi></msubsup></math>",
+   "name": {
+    "de": "effektives Potential",
+    "en": "effective potential"
+   },
+   "meaning": {
+    "de": "Coulombpotential plus Zentrifugalterm zur Drehimpulsquantenzahl ℓ, mit der reduzierten Masse",
+    "en": "Coulomb potential plus centrifugal term for orbital quantum number ℓ, with the reduced mass"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D71",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.rydberg-energy-reduced",
+   "macro": "RydRed",
+   "args": 0,
+   "expansion": "\\mathrm{Ry}_{\\mu}",
+   "tex": "\\mathrm{Ry}_{\\mu}",
+   "usage": "\\RydRed",
+   "unicode": "Ry_μ",
+   "mathml": "<math><msub><mi mathvariant=\"normal\">Ry</mi><mi>μ</mi></msub></math>",
+   "name": {
+    "de": "Rydberg-Energie mit reduzierter Masse",
+    "en": "Rydberg energy with the reduced mass"
+   },
+   "meaning": {
+    "de": "Ry_μ = Ry·μ/m_e, der Betrag der Grundzustandsenergie der Relativbewegung für Z = 1",
+    "en": "Ry_μ = Ry·μ/m_e, the modulus of the ground-state energy of the relative motion for Z = 1"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C11",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.radial-density",
+   "macro": "Pnl",
+   "args": 2,
+   "expansion": "P_{#1 #2}",
+   "tex": "P_{{n} {\\ell}}",
+   "usage": "\\Pnl{n}{\\ell}",
+   "unicode": "P_nℓ",
+   "mathml": "<math><msub><mi>P</mi><mrow><mi>n</mi><mi>ℓ</mi></mrow></msub></math>",
+   "name": {
+    "de": "radiale Aufenthaltsdichte",
+    "en": "radial probability density"
+   },
+   "meaning": {
+    "de": "P_nℓ(r) = r² R_nℓ(r)², Wahrscheinlichkeitsdichte des Abstands r",
+    "en": "P_nℓ(r) = r² R_nℓ(r)², probability density of the distance r"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D72",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.radial-distribution",
+   "macro": "Fnl",
+   "args": 2,
+   "expansion": "F_{#1 #2}",
+   "tex": "F_{{n} {\\ell}}",
+   "usage": "\\Fnl{n}{\\ell}",
+   "unicode": "F_nℓ",
+   "mathml": "<math><msub><mi>F</mi><mrow><mi>n</mi><mi>ℓ</mi></mrow></msub></math>",
+   "name": {
+    "de": "radiale Verteilungsfunktion",
+    "en": "radial distribution function"
+   },
+   "meaning": {
+    "de": "Wahrscheinlichkeit, den Abstand kleiner als r zu finden",
+    "en": "probability of finding the distance smaller than r"
+   },
+   "depth": "vertiefung",
+   "first_fixed_in": "D73",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.radial-tail-polynomial",
+   "macro": "Qnl",
+   "args": 2,
+   "expansion": "Q_{#1 #2}",
+   "tex": "Q_{{n} {\\ell}}",
+   "usage": "\\Qnl{n}{\\ell}",
+   "unicode": "Q_nℓ",
+   "mathml": "<math><msub><mi>Q</mi><mrow><mi>n</mi><mi>ℓ</mi></mrow></msub></math>",
+   "name": {
+    "de": "Restpolynom der radialen Verteilungsfunktion",
+    "en": "tail polynomial of the radial distribution function"
+   },
+   "meaning": {
+    "de": "Polynom in F_nℓ = 1 − e^{−2x/n} Q_nℓ(x), x = Zr/a_μ",
+    "en": "polynomial in F_nℓ = 1 − e^{−2x/n} Q_nℓ(x), x = Zr/a_μ"
+   },
+   "depth": "vertiefung",
+   "first_fixed_in": "C11",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.planck-constant",
+   "macro": "hPlanck",
+   "args": 0,
+   "expansion": "h",
+   "tex": "h",
+   "usage": "\\hPlanck",
+   "unicode": "h",
+   "mathml": "<math><mi>h</mi></math>",
+   "name": {
+    "de": "Plancksches Wirkungsquantum",
+    "en": "Planck constant"
+   },
+   "meaning": {
+    "de": "h = 2πℏ",
+    "en": "h = 2πℏ"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C11",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.speed-of-light",
+   "macro": "clight",
+   "args": 0,
+   "expansion": "c",
+   "tex": "c",
+   "usage": "\\clight",
+   "unicode": "c",
+   "mathml": "<math><mi>c</mi></math>",
+   "name": {
+    "de": "Lichtgeschwindigkeit im Vakuum",
+    "en": "speed of light in vacuum"
+   },
+   "meaning": {
+    "de": "Lichtgeschwindigkeit im Vakuum",
+    "en": "speed of light in vacuum"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C11",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.rydberg-constant",
+   "macro": "Rinf",
+   "args": 0,
+   "expansion": "R_{\\infty}",
+   "tex": "R_{\\infty}",
+   "usage": "\\Rinf",
+   "unicode": "R_∞",
+   "mathml": "<math><msub><mi>R</mi><mi mathvariant=\"normal\">∞</mi></msub></math>",
+   "name": {
+    "de": "Rydberg-Konstante",
+    "en": "Rydberg constant"
+   },
+   "meaning": {
+    "de": "Rydberg-Konstante für unendlich schweren Kern; Ry = h c R_∞",
+    "en": "Rydberg constant for infinite nuclear mass; Ry = h c R_∞"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C11",
+   "status": "blessed-provisional",
+   "verified": true
+  }
+ ]
+}

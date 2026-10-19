@@ -1007,3 +1007,15 @@ Every URL below returned HTTP 200 to `curl -L` on 2026-10-09 unless marked.
 | [MIT] | Mitsuba 3 participating media and grid volumes | https://mitsuba.readthedocs.io/en/stable/src/generated/plugins_media.html |
 | [THREE] | three.js examples (list from https://threejs.org/examples/files.json, three 0.186.1 on jsDelivr on 2026-10-09): webgl_volume_cloud, webgl_texture3d, webgpu_volume_cloud, webgpu_compute_particles, webgpu_compute_texture_3d, webgpu_compute_audio | https://threejs.org/examples/ |
 | [MANIM] | Manim Community; Motion Canvas; Remotion | https://www.manim.community ; https://motioncanvas.io ; https://www.remotion.dev |
+
+---
+
+## Correction note, 2026-10-11
+
+Added by the Phase 0 coordinator from the codex review (`../review/REVIEW.md`, sections B and G;
+path relative to `docs/plan/research/`). The text above is left as written, as evidence of the
+campaign; where it conflicts with this note, the note governs.
+
+- Lines 671-672: H = -Delta - Z/r has energies -Z^2/(4 n^2). For -Z^2/(2 n^2) the Hamiltonian is -Delta/2 - Z/r. No golden value may be generated from the uncorrected pairing.
+- Lines 612-613, 637, 643: after TJO's two-body decision the relative-coordinate current uses mu, and internal energies, lengths and isotope parameters use one stated mass convention.
+- Lines 760-763: sign-times-square-root-of-rational arithmetic is not closed under sums; extend it or restrict the levels. Lines 785-788: Shannon entropy is a lower bound for twenty-questions par, not in general attainable; use the optimal decision tree's expected length.

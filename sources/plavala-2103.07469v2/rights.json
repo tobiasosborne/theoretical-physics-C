@@ -1,0 +1,15 @@
+{
+ "schema_version": 1,
+ "key": "plavala-2103.07469v2",
+ "holder": "Martin Plávala",
+ "status": "arxiv-nonexclusive",
+ "licence": "arXiv.org perpetual, non-exclusive licence to distribute 1.0 (per the curriculum report S01, 'checked on the abs page'; not re-checked: no network)",
+ "redistribution": "never",
+ "quotation": "short quotations with attribution",
+ "storage_policy": "source stays in the gitignored docs/plan/research/curriculum/plavala-src/; only hashes and metadata are tracked",
+ "public_artifacts": "citation and project-authored exposition; no vendored source, no figures from the paper",
+ "basis": "docs/plan/research/curriculum/REPORT.md source ledger S01 and rigour-process/REPORT.md A.3: the non-exclusive licence does not permit vendoring the work",
+ "unchecked": [
+  "the licence line on the arXiv abs page (not re-read by the evidence package)"
+ ]
+}

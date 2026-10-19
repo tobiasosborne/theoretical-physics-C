@@ -1,0 +1,7 @@
+{
+ "gate": "registry",
+ "what": "Two blessed symbols render as the same token K.",
+ "cmd": "python3 scripts/registry/check_registry.py --root tests/red/registry/token-clash --no-generated",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "token clash: two blessed symbols share the canonical token 'K'"
+}

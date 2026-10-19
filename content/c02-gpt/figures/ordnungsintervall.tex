@@ -1,0 +1,27 @@
+% c02.fig.ordnungsintervall — the effect set as an order interval, for the classical bit.
+%
+% Coordinates (q_0, q_1) = (f(s_0), f(s_1)) of an affine function f on Delta_2.
+% Positive cone A(K)^+ = { q_0 >= 0, q_1 >= 0 } (hatched, drawn up to 1.6).
+% Order unit 1_K = (1,1).  f <= 1_K means 1_K - f in A(K)^+, i.e. f lies in the shifted,
+% reflected cone 1_K - A(K)^+ = { q_0 <= 1, q_1 <= 1 } (hatched the other way).
+% The order interval [0, 1_K] is the intersection: the unit square E(Delta_2).
+% Greyscale: the two cones are told apart by the direction of their hatching.
+\begin{tikzpicture}[x=2.1cm, y=2.1cm]
+  \fill[pattern=north east lines, pattern color=tpc-grey-3] (0,0) rectangle (1.6,1.6);
+  \fill[pattern=north west lines, pattern color=tpc-grey-3] (-0.6,-0.6) rectangle (1,1);
+  \fill[tpc-plate] (0,0) rectangle (1,1);
+  \fill[tpc-effect!16!tpc-plate] (0,0) rectangle (1,1);
+  \draw[tpc axis] (0,1.6) -- (0,0) -- (1.6,0);
+  \draw[tpc axis] (-0.6,1) -- (1,1) -- (1,-0.6);
+  \draw[tpc axis, -{Stealth[length=4pt]}] (1.6,0) -- (1.85,0);
+  \draw[tpc axis, -{Stealth[length=4pt]}] (0,1.6) -- (0,1.85);
+  \node[tpc label, anchor=west] at (1.85,0) {$q_0$};
+  \node[tpc label, anchor=south] at (0,1.85) {$q_1$};
+  \fill[tpc-effect] (0,0) ++(-2pt,-2pt) rectangle ++(4pt,4pt);
+  \fill[tpc-effect] (1,1) ++(-2pt,-2pt) rectangle ++(4pt,4pt);
+  \node[tpc label, anchor=north east, fill=tpc-plate, inner sep=1.5pt] at (-0.03,-0.03) {$0$};
+  \node[tpc label, anchor=south west, fill=tpc-plate, inner sep=1.5pt] at (1.03,1.03) {$1_K$};
+  \node[tpc label, fill=tpc-plate, inner sep=1.5pt] at (1.3,0.42) {$A(K)^{+}$};
+  \node[tpc label, fill=tpc-plate, inner sep=1.5pt] at (0.42,-0.33) {$1_K - A(K)^{+}$};
+  \node[tpc label] at (0.5,0.5) {$E(K) = [0, 1_K]$};
+\end{tikzpicture}

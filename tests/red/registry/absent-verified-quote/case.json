@@ -1,0 +1,7 @@
+{
+  "gate": "registry",
+  "what": "A verified text quote has no source member on disk.",
+  "cmd": "python3 scripts/registry/check_registry.py --root tests/red/registry/absent-verified-quote --no-generated --private",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "not verified in this run: .*verified quote source member is absent: fixture-book/notes.txt"
+}

@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A private payload is absent in private mode.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/payload-missing-private --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[manifest\\] sources/fake-scan/scan\\.bin: payload file is missing"
+}

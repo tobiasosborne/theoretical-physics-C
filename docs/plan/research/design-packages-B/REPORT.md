@@ -133,3 +133,13 @@ physics axis.
 - Screenshots were taken with a 30-line Playwright script kept in the session scratchpad
   (`require` of `../physics-visualisations/viewer/node_modules/playwright`, Chromium 1228); it set
   `colorScheme` light/dark at 1280 x 900 and full-page capture.
+
+---
+
+## Correction note, 2026-10-11
+
+Added by the Phase 0 coordinator from the codex review (`../review/REVIEW.md`, sections B and G;
+path relative to `docs/plan/research/`). The text above is left as written, as evidence of the
+campaign; where it conflicts with this note, the note governs.
+
+- Lines 28-32: the half-maximum enclosed probability is about 0.1771; the claimed four-decimal convergence of the stated grids is withdrawn. Line 92: STIX is not technically unique.

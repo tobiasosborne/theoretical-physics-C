@@ -1,0 +1,325 @@
+{
+  "$description": "STIX Two for everything, wide margin, neutral chrome with one notebook blue. Lane: design-packages-A/PKG-3-lab-notebook.md.",
+  "$extensions": {
+    "org.tpc": {
+      "pkg": 3,
+      "title": "PKG-3 Lab notebook",
+      "production_ready": true,
+      "waivers": []
+    }
+  },
+  "color": {
+    "ground": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [1.0, 0.0, 0] },
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.19, 0.0, 0] },
+          "print": { "colorSpace": "oklch", "components": [1.0, 0.0, 0] }
+        }
+      }
+    },
+    "ground-alt": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.965, 0.0, 0] },
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.24, 0.0, 0] }
+        }
+      }
+    },
+    "ink": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.18, 0.0, 0] },
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.93, 0.0, 0] },
+          "print": { "colorSpace": "oklch", "components": [0.0, 0.0, 0] }
+        }
+      }
+    },
+    "ink-muted": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.48, 0.0, 0] },
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.74, 0.0, 0] }
+        }
+      }
+    },
+    "rule": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.85, 0.0, 0] },
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.36, 0.0, 0] }
+        }
+      }
+    },
+    "accent": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.392, 0.129, 255] },
+      "$description": "Tol high-contrast blue #004488",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.78, 0.09, 250] }
+        }
+      }
+    },
+    "link": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.392, 0.129, 255] },
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.78, 0.09, 250] }
+        }
+      }
+    },
+    "highlight": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.955, 0.045, 90] },
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.29, 0.04, 90] }
+        }
+      }
+    },
+    "stage": {
+      "$type": "color",
+      "$value": "{color.plate}",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.13, 0.0, 0] }
+        }
+      }
+    },
+    "stage-ink": {
+      "$type": "color",
+      "$value": "{color.plate-ink}",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.95, 0.0, 0] }
+        }
+      }
+    },
+    "stage-rule": {
+      "$type": "color",
+      "$value": "{color.plate-rule}",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.34, 0.0, 0] }
+        }
+      }
+    }
+  },
+  "font": {
+    "serif": {
+      "$type": "fontFamily",
+      "$value": [
+        "STIX Two Text",
+        "STIX Two Math",
+        "serif"
+      ],
+      "$extensions": {
+        "org.tpc.tex": {
+          "open": {
+            "font": "STIXTwoText",
+            "options": "Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,BoldFont=*-Bold,BoldItalicFont=*-BoldItalic",
+            "probe": "[STIXTwoText-Regular.otf]"
+          }
+        }
+      }
+    },
+    "sans": {
+      "$type": "fontFamily",
+      "$value": [
+        "STIX Two Text",
+        "STIX Two Math",
+        "serif"
+      ],
+      "$extensions": {
+        "org.tpc.tex": {
+          "open": {
+            "font": "STIXTwoText",
+            "options": "Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,BoldFont=*-SemiBold,BoldItalicFont=*-SemiBoldItalic",
+            "probe": "[STIXTwoText-Regular.otf]"
+          }
+        }
+      },
+      "$description": "single-family package: the label face is STIX Two Text"
+    },
+    "mono": {
+      "$type": "fontFamily",
+      "$value": [
+        "Iosevka",
+        "ui-monospace",
+        "monospace"
+      ],
+      "$extensions": {
+        "org.tpc.tex": {
+          "open": {
+            "font": "Iosevka",
+            "options": "Scale=MatchLowercase",
+            "probe": "Iosevka"
+          }
+        }
+      }
+    },
+    "math": {
+      "$type": "fontFamily",
+      "$value": [
+        "STIX Two Math",
+        "math"
+      ],
+      "$extensions": {
+        "org.tpc.tex": {
+          "open": {
+            "font": "STIXTwoMath-Regular.otf",
+            "options": "",
+            "probe": "[STIXTwoMath-Regular.otf]"
+          }
+        }
+      }
+    }
+  },
+  "type": {
+    "body": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.serif}",
+        "fontSize": { "value": 10.5, "unit": "pt" },
+        "lineHeight": 1.3333,
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      }
+    },
+    "small": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.serif}",
+        "fontSize": { "value": 9.5, "unit": "pt" },
+        "lineHeight": 1.2632,
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      }
+    },
+    "label": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.sans}",
+        "fontSize": { "value": 8.5, "unit": "pt" },
+        "lineHeight": 1.2941,
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      }
+    },
+    "h1": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.serif}",
+        "fontSize": { "value": 20, "unit": "pt" },
+        "lineHeight": 1.2,
+        "fontWeight": 400,
+        "fontStyle": "italic"
+      }
+    },
+    "h2": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.serif}",
+        "fontSize": { "value": 13, "unit": "pt" },
+        "lineHeight": 1.2308,
+        "fontWeight": 400,
+        "fontStyle": "italic"
+      }
+    },
+    "h3": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.serif}",
+        "fontSize": { "value": 10.5, "unit": "pt" },
+        "lineHeight": 1.3333,
+        "fontWeight": 400,
+        "fontStyle": "italic"
+      }
+    },
+    "numeral": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.serif}",
+        "fontSize": { "value": 30, "unit": "pt" },
+        "lineHeight": 1.0,
+        "fontWeight": 400,
+        "fontStyle": "italic"
+      }
+    },
+    "mono": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.mono}",
+        "fontSize": { "value": 8.5, "unit": "pt" },
+        "lineHeight": 1.2941,
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      }
+    },
+    "depth-label": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.serif}",
+        "fontSize": { "value": 10.5, "unit": "pt" },
+        "lineHeight": 1.3333,
+        "fontWeight": 400,
+        "fontStyle": "italic"
+      }
+    },
+    "web-body": {
+      "$type": "dimension",
+      "$value": { "value": 1.125, "unit": "rem" }
+    }
+  },
+  "measure": {
+    "text": {
+      "$type": "dimension",
+      "$value": { "value": 110, "unit": "mm" }
+    },
+    "inner": {
+      "$type": "dimension",
+      "$value": { "value": 20, "unit": "mm" }
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": { "value": 7, "unit": "mm" }
+    },
+    "margin": {
+      "$type": "dimension",
+      "$value": { "value": 55, "unit": "mm" }
+    },
+    "top": {
+      "$type": "dimension",
+      "$value": { "value": 20, "unit": "mm" }
+    },
+    "bottom": {
+      "$type": "dimension",
+      "$value": { "value": 22, "unit": "mm" }
+    },
+    "web-text": {
+      "$type": "dimension",
+      "$value": { "value": 36, "unit": "rem" }
+    },
+    "web-gap": {
+      "$type": "dimension",
+      "$value": { "value": 2.5, "unit": "rem" }
+    },
+    "web-margin": {
+      "$type": "dimension",
+      "$value": { "value": 17, "unit": "rem" }
+    }
+  },
+  "stroke": {
+    "depth-v": {
+      "$type": "dimension",
+      "$value": { "value": 0.8, "unit": "pt" }
+    }
+  }
+}

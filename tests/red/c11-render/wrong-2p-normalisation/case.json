@@ -1,0 +1,7 @@
+{
+  "gate": "c11-render",
+  "what": "The kernel carries the vl16 defect: psi_{2,1,+-1} with a prefactor too small by sqrt 2 (norm 1/2 instead of 1).",
+  "cmd": "HYDROGEN_KERNEL=tests/red/c11-render/wrong-2p-normalisation/kernel.ts bash web/run.sh test tests/kernels/hydrogen.test.ts -t 'psi\\(2,1'",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "golden mismatch: psi\\(2,1,-?1\\)"
+}

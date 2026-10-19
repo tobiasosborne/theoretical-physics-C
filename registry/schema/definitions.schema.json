@@ -1,0 +1,177 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "registry/definitions.json",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "schema_version",
+  "definitions"
+ ],
+ "properties": {
+  "schema_version": {
+   "type": "integer"
+  },
+  "preinventory": {
+   "type": "object",
+   "additionalProperties": false,
+   "properties": {
+    "definition_rows": {
+     "type": "integer"
+    }
+   }
+  },
+  "definitions": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/definition"
+   }
+  }
+ },
+ "$defs": {
+  "source": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "source",
+    "verified",
+    "how"
+   ],
+   "properties": {
+    "source": {
+     "type": "string",
+     "minLength": 1
+    },
+    "locus": {
+     "type": "string"
+    },
+    "verified": {
+     "type": "boolean"
+    },
+    "how": {
+     "type": "string"
+    },
+    "quote": {
+     "type": "string"
+    }
+   }
+  },
+  "definition": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "id",
+    "name_de",
+    "name_en",
+    "body_de",
+    "body_en",
+    "symbol_ids",
+    "depth",
+    "origin",
+    "choices",
+    "status",
+    "first_fixed_in",
+    "sources"
+   ],
+   "properties": {
+    "id": {
+     "type": "string",
+     "pattern": "^D[1-9][0-9]*$"
+    },
+    "preinventory_row": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "name_de": {
+     "type": "string",
+     "minLength": 1
+    },
+    "name_en": {
+     "type": "string",
+     "minLength": 1
+    },
+    "body_de": {
+     "type": "string",
+     "minLength": 1
+    },
+    "body_en": {
+     "type": "string",
+     "minLength": 1
+    },
+    "symbol_ids": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "depth": {
+     "enum": [
+      "kern",
+      "vertiefung",
+      "fundament"
+     ]
+    },
+    "origin": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "type"
+     ],
+     "properties": {
+      "type": {
+       "enum": [
+        "source-adapted",
+        "author-stipulated"
+       ]
+      },
+      "source": {
+       "type": "string"
+      },
+      "locus": {
+       "type": "string"
+      },
+      "brief_pointer": {
+       "type": "string"
+      }
+     }
+    },
+    "choices": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "status": {
+     "enum": [
+      "blessed-provisional",
+      "proposed"
+     ]
+    },
+    "first_fixed_in": {
+     "type": "string",
+     "pattern": "^C([0-9]|1[0-9]|2[01])$"
+    },
+    "sources": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "$ref": "#/$defs/source"
+     }
+    },
+    "notes": {
+     "type": "string"
+    },
+    "gap_tjo": {
+     "type": "string"
+    },
+    "needs_check": {
+     "type": "boolean"
+    },
+    "check": {
+     "type": "string"
+    }
+   }
+  }
+ }
+}

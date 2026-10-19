@@ -1,0 +1,45 @@
+{
+  "id": "c00",
+  "slug": "theorie",
+  "title": {
+    "de": "Was eine physikalische Theorie liefert",
+    "en": "What a physical theory supplies"
+  },
+  "effective_theory": {
+    "de": "Der Autor legt fest: Eine physikalische Theorie liefert Daten für Präparationen, Dynamik und Messung; Vorhersagen haben die Form von Wahrscheinlichkeiten.",
+    "en": "The author stipulates: a physical theory supplies data for preparations, dynamics and measurement; predictions take the form of probabilities."
+  },
+  "zoom_scale": "gpt",
+  "prerequisites": [],
+  "assets": [
+    {
+      "id": "c00.fig.experiment",
+      "kind": "figure",
+      "file": "figures/experiment.tex"
+    },
+    {
+      "id": "c00.fig.leiter",
+      "kind": "figure",
+      "file": "figures/leiter.tex"
+    },
+    {
+      "id": "c00.fig.hohlraum",
+      "kind": "figure",
+      "file": "figures/hohlraum.tex"
+    },
+    {
+      "id": "c00.fig.planck",
+      "kind": "figure",
+      "file": "figures/planck.tex"
+    },
+    {
+      "id": "c00.fig.photoeffekt",
+      "kind": "figure",
+      "file": "figures/photoeffekt.tex"
+    },
+    {
+      "id": "c00.tab.jahre",
+      "kind": "table"
+    }
+  ]
+}

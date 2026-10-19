@@ -1,0 +1,483 @@
+{
+ "$description": "RED FIXTURE (planted defect). STIX Two + Inter + Iosevka, teal accent, dark stage for 3D and video. Lane: design-packages-B/PKG-4-tokens-first-dark-video.md.",
+ "$extensions": {
+  "org.tpc": {
+   "pkg": 4,
+   "title": "PKG-4 Tokens first, dark-ground video",
+   "production_ready": true,
+   "waivers": []
+  }
+ },
+ "color": {
+  "ground": {
+   "$type": "color",
+   "$value": {
+    "colorSpace": "oklch",
+    "components": [
+     0.985,
+     0.004,
+     230
+    ]
+   },
+   "$extensions": {
+    "org.tpc.modes": {
+     "dark": {
+      "colorSpace": "oklch",
+      "components": [
+       0.195,
+       0.012,
+       240
+      ]
+     },
+     "print": {
+      "colorSpace": "oklch",
+      "components": [
+       1.0,
+       0.0,
+       0
+      ]
+     }
+    }
+   }
+  },
+  "ground-alt": {
+   "$type": "color",
+   "$value": {
+    "colorSpace": "oklch",
+    "components": [
+     0.955,
+     0.008,
+     230
+    ]
+   },
+   "$extensions": {
+    "org.tpc.modes": {
+     "dark": {
+      "colorSpace": "oklch",
+      "components": [
+       0.24,
+       0.014,
+       240
+      ]
+     }
+    }
+   }
+  },
+  "ink": {
+   "$type": "color",
+   "$value": {
+    "colorSpace": "oklch",
+    "components": [
+     0.23,
+     0.02,
+     245
+    ]
+   },
+   "$extensions": {
+    "org.tpc.modes": {
+     "dark": {
+      "colorSpace": "oklch",
+      "components": [
+       0.92,
+       0.008,
+       230
+      ]
+     },
+     "print": {
+      "colorSpace": "oklch",
+      "components": [
+       0.0,
+       0.0,
+       0
+      ]
+     }
+    }
+   }
+  },
+  "ink-muted": {
+   "$type": "color",
+   "$value": {
+    "colorSpace": "oklch",
+    "components": [
+     0.48,
+     0.015,
+     245
+    ]
+   },
+   "$extensions": {
+    "org.tpc.modes": {
+     "dark": {
+      "colorSpace": "oklch",
+      "components": [
+       0.74,
+       0.012,
+       230
+      ]
+     }
+    }
+   }
+  },
+  "rule": {
+   "$type": "color",
+   "$value": {
+    "colorSpace": "oklch",
+    "components": [
+     0.84,
+     0.01,
+     240
+    ]
+   },
+   "$extensions": {
+    "org.tpc.modes": {
+     "dark": {
+      "colorSpace": "oklch",
+      "components": [
+       0.38,
+       0.014,
+       240
+      ]
+     }
+    }
+   }
+  },
+  "accent": {
+   "$type": "color",
+   "$value": {
+    "colorSpace": "oklch",
+    "components": [
+     0.45,
+     0.065,
+     236
+    ]
+   },
+   "$extensions": {
+    "org.tpc.modes": {
+     "dark": {
+      "colorSpace": "oklch",
+      "components": [
+       0.78,
+       0.09,
+       222
+      ]
+     }
+    }
+   }
+  },
+  "link": {
+   "$type": "color",
+   "$value": {
+    "colorSpace": "oklch",
+    "components": [
+     0.46,
+     0.1,
+     232
+    ]
+   },
+   "$extensions": {
+    "org.tpc.modes": {
+     "dark": {
+      "colorSpace": "oklch",
+      "components": [
+       0.8,
+       0.1,
+       218
+      ]
+     }
+    }
+   }
+  },
+  "highlight": {
+   "$type": "color",
+   "$value": {
+    "colorSpace": "oklch",
+    "components": [
+     0.95,
+     0.025,
+     225
+    ]
+   },
+   "$description": "cool tint of the accent: no second chrome hue",
+   "$extensions": {
+    "org.tpc.modes": {
+     "dark": {
+      "colorSpace": "oklch",
+      "components": [
+       0.29,
+       0.035,
+       232
+      ]
+     }
+    }
+   }
+  }
+ },
+ "font": {
+  "serif": {
+   "$type": "fontFamily",
+   "$value": [
+    "STIX Two Text",
+    "STIX Two Math",
+    "serif"
+   ],
+   "$extensions": {
+    "org.tpc.tex": {
+     "open": {
+      "font": "STIXTwoText",
+      "options": "Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,BoldFont=*-Bold,BoldItalicFont=*-BoldItalic",
+      "probe": "[STIXTwoText-Regular.otf]"
+     }
+    }
+   }
+  },
+  "sans": {
+   "$type": "fontFamily",
+   "$value": [
+    "Inter",
+    "system-ui",
+    "sans-serif"
+   ],
+   "$extensions": {
+    "org.tpc.tex": {
+     "open": {
+      "font": "Inter",
+      "options": "Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,BoldFont=*-SemiBold,BoldItalicFont=*-SemiBoldItalic,Scale=MatchLowercase,Numbers=Tabular",
+      "probe": "[Inter-Regular.otf]"
+     }
+    }
+   }
+  },
+  "mono": {
+   "$type": "fontFamily",
+   "$value": [
+    "Iosevka",
+    "ui-monospace",
+    "monospace"
+   ],
+   "$extensions": {
+    "org.tpc.tex": {
+     "open": {
+      "font": "Iosevka",
+      "options": "Scale=MatchLowercase",
+      "probe": "Iosevka"
+     }
+    }
+   }
+  },
+  "math": {
+   "$type": "fontFamily",
+   "$value": [
+    "STIX Two Math",
+    "math"
+   ],
+   "$extensions": {
+    "org.tpc.tex": {
+     "open": {
+      "font": "STIXTwoMath-Regular.otf",
+      "options": "",
+      "probe": "[STIXTwoMath-Regular.otf]"
+     }
+    }
+   }
+  }
+ },
+ "type": {
+  "body": {
+   "$type": "typography",
+   "$value": {
+    "fontFamily": "{font.serif}",
+    "fontSize": {
+     "value": 10.5,
+     "unit": "pt"
+    },
+    "lineHeight": 1.3238,
+    "fontWeight": 400,
+    "fontStyle": "normal"
+   }
+  },
+  "small": {
+   "$type": "typography",
+   "$value": {
+    "fontFamily": "{font.serif}",
+    "fontSize": {
+     "value": 9.5,
+     "unit": "pt"
+    },
+    "lineHeight": 1.3158,
+    "fontWeight": 400,
+    "fontStyle": "normal"
+   }
+  },
+  "label": {
+   "$type": "typography",
+   "$value": {
+    "fontFamily": "{font.sans}",
+    "fontSize": {
+     "value": 7.8,
+     "unit": "pt"
+    },
+    "lineHeight": 1.359,
+    "fontWeight": 400,
+    "fontStyle": "normal"
+   }
+  },
+  "h1": {
+   "$type": "typography",
+   "$value": {
+    "fontFamily": "{font.serif}",
+    "fontSize": {
+     "value": 19,
+     "unit": "pt"
+    },
+    "lineHeight": 1.2105,
+    "fontWeight": 400,
+    "fontStyle": "normal"
+   }
+  },
+  "h2": {
+   "$type": "typography",
+   "$value": {
+    "fontFamily": "{font.serif}",
+    "fontSize": {
+     "value": 12.5,
+     "unit": "pt"
+    },
+    "lineHeight": 1.28,
+    "fontWeight": 600,
+    "fontStyle": "normal"
+   }
+  },
+  "h3": {
+   "$type": "typography",
+   "$value": {
+    "fontFamily": "{font.serif}",
+    "fontSize": {
+     "value": 10.5,
+     "unit": "pt"
+    },
+    "lineHeight": 1.3238,
+    "fontWeight": 600,
+    "fontStyle": "normal"
+   }
+  },
+  "numeral": {
+   "$type": "typography",
+   "$value": {
+    "fontFamily": "{font.sans}",
+    "fontSize": {
+     "value": 30,
+     "unit": "pt"
+    },
+    "lineHeight": 1.0,
+    "fontWeight": 600,
+    "fontStyle": "normal"
+   }
+  },
+  "mono": {
+   "$type": "typography",
+   "$value": {
+    "fontFamily": "{font.mono}",
+    "fontSize": {
+     "value": 9,
+     "unit": "pt"
+    },
+    "lineHeight": 1.3333,
+    "fontWeight": 400,
+    "fontStyle": "normal"
+   }
+  },
+  "depth-label": {
+   "$type": "typography",
+   "$value": {
+    "fontFamily": "{font.sans}",
+    "fontSize": {
+     "value": 9,
+     "unit": "pt"
+    },
+    "lineHeight": 1.3238,
+    "fontWeight": 600,
+    "fontStyle": "normal"
+   }
+  },
+  "web-body": {
+   "$type": "dimension",
+   "$value": {
+    "value": 1.125,
+    "unit": "rem"
+   }
+  }
+ },
+ "measure": {
+  "text": {
+   "$type": "dimension",
+   "$value": {
+    "value": 108,
+    "unit": "mm"
+   }
+  },
+  "inner": {
+   "$type": "dimension",
+   "$value": {
+    "value": 22,
+    "unit": "mm"
+   }
+  },
+  "gap": {
+   "$type": "dimension",
+   "$value": {
+    "value": 6,
+    "unit": "mm"
+   }
+  },
+  "margin": {
+   "$type": "dimension",
+   "$value": {
+    "value": 50,
+    "unit": "mm"
+   }
+  },
+  "top": {
+   "$type": "dimension",
+   "$value": {
+    "value": 22,
+    "unit": "mm"
+   }
+  },
+  "bottom": {
+   "$type": "dimension",
+   "$value": {
+    "value": 26,
+    "unit": "mm"
+   }
+  },
+  "web-text": {
+   "$type": "dimension",
+   "$value": {
+    "value": 38,
+    "unit": "rem"
+   }
+  },
+  "web-gap": {
+   "$type": "dimension",
+   "$value": {
+    "value": 2,
+    "unit": "rem"
+   }
+  },
+  "web-margin": {
+   "$type": "dimension",
+   "$value": {
+    "value": 15,
+    "unit": "rem"
+   }
+  }
+ },
+ "stroke": {
+  "depth-v": {
+   "$type": "dimension",
+   "$value": {
+    "value": 1.2,
+    "unit": "pt"
+   }
+  }
+ }
+}

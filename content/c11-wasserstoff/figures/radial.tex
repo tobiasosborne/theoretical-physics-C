@@ -1,0 +1,33 @@
+% c11.fig.radial — the radial functions R_10, R_20, R_21.
+%
+% Generating formulas (DERIVATION.md Result 5.1, radial forms; Z = 1, x = r/a_mu with the
+% Bohr radius a_mu of the REDUCED mass), plotted as a_mu^{3/2} R_nl:
+%     R_10 = 2 exp(-x),
+%     R_20 = (2 - x) exp(-x/2) / (2 sqrt 2),      zero at x = 2,
+%     R_21 = x exp(-x/2) / (2 sqrt 6).
+% Greyscale: 1s solid heavy, 2s dashed, 2p dash-dotted; curves labelled directly.
+\begin{tikzpicture}
+  \pgfplotsset{c11/.style={
+    axis lines=left, clip=false, grid=none,
+    axis line style={draw=tpc-plate-ink, line width=\tpcstrokethin},
+    tick style={draw=tpc-plate-ink, line width=\tpcstrokehair},
+    tick label style={font=\tpcfontlabel, text=tpc-plate-ink},
+    label style={font=\tpcfontlabel, text=tpc-plate-ink}}}
+  \begin{axis}[c11, width=9.4cm, height=5.6cm,
+      xmin=0, xmax=12.5, ymin=-0.5, ymax=2.1,
+      xtick={0,2,4,6,8,10,12}, ytick={0,1,2},
+      xlabel={$r/a_{\mu}$}, ylabel={$a_{\mu}^{3/2}\,R_{n\ell}$},
+      every axis x label/.style={at={(ticklabel* cs:1.0)}, anchor=west, font=\tpcfontlabel},
+      every axis y label/.style={at={(ticklabel* cs:1.0)}, anchor=south, font=\tpcfontlabel}]
+    \draw[tpc grid] (axis cs:0,0) -- (axis cs:12.5,0);
+    \addplot[tpc q1, domain=0:12.5, samples=160] {2*exp(-x)};
+    \addplot[tpc q3, dash pattern=on 5pt off 2pt, domain=0:12.5, samples=160] {(2-x)*exp(-x/2)/(2*sqrt(2))};
+    \addplot[tpc q5, dash pattern=on 5pt off 1.5pt on 1.2pt off 1.5pt, domain=0:12.5, samples=160] {x*exp(-x/2)/(2*sqrt(6))};
+    \node[tpc label, anchor=west] at (axis cs:0.75,1.25) {$R_{10}$ (1s)};
+    \node[tpc label, anchor=north west] at (axis cs:3.6,-0.15) {$R_{20}$ (2s)};
+    \node[tpc label, anchor=south west] at (axis cs:3.2,0.17) {$R_{21}$ (2p)};
+    \fill[tpc-plate-ink] (axis cs:2,0) circle (1.4pt);
+    \draw[tpc leader] (axis cs:2,0.03) -- (axis cs:2.7,0.62);
+    \node[tpc label, anchor=south west] at (axis cs:2.6,0.6) {\tpcifenglish{node of $R_{20}$ at $r = 2a_{\mu}$}{Knoten von $R_{20}$ bei $r = 2a_{\mu}$}};
+  \end{axis}
+\end{tikzpicture}

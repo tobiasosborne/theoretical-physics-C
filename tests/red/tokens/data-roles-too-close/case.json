@@ -1,0 +1,7 @@
+{
+  "gate": "tokens",
+  "what": "PKG-3 overrides the effect role to L 0.42, only 0.10 above state (L 0.32): the greyscale budget of 0.15 is broken.",
+  "cmd": "python3 design/build_tokens.py --measure --base design/tokens/base.tokens.json --tokens-dir tests/red/tokens/data-roles-too-close/tokens",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "FAIL\\s+pkg3 light: grey-gap state/effect = 0\\.\\d+, needs >= 0\\.15"
+}

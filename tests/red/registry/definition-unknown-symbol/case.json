@@ -1,0 +1,7 @@
+{
+ "gate": "registry",
+ "what": "A definition lists a symbol ID that is not in notation.json.",
+ "cmd": "python3 scripts/registry/check_registry.py --root tests/red/registry/definition-unknown-symbol --no-generated",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "unknown symbol: D1: symbol_ids names 'sym\\.nonexistent'"
+}

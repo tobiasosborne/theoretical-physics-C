@@ -1,0 +1,7 @@
+{
+  "gate": "levels",
+  "what": "Kern text transcludes \\tpcdef{D6}, a Fundament definition of the real registry, outside a fundament block.",
+  "cmd": "python3 scripts/course/check_levels.py --chapters c99 --content tests/red/levels/kern-transcludes-deeper-definition/content --lint-only",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "K1 [^\\n]*de\\.tex:\\d+: definition D6 has depth fundament but is transcluded in kern text"
+}

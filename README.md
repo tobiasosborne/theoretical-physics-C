@@ -65,8 +65,8 @@ transcripts/
 archive/
   skript-2022/                the v0.1 LaTeX source, as it was
   skript-2021/                earlier working copy
-  corrections/                student bug-bounty corrections
-  admin/, pdf/, third-party/, original/
+  (compiled PDFs, student corrections, admin material and third-party
+  files are kept locally only and are not part of the public repository)
 
 scripts/
   fetch_transcripts.py        download and normalise the captions
@@ -140,5 +140,6 @@ scripts/fetch_transcripts.py --force    # re-download everything
 
 ## Licence
 
-Apache 2.0. The material in `archive/third-party/` is not covered by this
-licence and is not redistributed.
+GNU Affero General Public License v3.0 or later (see `LICENSE`). Third-party
+material referenced by the course (textbooks, other lecturers' notes, commercial
+fonts) is not part of the repository and is not covered by this licence.

@@ -1,0 +1,7 @@
+{
+  "gate": "tokens",
+  "what": "A web source file sets a hex colour and a font family by name instead of using the tokens' custom properties.",
+  "cmd": "python3 design/lint_content.py tests/red/tokens/literal-in-web-src/web/src",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "demo\\.css:\\d+: literal in content: hex colour: #1CADE4"
+}

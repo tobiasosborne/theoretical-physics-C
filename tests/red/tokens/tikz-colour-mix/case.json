@@ -1,0 +1,7 @@
+{
+  "gate": "tokens",
+  "what": "TikZ uses a literal named colour mix.",
+  "cmd": "python3 design/lint_content.py tests/red/tokens/tikz-colour-mix/probe.tex",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "literal colour mix: blue!50"
+}

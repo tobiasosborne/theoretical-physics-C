@@ -1,0 +1,7 @@
+{
+  "gate": "web",
+  "what": "An HTML style attribute loads an external resource.",
+  "cmd": "node --import ./web/node_modules/tsx/dist/loader.mjs web/tools/checks/static.ts --only external --site tests/red/web/css-style-attribute",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "external: FAIL .*external resource in style attribute: https://example.org/x.png"
+}

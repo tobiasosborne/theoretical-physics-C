@@ -1,0 +1,7 @@
+{
+ "gate": "c02-game",
+ "what": "The stored P_opt of level B2 in the level file is 4/5; the optimum is 3/4.",
+ "cmd": "GPT_LEVELS=tests/red/c02-game/wrong-stored-optimum/levels.json bash web/run.sh test tests/kernels/gpt-levels.test.ts",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "level B2: stored P_opt 4/5 differs from the computed optimum 3/4"
+}

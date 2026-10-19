@@ -1,0 +1,7 @@
+{
+  "gate": "levels",
+  "what": "A number unit hides a forbidden reference in mathematics.",
+  "cmd": "python3 scripts/course/check_levels.py --chapters c99 --content tests/red/levels/num-deep-reference/content --lint-only",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "L2 .*'\\\\ref' inside mathematics"
+}

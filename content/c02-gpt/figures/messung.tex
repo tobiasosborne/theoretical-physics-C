@@ -1,0 +1,29 @@
+% c02.fig.messung — a measurement with three outcomes on the classical bit.
+%
+% Effects in the coordinates (q_0, q_1) = (f(s_0), f(s_1)):
+%   f_1 = (1/2, 0), f_2 = (1/2, 1/2), f_3 = (0, 1/2);  f_1 + f_2 + f_3 = (1, 1) = 1_K.
+% Drawn along p_1 (s_0 at 0, s_1 at 1): f_i(p_1) = q_0 (1 - p_1) + q_1 p_1, stacked:
+%   lower boundary f_1 = (1 - p_1)/2, upper boundary f_1 + f_2 = (1 - p_1)/2 + 1/2,
+%   top = 1.  At the state x with p_1 = 1/4 the three probabilities are
+%   f_1(x) = 3/8, f_2(x) = 1/2, f_3(x) = 1/8.
+% Greyscale: the three bands carry three greys and are labelled; band boundaries dashed
+% (effect role).
+\begin{tikzpicture}[x=5.2cm, y=2.6cm]
+  \fill[tpc-grey-2] (0,0) -- (1,0) -- (0,0.5) -- cycle;
+  \fill[tpc-grey-1] (0,0.5) -- (1,0) -- (1,0.5) -- (0,1) -- cycle;
+  \fill[tpc-grey-3] (0,1) -- (1,0.5) -- (1,1) -- cycle;
+  \draw[tpc effect] (0,0.5) -- (1,0);
+  \draw[tpc effect] (0,1) -- (1,0.5);
+  \draw[tpc axis] (0,0) rectangle (1,1);
+  \node[tpc label, left=2pt] at (0,0) {$0$};
+  \node[tpc label, left=2pt] at (0,0.5) {$\tfrac12$};
+  \node[tpc label, left=2pt] at (0,1) {$1$};
+  \node[tpc label, below=3pt] at (0,0) {$s_0$};
+  \node[tpc label, below=3pt] at (1,0) {$s_1$};
+  \draw[tpc leader] (0.25,0) -- (0.25,1);
+  \fill[tpc-state] (0.25,0) circle (2pt);
+  \node[tpc label, below=3pt] at (0.25,0) {$x$};
+  \node[tpc label, anchor=west] at (0.27,0.16) {$f_1(x) = \tfrac38$};
+  \node[tpc label, anchor=west] at (0.27,0.62) {$f_2(x) = \tfrac12$};
+  \node[tpc label, anchor=south] at (0.25,1.02) {$f_3(x) = \tfrac18$};
+\end{tikzpicture}

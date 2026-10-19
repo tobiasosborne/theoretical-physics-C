@@ -1,0 +1,7 @@
+{
+ "gate": "c02-game",
+ "what": "A level claims P_opt = 1 by an optimal \"effect\" that lies outside E(K); inside E(K) the claimed optimum cannot be reached.",
+ "cmd": "GPT_LEVELS=tests/red/c02-game/unsolvable-level/levels.json bash web/run.sh test tests/kernels/gpt-levels.test.ts",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "level X1: a stored optimal effect is not in E\\(K\\): the level is not solvable at its claimed optimum 1"
+}

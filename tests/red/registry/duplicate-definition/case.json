@@ -1,0 +1,7 @@
+{
+ "gate": "registry",
+ "what": "Two definition records carry the ID D1.",
+ "cmd": "python3 scripts/registry/check_registry.py --root tests/red/registry/duplicate-definition --no-generated",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "duplicate definition: definition ID 'D1'"
+}

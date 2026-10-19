@@ -1,0 +1,56 @@
+% c11.fig.zweikoerper — electron, proton, centre of mass and relative coordinate.
+%
+% Geometry from the formulas of registry definition D61 and of
+% evidence/derivations/c11/DERIVATION.md, Result 1.1:
+%     R = (m_e r_e + m_p r_p)/M,   r = r_e - r_p,   M = m_e + m_p,
+%     r_e = R + (m_p/M) r,         r_p = R - (m_e/M) r.
+% The picture is drawn with the STATED, NOT PHYSICAL mass ratio
+%     m_p : m_e = 3 : 1,   so   m_e/M = 1/4,  m_p/M = 3/4:
+% R is the point one quarter of the way from the proton to the electron.
+% With the physical ratio R would sit on the proton at this scale.  The mass
+% ratio is written into the picture.  Positions (arbitrary units):
+%     O = (3.8, -1.5),  r_p = O + (-2.8, 2.7),  r_e = O + (4.4, 4.3)
+%     =>  R = r_p + (1/4)(r_e - r_p) = O + (-1.0, 3.1)   (computed by TikZ from the same rule).
+% Greyscale: old coordinates thin, new coordinates heavy; r is dashed.
+\begin{tikzpicture}[x=1cm, y=1cm, >={Stealth[length=5pt,width=4pt]}]
+  \coordinate (O) at (3.8,-1.5);
+  \coordinate (P) at (1.0,1.2);
+  \coordinate (E) at (8.2,2.8);
+  \coordinate (R) at ($(P)!0.25!(E)$);
+  % unit normal of the line proton -> electron, for the dimension line above it
+  \coordinate (N) at ($(P)!1cm!90:(E)$);
+  \coordinate (n) at ($(N)-(P)$);
+  % old coordinates: thin
+  \draw[tpc axis, ->, shorten >=4pt] (O) -- (P)
+    node[pos=0.5, below left=-1pt, tpc label] {$\boldsymbol{r}_{\mathrm{p}}$};
+  \draw[tpc axis, ->, shorten >=3pt] (O) -- (E)
+    node[pos=0.5, below right=-1pt, tpc label] {$\boldsymbol{r}_{\mathrm{e}}$};
+  % new coordinates: heavy; r dashed
+  \draw[draw=tpc-plate-ink, line width=\tpcstrokestate, ->, shorten >=4pt] (O) -- (R)
+    node[pos=0.5, right=1pt, tpc label] {$\boldsymbol{R}$};
+  \draw[draw=tpc-plate-ink, line width=\tpcstrokestate, dash pattern=on 4.5pt off 1.8pt,
+        ->, shorten <=4pt, shorten >=3pt] (P) -- (E)
+    node[pos=0.66, below=2pt, tpc label, sloped]
+      {$\boldsymbol{r} = \boldsymbol{r}_{\mathrm{e}} - \boldsymbol{r}_{\mathrm{p}}$};
+  % how R divides the distance r = |r|
+  \foreach \Q in {P,R,E}
+    \draw[tpc leader] ($(\Q)+0.22*(n)$) -- ($(\Q)+0.48*(n)$);
+  \draw[tpc leader, <->] ($(P)+0.35*(n)$) -- ($(R)+0.35*(n)$)
+    node[midway, above=0pt, tpc label, sloped] {$\tfrac{m_{\mathrm{e}}}{M}\,r$};
+  \draw[tpc leader, <->] ($(R)+0.35*(n)$) -- ($(E)+0.35*(n)$)
+    node[midway, above=0pt, tpc label, sloped] {$\tfrac{m_{\mathrm{p}}}{M}\,r$};
+  % the points
+  \fill[tpc-plate-ink] (O) circle (1.3pt) node[below=1pt, tpc label] {$O$};
+  \fill[tpc-plate-ink] (P) circle (3.4pt);
+  \draw[tpc-plate-ink, fill=tpc-plate, line width=\tpcstrokeregular] (E) circle (2.4pt);
+  \draw[tpc-plate-ink, line width=\tpcstrokeregular]
+    ($(R)+(-3pt,-3pt)$) -- ($(R)+(3pt,3pt)$) ($(R)+(-3pt,3pt)$) -- ($(R)+(3pt,-3pt)$);
+  \node[tpc label, anchor=east] at ($(P)+(-0.18,0)$) {\tpcifenglish{proton}{Proton}};
+  \node[tpc label, anchor=west] at ($(E)+(0.15,0)$) {\tpcifenglish{electron}{Elektron}};
+  \node[tpc label, anchor=north west] at ($(R)+(0.28,-0.12)$)
+    {\tpcifenglish{centre of mass}{Schwerpunkt}};
+  \node[tpc label, anchor=north west, align=left, text=tpc-plate-muted] at (5.3,-0.55)
+    {\tpcifenglish{drawn for $m_{\mathrm{p}} : m_{\mathrm{e}} = 3 : 1$}%
+                  {gezeichnet für $m_{\mathrm{p}} : m_{\mathrm{e}} = 3 : 1$}\\
+     \tpcifenglish{(not the physical ratio)}{(nicht das physikalische Verhältnis)}};
+\end{tikzpicture}

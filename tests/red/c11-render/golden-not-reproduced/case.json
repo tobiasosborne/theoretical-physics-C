@@ -1,0 +1,5 @@
+{ "gate": "c11-render",
+  "what": "A golden file whose first value (R_10(0) a_mu^(3/2) = 2) was edited to 2.0000001: it is not what the Julia reference writes.",
+  "cmd": "julia --project=numerics numerics/generate/hydrogen_golden.jl --check --file tests/red/c11-render/golden-not-reproduced/hydrogen.json",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "golden file not reproduced by Julia" }

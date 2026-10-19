@@ -1,0 +1,58 @@
+% c02.fig.effektmengen — the effect sets of the classical bit and of the square bit.
+%
+% (a) E(Delta_2) = [0,1]^2 in the coordinates (q_0, q_1) = (f(s_0), f(s_1)).
+%     Extreme effects: (0,0) = 0, (1,0), (0,1), (1,1) = 1_K.
+% (b) E(K_Q) = { (b, a_x, a_y) : |a_x| + |a_y| <= min(b, 1-b) } with b drawn upwards:
+%     a double pyramid (octahedron) with the six vertices
+%       0 = (0,0,0), 1_K = (1,0,0), f_x^{+-} = (1/2, +-1/2, 0), f_y^{+-} = (1/2, 0, +-1/2).
+%     ORTHOGRAPHIC projection, azimuth alpha = 25 deg, elevation beta = 15 deg:
+%       a_x -> (-sin a, -sin b cos a) = (-0.4226,-0.2346),
+%       a_y -> (cos a, -sin b sin a)  = ( 0.9063,-0.1094),  b -> (0, cos b) = (0, 0.9659).
+%     Viewer direction d = (cos b cos a, cos b sin a, sin b) = (0.875, 0.408, 0.259) in
+%     (a_x, a_y, b).  A face with outward normal (sx, sy, sb), sx,sy,sb = +-1, is visible
+%     iff 0.875 sx + 0.408 sy + 0.259 sb > 0, i.e. iff sx = +1.  Hidden: the vertex
+%     f_x^- and its four edges (thin, dotted).
+% Greyscale: extreme effects are squares; hidden edges dotted.
+\begin{tikzpicture}[x=1cm, y=1cm]
+  % ---------- (a) ----------
+  \begin{scope}[x=2.5cm, y=2.5cm]
+    \draw[tpc axis, fill=tpc-grey-1] (0,0) rectangle (1,1);
+    \draw[tpc axis, -{Stealth[length=4pt]}] (1,0) -- (1.28,0);
+    \draw[tpc axis, -{Stealth[length=4pt]}] (0,1) -- (0,1.28);
+    \node[tpc label, anchor=west] at (1.28,0) {$q_0$};
+    \node[tpc label, anchor=south] at (0,1.28) {$q_1$};
+    \foreach \p in {(0,0),(1,0),(0,1),(1,1)}
+      \fill[tpc-effect] \p ++(-2pt,-2pt) rectangle ++(4pt,4pt);
+    \node[tpc label, anchor=north east] at (0,0) {$0$};
+    \node[tpc label, anchor=north] at (1,-0.04) {$(1,0)$};
+    \node[tpc label, anchor=east] at (-0.04,1) {$(0,1)$};
+    \node[tpc label, anchor=south west] at (1,1) {$1_K$};
+    \fill[tpc-plate-ink] (0.75,0.25) circle (1.3pt);
+    \node[tpc label, anchor=south west] at (0.75,0.25) {$f$};
+    \node[tpc label] at (0.5,-0.52) {(a) \tpcifenglish{classical bit}{klassisches Bit}};
+  \end{scope}
+  % ---------- (b) ----------
+  \begin{scope}[shift={(7.3,0)},
+      x={(-1.4791cm,-0.8211cm)}, y={(3.1721cm,-0.3829cm)}, z={(0cm,3.3807cm)}]
+    % 3.5 cm per unit
+    \coordinate (O)  at (0,0,0);
+    \coordinate (U)  at (0,0,1);
+    \coordinate (XP) at (0.5,0,0.5);
+    \coordinate (XM) at (-0.5,0,0.5);
+    \coordinate (YP) at (0,0.5,0.5);
+    \coordinate (YM) at (0,-0.5,0.5);
+    \fill[tpc-grey-1] (O) -- (YM) -- (U) -- (YP) -- cycle;
+    \draw[tpc leader, dash pattern=on 0.8pt off 1.6pt] (XM) -- (O) (XM) -- (U) (XM) -- (YP) (XM) -- (YM);
+    \draw[tpc axis] (O) -- (YM) -- (U) -- (YP) -- cycle;
+    \draw[tpc axis] (O) -- (XP) -- (U) (YM) -- (XP) -- (YP);
+    \foreach \p in {O,U,XP,YP,YM,XM}
+      \fill[tpc-effect] (\p) ++(-2pt,-2pt) rectangle ++(4pt,4pt);
+    \node[tpc label, anchor=north] at ($(O)+(0,-3pt)$) {$0$};
+    \node[tpc label, anchor=south] at ($(U)+(0,3pt)$) {$1_K$};
+    \node[tpc label, anchor=north east] at ($(XP)+(-2pt,-2pt)$) {$f_x^{+}$};
+    \node[tpc label, anchor=south west] at ($(XM)+(2pt,2pt)$) {$f_x^{-}$};
+    \node[tpc label, anchor=west] at ($(YP)+(4pt,0)$) {$f_y^{+}$};
+    \node[tpc label, anchor=east] at ($(YM)+(-4pt,0)$) {$f_y^{-}$};
+    \node[tpc label] at ($(O)+(0,-1.3cm)$) {(b) \tpcifenglish{square bit}{Quadrat-Bit}};
+  \end{scope}
+\end{tikzpicture}

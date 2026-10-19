@@ -1,0 +1,317 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tpc-levels}[2026/10/11 Theoretische Physik C depth system (Kern / Vertiefung / Fundament)]
+
+% ══════════════════════════════════════════════════════════════
+%  WHAT THIS IS
+% ══════════════════════════════════════════════════════════════
+% Three depths (PLAN S2, layered-docs REPORT 5.2-5.7):
+%
+%   Kern        the running text.  Complete on its own.
+%   Vertiefung  inline blocks after the core result:  \begin{vertiefung}[...]
+%   Fundament   blocks collected at the end of the chapter: \begin{fundament}[...]
+%
+% Depth is marked by a rule in the left margin plus a run-in label, never
+% by tint or by small type (PLAN S3).  Vertiefung carries one solid rule,
+% Fundament a double hairline, so the two differ in shape and survive
+% greyscale; colour only repeats what the shape and the label word say.
+%
+% Every block takes keyed arguments, all mandatory:
+%
+%   \begin{vertiefung}[id=c11.v1, titel={...}, wozu={...},
+%                      voraussetzung={...}, zurueck={...}]
+%
+%   id             stable ID, also the \label of the block
+%   titel          the run-in title
+%   wozu           the lead: what the reader gains          ("Wozu:" / "Why:")
+%   voraussetzung  the dependency statement                 ("Voraussetzung:" / "Requires:")
+%   zurueck        the return line, in Kern language        ("Zurück zum Kern." / "Back to the core.")
+%
+% Numbering.  Inside a block the equation counter, the figure and table
+% counters and every theorem-like counter are switched to depth counters
+% printed 6.V1 / 6.F1.  Kern counters are never touched inside a block, so
+% Kern numbers are identical with and without the blocks (invariant K4).
+% The block itself and the theorem-like units inside blocks share ONE
+% sequence per depth and chapter: "Vertiefung 6.V1", "Lemma 6.V2",
+% "Vertiefung 6.V3".  A bare 6.Vn therefore names exactly one thing;
+% equations are (6.Vn) in parentheses, figures "Abbildung 6.Vn".
+%
+% Fundament placement.  Authors write the Fundament blocks at the END of
+% the chapter file, after all Kern text; nothing is moved.  The first
+% fundament block of a chapter starts the appendix "Fundament zu Kapitel
+% n" on a new page; its pages carry a corner marker F.  (Chosen over
+% write-in-place-and-move: source order equals print order equals web
+% order, error lines point at the real line, no token capture.)
+%
+% Signposts.  \zoomref{id} is the only way Kern text points into depth.
+% Full edition: a margin note with the block number and page.  Kern
+% edition: nothing at all.  A plain \ref from Kern text to a label inside
+% a block is undefined in the Kern edition; scripts/course/build_course.sh
+% and check_levels.py turn that into a failure (invariant K2).
+%
+% Options:  kern   exclude both depths (the Kern edition)
+%           full   include them (default)
+%
+% Load after tpc-style (for \tpcifenglish and tcolorbox) when both are
+% used.  Colours are token names; the defaults below apply only when
+% tpc-design has not defined them.
+
+\newif\iftpcdepthshown \tpcdepthshowntrue
+\DeclareOption{kern}{\tpcdepthshownfalse}
+\DeclareOption{full}{\tpcdepthshowntrue}
+\ProcessOptions\relax
+
+\RequirePackage{xcolor}
+\RequirePackage{keyval}
+\RequirePackage{amsmath}
+\RequirePackage[many]{tcolorbox}
+\RequirePackage{marginnote}
+
+% Language follows the switch of tpc-style; German without it.
+\providecommand{\tpcifenglish}[2]{#2}
+
+% ── Tokens (safe defaults; tpc-design overrides) ──────────────
+\providecolor{tpc-ink}{gray}{0.10}
+\providecolor{tpc-rule}{gray}{0.55}
+\providecolor{tpc-depth-v}{gray}{0.20}
+\providecolor{tpc-depth-f}{gray}{0.20}
+\providecommand{\tpcdepthrulewidth}{1.5pt}   % Vertiefung: one solid rule
+\providecommand{\tpcdepthrulesep}{10pt}      % rule to text
+\providecommand{\tpcdepthFrulewidth}{0.5pt}  % Fundament: two hairlines ...
+\providecommand{\tpcdepthFrulegap}{2pt}      % ... this far apart
+\providecommand{\tpcdepthlabelfont}{\sffamily\bfseries}
+% colour of the run-in label: the colour of its margin rule (#1 = V|F)
+\providecommand{\tpcdepthlabelcolor}[1]{%
+  \if#1V\color{tpc-depth-v}\else\color{tpc-depth-f}\fi}
+\providecommand{\tpcdepthtitlefont}{\sffamily}
+\providecommand{\tpcdepthleadfont}{\sffamily}
+\providecommand{\tpcdepthheadsep}{\medskipamount}  % head to body, body to return line
+\providecommand{\tpcdepthmarginfont}{\sffamily\footnotesize}
+
+% ── Words ─────────────────────────────────────────────────────
+\newcommand{\tpclv@word}[1]{%
+  \if#1V\tpcifenglish{Deeper}{Vertiefung}\else
+        \tpcifenglish{Foundations}{Fundament}\fi}
+\newcommand{\tpclv@kernword}{\tpcifenglish{Core}{Kern}}
+\newcommand{\tpclv@wozuword}{\tpcifenglish{Why}{Wozu}}
+\newcommand{\tpclv@vorword}{\tpcifenglish{Requires}{Voraussetzung}}
+\newcommand{\tpclv@backword}{\tpcifenglish{Back to the core}{Zur\"uck zum Kern}}
+\newcommand{\tpclv@fromword}{\tpcifenglish{from}{aus}}
+\newcommand{\tpclv@pageword}{\tpcifenglish{p.}{S.}}
+\providecommand{\tpcdepthunitname}{\tpcifenglish{Section}{Abschnitt}}
+\providecommand{\tpcdepthappendixtitle}{%
+  \tpclv@word F\ \tpcifenglish{for}{zu}\ \tpcdepthunitname~\tpcdepthprefix}
+
+% ── Counters ──────────────────────────────────────────────────
+\newcounter{tpcVunit}\newcounter{tpcVeq}\newcounter{tpcVfig}
+\newcounter{tpcFunit}\newcounter{tpcFeq}\newcounter{tpcFfig}
+\providecommand{\tpcdepthprefix}{\thesection}
+\def\tpclv@within{}
+% \tpclevelsnumberwithin{chapter}: reset the depth counters with that
+% counter and print its number as the prefix.
+\newcommand{\tpclevelsnumberwithin}[1]{%
+  \@for\tpclv@c:=tpcVunit,tpcVeq,tpcVfig,tpcFunit,tpcFeq,tpcFfig\do{%
+    \ifx\tpclv@within\@empty\else
+      \expandafter\@removefromreset\expandafter{\tpclv@c}{\tpclv@within}\fi
+    \expandafter\@addtoreset\expandafter{\tpclv@c}{#1}}%
+  \def\tpclv@within{#1}%
+  \renewcommand{\tpcdepthprefix}{\csname the#1\endcsname}}
+\tpclevelsnumberwithin{section}
+
+\newcommand{\tpclv@def@the}[2]{% #1 = V|F, #2 = unit|eq|fig
+  \@namedef{thetpc#1#2}{\tpcdepthprefix.#1\arabic{tpc#1#2}}%
+  \@namedef{theHtpc#1#2}{\tpcdepthprefix.#1#2.\arabic{tpc#1#2}}}
+\tpclv@def@the{V}{unit}\tpclv@def@the{V}{eq}\tpclv@def@the{V}{fig}
+\tpclv@def@the{F}{unit}\tpclv@def@the{F}{eq}\tpclv@def@the{F}{fig}
+
+% Theorem-like counters that are switched to the unit counter inside a
+% block.  Shared-counter environments (lemma, proposition on `theorem')
+% follow automatically.  A style that adds a numbered environment adds
+% its counter here; forgetting to is what check K4 catches.
+\newcommand{\tpclv@unitcounters}{theorem,definition,example,exercise,%
+  prototypedefinition,physicalintuition,conjecture}
+\newcommand{\tpclevelsaddunitcounter}[1]{%
+  \expandafter\def\expandafter\tpclv@unitcounters\expandafter{\tpclv@unitcounters,#1}}
+
+% \tpcdepth expands to K, V or F: the depth of the current position.
+\def\tpcdepth{K}
+
+\newcommand{\tpclv@remap}[1]{% #1 = V|F
+  \def\tpcdepth{#1}%
+  \expandafter\let\expandafter\c@equation\csname c@tpc#1eq\endcsname
+  \expandafter\let\expandafter\theequation\csname thetpc#1eq\endcsname
+  \expandafter\let\expandafter\theHequation\csname theHtpc#1eq\endcsname
+  \@for\tpclv@c:=figure,table\do{%
+    \@ifundefined{c@\tpclv@c}{}{%
+      \expandafter\let\csname c@\tpclv@c\expandafter\endcsname
+        \csname c@tpc#1fig\endcsname
+      \expandafter\let\csname the\tpclv@c\expandafter\endcsname
+        \csname thetpc#1fig\endcsname
+      \expandafter\let\csname theH\tpclv@c\expandafter\endcsname
+        \csname theHtpc#1fig\endcsname}}%
+  \@for\tpclv@c:=\tpclv@unitcounters\do{%
+    \@ifundefined{c@\tpclv@c}{}{%
+      \expandafter\let\csname c@\tpclv@c\expandafter\endcsname
+        \csname c@tpc#1unit\endcsname
+      \expandafter\let\csname the\tpclv@c\expandafter\endcsname
+        \csname thetpc#1unit\endcsname
+      \expandafter\let\csname theH\tpclv@c\expandafter\endcsname
+        \csname theHtpc#1unit\endcsname}}}
+
+% ── The glyph: the margin rule in miniature ───────────────────
+% One bar for Vertiefung, two hairlines for Fundament.  Used in
+% signposts, in the table of contents and in the corner marker.
+\newcommand{\tpcdepthglyph}[1]{%
+  \begingroup
+  \if#1V\color{tpc-depth-v}\rule[-0.25ex]{\tpcdepthrulewidth}{1.9ex}%
+  \else\color{tpc-depth-f}\rule[-0.25ex]{\tpcdepthFrulewidth}{1.9ex}%
+       \kern\tpcdepthFrulegap\rule[-0.25ex]{\tpcdepthFrulewidth}{1.9ex}\fi
+  \endgroup}
+
+% ── Table of contents ─────────────────────────────────────────
+\providecommand{\tpcdepthtoclevel}{subsection}
+\newcommand{\tpcdepthtocline}[3]{% #1 = V|F, #2 = number, #3 = title
+  \tpcdepthglyph{#1}\enspace\tpclv@word{#1}%
+  \if\relax\detokenize{#2}\relax\else~#2\fi
+  \if\relax\detokenize{#3}\relax\else\enspace\textperiodcentered\enspace#3\fi}
+
+% Declared outside the edition conditional: TeX must know it as a
+% conditional while skipping the full-edition branch.
+\newif\iftpclv@inappendix
+
+\iftpcdepthshown
+% ══════════════════════════════════════════════════════════════
+%  FULL EDITION
+% ══════════════════════════════════════════════════════════════
+
+% ── Keys ──────────────────────────────────────────────────────
+\define@key{tpclv}{id}{\def\tpclv@id{#1}}
+\define@key{tpclv}{titel}{\def\tpclv@titel{#1}}
+\define@key{tpclv}{wozu}{\def\tpclv@wozu{#1}}
+\define@key{tpclv}{voraussetzung}{\def\tpclv@voraussetzung{#1}}
+\define@key{tpclv}{zurueck}{\def\tpclv@zurueck{#1}}
+\newcommand{\tpclv@require}[2]{%
+  \expandafter\ifx\csname tpclv@#1\endcsname\@empty
+    \PackageError{tpc-levels}{Depth block `\tpclv@id': missing key `#1' (#2)}%
+      {Every vertiefung/fundament block needs id, titel, wozu,
+       voraussetzung and zurueck.}%
+  \fi}
+
+% ── The boxes: a rule in the margin, nothing else ─────────────
+% Text keeps the full measure and the body size; the rule sits in the
+% left margin and continues across page breaks.
+\tcbset{
+  tpclv@common/.style={enhanced, breakable, frame hidden, interior hidden,
+    boxrule=0pt, boxsep=0pt, left=0pt, right=0pt, top=1pt, bottom=1pt,
+    arc=0pt, outer arc=0pt, parbox=false, pad at break=0pt,
+    before skip=\bigskipamount, after skip=\bigskipamount,
+    colupper=tpc-ink},
+  tpclv@boxV/.style={tpclv@common,
+    borderline west={\tpcdepthrulewidth}{-\tpcdepthrulesep}{tpc-depth-v}},
+  tpclv@boxF/.style={tpclv@common,
+    borderline west={\tpcdepthFrulewidth}{-\tpcdepthrulesep}{tpc-depth-f},
+    borderline west={\tpcdepthFrulewidth}%
+      {-\dimexpr\tpcdepthrulesep+\tpcdepthFrulewidth+\tpcdepthFrulegap\relax}%
+      {tpc-depth-f}},
+}
+
+% ── Fundament appendix ────────────────────────────────────────
+% Called by the sectioning command that starts a chapter.
+\newcommand{\tpclevelschapterstart}{\global\tpclv@inappendixfalse}
+\newcommand{\tpclv@startappendix}{%
+  \iftpclv@inappendix\else
+    \clearpage
+    \global\tpclv@inappendixtrue
+    \tpclv@appendixheading
+  \fi}
+% (amsart lists a starred section in the table of contents by itself.)
+\providecommand{\tpclv@appendixheading}{\section*{\tpcdepthappendixtitle}}
+% Corner marker on every page of a Fundament appendix.  The flag changes
+% only directly after a \clearpage, so it is exact per page.
+\providecommand{\tpcdepthcornermark}{%
+  \put(\dimexpr\paperwidth-1.75cm\relax,-1.55cm){%
+    \makebox(0,0)[lb]{\tpcdepthglyph{F}\enspace
+      {\tpcdepthlabelfont\large F}}}}
+\AddToHook{shipout/foreground}{\iftpclv@inappendix\tpcdepthcornermark\fi}
+
+% ── Block begin / end ─────────────────────────────────────────
+\newcommand{\tpclv@begin}[2]{% #1 = V|F, #2 = keys
+  \if K\tpcdepth\else
+    \PackageError{tpc-levels}{Nested depth block}%
+      {A vertiefung or fundament block may not contain another one.}%
+  \fi
+  \let\tpclv@id\@empty \let\tpclv@titel\@empty \let\tpclv@wozu\@empty
+  \let\tpclv@voraussetzung\@empty \let\tpclv@zurueck\@empty
+  \setkeys{tpclv}{#2}%
+  \tpclv@require{id}{stable ID}%
+  \tpclv@require{titel}{title}%
+  \tpclv@require{wozu}{lead}%
+  \tpclv@require{voraussetzung}{dependency statement}%
+  \tpclv@require{zurueck}{return line}%
+  \par
+  \if#1F\tpclv@startappendix\fi
+  \refstepcounter{tpc#1unit}%
+  \if#1V%
+    \addcontentsline{toc}{\tpcdepthtoclevel}{\protect\tpcdepthtocline{V}%
+      {\csname thetpc#1unit\endcsname}{\tpclv@titel}}%
+  \fi
+  \edef\tpclv@parindent{\the\parindent}%
+  \tcolorbox[tpclv@box#1]%
+  \setlength{\parindent}{\tpclv@parindent}%
+  \tpclv@remap{#1}%
+  \protected@edef\tpclv@blockname{\tpclv@word{#1}~\csname thetpc#1unit\endcsname}%
+  \label{\tpclv@id}%
+  \noindent{\tpcdepthlabelfont\tpcdepthlabelcolor{#1}\tpclv@word{#1}~\csname thetpc#1unit\endcsname}%
+  \enspace\textperiodcentered\enspace{\tpcdepthtitlefont\tpclv@titel}\par\nobreak
+  \if#1F%
+    \noindent{\tpcdepthleadfont\tpclv@fromword}\
+      \ref{zoomfrom:\tpclv@id}, \tpclv@pageword~\pageref{zoomfrom:\tpclv@id}.\par\nobreak
+  \fi
+  \noindent{\tpcdepthleadfont\tpclv@wozuword:}\ \tpclv@wozu\par\nobreak
+  \noindent{\tpcdepthleadfont\tpclv@vorword:}\ \tpclv@voraussetzung\par
+  \vspace{\tpcdepthheadsep}\@afterindentfalse\@afterheading
+  \def\tpclv@current{#1}%
+}
+\newcommand{\tpclv@end}{%
+  \par\addvspace{\tpcdepthheadsep}%
+  \noindent{\tpcdepthlabelfont\tpcdepthlabelcolor{\tpclv@current}\tpclv@backword
+    \if F\tpclv@current\ (\tpclv@pageword~\pageref{zoomfrom:\tpclv@id})\fi.}%
+  \enspace\tpclv@zurueck\par
+  \endtcolorbox}
+
+\newenvironment{vertiefung}[1][]{\tpclv@begin{V}{#1}}{\tpclv@end}
+\newenvironment{fundament}[1][]{\tpclv@begin{F}{#1}}{\tpclv@end}
+
+% ── Signpost ──────────────────────────────────────────────────
+% The depth of the target is read off the ID (cNN.vK / cNN.fK).  The
+% first signpost to a block leaves the anchor zoomfrom:<id>, which a
+% Fundament block prints as its back-link ("aus Kern 6.3, S. 112").
+\newcommand{\tpclv@iddepth}[1]{%
+  \in@{.f}{#1}\ifin@\def\tpclv@target{F}\else\def\tpclv@target{V}\fi}
+\newcommand{\tpclv@here}{%
+  \if K\tpcdepth \tpclv@kernword~\thesection\else \tpclv@blockname\fi}
+\newcommand{\tpclv@signpost}[1]{%
+  \tpcdepthmarginfont\raggedright
+  \tpcdepthglyph{\tpclv@target}\enspace\tpclv@word{\tpclv@target}~\ref{#1},
+  \tpclv@pageword~\pageref{#1}}
+\DeclareRobustCommand{\zoomref}[1]{%
+  \tpclv@iddepth{#1}%
+  \@ifundefined{tpclv@zf@#1}{%
+    \global\@namedef{tpclv@zf@#1}{}%
+    \begingroup
+      \protected@edef\@currentlabel{\tpclv@here}%
+      \label{zoomfrom:#1}%
+    \endgroup}{}%
+  \marginnote{\tpclv@signpost{#1}}}
+
+\else
+% ══════════════════════════════════════════════════════════════
+%  KERN EDITION
+% ══════════════════════════════════════════════════════════════
+% Both depths are dropped without being typeset; signposts vanish.
+\newcommand{\tpclevelschapterstart}{}
+\NewDocumentEnvironment{vertiefung}{O{} +b}{}{}
+\NewDocumentEnvironment{fundament}{O{} +b}{}{}
+\DeclareRobustCommand{\zoomref}[1]{}
+\fi
+
+\endinput

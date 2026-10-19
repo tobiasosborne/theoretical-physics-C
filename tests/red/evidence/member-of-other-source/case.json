@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A provenance row names a member that belongs to another source.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/member-of-other-source --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[member\\] provenance\\.json:P-0001: member 'fake-brief/brief\\.md' is not a manifest file of source 'fake-notes'"
+}

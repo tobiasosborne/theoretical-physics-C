@@ -1,0 +1,38 @@
+% c11.fig.schnitt — density of the relative coordinate for 2p_0 and 2p_{+-1} in the plane y = 0.
+%
+% Generating formulas (DERIVATION.md Result 5.1; Z = 1, lengths in the Bohr radius a_mu of the
+% REDUCED mass, (x, z) Cartesian components of the RELATIVE coordinate r = r_e - r_p, y = 0,
+% r = sqrt(x^2 + z^2), cos(theta) = z/r, sin(theta) = |x|/r):
+%     a_mu^3 |psi_210|^2    = r^2 exp(-r) cos^2(theta) / (32 pi) = z^2 exp(-r) / (32 pi),
+%     a_mu^3 |psi_21+-1|^2  = r^2 exp(-r) sin^2(theta) / (64 pi) = x^2 exp(-r) / (64 pi).
+% Both panels use ONE linear grey scale from 0 (plate) to the maximum of the left panel,
+% 4 exp(-2)/(32 pi) at (x, z) = (0, +-2); the maximum of the right panel is half of that,
+% at x = +-2, z = 0.  The grid of cells (48 x 48) is a property of the drawing, not of the
+% density: each cell shows the value at its centre.
+% Greyscale: the value is carried by lightness only.
+\begin{tikzpicture}
+  \pgfplotsset{
+    colormap={c11dens}{color(0cm)=(tpc-plate) color(1cm)=(tpc-state)},
+    c11/.style={
+      view={0}{90}, axis equal image, axis on top, grid=none, clip=true,
+      width=5.6cm, height=5.6cm, scale only axis=false,
+      xmin=-9, xmax=9, ymin=-9, ymax=9, xtick={-8,-4,0,4,8}, ytick={-8,-4,0,4,8},
+      axis line style={draw=tpc-plate-ink, line width=\tpcstrokethin},
+      tick style={draw=tpc-plate-ink, line width=\tpcstrokehair},
+      tick label style={font=\tpcfontlabel, text=tpc-plate-ink},
+      label style={font=\tpcfontlabel, text=tpc-plate-ink},
+      title style={font=\tpcfontlabel, text=tpc-plate-ink, yshift=-4pt},
+      point meta min=0, point meta max=0.005385,
+      xlabel={$x/a_{\mu}$}, ylabel={$z/a_{\mu}$}}}
+  \begin{axis}[c11, name=links, title={$2\mathrm{p}_0$: $a_{\mu}^3\,\lvert\psi_{210}\rvert^2$}]
+    \addplot3[surf, shader=flat corner, draw=none, samples=49, domain=-9:9, y domain=-9:9,
+              point meta={y*y*exp(-sqrt(x*x+y*y))/(32*pi)}] {0};
+    \draw[tpc leader, dash pattern=on 2pt off 2pt] (axis cs:-9,0) -- (axis cs:9,0);
+  \end{axis}
+  \begin{axis}[c11, at={(links.outer east)}, anchor=outer west, xshift=1mm, ylabel={},
+               title={$2\mathrm{p}_{\pm1}$: $a_{\mu}^3\,\lvert\psi_{21\pm1}\rvert^2$}]
+    \addplot3[surf, shader=flat corner, draw=none, samples=49, domain=-9:9, y domain=-9:9,
+              point meta={x*x*exp(-sqrt(x*x+y*y))/(64*pi)}] {0};
+    \draw[tpc leader, dash pattern=on 2pt off 2pt] (axis cs:0,-9) -- (axis cs:0,9);
+  \end{axis}
+\end{tikzpicture}

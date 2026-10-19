@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A ledger row is tagged in de.tex but not in en.tex.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/claim-only-in-german --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[unused-claim\\] claims\\.json:c98\\.cl\\.3: tagged 0 time\\(s\\) in c98-red/en\\.tex"
+}

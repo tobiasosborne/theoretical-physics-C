@@ -1,0 +1,98 @@
+/* Demos of chapter C2 (explorer, Distinguish). Token names only (design/README.md).
+   Everything is drawn on the plate, with plate roles; the plate is light on both grounds. */
+.c02 { box-sizing: border-box; width: 100%; padding: var(--tpc-space-s); color: var(--tpc-plate-ink); background: var(--tpc-plate);
+  font-family: var(--tpc-family-label); font-size: var(--tpc-size-label); line-height: var(--tpc-leading-label);
+  container-type: inline-size; text-align: left; }
+.c02 *, .c02 *::before { box-sizing: border-box; }
+.c02-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--tpc-space-xs) var(--tpc-space-s); margin: 0 0 var(--tpc-space-xs); }
+.c02-title { font-weight: 600; margin: 0; font-size: inherit; }
+.c02-muted { color: var(--tpc-plate-muted); }
+.c02-figs { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--tpc-space-s); justify-items: center; }
+.c02-fig { margin: 0; width: 100%; max-width: 23rem; min-width: 0; }
+.c02-fig svg { display: block; width: 100%; aspect-ratio: 1; touch-action: none; user-select: none; overflow: visible; }
+.c02-fig figcaption { color: var(--tpc-plate-muted); margin-top: 0.2em; min-height: 2.7em; }
+.c02-3d { grid-column: 1 / -1; width: 100%; aspect-ratio: 2.3; position: relative; background: var(--tpc-stage); touch-action: none; }
+.c02-3d canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.c02-3d-labels { position: absolute; inset: 0; pointer-events: none; color: var(--tpc-stage-ink); }
+.c02-3d-labels span { position: absolute; transform: translate(-50%, -50%); white-space: nowrap; }
+.c02-cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--tpc-space-xs) var(--tpc-space-m); margin-top: var(--tpc-space-s); align-items: start; }
+.c02-col > * + * { margin-top: var(--tpc-space-xs); }
+.c02 p { margin: 0; }
+.c02 h3 { font: inherit; font-weight: 600; margin: 0; }
+@container (max-width: 34rem) {
+  .c02-figs { grid-template-columns: minmax(0, 1fr); }
+  .c02-cols { grid-template-columns: minmax(0, 1fr); }
+  .c02-3d { aspect-ratio: 1.5; }
+}
+
+/* mathematics in running text and in SVG labels */
+.c02 .c02-m, .c02 svg .m { font-family: var(--tpc-font-math); font-style: italic; font-size: 1.12em; }
+.c02 .c02-m { padding: 0 0.07em 0 0.03em; }
+.c02 math { font-family: var(--tpc-font-math); font-size: 1.12em; }
+.c02 sub { font-size: 0.78em; line-height: 0; }
+.c02 .c02-num { font-variant-numeric: tabular-nums lining-nums; white-space: nowrap; }
+
+/* controls */
+.c02 button { font: inherit; color: var(--tpc-plate-ink); background: var(--tpc-grey-1); border: var(--tpc-stroke-thin) solid var(--tpc-grey-4);
+  border-radius: 0.2rem; padding: 0.3em 0.75em; min-height: 2rem; cursor: pointer; }
+.c02 button[aria-pressed="true"], .c02 button[aria-current="true"] { background: var(--tpc-plate-ink); color: var(--tpc-plate); border-color: var(--tpc-plate-ink); }
+.c02 button:disabled { color: var(--tpc-grey-3); border-color: var(--tpc-grey-2); cursor: default; }
+.c02 button.c02-primary { border-width: var(--tpc-stroke-box); border-color: var(--tpc-plate-ink); font-weight: 600; }
+.c02 button:focus-visible, .c02 input:focus-visible, .c02 summary:focus-visible, .c02 .c02-h:focus-visible { outline: var(--tpc-stroke-box) solid var(--tpc-plate-ink); outline-offset: 2px; }
+.c02-row { display: flex; flex-wrap: wrap; align-items: center; gap: var(--tpc-space-xs); }
+.c02-slider { display: grid; grid-template-columns: 6.2em minmax(4rem, 1fr) 5.2em; align-items: center; gap: 0.5em; min-height: 1.9rem; }
+.c02-slider input[type="range"] { width: 100%; accent-color: var(--tpc-plate-ink); margin: 0; }
+.c02-slider output { font-variant-numeric: tabular-nums lining-nums; text-align: right; }
+.c02-read { display: grid; grid-template-columns: auto 1fr; gap: 0.15em 0.6em; align-items: baseline; margin: 0; }
+.c02-read dt { margin: 0; white-space: nowrap; }
+.c02-read dd { margin: 0; font-variant-numeric: tabular-nums lining-nums; }
+.c02-read .c02-key dd, .c02-read dd.c02-key { font-weight: 600; }
+.c02-box { border-top: var(--tpc-stroke-thin) solid var(--tpc-plate-rule); padding-top: var(--tpc-space-xs); }
+.c02 table { border-collapse: collapse; font-variant-numeric: tabular-nums lining-nums; }
+.c02 th, .c02 td { text-align: left; padding: 0.1em 1.2em 0.1em 0; font-weight: 400; vertical-align: baseline; }
+.c02 th { color: var(--tpc-plate-muted); border-bottom: var(--tpc-stroke-hair) solid var(--tpc-plate-rule); }
+.c02 tr.c02-best td { font-weight: 600; }
+.c02 details > summary { cursor: pointer; font-weight: 600; }
+.c02 details ul { margin: 0.3em 0 0; padding-left: 1.2em; }
+.c02 details li + li { margin-top: 0.25em; }
+.c02 kbd { font-family: var(--tpc-family-mono); font-size: 0.95em; border: var(--tpc-stroke-hair) solid var(--tpc-grey-4); border-radius: 0.15rem; padding: 0 0.3em; white-space: nowrap; }
+.c02-stars { display: inline-flex; gap: 0.15em; vertical-align: -0.15em; }
+.c02-stars svg { width: 1.15em; height: 1.15em; display: block; }
+.c02-stars .on { fill: var(--tpc-plate-ink); stroke: var(--tpc-plate-ink); }
+.c02-stars .off { fill: none; stroke: var(--tpc-grey-4); }
+.c02-stars path { stroke-width: var(--tpc-stroke-thin); stroke-linejoin: round; }
+.c02-levels { display: flex; flex-wrap: wrap; gap: 0.3em; }
+.c02-levels button { min-width: 2.2rem; padding: 0.2em 0.4em; display: inline-flex; flex-direction: column; align-items: center; gap: 0.1em; }
+.c02-levels .c02-stars svg { width: 0.62em; height: 0.62em; }
+.c02-levels button[aria-current="true"] .on { fill: var(--tpc-plate); stroke: var(--tpc-plate); }
+.c02-levels button[aria-current="true"] .off { stroke: var(--tpc-grey-3); }
+
+/* drawing: plate roles; colour only for the physics roles state and effect */
+.c02 svg text { font-family: var(--tpc-family-label); font-size: var(--tpc-size-label); fill: var(--tpc-plate-ink);
+  paint-order: stroke; stroke: var(--tpc-plate); stroke-width: 3px; stroke-linejoin: round; }
+.c02 svg text.mu { fill: var(--tpc-plate-muted); }
+.c02 svg text.ef { fill: var(--tpc-effect); }
+.c02 svg text.st { fill: var(--tpc-state); }
+.c02 svg .bg { fill: var(--tpc-plate); }
+.c02 svg .k-body { fill: var(--tpc-grey-1); stroke: var(--tpc-plate-ink); stroke-width: var(--tpc-stroke-regular); stroke-linejoin: round; }
+.c02 svg .ink { fill: none; stroke: var(--tpc-plate-ink); stroke-width: var(--tpc-stroke-regular); stroke-linejoin: round; stroke-linecap: round; }
+.c02 svg .ink-heavy { fill: none; stroke: var(--tpc-plate-ink); stroke-width: var(--tpc-stroke-dynamics); stroke-linecap: round; }
+.c02 svg .thin { fill: none; stroke: var(--tpc-plate-ink); stroke-width: var(--tpc-stroke-hair); }
+.c02 svg .rule { fill: none; stroke: var(--tpc-plate-rule); stroke-width: var(--tpc-stroke-thin); }
+.c02 svg .face { fill: var(--tpc-grey-1); stroke: none; }
+.c02 svg .dot { fill: var(--tpc-plate-ink); }
+.c02 svg .ring { fill: var(--tpc-plate); stroke: var(--tpc-plate-ink); stroke-width: var(--tpc-stroke-regular); }
+.c02 svg .opt { fill: none; stroke: var(--tpc-plate-ink); stroke-width: var(--tpc-stroke-regular); }
+.c02 svg .s-pt { fill: var(--tpc-state); }
+.c02 svg .s-open { fill: var(--tpc-plate); stroke: var(--tpc-state); stroke-width: var(--tpc-stroke-state); }
+.c02 svg .s-line { fill: none; stroke: var(--tpc-state); stroke-width: var(--tpc-stroke-state); }
+.c02 svg .s-hair { fill: none; stroke: var(--tpc-state); stroke-width: var(--tpc-stroke-thin); }
+.c02 svg .e-line { fill: none; stroke: var(--tpc-effect); stroke-width: var(--tpc-stroke-effect); stroke-dasharray: var(--tpc-dash-effect); }
+.c02 svg .e-hair { fill: none; stroke: var(--tpc-effect); stroke-width: var(--tpc-stroke-thin); stroke-dasharray: var(--tpc-dash-effect); }
+.c02 svg .e-star { fill: none; stroke: var(--tpc-effect); stroke-width: var(--tpc-stroke-thin); }
+.c02 svg .e-pt { fill: var(--tpc-effect); stroke: var(--tpc-plate); stroke-width: var(--tpc-stroke-thin); }
+.c02 svg .e-open { fill: var(--tpc-plate); stroke: var(--tpc-effect); stroke-width: var(--tpc-stroke-regular); }
+.c02 svg .e-sec { fill: none; stroke: var(--tpc-effect); stroke-width: var(--tpc-stroke-thin); }
+.c02 svg .hit { fill: var(--tpc-plate); fill-opacity: 0; stroke: none; }
+.c02 svg .c02-h { cursor: grab; outline-offset: 4px; }
+.c02 svg .c02-x { cursor: pointer; }

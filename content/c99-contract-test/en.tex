@@ -1,0 +1,280 @@
+% c99-contract-test/en.tex — contract test (English, follows de.tex)
+%
+% Not course content.  This chapter uses every construct of
+% docs/authoring/CONTRACT.md at least once and is the fixture for
+% scripts/course/check_levels.py and for the HTML converter.  The material
+% is deliberately physics-free: arithmetic with integer 2x2 matrices, every
+% statement worked out in the text.  It is built only with --chapters c99
+% or --with-test-chapter.
+
+\chapter{Contract test: two-by-two matrices}\label{c99}
+
+This chapter is not part of the course. It is a test fixture: it uses every
+construct the authoring contract allows, and it computes with integers only.
+The course proper begins in Chapter~\ref{c00}; this reference leaves the chapter on
+purpose.
+
+\section{Two matrices and their products}\label{c99.s1}
+
+We consider two fixed matrices with integer entries,
+\begin{equation}\label{c99.eq.matrizen}\claim{c99.cl.1}{author-stipulated}
+  A = \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix},
+  \qquad
+  B = \begin{pmatrix} 1 & 0 \\ 3 & 1 \end{pmatrix}.
+\end{equation}
+This stipulation is the first of the fixture \srcref{c99-fixture}{STIPULATIONS.md, S1}.
+A product of two matrices is formed by the rule “row times column”. For the two
+possible orders this gives
+\begin{align}
+  AB &= \begin{pmatrix} 1\cdot 1 + 2\cdot 3 & 1\cdot 0 + 2\cdot 1 \\
+                        0\cdot 1 + 1\cdot 3 & 0\cdot 0 + 1\cdot 1 \end{pmatrix}
+      = \begin{pmatrix} 7 & 2 \\ 3 & 1 \end{pmatrix},
+  \label{c99.eq.ab}\claim{c99.cl.2}{derived} \\
+  BA &= \begin{pmatrix} 1\cdot 1 + 0\cdot 0 & 1\cdot 2 + 0\cdot 1 \\
+                        3\cdot 1 + 1\cdot 0 & 3\cdot 2 + 1\cdot 1 \end{pmatrix}
+      = \begin{pmatrix} 1 & 2 \\ 3 & 7 \end{pmatrix}.
+  \label{c99.eq.ba}\claim{c99.cl.3}{derived}
+\end{align}
+
+\begin{proposition}[The order matters]\label{c99.prop.reihenfolge}\claim{c99.cl.4}{derived}
+  For the matrices of \eqref{c99.eq.matrizen} we have $AB \neq BA$.
+\end{proposition}
+\begin{proof}
+  The top left entry equals $7$ in \eqref{c99.eq.ab} and $1$ in
+  \eqref{c99.eq.ba}.
+\end{proof}
+
+\begin{tpcfigure}{c99.fig.scherung}
+  \demo{c99.demo.scherung}
+  \caption{The matrix $A$ as a map of the plane: the point $(x,y)$ goes to
+    $(x+2y,\,y)$. The dashed unit square becomes the hatched parallelogram with
+    corners $(0,0)$, $(1,0)$, $(3,1)$ and $(2,1)$; the base stays where it is and
+    the top edge moves two units to the right. The German caption of this figure
+    is long on purpose, so that the line breaking of long German compounds is
+    tested in print and on the web; the English caption is kept at a comparable
+    length so that both editions exercise a caption of several lines.}
+\end{tpcfigure}
+
+\tpcdef{T1}
+
+With \defref{T1} one reads off from \eqref{c99.eq.ab} and \eqref{c99.eq.ba}:
+\begin{equation}\label{c99.eq.spuren}\claim{c99.cl.5}{derived}
+  \tr(AB) = 7 + 1 = 8,
+  \qquad
+  \tr(BA) = 1 + 7 = 8.
+\end{equation}
+The mean of the four entries of $AB$ is \num[c99.cl.19]{3.25}{}.
+The products differ, but their traces agree. This is not an accident of these two
+matrices\zoomref{c99.v1}:
+
+\begin{theorem}[Trace of a product]\label{c99.thm.spur}\claim[proof-linked]{c99.cl.6}{derived}
+  For all $2\times 2$ matrices $X$ and $Y$ we have $\tr(XY) = \tr(YX)$.
+\end{theorem}
+
+\begin{vertiefung}[id=c99.v1,
+    titel={Why the traces agree},
+    wozu={The core states Theorem~\ref{c99.thm.spur} without proof; here it is
+      worked out for arbitrary entries.},
+    voraussetzung={Core~\ref{c99.s1} up to equation~\eqref{c99.eq.spuren}; not
+      needed for Section~\ref{c99.s2}.},
+    zurueck={The trace of a product does not depend on the order of the factors;
+      the product itself does.}]
+  Let $X$ and $Y$ be matrices with entries $x_{jk}$ and $y_{jk}$. The diagonal
+  entries of the two products are
+  \begin{align}
+    (XY)_{11} &= x_{11}y_{11} + x_{12}y_{21}, &
+    (XY)_{22} &= x_{21}y_{12} + x_{22}y_{22},
+    \label{c99.eq.diag-xy}\claim{c99.cl.7}{derived} \\
+    (YX)_{11} &= y_{11}x_{11} + y_{12}x_{21}, &
+    (YX)_{22} &= y_{21}x_{12} + y_{22}x_{22}.
+    \label{c99.eq.diag-yx}\claim{c99.cl.8}{derived}
+  \end{align}
+
+  \begin{lemma}[Trace of a product, worked out]\label{c99.lem.spur}\claim{c99.cl.9}{derived}
+    For all $2\times 2$ matrices $X$ and $Y$ we have
+    \begin{equation}\label{c99.eq.spur-allgemein}
+      \tr(XY) = x_{11}y_{11} + x_{12}y_{21} + x_{21}y_{12} + x_{22}y_{22} = \tr(YX).
+    \end{equation}
+  \end{lemma}
+  \begin{proof}
+    The sum of the two entries in \eqref{c99.eq.diag-xy} is the middle
+    expression. The sum of the two entries in \eqref{c99.eq.diag-yx} consists of
+    the same four products in a different order.
+  \end{proof}
+
+  \tpcdef{T2}
+
+  For the two matrices of the core, \eqref{c99.eq.ab} and \eqref{c99.eq.ba} give
+  \begin{equation}\label{c99.eq.kommutator}\claim{c99.cl.10}{derived}
+    \comm{A}{B} = \begin{pmatrix} 7-1 & 2-2 \\ 3-3 & 1-7 \end{pmatrix}
+                = \begin{pmatrix} 6 & 0 \\ 0 & -6 \end{pmatrix},
+    \qquad
+    \tr\comm{A}{B} = 6 - 6 = 0.
+  \end{equation}
+
+  \begin{tpcfigure}{c99.fig.kommutator}
+    \caption{The commutator of \eqref{c99.eq.kommutator} as a map: it stretches
+      by the factor $6$ and reflects in the horizontal axis.}
+  \end{tpcfigure}
+
+  That the trace respects sums is checked in the foundations\zoomref{c99.f2}.
+\end{vertiefung}
+
+The next paragraph is written for readers who skipped the block: it uses only
+\eqref{c99.eq.spuren} and Theorem~\ref{c99.thm.spur}.
+
+\begin{tpcfigure}{c99.fig.scherung-b}
+  \demo{c99.demo.scherung-b}
+  \caption{The matrix $B$ as a map: $(x,y)$ goes to $(x,\,3x+y)$. A second
+    figure with a demo on the same page.}
+\end{tpcfigure}
+
+\begin{tpctable}{c99.tab.produkte}
+  \caption{The entries of the two products of \eqref{c99.eq.ab} and \eqref{c99.eq.ba}.}
+  \begin{tabular}{lcccc}
+    \toprule
+    Product & $(1,1)$ & $(1,2)$ & $(2,1)$ & $(2,2)$ \\
+    \midrule
+    $AB$ & $7$ & $2$ & $3$ & $1$ \\
+    $BA$ & $1$ & $2$ & $3$ & $7$ \\
+    \bottomrule
+  \end{tabular}
+\end{tpctable}
+
+\begin{merksatz}[Key point]
+  For matrices the order of the factors matters.
+\end{merksatz}
+
+\section{Shears}\label{c99.s2}
+
+\subsection{A family of matrices}\label{c99.s2.1}
+
+For every integer $t$ let
+\begin{equation}\label{c99.eq.scherung}\claim{c99.cl.11}{author-stipulated}
+  M(t) = \begin{pmatrix} 1 & t \\ 0 & 1 \end{pmatrix}.
+\end{equation}
+The matrix $A$ of \eqref{c99.eq.matrizen} is $M(2)$.
+
+\begin{theorem}[Shears add]\label{c99.thm.scherung}\claim[proof-included]{c99.cl.12}{derived}
+  For all integers $s$ and $t$ we have $M(s)M(t) = M(s+t)$. Moreover, for every
+  integer $n \geq 1$ we have $M(t)^n = M(nt)$.
+\end{theorem}
+\begin{proof}
+  The first statement is a multiplication:
+  \begin{equation}\label{c99.eq.scherung-produkt}
+    M(s)M(t)
+    = \begin{pmatrix} 1\cdot 1 + s\cdot 0 & 1\cdot t + s\cdot 1 \\
+                      0\cdot 1 + 1\cdot 0 & 0\cdot t + 1\cdot 1 \end{pmatrix}
+    = \begin{pmatrix} 1 & s+t \\ 0 & 1 \end{pmatrix}
+    = M(s+t).
+  \end{equation}
+  The second follows by induction on $n$. For $n = 1$ there is nothing to show.
+  The induction step is a lemma of its own.
+  \begin{lemma}[Induction step]\label{c99.lem.schritt}\claim{c99.cl.13}{derived}
+    If $M(t)^n = M(nt)$, then also $M(t)^{n+1} = M((n+1)t)$.
+  \end{lemma}
+  \begin{proof}
+    By assumption $M(t)^{n+1} = M(t)^n M(t) = M(nt)M(t)$, and by
+    \eqref{c99.eq.scherung-produkt} with $s = nt$ this is $M(nt + t) = M((n+1)t)$.
+  \end{proof}
+  With Lemma~\ref{c99.lem.schritt} the statement holds for all $n \geq 1$.
+\end{proof}
+
+\begin{corollary}[Shears commute]\label{c99.cor.vertauschen}\claim{c99.cl.18}{derived}
+  For all integers $s$ and $t$, $M(s)M(t) = M(t)M(s)$.
+\end{corollary}
+\begin{proof}
+  By Theorem~\ref{c99.thm.scherung} both sides equal $M(s+t)$, because
+  $s + t = t + s$.
+\end{proof}
+
+\begin{example}[Numbers]\label{c99.ex.zahlen}
+  With $s = 2$ and $t = 3$, \eqref{c99.eq.scherung-produkt} gives the equation
+  $M(2)M(3) = M(5)$, and with $t = 2$, $n = 3$ we get $A^3 = M(2)^3 = M(6)$.
+\end{example}
+
+\begin{remark}
+  The set of all $M(t)$ is closed under multiplication. What follows from this
+  is in the foundations\zoomref{c99.f1}.
+\end{remark}
+
+\subsection{A case distinction}\label{c99.s2.2}
+
+The absolute value of the top right entry of $M(t)$ is
+\begin{equation}\label{c99.eq.betrag}\claim{c99.cl.14}{author-stipulated}
+  f(t) =
+  \begin{cases}
+    t  & \text{\tpcifenglish{if}{falls}}\ t \geq 0, \\
+    -t & \text{\tpcifenglish{if}{falls}}\ t < 0.
+  \end{cases}
+\end{equation}
+
+\begin{proposition}[The absolute value is not negative]\label{c99.prop.betrag}\claim{c99.cl.15}{derived}
+  For every integer $t$ we have $f(t) \geq 0$ and $f(t)^2 = t^2$.
+\end{proposition}
+\begin{proof}
+  We distinguish the two cases of \eqref{c99.eq.betrag}.
+  \begin{description}
+    \item[Case 1: $t \geq 0$.] Then $f(t) = t \geq 0$ and $f(t)^2 = t^2$.
+    \item[Case 2: $t < 0$.] Then $f(t) = -t > 0$ and
+      $f(t)^2 = (-t)^2 = t^2$.
+  \end{description}
+\end{proof}
+
+\begin{intuition}
+  A shear moves every horizontal line along itself; only the amount of the shift
+  grows with the height. The boxes for element types are tinted, the depth
+  blocks are not.
+\end{intuition}
+
+\begin{exercise}[The inverse]\label{c99.exc.umkehrung}
+  Compute $M(t)M(-t)$.
+  \begin{enumerate}
+    \item Use \eqref{c99.eq.scherung-produkt}.
+    \item Compare with the direct multiplication.
+  \end{enumerate}
+\end{exercise}
+\begin{solution}
+  With $s = t$ and $-t$ in the place of $t$, \eqref{c99.eq.scherung-produkt}
+  gives the matrix $M(t - t) = M(0)$, and $M(0)$ has the entries $1, 0, 0, 1$.
+  \begin{itemize}
+    \item Directly: the top right entry is $1\cdot(-t) + t\cdot 1 = 0$.
+    \item The remaining entries are as in \eqref{c99.eq.scherung-produkt}.
+  \end{itemize}
+\end{solution}
+
+\begin{fundament}[id=c99.f1,
+    titel={The shears form a group},
+    wozu={The core uses only the product of two shears; here we collect what
+      follows from it for the whole family.},
+    voraussetzung={Core~\ref{c99.s2.1}, Theorem~\ref{c99.thm.scherung}.},
+    zurueck={Every shear $M(t)$ is undone by $M(-t)$.}]
+  \begin{proposition}[Identity and inverse]\label{c99.prop.gruppe}\claim{c99.cl.16}{derived}
+    For all integers $t$ we have $M(0)M(t) = M(t)$ and $M(t)M(-t) = M(0)$,
+    and likewise with the factors exchanged.
+  \end{proposition}
+  \begin{proof}
+    Both are Theorem~\ref{c99.thm.scherung} with a special choice of $s$:
+    \begin{equation}\label{c99.eq.gruppe}
+      M(0)M(t) = M(0 + t) = M(t),
+      \qquad
+      M(t)M(-t) = M(t - t) = M(0).
+    \end{equation}
+    The equations with the factors exchanged follow in the same way, because
+    $s + t = t + s$.
+  \end{proof}
+\end{fundament}
+
+\begin{fundament}[id=c99.f2,
+    titel={The trace respects sums},
+    wozu={The deeper block uses that the trace of a difference is the difference
+      of the traces; here is the computation.},
+    voraussetzung={\defref{T1}.},
+    zurueck={From $\tr(AB) = \tr(BA)$ it therefore follows that $\tr(AB - BA) = 0$.}]
+  For matrices $X$ and $Y$ with entries $x_{jk}$ and $y_{jk}$ and an integer $c$,
+  \begin{equation}\label{c99.eq.spur-linear}\claim{c99.cl.17}{derived}
+    \tr(X + cY) = (x_{11} + c\,y_{11}) + (x_{22} + c\,y_{22})
+                = \tr X + c\,\tr Y.
+  \end{equation}
+  With $c = -1$ this is the statement about differences.
+\end{fundament}

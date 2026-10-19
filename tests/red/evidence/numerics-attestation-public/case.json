@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "Public mode requires each numerical claim's execution result.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/numerics-attestation-public --public",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[receipt\\].*numerical claim 'c98\\.cl\\.4' lacks a successful execution attestation"
+}

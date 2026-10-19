@@ -1,0 +1,7 @@
+{
+  "gate": "red-runner",
+  "what": "A command exits nonzero despite an explicit zero-exit expectation.",
+  "cmd": "python3 tests/red/red-runner/no-cases/probe.py exit-expectation",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "MISSED .*expect_exit_nonzero=False"
+}

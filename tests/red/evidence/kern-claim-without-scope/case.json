@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A Kern claim has no scope (K3: the premise is missing).",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/kern-claim-without-scope --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[K3\\] claims\\.json:c98\\.cl\\.1: Kern claim without scope"
+}

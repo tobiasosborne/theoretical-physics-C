@@ -1,0 +1,31 @@
+{
+  "id": "c98",
+  "slug": "red",
+  "test_fixture": true,
+  "title": {
+    "de": "Rote Vorlage",
+    "en": "Red fixture"
+  },
+  "effective_theory": {
+    "de": "Keine: Prüfvorlage.",
+    "en": "None: fixture."
+  },
+  "zoom_scale": "none",
+  "prerequisites": [],
+  "assets": [
+    {
+      "id": "c98.fig.bild",
+      "kind": "figure",
+      "file": "figures/bild.tex"
+    },
+    {
+      "id": "c98.demo.nirgends",
+      "kind": "demo",
+      "still": "c98.fig.bild",
+      "title": {
+        "de": "Fehlt",
+        "en": "Missing"
+      }
+    }
+  ]
+}

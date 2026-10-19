@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "The lemma's \\claim stands behind a line break and a comment sign (\\\\% ...), so TeX never sees it.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/claim-in-comment --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[unit-without-claim\\] c98-red/de\\.tex:\\d+: lemma without \\\\claim"
+}

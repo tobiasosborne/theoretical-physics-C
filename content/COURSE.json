@@ -1,0 +1,27 @@
+{
+ "_role": "The chapters of the course as planned in docs/plan/PLAN.md section 5. A build that lacks any of them is partial: references into unwritten chapters are logged as external, not failed.",
+ "planned": [
+  "c00",
+  "c01",
+  "c02",
+  "c03",
+  "c04",
+  "c05",
+  "c06",
+  "c07",
+  "c08",
+  "c09",
+  "c10",
+  "c11",
+  "c12",
+  "c13",
+  "c14",
+  "c15",
+  "c16",
+  "c17",
+  "c18",
+  "c19",
+  "c20",
+  "c21"
+ ]
+}

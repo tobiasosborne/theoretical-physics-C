@@ -1,0 +1,87 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "registry/translation.json",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "schema_version",
+  "not_a_source",
+  "rows"
+ ],
+ "properties": {
+  "schema_version": {
+   "type": "integer"
+  },
+  "not_a_source": {
+   "type": "object"
+  },
+  "rows": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/row"
+   }
+  }
+ },
+ "$defs": {
+  "row": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "id",
+    "source",
+    "locus",
+    "quote",
+    "source_token",
+    "source_meaning",
+    "canonical",
+    "mapping",
+    "verified",
+    "how"
+   ],
+   "properties": {
+    "id": {
+     "type": "string",
+     "pattern": "^TR-[A-Z0-9]+-[0-9]+$"
+    },
+    "source": {
+     "type": "string",
+     "minLength": 1
+    },
+    "locus": {
+     "type": "string",
+     "minLength": 1
+    },
+    "quote": {
+     "type": "string",
+     "minLength": 1
+    },
+    "source_token": {
+     "type": "string",
+     "minLength": 1
+    },
+    "source_meaning": {
+     "type": "string",
+     "minLength": 1
+    },
+    "canonical": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "mapping": {
+     "type": "string",
+     "minLength": 1
+    },
+    "verified": {
+     "type": "boolean"
+    },
+    "how": {
+     "type": "string",
+     "minLength": 1
+    }
+   }
+  }
+ },
+ "description": "Source keys used anywhere in the registry are names of registered sources (sources/<key>/source.json); title, kind and paths are read from that record. not_a_source declares the only other keys admitted: pseudo-keys for project documents and notes, each {title, kind: 'text' | 'note', path?}. They are not sources."
+}

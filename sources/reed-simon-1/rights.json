@@ -1,0 +1,15 @@
+{
+ "schema_version": 1,
+ "key": "reed-simon-1",
+ "holder": "Academic Press, Inc.",
+ "status": "copyright",
+ "licence": "all rights reserved (copyright page)",
+ "redistribution": "never",
+ "quotation": "short quotations with attribution only (one sentence or one formula per provenance row; COORDINATION.md rule 5)",
+ "storage_policy": "payload and extracted text stay in the gitignored sources/<key>/; only source.json, rights.json and hashes are tracked",
+ "public_artifacts": "conventional citation and project-authored exposition; no page images, no extracted text",
+ "basis": "copyright page read from the page image (DjVu page 2): 'Copyright (c) 1980, by Academic Press, Inc. All rights reserved. No part of this publication may be reproduced or transmitted in any form ...'",
+ "unchecked": [
+  "the exact scope of the quotation right for the published course (German UrhG section 51 not assessed)"
+ ]
+}

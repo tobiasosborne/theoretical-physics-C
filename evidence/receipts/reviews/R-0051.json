@@ -1,0 +1,18 @@
+{
+  "id": "R-0051",
+  "reviewer": "codex gpt-6.1-sol, independent review 0e",
+  "date": "2026-10-12",
+  "covers": [
+    "P-0051"
+  ],
+  "verdict": "pass",
+  "method": "Independently rendered sources/reed-simon-1/reed-simon-1.djvu with ddjvu -format=pnm -page=66 into /tmp/smoke-b-review; inspected the rendered page image, printed page 52, and compared quote, context, and supported claim. Scan SHA256 a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36 independently matched.",
+  "notes": "The recorded transcription agrees with the rendered page image, with mathematical notation transcribed into TeX. Coverage is this provenance row; the supported chapter claim also needs its own stated hypotheses and derivation. The separability hypothesis is printed immediately above part (a).",
+  "bindings": [
+    {
+      "provenance_id": "P-0051",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "3ee4dd0265bf53f34738528df39a6d471611a0539aedff4d756d930b40cf2928"
+    }
+  ]
+}

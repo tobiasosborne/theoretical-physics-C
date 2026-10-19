@@ -1,0 +1,1543 @@
+% c11-wasserstoff/de.tex — Kapitel 11, Das Wasserstoffatom (deutsche Leitfassung)
+%
+% Smoke B der Phase 0.  Mathematik aus evidence/derivations/c11/DERIVATION.md
+% (Herleitung) und REVIEW.md (unabhängige Prüfung); jede Aussage hat ihre Zeile
+% in evidence/claims.json (c11.cl.*). scripts/c11/check_c11_formulas.py prüft exakt
+% die in formulas.json gelisteten Zeilen ungesternter equation/align-Umgebungen,
+% deren linke Seite eine Ylm-, Rnl-, psinlm- oder Lag-Funktion mit numerischen
+% Indizes und Argumentliste ist (Lag darf einen symbolischen oberen Index haben).
+% Gesternten Displays, symbolischen Definitionen, Integralen, CDFs und tpcdef-Inhalten
+% gilt diese Prüfung nicht. Gelistete Gleichungen und formulas.json werden zusammen geändert.
+
+\chapter{Das Wasserstoffatom}\label{c11}
+
+Das Wasserstoffatom besteht aus einem Elektron und einem Proton. Es ist das einfachste
+Atom. In diesem Kapitel konstruieren wir eine Familie gebundener Zustände in einem
+quantenmechanischen Modell: Ihre Energien und Wellenfunktionen sowie die unter einer
+zusätzlichen Photonenergie-Konvention verglichenen Wellenlängen stehen als geschlossene
+Formeln da.
+
+Wir gehen dabei in drei Schritten vor. Zuerst schreiben wir das Atom als das hin, was es
+ist, nämlich als System aus \emph{zwei} Teilchen. Dann spalten wir die Bewegung des
+Schwerpunkts ab; diese Rechnung führen wir vollständig aus, denn sie entscheidet, was die
+berühmten Orbitalbilder eigentlich zeigen. Übrig bleibt ein Problem für ein einziges
+Teilchen mit der sogenannten reduzierten Masse, und dieses lösen wir.
+
+\section{Zwei Teilchen, ein Atom}\label{c11.s1}
+
+Das Elektron sitzt am Ort $\posE$, das Proton am Ort $\posP$; beide Orte sind Vektoren
+im dreidimensionalen Raum. Die beiden Teilchen haben die Massen $\massE$ und $\massP$
+und ziehen einander elektrisch an. Mehr steckt in unserem Modell nicht:
+
+\tpcdef{D60}
+
+Für Wasserstoff ist $\Znuc = 1$. Wir lassen $\Znuc$ in den Formeln stehen; sie gelten
+dann ebenso für einen Kern mit der Ladung $\Znuc\echarge$ und einem einzigen Elektron,
+wenn man für $\massP$ die Masse dieses Kerns einsetzt.
+
+\begin{tpcfigure}{c11.fig.zweikoerper}
+  \caption{Die Orte $\posE$ des Elektrons und $\posP$ des Protons, vom Ursprung $O$ aus
+    gemessen, und die beiden neuen Koordinaten aus Abschnitt~\ref{c11.s2}: die
+    Schwerpunktskoordinate $\posCM$ und die Relativkoordinate $\posRel = \posE - \posP$.
+    Der Schwerpunkt teilt die Verbindungsstrecke im Verhältnis der Massen. Das Bild ist
+    für das Massenverhältnis $\massP : \massE = 3 : 1$ gezeichnet, damit man den
+    Schwerpunkt vom Proton unterscheiden kann; das ist nicht das Verhältnis im
+    Wasserstoffatom.}
+\end{tpcfigure}
+
+% GAP-TJO: Die Formulierung der Brücke vom endlichdimensionalen Kern (C0-C4) zu L^2 ist
+% TJOs (PLAN.md Abschnitt 14, Punkt 7; sie gehört nach C5).  Der folgende Absatz hält sich
+% an die Aufzählung dort und erfindet nichts hinzu.
+Was heißt hier „Zustand“ und was „Operator“? Ab Kapitel~\ref{c05} arbeiten wir mit
+Wellenfunktionen, und in genau diesem Sinn ist das Folgende gemeint: Die Zustände, mit
+denen wir rechnen, sind durch eine Wellenfunktion $\Psi(\posE, \posP)$ gegeben, eine
+komplexwertige Funktion von sechs reellen Variablen, deren Betragsquadrat sich über den
+ganzen $\mathbb{R}^6$ zu eins integriert; das Skalarprodukt zweier Wellenfunktionen ist
+ein Integral; und wir verwenden zunächst den Differentialausdruck aus \defref{D60}
+auf Funktionen, die sich außerhalb der Kollisionspunkte zweimal differenzieren lassen.
+Zweimalige Differenzierbarkeit allein legt keinen Operator-Definitionsbereich auf
+$\Ltwo{\mathbb{R}^6}$ fest. Die Eigenfunktionsgleichungen gelten außerhalb der
+Kollisionspunkte und als $L^2$-Identitäten fast überall. Auf welchen Funktionen genau
+die Vorschrift einen Operator festlegt, ist eine eigene Frage\zoomref{c11.f1}.
+
+Zu zwei Teilchen gehören also Funktionen von sechs Variablen. Man schreibt das als
+\begin{equation}\label{c11.eq.hilbertraum}\claim{c11.cl.hilbertraum}{source-quoted}
+  \Ltwo{\mathbb{R}^3} \otimes \Ltwo{\mathbb{R}^3} = \Ltwo{\mathbb{R}^6},
+  \qquad
+  (f \otimes g)(\posE, \posP) = f(\posE)\, g(\posP).
+\end{equation}
+Links steht das Tensorprodukt, mit dem man in der Quantenmechanik Systeme zusammensetzt;
+rechts steht, was das für Wellenfunktionen bedeutet: Das Produkt $f \otimes g$ einer
+Funktion des Elektronenorts und einer Funktion des Protonenorts ist die gewöhnliche
+Produktfunktion \srcref{reed-simon-1}{Theorem II.10 (a), S. 52}. Für uns ist nur die
+rechte Seite wichtig: Wir rechnen mit Funktionen von sechs Variablen.
+
+Unser Modell lässt vieles weg, und das sagen wir gleich dazu. Elektron und Proton sind
+Punktladungen ohne Spin; die Bewegung ist nichtrelativistisch; die einzige
+Wechselwirkung ist die Coulombanziehung; ein Lichtfeld, das das Atom aussenden oder
+aufnehmen könnte, kommt in $\HamTot$ nicht vor. Alle Ergebnisse dieses Kapitels sind
+Aussagen über dieses Modell.
+
+\section{Schwerpunkt und Relativbewegung}\label{c11.s2}
+
+Das Potential in $\HamTot$ hängt nur vom Abstandsvektor $\posE - \posP$ ab. Das legt
+nahe, diesen Vektor als eine der neuen Koordinaten zu nehmen. Als zweite nehmen wir den
+Schwerpunkt.
+
+\tpcdef{D61}
+
+\tpcdef{D62}
+
+\begin{tpcfigure}{c11.fig.massen}
+  \caption{Wo der Schwerpunkt auf der Strecke vom Proton zum Elektron liegt: nach \defref{D61} im Abstand $(\massE/\massTot)\,\rad$ vom Proton. Bei gleichen Massen ist das die Mitte, beim Massenverhältnis aus Abbildung~\ref{c11.fig.zweikoerper} ein Viertel der Strecke. Im Wasserstoffatom ist das Proton so viel schwerer als das Elektron, dass der Schwerpunkt im Maßstab dieses Bildes mit dem Proton zusammenfällt.}
+\end{tpcfigure}
+
+\subsection{Die neuen Koordinaten}\label{c11.s2.1}
+
+Zuerst lösen wir nach den alten Koordinaten auf. Aus $\posRel = \posE - \posP$ folgt
+$\posE = \posP + \posRel$. Eingesetzt in
+$\massTot\posCM = \massE\posE + \massP\posP$ ergibt das
+$\massTot\posCM = \massTot\posP + \massE\posRel$, also
+\begin{equation}\label{c11.eq.umkehr}\claim{c11.cl.umkehr}{derived}
+  \posP = \posCM - \frac{\massE}{\massTot}\,\posRel,
+  \qquad
+  \posE = \posCM + \frac{\massP}{\massTot}\,\posRel.
+\end{equation}
+Zu jedem Paar $(\posE, \posP)$ gehört also genau ein Paar $(\posCM, \posRel)$ und
+umgekehrt (Abbildung~\ref{c11.fig.zweikoerper}). Eine Wellenfunktion können wir deshalb
+ebenso gut als Funktion der neuen Koordinaten schreiben. Wir nennen diese Funktion
+$\widetilde{\Psi}$:
+\begin{equation}\label{c11.eq.tilde}\claim{c11.cl.tilde}{derived}
+  \widetilde{\Psi}(\posCM, \posRel)
+  = \Psi\Bigl(\posCM + \frac{\massP}{\massTot}\,\posRel,\;
+              \posCM - \frac{\massE}{\massTot}\,\posRel\Bigr),
+  \qquad
+  \widetilde{\Psi} = \Uni\Psi.
+\end{equation}
+Der Buchstabe $\Uni$ steht für die Abbildung, die aus $\Psi$ die Funktion
+$\widetilde{\Psi}$ macht. Sie ändert nichts an der Physik, nur an der Beschriftung.
+
+Ändert sie die Normierung? Bei einem Wechsel der Integrationsvariablen kommt es auf den
+Betrag der Determinante der Koordinatentransformation an. Die Transformation mischt die
+drei Raumrichtungen nicht: In jeder Richtung gilt dasselbe, zum Beispiel für die
+$x$-Komponenten $x_{\mathrm{e}}$, $x_{\mathrm{p}}$ der alten und $X$, $x$ der neuen
+Koordinaten
+\begin{equation}\label{c11.eq.jacobi}\claim{c11.cl.jacobi}{derived}
+  \begin{aligned}
+    \begin{pmatrix} X \\ x \end{pmatrix}
+    &= \begin{pmatrix} \massE/\massTot & \massP/\massTot \\ 1 & -1 \end{pmatrix}
+      \begin{pmatrix} x_{\mathrm{e}} \\ x_{\mathrm{p}} \end{pmatrix}, \\
+    \det \begin{pmatrix} \massE/\massTot & \massP/\massTot \\ 1 & -1 \end{pmatrix}
+    &= -\frac{\massE + \massP}{\massTot} = -1.
+  \end{aligned}
+\end{equation}
+Für alle drei Richtungen zusammen ist die Determinante $(-1)^3 = -1$. Ihr Betrag ist
+eins: Der volle Jacobi-Faktor erhält das Integrationsvolumen und damit die Normierung.
+Die besondere ebene Masche in Abbildung~\ref{c11.fig.koordinaten} hat denselben
+Flächeninhalt wie das dort gezeigte Einheitsquadrat.
+\begin{equation}\label{c11.eq.norm}\claim{c11.cl.norm}{derived}
+  \int \abs{\widetilde{\Psi}(\posCM, \posRel)}^2 \,\dd^3\posCM\,\dd^3\posRel
+  = \int \abs{\Psi(\posE, \posP)}^2 \,\dd^3\posE\,\dd^3\posP .
+\end{equation}
+
+\begin{tpcfigure}{c11.fig.koordinaten}
+  \caption{Der Koordinatenwechsel für eine Raumrichtung, wieder für
+    $\massP : \massE = 3 : 1$ gezeichnet. Durchgezogene Linien: $X$ fest; gestrichelte
+    Linien: $x$ fest. Die neuen Koordinatenlinien stehen nicht senkrecht aufeinander,
+    aber die Masche zwischen $X = 1$, $X = 2$, $x = 0$ und $x = 1$ hat denselben
+    Flächeninhalt wie das Einheitsquadrat der alten Koordinaten: Der Betrag der
+    Determinante in \eqref{c11.eq.jacobi} ist eins.}
+\end{tpcfigure}
+
+\subsection{Die kinetische Energie in den neuen Koordinaten}\label{c11.s2.2}
+
+Jetzt kommt die eigentliche Rechnung. Wir brauchen die zweiten Ableitungen nach den
+alten Koordinaten, ausgedrückt durch Ableitungen nach den neuen. Das Werkzeug ist die
+Kettenregel, und wieder genügt eine Raumrichtung. Nach \defref{D61} ist
+$X = (\massE x_{\mathrm{e}} + \massP x_{\mathrm{p}})/\massTot$ und
+$x = x_{\mathrm{e}} - x_{\mathrm{p}}$, also
+\begin{equation}\label{c11.eq.partiell}\claim{c11.cl.partiell}{derived}
+  \frac{\partial X}{\partial x_{\mathrm{e}}} = \frac{\massE}{\massTot},
+  \qquad
+  \frac{\partial x}{\partial x_{\mathrm{e}}} = 1,
+  \qquad
+  \frac{\partial X}{\partial x_{\mathrm{p}}} = \frac{\massP}{\massTot},
+  \qquad
+  \frac{\partial x}{\partial x_{\mathrm{p}}} = -1.
+\end{equation}
+Eine Funktion der neuen Koordinaten hängt über $X$ und über $x$ von $x_{\mathrm{e}}$ ab.
+Die Kettenregel sammelt beide Abhängigkeiten ein:
+\begin{equation}\label{c11.eq.kette}\claim{c11.cl.kette}{derived}
+  \frac{\partial}{\partial x_{\mathrm{e}}}
+  = \frac{\massE}{\massTot}\frac{\partial}{\partial X} + \frac{\partial}{\partial x},
+  \qquad
+  \frac{\partial}{\partial x_{\mathrm{p}}}
+  = \frac{\massP}{\massTot}\frac{\partial}{\partial X} - \frac{\partial}{\partial x}.
+\end{equation}
+
+\begin{tpcfigure}{c11.fig.kette}
+  \caption{Die Kettenregel \eqref{c11.eq.kette} als Schema. Eine Funktion von $X$ und $x$ hängt auf zwei Wegen von $x_{\mathrm{e}}$ ab (durchgezogen) und auf zwei Wegen von $x_{\mathrm{p}}$ (gestrichelt). An jedem Pfeil steht der Faktor aus \eqref{c11.eq.partiell}; die Ableitung nach einer alten Koordinate ist die Summe über ihre beiden Wege.}
+\end{tpcfigure}
+
+Das wenden wir zweimal an. Wenn die Funktion zweimal stetig differenzierbar ist, kommt
+es auf die Reihenfolge der Ableitungen nicht an, und man darf rechnen wie bei einer
+binomischen Formel:
+\begin{equation}\label{c11.eq.zweite}\claim{c11.cl.zweite}{derived}
+  \begin{aligned}
+    \frac{\partial^2}{\partial x_{\mathrm{e}}^2}
+    &= \frac{\massE^2}{\massTot^2}\frac{\partial^2}{\partial X^2}
+     + \frac{2\massE}{\massTot}\frac{\partial^2}{\partial X\,\partial x}
+     + \frac{\partial^2}{\partial x^2}, \\
+    \frac{\partial^2}{\partial x_{\mathrm{p}}^2}
+    &= \frac{\massP^2}{\massTot^2}\frac{\partial^2}{\partial X^2}
+     - \frac{2\massP}{\massTot}\frac{\partial^2}{\partial X\,\partial x}
+     + \frac{\partial^2}{\partial x^2}.
+  \end{aligned}
+\end{equation}
+Für die $y$- und die $z$-Richtung gilt dasselbe. Die Summe über die drei Richtungen
+macht aus den zweiten Ableitungen Laplace-Operatoren; die gemischten Terme summieren
+sich zu $\nabla_{\posCM} \cdot \nabla_{\posRel}$, dem Skalarprodukt der beiden
+Gradienten:
+\begin{equation}\label{c11.eq.laplace}\claim{c11.cl.laplace}{derived}
+  \begin{aligned}
+    \Lap_{\mathrm{e}}
+    &= \frac{\massE^2}{\massTot^2}\,\Lap_{\posCM}
+     + \frac{2\massE}{\massTot}\,\nabla_{\posCM} \cdot \nabla_{\posRel}
+     + \Lap_{\posRel}, \\
+    \Lap_{\mathrm{p}}
+    &= \frac{\massP^2}{\massTot^2}\,\Lap_{\posCM}
+     - \frac{2\massP}{\massTot}\,\nabla_{\posCM} \cdot \nabla_{\posRel}
+     + \Lap_{\posRel}.
+  \end{aligned}
+\end{equation}
+In $\HamTot$ steht $\Lap_{\mathrm{e}}$ geteilt durch $\massE$ und $\Lap_{\mathrm{p}}$
+geteilt durch $\massP$. Genau diese Gewichte lassen die gemischten Terme verschwinden:
+\begin{equation}\label{c11.eq.koeff}\claim{c11.cl.koeff}{derived}
+  \begin{aligned}
+    \frac{1}{\massE}\,\Lap_{\mathrm{e}} + \frac{1}{\massP}\,\Lap_{\mathrm{p}}
+    &= \frac{\massE + \massP}{\massTot^2}\,\Lap_{\posCM}
+     + \Bigl(\frac{2}{\massTot} - \frac{2}{\massTot}\Bigr)\,
+       \nabla_{\posCM} \cdot \nabla_{\posRel}
+     + \Bigl(\frac{1}{\massE} + \frac{1}{\massP}\Bigr)\,\Lap_{\posRel} \\
+    &= \frac{1}{\massTot}\,\Lap_{\posCM} + \frac{1}{\massRed}\,\Lap_{\posRel}.
+  \end{aligned}
+\end{equation}
+Vor $\Lap_{\posCM}$ steht der Kehrwert der Gesamtmasse, vor $\Lap_{\posRel}$ der Kehrwert
+der reduzierten Masse aus \defref{D62}. Multipliziert man mit $-\hbar^2/2$ und nimmt das
+Potential dazu, das nur von $\posRel$ abhängt, so steht das Ergebnis da.
+
+\begin{theorem}[Abspaltung der Schwerpunktsbewegung]\label{c11.thm.separation}\claim[proof-included]{c11.cl.separation}{derived}
+  Die Funktion $\Psi$ der beiden Orte sei zweimal stetig differenzierbar, wo immer
+  $\posE \neq \posP$ ist, und $\widetilde{\Psi} = \Uni\Psi$ sei dieselbe Funktion in den
+  neuen Koordinaten wie in \eqref{c11.eq.tilde}. Dann gilt an allen diesen Stellen
+  \begin{equation}\label{c11.eq.separation}
+    \begin{aligned}
+      \Uni\,\HamTot\Psi &= \HamCM\widetilde{\Psi} + \HamRel\widetilde{\Psi}, \\
+      \HamCM &= -\frac{\hbar^2}{2\massTot}\,\Lap_{\posCM},
+      \qquad
+      \HamRel = -\frac{\hbar^2}{2\massRed}\,\Lap_{\posRel} + \Vpot(\posRel).
+    \end{aligned}
+  \end{equation}
+  Dabei wirkt $\HamCM$ nur auf die Schwerpunktskoordinate und $\HamRel$ nur auf die
+  Relativkoordinate.
+\end{theorem}
+\begin{proof}
+  Die kinetische Energie in $\HamTot$ ist $-\hbar^2/2$ mal der linken Seite von
+  \eqref{c11.eq.koeff}; die rechte Seite von \eqref{c11.eq.koeff} liefert die beiden
+  Laplace-Operatoren in \eqref{c11.eq.separation}. Das Potential
+  $\Vpot(\posE - \posP)$ ist in den neuen Koordinaten $\Vpot(\posRel)$. Die Punkte mit
+  $\posE = \posP$, also $\posRel = 0$, sind ausgenommen, weil das Potential dort nicht
+  erklärt ist.
+\end{proof}
+
+\begin{tpcfigure}{c11.fig.zerlegung}
+  \caption{Theorem~\ref{c11.thm.separation} als Schema; die Längen im Bild bedeuten nichts. Links das Atom, wie es dasteht: zwei Teilchen, gekoppelt durch das Potential. Rechts dasselbe System in den neuen Koordinaten: ein freies Teilchen der Masse $\massTot$ und, unabhängig davon, ein Teilchen der Masse $\massRed$ im Potential $\Vpot$.}
+\end{tpcfigure}
+
+Der Satz ist eine Aussage über Differentialausdrücke. Mit dem Tensorprodukt aus
+\eqref{c11.eq.hilbertraum}, jetzt für die Variablen $\posCM$ und $\posRel$, schreibt man
+dasselbe kurz als $\Uni\,\HamTot\,\Uni^{-1} = \HamCM \otimes \Id + \Id \otimes \HamRel$
+\srcref{reed-simon-3}{§\,XI.4, S. 55}.
+
+Der Hamiltonoperator zerfällt also in zwei Teile, die nichts voneinander wissen. Das
+nutzen wir mit einem Produktansatz aus. Ist $\widetilde{\Psi}(\posCM, \posRel) =
+\Phi(\posCM)\,\psi(\posRel)$, so wirkt $\HamCM$ nur auf $\Phi$ und $\HamRel$ nur auf
+$\psi$:
+\begin{equation}\label{c11.eq.produkt}\claim{c11.cl.produkt}{derived}
+  (\HamCM + \HamRel)\,\Phi\,\psi
+  = (\HamCM\Phi)\,\psi + \Phi\,(\HamRel\psi).
+\end{equation}
+Der erste Summand gehört zu einem freien Teilchen der Masse $\massTot$. Der Schwerpunkt
+des Atoms bewegt sich also, als gäbe es das Innenleben nicht. Der zweite Summand gehört
+zu \emph{einem} Teilchen der Masse $\massRed$ im Potential $\Vpot$. In $\HamRel$ steckt
+die ganze Atomphysik dieses Kapitels.
+
+\begin{merksatz}[Exakt, nicht genähert]
+  Die Zurückführung des Zweiteilchenproblems auf ein Einteilchenproblem mit der
+  reduzierten Masse $\massRed$ ist in unserem Modell exakt. Eine Näherung wird daraus
+  erst, wenn man $\massRed$ durch $\massE$ ersetzt, also so tut, als wäre das Proton
+  unendlich schwer.
+\end{merksatz}
+
+Wie gut wäre diese Näherung? Das Elektron ist viel leichter als das Proton. Das
+Verhältnis der Massen ist $\massE/\massP = \num[c11.cl.q]{5{,}44617 \cdot 10^{-4}}{}$.
+Für die reduzierte Masse folgt daraus $\massRed/\massE = 1/(1 + \massE/\massP)$, in
+Zahlen \num[c11.cl.mu-ratio]{0{,}999456}{}. Sie ist also nur wenig kleiner als die
+Elektronenmasse (Abbildung~\ref{c11.fig.reduziert}). Weil die Rechnung mit $\massRed$ aber um nichts schwerer ist
+als die mit $\massE$, rechnen wir durchweg mit $\massRed$ und sagen bei jeder Größe
+dazu, welche Masse in ihr steckt.
+
+\begin{tpcfigure}{c11.fig.reduziert}
+  \caption{Die reduzierte Masse nach \defref{D62}, in Einheiten der Elektronenmasse, als Funktion des Massenverhältnisses; die waagerechte Achse ist logarithmisch. Bei gleichen Massen ist $\massRed$ die Hälfte von $\massE$. Je schwerer das zweite Teilchen, desto näher kommt $\massRed$ der Elektronenmasse; der rechte Punkt ist Wasserstoff.}
+\end{tpcfigure}
+
+\section{Was die Relativwellenfunktion ist und was nicht}\label{c11.s3}
+
+Die Funktionen $\psi(\posRel)$, die wir in den nächsten Abschnitten ausrechnen, sind
+Funktionen der Relativkoordinate. Bevor wir das tun, klären wir, was eine solche
+Funktion über das Atom im Labor sagt. Dazu brauchen wir die zweite Hälfte des Zustands,
+die Wellenfunktion $\Phi(\posCM)$ des Schwerpunkts.
+
+Wir betrachten einen Produktzustand
+$\widetilde{\Psi}(\posCM, \posRel) = \Phi(\posCM)\,\psi(\posRel)$, in dem $\Phi$ und
+$\psi$ jede für sich normiert sind. Nach \eqref{c11.eq.norm} ist dann auch $\Psi$
+normiert. Integriert man das Betragsquadrat über eine der beiden neuen Koordinaten,
+bleibt die Dichte der anderen übrig:
+\begin{equation}\label{c11.eq.relativdichte}\claim{c11.cl.relativdichte}{derived}
+  \int \abs{\widetilde{\Psi}(\posCM, \posRel)}^2 \,\dd^3\posCM = \abs{\psi(\posRel)}^2,
+  \qquad
+  \int \abs{\widetilde{\Psi}(\posCM, \posRel)}^2 \,\dd^3\posRel = \abs{\Phi(\posCM)}^2.
+\end{equation}
+% GAP-TJO: Wie der Kurs operational sagt, was |psi|^2 "ist" (Wahrscheinlichkeitsdichte
+% wofür, gemessen wie), ist TJOs Formulierung; hier steht nur die Randdichte der Formel.
+Also ist $\abs{\psi(\posRel)}^2$ die Wahrscheinlichkeitsdichte für den Abstandsvektor
+$\posRel = \posE - \posP$ vom Proton zum Elektron, und $\abs{\Phi(\posCM)}^2$ die für
+den Ort des Schwerpunkts. Keine der beiden ist die Dichte des Elektrons im Labor. Diese
+definieren wir eigens.
+
+\tpcdef{D70}
+
+\begin{tpcfigure}{c11.fig.kopien}
+  \caption{Wie die Dichte des Elektrons im Labor zustande kommt, als Schema; Längen und Strichstärken bedeuten nichts. Jeder mögliche Ort des Schwerpunkts (Kreuze) trägt eine skalierte Kopie der Relativdichte (Ringe), mit $g_b(\boldsymbol{y}) = b^{-3}g(\boldsymbol{y}/b)$, $g = \abs{\psi}^2$ und $b = \massP/\massTot$, und zwar mit dem Gewicht, mit dem dieser Ort im Schwerpunktszustand vorkommt. Die Summe aller Kopien ist $\densE$. Die Rechnung dazu folgt.}
+\end{tpcfigure}
+
+Für den Produktzustand lässt sich $\densE$ ausrechnen. Wir halten den Elektronenort
+$\posE = \boldsymbol{x}$ fest und integrieren über $\posP$. Statt über $\posP$
+integrieren wir über $\posRel = \boldsymbol{x} - \posP$; dabei ist
+$\dd^3\posP = \dd^3\posRel$, und nach \eqref{c11.eq.umkehr} liegt der Schwerpunkt bei
+$\posCM = \boldsymbol{x} - (\massP/\massTot)\,\posRel$. Das ergibt
+\begin{equation}\label{c11.eq.faltung}\claim{c11.cl.faltung}{derived}
+  \densE(\boldsymbol{x})
+  = \int \Bigl\lvert \Phi\Bigl(\boldsymbol{x} - \frac{\massP}{\massTot}\,\posRel\Bigr)
+    \Bigr\rvert^2 \abs{\psi(\posRel)}^2 \,\dd^3\posRel .
+\end{equation}
+Genauso findet man für das Proton, mit $\posRel = \posE - \boldsymbol{x}$ und
+$\posCM = \boldsymbol{x} + (\massE/\massTot)\,\posRel$,
+\begin{equation}\label{c11.eq.protondichte}\claim{c11.cl.protondichte}{derived}
+  \densP(\boldsymbol{x})
+  = \int \Bigl\lvert \Phi\Bigl(\boldsymbol{x} + \frac{\massE}{\massTot}\,\posRel\Bigr)
+    \Bigr\rvert^2 \abs{\psi(\posRel)}^2 \,\dd^3\posRel .
+\end{equation}
+Mit $f = \abs{\Phi}^2$, $g = \abs{\psi}^2$, $b = \massP/\massTot$ und
+$g_b(\boldsymbol{y}) = b^{-3}g(\boldsymbol{y}/b)$ ist \eqref{c11.eq.faltung} die
+Faltung $\densE = f * g_b$. Jeder mögliche Ort des Schwerpunkts trägt eine skalierte
+Kopie der Relativdichte bei, gewichtet mit der Wahrscheinlichkeit dieses Orts. Die
+Dichte des Elektrons im Labor ist diese skalierte Relativdichte, verschmiert mit der
+Unschärfe des Schwerpunkts (Abbildung~\ref{c11.fig.faltung}).
+
+\begin{tpcfigure}{c11.fig.faltung}
+  \caption{Die Faltung \eqref{c11.eq.faltung} entlang einer Geraden durch die Mitte des
+    Schwerpunktpakets, für $\Znuc = 1$. Dünn durchgezogen: die Relativdichte
+    $\abs{\psinlm{1}{0}{0}}^2$ des Zustands 1s aus Abschnitt~\ref{c11.s5}. Gestrichelt:
+    die Dichte $\abs{\Phi}^2$ eines Schwerpunktpakets in Form einer Glockenkurve; ihre
+    Breite, $\num[c11.cl.wolke]{0{,}7}{}$ Längeneinheiten, ist für das Bild gewählt.
+    Dick: die Dichte $\densE$ des Elektrons im Labor. Sie ist breiter und flacher als
+    beide. Am markierten Punkt, eine Längeneinheit von der Mitte, ist
+    $\densE\,\aRed^3 = \num[c11.cl.wolke]{0{,}0379}{}$. Längeneinheit ist der Bohrsche
+    Radius $\aRed$ mit reduzierter Masse aus Abschnitt~\ref{c11.s4}.}
+\end{tpcfigure}
+
+In zwei Grenzfällen wird aus der verschmierten Dichte das gewohnte Bild.
+
+\emph{Scharfer Schwerpunkt.} Wir ziehen das Paket $\abs{\Phi}^2$ immer enger um einen
+Punkt $\posCM_0$ zusammen. Einen normierbaren Zustand der Breite null gibt es nicht;
+gemeint ist eine Folge immer schmalerer Pakete. Im Grenzfall bleibt vom Integral
+\eqref{c11.eq.faltung} nur der Beitrag übrig, bei dem das Argument von $\Phi$ gleich
+$\posCM_0$ ist.
+
+\emph{Unendlich schweres Proton.} Wächst die Protonenmasse über alle Grenzen, so geht
+$\massP/\massTot$ gegen eins und $\massE/\massTot$ gegen null, und die reduzierte Masse
+geht gegen $\massE$. Die Protonendichte \eqref{c11.eq.protondichte} wird dann zu
+$\abs{\Phi}^2$: Das Proton sitzt im Schwerpunkt.
+
+In Formeln, in der ersten Zeile für den scharfen Schwerpunkt bei $\posCM_0$, in der
+zweiten, wenn zusätzlich $\massP \to \infty$ geht:
+\begin{equation}\label{c11.eq.grenzfall}\claim{c11.cl.grenzfall}{derived}
+  \begin{aligned}
+    \densE(\boldsymbol{x})
+    &\longrightarrow \Bigl(\frac{\massTot}{\massP}\Bigr)^{3}
+      \Bigl\lvert \psi\Bigl(\frac{\massTot}{\massP}\,(\boldsymbol{x} - \posCM_0)\Bigr)
+      \Bigr\rvert^2, \\
+    \densE(\boldsymbol{x})
+    &\longrightarrow \abs{\psi(\boldsymbol{x} - \posCM_0)}^2 .
+  \end{aligned}
+\end{equation}
+Erst wenn beides zusammenkommt, ein scharf lokalisierter Schwerpunkt \emph{und} ein
+unendlich schweres Proton, ist $\abs{\psi}^2$ die Dichte des Elektrons um einen festen
+Punkt. Bei endlicher Protonenmasse ist die Elektronendichte um den Faktor
+$\massP/\massTot$ gestaucht, und das Proton hat seinerseits eine kleine Wolke um den
+Schwerpunkt.
+
+\begin{merksatz}[Was ein Orbitalbild zeigt]
+  Ein Orbitalbild zeigt $\abs{\psi(\posRel)}^2$, die Dichte der Relativkoordinate
+  $\posRel = \posE - \posP$. Es zeigt nicht, wo sich das Elektron im Labor aufhält: Dazu
+  muss man sagen, wie der Schwerpunkt präpariert ist, und die Faltung
+  \eqref{c11.eq.faltung} ausführen.
+\end{merksatz}
+
+Auch bei der Energie muss man die beiden Hälften auseinanderhalten. Ist $\psi$ eine
+Lösung von $\HamRel\psi = E\psi$, so ist der Erwartungswert der Gesamtenergie im
+Produktzustand
+\begin{equation}\label{c11.eq.energie}\claim{c11.cl.energie}{derived}
+  \Etot = \frac{\hbar^2}{2\massTot} \int \abs{\nabla\Phi(\posCM)}^2 \,\dd^3\posCM + E ,
+\end{equation}
+sofern das Integral endlich ist. Der erste Summand ist die Bewegungsenergie des
+Schwerpunkts; er hängt davon ab, wie das Atom als Ganzes präpariert wurde, und er ist
+nie null, weil eine normierte Funktion $\Phi$ nicht konstant sein kann. Der zweite
+Summand, $E$, ist die \emph{innere} Energie des Atoms. Die Energien $\En{\nqn}$, die wir
+gleich berechnen, sind innere Energien. Ein ruhendes Atom mit scharfer Gesamtenergie ist
+in diesem Modell kein normierbarer Zustand; der Schwerpunkt ist immer ein freies
+Wellenpaket. Seine Wahrscheinlichkeit in jedem festen beschränkten Gebiet geht für
+große Zeiten gegen null. Wenn zweite Momente existieren, wächst seine Breite für große
+Zeiten; anfangs kann es schmaler werden\zoomref{c11.v1}.
+
+\begin{tpcfigure}{c11.fig.energie}
+  \caption{Innere Energie und Gesamtenergie nach \eqref{c11.eq.energie}, für $\Znuc = 1$ und in Einheiten der Rydberg-Energie $\RydRed$ aus Abschnitt~\ref{c11.s4}. Die dicken Striche sind die inneren Energien $\En{1}$, $\En{2}$, $\En{3}$ aus Theorem~\ref{c11.thm.spektrum}. Schraffiert ist jeweils der Bereich, in dem der Erwartungswert der Gesamtenergie liegen kann: Er beginnt bei der inneren Energie und hat kein oberes Ende, weil die Bewegungsenergie des Schwerpunkts jeden positiven Wert haben kann.}
+\end{tpcfigure}
+
+\begin{vertiefung}[id=c11.v1,
+    titel={Warum der Schwerpunkt zerfließt},
+    wozu={Der Kern behauptet, dass der Schwerpunkt eines Atoms kein Energieeigenzustand
+      sein kann, sondern immer ein Wellenpaket ist, und dass dieses Paket zerfließt. Hier
+      steht die Rechnung dazu.},
+    voraussetzung={Kern~\ref{c11.s2} und \ref{c11.s3}; die Fouriertransformation aus
+      Kapitel~\ref{c05}. Nicht nötig für die Abschnitte~\ref{c11.s4} bis \ref{c11.s7}.},
+    zurueck={Die innere Dichte $\abs{\psi}^2$ eines Energieeigenzustands steht still;
+      die Dichte des Schwerpunkts und mit ihr die Dichten von Elektron und Proton im
+      Labor laufen auseinander.}]
+  Der Schwerpunkt ist ein freies Teilchen der Masse $\massTot$. Wir schreiben
+  $\FT{\Phi}(\boldsymbol{k})$ für die Fouriertransformierte von $\Phi(\posCM)$; sie ist
+  wieder normiert, und aus $-\Lap_{\posCM}\Phi$ wird durch zweimaliges partielles
+  Integrieren $\abs{\boldsymbol{k}}^2\,\FT{\Phi}$.
+
+  \begin{proposition}[Kein normierbarer Eigenzustand]\label{c11.prop.kein-eigenzustand}\claim[proof-included]{c11.cl.kein-eigenzustand}{derived}
+    Es gibt keine reelle Zahl $\lambda$ und keine quadratintegrierbare Funktion
+    $\Phi \neq 0$ mit $-\Lap_{\posCM}\Phi = \lambda\Phi$.
+  \end{proposition}
+  \begin{proof}
+    Nach Fouriertransformation lautet die Gleichung
+    $(\abs{\boldsymbol{k}}^2 - \lambda)\,\FT{\Phi}(\boldsymbol{k}) = 0$ für fast alle
+    $\boldsymbol{k}$. Für $\lambda < 0$ ist der Vorfaktor nirgends null. Für
+    $\lambda \geq 0$ ist er nur auf einer Kugelfläche (für $\lambda = 0$: in einem Punkt)
+    null, und das ist eine Menge vom Volumen null. In beiden Fällen ist $\FT{\Phi}$ fast
+    überall null, also $\Phi = 0$.
+  \end{proof}
+
+  Eine ebene Welle $e^{i\boldsymbol{k}\cdot\posCM}$ löst die Eigenwertgleichung zwar,
+  hat aber überall den Betrag eins und ist nicht normierbar. Ein normierbarer
+  Schwerpunktszustand ist deshalb immer eine Überlagerung vieler Impulse, ein
+  Wellenpaket. Wie breit es ist, misst die Varianz $\Var\posCM$, die Summe der Varianzen
+  der drei Komponenten. Für ein freies Teilchen ist im Heisenbergbild
+  $\posCM(t) = \posCM(0) + t\,\boldsymbol{P}/\massTot$ mit dem Gesamtimpuls
+  $\boldsymbol{P}$. Mit den Abweichungen $\delta\posCM$ und $\delta\boldsymbol{P}$ von
+  den Erwartungswerten folgt für Pakete, deren zweite Momente endlich sind,
+  \begin{equation}\label{c11.eq.varianz}\claim{c11.cl.varianz}{derived}
+    \Var\posCM(t) = \Var\posCM(0)
+    + \frac{t}{\massTot}\,\expval{\delta\posCM \cdot \delta\boldsymbol{P}
+      + \delta\boldsymbol{P} \cdot \delta\posCM}
+    + \frac{t^2}{\massTot^2}\,\Var\boldsymbol{P}.
+  \end{equation}
+  Die Impulsvarianz $\Var\boldsymbol{P}$ eines normierbaren Pakets ist nicht null. Für
+  große Zeiten gewinnt also der letzte Term, und die Breite wächst proportional zu
+  $\abs{t}$. Am Anfang kann das Paket schmaler werden, wenn der mittlere Term negativ
+  ist (Abbildung~\ref{c11.fig.zerfliessen}).
+
+  \begin{tpcfigure}{c11.fig.zerfliessen}
+    \caption{Die Breite eines freien Schwerpunktpakets nach \eqref{c11.eq.varianz},
+      bezogen auf die Anfangsbreite. Waagerecht die Zeit, gemessen in Einheiten von
+      $\massTot\sqrt{\Var\posCM(0)}/\sqrt{\Var\boldsymbol{P}}$. Die Zahl $k$ ist der
+      Erwartungswert im mittleren Term von \eqref{c11.eq.varianz}, geteilt durch
+      $2\sqrt{\Var\posCM(0)\,\Var\boldsymbol{P}}$. Durchgezogen: $k = 0$. Gestrichelt:
+      ein Paket mit $k < 0$, das erst schmaler und dann breiter wird; der Punkt markiert
+      seine kleinste Breite. Dünn: eine Gerade mit der gemeinsamen asymptotischen
+      Steigung.}
+  \end{tpcfigure}
+
+  Ohne Annahme über zweite Momente gilt eine schwächere, aber allgemeine Aussage.
+
+  \begin{proposition}[Lokales Zerfließen]\label{c11.prop.zerfliessen}\claim[proof-included]{c11.cl.zerfliessen}{derived}
+    Sei $\Phi_t$ die freie Zeitentwicklung eines normierten $\Phi_0$ und $B$ ein
+    beschränktes Gebiet. Dann geht die Wahrscheinlichkeit
+    $\int_B \abs{\Phi_t(\posCM)}^2 \,\dd^3\posCM$, den Schwerpunkt in $B$ zu finden, für
+    $\abs{t} \to \infty$ gegen null.
+  \end{proposition}
+  \begin{proof}
+    Die freie Zeitentwicklung multipliziert $\FT{\Phi}(\boldsymbol{k})$ mit
+    $e^{-i\hbar\abs{\boldsymbol{k}}^2 t/(2\massTot)}$. Zurück im Ortsraum ist das ein
+    Integral $\Phi_t(\posCM) = \int K_t(\posCM - \posCM')\,\Phi_0(\posCM')\,\dd^3\posCM'$
+    mit einem Kern, dessen Betrag nicht vom Ort abhängt:
+    \begin{equation}\label{c11.eq.freikern}
+      K_t(\boldsymbol{z}) = \Bigl(\frac{\massTot}{2\pi i\hbar t}\Bigr)^{3/2}
+        e^{i\massTot\abs{\boldsymbol{z}}^2/(2\hbar t)},
+      \qquad
+      \abs{K_t(\boldsymbol{z})} = \Bigl(\frac{\massTot}{2\pi\hbar\abs{t}}\Bigr)^{3/2}.
+    \end{equation}
+    Der Kern entsteht aus einem gaußschen Integral über $\boldsymbol{k}$. Für ein
+    glattes, rasch abfallendes $g$ anstelle von $\Phi_0$ ist deshalb überall
+    \begin{equation}\label{c11.eq.schranke}
+      \abs{g_t(\posCM)} \leq \Bigl(\frac{\massTot}{2\pi\hbar\abs{t}}\Bigr)^{3/2}
+        \int \abs{g(\posCM')}\,\dd^3\posCM' ,
+    \end{equation}
+    und das Integral von $\abs{g_t}^2$ über $B$ ist höchstens das Volumen von $B$ mal
+    dem Quadrat dieser Schranke; es geht gegen null. Ein beliebiges normiertes $\Phi_0$
+    lässt sich durch solche $g$ im quadratischen Mittel beliebig genau annähern, und die
+    freie Zeitentwicklung ändert den Abstand im quadratischen Mittel nicht. Also liegt
+    die Wurzel der gesuchten Wahrscheinlichkeit für große $\abs{t}$ unter jeder
+    vorgegebenen Schranke.
+  \end{proof}
+
+  Die Aussage sagt nicht, dass die Dichte an jedem Punkt abnimmt, und nicht, dass die
+  Breite von Anfang an wächst. Für die Relativbewegung ist es anders: Ein
+  Energieeigenzustand entwickelt sich als
+  $\psi(t) = e^{-i\En{\nqn}t/\hbar}\,\psi(0)$, seine Dichte $\abs{\psi}^2$ ändert sich
+  nicht.
+\end{vertiefung}
+
+
+\section{Die Relativbewegung: Radialgleichung und Energien}\label{c11.s4}
+
+Wir suchen jetzt die Lösungen von
+$\HamRel\psi = E\psi$ mit negativer Energie $E$, die gebundenen Zustände. Das ist das
+Problem eines einzelnen Teilchens der Masse $\massRed$ in einem Potential, das nur vom
+Abstand $\rad = \abs{\posRel}$ abhängt. Für solche Potentiale haben wir in
+Kapitel~\ref{c10} Kugelkoordinaten $(\rad, \theta, \phi)$ benutzt und den Winkelanteil
+ein für alle Mal gelöst: mit den Kugelflächenfunktionen $\Ylm{\lqn}{\mqn}$ aus
+\defref{D67}. Von dort übernehmen wir eine einzige Tatsache. Auf einem Produkt aus einer
+Funktion $R(\rad)$ des Abstands und einer Kugelflächenfunktion wirkt der
+Laplace-Operator so:
+\begin{equation}\label{c11.eq.winkel}\claim{c11.cl.winkel}{numerically-checked}
+  \Lap_{\posRel}\bigl(R(\rad)\,\Ylm{\lqn}{\mqn}(\theta, \phi)\bigr)
+  = \Bigl(\frac{1}{\rad^2}\frac{\dd}{\dd\rad}\Bigl(\rad^2\frac{\dd R}{\dd\rad}\Bigr)
+    - \frac{\lqn(\lqn + 1)}{\rad^2}\,R\Bigr)\,\Ylm{\lqn}{\mqn}(\theta, \phi).
+\end{equation}
+Die Winkel sind damit erledigt; die Zahl $\lqn$ merkt sich, wie viel Drehimpuls in der
+Bewegung steckt. Für $\lqn = 0$, $1$ und $2$, mehr brauchen wir in diesem Kapitel nicht,
+ist \eqref{c11.eq.winkel} für beliebiges $R$ exakt nachgerechnet.
+
+Es bleibt eine Gleichung für $R(\rad)$. Sie wird noch einfacher, wenn man statt $R$ die
+Funktion $u(\rad) = \rad\,R(\rad)$ benutzt, denn dann ist
+\begin{equation}\label{c11.eq.usubst}\claim{c11.cl.usubst}{derived}
+  \frac{1}{\rad^2}\frac{\dd}{\dd\rad}\Bigl(\rad^2\frac{\dd}{\dd\rad}\frac{u}{\rad}\Bigr)
+  = \frac{1}{\rad}\frac{\dd^2 u}{\dd\rad^2} .
+\end{equation}
+Den Rest fassen wir zu einem Potential zusammen.
+
+\tpcdef{D71}
+
+Setzt man $\psi = (u/\rad)\,\Ylm{\lqn}{\mqn}$ in $\HamRel\psi = E\psi$ ein, benutzt
+\eqref{c11.eq.winkel} und multipliziert mit $\rad$, so erhält man die
+\emph{Radialgleichung}
+\begin{equation}\label{c11.eq.radial}\claim{c11.cl.radial}{derived}
+  \begin{aligned}
+    -\frac{\hbar^2}{2\massRed}\,\frac{\dd^2 u}{\dd\rad^2} + \Veff{\lqn}(\rad)\,u(\rad)
+    &= E\,u(\rad), \\
+    \Veff{\lqn}(\rad) &= \frac{\hbar^2\lqn(\lqn + 1)}{2\massRed\,\rad^2}
+      - \frac{\Znuc\echarge^2}{4\pi\epsz\,\rad}.
+  \end{aligned}
+\end{equation}
+Das ist die Schrödingergleichung eines Teilchens auf der Halbgeraden $\rad > 0$ im
+effektiven Potential $\Veff{\lqn}$, also ein eindimensionales Problem.
+Abbildung~\ref{c11.fig.potential} zeigt dieses Potential. Wir suchen Lösungen, die
+normierbar sind. Weil die
+Kugelflächenfunktionen auf der Kugel normiert sind, heißt das
+\begin{equation}\label{c11.eq.unorm}\claim{c11.cl.unorm}{derived}
+  \int_0^\infty \abs{R(\rad)}^2\,\rad^2\,\dd\rad = \int_0^\infty \abs{u(\rad)}^2\,\dd\rad = 1 .
+\end{equation}
+Der Faktor $\rad^2$ kommt vom Volumenelement in Kugelkoordinaten; er ist der Grund,
+warum $u$ bequemer ist als $R$.
+
+\begin{tpcfigure}{c11.fig.potential}
+  \caption{Das effektive Potential $\Veff{\lqn}$ aus \eqref{c11.eq.radial} für
+    $\Znuc = 1$. Durchgezogen: $\lqn = 0$, das reine Coulombpotential. Gestrichelt:
+    $\lqn = 1$; der Zentrifugalterm hält das Teilchen vom Ursprung fern und erzeugt eine
+    Mulde, deren tiefster Punkt markiert ist. Dünne waagerechte Linien: die Energien
+    $\En{1}$, $\En{2}$, $\En{3}$ aus Theorem~\ref{c11.thm.spektrum}. Längen in Einheiten
+    von $\aRed$, Energien in Einheiten von $\RydRed$; beide enthalten die reduzierte
+    Masse.}
+\end{tpcfigure}
+
+\subsection{Die natürlichen Einheiten des Atoms}\label{c11.s4.1}
+
+Die Konstanten in \eqref{c11.eq.radial} legen eine Länge und eine Energie fest. In
+diesen Einheiten wird die Gleichung übersichtlich.
+
+\tpcdef{D63}
+
+\tpcdef{D64}
+
+Es gibt also zwei Bohrsche Radien, und man muss bei jeder Formel sagen, welchen man
+meint. In die Radialgleichung geht die reduzierte Masse ein, also $\aRed$. Aus den
+beiden Definitionen folgt
+\begin{equation}\label{c11.eq.bohr}\claim{c11.cl.bohr}{derived}
+  \begin{aligned}
+    \aRed &= \frac{4\pi\epsz\hbar^2}{\massRed\,\echarge^2}
+           = \aBohr\,\frac{\massE}{\massRed}
+           = \aBohr\,\Bigl(1 + \frac{\massE}{\massP}\Bigr), \\
+    \RydRed &= \frac{\hbar^2}{2\massRed\,\aRed^2}
+             = \frac{\echarge^2}{8\pi\epsz\,\aRed}
+             = \frac{\massRed}{\massE}\,\Ryd .
+  \end{aligned}
+\end{equation}
+Die Energie $\RydRed$ ist die Rydberg-Energie mit reduzierter Masse. In Zahlen:
+$\aBohr = \num[c11.cl.a0]{5{,}29177 \cdot 10^{-11}}{m}$ und
+$\aRed = \num[c11.cl.amu]{5{,}29465 \cdot 10^{-11}}{m}$. Weiter ist
+$\Ryd = \num[c11.cl.ry]{13{,}6057}{eV}$ und
+$\RydRed = \num[c11.cl.e1-mu]{13{,}5983}{eV}$.
+
+Mit der dimensionslosen Länge $x = \Znuc\rad/\aRed$ und der dimensionslosen Energie
+$\varepsilon = E/(\Znuc^2\,\RydRed)$ verschwinden alle Konstanten aus der
+Radialgleichung. Aus \eqref{c11.eq.radial} wird, mit $u$ als Funktion von $x$,
+\begin{equation}\label{c11.eq.dimlos}\claim{c11.cl.dimlos}{derived}
+  -\frac{\dd^2 u}{\dd x^2} + \Bigl(\frac{\lqn(\lqn + 1)}{x^2} - \frac{2}{x}\Bigr)\,u
+  = \varepsilon\,u .
+\end{equation}
+
+\subsection{Lösungen durch Einsetzen}\label{c11.s4.2}
+
+Gleichungen wie \eqref{c11.eq.dimlos} löst man systematisch mit einem Potenzreihenansatz.
+Das ist aufwendig. Wir gehen den kurzen Weg: Wir schreiben Lösungen hin und prüfen sie
+durch Einsetzen. Die einfachste ist $u(x) = x\,e^{-x}$ für $\lqn = 0$. Ihre Ableitungen
+sind $u' = (1 - x)\,e^{-x}$ und $u'' = (x - 2)\,e^{-x}$, und damit
+\begin{equation}\label{c11.eq.grundzustand}\claim{c11.cl.grundzustand}{derived}
+  -u'' - \frac{2}{x}\,u = (2 - x)\,e^{-x} - 2\,e^{-x} = -x\,e^{-x} = -u .
+\end{equation}
+Die Funktion löst \eqref{c11.eq.dimlos} also mit $\varepsilon = -1$, das heißt mit der
+Energie $E = -\Znuc^2\,\RydRed$. Sie verschwindet bei $x = 0$ und fällt für große $x$
+exponentiell ab; sie ist normierbar. Sie hat die niedrigste Energie in der
+konstruierten Familie. Auf dieselbe Weise prüft man jede der folgenden Lösungen.
+
+\begin{tpcfigure}{c11.fig.grundzustand}
+  \caption{Die Lösung $u(x) = x\,e^{-x}$ aus \eqref{c11.eq.grundzustand} im Potential, für $\Znuc = 1$. Dick: das effektive Potential für $\lqn = 0$. Dünne waagerechte Linie: die Energie $\En{1} = -\RydRed$. Die Funktion $u$ ist, wie in solchen Bildern üblich, auf dieser Linie als Grundlinie gezeichnet; ihre Höhe ist frei skaliert. Sie beginnt bei null, hat ihr Maximum bei $\rad = \aRed$ und fällt nach außen exponentiell ab.}
+\end{tpcfigure}
+
+\begin{theorem}[Energien der konstruierten gebundenen Zustände]\label{c11.thm.spektrum}\claim[proof-linked]{c11.cl.spektrum}{derived}
+  Sei $\nqn$ eine der Zahlen $1, 2, 3, \ldots$ und $\lqn$ eine der Zahlen
+  $0, 1, \ldots, \nqn - 1$. Dann hat die Radialgleichung \eqref{c11.eq.radial} eine
+  normierbare Lösung $u \neq 0$ mit $u(0) = 0$ zur Energie
+  \begin{equation}\label{c11.eq.energien}
+    \En{\nqn} = -\frac{\Znuc^2\,\RydRed}{\nqn^2}
+              = -\frac{\Znuc^2\echarge^2}{8\pi\epsz\,\aRed}\,\frac{1}{\nqn^2} .
+  \end{equation}
+  Die Energie hängt nur von $\nqn$ ab, nicht von $\lqn$.
+\end{theorem}
+
+Für $\nqn = 1$ haben wir das eben nachgerechnet; die Lösungen für $\nqn = 2$ stehen in
+Abschnitt~\ref{c11.s5}, und Aufgabe~\ref{c11.exc.zweip} prüft eine davon. Für größere
+$\nqn$ geht man genauso vor; den allgemeinen Beweis führen wir hier nicht\zoomref{c11.v2}.
+Der Satz sagt, dass es diese Lösungen gibt. Dass die Relativbewegung keine weiteren gebundenen Zustände hat, zeigen
+wir in diesem Kapitel nicht.
+
+\tpcdef{D65}
+
+Die Zählung der konstruierten Familie beginnt bei $\nqn = 1$. Ihre niedrigste Energie
+ist $\En{1} = -\Znuc^2\,\RydRed$, die des Zustands 1s. Darüber liegen in dieser Familie
+unendlich viele weitere Niveaus, die immer dichter zusammenrücken und sich bei $E = 0$
+häufen (Abbildung~\ref{c11.fig.termschema} in Abschnitt~\ref{c11.s6}). Für Wasserstoff ist
+$\En{1} = \num[c11.cl.e1-mu]{-13{,}5983}{eV}$; mit der Elektronenmasse anstelle der
+reduzierten Masse käme $\num[c11.cl.e1-me]{-13{,}6057}{eV}$ heraus.
+
+Zu jedem $\nqn$ gehören mehrere Zustände gleicher Energie. Gezählt werden sie mit
+\defref{D65}: Zu jedem $\lqn$ gibt es $2\lqn + 1$ Werte von $\mqn$, also insgesamt
+\begin{equation}\label{c11.eq.entartung}\claim{c11.cl.entartung}{derived}
+  \sum_{\lqn = 0}^{\nqn - 1} (2\lqn + 1) = \nqn^2 .
+\end{equation}
+
+\begin{tpctable}{c11.tab.zustaende}
+  \caption{Die Zustände der Relativbewegung bis $\nqn = 3$. Die Buchstaben s, p, d
+    stehen für $\lqn = 0, 1, 2$; in der letzten Spalte steht die Zahl der Zustände
+    gleicher Energie nach \eqref{c11.eq.entartung}. Der Spin ist nicht mitgezählt.}
+  \begin{tabular}{ccccc}
+    \toprule
+    $\nqn$ & $\lqn$ & $\mqn$ & Name & Zustände zu $\En{\nqn}$ \\
+    \midrule
+    $1$ & $0$ & $0$ & 1s & $1$ \\
+    \midrule
+    $2$ & $0$ & $0$ & 2s & \\
+    $2$ & $1$ & $-1, 0, 1$ & 2p & $4$ \\
+    \midrule
+    $3$ & $0$ & $0$ & 3s & \\
+    $3$ & $1$ & $-1, 0, 1$ & 3p & \\
+    $3$ & $2$ & $-2, -1, 0, 1, 2$ & 3d & $9$ \\
+    \bottomrule
+  \end{tabular}
+\end{tpctable}
+
+\begin{tpcfigure}{c11.fig.entartung}
+  \caption{Dieselben Zustände wie in Tabelle~\ref{c11.tab.zustaende}, nach $\nqn$ und $\lqn$ sortiert, für $\Znuc = 1$. Jeder kurze Strich ist ein Zustand; seine Höhe ist die Energie $\En{\nqn}$ in Einheiten von $\RydRed$. Striche auf gleicher Höhe haben dieselbe Energie, gleichgültig in welcher Spalte sie stehen. Rechts steht ihre Anzahl $\nqn^2$.}
+\end{tpcfigure}
+
+\begin{vertiefung}[id=c11.v2,
+    titel={Die allgemeine Radialfunktion},
+    wozu={Der Kern prüft die Lösungen für $\nqn \leq 2$ durch Einsetzen. Hier steht die
+      Formel für alle $\nqn$ und $\lqn$, der Beweis von Theorem~\ref{c11.thm.spektrum}
+      und der Beweis, dass der Vorfaktor die Radialfunktionen normiert.},
+    voraussetzung={Kern~\ref{c11.s4}. Nicht nötig für die Abschnitte~\ref{c11.s5} bis
+      \ref{c11.s7}, die mit den ausgeschriebenen Funktionen für $\nqn \leq 2$ arbeiten.},
+    zurueck={Zu jedem $\nqn$ und jedem $\lqn < \nqn$ gibt es eine normierte Radialfunktion
+      zur Energie $\En{\nqn}$: ein Polynom vom Grad $\nqn - \lqn - 1$ mal
+      $\rad^{\lqn}$ mal einer abfallenden Exponentialfunktion.}]
+  Die Polynome, die in den Radialfunktionen auftreten, haben einen Namen. Wie man sie
+  normiert und beschriftet, ist eine Konvention; wir legen sie fest.
+
+  \tpcdef{D68}
+
+  Die ersten drei lauten
+  \begin{align}
+    \Lag{0}{\alpha}(x) &= 1,
+      \label{c11.eq.lag0}\claim{c11.cl.lag0}{numerically-checked} \\
+    \Lag{1}{\alpha}(x) &= \alpha + 1 - x,
+      \label{c11.eq.lag1}\claim{c11.cl.lag1}{numerically-checked} \\
+    \Lag{2}{\alpha}(x) &= \frac{x^2}{2} - (\alpha + 2)\,x + \frac{(\alpha + 1)(\alpha + 2)}{2}.
+      \label{c11.eq.lag2}\claim{c11.cl.lag2}{numerically-checked}
+  \end{align}
+
+  \begin{tpcfigure}{c11.fig.laguerre}
+    \caption{Die Polynome $\Lag{k}{1}$ für $k = 0, 1, 2, 3$ nach \defref{D68}. Das Polynom zum Index $k$ hat den Grad $k$ und bei $x = 0$ den Wert $k + 1$. Mit $\alpha = 1$ sind das die Polynome, die in den Radialfunktionen der s-Zustände stehen.}
+  \end{tpcfigure}
+
+  \tpcdef{D66}
+
+  \begin{proof}[Beweis von Theorem~\ref{c11.thm.spektrum}]
+    Für $E < 0$ setzen wir $\kappa = \sqrt{-2\massRed E}/\hbar$, $s = 2\kappa\rad$ und
+    $u = s^{\lqn + 1}\,e^{-s/2}\,v(s)$. Einsetzen in \eqref{c11.eq.radial} und Kürzen
+    ergibt für $v$ die Gleichung
+    \begin{equation}\label{c11.eq.laguerre-dgl}\claim{c11.cl.laguerre-dgl}{derived}
+      s\,v'' + (2\lqn + 2 - s)\,v' + k\,v = 0,
+      \qquad
+      k = \frac{\Znuc}{\kappa\,\aRed} - \lqn - 1 .
+    \end{equation}
+    Mit dem Potenzreihenansatz $v = \sum_j c_j\,s^j$ folgt durch Koeffizientenvergleich
+    \begin{equation}\label{c11.eq.rekursion}\claim{c11.cl.rekursion}{derived}
+      c_{j + 1} = \frac{j - k}{(j + 1)(j + 2\lqn + 2)}\;c_j .
+    \end{equation}
+    Ist $k$ eine der Zahlen $0, 1, 2, \ldots$, so ist $c_{k + 1} = 0$ und mit ihm alle
+    folgenden Koeffizienten: $v$ ist ein Polynom vom Grad $k$. Wir schreiben
+    $k = \nqn - \lqn - 1$; dann ist $\nqn \geq \lqn + 1$ eine ganze Zahl, und aus der
+    Definition von $k$ folgt
+    \begin{equation}\label{c11.eq.abbruch}\claim{c11.cl.abbruch}{derived}
+      \kappa = \frac{\Znuc}{\nqn\,\aRed},
+      \qquad
+      E = -\frac{\hbar^2\kappa^2}{2\massRed}
+        = -\frac{\hbar^2\Znuc^2}{2\massRed\,\aRed^2\,\nqn^2}
+        = -\frac{\Znuc^2\,\RydRed}{\nqn^2} .
+    \end{equation}
+    Das Polynom ist bis auf einen Faktor $\Lag{\nqn - \lqn - 1}{2\lqn + 1}(s)$: Das
+    Verhältnis aufeinanderfolgender Koeffizienten der Summe in \defref{D68} ist für
+    $\alpha = 2\lqn + 1$ gerade das in \eqref{c11.eq.rekursion}. Die Lösung
+    $u = s^{\lqn + 1}\,e^{-s/2}\,v$ verschwindet bei $\rad = 0$ und fällt exponentiell
+    ab, ist also normierbar, und $R = u/\rad$ ist bis auf den Vorfaktor die
+    Radialfunktion aus \defref{D66}.
+  \end{proof}
+
+  Der Beweis konstruiert Lösungen. Er zeigt nicht, dass eine Potenzreihe, die nicht
+  abbricht, niemals normierbar ist; diese Frage bleibt hier offen.
+
+  \begin{proposition}[Normierung der Radialfunktionen]\label{c11.prop.norm}\claim[proof-included]{c11.cl.radialnorm}{derived}
+    Für alle $\nqn \geq 1$ und $0 \leq \lqn \leq \nqn - 1$ gilt
+    $\int_0^\infty \Rnl{\nqn}{\lqn}(\rad)^2\,\rad^2\,\dd\rad = 1$.
+  \end{proposition}
+  \begin{proof}
+    Wir schreiben $k = \nqn - \lqn - 1$ und $\alpha = 2\lqn + 1$. Aus der Summe in
+    \defref{D68} folgt durch Ausdifferenzieren mit der Produktregel die Darstellung
+    \begin{equation}\label{c11.eq.rodrigues}
+      \Lag{k}{\alpha}(s) = \frac{s^{-\alpha}\,e^{s}}{k!}\,
+        \frac{\dd^k}{\dd s^k}\bigl(e^{-s}\,s^{k + \alpha}\bigr).
+    \end{equation}
+    Integriert man $s^\alpha e^{-s}\,\Lag{k}{\alpha}$ gegen ein Polynom und wälzt die
+    $k$ Ableitungen durch partielle Integration auf das Polynom, so verschwindet das
+    Integral für jedes Polynom vom Grad kleiner als $k$; die Randterme sind null. Gegen
+    $\Lag{k}{\alpha}$ selbst, dessen höchster Koeffizient $(-1)^k/k!$ ist, bleibt
+    \begin{equation}\label{c11.eq.lagnorm}
+      \int_0^\infty s^{\alpha}\,e^{-s}\,\bigl(\Lag{k}{\alpha}(s)\bigr)^2\,\dd s
+      = \frac{(k + \alpha)!}{k!} .
+    \end{equation}
+    Für die Radialfunktionen brauchen wir eine Potenz von $s$ mehr. Koeffizientenvergleich
+    in den Summen ergibt, mit $\Lag{-1}{\alpha} = 0$,
+    \begin{equation}\label{c11.eq.dreiterm}
+      s\,\Lag{k}{\alpha} = (2k + \alpha + 1)\,\Lag{k}{\alpha}
+        - (k + 1)\,\Lag{k + 1}{\alpha} - (k + \alpha)\,\Lag{k - 1}{\alpha} .
+    \end{equation}
+    Multipliziert mit $s^\alpha e^{-s}\,\Lag{k}{\alpha}$ und integriert fallen die beiden
+    letzten Terme wegen der Orthogonalität weg, und mit \eqref{c11.eq.lagnorm} bleibt
+    \begin{equation}\label{c11.eq.lagnorm2}
+      \int_0^\infty s^{\alpha + 1}\,e^{-s}\,\bigl(\Lag{k}{\alpha}(s)\bigr)^2\,\dd s
+      = (2k + \alpha + 1)\,\frac{(k + \alpha)!}{k!}
+      = \frac{2\nqn\,(\nqn + \lqn)!}{(\nqn - \lqn - 1)!} .
+    \end{equation}
+    Mit $s = 2\kappa\rad$ ist $\rad^2\,\dd\rad = s^2\,\dd s/(2\kappa)^3$, und in
+    $\Rnl{\nqn}{\lqn}^2\,\rad^2$ steht $s^{2\lqn + 2} = s^{\alpha + 1}$. Das
+    Normierungsintegral ist also das Quadrat des Vorfaktors aus \defref{D66}, geteilt
+    durch $(2\kappa)^3$, mal der rechten Seite von \eqref{c11.eq.lagnorm2}, und das ist
+    eins.
+  \end{proof}
+\end{vertiefung}
+
+\section{Die ersten Wellenfunktionen}\label{c11.s5}
+
+
+Jetzt setzen wir die Teile zusammen und schreiben die Wellenfunktionen der
+Relativbewegung für $\nqn = 1$ und $\nqn = 2$ vollständig hin. Dazu brauchen wir die
+Kugelflächenfunktionen für $\lqn = 0$ und $\lqn = 1$. Nach \defref{D67} sind das
+\begin{align}
+  \Ylm{0}{0}(\theta, \phi) &= \frac{1}{\sqrt{4\pi}},
+    \label{c11.eq.y00}\claim{c11.cl.y00}{numerically-checked} \\
+  \Ylm{1}{0}(\theta, \phi) &= \sqrt{\frac{3}{4\pi}}\,\cos\theta,
+    \label{c11.eq.y10}\claim{c11.cl.y10}{numerically-checked} \\
+  \Ylm{1}{\pm 1}(\theta, \phi) &= \mp\sqrt{\frac{3}{8\pi}}\,\sin\theta\,e^{\pm i\phi}.
+    \label{c11.eq.y1pm}\claim{c11.cl.y1pm}{numerically-checked}
+\end{align}
+In der letzten Zeile gehören die oberen und die unteren Vorzeichen jeweils zusammen. Das
+Minuszeichen vor $\Ylm{1}{1}$ ist kein Naturgesetz, sondern eine Verabredung, die
+Condon-Shortley-Konvention. Jede andere Wahl der Vorzeichen beschriebe dieselbe Physik;
+man muss nur bei einer bleiben.
+
+Zu den Lösungen $u$ aus Theorem~\ref{c11.thm.spektrum} gehören die Radialfunktionen
+$\Rnl{\nqn}{\lqn} = u/\rad$. Normiert lauten sie
+\begin{align}
+  \Rnl{1}{0}(\rad) &= 2\left(\frac{\Znuc}{\aRed}\right)^{3/2} e^{-\Znuc\rad/\aRed},
+    \label{c11.eq.r10}\claim{c11.cl.r10}{numerically-checked} \\
+  \Rnl{2}{0}(\rad) &= \frac{1}{2\sqrt{2}}\left(\frac{\Znuc}{\aRed}\right)^{3/2}
+    \left(2 - \frac{\Znuc\rad}{\aRed}\right) e^{-\Znuc\rad/(2\aRed)},
+    \label{c11.eq.r20}\claim{c11.cl.r20}{numerically-checked} \\
+  \Rnl{2}{1}(\rad) &= \frac{1}{2\sqrt{6}}\left(\frac{\Znuc}{\aRed}\right)^{3/2}
+    \frac{\Znuc\rad}{\aRed}\,e^{-\Znuc\rad/(2\aRed)}.
+    \label{c11.eq.r21}\claim{c11.cl.r21}{numerically-checked}
+\end{align}
+In allen dreien steht der Bohrsche Radius $\aRed$ mit der reduzierten Masse
+(Abbildung~\ref{c11.fig.radial}).
+
+\begin{tpcfigure}{c11.fig.radial}
+  \caption{Die Radialfunktionen \eqref{c11.eq.r10} bis \eqref{c11.eq.r21} für
+    $\Znuc = 1$. $\Rnl{1}{0}$ und $\Rnl{2}{0}$ sind am Ursprung von null verschieden,
+    $\Rnl{2}{1}$ beginnt bei null. $\Rnl{2}{0}$ wechselt bei $\rad = 2\aRed$ das
+    Vorzeichen; eine solche Nullstelle heißt Knoten.}
+\end{tpcfigure}
+
+\tpcdef{D69}
+
+Ausmultipliziert ergibt das für $\nqn = 1$ und $\nqn = 2$ fünf Funktionen:
+\begin{align}
+  \psinlm{1}{0}{0}(\rad, \theta, \phi) &= \frac{1}{\sqrt{\pi}}
+    \left(\frac{\Znuc}{\aRed}\right)^{3/2} e^{-\Znuc\rad/\aRed},
+    \label{c11.eq.psi100}\claim{c11.cl.psi100}{numerically-checked} \\
+  \psinlm{2}{0}{0}(\rad, \theta, \phi) &= \frac{1}{4\sqrt{2\pi}}
+    \left(\frac{\Znuc}{\aRed}\right)^{3/2}
+    \left(2 - \frac{\Znuc\rad}{\aRed}\right) e^{-\Znuc\rad/(2\aRed)},
+    \label{c11.eq.psi200}\claim{c11.cl.psi200}{numerically-checked} \\
+  \psinlm{2}{1}{0}(\rad, \theta, \phi) &= \frac{1}{4\sqrt{2\pi}}
+    \left(\frac{\Znuc}{\aRed}\right)^{3/2}
+    \frac{\Znuc\rad}{\aRed}\,e^{-\Znuc\rad/(2\aRed)}\,\cos\theta,
+    \label{c11.eq.psi210}\claim{c11.cl.psi210}{numerically-checked} \\
+  \psinlm{2}{1}{\pm 1}(\rad, \theta, \phi) &= \mp\frac{1}{8\sqrt{\pi}}
+    \left(\frac{\Znuc}{\aRed}\right)^{3/2}
+    \frac{\Znuc\rad}{\aRed}\,e^{-\Znuc\rad/(2\aRed)}\,\sin\theta\,e^{\pm i\phi}.
+    \label{c11.eq.psi21pm}\claim{c11.cl.psi21pm}{numerically-checked}
+\end{align}
+Die erste heißt 1s, die zweite 2s, die drei übrigen 2p. Die Zustände 1s und 2s hängen
+nicht von den Winkeln ab; sie sind kugelsymmetrisch. Der Zustand 1s ist am Ursprung
+am größten und fällt nach außen exponentiell ab. Bei den 2p-Zuständen kommt die
+Winkelabhängigkeit dazu (Abbildung~\ref{c11.fig.schnitt}).
+
+\begin{tpcfigure}{c11.fig.schnitt}
+  \demo{c11.demo.cloud}
+  \caption{Die Dichte $\abs{\psi}^2$ der Relativkoordinate für die 2p-Zustände, als
+    Schnitt durch die Ebene $y = 0$ und für $\Znuc = 1$; dunkler heißt größer, beide
+    Felder benutzen dieselbe lineare Grauskala. Links $\psinlm{2}{1}{0}$: zwei Keulen
+    entlang der $z$-Achse, getrennt durch die Ebene $z = 0$, in der die Dichte
+    verschwindet. Rechts $\psinlm{2}{1}{\pm 1}$: Im Raum ist das ein Ring um die
+    $z$-Achse, auf der die Dichte verschwindet; der Schnitt trifft den Ring zweimal. Die
+    Achsen sind Komponenten von $\posRel = \posE - \posP$, nicht Orte im Labor.}
+\end{tpcfigure}
+
+Dass diese Funktionen normiert sind, rechnen wir für den Zustand 1s vor. In
+Kugelkoordinaten ist das Volumenelement $\rad^2\sin\theta\,\dd\rad\,\dd\theta\,\dd\phi$;
+weil $\psinlm{1}{0}{0}$ nicht von den Winkeln abhängt, liefert das Winkelintegral die
+Kugeloberfläche $4\pi$, und mit $x = \Znuc\rad/\aRed$ bleibt
+\begin{equation}\label{c11.eq.norm100}\claim{c11.cl.norm100}{derived}
+  \begin{aligned}
+    \int \abs{\psinlm{1}{0}{0}}^2\,\dd^3\posRel
+    &= \frac{1}{\pi}\Bigl(\frac{\Znuc}{\aRed}\Bigr)^{3}\,4\pi
+      \int_0^\infty \rad^2\,e^{-2\Znuc\rad/\aRed}\,\dd\rad \\
+    &= 4\int_0^\infty x^2\,e^{-2x}\,\dd x
+     = 4 \cdot \frac{2}{2^3} = 1 .
+  \end{aligned}
+\end{equation}
+Benutzt haben wir $\int_0^\infty x^k\,e^{-cx}\,\dd x = k!/c^{k + 1}$, hier mit $k = 2$
+und $c = 2$. Für die anderen vier Funktionen geht es genauso, nur mit mehr Schreibarbeit.
+Alle fünf sind normiert, stehen paarweise senkrecht aufeinander und lösen die Gleichung
+der Relativbewegung zu der Energie aus Theorem~\ref{c11.thm.spektrum}. Die
+Eigenfunktionsgleichung gilt für $\posRel \neq 0$ und als $L^2$-Identität fast überall:
+\begin{equation}\label{c11.eq.orthonormal}\claim{c11.cl.orthonormal}{numerically-checked}
+  \begin{aligned}
+    \int \overline{\psinlm{\nqn}{\lqn}{\mqn}}\;\psinlm{\nqn'}{\lqn'}{\mqn'}\,\dd^3\posRel
+    &= \delta_{\nqn\nqn'}\,\delta_{\lqn\lqn'}\,\delta_{\mqn\mqn'}, \\
+    \HamRel\,\psinlm{\nqn}{\lqn}{\mqn} &= \En{\nqn}\,\psinlm{\nqn}{\lqn}{\mqn}.
+  \end{aligned}
+\end{equation}
+Das Symbol $\delta_{jk}$ ist eins für $j = k$ und sonst null. Beide Aussagen sind für
+die hier ausgeschriebenen Funktionen mit exakter Arithmetik nachgerechnet.
+
+Zwei der fünf Funktionen sind komplexwertig, $\psinlm{2}{1}{1}$ und $\psinlm{2}{1}{-1}$.
+Sie unterscheiden sich im Drehsinn der Phase $e^{\pm i\phi}$ und, wegen der Konvention
+von Condon und Shortley, im Vorzeichen:
+\begin{equation}\label{c11.eq.cs}\claim{c11.cl.cs}{numerically-checked}
+  \psinlm{2}{1}{-1} = -\,\overline{\psinlm{2}{1}{1}},
+  \qquad
+  \abs{\psinlm{2}{1}{-1}}^2 = \abs{\psinlm{2}{1}{1}}^2 .
+\end{equation}
+Die Dichten der beiden Zustände sind also gleich. Ein Bild der Dichte kann sie nicht
+unterscheiden (Abbildung~\ref{c11.fig.schnitt}); der Unterschied steckt in der Phase
+(Abbildung~\ref{c11.fig.phase}).
+
+\begin{tpcfigure}{c11.fig.phase}
+  \demo{c11.demo.phase}
+  \caption{Vorzeichen und Phase der 2p-Wellenfunktionen für $\Znuc = 1$; die Grauwerte
+    zeigen wieder $\abs{\psi}^2$. Links $\psinlm{2}{1}{0}$ in der Ebene $y = 0$: Die
+    Funktion ist reell, oben positiv, unten negativ. Rechts $\psinlm{2}{1}{1}$ in der
+    Ebene $z = 0$: Der Betrag hängt nur vom Abstand zur Mitte ab, die Phase
+    $\arg\psinlm{2}{1}{1} = \phi + \pi$ nur vom Winkel $\phi$; an den vier Strahlen
+    steht ihr Wert, und der Pfeil zeigt, in welcher Richtung sie wächst. Für
+    $\psinlm{2}{1}{-1}$ läuft die Phase andersherum.}
+\end{tpcfigure}
+
+\begin{remark}
+  Die üblichen Orbitalbilder zeigen $\abs{\psi}^2$. Dabei geht Information verloren:
+  Multipliziert man $\psi$ an jedem Punkt mit einer Zahl vom Betrag eins, die vom Ort
+  abhängen darf, so ändert sich die Dichte nicht, die Wellenfunktion aber schon. Zu
+  einem Bild der Dichte gehört deshalb immer die Angabe, welcher Zustand gemeint ist.
+\end{remark}
+
+Für $\nqn = 3$ und darüber geht es nach demselben Muster weiter\zoomref{c11.v3}.
+
+\begin{vertiefung}[id=c11.v3,
+    titel={Die Wellenfunktionen für $\nqn = 3$},
+    wozu={Der Kern schreibt die Zustände bis $\nqn = 2$ aus. Hier stehen die neun
+      Zustände zu $\nqn = 3$, darunter die ersten d-Zustände.},
+    voraussetzung={Kern~\ref{c11.s5}; die allgemeine Formel aus
+      Vertiefung~\ref{c11.v2} hilft, ist aber nicht nötig. Nicht nötig für die
+      Abschnitte~\ref{c11.s6} und \ref{c11.s7}.},
+    zurueck={Mit wachsendem $\nqn$ kommen Knoten hinzu, und die Funktionen reichen
+      weiter nach außen. Die Bauart bleibt: Radialfunktion mal Funktion der Winkel.}]
+  Für $\lqn = 2$ brauchen wir fünf weitere Kugelflächenfunktionen, wieder in der
+  Condon-Shortley-Konvention aus \defref{D67}:
+  \begin{align}
+    \Ylm{2}{0}(\theta, \phi) &= \sqrt{\frac{5}{16\pi}}\,\bigl(3\cos^2\theta - 1\bigr),
+      \label{c11.eq.y20}\claim{c11.cl.y20}{numerically-checked} \\
+    \Ylm{2}{\pm 1}(\theta, \phi) &= \mp\sqrt{\frac{15}{8\pi}}\,\sin\theta\,\cos\theta\,e^{\pm i\phi},
+      \label{c11.eq.y2pm1}\claim{c11.cl.y2pm1}{numerically-checked} \\
+    \Ylm{2}{\pm 2}(\theta, \phi) &= \sqrt{\frac{15}{32\pi}}\,\sin^2\theta\,e^{\pm 2i\phi}.
+      \label{c11.eq.y2pm2}\claim{c11.cl.y2pm2}{numerically-checked}
+  \end{align}
+
+  \begin{tpcfigure}{c11.fig.schnitt3}
+    \caption{Die Dichte $\abs{\psi}^2$ der Relativkoordinate für die d-Zustände mit $\nqn = 3$, als Schnitt durch die Ebene $y = 0$ und für $\Znuc = 1$, in derselben Darstellung wie Abbildung~\ref{c11.fig.schnitt}; alle drei Felder benutzen eine gemeinsame lineare Grauskala. Die Achsen sind Komponenten von $\posRel = \posE - \posP$.}
+  \end{tpcfigure}
+
+  Die drei Radialfunktionen zu $\nqn = 3$ sind
+  \begin{align}
+    \Rnl{3}{0}(\rad) &= \frac{2}{81\sqrt{3}}\left(\frac{\Znuc}{\aRed}\right)^{3/2}
+      \left(27 - 18\,\frac{\Znuc\rad}{\aRed} + 2\,\frac{\Znuc^2\rad^2}{\aRed^2}\right)
+      e^{-\Znuc\rad/(3\aRed)},
+      \label{c11.eq.r30}\claim{c11.cl.r30}{numerically-checked} \\
+    \Rnl{3}{1}(\rad) &= \frac{4}{81\sqrt{6}}\left(\frac{\Znuc}{\aRed}\right)^{3/2}
+      \frac{\Znuc\rad}{\aRed}\left(6 - \frac{\Znuc\rad}{\aRed}\right)
+      e^{-\Znuc\rad/(3\aRed)},
+      \label{c11.eq.r31}\claim{c11.cl.r31}{numerically-checked} \\
+    \Rnl{3}{2}(\rad) &= \frac{4}{81\sqrt{30}}\left(\frac{\Znuc}{\aRed}\right)^{3/2}
+      \frac{\Znuc^2\rad^2}{\aRed^2}\,e^{-\Znuc\rad/(3\aRed)},
+      \label{c11.eq.r32}\claim{c11.cl.r32}{numerically-checked}
+  \end{align}
+  und die Wellenfunktionen $\psinlm{3}{\lqn}{\mqn} = \Rnl{3}{\lqn}\,\Ylm{\lqn}{\mqn}$
+  lauten ausgeschrieben
+  \begin{align}
+    \psinlm{3}{0}{0}(\rad, \theta, \phi) &= \frac{1}{81\sqrt{3\pi}}
+      \left(\frac{\Znuc}{\aRed}\right)^{3/2}
+      \left(27 - 18\,\frac{\Znuc\rad}{\aRed} + 2\,\frac{\Znuc^2\rad^2}{\aRed^2}\right)
+      e^{-\Znuc\rad/(3\aRed)},
+      \label{c11.eq.psi300}\claim{c11.cl.psi300}{numerically-checked} \\
+    \psinlm{3}{1}{0}(\rad, \theta, \phi) &= \frac{2}{81\sqrt{2\pi}}
+      \left(\frac{\Znuc}{\aRed}\right)^{3/2}
+      \frac{\Znuc\rad}{\aRed}\left(6 - \frac{\Znuc\rad}{\aRed}\right)
+      e^{-\Znuc\rad/(3\aRed)}\,\cos\theta,
+      \label{c11.eq.psi310}\claim{c11.cl.psi310}{numerically-checked} \\
+    \psinlm{3}{1}{\pm 1}(\rad, \theta, \phi) &= \mp\frac{1}{81\sqrt{\pi}}
+      \left(\frac{\Znuc}{\aRed}\right)^{3/2}
+      \frac{\Znuc\rad}{\aRed}\left(6 - \frac{\Znuc\rad}{\aRed}\right)
+      e^{-\Znuc\rad/(3\aRed)}\,\sin\theta\,e^{\pm i\phi},
+      \label{c11.eq.psi31pm}\claim{c11.cl.psi31pm}{numerically-checked} \\
+    \psinlm{3}{2}{0}(\rad, \theta, \phi) &= \frac{1}{81\sqrt{6\pi}}
+      \left(\frac{\Znuc}{\aRed}\right)^{3/2}
+      \frac{\Znuc^2\rad^2}{\aRed^2}\,e^{-\Znuc\rad/(3\aRed)}\,
+      \bigl(3\cos^2\theta - 1\bigr),
+      \label{c11.eq.psi320}\claim{c11.cl.psi320}{numerically-checked} \\
+    \psinlm{3}{2}{\pm 1}(\rad, \theta, \phi) &= \mp\frac{1}{81\sqrt{\pi}}
+      \left(\frac{\Znuc}{\aRed}\right)^{3/2}
+      \frac{\Znuc^2\rad^2}{\aRed^2}\,e^{-\Znuc\rad/(3\aRed)}\,
+      \sin\theta\,\cos\theta\,e^{\pm i\phi},
+      \label{c11.eq.psi32pm1}\claim{c11.cl.psi32pm1}{numerically-checked} \\
+    \psinlm{3}{2}{\pm 2}(\rad, \theta, \phi) &= \frac{1}{162\sqrt{\pi}}
+      \left(\frac{\Znuc}{\aRed}\right)^{3/2}
+      \frac{\Znuc^2\rad^2}{\aRed^2}\,e^{-\Znuc\rad/(3\aRed)}\,
+      \sin^2\theta\,e^{\pm 2i\phi}.
+      \label{c11.eq.psi32pm2}\claim{c11.cl.psi32pm2}{numerically-checked}
+  \end{align}
+  Die sechs Zeilen zählen neun Zustände auf. Zusammen mit den fünf Zuständen des Kerns
+  sind es vierzehn; für alle vierzehn sind Normierung, Orthogonalität und die
+  Eigenwertgleichung aus \eqref{c11.eq.orthonormal} exakt nachgerechnet.
+  $\Rnl{3}{0}$ hat zwei Knoten, bei
+  $\Znuc\rad/\aRed = (9 \mp 3\sqrt{3})/2$, den Nullstellen des quadratischen Faktors;
+  $\Rnl{3}{1}$ hat einen bei $\Znuc\rad/\aRed = 6$, und $\Rnl{3}{2}$ hat keinen
+  (Abbildung~\ref{c11.fig.radial3}).
+
+  \begin{tpcfigure}{c11.fig.radial3}
+    \caption{Oben die Radialfunktionen \eqref{c11.eq.r30} bis \eqref{c11.eq.r32} für
+      $\Znuc = 1$, unten die zugehörigen radialen Aufenthaltsdichten
+      $\Pnl{3}{\lqn}(\rad) = \rad^2\,\Rnl{3}{\lqn}(\rad)^2$ aus \defref{D72} in
+      Abschnitt~\ref{c11.s7}. Durchgezogen 3s, gestrichelt 3p,
+      strichpunktiert 3d. Je kleiner $\lqn$, desto mehr Knoten.}
+  \end{tpcfigure}
+\end{vertiefung}
+
+
+\section{Spektrallinien}\label{c11.s6}
+
+Für den spektralen Vergleich der Formel \eqref{c11.eq.energien} mit dem Labor verwenden
+wir Differenzen der inneren Niveaus.
+
+\begin{merksatz}[Spektraler Vergleich]
+  Für den hier vorgenommenen spektralen Vergleich verwenden wir Differenzen der
+  inneren Niveaus. Die folgende zusätzliche Photonenergie-Konvention verbindet sie
+  mit Wellenlängen.
+\end{merksatz}
+
+Ein Atom kann von einem Zustand der Energie $\En{\nqn}$ in einen der niedrigeren Energie
+$\En{\nqn'}$ übergehen und dabei Licht aussenden; die Energie eines Lichtquants wird mit
+der Differenz $\En{\nqn} - \En{\nqn'}$ verglichen. Unser Modell enthält kein Lichtfeld.
+Dass die Differenz als Licht erscheint, ist deshalb hier eine Annahme, die zum Modell
+hinzukommt, und der Rückstoß, den das Atom beim Aussenden erfährt, ist dabei
+vernachlässigt. Unter dieser Annahme gehört zu jedem Paar $\nqn > \nqn'$ eine
+Wellenlänge $\lambda$ im Vakuum. Für Wasserstoff, $\Znuc = 1$, ist
+\begin{equation}\label{c11.eq.linie}\claim{c11.cl.linie}{derived}
+  \begin{aligned}
+    \En{\nqn} - \En{\nqn'} &= \RydRed\,\Bigl(\frac{1}{\nqn'^2} - \frac{1}{\nqn^2}\Bigr), \\
+    \lambda &= \frac{\hPlanck\,\clight}{\En{\nqn} - \En{\nqn'}}
+             = \frac{1 + \massE/\massP}{\Rinf}\,
+               \Bigl(\frac{1}{\nqn'^2} - \frac{1}{\nqn^2}\Bigr)^{-1} .
+  \end{aligned}
+\end{equation}
+Hier ist $\hPlanck = 2\pi\hbar$ das Plancksche Wirkungsquantum, $\clight$ die
+Lichtgeschwindigkeit und $\Rinf$ die Rydberg-Konstante
+\srcref{codata-2022}{Zeile „Rydberg constant“}, mit der man die Rydberg-Energie als
+$\Ryd = \hPlanck\,\clight\,\Rinf$ schreibt. Der Faktor $1 + \massE/\massP$ kommt von
+der reduzierten Masse; er ist die Spur, die das Proton im Spektrum hinterlässt.
+
+Die Übergänge, die bei $\nqn' = 1$ enden, bilden die Lyman-Serie, die bei $\nqn' = 2$
+enden, die Balmer-Serie (Abbildung~\ref{c11.fig.termschema}). Die jeweils längste
+Wellenlänge gehört zum kleinsten Sprung. Unser Modell liefert für den Übergang
+$2 \to 1$ die Wellenlänge $\num[c11.cl.lyman]{121{,}568}{nm}$ und für den Übergang
+$3 \to 2$ die Wellenlänge $\num[c11.cl.balmer]{656{,}470}{nm}$. Die zugehörigen
+Energiedifferenzen stehen im Verhältnis
+\begin{equation}\label{c11.eq.verhaeltnis}\claim{c11.cl.verhaeltnis}{derived}
+  \frac{\En{2} - \En{1}}{\En{3} - \En{2}}
+  = \frac{1 - \tfrac14}{\tfrac14 - \tfrac19}
+  = \frac{3/4}{5/36} = \frac{27}{5} .
+\end{equation}
+
+\begin{tpcfigure}{c11.fig.termschema}
+  \caption{Das Termschema der Relativbewegung: die Energien $\En{\nqn}$ aus
+    \eqref{c11.eq.energien} für $\Znuc = 1$ in Einheiten von $\RydRed$. Die Niveaus
+    häufen sich bei $E = 0$. Die Pfeile sind Übergänge; ihre Länge ist maßstäblich die
+    Energiedifferenz. Durchgezogen: Lyman-Serie, $\nqn \to 1$. Gestrichelt:
+    Balmer-Serie, $\nqn \to 2$.}
+\end{tpcfigure}
+
+\begin{tpcfigure}{c11.fig.spektrum}
+  \caption{Dieselben Übergänge als Wellenlängen nach \eqref{c11.eq.linie}, auf einer
+    logarithmischen Achse. Jeder Strich ist eine Linie; durchgezogen die Lyman-Serie
+    ($\nqn = 2, \ldots, 12$), gestrichelt die Balmer-Serie ($\nqn = 3, \ldots, 12$). So
+    wie sich die Niveaus bei $E = 0$ häufen, drängen sich die Linien jeder Serie an
+    ihrer Seriengrenze, der Wellenlänge für $\nqn \to \infty$. Zwischen den beiden
+    Serien liegt keine Linie von einer der beiden.}
+\end{tpcfigure}
+
+Wie ernst darf man diese Zahlen nehmen? Sie sind exakte Folgerungen aus dem Modell und
+aus gemessenen Naturkonstanten\zoomref{c11.v4}. Das Modell selbst lässt aber weg: die
+Feinstruktur, die Lamb-Verschiebung, die endliche Ausdehnung des Kerns, den Spin, äußere
+Felder, die Dynamik der Abstrahlung und den Rückstoß. Die Wellenlängen sind deshalb
+Aussagen über das spinlose Coulomb-Modell und keine Vorhersagen auf der Genauigkeit, mit
+der man wirkliche Spektrallinien auflösen kann. Auch darüber, welche Übergänge wie
+häufig vorkommen, sagt unser Hamiltonoperator nichts.
+
+\begin{vertiefung}[id=c11.v4,
+    titel={Wie genau sind die Zahlen?},
+    wozu={Der Kern gibt Energien und Wellenlängen auf wenige Stellen an. Hier stehen
+      die Eingangsdaten, die vollen Ergebnisse und die Auskunft, wie viele ihrer Stellen
+      etwas bedeuten.},
+    voraussetzung={Kern~\ref{c11.s4} und \ref{c11.s6}. Nicht nötig für
+      Abschnitt~\ref{c11.s7}.},
+    zurueck={Die Rechnung ist auf viele Stellen genau. Was diese Stellen physikalisch
+      bedeuten, entscheidet das Modell, nicht die Arithmetik.}]
+  Die übernommenen Naturkonstanten stammen aus der Liste der empfohlenen Werte von
+  2022 (CODATA), aus der schon die Rydberg-Konstante in \eqref{c11.eq.linie} kam.
+  Abgeleitete Modellwerte verwenden diese Eingangsdaten; illustrative Parameter sind
+  gewählte Werte. Tabelle~\ref{c11.tab.codata} zeigt die benutzten Zeilen. Die Werte von $\hPlanck$, $\clight$ und $\echarge$ sind
+  dort als exakt gekennzeichnet; die anderen tragen eine Standardunsicherheit.
+
+  \begin{tpctable}{c11.tab.codata}
+    \caption{Eingangsdaten: Wert und Standardunsicherheit, wie sie in der Liste stehen.}
+    \begin{tabular}{lll}
+      \toprule
+      Größe & Wert & Standardunsicherheit \\
+      \midrule
+      $\massE/\massP$ & $\num[c11.cl.q]{5{,}446170214889 \cdot 10^{-4}}{}$
+        & $\num[c11.cl.q]{9{,}4 \cdot 10^{-15}}{}$ \\
+      $\aBohr$ & $\num[c11.cl.a0]{5{,}29177210544 \cdot 10^{-11}}{m}$
+        & $\num[c11.cl.a0]{8{,}2 \cdot 10^{-21}}{m}$ \\
+      $\Rinf$ & $\num[c11.cl.rinf]{10973731{,}568157}{m^{-1}}$
+        & $\num[c11.cl.rinf]{1{,}2 \cdot 10^{-5}}{m^{-1}}$ \\
+      $\hPlanck\,\clight\,\Rinf$ & $\num[c11.cl.ry]{13{,}605693122990}{eV}$
+        & $\num[c11.cl.ry]{1{,}5 \cdot 10^{-11}}{eV}$ \\
+      $\hPlanck$ & $\num[c11.cl.h]{6{,}62607015 \cdot 10^{-34}}{J\,Hz^{-1}}$ & exakt \\
+      $\clight$ & $\num[c11.cl.c]{299792458}{m\,s^{-1}}$ & exakt \\
+      $\echarge$ & $\num[c11.cl.e]{1{,}602176634 \cdot 10^{-19}}{C}$ & exakt \\
+      \bottomrule
+    \end{tabular}
+  \end{tpctable}
+
+  Aus diesen Zeilen folgen die Zahlen des Kapitels durch
+  $\massRed/\massE = 1/(1 + \massE/\massP)$, durch \eqref{c11.eq.bohr} und durch
+  \eqref{c11.eq.linie}. Tabelle~\ref{c11.tab.ergebnisse} zeigt sie mit allen Stellen,
+  die die Eingangsdaten hergeben.
+
+  \begin{tpctable}{c11.tab.ergebnisse}
+    \caption{Ergebnisse des Modells für $\Znuc = 1$ und die Skala ihrer Unsicherheit
+      nach \eqref{c11.eq.fehler}, aufgerundet.}
+    \begin{tabular}{lll}
+      \toprule
+      Größe & Wert & Unsicherheitsskala \\
+      \midrule
+      $\massRed/\massE$ & $\num[c11.cl.mu-ratio]{0{,}999455679424762}{}$
+        & $\num[c11.cl.mu-ratio]{9{,}4 \cdot 10^{-15}}{}$ \\
+      $\aRed$ & $\num[c11.cl.amu]{5{,}29465409460 \cdot 10^{-11}}{m}$
+        & $\num[c11.cl.amu]{8{,}21 \cdot 10^{-21}}{m}$ \\
+      $\En{1}$ mit $\massRed$ & $\num[c11.cl.e1-mu]{-13{,}598287264283}{eV}$
+        & $\num[c11.cl.e1-mu]{1{,}50 \cdot 10^{-11}}{eV}$ \\
+      $\En{1}$ mit $\massE$ & $\num[c11.cl.e1-me]{-13{,}605693122991}{eV}$
+        & $\num[c11.cl.e1-me]{1{,}49 \cdot 10^{-11}}{eV}$ \\
+      $\lambda$ für $2 \to 1$ & $\num[c11.cl.lyman]{121{,}5684456173}{nm}$
+        & $\num[c11.cl.lyman]{1{,}35 \cdot 10^{-10}}{nm}$ \\
+      $\lambda$ für $3 \to 2$ & $\num[c11.cl.balmer]{656{,}4696063332}{nm}$
+        & $\num[c11.cl.balmer]{7{,}25 \cdot 10^{-10}}{nm}$ \\
+      \bottomrule
+    \end{tabular}
+  \end{tpctable}
+
+  \begin{tpcfigure}{c11.fig.unsicherheit}
+    \caption{Die Unsicherheit jeder Zeile der Tabellen~\ref{c11.tab.codata} und \ref{c11.tab.ergebnisse}, geteilt durch den Betrag des Werts, auf einer logarithmischen Achse. Durchgezogen die Eingangsdaten, gestrichelt die Ergebnisse. Am ungenauesten sind die Längen $\aBohr$ und $\aRed$; die Energien und Wellenlängen erben die Genauigkeit der Rydberg-Konstante.}
+  \end{tpcfigure}
+
+  Die Unsicherheitsskala einer Größe $f$, die aus Eingangswerten $c_1, c_2, \ldots$ mit
+  den Standardunsicherheiten $u(c_1), u(c_2), \ldots$ berechnet ist, bilden wir so:
+  \begin{equation}\label{c11.eq.fehler}\claim{c11.cl.fehler}{derived}
+    \sum_i \Bigl\lvert \frac{\partial f}{\partial c_i} \Bigr\rvert\, u(c_i) .
+  \end{equation}
+  Das ist eine Schranke erster Ordnung, die gilt, gleichgültig wie die Unsicherheiten
+  der Eingangswerte zusammenhängen; eine fortgepflanzte Standardunsicherheit im
+  strengen Sinn ist es nicht, denn dafür müsste man diese Zusammenhänge kennen.
+
+  Die Tabellen sagen zweierlei. Die Rechnung selbst ist kein Engpass: Die Eingangsdaten
+  begrenzen die Ergebnisse erst weit hinter dem Komma. Und gerade deshalb darf man die
+  vielen Stellen nicht für Physik halten. Die Wellenlängen sind die des Modells aus
+  Abschnitt~\ref{c11.s1}; was es weglässt, steht am Ende von Abschnitt~\ref{c11.s6}.
+\end{vertiefung}
+
+\section{Der Abstand von Elektron und Proton}\label{c11.s7}
+
+Die Wellenfunktionen aus Abschnitt~\ref{c11.s5} sagen, wie der Abstandsvektor $\posRel$
+verteilt ist. Oft will man weniger wissen: nur, wie groß der Abstand
+$\rad = \abs{\posRel}$ zwischen Elektron und Proton ist, gleichgültig in welcher
+Richtung.
+
+Für \defref{D72} wählen wir die hier konstruierten Radialfunktionen reell; ihre
+Quadrate sind deshalb zugleich ihre Betragsquadrate.
+
+\tpcdef{D72}
+
+Der Name ist berechtigt: Integriert man $\abs{\psinlm{\nqn}{\lqn}{\mqn}}^2$ über eine
+Kugelschale, so liefern die Winkel den Faktor eins, weil die Kugelflächenfunktionen
+normiert sind, und es bleibt
+\begin{equation}\label{c11.eq.schale}\claim{c11.cl.schale}{derived}
+  \int_{r_1 \leq \abs{\posRel} \leq r_2} \abs{\psinlm{\nqn}{\lqn}{\mqn}(\posRel)}^2\,\dd^3\posRel
+  = \int_{r_1}^{r_2} \Pnl{\nqn}{\lqn}(\rad)\,\dd\rad .
+\end{equation}
+Also ist $\Pnl{\nqn}{\lqn}(\rad)\,\dd\rad$ die Wahrscheinlichkeit, den Abstand zwischen
+$\rad$ und $\rad + \dd\rad$ zu finden, und zwar für jedes $\mqn$ dieselbe. Mit den
+Radialfunktionen \eqref{c11.eq.r10} bis \eqref{c11.eq.r21} und $x = \Znuc\rad/\aRed$
+ergibt sich
+\begin{equation}\label{c11.eq.pnl}\claim{c11.cl.pnl}{derived}
+  \Pnl{1}{0} = \frac{\Znuc}{\aRed}\,4x^2\,e^{-2x},
+  \qquad
+  \Pnl{2}{0} = \frac{\Znuc}{\aRed}\,\frac{x^2(2 - x)^2}{8}\,e^{-x},
+  \qquad
+  \Pnl{2}{1} = \frac{\Znuc}{\aRed}\,\frac{x^4}{24}\,e^{-x} .
+\end{equation}
+
+\begin{tpcfigure}{c11.fig.dichte}
+  \demo{c11.demo.radial}
+  \caption{Die radialen Aufenthaltsdichten \eqref{c11.eq.pnl} für $\Znuc = 1$.
+    Durchgezogen 1s, gestrichelt 2s, strichpunktiert 2p. Die gepunktete Linie markiert
+    das Maximum von $\Pnl{1}{0}$ bei $\rad = \aRed$, der Punkt den Knoten von
+    $\Pnl{2}{0}$ bei $\rad = 2\aRed$. Die kurzen Striche unter der Achse sind die
+    mittleren Abstände \eqref{c11.eq.mittel}. Alle Kurven beginnen bei null, auch die
+    der s-Zustände: Der Faktor $\rad^2$ kommt vom Volumen der Kugelschale.}
+\end{tpcfigure}
+
+Drei Dinge liest man an Abbildung~\ref{c11.fig.dichte} ab.
+
+Erstens der \emph{wahrscheinlichste Abstand} im Zustand 1s. Die Ableitung von
+$x^2 e^{-2x}$ ist $2x(1 - x)\,e^{-2x}$; sie verschwindet für $x > 0$ nur bei $x = 1$.
+Also hat $\Pnl{1}{0}$ sein Maximum bei
+\begin{equation}\label{c11.eq.maximum}\claim{c11.cl.maximum}{numerically-checked}
+  \rad = \frac{\aRed}{\Znuc} .
+\end{equation}
+Das gibt dem Bohrschen Radius eine anschauliche Bedeutung: Für Wasserstoff ist $\aRed$
+der wahrscheinlichste Abstand zwischen Elektron und Proton im Zustand 1s. Die
+Wellenfunktion $\psinlm{1}{0}{0}$ selbst ist dagegen bei $\rad = 0$ am größten. Das ist
+kein Widerspruch: $\abs{\psi}^2$ ist eine Dichte pro Volumen, $\Pnl{1}{0}$ eine Dichte
+pro Abstand, und zu einem größeren Abstand gehört eine größere Kugelschale.
+
+\begin{tpcfigure}{c11.fig.kugelschale}
+  \caption{Warum die radiale Aufenthaltsdichte von 1s bei null beginnt, für $\Znuc = 1$. Gestrichelt: die skalierte Dichte $\pi\aRed^3\abs{\psinlm{1}{0}{0}}^2 = e^{-2x}$ pro Volumen, am Ursprung am größten. Dünn: $\rad^2/\aRed^2 = x^2$, die Kugeloberfläche geteilt durch $4\pi\aRed^2$. Dick: $\aRed\Pnl{1}{0} = 4x^2 e^{-2x}$, die skalierte Dichte pro Abstand, also das Vierfache des Produkts der dünnen und der gestrichelten Kurve; ihr Maximum liegt bei $\rad = \aRed$. Hier ist $x = \rad/\aRed$.}
+\end{tpcfigure}
+
+Zweitens die \emph{Knoten}. $\Pnl{2}{0}$ verschwindet bei $x = 2$, also bei
+$\rad = 2\aRed/\Znuc$, weil dort $\Rnl{2}{0}$ das Vorzeichen wechselt. Im Zustand 2s ist
+die Dichte auf der ganzen Kugel mit diesem Radius null. Die Zustände 1s und 2p haben
+keinen solchen Knoten.
+
+Drittens der \emph{mittlere Abstand} $\expval{\rad} = \int_0^\infty \rad\,
+\Pnl{\nqn}{\lqn}(\rad)\,\dd\rad$. Für den Zustand 1s ist das
+$(\aRed/\Znuc) \cdot 4\int_0^\infty x^3 e^{-2x}\,\dd x = (\aRed/\Znuc) \cdot 4 \cdot
+3!/2^4$. Dieselbe Rechnung für die beiden anderen Dichten ergibt zusammen
+\begin{equation}\label{c11.eq.mittel}\claim{c11.cl.mittel}{derived}
+  \expval{\rad}_{10} = \frac{3}{2}\,\frac{\aRed}{\Znuc},
+  \qquad
+  \expval{\rad}_{20} = 6\,\frac{\aRed}{\Znuc},
+  \qquad
+  \expval{\rad}_{21} = 5\,\frac{\aRed}{\Znuc} .
+\end{equation}
+Die Indizes sind $\nqn$ und $\lqn$. Der mittlere Abstand ist größer als der
+wahrscheinlichste, weil die Dichte nach außen langsam ausläuft. Und obwohl 2s und 2p
+dieselbe Energie haben, ist der mittlere Abstand verschieden. Für alle $\nqn$ und
+$\lqn$ gibt es dafür eine geschlossene Formel\zoomref{c11.v5}.
+
+Damit sind die konstruierten gebundenen Zustände und ihre Dichten beschrieben. Die
+Bewegung des Schwerpunkts ist frei, die konstruierte Familie hat die Energien
+\eqref{c11.eq.energien} und die Wellenfunktionen aus Abschnitt~\ref{c11.s5}, und was man
+im Labor von einem Atom sieht, verlangt beide Hälften (Abbildung~\ref{c11.fig.ueberblick}).
+
+\begin{tpcfigure}{c11.fig.ueberblick}
+  \caption{Der Weg des Kapitels als Schema. Aus dem Zweiteilchenproblem werden zwei unabhängige Probleme; die Relativbewegung liefert Energien und Wellenfunktionen. Mit dem Labor verglichen werden die Differenzen der Energien, als Spektrallinien, und Dichten, in die der Zustand des Schwerpunkts eingeht.}
+\end{tpcfigure}
+
+
+\begin{vertiefung}[id=c11.v5,
+    titel={Momente und Verteilungsfunktion},
+    wozu={Der Kern berechnet mittlere Abstände für $\nqn \leq 2$ einzeln. Hier steht
+      eine Formel für alle Zustände, dazu die Wahrscheinlichkeit, den Abstand unterhalb
+      eines gegebenen Radius zu finden.},
+    voraussetzung={Kern~\ref{c11.s7}; für den allgemeinen Fall die Radialfunktionen aus
+      Vertiefung~\ref{c11.v2}.},
+    zurueck={Mittlere Abstände und eingeschlossene Wahrscheinlichkeiten gibt es für
+      jeden Zustand als Formel, ohne numerische Integration.}]
+  Wir messen Längen wieder mit $x = \Znuc\rad/\aRed$ und schreiben $u(x)$ für die auf
+  $\int_0^\infty u^2\,\dd x = 1$ normierte reelle Lösung von \eqref{c11.eq.dimlos} zu
+  $\varepsilon = -1/\nqn^2$. Die Momente sind $I_s = \int_0^\infty x^s\,u(x)^2\,\dd x$.
+  Multipliziert man \eqref{c11.eq.dimlos} einmal mit $x^s u$ und einmal mit
+  $x^{s + 1} u'$ und integriert partiell, so erhält man zwei Gleichungen, aus denen man
+  das Integral über $x^s (u')^2$ eliminieren kann. Für $s = 0, 1, 2$ verschwinden die
+  Randterme, und es bleibt
+  \begin{equation}\label{c11.eq.kramers}\claim{c11.cl.kramers}{derived}
+    s\,\Bigl(\frac{s^2 - 1}{4} - \lqn(\lqn + 1)\Bigr)\,I_{s - 2}
+    + (2s + 1)\,I_{s - 1} - \frac{s + 1}{\nqn^2}\,I_s = 0 .
+  \end{equation}
+  Mit $I_0 = 1$ liefern $s = 0$, $s = 1$ und $s = 2$ der Reihe nach
+  \begin{equation}\label{c11.eq.momente}\claim{c11.cl.momente}{derived}
+    \begin{aligned}
+      \Bigl\langle \frac{1}{\rad} \Bigr\rangle &= \frac{\Znuc}{\aRed\,\nqn^2},
+      \qquad
+      \expval{\rad} = \frac{\aRed}{2\Znuc}\,\bigl(3\nqn^2 - \lqn(\lqn + 1)\bigr), \\
+      \expval{\rad^2} &= \frac{\aRed^2\,\nqn^2}{2\Znuc^2}\,
+        \bigl(5\nqn^2 + 1 - 3\lqn(\lqn + 1)\bigr).
+    \end{aligned}
+  \end{equation}
+  Für $\nqn \leq 2$ sind das die Werte aus \eqref{c11.eq.mittel}. Bei festem $\nqn$ ist
+  der mittlere Abstand umso kleiner, je größer $\lqn$ ist.
+
+  Für die zweite Frage definieren wir die Verteilungsfunktion.
+
+  \tpcdef{D73}
+
+  Weil $\Pnl{\nqn}{\lqn}$ ein Polynom mal $e^{-2x/\nqn}$ ist, lässt sich das Integral
+  durch wiederholtes partielles Integrieren geschlossen ausführen:
+  \begin{equation}\label{c11.eq.cdf}\claim{c11.cl.cdf}{derived}
+    \Fnl{\nqn}{\lqn}(\rad) = 1 - e^{-2x/\nqn}\,\Qnl{\nqn}{\lqn}(x),
+    \qquad
+    x = \frac{\Znuc\rad}{\aRed},
+  \end{equation}
+  mit einem Polynom $\Qnl{\nqn}{\lqn}$. Für die Zustände bis $\nqn = 3$ ist
+  \begin{equation}\label{c11.eq.qpolynome}\claim{c11.cl.qpolynome}{derived}
+    \begin{aligned}
+      \Qnl{1}{0} &= 1 + 2x + 2x^2, \\
+      \Qnl{2}{0} &= 1 + x + \frac{x^2}{2} + \frac{x^4}{8}, \\
+      \Qnl{2}{1} &= 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \frac{x^4}{24}, \\
+      \Qnl{3}{0} &= 1 + \frac{2x}{3} + \frac{2x^2}{9} + \frac{4x^4}{81}
+                    - \frac{8x^5}{729} + \frac{8x^6}{6561}, \\
+      \Qnl{3}{1} &= 1 + \frac{2x}{3} + \frac{2x^2}{9} + \frac{4x^3}{81}
+                    + \frac{2x^4}{243} - \frac{4x^5}{2187} + \frac{4x^6}{6561}, \\
+      \Qnl{3}{2} &= 1 + \frac{2x}{3} + \frac{2x^2}{9} + \frac{4x^3}{81}
+                    + \frac{2x^4}{243} + \frac{4x^5}{3645} + \frac{4x^6}{32805}.
+    \end{aligned}
+  \end{equation}
+
+  \begin{tpcfigure}{c11.fig.verteilung}
+    \caption{Die Verteilungsfunktionen $\Fnl{1}{0}$, $\Fnl{2}{0}$ und $\Fnl{2}{1}$ nach
+      \eqref{c11.eq.cdf} für $\Znuc = 1$: die Wahrscheinlichkeit, den Abstand kleiner
+      als $\rad$ zu finden. Am Knoten von 2s, dem markierten Punkt bei
+      $\rad = 2\aRed$, hat $\Fnl{2}{0}$ eine waagerechte Tangente.}
+  \end{tpcfigure}
+
+  Mit $\Fnl{\nqn}{\lqn}$ lässt sich sagen, was die Oberfläche in einem Orbitalbild
+  bedeuten soll, und dafür gibt es zwei verschiedene Verabredungen. Die Kugel mit dem
+  Radius $r_p$, für den $\Fnl{\nqn}{\lqn}(r_p) = p$ ist, schließt die Wahrscheinlichkeit
+  $p$ ein, für jedes $\mqn$; sie ist aber im Allgemeinen keine Fläche gleicher Dichte.
+  Eine Fläche gleicher Dichte, die die Wahrscheinlichkeit $p$ einschließt, erhält man
+  aus einer Schwelle $c_p$ mit
+  \begin{equation}\label{c11.eq.isoflaeche}\claim{c11.cl.isoflaeche}{derived}
+    \int_{\abs{\psi}^2 \geq c_p} \abs{\psi(\posRel)}^2\,\dd^3\posRel = p ;
+  \end{equation}
+  das eingeschlossene Gebiet kann aus mehreren Teilen bestehen. Für den Zustand 1s, in
+  dem die Dichte mit dem Abstand streng abnimmt, fallen beide Verabredungen zusammen.
+  Eine Dichteschwelle, die man nicht integriert hat, darf man nicht mit einer
+  Wahrscheinlichkeit beschriften.
+\end{vertiefung}
+
+\begin{exercise}[Der Zustand 2p durch Einsetzen]\label{c11.exc.zweip}
+  Zeige, dass $u(x) = x^2\,e^{-x/2}$ die Gleichung \eqref{c11.eq.dimlos} für $\lqn = 1$
+  löst, und lies $\varepsilon$ ab. Vergleiche mit \eqref{c11.eq.r21}.
+\end{exercise}
+\begin{solution}
+  Es ist $u' = (2x - \tfrac12 x^2)\,e^{-x/2}$ und
+  $u'' = (2 - 2x + \tfrac14 x^2)\,e^{-x/2}$. Für $\lqn = 1$ ist
+  $\lqn(\lqn + 1)/x^2 - 2/x = 2/x^2 - 2/x$, und dieser Faktor mal $u$ ist
+  $(2 - 2x)\,e^{-x/2}$. Zusammen:
+  $-u'' + (2/x^2 - 2/x)\,u = -\tfrac14 x^2\,e^{-x/2} = -\tfrac14 u$. Also ist
+  $\varepsilon = -\tfrac14$, das ist $\En{2}$ in Einheiten von $\Znuc^2\,\RydRed$. Die
+  Radialfunktion $u/x$ ist bis auf den Vorfaktor $\Rnl{2}{1}$.
+\end{solution}
+
+\begin{exercise}[Mittlerer Abstand im Zustand 2p]\label{c11.exc.mittel}
+  Berechne $\expval{\rad}$ für den Zustand 2p aus $\Pnl{2}{1}$ in \eqref{c11.eq.pnl}.
+\end{exercise}
+\begin{solution}
+  Mit $\rad = (\aRed/\Znuc)\,x$ und $\dd\rad = (\aRed/\Znuc)\,\dd x$ ist
+  \begin{equation*}
+    \expval{\rad} = \frac{\aRed}{\Znuc} \cdot \frac{1}{24}\int_0^\infty x^5 e^{-x}\,\dd x
+    = \frac{\aRed}{\Znuc} \cdot \frac{5!}{24} = 5\,\frac{\aRed}{\Znuc},
+  \end{equation*}
+  wie in \eqref{c11.eq.mittel}.
+\end{solution}
+
+\begin{exercise}[Das unendlich schwere Proton]\label{c11.exc.unendlich}
+  Um welchen Faktor ändern sich der Bohrsche Radius und die Energien $\En{\nqn}$, wenn
+  man die reduzierte Masse $\massRed$ durch die Elektronenmasse $\massE$ ersetzt?
+  \begin{enumerate}
+    \item Benutze \eqref{c11.eq.bohr}.
+    \item Was bedeutet das für die Wellenlängen in \eqref{c11.eq.linie}?
+  \end{enumerate}
+\end{exercise}
+\begin{solution}
+  Aus $\aRed$ wird $\aBohr = \aRed\,\massRed/\massE$. Der Radius wird also um den
+  Faktor $\massRed/\massE = 1/(1 + \massE/\massP)$ kleiner. Aus $\RydRed$ wird
+  $\Ryd = \RydRed\,\massE/\massRed$. Alle Energien werden also dem Betrag nach um den
+  Faktor $1 + \massE/\massP$ größer.
+  \begin{itemize}
+    \item Die Energiedifferenzen wachsen um denselben Faktor.
+    \item Die Wellenlängen werden um diesen Faktor kürzer: In \eqref{c11.eq.linie}
+      fällt der Faktor $1 + \massE/\massP$ weg.
+  \end{itemize}
+\end{solution}
+
+
+\begin{fundament}[id=c11.f1,
+    titel={Selbstadjungiertheit der Hamiltonoperatoren des Wasserstoffatoms},
+    wozu={Im Kern sind $\HamTot$ und $\HamRel$ Rechenvorschriften für differenzierbare
+      Funktionen. Hier steht, auf welchen Definitionsbereichen sie selbstadjungierte
+      Operatoren festlegen, und auf welchen Satz sich das stützt.},
+    voraussetzung={Kern~\ref{c11.s1} und \ref{c11.s2}; die Begriffe Definitionsbereich
+      und (wesentlich) selbstadjungiert aus \defref{D16} und \defref{D19}.},
+    zurueck={Die Rechenvorschriften aus \defref{D60} und
+      Theorem~\ref{c11.thm.separation} legen, auf glatten Funktionen mit kompaktem
+      Träger gestartet, jeweils einen selbstadjungierten Operator fest: ihren
+      Abschluss.}]
+  Ein Operator ist nach \defref{D16} erst angegeben, wenn man seinen Definitionsbereich
+  nennt. Wir starten mit einem kleinen Bereich, auf dem an den Rechenvorschriften nichts
+  zu deuten ist: den glatten Funktionen mit kompaktem Träger, $\Ccinf{\mathbb{R}^3}$ für
+  die Relativbewegung und $\Ccinf{\mathbb{R}^6}$ für das ganze Atom. Die Frage ist, ob
+  die Operatoren dort wesentlich selbstadjungiert sind (\defref{D19}); dann, und nur
+  davon handelt dieser Block, ist ihr Abschluss selbstadjungiert.
+
+  \begin{tpcfigure}{c11.fig.bereiche}
+    \caption{Die drei Funktionenmengen dieses Blocks als Schema: die glatten Funktionen mit kompaktem Träger, der Definitionsbereich $\dom{-\Lap}$ des Laplace-Operators und der ganze Raum $\Ltwo{\mathbb{R}^3}$. Eingetragen ist, was Korollar~\ref{c11.cor.relativ} über $\HamRel$ sagt.}
+  \end{tpcfigure}
+
+  Die Antwort hängt an einer Eigenschaft des Potentials. Man schreibt
+  $\Ltwo{\mathbb{R}^3} + L^{\infty}(\mathbb{R}^3)$ für die Menge der messbaren Funktionen
+  $f$ auf $\mathbb{R}^3$, die sich als Summe $f = f_1 + f_2$ einer quadratintegrierbaren
+  Funktion $f_1$ und einer beschränkten Funktion $f_2$ schreiben lassen. Für solche
+  Potentiale gelten zwei Sätze von Kato, die wir ohne Beweis übernehmen. Im ersten ist
+  $\Lap$ der Laplace-Operator auf $\mathbb{R}^3$ und $\dom{-\Lap}$ sein
+  Definitionsbereich.
+
+  \begin{theorem}[Kato; Reed und Simon, Theorem X.15]\label{c11.thm.kato15}\claim[proof-omitted]{c11.cl.kato15}{source-quoted}
+    Sei $\Vpot \in \Ltwo{\mathbb{R}^3} + L^{\infty}(\mathbb{R}^3)$ reellwertig. Dann ist
+    $-\Lap + \Vpot$ wesentlich selbstadjungiert auf $\Ccinf{\mathbb{R}^3}$ und
+    selbstadjungiert auf $\dom{-\Lap}$.
+  \end{theorem}
+
+  \begin{theorem}[Satz von Kato; Reed und Simon, Theorem X.16]\label{c11.thm.kato16}\claim[proof-omitted]{c11.cl.kato16}{source-quoted}
+    Seien $\Vpot_1, \ldots, \Vpot_m$ reellwertige messbare Funktionen, jede in
+    $\Ltwo{\mathbb{R}^3} + L^{\infty}(\mathbb{R}^3)$. Sei $\Vpot_k(y_k)$ der
+    Multiplikationsoperator auf $\Ltwo{\mathbb{R}^{3n}}$, der entsteht, wenn man für
+    $y_k$ drei Koordinaten des $\mathbb{R}^{3n}$ wählt. Dann ist
+    $-\Lap + \sum_{k = 1}^{m} \Vpot_k(y_k)$ wesentlich selbstadjungiert auf
+    $\Ccinf{\mathbb{R}^{3n}}$; dabei ist $\Lap$ der Laplace-Operator auf
+    $\mathbb{R}^{3n}$.
+  \end{theorem}
+
+  Beide Sätze stehen bei \srcref{reed-simon-2}{§\,X.2, S. 165--166}; dort fehlt der Faktor
+  $\hbar^2$, weil mit $\hbar = 1$ gerechnet wird. Dass das Coulombpotential die
+  Voraussetzung erfüllt, rechnen wir nach.
+
+  \begin{lemma}[Das Coulombpotential ist zulässig]\label{c11.lem.coulomb}\claim[proof-included]{c11.cl.coulomb}{derived}
+    Sei $c > 0$ und $\Vpot(\posRel) = -c/\abs{\posRel}$. Für jedes $b > 0$ zerlegen wir
+    $\Vpot = \Vpot_1 + \Vpot_2$, wobei $\Vpot_1$ für $\abs{\posRel} < b$ gleich $\Vpot$
+    und sonst null ist. Dann gilt
+    \begin{equation}\label{c11.eq.coulombsplit}
+      \int \abs{\Vpot_1(\posRel)}^2\,\dd^3\posRel = 4\pi c^2 b,
+      \qquad
+      \abs{\Vpot_2(\posRel)} \leq \frac{c}{b}\quad\text{\tpcifenglish{for all}{für alle}}\ \posRel .
+    \end{equation}
+    Insbesondere liegt $\Vpot$ in $\Ltwo{\mathbb{R}^3} + L^{\infty}(\mathbb{R}^3)$.
+  \end{lemma}
+  \begin{proof}
+    In Kugelkoordinaten ist $\dd^3\posRel = 4\pi\rad^2\,\dd\rad$ für Funktionen, die nur
+    von $\rad$ abhängen. Also ist das Integral gleich
+    $4\pi\int_0^b (c^2/\rad^2)\,\rad^2\,\dd\rad = 4\pi c^2 b$: Der Faktor $\rad^2$ des
+    Volumenelements hebt die Singularität auf. Außerhalb der Kugel ist
+    $c/\abs{\posRel} \leq c/b$ (Abbildung~\ref{c11.fig.coulombsplit}).
+  \end{proof}
+
+  \begin{tpcfigure}{c11.fig.coulombsplit}
+    \caption{Die Zerlegung aus Lemma~\ref{c11.lem.coulomb}. Innerhalb des Radius $b$
+      (durchgezogen) wächst $\abs{\Vpot}$ über alle Grenzen, ist aber
+      quadratintegrierbar; außerhalb (gestrichelt) ist $\abs{\Vpot}$ durch $c/b$
+      beschränkt.}
+  \end{tpcfigure}
+
+  \begin{corollary}[Relativbewegung]\label{c11.cor.relativ}\claim[proof-included]{c11.cl.sa-relativ}{source-backed}
+    Der Operator $\HamRel = -\frac{\hbar^2}{2\massRed}\Lap + \Vpot$ mit dem
+    Coulombpotential aus \defref{D60} ist wesentlich selbstadjungiert auf
+    $\Ccinf{\mathbb{R}^3}$ und selbstadjungiert auf $\dom{-\Lap}$.
+  \end{corollary}
+  \begin{proof}
+    Es ist $\HamRel = \frac{\hbar^2}{2\massRed}\,(-\Lap + W)$ mit
+    $W = \frac{2\massRed}{\hbar^2}\,\Vpot$, und $W(\posRel) = -c/\abs{\posRel}$ mit
+    $c = 2\Znuc/\aRed > 0$. Nach Lemma~\ref{c11.lem.coulomb} erfüllt $W$ die
+    Voraussetzung von Theorem~\ref{c11.thm.kato15}. Ein reeller Faktor $c \neq 0$
+    erhält die Definitionsbereiche und die wesentliche Selbstadjungiertheit:
+    $(cA)^* = cA^*$ und $\overline{cA} = c\overline{A}$. Die erste Identität folgt aus
+    der Definitionsgleichung des Adjungierten, die zweite aus der umkehrbaren
+    Graphenabbildung $(f,g) \mapsto (f,cg)$. Der positive Faktor überträgt also beide
+    Aussagen von $-\Lap + W$ auf $\HamRel$.
+  \end{proof}
+
+  Für das Coulombpotential steht die erste Aussage des Korollars bei Reed und Simon als
+  Beispiel~1 direkt hinter dem Beweis von Theorem X.15.
+
+  \begin{proposition}[Das ganze Atom]\label{c11.prop.zweikoerper}\claim[proof-included]{c11.cl.sa-zweikoerper}{source-backed}
+    Der Zweikörper-Hamiltonoperator $\HamTot$ aus \defref{D60} mit dem Coulombpotential
+    ist wesentlich selbstadjungiert auf $\Ccinf{\mathbb{R}^6}$.
+  \end{proposition}
+  \begin{proof}
+    Theorem~\ref{c11.thm.kato16} verlangt den Laplace-Operator des $\mathbb{R}^6$ ohne
+    Massenfaktoren und ein Potential, das von drei der Koordinaten abhängt. Beides
+    stellen wir in zwei Schritten her.
+    \begin{description}
+      \item[Schritt 1, Massen wegskalieren] Wir führen neue Variablen ein,
+        \begin{equation*}
+          \boldsymbol{x}_{\mathrm{e}} = \frac{\sqrt{2\massE}}{\hbar}\,\posE,
+          \qquad
+          \boldsymbol{x}_{\mathrm{p}} = \frac{\sqrt{2\massP}}{\hbar}\,\posP .
+        \end{equation*}
+        In ihnen wird die kinetische Energie zu $-\Lap$ auf $\mathbb{R}^6$. Das Umskalieren ist, mit einem konstanten
+        Normierungsfaktor versehen, eine normerhaltende, umkehrbare Abbildung, die
+        $\Ccinf{\mathbb{R}^6}$ auf sich abbildet.
+      \item[Schritt 2, die Relativrichtung] Im Potential steht
+        $\posE - \posP = \hbar\gamma\,\boldsymbol{z}$ mit
+        \begin{equation}\label{c11.eq.drehung}
+          \boldsymbol{z} = \frac{1}{\gamma}\Bigl(
+            \frac{\boldsymbol{x}_{\mathrm{e}}}{\sqrt{2\massE}}
+            - \frac{\boldsymbol{x}_{\mathrm{p}}}{\sqrt{2\massP}}\Bigr),
+          \qquad
+          \gamma = \sqrt{\frac{1}{2\massE} + \frac{1}{2\massP}}
+                 = \frac{1}{\sqrt{2\massRed}} .
+        \end{equation}
+        Die Quadrate der beiden Vorfaktoren sind $1/(2\massE\gamma^2)$ und
+        $1/(2\massP\gamma^2)$. Ihre Summe ist eins. Die drei Komponenten von
+        $\boldsymbol{z}$ sind deshalb Koordinaten des $\mathbb{R}^6$ längs dreier
+        Einheitsrichtungen, die aufeinander senkrecht stehen. Nach einer Drehung des
+        $\mathbb{R}^6$ sind sie drei der sechs Koordinaten. In ihnen ist das Potential
+        $-c/\abs{\boldsymbol{z}}$ mit einem $c > 0$. Nach Lemma~\ref{c11.lem.coulomb}
+        ist es also zulässig.
+    \end{description}
+    Theorem~\ref{c11.thm.kato16} mit $n = 2$ und $m = 1$ ist für drei der Koordinaten
+    selbst formuliert; sein Beweis bei Reed und Simon beginnt mit genau dieser Drehung
+    der Variablen und deckt den gedrehten Fall ab. Drehung und Umskalierung bilden
+    $\Ccinf{\mathbb{R}^6}$ auf sich ab und erhalten die wesentliche Selbstadjungiertheit.
+  \end{proof}
+
+  \begin{tpcfigure}{c11.fig.drehung}
+    \caption{Schritt 2 des Beweises für eine Raumrichtung, gezeichnet für $\massP : \massE = 3 : 1$. In der Ebene der skalierten Koordinaten $x_{\mathrm{e}}$, $x_{\mathrm{p}}$ ist $z$ die Koordinate längs des Einheitsvektors mit den Komponenten $\sqrt{\massP/\massTot}$ und $-\sqrt{\massE/\massTot}$. Dieser und die dazu senkrechte Richtung bilden ein gedrehtes Achsenkreuz; der Kreis ist der Einheitskreis.}
+  \end{tpcfigure}
+
+  Reed und Simon ziehen denselben Schluss für jedes Potential der Klasse
+  $\Ltwo{\mathbb{R}^3} + L^{\infty}(\mathbb{R}^3)$ in einem Satz
+  \srcref{reed-simon-3}{§\,XI.4, S. 55}. Beim Vergleich mit dieser Seite ist zu beachten:
+  Die beiden Massen und die reduzierte Masse tragen dort andere Buchstaben (die
+  reduzierte Masse heißt $m$); es ist $\hbar = 1$; die glatten Funktionen mit kompaktem
+  Träger heißen $C_0^{\infty}$; und die dort $U$ genannte Abbildung macht aus einer
+  Funktion der neuen Koordinaten eine Funktion der alten, sie ist also die Umkehrung
+  unserer Abbildung $\Uni$ aus \eqref{c11.eq.tilde}. Die Rechnung, die zu
+  Theorem~\ref{c11.thm.separation} führt, ist dort eine Übungsaufgabe.
+\end{fundament}

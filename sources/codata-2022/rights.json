@@ -1,0 +1,15 @@
+{
+ "schema_version": 1,
+ "key": "codata-2022",
+ "holder": "NIST (U.S. Department of Commerce)",
+ "status": "public",
+ "licence": "unchecked: NIST Standard Reference Data; the licence text was not read",
+ "redistribution": "unchecked",
+ "quotation": "values may be quoted with attribution",
+ "storage_policy": "kept in the gitignored sources/codata-2022/ until redistribution of the file itself is checked; individual values are quoted in the ledgers",
+ "public_artifacts": "values with the citation 'CODATA 2022'",
+ "basis": "coordinator's brief: 'CODATA public'; publicly served by physics.nist.gov without access control",
+ "unchecked": [
+  "whether the file itself may be committed (NIST SRD copyright notice not read)"
+ ]
+}

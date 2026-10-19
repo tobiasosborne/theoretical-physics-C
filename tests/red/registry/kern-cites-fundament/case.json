@@ -1,0 +1,7 @@
+{
+ "gate": "registry",
+ "what": "Kern running text transcludes D2, a Fundament definition, outside a fundament environment.",
+ "cmd": "python3 scripts/registry/check_registry.py --root tests/red/registry/kern-cites-fundament --no-generated",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "depth violation: content/c98-red/de\\.tex:3: Kern text cites D2, a Fundament definition"
+}

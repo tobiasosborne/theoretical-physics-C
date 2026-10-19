@@ -1,0 +1,7 @@
+{
+  "gate": "red-runner",
+  "what": "A requested gate has no red cases.",
+  "cmd": "python3 tests/red/red-runner/no-cases/probe.py no-cases",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "NO CASE gate 'fixture' has no red fixture"
+}

@@ -1,0 +1,29 @@
+% c11.fig.coulombsplit — splitting the Coulomb potential into a square-integrable and a bounded part.
+%
+% Generating formula (DERIVATION.md Result 1.2; REVIEW.md A2): for V(r) = -c/r, c > 0, and b > 0,
+%     V = V_1 + V_2,   V_1 = V for r < b and 0 otherwise,   V_2 = V for r >= b and 0 otherwise,
+%     integral |V_1|^2 d^3r = 4 pi c^2 b   (finite),        |V_2| <= c/b   (bounded).
+% Drawn: |V| b/c = 1/x with x = r/b; the inner part (x < 1) heavy solid, the outer part (x >= 1)
+% heavy dashed, the bound 1 as a thin horizontal line, the cut x = 1 as a thin vertical line.
+% Greyscale: solid versus dashed, with labels.
+\begin{tikzpicture}
+  \pgfplotsset{c11/.style={
+    axis lines=left, clip=false, grid=none,
+    axis line style={draw=tpc-plate-ink, line width=\tpcstrokethin},
+    tick style={draw=tpc-plate-ink, line width=\tpcstrokehair},
+    tick label style={font=\tpcfontlabel, text=tpc-plate-ink},
+    label style={font=\tpcfontlabel, text=tpc-plate-ink},
+    every axis x label/.style={at={(ticklabel* cs:1.0)}, anchor=west, font=\tpcfontlabel},
+    every axis y label/.style={at={(ticklabel* cs:1.0)}, anchor=south, font=\tpcfontlabel}}}
+  \begin{axis}[c11, width=8.6cm, height=5.0cm,
+      xmin=0, xmax=5.2, ymin=0, ymax=4.3,
+      xtick={0,1,2,3,4,5}, ytick={0,1,2,3,4},
+      xlabel={$r/b$}, ylabel={$\lvert V\rvert\, b/c$}]
+    \draw[tpc leader] (axis cs:0,1) -- (axis cs:5.2,1);
+    \draw[tpc leader] (axis cs:1,0) -- (axis cs:1,4.3);
+    \addplot[tpc dynamics, domain=0.233:1, samples=80] {1/x};
+    \addplot[tpc dynamics, dash pattern=on 5pt off 2pt, domain=1:5.2, samples=80] {1/x};
+    \node[tpc label, anchor=west] at (axis cs:1.12,3.2) {$V_1$: $\int\lvert V_1\rvert^2\,\mathrm{d}^3r = 4\pi c^2 b$};
+    \node[tpc label, anchor=south west] at (axis cs:2.2,1.05) {$V_2$: $\lvert V_2\rvert \leq c/b$};
+  \end{axis}
+\end{tikzpicture}

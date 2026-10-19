@@ -1,0 +1,7 @@
+{
+  "gate": "web",
+  "what": "The German and the English page of a chapter carry the same IDs in a different order.",
+  "cmd": "node --import ./web/node_modules/tsx/dist/loader.mjs web/tools/checks/static.ts --only ids --site tests/red/web/e-id-order/site --chapters c98",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "ids: FAIL c98: German and English pages differ at position 3: de has 'c98\\.eq\\.a', en has 'c98\\.eq\\.b'"
+}

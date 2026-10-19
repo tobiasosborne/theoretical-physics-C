@@ -1,0 +1,93 @@
+{
+ "schema_version": 1,
+ "claims": [
+  {
+   "id": "c98.cl.1",
+   "kind": "theorem",
+   "statement_de": "Fixture.",
+   "statement_en": "Fixture.",
+   "depth": "vertiefung",
+   "evidence": "source-quoted",
+   "presentation": "proof-omitted",
+   "scope": null,
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0001"
+   ],
+   "definition_ids": [
+    "D1"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c98.cl.2",
+   "kind": "equation",
+   "statement_de": "Fixture.",
+   "statement_en": "Fixture.",
+   "depth": "vertiefung",
+   "evidence": "source-backed",
+   "presentation": null,
+   "scope": null,
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0002"
+   ],
+   "definition_ids": [],
+   "review_receipt": null
+  },
+  {
+   "id": "c98.cl.3",
+   "kind": "lemma",
+   "statement_de": "Fixture.",
+   "statement_en": "Fixture.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "the empty heap",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "definition_ids": [],
+   "review_receipt": null,
+   "derivation": "evidence/derivations/d.md#empty-heap"
+  },
+  {
+   "id": "c98.cl.4",
+   "kind": "equation",
+   "statement_de": "Fixture.",
+   "statement_en": "Fixture.",
+   "depth": "kern",
+   "evidence": "numerically-checked",
+   "presentation": null,
+   "scope": "integers",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "definition_ids": [],
+   "review_receipt": null,
+   "numerics": {
+    "script": "numerics/check.py",
+    "command": "python3 numerics/check.py",
+    "expected": 2.0,
+    "tolerance": 1e-12,
+    "inputs": [
+     "numerics/input.txt"
+    ]
+   }
+  },
+  {
+   "id": "c98.cl.5",
+   "kind": "definition",
+   "statement_de": "Fixture.",
+   "statement_en": "Fixture.",
+   "depth": "kern",
+   "evidence": "author-stipulated",
+   "presentation": null,
+   "scope": "this fixture chapter",
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0003"
+   ],
+   "definition_ids": [],
+   "review_receipt": null
+  }
+ ]
+}

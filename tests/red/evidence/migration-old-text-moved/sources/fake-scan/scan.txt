@@ -1,0 +1,1 @@
+Fixture text layer of the fake scan. The count n satisfies n >= 0.

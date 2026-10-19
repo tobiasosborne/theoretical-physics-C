@@ -1,0 +1,36 @@
+% c11.fig.entartung — the states up to n = 3, sorted by n and l.
+%
+% Generating formulas (DERIVATION.md Result 2.2; registry definition D65): E_n/Ry_mu = -1/n^2
+% independent of l and m; for each n the values l = 0, ..., n-1, for each l the 2l+1 values of m;
+% sum over l of (2l+1) = n^2.  Every short stroke is one state (n, l, m); its height is the
+% computed value -1/n^2 on the vertical axis E/Ry_mu.  Columns: l = 0, 1, 2 (s, p, d).
+% Greyscale: strokes and labels only.
+\begin{tikzpicture}[x=1cm, y=3.4cm]
+  \draw[tpc axis, ->] (0,-1.1) -- (0,0.16) node[above, tpc label] {$E/\mathrm{Ry}_{\mu}$};
+  \foreach \v/\l in {-1/{-1}, -0.25/{-\tfrac14}, 0/0}
+    \draw[tpc axis] (0,\v) -- (-0.08,\v) node[left, tpc label] {$\l$};
+  \draw[tpc axis] (0,{-1/9}) -- (-0.08,{-1/9});
+  \draw[tpc grid] (0,0) -- (8.9,0);
+  % l = 0: one state for n = 1, 2, 3
+  \foreach \n in {1,2,3}
+    \draw[tpc dynamics] (1.05,{-1/(\n*\n)}) -- (1.5,{-1/(\n*\n)});
+  % l = 1: three states for n = 2, 3
+  \foreach \n in {2,3} \foreach \k in {0,1,2}
+    \draw[tpc dynamics] ({2.8+0.6*\k},{-1/(\n*\n)}) -- ({3.25+0.6*\k},{-1/(\n*\n)});
+  % l = 2: five states for n = 3
+  \foreach \k in {0,1,2,3,4}
+    \draw[tpc dynamics] ({5.2+0.6*\k},{-1/9}) -- ({5.65+0.6*\k},{-1/9});
+  \node[tpc label, anchor=north] at (1.27,-1.03) {1s};
+  \node[tpc label, anchor=north] at (1.27,-0.28) {2s};
+  \node[tpc label, anchor=north] at (3.62,-0.28) {2p};
+  \node[tpc label, anchor=south] at (1.27,-0.1) {3s};
+  \node[tpc label, anchor=south] at (3.62,-0.1) {3p};
+  \node[tpc label, anchor=south] at (6.62,-0.1) {3d};
+  \node[tpc label, anchor=south] at (1.27,0.03) {$\ell = 0$};
+  \node[tpc label, anchor=south] at (3.62,0.03) {$\ell = 1$};
+  \node[tpc label, anchor=south] at (6.62,0.03) {$\ell = 2$};
+  \node[tpc label, anchor=west] at (8.3,-1) {$1$};
+  \node[tpc label, anchor=west] at (8.3,-0.25) {$4$};
+  \node[tpc label, anchor=west] at (8.3,-0.1111) {$9$};
+  \node[tpc label, anchor=south west] at (7.75,0.03) {$n^2$};
+\end{tikzpicture}

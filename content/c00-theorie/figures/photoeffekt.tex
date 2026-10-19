@@ -1,0 +1,38 @@
+% c00.fig.photoeffekt — the photoelectric relation E_el = h nu - W.
+%
+% Formula: chapter equation c00.eq.photoeffekt (lecture notes vl01.tex:57).
+% Algebraic plot of the lecture's relation; its physical regime awaits an author-supplied
+% source or wording (G-0024). Drawn for
+% two values of the binding energy, W_1 and W_2 = (8/5) W_1 (the ratio is chosen for the
+% picture).  Units: horizontal h nu / W_1, vertical E_el / W_1, so
+%     line 1:  y = x - 1    for x >= 1    (zero at x = 1, i.e. nu = W_1/h),
+%     line 2:  y = x - 8/5  for x >= 8/5  (zero at nu = W_2/h).
+% Both lines have slope 1 in these units, that is slope h in the plane (nu, E_el).
+% Below the zero the relation would give a negative kinetic energy (c00.eq.schwelle); the
+% line is continued there only as a thin dotted guide to its intercept -W on the axis.
+% The slope triangle on line 1 has the corners (1.9, 0.9), (1.9, 1.5), (2.5, 1.5).
+% Greyscale: line 1 solid, line 2 dashed; both labelled directly.
+\begin{tikzpicture}[x=2.2cm, y=1.6cm]
+  \draw[tpc axis, -{Stealth[length=5pt]}] (0,0) -- (3.75,0);
+  \draw[tpc axis, -{Stealth[length=5pt]}] (0,-1.75) -- (0,2.25);
+  \node[tpc label, anchor=west] at (3.78,0) {$\nu$};
+  \node[tpc label, anchor=south] at (0,2.28) {$E_{\mathrm{el}}$};
+  \node[tpc label, anchor=east] at (-0.06,0) {$0$};
+  \draw[tpc leader, dotted] (0,-1) -- (1,0);
+  \draw[tpc leader, dotted] (0,-1.6) -- (1.6,0);
+  \draw[tpc q1] (1,0) -- (3.2,2.2);
+  \draw[tpc q3, dash pattern=on 5pt off 2pt] (1.6,0) -- (3.6,2.0);
+  \fill[tpc-plate-ink] (1,0) circle (1.5pt);
+  \fill[tpc-plate-ink] (1.6,0) circle (1.5pt);
+  \fill[tpc-plate-ink] (0,-1) circle (1.2pt);
+  \fill[tpc-plate-ink] (0,-1.6) circle (1.2pt);
+  \node[tpc label, anchor=east] at (-0.06,-1) {$-W_1$};
+  \node[tpc label, anchor=east] at (-0.06,-1.6) {$-W_2$};
+  \node[tpc label, anchor=north] at (1,-0.08) {$W_1/h$};
+  \node[tpc label, anchor=north] at (1.75,-0.08) {$W_2/h$};
+  \draw[tpc leader] (1.9,0.9) -- (1.9,1.5) -- (2.5,1.5);
+  \node[tpc label, anchor=south] at (2.2,1.52) {$\nu' - \nu$};
+  \node[tpc label, anchor=east] at (1.87,1.2) {$h(\nu' - \nu)$};
+  \node[tpc label, anchor=west] at (3.23,2.2) {$W_1$};
+  \node[tpc label, anchor=west] at (3.63,2.0) {$W_2$};
+\end{tikzpicture}

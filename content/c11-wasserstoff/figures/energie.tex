@@ -1,0 +1,25 @@
+% c11.fig.energie — internal energy and total energy of a product state.
+%
+% Generating formula (DERIVATION.md Result 1b.3): for Psi~ = Phi(R) psi_nlm(r),
+%     <H_tot> = (hbar^2/2M) integral |grad Phi|^2 d^3R + E_n,   first term > 0,
+% with E_n/Ry_mu = -1/n^2 (Result 2.2, Z = 1).  The picture shows, for n = 1, 2, 3, the internal
+% level E_n (heavy line, at its computed height) and above it the range of possible expectation
+% values of the total energy (hatched), which begins at E_n and has no upper end; the hatching is
+% cut off at the top of the picture.  The vertical axis is E/Ry_mu.
+% Greyscale: heavy line versus hatching, with labels.
+\begin{tikzpicture}[x=1cm, y=3.0cm, >={Stealth[length=5pt,width=4pt]}]
+  \draw[tpc axis, ->] (0,-1.08) -- (0,0.42) node[above, tpc label] {$E/\mathrm{Ry}_{\mu}$};
+  \foreach \v/\l in {-1/{-1}, -0.25/{-\tfrac14}, 0/0}
+    \draw[tpc axis] (0,\v) -- (-0.08,\v) node[left, tpc label] {$\l$};
+  \draw[tpc axis] (0,{-1/9}) -- (-0.08,{-1/9});
+  \draw[tpc grid] (0,0) -- (8.6,0);
+  \foreach \n/\x in {1/0.7, 2/3.3, 3/5.9} {
+    \fill[pattern=north east lines, pattern color=tpc-plate-muted] (\x,{-1/(\n*\n)}) rectangle (\x+2.0,0.34);
+    \draw[tpc dynamics] (\x,{-1/(\n*\n)}) -- (\x+2.0,{-1/(\n*\n)});
+    \node[tpc label, anchor=north] at (\x+1.0,{-1/(\n*\n)-0.02}) {$E_{\n}$};
+  }
+  \node[tpc label, anchor=south west, align=left, fill=tpc-plate, inner sep=2pt] at (0.8,-0.78)
+    {\tpcifenglish{total energy:}{Gesamtenergie:}\\
+     $E_1$ ${}+{}$ \tpcifenglish{kinetic energy}{Bewegungsenergie}\\
+     \tpcifenglish{of the centre of mass}{des Schwerpunkts}};
+\end{tikzpicture}

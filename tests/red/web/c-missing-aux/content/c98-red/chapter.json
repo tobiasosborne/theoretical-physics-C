@@ -1,0 +1,16 @@
+{
+  "id": "c98",
+  "slug": "red",
+  "test_fixture": true,
+  "title": {
+    "de": "Rote Vorlage",
+    "en": "Red fixture"
+  },
+  "effective_theory": {
+    "de": "Keine: Prüfvorlage.",
+    "en": "None: fixture."
+  },
+  "zoom_scale": "none",
+  "prerequisites": [],
+  "assets": []
+}

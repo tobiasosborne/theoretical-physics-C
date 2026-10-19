@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "The legacy file changed after the migration was recorded.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/stale-migration-record --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[migration\\] migrations/M-0001\\.json:legacy/old\\.tex:2: stale migration record: the legacy file's sha256"
+}

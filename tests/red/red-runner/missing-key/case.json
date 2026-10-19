@@ -1,0 +1,7 @@
+{
+  "gate": "red-runner",
+  "what": "A case lacks its required defect description.",
+  "cmd": "python3 tests/red/red-runner/no-cases/probe.py missing-key",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "BROKEN .*missing required case keys: what"
+}

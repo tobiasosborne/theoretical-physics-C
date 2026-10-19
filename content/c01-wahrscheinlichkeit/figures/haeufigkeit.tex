@@ -1,0 +1,46 @@
+% c01.fig.haeufigkeit — relative frequencies of one seeded run against the weights.
+% Still of the demo c01.demo.haeufigkeit.
+%
+% Weight: the loaded die p = (1, 2, 2, 2, 2, 3)/12 on X = {1,...,6}.
+% Data: the first 12, 120 and 1200 outcomes of the sampler of web/src/kernels/prob.ts with
+% seed 1; counts written by the reference script web/tests/golden/reference/prob.jl into
+% web/tests/golden/prob.json (cases fn = "counts", name = "loaded-die"):
+%     N = 12:    1,   1,   3,   3,   2,   2
+%     N = 120:   11,  21,  23,  23,  15,  27
+%     N = 1200:  120, 196, 197, 182, 203, 302
+% Bars: relative frequency h_N(x) = N(x)/N (c01.eq.haeufigkeit).  Horizontal marks: the
+% weight p(x).  Vertical scale: 1 unit of probability = 8.4 cm (axis up to 0.3).
+% Greyscale: frequencies are hatched bars with an ink outline; weights are heavy solid
+% marks in the state role, wider than the bars.
+\begin{tikzpicture}[x=0.52cm, y=8.4cm]
+  \foreach \panel/\shift/\n in {a/0/12, b/4.55/120, c/9.1/1200} {
+    \begin{scope}[shift={(\shift cm,0)}]
+      \draw[tpc grid] (0.3,1/12) -- (6.7,1/12);
+      \draw[tpc grid] (0.3,1/6) -- (6.7,1/6);
+      \draw[tpc grid] (0.3,1/4) -- (6.7,1/4);
+      \draw[tpc axis] (0.3,0) -- (6.7,0);
+      \draw[tpc axis] (0.3,0) -- (0.3,0.31);
+      \foreach \x in {1,...,6} \node[tpc label, anchor=north] at (\x,-0.007) {$\x$};
+      \node[tpc label, anchor=north] at (3.5,-0.05) {(\panel) $N = \n$};
+    \end{scope}
+  }
+  \node[tpc label, anchor=east] at (0.25,0) {$0$};
+  \node[tpc label, anchor=east] at (0.25,1/12) {$\tfrac1{12}$};
+  \node[tpc label, anchor=east] at (0.25,1/6) {$\tfrac16$};
+  \node[tpc label, anchor=east] at (0.25,1/4) {$\tfrac14$};
+  \foreach \shift/\n/\ca/\cb/\cc/\cd/\ce/\cf in {
+      0/12/1/1/3/3/2/2,
+      4.55/120/11/21/23/23/15/27,
+      9.1/1200/120/196/197/182/203/302} {
+    \begin{scope}[shift={(\shift cm,0)}]
+      \foreach \x/\c in {1/\ca, 2/\cb, 3/\cc, 4/\cd, 5/\ce, 6/\cf}
+        \draw[tpc leader, tpc bath hatch] (\x-0.27,0) rectangle (\x+0.27,\c/\n);
+      \foreach \x/\a in {1/1, 2/2, 3/2, 4/2, 5/2, 6/3}
+        \draw[tpc state] (\x-0.42,\a/12) -- (\x+0.42,\a/12);
+    \end{scope}
+  }
+  \draw[tpc leader, tpc bath hatch] (0.9,0.305) rectangle (1.44,0.33);
+  \node[tpc label, anchor=west] at (1.55,0.3175) {$h_N(x)$};
+  \draw[tpc state] (3.7,0.3175) -- (4.54,0.3175);
+  \node[tpc label, anchor=west] at (4.65,0.3175) {$p(x)$};
+\end{tikzpicture}

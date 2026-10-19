@@ -1,0 +1,16 @@
+{
+  "id": "c99",
+  "slug": "red",
+  "test_fixture": true,
+  "title": {
+    "de": "Roter Fall",
+    "en": "Red case"
+  },
+  "effective_theory": {
+    "de": "Keine: Prüfvorlage.",
+    "en": "None: fixture."
+  },
+  "zoom_scale": "none",
+  "prerequisites": [],
+  "assets": []
+}

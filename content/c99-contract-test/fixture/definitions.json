@@ -1,0 +1,7 @@
+{
+  "note": "Stand-in for registry/definitions.json, contract test chapter only.",
+  "definitions": [
+    { "id": "T1", "depth": "kern" },
+    { "id": "T2", "depth": "vertiefung" }
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "id": "c11-hydrogen",
+  "demo": "c11.demo.cloud",
+  "what": "Storyboard of the short hydrogen video. One source for (a) the scripted state and camera sequence that c11.demo.cloud plays in deterministic mode when its parameter tour is set, and (b) the bilingual WebVTT captions (web/video/c11-video.ts). Every caption states only what evidence/derivations/c11/DERIVATION.md supports; refs names the claims of content/c11-wasserstoff and the results of the derivation it rests on.",
+  "units": {
+    "seconds": "duration of the scene; frames = seconds x fps, fps from the design tokens (video.fps)",
+    "cut": "half-thickness of the slab shown, in a_mu, perpendicular to the viewing axis of 'view'; null = the whole cloud; [a, b] is interpolated linearly over the scene",
+    "az, el": "camera azimuth about the z axis and elevation, in radians; [a, b] is interpolated linearly over the scene",
+    "sigma": "width of the Gaussian centre-of-mass packet in a_mu (laboratory scenes)",
+    "mass_factor": "factor by which m_e/m_p is multiplied; 1 = CODATA 2022; any other value is not physical and is labelled so in the frame"
+  },
+  "scenes": [
+    {
+      "id": "s1-1s",
+      "seconds": 4,
+      "state": "1s", "view": "front", "cut": null, "sphere": false, "phase": false, "lab": false,
+      "az": [-0.35, 0.35], "el": [0.3, 0.3],
+      "refs": ["c11.cl.relativdichte", "c11.cl.psi100", "DERIVATION 1.3", "DERIVATION 5.1"],
+      "caption": {
+        "de": "Grundzustand 1s. Jeder Punkt ist eine Stichprobe aus |ψ(r)|². r = r_e − r_p ist der Abstandsvektor vom Proton zum Elektron, nicht der Ort des Elektrons im Labor. Längen in a_μ.",
+        "en": "Ground state 1s. Each point is a sample from |ψ(r)|². r = r_e − r_p is the vector from the proton to the electron, not the position of the electron in the laboratory. Lengths in a_μ."
+      }
+    },
+    {
+      "id": "s2-1s-sphere",
+      "seconds": 3,
+      "state": "1s", "view": "front", "cut": 1.0, "sphere": true, "phase": false, "lab": false,
+      "az": [0.35, 0.1], "el": [0.3, 0.3],
+      "refs": ["c11.cl.cdf", "c11.cl.isoflaeche", "DERIVATION 7.2", "DERIVATION 7.3"],
+      "caption": {
+        "de": "Eine Schicht durch die Mitte. Die gestrichelte Kugel schließt 90 % der Wahrscheinlichkeit ein; ihr Radius folgt aus der radialen Verteilungsfunktion.",
+        "en": "A slab through the centre. The dashed sphere encloses 90 % of the probability; its radius follows from the radial distribution function."
+      }
+    },
+    {
+      "id": "s3-2s",
+      "seconds": 4,
+      "state": "2s", "view": "front", "cut": [16, 1.0], "sphere": false, "phase": false, "lab": false,
+      "az": [-0.2, 0.2], "el": [0.3, 0.3],
+      "refs": ["c11.cl.psi200", "c11.cl.pnl", "DERIVATION 5.1"],
+      "caption": {
+        "de": "Zustand 2s. Schneidet man die Wolke auf, wird die Knotenkugel sichtbar: Bei r = 2 a_μ verschwindet die Dichte.",
+        "en": "State 2s. Cutting the cloud open shows the nodal sphere: at r = 2 a_μ the density vanishes."
+      }
+    },
+    {
+      "id": "s4-2p0",
+      "seconds": 3,
+      "state": "2p0", "view": "front", "cut": 1.5, "sphere": false, "phase": false, "lab": false,
+      "az": [0.2, -0.2], "el": [0.3, 0.3],
+      "refs": ["c11.cl.psi210", "DERIVATION 5.1"],
+      "caption": {
+        "de": "Zustand 2p mit m = 0: zwei Keulen entlang der z-Achse. In der Ebene z = 0 verschwindet die Dichte.",
+        "en": "State 2p with m = 0: two lobes along the z axis. In the plane z = 0 the density vanishes."
+      }
+    },
+    {
+      "id": "s5-2p1-phase",
+      "seconds": 5,
+      "state": "2p+1", "view": "top", "cut": null, "sphere": false, "phase": true, "lab": false,
+      "az": [-0.5, 0.5], "el": [1.15, 1.15],
+      "refs": ["c11.cl.psi21pm", "c11.cl.cs", "DERIVATION 4.1", "DERIVATION 5.1"],
+      "caption": {
+        "de": "Zustand 2p mit m = +1, von schräg oben: ein Ring um die z-Achse. Die Farbe zeigt die Phase arg ψ; sie läuft einmal um die Achse. Die Dichte allein zeigt das nicht.",
+        "en": "State 2p with m = +1, seen from above at an angle: a ring about the z axis. The colour shows the phase arg ψ; it runs once around the axis. The density alone does not show this."
+      }
+    },
+    {
+      "id": "s6-lab",
+      "seconds": 5,
+      "state": "2s", "view": "front", "cut": 1.0, "sphere": false, "phase": false, "lab": true, "sigma": [0.3, 1.6], "mass_factor": 1,
+      "az": [-0.15, 0.15], "el": [0.3, 0.3],
+      "refs": ["c11.cl.faltung", "c11.cl.protondichte", "DERIVATION 1b.1"],
+      "caption": {
+        "de": "Im Labor: Der Schwerpunkt ist ein Gauß-Paket der Breite σ. Die Dichte des Elektrons ist ρ_e = f * g_b: f = |Φ|² gefaltet mit der skalierten Kopie g_b(y) = b⁻³g(y/b) der Relativdichte g = |ψ|², b = m_p/M. Wird das Paket breiter, füllt sich der Knoten.",
+        "en": "In the laboratory: the centre of mass is a Gaussian packet of width σ. The density of the electron is ρ_e = f * g_b: f = |Φ|² convolved with the scaled copy g_b(y) = b⁻³g(y/b) of the relative density g = |ψ|², b = m_p/M. As the packet widens, the node fills in."
+      }
+    }
+  ]
+}

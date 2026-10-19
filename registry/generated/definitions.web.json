@@ -1,0 +1,1564 @@
+{
+ "_generated": {
+  "by": "scripts/registry/gen_registry.py",
+  "inputs_sha256": {
+   "notation.json": "ac64b8bc61d03c8abe4a9b4a634260088b4f26f4395f994c4358de234f9ab93e",
+   "definitions.json": "08ebd322de01899c868d738519343b833e828dfcaff557a987a470afd1faf4a5",
+   "conventions.json": "a376a57b23b3a84aa2eb310817d70bacf219028f2e639533d9f68856071ebf23",
+   "translation.json": "d83ac8b9bdfbee8cdc381aa08fd443116fb86c02ac3b9a5028bf742810cd0ccb"
+  }
+ },
+ "schema_version": 1,
+ "definitions": [
+  {
+   "id": "D1",
+   "name": {
+    "de": "Präparationsverfahren",
+    "en": "preparation procedure"
+   },
+   "body": {
+    "de": "Ein \\emph{Präparationsverfahren} ist eine Liste von Anweisungen, die man ausführt, um das betrachtete System zu Beginn eines Experiments herzurichten. Die Anweisungen dürfen von zufälligen Ereignissen abhängen. Zwei Präparationsverfahren heißen äquivalent, wenn alle Ja-Nein-Fragen (D2) nach beiden dieselben Wahrscheinlichkeiten liefern; ein \\emph{Zustand} ist eine Äquivalenzklasse von Präparationsverfahren.",
+    "en": "A \\emph{preparation procedure} is a list of instructions that one carries out to prepare the system in question at the beginning of an experiment. The instructions may depend on random events. Two preparation procedures are equivalent if all yes-no questions (D2) give the same probabilities after both; a \\emph{state} is an equivalence class of preparation procedures."
+   },
+   "symbol_ids": [],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C0",
+   "needs_check": false
+  },
+  {
+   "id": "D2",
+   "name": {
+    "de": "Ja-Nein-Frage, Effekt",
+    "en": "yes-no question, effect"
+   },
+   "body": {
+    "de": "Eine \\emph{Ja-Nein-Frage} ist eine Liste von Anweisungen, die man nach der Präparation ausführt und die die Antwort Ja oder Nein liefert; zwei Ja-Nein-Fragen heißen äquivalent, wenn sie auf allen Präparationen dieselbe Antwort geben. Mathematisch ist ein \\emph{Effekt} auf einem Zustandsraum $\\StSp$ (D3) eine affine Funktion $f\\colon \\StSp \\to [0,1]$, das heißt $0 \\leq f(x) \\leq 1$ und $f(\\lambda x + (1-\\lambda) y) = \\lambda f(x) + (1-\\lambda) f(y)$ für alle $x, y \\in \\StSp$ und $\\lambda \\in [0,1]$; $f(x)$ ist die Wahrscheinlichkeit der Antwort Ja im Zustand $x$. Die Menge aller Effekte ist die \\emph{Effektalgebra} $\\EffAlg{\\StSp}$.",
+    "en": "A \\emph{yes-no question} is a list of instructions that one carries out after the preparation and that returns the answer yes or no; two yes-no questions are equivalent if they give the same answer on all preparations. Mathematically an \\emph{effect} on a state space $\\StSp$ (D3) is an affine function $f\\colon \\StSp \\to [0,1]$, that is, $0 \\leq f(x) \\leq 1$ and $f(\\lambda x + (1-\\lambda) y) = \\lambda f(x) + (1-\\lambda) f(y)$ for all $x, y \\in \\StSp$ and $\\lambda \\in [0,1]$; $f(x)$ is the probability of the answer yes in the state $x$. The set of all effects is the \\emph{effect algebra} $\\EffAlg{\\StSp}$."
+   },
+   "symbol_ids": [
+    "sym.state-space",
+    "sym.effect-algebra"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C2",
+   "needs_check": false
+  },
+  {
+   "id": "D3",
+   "name": {
+    "de": "Zustandsraum",
+    "en": "state space"
+   },
+   "body": {
+    "de": "Ein \\emph{Zustandsraum} $\\StSp$ ist (S1) eine Menge von Punkten, die (S2) konvex, (S3) abgeschlossen in einer physikalisch motivierten Topologie und (S4) beschränkt ist und (S5) Teilmenge eines reellen, endlichdimensionalen Vektorraums mit der euklidischen Topologie. Die Bedingung (S5) ist eine Einschränkung: Sie schließt unendlichdimensionale Theorien aus.",
+    "en": "A \\emph{state space} $\\StSp$ is (S1) a set of points that is (S2) convex, (S3) closed in some physically motivated topology and (S4) bounded, and (S5) a subset of a real, finite-dimensional vector space with the Euclidean topology. Condition (S5) is a restriction: it excludes infinite-dimensional theories."
+   },
+   "symbol_ids": [
+    "sym.state-space"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [
+    "finite-dimensional (S5)"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C2",
+   "needs_check": false
+  },
+  {
+   "id": "D4",
+   "name": {
+    "de": "Mischung, reiner Zustand, Seite",
+    "en": "mixture, pure state, face"
+   },
+   "body": {
+    "de": "Sei $\\StSp$ ein Zustandsraum und $x \\in \\StSp$. Der Zustand $x$ heißt \\emph{Extremalpunkt} von $\\StSp$ oder \\emph{reiner Zustand}, wenn aus $x = \\lambda y + (1-\\lambda) z$ mit $y, z \\in \\StSp$ und $\\lambda \\in (0,1)$ stets $x = y = z$ folgt; die Menge der reinen Zustände ist $\\ext(\\StSp)$. Ein Zustand heißt \\emph{gemischt}, wenn er nicht rein ist. $x$ heißt \\emph{Mischung} von $y, z \\in \\StSp$, wenn es $\\lambda \\in [0,1]$ mit $x = \\lambda y + (1-\\lambda) z$ gibt. Eine konvexe Teilmenge $F \\subset \\StSp$ heißt \\emph{Seite} von $\\StSp$, wenn aus $\\lambda x + (1-\\lambda) y \\in F$ mit $x, y \\in \\StSp$ und $\\lambda \\in (0,1)$ stets $x, y \\in F$ folgt.",
+    "en": "Let $\\StSp$ be a state space and $x \\in \\StSp$. The state $x$ is an \\emph{extreme point} of $\\StSp$, or a \\emph{pure state}, if $x = \\lambda y + (1-\\lambda) z$ with $y, z \\in \\StSp$ and $\\lambda \\in (0,1)$ always implies $x = y = z$; the set of pure states is $\\ext(\\StSp)$. A state is \\emph{mixed} if it is not pure. $x$ is a \\emph{mixture} of $y, z \\in \\StSp$ if there is $\\lambda \\in [0,1]$ with $x = \\lambda y + (1-\\lambda) z$. A convex subset $F \\subset \\StSp$ is a \\emph{face} of $\\StSp$ if $\\lambda x + (1-\\lambda) y \\in F$ with $x, y \\in \\StSp$ and $\\lambda \\in (0,1)$ always implies $x, y \\in F$."
+   },
+   "symbol_ids": [
+    "sym.state-space",
+    "sym.extreme-points"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C2",
+   "needs_check": true
+  },
+  {
+   "id": "D5",
+   "name": {
+    "de": "Effektalgebra (abstrakt und linear)",
+    "en": "effect algebra (abstract and linear)"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: Effektalgebra (abstrakt und linear). Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: effect algebra (abstract and linear). The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "fundament",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C2",
+   "needs_check": true
+  },
+  {
+   "id": "D6",
+   "name": {
+    "de": "Ordnungseinheitsraum",
+    "en": "order unit space"
+   },
+   "body": {
+    "de": "Ein \\emph{Ordnungseinheitsraum} ist ein Tripel $(V, \\leq, \\OrdUnit)$ aus einem geordneten Vektorraum $(V, \\leq)$ und einer \\emph{Ordnungseinheit} $\\OrdUnit \\in V$, das heißt einem Element, zu dem es für jedes $v \\in V$ ein $\\lambda \\geq 0$ mit $v \\leq \\lambda \\OrdUnit$ gibt.",
+    "en": "An \\emph{order unit space} $(V, \\leq, \\OrdUnit)$ is an ordered vector space $(V, \\leq)$ with an \\emph{order unit} $\\OrdUnit \\in V$, that is, an element such that for every $v \\in V$ there is $\\lambda \\geq 0$ with $v \\leq \\lambda \\OrdUnit$."
+   },
+   "symbol_ids": [
+    "sym.order-unit"
+   ],
+   "depth": "fundament",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C2",
+   "needs_check": true
+  },
+  {
+   "id": "D7",
+   "name": {
+    "de": "Basisnorm, Ordnungseinheitsnorm",
+    "en": "base norm, order unit norm"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: Basisnorm, Ordnungseinheitsnorm. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: base norm, order unit norm. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "fundament",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C2",
+   "needs_check": true
+  },
+  {
+   "id": "D8",
+   "name": {
+    "de": "Kanal",
+    "en": "channel"
+   },
+   "body": {
+    "de": "Seien $K_A$, $K_B$ Zustandsräume. Ein \\emph{Kanal} von $K_A$ nach $K_B$ ist eine affine Abbildung $\\Phi\\colon K_A \\to K_B$, das heißt $\\Phi(\\lambda x + (1-\\lambda) y) = \\lambda \\Phi(x) + (1-\\lambda) \\Phi(y)$ für alle $x, y \\in K_A$ und $\\lambda \\in [0,1]$. Die Menge aller Kanäle von $K_A$ nach $K_B$ ist $\\Chan{K_A}{K_B}$.",
+    "en": "Let $K_A$, $K_B$ be state spaces. A \\emph{channel} from $K_A$ to $K_B$ is an affine map $\\Phi\\colon K_A \\to K_B$, that is, $\\Phi(\\lambda x + (1-\\lambda) y) = \\lambda \\Phi(x) + (1-\\lambda) \\Phi(y)$ for all $x, y \\in K_A$ and $\\lambda \\in [0,1]$. The set of all channels from $K_A$ to $K_B$ is $\\Chan{K_A}{K_B}$."
+   },
+   "symbol_ids": [
+    "sym.channels"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C2",
+   "needs_check": false
+  },
+  {
+   "id": "D9",
+   "name": {
+    "de": "Messung",
+    "en": "measurement"
+   },
+   "body": {
+    "de": "Eine \\emph{Messung mit $n$ Ergebnissen} auf einem Zustandsraum $\\StSp$ ist ein Kanal $m \\in \\Chan{\\StSp}{\\Simplex{n}}$ in den klassischen Zustandsraum $\\Simplex{n}$ (D11). Gleichwertig ist die Angabe von Effekten $f_1, \\ldots, f_n \\in \\EffAlg{\\StSp}$ mit $\\sum_{i=1}^{n} f_i = \\UnitEff{\\StSp}$; dann ist $m(x) = \\sum_{i=1}^{n} f_i(x)\\, s_i$, wobei $s_1, \\ldots, s_n$ die reinen Zustände von $\\Simplex{n}$ sind, und $f_i(x)$ ist die Wahrscheinlichkeit des $i$-ten Ergebnisses im Zustand $x$.",
+    "en": "A \\emph{measurement with $n$ outcomes} on a state space $\\StSp$ is a channel $m \\in \\Chan{\\StSp}{\\Simplex{n}}$ into the classical state space $\\Simplex{n}$ (D11). Equivalently it is given by effects $f_1, \\ldots, f_n \\in \\EffAlg{\\StSp}$ with $\\sum_{i=1}^{n} f_i = \\UnitEff{\\StSp}$; then $m(x) = \\sum_{i=1}^{n} f_i(x)\\, s_i$, where $s_1, \\ldots, s_n$ are the pure states of $\\Simplex{n}$, and $f_i(x)$ is the probability of the $i$-th outcome in the state $x$."
+   },
+   "symbol_ids": [
+    "sym.state-space",
+    "sym.channels",
+    "sym.simplex",
+    "sym.effect-algebra",
+    "sym.unit-effect"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [
+    "finitely many outcomes"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C2",
+   "needs_check": false
+  },
+  {
+   "id": "D10",
+   "name": {
+    "de": "Instrument",
+    "en": "instrument"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: Instrument. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: instrument. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "vertiefung",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C2",
+   "needs_check": true
+  },
+  {
+   "id": "D11",
+   "name": {
+    "de": "klassische Theorie, Simplex",
+    "en": "classical theory, simplex"
+   },
+   "body": {
+    "de": "Ein \\emph{Simplex} $\\Simplex{n}$ ist die konvexe Hülle $\\conv(\\{s_1, \\ldots, s_n\\})$ von $n$ affin unabhängigen Punkten $s_1, \\ldots, s_n$ eines reellen endlichdimensionalen Vektorraums. Eine \\emph{klassische Theorie} ist eine Theorie, deren Zustandsraum ein Simplex $\\Simplex{n}$ mit $n \\in \\mathbb{N}$ ist; jede Theorie, deren Zustandsraum kein Simplex ist, heißt nichtklassisch.",
+    "en": "A \\emph{simplex} $\\Simplex{n}$ is the convex hull $\\conv(\\{s_1, \\ldots, s_n\\})$ of $n$ affinely independent points $s_1, \\ldots, s_n$ of a real finite-dimensional vector space. A \\emph{classical theory} is a theory whose state space is a simplex $\\Simplex{n}$ with $n \\in \\mathbb{N}$; every theory whose state space is not a simplex is called non-classical."
+   },
+   "symbol_ids": [
+    "sym.simplex",
+    "sym.convex-hull"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C2",
+   "needs_check": false
+  },
+  {
+   "id": "D12",
+   "name": {
+    "de": "Hypothese der Nichteinschränkung",
+    "en": "no-restriction hypothesis"
+   },
+   "body": {
+    "de": "Die \\emph{Hypothese der Nichteinschränkung} ist die Annahme: Jeder Effekt aus $\\EffAlg{\\StSp}$ entspricht einer wohldefinierten Ja-Nein-Frage, die sich zumindest im Prinzip experimentell ausführen lässt. Ohne sie ist nur eine Teilmenge $E \\subset \\EffAlg{\\StSp}$ zugelassen.",
+    "en": "The \\emph{no-restriction hypothesis} is the assumption that every effect in $\\EffAlg{\\StSp}$ corresponds to a well-defined yes-no question that can, at least in principle, be performed experimentally. Without it only a subset $E \\subset \\EffAlg{\\StSp}$ is allowed."
+   },
+   "symbol_ids": [
+    "sym.effect-algebra",
+    "sym.state-space"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C2",
+   "needs_check": false
+  },
+  {
+   "id": "D13",
+   "name": {
+    "de": "Tensorprodukt von Zustandsräumen (minimal, maximal)",
+    "en": "tensor product of state spaces (minimal, maximal)"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: Tensorprodukt von Zustandsräumen (minimal, maximal). Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: tensor product of state spaces (minimal, maximal). The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "fundament",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C12",
+   "needs_check": true
+  },
+  {
+   "id": "D14",
+   "name": {
+    "de": "Hilbertraum",
+    "en": "Hilbert space"
+   },
+   "body": {
+    "de": "Ein \\emph{Hilbertraum} $\\Hil$ ist ein komplexer Vektorraum mit Skalarprodukt $\\braket{\\cdot}{\\cdot}$, der bezüglich der Norm $\\norm{\\psi}^2 = \\braket{\\psi}{\\psi}$ vollständig ist. Das Skalarprodukt ist linear im zweiten und antilinear im ersten Argument (CONV-INNER).",
+    "en": "A \\emph{Hilbert space} $\\Hil$ is a complex vector space with inner product $\\braket{\\cdot}{\\cdot}$ that is complete with respect to the norm $\\norm{\\psi}^2 = \\braket{\\psi}{\\psi}$. The inner product is linear in the second and antilinear in the first argument (CONV-INNER)."
+   },
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.inner-product"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [
+    "CONV-INNER"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "needs_check": false
+  },
+  {
+   "id": "D15",
+   "name": {
+    "de": "beschränkter Operator, Operatornorm",
+    "en": "bounded operator, operator norm"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: beschränkter Operator, Operatornorm. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: bounded operator, operator norm. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C3",
+   "needs_check": true
+  },
+  {
+   "id": "D16",
+   "name": {
+    "de": "dicht definierter Operator, Definitionsbereich",
+    "en": "densely defined operator, domain"
+   },
+   "body": {
+    "de": "Ein \\emph{Operator} $T$ auf einem Hilbertraum $\\Hil$ ist eine lineare Abbildung von seinem \\emph{Definitionsbereich} $\\dom{T}$, einem linearen Teilraum von $\\Hil$, nach $\\Hil$. Er heißt \\emph{dicht definiert}, wenn $\\dom{T}$ dicht in $\\Hil$ liegt. Um einen Operator anzugeben, nennt man zuerst den Definitionsbereich und dann, wie der Operator darauf wirkt.",
+    "en": "An \\emph{operator} $T$ on a Hilbert space $\\Hil$ is a linear map from its \\emph{domain} $\\dom{T}$, a linear subspace of $\\Hil$, into $\\Hil$. It is \\emph{densely defined} if $\\dom{T}$ is dense in $\\Hil$. To specify an operator one first gives the domain and then says how the operator acts on it."
+   },
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.domain"
+   ],
+   "depth": "vertiefung",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C5",
+   "needs_check": true
+  },
+  {
+   "id": "D17",
+   "name": {
+    "de": "adjungierter Operator (beschränkt und unbeschränkt)",
+    "en": "adjoint (bounded and unbounded)"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: adjungierter Operator (beschränkt und unbeschränkt). Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: adjoint (bounded and unbounded). The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C3",
+   "needs_check": true
+  },
+  {
+   "id": "D18",
+   "name": {
+    "de": "symmetrischer (hermitescher) Operator",
+    "en": "symmetric (Hermitian) operator"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: symmetrischer (hermitescher) Operator. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: symmetric (Hermitian) operator. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C3",
+   "needs_check": true
+  },
+  {
+   "id": "D19",
+   "name": {
+    "de": "selbstadjungiert, wesentlich selbstadjungiert",
+    "en": "self-adjoint, essentially self-adjoint"
+   },
+   "body": {
+    "de": "Sei $T$ ein dicht definierter Operator auf $\\Hil$ (D16). Der Definitionsbereich $\\dom{T\\adj}$ des \\emph{adjungierten Operators} $T\\adj$ besteht aus allen $\\varphi \\in \\Hil$, zu denen es ein $\\xi \\in \\Hil$ gibt mit $\\braket{T\\psi}{\\varphi} = \\braket{\\psi}{\\xi}$ für alle $\\psi \\in \\dom{T}$; man setzt $T\\adj\\varphi = \\xi$. $T$ heißt \\emph{symmetrisch}, wenn $\\dom{T} \\subset \\dom{T\\adj}$ und $T\\varphi = T\\adj\\varphi$ für alle $\\varphi \\in \\dom{T}$ gilt, und \\emph{selbstadjungiert}, wenn $T = T\\adj$ ist, das heißt wenn $T$ symmetrisch ist und $\\dom{T} = \\dom{T\\adj}$. $T$ heißt \\emph{abgeschlossen}, wenn sein Graph, die Menge der Paare $(\\varphi, T\\varphi)$ mit $\\varphi \\in \\dom{T}$, in $\\Hil \\times \\Hil$ abgeschlossen ist; der \\emph{Abschluss} $\\overline{T}$ ist die kleinste abgeschlossene Fortsetzung von $T$. Ein symmetrischer Operator heißt \\emph{wesentlich selbstadjungiert}, wenn sein Abschluss selbstadjungiert ist.",
+    "en": "Let $T$ be a densely defined operator on $\\Hil$ (D16). The domain $\\dom{T\\adj}$ of the \\emph{adjoint} $T\\adj$ consists of all $\\varphi \\in \\Hil$ for which there is a $\\xi \\in \\Hil$ with $\\braket{T\\psi}{\\varphi} = \\braket{\\psi}{\\xi}$ for all $\\psi \\in \\dom{T}$; one sets $T\\adj\\varphi = \\xi$. $T$ is \\emph{symmetric} if $\\dom{T} \\subset \\dom{T\\adj}$ and $T\\varphi = T\\adj\\varphi$ for all $\\varphi \\in \\dom{T}$, and \\emph{self-adjoint} if $T = T\\adj$, that is, if $T$ is symmetric and $\\dom{T} = \\dom{T\\adj}$. $T$ is \\emph{closed} if its graph, the set of pairs $(\\varphi, T\\varphi)$ with $\\varphi \\in \\dom{T}$, is closed in $\\Hil \\times \\Hil$; the \\emph{closure} $\\overline{T}$ is the smallest closed extension of $T$. A symmetric operator is \\emph{essentially self-adjoint} if its closure is self-adjoint."
+   },
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.domain",
+    "sym.adjoint",
+    "sym.inner-product"
+   ],
+   "depth": "vertiefung",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C5",
+   "needs_check": true
+  },
+  {
+   "id": "D20",
+   "name": {
+    "de": "positiver Operator, Operatorordnung",
+    "en": "positive operator, operator order"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: positiver Operator, Operatorordnung. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: positive operator, operator order. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C3",
+   "needs_check": true
+  },
+  {
+   "id": "D21",
+   "name": {
+    "de": "Spurklasse, Spur",
+    "en": "trace class, trace"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: Spurklasse, Spur. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: trace class, trace. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "vertiefung",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C4",
+   "needs_check": true
+  },
+  {
+   "id": "D22",
+   "name": {
+    "de": "Dichteoperator",
+    "en": "density operator"
+   },
+   "body": {
+    "de": "Ein \\emph{Dichteoperator} (Zustand, Dichtematrix) ist ein positiver Operator $\\rho$ auf $\\Hil$ mit $\\tr(\\rho) = 1$.",
+    "en": "A \\emph{density operator} (state, density matrix) is a positive operator $\\rho$ on $\\Hil$ with $\\tr(\\rho) = 1$."
+   },
+   "symbol_ids": [
+    "sym.density-operator",
+    "sym.hilbert-space",
+    "sym.trace"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [
+    "CONV-TRACE"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C4",
+   "needs_check": true
+  },
+  {
+   "id": "D23",
+   "name": {
+    "de": "normaler Zustand und Zustand auf der Operatoralgebra",
+    "en": "normal state versus state on the operator algebra"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: normaler Zustand und Zustand auf der Operatoralgebra. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: normal state versus state on the operator algebra. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "vertiefung",
+   "origin": "author-stipulated",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C4",
+   "needs_check": true
+  },
+  {
+   "id": "D24",
+   "name": {
+    "de": "POVM, projektorwertiges Maß",
+    "en": "POVM, projection-valued measure"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: POVM, projektorwertiges Maß. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: POVM, projection-valued measure. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C4",
+   "needs_check": true
+  },
+  {
+   "id": "D25",
+   "name": {
+    "de": "scharfe Observable und selbstadjungierter Operator",
+    "en": "sharp observable and self-adjoint operator"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: scharfe Observable und selbstadjungierter Operator. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: sharp observable and self-adjoint operator. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "vertiefung",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C4",
+   "needs_check": true
+  },
+  {
+   "id": "D26",
+   "name": {
+    "de": "Bornsche Regel",
+    "en": "Born rule"
+   },
+   "body": {
+    "de": "Die Wahrscheinlichkeit, dass der Detektor $\\EffOp$ anspricht, wenn der Zustand als Dichteoperator $\\rho$ präpariert wurde, ist $\\tr(\\rho \\EffOp)$.",
+    "en": "The probability of detection by the detector $\\EffOp$ for a state prepared as the density operator $\\rho$ is $\\tr(\\rho \\EffOp)$."
+   },
+   "symbol_ids": [
+    "sym.effect-operator",
+    "sym.density-operator",
+    "sym.trace"
+   ],
+   "depth": "kern",
+   "origin": "author-stipulated",
+   "choices": [
+    "CONV-TRACE"
+   ],
+   "status": "proposed",
+   "first_fixed_in": "C4",
+   "needs_check": false
+  },
+  {
+   "id": "D27",
+   "name": {
+    "de": "Wigner-Symmetrie, Kadison-Symmetrie, Effektautomorphismus",
+    "en": "Wigner symmetry, Kadison symmetry, effect automorphism"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: Wigner-Symmetrie, Kadison-Symmetrie, Effektautomorphismus. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: Wigner symmetry, Kadison symmetry, effect automorphism. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "vertiefung",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C8",
+   "needs_check": true
+  },
+  {
+   "id": "D28",
+   "name": {
+    "de": "projektive unitäre Darstellung",
+    "en": "projective unitary representation"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: projektive unitäre Darstellung. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: projective unitary representation. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "vertiefung",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C8",
+   "needs_check": true
+  },
+  {
+   "id": "D29",
+   "name": {
+    "de": "stark stetige einparametrige unitäre Gruppe, Erzeuger",
+    "en": "strongly continuous one-parameter unitary group, generator"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: stark stetige einparametrige unitäre Gruppe, Erzeuger. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: strongly continuous one-parameter unitary group, generator. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "vertiefung",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C9",
+   "needs_check": true
+  },
+  {
+   "id": "D30",
+   "name": {
+    "de": "Hamiltonoperator (als Erzeuger)",
+    "en": "Hamiltonian (as generator)"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: Hamiltonoperator (als Erzeuger). Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: Hamiltonian (as generator). The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "kern",
+   "origin": "author-stipulated",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C9",
+   "needs_check": true
+  },
+  {
+   "id": "D31",
+   "name": {
+    "de": "Präparationsunschärfe (Varianz)",
+    "en": "preparation uncertainty (variance)"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: Präparationsunschärfe (Varianz). Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: preparation uncertainty (variance). The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C6",
+   "needs_check": true
+  },
+  {
+   "id": "D32",
+   "name": {
+    "de": "Messfehler, gemeinsame Messung",
+    "en": "measurement error, joint measurement"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: Messfehler, gemeinsame Messung. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: measurement error, joint measurement. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "vertiefung",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C6",
+   "needs_check": true
+  },
+  {
+   "id": "D33",
+   "name": {
+    "de": "Darstellung einer Lie-Algebra; Drehimpulsoperatoren",
+    "en": "representation of a Lie algebra; angular momentum operators"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: Darstellung einer Lie-Algebra; Drehimpulsoperatoren. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: representation of a Lie algebra; angular momentum operators. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C10",
+   "needs_check": true
+  },
+  {
+   "id": "D34",
+   "name": {
+    "de": "irreduzible Darstellung; Spin j",
+    "en": "irreducible representation; spin j"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: irreduzible Darstellung; Spin j. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: irreducible representation; spin j. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C10",
+   "needs_check": true
+  },
+  {
+   "id": "D35",
+   "name": {
+    "de": "Tensorprodukt von Hilberträumen und Operatoren",
+    "en": "tensor product of Hilbert spaces and operators"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: Tensorprodukt von Hilberträumen und Operatoren. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: tensor product of Hilbert spaces and operators. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C12",
+   "needs_check": true
+  },
+  {
+   "id": "D36",
+   "name": {
+    "de": "verschränkter und separabler Zustand",
+    "en": "entangled and separable state"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: verschränkter und separabler Zustand. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: entangled and separable state. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C12",
+   "needs_check": true
+  },
+  {
+   "id": "D37",
+   "name": {
+    "de": "Permutationsoperator",
+    "en": "permutation operator"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: Permutationsoperator. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: permutation operator. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C13",
+   "needs_check": true
+  },
+  {
+   "id": "D38",
+   "name": {
+    "de": "(anti)symmetrischer Unterraum",
+    "en": "(anti)symmetric subspace"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: (anti)symmetrischer Unterraum. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: (anti)symmetric subspace. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C13",
+   "needs_check": true
+  },
+  {
+   "id": "D39",
+   "name": {
+    "de": "Fockraum, Vakuum",
+    "en": "Fock space, vacuum"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: Fockraum, Vakuum. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: Fock space, vacuum. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C14",
+   "needs_check": true
+  },
+  {
+   "id": "D40",
+   "name": {
+    "de": "Erzeugungs- und Vernichtungsoperator",
+    "en": "creation and annihilation operator"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: Erzeugungs- und Vernichtungsoperator. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: creation and annihilation operator. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C14",
+   "needs_check": true
+  },
+  {
+   "id": "D41",
+   "name": {
+    "de": "CCR und CAR (und Weyl-Form)",
+    "en": "CCR and CAR (and Weyl form)"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: CCR und CAR (und Weyl-Form). Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: CCR and CAR (and Weyl form). The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "vertiefung",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C14",
+   "needs_check": true
+  },
+  {
+   "id": "D42",
+   "name": {
+    "de": "Normalordnung",
+    "en": "normal ordering"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: Normalordnung. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: normal ordering. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "vertiefung",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C14",
+   "needs_check": true
+  },
+  {
+   "id": "D43",
+   "name": {
+    "de": "zweite Quantisierung von Operatoren und Erzeugern",
+    "en": "second quantisation of operators and generators"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: zweite Quantisierung von Operatoren und Erzeugern. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: second quantisation of operators and generators. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "vertiefung",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C14",
+   "needs_check": true
+  },
+  {
+   "id": "D44",
+   "name": {
+    "de": "von-Neumann-Entropie",
+    "en": "von Neumann entropy"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: von-Neumann-Entropie. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: von Neumann entropy. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C15",
+   "needs_check": true
+  },
+  {
+   "id": "D45",
+   "name": {
+    "de": "mikrokanonischer Zustand",
+    "en": "microcanonical state"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: mikrokanonischer Zustand. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: microcanonical state. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C16",
+   "needs_check": true
+  },
+  {
+   "id": "D46",
+   "name": {
+    "de": "Gibbs-Zustand (kanonisch); Zustandssumme",
+    "en": "Gibbs (canonical) state; partition function"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: Gibbs-Zustand (kanonisch); Zustandssumme. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: Gibbs (canonical) state; partition function. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C17",
+   "needs_check": true
+  },
+  {
+   "id": "D47",
+   "name": {
+    "de": "großkanonischer Zustand auf dem Fockraum",
+    "en": "grand canonical state on Fock space"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: großkanonischer Zustand auf dem Fockraum. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: grand canonical state on Fock space. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C17",
+   "needs_check": true
+  },
+  {
+   "id": "D48",
+   "name": {
+    "de": "KMS-Zustand",
+    "en": "KMS state"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: KMS-Zustand. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: KMS state. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "fundament",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C17",
+   "needs_check": true
+  },
+  {
+   "id": "D49",
+   "name": {
+    "de": "Temperatur (mikrokanonisch, kanonisch, thermodynamisch)",
+    "en": "temperature (microcanonical, canonical, thermodynamic)"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: Temperatur (mikrokanonisch, kanonisch, thermodynamisch). Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: temperature (microcanonical, canonical, thermodynamic). The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C16",
+   "needs_check": true
+  },
+  {
+   "id": "D50",
+   "name": {
+    "de": "adiabatische Erreichbarkeit, einfaches System",
+    "en": "adiabatic accessibility, simple system"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: adiabatische Erreichbarkeit, einfaches System. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: adiabatic accessibility, simple system. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "fundament",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C19",
+   "needs_check": true
+  },
+  {
+   "id": "D51",
+   "name": {
+    "de": "Wärme, Arbeit, Kreisprozess, Wirkungsgrad",
+    "en": "heat, work, cycle, efficiency"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: Wärme, Arbeit, Kreisprozess, Wirkungsgrad. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: heat, work, cycle, efficiency. The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C19",
+   "needs_check": true
+  },
+  {
+   "id": "D52",
+   "name": {
+    "de": "thermodynamisches Potential (Legendre-Transformation)",
+    "en": "thermodynamic potential (Legendre transform)"
+   },
+   "body": {
+    "de": "Platzhalter. Dieser Eintrag legt fest: thermodynamisches Potential (Legendre-Transformation). Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
+    "en": "Placeholder. This entry will fix: thermodynamic potential (Legendre transform). The wording is entered only after it has been checked against the source."
+   },
+   "symbol_ids": [],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "proposed",
+   "first_fixed_in": "C21",
+   "needs_check": true
+  },
+  {
+   "id": "D53",
+   "name": {
+    "de": "Ergebnismenge",
+    "en": "outcome set"
+   },
+   "body": {
+    "de": "Jedem System wird eine Menge $\\Outcomes$ zugeordnet, die \\emph{Ergebnismenge} (Elementarereignisraum, Stichprobenraum); ihre Elemente heißen Elementarereignisse. Teilmengen $S \\subset \\Outcomes$ heißen \\emph{Ereignisse}.",
+    "en": "To every system a set $\\Outcomes$ is assigned, the \\emph{outcome set} (sample space); its elements are called elementary outcomes. Subsets $S \\subset \\Outcomes$ are called \\emph{events}."
+   },
+   "symbol_ids": [
+    "sym.outcome-set"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C1",
+   "needs_check": false
+  },
+  {
+   "id": "D54",
+   "name": {
+    "de": "Wahrscheinlichkeitsverteilung, Präparation (klassisch)",
+    "en": "probability distribution, preparation (classical)"
+   },
+   "body": {
+    "de": "Eine \\emph{Wahrscheinlichkeitsverteilung} (ein \\emph{Wahrscheinlichkeitsgewicht}) auf einer endlichen Ergebnismenge $\\Outcomes$ ist eine Funktion $\\pw$ auf $\\Outcomes$ mit $\\pw(x) \\geq 0$ für alle $x \\in \\Outcomes$ und $\\sum_{x \\in \\Outcomes} \\pw(x) = 1$. In der klassischen Wahrscheinlichkeitstheorie wird eine Präparation durch eine solche Verteilung charakterisiert. Die \\emph{Wahrscheinlichkeit} eines Ereignisses $S \\subset \\Outcomes$ ist $\\Prob[S] = \\sum_{x \\in S} \\pw(x)$.",
+    "en": "A \\emph{probability distribution} (a \\emph{probability weight}) on a finite outcome set $\\Outcomes$ is a function $\\pw$ on $\\Outcomes$ with $\\pw(x) \\geq 0$ for all $x \\in \\Outcomes$ and $\\sum_{x \\in \\Outcomes} \\pw(x) = 1$. In classical probability theory a preparation is characterised by such a distribution. The \\emph{probability} of an event $S \\subset \\Outcomes$ is $\\Prob[S] = \\sum_{x \\in S} \\pw(x)$."
+   },
+   "symbol_ids": [
+    "sym.outcome-set",
+    "sym.probability-weight",
+    "sym.probability"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [
+    "finite outcome set"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C1",
+   "needs_check": false
+  },
+  {
+   "id": "D55",
+   "name": {
+    "de": "Erwartungswert",
+    "en": "expectation value"
+   },
+   "body": {
+    "de": "Eine \\emph{Messung} (Observable, Zufallsvariable) auf einer endlichen Ergebnismenge $\\Outcomes$ ist eine Funktion $f\\colon \\Outcomes \\to \\mathbb{R}$. Ihr \\emph{Erwartungswert} in der Präparation $\\pw$ ist $\\Ex[f] = \\sum_{x \\in \\Outcomes} \\pw(x) f(x)$.",
+    "en": "A \\emph{measurement} (observable, random variable) on a finite outcome set $\\Outcomes$ is a function $f\\colon \\Outcomes \\to \\mathbb{R}$. Its \\emph{expectation value} in the preparation $\\pw$ is $\\Ex[f] = \\sum_{x \\in \\Outcomes} \\pw(x) f(x)$."
+   },
+   "symbol_ids": [
+    "sym.outcome-set",
+    "sym.probability-weight",
+    "sym.expectation"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [
+    "finite outcome set"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C1",
+   "needs_check": false
+  },
+  {
+   "id": "D56",
+   "name": {
+    "de": "Varianz",
+    "en": "variance"
+   },
+   "body": {
+    "de": "Die \\emph{Varianz} einer Messung $f$ in der Präparation $\\pw$ ist $\\Var[f] = \\Ex[(f - \\Ex[f])^2]$: der Erwartungswert der quadratischen Abweichung von $f$ von ihrem Erwartungswert. Ist die Ergebnismenge $\\mathbb{R}$ und $f$ die Koordinatenfunktion $x \\mapsto x$ mit dem Mittelwert $M_1 = \\Ex[x]$, so schreibt man dafür auch $\\Var[\\Prob] = \\Ex[(x - M_1)^2]$.",
+    "en": "The \\emph{variance} of a measurement $f$ in the preparation $\\pw$ is $\\Var[f] = \\Ex[(f - \\Ex[f])^2]$: the expectation value of the squared deviation of $f$ from its expectation value. If the outcome set is $\\mathbb{R}$ and $f$ is the coordinate function $x \\mapsto x$ with mean $M_1 = \\Ex[x]$, one also writes $\\Var[\\Prob] = \\Ex[(x - M_1)^2]$ for it."
+   },
+   "symbol_ids": [
+    "sym.probability-weight",
+    "sym.probability",
+    "sym.expectation",
+    "sym.variance"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [
+    "variance of a measurement f in a preparation; the script's Var[P] is the case of the coordinate function on the real line"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C1",
+   "needs_check": false
+  },
+  {
+   "id": "D57",
+   "name": {
+    "de": "affine Funktionen und positiver Kegel",
+    "en": "affine functions and positive cone"
+   },
+   "body": {
+    "de": "Für einen Zustandsraum $\\StSp$ ist $\\Aff{\\StSp}$ der reelle Vektorraum der affinen Funktionen auf $\\StSp$, also der $f\\colon \\StSp \\to \\mathbb{R}$ mit $f(\\lambda x + (1-\\lambda) y) = \\lambda f(x) + (1-\\lambda) f(y)$ für alle $x, y \\in \\StSp$ und $\\lambda \\in [0,1]$. Der \\emph{positive Kegel} ist $\\AffPos{\\StSp} = \\{ f \\in \\Aff{\\StSp} : f(x) \\geq 0 \\text{ für alle } x \\in \\StSp \\}$.",
+    "en": "For a state space $\\StSp$, $\\Aff{\\StSp}$ is the real vector space of affine functions on $\\StSp$, that is, of the $f\\colon \\StSp \\to \\mathbb{R}$ with $f(\\lambda x + (1-\\lambda) y) = \\lambda f(x) + (1-\\lambda) f(y)$ for all $x, y \\in \\StSp$ and $\\lambda \\in [0,1]$. The \\emph{positive cone} is $\\AffPos{\\StSp} = \\{ f \\in \\Aff{\\StSp} : f(x) \\geq 0 \\text{ for all } x \\in \\StSp \\}$."
+   },
+   "symbol_ids": [
+    "sym.state-space",
+    "sym.affine-functions",
+    "sym.positive-cone"
+   ],
+   "depth": "vertiefung",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C2",
+   "needs_check": false
+  },
+  {
+   "id": "D58",
+   "name": {
+    "de": "Einseffekt",
+    "en": "unit effect"
+   },
+   "body": {
+    "de": "Der \\emph{Einseffekt} $\\UnitEff{\\StSp} \\in \\EffAlg{\\StSp}$ ist die konstante Funktion $\\UnitEff{\\StSp}(x) = 1$ für alle $x \\in \\StSp$.",
+    "en": "The \\emph{unit effect} $\\UnitEff{\\StSp} \\in \\EffAlg{\\StSp}$ is the constant function $\\UnitEff{\\StSp}(x) = 1$ for all $x \\in \\StSp$."
+   },
+   "symbol_ids": [
+    "sym.unit-effect",
+    "sym.state-space",
+    "sym.effect-algebra"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C2",
+   "needs_check": false
+  },
+  {
+   "id": "D59",
+   "name": {
+    "de": "Dualraum, Paarung und dualer Kegel",
+    "en": "dual space, pairing and dual cone"
+   },
+   "body": {
+    "de": "$\\AffDual{\\StSp}$ ist der Vektorraum aller linearen Funktionale auf $\\Aff{\\StSp}$. Für $\\psi \\in \\AffDual{\\StSp}$ und $f \\in \\Aff{\\StSp}$ bezeichnet $\\pair{\\psi}{f}$ den Wert von $\\psi$ auf $f$. Der \\emph{duale Kegel} ist $\\AffDualPos{\\StSp} = \\{ \\psi \\in \\AffDual{\\StSp} : \\pair{\\psi}{f} \\geq 0 \\text{ für alle } f \\in \\AffPos{\\StSp} \\}$. Ein Zustand $x \\in \\StSp$ wird mit dem Funktional $\\pair{x}{f} = f(x)$ identifiziert.",
+    "en": "$\\AffDual{\\StSp}$ is the vector space of all linear functionals on $\\Aff{\\StSp}$. For $\\psi \\in \\AffDual{\\StSp}$ and $f \\in \\Aff{\\StSp}$, $\\pair{\\psi}{f}$ denotes the value of $\\psi$ on $f$. The \\emph{dual cone} is $\\AffDualPos{\\StSp} = \\{ \\psi \\in \\AffDual{\\StSp} : \\pair{\\psi}{f} \\geq 0 \\text{ for all } f \\in \\AffPos{\\StSp} \\}$. A state $x \\in \\StSp$ is identified with the functional $\\pair{x}{f} = f(x)$."
+   },
+   "symbol_ids": [
+    "sym.dual-space",
+    "sym.state-space",
+    "sym.affine-functions",
+    "sym.pairing",
+    "sym.dual-cone",
+    "sym.positive-cone"
+   ],
+   "depth": "vertiefung",
+   "origin": "source-adapted",
+   "choices": [
+    "CONV-PAIRING"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C2",
+   "needs_check": false
+  },
+  {
+   "id": "D60",
+   "name": {
+    "de": "Zweikörper-Hamiltonoperator",
+    "en": "two-body Hamiltonian of the hydrogen atom"
+   },
+   "body": {
+    "de": "Der Zustandsraum ist $\\Ltwo{\\mathbb{R}^6}$; $\\posE$ und $\\posP$ in $\\mathbb{R}^3$ sind die Orte von Elektron und Proton. Darauf wirkt der \\emph{Zweikörper-Hamiltonoperator} $\\HamTot = -\\frac{\\hbar^2}{2\\massE}\\Lap_{\\mathrm{e}} - \\frac{\\hbar^2}{2\\massP}\\Lap_{\\mathrm{p}} + \\Vpot(\\posE - \\posP)$. Darin sind $\\Lap_{\\mathrm{e}}$ und $\\Lap_{\\mathrm{p}}$ die dreidimensionalen Laplace-Operatoren zu $\\posE$ und $\\posP$. Für das wasserstoffartige Atom ist $\\Vpot(\\posRel) = -\\frac{\\Znuc \\echarge^2}{4\\pi\\epsz\\, \\rad}$ mit $\\rad = \\abs{\\posRel}$.",
+    "en": "The state space is $\\Ltwo{\\mathbb{R}^6}$; $\\posE$ and $\\posP$ in $\\mathbb{R}^3$ are the positions of electron and proton. The \\emph{two-body Hamiltonian} is $\\HamTot = -\\frac{\\hbar^2}{2\\massE}\\Lap_{\\mathrm{e}} - \\frac{\\hbar^2}{2\\massP}\\Lap_{\\mathrm{p}} + \\Vpot(\\posE - \\posP)$. Here $\\Lap_{\\mathrm{e}}$ and $\\Lap_{\\mathrm{p}}$ are the three-dimensional Laplacians associated to $\\posE$ and $\\posP$. For the hydrogen-like atom $\\Vpot(\\posRel) = -\\frac{\\Znuc \\echarge^2}{4\\pi\\epsz\\, \\rad}$ with $\\rad = \\abs{\\posRel}$."
+   },
+   "symbol_ids": [
+    "sym.l2-space",
+    "sym.electron-position",
+    "sym.proton-position",
+    "sym.hamiltonian-two-body",
+    "sym.hbar",
+    "sym.electron-mass",
+    "sym.laplacian",
+    "sym.proton-mass",
+    "sym.potential",
+    "sym.relative-coordinate",
+    "sym.nuclear-charge",
+    "sym.elementary-charge",
+    "sym.vacuum-permittivity",
+    "sym.radial-coordinate"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [
+    "CONV-UNITS",
+    "CONV-CM"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C11",
+   "needs_check": true
+  },
+  {
+   "id": "D61",
+   "name": {
+    "de": "Schwerpunkts- und Relativkoordinaten",
+    "en": "centre-of-mass and relative coordinates"
+   },
+   "body": {
+    "de": "Mit der Gesamtmasse $\\massTot = \\massE + \\massP$ sind die \\emph{Schwerpunktskoordinate} $\\posCM = (\\massE \\posE + \\massP \\posP)/\\massTot$ und die \\emph{Relativkoordinate} $\\posRel = \\posE - \\posP$; $\\rad = \\abs{\\posRel}$ ist die Radialkoordinate.",
+    "en": "With the total mass $\\massTot = \\massE + \\massP$, the \\emph{centre-of-mass coordinate} is $\\posCM = (\\massE \\posE + \\massP \\posP)/\\massTot$ and the \\emph{relative coordinate} is $\\posRel = \\posE - \\posP$; $\\rad = \\abs{\\posRel}$ is the radial coordinate."
+   },
+   "symbol_ids": [
+    "sym.total-mass",
+    "sym.electron-mass",
+    "sym.proton-mass",
+    "sym.centre-of-mass-coordinate",
+    "sym.electron-position",
+    "sym.proton-position",
+    "sym.relative-coordinate",
+    "sym.radial-coordinate"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [
+    "CONV-CM"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C11",
+   "needs_check": false
+  },
+  {
+   "id": "D62",
+   "name": {
+    "de": "reduzierte Masse",
+    "en": "reduced mass"
+   },
+   "body": {
+    "de": "Die \\emph{reduzierte Masse} $\\massRed$ von Elektron und Proton ist durch $\\frac{1}{\\massRed} = \\frac{1}{\\massE} + \\frac{1}{\\massP}$ festgelegt, also $\\massRed = \\massE \\massP / (\\massE + \\massP)$.",
+    "en": "The \\emph{reduced mass} $\\massRed$ of electron and proton is fixed by $\\frac{1}{\\massRed} = \\frac{1}{\\massE} + \\frac{1}{\\massP}$, that is, $\\massRed = \\massE \\massP / (\\massE + \\massP)$."
+   },
+   "symbol_ids": [
+    "sym.reduced-mass",
+    "sym.electron-mass",
+    "sym.proton-mass"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C11",
+   "needs_check": false
+  },
+  {
+   "id": "D63",
+   "name": {
+    "de": "Bohrscher Radius",
+    "en": "Bohr radius"
+   },
+   "body": {
+    "de": "Der \\emph{Bohrsche Radius} ist $\\aBohr = \\frac{4\\pi\\epsz\\hbar^2}{\\massE \\echarge^2}$; er enthält die Elektronenmasse und gehört zum unendlich schweren Kern. Der Bohrsche Radius mit reduzierter Masse ist $\\aRed = \\aBohr\\, \\massE/\\massRed$.",
+    "en": "The \\emph{Bohr radius} is $\\aBohr = \\frac{4\\pi\\epsz\\hbar^2}{\\massE \\echarge^2}$; it contains the electron mass and belongs to the infinitely heavy nucleus. The Bohr radius with the reduced mass is $\\aRed = \\aBohr\\, \\massE/\\massRed$."
+   },
+   "symbol_ids": [
+    "sym.bohr-radius",
+    "sym.vacuum-permittivity",
+    "sym.hbar",
+    "sym.electron-mass",
+    "sym.elementary-charge",
+    "sym.bohr-radius-reduced",
+    "sym.reduced-mass"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [
+    "CONV-UNITS",
+    "CONV-A0"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C11",
+   "needs_check": false
+  },
+  {
+   "id": "D64",
+   "name": {
+    "de": "Rydberg-Energie",
+    "en": "Rydberg energy"
+   },
+   "body": {
+    "de": "Die \\emph{Rydberg-Energie} ist $\\Ryd = \\frac{\\echarge^2}{4\\pi\\epsz} \\frac{1}{2\\aBohr}$, der Betrag der Energie des Zustands 1s ($\\nqn = 1$) bei $\\Znuc = 1$ und unendlich schwerem Kern.",
+    "en": "The \\emph{Rydberg energy} is $\\Ryd = \\frac{\\echarge^2}{4\\pi\\epsz} \\frac{1}{2\\aBohr}$, the modulus of the energy of the state 1s ($\\nqn = 1$) at $\\Znuc = 1$ and infinitely heavy nucleus."
+   },
+   "symbol_ids": [
+    "sym.rydberg-energy",
+    "sym.elementary-charge",
+    "sym.vacuum-permittivity",
+    "sym.bohr-radius",
+    "sym.nuclear-charge",
+    "sym.principal-quantum-number"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [
+    "CONV-UNITS",
+    "CONV-A0"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C11",
+   "needs_check": true
+  },
+  {
+   "id": "D65",
+   "name": {
+    "de": "Quantenzahlen des Wasserstoffatoms",
+    "en": "quantum numbers of the hydrogen atom"
+   },
+   "body": {
+    "de": "Die \\emph{Hauptquantenzahl} ist $\\nqn = 1, 2, \\ldots$; zu jedem $\\nqn$ gehören die \\emph{Drehimpulsquantenzahlen} $\\lqn = 0, 1, \\ldots, \\nqn - 1$ und zu jedem $\\lqn$ die $2\\lqn + 1$ Werte der \\emph{magnetischen Quantenzahl} $\\mqn = -\\lqn, -\\lqn + 1, \\ldots, \\lqn$.",
+    "en": "The \\emph{principal quantum number} is $\\nqn = 1, 2, \\ldots$; to every $\\nqn$ belong the \\emph{orbital quantum numbers} $\\lqn = 0, 1, \\ldots, \\nqn - 1$, and to every $\\lqn$ the $2\\lqn + 1$ values of the \\emph{magnetic quantum number} $\\mqn = -\\lqn, -\\lqn + 1, \\ldots, \\lqn$."
+   },
+   "symbol_ids": [
+    "sym.principal-quantum-number",
+    "sym.orbital-quantum-number",
+    "sym.magnetic-quantum-number"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C11",
+   "needs_check": false
+  },
+  {
+   "id": "D66",
+   "name": {
+    "de": "Radialfunktionen",
+    "en": "radial functions"
+   },
+   "body": {
+    "de": "Für $\\nqn \\geq 1$ und $0 \\leq \\lqn \\leq \\nqn - 1$ ist die \\emph{Radialfunktion} $\\Rnl{\\nqn}{\\lqn}(\\rad) = \\sqrt{\\frac{(\\nqn - \\lqn - 1)!\\,(2\\kappa)^3}{2\\nqn\\,(\\nqn + \\lqn)!}}\\; (2\\kappa \\rad)^{\\lqn}\\, e^{-\\kappa \\rad}\\, \\Lag{\\nqn - \\lqn - 1}{2\\lqn + 1}(2\\kappa \\rad)$ mit $\\kappa = \\frac{\\Znuc}{\\nqn\\, \\aRed}$ und den verallgemeinerten Laguerre-Polynomen $\\Lag{k}{\\alpha}$ aus D68.",
+    "en": "For $\\nqn \\geq 1$ and $0 \\leq \\lqn \\leq \\nqn - 1$ the \\emph{radial function} is $\\Rnl{\\nqn}{\\lqn}(\\rad) = \\sqrt{\\frac{(\\nqn - \\lqn - 1)!\\,(2\\kappa)^3}{2\\nqn\\,(\\nqn + \\lqn)!}}\\; (2\\kappa \\rad)^{\\lqn}\\, e^{-\\kappa \\rad}\\, \\Lag{\\nqn - \\lqn - 1}{2\\lqn + 1}(2\\kappa \\rad)$ with $\\kappa = \\frac{\\Znuc}{\\nqn\\, \\aRed}$ and the generalised Laguerre polynomials $\\Lag{k}{\\alpha}$ of D68."
+   },
+   "symbol_ids": [
+    "sym.principal-quantum-number",
+    "sym.orbital-quantum-number",
+    "sym.radial-function",
+    "sym.radial-coordinate",
+    "sym.laguerre",
+    "sym.nuclear-charge",
+    "sym.bohr-radius-reduced"
+   ],
+   "depth": "vertiefung",
+   "origin": "source-adapted",
+   "choices": [
+    "CONV-LAGUERRE",
+    "CONV-A0"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C11",
+   "needs_check": true
+  },
+  {
+   "id": "D67",
+   "name": {
+    "de": "Kugelflächenfunktionen",
+    "en": "spherical harmonics"
+   },
+   "body": {
+    "de": "Für $\\lqn = 0, 1, 2, \\ldots$ und $0 \\leq \\mqn \\leq \\lqn$ ist die \\emph{Kugelflächenfunktion} $\\Ylm{\\lqn}{\\mqn}(\\theta, \\phi) = (-1)^{\\mqn} \\left( \\frac{2\\lqn + 1}{4\\pi} \\frac{(\\lqn - \\mqn)!}{(\\lqn + \\mqn)!} \\right)^{1/2} \\Plm{\\lqn}{\\mqn}(\\cos\\theta)\\, e^{i \\mqn \\phi}$ mit den zugeordneten Legendrefunktionen $\\Plm{\\lqn}{\\mqn}(x) = (1 - x^2)^{\\mqn/2} \\frac{\\mathrm{d}^{\\mqn}}{\\mathrm{d}x^{\\mqn}} P_{\\lqn}(x)$ und den Legendre-Polynomen $P_{\\lqn}(x) = \\frac{1}{2^{\\lqn} \\lqn!} \\frac{\\mathrm{d}^{\\lqn}}{\\mathrm{d}x^{\\lqn}} (x^2 - 1)^{\\lqn}$. Der Faktor $(-1)^{\\mqn}$ ist die Condon-Shortley-Phase (CONV-CS). Für $1 \\leq \\mqn \\leq \\lqn$ ist außerdem $\\Ylm{\\lqn}{-\\mqn} = (-1)^{\\mqn}\\, \\overline{\\Ylm{\\lqn}{\\mqn}}$; auch das gehört zur Konvention.",
+    "en": "For $\\lqn = 0, 1, 2, \\ldots$ and $0 \\leq \\mqn \\leq \\lqn$ the \\emph{spherical harmonic} is $\\Ylm{\\lqn}{\\mqn}(\\theta, \\phi) = (-1)^{\\mqn} \\left( \\frac{2\\lqn + 1}{4\\pi} \\frac{(\\lqn - \\mqn)!}{(\\lqn + \\mqn)!} \\right)^{1/2} \\Plm{\\lqn}{\\mqn}(\\cos\\theta)\\, e^{i \\mqn \\phi}$ with the associated Legendre functions $\\Plm{\\lqn}{\\mqn}(x) = (1 - x^2)^{\\mqn/2} \\frac{\\mathrm{d}^{\\mqn}}{\\mathrm{d}x^{\\mqn}} P_{\\lqn}(x)$ and the Legendre polynomials $P_{\\lqn}(x) = \\frac{1}{2^{\\lqn} \\lqn!} \\frac{\\mathrm{d}^{\\lqn}}{\\mathrm{d}x^{\\lqn}} (x^2 - 1)^{\\lqn}$. The factor $(-1)^{\\mqn}$ is the Condon-Shortley phase (CONV-CS). For $1 \\leq \\mqn \\leq \\lqn$, moreover, $\\Ylm{\\lqn}{-\\mqn} = (-1)^{\\mqn}\\, \\overline{\\Ylm{\\lqn}{\\mqn}}$; this too belongs to the convention."
+   },
+   "symbol_ids": [
+    "sym.orbital-quantum-number",
+    "sym.magnetic-quantum-number",
+    "sym.spherical-harmonic",
+    "sym.associated-legendre"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [
+    "CONV-CS"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C10",
+   "needs_check": true
+  },
+  {
+   "id": "D68",
+   "name": {
+    "de": "verallgemeinerte Laguerre-Polynome",
+    "en": "generalised Laguerre polynomials"
+   },
+   "body": {
+    "de": "Seien $k \\geq 0$ und $\\alpha \\geq 0$ ganze Zahlen. Das \\emph{verallgemeinerte Laguerre-Polynom} zum Index $k$ und zum Parameter $\\alpha$ ist $\\Lag{k}{\\alpha}(x) = \\sum_{i=0}^{k} (-1)^i \\binom{k + \\alpha}{k - i} \\frac{x^i}{i!}$. Es hat den Grad $k$ und den Wert $\\Lag{k}{\\alpha}(0) = \\binom{k + \\alpha}{k}$.",
+    "en": "Let $k \\geq 0$ and $\\alpha \\geq 0$ be integers. The \\emph{generalised Laguerre polynomial} with index $k$ and parameter $\\alpha$ is $\\Lag{k}{\\alpha}(x) = \\sum_{i=0}^{k} (-1)^i \\binom{k + \\alpha}{k - i} \\frac{x^i}{i!}$. It has degree $k$ and the value $\\Lag{k}{\\alpha}(0) = \\binom{k + \\alpha}{k}$."
+   },
+   "symbol_ids": [
+    "sym.laguerre"
+   ],
+   "depth": "vertiefung",
+   "origin": "source-adapted",
+   "choices": [
+    "CONV-LAGUERRE"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C11",
+   "needs_check": true
+  },
+  {
+   "id": "D69",
+   "name": {
+    "de": "Eigenfunktionen des Wasserstoffatoms",
+    "en": "hydrogen eigenfunctions"
+   },
+   "body": {
+    "de": "Die \\emph{Eigenfunktionen} der Relativbewegung sind $\\psinlm{\\nqn}{\\lqn}{\\mqn}(\\rad, \\theta, \\phi) = \\Rnl{\\nqn}{\\lqn}(\\rad)\\, \\Ylm{\\lqn}{\\mqn}(\\theta, \\phi)$, wobei $(\\rad, \\theta, \\phi)$ die Kugelkoordinaten der Relativkoordinate $\\posRel = \\posE - \\posP$ sind.",
+    "en": "The \\emph{eigenfunctions} of the relative motion are $\\psinlm{\\nqn}{\\lqn}{\\mqn}(\\rad, \\theta, \\phi) = \\Rnl{\\nqn}{\\lqn}(\\rad)\\, \\Ylm{\\lqn}{\\mqn}(\\theta, \\phi)$, where $(\\rad, \\theta, \\phi)$ are the spherical coordinates of the relative coordinate $\\posRel = \\posE - \\posP$."
+   },
+   "symbol_ids": [
+    "sym.hydrogen-eigenfunction",
+    "sym.principal-quantum-number",
+    "sym.orbital-quantum-number",
+    "sym.magnetic-quantum-number",
+    "sym.radial-coordinate",
+    "sym.radial-function",
+    "sym.spherical-harmonic",
+    "sym.relative-coordinate",
+    "sym.electron-position",
+    "sym.proton-position"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [
+    "CONV-CM",
+    "CONV-CS",
+    "CONV-LAGUERRE"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C11",
+   "needs_check": true
+  },
+  {
+   "id": "D70",
+   "name": {
+    "de": "Aufenthaltsdichten von Elektron und Proton",
+    "en": "position densities of electron and proton"
+   },
+   "body": {
+    "de": "Sei $\\Psi \\in \\Ltwo{\\mathbb{R}^6}$ eine normierte Wellenfunktion der Orte $\\posE$ und $\\posP$. Die \\emph{Aufenthaltsdichte des Elektrons} $\\densE(\\boldsymbol{x})$ ist das Integral von $\\abs{\\Psi(\\boldsymbol{x}, \\posP)}^2$ über alle Protonenorte $\\posP$. Die \\emph{Aufenthaltsdichte des Protons} $\\densP(\\boldsymbol{x})$ ist das Integral von $\\abs{\\Psi(\\posE, \\boldsymbol{x})}^2$ über alle Elektronenorte $\\posE$. Beide sind Randdichten von $\\abs{\\Psi}^2$ und integrieren sich zu eins.",
+    "en": "Let $\\Psi \\in \\Ltwo{\\mathbb{R}^6}$ be a normalised wave function of the positions $\\posE$ and $\\posP$. The \\emph{position density of the electron} $\\densE(\\boldsymbol{x})$ is the integral of $\\abs{\\Psi(\\boldsymbol{x}, \\posP)}^2$ over all proton positions $\\posP$. The \\emph{position density of the proton} $\\densP(\\boldsymbol{x})$ is the integral of $\\abs{\\Psi(\\posE, \\boldsymbol{x})}^2$ over all electron positions $\\posE$. Both are marginal densities of $\\abs{\\Psi}^2$ and integrate to one."
+   },
+   "symbol_ids": [
+    "sym.l2-space",
+    "sym.electron-position",
+    "sym.proton-position",
+    "sym.electron-density",
+    "sym.proton-density"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [
+    "CONV-CM"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C11",
+   "needs_check": true
+  },
+  {
+   "id": "D71",
+   "name": {
+    "de": "effektives Potential",
+    "en": "effective potential"
+   },
+   "body": {
+    "de": "Zur Drehimpulsquantenzahl $\\lqn$ ist das \\emph{effektive Potential} der Relativbewegung $\\Veff{\\lqn}(\\rad) = \\frac{\\hbar^2 \\lqn(\\lqn + 1)}{2 \\massRed\\, \\rad^2} + \\Vpot(\\rad)$; der erste Summand heißt Zentrifugalterm.",
+    "en": "For the orbital quantum number $\\lqn$ the \\emph{effective potential} of the relative motion is $\\Veff{\\lqn}(\\rad) = \\frac{\\hbar^2 \\lqn(\\lqn + 1)}{2 \\massRed\\, \\rad^2} + \\Vpot(\\rad)$; the first term is called the centrifugal term."
+   },
+   "symbol_ids": [
+    "sym.orbital-quantum-number",
+    "sym.effective-potential",
+    "sym.radial-coordinate",
+    "sym.hbar",
+    "sym.reduced-mass",
+    "sym.potential"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [
+    "CONV-UNITS"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C11",
+   "needs_check": false
+  },
+  {
+   "id": "D72",
+   "name": {
+    "de": "radiale Aufenthaltsdichte",
+    "en": "radial probability density"
+   },
+   "body": {
+    "de": "Die \\emph{radiale Aufenthaltsdichte} zur Radialfunktion $\\Rnl{\\nqn}{\\lqn}$ ist $\\Pnl{\\nqn}{\\lqn}(\\rad) = \\rad^2\\, \\Rnl{\\nqn}{\\lqn}(\\rad)^2$ für $\\rad \\geq 0$.",
+    "en": "The \\emph{radial probability density} of the radial function $\\Rnl{\\nqn}{\\lqn}$ is $\\Pnl{\\nqn}{\\lqn}(\\rad) = \\rad^2\\, \\Rnl{\\nqn}{\\lqn}(\\rad)^2$ for $\\rad \\geq 0$."
+   },
+   "symbol_ids": [
+    "sym.radial-density",
+    "sym.radial-function",
+    "sym.principal-quantum-number",
+    "sym.orbital-quantum-number",
+    "sym.radial-coordinate"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C11",
+   "needs_check": true
+  },
+  {
+   "id": "D73",
+   "name": {
+    "de": "radiale Verteilungsfunktion",
+    "en": "radial distribution function"
+   },
+   "body": {
+    "de": "Die \\emph{radiale Verteilungsfunktion} ist $\\Fnl{\\nqn}{\\lqn}(\\rad) = \\int_0^{\\rad} \\Pnl{\\nqn}{\\lqn}(s)\\, \\mathrm{d}s$ mit der radialen Aufenthaltsdichte $\\Pnl{\\nqn}{\\lqn}$ (D72).",
+    "en": "The \\emph{radial distribution function} is $\\Fnl{\\nqn}{\\lqn}(\\rad) = \\int_0^{\\rad} \\Pnl{\\nqn}{\\lqn}(s)\\, \\mathrm{d}s$ with the radial probability density $\\Pnl{\\nqn}{\\lqn}$ (D72)."
+   },
+   "symbol_ids": [
+    "sym.radial-distribution",
+    "sym.radial-density",
+    "sym.principal-quantum-number",
+    "sym.orbital-quantum-number",
+    "sym.radial-coordinate"
+   ],
+   "depth": "vertiefung",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C11",
+   "needs_check": false
+  },
+  {
+   "id": "D74",
+   "name": {
+    "de": "Extremaleffekt",
+    "en": "extreme effect"
+   },
+   "body": {
+    "de": "Sei $\\StSp$ ein Zustandsraum. Ein Effekt $f \\in \\EffAlg{\\StSp}$ heißt \\emph{Extremaleffekt}, wenn er ein Extremalpunkt der Menge $\\EffAlg{\\StSp}$ ist: Aus $f = \\lambda g + (1-\\lambda) h$ mit $g, h \\in \\EffAlg{\\StSp}$ und $\\lambda \\in (0,1)$ folgt stets $f = g = h$.",
+    "en": "Let $\\StSp$ be a state space. An effect $f \\in \\EffAlg{\\StSp}$ is an \\emph{extreme effect} if it is an extreme point of the set $\\EffAlg{\\StSp}$: $f = \\lambda g + (1-\\lambda) h$ with $g, h \\in \\EffAlg{\\StSp}$ and $\\lambda \\in (0,1)$ always implies $f = g = h$."
+   },
+   "symbol_ids": [
+    "sym.state-space",
+    "sym.effect-algebra"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C2",
+   "needs_check": true
+  }
+ ]
+}

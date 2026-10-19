@@ -1,0 +1,90 @@
+{
+ "schema_version": 1,
+ "symbols": [
+  {
+   "symbol_id": "sym.state-space",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "StSp",
+    "args": 0,
+    "expansion": "K"
+   },
+   "canonical_token": "K",
+   "unicode": "K",
+   "mathml": "<math><mi>K</mi></math>",
+   "name_de": "Name",
+   "name_en": "name",
+   "meaning_de": "Bedeutung",
+   "meaning_en": "meaning",
+   "depth": "kern",
+   "first_fixed_in": "D1",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "fixture-book",
+     "locus": "p. 1",
+     "verified": true,
+     "how": "fixture"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.order-unit",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "OrdUnit",
+    "args": 0,
+    "expansion": "u"
+   },
+   "canonical_token": "u",
+   "unicode": "u",
+   "mathml": "<math><mi>u</mi></math>",
+   "name_de": "Name",
+   "name_en": "name",
+   "meaning_de": "Bedeutung",
+   "meaning_en": "meaning",
+   "depth": "fundament",
+   "first_fixed_in": "D2",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "fixture-book",
+     "locus": "p. 1",
+     "verified": true,
+     "how": "fixture"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.complex-conjugation",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "Conj",
+    "args": 0,
+    "expansion": "K"
+   },
+   "canonical_token": "K",
+   "unicode": "K",
+   "mathml": "<math><mi>K</mi></math>",
+   "name_de": "Name",
+   "name_en": "name",
+   "meaning_de": "Bedeutung",
+   "meaning_en": "meaning",
+   "depth": "kern",
+   "first_fixed_in": "D1",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "fixture-book",
+     "locus": "p. 1",
+     "verified": true,
+     "how": "fixture"
+    }
+   ],
+   "legacy_aliases": []
+  }
+ ],
+ "collisions": []
+}

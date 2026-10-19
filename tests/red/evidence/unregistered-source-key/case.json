@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A provenance row names a source key that is not registered.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/unregistered-source-key --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[unregistered-source\\] provenance\\.json:P-0001: source key 'ghost-book'"
+}

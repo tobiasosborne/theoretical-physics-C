@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "Content tags a claim ID that is not in the ledger.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/claim-unknown-id --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[unknown-claim\\] c98-red/de\\.tex:\\d+: \\\\claim\\{c98\\.cl\\.77\\} is not a row"
+}

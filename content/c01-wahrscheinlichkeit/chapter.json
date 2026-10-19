@@ -1,0 +1,81 @@
+{
+  "id": "c01",
+  "slug": "wahrscheinlichkeit",
+  "title": {
+    "de": "Wahrscheinlichkeit für Physiker",
+    "en": "Probability for physicists"
+  },
+  "effective_theory": {
+    "de": "Im endlichen klassischen Modell dieses Kapitels sind Präparationen Gewichte auf einer endlichen Ergebnismenge und deterministische Präparationen Punktgewichte; auf der reellen Linie betrachtet das Kapitel Präparationen, die eine Dichte haben.",
+    "en": "In this chapter's finite classical model, preparations are weights on a finite outcome set and deterministic preparations are point weights; on the real line the chapter considers preparations that admit a density."
+  },
+  "zoom_scale": "gpt",
+  "prerequisites": [
+    "c00"
+  ],
+  "assets": [
+    {
+      "id": "c01.fig.ereignis",
+      "kind": "figure",
+      "file": "figures/ereignis.tex"
+    },
+    {
+      "id": "c01.fig.gewichte",
+      "kind": "figure",
+      "file": "figures/gewichte.tex"
+    },
+    {
+      "id": "c01.fig.erwartung",
+      "kind": "figure",
+      "file": "figures/erwartung.tex"
+    },
+    {
+      "id": "c01.fig.haeufigkeit",
+      "kind": "figure",
+      "file": "figures/haeufigkeit.tex"
+    },
+    {
+      "id": "c01.fig.indikator",
+      "kind": "figure",
+      "file": "figures/indikator.tex"
+    },
+    {
+      "id": "c01.fig.varianz",
+      "kind": "figure",
+      "file": "figures/varianz.tex"
+    },
+    {
+      "id": "c01.fig.mischung",
+      "kind": "figure",
+      "file": "figures/mischung.tex"
+    },
+    {
+      "id": "c01.fig.simplex",
+      "kind": "figure",
+      "file": "figures/simplex.tex"
+    },
+    {
+      "id": "c01.fig.konzentration",
+      "kind": "figure",
+      "file": "figures/konzentration.tex"
+    },
+    {
+      "id": "c01.fig.dichte",
+      "kind": "figure",
+      "file": "figures/dichte.tex"
+    },
+    {
+      "id": "c01.tab.sprache",
+      "kind": "table"
+    },
+    {
+      "id": "c01.demo.haeufigkeit",
+      "kind": "demo",
+      "still": "c01.fig.haeufigkeit",
+      "title": {
+        "de": "Relative Häufigkeiten und Gewichte",
+        "en": "Relative frequencies and weights"
+      }
+    }
+  ]
+}

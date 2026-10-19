@@ -1,0 +1,19 @@
+% c02.fig.schema — one run of an experiment: preparation, yes-no question, answer.
+% A scheme, not a plot.  Roles: the preparation box is drawn in the state role (solid),
+% the question box in the effect role (dashed); the probabilities are f(x) and 1 - f(x)
+% (registry definition D2).
+\begin{tikzpicture}[x=1cm, y=1cm]
+  \draw[tpc state] (0,0) rectangle (2.5,1.3);
+  \node[tpc label, align=center] at (1.25,0.65)
+    {\tpcifenglish{preparation}{Präparation}\\[1pt]\tpcifenglish{state}{Zustand} $x$};
+  \draw[tpc axis, -{Stealth[length=5pt]}] (2.5,0.65) -- (3.3,0.65);
+  \draw[tpc effect] (3.3,0) rectangle (6.1,1.3);
+  \node[tpc label, align=center] at (4.7,0.65)
+    {\tpcifenglish{yes-no question}{Ja-Nein-Frage}\\[1pt]\tpcifenglish{effect}{Effekt} $f$};
+  \draw[tpc axis, -{Stealth[length=5pt]}] (6.1,0.95) -- (6.9,1.25);
+  \draw[tpc axis, -{Stealth[length=5pt]}] (6.1,0.35) -- (6.9,0.05);
+  \node[tpc label, anchor=west, align=left] at (6.95,1.27)
+    {\tpcifenglish{yes, with}{Ja, mit}\\[1pt]\tpcifenglish{probability}{Wahrscheinlichkeit} $f(x)$};
+  \node[tpc label, anchor=west, align=left] at (6.95,0.03)
+    {\tpcifenglish{no, with}{Nein, mit}\\[1pt]\tpcifenglish{probability}{Wahrscheinlichkeit} $1 - f(x)$};
+\end{tikzpicture}

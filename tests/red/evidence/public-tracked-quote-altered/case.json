@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "Public mode still verifies quotes from tracked sources: a word of the stipulation quote is changed.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/public-tracked-quote-altered --public",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[quote\\] provenance\\.json:P-0003: quote not found"
+}

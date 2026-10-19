@@ -1,0 +1,7 @@
+{
+  "gate": "registry",
+  "what": "Content transcludes a proposed definition.",
+  "cmd": "python3 scripts/registry/check_registry.py --root tests/red/registry/proposed-definition --no-generated --private",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "proposed definition: .*\\\\tpcdef\\{D1\\} cannot transclude a definition with status 'proposed'"
+}

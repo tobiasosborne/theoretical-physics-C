@@ -1,0 +1,39 @@
+{
+ "schema_version": 1,
+ "id": "M-0003",
+ "status": "recorded",
+ "title": "vl22: the multiplier in the canonical Lagrangian is inconsistent with the stationarity result",
+ "legacy": [
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl22.tex",
+   "line": 25,
+   "file_sha256": "63acef9837f90b6f86697cab4e5753f035c571ab77e8b49786931630744059cc",
+   "old_text": "\\max_{\\rho} f(\\rho) = -k\\tr(\\rho\\log(\\rho)) + \\beta \\tr(\\rho \\widehat{H})",
+   "new_text": "\\max_{\\rho} f(\\rho) = -k\\tr(\\rho\\log(\\rho)) - k\\beta\\left(\\tr(\\rho \\widehat{H}) - E\\right) - k\\gamma\\left(\\tr(\\rho) - 1\\right)"
+  },
+  {
+   "version": "v0.2-en",
+   "file": "latex/lectures/en/lec22.tex",
+   "line": 25,
+   "file_sha256": "ef75472b7eae14391b7b314cff6307a3b4bd984590c85872a9708a80d51d65a7",
+   "old_text": "\\max_{\\rho} f(\\rho) = -k\\tr(\\rho\\log(\\rho)) + \\beta \\tr(\\rho \\widehat{H})",
+   "new_text": "\\max_{\\rho} f(\\rho) = -k\\tr(\\rho\\log(\\rho)) - k\\beta\\left(\\tr(\\rho \\widehat{H}) - E\\right) - k\\gamma\\left(\\tr(\\rho) - 1\\right)"
+  },
+  {
+   "version": "v0.1",
+   "file": "archive/skript-2022/Vorlesungen22.tex",
+   "line": 17,
+   "file_sha256": "d9a3d0619f7c26d7335749a1a60bdbd59847bc54888a3a42c4c578a96e6cbc0b",
+   "old_text": "\\max_{\\rho} f(\\rho) = -k\\tr(\\rho\\log(\\rho)) + \\beta \\tr(\\rho \\widehat{H})",
+   "new_text": "\\max_{\\rho} f(\\rho) = -k\\tr(\\rho\\log(\\rho)) - k\\beta\\left(\\tr(\\rho \\widehat{H}) - E\\right) - k\\gamma\\left(\\tr(\\rho) - 1\\right)"
+  }
+ ],
+ "reason": "An inconsistency of multiplier definitions, not a wrong sign in isolation: with f = -k tr(rho log rho) + beta tr(rho H) and normalisation, stationarity gives rho ~ exp(+beta H / k), whereas the lines that follow (vl22.tex:41-46) give exp(-beta H). The fix must define the multiplier: S - k beta (tr(rho H) - E) - k gamma (tr(rho) - 1), or else distinguish the arbitrary multiplier from the inverse temperature.",
+ "evidence": {
+  "independent_check": "docs/plan/research/review/REVIEW.md:60 (section B, row 'vl22 canonical Lagrangian': CONFIRMED as an inconsistency of multiplier definitions); PLAN.md section 13.2",
+  "provenance_ids": [],
+  "notes": "new_text is the review's first option written in the script's notation (k, \\widehat{H}); the surrounding sentences (vl22.tex:26-41), which introduce beta, must be adapted with it. Which option is taken is TJO's choice."
+ },
+ "destination": "c17"
+}

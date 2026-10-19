@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "The manifest lists a payload that no source.json registers.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/manifest-entry-unregistered --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[registry\\] sources/MANIFEST\\.sha256: entry 'stray/book\\.txt' belongs to no registered"
+}

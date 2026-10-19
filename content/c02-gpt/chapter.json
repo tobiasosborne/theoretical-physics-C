@@ -1,0 +1,125 @@
+{
+  "id": "c02",
+  "slug": "gpt",
+  "title": {
+    "de": "Allgemeine probabilistische Theorien",
+    "en": "General probabilistic theories"
+  },
+  "effective_theory": {
+    "de": "Präparationen bilden eine konvexe Menge, Ja-Nein-Fragen sind affine Funktionen darauf; welche konvexe Menge zu einem System gehört, legt dieser Rahmen nicht fest.",
+    "en": "Preparations form a convex set and yes-no questions are affine functions on it; which convex set belongs to a system is not fixed by this framework."
+  },
+  "zoom_scale": "gpt",
+  "prerequisites": [
+    "c00",
+    "c01"
+  ],
+  "assets": [
+    {
+      "id": "c02.fig.schema",
+      "kind": "figure",
+      "file": "figures/schema.tex"
+    },
+    {
+      "id": "c02.fig.zustandsraeume",
+      "kind": "figure",
+      "file": "figures/zustandsraeume.tex"
+    },
+    {
+      "id": "c02.fig.niveaulinien",
+      "kind": "figure",
+      "file": "figures/niveaulinien.tex"
+    },
+    {
+      "id": "c02.fig.effektmengen",
+      "kind": "figure",
+      "file": "figures/effektmengen.tex"
+    },
+    {
+      "id": "c02.fig.blochkugel",
+      "kind": "figure",
+      "file": "figures/blochkugel.tex"
+    },
+    {
+      "id": "c02.fig.kegel",
+      "kind": "figure",
+      "file": "figures/kegel.tex"
+    },
+    {
+      "id": "c02.fig.optimum",
+      "kind": "figure",
+      "file": "figures/optimum.tex"
+    },
+    {
+      "id": "c02.fig.vielecke",
+      "kind": "figure",
+      "file": "figures/vielecke.tex"
+    },
+    {
+      "id": "c02.fig.unterscheiden",
+      "kind": "figure",
+      "file": "figures/unterscheiden.tex"
+    },
+    {
+      "id": "c02.fig.ordnungsintervall",
+      "kind": "figure",
+      "file": "figures/ordnungsintervall.tex"
+    },
+    {
+      "id": "c02.fig.laengen",
+      "kind": "figure",
+      "file": "figures/laengen.tex"
+    },
+    {
+      "id": "c02.fig.quadrat",
+      "kind": "figure",
+      "file": "figures/quadrat.tex"
+    },
+    {
+      "id": "c02.fig.aufgabe",
+      "kind": "figure",
+      "file": "figures/aufgabe.tex"
+    },
+    {
+      "id": "c02.fig.messung",
+      "kind": "figure",
+      "file": "figures/messung.tex"
+    },
+    {
+      "id": "c02.fig.blochzustaende",
+      "kind": "figure",
+      "file": "figures/blochzustaende.tex"
+    },
+    {
+      "id": "c02.fig.affin",
+      "kind": "figure",
+      "file": "figures/affin.tex"
+    },
+    {
+      "id": "c02.tab.vergleich",
+      "kind": "table"
+    },
+    {
+      "id": "c02.tab.level",
+      "kind": "table"
+    },
+    {
+      "id": "c02.demo.explorer",
+      "kind": "demo",
+      "still": "c02.fig.zustandsraeume",
+      "title": {
+        "de": "Zustandsraum und Effekte: der Explorer",
+        "en": "State space and effects: the explorer"
+      }
+    },
+    {
+      "id": "c02.demo.distinguish",
+      "kind": "game",
+      "still": "c02.fig.unterscheiden",
+      "title": {
+        "de": "Distinguish: zwei Präparationen unterscheiden",
+        "en": "Distinguish: telling two preparations apart"
+      }
+    }
+  ]
+}

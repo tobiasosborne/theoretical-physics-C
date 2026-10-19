@@ -1,0 +1,7 @@
+{
+  "gate": "levels",
+  "what": "A corollary has its label but no \\claim.",
+  "cmd": "python3 scripts/course/check_levels.py --chapters c99 --content tests/red/levels/theorem-without-claim/content --lint-only",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "CL [^\\n]*de\\.tex:\\d+: corollary carries 0 \\\\claim\\(s\\) on its label"
+}

@@ -1,0 +1,7 @@
+{
+ "gate": "c02-game",
+ "what": "A demo helper of the game draws the effect in a literal colour instead of the token.",
+ "cmd": "python3 design/lint_content.py tests/red/c02-game/hard-coded-colour",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "marker\\.ts:\\d+: .*hex colour"
+}

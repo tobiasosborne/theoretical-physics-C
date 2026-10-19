@@ -1,0 +1,9 @@
+{
+ "id": "R-0001",
+ "reviewer": "fixture reviewer",
+ "date": "2026-10-11",
+ "covers": [
+  "P-0002"
+ ],
+ "verdict": "pass"
+}

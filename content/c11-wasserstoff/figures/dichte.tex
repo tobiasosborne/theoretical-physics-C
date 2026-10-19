@@ -1,0 +1,44 @@
+% c11.fig.dichte — the radial probability densities P_10, P_20, P_21.
+%
+% Generating formulas (registry definition D72 with DERIVATION.md Result 5.1; Z = 1,
+% x = r/a_mu with the Bohr radius a_mu of the REDUCED mass), plotted as a_mu P_nl = x^2 (a_mu^{3/2} R_nl)^2:
+%     P_10 = 4 x^2 exp(-2x),                 maximum at x = 1,
+%     P_20 = x^2 (2 - x)^2 exp(-x) / 8,      zero at x = 2 (radial node),
+%     P_21 = x^4 exp(-x) / 24.
+% Mean radii (DERIVATION.md Result 7.1, <r> = a_mu [3 n^2 - l(l+1)] / 2 for Z = 1):
+%     <r>_1s = 3/2,   <r>_2s = 6,   <r>_2p = 5     (in units of a_mu),
+% marked by ticks on the horizontal axis.
+% Greyscale: 1s solid heavy, 2s dashed, 2p dash-dotted; curves labelled directly.
+\begin{tikzpicture}
+  \pgfplotsset{c11/.style={
+    axis lines=left, clip=false, grid=none,
+    axis line style={draw=tpc-plate-ink, line width=\tpcstrokethin},
+    tick style={draw=tpc-plate-ink, line width=\tpcstrokehair},
+    tick label style={font=\tpcfontlabel, text=tpc-plate-ink},
+    label style={font=\tpcfontlabel, text=tpc-plate-ink}}}
+  \begin{axis}[c11, width=9.4cm, height=5.8cm,
+      xmin=0, xmax=14.5, ymin=0, ymax=0.6,
+      xtick={0,2,4,6,8,10,12,14}, ytick={0,0.2,0.4},
+      yticklabels={$0$,$\tfrac15$,$\tfrac25$},
+      xlabel={$r/a_{\mu}$}, ylabel={$a_{\mu}\,P_{n\ell}$},
+      every axis x label/.style={at={(ticklabel* cs:1.0)}, anchor=west, font=\tpcfontlabel},
+      every axis y label/.style={at={(ticklabel* cs:1.0)}, anchor=south, font=\tpcfontlabel}]
+    \addplot[tpc q1, domain=0:14.5, samples=220] {4*x*x*exp(-2*x)};
+    \addplot[tpc q3, dash pattern=on 5pt off 2pt, domain=0:14.5, samples=220] {x*x*(2-x)*(2-x)*exp(-x)/8};
+    \addplot[tpc q5, dash pattern=on 5pt off 1.5pt on 1.2pt off 1.5pt, domain=0:14.5, samples=220] {x*x*x*x*exp(-x)/24};
+    \node[tpc label, anchor=west] at (axis cs:1.5,0.48) {$P_{10}$ (1s)};
+    \node[tpc label, anchor=south] at (axis cs:7.6,0.165) {$P_{20}$ (2s)};
+    \node[tpc label, anchor=south west] at (axis cs:3.05,0.2) {$P_{21}$ (2p)};
+    % the maximum of P_10 at r = a_mu
+    \draw[tpc leader, dash pattern=on 1.5pt off 1.5pt] (axis cs:1,0) -- (axis cs:1,{4*exp(-2)});
+    % the radial node of 2s
+    \fill[tpc-plate-ink] (axis cs:2,0) circle (1.4pt);
+    % mean radii
+    \draw[tpc q1, line width=\tpcstrokeregular] (axis cs:1.5,0) -- (axis cs:1.5,-0.035);
+    \draw[tpc q5, line width=\tpcstrokeregular] (axis cs:5,0) -- (axis cs:5,-0.035);
+    \draw[tpc q3, line width=\tpcstrokeregular] (axis cs:6,0) -- (axis cs:6,-0.035);
+    \node[tpc label, anchor=north] at (axis cs:1.2,-0.085) {$\langle r\rangle_{1\mathrm{s}}$};
+    \node[tpc label, anchor=north] at (axis cs:4.7,-0.085) {$\langle r\rangle_{2\mathrm{p}}$};
+    \node[tpc label, anchor=north] at (axis cs:6.5,-0.085) {$\langle r\rangle_{2\mathrm{s}}$};
+  \end{axis}
+\end{tikzpicture}

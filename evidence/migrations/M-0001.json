@@ -1,0 +1,45 @@
+{
+ "schema_version": 1,
+ "id": "M-0001",
+ "status": "applied",
+ "title": "vl16: leading sign of the generalised Laguerre polynomial L_2^s",
+ "legacy": [
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl16.tex",
+   "line": 85,
+   "file_sha256": "ee5a38ebbc2b30ba85fd76ba198131b6a7cfdab2835ba25e352861e123b7128c",
+   "old_text": "L_2^s(x) &= -\\frac{x^2}{2}-(s+2)x + \\frac{1}{2}(s+1)(s+2) \\\\",
+   "new_text": "L_2^s(x) &= \\frac{x^2}{2}-(s+2)x + \\frac{1}{2}(s+1)(s+2) \\\\",
+   "applied_file_sha256": "cc8ff7310b9a50105ffd55b6a46edc8c4187e9b592cc8ad2ad9a64016993afb1",
+   "applied_source_key": "tpc-script-v0.2.1"
+  },
+  {
+   "version": "v0.2-en",
+   "file": "latex/lectures/en/lec16.tex",
+   "line": 85,
+   "file_sha256": "314189855e5cb713dbf5f8ecc21a010adb1b5ecd1dafe1e97281271f6d531a8d",
+   "old_text": "L_2^s(x) &= -\\frac{x^2}{2}-(s+2)x + \\frac{1}{2}(s+1)(s+2) \\\\",
+   "new_text": "L_2^s(x) &= \\frac{x^2}{2}-(s+2)x + \\frac{1}{2}(s+1)(s+2) \\\\",
+   "applied_file_sha256": "06a697435e0f8e37bdbd8275ea5c02a9334094776bf3958b763f9b3fb8d34d77",
+   "applied_source_key": "tpc-script-v0.2.1"
+  },
+  {
+   "version": "v0.1",
+   "file": "archive/skript-2022/Vorlesungen16.tex",
+   "line": 57,
+   "file_sha256": "3a3b7b44d8da46d39b98420b3cf03c979a8c7ad2dc540f0ccfb56bbe0834f735",
+   "old_text": "L_2^s(x) &= -\\frac{x^2}{2}-(s+2)x + \\frac{1}{2}(s+1)(s+2) \\\\",
+   "new_text": "L_2^s(x) &= \\frac{x^2}{2}-(s+2)x + \\frac{1}{2}(s+1)(s+2) \\\\"
+  }
+ ],
+ "reason": "The printed polynomial has leading term -x^2/2. The finite-sum definition gives L_2^(s)(x) = x^2/2 - (s+2)x + (s+1)(s+2)/2; the printed one fails the Laguerre differential equation.",
+ "evidence": {
+  "independent_check": "docs/plan/research/review/REVIEW.md:57 (section B, row 'vl16 Laguerre leading sign': CONFIRMED; values at s=1, x=0.7 are 1.145 correct against 0.655 printed)",
+  "provenance_ids": [],
+  "notes": "The review cites DLMF 18.5.12, which is not a registered local source; the admissible evidence for the corrected formula in the new chapter is the derivation at evidence/derivations/c11/DERIVATION.md (section 3, Laguerre convention), owned by the hydrogen smoke.",
+  "derivation": "evidence/derivations/c11/DERIVATION.md section 6; evidence/derivations/c11/REVIEW.md section B4"
+ },
+ "destination": "c11",
+ "applied_date": "2026-10-12"
+}

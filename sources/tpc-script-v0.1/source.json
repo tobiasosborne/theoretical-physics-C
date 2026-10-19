@@ -1,0 +1,360 @@
+{
+ "schema_version": 1,
+ "key": "tpc-script-v0.1",
+ "kind": "script-snapshot",
+ "storage": "tracked",
+ "title": "Theoretische Physik C, script v0.1 (archive/skript-2022)",
+ "authors": [
+  "Tobias J. Osborne"
+ ],
+ "version": "v0.1",
+ "language": "de",
+ "identifiers": {
+  "git_commit": "88996cf14ba45e2c89474d2896f76711ea3d959d",
+  "last_commit_touching_these_files": "fa318f67fe1e71d208a75afa89ee8f69478c8f09"
+ },
+ "retrieval": {
+  "route": "tracked files under archive/skript-2022 in this repository; `git diff --quiet HEAD -- archive/skript-2022` was clean when the hashes were taken",
+  "date": "2026-10-11"
+ },
+ "identity_check": "title and author read from the master file's \\title and \\author lines on 2026-10-11",
+ "files": [
+  {
+   "path": "../archive/skript-2022/TheoAVL16.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "eea4d87e46ca2f982f9742c244ba8cfb5ec47c3edca22219b0930bf722783ab8"
+  },
+  {
+   "path": "../archive/skript-2022/TheoAVL17.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "ed22642fd9752f228c10f9fd44c1b9d1264409bed739505469a3f1b4d29b86e7"
+  },
+  {
+   "path": "../archive/skript-2022/TheoAVL23.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "e625cff207b5a9e7d656afe2bc9a7db333947d01bd465925315180a098e6a3cb"
+  },
+  {
+   "path": "../archive/skript-2022/TheoAVL24.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "aa9ffd6b6eb960e383bc7bfe38f2737fa14954c83618d43e257eca8eebc5add1"
+  },
+  {
+   "path": "../archive/skript-2022/TheoAVL25.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "b44bfcb371c3e1a1ec74fe5f37a2221487d672a933de5c358b58c979a4559cd5"
+  },
+  {
+   "path": "../archive/skript-2022/TheoAVL26.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "d342c13a2229c32c45847e7ca5e31e44980d26c1010d0945826c1bcce86b2396"
+  },
+  {
+   "path": "../archive/skript-2022/TheoCVL1.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "614493e159fd9d90244037fcfe88a8a3789195618a98a59056bfb0551b4d8718"
+  },
+  {
+   "path": "../archive/skript-2022/TheoCVL10.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "cb76df4bb42ca2226f96780e97995154eaeab53b53528614f214ac1436a77679"
+  },
+  {
+   "path": "../archive/skript-2022/TheoCVL11.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "2f81d882c44b7f7eee85207f55e6e67a1ae794471e4c5f8c436aba6165356e36"
+  },
+  {
+   "path": "../archive/skript-2022/TheoCVL12.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "85d1fa7fa9b459dd2367cbc73898456949e43ac8004afbf205f696846abeb80a"
+  },
+  {
+   "path": "../archive/skript-2022/TheoCVL13.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "2e2259705ad4536856294bd0a8ed4931e486fc94d07f8ca0dfd31c1f91cfecbb"
+  },
+  {
+   "path": "../archive/skript-2022/TheoCVL14.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "b01af67f0c4ac9976fb9df2b9069b801777269d2994c3bfd93a92af9ad336587"
+  },
+  {
+   "path": "../archive/skript-2022/TheoCVL15.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "4ed35be19f20adeb739216cccfab1114b56af3104cdacc0a43a94c9065868521"
+  },
+  {
+   "path": "../archive/skript-2022/TheoCVL18.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "1e8d7a372c622faf7f64d5ba931351d1514da46c8358661e1c2c0ef6ca2bc459"
+  },
+  {
+   "path": "../archive/skript-2022/TheoCVL19.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "06a5fe3f57a64b069b17eee449c5bb9e4a9704ced9fe48262216771dc772a2a5"
+  },
+  {
+   "path": "../archive/skript-2022/TheoCVL2.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "27def24ca4260f1495ac70c5199393a8387aa88f1a58b0fa9557b1c52cd93873"
+  },
+  {
+   "path": "../archive/skript-2022/TheoCVL20.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "0a462d5cb4bd838ad0f0661732d354307149a0235f02179db39378b8b35c20f5"
+  },
+  {
+   "path": "../archive/skript-2022/TheoCVL21.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "497baed5a44e4a85ac74b0389fbd99ed00c41a5fee3830f6e9abf22dfcbda424"
+  },
+  {
+   "path": "../archive/skript-2022/TheoCVL22.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "ce21306e87dfa7e8a80ddc272d98f300e44da33c615b7346d53e7faa1404c298"
+  },
+  {
+   "path": "../archive/skript-2022/TheoCVL3.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "7f58f6801c166231bd47d8c58ae9d9056c0da78eadbed5a620b5dae5e4f7d839"
+  },
+  {
+   "path": "../archive/skript-2022/TheoCVL4.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "8640d1d10efa555e9938fb4114d744abaf1eef959d55f27743dc4dcd91dd2bba"
+  },
+  {
+   "path": "../archive/skript-2022/TheoCVL5.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "2e18b32369bab192d5ed3b4ce066d1e03e42f9606b8182db5ab5a1a33a093677"
+  },
+  {
+   "path": "../archive/skript-2022/TheoCVL6.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "e95bfb79f21ee22fcbb73f26e397fbcde45ba4ea893d0e117e5033fc9b884f11"
+  },
+  {
+   "path": "../archive/skript-2022/TheoCVL7.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "b9a4e0c68e864b3f894cc93794f4450b3cf7bab93dec6efc379dc79ed9fbd3d8"
+  },
+  {
+   "path": "../archive/skript-2022/TheoCVL8.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "2f0724c4af4208466a18331eedf0a61ba25a6a47e11b9a3c1ded9aa21996065a"
+  },
+  {
+   "path": "../archive/skript-2022/TheoCVL9.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "556c2673f78383064df3edca0f34872d5335e916189696efd04e7b5c5afec172"
+  },
+  {
+   "path": "../archive/skript-2022/TheoretischePhysikC.pdf",
+   "role": "binary",
+   "media_type": "application/pdf",
+   "sha256": "0f60c2f5c51a9b63a4da2245aeb898954c5b5457c2c018ecd902ddabc46c4d81"
+  },
+  {
+   "path": "../archive/skript-2022/TheoretischePhysikC.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "680cf068d6711d8a93aeedbb1bac60e279a268e0bedd18aa9c744ba6a0b7fe5e"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen1.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "169b2f6f9c71ecb3882c13889634f42a2d8ddee3d12d7189e64fb4d6ed983371"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen10.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "062f1044d519044992efe213b3b02b658a272387507df8a081444204e726f84d"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen11.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "fcb586ef8b741941b6327e60740a22a69d1cc035952ba8057cdf4154e449c3a4"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen12.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "282f2e6e09fa670dd0e9c39a3be88f5a7dd04f7cf52283ad5348b763705f5f01"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen13.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "0d6ed93cae7e6c5fff9f0dd92fde491cd440ace5f4fae97085af768fb42021ec"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen14.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "96ed64a4b408339c4bd9e192ad9ee48498a541e23d8b62beacac6c6e7a88113a"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen15.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "9c9ec894b5875c5f3cc85a58ff1dbc35572bbbff8c21a2e7c954973695854b8f"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen16.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "3a3b7b44d8da46d39b98420b3cf03c979a8c7ad2dc540f0ccfb56bbe0834f735"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen17.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "656ce2a908daa04a85fc85930968a3506266d7253addf7550e1b3936afe3628b"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen18.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "4919b3cd492ba0d493b5e37b8be46a09d7dc8d4ebc0cde08907bdcb178e4c1ab"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen19.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "3d35947ebbb0ba1f37eec61010be7f40d8cda03942fc5966d48945f7b7a94c96"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen2.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "c261c7baba74b0ee6367f2d9caa0855be066e2347ea24575afd6e82a400888d3"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen20.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "0c7765d69806d1283bfbed4cc527a12c8254977f043dea4d46738a1c54cd0bf8"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen21.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "3739b67cecc6c7bc315403e4a918598dda20d26b0552423d954bfc3f49e85492"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen22.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "d9a3d0619f7c26d7335749a1a60bdbd59847bc54888a3a42c4c578a96e6cbc0b"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen23.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "a903804a770affbdfef8e6244b7adf557a50ab142d8c418dd51e34597c543adf"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen24.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "6ac5fd347a3582eacc3e9d8cb388caeea9402dbab9f0d252984040e9490bc94b"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen25.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "6899a49304aa20135ddb5378d9f44acb05feee62e60d6ffed5563f8bcc6d851d"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen26.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "5f906484672102cff56d6af82d3f0013acc84daf5cf2acfd86c1f59daf657e8a"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen3.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "389a16293491295d301d6749de11bedbb17c8c712e1f66ca9da9dd4684b45533"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen4.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "d81d48818d677ba6f61eb876c8f0461440dd7aa3baf4aa3f5bb7c04ef62cacb7"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen5.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "5ec9c7e139f4d6e18391a20736c39ef62da05096faa89d64ba1db80e14271fc2"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen6.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "50e2f27b5292782c0ecca3f6730b86f58ed440c0b7b651cc65b565a2adf501d3"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen7.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "e279215ff001456ba8b51e2ba1473ed359fcd2bb4baaa8c7cc7e1750203a775a"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen8.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "aa55a736e41b21d8e45a8d498d02853ab093bd017d663b878e350bcbb168b1a4"
+  },
+  {
+   "path": "../archive/skript-2022/Vorlesungen9.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "1be8c98623b8529aa48f6a545be19762405911135f6d6a66e7beda98ba4d2a47"
+  }
+ ],
+ "authority_for": "what was written and taught in 2022",
+ "limitations": "contains the same defects as v0.2 (inherited); registered as far as it is tracked (54 files, including the compiled TheoretischePhysikC.pdf)",
+ "rights_ref": "rights.json",
+ "supersedes": null,
+ "errata": [
+  "evidence/migrations/M-0001.json",
+  "evidence/migrations/M-0002.json",
+  "evidence/migrations/M-0003.json",
+  "evidence/migrations/M-0004.json",
+  "evidence/migrations/M-0005.json"
+ ],
+ "registry_aliases": [],
+ "notes": "An immutable snapshot: when a migration is applied to these files the manifest goes stale on purpose; register the changed files under a new key."
+}

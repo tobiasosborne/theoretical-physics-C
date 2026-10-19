@@ -1,0 +1,56 @@
+{
+ "schema_version": 1,
+ "provenance": [
+  {
+   "id": "P-0001",
+   "claim_ids": [
+    "c98.cl.1"
+   ],
+   "source_key": "fake-notes",
+   "member": "fake-notes/notes.txt",
+   "member_sha256": "f4329d38915fd20311c1e992616178a2a00f470c46c037ff7b80f22095fac6e3",
+   "locus": {
+    "line_start": 5,
+    "line_end": 5
+   },
+   "quote": "For every heap of pebbles the count n satisfies n >= 0.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0002",
+   "claim_ids": [
+    "c98.cl.2"
+   ],
+   "source_key": "fake-scan",
+   "member": "fake-scan/scan.txt",
+   "member_sha256": "8271f3dec99f786da7c094c8c11cc33b693c870b3918c046a35ca2fdda7f75eb",
+   "locus": {
+    "line_start": 1,
+    "line_end": 1
+   },
+   "quote": "the count n satisfies n >= 0",
+   "read_from": "text",
+   "reviewer": "fixture reviewer",
+   "review_receipt": "R-0001"
+  },
+  {
+   "id": "P-0003",
+   "claim_ids": [
+    "c98.cl.5"
+   ],
+   "source_key": "fake-brief",
+   "member": "fake-brief/brief.md",
+   "member_sha256": "dc7ff80971f44c23e9c88273a6c5fae3596db9257e9146e4a2dc8ae7ba03e766",
+   "locus": {
+    "line_start": 3,
+    "line_end": 3
+   },
+   "quote": "S1. In this chapter a heap is drawn as a circle.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  }
+ ]
+}

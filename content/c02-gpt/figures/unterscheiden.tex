@@ -1,0 +1,76 @@
+% c02.fig.unterscheiden — one level of the game in each theory: the two states, the
+% level lines of an optimal extreme effect f, and the optimal success probability.
+% Data: evidence/derivations/c02/golden.json, levels B2, S2, Q1 (all with priors 1/2, 1/2).
+%
+% (a) B2, classical bit along p_1 (s_0 at 0, s_1 at 1): x_1 = (3/4,1/4) at p_1 = 1/4,
+%     x_2 = (1/4,3/4) at p_1 = 3/4.  Optimal effect (q_0,q_1) = (1,0): the graph falls
+%     from 1 at s_0 to 0 at s_1; f(x_1) = 3/4, f(x_2) = 1/4;
+%     P = (3/4 + 1 - 1/4)/2 = 3/4.
+% (b) S2, square bit: x_1 = (1,1), x_2 = (-1,-1).  Optimal effect f_x^+ = (1 + r_x)/2:
+%     level lines r_x = const, f = 1 on the right edge, f = 0 on the left edge.  P = 1.
+% (c) Q1, qubit: section r_z = 0 of the qubit state ball (the unit disc in the r_x-r_y plane).
+%     x_1 = (1,0,0), x_2 = (0,1,0).  Optimal effect f = (1 + n.r)/2 with
+%     n = (1,-1,0)/sqrt(2).  Level lines are perpendicular to n; f = 1 touches the circle
+%     at n = (0.7071,-0.7071), f = 0 at -n; f = 1/2 is the line r_y = r_x.
+%     f(x_1) = (2+sqrt 2)/4, f(x_2) = (2-sqrt 2)/4, P = (2+sqrt 2)/4.
+%     The lines through x_1 and x_2 are n.r = +-0.7071.
+% Greyscale: states filled discs, labelled; effect level lines dashed.
+\begin{tikzpicture}[x=1cm, y=1cm]
+  % ---------- (a) ----------
+  \begin{scope}[shift={(0,-1.2)}, x=2.3cm, y=2.2cm]
+    \draw[tpc grid] (0,1) -- (1,1);
+    \draw[tpc axis] (0,0) -- (1,0);
+    \draw[tpc axis] (0,0) -- (0,1.1);
+    \draw[tpc axis] (1,0) -- (1,1.1);
+    \node[tpc label, left=2pt] at (0,0) {$0$};
+    \node[tpc label, left=2pt] at (0,1) {$1$};
+    \node[tpc label, below=3pt] at (0,0) {$s_0$};
+    \node[tpc label, below=3pt] at (1,0) {$s_1$};
+    \draw[tpc effect] (0,1) -- (1,0);
+    \draw[tpc leader] (0.25,0) -- (0.25,0.75);
+    \draw[tpc leader] (0.75,0) -- (0.75,0.25);
+    \fill[tpc-plate-ink] (0.25,0.75) circle (1.3pt);
+    \fill[tpc-plate-ink] (0.75,0.25) circle (1.3pt);
+    \fill[tpc-state] (0.25,0) circle (2pt);
+    \fill[tpc-state] (0.75,0) circle (2pt);
+    \node[tpc label, below=3pt] at (0.25,0) {$x_1$};
+    \node[tpc label, below=3pt] at (0.75,0) {$x_2$};
+    \node[tpc label, anchor=south west] at (0.27,0.75) {$\tfrac34$};
+    \node[tpc label, anchor=south west] at (0.77,0.25) {$\tfrac14$};
+    \node[tpc label, align=center] at (0.5,-0.72)
+      {(a) B2\\[1pt]$P = \tfrac34$};
+  \end{scope}
+  % ---------- (b) ----------
+  \begin{scope}[shift={(4.75,0)}, x=1.15cm, y=1.15cm]
+    \draw[tpc axis, fill=tpc-grey-1] (-1,-1) rectangle (1,1);
+    \foreach \c in {-1,-0.5,0,0.5,1} \draw[tpc effect] (\c,-1) -- (\c,1);
+    \fill[tpc-state] (1,1) circle (2pt);
+    \fill[tpc-state] (-1,-1) circle (2pt);
+    \node[tpc label, anchor=south west] at (1,1) {$x_1$};
+    \node[tpc label, anchor=north east] at (-1,-1) {$x_2$};
+    \node[tpc label, anchor=south] at (-1,1) {$f = 0$};
+    \node[tpc label, anchor=north] at (1,-1) {$f = 1$};
+    \node[tpc label, align=center] at (0,-2.42)
+      {(b) S2\\[1pt]$P = 1$};
+  \end{scope}
+  % ---------- (c) ----------
+  \begin{scope}[shift={(8.55,0)}, x=1.15cm, y=1.15cm]
+    \draw[tpc axis, fill=tpc-grey-1] (0,0) circle (1);
+    \begin{scope}
+      \clip (0,0) circle (1.32);
+      % lines n.r = c, n = (1,-1)/sqrt 2: points c*n + t*(1,1)/sqrt 2
+      \foreach \c in {-1,-0.7071,0,0.7071,1}
+        \draw[tpc effect] ({0.7071*\c - 1.5},{-0.7071*\c - 1.5}) -- ({0.7071*\c + 1.5},{-0.7071*\c + 1.5});
+    \end{scope}
+    \fill[tpc-state] (1,0) circle (2pt);
+    \fill[tpc-state] (0,1) circle (2pt);
+    \node[tpc label, anchor=west] at (1.04,0.04) {$x_1$};
+    \node[tpc label, anchor=south west] at (0.04,1.02) {$x_2$};
+    \draw[tpc leader, -{Stealth[length=4pt]}] (0,0) -- (0.5,-0.5);
+    \node[tpc label, anchor=east] at (0.24,-0.34) {$\boldsymbol{n}$};
+    \node[tpc label, anchor=north] at (0.9,-1.0) {$f = 1$};
+    \node[tpc label, anchor=south] at (-0.9,1.0) {$f = 0$};
+    \node[tpc label, align=center] at (0,-2.42)
+      {(c) Q1\\[1pt]$P = \tfrac{2+\sqrt{2}}{4}$};
+  \end{scope}
+\end{tikzpicture}

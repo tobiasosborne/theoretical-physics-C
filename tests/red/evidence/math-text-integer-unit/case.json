@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "An unsupported integer with a unit inside math text fails.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/math-text-integer-unit --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[number\\] c98-red/de\\.tex:\\d+: underived number '300 K'"
+}

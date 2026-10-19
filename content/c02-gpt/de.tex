@@ -1,0 +1,1364 @@
+% content/c02-gpt/de.tex — Kapitel 2: Allgemeine probabilistische Theorien (deutsche Leitfassung)
+%
+% Quelle der Definitionen und zitierten Sätze: Plávala, arXiv:2103.07469v2
+%   (Quellenschlüssel plavala-2103.07469v2; Dateien basic_v3.tex, what_v4.tex, CT_v3.tex,
+%   QT_v3.tex, boxworld_v3.tex, channels_v3.tex, cones_v3.tex).
+% Mathematik: evidence/derivations/c02/DERIVATION.md, geprüft in REVIEW.md daneben.
+% Rahmung: docs/plan/BRIEF.md, Abschnitt „The physics approach“, Punkte 0 bis 3
+%   (author-stipulated; nur zitiert und angeordnet, nicht erweitert).
+%
+% Schreibweise (Registry, TR-PLA-02 und TR-PLA-04): Zustände x, y; Effekte f, g, h.
+% DERIVATION.md und IDEAS.md schreiben für dieselben Größen omega_i, e, pi_i; hier
+% stehen x_i, f, lambda_i.  Die Koordinaten (b, a) eines Effekts sind die der Herleitung.
+
+\chapter{Allgemeine probabilistische Theorien}\label{c02}
+
+Dieses Kapitel legt den Rahmen fest, in dem der ganze Kurs arbeitet. Eine Theorie besteht
+darin aus zwei Mengen: den Zuständen, in die sich ein System versetzen lässt, und den
+Ja-Nein-Fragen, die man ihm danach stellen kann. Zu jedem Paar aus Zustand und Frage gehört
+eine Wahrscheinlichkeit für die Antwort Ja. Drei Theorien rechnen wir vollständig durch: das
+klassische Bit, das Quadrat-Bit und das Qubit. Am Ende steht eine Aufgabe, an der man die
+drei auseinanderhalten kann: zwei Präparationen mit einer einzigen Messung unterscheiden.
+
+Die Mathematik folgt der Einführung in allgemeine probabilistische Theorien von Plávala
+\srcref{plavala-2103.07469v2}{„What are GPTs?“ und „State spaces and effect algebras“}.
+Wie dort sind alle Zustandsräume dieses Kapitels endlichdimensional. Das ist eine Annahme
+und keine Folgerung; sie steht als Bedingung (S5) in \defref{D3}.
+
+\section{Was eine Theorie liefert}\label{c02.s1}
+
+Der Kurs folgt einer Rahmung, die sein Autor festgelegt hat. Sie wird in diesem Kapitel
+nicht begründet, sondern benutzt. Ihre ersten Sätze lauten:
+% GAP-TJO: Die deutsche Fassung der drei folgenden Sätze ist eine Übersetzung aus
+% docs/plan/BRIEF.md:44-46 und nicht von TJO geschrieben; der englische Wortlaut steht
+% wörtlich in der englischen Ausgabe und in evidence/claims.json.
+\begin{equation}\label{c02.eq.rahmen-liefert}\claim{c02.cl.rahmen-liefert}{author-stipulated}
+  \begin{aligned}
+    &\text{\tpcifenglish{A physical theory supplies data for}{Eine physikalische Theorie liefert Daten für}} \\
+    &\text{\tpcifenglish{preparations + dynamics + measurement.}{Präparationen + Dynamik + Messung.}}
+  \end{aligned}
+\end{equation}
+\begin{equation}\label{c02.eq.rahmen-probabilistisch}\claim{c02.cl.rahmen-probabilistisch}{author-stipulated}
+  \begin{aligned}
+    &\text{\tpcifenglish{All physical theories are probabilistic theories}{Alle physikalischen Theorien sind probabilistische Theorien}} \\
+    &\text{\tpcifenglish{(I think of deterministic as a subset of probabilistic).}{(deterministische fasse ich als Teilmenge der probabilistischen auf).}}
+  \end{aligned}
+\end{equation}
+\begin{equation}\label{c02.eq.rahmen-sprache}\claim{c02.cl.rahmen-sprache}{author-stipulated}
+  \begin{aligned}
+    &\text{\tpcifenglish{We use the language of preparations (= states)}{Wir benutzen die Sprache der Präparationen (= Zustände)}} \\
+    &\text{\tpcifenglish{instead of “probability measures”.}{statt der „Wahrscheinlichkeitsmaße“.}}
+  \end{aligned}
+\end{equation}
+Von den drei Zutaten in \eqref{c02.eq.rahmen-liefert} behandelt dieses Kapitel zwei: die
+Präparationen und die Messungen. Die Dynamik kommt später im Kurs.
+
+Was eine Präparation ist, legt \defref{D1} in Kapitel~\ref{c00} fest: eine Liste von
+Anweisungen, nach der man ein System für ein Experiment herrichtet. Danach stellt man dem
+System eine Ja-Nein-Frage. Die Theorie ordnet jedem Paar aus Präparation und Ja-Nein-Frage
+eine Zahl zwischen $0$ und $1$ zu, die Wahrscheinlichkeit der Antwort Ja
+\srcref{plavala-2103.07469v2}{„Effect algebra“}.
+Abbildung~\ref{c02.fig.schema} zeigt einen Durchlauf eines solchen Experiments.
+
+\begin{tpcfigure}{c02.fig.schema}
+  \caption{Ein Durchlauf eines Experiments. Die Präparation versetzt das System in einen
+    Zustand $x$; danach wird eine Ja-Nein-Frage gestellt. Die Theorie sagt die
+    Wahrscheinlichkeit $f(x)$ der Antwort Ja voraus. Im ganzen Kapitel sind Zustände
+    durchgezogen und als gefüllte Punkte gezeichnet, Effekte gestrichelt und als Quadrate.}
+\end{tpcfigure}
+
+Zwei Präparationen, die auf alle Ja-Nein-Fragen dieselben Wahrscheinlichkeiten liefern,
+gelten nach \defref{D1} als derselbe Zustand. Ein Zustand ist also das, was an einer
+Präparation für die Vorhersagen zählt.
+
+\section{Zustandsräume}\label{c02.s2}
+
+Die Menge aller Zustände eines Systems heißt sein Zustandsraum.
+
+\tpcdef{D3}
+
+In den Beispielen dieses Kapitels ist $\StSp$ eine Teilmenge von $\mathbb{R}^d$ mit
+$d = 1$, $2$ oder $3$. Abgeschlossen und beschränkt bedeutet dann: $\StSp$ enthält seinen
+Rand und reicht nicht ins Unendliche.
+
+Warum konvex? Sind $x$ und $y$ Zustände und ist $\lambda$ eine Zahl zwischen $0$ und $1$,
+so kann man würfeln: Mit Wahrscheinlichkeit $\lambda$ wird $x$ präpariert, mit
+Wahrscheinlichkeit $1-\lambda$ wird $y$ präpariert. Auch das ist eine Präparation. Ihr
+Zustand wird durch den Punkt $\lambda x + (1-\lambda) y$ beschrieben
+\srcref{plavala-2103.07469v2}{„What are GPTs?“}.
+Geometrisch liegt dieser Punkt auf der Strecke zwischen $x$ und $y$, und zwar umso näher bei
+$x$, je größer $\lambda$ ist. Konvex heißt: Mit je zwei Punkten enthält $\StSp$ ihre ganze
+Verbindungsstrecke.
+
+\tpcdef{D4}
+
+\begin{tpcfigure}{c02.fig.zustandsraeume}
+  \demo{c02.demo.explorer}
+  \caption{Die drei Zustandsräume dieses Kapitels: (a) eine Strecke, (b) ein Quadrat,
+    (c) eine Kugel, hier mit ihrem Äquator gezeichnet. In jedem ist die Mischung
+    $z = \tfrac14 x + \tfrac34 y$ zweier Zustände $x$ und $y$ eingetragen (offener Kreis);
+    sie liegt auf der Verbindungsstrecke, dreimal so nah bei $y$ wie bei $x$. Die reinen
+    Zustände sind in (a) die beiden Endpunkte $s_0$, $s_1$, in (b) die vier Ecken
+    $s_{00}$, $s_{10}$, $s_{01}$, $s_{11}$ und in (c) alle Punkte der Kugeloberfläche.
+    Das wird in Abschnitt~\ref{c02.s4} nachgerechnet.}
+\end{tpcfigure}
+
+Reine Zustände sind die Ecken des Zustandsraums im weitesten Sinn: Punkte, die auf keiner
+Verbindungsstrecke zweier anderer Zustände im Inneren liegen. Alle übrigen Zustände lassen
+sich aus ihnen mischen:
+
+\begin{theorem}[Jeder Zustand ist eine Mischung reiner Zustände]\label{c02.thm.zerlegung}\claim[proof-omitted]{c02.cl.zerlegung}{source-backed}
+  Sei $\StSp \subset V$ ein Zustandsraum in einem reellen Vektorraum $V$ der Dimension $d$.
+  Dann lässt sich jeder Zustand $x \in \StSp$ als Konvexkombination von höchstens $d+1$
+  reinen Zuständen schreiben: Es gibt reine Zustände $y_1, \dots, y_k$ mit $k \leq d+1$
+  und Zahlen $\lambda_1, \dots, \lambda_k \geq 0$ mit $\lambda_1 + \dots + \lambda_k = 1$
+  und
+  \begin{equation}\label{c02.eq.zerlegung}
+    x = \lambda_1 y_1 + \dots + \lambda_k y_k .
+  \end{equation}
+\end{theorem}
+
+Das sind zwei Sätze der konvexen Geometrie. Plávala übernimmt sie ohne Beweis
+\srcref{plavala-2103.07469v2}{„State space“}.
+Im Quadrat kommt man demnach stets mit höchstens drei Ecken aus, in der Kugel mit höchstens
+vier Punkten der Oberfläche. Eindeutig ist die Zerlegung im Allgemeinen nicht; das Quadrat
+wird in Gleichung~\eqref{c02.eq.quadrat-mitte} das erste Gegenbeispiel liefern.
+
+\section{Effekte}\label{c02.s3}
+
+Eine Ja-Nein-Frage ordnet jedem Zustand $x$ eine Zahl $f(x)$ zu, die Wahrscheinlichkeit der
+Antwort Ja. Für die Theorie ist sie also eine Funktion $f$ von $\StSp$ nach $[0,1]$. Nicht jede
+solche Funktion kommt in Frage.
+
+Um das zu sehen, betrachten wir die gewürfelte Präparation von eben auf zwei Arten. In
+jedem Durchlauf entscheidet der Würfel, was präpariert wird: Mit Wahrscheinlichkeit
+$\lambda$ zeigt er die Marke „$x$“, und es wird $x$ präpariert; mit Wahrscheinlichkeit
+$1-\lambda$ zeigt er die Marke „$y$“, und es wird $y$ präpariert.
+
+Erste Rechnung. Ein Durchlauf trägt mit Wahrscheinlichkeit $\lambda$ die Marke „$x$“ und
+liefert dann mit Wahrscheinlichkeit $f(x)$ ein Ja. Mit Wahrscheinlichkeit $1-\lambda$ trägt
+er die Marke „$y$“ und liefert dann mit Wahrscheinlichkeit $f(y)$ ein Ja. Zusammen ist die Wahrscheinlichkeit für Ja gleich
+$\lambda f(x) + (1-\lambda) f(y)$.
+
+Zweite Rechnung. Präpariert wurde der Zustand $\lambda x + (1-\lambda) y$. Die
+Wahrscheinlichkeit für Ja ist $f(\lambda x + (1-\lambda) y)$.
+
+Beide Rechnungen beschreiben dasselbe Experiment. Also muss für alle $x, y \in \StSp$ und
+alle $\lambda \in [0,1]$ gelten:
+\begin{equation}\label{c02.eq.affin}\claim{c02.cl.affin}{source-quoted}
+  f(\lambda x + (1-\lambda) y) = \lambda f(x) + (1-\lambda) f(y) .
+\end{equation}
+Eine Funktion mit dieser Eigenschaft heißt \emph{affin}
+\srcref{plavala-2103.07469v2}{„Effect algebra“}.
+
+\begin{tpcfigure}{c02.fig.affin}
+  \caption{Die Zustände mischen oder die Wahrscheinlichkeiten mischen. Waagerecht ist die Strecke zwischen zwei Zuständen aufgetragen, senkrecht die Wahrscheinlichkeit für Ja. (a) Eine affine Funktion: Ihr Graph ist eine Gerade. In der Mischung $z = \tfrac14 x + \tfrac34 y$ hat sie den Wert $\tfrac14\cdot\tfrac14 + \tfrac34\cdot\tfrac34 = \tfrac58$, dieselbe Mischung der beiden Randwerte. (b) Die Funktion $r \mapsto r^2$ auf $[-1,1]$: Das Mittel der Randwerte ist $1$, der Wert in der Mitte ist $0$. Eine solche Funktion kann keine Ja-Nein-Frage beschreiben.}
+\end{tpcfigure}
+
+\begin{greybox}[Zwei Annahmen hinter Gleichung~\eqref{c02.eq.affin}]
+  Die Herleitung benutzt zwei Annahmen, die Plávala ausdrücklich nennt.
+  \begin{enumerate}
+    \item Mischungen lassen sich herstellen, indem man das Experiment oft wiederholt und
+      einmal $x$, einmal $y$ präpariert.
+    \item Es kommt dasselbe heraus, ob man die Zustände mischt oder die
+      Wahrscheinlichkeiten. Anders gesagt: Die Wahrscheinlichkeit einer Antwort hängt nur
+      vom Zustand ab und nicht davon, auf welchem Weg er hergestellt wurde.
+  \end{enumerate}
+  Aus der Konvexität von $\StSp$ allein folgt Gleichung~\eqref{c02.eq.affin} nicht. Auf
+  der Strecke $[-1,1]$ etwa hat die Funktion $r \mapsto r^2$ Werte in $[0,1]$, aber in der
+  Mitte zwischen $-1$ und $1$ den Wert $0$ und nicht den Mittelwert $1$ der beiden
+  Randwerte.
+\end{greybox}
+
+\tpcdef{D2}
+
+In Koordinaten sind affine Funktionen leicht zu erkennen\zoomref{c02.v1}.
+
+\begin{lemma}[Affine Funktionen in Koordinaten]\label{c02.lem.koordinaten}\claim[proof-linked]{c02.cl.koordinaten}{derived}
+  Sei $\StSp \subset \mathbb{R}^d$ ein Zustandsraum, der in keiner Geraden ($d = 2$), keiner
+  Ebene ($d = 3$) und allgemein in keinem affinen Teilraum kleinerer Dimension enthalten
+  ist; für $d = 1$ heißt das, dass $\StSp$ mehr als einen Punkt hat. Eine Funktion
+  $f\colon \StSp \to \mathbb{R}$ erfüllt Gleichung~\eqref{c02.eq.affin} genau dann, wenn es
+  eine Zahl $b$ und einen Vektor $\vb{a} \in \mathbb{R}^d$ gibt mit
+  \begin{equation}\label{c02.eq.koordinaten}
+    f(\vb{r}) = b + \vb{a}\cdot\vb{r}
+    \qquad \text{\tpcifenglish{for all}{für alle}}\ \vb{r} \in \StSp .
+  \end{equation}
+  Die Zahl $b$ und der Vektor $\vb{a}$ sind durch $f$ eindeutig bestimmt.
+\end{lemma}
+
+\begin{vertiefung}[id=c02.v1,
+    titel={Warum affine Funktionen diese Form haben},
+    wozu={Der Kern benutzt Lemma~\ref{c02.lem.koordinaten} ohne Beweis. Hier steht er,
+      zusammen mit der Regel für Mischungen aus mehr als zwei Zuständen.},
+    voraussetzung={Kern bis Lemma~\ref{c02.lem.koordinaten}; lineare Gleichungssysteme.
+      Der Rest des Kerns braucht diesen Block nicht.},
+    zurueck={Auf einem Zustandsraum im $\mathbb{R}^d$ ist ein Effekt durch $d+1$ Zahlen
+      festgelegt: $b$ und die Komponenten von $\vb{a}$.}]
+  Gleichung~\eqref{c02.eq.affin} spricht von zwei Zuständen. Für $k$ Zustände
+  $x_1, \dots, x_k$ und Gewichte $\lambda_i \geq 0$ mit $\lambda_1 + \dots + \lambda_k = 1$
+  folgt daraus
+  \begin{equation}\label{c02.eq.mehrfach}\claim{c02.cl.mehrfach}{derived}
+    f(\lambda_1 x_1 + \dots + \lambda_k x_k) = \lambda_1 f(x_1) + \dots + \lambda_k f(x_k) .
+  \end{equation}
+  Das zeigt man schrittweise. Für $k = 2$ ist es Gleichung~\eqref{c02.eq.affin}. Ist
+  $\lambda_k < 1$, so ist
+  $\lambda_1 x_1 + \dots + \lambda_k x_k = (1-\lambda_k)\, y + \lambda_k x_k$ mit dem Zustand
+  $y = \bigl(\lambda_1 x_1 + \dots + \lambda_{k-1} x_{k-1}\bigr)/(1-\lambda_k)$, der eine
+  Konvexkombination von $k-1$ Zuständen ist. Gleichung~\eqref{c02.eq.affin} führt die
+  Behauptung für $k$ auf die für $k-1$ zurück. Für $\lambda_k = 1$ ist nichts zu zeigen.
+
+  \begin{proof}[Beweis von Lemma~\ref{c02.lem.koordinaten}]
+    Jede Funktion der Form \eqref{c02.eq.koordinaten} ist affin, denn
+    \begin{equation*}
+      b + \vb{a}\cdot(\lambda\vb{r} + (1-\lambda)\vb{s})
+      = \lambda(b + \vb{a}\cdot\vb{r}) + (1-\lambda)(b + \vb{a}\cdot\vb{s}) .
+    \end{equation*}
+
+    Sei umgekehrt $f$ affin. Nach Voraussetzung enthält $\StSp$ Punkte
+    $\vb{v}_0, \dots, \vb{v}_d$, die in keinem affinen Teilraum kleinerer Dimension liegen.
+    Dann hat das lineare Gleichungssystem $b + \vb{a}\cdot\vb{v}_i = f(\vb{v}_i)$,
+    $i = 0, \dots, d$, für die $d+1$ Unbekannten $b$ und $\vb{a}$ genau eine Lösung. Wir
+    setzen $g(\vb{r}) = b + \vb{a}\cdot\vb{r}$ und zeigen $f = g$ auf ganz $\StSp$.
+
+    Jeder Punkt $\vb{r} \in \mathbb{R}^d$ lässt sich auf genau eine Weise als
+    $\vb{r} = \alpha_0 \vb{v}_0 + \dots + \alpha_d \vb{v}_d$ mit
+    $\alpha_0 + \dots + \alpha_d = 1$ schreiben; die $\alpha_i$ dürfen negativ sein. Wir
+    bringen die Glieder mit negativem $\alpha_i$ auf die linke Seite. Sei $N$ die Menge
+    dieser Indizes und $S = 1 + \sum_{i \in N} \abs{\alpha_i}$; die übrigen $\alpha_i$
+    summieren sich dann ebenfalls zu $S$. Division durch $S$ ergibt
+    \begin{equation*}
+      \frac{1}{S}\,\vb{r} + \sum_{i \in N} \frac{\abs{\alpha_i}}{S}\,\vb{v}_i
+      = \sum_{i \notin N} \frac{\alpha_i}{S}\,\vb{v}_i .
+    \end{equation*}
+    Für $\vb{r} \in \StSp$ stehen auf beiden Seiten Konvexkombinationen von Zuständen.
+    Sowohl $f$ als auch $g$ erfüllen Gleichung~\eqref{c02.eq.mehrfach}, und sie stimmen in
+    allen $\vb{v}_i$ überein. Wendet man beide auf diese Gleichung an und zieht die
+    Ergebnisse voneinander ab, so bleibt $\bigl(f(\vb{r}) - g(\vb{r})\bigr)/S = 0$.
+  \end{proof}
+\end{vertiefung}
+
+Nach Gleichung~\eqref{c02.eq.koordinaten} ist $f(\vb{r}) = b + \vb{a}\cdot\vb{r}$. Ist
+$\vb{a} \neq 0$, also $f$ nicht konstant, so bilden die Punkte des $\mathbb{R}^d$, in denen
+$b + \vb{a}\cdot\vb{r}$ denselben Wert hat, parallele Geraden ($d = 2$) oder parallele
+Ebenen ($d = 3$), senkrecht zu $\vb{a}$; die Niveaumengen von $f$ sind ihre Schnitte mit
+$\StSp$. Ist $\vb{a} = 0$, so ist $f$ konstant, und ganz $\StSp$ ist eine einzige
+Niveaumenge. Ein Effekt ist eine affine Funktion, deren Werte auf ganz
+$\StSp$ zwischen $0$ und $1$ bleiben (Abbildung~\ref{c02.fig.niveaulinien}). Affin ist nicht
+dasselbe wie linear: Der konstante Anteil $b$ gehört dazu.
+
+\begin{tpcfigure}{c02.fig.niveaulinien}
+  \caption{Ein Effekt ist eine affine Funktion mit Werten in $[0,1]$. (a) Auf der Strecke
+    ist sein Graph eine Gerade; sie ist durch die Werte $q_0$ und $q_1$ in den Endpunkten
+    festgelegt, hier $\tfrac34$ und $\tfrac14$. Im Zustand $x$, der ein Viertel des Weges
+    von $s_0$ nach $s_1$ liegt, liest man $f(x) = \tfrac58$ ab. (b) Auf dem Quadrat sind
+    die Niveaulinien des Effekts $f(\vb{r}) = \tfrac12 + \tfrac14 r_x + \tfrac14 r_y$
+    parallele Geraden senkrecht zu $\vb{a} = (\tfrac14, \tfrac14)$. Der Wert $0$ wird nur
+    in der Ecke links unten angenommen, der Wert $1$ nur in der Ecke rechts oben; im
+    Zustand $x = (\tfrac12, 0)$ ist $f(x) = \tfrac58$.}
+\end{tpcfigure}
+
+\tpcdef{D58}
+
+Für jeden Effekt $f$ ist auch $\UnitEff{\StSp} - f$ ein Effekt, denn diese Funktion ist
+affin und hat Werte in $[0,1]$:
+\begin{equation}\label{c02.eq.komplement}\claim{c02.cl.komplement}{source-backed}
+  \UnitEff{\StSp} - f \in \EffAlg{\StSp},
+  \qquad f + (\UnitEff{\StSp} - f) = \UnitEff{\StSp} .
+\end{equation}
+Der Effekt $\UnitEff{\StSp} - f$ gehört zur Antwort Nein: Ist $f(x)$ die Wahrscheinlichkeit
+für Ja, so ist $1 - f(x)$ die für Nein. Eine Ja-Nein-Frage ist damit dasselbe wie eine
+Messung mit zwei Ergebnissen, beschrieben durch das Paar $f$, $\UnitEff{\StSp} - f$. Zwei
+Effekte gibt es in jeder Theorie: $\UnitEff{\StSp}$, die Frage mit der sicheren Antwort Ja,
+und die Nullfunktion $0$, die Frage mit der sicheren Antwort Nein.
+
+Auch Effekte lassen sich mischen. Man würfelt, welche von zwei Fragen gestellt wird: mit
+Wahrscheinlichkeit $\lambda$ die Frage $f$, sonst die Frage $g$. Die Wahrscheinlichkeit
+für Ja ist dann $\lambda f(x) + (1-\lambda) g(x)$, und
+\begin{equation}\label{c02.eq.effekt-mischung}\claim{c02.cl.effekt-mischung}{derived}
+  \lambda f + (1-\lambda) g \in \EffAlg{\StSp}
+  \qquad \text{\tpcifenglish{for all}{für alle}}\ f, g \in \EffAlg{\StSp},\ \lambda \in [0,1] ,
+\end{equation}
+denn diese Funktion ist wieder affin und hat Werte in $[0,1]$. Die Menge
+$\EffAlg{\StSp}$ ist also selbst konvex, und sie hat Ecken:
+
+\tpcdef{D74}
+
+\section{Drei Theorien}\label{c02.s4}
+
+\subsection{Das klassische Bit}\label{c02.s4.1}
+
+\tpcdef{D11}
+
+Das klassische Bit ist die klassische Theorie mit $n = 2$. Ein Zustand ist eine
+Wahrscheinlichkeitsverteilung auf zwei Möglichkeiten, wie in Kapitel~\ref{c01}:
+\begin{equation}\label{c02.eq.bit}\claim{c02.cl.bit-zustaende}{source-backed}
+  \begin{aligned}
+    \Simplex{2} &= \bigl\{ (\pw_0, \pw_1) \in \mathbb{R}^2 : \pw_0 \geq 0,\ \pw_1 \geq 0,\ \pw_0 + \pw_1 = 1 \bigr\}, \\
+    s_0 &= (1,0), \qquad s_1 = (0,1) .
+  \end{aligned}
+\end{equation}
+Das ist die Strecke zwischen $s_0$ und $s_1$ in Abbildung~\ref{c02.fig.zustandsraeume}(a);
+jeder Zustand ist $x = \pw_0 s_0 + \pw_1 s_1$, und zwar auf genau eine Weise. Die
+reinen Zustände sind die beiden Endpunkte $s_0$ und $s_1$
+\srcref{plavala-2103.07469v2}{„Example: classical theory“}.
+
+\begin{proposition}[Effekte des klassischen Bits]\label{c02.prop.bit}\claim[proof-included]{c02.cl.bit-effekte}{derived}
+  Jeder Effekt $f$ auf $\Simplex{2}$ ist durch seine Werte $q_0 = f(s_0)$ und
+  $q_1 = f(s_1)$ in den reinen Zuständen bestimmt:
+  \begin{equation}\label{c02.eq.bit-effekt}
+    f(\pw_0, \pw_1) = q_0\, \pw_0 + q_1\, \pw_1 .
+  \end{equation}
+  Umgekehrt ist das für jedes Paar $(q_0, q_1)$ mit $0 \leq q_0 \leq 1$ und
+  $0 \leq q_1 \leq 1$ ein Effekt. Die Menge der Effekte ist also das Einheitsquadrat
+  $\EffAlg{\Simplex{2}} = [0,1]^2$. Ihre Extremaleffekte sind die vier Ecken
+  $(0,0)$, $(1,0)$, $(0,1)$ und $(1,1)$.
+\end{proposition}
+
+\begin{tpcfigure}{c02.fig.effektmengen}
+  \caption{Die Effektmengen zweier Theorien. (a) Klassisches Bit: das Einheitsquadrat in
+    den Koordinaten $q_0 = f(s_0)$, $q_1 = f(s_1)$. Der Punkt $f$ ist der Effekt aus
+    Abbildung~\ref{c02.fig.niveaulinien}(a). (b) Quadrat-Bit, im Vorgriff auf
+    Proposition~\ref{c02.prop.quadrat}: eine Doppelpyramide; nach oben ist $b$ aufgetragen, waagerecht $a_x$ und
+    $a_y$. Die Extremaleffekte sind als Quadrate markiert, verdeckte Kanten gepunktet. Beim
+    Bit gibt es vier Extremaleffekte zu zwei reinen Zuständen, beim Quadrat-Bit sechs zu
+    vier reinen Zuständen.}
+\end{tpcfigure}
+
+\begin{proof}
+  Gleichung~\eqref{c02.eq.bit-effekt} ist Gleichung~\eqref{c02.eq.affin} für
+  $x = \pw_0 s_0 + \pw_1 s_1$. Umgekehrt ist die rechte Seite von
+  \eqref{c02.eq.bit-effekt} affin, und ihr Wert ist ein gewichtetes Mittel von $q_0$ und
+  $q_1$; er liegt genau dann für alle Zustände in $[0,1]$, wenn $q_0$ und $q_1$ dort
+  liegen.
+
+  Zu den Ecken: Liegt eine der beiden Zahlen, etwa $q_0$, echt zwischen $0$ und $1$, so
+  kann man sie um einen kleinen Betrag $\varepsilon$ vergrößern und verkleinern, ohne das
+  Quadrat zu verlassen; $(q_0, q_1)$ ist dann die Mitte zwischen
+  $(q_0 + \varepsilon, q_1)$ und $(q_0 - \varepsilon, q_1)$ und kein Extremaleffekt. Sind
+  dagegen $q_0$ und $q_1$ beide $0$ oder $1$ und ist $f = \lambda g + (1-\lambda) h$ mit
+  Effekten $g$, $h$ und $0 < \lambda < 1$, so müssen $g$ und $h$ in jeder der beiden
+  Koordinaten denselben Wert haben wie $f$: Ein Mittel zweier Zahlen aus $[0,1]$ ist nur
+  dann $0$, wenn beide $0$ sind, und nur dann $1$, wenn beide $1$ sind.
+\end{proof}
+
+Die vier Extremaleffekte haben eine einfache Bedeutung. $(1,0)$ fragt: „Liegt $s_0$ vor?“
+$(0,1)$ fragt: „Liegt $s_1$ vor?“ $(1,1)$ ist der Einseffekt und $(0,0)$ die Nullfunktion.
+In den reinen Zuständen sind ihre Antworten sicher: Die Wahrscheinlichkeiten sind $0$ oder
+$1$. Die übrigen Effekte sind Mischungen dieser vier, also Fragen, bei denen zusätzlich
+gewürfelt wird. Abbildung~\ref{c02.fig.effektmengen}(a) zeigt die Effektmenge.
+
+Zum Vergleich mit den beiden anderen Theorien legen wir den Nullpunkt in die Mitte der
+Strecke. Mit der Koordinate $r = \pw_0 - \pw_1 \in [-1,1]$ ist
+$\pw_0 = \tfrac12(1+r)$ und $\pw_1 = \tfrac12(1-r)$, und aus
+Gleichung~\eqref{c02.eq.bit-effekt} wird
+\begin{equation}\label{c02.eq.bit-zentriert}\claim{c02.cl.bit-zentriert}{derived}
+  \begin{aligned}
+    f(r) &= b + a\, r, \qquad b = \tfrac12(q_0 + q_1), \quad a = \tfrac12(q_0 - q_1), \\
+    \abs{a} &\leq \min(b,\, 1-b) .
+  \end{aligned}
+\end{equation}
+Die Ungleichung sagt dasselbe wie $0 \leq q_0 \leq 1$ und $0 \leq q_1 \leq 1$, denn
+$q_0 = b + a$ und $q_1 = b - a$ sind der größte und der kleinste Wert von $f$, wenn
+$a \geq 0$ ist, und umgekehrt, wenn $a < 0$ ist.
+
+\subsection{Das Quadrat-Bit}\label{c02.s4.2}
+
+Die zweite Theorie hat ein Quadrat als Zustandsraum. Plávala führt sie unter dem Namen
+„boxworld“ ein: Ein Zustand beschreibt dort einen Kasten mit einem Eingabebit und einem
+Ausgabebit, und die vier Ecken $s_{ij}$ sind die Kästen, die bei Eingabe $0$ die Ausgabe
+$i$ und bei Eingabe $1$ die Ausgabe $j$ liefern
+\srcref{plavala-2103.07469v2}{„Example: boxworld theory“}. In Koordinaten, deren
+Nullpunkt in der Mitte liegt, ist
+\begin{equation}\label{c02.eq.quadrat}\claim{c02.cl.quadrat-zustaende}{source-backed}
+  \begin{aligned}
+    \StSp_{\mathrm{Q}} &= [-1,1]^2 = \bigl\{ (r_x, r_y) : \abs{r_x} \leq 1,\ \abs{r_y} \leq 1 \bigr\}, \\
+    s_{ij} &= (2i-1,\ 2j-1), \qquad i, j \in \{0,1\} .
+  \end{aligned}
+\end{equation}
+Die reinen Zustände sind die vier Ecken (Abbildung~\ref{c02.fig.zustandsraeume}(b)). Anders
+als beim Bit ist die Zerlegung in reine Zustände nicht eindeutig. Die Mitte des Quadrats
+ist auf zwei Arten eine Mischung zweier Ecken:
+\begin{equation}\label{c02.eq.quadrat-mitte}\claim{c02.cl.quadrat-mitte}{source-backed}
+  \tfrac12\bigl(s_{00} + s_{11}\bigr) = \tfrac12\bigl(s_{10} + s_{01}\bigr) = (0,0) .
+\end{equation}
+In einem Simplex wäre das nicht möglich: Dort sind die Gewichte, mit denen ein Zustand aus
+den reinen Zuständen gemischt ist, eindeutig bestimmt. Nach \defref{D11} ist das Quadrat-Bit
+deshalb keine klassische Theorie.
+
+\begin{tpcfigure}{c02.fig.quadrat}
+  \caption{Das Quadrat-Bit. (a) Die Mitte des Quadrats liegt auf beiden Diagonalen; sie
+    ist die Mitte zwischen $s_{00}$ und $s_{11}$ und ebenso die Mitte zwischen $s_{10}$
+    und $s_{01}$, wie in Gleichung~\eqref{c02.eq.quadrat-mitte}. (b) Die Niveaulinien des
+    Extremaleffekts $f_x^{+}$ aus Proposition~\ref{c02.prop.quadrat}: Er hat auf der
+    rechten Kante den Wert $1$ und auf der linken den Wert $0$.}
+\end{tpcfigure}
+
+\begin{proposition}[Effekte des Quadrat-Bits]\label{c02.prop.quadrat}\claim[proof-included]{c02.cl.quadrat-effekte}{derived}
+  Die Funktion $f(\vb{r}) = b + a_x r_x + a_y r_y$ ist genau dann ein Effekt auf
+  $\StSp_{\mathrm{Q}}$, wenn
+  \begin{equation}\label{c02.eq.quadrat-effekt}
+    \abs{a_x} + \abs{a_y} \leq \min(b,\, 1-b) .
+  \end{equation}
+  Schreibt man einen Effekt als Punkt $(b, a_x, a_y)$, so ist
+  $\EffAlg{\StSp_{\mathrm{Q}}}$ eine Doppelpyramide mit sechs Ecken. Diese sechs Ecken sind
+  die Extremaleffekte:
+  \begin{equation}\label{c02.eq.quadrat-extremal}
+    \begin{aligned}
+      0 &= (0,0,0), & f_x^{\pm} &= \bigl(\tfrac12, \pm\tfrac12, 0\bigr), \\
+      \UnitEff{\StSp} &= (1,0,0), & f_y^{\pm} &= \bigl(\tfrac12, 0, \pm\tfrac12\bigr) .
+    \end{aligned}
+  \end{equation}
+\end{proposition}
+\begin{proof}
+  Den kleinsten Wert nimmt $f$ in der Ecke an, in der $r_x$ das entgegengesetzte
+  Vorzeichen von $a_x$ und $r_y$ das entgegengesetzte Vorzeichen von $a_y$ hat; er ist
+  $b - \abs{a_x} - \abs{a_y}$. Der größte Wert ist entsprechend
+  $b + \abs{a_x} + \abs{a_y}$. Beide liegen genau dann in $[0,1]$, wenn
+  \eqref{c02.eq.quadrat-effekt} gilt.
+
+  Jeder Effekt ist eine Mischung der sechs Punkte in \eqref{c02.eq.quadrat-extremal}. Mit
+  $q = \abs{a_x} + \abs{a_y}$ ist nämlich
+  \begin{equation*}
+    (b, a_x, a_y) = (b - q)\,\UnitEff{\StSp} + 2\abs{a_x}\, f_x^{\pm} + 2\abs{a_y}\, f_y^{\pm} + (1 - b - q)\cdot 0 ,
+  \end{equation*}
+  wobei bei $f_x^{\pm}$ das Vorzeichen von $a_x$ und bei $f_y^{\pm}$ das von $a_y$ zu nehmen
+  ist; ist $a_x = 0$ oder $a_y = 0$, so hat das betreffende Glied das Gewicht $0$ und
+  entfällt. Die vier Gewichte sind wegen \eqref{c02.eq.quadrat-effekt} nicht negativ, und ihre
+  Summe ist $1$. Ein Extremaleffekt muss daher einer der sechs Punkte sein.
+
+  Dass alle sechs extremal sind, sieht man an den Stellen, an denen sie die Werte $0$ und
+  $1$ annehmen. Sei $f_x^{+} = \lambda g + (1-\lambda) h$ mit Effekten $g$, $h$ und
+  $0 < \lambda < 1$. Der Effekt $f_x^{+}(\vb{r}) = \tfrac12(1 + r_x)$ hat in den Ecken
+  $(1,1)$ und $(1,-1)$ den Wert $1$ und in $(-1,1)$ den Wert $0$. Wie im Beweis von
+  Proposition~\ref{c02.prop.bit} müssen $g$ und $h$ dort dieselben Werte haben. Drei
+  Gleichungen $b + a_x + a_y = 1$, $b + a_x - a_y = 1$, $b - a_x + a_y = 0$ haben nur die
+  Lösung $(b, a_x, a_y) = (\tfrac12, \tfrac12, 0)$; also ist $g = h = f_x^{+}$. Für
+  $f_x^{-}$, $f_y^{+}$, $f_y^{-}$ geht es genauso. Die Nullfunktion ist extremal, weil ein
+  Mittel zweier Funktionen mit Werten in $[0,1]$ nur dann überall $0$ ist, wenn beide
+  überall $0$ sind; für $\UnitEff{\StSp}$ gilt dasselbe mit dem Wert $1$.
+\end{proof}
+
+Auch hier haben die Extremaleffekte eine einfache Bedeutung. Der Effekt
+$f_x^{+} = \tfrac12(1 + r_x)$ hat in der Ecke $s_{ij}$ den Wert $i$: Er fragt, ob der
+Kasten bei Eingabe $0$ die Ausgabe $1$ liefert. Entsprechend hat
+$f_y^{+} = \tfrac12(1 + r_y)$ in $s_{ij}$ den Wert $j$ und fragt nach der Ausgabe bei
+Eingabe $1$. $f_x^{-}$ und $f_y^{-}$ sind die Komplemente, $f_x^{-} = \UnitEff{\StSp} - f_x^{+}$
+und $f_y^{-} = \UnitEff{\StSp} - f_y^{+}$. Plávala gibt dieselbe Menge als konvexe Hülle
+dieser sechs Effekte an; sie ist in Abbildung~\ref{c02.fig.effektmengen}(b) gezeichnet.
+
+\subsection{Das Qubit}\label{c02.s4.3}
+
+Die dritte Theorie ist das kleinste nichttriviale System der Quantentheorie. Seine Zustände sind
+Matrizen: komplexe $2\times 2$-Matrizen $\rho$ mit drei Eigenschaften,
+\begin{equation}\label{c02.eq.qubit}\claim{c02.cl.qubit-zustaende}{source-backed}
+  \rho\ \text{\tpcifenglish{Hermitian}{hermitesch}}, \qquad \rho \geq 0, \qquad \tr(\rho) = 1 .
+\end{equation}
+Hermitesch heißt: Die Diagonaleinträge sind reell, und die beiden anderen Einträge sind
+zueinander komplex konjugiert. Die Bedingung $\rho \geq 0$ heißt für eine hermitesche
+$2\times 2$-Matrix: Ihre beiden Eigenwerte sind nicht negativ. Solche Matrizen heißen
+Dichtematrizen \srcref{plavala-2103.07469v2}{„Example: quantum theory“}.
+Um sie zu überblicken, benutzen wir die Einheitsmatrix und die drei Pauli-Matrizen
+\srcref{tpc-script-v0.2}{Vorlesung 17}:
+\begin{equation}\label{c02.eq.pauli}\claim{c02.cl.pauli}{source-backed}
+  \Id = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}, \quad
+  \pauli{x} = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \quad
+  \pauli{y} = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}, \quad
+  \pauli{z} = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix} .
+\end{equation}
+
+Die folgende Proposition sagt, dass diese Matrizen eine Kugel bilden (Abbildung~\ref{c02.fig.blochzustaende}).
+
+\begin{tpcfigure}{c02.fig.blochzustaende}
+  \caption{Die Zustände des Qubits als Punkte der Einheitskugel. Die Punkte $\vb{n}$, $-\vb{n}$, $\vb{m}$, $-\vb{m}$ der Oberfläche sind reine Zustände. Der Zustand $\vb{r} = \tfrac12\vb{n}$ im Inneren ist die Mischung $\tfrac34\vb{n} + \tfrac14(-\vb{n})$. Der Mittelpunkt ist die Mitte zwischen $\vb{n}$ und $-\vb{n}$ und ebenso die Mitte zwischen $\vb{m}$ und $-\vb{m}$.}
+\end{tpcfigure}
+
+\begin{proposition}[Die Zustandskugel des Qubits]\label{c02.prop.bloch}\claim[proof-included]{c02.cl.bloch}{derived}
+  \begin{enumerate}
+    \item Jede hermitesche $2\times 2$-Matrix mit Spur $1$ lässt sich mit genau einem
+      Vektor $\vb{r} = (r_x, r_y, r_z) \in \mathbb{R}^3$ schreiben als
+      \begin{equation}\label{c02.eq.bloch}
+        \rho(\vb{r}) = \tfrac12\bigl(\Id + r_x \pauli{x} + r_y \pauli{y} + r_z \pauli{z}\bigr)
+        = \frac12 \begin{pmatrix} 1 + r_z & r_x - i r_y \\ r_x + i r_y & 1 - r_z \end{pmatrix} .
+      \end{equation}
+    \item Die Eigenwerte von $\rho(\vb{r})$ sind $\tfrac12(1 + \norm{\vb{r}})$ und
+      $\tfrac12(1 - \norm{\vb{r}})$. Also ist $\rho(\vb{r})$ genau dann ein Zustand, wenn
+      $\norm{\vb{r}} \leq 1$ ist.
+    \item Mischungen bleiben Mischungen:
+      $\rho(\lambda \vb{r} + (1-\lambda)\vb{s}) = \lambda \rho(\vb{r}) + (1-\lambda)\rho(\vb{s})$.
+    \item Der Zustand $\rho(\vb{r})$ ist genau dann rein, wenn $\norm{\vb{r}} = 1$ ist.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  (1) Eine hermitesche Matrix hat reelle Diagonaleinträge; ist ihre Spur $1$, so lassen
+  sie sich als $\tfrac12(1 + r_z)$ und $\tfrac12(1 - r_z)$ schreiben, wobei $r_z$ ihre
+  Differenz ist. Der Eintrag links unten ist eine komplexe Zahl, die wir
+  $\tfrac12(r_x + i r_y)$ nennen; der Eintrag rechts oben ist dann die konjugierte Zahl
+  $\tfrac12(r_x - i r_y)$.
+
+  (2) Die Eigenwerte $\kappa$ sind die Nullstellen von
+  \begin{equation*}
+    \det\bigl(\kappa\, \Id - \rho(\vb{r})\bigr)
+    = \bigl(\kappa - \tfrac12(1 + r_z)\bigr)\bigl(\kappa - \tfrac12(1 - r_z)\bigr) - \tfrac14\bigl(r_x^2 + r_y^2\bigr)
+    = \bigl(\kappa - \tfrac12\bigr)^2 - \tfrac14 \norm{\vb{r}}^2 .
+  \end{equation*}
+  Beide sind genau dann nicht negativ, wenn $\norm{\vb{r}} \leq 1$ ist.
+
+  (3) Die rechte Seite von \eqref{c02.eq.bloch} ist eine Konstante plus ein Ausdruck, der
+  linear in $\vb{r}$ ist.
+
+  (4) Sei $\norm{\vb{r}} = 1$ und $\vb{r} = \lambda \vb{s} + (1-\lambda)\vb{t}$ mit
+  $\norm{\vb{s}} \leq 1$, $\norm{\vb{t}} \leq 1$ und $0 < \lambda < 1$. Dann ist
+  $1 = \vb{r}\cdot\vb{r} = \lambda\, \vb{r}\cdot\vb{s} + (1-\lambda)\, \vb{r}\cdot\vb{t}$.
+  Ein Skalarprodukt ist höchstens so groß wie das Produkt der Längen, hier also höchstens
+  $1$, und es ist nur dann gleich $1$, wenn beide Vektoren gleich sind. Also ist
+  $\vb{s} = \vb{t} = \vb{r}$, und $\rho(\vb{r})$ ist rein. Ist dagegen
+  $q = \norm{\vb{r}} < 1$, so wählen wir einen Einheitsvektor $\vb{n}$ mit
+  $\vb{r} = q\,\vb{n}$ und schreiben
+  $\vb{r} = \tfrac12(1+q)\,\vb{n} + \tfrac12(1-q)\,(-\vb{n})$. Das ist eine Mischung zweier
+  verschiedener Zustände mit Gewichten echt zwischen $0$ und $1$.
+\end{proof}
+
+Wegen (3) dürfen wir den Zustand $\rho(\vb{r})$ mit dem Punkt $\vb{r}$ gleichsetzen. Der
+Zustandsraum des Qubits ist dann die Einheitskugel
+$\StSp_{\mathrm{B}} = \{ \vb{r} \in \mathbb{R}^3 : \norm{\vb{r}} \leq 1 \}$. Wir nennen
+sie die Zustandskugel des Qubits; ihre reinen Zustände sind die Punkte der Oberfläche
+(Abbildung~\ref{c02.fig.zustandsraeume}(c)). Auch hier ist die Zerlegung in reine Zustände
+nicht eindeutig: Der Mittelpunkt ist die Mitte zwischen $\vb{n}$ und $-\vb{n}$ für jeden
+Einheitsvektor $\vb{n}$.
+
+Die Effekte gewinnt man wie beim Quadrat, nur mit einer anderen Länge für $\vb{a}$. Auch
+sie lassen sich als Matrizen schreiben. Abbildung~\ref{c02.fig.blochkugel} zeigt vorab,
+wie ein Extremaleffekt der Kugel aussieht.
+
+\begin{tpcfigure}{c02.fig.blochkugel}
+  \caption{Die Zustandskugel des Qubits mit dem Extremaleffekt
+    $f_{\vb{n}}(\vb{r}) = \tfrac12(1 + \vb{n}\cdot\vb{r})$ aus
+    Proposition~\ref{c02.prop.qubit-effekte} für $\vb{n} = (0,0,1)$, also
+    $f_{\vb{n}}(\vb{r}) = \tfrac12(1 + r_z)$. Die Punkte gleicher Wahrscheinlichkeit
+    bilden waagerechte Ebenen. Die Ebene $f = 1$ berührt die Kugel im reinen Zustand
+    $\vb{n}$ (oben), die Ebene $f = 0$ im reinen Zustand $-\vb{n}$ (unten). Der Zustand $x$
+    liegt auf der Höhe $r_z = \tfrac12$; dort ist $f = \tfrac34$. Bei einem nicht
+    konstanten Effekt, der nicht extremal ist, berührt höchstens eine der beiden Ebenen
+    $f = 0$ und $f = 1$ die Kugel; eine von ihnen kann sie noch berühren. Ein konstanter
+    Effekt hat überall denselben Wert; seine Niveaumengen sind keine Ebenen.}
+\end{tpcfigure}
+
+\begin{proposition}[Effekte des Qubits]\label{c02.prop.qubit-effekte}\claim[proof-included]{c02.cl.qubit-effekte}{derived}
+  \begin{enumerate}
+    \item Die Funktion $f(\vb{r}) = b + \vb{a}\cdot\vb{r}$ ist genau dann ein Effekt auf
+      $\StSp_{\mathrm{B}}$, wenn
+      \begin{equation}\label{c02.eq.qubit-effekt}
+        \norm{\vb{a}} \leq \min(b,\, 1-b) .
+      \end{equation}
+    \item Mit der hermiteschen Matrix
+      $\EffOp = b\, \Id + a_x \pauli{x} + a_y \pauli{y} + a_z \pauli{z}$ ist
+      \begin{equation}\label{c02.eq.spurformel}
+        f(\vb{r}) = b + \vb{a}\cdot\vb{r} = \tr\bigl(\rho(\vb{r})\, \EffOp\bigr) .
+      \end{equation}
+      Die Eigenwerte von $\EffOp$ sind $b + \norm{\vb{a}}$ und $b - \norm{\vb{a}}$;
+      Bedingung~\eqref{c02.eq.qubit-effekt} sagt, dass beide in $[0,1]$ liegen.
+    \item Die Extremaleffekte sind $0$, $\UnitEff{\StSp}$ und, für jeden Einheitsvektor
+      $\vb{n}$, der Effekt
+      \begin{equation}\label{c02.eq.qubit-extremal}
+        f_{\vb{n}}(\vb{r}) = \tfrac12\bigl(1 + \vb{n}\cdot\vb{r}\bigr) .
+      \end{equation}
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  (1) Auf der Kugel ist $\vb{a}\cdot\vb{r}$ höchstens $\norm{\vb{a}}$ und mindestens
+  $-\norm{\vb{a}}$; beide Werte werden angenommen, für $\vb{a} \neq 0$ in den Punkten
+  $\pm\vb{a}/\norm{\vb{a}}$. Der kleinste Wert von $f$ ist also $b - \norm{\vb{a}}$, der
+  größte $b + \norm{\vb{a}}$.
+
+  (2) Durch Ausmultiplizieren der Matrizen in \eqref{c02.eq.pauli} findet man: Jede
+  Pauli-Matrix hat Spur $0$, ihr Quadrat ist $\Id$, und das Produkt zweier verschiedener
+  Pauli-Matrizen hat Spur $0$. Also ist $\tr(\Id) = 2$, die Spur des Quadrats einer
+  Pauli-Matrix ist $2$, und im Produkt $\rho(\vb{r})\,\EffOp$ tragen nur die Glieder mit
+  $\Id\cdot\Id$ und mit zwei gleichen Pauli-Matrizen zur Spur bei:
+  $\tr(\rho(\vb{r})\,\EffOp) = \tfrac12\bigl(2b + 2 a_x r_x + 2 a_y r_y + 2 a_z r_z\bigr)$.
+  Die Eigenwerte von $\EffOp$ erhält man wie in Proposition~\ref{c02.prop.bloch}(2).
+
+  (3) Sei $q = \norm{\vb{a}}$. Für $q = 0$ ist
+  $(b, 0) = b\, \UnitEff{\StSp} + (1 - b)\cdot 0$, eine Mischung von $\UnitEff{\StSp}$ und
+  der Nullfunktion. Für $q > 0$ setzen wir $\vb{n} = \vb{a}/q$; dann ist
+  \begin{equation*}
+    (b, \vb{a}) = (b - q)\, \UnitEff{\StSp} + 2q\, \bigl(\tfrac12, \tfrac12\vb{n}\bigr) + (1 - b - q)\cdot 0 ,
+  \end{equation*}
+  eine Mischung mit nicht negativen Gewichten der Summe $1$. Extremaleffekte kann es also
+  nur unter den genannten geben. Der Effekt $f_{\vb{n}}$ hat im Punkt $\vb{n}$ den Wert
+  $1$ und im Punkt $-\vb{n}$ den Wert $0$. Ist $f_{\vb{n}} = \lambda g + (1-\lambda) h$ mit
+  Effekten $g$, $h$ und $0 < \lambda < 1$, so haben $g$ und $h$ dort dieselben Werte. Für
+  $g = (b, \vb{a})$ heißt das $b + \vb{a}\cdot\vb{n} = 1$ und $b - \vb{a}\cdot\vb{n} = 0$,
+  also $b = \tfrac12$ und $\vb{a}\cdot\vb{n} = \tfrac12$. Wegen
+  \eqref{c02.eq.qubit-effekt} ist $\norm{\vb{a}} \leq \tfrac12$, und das lässt nur
+  $\vb{a} = \tfrac12\vb{n}$ zu. Also ist $g = h = f_{\vb{n}}$. Für $0$ und
+  $\UnitEff{\StSp}$ gilt das Argument aus Proposition~\ref{c02.prop.quadrat}.
+\end{proof}
+
+Der Extremaleffekt $f_{\vb{n}}$ fragt: „Liegt der reine Zustand $\vb{n}$ vor?“ Im Zustand
+$\vb{n}$ ist die Antwort sicher Ja, im gegenüberliegenden Zustand $-\vb{n}$ sicher Nein, und
+in jedem anderen Zustand ist sie zufällig. Seine Matrix ist
+$\tfrac12(\Id + n_x\pauli{x} + n_y\pauli{y} + n_z\pauli{z}) = \rho(\vb{n})$, die Dichtematrix
+dieses reinen Zustands. In Abbildung~\ref{c02.fig.blochkugel} ist er als Schar paralleler
+Ebenen gezeichnet.
+
+\subsection{Was die drei unterscheidet}\label{c02.s4.4}
+
+In Koordinaten mit dem Nullpunkt in der Mitte sehen die drei Theorien fast gleich aus. Ein
+Effekt ist jedes Mal eine Funktion $b + \vb{a}\cdot\vb{r}$ mit der Bedingung, dass eine
+Länge von $\vb{a}$ höchstens $\min(b, 1-b)$ ist. Nur die Länge wird verschieden gemessen:
+beim Bit als Betrag $\abs{a}$ (Gleichung~\eqref{c02.eq.bit-zentriert}), beim Quadrat-Bit
+als Summe $\abs{a_x} + \abs{a_y}$ (Gleichung~\eqref{c02.eq.quadrat-effekt}), beim Qubit als
+gewöhnliche Länge $\norm{\vb{a}}$ (Gleichung~\eqref{c02.eq.qubit-effekt}).
+Tabelle~\ref{c02.tab.vergleich} stellt zusammen, was daraus folgt.
+
+\begin{tpctable}{c02.tab.vergleich}
+  \caption{Die drei Theorien im Vergleich. Die Einträge sind die Ergebnisse der
+    Propositionen~\ref{c02.prop.bit}, \ref{c02.prop.quadrat}, \ref{c02.prop.bloch} und
+    \ref{c02.prop.qubit-effekte} sowie der Gleichungen~\eqref{c02.eq.bit} und
+    \eqref{c02.eq.quadrat-mitte}.}
+  \begin{tabular}{llll}
+    \toprule
+      & Bit & Quadrat-Bit & Qubit \\
+    \midrule
+    Zustandsraum & Strecke & Quadrat & Kugel \\
+    reine Zustände & zwei & vier & Oberfläche \\
+    Extremaleffekte & vier & sechs & $0$, $\UnitEff{\StSp}$, alle $f_{\vb{n}}$ \\
+    Zerlegung eindeutig & ja & nein & nein \\
+    klassisch (\defref{D11}) & ja & nein & nein \\
+    \bottomrule
+  \end{tabular}
+\end{tpctable}
+
+Dass das Qubit keine klassische Theorie ist, folgt wie beim Quadrat aus der mehrdeutigen
+Zerlegung. Worin sich Quadrat-Bit und Qubit voneinander unterscheiden, zeigt die Aufgabe in
+Abschnitt~\ref{c02.s6}.
+
+\section{Messungen und die Hypothese der Nichteinschränkung}\label{c02.s5}
+
+Eine Ja-Nein-Frage hat zwei mögliche Ergebnisse. Für Messungen mit mehr Ergebnissen braucht
+man einen weiteren Begriff.
+
+\tpcdef{D8}
+
+\tpcdef{D9}
+
+Kanäle beschreiben allgemein, wie aus Zuständen eines Systems Zustände eines anderen
+werden. Dieses Kapitel braucht sie nur für \defref{D9}, und davon nur die zweite Hälfte:
+Eine Messung mit $n$ Ergebnissen ist eine Liste von Effekten $f_1, \dots, f_n$, deren Summe
+der Einseffekt ist. Im Zustand $x$ tritt das $i$-te Ergebnis mit der Wahrscheinlichkeit
+$f_i(x)$ ein, und diese Zahlen bilden eine Wahrscheinlichkeitsverteilung:
+\begin{equation}\label{c02.eq.messung}\claim{c02.cl.messung}{derived}
+  f_i(x) \geq 0 \quad (i = 1, \dots, n),
+  \qquad f_1(x) + \dots + f_n(x) = \UnitEff{\StSp}(x) = 1 .
+\end{equation}
+Für $n = 2$ ist das die Ja-Nein-Frage mit $f_1 = f$ und $f_2 = \UnitEff{\StSp} - f$ aus
+Gleichung~\eqref{c02.eq.komplement}
+\srcref{plavala-2103.07469v2}{„Measurements“}.
+
+\begin{tpcfigure}{c02.fig.messung}
+  \caption{Eine Messung mit drei Ergebnissen auf dem klassischen Bit. Die Effekte sind $f_1 = (\tfrac12, 0)$, $f_2 = (\tfrac12, \tfrac12)$ und $f_3 = (0, \tfrac12)$ in den Koordinaten $(q_0, q_1)$; ihre Summe ist $(1,1) = \UnitEff{\StSp}$. Über jedem Zustand sind die drei Wahrscheinlichkeiten übereinander aufgetragen; zusammen füllen sie die Höhe $1$. Im Zustand $x = (\tfrac34, \tfrac14)$ sind es $\tfrac38$, $\tfrac12$ und $\tfrac18$.}
+\end{tpcfigure}
+
+Bisher war ein Effekt eine Funktion mit bestimmten Eigenschaften. Ob sich zu jeder solchen
+Funktion auch ein Experiment angeben lässt, ist eine eigene Frage.
+
+\tpcdef{D12}
+
+% GAP-TJO: Ob die Hypothese der Nichteinschränkung im Kurs Teil von Postulat P3 ist oder
+% eine eigene Annahme, sagt docs/plan/BRIEF.md nicht (BRIEF.md:53).  Der Text unten nennt
+% sie nur als Hypothese dieses Kapitels.
+Dieses Kapitel setzt die Hypothese überall voraus: In Abschnitt~\ref{c02.s6} wird über
+alle Effekte aus $\EffAlg{\StSp}$ optimiert. Lässt eine Theorie nur einen Teil der
+Effekte zu, so ist das dort berechnete Optimum eine obere Schranke und muss nicht
+erreichbar sein. Die Hypothese spricht außerdem nur von Ja-Nein-Fragen. Dass sich auch jede
+Liste von Effekten mit Summe $\UnitEff{\StSp}$ als Messung ausführen lässt, wäre eine
+weitere Annahme; die Unterscheidungsaufgabe in Abschnitt~\ref{c02.s6} benutzt nur
+Messungen mit zwei Ergebnissen und braucht sie nicht\zoomref{c02.v2}. Die Messung mit drei
+Ergebnissen in Abbildung~\ref{c02.fig.messung} ist ein Beispiel zu \defref{D9} und kommt
+in der Aufgabe nicht vor.
+
+\begin{vertiefung}[id=c02.v2,
+    titel={Zwei Kegel und die Ebene auf Höhe eins},
+    wozu={Zustände und Effekte leben in zwei verschiedenen Vektorräumen, die zueinander
+      dual sind. Hier werden beide Räume und ihre Kegel eingeführt und für die drei
+      Theorien ausgerechnet.},
+    voraussetzung={Kern bis Abschnitt~\ref{c02.s5}; Vektorräume, lineare Abbildungen. Der
+      Kern braucht diesen Block nicht; die Vertiefungen~\ref{c02.v3} und \ref{c02.v5} bauen
+      auf ihm auf.},
+    zurueck={Ein Zustand ist ein Punkt eines Kegels auf Höhe eins; ein Effekt ist ein
+      Punkt eines anderen Kegels zwischen $0$ und dem Einseffekt.}]
+  \tpcdef{D57}
+
+  \tpcdef{D59}
+
+  Der Kegel $\AffPos{\StSp}$ besteht aus Funktionen auf Zuständen; in ihm liegen die
+  Effekte. Der Kegel $\AffDualPos{\StSp}$ besteht aus Funktionalen auf diesen Funktionen;
+  in ihm liegen die Zustände. Die beiden sind nicht zu verwechseln. Wo die Zustände in
+  ihrem Kegel liegen, sagt ein Satz von Plávala
+  \srcref{plavala-2103.07469v2}{„Duality between the state space and the effect algebra“}:
+
+  \begin{theorem}[Zustände auf Höhe eins]\label{c02.thm.hoehe}\claim[proof-omitted]{c02.cl.hoehe}{source-quoted}
+    Für jeden Zustandsraum $\StSp$ gilt, bis auf einen Isomorphismus,
+    \begin{equation}\label{c02.eq.hoehe}
+      \StSp = \bigl\{ \varphi \in \AffDualPos{\StSp} : \pair{\varphi}{\UnitEff{\StSp}} = 1 \bigr\} .
+    \end{equation}
+  \end{theorem}
+
+  Der Isomorphismus ist die Auswertung aus \defref{D59}: Der Zustand $x$ wird zum
+  Funktional $f \mapsto f(x)$. Die Bedingung $\pair{\varphi}{\UnitEff{\StSp}} = 1$ ist die
+  Normierung; sie schneidet aus dem Kegel eine Ebene aus, die „Höhe eins“.
+
+  \begin{lemma}[Der Kegel der unnormierten Zustände]\label{c02.lem.basis}\claim[proof-included]{c02.cl.basis}{derived}
+    Jedes $\psi \in \AffDualPos{\StSp}$ mit $\psi \neq 0$ lässt sich auf genau eine Weise
+    als $\psi = t\, x$ mit einer Zahl $t > 0$ und einem Zustand $x \in \StSp$ schreiben.
+    Dabei ist $t = \pair{\psi}{\UnitEff{\StSp}}$.
+  \end{lemma}
+  \begin{proof}
+    Zu jedem $f \in \Aff{\StSp}$ gibt es eine Zahl $M \geq 0$ mit
+    $-M \leq f(x) \leq M$ für alle $x \in \StSp$, denn $f$ ist nach
+    Lemma~\ref{c02.lem.koordinaten} stetig und $\StSp$ ist abgeschlossen und beschränkt.
+    Die Funktionen $M\,\UnitEff{\StSp} - f$ und $M\,\UnitEff{\StSp} + f$ liegen dann in
+    $\AffPos{\StSp}$, und für $\psi \in \AffDualPos{\StSp}$ folgt
+    $-M\, \pair{\psi}{\UnitEff{\StSp}} \leq \pair{\psi}{f} \leq M\, \pair{\psi}{\UnitEff{\StSp}}$.
+    Wäre $t = \pair{\psi}{\UnitEff{\StSp}} = 0$, so wäre also $\pair{\psi}{f} = 0$ für
+    alle $f$ und damit $\psi = 0$. Für $\psi \neq 0$ ist deshalb $t > 0$, das Funktional
+    $\psi / t$ ist positiv und normiert, und nach Theorem~\ref{c02.thm.hoehe} ist es ein
+    Zustand $x$. Ist $\psi = t' x'$ eine zweite solche Darstellung, so liefert die Paarung
+    mit $\UnitEff{\StSp}$ zuerst $t' = t$ und dann $x' = x$.
+  \end{proof}
+
+  $\AffDualPos{\StSp}$ ist also der Kegel der Strahlen vom Nullpunkt durch $\StSp$: die
+  Menge der unnormierten Zustände. Den zweiten Kegel beschreibt Plávala so:
+
+  \begin{lemma}[Positive Funktionen und positive Funktionale]\label{c02.lem.dualkegel}\claim[proof-omitted]{c02.cl.dualkegel}{source-quoted}
+    Sei $f \in \Aff{\StSp}$. Dann ist $f \in \AffPos{\StSp}$ genau dann, wenn
+    $\pair{\psi}{f} \geq 0$ für alle $\psi \in \AffDualPos{\StSp}$ gilt.
+  \end{lemma}
+
+  Der Kegel der positiven affinen Funktionen ist demnach der duale Kegel zum Kegel der
+  unnormierten Zustände, und die Effekte sind darin die Funktionen zwischen $0$ und
+  $\UnitEff{\StSp}$. An dieser Stelle steht in der Rahmung des Kurses der Satz
+  % GAP-TJO: Wie TJO „elements of the dual space to states“ (BRIEF.md:46) gelesen haben
+  % will, sagt der Brief nicht (evidence/gaps.json, G-0010).  Der Satz wird deshalb nur
+  % zitiert; die mathematische Aussage danach ist die des Kapitels und keine Auslegung
+  % seines Satzes.  Die deutsche Fassung des Satzes ist eine Übersetzung.
+  \begin{equation}\label{c02.eq.rahmen-dual}\claim{c02.cl.rahmen-dual}{author-stipulated}
+    \begin{aligned}
+      &\text{\tpcifenglish{Measurements/instruments/POVMs are then}{Messungen/Instrumente/POVMs sind dann}} \\
+      &\text{\tpcifenglish{elements of the dual space to states.}{Elemente des Dualraums zu den Zuständen.}}
+    \end{aligned}
+  \end{equation}
+  Dieser Satz wird hier zitiert und nicht ausgelegt. Getrennt davon hält dieser Block als
+  mathematische Aussage fest: Ein einzelner Effekt ist ein Element von
+  $\Aff{\StSp}$ mit $0 \leq f \leq \UnitEff{\StSp}$, und $\Aff{\StSp}$ und der von den
+  Zuständen aufgespannte Raum $\AffDual{\StSp}$ sind zueinander dual. Eine Messung ist eine
+  Liste solcher Effekte (\defref{D9}).
+
+  \emph{In Koordinaten.} Für $\StSp \subset \mathbb{R}^d$ wie in
+  Lemma~\ref{c02.lem.koordinaten} schreiben wir den Zustand $\vb{r}$ als Vektor
+  $(1, \vb{r}) \in \mathbb{R}^{d+1}$ und die Funktion $b + \vb{a}\cdot\vb{r}$ als Vektor
+  $(b, \vb{a})$. Die Paarung ist dann das gewöhnliche Skalarprodukt dieser beiden Vektoren,
+  $b\cdot 1 + \vb{a}\cdot\vb{r}$. Auf den Vektoren $(1, \vb{r})$ sind Effekte linear; auf
+  den Punkten $\vb{r}$ selbst sind sie nur affin. Die beiden Kegel der drei Theorien sind
+  \begin{equation}\label{c02.eq.kegel-bit}\claim{c02.cl.kegel-bit}{derived}
+    \begin{aligned}
+      \AffDualPos{\Simplex{2}} &= \{ (t, R) : t \geq \abs{R} \}, \\
+      \AffPos{\Simplex{2}} &= \{ (b, a) : b \geq \abs{a} \},
+    \end{aligned}
+  \end{equation}
+  \begin{equation}\label{c02.eq.kegel-quadrat}\claim{c02.cl.kegel-quadrat}{derived}
+    \begin{aligned}
+      \AffDualPos{\StSp_{\mathrm{Q}}} &= \{ (t, R_x, R_y) : t \geq \max(\abs{R_x}, \abs{R_y}) \}, \\
+      \AffPos{\StSp_{\mathrm{Q}}} &= \{ (b, a_x, a_y) : b \geq \abs{a_x} + \abs{a_y} \},
+    \end{aligned}
+  \end{equation}
+  \begin{equation}\label{c02.eq.kegel-qubit}\claim{c02.cl.kegel-qubit}{derived}
+    \begin{aligned}
+      \AffDualPos{\StSp_{\mathrm{B}}} &= \{ (t, \vb{R}) : t \geq \norm{\vb{R}} \}, \\
+      \AffPos{\StSp_{\mathrm{B}}} &= \{ (b, \vb{a}) : b \geq \norm{\vb{a}} \} ,
+    \end{aligned}
+  \end{equation}
+  das Bit dabei in der Koordinate $r$ aus Gleichung~\eqref{c02.eq.bit-zentriert}.
+  In der ersten Zeile steht jeweils die Menge der Vektoren $t\,(1, \vb{r})$ mit $t \geq 0$ und
+  $\vb{r} \in \StSp$, in der zweiten die Menge der Funktionen, deren kleinster Wert auf $\StSp$
+  nicht negativ ist; die kleinsten Werte wurden in Abschnitt~\ref{c02.s4} berechnet. Beim
+  Bit und beim Qubit sind die beiden Mengen in diesen Koordinaten gleich. Beim Quadrat-Bit
+  sind sie verschieden: Der Vektor $(1, 1, 1)$ liegt in der ersten Menge und nicht in der
+  zweiten (Abbildung~\ref{c02.fig.kegel}). Eine Aussage über andere Koordinaten oder andere
+  Skalarprodukte ist das nicht.
+
+  \begin{tpcfigure}{c02.fig.kegel}
+    \caption{Die beiden Kegel des Quadrat-Bits aus \eqref{c02.eq.kegel-quadrat}. (a) Der
+      Kegel $\AffDualPos{\StSp}$ der unnormierten Zustände. Der Zustandsraum $\StSp$ ist
+      sein Schnitt mit der Ebene $t = 1$; jeder Strahl vom Nullpunkt durch den Kegel trifft
+      $\StSp$ in genau einem Zustand $x$. (b) Der Kegel $\AffPos{\StSp}$ der positiven
+      affinen Funktionen; nach oben ist $b$ aufgetragen. Die Effektmenge ist die
+      gestrichelte Doppelpyramide zwischen $0$ und $\UnitEff{\StSp}$ aus
+      Abbildung~\ref{c02.fig.effektmengen}(b). Der Kegel in (a) hat einen quadratischen
+      Querschnitt mit Seiten parallel zu den Achsen, der in (b) einen um ein Achtel einer
+      vollen Drehung gedrehten und schmaleren: Die beiden Kegel sind nicht gleich.}
+  \end{tpcfigure}
+
+  Der Einseffekt spielt in $\Aff{\StSp}$ eine besondere Rolle: Jede affine Funktion liegt
+  unter einem Vielfachen von ihm, wie im Beweis von Lemma~\ref{c02.lem.basis} benutzt. Ein
+  solches Element heißt Ordnungseinheit\zoomref{c02.f1}.
+\end{vertiefung}
+
+\section{Zwei Präparationen unterscheiden}\label{c02.s6}
+
+Jetzt zur Aufgabe, an der sich die drei Theorien messen lassen. Gegeben sind zwei Zustände
+$x_1$ und $x_2$ desselben Zustandsraums $\StSp$ und zwei Zahlen $\lambda_1, \lambda_2 \geq 0$
+mit $\lambda_1 + \lambda_2 = 1$. Jemand präpariert mit Wahrscheinlichkeit $\lambda_1$ den
+Zustand $x_1$ und mit Wahrscheinlichkeit $\lambda_2$ den Zustand $x_2$ und sagt nicht,
+welchen. Wir dürfen eine Ja-Nein-Frage $f$ stellen und sollen dann raten. Die Verabredung
+ist: Bei Ja raten wir $x_1$, bei Nein $x_2$.
+
+Richtig liegen wir in zwei Fällen: Es wurde $x_1$ präpariert und die Antwort ist Ja, oder
+es wurde $x_2$ präpariert und die Antwort ist Nein. Die Erfolgswahrscheinlichkeit ist
+deshalb
+\begin{equation}\label{c02.eq.erfolg}\claim{c02.cl.erfolg}{source-backed}
+  P(f) = \lambda_1\, f(x_1) + \lambda_2\, \bigl(1 - f(x_2)\bigr) .
+\end{equation}
+Gesucht ist der größte Wert $P_{\mathrm{opt}}$, den $P(f)$ annimmt, wenn $f$ alle Effekte
+durchläuft \srcref{plavala-2103.07469v2}{„Order unit norm, base norm and discrimination tasks“}.
+
+\begin{tpcfigure}{c02.fig.aufgabe}
+  \caption{Die Aufgabe. Links: Präpariert wird $x_1$ oder $x_2$, dann wird die Frage $f$ gestellt und nach der Antwort geraten. Rechts: die Wahrscheinlichkeiten der vier möglichen Fälle, in der oberen Zeile für die Antwort Ja, in der unteren für Nein. In den beiden stark umrandeten Fällen ist der Tipp richtig; ihre Summe ist $P(f)$ aus Gleichung~\eqref{c02.eq.erfolg}.}
+\end{tpcfigure}
+
+Zwei Effekte kommen ohne Messung aus. Die Nullfunktion antwortet immer Nein; wir raten dann
+immer $x_2$ und liegen mit Wahrscheinlichkeit $\lambda_2$ richtig. Der Einseffekt antwortet
+immer Ja; wir raten immer $x_1$ und liegen mit Wahrscheinlichkeit $\lambda_1$ richtig.
+Deshalb gilt in jeder Theorie
+\begin{equation}\label{c02.eq.schranken}\claim{c02.cl.schranken}{derived}
+  \max(\lambda_1, \lambda_2) \leq P_{\mathrm{opt}} \leq 1 .
+\end{equation}
+
+\begin{proposition}[Wann gelingt die Unterscheidung sicher?]\label{c02.prop.perfekt}\claim[proof-included]{c02.cl.perfekt}{derived}
+  Seien $\lambda_1 > 0$ und $\lambda_2 > 0$. Dann ist $P(f) = 1$ genau dann, wenn
+  $f(x_1) = 1$ und $f(x_2) = 0$ ist.
+\end{proposition}
+\begin{proof}
+  Aus \eqref{c02.eq.erfolg} und $\lambda_1 + \lambda_2 = 1$ folgt
+  $1 - P(f) = \lambda_1\bigl(1 - f(x_1)\bigr) + \lambda_2\, f(x_2)$. Beide Summanden sind
+  nicht negativ; die Summe ist nur dann $0$, wenn beide $0$ sind.
+\end{proof}
+
+Zwei Zustände heißen in diesem Kapitel \emph{sicher unterscheidbar}, wenn es einen Effekt
+mit $f(x_1) = 1$ und $f(x_2) = 0$ gibt. Auf die Vorgaben $\lambda_1$, $\lambda_2$ kommt es
+dabei nicht an, solange beide positiv sind. Ist eine von ihnen $0$, so erreicht schon
+Raten den Wert $P = 1$, und der Wert sagt nichts über die beiden Zustände.
+
+Die Funktion $P$ ist auf der Menge der Effekte affin: In den Koordinaten $(b, \vb{a})$ aus
+Lemma~\ref{c02.lem.koordinaten} ist
+\begin{equation}\label{c02.eq.erfolg-koordinaten}\claim{c02.cl.erfolg-koordinaten}{derived}
+  P(f) = \lambda_2 + \delta\, b + \vb{v}\cdot\vb{a},
+  \qquad \delta = \lambda_1 - \lambda_2, \quad \vb{v} = \lambda_1 \vb{r}_1 - \lambda_2 \vb{r}_2 ,
+\end{equation}
+wobei $\vb{r}_1$ und $\vb{r}_2$ die Koordinaten von $x_1$ und $x_2$ sind. Sind $\delta$
+und $\vb{v}$ nicht beide $0$, so ist $P$ nicht konstant; die Gleichung
+$\delta\, b + \vb{v}\cdot\vb{a} = c$ beschreibt dann für jede Zahl $c$ eine Hyperebene im
+Koordinatenraum $\mathbb{R}^{d+1}$ der Effekte, diese Hyperebenen sind parallel, und die
+Niveaumengen von $P$ sind ihre Schnitte mit der Effektmenge. In den Koordinaten $(b, a)$
+des Bits sind das Geraden, beim Quadrat-Bit Ebenen. Sind $\delta = 0$ und $\vb{v} = 0$, so
+ist $P$ konstant, und die ganze Effektmenge ist eine einzige Niveaumenge. Eine affine
+Funktion nimmt ihren größten Wert am Rand an, und zwar in einer Ecke
+(Abbildung~\ref{c02.fig.optimum})\zoomref{c02.v3}:
+
+\begin{theorem}[Ein Extremaleffekt erreicht das Optimum]\label{c02.thm.extremal}\claim[proof-linked]{c02.cl.extremal}{derived}
+  Sei $\StSp$ ein Zustandsraum, und seien $x_1, x_2 \in \StSp$ und
+  $\lambda_1, \lambda_2 \geq 0$ mit $\lambda_1 + \lambda_2 = 1$ gegeben. Dann gibt es einen
+  Extremaleffekt $f$ mit $P(f) = P_{\mathrm{opt}}$.
+\end{theorem}
+
+Der Satz sagt nicht, dass jeder optimale Effekt extremal ist. In
+Abbildung~\ref{c02.fig.optimum}(b) sind zwei Extremaleffekte optimal und mit ihnen alle
+ihre Mischungen.
+
+\begin{tpcfigure}{c02.fig.optimum}
+  \caption{Die Erfolgswahrscheinlichkeit $P$ als Funktion auf der Effektmenge; die dünnen
+    Linien sind Niveaulinien von $P$. (a) Klassisches Bit mit $x_1 = (\tfrac34, \tfrac14)$,
+    $x_2 = (\tfrac14, \tfrac34)$ und $\lambda_1 = \lambda_2 = \tfrac12$: Hier ist
+    $P = \tfrac12 + \tfrac14(q_0 - q_1)$, und der größte Wert $\tfrac34$ wird nur in der
+    Ecke $(1,0)$ angenommen. (b) Quadrat-Bit mit $x_1 = (1,1)$, $x_2 = (-1,-1)$ und
+    $\lambda_1 = \lambda_2 = \tfrac12$: Hier ist $P = \tfrac12 + a_x + a_y$ unabhängig von
+    $b$; gezeichnet ist der Schnitt $b = \tfrac12$ durch die Doppelpyramide. Der größte
+    Wert $1$ wird auf der ganzen Kante zwischen $f_x^{+}$ und $f_y^{+}$ angenommen. Optimale
+    Extremaleffekte sind eingekreist.}
+\end{tpcfigure}
+
+\begin{vertiefung}[id=c02.v3,
+    titel={Warum ein Extremaleffekt genügt},
+    wozu={Der Kern benutzt Theorem~\ref{c02.thm.extremal} ohne Beweis. Hier wird er für
+      jeden Zustandsraum geführt.},
+    voraussetzung={Vertiefungen~\ref{c02.v1} und \ref{c02.v2}; stetige Funktionen auf
+      abgeschlossenen, beschränkten Mengen. Der Kern rechnet das Optimum für die drei
+      Theorien in Proposition~\ref{c02.prop.optimum} direkt aus und braucht diesen Block
+      nicht.},
+    zurueck={Um zwei Präparationen bestmöglich zu unterscheiden, genügt es, die
+      Extremaleffekte durchzugehen.}]
+  \begin{lemma}[Die Effektmenge ist abgeschlossen, beschränkt und konvex]\label{c02.lem.kompakt}\claim[proof-included]{c02.cl.kompakt}{derived}
+    Sei $\StSp \subset \mathbb{R}^d$ wie in Lemma~\ref{c02.lem.koordinaten}. In den
+    Koordinaten $(b, \vb{a}) \in \mathbb{R}^{d+1}$ ist $\EffAlg{\StSp}$ eine
+    abgeschlossene, beschränkte und konvexe Menge. Sie erfüllt damit selbst die
+    Bedingungen (S1) bis (S5) aus \defref{D3}.
+  \end{lemma}
+  \begin{proof}
+    $\EffAlg{\StSp}$ ist die Menge aller $(b, \vb{a})$, die für jedes $\vb{r} \in \StSp$
+    die beiden Ungleichungen $0 \leq b + \vb{a}\cdot\vb{r} \leq 1$ erfüllen. Jede einzelne
+    Ungleichung beschreibt eine abgeschlossene, konvexe Menge, und ein Durchschnitt solcher
+    Mengen ist wieder von dieser Art. Beschränkt ist $\EffAlg{\StSp}$, weil $b$ und
+    $\vb{a}$ nach dem Beweis von Lemma~\ref{c02.lem.koordinaten} die Lösung eines linearen
+    Gleichungssystems sind, dessen rechte Seiten $f(\vb{v}_i)$ in $[0,1]$ liegen.
+  \end{proof}
+
+  \begin{proof}[Beweis von Theorem~\ref{c02.thm.extremal}]
+    Nach Gleichung~\eqref{c02.eq.erfolg-koordinaten} ist $P$ eine stetige Funktion der
+    Koordinaten $(b, \vb{a})$. Auf der abgeschlossenen und beschränkten Menge
+    $\EffAlg{\StSp}$ nimmt sie ihren größten Wert in einem Effekt $f^{*}$ an. Nach
+    Lemma~\ref{c02.lem.kompakt} gilt Theorem~\ref{c02.thm.zerlegung} auch für
+    $\EffAlg{\StSp}$: Es gibt Extremaleffekte $g_1, \dots, g_k$ und Gewichte
+    $\kappa_i \geq 0$ mit Summe $1$ und $f^{*} = \kappa_1 g_1 + \dots + \kappa_k g_k$. Da $P$ affin
+    ist, folgt wie in Gleichung~\eqref{c02.eq.mehrfach}
+    \begin{equation*}
+      P_{\mathrm{opt}} = P(f^{*}) = \kappa_1 P(g_1) + \dots + \kappa_k P(g_k) .
+    \end{equation*}
+    Kein $P(g_i)$ ist größer als $P_{\mathrm{opt}}$. Ein gewichtetes Mittel solcher Zahlen
+    ist nur dann gleich $P_{\mathrm{opt}}$, wenn jedes $g_i$ mit $\kappa_i > 0$ den Wert
+    $P(g_i) = P_{\mathrm{opt}}$ hat. Mindestens ein solches $g_i$ gibt es.
+  \end{proof}
+
+  Liegt $\StSp$ in einem affinen Teilraum kleinerer Dimension, so wendet man das Argument
+  in Koordinaten dieses Teilraums an.
+\end{vertiefung}
+
+Für die drei Theorien lässt sich das Optimum ausrechnen.
+
+\begin{proposition}[Das Optimum in den drei Theorien]\label{c02.prop.optimum}\claim[proof-included]{c02.cl.optimum}{derived}
+  Mit $\delta = \lambda_1 - \lambda_2$ und $\vb{v} = \lambda_1 \vb{r}_1 - \lambda_2 \vb{r}_2$
+  wie in Gleichung~\eqref{c02.eq.erfolg-koordinaten} gilt:
+  \begin{align}
+    \text{\tpcifenglish{classical bit}{klassisches Bit}}\ (r = \pw_0 - \pw_1):\quad
+      P_{\mathrm{opt}} &= \tfrac12\bigl(1 + \max(\abs{\delta},\, \abs{v})\bigr),
+      \label{c02.eq.opt-bit} \\
+    \text{\tpcifenglish{square bit}{Quadrat-Bit}}:\quad
+      P_{\mathrm{opt}} &= \tfrac12\bigl(1 + \max(\abs{\delta},\, \abs{v_x},\, \abs{v_y})\bigr),
+      \label{c02.eq.opt-quadrat} \\
+    \text{Qubit}:\quad
+      P_{\mathrm{opt}} &= \tfrac12\bigl(1 + \max(\abs{\delta},\, \norm{\vb{v}})\bigr).
+      \label{c02.eq.opt-qubit}
+  \end{align}
+  Beim klassischen Bit ist das in den Koordinaten $x_1 = (\pw_0, \pw_1)$,
+  $x_2 = (\pw'_0, \pw'_1)$ dasselbe wie
+  \begin{equation}\label{c02.eq.opt-bit-p}
+    P_{\mathrm{opt}} = \max(\lambda_1 \pw_0,\, \lambda_2 \pw'_0) + \max(\lambda_1 \pw_1,\, \lambda_2 \pw'_1) .
+  \end{equation}
+\end{proposition}
+\begin{proof}
+  Wir halten in Gleichung~\eqref{c02.eq.erfolg-koordinaten} zuerst $b$ fest und wählen
+  $\vb{a}$ so gut wie möglich. Erlaubt sind alle $\vb{a}$, deren Länge höchstens
+  $m = \min(b, 1-b)$ ist, wobei die Länge je nach Theorie $\abs{a}$,
+  $\abs{a_x} + \abs{a_y}$ oder $\norm{\vb{a}}$ bedeutet. Der größte Wert von
+  $\vb{v}\cdot\vb{a}$ ist dann $m\, L$, mit $L = \abs{v}$ beim Bit,
+  $L = \max(\abs{v_x}, \abs{v_y})$ beim Quadrat-Bit und $L = \norm{\vb{v}}$ beim Qubit.
+  Beim Bit wählt man dazu $a = \pm m$ mit dem Vorzeichen von $v$. Beim Quadrat-Bit legt man
+  das ganze $m$ auf die Koordinate, in der $\vb{v}$ den größeren Betrag hat. Beim Qubit
+  wählt man $\vb{a}$ in Richtung von $\vb{v}$.
+
+  Es bleibt, $\lambda_2 + \delta\, b + L \min(b, 1-b)$ über $b \in [0,1]$ zu maximieren.
+  Dieser Ausdruck ist auf $[0, \tfrac12]$ und auf $[\tfrac12, 1]$ jeweils eine Gerade in
+  $b$; sein größter Wert liegt also bei $b = 0$, $b = \tfrac12$ oder $b = 1$. Die drei
+  Werte sind $\lambda_2$, $\lambda_2 + \tfrac12\delta + \tfrac12 L = \tfrac12(1 + L)$ und
+  $\lambda_2 + \delta = \lambda_1$. Wegen
+  $\max(\lambda_1, \lambda_2) = \tfrac12(1 + \abs{\delta})$ ist der größte der drei
+  $\tfrac12(1 + \max(\abs{\delta}, L))$.
+
+  Zu \eqref{c02.eq.opt-bit-p}: Setzt man \eqref{c02.eq.bit-effekt} in
+  \eqref{c02.eq.erfolg} ein, so erhält man $P = \lambda_2 + d_0 q_0 + d_1 q_1$ mit
+  $d_0 = \lambda_1 \pw_0 - \lambda_2 \pw'_0$ und $d_1 = \lambda_1 \pw_1 - \lambda_2 \pw'_1$.
+  Am größten wird das, wenn man $q_i = 1$ wählt, wo $d_i > 0$ ist, und sonst $q_i = 0$.
+  Das ergibt $\lambda_2 \pw'_0 + \max(d_0, 0) + \lambda_2 \pw'_1 + \max(d_1, 0)$, und das ist
+  die rechte Seite von \eqref{c02.eq.opt-bit-p}.
+\end{proof}
+
+Der Beweis liefert die optimalen Effekte gleich mit. Ist $\abs{\delta}$ die größte der
+Zahlen in der Klammer, so ist Raten optimal: der Einseffekt, falls $\lambda_1$ die größere
+Vorgabe ist, sonst die Nullfunktion. Andernfalls ist ein Extremaleffekt mit $b = \tfrac12$
+optimal: beim Quadrat-Bit einer der vier Effekte $f_x^{\pm}$, $f_y^{\pm}$, beim Qubit der
+Effekt $f_{\vb{n}}$ mit $\vb{n} = \vb{v}/\norm{\vb{v}}$. Die drei Formeln unterscheiden sich
+nur darin, wie die Länge von $\vb{v}$ gemessen wird (Abbildung~\ref{c02.fig.laengen})\zoomref{c02.v4}.
+
+\begin{tpcfigure}{c02.fig.laengen}
+  \caption{Wie gut lässt sich ein Zustand $x_1$ vom Mittelpunkt $x_2$ des Zustandsraums
+    unterscheiden, wenn beide gleich oft präpariert werden? Nach
+    Proposition~\ref{c02.prop.optimum} ist dann $P_{\mathrm{opt}} = \tfrac12 + \tfrac14 L$,
+    wobei $L$ die Länge des Ortsvektors von $x_1$ in der jeweiligen Theorie ist.
+    Eingetragen sind die Orte von $x_1$ mit $P_{\mathrm{opt}} = \tfrac58$ und
+    $P_{\mathrm{opt}} = \tfrac34$: (a) Punkte, (b) Quadrate, (c) Kreise. Mehr als
+    $\tfrac34$ ist gegen den Mittelpunkt in keiner der drei Theorien zu erreichen.}
+\end{tpcfigure}
+
+\begin{vertiefung}[id=c02.v4,
+    titel={Das Qubit-Optimum als Spurnorm},
+    wozu={Gleichung~\eqref{c02.eq.opt-qubit} lässt sich ohne Koordinaten schreiben, direkt
+      mit den Dichtematrizen der beiden Zustände.},
+    voraussetzung={Abschnitt~\ref{c02.s4.3} und Proposition~\ref{c02.prop.optimum}.
+      Der Kern braucht diesen Block nicht.},
+    zurueck={Die Länge $\max(\abs{\delta}, \norm{\vb{v}})$ in
+      Gleichung~\eqref{c02.eq.opt-qubit} ist eine Eigenschaft der Matrix
+      $\lambda_1\rho_1 - \lambda_2\rho_2$ allein.}]
+  Für eine hermitesche $2\times 2$-Matrix $D$ mit den Eigenwerten $\kappa_1$ und $\kappa_2$
+  nennen wir $\norm{D}_1 = \abs{\kappa_1} + \abs{\kappa_2}$ ihre \emph{Spurnorm}.
+
+  \begin{proposition}[Spurnormformel]\label{c02.prop.spurnorm}\claim[proof-included]{c02.cl.spurnorm}{derived}
+    Seien $\rho_1 = \rho(\vb{r}_1)$ und $\rho_2 = \rho(\vb{r}_2)$ zwei Zustände des Qubits
+    und $\lambda_1, \lambda_2 \geq 0$ mit $\lambda_1 + \lambda_2 = 1$. Dann ist
+    \begin{equation}\label{c02.eq.spurnorm}
+      P_{\mathrm{opt}} = \tfrac12\bigl(1 + \norm{\lambda_1 \rho_1 - \lambda_2 \rho_2}_1\bigr) .
+    \end{equation}
+  \end{proposition}
+  \begin{proof}
+    Nach Gleichung~\eqref{c02.eq.bloch} ist
+    $D = \lambda_1\rho_1 - \lambda_2\rho_2
+       = \tfrac12\bigl(\delta\, \Id + v_x \pauli{x} + v_y \pauli{y} + v_z \pauli{z}\bigr)$.
+    Die Rechnung aus Proposition~\ref{c02.prop.bloch}(2) gibt für $D$ die Eigenwerte
+    $\tfrac12(\delta + \norm{\vb{v}})$ und $\tfrac12(\delta - \norm{\vb{v}})$. Mit
+    $L = \norm{\vb{v}}$ ist also
+    $\norm{D}_1 = \tfrac12\bigl(\abs{\delta + L} + \abs{\delta - L}\bigr)$. Für
+    $\delta \geq L$ ist das $\delta$, für $\delta \leq -L$ ist es $-\delta$, und für
+    $-L \leq \delta \leq L$ ist es $L$; in jedem Fall also $\max(\abs{\delta}, L)$.
+    Einsetzen in \eqref{c02.eq.opt-qubit} ergibt die Behauptung.
+  \end{proof}
+
+  Plávala beweist für jeden Zustandsraum eine Formel derselben Gestalt. An der Stelle der
+  Spurnorm steht dort eine Norm auf $\AffDual{\StSp}$, die hier nicht eingeführt wird
+  \srcref{plavala-2103.07469v2}{„Order unit norm, base norm and discrimination tasks“}.
+\end{vertiefung}
+
+Was folgt daraus für reine Zustände?
+
+\begin{corollary}[Reine Zustände sind nicht immer sicher unterscheidbar]\label{c02.cor.rein}\claim[proof-included]{c02.cl.rein}{derived}
+  \begin{enumerate}
+    \item Im klassischen Bit und im Quadrat-Bit sind je zwei verschiedene reine Zustände
+      sicher unterscheidbar.
+    \item Zwei Zustände des Qubits sind genau dann sicher unterscheidbar, wenn beide rein
+      sind und einander gegenüberliegen: $\vb{r}_2 = -\vb{r}_1$ mit $\norm{\vb{r}_1} = 1$.
+    \item Die reinen Zustände $x_1 = (1,0,0)$ und $x_2 = (0,1,0)$ des Qubits sind
+      verschieden und nicht sicher unterscheidbar. Für $\lambda_1 = \lambda_2 = \tfrac12$
+      ist
+      \begin{equation}\label{c02.eq.q1}
+        P_{\mathrm{opt}} = \tfrac12\Bigl(1 + \tfrac12\sqrt{2}\Bigr) = \tfrac14\bigl(2 + \sqrt{2}\bigr) < 1 .
+      \end{equation}
+  \end{enumerate}
+\end{corollary}
+\begin{proof}
+  (1) Beim Bit leistet der Effekt $(1,0)$ das Verlangte für $x_1 = s_0$, $x_2 = s_1$. Zwei
+  verschiedene Ecken des Quadrats unterscheiden sich in mindestens einer Koordinate; diese
+  ist in der einen Ecke $1$ und in der anderen $-1$. Der zugehörige Effekt $f_x^{\pm}$ oder
+  $f_y^{\pm}$ hat dann die Werte $1$ und $0$.
+
+  (2) Nach Proposition~\ref{c02.prop.perfekt} dürfen wir $\lambda_1 = \lambda_2 = \tfrac12$
+  annehmen. Dann ist $\delta = 0$ und $\vb{v} = \tfrac12(\vb{r}_1 - \vb{r}_2)$, und
+  Gleichung~\eqref{c02.eq.opt-qubit} gibt $P_{\mathrm{opt}} = 1$ genau dann, wenn
+  $\norm{\vb{r}_1 - \vb{r}_2} = 2$ ist. Wegen
+  $\norm{\vb{r}_1 - \vb{r}_2}^2 = \norm{\vb{r}_1}^2 + \norm{\vb{r}_2}^2 - 2\,\vb{r}_1\cdot\vb{r}_2 \leq 4$
+  ist das nur möglich, wenn beide Längen $1$ sind und $\vb{r}_1\cdot\vb{r}_2 = -1$ ist,
+  also $\vb{r}_2 = -\vb{r}_1$.
+
+  (3) Hier ist $\vb{v} = \tfrac12(1, -1, 0)$ und $\norm{\vb{v}} = \tfrac12\sqrt{2}$.
+\end{proof}
+
+Der Zahlenwert in \eqref{c02.eq.q1} ist ungefähr \num[c02.cl.level-q1]{0{,}8536}{}. Teil (2)
+gilt für die Kugel. Auf andere Zustandsräume lässt er sich nicht übertragen; im Quadrat sind
+schon benachbarte Ecken sicher unterscheidbar\zoomref{c02.v5}.
+
+Auch der umgekehrte Fall kommt vor: Die Zustände sind verschieden, und trotzdem ist Raten
+das Beste. Für die Qubit-Zustände $x_1 = (0, 0, \tfrac14)$ und $x_2 = (0, 0, -\tfrac14)$
+mit den Vorgaben $\lambda_1 = \tfrac{9}{10}$, $\lambda_2 = \tfrac{1}{10}$ ist
+$\delta = \tfrac45$ und $\norm{\vb{v}} = \tfrac14$. Gleichung~\eqref{c02.eq.opt-qubit} gibt
+$P_{\mathrm{opt}} = \num[c02.cl.level-q2]{\tfrac{9}{10}}{}$, und das erreicht schon der
+Einseffekt: immer $x_1$ raten.
+
+\begin{vertiefung}[id=c02.v5,
+    titel={Vielecke und die Scheibe},
+    wozu={Zwischen Quadrat und Kugel liegt eine ganze Familie von Zustandsräumen in der
+      Ebene. An ihr sieht man, wie die Unterscheidbarkeit reiner Zustände von der Form
+      des Zustandsraums abhängt, und was sich über das Verhältnis der beiden Kegel sagen
+      lässt.},
+    voraussetzung={Kern bis Korollar~\ref{c02.cor.rein}; für den letzten Teil
+      Vertiefung~\ref{c02.v2}. Der Kern braucht diesen Block nicht.},
+    zurueck={Ob sich zwei reine Zustände sicher unterscheiden lassen, hängt von der Form
+      des Zustandsraums ab und nicht nur von den beiden Punkten.}]
+  Für $n \geq 3$ sei $\StSp_n$ das regelmäßige $n$-Eck mit Umkreisradius $1$ und den Ecken
+  \begin{equation}\label{c02.eq.vieleck}\claim{c02.cl.vieleck}{derived}
+    \vb{v}_k = \bigl(\cos\tfrac{2\pi k}{n},\ \sin\tfrac{2\pi k}{n}\bigr), \quad k = 0, \dots, n-1,
+    \qquad c_n = \cos\tfrac{\pi}{n} ,
+  \end{equation}
+  und $\StSp_{\mathrm{D}} = \{ \vb{r} \in \mathbb{R}^2 : \norm{\vb{r}} \leq 1 \}$ die
+  Einheitsscheibe. Die reinen Zustände von $\StSp_n$ sind die Ecken $\vb{v}_k$, die von
+  $\StSp_{\mathrm{D}}$ die Punkte des Randkreises. $\StSp_3$ ist ein Dreieck und damit ein
+  Simplex, der Zustandsraum einer klassischen Theorie mit drei reinen Zuständen. $\StSp_4$
+  ist ein Quadrat, dessen Ecken auf den Achsen liegen; aus $\StSp_{\mathrm{Q}}$ entsteht es
+  durch Drehen und Verkleinern.
+
+  \begin{proposition}[Extremaleffekte der Vielecke und der Scheibe]\label{c02.prop.vieleck}\claim[proof-omitted]{c02.cl.vieleck-effekte}{derived}
+    Sei $\vb{m}_j = \bigl(\cos\tfrac{(2j+1)\pi}{n},\ \sin\tfrac{(2j+1)\pi}{n}\bigr)$ für
+    $j = 0, \dots, n-1$, und seien
+    \begin{equation}\label{c02.eq.vieleck-effekte}
+      f_k(\vb{r}) = \frac{c_n + \vb{v}_k\cdot\vb{r}}{1 + c_n},
+      \qquad
+      g_j(\vb{r}) = \frac12 + \frac{\vb{m}_j\cdot\vb{r}}{2 c_n} .
+    \end{equation}
+    Die Extremaleffekte von $\StSp_n$ sind $0$ und $\UnitEff{\StSp}$ und außerdem: für
+    ungerades $n$ die Effekte $f_k$ und $\UnitEff{\StSp} - f_k$ mit $k = 0, \dots, n-1$;
+    für gerades $n$ die Effekte $g_j$ mit $j = 0, \dots, n-1$.
+    Für ungerades $n$ sind das $2n + 2$ Extremaleffekte, für gerades $n$ sind es $n + 2$.
+    Die Extremaleffekte von $\StSp_{\mathrm{D}}$ sind $0$, $\UnitEff{\StSp}$ und
+    $\tfrac12(1 + \vb{n}\cdot\vb{r})$ für jeden Einheitsvektor $\vb{n}$ der Ebene.
+  \end{proposition}
+
+  Bei ungeradem $n$ hat $f_k$ den Wert $1$ in der Ecke $\vb{v}_k$ und den Wert $0$ auf der
+  gegenüberliegenden Kante. Bei geradem $n$ hat $g_j$ den Wert $1$ auf einer Kante und den
+  Wert $0$ auf der gegenüberliegenden. Für $n = 4$ sind die $g_j$ die vier Effekte
+  $f_x^{\pm}$, $f_y^{\pm}$ des Quadrats in gedrehten Koordinaten. Die Herleitung steht bei
+  den Nachweisen des Kapitels; für $n = 3, \dots, 8$ wurden die Listen zusätzlich durch
+  Aufzählen aller Ecken der Effektmenge nachgerechnet.
+
+  \emph{Unterscheiden.} Die Formel für die Scheibe ist dieselbe wie für die Kugel,
+  Gleichung~\eqref{c02.eq.opt-qubit} mit Vektoren der Ebene. Für die Vielecke geht man die
+  endlich vielen Extremaleffekte durch (Theorem~\ref{c02.thm.extremal}). Drei Ergebnisse,
+  alle für $\lambda_1 = \lambda_2 = \tfrac12$:
+  \begin{enumerate}
+    \item Im Fünfeck sind die benachbarten reinen Zustände $\vb{v}_0$ und $\vb{v}_1$ nicht
+      sicher unterscheidbar: Das Optimum ist
+      $P_{\mathrm{opt}} = c_5 = \tfrac14(1 + \sqrt{5})$, ungefähr
+      \num[c02.cl.level-p1]{0{,}8090}{}.
+    \item Im Sechseck sind $\vb{v}_0 = (1,0)$ und
+      $\vb{v}_2 = (-\tfrac12, \tfrac12\sqrt{3})$ reine Zustände und sicher unterscheidbar,
+      $P_{\mathrm{opt}} = \num[c02.cl.level-h1]{1}{}$, obwohl sie einander nicht
+      gegenüberliegen. Der Effekt $g_5$ hat in $\vb{v}_0$ den Wert $1$ und in $\vb{v}_2$
+      den Wert $0$.
+    \item Dasselbe Punktepaar $x_1 = (1,0)$, $x_2 = (-\tfrac34, \tfrac14)$ liegt im Quadrat
+      $\StSp_4$, im Fünfeck $\StSp_5$ und in der Scheibe $\StSp_{\mathrm{D}}$
+      (Abbildung~\ref{c02.fig.vielecke}). Die Optima sind
+      \begin{equation}\label{c02.eq.gleiches-paar}\claim{c02.cl.gleiches-paar}{derived}
+        P_{\mathrm{opt}}(\StSp_4) = 1, \qquad
+        P_{\mathrm{opt}}(\StSp_5) = \frac{55 - 7\sqrt{5}}{40}, \qquad
+        P_{\mathrm{opt}}(\StSp_{\mathrm{D}}) = \frac{8 + 5\sqrt{2}}{16} ,
+      \end{equation}
+      ungefähr \num[c02.cl.level-c1]{1}{}, \num[c02.cl.level-c2]{0{,}9837}{} und
+      \num[c02.cl.level-c3]{0{,}9419}{}.
+  \end{enumerate}
+  Die dritte Aussage hängt daran, wie die drei Zustandsräume zueinander liegen. Mit dem
+  achsenparallelen Quadrat $\StSp_{\mathrm{Q}} = [-1,1]^2$ und der Einheitsscheibe in
+  denselben Koordinaten gibt es kein solches Paar: Jedes Paar von Punkten der Scheibe, das
+  in $\StSp_{\mathrm{Q}}$ sicher unterscheidbar ist, besteht aus zwei gegenüberliegenden
+  Randpunkten der Scheibe und ist auch dort sicher unterscheidbar.
+
+  \begin{tpcfigure}{c02.fig.vielecke}
+    \caption{Dasselbe Punktepaar $x_1 = (1,0)$, $x_2 = (-\tfrac34, \tfrac14)$ in drei
+      Zustandsräumen, jeweils mit den Niveaulinien eines optimalen Extremaleffekts. (a) Im
+      Quadrat $\StSp_4$ liegt $x_2$ auf der Kante, auf der der Effekt den Wert $0$ hat; die
+      Unterscheidung gelingt sicher. (b) Im Fünfeck liegt $x_2$ im Inneren, knapp neben
+      der Kante mit $f = 0$. (c) In der Scheibe berührt die Linie $f = 0$ den Rand in einem
+      einzigen Punkt, und $x_2$ liegt deutlich daneben. Die Optima stehen in
+      \eqref{c02.eq.gleiches-paar}.}
+  \end{tpcfigure}
+
+  \emph{Die beiden Kegel.} In den Koordinaten von Vertiefung~\ref{c02.v2} gehört zum
+  $n$-Eck mit Umkreisradius $\gamma > 0$ der Zustandskegel
+  $C_{n,\gamma} = \{ t\,(1, \gamma\,\vb{r}) : t \geq 0,\ \vb{r} \in \StSp_n \}$.
+
+  \begin{proposition}[Wann die Kegel der Vielecke gleich sind]\label{c02.prop.selbstdual}\claim[proof-omitted]{c02.cl.selbstdual}{derived}
+    Sei $C_{n,\gamma}^{*} = \{ (s, \vb{a}) : s\,t + \vb{a}\cdot\vb{R} \geq 0
+    \ \text{\tpcifenglish{for all}{für alle}}\ (t, \vb{R}) \in C_{n,\gamma} \}$ der duale
+    Kegel bezüglich des gewöhnlichen Skalarprodukts des $\mathbb{R}^3$.
+    \begin{enumerate}
+      \item Für $\gamma = 1$ ist $C_{n,1}^{*} \neq C_{n,1}$ für jedes $n \geq 3$.
+      \item Für ungerades $n$ ist $C_{n,\gamma}^{*} = C_{n,\gamma}$ genau dann, wenn
+        $\gamma^2 = 1/c_n$ ist.
+      \item Für gerades $n$ ist $C_{n,\gamma}^{*} \neq C_{n,\gamma}$ für jedes
+        $\gamma > 0$.
+      \item Für die Scheibe ist der Kegel $\{ (t, \vb{R}) : t \geq \norm{\vb{R}} \}$ gleich
+        seinem dualen Kegel.
+    \end{enumerate}
+  \end{proposition}
+
+  Die Aussagen (1) bis (3) wurden für $n = 3, \dots, 8$ zusätzlich numerisch geprüft. Sie
+  betreffen die Gleichheit zweier Mengen in festen Koordinaten mit dem gewöhnlichen
+  Skalarprodukt. Für jedes $n$ und jedes $\gamma$ gibt es eine umkehrbare lineare
+  Abbildung, die $C_{n,\gamma}^{*}$ auf $C_{n,\gamma}$ abbildet, eine Drehung verbunden
+  mit einer Streckung; das ist eine schwächere Aussage als Gleichheit. Ob sich für gerades
+  $n$ ein anderes Skalarprodukt finden lässt, für das die Kegel gleich werden, ist hier
+  nicht untersucht. Auch das Dreieck fällt unter (1): In den Wahrscheinlichkeitskoordinaten
+  $(\pw_1, \pw_2, \pw_3)$ ist der Zustandskegel des Simplex gleich seinem dualen Kegel, in
+  den Koordinaten des regelmäßigen Dreiecks mit Umkreisradius $1$ nicht. Die beiden
+  Koordinatensysteme gehen nicht durch eine Drehung auseinander hervor.
+\end{vertiefung}
+
+\section{Das Spiel „Distinguish“}\label{c02.s7}
+
+Zu diesem Kapitel gehört ein Spiel. Diese Seite ist seine Anleitung.
+
+\emph{Regeln.} Ein Level gibt eine Theorie vor, zwei Zustände $x_1$, $x_2$ und zwei
+Vorgaben $\lambda_1$, $\lambda_2$. Gespielt wird die Aufgabe aus Abschnitt~\ref{c02.s6}: Man
+zieht einen Effekt $f$ an eine Stelle der Effektmenge. Gemessen wird mit dem Paar $f$,
+$\UnitEff{\StSp} - f$; bei Ja wird $x_1$ geraten, bei Nein $x_2$. Es gibt keinen Zufall
+und keine Zeitgrenze.
+
+\emph{Die Erfolgsgröße} ist $P(f)$ aus Gleichung~\eqref{c02.eq.erfolg}, die
+Wahrscheinlichkeit, richtig zu raten. Sie ist die einzige physikalische Größe des Spiels. Das Spiel
+zeigt sie für den gewählten Effekt an.
+
+\emph{Die Belohnung} wird aus $P(f)$ und $P_{\mathrm{opt}}$ berechnet und ist eine
+Entscheidung der Spielgestaltung, keine Physik. Drei Sterne gibt es nur für
+$P(f) = P_{\mathrm{opt}}$; verglichen wird exakt, ohne Toleranz. Darunter gibt es zwei
+Stufen mit festen Schwellen $0 < \varepsilon_2 < \varepsilon_1$: zwei Sterne für
+$P_{\mathrm{opt}} - P(f) \leq \varepsilon_2$, sonst einen Stern für
+$P_{\mathrm{opt}} - P(f) \leq \varepsilon_1$, sonst keinen. Die beiden Schwellen sind
+gewählte Entwurfswerte, nicht hergeleitet und nicht geprüft; ihre Werte stehen in der
+Regeltafel des Spiels und nicht in diesem Buch.
+
+\emph{Das bewiesene Optimum} $P_{\mathrm{opt}}$ jedes Levels steht in
+Tabelle~\ref{c02.tab.level}. Es folgt aus Proposition~\ref{c02.prop.optimum} und wird nach
+Theorem~\ref{c02.thm.extremal} von einem Extremaleffekt erreicht. Mehr ist in keinem Level
+möglich.
+
+\begin{tpctable}{c02.tab.level}
+  \caption{Die Level der ersten Ausgabe. Bit: Zustände als $(\pw_0, \pw_1)$, Effekte als
+    $(q_0, q_1)$. Quadrat-Bit und Qubit: Zustände als $\vb{r}$. Letzte Spalte: ein
+    optimaler Extremaleffekt; in Q1 ist $\vb{n} = (1, -1, 0)/\sqrt{2}$.}
+  \begin{tabular}{llllll}
+    \toprule
+    Level & $x_1$ & $x_2$ & $(\lambda_1, \lambda_2)$ & $P_{\mathrm{opt}}$ & optimal \\
+    \midrule
+    B1 & $(1, 0)$ & $(0, 1)$ & $(\tfrac12, \tfrac12)$ & \num[c02.cl.level-b1]{1}{} & $(1, 0)$ \\
+    B2 & $(\tfrac34, \tfrac14)$ & $(\tfrac14, \tfrac34)$ & $(\tfrac12, \tfrac12)$ & \num[c02.cl.level-b2]{\tfrac34}{} & $(1, 0)$ \\
+    S1 & $(1, 0)$ & $(-1, 0)$ & $(\tfrac12, \tfrac12)$ & \num[c02.cl.level-s1]{1}{} & $f_x^{+}$ \\
+    S2 & $(1, 1)$ & $(-1, -1)$ & $(\tfrac12, \tfrac12)$ & \num[c02.cl.level-s2]{1}{} & $f_x^{+}$, $f_y^{+}$ \\
+    Q1 & $(1, 0, 0)$ & $(0, 1, 0)$ & $(\tfrac12, \tfrac12)$ & \num[c02.cl.level-q1]{\tfrac14(2 + \sqrt{2})}{} & $f_{\vb{n}}$ \\
+    Q2 & $(0, 0, \tfrac14)$ & $(0, 0, -\tfrac14)$ & $(\tfrac{9}{10}, \tfrac{1}{10})$ & \num[c02.cl.level-q2]{\tfrac{9}{10}}{} & $\UnitEff{\StSp}$ \\
+    \bottomrule
+  \end{tabular}
+\end{tpctable}
+
+\begin{tpcfigure}{c02.fig.unterscheiden}
+  \demo{c02.demo.distinguish}
+  \caption{Je ein Level in den drei Theorien mit den Niveaulinien eines optimalen
+    Extremaleffekts (gestrichelt). (a) B2: Der Effekt $(1,0)$ hat in $x_1$ den Wert
+    $\tfrac34$ und in $x_2$ den Wert $\tfrac14$. (b) S2: Der Effekt $f_x^{+}$ trennt die
+    beiden Ecken sicher; $f_y^{+}$ auch. (c) Q1, Schnitt $r_z = 0$ durch die Zustandskugel des Qubits:
+    Keine Schar paralleler Linien hat $x_1$ auf $f = 1$ und zugleich $x_2$ auf $f = 0$.}
+\end{tpcfigure}
+
+In S1 sind beide Zustände gemischt und trotzdem sicher unterscheidbar. In S2 sind zwei
+Extremaleffekte optimal und mit ihnen die ganze Kante dazwischen
+(Abbildung~\ref{c02.fig.optimum}(b)). In Q2 ist Raten optimal: Der beste Effekt ist der
+Einseffekt, immer $x_1$ raten.
+
+\section{Von hier zur Quantentheorie}\label{c02.s8}
+
+Der Rahmen dieses Kapitels zeichnet keinen der drei Zustandsräume aus: Strecke, Quadrat und
+Kugel erfüllen alle die Bedingungen aus \defref{D3}. Welcher Zustandsraum zu einem
+gegebenen System gehört, sagt der Rahmen nicht. In der Quantentheorie treten die
+Zustandsräume einer bestimmten Familie auf, zu der die Kugel aus
+Abschnitt~\ref{c02.s4.3} als kleinstes nichttriviales Beispiel gehört. Zum Schritt dorthin
+steht in der Rahmung des Kurses der Satz:
+% GAP-TJO: Wie TJO den Schritt von den GPTs zur Quantentheorie benannt haben will, ist
+% offen (evidence/gaps.json, G-0012).  Die Bezeichnung „Modellwahl“ aus
+% docs/plan/PLAN.md, Abschnitt 13.1, A11 ist nicht sein Wortlaut und steht deshalb nicht
+% im Text; sein Satz ist der folgende (BRIEF.md:47).  Die deutsche Fassung ist eine
+% Übersetzung.
+\begin{equation}\label{c02.eq.rahmen-spezialisierung}\claim{c02.cl.rahmen-spezialisierung}{author-stipulated}
+  \begin{aligned}
+    &\text{\tpcifenglish{The GPT presentation allows us to present}{Die GPT-Darstellung erlaubt uns, die Postulate}} \\
+    &\text{\tpcifenglish{the postulates of a physical theory which we}{einer physikalischen Theorie anzugeben, die wir}} \\
+    &\text{\tpcifenglish{subsequently specialise to QM next.}{anschließend zur Quantenmechanik spezialisieren.}}
+  \end{aligned}
+\end{equation}
+
+\begin{fundament}[id=c02.f1,
+    titel={Ordnungseinheitsräume},
+    wozu={Die Effekte eines Zustandsraums bilden ein Intervall in einem geordneten
+      Vektorraum mit Ordnungseinheit. Hier steht diese Struktur so, wie Plávala sie für
+      endliche Dimension angibt, und es wird gesagt, was der Kurs darüber hinaus noch
+      schuldet.},
+    voraussetzung={Vertiefung~\ref{c02.v2}; Halbordnungen. Weder Kern noch Vertiefungen
+      brauchen diesen Block.},
+    zurueck={Man kann eine Theorie mit ihren Zuständen beginnen oder mit ihren Effekten;
+      in endlicher Dimension führt beides zu demselben Rahmen.}]
+  Auf $\Aff{\StSp}$ gibt es eine natürliche Ordnung: $f \leq g$ bedeutet
+  $f(x) \leq g(x)$ für alle $x \in \StSp$, also $g - f \in \AffPos{\StSp}$. Ein
+  \emph{geordneter Vektorraum} ist bei Plávala ein Vektorraum mit einer Relation $\leq$,
+  die reflexiv, antisymmetrisch und transitiv ist und sich mit der Addition und mit der
+  Multiplikation mit nicht negativen Zahlen verträgt
+  \srcref{plavala-2103.07469v2}{Anhang „Convex cones and ordered vector spaces“}.
+
+  \tpcdef{D6}
+
+  \begin{proposition}[Affine Funktionen als Ordnungseinheitsraum]\label{c02.prop.oeraum}\claim[proof-omitted]{c02.cl.oeraum}{source-backed}
+    Für jeden Zustandsraum $\StSp$ ist $(\Aff{\StSp}, \leq, \UnitEff{\StSp})$ ein
+    Ordnungseinheitsraum, und die Effekte sind darin das Ordnungsintervall zwischen $0$
+    und der Ordnungseinheit:
+    \begin{equation}\label{c02.eq.intervall}
+      \EffAlg{\StSp} = \{ f \in \Aff{\StSp} : 0 \leq f \leq \UnitEff{\StSp} \} .
+    \end{equation}
+  \end{proposition}
+
+  Plávala beweist die drei Bestandteile einzeln: dass $\Aff{\StSp}$ mit dieser Ordnung ein
+  geordneter Vektorraum ist, dass $\UnitEff{\StSp}$ eine Ordnungseinheit ist, und
+  Gleichung~\eqref{c02.eq.intervall}. Quelle:
+  \srcref{plavala-2103.07469v2}{„Effect algebra“}.
+  Abbildung~\ref{c02.fig.ordnungsintervall} zeigt das Intervall für das klassische Bit.
+
+  \begin{tpcfigure}{c02.fig.ordnungsintervall}
+    \caption{Die Effektmenge des klassischen Bits als Ordnungsintervall, in den Koordinaten
+      $(q_0, q_1)$ aus Proposition~\ref{c02.prop.bit}. Der positive Kegel $\AffPos{\StSp}$
+      ist der Quadrant rechts oben vom Nullpunkt. Die Bedingung $f \leq \UnitEff{\StSp}$
+      sagt, dass $\UnitEff{\StSp} - f$ in diesem Kegel liegt; das ist der Quadrant links
+      unten von $\UnitEff{\StSp}$. Der Durchschnitt der beiden Quadranten ist das
+      Einheitsquadrat $\EffAlg{\StSp}$.}
+  \end{tpcfigure}
+
+  Der Weg geht auch in die andere Richtung, von den Effekten zu den Zuständen. Ein Kegel
+  $C$ in einem Vektorraum $V$ heißt dabei \emph{spitz}, wenn außer $0$ kein Vektor zugleich
+  mit seinem Negativen in $C$ liegt, und \emph{erzeugend}, wenn $C$ den Raum $V$
+  aufspannt.
+
+  \begin{proposition}[Von den Effekten zurück zu den Zuständen]\label{c02.prop.rueckweg}\claim[proof-omitted]{c02.cl.rueckweg}{source-backed}
+    Sei $V$ ein reeller, endlichdimensionaler Vektorraum, $C \subset V$ ein konvexer,
+    abgeschlossener, spitzer und erzeugender Kegel und $\OrdUnit \in C$ eine
+    Ordnungseinheit. Sei $E = \{ v \in V : 0 \leq v \leq \OrdUnit \}$ und
+    \begin{equation}\label{c02.eq.rueckweg}
+      S(E) = \{ \psi \in C^{*} : \pair{\psi}{\OrdUnit} = 1 \} ,
+    \end{equation}
+    wobei $C^{*}$ der duale Kegel von $C$ ist. Dann ist $S(E)$ ein Zustandsraum, und seine
+    Effektmenge ist wieder $E$: Es gilt $\EffAlg{S(E)} = E$.
+  \end{proposition}
+
+  Plávala gibt dafür die Beweisidee an und folgert, dass der Rahmen, der von solchen
+  Intervallen ausgeht, derselbe ist wie der, der von Zustandsräumen ausgeht
+  \srcref{plavala-2103.07469v2}{„Connection to abstract convex effect algebras and order unit spaces“}.
+  Dort steht auch der abstrakte Begriff der Effektalgebra, den dieses Kapitel nicht
+  braucht.
+
+  \emph{Was offen bleibt.} In der Rahmung des Kurses steht an dieser Stelle der Satz
+  % GAP-TJO: BRIEF.md:47 verlangt „Archimedean order unit spaces“.  Das Wort „Archimedean“
+  % kommt in der Quelle (Plávala v2) nicht vor, und keine Quelle auf der Platte definiert
+  % es (evidence/gaps.json, G-0002).  Was es für den Kurs bedeutet, wie es sich zu
+  % Definition D6 verhält und wie der Satz in unendlicher Dimension zu lesen ist, muss TJO
+  % sagen.  Die deutsche Fassung des Satzes ist eine Übersetzung.
+  \begin{equation}\label{c02.eq.rahmen-archimedisch}\claim{c02.cl.rahmen-archimedisch}{author-stipulated}
+    \begin{aligned}
+      &\text{\tpcifenglish{All physical theories, for me,}{Alle physikalischen Theorien sind für mich}} \\
+      &\text{\tpcifenglish{are Archimedean order unit spaces.}{archimedische Ordnungseinheitsräume.}}
+    \end{aligned}
+  \end{equation}
+  Dieses Kapitel deckt davon nur einen Teil ab. Erstens ist \defref{D6} die Definition aus
+  der Quelle, und in ihr kommt die Eigenschaft „archimedisch“ nicht vor; was sie bedeutet
+  und warum der Kurs sie verlangt, ist hier nicht gesagt. Zweitens sind alle Aussagen
+  dieses Kapitels unter der Bedingung (S5) bewiesen oder zitiert, also für
+  endlichdimensionale Zustandsräume. Über unendlichdimensionale Theorien sagt es nichts.
+\end{fundament}

@@ -1,0 +1,19 @@
+{
+ "schema_version": 1,
+ "key": "fixture-book",
+ "kind": "book",
+ "storage": "private",
+ "title": "fixture source",
+ "authors": [
+  "nobody (fixture)"
+ ],
+ "files": [
+  {
+   "path": "fixture-book/scan.bin",
+   "role": "scan",
+   "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+   "pages": 1
+  }
+ ],
+ "rights_ref": "rights.json"
+}

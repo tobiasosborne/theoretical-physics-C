@@ -1,0 +1,39 @@
+{
+ "schema_version": 1,
+ "note": "Both psi21pm signs reversed consistently; reference dependencies present but filtered by --only.",
+ "formulas": [
+  {
+   "id": "c11.eq.y1pm",
+   "kind": "harmonic",
+   "l": 1,
+   "m": 1,
+   "pm": true,
+   "tex": "\\Ylm{1}{\\pm 1}(\\theta, \\phi) &= \\mp\\sqrt{\\frac{3}{8\\pi}}\\,\\sin\\theta\\,e^{\\pm i\\phi}.",
+   "expr": {
+    "+": "-sqrt(3/(8*pi))*sin(theta)*exp(I*phi)",
+    "-": "sqrt(3/(8*pi))*sin(theta)*exp(-I*phi)"
+   }
+  },
+  {
+   "id": "c11.eq.r21",
+   "kind": "radial",
+   "n": 2,
+   "l": 1,
+   "tex": "\\Rnl{2}{1}(\\rad) &= \\frac{1}{2\\sqrt{6}}\\left(\\frac{\\Znuc}{\\aRed}\\right)^{3/2}\n    \\frac{\\Znuc\\rad}{\\aRed}\\,e^{-\\Znuc\\rad/(2\\aRed)}.",
+   "expr": "(Z/a)**(3/2)*(Z*r/a)*exp(-Z*r/(2*a))/(2*sqrt(6))"
+  },
+  {
+   "id": "c11.eq.psi21pm",
+   "kind": "wavefunction",
+   "n": 2,
+   "l": 1,
+   "m": 1,
+   "pm": true,
+   "tex": "\\psinlm{2}{1}{\\pm 1}(\\rad, \\theta, \\phi) &= \\pm\\frac{1}{8\\sqrt{\\pi}}\n    \\left(\\frac{\\Znuc}{\\aRed}\\right)^{3/2}\n    \\frac{\\Znuc\\rad}{\\aRed}\\,e^{-\\Znuc\\rad/(2\\aRed)}\\,\\sin\\theta\\,e^{\\pm i\\phi}.",
+   "expr": {
+    "+": "-(-(Z/a)**(3/2)*(Z*r/a)*exp(-Z*r/(2*a))*sin(theta)*exp(I*phi)/(8*sqrt(pi)))",
+    "-": "-((Z/a)**(3/2)*(Z*r/a)*exp(-Z*r/(2*a))*sin(theta)*exp(-I*phi)/(8*sqrt(pi)))"
+   }
+  }
+ ]
+}

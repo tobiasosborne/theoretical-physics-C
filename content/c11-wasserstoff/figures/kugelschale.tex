@@ -1,0 +1,31 @@
+% c11.fig.kugelschale — why the radial density of the constructed 1s state starts at zero.
+%
+% Generating formulas (chapter equations c11.eq.psi100 and c11.eq.pnl; Z = 1, x = r/a_mu with the
+% Bohr radius a_mu of the REDUCED mass):
+%     pi a_mu^3 |psi_100|^2 = exp(-2x)            density per volume, largest at x = 0 (dashed),
+%     x^2                    = (area of the sphere of radius r)/(4 pi a_mu^2)   (thin),
+%     a_mu P_10 = 4 x^2 exp(-2x)                  density per distance, maximum at x = 1 (heavy):
+% the heavy curve is 4 times the product of the other two.
+% Greyscale: dashed, thin, heavy; labelled directly.
+\begin{tikzpicture}
+  \pgfplotsset{c11/.style={
+    axis lines=left, clip=false, grid=none,
+    axis line style={draw=tpc-plate-ink, line width=\tpcstrokethin},
+    tick style={draw=tpc-plate-ink, line width=\tpcstrokehair},
+    tick label style={font=\tpcfontlabel, text=tpc-plate-ink},
+    label style={font=\tpcfontlabel, text=tpc-plate-ink},
+    every axis x label/.style={at={(ticklabel* cs:1.0)}, anchor=west, font=\tpcfontlabel},
+    every axis y label/.style={at={(ticklabel* cs:1.0)}, anchor=south, font=\tpcfontlabel}}}
+  \begin{axis}[c11, width=9.0cm, height=5.0cm,
+      xmin=0, xmax=4.3, ymin=0, ymax=1.18,
+      xtick={0,1,2,3,4}, ytick={0,0.5,1}, yticklabels={$0$,$\tfrac12$,$1$},
+      xlabel={$r/a_{\mu}$}, ylabel={}]
+    \addplot[draw=tpc-state, line width=\tpcstrokethin, dash pattern=on 4pt off 2pt, domain=0:4.3, samples=120] {exp(-2*x)};
+    \addplot[draw=tpc-plate-ink, line width=\tpcstrokethin, domain=0:0.93, samples=60] {x*x};
+    \addplot[tpc state, domain=0:4.3, samples=160] {4*x*x*exp(-2*x)};
+    \draw[tpc leader, dash pattern=on 1.5pt off 1.5pt] (axis cs:1,0) -- (axis cs:1,{4*exp(-2)});
+    \node[tpc label, anchor=west] at (axis cs:0.1,1.08) {$\pi a_{\mu}^3\,\lvert\psi_{100}\rvert^2$};
+    \node[tpc label, anchor=south west] at (axis cs:0.95,0.84) {$r^2/a_{\mu}^2$};
+    \node[tpc label, anchor=south west] at (axis cs:1.35,0.47) {$a_{\mu} P_{10}$};
+  \end{axis}
+\end{tikzpicture}

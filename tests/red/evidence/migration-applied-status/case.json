@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "An applied migration lacks its application date and destinations.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/migration-applied-status --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[migration\\] migrations/M-0001\\.json: applied record needs a valid applied_date"
+}

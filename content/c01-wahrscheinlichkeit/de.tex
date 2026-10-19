@@ -1,0 +1,875 @@
+% content/c01-wahrscheinlichkeit/de.tex — Kapitel 1: Wahrscheinlichkeit für Physiker
+% (deutsche Leitfassung)
+%
+% Migration des Unterabschnitts „Wahrscheinlichkeit“ der ersten Vorlesung
+% (latex/lectures/de/vl01.tex:93-216).  Wohin jede Gleichung, jedes Beispiel und jede
+% Übung gegangen ist, steht in evidence/migrations/maps/vl01-map.json.
+%
+% Definitionen: Registry D53 bis D56 (Quelle: das Skript, vl01.tex, mit Zeilenangabe).
+% Herleitungen: jede als „hergeleitet“ markierte Aussage steht mit derselben ID in
+%   evidence/derivations/c01/DERIVATION.md.
+% Rahmung: docs/plan/BRIEF.md:45-46 (author-stipulated); Gefahr H1.1 des Curriculum-Berichts
+%   (Determinismus ist der Sonderfall des Punktgewichts) in Proposition c01.prop.punktgewicht.
+%
+% Schreibweise (Registry): Ergebnismenge X = \Outcomes, Gewicht p = \pw, \Prob, \Ex, \Var,
+% Indikatorfunktion \ind{S}.  Das Punktgewicht auf a heißt hier p_a, das Produktgewicht
+% für N Wiederholungen p^{(N)}; beide sind Schreibweisen dieses Kapitels.
+
+\chapter{Wahrscheinlichkeit für Physiker}\label{c01}
+
+Die Zahlen, die eine physikalische Theorie in diesem Kurs vorhersagt, sind
+Wahrscheinlichkeiten. Dieses Kapitel legt fest, wie mit ihnen gerechnet wird. Konzeptionell
+Neues enthält es kaum: Ein intuitives Verständnis von Wahrscheinlichkeit wird vorausgesetzt.
+Es geht um die \emph{Notation}, in der später die Quantenmechanik formuliert wird, und um
+eine Sprache. Zur Sprache gehört eine Festlegung des Autors:
+% GAP-TJO: Deutsche Fassung von docs/plan/BRIEF.md:46 (erster Teil des Satzes): Übersetzung
+% des Kapitelautors (G-0022).  Der zweite Teil des Satzes (Messungen als Elemente des
+% Dualraums) gehört zu Kapitel 2 und ist hier nicht zitiert.
+\begin{equation}\label{c01.eq.sprache}\claim{c01.cl.sprache}{author-stipulated}
+  \begin{aligned}
+    &\text{\tpcifenglish{Thus our presentation starts with probability theory,}{Unsere Darstellung beginnt deshalb mit der}} \\
+    &\text{\tpcifenglish{with notation and framing}{Wahrscheinlichkeitstheorie, mit Notation und Rahmung,}} \\
+    &\text{\tpcifenglish{adapted to physics: we use the language}{die der Physik angepasst sind: Wir benutzen die Sprache}} \\
+    &\text{\tpcifenglish{of preparations (= states)}{der Präparationen (= Zustände)}} \\
+    &\text{\tpcifenglish{instead of “probability measures”.}{statt der „Wahrscheinlichkeitsmaße“.}}
+  \end{aligned}
+\end{equation}
+Was die Mathematik eine Wahrscheinlichkeitsverteilung nennt, heißt hier also Präparation,
+und was sie eine Zufallsvariable nennt, heißt Messung. Tabelle~\ref{c01.tab.sprache} am Ende
+von Abschnitt~\ref{c01.s2} stellt die Wörter nebeneinander.
+
+\section{Ergebnisse und Präparationen}\label{c01.s1}
+
+\tpcdef{D53}
+
+In diesem und den nächsten beiden Abschnitten ist $\Outcomes$ eine endliche Menge.
+
+\begin{example}[Würfel und Münze]\label{c01.ex.wuerfel}
+  Bei einem Würfel besteht die Ergebnismenge aus den möglichen Augenzahlen:
+  $\Outcomes = \{1, 2, 3, 4, 5, 6\}$. Bei einer Münze ist
+  $\Outcomes = \{\text{\tpcifenglish{heads}{Kopf}}, \text{\tpcifenglish{tails}{Zahl}}\}$.
+  „Die Augenzahl ist gerade“ ist das Ereignis $S = \{2, 4, 6\}$.
+\end{example}
+
+\begin{exercise}[Zwei Würfel]\label{c01.exc.zwei-wuerfel}\claim{c01.cl.zwei-wuerfel}{derived}
+  Beschreiben Sie die Ergebnismenge für \emph{zwei} Würfel. Wie viele Elemente hat sie?
+\end{exercise}
+\begin{solution}
+  Ein Ergebnis ist ein Paar $(x_1, x_2)$ aus der Augenzahl $x_1$ des ersten und der
+  Augenzahl $x_2$ des zweiten Würfels. Die Ergebnismenge ist die Menge aller solchen Paare
+  mit $x_1, x_2 \in \{1, \dots, 6\}$. Zu jedem der $6$ Werte von $x_1$ gibt es $6$ Werte
+  von $x_2$; sie hat also $6 \cdot 6 = 36$ Elemente
+  (Abbildung~\ref{c01.fig.ereignis}).
+\end{solution}
+
+\begin{tpcfigure}{c01.fig.ereignis}
+  \caption{Ergebnismengen und Ereignisse. (a) Ein Würfel: sechs Ergebnisse; das Ereignis
+    „gerade Augenzahl“ ist die Menge der schraffierten Felder. (b) Zwei Würfel: Jeder
+    Punkt ist ein Paar $(x_1, x_2)$, zusammen $36$ Ergebnisse. Das Ereignis „die
+    Augensumme ist $7$“ besteht aus den sechs mit Quadraten markierten Paaren.}
+\end{tpcfigure}
+
+Eine Präparation legt fest, wie wahrscheinlich jedes Ergebnis ist.
+
+\tpcdef{D54}
+
+Die beiden Bedingungen an $\pw$ sind die einzigen. Die erste gilt, weil eine negative
+Wahrscheinlichkeit nichts bedeuten würde; die zweite, weil sicher irgendein Ergebnis
+eintritt. Wir nennen $\pw$ im Folgenden kurz ein \emph{Gewicht}.
+
+\begin{example}[Fairer und gezinkter Würfel]\label{c01.ex.gezinkt}\claim{c01.cl.gezinkt}{derived}
+  Für einen fairen Würfel ist $\pw(x) = \tfrac16$ für alle $x$. Andere Gewichte beschreiben
+  \emph{gezinkte} Würfel. In diesem Kapitel dient als gezinkter Würfel das Gewicht
+  \begin{equation}\label{c01.eq.gezinkt}
+    \pw(1) = \tfrac{1}{12}, \qquad
+    \pw(2) = \pw(3) = \pw(4) = \pw(5) = \tfrac{2}{12}, \qquad
+    \pw(6) = \tfrac{3}{12} .
+  \end{equation}
+  Die Summe ist $\tfrac{1 + 4\cdot 2 + 3}{12} = 1$. Das Ereignis „gerade Augenzahl“,
+  $S = \{2,4,6\}$, hat beim fairen Würfel die Wahrscheinlichkeit
+  $\Prob[S] = 3\cdot\tfrac16 = \tfrac12$ und beim gezinkten
+  $\Prob[S] = \tfrac{2 + 2 + 3}{12} = \tfrac{7}{12}$.
+\end{example}
+
+\begin{tpcfigure}{c01.fig.gewichte}
+  \caption{Drei Gewichte auf der Ergebnismenge $\{1, \dots, 6\}$ eines Würfels. Die Höhe
+    eines Balkens ist $\pw(x)$; in jedem Bild ist die Summe aller Höhen $1$. (a) Fairer
+    Würfel. (b) Der gezinkte Würfel aus Gleichung~\eqref{c01.eq.gezinkt}. (c) Ein
+    Punktgewicht: Das ganze Gewicht liegt auf dem Ergebnis $3$. Solche Gewichte beschreiben
+    deterministische Präparationen (Proposition~\ref{c01.prop.punktgewicht}).}
+\end{tpcfigure}
+
+\begin{proposition}[Eigenschaften der Wahrscheinlichkeit]\label{c01.prop.wahrscheinlichkeit}\claim[proof-included]{c01.cl.wahrscheinlichkeit}{derived}
+  Sei $\pw$ ein Gewicht auf einer endlichen Ergebnismenge $\Outcomes$, und seien
+  $S, T \subset \Outcomes$ Ereignisse. Dann gilt:
+  \begin{enumerate}
+    \item $0 \leq \Prob[S] \leq 1$, $\Prob[\emptyset] = 0$ und $\Prob[\Outcomes] = 1$.
+    \item Sind $S_1, \dots, S_k$ paarweise disjunkt, das heißt, haben je zwei von ihnen
+      kein Ergebnis gemeinsam, so ist
+      \begin{equation}\label{c01.eq.additiv}
+        \Prob[S_1 \cup \dots \cup S_k] = \Prob[S_1] + \dots + \Prob[S_k] .
+      \end{equation}
+    \item $\Prob[\Outcomes \setminus S] = 1 - \Prob[S]$.
+    \item $\Prob[S \cup T] = \Prob[S] + \Prob[T] - \Prob[S \cap T]$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  Zu~2: Jedes Ergebnis $x$ der Vereinigung liegt in genau einem $S_j$. Die Summe der
+  $\pw(x)$ über die Vereinigung lässt sich deshalb nach den $S_j$ ordnen, und das ist die
+  rechte Seite. Zu~1: $\Prob[S]$ ist eine Summe von Zahlen $\pw(x) \geq 0$, also
+  $\Prob[S] \geq 0$; die leere Summe ist $0$, und $\Prob[\Outcomes] = 1$ ist die zweite
+  Bedingung an ein Gewicht. Zu~3: $S$ und $\Outcomes \setminus S$ sind disjunkt mit
+  Vereinigung $\Outcomes$, also ist nach~2 $\Prob[S] + \Prob[\Outcomes \setminus S] = 1$.
+  Daraus folgt auch $\Prob[S] \leq 1$. Zu~4: $S \cup T$ ist die disjunkte Vereinigung von
+  $S$ und $T \setminus S$, und $T$ ist die disjunkte Vereinigung von $T \setminus S$ und
+  $S \cap T$. Nach~2 ist $\Prob[S \cup T] = \Prob[S] + \Prob[T \setminus S]$ und
+  $\Prob[T] = \Prob[T \setminus S] + \Prob[S \cap T]$. Einsetzen ergibt die Behauptung.
+\end{proof}
+
+Die Disjunktheit in~\eqref{c01.eq.additiv} ist wesentlich. Überlappen sich die Ereignisse,
+so zählt die rechte Seite Ergebnisse doppelt; Teil~4 zeigt für zwei Ereignisse, um wie viel.
+Eine Funktion, die Mengen Zahlen $\geq 0$ zuordnet und \eqref{c01.eq.additiv} erfüllt, heißt in der
+Mathematik ein \emph{Maß}, und ein \emph{Wahrscheinlichkeitsmaß}, wenn
+$\Prob[\Outcomes] = 1$ ist. Mehr Maßtheorie braucht dieser Kurs im Kern nicht; die Wörter
+sollen nur die Literatur lesbar machen.
+
+Präparationen lassen sich mischen. Sind $\pw$ und $q$ Gewichte und ist $\lambda$ eine Zahl
+zwischen $0$ und $1$, so kann man mit Wahrscheinlichkeit $\lambda$ nach $\pw$ und sonst
+nach $q$ präparieren. Auch das ist eine Präparation, mit dem Gewicht
+\begin{equation}\label{c01.eq.mischung}\claim{c01.cl.mischung}{derived}
+  \lambda\, \pw + (1-\lambda)\, q,
+  \qquad
+  \bigl(\lambda\, \pw + (1-\lambda)\, q\bigr)(x) = \lambda\, \pw(x) + (1-\lambda)\, q(x) .
+\end{equation}
+Das ist wieder ein Gewicht: Alle Werte sind $\geq 0$, weil $\lambda$, $1-\lambda$,
+$\pw(x)$ und $q(x)$ es sind, und die Summe über $x$ ist
+$\lambda \cdot 1 + (1-\lambda)\cdot 1 = 1$.
+
+\section{Messungen und Erwartungswert}\label{c01.s2}
+
+Kapitel~0 hat jedes Experiment in drei Stadien zerlegt. In der klassischen
+Wahrscheinlichkeitstheorie hat jedes Stadium eine einfache mathematische Gestalt
+\srcref{tpc-script-v0.2}{vl01, Kasten „Jedes Experiment in drei Schritten“}.
+
+\begin{greybox}[Die drei Stadien, klassisch]
+  \begin{equation}\label{c01.eq.stadien}\claim{c01.cl.messung}{source-backed}
+    \begin{aligned}
+      &\text{\tpcifenglish{1. Preparation:}{1. Präparation:}} && \text{\tpcifenglish{a weight}{ein Gewicht}}\ \pw \\
+      &\text{\tpcifenglish{2. Run:}{2. Durchführung:}} && \text{\tpcifenglish{a map of weights to weights}{eine Abbildung von Gewichten auf Gewichte}} \\
+      &\text{\tpcifenglish{3. Measurement:}{3. Messung:}} && \text{\tpcifenglish{a function}{eine Funktion}}\ f\colon \Outcomes \to \mathbb{R}
+    \end{aligned}
+  \end{equation}
+  Am Ende der Messung steht eines der möglichen Ergebnisse. Was für Abbildungen im zweiten
+  Stadium vorkommen, braucht dieses Kapitel nicht.
+\end{greybox}
+
+\tpcdef{D55}
+
+An eine Messung wird keine Bedingung gestellt: Jede Funktion auf $\Outcomes$ darf als
+Messung gelten. An eine Präparation stellen wir dagegen zwei. Der Wert $f(x)$ ist der
+Messwert, der sich ergibt, wenn man sicher weiß, dass das Ergebnis $x$ vorliegt.
+
+\begin{example}[Augenzahl]\label{c01.ex.augenzahl}\claim{c01.cl.augenzahl}{derived}
+  Für einen Würfel ist die Augenzahl $f(x) = x$ eine Messung. Für den fairen Würfel ist
+  \begin{equation}\label{c01.eq.augenzahl-fair}
+    \Ex[f] = \tfrac16\,(1 + 2 + 3 + 4 + 5 + 6) = \tfrac{21}{6} = \tfrac72 ,
+  \end{equation}
+  für den gezinkten Würfel aus Gleichung~\eqref{c01.eq.gezinkt}
+  \begin{equation}\label{c01.eq.augenzahl-gezinkt}
+    \Ex[f] = \tfrac{1}{12}\,(1\cdot 1 + 2\cdot 2 + 2\cdot 3 + 2\cdot 4 + 2\cdot 5 + 3\cdot 6)
+           = \tfrac{47}{12} .
+  \end{equation}
+  Keiner der beiden Werte ist eine Augenzahl. Der Erwartungswert muss kein möglicher
+  Messwert sein.
+\end{example}
+
+\begin{tpcfigure}{c01.fig.erwartung}
+  \caption{Der Erwartungswert der Augenzahl als Schwerpunkt. Denkt man sich die Gewichte
+    $\pw(x)$ als Massen an den Stellen $x$ eines Balkens, so ist $\Ex[f]$ die Stelle, an
+    der der Balken im Gleichgewicht ist: (a) beim fairen Würfel in der Mitte, bei
+    $\tfrac72$; (b) beim gezinkten Würfel aus Gleichung~\eqref{c01.eq.gezinkt} nach rechts
+    verschoben, bei $\tfrac{47}{12}$.}
+\end{tpcfigure}
+
+\subsection{Relative Häufigkeiten}\label{c01.s2.1}
+
+Woher kommt die Formel für den Erwartungswert? Man wiederholt das Experiment $N$-mal mit
+derselben Präparation, wobei $N$ eine positive ganze Zahl ist, und notiert die Ergebnisse
+$x_1, \dots, x_N$. Sei $N(x)$ die Anzahl
+der Durchläufe mit dem Ergebnis $x$. Die \emph{relative Häufigkeit} von $x$ ist
+\begin{equation}\label{c01.eq.haeufigkeit}\claim{c01.cl.haeufigkeit}{derived}
+  h_N(x) = \frac{N(x)}{N},
+  \qquad
+  h_N(x) \geq 0,
+  \qquad
+  \sum_{x \in \Outcomes} h_N(x) = 1 .
+\end{equation}
+Die Summe ist $1$, weil jeder der $N$ Durchläufe genau ein Ergebnis hat, also
+$\sum_x N(x) = N$ ist. Die relativen Häufigkeiten einer Messreihe sind selbst ein Gewicht.
+Für den Mittelwert der Messwerte einer Messung $f$ über die Messreihe gilt
+\begin{equation}\label{c01.eq.stichprobenmittel}\claim{c01.cl.stichprobenmittel}{derived}
+  \frac{1}{N} \sum_{i=1}^{N} f(x_i)
+  = \frac{1}{N} \sum_{x \in \Outcomes} N(x)\, f(x)
+  = \sum_{x \in \Outcomes} h_N(x)\, f(x) ,
+\end{equation}
+denn in der linken Summe kommt der Summand $f(x)$ genau $N(x)$-mal vor. Der Mittelwert
+einer Messreihe ist also der Erwartungswert von $f$ im Gewicht $h_N$. Diese Gleichung ist
+exakt und gilt für jede Messreihe.
+
+Die statistische Lesart der Vorlesung beschränken wir hier auf das Modell unabhängiger
+Wiederholungen derselben Präparation: Bei vielen solchen Wiederholungen liegt die relative
+Häufigkeit $h_N(x)$ mit hoher Wahrscheinlichkeit nahe bei $\pw(x)$,
+\begin{equation}\label{c01.eq.lesart}\claim{c01.cl.lesart}{source-backed}
+  h_N(x) \approx \pw(x)
+  \qquad \text{\tpcifenglish{for large}{für große}}\ N .
+\end{equation}
+In diesem Modell kommt das Ergebnis $x$ bei großem $N$ mit hoher Wahrscheinlichkeit
+etwa $N \pw(x)$-mal vor, die Summe der Messwerte ist dann etwa
+$\sum_x N \pw(x) f(x)$, und nach Division durch $N$ steht der Erwartungswert da
+\srcref{tpc-script-v0.2}{vl01, vor der Formel für den Erwartungswert}. Diese Lesart ist
+eine Deutung im angegebenen Modell: In einer einzelnen Messreihe kann $h_N$ von $\pw$
+abweichen. Für unabhängige Wiederholungen derselben Präparation lässt sich eine obere
+Schranke für die Wahrscheinlichkeit großer Abweichungen beweisen\zoomref{c01.v2}.
+
+\begin{tpcfigure}{c01.fig.haeufigkeit}
+  \demo{c01.demo.haeufigkeit}
+  \caption{Eine Messreihe mit dem gezinkten Würfel aus Gleichung~\eqref{c01.eq.gezinkt},
+    erzeugt von einem Rechenprogramm mit festem Startwert. Schraffierte Balken: relative
+    Häufigkeiten $h_N(x)$ nach den ersten (a) $12$, (b) $120$ und (c) $1200$ Würfen
+    derselben Reihe. Dicke Querstriche: die Gewichte $\pw(x)$. In (a) liegen die Balken
+    weit von den Strichen, in (c) nah an ihnen. Die Balken eines Bildes haben zusammen
+    stets die Höhe $1$, wie in Gleichung~\eqref{c01.eq.haeufigkeit}.}
+\end{tpcfigure}
+
+\subsection{Rechnen mit Erwartungswerten}\label{c01.s2.2}
+
+Messungen sind Funktionen und lassen sich deshalb addieren, mit Zahlen multiplizieren und
+miteinander multiplizieren: $(\alpha f + \gamma g)(x) = \alpha f(x) + \gamma g(x)$ und
+$(fg)(x) = f(x)\,g(x)$. Eine Zahl $c$ wird dabei als die konstante Messung mit dem Wert $c$
+gelesen. Wir schreiben $f \leq g$, wenn $f(x) \leq g(x)$ für alle $x \in \Outcomes$ gilt.
+
+\begin{proposition}[Rechenregeln für den Erwartungswert]\label{c01.prop.erwartung}\claim[proof-included]{c01.cl.erwartung}{derived}
+  Sei $\pw$ ein Gewicht auf einer endlichen Ergebnismenge $\Outcomes$, seien $f$ und $g$
+  Messungen und $\alpha$, $\gamma$, $c$ reelle Zahlen. Dann gilt:
+  \begin{enumerate}
+    \item Linearität: $\Ex[\alpha f + \gamma g] = \alpha\, \Ex[f] + \gamma\, \Ex[g]$.
+    \item Normierung: $\Ex[c] = c$.
+    \item Monotonie: Aus $f \leq g$ folgt $\Ex[f] \leq \Ex[g]$. Insbesondere ist
+      $\Ex[f] \geq 0$, wenn $f \geq 0$ ist.
+    \item Der Erwartungswert liegt zwischen dem kleinsten und dem größten Messwert:
+      $\min_x f(x) \leq \Ex[f] \leq \max_x f(x)$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  Zu~1:
+  \begin{equation}\label{c01.eq.linear}
+    \sum_{x \in \Outcomes} \pw(x)\,\bigl(\alpha f(x) + \gamma g(x)\bigr)
+    = \alpha \sum_{x \in \Outcomes} \pw(x) f(x) + \gamma \sum_{x \in \Outcomes} \pw(x) g(x) .
+  \end{equation}
+  Zu~2: $\sum_x \pw(x)\, c = c \sum_x \pw(x) = c$. Zu~3: Nach~1 ist
+  $\Ex[g] - \Ex[f] = \Ex[g - f] = \sum_x \pw(x)\,(g(x) - f(x))$, und jeder Summand ist ein
+  Produkt zweier Zahlen $\geq 0$. Zu~4: Mit $m = \min_x f(x)$ und $M = \max_x f(x)$ ist
+  $m \leq f \leq M$; nach~3 und~2 folgt $m \leq \Ex[f] \leq M$.
+\end{proof}
+
+\subsection{Ja-Nein-Messungen}\label{c01.s2.3}
+
+Eine besondere Rolle spielen Messungen, die nur die Werte $0$ und $1$ annehmen. Sie sind
+das Modell für Detektoren, die das Vorhandensein eines Teilchens anzeigen: Der Detektor
+sagt Klick oder kein Klick. An diesen zweiwertigen Messungen hängt die Quantenmechanik.
+Eine solche Messung $f$ ist durch die Menge $S = \{x \in \Outcomes \colon f(x) = 1\}$
+bestimmt. Man schreibt
+\begin{equation}\label{c01.eq.indikator-def}\claim{c01.cl.indikator-def}{source-backed}
+  \ind{S}(x) =
+  \begin{cases}
+    1, & x \in S, \\
+    0, & \text{\tpcifenglish{otherwise}{sonst}}
+  \end{cases}
+\end{equation}
+und nennt $\ind{S}$ die \emph{Indikatorfunktion} des Ereignisses $S$. Indikatorfunktionen
+\emph{sind} Messungen, kein eigenes Objekt daneben. Die Menge $S$ darf beliebig sein. Drei
+Grenzfälle: $S = \Outcomes$ gibt die konstante Messung $1$, $S = \emptyset$ die konstante
+Messung $0$, und für ein einzelnes Ergebnis $a$ ist $\ind{\{a\}}(x)$ gleich $1$ für
+$x = a$ und sonst $0$.
+
+Der Erwartungswert einer Indikatorfunktion ist die Wahrscheinlichkeit ihres Ereignisses:
+\begin{equation}\label{c01.eq.indikator}\claim{c01.cl.indikator}{derived}
+  \Ex[\ind{S}] = \sum_{x \in \Outcomes} \pw(x)\, \ind{S}(x) = \sum_{x \in S} \pw(x) = \Prob[S] .
+\end{equation}
+Abbildung~\ref{c01.fig.indikator} zeigt die Rechnung für den gezinkten Würfel.
+Wahrscheinlichkeiten sind also besondere Erwartungswerte. Umgekehrt legt $\Prob$ alle
+Erwartungswerte fest, denn mit $S = \{x\}$ ist $\pw(x) = \Prob[\{x\}]$ und deshalb
+$\Ex[f] = \sum_{x} \Prob[\{x\}]\, f(x)$.
+
+\begin{tpcfigure}{c01.fig.indikator}
+  \caption{Eine Ja-Nein-Messung am gezinkten Würfel aus Gleichung~\eqref{c01.eq.gezinkt}.
+    (a) Die Indikatorfunktion des Ereignisses $S = \{2,4,6\}$, gestrichelt wie alle
+    Messungen. (b) Die Gewichte $\pw(x)$ (Umrisse) und die Produkte $\pw(x)\,\ind{S}(x)$
+    (schraffiert): Die Indikatorfunktion lässt nur die Balken über $S$ übrig. Ihre Höhen
+    ergeben zusammen $\Ex[\ind{S}] = \Prob[S] = \tfrac{7}{12}$.}
+\end{tpcfigure}
+
+Mit Indikatorfunktionen rechnet man wie mit den Mengen:
+\begin{equation}\label{c01.eq.indikator-regeln}\claim{c01.cl.indikator-regeln}{derived}
+  \ind{S}\,\ind{T} = \ind{S \cap T},
+  \qquad
+  \ind{S}^2 = \ind{S},
+  \qquad
+  1 - \ind{S} = \ind{\Outcomes \setminus S} .
+\end{equation}
+Das prüft man Ergebnis für Ergebnis: Das Produkt $\ind{S}(x)\,\ind{T}(x)$ ist genau dann
+$1$, wenn beide Faktoren $1$ sind, also wenn $x$ in $S$ und in $T$ liegt. Die zweite
+Gleichung ist der Fall $T = S$. Die dritte: $1 - \ind{S}(x)$ ist $0$ für $x \in S$ und $1$
+sonst.
+
+Jede Messung lässt sich aus Ja-Nein-Messungen zusammensetzen. Für einen Messwert $v$ sei
+$\{f = v\}$ das Ereignis $\{x \in \Outcomes \colon f(x) = v\}$, „die Messung ergibt $v$“.
+Dann ist
+\begin{equation}\label{c01.eq.werteverteilung}\claim{c01.cl.werteverteilung}{derived}
+  f = \sum_{v} v\, \ind{\{f = v\}},
+  \qquad
+  \Ex[f] = \sum_{v} v\, \Prob[\{f = v\}] ,
+\end{equation}
+wobei $v$ die verschiedenen Werte durchläuft, die $f$ annimmt. Die erste Gleichung gilt,
+weil an jeder Stelle $x$ genau eine Indikatorfunktion gleich eins ist, die mit
+$v = f(x)$. Ist $f(x) = 0$, verschwinden alle gewichteten Summanden. Die zweite folgt daraus mit der Linearität und Gleichung~\eqref{c01.eq.indikator}. Der
+Erwartungswert ist das mit den Wahrscheinlichkeiten gewichtete Mittel der Messwerte.
+
+\begin{exercise}[Drei Ergebnisse]\label{c01.exc.drei}\claim{c01.cl.drei}{derived}
+  Sei $\Outcomes = \{1, 2, 3\}$ und $\pw(x) = \tfrac13$ für alle $x \in \Outcomes$.
+  Berechnen Sie $\Prob[S]$ für $S = \{1, 2\}$ und den Erwartungswert der Messung
+  $f(x) = x^2$.
+\end{exercise}
+\begin{solution}
+  $\Prob[S] = \pw(1) + \pw(2) = \tfrac23$ und
+  $\Ex[f] = \tfrac13\,(1 + 4 + 9) = \tfrac{14}{3}$.
+\end{solution}
+
+\begin{tpctable}{c01.tab.sprache}
+  \caption{Dieselben Dinge in zwei Sprachen. Links die Wörter der
+    Wahrscheinlichkeitstheorie, rechts die der Physik, die dieser Kurs benutzt.}
+  \begin{tabular}{lll}
+    \toprule
+    Symbol & Wahrscheinlichkeitstheorie & Physik \\
+    \midrule
+    $\Outcomes$ & Stichprobenraum & Ergebnismenge \\
+    $\pw$, $\Prob$ & Wahrscheinlichkeitsverteilung, -maß & Präparation \\
+    $f$ & Zufallsvariable & Messung \\
+    $\ind{S}$ & Indikatorfunktion des Ereignisses $S$ & Ja-Nein-Messung \\
+    $\Ex[f]$ & Erwartungswert & Erwartungswert \\
+    \bottomrule
+  \end{tabular}
+\end{tpctable}
+
+\section{Varianz und Determinismus}\label{c01.s3}
+
+Der Erwartungswert sagt, wo die Messwerte im Mittel liegen. Die Varianz sagt, wie weit sie
+um diesen Wert streuen.
+
+\tpcdef{D56}
+
+In der Definition ist $f - \Ex[f]$ die Messung mit den Werten $f(x) - \Ex[f]$, die
+Abweichung vom Erwartungswert, und $(f - \Ex[f])^2$ ihr Quadrat.
+
+\begin{proposition}[Eigenschaften der Varianz]\label{c01.prop.varianz}\claim[proof-included]{c01.cl.varianz}{derived}
+  Sei $\pw$ ein Gewicht auf einer endlichen Ergebnismenge $\Outcomes$, $f$ eine Messung
+  und $\alpha$, $\gamma$ reelle Zahlen. Dann gilt:
+  \begin{enumerate}
+    \item $\Var[f] = \Ex[f^2] - \Ex[f]^2$.
+    \item $\Var[f] \geq 0$.
+    \item $\Var[f] = 0$ gilt genau dann, wenn $f(x) = \Ex[f]$ für alle Ergebnisse $x$ mit
+      $\pw(x) > 0$ ist.
+    \item $\Var[\alpha f + \gamma] = \alpha^2\, \Var[f]$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  Wir schreiben $m = \Ex[f]$; das ist eine Zahl. Zu~1: Es ist
+  $(f - m)^2 = f^2 - 2 m f + m^2$. Mit der Linearität und der Normierung aus
+  Proposition~\ref{c01.prop.erwartung} folgt
+  \begin{equation}\label{c01.eq.varianzformel}
+    \Var[f] = \Ex[f^2] - 2m\, \Ex[f] + m^2 = \Ex[f^2] - 2m^2 + m^2 = \Ex[f^2] - m^2 .
+  \end{equation}
+  Zu~2 und~3: Nach Definition ist $\Var[f] = \sum_x \pw(x)\,(f(x) - m)^2$. Jeder Summand
+  ist $\geq 0$, also auch die Summe. Sie ist genau dann $0$, wenn jeder Summand $0$ ist,
+  und der Summand zu $x$ ist genau dann $0$, wenn $\pw(x) = 0$ oder $f(x) = m$ ist.
+  Zu~4: Nach der Linearität ist $\Ex[\alpha f + \gamma] = \alpha m + \gamma$. Also ist
+  $\alpha f + \gamma - \Ex[\alpha f + \gamma] = \alpha (f - m)$, das Quadrat davon ist
+  $\alpha^2 (f - m)^2$, und sein Erwartungswert ist $\alpha^2\, \Var[f]$.
+\end{proof}
+
+\begin{example}[Varianz der Augenzahl]\label{c01.ex.wuerfel-varianz}\claim{c01.cl.wuerfel-varianz}{derived}
+  Für den fairen Würfel und $f(x) = x$ ist
+  $\Ex[f^2] = \tfrac16\,(1 + 4 + 9 + 16 + 25 + 36) = \tfrac{91}{6}$ und mit
+  Gleichung~\eqref{c01.eq.augenzahl-fair}
+  \begin{equation}\label{c01.eq.varianz-fair}
+    \Var[f] = \tfrac{91}{6} - \bigl(\tfrac72\bigr)^2 = \tfrac{182 - 147}{12} = \tfrac{35}{12} .
+  \end{equation}
+  Für den gezinkten Würfel aus Gleichung~\eqref{c01.eq.gezinkt} ist
+  \begin{equation*}
+    \Ex[f^2] = \tfrac{1}{12}\,(1 + 2\cdot 4 + 2\cdot 9 + 2\cdot 16 + 2\cdot 25 + 3\cdot 36)
+    = \tfrac{217}{12} ,
+  \end{equation*}
+  und mit Gleichung~\eqref{c01.eq.augenzahl-gezinkt}
+  \begin{equation}\label{c01.eq.varianz-gezinkt}
+    \Var[f] = \tfrac{217}{12} - \bigl(\tfrac{47}{12}\bigr)^2
+            = \tfrac{2604 - 2209}{144} = \tfrac{395}{144} .
+  \end{equation}
+\end{example}
+
+\begin{example}[Zwei Ergebnisse]\label{c01.ex.muenze}\claim{c01.cl.muenze}{derived}
+  Sei $\Outcomes = \{0, 1\}$ mit $\pw(1) = q$ und $\pw(0) = 1 - q$ für eine Zahl $q$
+  zwischen $0$ und $1$, und sei $f(x) = x$. Dann ist $\Ex[f] = q$, und wegen $f^2 = f$ ist
+  auch $\Ex[f^2] = q$. Also ist
+  \begin{equation}\label{c01.eq.zwei-ergebnisse}
+    \Var[f] = q - q^2 = q\,(1 - q) = \tfrac14 - \bigl(q - \tfrac12\bigr)^2 .
+  \end{equation}
+  Die Varianz ist höchstens $\tfrac14$, und sie ist genau für $q = 0$ und $q = 1$ gleich
+  $0$: dann, wenn das Ergebnis feststeht.
+\end{example}
+
+Dieselbe Rechnung gilt für jede Ja-Nein-Messung. Nach
+Gleichung~\eqref{c01.eq.indikator-regeln} ist $\ind{S}^2 = \ind{S}$, also
+\begin{equation}\label{c01.eq.var-indikator}\claim{c01.cl.var-indikator}{derived}
+  \Var[\ind{S}] = \Prob[S] - \Prob[S]^2 = \Prob[S]\,\bigl(1 - \Prob[S]\bigr) .
+\end{equation}
+
+\begin{tpcfigure}{c01.fig.varianz}
+  \caption{(a), (b) Zwei Gewichte mit demselben Erwartungswert $\tfrac72$ der Augenzahl
+    $f(x) = x$ (gestrichelte Linie) und verschiedener Varianz: der faire Würfel aus
+    Gleichung~\eqref{c01.eq.varianz-fair} und ein Gewicht, das je zur Hälfte auf $3$ und
+    $4$ liegt; für dieses ist $\Ex[f^2] = \tfrac{9 + 16}{2}$ und
+    $\Var[f] = \tfrac{25}{2} - \tfrac{49}{4} = \tfrac14$. (c) Die Varianz
+    einer Ja-Nein-Messung als Funktion von $q = \Prob[S]$ nach
+    Gleichung~\eqref{c01.eq.var-indikator}: Sie verschwindet genau an den beiden Enden, wo
+    die Antwort feststeht, und ist bei $q = \tfrac12$ am größten.}
+\end{tpcfigure}
+
+\subsection{Punktgewichte}\label{c01.s3.1}
+
+Für ein Ergebnis $a \in \Outcomes$ heißt
+\begin{equation}\label{c01.eq.punktgewicht}\claim{c01.cl.punktgewicht-def}{source-backed}
+  \pw_a(x) =
+  \begin{cases}
+    1, & x = a, \\
+    0, & \text{\tpcifenglish{otherwise}{sonst}}
+  \end{cases}
+\end{equation}
+das \emph{Punktgewicht} auf $a$. Es ist ein Gewicht, und es ist auf einen Punkt
+konzentriert: Präpariert wird mit Sicherheit das Ergebnis $a$. Für jede Messung $f$ ist
+$\Ex[f] = f(a)$. Jedes Gewicht ist eine Mischung von Punktgewichten, und zwar auf genau
+eine Weise:
+\begin{equation}\label{c01.eq.zerlegung}\claim{c01.cl.zerlegung}{derived}
+  \pw = \sum_{a \in \Outcomes} \pw(a)\, \pw_a .
+\end{equation}
+Zum Nachprüfen wertet man beide Seiten an einer Stelle $x$ aus: Rechts bleibt nur der
+Summand mit $a = x$, und der ist $\pw(x)$. Eindeutig ist die Zerlegung, weil aus
+$\pw = \sum_a c_a\, \pw_a$ durch Auswerten an der Stelle $x$ sofort $c_x = \pw(x)$ folgt.
+
+\begin{proposition}[Determinismus ist ein Sonderfall]\label{c01.prop.punktgewicht}\claim[proof-included]{c01.cl.punktgewicht}{derived}
+  Für ein Gewicht $\pw$ auf einer endlichen Ergebnismenge $\Outcomes$ sind gleichwertig:
+  \begin{enumerate}
+    \item $\pw$ ist ein Punktgewicht.
+    \item Jedes Ereignis hat die Wahrscheinlichkeit $0$ oder $1$.
+    \item Jede Messung hat die Varianz $0$.
+    \item $\pw$ ist keine echte Mischung: Ist $\pw = \lambda q + (1 - \lambda) r$ mit
+      Gewichten $q$, $r$ und $0 < \lambda < 1$, so ist $q = r = \pw$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  Aus~1 folgt~2: Für $\pw = \pw_a$ ist $\Prob[S] = \ind{S}(a)$, also $0$ oder $1$.
+
+  Aus~2 folgt~1: Für jedes $x$ ist $\pw(x) = \Prob[\{x\}]$ gleich $0$ oder $1$. Die Summe
+  aller $\pw(x)$ ist $1$; also ist genau ein $\pw(a)$ gleich $1$ und alle anderen sind $0$.
+
+  Aus~1 folgt~3: Für $\pw = \pw_a$ ist $\Ex[f] = f(a)$, und $a$ ist das einzige Ergebnis
+  mit $\pw(x) > 0$. Nach Proposition~\ref{c01.prop.varianz}, Teil~3, ist $\Var[f] = 0$.
+
+  Aus~3 folgt~2: Nach Gleichung~\eqref{c01.eq.var-indikator} ist
+  $\Prob[S]\,(1 - \Prob[S]) = \Var[\ind{S}] = 0$, also $\Prob[S] = 0$ oder $\Prob[S] = 1$.
+
+  Aus~1 folgt~4: Sei $\pw_a = \lambda q + (1 - \lambda) r$. Für $x \neq a$ ist
+  $0 = \lambda q(x) + (1 - \lambda) r(x)$. Beide Summanden sind $\geq 0$ und
+  $\lambda$, $1 - \lambda$ sind positiv, also ist $q(x) = r(x) = 0$. Weil $q$ und $r$
+  Gewichte sind, bleibt $q(a) = r(a) = 1$.
+
+  Aus~4 folgt~1: Wir zeigen, dass ein Gewicht, das kein Punktgewicht ist, eine echte
+  Mischung ist. Ist $\pw$ kein Punktgewicht, so gibt es zwei verschiedene Ergebnisse $a$
+  und $b$ mit $\pw(a) > 0$ und $\pw(b) > 0$. Sei $\varepsilon$ die kleinere der beiden
+  Zahlen. Dann sind
+  \begin{equation}\label{c01.eq.echte-mischung}
+    q = \pw + \varepsilon\,(\pw_a - \pw_b),
+    \qquad
+    r = \pw - \varepsilon\,(\pw_a - \pw_b)
+  \end{equation}
+  Gewichte: Die Summe der Werte ist jeweils $1 + \varepsilon\,(1 - 1) = 1$, und negativ
+  könnten nur $q(b) = \pw(b) - \varepsilon$ und $r(a) = \pw(a) - \varepsilon$ werden, die
+  nach Wahl von $\varepsilon$ aber $\geq 0$ sind. Es ist $q \neq r$, weil
+  $q(a) - r(a) = 2\varepsilon > 0$ ist, und $\pw = \tfrac12 q + \tfrac12 r$.
+\end{proof}
+
+\begin{tpcfigure}{c01.fig.mischung}
+  \caption{Die Konstruktion aus Gleichung~\eqref{c01.eq.echte-mischung} für den gezinkten
+    Würfel $\pw$ aus Gleichung~\eqref{c01.eq.gezinkt}, mit $a = 6$, $b = 1$ und
+    $\varepsilon = \tfrac{1}{12}$. Von $\pw$ aus (links) wird das Gewicht $\tfrac{1}{12}$
+    einmal von $1$ nach $6$ verschoben (Mitte, $q$) und einmal von $6$ nach $1$ (rechts,
+    $r$); die veränderten Balken sind schraffiert. Hier ist $r$ der faire Würfel. Der gezinkte Würfel
+    ist die Mischung $\pw = \tfrac12 q + \tfrac12 r$ und deshalb kein Punktgewicht.}
+\end{tpcfigure}
+
+Im endlichen Modell nennen wir eine Präparation deterministisch, wenn ihr Gewicht ein
+Punktgewicht ist. Dann steht das Ergebnis jeder Messung fest: $f$ ergibt mit
+Wahrscheinlichkeit $1$ den Wert $f(a)$. Der Kapitelautor schlägt dies als Beispiel für
+die Festlegung aus Kapitel~0 vor, dass deterministische Theorien eine Teilmenge der
+probabilistischen sind. Diese Deutung wartet auf die Entscheidung des Autors (G-0023);
+die Proposition über Präparationen legt keine Dynamik deterministischer Theorien fest.
+
+\begin{merksatz}[Merksatz]
+  Ein Gewicht ist genau dann ein Punktgewicht, wenn jede Messung die Varianz $0$ hat, und
+  genau dann, wenn es keine echte Mischung anderer Gewichte ist. Jedes andere Gewicht ist
+  auf genau eine Weise eine Mischung von Punktgewichten.
+\end{merksatz}
+
+Kapitel~2 nennt Zustände, die keine echten Mischungen sind, \emph{rein}. Die reinen
+Zustände dieses endlichen klassischen Modells sind also die Punktgewichte.
+Gleichung~\eqref{c01.eq.zerlegung} zerlegt jedes Gewicht eindeutig in Punktgewichte.
+Die Deutung dieser Zerlegung als fehlende Information über ein sicher präpariertes
+Ergebnis ist ein Vorschlag des Kapitelautors und wartet auf die Entscheidung des Autors
+(G-0023). Geometrisch bilden die Gewichte auf $n$ Ergebnissen einen Körper mit $n$
+Ecken, den Punktgewichten: eine Strecke, ein Dreieck, ein Tetraeder\zoomref{c01.v1}.
+
+\begin{vertiefung}[id=c01.v1,
+    titel={Die Menge aller Präparationen ist ein Simplex},
+    wozu={Der Kern zeigt, dass jedes Gewicht eindeutig aus Punktgewichten gemischt ist.
+      Hier wird daraus ein Bild: Für $n$ Ergebnisse bilden die Gewichte eine Strecke, ein
+      Dreieck, ein Tetraeder und so weiter, und die Punktgewichte sind die Ecken.},
+    voraussetzung={Abschnitt~\ref{c01.s3.1}; Vektoren im $\mathbb{R}^n$. Der Rest dieses
+      Kapitels braucht den Block nicht; Kapitel~2 greift das Bild auf.},
+    zurueck={Die Gewichte auf $n$ Ergebnissen bilden einen Körper mit $n$ Ecken, den
+      Punktgewichten; jeder Punkt darin ist auf genau eine Weise aus den Ecken gemischt.}]
+  Sei $\Outcomes = \{1, \dots, n\}$. Ein Gewicht $\pw$ ist dann die Liste
+  $(\pw(1), \dots, \pw(n))$ seiner Werte, ein Vektor im $\mathbb{R}^n$. Das Punktgewicht
+  $\pw_a$ ist der Vektor mit einer $1$ an der Stelle $a$ und Nullen sonst.
+
+  \begin{proposition}[Die Gewichte bilden ein Simplex]\label{c01.prop.simplex}\claim[proof-included]{c01.cl.simplex}{derived}
+    Die Menge aller Gewichte auf $\{1, \dots, n\}$ ist die Menge aller Mischungen
+    $\lambda_1 \pw_1 + \dots + \lambda_n \pw_n$ der $n$ Punktgewichte mit
+    $\lambda_a \geq 0$ und $\lambda_1 + \dots + \lambda_n = 1$. Die Punktgewichte sind
+    affin unabhängig: Aus
+    \begin{equation}\label{c01.eq.affin-unabhaengig}
+      \alpha_1 \pw_1 + \dots + \alpha_n \pw_n = 0
+      \qquad \text{\tpcifenglish{and}{und}} \qquad
+      \alpha_1 + \dots + \alpha_n = 0
+    \end{equation}
+    folgt $\alpha_1 = \dots = \alpha_n = 0$.
+  \end{proposition}
+  \begin{proof}
+    Jede solche Mischung ist ein Gewicht, mit denselben Gründen wie bei
+    Gleichung~\eqref{c01.eq.mischung}. Umgekehrt ist jedes Gewicht nach
+    Gleichung~\eqref{c01.eq.zerlegung} eine solche Mischung, mit $\lambda_a = \pw(a)$. Zur
+    affinen Unabhängigkeit: Die linke Seite der ersten Gleichung in
+    \eqref{c01.eq.affin-unabhaengig} ist der Vektor $(\alpha_1, \dots, \alpha_n)$; ist er
+    $0$, so sind alle $\alpha_a = 0$. Die zweite Gleichung wird dafür nicht gebraucht.
+  \end{proof}
+
+  Die konvexe Hülle von $n$ affin unabhängigen Punkten heißt in Kapitel~2 ein Simplex, und
+  eine Theorie, deren Zustandsraum ein Simplex ist, heißt dort klassisch. Für $n = 2$ ist
+  das Simplex eine Strecke, für $n = 3$ ein Dreieck (Abbildung~\ref{c01.fig.simplex}), für
+  $n = 4$ ein Tetraeder. Die Zahlen $\pw(1), \dots, \pw(n)$ sind zugleich die
+  Wahrscheinlichkeiten der Ergebnisse und die Mischungsgewichte der Ecken.
+
+  \begin{tpcfigure}{c01.fig.simplex}
+    \caption{Die Menge aller Gewichte. (a) Zwei Ergebnisse: die Strecke zwischen den
+      Punktgewichten $\pw_1 = (1,0)$ und $\pw_2 = (0,1)$ in der Ebene der Koordinaten
+      $\pw(1)$, $\pw(2)$; eingetragen ist $\pw = (\tfrac14, \tfrac34)$. (b) Drei
+      Ergebnisse: ein Dreieck mit den Punktgewichten als Ecken. Eingetragen sind das
+      gleichmäßige Gewicht $(\tfrac13, \tfrac13, \tfrac13)$ im Schwerpunkt und das Gewicht
+      $(\tfrac12, \tfrac13, \tfrac16)$, das näher an $\pw_1$ liegt. Gefüllte Punkte sind
+      Punktgewichte, offene Kreise echte Mischungen.}
+  \end{tpcfigure}
+\end{vertiefung}
+
+\begin{vertiefung}[id=c01.v2,
+    titel={Wie nah liegen relative Häufigkeiten an den Wahrscheinlichkeiten?},
+    wozu={Der Kern beschränkt die statistische Lesart auf unabhängige Wiederholungen
+      derselben Präparation. Hier wird eine obere Schranke für die Wahrscheinlichkeit
+      einer Abweichung der relativen Häufigkeit um mindestens $\varepsilon > 0$ bewiesen;
+      diese Schranke nimmt mit der positiven ganzen Anzahl der Wiederholungen ab.},
+    voraussetzung={Abschnitte~\ref{c01.s2} und~\ref{c01.s3} bis
+      Gleichung~\eqref{c01.eq.var-indikator}. Der Rest des Kurses benutzt nur das Ergebnis
+      in Worten.},
+    zurueck={Die Wahrscheinlichkeit, dass die relative Häufigkeit eines Ereignisses nach
+      $N$ unabhängigen Wiederholungen um mindestens $\varepsilon$ von seiner
+      Wahrscheinlichkeit abweicht, ist höchstens $1/(4N\varepsilon^2)$.}]
+  Der erste Schritt gilt für jedes Gewicht und jede Messung.
+
+  \begin{lemma}[Ungleichung von Tschebyscheff]\label{c01.lem.tschebyscheff}\claim[proof-included]{c01.cl.tschebyscheff}{derived}
+    Sei $\pw$ ein Gewicht auf einer endlichen Ergebnismenge $\Outcomes$, $f$ eine Messung
+    und $\varepsilon > 0$. Sei $S$ das Ereignis, dass $f$ um mindestens $\varepsilon$ von
+    ihrem Erwartungswert abweicht,
+    $S = \{x \in \Outcomes \colon \abs{f(x) - \Ex[f]} \geq \varepsilon\}$. Dann ist
+    \begin{equation}\label{c01.eq.tschebyscheff}
+      \Prob[S] \leq \frac{\Var[f]}{\varepsilon^2} .
+    \end{equation}
+  \end{lemma}
+  \begin{proof}
+    Für $x \in S$ ist $(f(x) - \Ex[f])^2 \geq \varepsilon^2$, und für alle $x$ ist
+    $(f(x) - \Ex[f])^2 \geq 0$. Also gilt $(f - \Ex[f])^2 \geq \varepsilon^2\, \ind{S}$ an
+    jeder Stelle. Mit Monotonie und Linearität (Proposition~\ref{c01.prop.erwartung}) und
+    Gleichung~\eqref{c01.eq.indikator} folgt
+    $\Var[f] \geq \varepsilon^2\, \Ex[\ind{S}] = \varepsilon^2\, \Prob[S]$.
+  \end{proof}
+
+  Nun zum Modell. Sei $N$ eine positive ganze Zahl und $\Outcomes$ endlich. Ein Ergebnis
+  von $N$ Wiederholungen ist eine Liste $(x_1, \dots, x_N)$
+  von Ergebnissen aus $\Outcomes$. Wir \emph{nehmen an}, dass die Wiederholungen mit
+  derselben Präparation $\pw$ und unabhängig voneinander ausgeführt werden, und
+  beschreiben das durch das \emph{Produktgewicht}
+  $\pw^{(N)}(x_1, \dots, x_N) = \pw(x_1)\cdots\pw(x_N)$ auf der Menge aller solchen Listen.
+  Erwartungswert, Wahrscheinlichkeit und Varianz in diesem Gewicht schreiben wir $\Ex_N$,
+  $\Prob_N$ und $\Var_N$.
+
+  \begin{lemma}[Produktgewicht]\label{c01.lem.produkt}\claim[proof-included]{c01.cl.produkt}{derived}
+    Das Produktgewicht $\pw^{(N)}$ ist ein Gewicht. Sind $g$ und $w$ Messungen auf
+    $\Outcomes$ und $i \neq j$ zwei der Nummern $1, \dots, N$, so gilt für die Messungen
+    $(x_1, \dots, x_N) \mapsto g(x_i)$ und $(x_1, \dots, x_N) \mapsto g(x_i)\,w(x_j)$ auf
+    den Listen
+    \begin{equation}\label{c01.eq.produkt}
+      \Ex_N[g(x_i)] = \Ex[g],
+      \qquad
+      \Ex_N[g(x_i)\,w(x_j)] = \Ex[g]\;\Ex[w] .
+    \end{equation}
+  \end{lemma}
+  \begin{proof}
+    Eine Summe über alle Listen von Produkten $u_1(x_1)\cdots u_N(x_N)$ ist das Produkt der
+    Einzelsummen,
+    \begin{equation*}
+      \sum_{x_1, \dots, x_N} u_1(x_1)\cdots u_N(x_N)
+      = \Bigl(\sum_{x_1} u_1(x_1)\Bigr)\cdots\Bigl(\sum_{x_N} u_N(x_N)\Bigr) ;
+    \end{equation*}
+    das ist das Ausmultiplizieren der rechten Seite. Mit $u_l = \pw$ für alle $l$ ergibt das die Summe
+    $1$, und alle Werte von $\pw^{(N)}$ sind $\geq 0$. Mit $u_i = \pw\, g$ und $u_l = \pw$
+    sonst ist die Einzelsumme zu $i$ gleich $\Ex[g]$, alle anderen sind $1$. Mit
+    $u_i = \pw\, g$, $u_j = \pw\, w$ und $u_l = \pw$ sonst sind die Einzelsummen zu $i$ und
+    $j$ gleich $\Ex[g]$ und $\Ex[w]$, alle anderen $1$.
+  \end{proof}
+
+  \begin{theorem}[Relative Häufigkeiten bei unabhängigen Wiederholungen]\label{c01.thm.haeufigkeit}\claim[proof-included]{c01.cl.gesetz}{derived}
+    Sei $\pw$ ein Gewicht auf einer endlichen Ergebnismenge $\Outcomes$, $S$ ein Ereignis
+    und $N$ eine positive ganze Zahl. Sei $H_N$ die relative Häufigkeit von $S$ in einer Liste,
+    \begin{equation*}
+      H_N(x_1, \dots, x_N) = \tfrac{1}{N}\bigl(\ind{S}(x_1) + \dots + \ind{S}(x_N)\bigr) .
+    \end{equation*}
+    Dann gilt im Produktgewicht $\pw^{(N)}$
+    \begin{equation}\label{c01.eq.gesetz-momente}
+      \Ex_N[H_N] = \Prob[S],
+      \qquad
+      \Var_N[H_N] = \frac{\Prob[S]\,(1 - \Prob[S])}{N} ,
+    \end{equation}
+    und für jedes $\varepsilon > 0$
+    \begin{equation}\label{c01.eq.gesetz}
+      \Prob_N\bigl[\,\abs{H_N - \Prob[S]} \geq \varepsilon\,\bigr]
+      \;\leq\; \frac{\Prob[S]\,(1 - \Prob[S])}{N \varepsilon^2}
+      \;\leq\; \frac{1}{4 N \varepsilon^2} .
+    \end{equation}
+  \end{theorem}
+  \begin{proof}
+    Nach Gleichung~\eqref{c01.eq.produkt} mit $g = \ind{S}$ ist
+    $\Ex_N[\ind{S}(x_i)] = \Prob[S]$ für jedes $i$, und mit der Linearität folgt
+    $\Ex_N[H_N] = \tfrac{1}{N}\cdot N\, \Prob[S] = \Prob[S]$. Für die Varianz setzen wir
+    $g = \ind{S} - \Prob[S]$; dann ist $\Ex[g] = 0$ und $\Ex[g^2] = \Var[\ind{S}]$. Es ist
+    $H_N - \Prob[S] = \tfrac{1}{N}\sum_i g(x_i)$ und
+    \begin{equation}\label{c01.eq.gesetz-rechnung}
+      \begin{aligned}
+        \Var_N[H_N]
+        &= \frac{1}{N^2} \sum_{i} \Ex_N[g(x_i)^2]
+          + \frac{1}{N^2} \sum_{i \neq j} \Ex_N[g(x_i)\,g(x_j)] \\
+        &= \frac{1}{N^2}\cdot N\, \Var[\ind{S}] + 0 .
+      \end{aligned}
+    \end{equation}
+    Nach Gleichung~\eqref{c01.eq.produkt} ist jedes gemischte Glied gleich
+    $\Ex[g]\,\Ex[g]$, also $0$. Mit Gleichung~\eqref{c01.eq.var-indikator} ist das die
+    zweite Aussage in \eqref{c01.eq.gesetz-momente}. Die erste Ungleichung in
+    \eqref{c01.eq.gesetz} ist Lemma~\ref{c01.lem.tschebyscheff} für die Messung $H_N$ im
+    Gewicht $\pw^{(N)}$, die zweite folgt aus $q\,(1-q) \leq \tfrac14$
+    (Gleichung~\eqref{c01.eq.zwei-ergebnisse}).
+  \end{proof}
+
+  Die Schranke fällt wie $1/N$. Sie sagt nicht, dass $h_N$ in jeder Messreihe gegen
+  $\pw$ strebt, und sie sagt nichts über eine einzelne Messreihe. Sie sagt, dass
+  Messreihen mit großer Abweichung im Modell wenig Gewicht haben. Sie ist außerdem grob:
+  Die tatsächliche Wahrscheinlichkeit der Abweichung kann viel kleiner sein als die
+  Schranke.
+
+  Für eine Münze lässt sich das Gewicht von $H_N$ ganz angeben. Sei
+  $\Outcomes = \{0, 1\}$, $\pw(1) = q$ mit $0 \leq q \leq 1$ und $S = \{1\}$; $N$ sei eine
+  positive ganze Zahl. Wir benutzen die Konvention $t^0 = 1$ auch für $t = 0$: Ein
+  Produkt ohne Faktoren ist $1$. Eine Liste mit genau $k$ Einsen hat
+  das Gewicht $q^k (1-q)^{N-k}$, und es gibt $\binom{N}{k}$ solche Listen, so viele, wie
+  es Möglichkeiten gibt, die $k$ Plätze der Einsen unter den $N$ Plätzen auszuwählen. Also
+  ist
+  \begin{equation}\label{c01.eq.binomial}\claim{c01.cl.binomial}{derived}
+    \Prob_N\bigl[H_N = \tfrac{k}{N}\bigr] = \binom{N}{k}\, q^k\, (1-q)^{N-k},
+    \qquad k = 0, 1, \dots, N .
+  \end{equation}
+  Abbildung~\ref{c01.fig.konzentration} zeigt diese Wahrscheinlichkeiten für die faire
+  Münze.
+
+  \begin{tpcfigure}{c01.fig.konzentration}
+    \caption{Das Gewicht der relativen Häufigkeit $H_N$ von „Zahl“ bei einer fairen Münze,
+      $q = \tfrac12$, nach Gleichung~\eqref{c01.eq.binomial} für $N = 4$, $16$ und $64$
+      Würfe. Waagerecht steht der Wert $k/N$ von $H_N$; die Höhe eines Strichs ist seine
+      Wahrscheinlichkeit, in jedem Bild in Einheiten des größten Werts. Die Klammer
+      markiert die Werte mit $\abs{H_N - \tfrac12} < \tfrac14$. Mit wachsendem $N$
+      sammelt sich das Gewicht in der Mitte.}
+  \end{tpcfigure}
+\end{vertiefung}
+
+\section{Kontinuierliche Ergebnisse}\label{c01.s4}
+
+Bisher war $\Outcomes$ endlich. Für die Quantenmechanik ist aber
+$\Outcomes = \mathbb{R}$ entscheidend: Ein Teilchen in einer Dimension hat eine Position,
+und die möglichen Positionen sind die reellen Zahlen. In diesem Abschnitt betrachten wir
+nur Präparationen auf $\mathbb{R}$, die eine Dichte haben. In diesem Dichtemodell werden
+Wahrscheinlichkeiten durch Integration gewonnen, statt Dichtewerte über Punkte zu summieren.
+Eine solche Präparation wird durch eine \emph{Wahrscheinlichkeitsdichte} beschrieben:
+eine Funktion $\pw$ auf $\mathbb{R}$ mit
+\begin{equation}\label{c01.eq.dichte}\claim{c01.cl.dichte}{source-backed}
+  \begin{aligned}
+    \pw(x) &\geq 0,
+    &\int_{-\infty}^{\infty} \pw(x)\,\dd x &= 1, \\
+    \Prob[[a,b]] &= \int_a^b \pw(x)\,\dd x,
+    &\Ex[f] &= \int_{-\infty}^{\infty} \pw(x)\, f(x)\,\dd x .
+  \end{aligned}
+\end{equation}
+Die beiden Bedingungen der ersten Zeile entsprechen denen an ein Gewicht. Für reelle
+Endpunkte $a \leq b$ gibt die zweite Zeile die Intervallwahrscheinlichkeit an. Der
+Erwartungswert einer Messung $f$ wird hier verwendet, sofern
+$\int_{-\infty}^{\infty} \pw(x)\,\abs{f(x)}\,\dd x < \infty$ ist. In der
+Literatur findet man für dasselbe auch die Schreibweise $\int \Prob(\dd x)\, f(x)$, mit
+$\Prob(\dd x) = \pw(x)\,\dd x$. Dieser Kurs benutzt sie nicht; man soll sie nur erkennen
+können.
+
+\begin{merksatz}[Eine Dichte ist keine Wahrscheinlichkeit]
+  Der Wert $\pw(x)$ einer Dichte ist keine Wahrscheinlichkeit. Wahrscheinlichkeiten sind
+  Flächen unter der Kurve, also Integrale von $\pw$ über Mengen. Ein einzelner Punkt hat
+  die Wahrscheinlichkeit $0$, und $\pw(x)$ darf größer als $1$ sein.
+\end{merksatz}
+
+Beides sieht man an der gleichmäßigen Dichte auf dem Intervall von $0$ bis $\tfrac12$:
+\begin{equation}\label{c01.eq.gleich}\claim{c01.cl.gleich}{derived}
+  \begin{aligned}
+    \pw(x) &=
+    \begin{cases}
+      2, & 0 \leq x \leq \tfrac12, \\
+      0, & \text{\tpcifenglish{otherwise}{sonst}},
+    \end{cases}
+    &\int_{-\infty}^{\infty} \pw(x)\,\dd x &= 2\cdot\tfrac12 = 1, \\
+    \Prob[[a,a]] &= \int_a^a \pw(x)\,\dd x = 0 .
+  \end{aligned}
+\end{equation}
+Die Dichte hat den Wert $2$ und ist trotzdem normiert. Die letzte Gleichung gilt für jede
+Dichte und jeden Punkt $a$: Ein Integral über ein Intervall der Länge $0$ ist $0$.
+
+\begin{tpcfigure}{c01.fig.dichte}
+  \caption{(a) Die Dichte der Gauß-Verteilung aus Beispiel~\ref{c01.ex.gauss}. Die
+    Wahrscheinlichkeit, dass das Ergebnis zwischen reellen Endpunkten $a \leq b$ liegt, ist die schraffierte
+    Fläche und nicht die Höhe der Kurve. (b) Die gleichmäßige Dichte aus
+    Gleichung~\eqref{c01.eq.gleich}: Sie hat die Höhe $2$, die Fläche darunter ist $1$.}
+\end{tpcfigure}
+
+\begin{example}[Gauß-Verteilung]\label{c01.ex.gauss}\claim{c01.cl.gauss}{derived}
+  Die Dichte
+  \begin{equation}\label{c01.eq.gauss}
+    \pw(x) = \frac{1}{\sqrt{2\pi}}\, e^{-\frac12 x^2}
+  \end{equation}
+  heißt \emph{Normal-} oder \emph{Gauß-Verteilung}. Sie ist normiert: Die Fläche unter der
+  Kurve ist $1$\zoomref{c01.v3}. Wie wahrscheinlich ist ein Ergebnis
+  $x \geq 0$? Weil $\pw(-x) = \pw(x)$ ist, sind die Flächen links und rechts vom Nullpunkt
+  gleich groß; zusammen sind sie $1$. Also ist
+  \begin{equation}\label{c01.eq.gauss-halb}
+    \int_0^\infty \pw(x)\,\dd x = \int_{-\infty}^0 \pw(x)\,\dd x = \tfrac12 .
+  \end{equation}
+  Physikalisch gefragt: Ist das Teilchen links oder rechts vom Ursprung? Das Argument
+  funktioniert \emph{nur} für symmetrische Dichten.
+\end{example}
+
+Auf $\mathbb{R}$ ist die wichtigste Messung die Koordinate selbst, $f(x) = x$, und ihre
+Potenzen. Ihre Erwartungswerte heißen \emph{Momente}, sofern die Integrale
+$\int_{-\infty}^{\infty} \abs{x}^n\,\pw(x)\,\dd x$ endlich sind:
+\begin{equation}\label{c01.eq.momente}\claim{c01.cl.momente}{source-backed}
+  M_n = \int_{-\infty}^{\infty} x^n\, \pw(x)\,\dd x ,
+  \qquad n = 0, 1, 2, \dots
+\end{equation}
+Es ist immer $M_0 = 1$: Das ist die Normierung, geometrisch die Fläche unter der Kurve.
+$M_1$ heißt \emph{Mittelwert}. Die Varianz der Koordinate ist wie im endlichen Fall
+\begin{equation}\label{c01.eq.var-momente}\claim{c01.cl.var-momente}{derived}
+  \begin{aligned}
+    \Var[\Prob] &= \int_{-\infty}^{\infty} (x - M_1)^2\, \pw(x)\,\dd x \\
+    &= M_2 - 2 M_1\cdot M_1 + M_1^2\cdot M_0 = M_2 - M_1^2 ,
+  \end{aligned}
+\end{equation}
+sofern $\int_{-\infty}^{\infty} \abs{x}\,\pw(x)\,\dd x$ und
+$\int_{-\infty}^{\infty} x^2\,\pw(x)\,\dd x$ endlich sind. Für die Quantenmechanik ist die Varianz wichtiger als
+das zweite Moment; sie kehrt bei der Unschärferelation wieder. Mittelwert und Varianz
+tragen dieselbe Information wie $M_1$ und $M_2$.
+
+Die Momente außer $M_0$ müssen nicht existieren.
+
+\begin{example}[Eine Dichte ohne Mittelwert]\label{c01.ex.kein-mittelwert}\claim{c01.cl.kein-mittelwert}{derived}
+  Sei $\pw(x) = 1/x^2$ für $x \geq 1$ und $\pw(x) = 0$ sonst. Das ist eine Dichte:
+  \begin{equation}\label{c01.eq.kein-mittelwert}
+    \begin{aligned}
+      \int_1^{b} \frac{\dd x}{x^2} &= 1 - \frac{1}{b} \;\longrightarrow\; 1, \\
+      \int_1^{b} x\cdot\frac{\dd x}{x^2} &= \ln b \;\longrightarrow\; \infty
+      \qquad (b \to \infty) .
+    \end{aligned}
+  \end{equation}
+  Das Integral für $M_1$ divergiert: Diese Präparation hat keinen Mittelwert, und erst
+  recht keine Varianz.
+\end{example}
+
+\begin{vertiefung}[id=c01.v3,
+    titel={Normierung und Momente der Gauß-Verteilung},
+    wozu={Beispiel~\ref{c01.ex.gauss} behauptet, die Gauß-Dichte sei normiert. Hier wird
+      das nachgerechnet, zusammen mit Mittelwert und Varianz.},
+    voraussetzung={Abschnitt~\ref{c01.s4}; Integrale in zwei Variablen, Polarkoordinaten,
+      partielle Integration. Der Kern benutzt nur das Ergebnis.},
+    zurueck={Die Gauß-Dichte $e^{-x^2/2}/\sqrt{2\pi}$ ist normiert, ihr Mittelwert ist $0$
+      und ihre Varianz $1$.}]
+  Sei $I = \int_{-\infty}^{\infty} e^{-x^2/2}\,\dd x$. Das Integral existiert, weil
+  $e^{-x^2/2} \leq e^{-\abs{x}/2}$ für $\abs{x} \geq 1$ ist. Man berechnet $I^2$ als
+  Integral über die Ebene und wechselt zu Polarkoordinaten $x = r\cos\varphi$,
+  $y = r\sin\varphi$ mit $\dd x\,\dd y = r\,\dd r\,\dd\varphi$:
+  \begin{equation}\label{c01.eq.gauss-norm}\claim{c01.cl.gauss-norm}{derived}
+    \begin{aligned}
+      I^2 &= \int_{-\infty}^{\infty}\!\int_{-\infty}^{\infty} e^{-(x^2 + y^2)/2}\,\dd x\,\dd y
+           = \int_0^{2\pi}\!\int_0^\infty e^{-r^2/2}\, r\,\dd r\,\dd\varphi \\
+          &= 2\pi\,\Bigl[-e^{-r^2/2}\Bigr]_0^\infty = 2\pi .
+    \end{aligned}
+  \end{equation}
+  Weil $I > 0$ ist, folgt $I = \sqrt{2\pi}$, und die Dichte \eqref{c01.eq.gauss} hat das
+  Integral $1$.
+
+  Für die Momente gilt
+  \begin{equation}\label{c01.eq.gauss-momente}\claim{c01.cl.gauss-momente}{derived}
+    \begin{aligned}
+      M_1 &= 0, \\
+      M_2 &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} x\cdot x\,e^{-x^2/2}\,\dd x \\
+          &= \frac{1}{\sqrt{2\pi}}\Bigl[-x\,e^{-x^2/2}\Bigr]_{-\infty}^{\infty}
+            + \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} e^{-x^2/2}\,\dd x
+          = 0 + 1 .
+    \end{aligned}
+  \end{equation}
+  $M_1$ verschwindet, weil $x\,e^{-x^2/2}$ eine ungerade Funktion ist und ihr Integral
+  über $x \geq 0$ existiert: $\int_0^\infty x\,e^{-x^2/2}\,\dd x = 1$. Bei $M_2$ wurde
+  partiell integriert, mit $x\,e^{-x^2/2}$ als Ableitung von $-e^{-x^2/2}$; der Randterm
+  verschwindet, weil $x\,e^{-x^2/2}$ für $x \to \pm\infty$ gegen $0$ geht. Nach
+  Gleichung~\eqref{c01.eq.var-momente} ist die Varianz $M_2 - M_1^2 = 1$.
+\end{vertiefung}
+
+Damit steht die Sprache für die Modelle dieses Kapitels bereit: Präparationen sind
+Gewichte auf endlichen Ergebnismengen oder die hier betrachteten Dichten auf $\mathbb{R}$,
+Messungen sind Funktionen, und beide zusammen ergeben bei endlichen Integralen
+Erwartungswerte. Kapitel~2 löst sich von der
+Annahme, dass Präparationen Gewichte auf einer Ergebnismenge sind, und behält nur, was
+man mit ihnen tun kann: mischen und Ja-Nein-Fragen stellen.

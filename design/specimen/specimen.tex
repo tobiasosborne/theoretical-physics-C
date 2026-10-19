@@ -1,0 +1,185 @@
+% specimen.tex -- one page that proves the design flags work (XeLaTeX).
+%
+% Built for every package and ground by design/specimen/build_specimens.sh:
+%   xelatex "\def\tpcspecpkg{3}\def\tpcspecground{dark}\input{specimen.tex}"
+% Every colour, face and length below is a token name from design/README.md.
+% This file contains no package-specific value; design/lint_content.py checks that.
+%
+% Text and physics are taken from the lane specimen
+% docs/plan/research/design-packages-A/specimens/body-de.tex (checked there by hand):
+%   rho = (1 + r.sigma)/2, E = (1 + n.sigma)/2, |n| = 1  =>  tr(rho E) = (1 + r.n)/2.
+% Figure geometry: r = 0.75 at 50 degrees, n = e_x, so r.n = 0.75 cos 50 = 0.482 and
+% p = (1 + 0.482)/2 = 0.741.  Ladder: particle in a box, E_n = n^2 E_1
+% (latex/lectures/de/vl11.tex, latex/figures/fig_vl11_kasten.tex), n = 1..6.
+\providecommand\tpcspecpkg{1}
+\providecommand\tpcspecground{light}
+\providecommand\tpcspecmath{stix}
+\providecommand\tpcspecfonts{open}
+\documentclass[11pt]{article}
+\usepackage[ngerman]{babel}
+\usepackage[autostyle]{csquotes}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usepackage[pkg=\tpcspecpkg, ground=\tpcspecground, math=\tpcspecmath,
+            fonts=\tpcspecfonts]{tpc-design}
+\usepackage[most]{tcolorbox}
+\usepackage[protrusion=true, expansion=false]{microtype}
+\usepackage[hidelinks]{hyperref}
+\tpcapplypage
+\pagestyle{empty}
+\emergencystretch=1em
+\setlength{\parindent}{\tpcspacem}
+\setlength{\parskip}{0pt}
+
+% ---- semantic devices, built from tokens only ------------------------------
+\newcommand\speckicker[1]{{\tpcfontlabel\color{tpc-ink-muted}#1}\par\vspace{\tpcspacexs}}
+\newcommand\spechead[2]{%
+  \noindent\llap{{\tpcfontnumeral\color{tpc-accent}#1}\hspace{\tpcspaces}}%
+  {\tpcfonthi\color{tpc-accent}#2}\par\vspace{\tpcspaces}}
+\newcommand\specsection[1]{\par\vspace{\tpcspaces}\noindent
+  {\tpcfonthii\color{tpc-accent}#1}\par\vspace{\tpcspacexs}\noindent\ignorespaces}
+\newcommand\specnote[1]{\marginpar{\raggedright\tpcfontlabel\color{tpc-ink-muted}#1}}
+\newcommand\speclink[1]{{\color{tpc-link}\underline{#1}}}
+% Merksatz: highlight tint, box rule in the accent, run-in label.
+\newtcolorbox{specmerksatz}[1]{enhanced, frame hidden, boxrule=0pt, arc=0pt,
+  colback=tpc-highlight, coltext=tpc-ink, left=\tpcspaces, right=\tpcspaces,
+  top=\tpcspaces, bottom=\tpcspaces, before skip=\tpcspaces, after skip=\tpcspaces,
+  borderline west={\tpcstrokebox}{0pt}{tpc-accent},
+  boxsep=0pt,
+  before upper={\begingroup\tpcfonthiii\color{tpc-accent}#1\endgroup\quad}}
+% Depth marking, the same device in every package: body size, no tint, no small
+% type; a rule in the outer margin over the block's length and a run-in label.
+% Only the rule's colour and weight and the label's face come from the package.
+% #1 label, #2 title, #3 pointer to the Fundament (set beside the block).
+\newtcolorbox{specvertiefung}[3]{enhanced, frame hidden, boxrule=0pt, arc=0pt,
+  colback=tpc-ground, coltext=tpc-ink, boxsep=0pt, left=0pt, right=0pt, top=0pt, bottom=0pt,
+  before skip=\tpcspaces, after skip=\tpcspaces,
+  overlay={%
+    \fill[tpc-depth-v] ([xshift=\tpcspaces]frame.north east)
+      rectangle ([xshift=\dimexpr\tpcspaces+\tpcstrokedepthv\relax]frame.south east);
+    % Fundament pointer: double hairline in the depth-f role, then the label
+    \coordinate (F) at ([xshift=\tpcmargingap, yshift=-3pt]frame.north east);
+    \draw[tpc-depth-f, line width=\tpcstrokedepthf] (F) -- ++(\tpcmarginwidth,0)
+      ([yshift=-2pt]F) -- ++(\tpcmarginwidth,0);
+    \node[anchor=north west, inner sep=0pt, text width=\tpcmarginwidth, align=flush left,
+      text=tpc-depth-f, font=\tpcfontlabel] at ([yshift=-5pt]F) {#3};},
+  before upper={\begingroup\tpcfontdepth\color{tpc-depth-v}Vertiefung #1\enspace #2\par\endgroup}}
+\newcommand\vr{\symbfit{r}}
+\newcommand\vn{\symbfit{n}}
+\newcommand\vsigma{\symbfit{\sigma}}
+\ifdefined\symbfit\else
+  \renewcommand\vr{\boldsymbol{r}}\renewcommand\vn{\boldsymbol{n}}
+  \renewcommand\vsigma{\boldsymbol{\sigma}}
+\fi
+\newcommand\one{\mathbb{1}}
+
+\renewcommand\theequation{6.\arabic{equation}}
+\begin{document}
+\speckicker{Zoomstufe 1 \textendash\ ein einzelnes Quantensystem}
+\spechead{6}{Die Bornsche Regel}
+
+\noindent Eine physikalische Theorie liefert Daten für drei Dinge: Präparationen, Dynamik und
+Messungen. Eine Präparation nennen wir \enquote{Zustand}; im Quantenfall beschreiben wir sie
+durch einen Dichteoperator $\rho\geq 0$ mit $\operatorname{tr}\rho=1$.\specnote{Für ein Qubit ist
+jeder Dichteoperator von der Form $\rho=\tfrac12(\one+\vr\cdot\vsigma)$ mit
+$\lvert\vr\rvert\leq 1$. Reine Zustände liegen auf dem Rand.}
+Ein Detektor, der \enquote{klick} macht oder schweigt, wird durch einen Effekt $E$ mit
+$0\leq E\leq\one$ beschrieben. Die Theorie sagt nur Wahrscheinlichkeiten voraus, und zwar genau
+eine Zahl für jedes Paar aus Zustand und Effekt (siehe \speclink{Definition D-6.1}).
+
+\begin{specmerksatz}{Postulat P4}
+Wird ein System im Zustand $\rho$ präpariert und mit dem Effekt $E$ getestet, so spricht der
+Detektor mit der Wahrscheinlichkeit $p(E\,\vert\,\rho)=\operatorname{tr}(\rho E)$ an.
+\end{specmerksatz}
+
+\noindent Für ein Qubit lässt sich die Regel zeichnen (Abb.~6.1a). Mit
+$\rho=\tfrac12(\one+\vr\cdot\vsigma)$ und dem Projektor $E=\tfrac12(\one+\vn\cdot\vsigma)$,
+$\lvert\vn\rvert=1$, folgt
+\begin{equation}
+  \operatorname{tr}(\rho E)=\tfrac12\bigl(1+\vr\cdot\vn\bigr),
+  \qquad
+  \rho\;\mapsto\;U_t\,\rho\,U_t^{*},\quad U_t=\mathrm{e}^{-\mathrm{i}Ht/\hbar}.
+\end{equation}
+Die Wahrscheinlichkeit ist also die Projektion des Bloch-Vektors auf die Richtung des Detektors,
+verschoben und halbiert. Die Zeitentwicklung dreht den Vektor; sie ändert $\lvert\vr\rvert$ nicht.
+
+% ---- figure: plate (a, b) and stage (c) -------------------------------------
+\par\vspace{\tpcspaces}
+\noindent\makebox[\linewidth][l]{%
+\tpcplate{%
+\begin{tikzpicture}[x=1cm, y=1cm, baseline=(current bounding box.south)]
+  \useasboundingbox (-1.62,-1.78) rectangle (5.3,1.78);
+  % (a) Bloch disc: state, effect, dynamics, bath
+  \begin{scope}[scale=1.28]
+    \fill[tpc bath, even odd rule] (0,0) circle (1.17) (0,0) circle (1.0);
+    \fill[tpc bath hatch, even odd rule] (0,0) circle (1.17) (0,0) circle (1.0);
+    \draw[tpc bath edge] (0,0) circle (1.17);
+    \draw[tpc axis, -{Stealth[length=4pt, width=3pt]}] (-1.25,0) -- (1.36,0);
+    \draw[tpc axis, -{Stealth[length=4pt, width=3pt]}] (0,-1.22) -- (0,1.34);
+    \draw[tpc axis, line width=\tpcstrokeregular] (0,0) circle (1.0);
+    \draw[tpc dynamics, -{Stealth[length=5pt]}] (58:0.75) arc (58:112:0.75);
+    \node[tpc label, inner sep=1pt] at (136:0.56) {$U_t$};
+    \draw[tpc effect, solid, line width=2.2pt] (0,0) -- (0.482,0);
+    \draw[tpc effect, -{Stealth[length=5pt]}] (0.482,0) -- (1.0,0)
+      node[tpc label, below right, inner sep=1.5pt] {$\vn$};
+    \draw[tpc leader, dash pattern=on 1.6pt off 1.4pt] (50:0.75) -- (0.482,0);
+    \draw[tpc state, -{Stealth[length=5pt]}] (0,0) -- (50:0.75)
+      node[tpc label, right, inner sep=2.5pt] {$\vr$};
+    \node[tpc label, below, inner sep=3pt] at (0.24,0) {$\vr\cdot\vn$};
+    \node[tpc label, anchor=north west, inner sep=0pt] at (-1.24,1.36) {(a)};
+    \node[tpc label, anchor=north west, align=left] at (0.72,-0.86) {keine\\[-2pt]Zustände};
+  \end{scope}
+  % (b) ladder: E_n = n^2 E_1, n = 1..6; 0.075 cm per E_1
+  \begin{scope}[xshift=3.2cm, yshift=-1.5cm]
+    \node[tpc label, anchor=north west, inner sep=0pt] at (-0.55,3.24) {(b)};
+    \draw[tpc axis, -{Stealth[length=4pt, width=3pt]}] (0.2,-0.1) -- (0.2,3.05)
+      node[tpc label, right, inner sep=2pt] {$E$};
+    \foreach \n in {1,...,6}{
+      \draw[tpc q\n] (0.45,{0.075*\n*\n}) -- (1.75,{0.075*\n*\n});
+      \node[tpc label, right, inner sep=2pt] at (1.78,{0.075*\n*\n+(\n==1 ? -0.07 : 0)+(\n==2 ? 0.03 : 0)}) {$\n$};}
+    \draw[tpc dynamics, -{Stealth[length=5pt]}] (1.1,{0.075*9}) -- (1.1,{0.075*4+0.03});
+    \node[tpc label, anchor=north west, inner sep=1pt] at (0.42,-0.12) {$E_n=n^2E_1$};
+  \end{scope}
+\end{tikzpicture}}%
+\hspace{\tpcspaces}%
+% (c) the same roles on the stage: what a 3D demo or a video frame draws with
+{\fboxsep=\tpcplatepad\colorbox{tpc-stage}{%
+\begin{tikzpicture}[x=1cm, y=1cm, baseline=(current bounding box.south)]
+  \useasboundingbox (-0.1,-1.78) rectangle (3.5,1.78);
+  \node[tpc stage label, anchor=north west, inner sep=0pt] at (-0.02,1.74) {(c) Bühne};
+  \fill[tpc stage bath] (0,-0.2) rectangle (1.15,0.05);
+  \fill[tpc stage bath hatch] (0,-0.2) rectangle (1.15,0.05);
+  \draw[tpc stage bath edge] (0,-0.2) rectangle (1.15,0.05);
+  \draw[tpc stage dynamics] (0,0.35) -- (1.15,0.35);
+  \draw[tpc stage effect] (0,0.7) -- (1.15,0.7);
+  \draw[tpc stage state] (0,1.05) -- (1.15,1.05);
+  \foreach \t/\y in {Zustand/1.05, Effekt/0.7, Dynamik/0.35, Bad/-0.08}
+    \node[tpc stage label, right, inner sep=3pt] at (1.15,\y) {\t};
+  \foreach \n in {1,...,6}
+    \draw[tpc stage q\n, line width=3.2pt] ({0.5*(\n-1)},-0.95) -- ({0.5*(\n-1)+0.42},-0.95);
+  \node[tpc stage label, anchor=north west, inner sep=0pt] at (0,-1.15) {Leiter $n=1,\dots,6$};
+\end{tikzpicture}}}%
+}\par\vspace{\tpcspacexs}
+\noindent{\tpcfontsmall\color{tpc-ink-muted}{\tpcfontlabel\bfseries\color{tpc-ink} Abb.~6.1}\enspace
+\textit{Die Wahrscheinlichkeit ist eine Projektion.} (a) Zustand $\vr$, Detektorrichtung $\vn$,
+Projektion $p=\tfrac12(1+\vr\cdot\vn)\approx 0{,}74$; außerhalb des Kreises liegen keine Zustände.
+(b) Teilchen im Kasten, $n=1,\dots,6$. (c) Dieselben Rollen auf der Bühne für 3D und Video.\par}
+
+\vspace{\tpcspacexs}
+\begin{specvertiefung}{6.V2}{Zustände als Funktionale}{Fundament 6.F1: Spurklasse und
+normale Zustände}
+\noindent Voraussetzung: Kern 6.1. Allgemein ist ein Zustand ein positives, normiertes lineares
+Funktional $\omega$ auf der Algebra $\mathcal{B}(\mathcal{H})$, also $\omega(A^{*}A)\geq 0$ und
+$\omega(\one)=1$. Die \emph{normalen} Zustände sind genau die Funktionale
+$\omega(A)=\operatorname{tr}(\rho A)$ mit einem Dichteoperator $\rho$ der Spurklasse.
+{\color{tpc-depth-v}Zurück zum Kern:} im Folgenden genügen Dichteoperatoren.
+\end{specvertiefung}
+
+\specsection{Was diese Seite zeigt}
+Schrift, Farbe und Maße dieser Seite stammen aus einer einzigen Tokendatei. Farbe trägt nur
+Physik: Zustand, Effekt, Dynamik, Bad und die Leiter der Quantenzahlen.
+
+\vfill
+\noindent{\tpcfontmono\color{tpc-ink-muted}\tpctoktitle\\
+pkg=\tpcdesignpkg\ ground=\tpcdesignground\ math=\tpcdesignmath\ fonts=\tpcdesignfonts}
+\end{document}

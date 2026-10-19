@@ -1,0 +1,434 @@
+{
+ "schema_version": 1,
+ "note": "Statements deliberately kept OUT of the material because their source is not on disk or TJO has not written them. A row here is not a claim; nothing in content may rest on it.",
+ "gaps": [
+  {
+   "id": "G-0001",
+   "what": "TJO's deviations from the Ludwig-Werner operational framing (BRIEF.md:42 'But I deviate in several ways'): which they are and how the course states them.",
+   "needed_source": "TJO's own text (exists nowhere in writing); Ludwig, Foundations of Quantum Mechanics, is not on disk, so the baseline he deviates from cannot be quoted either.",
+   "where": "c00-c04 (operational framing, postulates)",
+   "raised_in": [
+    "docs/plan/BRIEF.md:42",
+    "docs/plan/PLAN.md:89",
+    "docs/plan/PLAN.md:403"
+   ],
+   "owner": "TJO",
+   "status": "open"
+  },
+  {
+   "id": "G-0002",
+   "what": "'All physical theories, for me, are Archimedean order unit spaces' (BRIEF.md:47): the definition of an Archimedean order unit space and its relation to Plavala's finite-dimensional state spaces. The word 'Archimedean' does not occur in the registered Plavala source.",
+   "needed_source": "A local source that defines Archimedean order unit spaces (none registered), or TJO's text. Plavala v2 cannot supply it (REVIEW.md section B, row 'Plavala never uses Archimedean').",
+   "where": "c02, Fundament (order-unit spaces are Fundament by decision D4)",
+   "raised_in": [
+    "docs/plan/BRIEF.md:47",
+    "docs/plan/research/review/REVIEW.md:73",
+    "docs/plan/PLAN.md:70"
+   ],
+   "owner": "TJO",
+   "status": "open"
+  },
+  {
+   "id": "G-0003",
+   "what": "The infinite-dimensional formulation of P2: whether the state space is all positive norm-one functionals on B(H), the normal states, or both, and how density operators and singular states are placed (BRIEF.md:52).",
+   "needed_source": "TJO's text. Bratteli-Robinson 1 is on disk and may back the mathematics of normal and singular states, but no locus has been read; rigour-process C.6 lists this as a Tier A scope issue.",
+   "where": "c04, Vertiefung (trace class, normal states) and Fundament",
+   "raised_in": [
+    "docs/plan/BRIEF.md:52",
+    "docs/plan/PLAN.md:89",
+    "docs/plan/PLAN.md:403",
+    "docs/plan/research/rigour-process/REPORT.md:343"
+   ],
+   "owner": "TJO",
+   "status": "open"
+  },
+  {
+   "id": "G-0004",
+   "what": "The wording of the finite-to-continuum bridge paragraph in C5: where the finite-dimensional restriction of Kern ends and in which sense Kern uses L^2 from there on.",
+   "needed_source": "TJO's text (PLAN.md section 14 item 7: 'The wording of the bridge paragraph in C5 is TJO's; it is on the gap list').",
+   "where": "c05, Kern",
+   "raised_in": [
+    "docs/plan/PLAN.md:545",
+    "docs/plan/research/review/REVIEW.md:232"
+   ],
+   "owner": "TJO",
+   "status": "open"
+  },
+  {
+   "id": "G-0005",
+   "what": "The symmetry road: TJO's reMarkable notes 'Symmetries and QM' are untranscribed; Wigner's theorem 'in all its forms' (BRIEF.md:67) has no local source.",
+   "needed_source": "A transcription of the notes checked against the pages, and Bargmann's / Wigner's original statements (not on disk).",
+   "where": "c08-c10",
+   "raised_in": [
+    "docs/plan/BRIEF.md:67",
+    "docs/plan/PLAN.md:92",
+    "docs/plan/PLAN.md:372"
+   ],
+   "owner": "TJO",
+   "status": "open"
+  },
+  {
+   "id": "G-0006",
+   "what": "Part V, thermodynamics (C19 the laws, C20 machines and Carnot, C21 potentials): nothing exists in writing.",
+   "needed_source": "TJO's text; Callen or Lieb-Yngvason (not on disk).",
+   "where": "c19-c21",
+   "raised_in": [
+    "docs/plan/PLAN.md:249",
+    "docs/plan/PLAN.md:404",
+    "docs/plan/BRIEF.md:82"
+   ],
+   "owner": "TJO",
+   "status": "open"
+  },
+  {
+   "id": "G-0007",
+   "what": "Preparation versus measurement uncertainty 'following Werner' (BRIEF.md:61): every statement about measurement uncertainty and error-disturbance relations.",
+   "needed_source": "Busch-Lahti-Werner (arXiv:1306.1565, 1312.4392, 1312.4393) are not on disk; they are freely available and only need to be fetched and registered.",
+   "where": "c06",
+   "raised_in": [
+    "docs/plan/BRIEF.md:61",
+    "docs/plan/PLAN.md:92",
+    "docs/plan/research/review/REVIEW.md:238"
+   ],
+   "owner": "TJO",
+   "status": "open"
+  },
+  {
+   "id": "G-0008",
+   "what": "TJO's 'extras' to the Bratteli-Robinson presentation of Fock space (BRIEF.md:78).",
+   "needed_source": "TJO's text or the 2016 advanced-QM recordings; Astwood's student notes are a map with known errors, not a quotable source.",
+   "where": "c14",
+   "raised_in": [
+    "docs/plan/BRIEF.md:78",
+    "docs/plan/PLAN.md:404"
+   ],
+   "owner": "TJO",
+   "status": "open"
+  },
+  {
+   "id": "G-0009",
+   "what": "German wording of TJO's framing sentences used in chapter c02 (BRIEF.md:44-47, items 0 to 3: 'A physical theory supplies data ...', 'All physical theories are probabilistic theories ...', 'we use the language of preparations ...', 'measurements/instruments/POVMs are then elements of the dual space to states', 'All physical theories, for me, are Archimedean order unit spaces', 'The GPT presentation allows us ...'). The chapter prints translations made by its author.",
+   "needed_source": "TJO's German text.",
+   "where": "c02, sections 2.1 and 2.8 (Kern), block c02.v2, block c02.f1",
+   "raised_in": [
+    "content/c02-gpt/de.tex (GAP-TJO comments)",
+    "docs/plan/BRIEF.md:44-47"
+   ],
+   "owner": "TJO",
+   "status": "open"
+  },
+  {
+   "id": "G-0010",
+   "what": "How TJO wants 'measurements/instruments/POVMs are then elements of the dual space to states' (BRIEF.md:46) read. The checked statement is: a single effect is an element of the order interval [0, 1_K] in A(K); the cone A(K)^+ is the dual cone of the cone of unnormalised states; a measurement is a finite list of effects; instruments are not treated in the files read. The chapter prints the sentence as a stipulation in block c02.v2, says that it is quoted and not interpreted, and states the mathematics separately as the chapter's own statement, not as a reading of the sentence.",
+   "needed_source": "TJO's text.",
+   "where": "c02, block c02.v2",
+   "raised_in": [
+    "content/c02-gpt/de.tex (GAP-TJO comment before c02.eq.rahmen-dual)",
+    "evidence/derivations/c02/DERIVATION.md section 6.7"
+   ],
+   "owner": "TJO",
+   "status": "open"
+  },
+  {
+   "id": "G-0011",
+   "what": "Whether the no-restriction hypothesis (D12) is part of postulate P3 ('Detectors = dual of state space = operators E with 0 <= E <= I', BRIEF.md:53) or a separate assumption of the course. Chapter c02 states it as a hypothesis of the chapter and says that all optima are computed under it.",
+   "needed_source": "TJO's text.",
+   "where": "c02, section 2.5; c04",
+   "raised_in": [
+    "content/c02-gpt/de.tex (GAP-TJO comment after D12)",
+    "docs/plan/BRIEF.md:53",
+    "registry/definitions.json D12 gap_tjo"
+   ],
+   "owner": "TJO",
+   "status": "open"
+  },
+  {
+   "id": "G-0012",
+   "what": "The label for the step from GPTs to quantum theory. PLAN.md 13.1 A11 calls it 'model selection' (the coordinator's reading); TJO has not said that this is his word. Chapter c02 therefore does not print 'Modellwahl / choice of model': it states that the framework singles out no state space and that quantum theory uses a particular family of state spaces, and quotes TJO's sentence with 'specialise' (BRIEF.md:47) as the stipulation.",
+   "needed_source": "TJO's text.",
+   "where": "c02, section 2.8",
+   "raised_in": [
+    "content/c02-gpt/de.tex (GAP-TJO comment before c02.eq.rahmen-spezialisierung)",
+    "docs/plan/PLAN.md section 13.1 A11"
+   ],
+   "owner": "TJO",
+   "status": "open"
+  },
+  {
+   "id": "G-0013",
+   "what": "Names without a source on disk in chapter c02. All are left out of the text: 'Bloch-Kugel / Bloch ball' for the unit ball of qubit states (the word occurs in no registered source; the chapter, its figures and the two demos say 'Zustandskugel des Qubits / qubit state ball' pending the source; the IDs c02.prop.bloch, c02.eq.bloch, c02.cl.bloch, c02.fig.blochkugel, c02.fig.blochzustaende are internal names and are kept), 'Helstrom' for the trace-norm formula of the optimal success probability (IDEAS.md:113), 'gbit' for the square bit (IDEAS.md:104; Plavala says boxworld), and the identification of the regular polygons with the polygon models '[JGBB]' of IDEAS.md:104.",
+   "needed_source": "A local source for each name: a quantum-information textbook for Bloch ball and Helstrom bound; the papers that introduced gbits and the polygon models.",
+   "where": "c02, sections 2.4.3 and 2.6, blocks c02.v4 and c02.v5",
+   "raised_in": [
+    "content/c02-gpt/de.tex",
+    "evidence/derivations/c02/DERIVATION.md sections 4.5 and 7.2",
+    "docs/plan/research/demos-games-video/IDEAS.md:104,113"
+   ],
+   "owner": "TJO",
+   "status": "open"
+  },
+  {
+   "id": "G-0014",
+   "what": "The reward rule of the game 'Distinguish'. Implemented rule (web/src/demos/c02/reward.ts, shown in the game's rules panel in both languages): three stars only for P = P_opt, compared exactly, no tolerance; otherwise two stars if P_opt - P <= 1/20; otherwise one star if P_opt - P <= 3/20; otherwise none. STATUS: an unvalidated design choice, not physics, not derived; no script, standard or derivation supports the two gaps 1/20 and 3/20 (IDEAS.md:111 had proposed a different rule: one star for P >= P_opt - 0.02 and three stars for P >= P_opt - 1e-3, which is not implemented). The authoring contract admits a number in content only with a claim of evidence derived, numerically-checked or source-*, so the manual page (c02.s7, de.tex and en.tex) states the structure of the implemented rule exactly (three stars only at P = P_opt; two tiers below with thresholds 0 < epsilon_2 < epsilon_1, named as chosen, unvalidated design values) and prints no values; it refers to the rules panel of the game for them.",
+   "needed_source": "A decision by TJO or the coordinator on how an unvalidated design choice may be printed (COORDINATION.md rule 10 allows 'unvalidated choice'; contract.json number_evidence does not).",
+   "where": "c02, section 2.7 (manual page)",
+   "raised_in": [
+    "content/c02-gpt/de.tex section c02.s7",
+    "docs/plan/research/demos-games-video/IDEAS.md:111",
+    "docs/authoring/CONTRACT.md section 9"
+   ],
+   "owner": "coordinator",
+   "status": "open"
+  },
+  {
+   "id": "G-0015",
+   "what": "Randbedingung bei r = 0 für ℓ = 0: warum unter den Lösungen der Radialgleichung gerade die mit u(0) = 0 zum selbstadjungierten Operator gehören. Steht nicht im Kapitel. / The boundary condition at r = 0 for ℓ = 0: why exactly the solutions with u(0) = 0 belong to the self-adjoint operator. Not in the chapter.",
+   "needed_source": "Teschl, Mathematical Methods in Quantum Mechanics, Theorem 10.9 (named in curriculum/REPORT.md H11.2; not on disk), or Reed-Simon II section X.1 (on disk, not read for this point).",
+   "where": "c11, Fundament",
+   "raised_in": [
+    "docs/plan/research/curriculum/REPORT.md:C11 H11.2",
+    "docs/plan/BRIEF.md:74",
+    "content/c11-wasserstoff/de.tex:c11.thm.spektrum"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Raised by the author of Smoke B (chapter C11), 2026-10-11."
+  },
+  {
+   "id": "G-0016",
+   "what": "Vollständigkeit des Coulomb-Spektrums: dass die konstruierten Zustände alle gebundenen Zustände der Relativbewegung sind, dass eine nicht abbrechende Potenzreihe nie normierbar ist, und dass das übrige Spektrum [0, ∞) ist. Das Kapitel behauptet nur die Existenz. / Completeness of the Coulomb spectrum: that the constructed states are all bound states, that a non-terminating series is never normalisable, and that the rest of the spectrum is [0, ∞). The chapter asserts existence only.",
+   "needed_source": "A source for the bound-state spectrum and essential spectrum of −Δ − γ/|x| (Teschl sections 10.2-10.4, not on disk; or Reed-Simon IV chapter XIII, on disk, not read).",
+   "where": "c11, Kern Theorem c11.thm.spektrum and Vertiefung c11.v2",
+   "raised_in": [
+    "evidence/derivations/c11/DERIVATION.md:204",
+    "evidence/derivations/c11/REVIEW.md:C (COULD NOT CHECK)"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Raised by the author of Smoke B (chapter C11), 2026-10-11."
+  },
+  {
+   "id": "G-0017",
+   "what": "Die Definitionsbereiche: D(−Δ) = H²(ℝ³) für den freien Laplace-Operator, und dass der Abschluss des Zweikörperoperators den Definitionsbereich H²(ℝ⁶) hat. REVIEW.md A2 behauptet beides aus dem Beweis von X.16 und dem Satz von Kato-Rellich; für das Kapitel wurde keine Quelle dafür gelesen, es schreibt nur D(−Δ). / The domains: D(−Δ) = H²(ℝ³), and that the closure of the two-body operator has domain H²(ℝ⁶). REVIEW.md A2 asserts both; no source was read for the chapter, which writes D(−Δ) only.",
+   "needed_source": "Reed-Simon II: the description of D(−Δ) (section IX.7) and the Kato-Rellich theorem X.12 (both on disk, not read for this chapter).",
+   "where": "c11, Fundament c11.f1",
+   "raised_in": [
+    "evidence/derivations/c11/REVIEW.md:A2"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Raised by the author of Smoke B (chapter C11), 2026-10-11."
+  },
+  {
+   "id": "G-0018",
+   "what": "Warum Selbstadjungiertheit zählt: dass nur selbstadjungierte Operatoren eine unitäre Zeitentwicklung erzeugen. Reed-Simon I S. 256 (DjVu-Seite 268) sagt das in einem Satz, vom C11-Autor am Seitenbild gelesen; im Kapitel steht es nicht, weil die zugehörigen Definitionen D29/D30 (Stone, Erzeuger) noch Platzhalter sind. / Why self-adjointness matters. Reed-Simon I p. 256 says it in one sentence (read from the page image by the C11 author); not in the chapter because D29/D30 are still placeholders.",
+   "needed_source": "Reed-Simon I section VIII.4 (Stone's theorem; on disk, not read) and the C5/C9 text that fixes D29 and D30.",
+   "where": "c11, Fundament c11.f1 (motivation); c05, c09",
+   "raised_in": [
+    "registry/definitions.json:D29",
+    "registry/definitions.json:D30"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Raised by the author of Smoke B (chapter C11), 2026-10-11."
+  },
+  {
+   "id": "G-0019",
+   "what": "TJOs Formulierungen für C11: (a) der Brückensatz vom endlichdimensionalen Kern zu L² (was 'Zustand' und 'Operator' ab C5 heißen), (b) was die 'Wolke' operational ist (|ψ(r)|² als Dichte der Relativkoordinate; wie präpariert und gemessen), (c) ob die Annahme 'Energiedifferenz erscheint als Lichtquant' so stehen soll. Das Kapitel hält sich an PLAN.md Abschnitt 14 Punkt 7 und an die Formeln und markiert die Stellen mit GAP-TJO. / TJO's wording for C11: the bridge sentence, what the 'cloud' is operationally, and the assumption that an energy difference appears as a quantum of light.",
+   "needed_source": "TJO's own text (BRIEF.md does not say).",
+   "where": "c11, Kern sections c11.s1, c11.s3, c11.s6",
+   "raised_in": [
+    "docs/plan/PLAN.md:section 14 item 7",
+    "docs/plan/BRIEF.md:74",
+    "content/c11-wasserstoff/de.tex:GAP-TJO"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Raised by the author of Smoke B (chapter C11), 2026-10-11."
+  },
+  {
+   "id": "G-0020",
+   "what": "Physikalische Einordnungen aus der Vorlesung, die ohne Quelle nicht ins Kapitel kamen: (a) Wasserstofflinien und Entfernungen zu Galaxien (vl16.tex:30-32, v19 [02:51]); (b) welche Serie sichtbar und welche ultraviolett ist (Grenzen des sichtbaren Bereichs, fig_vl16_termschema.tex); (c) dass Atome bei Raumtemperatur praktisch im Grundzustand sind (v19 [12:08]); (d) Auswahlregeln und Übergangsraten. / Physical remarks of the lecture that did not enter the chapter for lack of a source: galaxy distances, visible versus ultraviolet, ground state at room temperature, selection rules and rates.",
+   "needed_source": "A spectroscopy or astronomy reference for (a) and (b); a statistical-physics argument (chapter C15 ff.) for (c); a treatment of the radiation field for (d). None on disk.",
+   "where": "c11, Kern section c11.s6 and the two spectrum figures",
+   "raised_in": [
+    "latex/lectures/de/vl16.tex:30",
+    "latex/figures/fig_vl16_termschema.tex:44",
+    "transcripts/clean/v19.md:[02:51]"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Raised by the author of Smoke B (chapter C11), 2026-10-11."
+  },
+  {
+   "id": "G-0021",
+   "what": "Die Laguerre-Konvention CONV-LAGUERRE (Definition D68) und der Name 'Rydberg-Energie' (D64) stehen in keiner Quelle auf der Platte: D68 stützt sich auf die ausdrückliche Konvention der Herleitung (SymPy assoc_laguerre) und exakte Prüfungen, D64 bleibt 'proposed'. TJO soll die Konvention bestätigen. / CONV-LAGUERRE (D68) and the name 'Rydberg energy' (D64) are in no source on disk; TJO to confirm the convention.",
+   "needed_source": "A textbook or NIST DLMF chapter 18 for the generalised Laguerre polynomials; a definition of the Rydberg energy under that name.",
+   "where": "c11, Vertiefung c11.v2 (D66, D68); Kern c11.s4 (D64)",
+   "raised_in": [
+    "registry/definitions.json:D68",
+    "registry/definitions.json:D64"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Raised by the author of Smoke B (chapter C11), 2026-10-11."
+  },
+  {
+   "id": "G-0022",
+   "what": "Deutscher Wortlaut von TJOs Rahmung in den Kapiteln 0 und 1: die Sätze BRIEF.md:38, 44, 45, 46 (erster Teil), 50 und 90 sowie die Beschriftungen der Leiter (BRIEF.md:40) sind vom Kapitelautor übersetzt; TJO hat keine deutsche Fassung geschrieben. Betroffen: c00.eq.liefert, c00.eq.probabilistisch, c00.eq.p0, c00.eq.leiter, c00.eq.effektiv, c01.eq.sprache, Abbildung c00.fig.leiter (dort u. a. 'herauszoomen', 'herauszoomen und Information verlieren', 'Grundtheorie der Physik', 'unbestimmte Teilchenzahl', 'Grundhypothese der statistischen Mechanik'). / German wording of TJO's framing in chapters 0 and 1 is the chapter author's translation.",
+   "needed_source": "TJO's own German wording of the framing sentences and of the ladder (or his approval of these translations).",
+   "where": "c00 sections c00.s1 and c00.s3, figure c00.fig.leiter; c01 chapter opening",
+   "raised_in": [
+    "content/c00-theorie/de.tex",
+    "content/c00-theorie/figures/leiter.tex",
+    "content/c01-wahrscheinlichkeit/de.tex",
+    "docs/plan/BRIEF.md:38-50"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Raised by the author of Smoke A (chapters C0 and C1), 2026-10-11. Same kind of gap as the German translations in chapter c02."
+  },
+  {
+   "id": "G-0023",
+   "what": "Sätze, in denen die Kapitel 0 und 1 TJOs Rahmung über das wörtliche Zitat hinaus formulieren, und Rahmung, die fehlt: (a) Gegenüberstellung der drei Stadien des Skripts (Präparation, Durchführung, Messung) mit den drei Zutaten des Briefs (preparations, dynamics, measurement); (b) welche Operation hinter jedem Pfeil der Leiter steht (PLAN.md 13.1 A11: Modellwahl, Erweiterung, Vergröberung mit Grenzübergang) ist nicht ausgeführt; (c) 'P0 ist das erste der Postulate, die der Kurs nach und nach aufstellt' und 'der Merksatz der Vorlesung ist der Inhalt von P0, ausgesprochen für die Quantenmechanik'; (d) 'die definitiven Vorhersagen der klassischen Physik sind ein Sonderfall von Satz 0.2' und in Kapitel 1 'so ist der Satz aus Kapitel 0 gemeint, dass deterministische Theorien eine Teilmenge der probabilistischen sind' sowie 'in diesem Sinn kommen Wahrscheinlichkeiten in der klassischen Physik allein von fehlender Information'; (e) die Beschreibung von Definition D1 in Worten (Präparation als etwas, das man tut; Zustand als das, was für die Vorhersagen zählt). / Sentences where chapters 0 and 1 phrase TJO's framing beyond a direct quote, and framing that is missing. (f) Die früheren effective_theory-Sätze in c00/chapter.json ('gröbere Regeln derselben Art' ohne Dynamik) und c01/chapter.json (Gewichte ohne endliche Ergebnismenge) waren Formulierungen des Kapitelautors, keine Festlegungen des Briefs; sie sind ersetzt. Die sichtbaren Vorschläge zu P0, D1, Stadien/Dynamik, Punktgewichten und fehlender Information warten auf die Entscheidung des Autors. / The former metadata summaries extended the brief and are replaced; printed connective readings remain chapter-author proposals pending the author's decision.",
+   "needed_source": "TJO's own statement of: how the three-stage scheme relates to 'preparations + dynamics + measurement'; the operation behind each arrow of the ladder; the reading of 'deterministic as a subset of probabilistic'; his deviations from Ludwig-Werner (unwritten, see D1's gap_tjo). TJO must specify dynamics before the finite preparation theorem can be used to define deterministic theories; he must supply or approve the operational paraphrase and metadata framing.",
+   "where": "c00 sections c00.s1, c00.s2, c00.s3, c00.s4.4; c01 section c01.s3.1 (after proposition c01.prop.punktgewicht); effective_theory in content/c00-theorie/chapter.json and content/c01-wahrscheinlichkeit/chapter.json",
+   "raised_in": [
+    "content/c00-theorie/de.tex",
+    "content/c01-wahrscheinlichkeit/de.tex",
+    "docs/plan/PLAN.md:13.1 A11",
+    "docs/plan/research/curriculum/REPORT.md:250 (H1.1)",
+    "content/c00-theorie/chapter.json",
+    "content/c01-wahrscheinlichkeit/chapter.json",
+    "registry/definitions.json:D1"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Raised by the author of Smoke A (chapters C0 and C1), 2026-10-11. The mathematics behind (d) is proposition c01.prop.punktgewicht (derived); only the reading as TJO's meaning is open."
+  },
+  {
+   "id": "G-0024",
+   "what": "Physik der Vorgeschichte, die nicht ins Kapitel kam oder nur auf dem Skript ruht: (a) dass u_kl = 8πν²k_BT/c³ die Vorhersage der klassischen Physik ist, mit Herleitung (Modendichte mal Gleichverteilung), dem Namen Rayleigh-Jeans und dem Wort UV-Katastrophe: steht nur in der Abbildungsdatei latex/figures/fig_vl01_planck.tex, die keine registrierte Quelle ist; im Kapitel ist u_kl nur als Grenzform des Strahlungsgesetzes hergeleitet; (b) die mittlere Energie einer Mode hν/(e^{hν/kT}−1) und das 'Einfrieren' der Moden (vl01.tex:53 und Teil (b) der alten Abbildung); (c) was beim Photoeffekt unterhalb der Schwelle geschieht, dass W vom Material abhängt und dass die Elektronen aus einem Metall kommen; (d) alle Formeln und Befunde des Abschnitts c00.s4 sind nur durch TJOs Skript belegt, keine externe Quelle wurde geprüft. / Physics of the prehistory that did not enter the chapter or rests on the script alone.",
+   "needed_source": "A statistical-physics derivation of the mode density and equipartition (planned for chapter C18) or a textbook on disk; a source for the photoelectric effect; any external source for Planck's law, the photoelectric relation and p = h/λ.",
+   "where": "c00, section c00.s4 (c00.s4.1 to c00.s4.3), figure c00.fig.planck",
+   "raised_in": [
+    "latex/lectures/de/vl01.tex:37-63",
+    "latex/figures/fig_vl01_planck.tex:20-34",
+    "transcripts/clean/v01.md:[11:12]",
+    "transcripts/clean/v01.md:[26:00]"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Raised by the author of Smoke A (chapters C0 and C1), 2026-10-11. Smoke A repair retains only the algebraic limiting form, explicitly attributes the lecture-only physics, removes the all-frequencies clause and qubit inference, and leaves physical regimes for author-supplied sources or wording; the separate repair gaps record each objection."
+  },
+  {
+   "id": "G-0025",
+   "what": "Jahreszahlen und Namen der Vorgeschichte (Vertiefung c00.v2, Tabelle c00.tab.jahre) stammen allein aus dem Skript und sind gegen keine historische Quelle geprüft. Der Kapitelautor hält drei Angaben für prüfbedürftig, kann sie ohne Quelle aber weder bestätigen noch korrigieren: 'Planck ... postuliert (1899)' (vl01.tex:41), 'Franck-Hertz-Versuch (~1911)' (vl01.tex:60), 'Davisson-Germer-Experiment, 1929' (vl01.tex:63). Ebenfalls ungeprüft: 'Publikation in den Göttinger Mathematischen Nachrichten' (im Kapitel weggelassen). / Years and names of the prehistory come from the script alone; three dates look doubtful to the chapter author but cannot be confirmed or corrected without a source.",
+   "needed_source": "A history of quantum mechanics or the original papers (none on disk).",
+   "where": "c00, Vertiefung c00.v2 and table c00.tab.jahre",
+   "raised_in": [
+    "latex/lectures/de/vl01.tex:41",
+    "latex/lectures/de/vl01.tex:55",
+    "latex/lectures/de/vl01.tex:60",
+    "latex/lectures/de/vl01.tex:63",
+    "latex/lectures/de/vl01.tex:72",
+    "latex/lectures/de/vl01.tex:85"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Raised by the author of Smoke A (chapters C0 and C1), 2026-10-11. The dates are printed as 'given in the lecture notes', claim c00.cl.geschichte (depth vertiefung, source-backed to the script)."
+  },
+  {
+   "id": "G-0026",
+   "what": "Maßtheoretische Wahrscheinlichkeit auf ℝ, der im Curriculum-Bericht für C1 vorgesehene Zoom: σ-Additivität, Maße ohne Dichte (Punktmaße auf ℝ), die Schreibweise ∫ P(dx) f(x) als Integral nach einem Maß, und die Aussage des Skripts, dass die Varianz eines Maßes auf ℝ nur dann verschwindet, wenn es auf einen Punkt konzentriert ist (vl01.tex:214). Kapitel 1 beweist diese Aussage nur für endliche Ergebnismengen (c01.prop.varianz, Teil 3) und behandelt auf ℝ nur Dichten. Ein Fundament-Block dazu wurde nicht geschrieben. / Measure-theoretic probability on ℝ, the zoom-in planned for C1, is not written; the script's statement on vanishing variance is proved for finite outcome sets only.",
+   "needed_source": "A measure-theory source chosen by TJO (Reed-Simon I, chapter I, is on disk but was not read for this chapter) and his decision how far C1 goes.",
+   "where": "c01, section c01.s4; no Fundament block",
+   "raised_in": [
+    "docs/plan/research/curriculum/REPORT.md:44",
+    "latex/lectures/de/vl01.tex:161",
+    "latex/lectures/de/vl01.tex:214"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Raised by the author of Smoke A (chapters C0 and C1), 2026-10-11."
+  },
+  {
+   "id": "G-0027",
+   "what": "Old lecture statement: Die graue klassische Kurve liegt bei kleinen ν auf der Kurve derselben Temperatur und löst sich dann von ihr (vl01.tex:51–53); die Vorlesung nennt dort weder die Formel u_kl noch Messdaten. Review objection — reviewer's own knowledge, no local source: The review objects that the displayed limiting formula has no registered source or derivation identifying it as the classical prediction; the old plotted curve supplies no measured data.",
+   "needed_source": "The author must supply a source or a wording. A source or wording identifying the classical prediction, if it is to be stated.",
+   "where": "c00.s4.1; c00.fig.planck",
+   "raised_in": [
+    "latex/lectures/de/vl01.tex:51-53",
+    "docs/plan/phase0/review/REVIEW-smoke-A.md"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Recorded during the Smoke A repair; the objection is not admitted as physics provenance. The classical identification is independently unsupported by the registered lecture; only algebra is retained."
+  },
+  {
+   "id": "G-0028",
+   "what": "Old lecture statement: Die Energie der durch Licht ausgelösten Elektronen (Photoelektronen) ist nur durch die Lichtfrequenz bestimmt; \\eqbox{E_{\\text{el}} = \\frac12 m v^2 = h\\nu -W}; mit Bindungsenergie W (vl01.tex:59). Review objection — reviewer's own knowledge, no local source: The review objects that the unqualified relation for every photoelectron and the exact nonrelativistic kinetic energy need a fixed binding/work-function parameter, a single-photon idealisation, an applicable approximation and, for a surface, maximum kinetic energy.",
+   "needed_source": "The author must supply a source or a wording. A source or wording specifying the photoelectric regime.",
+   "where": "c00.s4.2; c00.fig.photoeffekt; c00.cl.photoeffekt",
+   "raised_in": [
+    "latex/lectures/de/vl01.tex:55-59",
+    "docs/plan/phase0/review/REVIEW-smoke-A.md"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Recorded during the Smoke A repair; the objection is not admitted as physics provenance. "
+  },
+  {
+   "id": "G-0029",
+   "what": "Old lecture statement: Strahlung wäre kontinuierlich über alle Frequenzen verteilt. Review objection — reviewer's own knowledge, no local source: The review objects that a periodic classical orbit can radiate at discrete harmonics, so classical physics alone does not imply radiation continuously over all frequencies.",
+   "needed_source": "The author must supply a source or a wording. A source or wording specifying the intended evolving radiating-orbit model.",
+   "where": "c00.s4.3; c00.cl.impuls",
+   "raised_in": [
+    "latex/lectures/de/vl01.tex:60-60",
+    "docs/plan/phase0/review/REVIEW-smoke-A.md"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Recorded during the Smoke A repair; the objection is not admitted as physics provenance. "
+  },
+  {
+   "id": "G-0030",
+   "what": "Old lecture statement: Der Drehimpuls hat endlich viele Möglichkeiten der Ausrichtung relativ zu einem angelegten Magnetfeld (Richtungsquantelung). Dieser Versuch ist uns besonders wichtig: Gerade weil der Drehimpuls quantisiert ist, können wir heute Qubits bauen. Review objection — reviewer's own knowledge, no local source: The review objects that the finite outcomes require a fixed angular-momentum multiplet and a component measurement along the field, and that the experiment does not justify every qubit implementation.",
+   "needed_source": "The author must supply a source or a wording. A source or wording specifying the Stern-Gerlach/angular-momentum scope and any intended qubit connection.",
+   "where": "c00.s4.3; c00.cl.impuls",
+   "raised_in": [
+    "latex/lectures/de/vl01.tex:62-62",
+    "docs/plan/phase0/review/REVIEW-smoke-A.md"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Recorded during the Smoke A repair; the objection is not admitted as physics provenance. "
+  },
+  {
+   "id": "G-0031",
+   "what": "Old lecture statement: Die Streuung von Licht an Elektronen wird durch Annahme von Lichtquanten mit $E=h\\nu$ und Impuls $p=h/\\lambda$ sowie Energie- und Impulserhaltung richtig beschrieben.  Review objection — reviewer's own knowledge, no local source: The review objects that energy, momentum and conservation specify Compton kinematics in an electron model, whereas a complete scattering prediction also needs dynamics.",
+   "needed_source": "The author must supply a source or a wording. A source or wording specifying what the Compton statement predicts and in which electron model.",
+   "where": "c00.s4.3; c00.cl.impuls",
+   "raised_in": [
+    "latex/lectures/de/vl01.tex:61-61",
+    "docs/plan/phase0/review/REVIEW-smoke-A.md"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Recorded during the Smoke A repair; the objection is not admitted as physics provenance. "
+  },
+  {
+   "id": "G-0032",
+   "what": "Old lecture statement: Ein Schwarzkörper reflektiert keine einfallende Strahlung, strahlt bei einer Temperatur $T$ wegen der thermisch angeregten Atome aber dennoch. Die übliche Realisierung ist eine Kiste mit kleinem Loch: Einfallende Strahlung verschwindet innen durch Vielfachreflexion, aus dem Loch tritt Schwarzkörperstrahlung aus. Review objection — reviewer's own knowledge, no local source: The review objects that a black-body cavity idealisation needs wall absorption and thermal equilibrium, rather than perfectly reflecting walls alone.",
+   "needed_source": "The author must supply a source or a wording. A source or wording specifying the physical cavity idealisation; the chapter corrects the ray claim to the drawn reflections only.",
+   "where": "c00.s4.1; c00.fig.hohlraum",
+   "raised_in": [
+    "latex/lectures/de/vl01.tex:47-47",
+    "docs/plan/phase0/review/REVIEW-smoke-A.md"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Recorded during the Smoke A repair; the objection is not admitted as physics provenance. "
+  }
+ ]
+}

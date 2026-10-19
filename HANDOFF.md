@@ -2,12 +2,26 @@
 
 ## Repo
 
-`/home/tobias/Projects/theoretical-physics-C` — git, `master`. Not yet pushed anywhere.
+`/home/tobias/Projects/theoretical-physics-C` — git, `master`; origin https://github.com/tobiasosborne/theoretical-physics-C.
 
 Modelled on `../generalrelativity`: same build/CI shape, adapted for a
 two-language course.
 
 ## Status
+
+**2026-10-20: public release audit.** The repo is published at
+https://github.com/tobiasosborne/theoretical-physics-C under AGPL-3.0-or-later (`LICENSE`).
+Six classification passes (Sonnet for docs, archive, evidence; Haiku for LaTeX, code, red
+corpus) found no secrets and no book text. Excluded from the public tree and purged from
+history, see the "Public-release exclusions" block in `.gitignore`: `archive/corrections/`
+(student-submitted corrections with names and a private email), `archive/admin/` (exam topic
+cards, consent-form template), every compiled PDF that embeds subsets of the commercial fonts
+(MTPro2, Whitney, Times LT Std, Minion), and the sources-inventory lane report, which lists
+local copies of third-party books and private folders. The wording "lawfully acquired" /
+"origin of the scan is not recorded" was dropped from `sources/*/rights.json` and
+`source.json` and the private receipt regenerated. Licence mentions changed from Apache 2.0 to
+AGPL. All of this is reversible by editing `.gitignore`.
+
 
 **2026-10-09: a planning campaign for a major upgrade is complete and landed in
 `docs/plan/`.** Read `docs/plan/BRIEF.md` (TJO's requirements, verbatim), then
@@ -28,9 +42,41 @@ five design packages with compiled print and rendered web specimens
 (`docs/plan/research/design-packages-{A,B}/specimens/`), two token compilers, a 22-chapter
 curriculum with hazards and a notation pre-inventory, 105 demo/game/video ideas with
 correctness tests, and architecture and rigour-process designs. `PLAN.md` section 1.2
-lists the ten decisions only TJO can make; nothing in Phase 0 starts before D1-D5.
+lists the ten decisions only TJO can make.
 
-### Verified defects in the current script (found by the campaign, not yet fixed)
+**2026-10-11: TJO answered D1-D10; they are recorded in `PLAN.md` section 1.3.** In short:
+MTPro2 in print and STIX Two online; light video ground by default with dark as a flag; all
+five design packages built behind feature flags; finite-dimensional Kern; the proposed depth
+names; three smoke tests in Phase 0 (first lecture, hydrogen, GPT foundations); everything
+on GitHub; commercial fonts never leave the local machine. Reed-Simon I-IV,
+Cycon-Froese-Kirsch-Simon and Bratteli-Robinson 1-2 are now in `~/Downloads` (hashes in
+section 1.3), unpacked with extracted text into the gitignored `sources/<key>/`; only
+`sources/MANIFEST.sha256` is tracked. Hydrogen is to be done as the full two-body problem
+with the reduced mass (locus: Reed-Simon III, XI.4, p. 55), and work proceeds without the
+sources still missing. Phase 0a is unblocked and not started.
+
+The first codex review run (2026-10-09) hit its time limit and wrote no `REVIEW.md`; its
+log is `codex-run1.log`. A second run with an addendum to `PROMPT.md` was started on
+2026-10-11 with `timeout 5400`.
+
+### Phase 0 in progress (2026-10-11, coordinator's log)
+
+The working contract for Phase 0 is `docs/plan/phase0/COORDINATION.md`; the coordinator's
+decisions on TJO's behalf are `PLAN.md` section 14; the codex plan review
+(`docs/plan/research/review/REVIEW.md`) is folded into `PLAN.md` section 13. Nothing of
+Phase 0 is committed. Status of each package is kept in the table at the end of this file
+("Phase 0 status").
+
+### Verified defects in the current script
+
+Update 2026-10-12: the two `vl16` defects below are fixed in `vl16.tex` and `lec16.tex`
+(migration records `evidence/migrations/M-0001.json`, `M-0002.json`, status `applied`;
+`ENRICHMENT_EXCEPTIONS` entry for lecture 16; report in
+`docs/plan/phase0/review/CODEX-migration-vl16-final.md`). The English edition of the old
+script now builds to 81 pages (`./ci.sh`, stage Build). The `vl22`, `vl19`/`a_0` and `vl04`
+items are recorded as M-0003..M-0005 and not applied. The three `vl01` wording slips listed
+under "Next" exist only in the archived v0.1; v0.2 already has them corrected (checked by the
+Smoke A review).
 
 All inherited from v0.1 and present in both editions. Each needs a fix in the German,
 then the English, then an `ENRICHMENT_EXCEPTIONS` entry (or, under the plan, a migration
@@ -287,3 +333,54 @@ translation agent, and the change was audited before being kept:
   Neumann". Every occurrence of the dropped words was checked and is
   genuine English ("for a die, for instance"; "the hat is there to remind
   us").
+
+## Phase 0 status
+
+Kept by the Phase 0 coordinator (an agent). Nothing here is committed. Each row names the
+gate command; "passed" means the coordinator ran it, on the date given.
+
+| Package | State | Where | Gate (run from the repo root) |
+|---|---|---|---|
+| Contract and rules | in force | `docs/plan/phase0/COORDINATION.md`, `PLAN.md` sections 13-14 | n/a |
+| Tokens, five packages x two grounds | landed 2026-10-11 | `design/`, `latex/tpc-design.sty` | `python3 design/build_tokens.py --check`; `python3 design/lint_content.py` |
+| Notation, definitions, conventions, translation | landed 2026-10-11; most rows `proposed` | `registry/`, `scripts/registry/` | `python3 scripts/registry/check_registry.py` |
+| Source registry, claims, provenance, gaps, migrations | landed 2026-10-11 | `sources/*/source.json`, `evidence/`, `scripts/evidence/` | `python3 scripts/evidence/check_evidence.py --private` (needs the private payloads), `--public` |
+| Depth system, authoring contract, four editions | landed 2026-10-11 | `latex/tpc-levels.sty`, `latex/tpc-course.sty`, `latex/course/`, `docs/authoring/`, `scripts/course/` | `bash scripts/course/build_course.sh --all-editions --with-test-chapter && python3 scripts/course/check_levels.py --with-test-chapter` |
+| TeX to HTML converter, site, demo harness, capture | landed 2026-10-11 | `web/` | `bash web/check.sh --chapters <ids>` (after the print build) |
+| Red corpus | one directory per gate | `tests/red/<gate>/` | `python3 scripts/check_red.py` |
+| Hydrogen derivation and independent check (codex) | done 2026-10-11 | `evidence/derivations/c11/` | `python3 evidence/derivations/c11/check_hydrogen.py --verify` |
+| GPT derivation and independent check (codex) | done 2026-10-11 | `evidence/derivations/c02/` | `python3 evidence/derivations/c02/check_gpt.py --verify` |
+
+All of these are wired into `./ci.sh` as the stage "Contracts". The smoke chapters and the
+0e review are tracked below this table as they land.
+
+### Smokes and 0e (status on 2026-10-12, end of the Phase 0 run)
+
+`./ci.sh` (all six stages, including the stage "Contracts" with the four-edition course
+build, the web gates in a headless browser, the Julia reference tests, the game play check
+and the whole red corpus) passed on 2026-10-12; log of that run: `build/coord-ci-full2.log`
+(not tracked).
+
+| Item | State | Where |
+|---|---|---|
+| Smoke B, hydrogen (C11): chapter in four editions, formula gate | written, reviewed by codex, one repair wave, closure checked | `content/c11-wasserstoff/`, `scripts/c11/`, `tests/red/c11-formulas/`, `docs/plan/phase0/review/{REVIEW,REPAIR}-smoke-B.md` |
+| Smoke B: three views, Julia reference, video | built; kernel checked in the Smoke B review; views and video not looked at by a person | `web/src/kernels/hydrogen.ts`, `web/src/demos/c11.*`, `numerics/`, `web/video/`, `tests/red/c11-render/`; video under `build/web/video/` (not tracked) |
+| Smoke C, GPT foundations (C2): chapter in four editions with the game manual | written, reviewed, repaired, closure checked | `content/c02-gpt/`, `evidence/derivations/c02/`, `docs/plan/phase0/review/REVIEW-smoke-C.md` |
+| Smoke C: explorer and the game "Distinguish" | built, reviewed with the chapter | `web/src/kernels/gpt.ts`, `web/src/demos/c02.*`, `numerics/gpt/`, `tests/red/c02-game/` |
+| Smoke A, first lecture (C0, C1): chapters, HTML, one demo, vl01 migration map | written, reviewed, repaired, closure checked | `content/c00-theorie/`, `content/c01-wahrscheinlichkeit/`, `evidence/migrations/`, `docs/plan/phase0/review/{REVIEW,REPAIR}-smoke-A.md` |
+| 0e: contracts review and repair | reviewed, one repair wave; the closure check lists what stays open | `docs/plan/phase0/review/REVIEW-contracts.md`, `REPAIR-contracts.md`, `CLOSURE.md` |
+
+Open after the one repair wave (details in `docs/plan/phase0/review/CLOSURE.md`): the gates
+check bookkeeping and structure, not whether a quote or derivation supports its claim; that
+stays a reviewer's job on every unit (`COORDINATION.md` section 8). Not enforced: fractions and
+number words under the numbers rule, numbers in figure files, one-sentence quote length,
+package-grid lengths in the lint, proof availability per edition, binding of the web
+converter to the build's .aux hash, red cases for several failure families.
+
+Waiting for TJO: `evidence/gaps.json` (32 rows), `registry/COLLISIONS.md`, and the list in
+`PLAN.md` section 14.
+
+Concurrent chapter builds must not share `build/course/`: build with
+`bash scripts/course/build_course.sh --chapters <ids> --all-editions --out build/<name>` and
+pass `--build build/<name>` to `check_levels.py` and `--course-build build/<name> --out
+build/<name>-web` to `web/check.sh`.

@@ -17,7 +17,7 @@
 | Hammerer Theo C student notes (scan) | `archive/third-party/Script_TheoC_VorlesungProfHammerer_Feb2020.pdf` | c107fa1b784103d47d878c1630852fa85f273f24f6f200d33cee2be59c7cd61d | third party |
 | Wilming many-body lecture notes | `~/Downloads/many-body-notes-current-upload.4.pdf` | 4dfef908cba021c5d8be86365f5df086723babb339547b8b576e3d311791a27b | "do not distribute" |
 | Earlier Theo C script PDF | `~/Downloads/TheoretischePhysikC.pdf` | 0f60c2f5c51a9b63a4da2245aeb898954c5b5457c2c018ecd902ddabc46c4d81 | TJO's own |
-| This repo | commit 8bfab6557978385dd7439e10086ffe509840bcd1 | (git) | Apache 2.0 |
+| This repo | commit 8bfab6557978385dd7439e10086ffe509840bcd1 | (git) | AGPL-3.0-or-later |
 
 ## Verified claims (how)
 

@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "Running text outside any claimed unit states a decimal with a unit that no claim supports.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/underived-number --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[number\\] c98-red/de\\.tex:\\d+: underived number '2\\.5'"
+}

@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "The claims ledger changed after the private run; public mode.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/stale-receipt-public --public",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[receipt\\] .*stale receipt: evidence/claims\\.json changed since the private check"
+}

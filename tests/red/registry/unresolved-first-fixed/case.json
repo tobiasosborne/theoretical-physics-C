@@ -1,0 +1,7 @@
+{
+ "gate": "registry",
+ "what": "A symbol's first_fixed_in names definition D9, which does not exist.",
+ "cmd": "python3 scripts/registry/check_registry.py --root tests/red/registry/unresolved-first-fixed --no-generated",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "unresolved: sym\\.state-space: first_fixed_in 'D9'"
+}

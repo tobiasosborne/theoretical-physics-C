@@ -1,0 +1,33 @@
+% c11.fig.grundzustand — the ground-state solution of the radial equation in its potential.
+%
+% Generating formulas (DERIVATION.md Results 2.1, 2.2; chapter equations c11.eq.dimlos and
+% c11.eq.grundzustand; Z = 1, x = r/a_mu, energies in units of Ry_mu, both with the REDUCED mass):
+%     effective potential for l = 0:   V/Ry_mu = -2/x,
+%     ground-state energy:             E_1/Ry_mu = -1,
+%     solution of -u'' - (2/x) u = -u: u(x) = x exp(-x),   maximum at x = 1.
+% As is usual in such pictures, u is drawn on the level E_1 as its base line: the curve is
+% -1 + 2 x exp(-x).  The factor 2 is a choice for the picture (u has no energy unit); the caption
+% says so.
+% Greyscale: potential heavy, level thin, u medium; labelled directly.
+\begin{tikzpicture}
+  \pgfplotsset{c11/.style={
+    axis lines=left, clip=false, grid=none,
+    axis line style={draw=tpc-plate-ink, line width=\tpcstrokethin},
+    tick style={draw=tpc-plate-ink, line width=\tpcstrokehair},
+    tick label style={font=\tpcfontlabel, text=tpc-plate-ink},
+    label style={font=\tpcfontlabel, text=tpc-plate-ink},
+    every axis x label/.style={at={(ticklabel* cs:1.0)}, anchor=west, font=\tpcfontlabel},
+    every axis y label/.style={at={(ticklabel* cs:1.0)}, anchor=south, font=\tpcfontlabel}}}
+  \begin{axis}[c11, width=9.0cm, height=4.5cm,
+      xmin=0, xmax=8.4, ymin=-2.6, ymax=0.45,
+      xtick={0,2,4,6,8}, ytick={-2,-1,0},
+      xlabel={$r/a_{\mu}$}, ylabel={$E/\mathrm{Ry}_{\mu}$}]
+    \draw[tpc grid] (axis cs:0,0) -- (axis cs:8.4,0);
+    \draw[tpc leader] (axis cs:0,-1) -- (axis cs:8.4,-1);
+    \addplot[tpc dynamics, domain=0.77:8.4, samples=160] {-2/x};
+    \addplot[tpc state, domain=0:8.4, samples=160] {-1+2*x*exp(-x)};
+    \node[tpc label, anchor=west] at (axis cs:1.35,-2.0) {$V_{0}^{\mathrm{eff}}$};
+    \node[tpc label, anchor=south west] at (axis cs:1.6,-0.42) {$u(x) = x\,e^{-x}$};
+    \node[tpc label, anchor=north east] at (axis cs:8.4,-1.02) {$E_1$};
+  \end{axis}
+\end{tikzpicture}

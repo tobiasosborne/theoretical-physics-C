@@ -1,0 +1,7 @@
+{
+  "gate": "tokens",
+  "what": "Dynamics roles try to exempt their low contrast through fill metadata.",
+  "cmd": "python3 design/build_tokens.py --pkg 2 --ground light --tokens-dir tests/red/tokens/fill-metadata-bypass/tokens --measure",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "stroke-contrast dynamics/plate = 2\\.981, needs >= 3\\.0 \\(quoted; WCAG 2\\.2 SC 1\\.4\\.11"
+}

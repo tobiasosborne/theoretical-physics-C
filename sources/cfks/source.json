@@ -1,0 +1,55 @@
+{
+ "schema_version": 1,
+ "key": "cfks",
+ "kind": "book",
+ "storage": "private",
+ "title": "Schrödinger Operators with Application to Quantum Mechanics and Global Geometry",
+ "authors": [
+  "Hans L. Cycon",
+  "Richard G. Froese",
+  "Werner Kirsch",
+  "Barry Simon"
+ ],
+ "edition": "first edition 1987; the CIP data on the copyright page say 'Springer Study Edition'; 'With 2 Figures'",
+ "language": "en",
+ "publisher": "Springer-Verlag, Berlin Heidelberg New York London Paris Tokyo (Texts and Monographs in Physics)",
+ "year": "1987",
+ "identifiers": {
+  "isbn": [
+   "3-540-16758-7",
+   "0-387-16758-7"
+  ],
+  "lccn": "86-13953"
+ },
+ "retrieval": {
+  "route": "supplied by TJO on 2026-10-11 in ~/Downloads (PLAN.md section 1.3); unpacked into sources/ by the Phase 0 coordinator",
+  "date": "2026-10-11",
+  "original_file": "Functional analysis.zip, sha256 ea36ca07d67e0e6a8d9ede984443c8a6992c66a6b907b58d5c20bdfd910a1ee3",
+  "unchecked": "the zip itself was not re-hashed by the evidence package",
+  "also": "a second copy ~/Downloads/...Cycon...Schroedinger_Operators...Springer(1987).djvu with sha256 258d6a27..., equal to this payload's hash (PLAN.md 1.3)"
+ },
+ "identity_check": "title page (DjVu page 4) and copyright page (DjVu page 5) rendered with ddjvu -format=pnm and read from the image on 2026-10-11: authors, title, 'With 2 Figures', Springer-Verlag, both ISBNs, '(c) Springer-Verlag Berlin Heidelberg 1987'",
+ "extraction": "cfks.txt is byte-identical to the output of `djvutxt cfks.djvu` (checked 2026-10-11)",
+ "page_index_convention": "page_index is the 1-based DjVu page; printed page numbers differ and are given separately in each locus",
+ "authority_for": "Schroedinger operators, self-adjointness, N-body Hamiltonians in atomic coordinates (section 3.2 per PLAN.md 1.3)",
+ "limitations": "scan; PLAN.md 1.3: section 3.2 was read from the text layer only and its formulas are not yet checked against the page image",
+ "files": [
+  {
+   "path": "cfks/cfks.djvu",
+   "role": "scan",
+   "media_type": "image/vnd.djvu",
+   "sha256": "258d6a27235d48ffdb3a34098014594e7a297b370f8c5053e37861436c99ba00",
+   "pages": 330
+  },
+  {
+   "path": "cfks/cfks.txt",
+   "role": "ocr-text",
+   "media_type": "text/plain",
+   "sha256": "6aadd3f7a228995ca1c4e9774bfb153e95d95e66dc2a0f195c9f42e7bad68126",
+   "notes": "for finding pages only; formulas and quotes are read from the page image"
+  }
+ ],
+ "rights_ref": "rights.json",
+ "supersedes": null,
+ "errata": []
+}

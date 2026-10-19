@@ -1,0 +1,292 @@
+{
+  "$description": "Libertinus family in every medium, monochrome chrome, light stage in every mode so that a still is a figure. Lane: design-packages-B/PKG-5-explorable-textbook.md.",
+  "$extensions": {
+    "org.tpc": {
+      "pkg": 5,
+      "title": "PKG-5 Explorable textbook",
+      "production_ready": true,
+      "waivers": [],
+      "stage_follows_plate": true,
+      "stage_follows_plate_reason": "PKG-5's defining rule: figure, demo, HUD and video share one light ground, so ground=dark only darkens the page around them."
+    }
+  },
+  "color": {
+    "ground": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.99, 0.003, 90] },
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.205, 0.006, 90] },
+          "print": { "colorSpace": "oklch", "components": [1.0, 0.0, 0] }
+        }
+      }
+    },
+    "ground-alt": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.955, 0.004, 90] },
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.25, 0.006, 90] }
+        }
+      }
+    },
+    "ink": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.22, 0.004, 90] },
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.91, 0.006, 90] },
+          "print": { "colorSpace": "oklch", "components": [0.0, 0.0, 0] }
+        }
+      }
+    },
+    "ink-muted": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.49, 0.006, 90] },
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.72, 0.006, 90] }
+        }
+      }
+    },
+    "rule": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.84, 0.004, 90] },
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.4, 0.006, 90] }
+        }
+      }
+    },
+    "accent": {
+      "$type": "color",
+      "$value": "{color.ink}",
+      "$description": "monochrome chrome"
+    },
+    "link": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.3, 0.01, 90] },
+      "$description": "monochrome link: carried by the underline",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.86, 0.01, 90] }
+        }
+      }
+    },
+    "highlight": {
+      "$type": "color",
+      "$value": "{color.ground-alt}",
+      "$description": "no chromatic tint on chrome"
+    }
+  },
+  "font": {
+    "serif": {
+      "$type": "fontFamily",
+      "$value": [
+        "Libertinus Serif",
+        "Libertinus Math",
+        "serif"
+      ],
+      "$extensions": {
+        "org.tpc.tex": {
+          "open": {
+            "font": "LibertinusSerif",
+            "options": "Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,BoldFont=*-Semibold,BoldItalicFont=*-SemiboldItalic",
+            "probe": "[LibertinusSerif-Regular.otf]"
+          }
+        }
+      }
+    },
+    "sans": {
+      "$type": "fontFamily",
+      "$value": [
+        "Libertinus Sans",
+        "sans-serif"
+      ],
+      "$extensions": {
+        "org.tpc.tex": {
+          "open": {
+            "font": "LibertinusSans",
+            "options": "Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,BoldFont=*-Bold",
+            "probe": "[LibertinusSans-Regular.otf]"
+          }
+        }
+      }
+    },
+    "mono": {
+      "$type": "fontFamily",
+      "$value": [
+        "Libertinus Mono",
+        "monospace"
+      ],
+      "$extensions": {
+        "org.tpc.tex": {
+          "open": {
+            "font": "LibertinusMono-Regular.otf",
+            "options": "Scale=MatchLowercase",
+            "probe": "[LibertinusMono-Regular.otf]"
+          }
+        }
+      }
+    },
+    "math": {
+      "$type": "fontFamily",
+      "$value": [
+        "Libertinus Math",
+        "math"
+      ],
+      "$extensions": {
+        "org.tpc.tex": {
+          "open": {
+            "font": "LibertinusMath-Regular.otf",
+            "options": "",
+            "probe": "[LibertinusMath-Regular.otf]"
+          }
+        }
+      }
+    }
+  },
+  "type": {
+    "body": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.serif}",
+        "fontSize": { "value": 11, "unit": "pt" },
+        "lineHeight": 1.3091,
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      }
+    },
+    "small": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.serif}",
+        "fontSize": { "value": 9, "unit": "pt" },
+        "lineHeight": 1.2778,
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      }
+    },
+    "label": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.serif}",
+        "fontSize": { "value": 8.5, "unit": "pt" },
+        "lineHeight": 1.2941,
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      }
+    },
+    "h1": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.serif}",
+        "fontSize": { "value": 20, "unit": "pt" },
+        "lineHeight": 1.2,
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      }
+    },
+    "h2": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.serif}",
+        "fontSize": { "value": 12, "unit": "pt" },
+        "lineHeight": 1.25,
+        "fontWeight": 600,
+        "fontStyle": "normal"
+      }
+    },
+    "h3": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.serif}",
+        "fontSize": { "value": 11, "unit": "pt" },
+        "lineHeight": 1.3091,
+        "fontWeight": 600,
+        "fontStyle": "normal"
+      }
+    },
+    "numeral": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.serif}",
+        "fontSize": { "value": 30, "unit": "pt" },
+        "lineHeight": 1.0,
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      }
+    },
+    "mono": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.mono}",
+        "fontSize": { "value": 8.5, "unit": "pt" },
+        "lineHeight": 1.2941,
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      }
+    },
+    "depth-label": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.serif}",
+        "fontSize": { "value": 11, "unit": "pt" },
+        "lineHeight": 1.3091,
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      },
+      "$extensions": {
+        "org.tpc.smallcaps": true
+      }
+    },
+    "web-body": {
+      "$type": "dimension",
+      "$value": { "value": 1.1875, "unit": "rem" }
+    }
+  },
+  "measure": {
+    "text": {
+      "$type": "dimension",
+      "$value": { "value": 112, "unit": "mm" }
+    },
+    "inner": {
+      "$type": "dimension",
+      "$value": { "value": 24, "unit": "mm" }
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": { "value": 6, "unit": "mm" }
+    },
+    "margin": {
+      "$type": "dimension",
+      "$value": { "value": 44, "unit": "mm" }
+    },
+    "top": {
+      "$type": "dimension",
+      "$value": { "value": 22, "unit": "mm" }
+    },
+    "bottom": {
+      "$type": "dimension",
+      "$value": { "value": 26, "unit": "mm" }
+    },
+    "web-text": {
+      "$type": "dimension",
+      "$value": { "value": 37, "unit": "rem" }
+    },
+    "web-gap": {
+      "$type": "dimension",
+      "$value": { "value": 2, "unit": "rem" }
+    },
+    "web-margin": {
+      "$type": "dimension",
+      "$value": { "value": 14, "unit": "rem" }
+    }
+  },
+  "stroke": {
+    "depth-v": {
+      "$type": "dimension",
+      "$value": { "value": 0.4, "unit": "pt" }
+    }
+  }
+}

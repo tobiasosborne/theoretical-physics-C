@@ -1,0 +1,61 @@
+{
+ "mode": "private",
+ "result": "pass",
+ "inputs": {
+  "evidence/claims.json": "81ef6a6bf2c138a6b9e38ee5413d3587e06600117c2f60d49c5f87dd1a790fe3",
+  "evidence/provenance.json": "da0de5ccee677105082cfd30cb36ba1111387add033cc7ffce4513912a4a8ca5",
+  "evidence/gaps.json": "10bfc61beae27325799c196259fc29c9bf9f83dfc7cbaf5a2b9bd1d180efc62a",
+  "evidence/migrations/M-0001.json": "580a3a45a090e321a30e63f98df4563e6ca437ea97b6f40f103293e9473f2be8",
+  "evidence/receipts/reviews/R-0001.json": "c7154aade3cc13bd92aed6f84dec697ef255baeb9c4cec6c50a3a4329c825336",
+  "sources/MANIFEST.sha256": "e27be87c5db54a1f29d91f5766ba2b492fc295001438bc2c540620eab9c11209",
+  "sources/fake-brief/source.json": "cbc97c2e2261a03b371e6f1a44f8007f9a8c085dd36e99dfe196f105f0fc08a6",
+  "sources/fake-notes/source.json": "26d3b80ea88ace70db6df3004da21ec318e4e6f5bae8b8f2d538271f106f43d4",
+  "sources/fake-scan/source.json": "98116ff6cb610ec4ea2814646d15f7735fa5eaf362a01d6093380365ea664a32",
+  "sources/fake-brief/rights.json": "491d219dd85f6b7d969219492bed03eedbfdd4562cc5ab45666754fd9876ba9c",
+  "sources/fake-notes/rights.json": "ca97ea56eeae95da7538805a392b7070d57f1a4a21f4b35e8a377aa1378c32c6",
+  "sources/fake-scan/rights.json": "15ba79b4bc2a12ddd26a138e82b6665bf0feea0af32a8bb2baf4f5d35273d6ae",
+  "evidence/derivations/d.md": "1dfc6f4488033a7c00f73a4411206bca3d0247432312aeffe919f05acd49b5c6",
+  "numerics/check.py": "e129241ca638617d9675c0206242cd9a3f2750f7014b1471adcbdfce3fdd7c0f",
+  "numerics/input.txt": "53c234e5e8472b6ac51c1ae1cab3fe06fad053beb8ebfd8977b010655bfdd3c3",
+  "checker:scripts/evidence/check_evidence.py": "d6ea08073dd27121af72779fede43e9ace0ca6cc76630bb94f0ec0a59941564b",
+  "schema:claims.schema.json": "5b799e97a72a4f787ae91159eb3ef27dbc6c081714fb7100e5fc51a38369b918",
+  "schema:gaps.schema.json": "b87f200d0cdc1ce6c75b295031f4bfa5b66bfba0be326163bbad0597c9957e04",
+  "schema:migration.schema.json": "8b2c4e26f1fff7d500a04af576312ddc857a8ceb2a67379d9a541260fae30f7f",
+  "schema:provenance.schema.json": "18f370f733e071569269fdd1b0790d06a3ad3836173aca909cf9f5c0221b9eca",
+  "schema:review.schema.json": "ba9156c6cd4b67453b29a879b7742e989531d4e9f9d2365f98bf07eff7922db6",
+  "schema:rights.schema.json": "c04836c5c4b071e416a82d39d7ce01950ec2fccdc5cba7f0920e98d10cbe521b",
+  "schema:source.schema.json": "19172cf301e6438060b048e2640b6df033d49391d970848ca2b28f33a7b35f56"
+ },
+ "counts": {
+  "awaiting_content": 0,
+  "claims": 5,
+  "gaps": 1,
+  "manifest_checked": 4,
+  "manifest_skipped": 0,
+  "migrations": 1,
+  "numerics_not_run": 0,
+  "numerics_run": 1,
+  "page_image": 1,
+  "provenance": 3,
+  "sources": 3,
+  "text_skipped": 0,
+  "text_verified": 2
+ },
+ "numerics_run": true,
+ "numerics_results": {
+  "c98.cl.4": {
+   "result": "pass",
+   "script": "numerics/check.py",
+   "command": "python3 numerics/check.py",
+   "value": 2.0,
+   "expected": 2.0,
+   "tolerance": 1e-12,
+   "exit_status": 0
+  }
+ },
+ "tools": {
+  "python": "3.12.3",
+  "hash": "sha256 (hashlib)"
+ },
+ "date": "2026-10-12"
+}

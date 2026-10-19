@@ -1,0 +1,7 @@
+{
+  "gate": "levels",
+  "what": "The build record names another job.",
+  "cmd": "python3 tests/red/levels/build-identity/probe.py build-identity",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "B0 tpc-de-full: build identity: job is 'unrelated'"
+}

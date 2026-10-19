@@ -1,0 +1,324 @@
+{
+ "schema_version": 1,
+ "key": "tpc-script-v0.2",
+ "kind": "script-snapshot",
+ "storage": "tracked",
+ "title": "Theoretische Physik C, script v0.2: lectures vl01-vl22 (German) and lec01-lec22 (English)",
+ "authors": [
+  "Tobias J. Osborne"
+ ],
+ "version": "v0.2",
+ "language": "de, en",
+ "identifiers": {
+  "git_commit": "88996cf14ba45e2c89474d2896f76711ea3d959d",
+  "last_commit_touching_these_files": "e126ae527507b4bd000c4f255c9a9be85a4733f1"
+ },
+ "retrieval": {
+  "route": "tracked files under latex/lectures in this repository; `git diff --quiet HEAD -- latex/lectures` was clean when the hashes were taken",
+  "date": "2026-10-11",
+  "git_members": {
+   "tpc-script-v0.2/git/latex/lectures/de/vl16.tex": "latex/lectures/de/vl16.tex",
+   "tpc-script-v0.2/git/latex/lectures/en/lec16.tex": "latex/lectures/en/lec16.tex"
+  }
+ },
+ "identity_check": "title and author read from the master file's \\title and \\author lines on 2026-10-11",
+ "files": [
+  {
+   "path": "../latex/lectures/de/vl01.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e"
+  },
+  {
+   "path": "../latex/lectures/de/vl02.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "0acb89f372aca2f40a5c43affa8bf833418ff40bfb407f34d22125fb62415c44"
+  },
+  {
+   "path": "../latex/lectures/de/vl03.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "5ade0d2df8358f22497f3e207710b2c0efb7c74ea9da31ae420bcb23d469837e"
+  },
+  {
+   "path": "../latex/lectures/de/vl04.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "e10cd13b0287b5114f3a30a7bfa9bdbb16a53aab755f8573bca795ae4a03aae9"
+  },
+  {
+   "path": "../latex/lectures/de/vl05.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "b7a2e83281fbde3fbefd01abe7c45123f126aeea880177b0911b54304c7684d3"
+  },
+  {
+   "path": "../latex/lectures/de/vl06.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "6abda03fd00b488fcf2968aff1295fcfcb89b4e93db086d969c6d96dcb034f6d"
+  },
+  {
+   "path": "../latex/lectures/de/vl07.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "8482c8aece9bd52e08a95dea90013119c806250b7d38c085eda6df5de483259c"
+  },
+  {
+   "path": "../latex/lectures/de/vl08.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "0d74967c9fa9c3357ea077ac6d9d942819fc11fe00360cfaf78021dbb891812e"
+  },
+  {
+   "path": "../latex/lectures/de/vl09.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "12a3a032aec831f53f07c0be9eb5932c3d9a9a0186e3501e48378bb974f1c2be"
+  },
+  {
+   "path": "../latex/lectures/de/vl10.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "dec296d4630704b77dd6b8e3f1ad6d487201d667b8b2959b5c094418d01e389d"
+  },
+  {
+   "path": "../latex/lectures/de/vl11.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "1ea5c828ac96a79e71ca7fb4cabb6584ca4a3296158ac1a0d369d76208e44ff5"
+  },
+  {
+   "path": "../latex/lectures/de/vl12.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "202c7044f48c57ae7e9f93b8c45428cd186d3fde7253abff5bbba178420079a7"
+  },
+  {
+   "path": "../latex/lectures/de/vl13.pdf",
+   "role": "binary",
+   "media_type": "application/pdf",
+   "sha256": "1cdb3109716ad0cfa6e101ca45da36a7a8dc6bda7bda88b0a12a7f05ad864f72"
+  },
+  {
+   "path": "../latex/lectures/de/vl13.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "79c3bf0e0d0cb5fa9bbb57fa7865d01763693570a99ede82a1dde6cab623d7b9"
+  },
+  {
+   "path": "../latex/lectures/de/vl14.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "2912c7ad93a503355e63efaf3ad9da02fdb2de2a58c08fd9cbf7150752defd45"
+  },
+  {
+   "path": "../latex/lectures/de/vl15.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "67f83a456e177ce355ebd6649ee2eeceb04b63d267d9f7293c98539ae0826be8"
+  },
+  {
+   "path": "tpc-script-v0.2/git/latex/lectures/de/vl16.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "ee5a38ebbc2b30ba85fd76ba198131b6a7cfdab2835ba25e352861e123b7128c"
+  },
+  {
+   "path": "../latex/lectures/de/vl17.pdf",
+   "role": "binary",
+   "media_type": "application/pdf",
+   "sha256": "e91e7f6f98d5d6868819c0195fab2375b9e7734f832f5dad75e716ac5d59a7b7"
+  },
+  {
+   "path": "../latex/lectures/de/vl17.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "cd0e0031ba2be7e1c0ddcb72b752aba214841dc992c202acf9a0cf4d9ddda0fc"
+  },
+  {
+   "path": "../latex/lectures/de/vl18.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "fbba8ef428572aebe2c9f5212baa1d93e6aefabffff87c26a9fb0279241a5758"
+  },
+  {
+   "path": "../latex/lectures/de/vl19.pdf",
+   "role": "binary",
+   "media_type": "application/pdf",
+   "sha256": "d3a49a37ebec11177950295a5f871c3180ee39e4f90b85446b16b97125792f2d"
+  },
+  {
+   "path": "../latex/lectures/de/vl19.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "95d5b9e454cf1b6c63d32226461bad9af63658dafc8552829e8ff90328331155"
+  },
+  {
+   "path": "../latex/lectures/de/vl20.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "629803c845f86fdf751f9a01be941cd37d6a310583abe3725c89fb2387488a01"
+  },
+  {
+   "path": "../latex/lectures/de/vl21.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "54fd47868a660dcb479d9dc13bc69bc5bafee4fe1db7e0c685a3810281915f58"
+  },
+  {
+   "path": "../latex/lectures/de/vl22.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "63acef9837f90b6f86697cab4e5753f035c571ab77e8b49786931630744059cc"
+  },
+  {
+   "path": "../latex/lectures/en/lec01.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "b0ccc8af69cc09146698d13dcbf0667b5ee2295def8dc4133611ade213eab270"
+  },
+  {
+   "path": "../latex/lectures/en/lec02.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "0686c02503139e489b6e5ca96764bd7f10e178ae2a19571dbbc7263a5e93a082"
+  },
+  {
+   "path": "../latex/lectures/en/lec03.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "597cbb8943fb5926076c2741f225868619087a348ab7b8bbe5da0e225ab2ab89"
+  },
+  {
+   "path": "../latex/lectures/en/lec04.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "9fd7efeb7a25a44f532e5a9be2d1278b3f669d04231772763fe0109c0f97ca8b"
+  },
+  {
+   "path": "../latex/lectures/en/lec05.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "3337b4a8578161288e4f004c635fd42f072da56b920b198ed1bd064641bd8e44"
+  },
+  {
+   "path": "../latex/lectures/en/lec06.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "7398af746d8746f00ab6b00583e98216af4338a650e8e14093525f30f5ad7d02"
+  },
+  {
+   "path": "../latex/lectures/en/lec07.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "f6339a2e8756b02a6d346c8484701fe3c3ce4a4c8b7c72c11e29251dc39f8ff6"
+  },
+  {
+   "path": "../latex/lectures/en/lec08.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "b0681c5b99e966be615f16443eca315c04bc3fdc6660198c2876765d660a2592"
+  },
+  {
+   "path": "../latex/lectures/en/lec09.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "d40d9e4c504a25fd8e422def8cfefdd542e04274cd0db1d369a60d458777035e"
+  },
+  {
+   "path": "../latex/lectures/en/lec10.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "fa7c2e12dfb4480be7fb82b6f50b9dff628dedb34d8b36e86faee3cd7076cf5b"
+  },
+  {
+   "path": "../latex/lectures/en/lec11.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "196324c95c86ad86f9aaaec17a97e23a8a5e8f123343cb497664ff819f3d772c"
+  },
+  {
+   "path": "../latex/lectures/en/lec12.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "e38dd9263e6d09907e051b78a85b710ecaf0d71f978291c11382d9e21f0e228d"
+  },
+  {
+   "path": "../latex/lectures/en/lec13.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "dc52eacd36e42959672672cc09ecf44efa4949363b7bbe37574acd89edd47af2"
+  },
+  {
+   "path": "../latex/lectures/en/lec14.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "db05d2b0e06b44f698f5daf34b79060dea069f507fa2f03c5e77502e3cc44876"
+  },
+  {
+   "path": "../latex/lectures/en/lec15.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "ce5dbc16b17bc3b74f777267eae072d1d4f24dec99e75540b3fb28bc34880c66"
+  },
+  {
+   "path": "tpc-script-v0.2/git/latex/lectures/en/lec16.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "314189855e5cb713dbf5f8ecc21a010adb1b5ecd1dafe1e97281271f6d531a8d"
+  },
+  {
+   "path": "../latex/lectures/en/lec17.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "56a6182045073f718df2d9fe374bd944af81df68af44b7949cd8be58c443dbe7"
+  },
+  {
+   "path": "../latex/lectures/en/lec18.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "6833bdb0a87601ee09e1345e96c0db0ea63076501a9ff73e47bd5f49eefa1e7d"
+  },
+  {
+   "path": "../latex/lectures/en/lec19.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "9066c34c8fd753c3bbf4949c659d1109d2fc45dedccd81c9946a799f0c6dec87"
+  },
+  {
+   "path": "../latex/lectures/en/lec20.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "58029dbfa0b52e3e6587cacc49c2c3ceaf7eeea416e88e30b06cb0e4673c1a4b"
+  },
+  {
+   "path": "../latex/lectures/en/lec21.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "60effc951e290207b6268c7bb92bc498fdb710c132cd4ec76f887702ae0c5802"
+  },
+  {
+   "path": "../latex/lectures/en/lec22.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "ef75472b7eae14391b7b314cff6307a3b4bd984590c85872a9708a80d51d65a7"
+  }
+ ],
+ "authority_for": "what the current script says; established course terminology and author choices",
+ "limitations": "contains verified defects (HANDOFF.md, 'Verified defects in the current script'); mathematical statements need their own evidence. Only latex/lectures/ is registered, not the masters, styles or figures.",
+ "rights_ref": "rights.json",
+ "supersedes": "tpc-script-v0.1",
+ "errata": [
+  "evidence/migrations/M-0001.json",
+  "evidence/migrations/M-0002.json",
+  "evidence/migrations/M-0003.json",
+  "evidence/migrations/M-0004.json",
+  "evidence/migrations/M-0005.json"
+ ],
+ "registry_aliases": [
+  "tpc-script"
+ ],
+ "notes": "An immutable snapshot: when a migration is applied to these files the manifest goes stale on purpose; register the changed files under a new key. The two superseded lecture-16 members retain their original hashes under distinct manifest names; retrieval.git_members maps them to git show at identifiers.git_commit. All other members still use the working tree."
+}

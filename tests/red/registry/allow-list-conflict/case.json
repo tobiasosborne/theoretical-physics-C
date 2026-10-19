@@ -1,0 +1,7 @@
+{
+ "gate": "registry",
+ "what": "The fixture's registry/allowed-tex.json allows \\input, which the authoring contract forbids in content, and \\emph, which the contract owns as a text macro.",
+ "cmd": "python3 scripts/registry/check_registry.py --root tests/red/registry/allow-list-conflict --no-generated",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "allow-list conflict: \\\\emph is in registry/allowed-tex\\.json but is owned by.*allow-list conflict: \\\\input is in registry/allowed-tex\\.json but docs/authoring/contract\\.json forbids"
+}

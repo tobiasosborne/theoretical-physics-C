@@ -41,5 +41,36 @@ _unzip_tmp/
 
 # Third-party sources unpacked for planning (arXiv licence; not redistributed)
 docs/plan/research/curriculum/plavala-src/
-docs/plan/research/*/codex.log
+docs/plan/research/*/codex*.log
 __pycache__/
+
+# Source registry: copyrighted books and their extracted text stay local;
+# only the hash manifest is tracked
+sources/*/*
+!sources/*/source.json
+!sources/*/rights.json
+
+# Phase 0: generated output
+/build/
+node_modules/
+evidence/**/codex*.log
+docs/plan/phase0/review/codex*.log
+
+# ── Public-release exclusions (audit 2026-10-20) ─────────────
+# Student-submitted corrections and course admin material: personal data
+archive/corrections/
+archive/admin/
+# Compiled PDFs that embed subsets of commercial fonts (MTPro2, Whitney,
+# Times LT Std, Minion); the .tex sources are tracked, the PDFs are not
+*.pdf
+!docs/plan/research/design-packages-A/specimens/pkg3.pdf
+!docs/plan/research/design-packages-B/specimens/pkg4.pdf
+!docs/plan/research/design-packages-B/specimens/pkg5.pdf
+!docs/plan/research/design-research/specimens/b.pdf
+!docs/plan/research/design-research/specimens/c.pdf
+!docs/plan/research/design-research/specimens/d.pdf
+!docs/plan/research/layered-docs/prototype/*.pdf
+# Lane report that inventories local copies of third-party books and
+# private folders; kept locally only
+docs/plan/research/sources-inventory/REPORT.md
+*.pyc

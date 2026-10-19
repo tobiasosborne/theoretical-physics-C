@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "An applied record's new text is present on another line.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/migration-applied-text-moved --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[migration\\] migrations/M-0001\\.json:legacy/old\\.tex:2: stale applied record: new_text is not on the stated line"
+}

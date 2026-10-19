@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A \\claim tag in content declares 'stated-without-proof'.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/content-stated-without-proof --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[evidence-status\\] c98-red/de\\.tex:5: .*'stated-without-proof' is not an evidence status.*belongs in evidence/gaps\\.json"
+}

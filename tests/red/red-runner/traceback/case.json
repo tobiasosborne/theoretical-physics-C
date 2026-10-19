@@ -1,0 +1,8 @@
+{
+  "gate": "red-runner",
+  "what": "An unrelated Python traceback must not certify a planted defect.",
+  "cmd": "python3 tests/red/red-runner/no-cases/probe.py traceback",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "BROKEN .*unexpected Python traceback",
+  "expect_traceback": true
+}

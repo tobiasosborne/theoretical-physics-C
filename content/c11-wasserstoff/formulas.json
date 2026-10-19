@@ -1,0 +1,251 @@
+{
+ "schema_version": 1,
+ "note": "Formula gate of chapter C11. Listed rows of unstarred equation/align displays in de.tex and en.tex whose left-hand side is exactly an applied Ylm, Rnl, psinlm or Lag function with numeric indices (m may use pm; Lag may have a symbolic upper index): equation ID, exact TeX row without label, claim and row separator, and its SymPy expression. Starred displays, symbolic-index definitions, integrals, CDFs and registry-inserted tpcdef bodies are outside discovery. Checked by scripts/c11/check_c11_formulas.py; its docstring defines the grammar and checks. Change a listed display and its entry together.",
+ "variables": {
+  "r, theta, phi": "spherical coordinates of the relative coordinate r_e - r_p",
+  "Z": "nuclear charge number",
+  "a": "a_mu, the Bohr radius with the reduced mass",
+  "x, alpha": "argument and upper index of a generalised Laguerre polynomial",
+  "expr of a display with \\pm": "{\"+\": upper signs, \"-\": lower signs}; the quantum number m of the entry is that of the upper signs"
+ },
+ "formulas": [
+  {
+   "id": "c11.eq.lag0",
+   "kind": "laguerre",
+   "k": 0,
+   "alpha": "alpha",
+   "tex": "\\Lag{0}{\\alpha}(x) &= 1,",
+   "expr": "1"
+  },
+  {
+   "id": "c11.eq.lag1",
+   "kind": "laguerre",
+   "k": 1,
+   "alpha": "alpha",
+   "tex": "\\Lag{1}{\\alpha}(x) &= \\alpha + 1 - x,",
+   "expr": "alpha + 1 - x"
+  },
+  {
+   "id": "c11.eq.lag2",
+   "kind": "laguerre",
+   "k": 2,
+   "alpha": "alpha",
+   "tex": "\\Lag{2}{\\alpha}(x) &= \\frac{x^2}{2} - (\\alpha + 2)\\,x + \\frac{(\\alpha + 1)(\\alpha + 2)}{2}.",
+   "expr": "x**2/2 - (alpha + 2)*x + (alpha + 1)*(alpha + 2)/2"
+  },
+  {
+   "id": "c11.eq.y00",
+   "kind": "harmonic",
+   "l": 0,
+   "m": 0,
+   "tex": "\\Ylm{0}{0}(\\theta, \\phi) &= \\frac{1}{\\sqrt{4\\pi}},",
+   "expr": "1/sqrt(4*pi)"
+  },
+  {
+   "id": "c11.eq.y10",
+   "kind": "harmonic",
+   "l": 1,
+   "m": 0,
+   "tex": "\\Ylm{1}{0}(\\theta, \\phi) &= \\sqrt{\\frac{3}{4\\pi}}\\,\\cos\\theta,",
+   "expr": "sqrt(3/(4*pi))*cos(theta)"
+  },
+  {
+   "id": "c11.eq.y1pm",
+   "kind": "harmonic",
+   "l": 1,
+   "m": 1,
+   "pm": true,
+   "tex": "\\Ylm{1}{\\pm 1}(\\theta, \\phi) &= \\mp\\sqrt{\\frac{3}{8\\pi}}\\,\\sin\\theta\\,e^{\\pm i\\phi}.",
+   "expr": {
+    "+": "-sqrt(3/(8*pi))*sin(theta)*exp(I*phi)",
+    "-": "sqrt(3/(8*pi))*sin(theta)*exp(-I*phi)"
+   }
+  },
+  {
+   "id": "c11.eq.r10",
+   "kind": "radial",
+   "n": 1,
+   "l": 0,
+   "tex": "\\Rnl{1}{0}(\\rad) &= 2\\left(\\frac{\\Znuc}{\\aRed}\\right)^{3/2} e^{-\\Znuc\\rad/\\aRed},",
+   "expr": "2*(Z/a)**(3/2)*exp(-Z*r/a)"
+  },
+  {
+   "id": "c11.eq.r20",
+   "kind": "radial",
+   "n": 2,
+   "l": 0,
+   "tex": "\\Rnl{2}{0}(\\rad) &= \\frac{1}{2\\sqrt{2}}\\left(\\frac{\\Znuc}{\\aRed}\\right)^{3/2}\n    \\left(2 - \\frac{\\Znuc\\rad}{\\aRed}\\right) e^{-\\Znuc\\rad/(2\\aRed)},",
+   "expr": "(Z/a)**(3/2)*(2 - Z*r/a)*exp(-Z*r/(2*a))/(2*sqrt(2))"
+  },
+  {
+   "id": "c11.eq.r21",
+   "kind": "radial",
+   "n": 2,
+   "l": 1,
+   "tex": "\\Rnl{2}{1}(\\rad) &= \\frac{1}{2\\sqrt{6}}\\left(\\frac{\\Znuc}{\\aRed}\\right)^{3/2}\n    \\frac{\\Znuc\\rad}{\\aRed}\\,e^{-\\Znuc\\rad/(2\\aRed)}.",
+   "expr": "(Z/a)**(3/2)*(Z*r/a)*exp(-Z*r/(2*a))/(2*sqrt(6))"
+  },
+  {
+   "id": "c11.eq.psi100",
+   "kind": "wavefunction",
+   "n": 1,
+   "l": 0,
+   "m": 0,
+   "tex": "\\psinlm{1}{0}{0}(\\rad, \\theta, \\phi) &= \\frac{1}{\\sqrt{\\pi}}\n    \\left(\\frac{\\Znuc}{\\aRed}\\right)^{3/2} e^{-\\Znuc\\rad/\\aRed},",
+   "expr": "(Z/a)**(3/2)*exp(-Z*r/a)/sqrt(pi)"
+  },
+  {
+   "id": "c11.eq.psi200",
+   "kind": "wavefunction",
+   "n": 2,
+   "l": 0,
+   "m": 0,
+   "tex": "\\psinlm{2}{0}{0}(\\rad, \\theta, \\phi) &= \\frac{1}{4\\sqrt{2\\pi}}\n    \\left(\\frac{\\Znuc}{\\aRed}\\right)^{3/2}\n    \\left(2 - \\frac{\\Znuc\\rad}{\\aRed}\\right) e^{-\\Znuc\\rad/(2\\aRed)},",
+   "expr": "(Z/a)**(3/2)*(2 - Z*r/a)*exp(-Z*r/(2*a))/(4*sqrt(2*pi))"
+  },
+  {
+   "id": "c11.eq.psi210",
+   "kind": "wavefunction",
+   "n": 2,
+   "l": 1,
+   "m": 0,
+   "tex": "\\psinlm{2}{1}{0}(\\rad, \\theta, \\phi) &= \\frac{1}{4\\sqrt{2\\pi}}\n    \\left(\\frac{\\Znuc}{\\aRed}\\right)^{3/2}\n    \\frac{\\Znuc\\rad}{\\aRed}\\,e^{-\\Znuc\\rad/(2\\aRed)}\\,\\cos\\theta,",
+   "expr": "(Z/a)**(3/2)*(Z*r/a)*exp(-Z*r/(2*a))*cos(theta)/(4*sqrt(2*pi))"
+  },
+  {
+   "id": "c11.eq.psi21pm",
+   "kind": "wavefunction",
+   "n": 2,
+   "l": 1,
+   "m": 1,
+   "pm": true,
+   "tex": "\\psinlm{2}{1}{\\pm 1}(\\rad, \\theta, \\phi) &= \\mp\\frac{1}{8\\sqrt{\\pi}}\n    \\left(\\frac{\\Znuc}{\\aRed}\\right)^{3/2}\n    \\frac{\\Znuc\\rad}{\\aRed}\\,e^{-\\Znuc\\rad/(2\\aRed)}\\,\\sin\\theta\\,e^{\\pm i\\phi}.",
+   "expr": {
+    "+": "-(Z/a)**(3/2)*(Z*r/a)*exp(-Z*r/(2*a))*sin(theta)*exp(I*phi)/(8*sqrt(pi))",
+    "-": "(Z/a)**(3/2)*(Z*r/a)*exp(-Z*r/(2*a))*sin(theta)*exp(-I*phi)/(8*sqrt(pi))"
+   }
+  },
+  {
+   "id": "c11.eq.y20",
+   "kind": "harmonic",
+   "l": 2,
+   "m": 0,
+   "tex": "\\Ylm{2}{0}(\\theta, \\phi) &= \\sqrt{\\frac{5}{16\\pi}}\\,\\bigl(3\\cos^2\\theta - 1\\bigr),",
+   "expr": "sqrt(5/(16*pi))*(3*cos(theta)**2 - 1)"
+  },
+  {
+   "id": "c11.eq.y2pm1",
+   "kind": "harmonic",
+   "l": 2,
+   "m": 1,
+   "pm": true,
+   "tex": "\\Ylm{2}{\\pm 1}(\\theta, \\phi) &= \\mp\\sqrt{\\frac{15}{8\\pi}}\\,\\sin\\theta\\,\\cos\\theta\\,e^{\\pm i\\phi},",
+   "expr": {
+    "+": "-sqrt(15/(8*pi))*sin(theta)*cos(theta)*exp(I*phi)",
+    "-": "sqrt(15/(8*pi))*sin(theta)*cos(theta)*exp(-I*phi)"
+   }
+  },
+  {
+   "id": "c11.eq.y2pm2",
+   "kind": "harmonic",
+   "l": 2,
+   "m": 2,
+   "pm": true,
+   "tex": "\\Ylm{2}{\\pm 2}(\\theta, \\phi) &= \\sqrt{\\frac{15}{32\\pi}}\\,\\sin^2\\theta\\,e^{\\pm 2i\\phi}.",
+   "expr": {
+    "+": "sqrt(15/(32*pi))*sin(theta)**2*exp(2*I*phi)",
+    "-": "sqrt(15/(32*pi))*sin(theta)**2*exp(-2*I*phi)"
+   }
+  },
+  {
+   "id": "c11.eq.r30",
+   "kind": "radial",
+   "n": 3,
+   "l": 0,
+   "tex": "\\Rnl{3}{0}(\\rad) &= \\frac{2}{81\\sqrt{3}}\\left(\\frac{\\Znuc}{\\aRed}\\right)^{3/2}\n      \\left(27 - 18\\,\\frac{\\Znuc\\rad}{\\aRed} + 2\\,\\frac{\\Znuc^2\\rad^2}{\\aRed^2}\\right)\n      e^{-\\Znuc\\rad/(3\\aRed)},",
+   "expr": "2*(Z/a)**(3/2)*(27 - 18*Z*r/a + 2*(Z*r/a)**2)*exp(-Z*r/(3*a))/(81*sqrt(3))"
+  },
+  {
+   "id": "c11.eq.r31",
+   "kind": "radial",
+   "n": 3,
+   "l": 1,
+   "tex": "\\Rnl{3}{1}(\\rad) &= \\frac{4}{81\\sqrt{6}}\\left(\\frac{\\Znuc}{\\aRed}\\right)^{3/2}\n      \\frac{\\Znuc\\rad}{\\aRed}\\left(6 - \\frac{\\Znuc\\rad}{\\aRed}\\right)\n      e^{-\\Znuc\\rad/(3\\aRed)},",
+   "expr": "4*(Z/a)**(3/2)*(Z*r/a)*(6 - Z*r/a)*exp(-Z*r/(3*a))/(81*sqrt(6))"
+  },
+  {
+   "id": "c11.eq.r32",
+   "kind": "radial",
+   "n": 3,
+   "l": 2,
+   "tex": "\\Rnl{3}{2}(\\rad) &= \\frac{4}{81\\sqrt{30}}\\left(\\frac{\\Znuc}{\\aRed}\\right)^{3/2}\n      \\frac{\\Znuc^2\\rad^2}{\\aRed^2}\\,e^{-\\Znuc\\rad/(3\\aRed)},",
+   "expr": "4*(Z/a)**(3/2)*(Z*r/a)**2*exp(-Z*r/(3*a))/(81*sqrt(30))"
+  },
+  {
+   "id": "c11.eq.psi300",
+   "kind": "wavefunction",
+   "n": 3,
+   "l": 0,
+   "m": 0,
+   "tex": "\\psinlm{3}{0}{0}(\\rad, \\theta, \\phi) &= \\frac{1}{81\\sqrt{3\\pi}}\n      \\left(\\frac{\\Znuc}{\\aRed}\\right)^{3/2}\n      \\left(27 - 18\\,\\frac{\\Znuc\\rad}{\\aRed} + 2\\,\\frac{\\Znuc^2\\rad^2}{\\aRed^2}\\right)\n      e^{-\\Znuc\\rad/(3\\aRed)},",
+   "expr": "(Z/a)**(3/2)*(27 - 18*Z*r/a + 2*(Z*r/a)**2)*exp(-Z*r/(3*a))/(81*sqrt(3*pi))"
+  },
+  {
+   "id": "c11.eq.psi310",
+   "kind": "wavefunction",
+   "n": 3,
+   "l": 1,
+   "m": 0,
+   "tex": "\\psinlm{3}{1}{0}(\\rad, \\theta, \\phi) &= \\frac{2}{81\\sqrt{2\\pi}}\n      \\left(\\frac{\\Znuc}{\\aRed}\\right)^{3/2}\n      \\frac{\\Znuc\\rad}{\\aRed}\\left(6 - \\frac{\\Znuc\\rad}{\\aRed}\\right)\n      e^{-\\Znuc\\rad/(3\\aRed)}\\,\\cos\\theta,",
+   "expr": "2*(Z/a)**(3/2)*(Z*r/a)*(6 - Z*r/a)*exp(-Z*r/(3*a))*cos(theta)/(81*sqrt(2*pi))"
+  },
+  {
+   "id": "c11.eq.psi31pm",
+   "kind": "wavefunction",
+   "n": 3,
+   "l": 1,
+   "m": 1,
+   "pm": true,
+   "tex": "\\psinlm{3}{1}{\\pm 1}(\\rad, \\theta, \\phi) &= \\mp\\frac{1}{81\\sqrt{\\pi}}\n      \\left(\\frac{\\Znuc}{\\aRed}\\right)^{3/2}\n      \\frac{\\Znuc\\rad}{\\aRed}\\left(6 - \\frac{\\Znuc\\rad}{\\aRed}\\right)\n      e^{-\\Znuc\\rad/(3\\aRed)}\\,\\sin\\theta\\,e^{\\pm i\\phi},",
+   "expr": {
+    "+": "-(Z/a)**(3/2)*(Z*r/a)*(6 - Z*r/a)*exp(-Z*r/(3*a))*sin(theta)*exp(I*phi)/(81*sqrt(pi))",
+    "-": "(Z/a)**(3/2)*(Z*r/a)*(6 - Z*r/a)*exp(-Z*r/(3*a))*sin(theta)*exp(-I*phi)/(81*sqrt(pi))"
+   }
+  },
+  {
+   "id": "c11.eq.psi320",
+   "kind": "wavefunction",
+   "n": 3,
+   "l": 2,
+   "m": 0,
+   "tex": "\\psinlm{3}{2}{0}(\\rad, \\theta, \\phi) &= \\frac{1}{81\\sqrt{6\\pi}}\n      \\left(\\frac{\\Znuc}{\\aRed}\\right)^{3/2}\n      \\frac{\\Znuc^2\\rad^2}{\\aRed^2}\\,e^{-\\Znuc\\rad/(3\\aRed)}\\,\n      \\bigl(3\\cos^2\\theta - 1\\bigr),",
+   "expr": "(Z/a)**(3/2)*(Z*r/a)**2*exp(-Z*r/(3*a))*(3*cos(theta)**2 - 1)/(81*sqrt(6*pi))"
+  },
+  {
+   "id": "c11.eq.psi32pm1",
+   "kind": "wavefunction",
+   "n": 3,
+   "l": 2,
+   "m": 1,
+   "pm": true,
+   "tex": "\\psinlm{3}{2}{\\pm 1}(\\rad, \\theta, \\phi) &= \\mp\\frac{1}{81\\sqrt{\\pi}}\n      \\left(\\frac{\\Znuc}{\\aRed}\\right)^{3/2}\n      \\frac{\\Znuc^2\\rad^2}{\\aRed^2}\\,e^{-\\Znuc\\rad/(3\\aRed)}\\,\n      \\sin\\theta\\,\\cos\\theta\\,e^{\\pm i\\phi},",
+   "expr": {
+    "+": "-(Z/a)**(3/2)*(Z*r/a)**2*exp(-Z*r/(3*a))*sin(theta)*cos(theta)*exp(I*phi)/(81*sqrt(pi))",
+    "-": "(Z/a)**(3/2)*(Z*r/a)**2*exp(-Z*r/(3*a))*sin(theta)*cos(theta)*exp(-I*phi)/(81*sqrt(pi))"
+   }
+  },
+  {
+   "id": "c11.eq.psi32pm2",
+   "kind": "wavefunction",
+   "n": 3,
+   "l": 2,
+   "m": 2,
+   "pm": true,
+   "tex": "\\psinlm{3}{2}{\\pm 2}(\\rad, \\theta, \\phi) &= \\frac{1}{162\\sqrt{\\pi}}\n      \\left(\\frac{\\Znuc}{\\aRed}\\right)^{3/2}\n      \\frac{\\Znuc^2\\rad^2}{\\aRed^2}\\,e^{-\\Znuc\\rad/(3\\aRed)}\\,\n      \\sin^2\\theta\\,e^{\\pm 2i\\phi}.",
+   "expr": {
+    "+": "(Z/a)**(3/2)*(Z*r/a)**2*exp(-Z*r/(3*a))*sin(theta)**2*exp(2*I*phi)/(162*sqrt(pi))",
+    "-": "(Z/a)**(3/2)*(Z*r/a)**2*exp(-Z*r/(3*a))*sin(theta)**2*exp(-2*I*phi)/(162*sqrt(pi))"
+   }
+  }
+ ]
+}

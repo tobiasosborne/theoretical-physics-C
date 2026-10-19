@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A derived claim points at a derivation file that does not exist.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/derivation-file-missing --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[derivation\\] claims\\.json:c98\\.cl\\.3: derived claim needs 'derivation'"
+}

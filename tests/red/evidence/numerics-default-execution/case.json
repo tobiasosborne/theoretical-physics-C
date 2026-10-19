@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "Private mode must execute the numerical script by default.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/numerics-default-execution --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[numerics\\] claims\\.json:c98\\.cl\\.4: numerical check failed: got 3\\.0"
+}

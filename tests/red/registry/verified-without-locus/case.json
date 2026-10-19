@@ -1,0 +1,7 @@
+{
+ "gate": "registry",
+ "what": "A symbol source is marked verified: true but has no locus.",
+ "cmd": "python3 scripts/registry/check_registry.py --root tests/red/registry/verified-without-locus --no-generated",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "verified without locus: sym\\.state-space"
+}

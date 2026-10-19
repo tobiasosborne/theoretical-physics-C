@@ -1,0 +1,7 @@
+{
+ "gate": "registry",
+ "what": "A content file defines its own macro with \\newcommand.",
+ "cmd": "python3 scripts/registry/check_registry.py --root tests/red/registry/local-macro --no-generated",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "local macro definition: content/c98-red/de\\.tex:1"
+}

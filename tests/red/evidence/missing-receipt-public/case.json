@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "Public mode without any receipt of a private run.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/missing-receipt-public --public",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[receipt\\] .*missing receipt"
+}

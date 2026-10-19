@@ -1,0 +1,69 @@
+% c02.fig.zustandsraeume — the three state spaces of the chapter, each with a mixture.
+%
+% (a) classical bit: the segment between the pure states s_0 and s_1, drawn along the
+%     coordinate p_1 (so s_0 is at 0 and s_1 at 1).  x: p_1 = 1/8, y: p_1 = 7/8,
+%     z = 1/4 x + 3/4 y: p_1 = 1/4*1/8 + 3/4*7/8 = 22/32 = 11/16.
+% (b) square bit: K_Q = [-1,1]^2.  x = (-3/4, 1/2), y = (3/4, -1/4),
+%     z = 1/4 x + 3/4 y = (-3/16 + 9/16, 1/8 - 3/16) = (3/8, -1/16).
+% (c) qubit: unit ball in R^3 in ORTHOGRAPHIC projection, so the outline is the unit
+%     circle.  Viewing angles alpha = 25 deg (azimuth), beta = 15 deg (elevation):
+%       e_x -> (-sin a, -sin b cos a), e_y -> (cos a, -sin b sin a), e_z -> (0, cos b).
+%     Equator (r_z = 0): the half with cos(t - alpha) > 0 faces the viewer (solid).
+%     x = (0, -3/4, 1/2), y = (0, 3/4, -1/4), z = 1/4 x + 3/4 y = (0, 3/8, -1/16).
+% Greyscale: states are filled discs, the mixture is an open ring; pure states are
+% squares in panels (a), (b); the boundary of the ball is the heavy circle.
+\begin{tikzpicture}[x=1cm, y=1cm]
+  % ---------- (a) bit ----------
+  \begin{scope}[shift={(0,0)}, x=2.6cm]
+    \draw[tpc axis] (0,0) -- (1,0);
+    \fill[tpc-plate-ink] (-0.022,-0.06) rectangle (0.022,0.06);
+    \fill[tpc-plate-ink] (0.978,-0.06) rectangle (1.022,0.06);
+    \node[tpc label, below=3pt] at (0,0) {$s_0$};
+    \node[tpc label, below=3pt] at (1,0) {$s_1$};
+    \draw[tpc state] (0.125,0) -- (0.875,0);
+    \fill[tpc-state] (0.125,0) circle (2pt);
+    \fill[tpc-state] (0.875,0) circle (2pt);
+    \draw[tpc-state, line width=\tpcstrokethin, fill=tpc-plate] (0.6875,0) circle (2.4pt);
+    \node[tpc label, above=3pt] at (0.125,0) {$x$};
+    \node[tpc label, above=3pt] at (0.875,0) {$y$};
+    \node[tpc label, above=3pt] at (0.6875,0) {$z$};
+    \node[tpc label] at (0.5,-1.75) {(a) \tpcifenglish{classical bit}{klassisches Bit}};
+  \end{scope}
+  % ---------- (b) square bit ----------
+  \begin{scope}[shift={(5.2,0)}, x=1.15cm, y=1.15cm]
+    \draw[tpc axis, fill=tpc-grey-1] (-1,-1) rectangle (1,1);
+    \foreach \p in {(-1,-1),(1,-1),(-1,1),(1,1)}
+      \fill[tpc-plate-ink] \p ++(-1.6pt,-1.6pt) rectangle ++(3.2pt,3.2pt);
+    \node[tpc label, below left=1pt]  at (-1,-1) {$s_{00}$};
+    \node[tpc label, below right=1pt] at (1,-1)  {$s_{10}$};
+    \node[tpc label, above left=1pt]  at (-1,1)  {$s_{01}$};
+    \node[tpc label, above right=1pt] at (1,1)   {$s_{11}$};
+    \draw[tpc state] (-0.75,0.5) -- (0.75,-0.25);
+    \fill[tpc-state] (-0.75,0.5) circle (2pt);
+    \fill[tpc-state] (0.75,-0.25) circle (2pt);
+    \draw[tpc-state, line width=\tpcstrokethin, fill=tpc-plate] (0.375,-0.0625) circle (2.4pt);
+    \node[tpc label, above=3pt] at (-0.75,0.5) {$x$};
+    \node[tpc label, below=3pt] at (0.75,-0.25) {$y$};
+    \node[tpc label, above=3pt] at (0.375,-0.0625) {$z$};
+    \node[tpc label] at (0,-1.52) {(b) \tpcifenglish{square bit}{Quadrat-Bit}};
+  \end{scope}
+  % ---------- (c) qubit ----------
+  \begin{scope}[shift={(9.3,0)},
+      x={(-0.4860cm,-0.2698cm)}, y={(1.0422cm,-0.1258cm)}, z={(0cm,1.1108cm)}]
+    % scale 1.15 cm per unit: e_x = 1.15*(-0.4226,-0.2346), e_y = 1.15*(0.9063,-0.1094),
+    % e_z = 1.15*(0,0.9659)
+    \fill[tpc-grey-1] (0,0,0) circle[x radius=1.15cm, y radius=1.15cm];
+    \draw[tpc grid, dash pattern=on 1.5pt off 1.5pt]
+      plot[domain=115:295, samples=46, variable=\t] ({cos(\t)},{sin(\t)},0);
+    \draw[tpc grid] plot[domain=-65:115, samples=46, variable=\t] ({cos(\t)},{sin(\t)},0);
+    \draw[tpc axis] (0,0,0) circle[x radius=1.15cm, y radius=1.15cm];
+    \draw[tpc state] (0,-0.75,0.5) -- (0,0.75,-0.25);
+    \fill[tpc-state] (0,-0.75,0.5) circle (2pt);
+    \fill[tpc-state] (0,0.75,-0.25) circle (2pt);
+    \draw[tpc-state, line width=\tpcstrokethin, fill=tpc-plate] (0,0.375,-0.0625) circle (2.4pt);
+    \node[tpc label, above=3pt] at (0,-0.75,0.5) {$x$};
+    \node[tpc label, below=3pt] at (0,0.75,-0.25) {$y$};
+    \node[tpc label, above=3pt] at (0,0.375,-0.0625) {$z$};
+    \node[tpc label] at (0,0,-1.574) {(c) Qubit};
+  \end{scope}
+\end{tikzpicture}

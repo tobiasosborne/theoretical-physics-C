@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "The fake source payload was edited after it was hashed.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/stale-manifest-hash --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[manifest\\] sources/fake-notes/notes\\.txt: stale manifest hash"
+}

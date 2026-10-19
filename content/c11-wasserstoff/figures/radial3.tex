@@ -1,0 +1,43 @@
+% c11.fig.radial3 — radial functions and radial probability densities for n = 3.
+%
+% Generating formulas (DERIVATION.md Result 5.1, radial forms; Z = 1, x = r/a_mu with the Bohr
+% radius a_mu of the REDUCED mass), a_mu^{3/2} R_nl:
+%     R_30 = 2 (27 - 18x + 2x^2) exp(-x/3) / (81 sqrt 3),   zeros at x = (9 -+ 3 sqrt 3)/2,
+%     R_31 = 4 x (6 - x) exp(-x/3) / (81 sqrt 6),            zero at x = 6,
+%     R_32 = 4 x^2 exp(-x/3) / (81 sqrt 30),
+% and a_mu P_3l = x^2 (a_mu^{3/2} R_3l)^2 (registry definition D72).
+% Mean radii (Result 7.1): 27/2, 25/2, 21/2 for l = 0, 1, 2.
+% Greyscale: 3s solid, 3p dashed, 3d dash-dotted; curves labelled directly.
+\begin{tikzpicture}
+  \pgfplotsset{c11/.style={
+    axis lines=left, clip=false, grid=none,
+    axis line style={draw=tpc-plate-ink, line width=\tpcstrokethin},
+    tick style={draw=tpc-plate-ink, line width=\tpcstrokehair},
+    tick label style={font=\tpcfontlabel, text=tpc-plate-ink},
+    label style={font=\tpcfontlabel, text=tpc-plate-ink},
+    every axis x label/.style={at={(ticklabel* cs:1.0)}, anchor=west, font=\tpcfontlabel},
+    every axis y label/.style={at={(ticklabel* cs:1.0)}, anchor=south, font=\tpcfontlabel}}}
+  \begin{axis}[c11, name=oben, width=9.4cm, height=4.6cm,
+      xmin=0, xmax=30, ymin=-0.09, ymax=0.42,
+      xtick={0,5,10,15,20,25,30}, ytick={0,0.2}, yticklabels={$0$,$\tfrac15$},
+      xlabel={$r/a_{\mu}$}, ylabel={$a_{\mu}^{3/2}\,R_{3\ell}$}]
+    \draw[tpc grid] (axis cs:0,0) -- (axis cs:30,0);
+    \addplot[tpc q1, domain=0:30, samples=220] {2*(27-18*x+2*x*x)*exp(-x/3)/(81*sqrt(3))};
+    \addplot[tpc q3, dash pattern=on 5pt off 2pt, domain=0:30, samples=220] {4*x*(6-x)*exp(-x/3)/(81*sqrt(6))};
+    \addplot[tpc q5, dash pattern=on 5pt off 1.5pt on 1.2pt off 1.5pt, domain=0:30, samples=220] {4*x*x*exp(-x/3)/(81*sqrt(30))};
+    \node[tpc label, anchor=west] at (axis cs:0.9,0.3) {$R_{30}$ (3s)};
+    \node[tpc label, anchor=south west] at (axis cs:2.6,0.085) {$R_{31}$ (3p)};
+    \node[tpc label, anchor=south west] at (axis cs:10.5,0.04) {$R_{32}$ (3d)};
+  \end{axis}
+  \begin{axis}[c11, at={(oben.below south west)}, anchor=north west, yshift=-9mm, width=9.4cm, height=4.6cm,
+      xmin=0, xmax=30, ymin=0, ymax=0.125,
+      xtick={0,5,10,15,20,25,30}, ytick={0,0.05,0.1}, yticklabels={$0$,$\tfrac1{20}$,$\tfrac1{10}$},
+      xlabel={$r/a_{\mu}$}, ylabel={$a_{\mu}\,P_{3\ell}$}]
+    \addplot[tpc q1, domain=0:30, samples=260] {x*x*(2*(27-18*x+2*x*x)*exp(-x/3)/(81*sqrt(3)))^2};
+    \addplot[tpc q3, dash pattern=on 5pt off 2pt, domain=0:30, samples=260] {x*x*(4*x*(6-x)*exp(-x/3)/(81*sqrt(6)))^2};
+    \addplot[tpc q5, dash pattern=on 5pt off 1.5pt on 1.2pt off 1.5pt, domain=0:30, samples=260] {x*x*(4*x*x*exp(-x/3)/(81*sqrt(30)))^2};
+    \node[tpc label, anchor=west] at (axis cs:17.3,0.075) {$P_{30}$};
+    \node[tpc label, anchor=south] at (axis cs:11.4,0.104) {$P_{31}$};
+    \node[tpc label, anchor=south east] at (axis cs:7.3,0.09) {$P_{32}$};
+  \end{axis}
+\end{tikzpicture}

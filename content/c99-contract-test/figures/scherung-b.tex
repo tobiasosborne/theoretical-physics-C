@@ -1,0 +1,14 @@
+% c99.fig.scherung-b — the unit square and its image under B.
+% Geometry from the formula (x, y) -> (x, 3x + y): corners
+% (0,0), (1,0), (1,1), (0,1) go to (0,0), (1,3), (1,4), (0,1).
+\begin{tikzpicture}[scale=0.8]
+  \draw[tpc-plate-rule, very thin] (-0.6,0) -- (2.2,0);
+  \draw[tpc-plate-rule, very thin] (0,-0.3) -- (0,4.4);
+  \draw[tpc-plate-ink, thick, pattern=north west lines, pattern color=tpc-plate-rule]
+    (0,0) -- (1,3) -- (1,4) -- (0,1) -- cycle;
+  \draw[tpc-plate-ink, thick, densely dashed] (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+  \node[below, font=\footnotesize] at (1,0) {$1$};
+  \node[right, font=\footnotesize] at (1,4) {$(1,4)$};
+  \node[font=\footnotesize, anchor=west] at (1.2,2.4)
+    {\tpcifenglish{image under $B$}{Bild unter $B$}};
+\end{tikzpicture}

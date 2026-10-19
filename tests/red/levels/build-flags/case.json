@@ -1,0 +1,7 @@
+{
+  "gate": "levels",
+  "what": "The build record omits the requested design flags.",
+  "cmd": "python3 tests/red/levels/build-identity/probe.py build-flags",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "B0 tpc-de-full: build flags"
+}

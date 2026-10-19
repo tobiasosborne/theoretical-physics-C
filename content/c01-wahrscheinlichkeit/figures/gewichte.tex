@@ -1,0 +1,42 @@
+% c01.fig.gewichte — three probability weights on the outcome set X = {1,...,6} of a die.
+%
+% Bars of height p(x) (definition D54); vertical scale: 1 unit of probability = 3.0 cm.
+%   (a) fair die        p(x) = 1/6 for all x
+%   (b) loaded die      p = (1, 2, 2, 2, 2, 3)/12     (the loaded die of the whole chapter)
+%   (c) point weight    p_3: p(3) = 1, all others 0   (c01.eq.punktgewicht)
+% Every panel carries the same axis marks 0, 1/6, 1/2, 1, so the heights can be compared.
+% Greyscale: all bars in the state role (a weight is a preparation); panels are told apart
+% by their labels, not by colour.
+\begin{tikzpicture}[x=0.52cm, y=3.0cm]
+  \foreach \panel/\shift/\title in {a/0/{\tpcifenglish{fair}{fair}}, b/4.55/{\tpcifenglish{loaded}{gezinkt}}, c/9.1/{\tpcifenglish{point weight}{Punktgewicht}}} {
+    \begin{scope}[shift={(\shift cm,0)}]
+      \draw[tpc grid] (0.3,1/6) -- (6.7,1/6);
+      \draw[tpc grid] (0.3,1/2) -- (6.7,1/2);
+      \draw[tpc grid] (0.3,1) -- (6.7,1);
+      \draw[tpc axis] (0.3,0) -- (6.7,0);
+      \draw[tpc axis] (0.3,0) -- (0.3,1.08);
+      \foreach \x in {1,...,6} \node[tpc label, anchor=north] at (\x,-0.02) {$\x$};
+      \node[tpc label, anchor=north] at (3.5,-0.14) {(\panel) \title};
+    \end{scope}
+  }
+  \node[tpc label, anchor=east] at (0.25,0) {$0$};
+  \node[tpc label, anchor=east] at (0.25,1/6) {$\tfrac16$};
+  \node[tpc label, anchor=east] at (0.25,1/2) {$\tfrac12$};
+  \node[tpc label, anchor=east] at (0.25,1) {$1$};
+  \node[tpc label, anchor=south] at (0.3,1.09) {$p(x)$};
+  % (a) fair
+  \foreach \x in {1,...,6}
+    \draw[tpc state, tpc tint state] (\x-0.3,0) rectangle (\x+0.3,1/6);
+  % (b) loaded: numerators 1,2,2,2,2,3 over 12
+  \begin{scope}[shift={(4.55cm,0)}]
+    \foreach \x/\a in {1/1, 2/2, 3/2, 4/2, 5/2, 6/3}
+      \draw[tpc state, tpc tint state] (\x-0.3,0) rectangle (\x+0.3,\a/12);
+    \node[tpc label, anchor=south] at (1,1/12) {$\tfrac1{12}$};
+    \node[tpc label, anchor=south] at (6,3/12) {$\tfrac14$};
+  \end{scope}
+  % (c) point weight on 3
+  \begin{scope}[shift={(9.1cm,0)}]
+    \draw[tpc state, tpc tint state] (3-0.3,0) rectangle (3+0.3,1);
+    \foreach \x in {1,2,4,5,6} \draw[tpc state] (\x-0.3,0) -- (\x+0.3,0);
+  \end{scope}
+\end{tikzpicture}

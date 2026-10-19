@@ -1,0 +1,47 @@
+% c01.fig.dichte — a density is not a probability; areas are.
+%
+% (a) The Gaussian density p(x) = exp(-x^2/2)/sqrt(2 pi)  (c01.ex.gauss), plotted on
+%     [-3.6, 3.6]; hatched: the area over [a, b] = [1/2, 3/2], which is P[[a,b]]
+%     (c01.eq.dichte).  Maximum p(0) = 1/sqrt(2 pi) (evaluated by pgfmath).
+%     Scale x: 1 = 0.8 cm, y: 1 = 5.4 cm.
+% (b) The uniform density on [0, 1/2]: p(x) = 2 there and 0 elsewhere (c01.eq.gleich):
+%     the area is 2 * 1/2 = 1 although p exceeds 1.  Scale x: 1 = 2.6 cm, y: 1 = 1.08 cm.
+% Greyscale: densities in the state role (solid); probabilities are hatched areas.
+\begin{tikzpicture}[x=1cm, y=1cm]
+  \begin{scope}[x=0.8cm, y=5.4cm]
+    \path[tpc bath hatch] (0.5,0) -- plot[domain=0.5:1.5, samples=30] (\x,{exp(-\x*\x/2)/sqrt(2*pi)}) -- (1.5,0) -- cycle;
+    \draw[tpc leader] (0.5,0) -- (0.5,{exp(-0.125)/sqrt(2*pi)});
+    \draw[tpc leader] (1.5,0) -- (1.5,{exp(-1.125)/sqrt(2*pi)});
+    \draw[tpc axis, -{Stealth[length=5pt]}] (-3.7,0) -- (3.9,0);
+    \draw[tpc axis, -{Stealth[length=5pt]}] (0,0) -- (0,0.52);
+    \draw[tpc state] plot[domain=-3.6:3.6, samples=121] (\x,{exp(-\x*\x/2)/sqrt(2*pi)});
+    \node[tpc label, anchor=west] at (3.92,0) {$x$};
+    \node[tpc label, anchor=south] at (0,0.52) {$p(x)$};
+    \node[tpc label, anchor=north] at (0,-0.01) {$0$};
+    \node[tpc label, anchor=north] at (0.5,-0.01) {$a$};
+    \node[tpc label, anchor=north] at (1.5,-0.01) {$b$};
+    \draw[tpc leader] (1.0,0.12) -- (2.0,0.3);
+    \node[tpc label, anchor=south west] at (1.9,0.29) {$\mathbb{P}[[a,b]]$};
+    \node[tpc label] at (0,-0.2) {(a)};
+  \end{scope}
+  \begin{scope}[shift={(6.6,0)}, x=2.6cm, y=1.08cm]
+    \path[tpc bath hatch] (0,0) rectangle (0.5,2);
+    \draw[tpc grid] (0,1) -- (1.05,1);
+    \draw[tpc axis, -{Stealth[length=5pt]}] (-0.25,0) -- (1.15,0);
+    \draw[tpc axis, -{Stealth[length=5pt]}] (0,0) -- (0,2.5);
+    \draw[tpc state] (-0.22,0) -- (0,0);
+    \draw[tpc state] (0,2) -- (0.5,2);
+    \draw[tpc state] (0.5,0) -- (1.05,0);
+    \draw[tpc leader, dotted] (0,0) -- (0,2);
+    \draw[tpc leader, dotted] (0.5,0) -- (0.5,2);
+    \node[tpc label, anchor=west] at (1.17,0) {$x$};
+    \node[tpc label, anchor=south] at (0,2.5) {$p(x)$};
+    \node[tpc label, anchor=east] at (-0.03,1) {$1$};
+    \node[tpc label, anchor=east] at (-0.03,2) {$2$};
+    \node[tpc label, anchor=north] at (0,-0.05) {$0$};
+    \node[tpc label, anchor=north] at (0.5,-0.05) {$\tfrac12$};
+    \node[tpc label, anchor=north] at (1,-0.05) {$1$};
+    \node[tpc label, fill=tpc-plate, inner sep=1.5pt] at (0.25,1.0) {$2\cdot\tfrac12 = 1$};
+    \node[tpc label] at (0.45,-1.05) {(b)};
+  \end{scope}
+\end{tikzpicture}

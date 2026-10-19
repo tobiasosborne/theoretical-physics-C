@@ -1,0 +1,69 @@
+% c00.fig.planck — Planck's law and its limiting form for small frequencies.
+%
+% Adapted from latex/figures/fig_vl01_planck.tex (v0.2).  That figure used SI units and
+% therefore numerical values of h, k and c; this one is drawn in dimensionless variables,
+% so that its geometry follows from the two formulas alone and contains no constant.
+%
+% Formulas (chapter equations c00.eq.planck and c00.eq.grenzform):
+%     u(nu,T)    = (8 pi h nu^3/c^3) / (exp(h nu/(k T)) - 1)
+%     u_kl(nu,T) = 8 pi nu^2 k T / c^3
+% (a) Fix a reference temperature T_0 and put  s = h nu/(k T_0),
+%     u_0 = 8 pi (k T_0)^3/(h^2 c^3).  Then
+%         u(nu,T)/u_0      = s^3 / (exp(s T_0/T) - 1),
+%         u_kl(nu,T_0)/u_0 = s^2.
+%     Three temperatures T = T_0, 5 T_0/6, 2 T_0/3 (the ratios 6000 : 5000 : 4000 of the
+%     v0.2 figure), i.e. exponents s, 6s/5, 3s/2.
+%     The limiting form is drawn for the HOTTEST temperature T_0, the one whose Planck
+%     curve it belongs to (the correction recorded in HANDOFF.md for fig_vl01_planck:
+%     drawn for the coldest temperature the parabola lies by accident on the hottest
+%     Planck curve).  It leaves the frame where s^2 = 2.1.
+%     Label positions: the maximum of s^3/(e^s - 1) is at s = 2.8214 (root of
+%     3(1 - e^{-s}) = s) with value 1.4214; for T it lies at 2.8214 T/T_0 with value
+%     1.4214 (T/T_0)^3, that is (2.82, 1.42), (2.35, 0.82), (1.88, 0.42).  These numbers
+%     only place labels.
+% (b) x = h nu/(k T):  u/u_kl = x/(exp(x) - 1)  (c00.eq.grenzform), with the two bounds of
+%     the Vertiefung c00.v1:  exp(-x) <= x/(exp(x)-1) <= 1/(1 + x/2).
+%     The gap between 1 and the ratio is hatched, not filled (greyscale).
+% Greyscale: the three temperatures differ in dash pattern and are labelled directly; the
+% limiting form is thin and densely dashed.
+\begin{tikzpicture}
+  \pgfplotsset{c00/.style={
+    axis lines=left, clip=true, grid=none,
+    axis line style={draw=tpc-plate-ink, line width=\tpcstrokethin},
+    tick style={draw=tpc-plate-ink, line width=\tpcstrokehair},
+    tick label style={font=\tpcfontlabel, text=tpc-plate-ink},
+    label style={font=\tpcfontlabel, text=tpc-plate-ink},
+    title style={font=\tpcfontlabel, text=tpc-plate-ink}}}
+  \begin{axis}[c00, name=spectrum, width=7.6cm, height=5.6cm,
+      xmin=0, xmax=7.2, ymin=0, ymax=2.1,
+      xtick={0,2,4,6}, ytick={0,1,2},
+      xlabel={$h\nu/(k_{\mathrm{B}}T_0)$}, ylabel={$u/u_0$},
+      title={(a) \tpcifenglish{three temperatures}{drei Temperaturen}}]
+    \addplot[tpc q1, domain=0.01:7.2, samples=180] {x^3/(exp(x)-1)};
+    \addplot[tpc q3, dash pattern=on 5pt off 2pt, domain=0.01:7.2, samples=180] {x^3/(exp(1.2*x)-1)};
+    \addplot[tpc q5, dash pattern=on 5pt off 1.5pt on 1.2pt off 1.5pt, domain=0.01:7.2, samples=180] {x^3/(exp(1.5*x)-1)};
+    \addplot[draw=tpc-plate-ink, line width=\tpcstrokethin, densely dashed, domain=0:1.45, samples=40] {x^2};
+    \node[tpc label, anchor=south] at (axis cs:2.9,1.45) {$T_0$};
+    \node[tpc label, anchor=south west] at (axis cs:2.75,0.80) {$\tfrac56 T_0$};
+    \node[tpc label, anchor=north] at (axis cs:1.9,0.36) {$\tfrac23 T_0$};
+    \draw[tpc leader] (axis cs:1.32,1.80) -- (axis cs:1.75,1.92);
+    \node[tpc label, anchor=west] at (axis cs:1.75,1.92)
+      {$u_{\mathrm{kl}}$ \tpcifenglish{for}{für} $T_0$};
+  \end{axis}
+  \begin{axis}[c00, at={(spectrum.south east)}, anchor=south west, xshift=16mm,
+      width=5.4cm, height=5.6cm,
+      xmin=0, xmax=6, ymin=0, ymax=1.25,
+      xtick={0,2,4,6}, ytick={0,0.5,1}, yticklabels={$0$,$\tfrac12$,$1$},
+      xlabel={$x = h\nu/(k_{\mathrm{B}}T)$}, ylabel={$u/u_{\mathrm{kl}}$},
+      title={(b) \tpcifenglish{the ratio}{das Verhältnis}}]
+    \path[tpc bath hatch]
+      (axis cs:0.02,1) -- plot[domain=0.02:6, samples=120, variable=\t]
+        (axis cs:{\t},{\t/(exp(\t)-1)}) -- (axis cs:6,1) -- cycle;
+    \addplot[draw=tpc-plate-ink, line width=\tpcstrokethin, densely dashed, domain=0:6, samples=2] {1};
+    \addplot[tpc q1, domain=0.02:6, samples=160] {x/(exp(x)-1)};
+    \node[tpc label, anchor=south west, fill=tpc-plate, inner sep=1.5pt] at (axis cs:1.5,1.03)
+      {$u = u_{\mathrm{kl}}$};
+    \node[tpc label, anchor=west, fill=tpc-plate, inner sep=1.5pt] at (axis cs:2.2,0.52)
+      {$\dfrac{x}{e^{x}-1}$};
+  \end{axis}
+\end{tikzpicture}

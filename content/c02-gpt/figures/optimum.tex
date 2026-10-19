@@ -1,0 +1,59 @@
+% c02.fig.optimum — the success probability P as a function on the effect set.
+%
+% P(f) = lambda_1 f(x_1) + lambda_2 (1 - f(x_2)).
+% (a) classical bit, level B2: x_1 = (3/4,1/4), x_2 = (1/4,3/4), lambda = (1/2,1/2).
+%     With f = (q_0,q_1): P = 1/2 + q_0 (3/8 - 1/8) + q_1 (1/8 - 3/8) = 1/2 + (q_0 - q_1)/4.
+%     Level lines q_0 - q_1 = 4P - 2: P = 1/4 at (0,1), P = 1/2 on the diagonal,
+%     P = 3/4 at (1,0), the only maximiser.
+% (b) square bit, level S2: x_1 = (1,1), x_2 = (-1,-1), lambda = (1/2,1/2).
+%     With f = (b,a_x,a_y): P = 1/2 + a_x + a_y, independent of b.  Shown: the slice
+%     b = 1/2 of E(K_Q), the diamond |a_x| + |a_y| <= 1/2 with the vertices f_x^{+-},
+%     f_y^{+-}.  Level lines a_x + a_y = P - 1/2: P = 0, 1/4, 1/2, 3/4, 1.  The maximum
+%     P = 1 is attained on the whole edge from f_x^+ = (1/2,0) to f_y^+ = (0,1/2).
+% Greyscale: level lines of P thin and solid; the optimal extreme effects are large
+% squares with a ring, the other extreme effects small squares; the optimal edge heavy.
+\begin{tikzpicture}[x=1cm, y=1cm]
+  % ---------- (a) ----------
+  \begin{scope}[x=2.7cm, y=2.7cm]
+    \draw[tpc axis, fill=tpc-grey-1] (0,0) rectangle (1,1);
+    \begin{scope}
+      \clip (0,0) rectangle (1,1);
+      \foreach \c in {-0.5,0,0.5} \draw[tpc leader] (-1,{-1-\c}) -- (2,{2-\c});
+    \end{scope}
+    \draw[tpc axis, -{Stealth[length=4pt]}] (1,0) -- (1.26,0);
+    \draw[tpc axis, -{Stealth[length=4pt]}] (0,1) -- (0,1.26);
+    \node[tpc label, anchor=west] at (1.26,0) {$q_0$};
+    \node[tpc label, anchor=south] at (0,1.26) {$q_1$};
+    \foreach \p in {(0,0),(0,1),(1,1)}
+      \fill[tpc-effect] \p ++(-1.6pt,-1.6pt) rectangle ++(3.2pt,3.2pt);
+    \fill[tpc-effect] (1,0) ++(-2.6pt,-2.6pt) rectangle ++(5.2pt,5.2pt);
+    \draw[tpc axis] (1,0) circle (5.5pt);
+    \node[tpc label, anchor=north west] at (1.03,-0.05) {$P = \tfrac34$};
+    \node[tpc label, anchor=south east] at (-0.03,1.02) {$P = \tfrac14$};
+    \node[tpc label, anchor=south west] at (1.02,1.0) {$P = \tfrac12$};
+    \node[tpc label, anchor=north east] at (-0.03,-0.02) {$P = \tfrac12$};
+    \node[tpc label] at (0.5,-0.55) {(a) \tpcifenglish{classical bit, level B2}{klassisches Bit, Level B2}};
+  \end{scope}
+  % ---------- (b) ----------
+  \begin{scope}[shift={(7.9,1.35)}, x=2.7cm, y=2.7cm]
+    \draw[tpc axis, fill=tpc-grey-1] (0.5,0) -- (0,0.5) -- (-0.5,0) -- (0,-0.5) -- cycle;
+    \begin{scope}
+      \clip (0.5,0) -- (0,0.5) -- (-0.5,0) -- (0,-0.5) -- cycle;
+      \foreach \c in {-0.25,0,0.25} \draw[tpc leader] (-1,{1+\c}) -- (1,{-1+\c});
+    \end{scope}
+    \draw[tpc-effect, line width=\tpcstrokedynamics] (0.5,0) -- (0,0.5);
+    \foreach \p in {(-0.5,0),(0,-0.5)}
+      \fill[tpc-effect] \p ++(-1.6pt,-1.6pt) rectangle ++(3.2pt,3.2pt);
+    \foreach \p in {(0.5,0),(0,0.5)}
+      { \fill[tpc-effect] \p ++(-2.6pt,-2.6pt) rectangle ++(5.2pt,5.2pt);
+        \draw[tpc axis] \p circle (5.5pt); }
+    \node[tpc label, anchor=west] at (0.56,0) {$f_x^{+}$};
+    \node[tpc label, anchor=south] at (0,0.56) {$f_y^{+}$};
+    \node[tpc label, anchor=east] at (-0.54,0) {$f_x^{-}$};
+    \node[tpc label, anchor=north] at (0,-0.54) {$f_y^{-}$};
+    \node[tpc label, anchor=south west] at (0.26,0.26) {$P = 1$};
+    \node[tpc label, anchor=north east] at (-0.26,-0.26) {$P = 0$};
+    \node[tpc label, anchor=north west] at (0.27,-0.27) {$P = \tfrac12$};
+    \node[tpc label] at (0,-1.05) {(b) \tpcifenglish{square bit, level S2}{Quadrat-Bit, Level S2}};
+  \end{scope}
+\end{tikzpicture}

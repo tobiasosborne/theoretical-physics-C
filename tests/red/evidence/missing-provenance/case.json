@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A source-quoted claim has no provenance row.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/missing-provenance --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[no-provenance\\] claims\\.json:c98\\.cl\\.1: source-quoted claim without a provenance row"
+}

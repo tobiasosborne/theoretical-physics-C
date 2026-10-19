@@ -1,0 +1,26 @@
+% c00.fig.experiment — every experiment in three stages.
+%
+% A scheme, not a plot.  Source of the content: the grey box "Jedes Experiment in drei
+% Schritten" of the lecture notes (latex/lectures/de/vl01.tex:118-126): preparation, run,
+% measurement; the first two stages can be read as ONE more complicated preparation.
+% Roles: preparation in the state role (solid), the run in the dynamics role (heavier),
+% the measurement in the effect role (dashed).  The brace below is the remark of the grey
+% box that stages 1 and 2 together are again a preparation.
+\begin{tikzpicture}[x=1cm, y=1cm]
+  \draw[tpc state] (0,0) rectangle (2.9,1.3);
+  \node[tpc label, align=center] at (1.45,0.65)
+    {1\\[1pt]\tpcifenglish{preparation}{Präparation}};
+  \draw[tpc axis, -{Stealth[length=5pt]}] (2.9,0.65) -- (3.8,0.65);
+  \draw[tpc dynamics] (3.8,0) rectangle (6.7,1.3);
+  \node[tpc label, align=center] at (5.25,0.65)
+    {2\\[1pt]\tpcifenglish{run}{Durchführung}};
+  \draw[tpc axis, -{Stealth[length=5pt]}] (6.7,0.65) -- (7.6,0.65);
+  \draw[tpc effect] (7.6,0) rectangle (10.5,1.3);
+  \node[tpc label, align=center] at (9.05,0.65)
+    {3\\[1pt]\tpcifenglish{measurement}{Messung}};
+  \draw[tpc axis, -{Stealth[length=5pt]}] (10.5,0.65) -- (11.4,0.65);
+  \node[tpc label, anchor=west] at (11.45,0.65) {\tpcifenglish{outcome}{Ergebnis}};
+  \draw[tpc leader] (0,-0.25) -- (0,-0.45) -- (6.7,-0.45) -- (6.7,-0.25);
+  \node[tpc label, anchor=north] at (3.35,-0.5)
+    {\tpcifenglish{together: one more complicated preparation}{zusammen: eine kompliziertere Präparation}};
+\end{tikzpicture}

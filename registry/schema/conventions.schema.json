@@ -1,0 +1,115 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "registry/conventions.json",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "schema_version",
+  "conventions"
+ ],
+ "properties": {
+  "schema_version": {
+   "type": "integer"
+  },
+  "conventions": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/convention"
+   }
+  }
+ },
+ "$defs": {
+  "source": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "source",
+    "verified",
+    "how"
+   ],
+   "properties": {
+    "source": {
+     "type": "string",
+     "minLength": 1
+    },
+    "locus": {
+     "type": "string"
+    },
+    "verified": {
+     "type": "boolean"
+    },
+    "how": {
+     "type": "string"
+    },
+    "quote": {
+     "type": "string"
+    }
+   }
+  },
+  "convention": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "id",
+    "name_de",
+    "name_en",
+    "statement_de",
+    "statement_en",
+    "fixed_in",
+    "status",
+    "sources"
+   ],
+   "properties": {
+    "id": {
+     "type": "string",
+     "pattern": "^CONV-[A-Z0-9-]+$"
+    },
+    "name_de": {
+     "type": "string",
+     "minLength": 1
+    },
+    "name_en": {
+     "type": "string",
+     "minLength": 1
+    },
+    "statement_de": {
+     "type": "string",
+     "minLength": 1
+    },
+    "statement_en": {
+     "type": "string",
+     "minLength": 1
+    },
+    "fixed_in": {
+     "type": "string",
+     "pattern": "^(D[1-9][0-9]*|C([0-9]|1[0-9]|2[01]))$"
+    },
+    "status": {
+     "enum": [
+      "blessed-provisional",
+      "proposed"
+     ]
+    },
+    "sources": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "$ref": "#/$defs/source"
+     }
+    },
+    "notes": {
+     "type": "string"
+    },
+    "gap_tjo": {
+     "type": "string"
+    },
+    "needs_check": {
+     "type": "boolean"
+    },
+    "check": {
+     "type": "string"
+    }
+   }
+  }
+ }
+}

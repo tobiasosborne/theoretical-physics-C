@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A numerically-checked claim names a script that does not exist.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/numerics-script-missing --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[numerics\\] claims\\.json:c98\\.cl\\.4: numerically-checked claim needs 'numerics'"
+}

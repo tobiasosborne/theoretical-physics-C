@@ -1,0 +1,7 @@
+{
+ "gate": "registry",
+ "what": "registry/generated/NOTATION.md was edited by hand after generation.",
+ "cmd": "python3 scripts/registry/check_registry.py --root tests/red/registry/stale-generated",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "stale generated file: registry/generated/NOTATION\\.md"
+}

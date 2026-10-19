@@ -1,0 +1,485 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{tpc-course}[2026/10/11 Theoretische Physik C course layer (authoring contract)]
+
+% ══════════════════════════════════════════════════════════════
+%  WHAT THIS IS
+% ══════════════════════════════════════════════════════════════
+% The style layer of the new course, on top of tpc-style and tpc-macros
+% (both unchanged).  It provides the macros of the authoring contract,
+% docs/authoring/CONTRACT.md; the machine-readable lists are in
+% docs/authoring/contract.json.  Content files use nothing else.
+%
+%   \usepackage[lang=de, edition=full, pkg=1, ground=light,
+%               math=stix, fonts=open]{tpc-course}
+%
+%   lang     de | en          babel and all printed labels
+%   edition  full | kern      kern drops Vertiefung and Fundament
+%   pkg, ground, math, fonts  passed to tpc-design when that file exists
+%   page     design | fixed   THE switch for the page grid.
+%            design (default): the package's own grid and body size, through
+%              \tpcapplypage of tpc-design (text measure, inner margin, and
+%              the margin column \tpcmarginwidth that signposts and claim
+%              tags stand in).  Falls back to `fixed' without tpc-design.
+%            fixed: one grid for every package, 138 mm text and a 33 mm
+%              margin column at the class's 12 pt.
+%
+% Palette.  tpc-style.sty is loaded unchanged, with its own colours
+% (cgblue, munsell, banana, isabelline, spacecadet, light-gray).  When
+% tpc-design is loaded this file re-points those names at token colours
+% and restyles headings, boxes, depth marks and margin notes from tokens
+% (section DESIGN MAPPING below), so that no element of a course page
+% keeps a colour of the old script.  The old script itself never loads
+% this file and builds as before.
+%
+% Loaded when present, skipped silently when not:
+%   tpc-design.sty            design tokens (owner: tokens)
+%   tpc-notation.sty          registry/generated (owner: registry)
+%   tpc-definitions.tex       registry/generated (owner: registry)
+%
+% Needs \documentclass[reqno]{amsart}: evidence tags hang off the
+% equation number in the right margin.
+
+\RequirePackage{kvoptions}
+\SetupKeyvalOptions{family=tpccourse, prefix=tpccourse@}
+\DeclareStringOption[de]{lang}
+\DeclareStringOption[full]{edition}
+\DeclareStringOption[1]{pkg}
+\DeclareStringOption[light]{ground}
+\DeclareStringOption[stix]{math}
+\DeclareStringOption[open]{fonts}
+\DeclareStringOption[design]{page}
+\ProcessKeyvalOptions*
+
+\newcommand{\tpccourse@ifeq}[2]{% \tpccourse@ifeq{\macro}{string}{yes}{no}
+  \begingroup\edef\tpccourse@a{#1}\edef\tpccourse@b{#2}%
+  \ifx\tpccourse@a\tpccourse@b
+    \endgroup\expandafter\@firstoftwo\else\endgroup\expandafter\@secondoftwo\fi}
+\newcommand{\tpccourse@checkvalue}[2]{% option, allowed comma list
+  \edef\tpccourse@a{,\csname tpccourse@#1\endcsname,}%
+  \edef\tpccourse@b{\noexpand\in@{\tpccourse@a}{,#2,}}\tpccourse@b
+  \ifin@\else\PackageError{tpc-course}%
+    {Option #1=\csname tpccourse@#1\endcsname\space is not one of: #2}{}\fi}
+\tpccourse@checkvalue{lang}{de,en}
+\tpccourse@checkvalue{edition}{full,kern}
+\tpccourse@checkvalue{pkg}{1,2,3,4,5}
+\tpccourse@checkvalue{ground}{light,dark}
+\tpccourse@checkvalue{math}{stix,mtpro2}
+\tpccourse@checkvalue{fonts}{open,local}
+\tpccourse@checkvalue{page}{design,fixed}
+
+% ── The existing style, unchanged ─────────────────────────────
+% tpc-style has one font switch: without `cmfonts' it loads MTPro2 with
+% Times LT Std and Whitney.  math=stix therefore asks for cmfonts and
+% leaves the faces to tpc-design.
+\tpccourse@ifeq{\tpccourse@lang}{en}
+  {\PassOptionsToPackage{english}{tpc-style}}
+  {\PassOptionsToPackage{german}{tpc-style}}
+\tpccourse@ifeq{\tpccourse@math}{stix}
+  {\PassOptionsToPackage{cmfonts}{tpc-style}}{}
+\RequirePackage{tpc-style}
+\RequirePackage{tpc-macros}
+
+% ── Design tokens ─────────────────────────────────────────────
+\newif\iftpccourse@design
+\IfFileExists{tpc-design.sty}{%
+  \edef\tpccourse@a{\noexpand\RequirePackage[pkg=\tpccourse@pkg,
+    ground=\tpccourse@ground,math=\tpccourse@math,
+    fonts=\tpccourse@fonts]{tpc-design}}\tpccourse@a
+  \tpccourse@designtrue
+}{\PackageInfo{tpc-course}{tpc-design.sty not found: default look}}
+\providecolor{tpc-ink}{gray}{0.10}
+\providecolor{tpc-ink-muted}{gray}{0.35}
+\providecolor{tpc-rule}{gray}{0.55}
+\providecolor{tpc-accent}{named}{cgblue}
+\providecolor{tpc-plate-ink}{gray}{0.10}
+\providecolor{tpc-plate-muted}{gray}{0.35}
+\providecolor{tpc-plate-rule}{gray}{0.55}
+\colorlet{tpc-heading}{tpc-accent}
+
+% ── Page: room for signposts and evidence tags ────────────────
+% Depth rule in the left margin, notes in the right margin column.
+% page=design takes the package's grid; page=fixed (or no tpc-design)
+% the one below.  Either way the margin column must hold a signpost.
+\newif\iftpccourse@designpage
+\tpccourse@ifeq{\tpccourse@page}{design}
+  {\iftpccourse@design\tpccourse@designpagetrue\fi}{}
+\iftpccourse@designpage
+  \tpcapplypage
+  % tpc-style has already fixed both side margins (margin=2.5cm), so the
+  % left + textwidth of \tpcapplypage is over-specified and geometry
+  % drops the text width.  State the right margin too: then the three
+  % agree and the measure is the package's.
+  \AddToHook{begindocument/before}{%
+    \geometry{left=\tpcmargininner,
+      right=\dimexpr\paperwidth-\tpcmargininner-\tpcmeasure\relax}}%
+  \ifdim\tpcmarginwidth<30mm
+    \PackageError{tpc-course}{The margin column of pkg=\tpccourse@pkg\space is
+      narrower than 30mm}{Signposts and claim tags stand in the margin
+      column; use page=fixed or widen measure.margin in the token file.}%
+  \fi
+\else
+  \geometry{a4paper, left=2.6cm, right=4.6cm, top=2.5cm, bottom=2.7cm,
+    marginparwidth=3.3cm, marginparsep=0.5cm}
+\fi
+
+% ══════════════════════════════════════════════════════════════
+%  DESIGN MAPPING (only with tpc-design)
+% ══════════════════════════════════════════════════════════════
+% Everything the reader sees takes a token.  What may differ between
+% packages here: colours, faces, rule weights, spacing.  What may not
+% (PLAN section 14 item 3): a depth block is body size on the text
+% measure, marked by a margin rule and a run-in label, with lead,
+% dependency and return line; no tint and no small type for depth.
+\iftpccourse@design
+  % the old style's colour names, re-pointed
+  \colorlet{cgblue}{tpc-accent}       % headings, theorem names
+  \colorlet{munsell}{tpc-link}        % links
+  \colorlet{banana}{tpc-highlight}    % Merksatz, key equations
+  \colorlet{isabelline}{tpc-ground-alt}% box fills
+  \colorlet{spacecadet}{tpc-ink}      % box titles, solutions
+  \colorlet{light-gray}{tpc-rule}
+  % headings
+  \def\@secnumfont{}
+  \def\section{\@startsection{section}{1}%
+    \z@{1\tpcspacel\@plus 1\tpcspaces}{1\tpcspaces}%
+    {\normalfont\tpcfonthii\color{tpc-accent}\raggedright}}
+  \def\subsection{\@startsection{subsection}{2}%
+    \z@{1\tpcspacem\@plus 1\tpcspaces}{-.5em}%
+    {\normalfont\tpcfonthiii\color{tpc-accent}}}
+  \def\tpcchapterlabelfont{\normalfont\tpcfonthiii\color{tpc-accent}}
+  \def\tpcchaptertitlefont{\normalfont\tpcfonthi\color{tpc-accent}}
+  % depth marks (read by tpc-levels through \providecommand)
+  \def\tpcdepthrulewidth{\tpcstrokedepthv}
+  \def\tpcdepthFrulewidth{\tpcstrokedepthf}
+  \def\tpcdepthlabelfont{\normalfont\tpcfontdepth}
+  \def\tpcdepthheadsep{\tpcspaces}
+  \def\tpcdepthmarginfont{\normalfont\tpcfontlabel\color{tpc-ink-muted}}
+  % margin tags and captions
+  \def\tpcmargintagfont{\normalfont\tpcfontlabel\itshape\color{tpc-ink-muted}}
+  \def\tpccaptionfont{\normalfont\tpcfontsmall}
+  \def\tpccaptionlabelfont{\tpcfontlabel\bfseries}
+  % boxes: text in ink (tcolorbox defaults to black), fills and rules
+  % from tokens.  Element boxes are tinted; depth blocks never are.
+  \tcbset{colupper=tpc-ink, collower=tpc-ink, coltitle=tpc-ink}
+  \newcommand{\tpccourse@boxtitle}[1]{%
+    {\normalfont\tpcfonthiii\color{tpc-ink}#1}\par\vspace{\tpcspacexs}}
+  \tcbset{tpccourse@box/.style={enhanced, breakable, frame hidden,
+      arc=0pt, outer arc=0pt, boxrule=0pt,
+      left=\tpcspacem, right=\tpcspaces, top=\tpcspaces, bottom=\tpcspaces,
+      before skip=\tpcspacem, after skip=\tpcspacem, detach title}}
+  \renewtcolorbox{merksatz}[1][]{tpccourse@box, colback=tpc-highlight,
+    borderline west={\tpcstrokebox}{0pt}{tpc-accent},
+    before upper={\if\relax\detokenize{#1}\relax\else\tpccourse@boxtitle{#1}\fi}}
+  \renewtcolorbox{greybox}[1][]{tpccourse@box, colback=tpc-ground-alt,
+    borderline west={\tpcstrokebox}{0pt}{tpc-rule},
+    before upper={\if\relax\detokenize{#1}\relax\else\tpccourse@boxtitle{#1}\fi}}
+  \renewtcolorbox{intuition}[1][]{tpccourse@box, colback=tpc-ground-alt,
+    borderline west={\tpcstrokebox}{0pt}{tpc-rule},
+    before upper={\tpccourse@boxtitle{\if\relax\detokenize{#1}\relax
+      \tpc@intu\else#1\fi}}}
+  \renewtcolorbox{historical}[1][]{tpccourse@box, colback=tpc-ground-alt,
+    borderline west={\tpcstrokebox}{0pt}{tpc-rule},
+    before upper={\tpccourse@boxtitle{\if\relax\detokenize{#1}\relax
+      \tpcifenglish{Historical note}{Historische Notiz}\else#1\fi}}}
+\fi
+
+% ── Depth system ──────────────────────────────────────────────
+\tpccourse@ifeq{\tpccourse@edition}{kern}
+  {\PassOptionsToPackage{kern}{tpc-levels}}
+  {\PassOptionsToPackage{full}{tpc-levels}}
+\RequirePackage{tpc-levels}
+
+% ══════════════════════════════════════════════════════════════
+%  CHAPTERS
+% ══════════════════════════════════════════════════════════════
+% amsart has no chapter.  The course adds one above \section.  The
+% chapter NUMBER is the number in the chapter ID (c11 -> 11); the master
+% sets it with \tpcsetchapter before the chapter file is read, so a
+% chapter has the same number whichever chapters are built with it.
+\newcounter{chapter}
+\renewcommand{\thechapter}{\arabic{chapter}}
+\providecommand{\theHchapter}{\arabic{chapter}}
+\@addtoreset{section}{chapter}
+\renewcommand{\thesection}{\thechapter.\arabic{section}}
+\counterwithin{equation}{chapter}
+\counterwithin{figure}{chapter}
+\counterwithin{table}{chapter}
+\@for\tpccourse@c:=theorem,definition,example,exercise,prototypedefinition,%
+    physicalintuition,conjecture\do{%
+  \expandafter\counterwithout\expandafter{\tpccourse@c}{section}%
+  \expandafter\counterwithin\expandafter{\tpccourse@c}{chapter}}
+\tpclevelsnumberwithin{chapter}
+% Corollaries are numbered in the course (tpc-style has them unnumbered):
+% every theorem-like unit carries a \label and a \claim, and a label
+% needs a number.  One sequence with theorem, lemma and proposition.
+\let\corollary\@undefined \let\endcorollary\@undefined
+\theoremstyle{plain}
+\newtheorem{corollary}[theorem]{\tpc@cor}
+\renewcommand{\tpcdepthunitname}{\tpcifenglish{Chapter}{Kapitel}}
+\providecommand{\toclevel@chapter}{0}
+% Figures stand where they are used and do not break, so pages are not
+% stretched to a common height.
+\raggedbottom
+
+\newcommand{\tpcsetchapter}[1]{\setcounter{chapter}{\numexpr#1-1\relax}}
+\newcommand{\tpcchapterword}{\tpcifenglish{Chapter}{Kapitel}}
+\providecommand{\tpcchapterlabelfont}{\normalfont\sffamily\bfseries\color{tpc-heading}\large}
+\providecommand{\tpcchaptertitlefont}{\normalfont\sffamily\bfseries\color{tpc-heading}\LARGE}
+\newcommand{\chapter}[1]{%
+  \clearpage
+  \tpclevelschapterstart
+  \refstepcounter{chapter}%
+  \markboth{\tpcchapterword\ \thechapter}{#1}%
+  \addcontentsline{toc}{chapter}{\protect\tocchapter{\tpcchapterword}{\thechapter}{#1}}%
+  \begingroup
+    \raggedright
+    {\tpcchapterlabelfont\tpcchapterword\ \thechapter\par}\vspace{0.4\baselineskip}%
+    {\tpcchaptertitlefont #1\par}%
+  \endgroup
+  \vspace{1.4\baselineskip}%
+  \@afterindentfalse\@afterheading}
+
+% ══════════════════════════════════════════════════════════════
+%  REFERENCES ACROSS CHAPTERS
+% ══════════════════════════════════════════════════════════════
+% A cross-chapter reference is an ordinary \ref{c02.eq.born}.  When only
+% some chapters are built (\tpcpartialtrue, set by the master), a
+% reference whose target chapter is not in the build prints the ID in
+% brackets and is logged as TPC-EXTERNAL-REF instead of counting as
+% undefined.  In a build of the whole course it is undefined like any
+% other broken reference, and the build fails.
+\newif\iftpcpartial
+\providecommand{\tpcchapterids}{}   % comma list of built chapter IDs
+\def\tpccourse@prefix#1.#2\@nil{#1}
+\newcommand{\tpccourse@ifexternal}[1]{%
+  \iftpcpartial
+    \edef\tpccourse@lbl{#1}%
+    \edef\tpccourse@a{\noexpand\in@{zoomfrom:}{\tpccourse@lbl}}\tpccourse@a
+    \ifin@ \let\tpccourse@next\@secondoftwo
+    \else
+      \edef\tpccourse@a{\noexpand\in@
+        {,\expandafter\tpccourse@prefix\tpccourse@lbl.\@nil,}%
+        {,\tpcchapterids,}}\tpccourse@a
+      \ifin@ \let\tpccourse@next\@secondoftwo
+      \else \let\tpccourse@next\@firstoftwo \fi
+    \fi
+  \else
+    \let\tpccourse@next\@secondoftwo
+  \fi
+  \tpccourse@next}
+\AtBeginDocument{%
+  \let\tpccourse@setref\@setref
+  \def\@setref#1#2#3{%
+    \ifx#1\relax
+      \tpccourse@ifexternal{#3}%
+        {\typeout{TPC-EXTERNAL-REF: #3}{\small\ttfamily[#3]}}%
+        {\tpccourse@setref#1#2{#3}}%
+    \else
+      \tpccourse@setref#1#2{#3}%
+    \fi}}
+
+% ══════════════════════════════════════════════════════════════
+%  MARGIN TAGS
+% ══════════════════════════════════════════════════════════════
+\providecommand{\tpcmargintagfont}{\sffamily\footnotesize\itshape\color{tpc-ink-muted}}
+\newcommand{\tpccourse@margintag}[1]{{\tpcmargintagfont#1}}
+
+% ══════════════════════════════════════════════════════════════
+%  CLAIMS
+% ══════════════════════════════════════════════════════════════
+% \claim{c11.cl.3}{derived}                 directly after the \label of
+% \claim[proof-omitted]{c11.cl.4}{source-backed}   the unit or equation
+%
+% Mandatory: the ledger ID and the evidence status, one of
+%   source-quoted  source-backed  derived  numerically-checked  author-stipulated
+% (COORDINATION.md section 5; nothing else is admitted).  Optional: the
+% presentation, proof-included | proof-omitted | proof-linked, for
+% theorem-like units.  The ledger (evidence/claims.json) is the
+% authority; what is written here is a declared copy so that print needs
+% no lookup, and the evidence checker compares the two.
+%
+% Print, as a small tag in the right margin:
+%   proof-omitted            "ohne Beweis"        / "without proof"
+%   proof-linked             "Beweis ausgelagert" / "proof elsewhere"
+%   otherwise, if derived    "hergeleitet"        / "derived"
+%   everything else          nothing
+% These are the cases a reader should weigh differently: carried out
+% here, or taken on trust at this point.
+\def\tpccourse@pendingtag{}
+\@namedef{tpccourse@st@source-quoted}{}
+\@namedef{tpccourse@st@source-backed}{}
+\@namedef{tpccourse@st@numerically-checked}{}
+\@namedef{tpccourse@st@author-stipulated}{}
+\@namedef{tpccourse@st@derived}{\tpcifenglish{derived}{hergeleitet}}
+\@namedef{tpccourse@pr@}{}
+\@namedef{tpccourse@pr@proof-included}{}
+\@namedef{tpccourse@pr@proof-omitted}{\tpcifenglish{without proof}{ohne Beweis}}
+\@namedef{tpccourse@pr@proof-linked}{\tpcifenglish{proof elsewhere}{Beweis ausgelagert}}
+\newcommand{\tpccourse@statustag}[2]{% #1 presentation, #2 status
+  \def\tpccourse@tag{}%
+  \@ifundefined{tpccourse@st@#2}{%
+    \PackageError{tpc-course}{Unknown evidence status `#2'}%
+      {Use one of: source-quoted, source-backed, derived,
+       numerically-checked, author-stipulated.}}%
+    {\edef\tpccourse@tag{\csname tpccourse@st@#2\endcsname}}%
+  \@ifundefined{tpccourse@pr@#1}{%
+    \PackageError{tpc-course}{Unknown presentation `#1'}%
+      {Use one of: proof-included, proof-omitted, proof-linked.}}%
+    {\edef\tpccourse@a{\csname tpccourse@pr@#1\endcsname}%
+     \ifx\tpccourse@a\@empty\else\let\tpccourse@tag\tpccourse@a\fi}}
+\DeclareRobustCommand{\claim}[3][]{%
+  \tpccourse@statustag{#1}{#3}%
+  \ifx\tpccourse@tag\@empty\else
+    \ifmmode
+      \global\let\tpccourse@pendingtag\tpccourse@tag
+    \else
+      \marginnote{\tpccourse@margintag{\tpccourse@tag}}%
+    \fi
+  \fi\ignorespaces}
+% In display mathematics the tag hangs off the equation number.
+\let\tpccourse@tagform\tagform@
+\def\tagform@#1{\tpccourse@tagform{#1}%
+  \ifmeasuring@\else
+    \ifx\tpccourse@pendingtag\@empty\else
+      \rlap{\hskip\marginparsep\tpccourse@margintag{\tpccourse@pendingtag}}%
+      \global\let\tpccourse@pendingtag\@empty
+    \fi
+  \fi}
+
+% ══════════════════════════════════════════════════════════════
+%  NUMBERS
+% ══════════════════════════════════════════════════════════════
+% \num[c11.cl.7]{13.6}{eV}   a numeric value with its unit, in text or in
+% \num{0.5}{}                mathematics.  The optional argument is the
+% claim that supports the value (derived, numerically-checked, or a
+% source locus); it may be left out only inside a display or theorem-like
+% unit whose own \claim supports the number.  The unit may be empty and
+% is set upright.  Print shows value and unit; the claim ID is for the
+% evidence checker ([number]) and the web edition.
+\DeclareRobustCommand{\num}[3][]{%
+  \ensuremath{#2\if\relax\detokenize{#3}\relax\else\,\mathrm{#3}\fi}}
+
+% ══════════════════════════════════════════════════════════════
+%  DEFINITIONS FROM THE REGISTRY
+% ══════════════════════════════════════════════════════════════
+% The registry's generated file declares each definition once:
+%
+%   \tpcdeclaredef{D17}{kern}{Titel}{Title}{deutscher Text}{English text}
+%
+% \tpcdef{D17}   prints it as a numbered definition with label D17.
+%                A definition is transcluded exactly once in the course.
+% \defref{D17}   cites it: "Definition 6.3".
+\newcommand{\tpcdeclaredef}[6]{%
+  \@namedef{tpcdef@depth@#1}{#2}%
+  \long\@namedef{tpcdef@title@#1}{\tpcifenglish{#4}{#3}}%
+  \long\@namedef{tpcdef@body@#1}{\tpcifenglish{#6}{#5}}}
+\newcommand{\tpccourse@depthname}{%
+  \if K\tpcdepth kern\else\if V\tpcdepth vertiefung\else fundament\fi\fi}
+\DeclareRobustCommand{\tpcdef}[1]{%
+  \@ifundefined{tpcdef@body@#1}{%
+    \PackageError{tpc-course}{Definition `#1' is not in the registry}%
+      {\string\tpcdef\space transcludes from registry/generated/tpc-definitions.tex.}}{%
+    \edef\tpccourse@a{\csname tpcdef@depth@#1\endcsname}%
+    \edef\tpccourse@b{\tpccourse@depthname}%
+    \ifx\tpccourse@a\tpccourse@b\else
+      \PackageError{tpc-course}{Definition `#1' has depth \tpccourse@a\space
+        but is transcluded at depth \tpccourse@b}{}%
+    \fi
+    \begin{definition}[\csname tpcdef@title@#1\endcsname]\label{#1}%
+      \csname tpcdef@body@#1\endcsname
+    \end{definition}}}
+\DeclareRobustCommand{\defref}[1]{Definition~\ref{#1}}
+
+% ══════════════════════════════════════════════════════════════
+%  FIGURES, DEMOS, TABLES
+% ══════════════════════════════════════════════════════════════
+% \begin{tpcfigure}{c11.fig.cloud}
+%   \demo{c11.demo.cloud}        (optional, at most one)
+%   \caption{...}
+% \end{tpcfigure}
+%
+% The picture is the file figures/cloud.tex of the chapter (last ID
+% component).  Figures do not float: they stand where the text uses
+% them, in Kern text and inside depth blocks alike.
+\providecommand{\tpcchapterdir}{.}
+\providecommand{\tpcdemobaseurl}{}  % GAP: set when the site address exists
+\providecommand{\tpccaptionfont}{\small}
+\providecommand{\tpccaptionlabelfont}{\sffamily\bfseries}
+\def\tpccourse@splitid#1.#2.#3\@nil{\def\tpccourse@idkind{#2}\def\tpccourse@idslug{#3}}
+\newcommand{\tpccourse@caption}[2]{% #1 word, #2 text
+  \par\addvspace{\smallskipamount}%
+  \refstepcounter{\@captype}\label{\tpccourse@unitid}%
+  \begingroup\tpccaptionfont\noindent
+    {\tpccaptionlabelfont #1~\csname the\@captype\endcsname.}\enspace#2\par
+  \endgroup}
+\newcommand{\tpccourse@demoline}{%
+  \ifx\tpccourse@demoid\@empty\else
+    \par\addvspace{\smallskipamount}%
+    \begingroup\tpccaptionfont\noindent
+    \fboxsep=0pt\fboxrule=0.4pt
+    \raisebox{-0.35\height}{\fbox{\parbox[c][1.3cm][c]{1.3cm}%
+      {\centering\sffamily\scriptsize QR}}}\enspace
+    \parbox[c]{\dimexpr\linewidth-1.3cm-1em\relax}{\raggedright
+      {\tpccaptionlabelfont\tpcifenglish{Interactive}{Interaktiv}:}\
+      \tpcifenglish{this figure is a still of the demo}%
+                   {diese Abbildung ist ein Standbild der Demo}\
+      {\ttfamily\tpcdemobaseurl\tpccourse@demoid}.}\par
+    \endgroup
+  \fi}
+% A figure is drawn in plate roles.  On the light ground the plate is the
+% page; on the dark ground the picture is set on the (light) plate.
+\newcommand{\tpccourse@onplate}[1]{#1}
+\iftpccourse@design\iftpcdark
+  \renewcommand{\tpccourse@onplate}[1]{\tpcplate{#1}}
+\fi\fi
+\newenvironment{tpcfigure}[1]{%
+  \par\addvspace{\bigskipamount}\noindent
+  \begin{minipage}{\linewidth}%
+  \def\tpccourse@unitid{#1}\def\@captype{figure}%
+  \let\tpccourse@demoid\@empty
+  \tpccourse@splitid#1\@nil
+  \renewcommand{\caption}[1]{%
+    \tpccourse@caption{\tpcifenglish{Figure}{Abbildung}}{##1}}%
+  \DeclareRobustCommand{\demo}[1]{\gdef\tpccourse@demoid{##1}\ignorespaces}%
+  \IfFileExists{\tpcchapterdir/figures/\tpccourse@idslug.tex}{%
+    {\centering\tpccourse@onplate{\input{\tpcchapterdir/figures/\tpccourse@idslug.tex}}\par}}{%
+    \PackageError{tpc-course}{Figure file for `#1' not found:
+      \tpcchapterdir/figures/\tpccourse@idslug.tex}{}}%
+  \ignorespaces
+}{%
+  \tpccourse@demoline
+  \end{minipage}\par\addvspace{\bigskipamount}}
+\DeclareRobustCommand{\demo}[1]{%
+  \PackageError{tpc-course}{\string\demo{#1} outside tpcfigure}%
+    {A demo is attached to the figure that is its still.}}
+
+% \begin{tpctable}{c11.tab.levels} \caption{...} \begin{tabular}...\end{tabular} \end{tpctable}
+\newenvironment{tpctable}[1]{%
+  \par\addvspace{\bigskipamount}\noindent
+  \begin{minipage}{\linewidth}\centering
+  \def\tpccourse@unitid{#1}\def\@captype{table}%
+  \renewcommand{\caption}[1]{%
+    {\raggedright\tpccourse@caption{\tpcifenglish{Table}{Tabelle}}{##1}}%
+    \addvspace{\smallskipamount}}%
+  \ignorespaces
+}{\end{minipage}\par\addvspace{\bigskipamount}}
+
+% ══════════════════════════════════════════════════════════════
+%  SOURCES
+% ══════════════════════════════════════════════════════════════
+% \srcref{reed-simon-3}{S. 55}  a locus in a registered source.  The
+% key is the name of a directory sources/<key>/ with a source.json;
+% check_levels.py (SR) refuses any other key.  A source reference
+% reflects a provenance row of a claim tagged in the same file
+% (check_evidence.py, [srcref]); it is not itself evidence.
+\DeclareRobustCommand{\srcref}[2]{[{\ttfamily #1}, #2]}
+
+% ══════════════════════════════════════════════════════════════
+%  REGISTRY (guarded)
+% ══════════════════════════════════════════════════════════════
+\IfFileExists{tpc-notation.sty}{\RequirePackage{tpc-notation}}%
+  {\PackageInfo{tpc-course}{tpc-notation.sty not found: no registry notation}}
+\IfFileExists{tpc-definitions.tex}{\input{tpc-definitions.tex}}%
+  {\PackageInfo{tpc-course}{tpc-definitions.tex not found: no registry definitions}}
+
+\endinput

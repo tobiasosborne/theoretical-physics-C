@@ -1,0 +1,2383 @@
+{
+ "schema_version": 1,
+ "note": "Provenance ledger. Each quote is verified whole inside the stated line window of the hashed member (text) or is counted as not machine-verified (page-image).",
+ "provenance": [
+  {
+   "id": "P-0001",
+   "claim_ids": [
+    "c99.cl.1"
+   ],
+   "source_key": "c99-fixture",
+   "member": "../evidence/c99-fixture/STIPULATIONS.md",
+   "member_sha256": "8e21252ce3a0f92c0f34d5a6da3bcecd2f4629dc90e10743e0ba40928b09dfb6",
+   "locus": {
+    "line_start": 12,
+    "line_end": 12
+   },
+   "quote": "The chapter fixes the integer matrices A = (1 2; 0 1) and B = (1 0; 3 1).",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0002",
+   "claim_ids": [
+    "c99.cl.11"
+   ],
+   "source_key": "c99-fixture",
+   "member": "../evidence/c99-fixture/STIPULATIONS.md",
+   "member_sha256": "8e21252ce3a0f92c0f34d5a6da3bcecd2f4629dc90e10743e0ba40928b09dfb6",
+   "locus": {
+    "line_start": 14,
+    "line_end": 14
+   },
+   "quote": "For every integer t the chapter writes M(t) for the matrix (1 t; 0 1).",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0003",
+   "claim_ids": [
+    "c99.cl.14"
+   ],
+   "source_key": "c99-fixture",
+   "member": "../evidence/c99-fixture/STIPULATIONS.md",
+   "member_sha256": "8e21252ce3a0f92c0f34d5a6da3bcecd2f4629dc90e10743e0ba40928b09dfb6",
+   "locus": {
+    "line_start": 16,
+    "line_end": 16
+   },
+   "quote": "The chapter writes f(t) for the function with f(t) = t if t >= 0 and f(t) = -t if t < 0.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0004",
+   "claim_ids": [
+    "c04.cl.p0"
+   ],
+   "source_key": "brief",
+   "member": "../docs/plan/BRIEF.md",
+   "member_sha256": "9b70b3a120262898efc41db8f3c9fd8f1678edce473cc594747159924725ac9e",
+   "locus": {
+    "line_start": 50,
+    "line_end": 50
+   },
+   "quote": "P0. Physical theories are probabilistic theories: predictions in the form of probabilities.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0005",
+   "claim_ids": [
+    "c04.cl.p1"
+   ],
+   "source_key": "brief",
+   "member": "../docs/plan/BRIEF.md",
+   "member_sha256": "9b70b3a120262898efc41db8f3c9fd8f1678edce473cc594747159924725ac9e",
+   "locus": {
+    "line_start": 51,
+    "line_end": 51
+   },
+   "quote": "P1. To every quantum mechanical system we assign a Hilbert space (*) (this is morally part of the definition of the state space for a GPT).",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0006",
+   "claim_ids": [
+    "c04.cl.p2"
+   ],
+   "source_key": "brief",
+   "member": "../docs/plan/BRIEF.md",
+   "member_sha256": "9b70b3a120262898efc41db8f3c9fd8f1678edce473cc594747159924725ac9e",
+   "locus": {
+    "line_start": 52,
+    "line_end": 52
+   },
+   "quote": "P2. State space = positive linear functionals on B(H) with norm 1. In the trace-class case these are density operators. Extreme points => pure states.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0007",
+   "claim_ids": [
+    "c04.cl.p3"
+   ],
+   "source_key": "brief",
+   "member": "../docs/plan/BRIEF.md",
+   "member_sha256": "9b70b3a120262898efc41db8f3c9fd8f1678edce473cc594747159924725ac9e",
+   "locus": {
+    "line_start": 53,
+    "line_end": 53
+   },
+   "quote": "P3. Detectors = dual of state space = operators E with 0 <= E <= I.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0008",
+   "claim_ids": [
+    "c04.cl.p4"
+   ],
+   "source_key": "brief",
+   "member": "../docs/plan/BRIEF.md",
+   "member_sha256": "9b70b3a120262898efc41db8f3c9fd8f1678edce473cc594747159924725ac9e",
+   "locus": {
+    "line_start": 54,
+    "line_end": 54
+   },
+   "quote": "P4. Born rule = probability of detection for a state prepared as density operator rho is tr(rho E).",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0009",
+   "claim_ids": [
+    "c04.cl.p5"
+   ],
+   "source_key": "brief",
+   "member": "../docs/plan/BRIEF.md",
+   "member_sha256": "9b70b3a120262898efc41db8f3c9fd8f1678edce473cc594747159924725ac9e",
+   "locus": {
+    "line_start": 55,
+    "line_end": 55
+   },
+   "quote": "P5. That is it; dynamics are symmetries. But let us add, as in the notes, the specification of the Heisenberg/Schroedinger dynamics.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0010",
+   "claim_ids": [],
+   "source_key": "codata-2022",
+   "member": "codata-2022/allascii.txt",
+   "member_sha256": "77fb90e66c40db3e6eb16630bc9c88e4c7c8beddbe5e71be406f2f26e3f67e67",
+   "locus": {
+    "line_start": 62,
+    "line_end": 62
+   },
+   "quote": "Boltzmann constant 1.380 649 e-23 (exact) J K^-1",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null,
+   "supports": "M-0004"
+  },
+  {
+   "id": "P-0011",
+   "claim_ids": [],
+   "source_key": "codata-2022",
+   "member": "codata-2022/allascii.txt",
+   "member_sha256": "77fb90e66c40db3e6eb16630bc9c88e4c7c8beddbe5e71be406f2f26e3f67e67",
+   "locus": {
+    "line_start": 61,
+    "line_end": 61
+   },
+   "quote": "Bohr radius 5.291 772 105 44 e-11 0.000 000 000 82 e-11 m",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null,
+   "supports": "M-0004 (the a_0 value in vl16.tex:57 / lec16.tex:57)"
+  },
+  {
+   "id": "P-0012",
+   "claim_ids": [
+    "c02.cl.zerlegung"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/basic_v3.tex",
+   "member_sha256": "ab317d371c85b9f8b3b823300f6746b3947d0e1674e546332a6dd200d72905ec",
+   "locus": {
+    "line_start": 24,
+    "line_end": 24
+   },
+   "quote": "Then any $x \\in K$ can be expressed as a convex combination of at most $\\dim(V) + 1$ points from $B$.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0013",
+   "claim_ids": [
+    "c02.cl.zerlegung",
+    "c02.cl.extremal"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/basic_v3.tex",
+   "member_sha256": "ab317d371c85b9f8b3b823300f6746b3947d0e1674e546332a6dd200d72905ec",
+   "locus": {
+    "line_start": 31,
+    "line_end": 31
+   },
+   "quote": "Let $K$ be a state space and let $\\ext(K)$ be the set of pure states of $K$ then $K = \\conv( \\ext(K) )$.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0014",
+   "claim_ids": [
+    "c02.cl.affin"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/basic_v3.tex",
+   "member_sha256": "ab317d371c85b9f8b3b823300f6746b3947d0e1674e546332a6dd200d72905ec",
+   "locus": {
+    "line_start": 63,
+    "line_end": 63
+   },
+   "quote": "f(\\lambda x + (1-\\lambda) y) = \\lambda f(x) + (1-\\lambda) f(y)",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0015",
+   "claim_ids": [
+    "c02.cl.affin"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/basic_v3.tex",
+   "member_sha256": "ab317d371c85b9f8b3b823300f6746b3947d0e1674e546332a6dd200d72905ec",
+   "locus": {
+    "line_start": 55,
+    "line_end": 55
+   },
+   "quote": "We will require that we get the same result whether we mix the state or whether we mix the probabilities.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0016",
+   "claim_ids": [
+    "c02.cl.affin"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/basic_v3.tex",
+   "member_sha256": "ab317d371c85b9f8b3b823300f6746b3947d0e1674e546332a6dd200d72905ec",
+   "locus": {
+    "line_start": 15,
+    "line_end": 15
+   },
+   "quote": "From now on we will assume that one can prepare a mixture using the aforementioned construction.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0017",
+   "claim_ids": [
+    "c02.cl.komplement"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/basic_v3.tex",
+   "member_sha256": "ab317d371c85b9f8b3b823300f6746b3947d0e1674e546332a6dd200d72905ec",
+   "locus": {
+    "line_start": 133,
+    "line_end": 133
+   },
+   "quote": "For every $f \\in E(K)$ there is $f^\\perp \\in E(K)$ such that $f + f^\\perp = 1_K$.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0018",
+   "claim_ids": [
+    "c02.cl.bit-zustaende"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/CT_v3.tex",
+   "member_sha256": "d3ce102f7848dd31ff9236730896b0ffa0039a8ecf5ff2b1f9996c46aba6a33f",
+   "locus": {
+    "line_start": 61,
+    "line_end": 61
+   },
+   "quote": "Let $n=2$, then the pure states are usually denoted $s_0$ and $s_1$, $S_2$ is isomorphic to the interval $[0,1]$ and the state space corresponds to a classical bit.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0019",
+   "claim_ids": [
+    "c02.cl.bit-zustaende"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/CT_v3.tex",
+   "member_sha256": "d3ce102f7848dd31ff9236730896b0ffa0039a8ecf5ff2b1f9996c46aba6a33f",
+   "locus": {
+    "line_start": 6,
+    "line_end": 6
+   },
+   "quote": "every state is a probability distribution over the set $\\{1, \\ldots, n\\}$",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0020",
+   "claim_ids": [
+    "c02.cl.bit-zustaende",
+    "c02.cl.quadrat-mitte"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/CT_v3.tex",
+   "member_sha256": "d3ce102f7848dd31ff9236730896b0ffa0039a8ecf5ff2b1f9996c46aba6a33f",
+   "locus": {
+    "line_start": 17,
+    "line_end": 17
+   },
+   "quote": "For any $x \\in S_n$ there are unique numbers $\\lambda_i \\in \\RR$, $\\lambda_i \\geq 0$, for all $i \\in \\{1, \\ldots, n\\}$, $\\sum_{i=1}^n \\lambda_i = 1$ such that $x = \\sum_{i=1}^n \\lambda_i s_i$.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0021",
+   "claim_ids": [
+    "c02.cl.quadrat-zustaende"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/boxworld_v3.tex",
+   "member_sha256": "8b596abc9fd790432ddcc53c0249bf341e6b7a69a26306f400b3d88c2fc1b8fc",
+   "locus": {
+    "line_start": 52,
+    "line_end": 52
+   },
+   "quote": "$S$ is the square state space that we will be investigating.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0022",
+   "claim_ids": [
+    "c02.cl.quadrat-zustaende"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/boxworld_v3.tex",
+   "member_sha256": "8b596abc9fd790432ddcc53c0249bf341e6b7a69a26306f400b3d88c2fc1b8fc",
+   "locus": {
+    "line_start": 15,
+    "line_end": 15
+   },
+   "quote": "$s_{ij}$ maps $0$ to $i$ and $1$ to $j$, where $i,j \\in \\{0, 1\\}$.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0023",
+   "claim_ids": [
+    "c02.cl.quadrat-mitte"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/boxworld_v3.tex",
+   "member_sha256": "8b596abc9fd790432ddcc53c0249bf341e6b7a69a26306f400b3d88c2fc1b8fc",
+   "locus": {
+    "line_start": 20,
+    "line_end": 20
+   },
+   "quote": "\\dfrac{1}{2} ( s_{00} + s_{11} ) = \\dfrac{1}{2} ( s_{10} +s_{01} ),",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0024",
+   "claim_ids": [
+    "c02.cl.quadrat-effekte"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/boxworld_v3.tex",
+   "member_sha256": "8b596abc9fd790432ddcc53c0249bf341e6b7a69a26306f400b3d88c2fc1b8fc",
+   "locus": {
+    "line_start": 91,
+    "line_end": 91
+   },
+   "quote": "E(S) = \\conv( \\{ 0, f_x, 1_S - f_x, f_y, 1_S - f_y, 1_S \\} ).",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0025",
+   "claim_ids": [
+    "c02.cl.qubit-zustaende"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/QT_v3.tex",
+   "member_sha256": "41033a5a93a34d1e30021ac15c9675d1aadf2de61c16b724ee405b27c53d6ab1",
+   "locus": {
+    "line_start": 11,
+    "line_end": 11
+   },
+   "quote": "\\dens(\\Ha) = \\{ \\rho \\in \\bound_H^+(\\Ha) : \\Tr(\\rho) = 1 \\}.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0026",
+   "claim_ids": [
+    "c02.cl.qubit-zustaende"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/QT_v3.tex",
+   "member_sha256": "41033a5a93a34d1e30021ac15c9675d1aadf2de61c16b724ee405b27c53d6ab1",
+   "locus": {
+    "line_start": 6,
+    "line_end": 6
+   },
+   "quote": "Let $\\Ha$ be a finite-dimensional complex Hilbert space.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0027",
+   "claim_ids": [
+    "c02.cl.qubit-effekte"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/QT_v3.tex",
+   "member_sha256": "41033a5a93a34d1e30021ac15c9675d1aadf2de61c16b724ee405b27c53d6ab1",
+   "locus": {
+    "line_start": 23,
+    "line_end": 23
+   },
+   "quote": "E(\\dens(\\Ha)) = \\effect(\\Ha) = \\{ X \\in \\bound_H(\\Ha): 0 \\leq X \\leq \\I \\}",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0028",
+   "claim_ids": [
+    "c02.cl.qubit-effekte"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/QT_v3.tex",
+   "member_sha256": "41033a5a93a34d1e30021ac15c9675d1aadf2de61c16b724ee405b27c53d6ab1",
+   "locus": {
+    "line_start": 13,
+    "line_end": 13
+   },
+   "quote": "the corresponding function $f_X \\in A(\\dens(\\Ha))$ is given as $f_X(\\rho) = \\Tr(\\rho X)$",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0029",
+   "claim_ids": [
+    "c02.cl.pauli"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl17.tex",
+   "member_sha256": "cd0e0031ba2be7e1c0ddcb72b752aba214841dc992c202acf9a0cf4d9ddda0fc",
+   "locus": {
+    "line_start": 36,
+    "line_end": 36
+   },
+   "quote": "Bis auf den Faktor $\\frac{\\hbar}{2}$ sind das die \\emph{Pauli-Matrizen} $\\sigma_1,\\sigma_2,\\sigma_3$.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0030",
+   "claim_ids": [
+    "c02.cl.messung"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/channels_v3.tex",
+   "member_sha256": "132155e8a544faeb0dad92f422f14f3e54a748d6a4ba22b3f55b510d4399c3b0",
+   "locus": {
+    "line_start": 253,
+    "line_end": 253
+   },
+   "quote": "$n$-outcome measurement $m \\in \\chan(K, S_n)$ is uniquely defined by effects $\\{ f_1, \\ldots, f_n \\} \\subset E(K)$ such that $\\sum_{i=1}^n f_i = 1_{S_n}$.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0031",
+   "claim_ids": [
+    "c02.cl.erfolg"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/basic_v3.tex",
+   "member_sha256": "ab317d371c85b9f8b3b823300f6746b3947d0e1674e546332a6dd200d72905ec",
+   "locus": {
+    "line_start": 508,
+    "line_end": 508
+   },
+   "quote": "p_{\\text{succ}}(f) = \\lambda \\<x_0, f\\> + (1-\\lambda)(1-\\<x_1,f\\>).",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0032",
+   "claim_ids": [
+    "c02.cl.hoehe"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/basic_v3.tex",
+   "member_sha256": "ab317d371c85b9f8b3b823300f6746b3947d0e1674e546332a6dd200d72905ec",
+   "locus": {
+    "line_start": 181,
+    "line_end": 181
+   },
+   "quote": "K = \\{ \\varphi \\in A(K)^{*+} : \\< \\varphi, 1_K \\> = 1 \\}",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0033",
+   "claim_ids": [
+    "c02.cl.hoehe"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/basic_v3.tex",
+   "member_sha256": "ab317d371c85b9f8b3b823300f6746b3947d0e1674e546332a6dd200d72905ec",
+   "locus": {
+    "line_start": 179,
+    "line_end": 183
+   },
+   "quote": "up to an isomorphism.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0034",
+   "claim_ids": [
+    "c02.cl.basis"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/basic_v3.tex",
+   "member_sha256": "ab317d371c85b9f8b3b823300f6746b3947d0e1674e546332a6dd200d72905ec",
+   "locus": {
+    "line_start": 371,
+    "line_end": 371
+   },
+   "quote": "For every $\\psi \\in A(K)^{*+}$ there is some $x \\in K$ and $\\lambda \\in \\Rp$ such that $\\psi = \\lambda x$.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0035",
+   "claim_ids": [
+    "c02.cl.dualkegel"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/basic_v3.tex",
+   "member_sha256": "ab317d371c85b9f8b3b823300f6746b3947d0e1674e546332a6dd200d72905ec",
+   "locus": {
+    "line_start": 386,
+    "line_end": 386
+   },
+   "quote": "Let $f \\in A(K)$, then $f \\in A(K)^+$ if and only if $\\< \\psi, f \\> \\geq 0$ for every $\\psi \\in A(K)^{*+}$.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0036",
+   "claim_ids": [
+    "c02.cl.oeraum"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/basic_v3.tex",
+   "member_sha256": "ab317d371c85b9f8b3b823300f6746b3947d0e1674e546332a6dd200d72905ec",
+   "locus": {
+    "line_start": 101,
+    "line_end": 101
+   },
+   "quote": "$A(K)$ with the ordering $\\geq$ is a ordered vector space",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0037",
+   "claim_ids": [
+    "c02.cl.oeraum"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/basic_v3.tex",
+   "member_sha256": "ab317d371c85b9f8b3b823300f6746b3947d0e1674e546332a6dd200d72905ec",
+   "locus": {
+    "line_start": 145,
+    "line_end": 145
+   },
+   "quote": "$1_K$ is the order unit of $A(K)^+$.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0038",
+   "claim_ids": [
+    "c02.cl.oeraum"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/basic_v3.tex",
+   "member_sha256": "ab317d371c85b9f8b3b823300f6746b3947d0e1674e546332a6dd200d72905ec",
+   "locus": {
+    "line_start": 141,
+    "line_end": 141
+   },
+   "quote": "Let $f \\in A(K)^+$ be an element such that for every $g \\in A(K)$ there is $\\mu \\in \\Rp$ such that $g \\leq \\mu f$.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0039",
+   "claim_ids": [
+    "c02.cl.oeraum"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/basic_v3.tex",
+   "member_sha256": "ab317d371c85b9f8b3b823300f6746b3947d0e1674e546332a6dd200d72905ec",
+   "locus": {
+    "line_start": 118,
+    "line_end": 118
+   },
+   "quote": "E(K) = \\{ f \\in A(K) : 0 \\leq f \\leq 1_K \\}.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0040",
+   "claim_ids": [
+    "c02.cl.rueckweg"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/basic_v3.tex",
+   "member_sha256": "ab317d371c85b9f8b3b823300f6746b3947d0e1674e546332a6dd200d72905ec",
+   "locus": {
+    "line_start": 320,
+    "line_end": 320
+   },
+   "quote": "Let $V$ be real, finite-dimensional vector space, $C \\subset V$ be convex, closed, pointed, and generating cone.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0041",
+   "claim_ids": [
+    "c02.cl.rueckweg"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/basic_v3.tex",
+   "member_sha256": "ab317d371c85b9f8b3b823300f6746b3947d0e1674e546332a6dd200d72905ec",
+   "locus": {
+    "line_start": 322,
+    "line_end": 322
+   },
+   "quote": "S(E) = \\{ \\psi \\in C^* : \\< \\psi, u \\> = 1 \\}.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0042",
+   "claim_ids": [
+    "c02.cl.rueckweg"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/basic_v3.tex",
+   "member_sha256": "ab317d371c85b9f8b3b823300f6746b3947d0e1674e546332a6dd200d72905ec",
+   "locus": {
+    "line_start": 328,
+    "line_end": 328
+   },
+   "quote": "E(S(E)) = \\{ a \\in C : 0 \\leq a \\leq u \\} = E.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0043",
+   "claim_ids": [
+    "c02.cl.rueckweg"
+   ],
+   "source_key": "plavala-2103.07469v2",
+   "member": "../docs/plan/research/curriculum/plavala-src/basic_v3.tex",
+   "member_sha256": "ab317d371c85b9f8b3b823300f6746b3947d0e1674e546332a6dd200d72905ec",
+   "locus": {
+    "line_start": 330,
+    "line_end": 330
+   },
+   "quote": "Hence the framework one would get using linear effect algebras is equivalent to the framework we get using state spaces.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0044",
+   "claim_ids": [
+    "c02.cl.rahmen-liefert"
+   ],
+   "source_key": "brief",
+   "member": "../docs/plan/BRIEF.md",
+   "member_sha256": "9b70b3a120262898efc41db8f3c9fd8f1678edce473cc594747159924725ac9e",
+   "locus": {
+    "line_start": 44,
+    "line_end": 44
+   },
+   "quote": "A physical theory supplies data for preparations + dynamics + measurement.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0045",
+   "claim_ids": [
+    "c02.cl.rahmen-probabilistisch"
+   ],
+   "source_key": "brief",
+   "member": "../docs/plan/BRIEF.md",
+   "member_sha256": "9b70b3a120262898efc41db8f3c9fd8f1678edce473cc594747159924725ac9e",
+   "locus": {
+    "line_start": 45,
+    "line_end": 45
+   },
+   "quote": "All physical theories are probabilistic theories (I think of deterministic as a subset of probabilistic).",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0046",
+   "claim_ids": [
+    "c02.cl.rahmen-sprache"
+   ],
+   "source_key": "brief",
+   "member": "../docs/plan/BRIEF.md",
+   "member_sha256": "9b70b3a120262898efc41db8f3c9fd8f1678edce473cc594747159924725ac9e",
+   "locus": {
+    "line_start": 46,
+    "line_end": 46
+   },
+   "quote": "we use the language of preparations (= states) instead of \"probability measures\"",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0047",
+   "claim_ids": [
+    "c02.cl.rahmen-dual"
+   ],
+   "source_key": "brief",
+   "member": "../docs/plan/BRIEF.md",
+   "member_sha256": "9b70b3a120262898efc41db8f3c9fd8f1678edce473cc594747159924725ac9e",
+   "locus": {
+    "line_start": 46,
+    "line_end": 46
+   },
+   "quote": "measurements/instruments/POVMs are then elements of the dual space to states.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0048",
+   "claim_ids": [
+    "c02.cl.rahmen-archimedisch"
+   ],
+   "source_key": "brief",
+   "member": "../docs/plan/BRIEF.md",
+   "member_sha256": "9b70b3a120262898efc41db8f3c9fd8f1678edce473cc594747159924725ac9e",
+   "locus": {
+    "line_start": 47,
+    "line_end": 47
+   },
+   "quote": "All physical theories, for me, are Archimedean order unit spaces.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0049",
+   "claim_ids": [
+    "c02.cl.rahmen-spezialisierung"
+   ],
+   "source_key": "brief",
+   "member": "../docs/plan/BRIEF.md",
+   "member_sha256": "9b70b3a120262898efc41db8f3c9fd8f1678edce473cc594747159924725ac9e",
+   "locus": {
+    "line_start": 47,
+    "line_end": 47
+   },
+   "quote": "The GPT presentation allows us to present the postulates of a physical theory which we subsequently *specialise* to QM next.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0050",
+   "claim_ids": [
+    "c11.cl.hilbertraum"
+   ],
+   "source_key": "reed-simon-3",
+   "member": "reed-simon-3/reed-simon-3.djvu",
+   "member_sha256": "47e47a11d12b6baadfba7c7c78389513ecafedf3af361934ae9dbcab04e45d1c",
+   "locus": {
+    "page_index": 62,
+    "printed_page": "55"
+   },
+   "quote": "We now write L^2(R^6) = L^2(R^3) \\otimes L^2(R^3) where now the variables are R and r_{12}.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review 0e",
+   "review_receipt": "R-0050",
+   "notes": "Section XI.4. read from the page image by the author of Smoke B (agent, 2026-10-11): ddjvu -format=pnm -page=62 -scale=150; not from the text layer. Review receipt pending (independent codex review)."
+  },
+  {
+   "id": "P-0051",
+   "claim_ids": [
+    "c11.cl.hilbertraum"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 66,
+    "printed_page": "52"
+   },
+   "quote": "Theorem II.10 (a) There is a unique isomorphism from L^2(M_1, d\\mu_1) \\otimes L^2(M_2, d\\mu_2) to L^2(M_1 \\times M_2, d\\mu_1 \\otimes d\\mu_2) so that f \\otimes g \\mapsto fg.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review 0e",
+   "review_receipt": "R-0051",
+   "notes": "Section II.4. Hypothesis of the theorem: both L^2 spaces separable. read from the page image by the author of Smoke B (agent, 2026-10-11): ddjvu -format=pnm -page=66 -scale=150; not from the text layer. Review receipt pending (independent codex review)."
+  },
+  {
+   "id": "P-0052",
+   "claim_ids": [
+    "c11.cl.separation"
+   ],
+   "source_key": "reed-simon-3",
+   "member": "reed-simon-3/reed-simon-3.djvu",
+   "member_sha256": "47e47a11d12b6baadfba7c7c78389513ecafedf3af361934ae9dbcab04e45d1c",
+   "locus": {
+    "page_index": 62,
+    "printed_page": "55"
+   },
+   "quote": "U \\tilde H U^{-1} = -\\frac{1}{2(\\mu_1+\\mu_2)}\\Delta_R - \\frac{1}{2m}\\Delta_{r_{12}} + V(r_{12}) ... where m^{-1} = \\mu_1^{-1} + \\mu_2^{-1} (Problem 40).",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review 0e",
+   "review_receipt": "R-0052",
+   "notes": "Section XI.4. Cross-check of the derived theorem: masses \\mu_1 = m_e, \\mu_2 = m_p, m = reduced mass, hbar = 1. The ellipsis skips the display of U \\tilde H_0 U^{-1}. read from the page image by the author of Smoke B (agent, 2026-10-11): ddjvu -format=pnm -page=62 -scale=150; not from the text layer. Review receipt pending (independent codex review)."
+  },
+  {
+   "id": "P-0053",
+   "claim_ids": [
+    "c11.cl.kato15",
+    "c11.cl.sa-relativ"
+   ],
+   "source_key": "reed-simon-2",
+   "member": "reed-simon-2/reed-simon-2.djvu",
+   "member_sha256": "2df55972e909cf69623a23b0d5759b7aec9faac518d940d1f7605ae7fbb00f5d",
+   "locus": {
+    "page_index": 175,
+    "printed_page": "165"
+   },
+   "quote": "Theorem X.15 Let V \\in L^2(R^3) + L^\\infty(R^3) be real-valued. Then -\\Delta + V(x) is essentially self-adjoint on C_0^\\infty(R^3) and self-adjoint on D(-\\Delta).",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review 0e",
+   "review_receipt": "R-0053",
+   "notes": "Section X.2. read from the page image by the author of Smoke B (agent, 2026-10-11): ddjvu -format=pnm -page=175 -scale=150; not from the text layer. Review receipt pending (independent codex review)."
+  },
+  {
+   "id": "P-0054",
+   "claim_ids": [
+    "c11.cl.kato15",
+    "c11.cl.kato16"
+   ],
+   "source_key": "reed-simon-2",
+   "member": "reed-simon-2/reed-simon-2.djvu",
+   "member_sha256": "2df55972e909cf69623a23b0d5759b7aec9faac518d940d1f7605ae7fbb00f5d",
+   "locus": {
+    "page_index": 175,
+    "printed_page": "165"
+   },
+   "quote": "The set of measurable functions f on M which can be written f = f_1 + f_2 where f_1 \\in L^p(M, d\\mu) and f_2 \\in L^q(M, d\\mu) will be denoted by L^p(M, d\\mu) + L^q(M, d\\mu).",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review 0e",
+   "review_receipt": "R-0054",
+   "notes": "Section X.2, the Definition before Theorem X.15. read from the page image by the author of Smoke B (agent, 2026-10-11): ddjvu -format=pnm -page=175 -scale=150; not from the text layer. Review receipt pending (independent codex review)."
+  },
+  {
+   "id": "P-0055",
+   "claim_ids": [
+    "c11.cl.kato16",
+    "c11.cl.sa-zweikoerper"
+   ],
+   "source_key": "reed-simon-2",
+   "member": "reed-simon-2/reed-simon-2.djvu",
+   "member_sha256": "2df55972e909cf69623a23b0d5759b7aec9faac518d940d1f7605ae7fbb00f5d",
+   "locus": {
+    "page_index": 176,
+    "printed_page": "166"
+   },
+   "quote": "Theorem X.16 (Kato's theorem) Let {V_k}_{k=1}^m be a collection of real-valued measurable functions each of which is in L^2(R^3) + L^\\infty(R^3). Let V_k(y_k) be the multiplication operator on L^2(R^{3n}) obtained by choosing y_k to be three coordinates of R^{3n}. Then -\\Delta + \\sum_{k=1}^m V_k(y_k) is essentially self-adjoint on C_0^\\infty(R^{3n}), where \\Delta denotes the Laplacian on R^{3n}.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review 0e",
+   "review_receipt": "R-0055",
+   "notes": "Section X.2. read from the page image by the author of Smoke B (agent, 2026-10-11): ddjvu -format=pnm -page=176 -scale=150; not from the text layer. Review receipt pending (independent codex review)."
+  },
+  {
+   "id": "P-0056",
+   "claim_ids": [
+    "c11.cl.sa-zweikoerper"
+   ],
+   "source_key": "reed-simon-2",
+   "member": "reed-simon-2/reed-simon-2.djvu",
+   "member_sha256": "2df55972e909cf69623a23b0d5759b7aec9faac518d940d1f7605ae7fbb00f5d",
+   "locus": {
+    "page_index": 176,
+    "printed_page": "166"
+   },
+   "quote": "By a rotation of variables we may assume the variables in V_k(\\cdot) are x_1, x_2, x_3. (This is because \\|\\cdot\\|_2, \\|\\cdot\\|_\\infty, and -\\Delta are invariant under rotations of coordinates.)",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review 0e",
+   "review_receipt": "R-0056",
+   "notes": "Proof of Theorem X.16. read from the page image by the author of Smoke B (agent, 2026-10-11): ddjvu -format=pnm -page=176 -scale=150; not from the text layer. Review receipt pending (independent codex review)."
+  },
+  {
+   "id": "P-0057",
+   "claim_ids": [
+    "c11.cl.sa-relativ"
+   ],
+   "source_key": "reed-simon-2",
+   "member": "reed-simon-2/reed-simon-2.djvu",
+   "member_sha256": "2df55972e909cf69623a23b0d5759b7aec9faac518d940d1f7605ae7fbb00f5d",
+   "locus": {
+    "page_index": 176,
+    "printed_page": "166"
+   },
+   "quote": "Example 1 Let V(r) = -e^2/r where r = \\sqrt{x^2 + y^2 + z^2}. Then -\\Delta - e^2/r is essentially self-adjoint on C_0^\\infty(R^3).",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review 0e",
+   "review_receipt": "R-0057",
+   "notes": "Section X.2, after the proof of Theorem X.15. read from the page image by the author of Smoke B (agent, 2026-10-11): ddjvu -format=pnm -page=176 -scale=150; not from the text layer. Review receipt pending (independent codex review)."
+  },
+  {
+   "id": "P-0058",
+   "claim_ids": [
+    "c11.cl.sa-zweikoerper"
+   ],
+   "source_key": "reed-simon-3",
+   "member": "reed-simon-3/reed-simon-3.djvu",
+   "member_sha256": "47e47a11d12b6baadfba7c7c78389513ecafedf3af361934ae9dbcab04e45d1c",
+   "locus": {
+    "page_index": 62,
+    "printed_page": "55"
+   },
+   "quote": "where V is a function in L^2(R^3) + L^\\infty(R^3). Thus Kato's theorem (Theorem X.16) shows that \\tilde H is self-adjoint on C_0^\\infty(R^6).",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review 0e",
+   "review_receipt": "R-0058",
+   "notes": "Section XI.4. 'self-adjoint on C_0^\\infty(R^6)' is read as essentially self-adjoint on that domain, which is the conclusion of Theorem X.16. read from the page image by the author of Smoke B (agent, 2026-10-11): ddjvu -format=pnm -page=62 -scale=150; not from the text layer. Review receipt pending (independent codex review)."
+  },
+  {
+   "id": "P-0059",
+   "claim_ids": [
+    "c11.cl.sa-zweikoerper"
+   ],
+   "source_key": "reed-simon-3",
+   "member": "reed-simon-3/reed-simon-3.djvu",
+   "member_sha256": "47e47a11d12b6baadfba7c7c78389513ecafedf3af361934ae9dbcab04e45d1c",
+   "locus": {
+    "page_index": 62,
+    "printed_page": "55"
+   },
+   "quote": "(Uf)(x, y) = f((\\mu_1 + \\mu_2)^{-1}(\\mu_1 x + \\mu_2 y), x - y)",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review 0e",
+   "review_receipt": "R-0059",
+   "notes": "Section XI.4. This U maps a function of the new coordinates to a function of the old ones: the inverse of the chapter's U (REVIEW.md A1). read from the page image by the author of Smoke B (agent, 2026-10-11): ddjvu -format=pnm -page=62 -scale=150; not from the text layer. Review receipt pending (independent codex review)."
+  },
+  {
+   "id": "P-0060",
+   "claim_ids": [
+    "c11.cl.q"
+   ],
+   "source_key": "codata-2022",
+   "member": "codata-2022/allascii.txt",
+   "member_sha256": "77fb90e66c40db3e6eb16630bc9c88e4c7c8beddbe5e71be406f2f26e3f67e67",
+   "locus": {
+    "line_start": 117,
+    "line_end": 117
+   },
+   "quote": "electron-proton mass ratio 5.446 170 214 889 e-4 0.000 000 000 094 e-4",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0061",
+   "claim_ids": [
+    "c11.cl.a0"
+   ],
+   "source_key": "codata-2022",
+   "member": "codata-2022/allascii.txt",
+   "member_sha256": "77fb90e66c40db3e6eb16630bc9c88e4c7c8beddbe5e71be406f2f26e3f67e67",
+   "locus": {
+    "line_start": 61,
+    "line_end": 61
+   },
+   "quote": "Bohr radius 5.291 772 105 44 e-11 0.000 000 000 82 e-11 m",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0062",
+   "claim_ids": [
+    "c11.cl.ry"
+   ],
+   "source_key": "codata-2022",
+   "member": "codata-2022/allascii.txt",
+   "member_sha256": "77fb90e66c40db3e6eb16630bc9c88e4c7c8beddbe5e71be406f2f26e3f67e67",
+   "locus": {
+    "line_start": 311,
+    "line_end": 311
+   },
+   "quote": "Rydberg constant times hc in eV 13.605 693 122 990 0.000 000 000 015 eV",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0063",
+   "claim_ids": [
+    "c11.cl.rinf",
+    "c11.cl.linie"
+   ],
+   "source_key": "codata-2022",
+   "member": "codata-2022/allascii.txt",
+   "member_sha256": "77fb90e66c40db3e6eb16630bc9c88e4c7c8beddbe5e71be406f2f26e3f67e67",
+   "locus": {
+    "line_start": 309,
+    "line_end": 309
+   },
+   "quote": "Rydberg constant 10 973 731.568 157 0.000 012 m^-1",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0064",
+   "claim_ids": [
+    "c11.cl.h"
+   ],
+   "source_key": "codata-2022",
+   "member": "codata-2022/allascii.txt",
+   "member_sha256": "77fb90e66c40db3e6eb16630bc9c88e4c7c8beddbe5e71be406f2f26e3f67e67",
+   "locus": {
+    "line_start": 271,
+    "line_end": 271
+   },
+   "quote": "Planck constant 6.626 070 15 e-34 (exact) J Hz^-1",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0065",
+   "claim_ids": [
+    "c11.cl.c"
+   ],
+   "source_key": "codata-2022",
+   "member": "codata-2022/allascii.txt",
+   "member_sha256": "77fb90e66c40db3e6eb16630bc9c88e4c7c8beddbe5e71be406f2f26e3f67e67",
+   "locus": {
+    "line_start": 330,
+    "line_end": 330
+   },
+   "quote": "speed of light in vacuum 299 792 458 (exact) m s^-1",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0066",
+   "claim_ids": [
+    "c11.cl.e"
+   ],
+   "source_key": "codata-2022",
+   "member": "codata-2022/allascii.txt",
+   "member_sha256": "77fb90e66c40db3e6eb16630bc9c88e4c7c8beddbe5e71be406f2f26e3f67e67",
+   "locus": {
+    "line_start": 132,
+    "line_end": 132
+   },
+   "quote": "elementary charge 1.602 176 634 e-19 (exact) C",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0067",
+   "claim_ids": [
+    "c00.cl.liefert"
+   ],
+   "source_key": "brief",
+   "member": "../docs/plan/BRIEF.md",
+   "member_sha256": "9b70b3a120262898efc41db8f3c9fd8f1678edce473cc594747159924725ac9e",
+   "locus": {
+    "line_start": 44,
+    "line_end": 44
+   },
+   "quote": "A physical theory supplies data for preparations + dynamics + measurement.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0068",
+   "claim_ids": [
+    "c00.cl.probabilistisch"
+   ],
+   "source_key": "brief",
+   "member": "../docs/plan/BRIEF.md",
+   "member_sha256": "9b70b3a120262898efc41db8f3c9fd8f1678edce473cc594747159924725ac9e",
+   "locus": {
+    "line_start": 45,
+    "line_end": 45
+   },
+   "quote": "All physical theories are probabilistic theories (I think of deterministic as a subset of probabilistic).",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0069",
+   "claim_ids": [
+    "c00.cl.p0"
+   ],
+   "source_key": "brief",
+   "member": "../docs/plan/BRIEF.md",
+   "member_sha256": "9b70b3a120262898efc41db8f3c9fd8f1678edce473cc594747159924725ac9e",
+   "locus": {
+    "line_start": 50,
+    "line_end": 50
+   },
+   "quote": "P0. Physical theories are probabilistic theories: predictions in the form of probabilities.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0070",
+   "claim_ids": [
+    "c00.cl.leiter"
+   ],
+   "source_key": "brief",
+   "member": "../docs/plan/BRIEF.md",
+   "member_sha256": "9b70b3a120262898efc41db8f3c9fd8f1678edce473cc594747159924725ac9e",
+   "locus": {
+    "line_start": 38,
+    "line_end": 38
+   },
+   "quote": "Our entire presentation works like this: we go from microscopic to macroscopic.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0071",
+   "claim_ids": [
+    "c00.cl.leiter"
+   ],
+   "source_key": "brief",
+   "member": "../docs/plan/BRIEF.md",
+   "member_sha256": "9b70b3a120262898efc41db8f3c9fd8f1678edce473cc594747159924725ac9e",
+   "locus": {
+    "line_start": 40,
+    "line_end": 40
+   },
+   "quote": "\"zoomed in\" = fundamental theory of physics (GPT = general probabilistic theory) -> \"zoom out\" QM of single systems -> \"zoom out\" many particles -> \"zoom out\" indefinite number of particles (Fock space) -> \"zoom out and lose info\" stat mech: ensembles, fundamental hypothesis of stat mech -> \"zoom out\" thermodynamics as the ultimate effective theory of all physics at the macroscale.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0072",
+   "claim_ids": [
+    "c00.cl.effektiv"
+   ],
+   "source_key": "brief",
+   "member": "../docs/plan/BRIEF.md",
+   "member_sha256": "9b70b3a120262898efc41db8f3c9fd8f1678edce473cc594747159924725ac9e",
+   "locus": {
+    "line_start": 90,
+    "line_end": 90
+   },
+   "quote": "At each stage the student learns that every theory is an *effective* theory of the one below it: an approximation to the fundamental underlying physics.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0073",
+   "claim_ids": [
+    "c00.cl.drei-stadien"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 120,
+    "line_end": 120
+   },
+   "quote": "Für den Theoretiker sehen \\emph{alle} Experimente der Physik gleich aus; sie bestehen aus drei Stadien:",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0074",
+   "claim_ids": [
+    "c00.cl.drei-stadien"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/en/lec01.tex",
+   "member_sha256": "b0ccc8af69cc09146698d13dcbf0667b5ee2295def8dc4133611ade213eab270",
+   "locus": {
+    "line_start": 120,
+    "line_end": 120
+   },
+   "quote": "To the theorist \\emph{all} experiments in physics look the same; they consist of three stages:",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0075",
+   "claim_ids": [
+    "c00.cl.drei-stadien"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 126,
+    "line_end": 126
+   },
+   "quote": "Ein Experimentalphysiker würde diese Vereinfachung nicht anerkennen; abstrakt sieht aber jedes Experiment so aus.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0076",
+   "claim_ids": [
+    "c00.cl.drei-stadien"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 126,
+    "line_end": 126
+   },
+   "quote": "Die ersten beiden Schritte lassen sich dabei zu \\emph{einer} komplizierteren Präparation zusammenfassen --- ein gezinkter Würfel ist ja nichts anderes als ein normaler Würfel, an dem man vorher etwas gemacht hat.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0077",
+   "claim_ids": [
+    "c00.cl.annahme"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 89,
+    "line_end": 89
+   },
+   "quote": "Unsere Annahme ist, dass die Quantenmechanik die korrekte Beschreibung des Universums ist.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0078",
+   "claim_ids": [
+    "c00.cl.annahme"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/en/lec01.tex",
+   "member_sha256": "b0ccc8af69cc09146698d13dcbf0667b5ee2295def8dc4133611ade213eab270",
+   "locus": {
+    "line_start": 89,
+    "line_end": 89
+   },
+   "quote": "Our assumption is that quantum mechanics is the correct description of the universe.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0079",
+   "claim_ids": [
+    "c00.cl.annahme"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 26,
+    "line_end": 26
+   },
+   "quote": "Wir befinden uns in einem Quanten-Universum. Allerdings haben wir bis 1900 die Quantenaspekte des Universums nicht bemerkt, weil uns die klassische Physik eine sehr gute Annäherung der Physik des Alltags geliefert hat.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0080",
+   "claim_ids": [
+    "c00.cl.annahme"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 26,
+    "line_end": 26
+   },
+   "quote": "Das Stichwort dazu heißt \\emph{Dekohärenz}; sie gehört in die fortgeschrittene Quantenmechanik, die wir hier nicht behandeln. Erklärungsbedürftig ist also nicht die Quantenmechanik, sondern die Güte der klassischen Näherung.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0081",
+   "claim_ids": [
+    "c00.cl.lichtquant"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 37,
+    "line_end": 37
+   },
+   "quote": "Die Annahme von Lichtquanten mit Energie $E=h\\nu$ liefert das richtiges Spektrum.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0082",
+   "claim_ids": [
+    "c00.cl.lichtquant"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 37,
+    "line_end": 37
+   },
+   "quote": "Das Spektrum der emittierten Strahlung ist nicht mit klassischer Physik erklärbar.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0083",
+   "claim_ids": [
+    "c00.cl.lichtquant"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 47,
+    "line_end": 47
+   },
+   "quote": "Ein Schwarzkörper reflektiert keine einfallende Strahlung, strahlt bei einer Temperatur $T$ wegen der thermisch angeregten Atome aber dennoch. Die übliche Realisierung ist eine Kiste mit kleinem Loch: Einfallende Strahlung verschwindet innen durch Vielfachreflexion, aus dem Loch tritt Schwarzkörperstrahlung aus. Dieses Gesetz leiten wir im statistischen Teil selbst her --- aus der Annahme, dass Licht quantisiert ist.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0084",
+   "claim_ids": [
+    "c00.cl.hbar"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 41,
+    "line_end": 41
+   },
+   "quote": "Heute wird in der theoretischen Physik vorwiegend die \\emph{reduzierte Planck-Konstante} ",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0085",
+   "claim_ids": [
+    "c00.cl.planck"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 39,
+    "line_end": 39
+   },
+   "quote": "\\text{Energiedichte der Strahlung im Intervall $d\\nu$} = U(\\nu)d\\nu = \\frac{8\\pi h \\nu^3}{c^3}\\frac{d\\nu}{e^{\\frac{h\\nu}{kT}}-1}",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0086",
+   "claim_ids": [
+    "c00.cl.hbar"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 43,
+    "line_end": 43
+   },
+   "quote": "\\eqbox{\\hbar = \\frac{h}{2\\pi}}",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0087",
+   "claim_ids": [
+    "c00.cl.h-wert"
+   ],
+   "source_key": "codata-2022",
+   "member": "codata-2022/allascii.txt",
+   "member_sha256": "77fb90e66c40db3e6eb16630bc9c88e4c7c8beddbe5e71be406f2f26e3f67e67",
+   "locus": {
+    "line_start": 271,
+    "line_end": 271
+   },
+   "quote": "Planck constant 6.626 070 15 e-34 (exact) J Hz^-1",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0088",
+   "claim_ids": [
+    "c00.cl.hbar-wert"
+   ],
+   "source_key": "codata-2022",
+   "member": "codata-2022/allascii.txt",
+   "member_sha256": "77fb90e66c40db3e6eb16630bc9c88e4c7c8beddbe5e71be406f2f26e3f67e67",
+   "locus": {
+    "line_start": 304,
+    "line_end": 304
+   },
+   "quote": "reduced Planck constant 1.054 571 817... e-34 (exact) J s",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0089",
+   "claim_ids": [
+    "c00.cl.photoeffekt"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 57,
+    "line_end": 57
+   },
+   "quote": "\\eqbox{E_{\\text{el}} = \\frac12 m v^2 = h\\nu -W}",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0090",
+   "claim_ids": [
+    "c00.cl.photoeffekt"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 55,
+    "line_end": 55
+   },
+   "quote": "Die Energie der durch Licht ausgelösten Elektronen (Photoelektronen) ist nur durch die Lichtfrequenz bestimmt",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0091",
+   "claim_ids": [
+    "c00.cl.photoeffekt"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 59,
+    "line_end": 59
+   },
+   "quote": "mit Bindungsenergie $W$. Diese Beobachung war ein Hinweis auf \\emph{Lichtquanten} mit Energie $E=h\\nu$. Klassisch ist das merkwürdig: Sonst bedeutet mehr Intensität mehr Energie; hier hängt die Energie allein an der Frequenz.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0092",
+   "claim_ids": [
+    "c00.cl.impuls"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 60,
+    "line_end": 60
+   },
+   "quote": "Linienspektren und Franck-Hertz-Versuche deuten darauf hin, dass in Atomen nur bestimmte, diskrete Energieniveaus erlaubt sind.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0093",
+   "claim_ids": [
+    "c00.cl.impuls"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 60,
+    "line_end": 60
+   },
+   "quote": "Nach den Liénard-Wiechert-Potentialen strahlt jede beschleunigte Punktladung. Ein Elektron auf einer Bahn um das Proton verliert also ständig Energie und müsste in den Kern stürzen --- was es nicht tut.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0094",
+   "claim_ids": [
+    "c00.cl.impuls"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 61,
+    "line_end": 61
+   },
+   "quote": "Die Streuung von Licht an Elektronen wird durch Annahme von Lichtquanten mit $E=h\\nu$ und Impuls $p=h/\\lambda$ sowie Energie- und Impulserhaltung richtig beschrieben.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0095",
+   "claim_ids": [
+    "c00.cl.impuls"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 62,
+    "line_end": 62
+   },
+   "quote": "Der Drehimpuls hat endlich viele Möglichkeiten der Ausrichtung relativ zu einem angelegten Magnetfeld (Richtungsquantelung).",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0096",
+   "claim_ids": [
+    "c00.cl.impuls"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 63,
+    "line_end": 63
+   },
+   "quote": "Dieses Experiment lieferte einen Hinweis auf die Welleneigenschaften des Elektrons",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0097",
+   "claim_ids": [
+    "c00.cl.geschichte"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 72,
+    "line_end": 72
+   },
+   "quote": "Das Geburtsjahr der Quantenmechanik ist 1926. In diesem Jahr veröffentlichte Schrödinger eine spannende Reihe von Arbeiten über die Wellenmechanik und Quantisierung. Ein paralleler Zugang begann 1925 mit Überlegungen von Heisenberg",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0098",
+   "claim_ids": [
+    "c00.cl.geschichte"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 72,
+    "line_end": 72
+   },
+   "quote": "Einerseits Born und Jordan mit Heisenberg zur sogenannten Matrizenmechanik und andererseits Dirac. Noch 1926 zeigt Schrödinger die Äquivalenz beider Zugänge. Die statistische Interpretation der Theorie wird von Born (ebenfalls 1926) geliefert.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0099",
+   "claim_ids": [
+    "c00.cl.geschichte"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 72,
+    "line_end": 72
+   },
+   "quote": "Borns Beitrag ist meiner Ansicht nach der wichtigste Aspekt der ganzen Theorie.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0100",
+   "claim_ids": [
+    "c00.cl.geschichte"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 37,
+    "line_end": 37
+   },
+   "quote": "Die konstante ,,h`` (ursprünglich ,,Hilfsgröße``) wurde von Planck zur Herleitung des Strahlungsgesetzes:",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0101",
+   "claim_ids": [
+    "c00.cl.geschichte"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 41,
+    "line_end": 41
+   },
+   "quote": "postuliert (1899).",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0102",
+   "claim_ids": [
+    "c00.cl.geschichte"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 55,
+    "line_end": 55
+   },
+   "quote": "(Lenard, 1899; Einstein 1905)",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0103",
+   "claim_ids": [
+    "c00.cl.geschichte"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 60,
+    "line_end": 60
+   },
+   "quote": "\\emph{Franck-Hertz-Versuch} ($\\sim$1911)",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0104",
+   "claim_ids": [
+    "c00.cl.geschichte"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 62,
+    "line_end": 62
+   },
+   "quote": "\\emph{Stern-Gerlach-Versuch} (1922)",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0105",
+   "claim_ids": [
+    "c00.cl.geschichte"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 63,
+    "line_end": 63
+   },
+   "quote": "(Davisson-Germer-Experiment, 1929; Beugung an Kristallen)",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0106",
+   "claim_ids": [
+    "c00.cl.geschichte"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 63,
+    "line_end": 63
+   },
+   "quote": "(postuliert 1924 von de Broglie)",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0107",
+   "claim_ids": [
+    "c00.cl.geschichte"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 85,
+    "line_end": 85
+   },
+   "quote": "So ließ sich Born von Norbert Wiener dabei beraten, aus Matrizen Operatoren zu machen",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0108",
+   "claim_ids": [
+    "c00.cl.geschichte"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 85,
+    "line_end": 85
+   },
+   "quote": "Hilbert hielt im WS 1926/27 in Göttingen eine Vorlesung über Quantenmechanik. Nebenbei führte sein junger Assistent John von Neumann den Hilbertraum, Dichtematrizen und die Entropie für Quantenzustände mit einer Publikation in den Göttinger Mathematischen Nachrichten ein.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0109",
+   "claim_ids": [
+    "c00.cl.geschichte"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 85,
+    "line_end": 85
+   },
+   "quote": "Die Rolle der Gruppentheorie wurde von Wigner und Weyl geklärt.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0110",
+   "claim_ids": [
+    "c00.cl.geschichte"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 87,
+    "line_end": 87
+   },
+   "quote": "Trotz vielen Ideen und deren Entwicklungen, ist die Interpretation der QM immer noch kontrovers. Dennoch ist die QM heute allgemein akzeptiert und liefert uns das beste physikalische Modell, das wir in der Physik haben; es gibt bis heute keinen Widerspruch zur QM.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0111",
+   "claim_ids": [
+    "c00.cl.geschichte"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 75,
+    "line_end": 75
+   },
+   "quote": "Die Originalarbeiten von Planck, Schrödinger, Heisenberg und Born sind auf Deutsch geschrieben.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0112",
+   "claim_ids": [
+    "c00.cl.welle-teilchen"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 67,
+    "line_end": 67
+   },
+   "quote": "Materie und Strahlung besitzen sowohl Wellen- als auch Teilcheneigenschaften.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0113",
+   "claim_ids": [
+    "c00.cl.welle-teilchen"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/en/lec01.tex",
+   "member_sha256": "b0ccc8af69cc09146698d13dcbf0667b5ee2295def8dc4133611ade213eab270",
+   "locus": {
+    "line_start": 67,
+    "line_end": 67
+   },
+   "quote": "Matter and radiation possess both wave and particle properties.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0114",
+   "claim_ids": [
+    "c00.cl.welle-teilchen"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 83,
+    "line_end": 83
+   },
+   "quote": "Diese zweite Aussage ist der ersten übergeordnet: ,,Wellen- und Teilcheneigenschaften`` bleibt ein wenig schwammig, die probabilistische Aussage dagegen ist präzise und liegt allen Quantenphänomenen zugrunde.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0115",
+   "claim_ids": [
+    "c00.cl.kernsatz"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 80,
+    "line_end": 80
+   },
+   "quote": "Die Quantenmechanik ist eine \\emph{probabilistische Theorie}. Sie liefert uns somit nur Vorhersagen in Form von \\emph{Wahrscheinlichkeiten}.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0116",
+   "claim_ids": [
+    "c00.cl.kernsatz"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/en/lec01.tex",
+   "member_sha256": "b0ccc8af69cc09146698d13dcbf0667b5ee2295def8dc4133611ade213eab270",
+   "locus": {
+    "line_start": 80,
+    "line_end": 80
+   },
+   "quote": "Quantum mechanics is a \\emph{probabilistic theory}. It therefore gives us predictions only in the form of \\emph{probabilities}.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0117",
+   "claim_ids": [
+    "c00.cl.kernsatz"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 83,
+    "line_end": 83
+   },
+   "quote": "Klassisch lauten die Vorhersagen definitiv --- das Teilchen ist zu dieser Zeit an dieser Stelle, und Wahrscheinlichkeiten treten dort allein wegen fehlender Information auf. Nehmen Sie den Satz bitte mit: In jeder mündlichen Prüfung frage ich, was die wichtigste Aussage über die Quantenmechanik ist.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0118",
+   "claim_ids": [
+    "c01.cl.sprache"
+   ],
+   "source_key": "brief",
+   "member": "../docs/plan/BRIEF.md",
+   "member_sha256": "9b70b3a120262898efc41db8f3c9fd8f1678edce473cc594747159924725ac9e",
+   "locus": {
+    "line_start": 46,
+    "line_end": 46
+   },
+   "quote": "Thus our presentation starts with probability theory, with notation and framing adapted to physics: we use the language of preparations (= states) instead of \"probability measures\"",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0119",
+   "claim_ids": [
+    "c01.cl.messung"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 122,
+    "line_end": 122
+   },
+   "quote": "Präparationen sind Wahrscheinlichkeitsfunktionen $p$.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0120",
+   "claim_ids": [
+    "c01.cl.messung"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 123,
+    "line_end": 123
+   },
+   "quote": "Es bildet Wahrscheinlichkeitsfunktionen auf Wahrscheinlichkeitsfunktionen ab.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0121",
+   "claim_ids": [
+    "c01.cl.messung"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 124,
+    "line_end": 124
+   },
+   "quote": "Messungen sind Funktionen $f$.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0122",
+   "claim_ids": [
+    "c01.cl.messung"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 133,
+    "line_end": 133
+   },
+   "quote": "An eine Messung stellen wir keine Bedingung, quasi jede Funktion darf als Messung gelten --- an die Präparation dagegen zwei.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0123",
+   "claim_ids": [
+    "c01.cl.messung"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 137,
+    "line_end": 137
+   },
+   "quote": "Der Wert $f(x)$ wird als der Messwert interpretiert, der sich ergibt, wenn man sicher weiß, dass das Elementarereignis $x$ vorliegt.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0124",
+   "claim_ids": [
+    "c01.cl.lesart"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 137,
+    "line_end": 137
+   },
+   "quote": "Wenn dieses Ereignis bei $N$ Messungen vorliegt ($Np(x)$), ergibt sich die Summe der Messwerte mit $\\sum_x N p(x) \\cdot f(x)$. Dividiert durch $N$ erhalten wir die Formel für den Erwartungswert:",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0125",
+   "claim_ids": [
+    "c01.cl.indikator-def"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 145,
+    "line_end": 146
+   },
+   "quote": "1, \\quad x\\in S, \\\\ 0, \\quad \\text{sonst.}",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0126",
+   "claim_ids": [
+    "c01.cl.indikator-def"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 149,
+    "line_end": 149
+   },
+   "quote": "Solche Funktionen nennt man \\emph{Indikatorfunktionen}.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0127",
+   "claim_ids": [
+    "c01.cl.indikator-def"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 150,
+    "line_end": 150
+   },
+   "quote": "Halten Sie fest: Indikatorfunktionen \\emph{sind} Messungen, kein eigenes Objekt daneben.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0128",
+   "claim_ids": [
+    "c01.cl.indikator-def"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 142,
+    "line_end": 142
+   },
+   "quote": "Der Detektor sagt Klick oder kein Klick; gerade an diesen zweiwertigen Messungen hängt die Quantenmechanik.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0129",
+   "claim_ids": [
+    "c01.cl.punktgewicht-def"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 150,
+    "line_end": 150
+   },
+   "quote": "für ein einzelnes Elementarereignis ist $\\chi_{\\{j\\}}(x) = \\delta_{x,j}$ das Kronecker-Delta.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0130",
+   "claim_ids": [
+    "c01.cl.punktgewicht-def"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 214,
+    "line_end": 214
+   },
+   "quote": "nur dann verschwinden, wenn $\\mathbb{P}$ auf einen Punkt konzentriert ist.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0131",
+   "claim_ids": [
+    "c01.cl.dichte"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 185,
+    "line_end": 185
+   },
+   "quote": "\\mathbb{E}[f] = \\int p(x) f(x) \\, dx",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0132",
+   "claim_ids": [
+    "c01.cl.dichte"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 187,
+    "line_end": 187
+   },
+   "quote": "wobei $p(x)\\,dx \\equiv \\mathbb{P}(dx)$ die Wahrscheinlichkeitsverteilung darstellt.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0133",
+   "claim_ids": [
+    "c01.cl.dichte"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 208,
+    "line_end": 208
+   },
+   "quote": "Es ist immer $M_0 = 1$, wegen der Normierung auf Gesamtwahrscheinlichkeit 1.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0134",
+   "claim_ids": [
+    "c01.cl.dichte"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 197,
+    "line_end": 197
+   },
+   "quote": "\\mathbb{P}[S] = \\mathbb{E}[\\chi_S] &= \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty \\chi_S(x) e^{-\\frac{1}{2}x^2}\\, dx",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0135",
+   "claim_ids": [
+    "c01.cl.dichte"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 176,
+    "line_end": 176
+   },
+   "quote": "Für die Quantenmechanik ist aber $X = \\mathbb{R}$ entscheidend: Ein Teilchen in einer Dimension hat eine Position, und die möglichen Positionen sind die reellen Zahlen; über einer überabzählbaren Menge hat $\\sum_{x\\in X}$ dann keine Bedeutung mehr.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0136",
+   "claim_ids": [
+    "c01.cl.momente"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 206,
+    "line_end": 206
+   },
+   "quote": "M_n = \\int x^n p(x)\\, dx",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0137",
+   "claim_ids": [
+    "c01.cl.momente"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 208,
+    "line_end": 208
+   },
+   "quote": "(Warnung: Alle anderen Momente brauchen nicht zu existieren, bzw.\\ ergeben unter Umständen divergente Integrale.) Geometrisch ist $M_0$ die Fläche unter der Kurve.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0138",
+   "claim_ids": [
+    "c01.cl.momente"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 210,
+    "line_end": 210
+   },
+   "quote": "Die praktisch wichtigsten Momente sind $M_1$ (\\emph{Mittelwert}), und $M_2$.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0139",
+   "claim_ids": [
+    "c01.cl.momente"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 216,
+    "line_end": 216
+   },
+   "quote": "In der Quantenmechanik spielt die Varianz eine größere Rolle als das zweite Moment; sie wird uns bei der Unschärferelation wieder begegnen.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  }
+ ]
+}

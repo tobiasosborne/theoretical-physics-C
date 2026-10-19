@@ -1,0 +1,35 @@
+{
+ "schema_version": 1,
+ "key": "codata-2022",
+ "kind": "data",
+ "storage": "private",
+ "title": "Fundamental Physical Constants --- Complete Listing, 2022 CODATA adjustment",
+ "authors": [
+  "NIST / CODATA Task Group on Fundamental Physical Constants (as named by the file header: 'From: http://physics.nist.gov/constants')"
+ ],
+ "version": "2022 CODATA adjustment",
+ "language": "en",
+ "identifiers": {
+  "url": "https://physics.nist.gov/cuu/Constants/Table/allascii.txt"
+ },
+ "retrieval": {
+  "route": "fetched by the Phase 0 coordinator",
+  "date": "2026-10-11",
+  "url": "https://physics.nist.gov/cuu/Constants/Table/allascii.txt",
+  "original_file": "allascii.txt"
+ },
+ "identity_check": "header lines 2-6 of the file read on 2026-10-11: 'Fundamental Physical Constants --- Complete Listing', '2022 CODATA adjustment', 'From:  http://physics.nist.gov/constants'; sha256 equals the value in PLAN.md section 14 item 9 (77fb90e6...)",
+ "files": [
+  {
+   "path": "codata-2022/allascii.txt",
+   "role": "text",
+   "media_type": "text/plain",
+   "sha256": "77fb90e66c40db3e6eb16630bc9c88e4c7c8beddbe5e71be406f2f26e3f67e67"
+  }
+ ],
+ "authority_for": "values, uncertainties and units of physical constants",
+ "limitations": "fixed-width ASCII table; digits are grouped by spaces and exponents written 'e-23'; the file was not re-fetched or compared with the NIST site by the evidence package",
+ "rights_ref": "rights.json",
+ "supersedes": null,
+ "errata": []
+}

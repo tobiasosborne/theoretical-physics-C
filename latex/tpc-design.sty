@@ -1,0 +1,329 @@
+\NeedsTeXFormat{LaTeX2e}[2022/06/01]
+\ProvidesPackage{tpc-design}[2026/10/11 Theoretische Physik C: design-token loader]
+
+% ══════════════════════════════════════════════════════════════
+%  tpc-design: the single entry point for type and colour
+% ══════════════════════════════════════════════════════════════
+%   \usepackage[pkg=1,ground=light,math=stix,fonts=open]{tpc-design}
+%
+%   pkg     1..5            design package                         (default 1)
+%   ground  light | dark    page, stage and video ground           (default light)
+%   math    stix | mtpro2   stix   = the package's OpenType maths face (unicode-math)
+%                           mtpro2 = MathTime Pro 2; needs fonts=local and a
+%                                    package that declares it (PKG-1)
+%   fonts   open | local    open   = open-source faces only
+%                           local  = the package's commercial faces where
+%                                    installed; a missing face falls back to
+%                                    the open face with a warning
+%   root    <dir>           directory holding pkgN-<ground>/tpc-tokens.sty
+%                           (default: found relative to this file or the
+%                           working directory, then through TEXINPUTS)
+%
+% Every value comes from design/build/pkgN-<ground>/tpc-tokens.sty, which
+% design/build_tokens.py generates from design/tokens/.  This file holds
+% logic only: no colour, no font name, no length.  The names it provides
+% are listed in design/README.md.
+%
+% Works with latex/tpc-style.sty loaded before or after it:
+%   math=stix    tpc-style must take its [cmfonts] branch.  Loaded after
+%                tpc-design it gets that option automatically; loaded
+%                before, pass [cmfonts] yourself.
+%   math=mtpro2  tpc-style's default branch; either order.
+% XeLaTeX only.
+
+\RequirePackage{iftex}
+\ifxetex\else
+  \PackageError{tpc-design}{XeLaTeX is required}{The token loader sets
+    fonts through fontspec and probes them with XeTeX primitives.}
+\fi
+
+% ── options ───────────────────────────────────────────────────
+\DeclareKeys[tpcdesign]{
+  pkg.store    = \tpcd@pkg,
+  ground.store = \tpcd@ground,
+  math.store   = \tpcd@math,
+  fonts.store  = \tpcd@fonts,
+  root.store   = \tpcd@root,
+}
+\SetKeys[tpcdesign]{pkg=1, ground=light, math=stix, fonts=open, root={}}
+\ProcessKeyOptions[tpcdesign]
+% option values may be given as macros (build scripts do): expand them once
+\edef\tpcd@pkg{\tpcd@pkg}\edef\tpcd@ground{\tpcd@ground}
+\edef\tpcd@math{\tpcd@math}\edef\tpcd@fonts{\tpcd@fonts}\edef\tpcd@root{\tpcd@root}
+
+\def\tpcd@s@light{light}\def\tpcd@s@dark{dark}
+\def\tpcd@s@stix{stix}\def\tpcd@s@mtpro{mtpro2}
+\def\tpcd@s@open{open}\def\tpcd@s@local{local}
+
+\def\tpcd@validate#1#2#3{% #1 key, #2 value macro, #3 comma list of legal values
+  \@tempswafalse
+  \@for\tpcd@v:=#3\do{\ifx\tpcd@v#2\@tempswatrue\fi}%
+  \if@tempswa\else
+    \PackageError{tpc-design}{#1=#2 is not one of: #3}{See design/README.md.}%
+  \fi}
+\tpcd@validate{pkg}\tpcd@pkg{1,2,3,4,5}
+\tpcd@validate{ground}\tpcd@ground{light,dark}
+\tpcd@validate{math}\tpcd@math{stix,mtpro2}
+\tpcd@validate{fonts}\tpcd@fonts{open,local}
+
+% ── locate and read the generated token file ──────────────────
+\edef\tpcd@rel{pkg\tpcd@pkg-\tpcd@ground/tpc-tokens.sty}
+\let\tpcd@found\@empty
+\def\tpcd@try#1{%
+  \ifx\tpcd@found\@empty
+    \IfFileExists{#1\tpcd@rel}{\edef\tpcd@found{#1\tpcd@rel}}{}%
+  \fi}
+\ifx\tpcd@root\@empty\else \tpcd@try{\tpcd@root/}\fi
+\ifdefined\CurrentFilePath
+  \ifx\CurrentFilePath\@empty\else \tpcd@try{\CurrentFilePath/../design/build/}\fi
+\fi
+\tpcd@try{design/build/}
+\tpcd@try{../design/build/}
+\tpcd@try{../../design/build/}
+\tpcd@try{../../../design/build/}
+\tpcd@try{}
+\ifx\tpcd@found\@empty
+  \PackageError{tpc-design}{cannot find \tpcd@rel}{Run `python3
+    design/build_tokens.py --all', or pass root=<path to design/build>, or
+    put design/build on TEXINPUTS.}
+  \expandafter\endinput
+\fi
+
+% tpc-style loads xcolor with [table]; ask for the same so that either
+% load order works.
+\RequirePackage{color}
+\@ifpackageloaded{xcolor}{}{\RequirePackage[table]{xcolor}}
+\input{\tpcd@found}
+
+\newif\iftpcdark
+\ifx\tpcd@ground\tpcd@s@dark \tpcdarktrue \fi
+\if0\tpctokproductionready
+  \PackageWarningNoLine{tpc-design}{pkg=\tpcd@pkg\space (\tpctoktitle) is
+    flagged production_ready=false in its token file}
+\fi
+
+% ── font probing ──────────────────────────────────────────────
+% #1 is a XeTeX font specification: a fontconfig name, or [File.otf].
+\newif\iftpcd@exists
+\def\tpcd@probe#1{%
+  \begingroup
+    \suppressfontnotfounderror=1
+    \global\font\tpcd@probefont="#1" at 10pt
+  \endgroup
+  \ifx\tpcd@probefont\nullfont \tpcd@existsfalse \else \tpcd@existstrue \fi}
+
+% Directory of Companion Math (PKG-2, fonts=local), with trailing slash.
+% The prototype is not in any font directory; define this before loading.
+\providecommand\tpccompanionmathpath{}
+
+% Set one text role (serif | sans | mono) from the token macros.
+\newif\iftpcd@done
+\def\tpcd@setrole#1{%
+  \tpcd@donefalse
+  \ifx\tpcd@fonts\tpcd@s@local
+    \expandafter\ifx\csname tpctok@#1@local\endcsname\@empty\else
+      \tpcd@probe{\csname tpctok@#1@local@probe\endcsname}%
+      \iftpcd@exists
+        \csname tpctok@#1@local\endcsname \tpcd@donetrue
+      \else
+        \PackageWarningNoLine{tpc-design}{fonts=local: the #1 face of
+          pkg=\tpcd@pkg\space is not installed
+          (\csname tpctok@#1@local@probe\endcsname); using the open face}%
+      \fi
+    \fi
+  \fi
+  \iftpcd@done\else
+    \tpcd@probe{\csname tpctok@#1@open@probe\endcsname}%
+    \iftpcd@exists
+      \csname tpctok@#1@open\endcsname
+    \else
+      \PackageWarningNoLine{tpc-design}{the open #1 face of pkg=\tpcd@pkg\space
+        is not installed (\csname tpctok@#1@open@probe\endcsname); keeping
+        the LaTeX default}%
+    \fi
+  \fi}
+\def\tpcd@textfonts{\tpcd@setrole{serif}\tpcd@setrole{sans}\tpcd@setrole{mono}}
+
+% ── decide the maths engine ───────────────────────────────────
+\let\tpcd@engine\tpcd@s@stix
+\ifx\tpcd@math\tpcd@s@mtpro
+  \ifx\tpcd@fonts\tpcd@s@local
+    \if1\tpctok@mtpro
+      \IfFileExists{mtpro2.sty}{\let\tpcd@engine\tpcd@s@mtpro}{%
+        \PackageWarningNoLine{tpc-design}{math=mtpro2: mtpro2.sty is not
+          installed; using the OpenType maths face}}%
+    \else
+      \PackageWarningNoLine{tpc-design}{math=mtpro2: pkg=\tpcd@pkg\space does
+        not use MathTime Pro 2; using its OpenType maths face}%
+    \fi
+  \else
+    \PackageError{tpc-design}{math=mtpro2 is only valid with
+      fonts=local}{MathTime Pro 2 is a commercial face.  Continuing with
+      math=stix.}%
+  \fi
+\fi
+
+\ifx\tpcd@engine\tpcd@s@mtpro
+  % Same order and options as tpc-style.sty, so that loading that file
+  % afterwards is a no-op for the maths stack:
+  % amsmath -> (tcolorbox before mathspec) -> mtpro2 -> mathspec.
+  % mathspec refuses any later \RequirePackage{amsmath}, hence the guard.
+  \@ifpackageloaded{mathspec}{}{%
+    \RequirePackage{amsmath}
+    \@ifpackageloaded{tcolorbox}{}{\RequirePackage[many]{tcolorbox}}
+    \RequirePackage[mtphrb,mtpcal,mtpfrak]{mtpro2}
+    \RequirePackage{mathspec}
+    % mathspec turns every later \RequirePackage{amsmath} into an error,
+    % which tpc-style.sty would trip over.  amsmath is loaded, so such a
+    % request is a no-op: give \RequirePackage its meaning back.
+    \ifdefined\original@RequirePackage
+      \let\RequirePackage\original@RequirePackage
+    \fi
+    \RequirePackage{mathrsfs}}
+  \def\tpcd@mathfonts{%
+    \ifx\tpctok@mathrm@local\@empty\else
+      \tpcd@probe{\tpctok@mathrm@local}%
+      \iftpcd@exists
+        \expandafter\setmathrm\expandafter{\tpctok@mathrm@local}%
+      \fi
+    \fi}
+\else
+  \@ifpackageloaded{mtpro2}{%
+    \PackageError{tpc-design}{math=stix, but MathTime Pro 2 is already
+      loaded}{tpc-style.sty was loaded before tpc-design without [cmfonts].
+      Load it as \string\usepackage[cmfonts]{tpc-style}, or load tpc-design
+      first.  Continuing with the maths fonts as they are.}%
+    \let\tpcd@mathfonts\relax
+  }{%
+    \PassOptionsToPackage{cmfonts}{tpc-style}
+    % amssymb and mathrsfs are what tpc-style[cmfonts] loads; they have to
+    % come before unicode-math, which then takes over their symbols.
+    \RequirePackage{amsmath}
+    \RequirePackage{amssymb}
+    \RequirePackage{mathrsfs}
+    \RequirePackage{unicode-math}
+    \def\tpcd@mathfonts{%
+      \tpcd@donefalse
+      \ifx\tpcd@fonts\tpcd@s@local
+        \ifx\tpctok@math@local\@empty\else
+          \tpcd@probe{\tpctok@math@local@probe}%
+          \iftpcd@exists \tpctok@math@local \tpcd@donetrue
+          \else
+            \PackageWarningNoLine{tpc-design}{fonts=local: the maths face of
+              pkg=\tpcd@pkg\space is not installed
+              (\tpctok@math@local@probe); using the open face}%
+          \fi
+        \fi
+      \fi
+      \iftpcd@done\else
+        \tpcd@probe{\tpctok@math@open@probe}%
+        \iftpcd@exists \tpctok@math@open
+        \else
+          \PackageWarningNoLine{tpc-design}{the open maths face of
+            pkg=\tpcd@pkg\space is not installed (\tpctok@math@open@probe);
+            keeping the LaTeX default}%
+        \fi
+      \fi}
+  }
+\fi
+
+\tpcd@textfonts
+\tpcd@mathfonts
+% tpc-style's default branch sets its own text faces; put the package's
+% faces back if it is loaded after this file.
+\AddToHook{package/tpc-style/after}{\tpcd@textfonts\tpcd@mathfonts}
+
+% what was actually selected, for logs and conditionals in other styles
+\let\tpcdesignpkg\tpcd@pkg
+\let\tpcdesignground\tpcd@ground
+\let\tpcdesignfonts\tpcd@fonts
+\let\tpcdesignmath\tpcd@engine
+
+% ── ground ────────────────────────────────────────────────────
+% On the dark ground the page takes tpc-ground and text takes tpc-ink.
+% On the light ground the token file already gives paper white and 100 % K.
+\iftpcdark
+  \pagecolor{tpc-ground}
+  \AtBeginDocument{\color{tpc-ink}\global\let\default@color\current@color}
+\fi
+
+% Links take the link role wherever hyperref is in use.
+\AtBeginDocument{%
+  \@ifpackageloaded{hyperref}{%
+    \hypersetup{linkcolor=tpc-link, citecolor=tpc-link, urlcolor=tpc-link}}{}}
+
+% ── page ──────────────────────────────────────────────────────
+% \tpcapplypage (preamble): the package's page grid and body size.  Not
+% applied by default, so that an existing document keeps its layout.
+\newcommand\tpcapplypage{%
+  \RequirePackage{geometry}%
+  \AddToHook{begindocument/before}{%
+    \geometry{a4paper, left=\tpcmargininner, textwidth=\tpcmeasure,
+      marginparsep=\tpcmargingap, marginparwidth=\tpcmarginwidth,
+      top=\tpcmargintop, bottom=\tpcmarginbottom}}%
+  \renewcommand\normalsize{%
+    \@setfontsize\normalsize{\tpcbodysize}{\tpcbodyleading}%
+    \abovedisplayskip .6\dimexpr\tpcbodyleading\relax \@plus 2\p@ \@minus 3\p@
+    \belowdisplayskip \abovedisplayskip
+    \abovedisplayshortskip \z@ \@plus 2\p@
+    \belowdisplayshortskip .4\dimexpr\tpcbodyleading\relax \@plus 2\p@ \@minus 2\p@}%
+  \normalsize}
+\@onlypreamble\tpcapplypage
+
+% ── plate ─────────────────────────────────────────────────────
+% Figures sit on the plate, which is light on every ground.
+% \tpcplate{<figure>} sets its argument on the plate in plate ink.
+\newcommand\tpcplate[1]{%
+  \begingroup\fboxsep=\tpcplatepad
+  \colorbox{tpc-plate}{\color{tpc-plate-ink}#1}%
+  \endgroup}
+
+% ── TikZ role styles ──────────────────────────────────────────
+% Defined at \begin{document} when TikZ is loaded.  Colour is never the
+% only carrier: each physics role has its own width or dash pattern.
+\AtBeginDocument{%
+  \@ifpackageloaded{tikz}{%
+    \usetikzlibrary{patterns}%
+    \tikzset{
+      tpc plate/.style={fill=tpc-plate, draw=none},
+      tpc axis/.style={draw=tpc-plate-ink, line width=\tpcstrokethin},
+      tpc grid/.style={draw=tpc-plate-rule, line width=\tpcstrokehair},
+      tpc leader/.style={draw=tpc-plate-ink, line width=\tpcstrokehair},
+      tpc label/.style={text=tpc-plate-ink, font=\tpcfontlabel},
+      tpc state/.style={draw=tpc-state, line width=\tpcstrokestate},
+      tpc effect/.style={draw=tpc-effect, line width=\tpcstrokeeffect,
+        dash pattern/.expanded=\tpcdasheffect},
+      tpc dynamics/.style={draw=tpc-dynamics, line width=\tpcstrokedynamics},
+      tpc bath/.style={fill=tpc-bath, draw=none},
+      tpc bath hatch/.style={pattern=north east lines, pattern color=tpc-bath-edge},
+      tpc bath edge/.style={draw=tpc-bath-edge, line width=\tpcstrokebath,
+        dash pattern/.expanded=\tpcdashbath},
+      tpc fill state/.style={fill=tpc-state},
+      tpc fill effect/.style={fill=tpc-effect},
+      tpc fill dynamics/.style={fill=tpc-dynamics},
+      tpc tint state/.style={fill=tpc-state!16!tpc-plate},
+      tpc tint effect/.style={fill=tpc-effect!16!tpc-plate},
+      tpc tint dynamics/.style={fill=tpc-dynamics!20!tpc-plate},
+      tpc stage/.style={fill=tpc-stage, draw=none},
+      tpc stage label/.style={text=tpc-stage-ink, font=\tpcfontlabel},
+      tpc stage state/.style={draw=tpc-stage-state, line width=\tpcstrokestate},
+      tpc stage effect/.style={draw=tpc-stage-effect, line width=\tpcstrokeeffect,
+        dash pattern/.expanded=\tpcdasheffect},
+      tpc stage dynamics/.style={draw=tpc-stage-dynamics,
+        line width=\tpcstrokedynamics},
+      tpc stage bath/.style={fill=tpc-stage-bath, draw=none},
+      tpc stage bath hatch/.style={pattern=north east lines,
+        pattern color=tpc-stage-bath-edge},
+      tpc stage bath edge/.style={draw=tpc-stage-bath-edge,
+        line width=\tpcstrokebath, dash pattern/.expanded=\tpcdashbath},
+    }%
+    \@for\tpcd@v:=1,2,3,4,5,6\do{%
+      \edef\tpcd@tmp{\noexpand\tikzset{
+        tpc q\tpcd@v/.style={draw=tpc-q\tpcd@v, line width=\noexpand\tpcstrokestate},
+        tpc fill q\tpcd@v/.style={fill=tpc-q\tpcd@v},
+        tpc stage q\tpcd@v/.style={draw=tpc-stage-q\tpcd@v,
+          line width=\noexpand\tpcstrokestate}}}%
+      \tpcd@tmp}%
+  }{}}
+
+\endinput

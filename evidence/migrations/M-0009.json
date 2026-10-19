@@ -1,0 +1,40 @@
+{
+ "schema_version": 1,
+ "id": "M-0009",
+ "status": "recorded",
+ "title": "vl01: the count N p(x) in the motivation of the expectation value is stated as exact",
+ "legacy": [
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl01.tex",
+   "line": 137,
+   "file_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "old_text": "Wenn dieses Ereignis bei $N$ Messungen vorliegt ($Np(x)$), ergibt sich die Summe der Messwerte mit $\\sum_x N p(x) \\cdot f(x)$.",
+   "new_text": "Die statistische Lesart der Wahrscheinlichkeit lautet nun: Bei vielen Wiederholungen liegt die relative Häufigkeit $h_N(x)$ nahe bei $p(x)$. Das Ergebnis $x$ kommt in $N$ Durchläufen etwa $N p(x)$-mal vor, die Summe der Messwerte ist etwa $\\sum_x N p(x) f(x)$, und nach Division durch $N$ steht der Erwartungswert da. Diese Lesart ist eine Deutung und kein Satz dieses Kapitels: In einer einzelnen Messreihe kann $h_N$ von $p$ abweichen."
+  },
+  {
+   "version": "v0.2-en",
+   "file": "latex/lectures/en/lec01.tex",
+   "line": 137,
+   "file_sha256": "b0ccc8af69cc09146698d13dcbf0667b5ee2295def8dc4133611ade213eab270",
+   "old_text": "If this event occurs in $N$ measurements ($Np(x)$), the sum of the measured values comes out as $\\sum_x N p(x) \\cdot f(x)$.",
+   "new_text": "The statistical reading of probability now says: with many repetitions the relative frequency $h_N(x)$ lies close to $p(x)$. The outcome $x$ occurs about $N p(x)$ times in $N$ runs, the sum of the measured values is about $\\sum_x N p(x) f(x)$, and after division by $N$ the expectation value stands there. This reading is an interpretation and not a theorem of this chapter: in a single series $h_N$ may differ from $p$."
+  },
+  {
+   "version": "v0.1",
+   "file": "archive/skript-2022/Vorlesungen1.tex",
+   "line": 107,
+   "file_sha256": "169b2f6f9c71ecb3882c13889634f42a2d8ddee3d12d7189e64fb4d6ed983371",
+   "old_text": "Wenn dieses Ereignis bei $N$ Messungen vorliegt ($Np(x)$), ergibt sich die Summer der Messwerte mit $\\sum_x N p(x) \\cdot f(x)$.",
+   "new_text": "Die statistische Lesart der Wahrscheinlichkeit lautet nun: Bei vielen Wiederholungen liegt die relative Häufigkeit $h_N(x)$ nahe bei $p(x)$. Das Ergebnis $x$ kommt in $N$ Durchläufen etwa $N p(x)$-mal vor, die Summe der Messwerte ist etwa $\\sum_x N p(x) f(x)$, und nach Division durch $N$ steht der Erwartungswert da. Diese Lesart ist eine Deutung und kein Satz dieses Kapitels: In einer einzelnen Messreihe kann $h_N$ von $p$ abweichen."
+  }
+ ],
+ "reason": "The script says that in N measurements the elementary event x occurs N p(x) times and that the sum of the measured values is the sum of N p(x) f(x). In a finite series of runs the count N(x) is an integer and need not equal N p(x). The new chapter separates what is exact from what is a reading: the relative frequencies h_N(x) = N(x)/N of any series are a weight and the mean of the series is exactly the expectation of f in h_N (c01.eq.haeufigkeit, c01.eq.stichprobenmittel, derived); that h_N is close to p for many repetitions is stated as the statistical reading (c01.cl.lesart, source-backed to the script); what can be proved is the bound of theorem c01.thm.haeufigkeit under the assumption of independent repetitions.",
+ "evidence": {
+  "independent_check": "evidence/derivations/c01/DERIVATION.md (c01.cl.haeufigkeit, c01.cl.stichprobenmittel, c01.cl.gesetz); a counterexample to the exact count: web/tests/golden/prob.json, case counts(loaded-die, seed 1, N = 12) = [1, 1, 3, 3, 2, 2] against N p = [1, 2, 2, 2, 2, 3]",
+  "provenance_ids": [],
+  "derivation": "evidence/derivations/c01/DERIVATION.md#c01.cl.stichprobenmittel",
+  "notes": "A change of meaning (exact count to interpretation), made by the chapter author; TJO to confirm."
+ },
+ "destination": "c01.s2.1"
+}

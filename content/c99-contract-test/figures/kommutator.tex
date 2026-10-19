@@ -1,0 +1,14 @@
+% c99.fig.kommutator — the unit square and its image under AB - BA.
+% Geometry from the formula (x, y) -> (6x, -6y): corners
+% (0,0), (1,0), (1,1), (0,1) go to (0,0), (6,0), (6,-6), (0,-6).
+\begin{tikzpicture}[scale=0.42]
+  \draw[tpc-plate-rule, very thin] (-0.8,0) -- (7,0);
+  \draw[tpc-plate-rule, very thin] (0,-6.6) -- (0,1.6);
+  \draw[tpc-plate-ink, thick, pattern=crosshatch, pattern color=tpc-plate-rule]
+    (0,0) -- (6,0) -- (6,-6) -- (0,-6) -- cycle;
+  \draw[tpc-plate-ink, thick, densely dashed] (0,0) -- (1,0) -- (1,1) -- (0,1) -- cycle;
+  \node[above, font=\footnotesize] at (6,0) {$6$};
+  \node[left,  font=\footnotesize] at (0,-6) {$-6$};
+  \node[font=\footnotesize, anchor=west] at (6.3,-3)
+    {\tpcifenglish{image under $AB - BA$}{Bild unter $AB - BA$}};
+\end{tikzpicture}

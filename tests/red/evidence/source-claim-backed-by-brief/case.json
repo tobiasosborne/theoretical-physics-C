@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A source-backed claim is backed only by the brief.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/source-claim-backed-by-brief --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[no-provenance\\] claims\\.json:c98\\.cl\\.2: source-backed claim without"
+}

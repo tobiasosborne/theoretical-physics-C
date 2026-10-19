@@ -1,0 +1,15 @@
+{
+ "id": "c98",
+ "slug": "probe",
+ "title": {
+  "de": "Probe",
+  "en": "Probe"
+ },
+ "effective_theory": {
+  "de": "Probe",
+  "en": "Probe"
+ },
+ "zoom_scale": "none",
+ "prerequisites": [],
+ "assets": []
+}

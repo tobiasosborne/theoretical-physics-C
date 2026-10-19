@@ -1,0 +1,42 @@
+% c01.fig.indikator — a yes-no measurement and its expectation value.
+%
+% Outcome set X = {1,...,6}; event S = {2,4,6}; loaded die p = (1,2,2,2,2,3)/12
+% (c01.eq.gezinkt).
+%   (a) the indicator function chi_S (c01.eq.indikator-def): value 1 on S, 0 elsewhere;
+%       scale 1 = 1.6 cm.
+%   (b) the weight p(x) (outlined bars) and the products p(x) chi_S(x) (hatched): only the
+%       bars over S remain; their heights add up to E[chi_S] = P[S] = (2+2+3)/12 = 7/12
+%       (c01.eq.indikator).  Scale: 1 unit of probability = 9.6 cm.
+% Greyscale: the measurement is drawn in the effect role (dashed outline), the weight in
+% the state role (solid); the products are hatched.
+\begin{tikzpicture}[x=0.6cm, y=1.6cm]
+  \begin{scope}
+    \draw[tpc grid] (0.3,1) -- (6.7,1);
+    \draw[tpc axis] (0.3,0) -- (6.7,0);
+    \draw[tpc axis] (0.3,0) -- (0.3,1.2);
+    \foreach \x in {2,4,6} \draw[tpc effect] (\x-0.3,0) rectangle (\x+0.3,1);
+    \foreach \x in {1,3,5} \draw[tpc effect] (\x-0.3,0) -- (\x+0.3,0);
+    \foreach \x in {1,...,6} \node[tpc label, anchor=north] at (\x,-0.04) {$\x$};
+    \node[tpc label, anchor=east] at (0.25,0) {$0$};
+    \node[tpc label, anchor=east] at (0.25,1) {$1$};
+    \node[tpc label, anchor=south] at (0.3,1.22) {$\chi_S(x)$};
+    \node[tpc label, anchor=north] at (3.5,-0.36) {(a) $S = \{2,4,6\}$};
+  \end{scope}
+  \begin{scope}[shift={(6.4cm,0)}, y=9.6cm]
+    \draw[tpc grid] (0.3,1/12) -- (6.7,1/12);
+    \draw[tpc grid] (0.3,1/6) -- (6.7,1/6);
+    \draw[tpc grid] (0.3,1/4) -- (6.7,1/4);
+    \draw[tpc axis] (0.3,0) -- (6.7,0);
+    \draw[tpc axis] (0.3,0) -- (0.3,0.3);
+    \foreach \x/\a in {2/2, 4/2, 6/3} \path[tpc bath hatch] (\x-0.3,0) rectangle (\x+0.3,\a/12);
+    \foreach \x/\a in {1/1, 2/2, 3/2, 4/2, 5/2, 6/3} \draw[tpc state] (\x-0.3,0) rectangle (\x+0.3,\a/12);
+    \foreach \x in {1,...,6} \node[tpc label, anchor=north] at (\x,-0.01) {$\x$};
+    \node[tpc label, anchor=east] at (0.25,0) {$0$};
+    \node[tpc label, anchor=east] at (0.25,1/12) {$\tfrac1{12}$};
+    \node[tpc label, anchor=east] at (0.25,1/6) {$\tfrac16$};
+    \node[tpc label, anchor=east] at (0.25,1/4) {$\tfrac14$};
+    \node[tpc label, anchor=south] at (0.3,0.305) {$p(x)$};
+    \node[tpc label, anchor=west] at (7.0,0.14) {$\tfrac{2}{12} + \tfrac{2}{12} + \tfrac{3}{12} = \tfrac{7}{12}$};
+    \node[tpc label, anchor=north] at (3.5,-0.06) {(b) $p(x)\,\chi_S(x)$};
+  \end{scope}
+\end{tikzpicture}

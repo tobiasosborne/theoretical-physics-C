@@ -1,0 +1,30 @@
+{
+ "schema_version": 1,
+ "key": "c99-fixture",
+ "kind": "author-stipulation",
+ "storage": "tracked",
+ "title": "Stipulations of the contract-test chapter c99 (physics-free fixture)",
+ "authors": [
+  "Phase 0 evidence package (agent)"
+ ],
+ "version": "2026-10-11",
+ "language": "en",
+ "retrieval": {
+  "route": "tracked file evidence/c99-fixture/STIPULATIONS.md",
+  "date": "2026-10-11"
+ },
+ "identity_check": "written by the evidence package to mirror the three objects that content/c99-contract-test introduces by fiat",
+ "files": [
+  {
+   "path": "../evidence/c99-fixture/STIPULATIONS.md",
+   "role": "text",
+   "media_type": "text/markdown",
+   "sha256": "8e21252ce3a0f92c0f34d5a6da3bcecd2f4629dc90e10743e0ba40928b09dfb6"
+  }
+ ],
+ "authority_for": "chapter c99 only: the fixture matrices A, B, the family M(t) and the function f(t)",
+ "limitations": "NOT a stipulation by TJO and no physics. It exists so that the author-stipulated tags of the test chapter resolve through the same rule as real ones. No claim outside c99 may cite it.",
+ "rights_ref": "rights.json",
+ "supersedes": null,
+ "errata": []
+}

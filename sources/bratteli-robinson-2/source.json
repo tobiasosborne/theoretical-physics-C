@@ -1,0 +1,49 @@
+{
+ "schema_version": 1,
+ "key": "bratteli-robinson-2",
+ "kind": "book",
+ "storage": "private",
+ "title": "Operator Algebras and Quantum Statistical Mechanics 2: Equilibrium States. Models in Quantum Statistical Mechanics",
+ "authors": [
+  "Ola Bratteli",
+  "Derek W. Robinson"
+ ],
+ "edition": "Second Edition 1997. Second Printing 2002",
+ "language": "en",
+ "publisher": "Springer-Verlag Berlin Heidelberg New York (Texts and Monographs in Physics)",
+ "year": "1997",
+ "identifiers": {
+  "isbn": "3-540-61443-5",
+  "issn": "0172-5998"
+ },
+ "retrieval": {
+  "route": "supplied by TJO on 2026-10-11 in ~/Downloads (PLAN.md section 1.3); unpacked into sources/ by the Phase 0 coordinator",
+  "date": "2026-10-11",
+  "original_file": "Functional analysis(1).zip, sha256 a1cce0cd24f161e282a3924fc75fded69f30df4bc1248514c9ffd05433f6601b",
+  "unchecked": "the zip itself was not re-hashed by the evidence package"
+ },
+ "identity_check": "title page (PDF page 3) and copyright page (PDF page 4) rendered with pdftoppm and read from the image on 2026-10-11: authors, title, subtitle, 'Second Edition', 'Second Edition 1997. Second Printing 2002', ISBN 3-540-61443-5, '(c) Springer-Verlag Berlin Heidelberg 1981, 1997'",
+ "extraction": "bratteli-robinson-2.txt is byte-identical to the output of `pdftotext -layout bratteli-robinson-2.pdf -` (poppler 24.02.0; checked 2026-10-11)",
+ "page_index_convention": "page_index is the 1-based PDF page; printed page numbers differ and are given separately in each locus",
+ "authority_for": "Fock space, CCR and CAR algebras, equilibrium (KMS) states, quantum statistical models",
+ "limitations": "scanned PDF with OCR text layer; formulas are read from the page image; exact theorem loci not yet fixed",
+ "files": [
+  {
+   "path": "bratteli-robinson-2/bratteli-robinson-2.pdf",
+   "role": "scan",
+   "media_type": "application/pdf",
+   "sha256": "41f79b76734220984ee8588e271e44279b3933519e00337de9eefc613490c50c",
+   "pages": 532
+  },
+  {
+   "path": "bratteli-robinson-2/bratteli-robinson-2.txt",
+   "role": "ocr-text",
+   "media_type": "text/plain",
+   "sha256": "37407808a17df45d32b85368cdc595c638baf829ef44ad823bf33a7d997d2b34",
+   "notes": "for finding pages only; formulas and quotes are read from the page image"
+  }
+ ],
+ "rights_ref": "rights.json",
+ "supersedes": null,
+ "errata": []
+}

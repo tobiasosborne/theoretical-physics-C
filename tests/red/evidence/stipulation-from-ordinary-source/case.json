@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "An author-stipulated claim is backed by a quote from a paper, not from the brief.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/stipulation-from-ordinary-source --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[no-provenance\\] claims\\.json:c98\\.cl\\.5: author-stipulated claim without"
+}

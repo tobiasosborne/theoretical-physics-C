@@ -1,0 +1,4750 @@
+{
+ "schema_version": 1,
+ "preinventory": {
+  "symbol_rows": 68
+ },
+ "symbols": [
+  {
+   "symbol_id": "sym.outcome-set",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "Outcomes",
+    "args": 0,
+    "expansion": "X"
+   },
+   "canonical_token": "X",
+   "unicode": "X",
+   "mathml": "<math><mi>X</mi></math>",
+   "name_de": "Ergebnismenge",
+   "name_en": "outcome set",
+   "meaning_de": "Menge der Elementarereignisse (Stichprobenraum) eines Systems",
+   "meaning_en": "set of elementary outcomes (sample space) of a system",
+   "depth": "kern",
+   "first_fixed_in": "D53",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl01.tex:98",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "eine Menge $X$ zugeordnet, die man \\emph{Elementarereignisraum} oder \\emph{Stichprobenraum} nennt"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.probability-weight",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "pw",
+    "args": 0,
+    "expansion": "p"
+   },
+   "canonical_token": "p",
+   "unicode": "p",
+   "mathml": "<math><mi>p</mi></math>",
+   "name_de": "Wahrscheinlichkeitsgewicht",
+   "name_en": "probability weight",
+   "meaning_de": "Wahrscheinlichkeitsverteilung p(x) auf der Ergebnismenge; im klassischen Fall die Präparation",
+   "meaning_en": "probability distribution p(x) on the outcome set; in the classical case the preparation",
+   "depth": "kern",
+   "first_fixed_in": "D54",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl01.tex:108",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Eine \\emph{Präparation} wird durch die Angabe einer Wahrscheinlichkeit $p(x)$ für jedes $x\\in X$ charakterisiert."
+    },
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "basic_v3.tex:53",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "we will interpret $p \\in [0,1]$ as the probability of the outcome `yes'"
+    }
+   ],
+   "legacy_aliases": [],
+   "collisions": [
+    "COL-P"
+   ]
+  },
+  {
+   "symbol_id": "sym.indicator",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "ind",
+    "args": 1,
+    "expansion": "\\chi_{#1}",
+    "arg_examples": [
+     "S"
+    ]
+   },
+   "canonical_token": "\\chi_S",
+   "unicode": "χ_S",
+   "mathml": "<math><msub><mi>χ</mi><mi>S</mi></msub></math>",
+   "name_de": "Indikatorfunktion",
+   "name_en": "indicator function",
+   "meaning_de": "Funktion, die auf dem Ereignis S den Wert 1 und sonst 0 hat; die klassische Ja-Nein-Messung",
+   "meaning_en": "function equal to 1 on the event S and 0 elsewhere; the classical yes-no measurement",
+   "depth": "kern",
+   "first_fixed_in": "C1",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl01.tex:144",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\chi_S(x) = \\begin{cases}"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.expectation",
+   "preinventory_row": 66,
+   "tex": {
+    "macro": "Ex",
+    "args": 0,
+    "expansion": "\\mathbb{E}"
+   },
+   "canonical_token": "\\mathbbE",
+   "unicode": "𝔼",
+   "mathml": "<math><mi>𝔼</mi></math>",
+   "name_de": "Erwartungswert",
+   "name_en": "expectation value",
+   "meaning_de": "Erwartungswertfunktional einer Präparation",
+   "meaning_en": "expectation functional of a preparation",
+   "depth": "kern",
+   "first_fixed_in": "D55",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl01.tex:139",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\text{Erwartungswert} = \\mathbb{E}[f] = \\sum_{x\\in X} p(x)f(x)."
+    },
+    {
+     "source": "tpc-macros",
+     "locus": "tpc-macros.sty:37",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\newcommand{\\Ex}{\\mathbb{E}}"
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "Ex",
+     "note": "same name and expansion"
+    }
+   ]
+  },
+  {
+   "symbol_id": "sym.probability",
+   "preinventory_row": 66,
+   "tex": {
+    "macro": "Prob",
+    "args": 0,
+    "expansion": "\\mathbb{P}"
+   },
+   "canonical_token": "\\mathbbP",
+   "unicode": "ℙ",
+   "mathml": "<math><mi>ℙ</mi></math>",
+   "name_de": "Wahrscheinlichkeit",
+   "name_en": "probability",
+   "meaning_de": "Wahrscheinlichkeit eines Ereignisses S, ℙ[S] = 𝔼[χ_S]",
+   "meaning_en": "probability of an event S, ℙ[S] = 𝔼[χ_S]",
+   "depth": "kern",
+   "first_fixed_in": "D54",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl01.tex:154",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\mathbb{E}[\\chi_S] = \\sum_{x\\in X} p(x)\\chi_S(x) = \\sum_{x\\in S} p(x) \\equiv \\mathbb{P}[S]"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.variance",
+   "preinventory_row": 66,
+   "tex": {
+    "macro": "Var",
+    "args": 0,
+    "expansion": "\\operatorname{Var}"
+   },
+   "canonical_token": "\\operatornameVar",
+   "unicode": "Var",
+   "mathml": "<math><mi mathvariant=\"normal\">Var</mi></math>",
+   "name_de": "Varianz",
+   "name_en": "variance",
+   "meaning_de": "Varianz einer Wahrscheinlichkeitsverteilung",
+   "meaning_en": "variance of a probability distribution",
+   "depth": "kern",
+   "first_fixed_in": "D56",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl01.tex:212",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\text{Var}[\\mathbb{P}] \\equiv \\mathbb{E}[(x-M_1)^2]"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "The pre-inventory row 66 proposes lower-case \\mathrm{var}; vl01.tex:212 writes Var, vl09.tex:41 writes var. Var is taken because it is the form at the first definition."
+  },
+  {
+   "symbol_id": "sym.state-space",
+   "preinventory_row": 8,
+   "tex": {
+    "macro": "StSp",
+    "args": 0,
+    "expansion": "K"
+   },
+   "canonical_token": "K",
+   "unicode": "K",
+   "mathml": "<math><mi>K</mi></math>",
+   "name_de": "Zustandsraum",
+   "name_en": "state space",
+   "meaning_de": "Zustandsraum einer allgemeinen probabilistischen Theorie: kompakte konvexe Menge in einem reellen endlichdimensionalen Vektorraum",
+   "meaning_en": "state space of a general probabilistic theory: compact convex set in a real finite-dimensional vector space",
+   "depth": "kern",
+   "first_fixed_in": "D3",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "what_v4.tex:23",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "Let $K$ denote a state space"
+    }
+   ],
+   "legacy_aliases": [],
+   "collisions": [
+    "COL-K"
+   ]
+  },
+  {
+   "symbol_id": "sym.effect-algebra",
+   "preinventory_row": 9,
+   "tex": {
+    "macro": "EffAlg",
+    "args": 1,
+    "expansion": "E(#1)",
+    "arg_examples": [
+     "K"
+    ]
+   },
+   "canonical_token": "E(K)",
+   "unicode": "E(K)",
+   "mathml": "<math><mrow><mi>E</mi><mo>(</mo><mi>K</mi><mo>)</mo></mrow></math>",
+   "name_de": "Effektalgebra",
+   "name_en": "effect algebra",
+   "meaning_de": "Menge aller affinen Funktionen K → [0,1]",
+   "meaning_en": "set of all affine functions K → [0,1]",
+   "depth": "kern",
+   "first_fixed_in": "D2",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "basic_v3.tex:57",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "the \\emph{effect algebra} over $K$ will be denoted $E(K)$"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.affine-functions",
+   "preinventory_row": 9,
+   "tex": {
+    "macro": "Aff",
+    "args": 1,
+    "expansion": "A(#1)",
+    "arg_examples": [
+     "K"
+    ]
+   },
+   "canonical_token": "A(K)",
+   "unicode": "A(K)",
+   "mathml": "<math><mrow><mi>A</mi><mo>(</mo><mi>K</mi><mo>)</mo></mrow></math>",
+   "name_de": "Raum der affinen Funktionen",
+   "name_en": "space of affine functions",
+   "meaning_de": "reeller Vektorraum der affinen Funktionen K → ℝ",
+   "meaning_en": "real vector space of affine functions K → ℝ",
+   "depth": "vertiefung",
+   "first_fixed_in": "D57",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "basic_v3.tex:76",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "Let $A(K)$ be the vector space of affine functions on $K$"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.positive-cone",
+   "preinventory_row": 9,
+   "tex": {
+    "macro": "AffPos",
+    "args": 1,
+    "expansion": "A(#1)^{+}",
+    "arg_examples": [
+     "K"
+    ]
+   },
+   "canonical_token": "A(K)^+",
+   "unicode": "A(K)⁺",
+   "mathml": "<math><msup><mrow><mi>A</mi><mo>(</mo><mi>K</mi><mo>)</mo></mrow><mo>+</mo></msup></math>",
+   "name_de": "positiver Kegel",
+   "name_en": "positive cone",
+   "meaning_de": "Kegel der nichtnegativen affinen Funktionen auf K",
+   "meaning_en": "cone of nonnegative affine functions on K",
+   "depth": "vertiefung",
+   "first_fixed_in": "D57",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "basic_v3.tex:79",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "A(K)^+ &= \\{ f \\in A(K) : f(x) \\geq 0, \\forall x \\in K \\}."
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.dual-space",
+   "preinventory_row": 9,
+   "tex": {
+    "macro": "AffDual",
+    "args": 1,
+    "expansion": "A(#1)^{*}",
+    "arg_examples": [
+     "K"
+    ]
+   },
+   "canonical_token": "A(K)^*",
+   "unicode": "A(K)*",
+   "mathml": "<math><msup><mrow><mi>A</mi><mo>(</mo><mi>K</mi><mo>)</mo></mrow><mo>*</mo></msup></math>",
+   "name_de": "Dualraum von A(K)",
+   "name_en": "dual space of A(K)",
+   "meaning_de": "Vektorraum aller linearen Funktionale auf A(K)",
+   "meaning_en": "vector space of all linear functionals on A(K)",
+   "depth": "vertiefung",
+   "first_fixed_in": "D59",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "basic_v3.tex:154",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "Let $A(K)^*$ denote the dual vector space to $A(K)$"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.dual-cone",
+   "preinventory_row": 9,
+   "tex": {
+    "macro": "AffDualPos",
+    "args": 1,
+    "expansion": "A(#1)^{*+}",
+    "arg_examples": [
+     "K"
+    ]
+   },
+   "canonical_token": "A(K)^*+",
+   "unicode": "A(K)*⁺",
+   "mathml": "<math><msup><mrow><mi>A</mi><mo>(</mo><mi>K</mi><mo>)</mo></mrow><mrow><mo>*</mo><mo>+</mo></mrow></msup></math>",
+   "name_de": "dualer Kegel",
+   "name_en": "dual cone",
+   "meaning_de": "Kegel der auf A(K)⁺ nichtnegativen linearen Funktionale",
+   "meaning_en": "cone of linear functionals that are nonnegative on A(K)⁺",
+   "depth": "vertiefung",
+   "first_fixed_in": "D59",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "basic_v3.tex:158",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "A(K)^{*+} = \\{ \\psi \\in A(K)^* : \\<\\psi, f\\> \\geq 0, \\forall f \\in A(K)^+ \\},"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.unit-effect",
+   "preinventory_row": 10,
+   "tex": {
+    "macro": "UnitEff",
+    "args": 1,
+    "expansion": "1_{#1}",
+    "arg_examples": [
+     "K"
+    ]
+   },
+   "canonical_token": "1_K",
+   "unicode": "1_K",
+   "mathml": "<math><msub><mn>1</mn><mi>K</mi></msub></math>",
+   "name_de": "Einseffekt",
+   "name_en": "unit effect",
+   "meaning_de": "konstante Funktion 1 auf K",
+   "meaning_en": "constant function 1 on K",
+   "depth": "kern",
+   "first_fixed_in": "D58",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "basic_v3.tex:70",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "$1_K \\in E(K)$ is the constant function given as $1_K(x) = 1$ for all $x \\in K$."
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.order-unit",
+   "preinventory_row": 10,
+   "tex": {
+    "macro": "OrdUnit",
+    "args": 0,
+    "expansion": "u"
+   },
+   "canonical_token": "u",
+   "unicode": "u",
+   "mathml": "<math><mi>u</mi></math>",
+   "name_de": "Ordnungseinheit",
+   "name_en": "order unit",
+   "meaning_de": "ausgezeichnetes Element eines geordneten Vektorraums, dessen Vielfache jedes Element majorisieren",
+   "meaning_en": "distinguished element of an ordered vector space whose multiples dominate every element",
+   "depth": "fundament",
+   "first_fixed_in": "D6",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "basic_v3.tex:299",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "\\emph{Order unit space} $(V, \\leq, u)$ is an ordered vector space $(V, \\leq)$ with an order unit $u \\in V$"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.pairing",
+   "preinventory_row": 11,
+   "tex": {
+    "macro": "pair",
+    "args": 2,
+    "expansion": "\\langle #1, #2 \\rangle",
+    "arg_examples": [
+     "x",
+     "f"
+    ]
+   },
+   "canonical_token": "\\langlex,f\\rangle",
+   "unicode": "⟨x, f⟩",
+   "mathml": "<math><mrow><mo>⟨</mo><mi>x</mi><mo>,</mo><mi>f</mi><mo>⟩</mo></mrow></math>",
+   "name_de": "Paarung Zustand-Effekt",
+   "name_en": "state-effect pairing",
+   "meaning_de": "Wert des Effekts f im Zustand x; Zustand im ersten Platz",
+   "meaning_en": "value of the effect f in the state x; state in the first slot",
+   "depth": "vertiefung",
+   "first_fixed_in": "D59",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "basic_v3.tex:174",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "\\< x, f \\> = f(x)."
+    }
+   ],
+   "legacy_aliases": [],
+   "conventions": [
+    "CONV-PAIRING"
+   ]
+  },
+  {
+   "symbol_id": "sym.channels",
+   "preinventory_row": 13,
+   "tex": {
+    "macro": "Chan",
+    "args": 2,
+    "expansion": "\\mathcal{C}(#1, #2)",
+    "arg_examples": [
+     "K_A",
+     "K_B"
+    ]
+   },
+   "canonical_token": "\\mathcalC(K_A,K_B)",
+   "unicode": "𝒞(K_A, K_B)",
+   "mathml": "<math><mrow><mi>𝒞</mi><mo>(</mo><msub><mi>K</mi><mi>A</mi></msub><mo>,</mo><msub><mi>K</mi><mi>B</mi></msub><mo>)</mo></mrow></math>",
+   "name_de": "Menge der Kanäle",
+   "name_en": "set of channels",
+   "meaning_de": "Menge der affinen Abbildungen K_A → K_B",
+   "meaning_en": "set of affine maps K_A → K_B",
+   "depth": "kern",
+   "first_fixed_in": "D8",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "channels_v3.tex:16",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "We will denote the set of all channels $\\Phi: K_A \\to K_B$ by $\\chan(K_A, K_B)$."
+    },
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "mplmacros.sty:188",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "\\DeclareMathOperator{\\chan}{\\mathcal{C}}"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "Pre-inventory row 13 notes the visual closeness to C(X), continuous functions; not among the ten collisions."
+  },
+  {
+   "symbol_id": "sym.simplex",
+   "preinventory_row": 14,
+   "tex": {
+    "macro": "Simplex",
+    "args": 1,
+    "expansion": "\\Delta_{#1}",
+    "arg_examples": [
+     "n"
+    ]
+   },
+   "canonical_token": "\\Delta_n",
+   "unicode": "Δ_n",
+   "mathml": "<math><msub><mi mathvariant=\"normal\">Δ</mi><mi>n</mi></msub></math>",
+   "name_de": "Simplex",
+   "name_en": "simplex",
+   "meaning_de": "klassischer Zustandsraum mit n reinen Zuständen: konvexe Hülle von n affin unabhängigen Punkten",
+   "meaning_en": "classical state space with n pure states: convex hull of n affinely independent points",
+   "depth": "kern",
+   "first_fixed_in": "D11",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "CT_v3.tex:6",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "a simplex $S_n$ is a convex hull of affinely independent points"
+    }
+   ],
+   "legacy_aliases": [],
+   "collisions": [
+    "COL-S",
+    "COL-DELTA"
+   ],
+   "notes": "Plavala writes S_n. The pre-inventory proposes Δ_n to free S for entropy; provisional."
+  },
+  {
+   "symbol_id": "sym.extreme-points",
+   "preinventory_row": 15,
+   "tex": {
+    "macro": "ext",
+    "args": 0,
+    "expansion": "\\operatorname{ext}"
+   },
+   "canonical_token": "\\operatornameext",
+   "unicode": "ext",
+   "mathml": "<math><mi mathvariant=\"normal\">ext</mi></math>",
+   "name_de": "Extremalpunkte",
+   "name_en": "extreme points",
+   "meaning_de": "Menge der Extremalpunkte (reinen Zustände) einer konvexen Menge",
+   "meaning_en": "set of extreme points (pure states) of a convex set",
+   "depth": "kern",
+   "first_fixed_in": "D4",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "mplmacros.sty:206",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "\\DeclareMathOperator{\\ext}{ext}"
+    },
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "basic_v3.tex:43",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "$\\ext(K)$ contains finitely many points"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.convex-hull",
+   "preinventory_row": 15,
+   "tex": {
+    "macro": "conv",
+    "args": 0,
+    "expansion": "\\operatorname{conv}"
+   },
+   "canonical_token": "\\operatornameconv",
+   "unicode": "conv",
+   "mathml": "<math><mi mathvariant=\"normal\">conv</mi></math>",
+   "name_de": "konvexe Hülle",
+   "name_en": "convex hull",
+   "meaning_de": "konvexe Hülle einer Menge",
+   "meaning_en": "convex hull of a set",
+   "depth": "kern",
+   "first_fixed_in": "D11",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "mplmacros.sty:196",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "\\DeclareMathOperator{\\conv}{conv}"
+    },
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "CT_v3.tex:15",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "S_n = \\conv ( \\{ s_1, \\ldots, s_n \\} )"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.cone-hull",
+   "preinventory_row": 15,
+   "tex": {
+    "macro": "cone",
+    "args": 0,
+    "expansion": "\\operatorname{cone}"
+   },
+   "canonical_token": "\\operatornamecone",
+   "unicode": "cone",
+   "mathml": "<math><mi mathvariant=\"normal\">cone</mi></math>",
+   "name_de": "erzeugter Kegel",
+   "name_en": "generated cone",
+   "meaning_de": "kleinster Kegel, der eine Menge enthält",
+   "meaning_en": "smallest cone containing a set",
+   "depth": "vertiefung",
+   "first_fixed_in": "D57",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "mplmacros.sty:198",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "\\DeclareMathOperator{\\cone}{cone}"
+    },
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "basic_v3.tex:81",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "$A(K)^+$ is the smallest cone in $A(K)$ that contains $E(K)$"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.hilbert-space",
+   "preinventory_row": 1,
+   "tex": {
+    "macro": "Hil",
+    "args": 0,
+    "expansion": "\\mathcal{H}"
+   },
+   "canonical_token": "\\mathcalH",
+   "unicode": "ℋ",
+   "mathml": "<math><mi>ℋ</mi></math>",
+   "name_de": "Hilbertraum",
+   "name_en": "Hilbert space",
+   "meaning_de": "Hilbertraum eines quantenmechanischen Systems",
+   "meaning_en": "Hilbert space of a quantum-mechanical system",
+   "depth": "kern",
+   "first_fixed_in": "D14",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:177",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Hilbertraum $\\mathcal{H}$ ist als ein komplexer Vektorraum mit Skalarprodukt"
+    },
+    {
+     "source": "tpc-macros",
+     "locus": "tpc-macros.sty:38",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\newcommand{\\Hil}{\\mathcal{H}}"
+    },
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "mplmacros.sty:174",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "\\DeclareMathOperator{\\Ha}{\\mathcal{H}}"
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "Hil",
+     "note": "same name and expansion"
+    }
+   ],
+   "collisions": [
+    "COL-H"
+   ]
+  },
+  {
+   "symbol_id": "sym.inner-product",
+   "preinventory_row": 2,
+   "tex": {
+    "macro": "braket",
+    "args": 2,
+    "expansion": "\\langle #1 \\mid #2 \\rangle",
+    "arg_examples": [
+     "\\phi",
+     "\\psi"
+    ]
+   },
+   "canonical_token": "\\langle\\phi\\mid\\psi\\rangle",
+   "unicode": "⟨φ|ψ⟩",
+   "mathml": "<math><mrow><mo>⟨</mo><mi>ϕ</mi><mo>|</mo><mi>ψ</mi><mo>⟩</mo></mrow></math>",
+   "name_de": "Skalarprodukt",
+   "name_en": "inner product",
+   "meaning_de": "Skalarprodukt, antilinear im ersten und linear im zweiten Argument",
+   "meaning_en": "inner product, antilinear in the first and linear in the second argument",
+   "depth": "kern",
+   "first_fixed_in": "D14",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:137",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\langle z\\phi|\\psi\\rangle &= z^* \\langle \\phi|\\psi\\rangle."
+    },
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "QT_v3.tex:6",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "it is linear in the second argument"
+    },
+    {
+     "source": "reed-simon-1",
+     "locus": "section II.1, p. 36 (DjVu page 48)",
+     "verified": true,
+     "quote": "(iii) (x, \\alpha y) = \\alpha (x, y)",
+     "how": "read from the page image (ddjvu -format=pnm -page=48 -scale=180), not from the text layer"
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "braket",
+     "note": "same name and expansion"
+    }
+   ],
+   "conventions": [
+    "CONV-INNER"
+   ]
+  },
+  {
+   "symbol_id": "sym.bounded-operators",
+   "preinventory_row": 3,
+   "tex": {
+    "macro": "BdOp",
+    "args": 1,
+    "expansion": "B(#1)",
+    "arg_examples": [
+     "\\mathcal{H}"
+    ]
+   },
+   "canonical_token": "B(\\mathcalH)",
+   "unicode": "B(ℋ)",
+   "mathml": "<math><mrow><mi>B</mi><mo>(</mo><mi>ℋ</mi><mo>)</mo></mrow></math>",
+   "name_de": "beschränkte Operatoren",
+   "name_en": "bounded operators",
+   "meaning_de": "Algebra der beschränkten Operatoren auf ℋ",
+   "meaning_en": "algebra of bounded operators on ℋ",
+   "depth": "kern",
+   "first_fixed_in": "D15",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:23 (symbol row 3)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "Lop",
+     "note": "legacy \\Lop is \\mathcal{L} and is documented as 'bounded operators / Liouvillian' (two meanings); not reused"
+    }
+   ]
+  },
+  {
+   "symbol_id": "sym.bounded-selfadjoint",
+   "preinventory_row": 4,
+   "tex": {
+    "macro": "BdSa",
+    "args": 1,
+    "expansion": "B(#1)_{\\mathrm{sa}}",
+    "arg_examples": [
+     "\\mathcal{H}"
+    ]
+   },
+   "canonical_token": "B(\\mathcalH)_\\mathrmsa",
+   "unicode": "B(ℋ)_sa",
+   "mathml": "<math><msub><mrow><mi>B</mi><mo>(</mo><mi>ℋ</mi><mo>)</mo></mrow><mi mathvariant=\"normal\">sa</mi></msub></math>",
+   "name_de": "beschränkte selbstadjungierte Operatoren",
+   "name_en": "bounded self-adjoint operators",
+   "meaning_de": "reeller Vektorraum der beschränkten selbstadjungierten Operatoren",
+   "meaning_en": "real vector space of bounded self-adjoint operators",
+   "depth": "vertiefung",
+   "first_fixed_in": "D15",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:24 (symbol row 4)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.trace-class",
+   "preinventory_row": 5,
+   "tex": {
+    "macro": "TrCl",
+    "args": 1,
+    "expansion": "T(#1)",
+    "arg_examples": [
+     "\\mathcal{H}"
+    ]
+   },
+   "canonical_token": "T(\\mathcalH)",
+   "unicode": "T(ℋ)",
+   "mathml": "<math><mrow><mi>T</mi><mo>(</mo><mi>ℋ</mi><mo>)</mo></mrow></math>",
+   "name_de": "Spurklasseoperatoren",
+   "name_en": "trace-class operators",
+   "meaning_de": "Raum der Spurklasseoperatoren auf ℋ",
+   "meaning_en": "space of trace-class operators on ℋ",
+   "depth": "vertiefung",
+   "first_fixed_in": "D21",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:25 (symbol row 5)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.density-operators",
+   "preinventory_row": 6,
+   "tex": {
+    "macro": "DensOps",
+    "args": 1,
+    "expansion": "\\mathcal{D}(#1)",
+    "arg_examples": [
+     "\\mathcal{H}"
+    ]
+   },
+   "canonical_token": "\\mathcalD(\\mathcalH)",
+   "unicode": "𝒟(ℋ)",
+   "mathml": "<math><mrow><mi>𝒟</mi><mo>(</mo><mi>ℋ</mi><mo>)</mo></mrow></math>",
+   "name_de": "Menge der Dichteoperatoren",
+   "name_en": "set of density operators",
+   "meaning_de": "Zustandsraum der Quantentheorie",
+   "meaning_en": "state space of quantum theory",
+   "depth": "kern",
+   "first_fixed_in": "D22",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:26 (symbol row 6)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.effect-operators",
+   "preinventory_row": 7,
+   "tex": {
+    "macro": "EffOps",
+    "args": 1,
+    "expansion": "\\mathcal{E}(#1)",
+    "arg_examples": [
+     "\\mathcal{H}"
+    ]
+   },
+   "canonical_token": "\\mathcalE(\\mathcalH)",
+   "unicode": "ℰ(ℋ)",
+   "mathml": "<math><mrow><mi>ℰ</mi><mo>(</mo><mi>ℋ</mi><mo>)</mo></mrow></math>",
+   "name_de": "Menge der Effektoperatoren",
+   "name_en": "set of effect operators",
+   "meaning_de": "Operatoren zwischen 0 und der Identität",
+   "meaning_en": "operators between 0 and the identity",
+   "depth": "kern",
+   "first_fixed_in": "D24",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:27 (symbol row 7)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.effect-operator",
+   "preinventory_row": 12,
+   "tex": {
+    "macro": "EffOp",
+    "args": 0,
+    "expansion": "F"
+   },
+   "canonical_token": "F",
+   "unicode": "F",
+   "mathml": "<math><mi>F</mi></math>",
+   "name_de": "Effektoperator",
+   "name_en": "effect operator",
+   "meaning_de": "einzelner Effekt (Detektor) der Quantentheorie",
+   "meaning_en": "single effect (detector) of quantum theory",
+   "depth": "kern",
+   "first_fixed_in": "D24",
+   "status": "collision-open",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:32 (symbol row 12)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [],
+   "collisions": [
+    "COL-F"
+   ],
+   "gap_tjo": "BRIEF.md P3/P4 write E for the detector operator; the script (vl06.tex Postulat 3 and 4) writes F. Which is canonical?"
+  },
+  {
+   "symbol_id": "sym.tensor-min",
+   "preinventory_row": 16,
+   "tex": {
+    "macro": "tmin",
+    "args": 0,
+    "expansion": "\\otimes_{\\mathrm{min}}"
+   },
+   "canonical_token": "\\otimes_\\mathrmmin",
+   "unicode": "⊗_min",
+   "mathml": "<math><msub><mo>⊗</mo><mi mathvariant=\"normal\">min</mi></msub></math>",
+   "name_de": "minimales Tensorprodukt",
+   "name_en": "minimal tensor product",
+   "meaning_de": "minimales Tensorprodukt von Zustandsräumen",
+   "meaning_en": "minimal tensor product of state spaces",
+   "depth": "fundament",
+   "first_fixed_in": "D13",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:36 (symbol row 16)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.tensor-max",
+   "preinventory_row": 16,
+   "tex": {
+    "macro": "tmax",
+    "args": 0,
+    "expansion": "\\otimes_{\\mathrm{max}}"
+   },
+   "canonical_token": "\\otimes_\\mathrmmax",
+   "unicode": "⊗_max",
+   "mathml": "<math><msub><mo>⊗</mo><mi mathvariant=\"normal\">max</mi></msub></math>",
+   "name_de": "maximales Tensorprodukt",
+   "name_en": "maximal tensor product",
+   "meaning_de": "maximales Tensorprodukt von Zustandsräumen",
+   "meaning_en": "maximal tensor product of state spaces",
+   "depth": "fundament",
+   "first_fixed_in": "D13",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:36 (symbol row 16)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.density-operator",
+   "preinventory_row": 17,
+   "tex": {
+    "macro": "rho",
+    "args": 0,
+    "expansion": "\\rho",
+    "builtin": true
+   },
+   "canonical_token": "\\rho",
+   "unicode": "ρ",
+   "mathml": "<math><mi>ρ</mi></math>",
+   "name_de": "Dichteoperator",
+   "name_en": "density operator",
+   "meaning_de": "Zustand (Präparation) eines Quantensystems",
+   "meaning_en": "state (preparation) of a quantum system",
+   "depth": "kern",
+   "first_fixed_in": "D22",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl06.tex:36",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Das ist ein positiver Operator $\\rho$ auf $\\mathcal{H}$, mit $\\tr(\\rho) = 1$."
+    },
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "QT_v3.tex:11",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "\\dens(\\Ha) = \\{ \\rho \\in \\bound_H^+(\\Ha) : \\Tr(\\rho) = 1 \\}."
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "rhoop",
+     "note": "legacy \\rhoop is \\widehat{\\rho}; the hat question is open (sym.operator-hat)"
+    }
+   ]
+  },
+  {
+   "symbol_id": "sym.algebraic-state",
+   "preinventory_row": 18,
+   "tex": {
+    "macro": "AlgSt",
+    "args": 0,
+    "expansion": "\\omega"
+   },
+   "canonical_token": "\\omega",
+   "unicode": "ω",
+   "mathml": "<math><mi>ω</mi></math>",
+   "name_de": "algebraischer Zustand",
+   "name_en": "algebraic state",
+   "meaning_de": "positives normiertes lineares Funktional auf einer Operatoralgebra",
+   "meaning_en": "positive normalised linear functional on an operator algebra",
+   "depth": "fundament",
+   "first_fixed_in": "D23",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:38 (symbol row 18)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "Pre-inventory: collides with the angular frequency ω of the oscillator."
+  },
+  {
+   "symbol_id": "sym.identity",
+   "preinventory_row": 19,
+   "tex": {
+    "macro": "Id",
+    "args": 0,
+    "expansion": "\\mathbb{I}"
+   },
+   "canonical_token": "\\mathbbI",
+   "unicode": "𝕀",
+   "mathml": "<math><mi>𝕀</mi></math>",
+   "name_de": "Einsoperator",
+   "name_en": "identity operator",
+   "meaning_de": "Identität auf dem Hilbertraum",
+   "meaning_en": "identity on the Hilbert space",
+   "depth": "kern",
+   "first_fixed_in": "C3",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:9",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Der \\emph{Einsoperator} $\\mathbb{I}$ wird durch"
+    },
+    {
+     "source": "reed-simon-3",
+     "locus": "section XI.4, p. 55 (DjVu page 62)",
+     "verified": true,
+     "quote": "U \\tilde H U^{-1} = h_0 \\otimes I + I \\otimes H",
+     "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "The pre-inventory proposes the glyph 𝟙 (Plavala \\mathds{1}); kept as the script's \\mathbb{I} because \\mathbb{1} is not available in every math font of the build matrix. Reed-Simon and BRIEF.md write I.",
+   "gap_tjo": "Glyph of the identity: 𝕀 (script), 𝟙 (pre-inventory, Plavala) or I (BRIEF, Reed-Simon)?"
+  },
+  {
+   "symbol_id": "sym.trace",
+   "preinventory_row": 20,
+   "tex": {
+    "macro": "tr",
+    "args": 0,
+    "expansion": "\\operatorname{tr}"
+   },
+   "canonical_token": "\\operatornametr",
+   "unicode": "tr",
+   "mathml": "<math><mi mathvariant=\"normal\">tr</mi></math>",
+   "name_de": "Spur",
+   "name_en": "trace",
+   "meaning_de": "Spur eines Operators, nicht normiert",
+   "meaning_en": "trace of an operator, not normalised",
+   "depth": "kern",
+   "first_fixed_in": "D21",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl06.tex:43",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "1 = \\tr(\\rho) = \\tr(|\\Psi\\rangle\\langle \\Psi|)"
+    },
+    {
+     "source": "tpc-macros",
+     "locus": "tpc-macros.sty:12",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\DeclareMathOperator{\\tr}{tr}"
+    },
+    {
+     "source": "plavala-2103.07469v2",
+     "locus": "mplmacros.sty:216",
+     "verified": true,
+     "how": "read in the arXiv TeX source at this line",
+     "quote": "\\DeclareMathOperator{\\Tr}{Tr}"
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "tr",
+     "note": "same name and expansion"
+    }
+   ],
+   "conventions": [
+    "CONV-TRACE"
+   ]
+  },
+  {
+   "symbol_id": "sym.adjoint",
+   "preinventory_row": 21,
+   "tex": {
+    "macro": "adj",
+    "args": 0,
+    "expansion": "^{\\dagger}"
+   },
+   "canonical_token": "^\\dagger",
+   "unicode": "†",
+   "mathml": "<math><msup><mrow/><mo>†</mo></msup></math>",
+   "name_de": "Adjungierte",
+   "name_en": "adjoint",
+   "meaning_de": "adjungierter Operator, als Suffix geschrieben",
+   "meaning_en": "adjoint operator, written as a suffix",
+   "depth": "kern",
+   "first_fixed_in": "D17",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:41 (symbol row 21)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "adj",
+     "note": "same name and expansion"
+    },
+    {
+     "macro": "herm",
+     "note": "prefix form \\herm{A}"
+    }
+   ]
+  },
+  {
+   "symbol_id": "sym.operator-hat",
+   "preinventory_row": 22,
+   "tex": {
+    "macro": "op",
+    "args": 1,
+    "expansion": "\\widehat{#1}",
+    "arg_examples": [
+     "A"
+    ]
+   },
+   "canonical_token": "\\widehatA",
+   "unicode": "Â",
+   "mathml": "<math><mover accent=\"true\"><mi>A</mi><mo>^</mo></mover></math>",
+   "name_de": "Operatorhut",
+   "name_en": "operator hat",
+   "meaning_de": "Kennzeichnung eines Operators durch ein Dach",
+   "meaning_en": "marking of an operator by a hat",
+   "depth": "kern",
+   "first_fixed_in": "C3",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:42 (symbol row 22)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "op",
+     "note": "same name and expansion"
+    }
+   ],
+   "gap_tjo": "Do operator hats survive into the new course (the script uses them, Reed-Simon, Plavala and Bratteli-Robinson do not)?"
+  },
+  {
+   "symbol_id": "sym.hbar",
+   "preinventory_row": 23,
+   "tex": {
+    "macro": "hbar",
+    "args": 0,
+    "expansion": "\\hbar",
+    "builtin": true
+   },
+   "canonical_token": "\\hbar",
+   "unicode": "ℏ",
+   "mathml": "<math><mi mathvariant=\"normal\">ℏ</mi></math>",
+   "name_de": "reduziertes Plancksches Wirkungsquantum",
+   "name_en": "reduced Planck constant",
+   "meaning_de": "ℏ wird in SI-Einheiten ausgeschrieben",
+   "meaning_en": "ℏ is written out in SI units",
+   "depth": "kern",
+   "first_fixed_in": "C5",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2.1",
+     "locus": "lectures/de/vl16.tex:57",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "a_0 = \\frac{4\\pi\\epsilon_0\\hbar^2}{m_{\\text{e}}e^2}"
+    }
+   ],
+   "legacy_aliases": [],
+   "conventions": [
+    "CONV-UNITS"
+   ]
+  },
+  {
+   "symbol_id": "sym.time-evolution",
+   "preinventory_row": 24,
+   "tex": {
+    "macro": "Ut",
+    "args": 1,
+    "expansion": "U_{#1}",
+    "arg_examples": [
+     "t"
+    ]
+   },
+   "canonical_token": "U_t",
+   "unicode": "U_t",
+   "mathml": "<math><msub><mi>U</mi><mi>t</mi></msub></math>",
+   "name_de": "Zeitentwicklungsoperator",
+   "name_en": "time-evolution operator",
+   "meaning_de": "unitäre Zeitentwicklung im Schrödingerbild",
+   "meaning_en": "unitary time evolution in the Schrödinger picture",
+   "depth": "kern",
+   "first_fixed_in": "D29",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:44 (symbol row 24)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [],
+   "collisions": [
+    "COL-U"
+   ]
+  },
+  {
+   "symbol_id": "sym.heisenberg-picture",
+   "preinventory_row": 25,
+   "tex": {
+    "macro": "Heis",
+    "args": 2,
+    "expansion": "#1_{#2}",
+    "arg_examples": [
+     "A",
+     "t"
+    ]
+   },
+   "canonical_token": "A_t",
+   "unicode": "A_t",
+   "mathml": "<math><msub><mi>A</mi><mi>t</mi></msub></math>",
+   "name_de": "Heisenbergbild-Observable",
+   "name_en": "Heisenberg-picture observable",
+   "meaning_de": "zeitentwickelte Observable im Heisenbergbild",
+   "meaning_en": "time-evolved observable in the Heisenberg picture",
+   "depth": "kern",
+   "first_fixed_in": "C9",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:45 (symbol row 25)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.fourier-transform",
+   "preinventory_row": 26,
+   "tex": {
+    "macro": "FT",
+    "args": 1,
+    "expansion": "\\widehat{#1}",
+    "arg_examples": [
+     "f"
+    ]
+   },
+   "canonical_token": "\\widehatf",
+   "unicode": "f̂",
+   "mathml": "<math><mover accent=\"true\"><mi>f</mi><mo>^</mo></mover></math>",
+   "name_de": "Fouriertransformierte",
+   "name_en": "Fourier transform",
+   "meaning_de": "Fouriertransformierte einer Funktion",
+   "meaning_en": "Fourier transform of a function",
+   "depth": "kern",
+   "first_fixed_in": "C5",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:46 (symbol row 26)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [],
+   "conventions": [
+    "CONV-FOURIER"
+   ],
+   "notes": "The pre-inventory attributes \\hat f(k) to vl08.tex; vl08.tex:71 writes F(k). The hat form also coincides with the operator hat."
+  },
+  {
+   "symbol_id": "sym.position-operator",
+   "preinventory_row": 27,
+   "tex": {
+    "macro": "xop",
+    "args": 0,
+    "expansion": "\\widehat{x}"
+   },
+   "canonical_token": "\\widehatx",
+   "unicode": "x̂",
+   "mathml": "<math><mover accent=\"true\"><mi>x</mi><mo>^</mo></mover></math>",
+   "name_de": "Ortsoperator",
+   "name_en": "position operator",
+   "meaning_de": "Ortsoperator",
+   "meaning_en": "position operator",
+   "depth": "kern",
+   "first_fixed_in": "C5",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:47 (symbol row 27)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "xop",
+     "note": "same name and expansion"
+    }
+   ]
+  },
+  {
+   "symbol_id": "sym.momentum-operator",
+   "preinventory_row": 27,
+   "tex": {
+    "macro": "pop",
+    "args": 0,
+    "expansion": "\\widehat{p}"
+   },
+   "canonical_token": "\\widehatp",
+   "unicode": "p̂",
+   "mathml": "<math><mover accent=\"true\"><mi>p</mi><mo>^</mo></mover></math>",
+   "name_de": "Impulsoperator",
+   "name_en": "momentum operator",
+   "meaning_de": "Impulsoperator",
+   "meaning_en": "momentum operator",
+   "depth": "kern",
+   "first_fixed_in": "C5",
+   "status": "collision-open",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:47 (symbol row 27)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "pop",
+     "note": "same name and expansion"
+    }
+   ],
+   "collisions": [
+    "COL-P"
+   ]
+  },
+  {
+   "symbol_id": "sym.commutator",
+   "preinventory_row": 28,
+   "tex": {
+    "macro": "comm",
+    "args": 2,
+    "expansion": "\\left[ #1, #2 \\right]",
+    "arg_examples": [
+     "A",
+     "B"
+    ]
+   },
+   "canonical_token": "\\left[A,B\\right]",
+   "unicode": "[A, B]",
+   "mathml": "<math><mrow><mo>[</mo><mi>A</mi><mo>,</mo><mi>B</mi><mo>]</mo></mrow></math>",
+   "name_de": "Kommutator",
+   "name_en": "commutator",
+   "meaning_de": "AB − BA",
+   "meaning_en": "AB − BA",
+   "depth": "kern",
+   "first_fixed_in": "C3",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:48 (symbol row 28)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "comm",
+     "note": "same name and expansion"
+    }
+   ]
+  },
+  {
+   "symbol_id": "sym.anticommutator",
+   "preinventory_row": 28,
+   "tex": {
+    "macro": "acomm",
+    "args": 2,
+    "expansion": "\\left\\{ #1, #2 \\right\\}",
+    "arg_examples": [
+     "A",
+     "B"
+    ]
+   },
+   "canonical_token": "\\left\\A,B\\right\\",
+   "unicode": "{A, B}",
+   "mathml": "<math><mrow><mo>{</mo><mi>A</mi><mo>,</mo><mi>B</mi><mo>}</mo></mrow></math>",
+   "name_de": "Antikommutator",
+   "name_en": "anticommutator",
+   "meaning_de": "AB + BA",
+   "meaning_en": "AB + BA",
+   "depth": "kern",
+   "first_fixed_in": "C14",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:48 (symbol row 28)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "acomm",
+     "note": "same name and expansion"
+    }
+   ]
+  },
+  {
+   "symbol_id": "sym.orbital-angular-momentum",
+   "preinventory_row": 29,
+   "tex": {
+    "macro": "Lj",
+    "args": 1,
+    "expansion": "\\widehat{L}_{#1}",
+    "arg_examples": [
+     "j"
+    ]
+   },
+   "canonical_token": "\\widehatL_j",
+   "unicode": "L̂_j",
+   "mathml": "<math><msub><mover accent=\"true\"><mi>L</mi><mo>^</mo></mover><mi>j</mi></msub></math>",
+   "name_de": "Bahndrehimpuls",
+   "name_en": "orbital angular momentum",
+   "meaning_de": "Komponente des Bahndrehimpulsoperators",
+   "meaning_en": "component of the orbital angular momentum operator",
+   "depth": "kern",
+   "first_fixed_in": "D33",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:49 (symbol row 29)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "Lz",
+     "note": "legacy \\Lz is the z component"
+    }
+   ]
+  },
+  {
+   "symbol_id": "sym.angular-momentum-squared",
+   "preinventory_row": 29,
+   "tex": {
+    "macro": "Lsq",
+    "args": 0,
+    "expansion": "\\widehat{L}^2"
+   },
+   "canonical_token": "\\widehatL^2",
+   "unicode": "L̂²",
+   "mathml": "<math><msup><mover accent=\"true\"><mi>L</mi><mo>^</mo></mover><mn>2</mn></msup></math>",
+   "name_de": "Drehimpulsquadrat",
+   "name_en": "squared angular momentum",
+   "meaning_de": "Quadrat des Bahndrehimpulsoperators",
+   "meaning_en": "square of the orbital angular momentum operator",
+   "depth": "kern",
+   "first_fixed_in": "D33",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:49 (symbol row 29)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "Lsq",
+     "note": "same name and expansion"
+    }
+   ]
+  },
+  {
+   "symbol_id": "sym.ladder-operators",
+   "preinventory_row": 29,
+   "tex": {
+    "macro": "Lpm",
+    "args": 0,
+    "expansion": "\\widehat{L}_{\\pm}"
+   },
+   "canonical_token": "\\widehatL_\\pm",
+   "unicode": "L̂_±",
+   "mathml": "<math><msub><mover accent=\"true\"><mi>L</mi><mo>^</mo></mover><mo>±</mo></msub></math>",
+   "name_de": "Leiteroperatoren",
+   "name_en": "ladder operators",
+   "meaning_de": "Auf- und Absteigeoperatoren des Drehimpulses",
+   "meaning_en": "raising and lowering operators of angular momentum",
+   "depth": "kern",
+   "first_fixed_in": "D33",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:49 (symbol row 29)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.spin",
+   "preinventory_row": 30,
+   "tex": {
+    "macro": "Sj",
+    "args": 1,
+    "expansion": "\\widehat{S}_{#1}",
+    "arg_examples": [
+     "j"
+    ]
+   },
+   "canonical_token": "\\widehatS_j",
+   "unicode": "Ŝ_j",
+   "mathml": "<math><msub><mover accent=\"true\"><mi>S</mi><mo>^</mo></mover><mi>j</mi></msub></math>",
+   "name_de": "Spin",
+   "name_en": "spin",
+   "meaning_de": "Komponente des Spinoperators",
+   "meaning_en": "component of the spin operator",
+   "depth": "kern",
+   "first_fixed_in": "D34",
+   "status": "collision-open",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:50 (symbol row 30)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [],
+   "collisions": [
+    "COL-S"
+   ]
+  },
+  {
+   "symbol_id": "sym.general-angular-momentum",
+   "preinventory_row": 30,
+   "tex": {
+    "macro": "Jj",
+    "args": 1,
+    "expansion": "\\widehat{J}_{#1}",
+    "arg_examples": [
+     "j"
+    ]
+   },
+   "canonical_token": "\\widehatJ_j",
+   "unicode": "Ĵ_j",
+   "mathml": "<math><msub><mover accent=\"true\"><mi>J</mi><mo>^</mo></mover><mi>j</mi></msub></math>",
+   "name_de": "allgemeiner Drehimpuls",
+   "name_en": "general angular momentum",
+   "meaning_de": "Komponente eines allgemeinen Drehimpulsoperators",
+   "meaning_en": "component of a general angular momentum operator",
+   "depth": "kern",
+   "first_fixed_in": "D33",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:50 (symbol row 30)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.orbital-quantum-number",
+   "preinventory_row": 31,
+   "tex": {
+    "macro": "lqn",
+    "args": 0,
+    "expansion": "\\ell"
+   },
+   "canonical_token": "\\ell",
+   "unicode": "ℓ",
+   "mathml": "<math><mi>ℓ</mi></math>",
+   "name_de": "Drehimpulsquantenzahl",
+   "name_en": "orbital quantum number",
+   "meaning_de": "ℓ = 0, 1, …, n−1",
+   "meaning_en": "ℓ = 0, 1, …, n−1",
+   "depth": "kern",
+   "first_fixed_in": "D65",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2.1",
+     "locus": "lectures/de/vl16.tex:78",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Drehimpulsquantenzahlen $\\ell = 0,1,2, \\ldots, n-1$"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.magnetic-quantum-number",
+   "preinventory_row": 31,
+   "tex": {
+    "macro": "mqn",
+    "args": 0,
+    "expansion": "m"
+   },
+   "canonical_token": "m",
+   "unicode": "m",
+   "mathml": "<math><mi>m</mi></math>",
+   "name_de": "magnetische Quantenzahl",
+   "name_en": "magnetic quantum number",
+   "meaning_de": "m = −ℓ, …, ℓ",
+   "meaning_en": "m = −ℓ, …, ℓ",
+   "depth": "kern",
+   "first_fixed_in": "D65",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2.1",
+     "locus": "lectures/de/vl16.tex:78",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "$m = -\\ell, -\\ell+1, \\ldots, \\ell$"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "Reed-Simon III p. 55 uses m for the reduced mass; see translation row TR-RS3-03."
+  },
+  {
+   "symbol_id": "sym.principal-quantum-number",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "nqn",
+    "args": 0,
+    "expansion": "n"
+   },
+   "canonical_token": "n",
+   "unicode": "n",
+   "mathml": "<math><mi>n</mi></math>",
+   "name_de": "Hauptquantenzahl",
+   "name_en": "principal quantum number",
+   "meaning_de": "n = 1, 2, …",
+   "meaning_en": "n = 1, 2, …",
+   "depth": "kern",
+   "first_fixed_in": "D65",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2.1",
+     "locus": "lectures/de/vl16.tex:55",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "mit \\emph{Hauptquantenzahl} $n=1,2,\\ldots$"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.spherical-harmonic",
+   "preinventory_row": 32,
+   "tex": {
+    "macro": "Ylm",
+    "args": 2,
+    "expansion": "Y_{#1}^{#2}",
+    "arg_examples": [
+     "\\ell",
+     "m"
+    ]
+   },
+   "canonical_token": "Y_\\ell^m",
+   "unicode": "Y_ℓ^m",
+   "mathml": "<math><msubsup><mi>Y</mi><mi>ℓ</mi><mi>m</mi></msubsup></math>",
+   "name_de": "Kugelflächenfunktion",
+   "name_en": "spherical harmonic",
+   "meaning_de": "gemeinsame Eigenfunktion von L̂² und L̂_3 auf der Sphäre, mit Condon-Shortley-Phase",
+   "meaning_en": "joint eigenfunction of L̂² and L̂_3 on the sphere, with the Condon-Shortley phase",
+   "depth": "kern",
+   "first_fixed_in": "D67",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl14.tex:133",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\text{Y}_\\ell^m (\\theta,\\phi) \\equiv (-1)^m"
+    }
+   ],
+   "legacy_aliases": [],
+   "conventions": [
+    "CONV-CS"
+   ],
+   "notes": "The script sets Y upright (\\text{Y}); the registry uses italic Y as in the pre-inventory."
+  },
+  {
+   "symbol_id": "sym.associated-legendre",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "Plm",
+    "args": 2,
+    "expansion": "P_{#1}^{#2}",
+    "arg_examples": [
+     "\\ell",
+     "m"
+    ]
+   },
+   "canonical_token": "P_\\ell^m",
+   "unicode": "P_ℓ^m",
+   "mathml": "<math><msubsup><mi>P</mi><mi>ℓ</mi><mi>m</mi></msubsup></math>",
+   "name_de": "zugeordnete Legendrefunktion",
+   "name_en": "associated Legendre function",
+   "meaning_de": "zugeordnete Legendrefunktion, in der Schreibweise des Skripts ohne Phasenfaktor",
+   "meaning_en": "associated Legendre function, in the script's form without phase factor",
+   "depth": "kern",
+   "first_fixed_in": "D67",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl14.tex:137",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\text{P}^m_\\ell(x) = (1-x^2)^{\\frac{m}{2}}\\frac{d^m}{dx^m}\\text{P}_\\ell(x)"
+    }
+   ],
+   "legacy_aliases": [],
+   "conventions": [
+    "CONV-CS"
+   ]
+  },
+  {
+   "symbol_id": "sym.laguerre",
+   "preinventory_row": 33,
+   "tex": {
+    "macro": "Lag",
+    "args": 2,
+    "expansion": "L_{#1}^{(#2)}",
+    "arg_examples": [
+     "k",
+     "\\alpha"
+    ]
+   },
+   "canonical_token": "L_k^(\\alpha)",
+   "unicode": "L_k^(α)",
+   "mathml": "<math><msubsup><mi>L</mi><mi>k</mi><mrow><mo>(</mo><mi>α</mi><mo>)</mo></mrow></msubsup></math>",
+   "name_de": "verallgemeinertes Laguerre-Polynom",
+   "name_en": "generalised Laguerre polynomial",
+   "meaning_de": "verallgemeinertes Laguerre-Polynom vom Grad k, Konvention CONV-LAGUERRE",
+   "meaning_en": "generalised Laguerre polynomial of degree k, convention CONV-LAGUERRE",
+   "depth": "vertiefung",
+   "first_fixed_in": "D68",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2.1",
+     "locus": "lectures/de/vl16.tex:45",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\text{L}_{n-\\ell-1}^{2\\ell +1}(2\\kappa r)"
+    },
+    {
+     "source": "derivation-c11",
+     "locus": "DERIVATION.md:210",
+     "verified": true,
+     "how": "read in evidence/derivations/c11/DERIVATION.md at this line (derivation by codex, independently reviewed in REVIEW.md)",
+     "quote": "L_k^{(\\alpha)}(s)=\\sum_{j=0}^k(-1)^j\\binom{k+\\alpha}{k-j}\\frac{s^j}{j!},\\qquad"
+    }
+   ],
+   "legacy_aliases": [],
+   "conventions": [
+    "CONV-LAGUERRE"
+   ],
+   "needs_check": true,
+   "check": "the defining sum is a stated convention of evidence/derivations/c11/DERIVATION.md (Result 3.1), checked there in exact arithmetic; no textbook source on disk states it. TJO to confirm CONV-LAGUERRE."
+  },
+  {
+   "symbol_id": "sym.bohr-radius",
+   "preinventory_row": 34,
+   "tex": {
+    "macro": "aBohr",
+    "args": 0,
+    "expansion": "a_0"
+   },
+   "canonical_token": "a_0",
+   "unicode": "a₀",
+   "mathml": "<math><msub><mi>a</mi><mn>0</mn></msub></math>",
+   "name_de": "Bohrscher Radius",
+   "name_en": "Bohr radius",
+   "meaning_de": "Bohrscher Radius für unendlich schweren Kern (mit der Elektronenmasse)",
+   "meaning_en": "Bohr radius for infinite nuclear mass (with the electron mass)",
+   "depth": "kern",
+   "first_fixed_in": "D63",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2.1",
+     "locus": "lectures/de/vl16.tex:57",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "a_0 = \\frac{4\\pi\\epsilon_0\\hbar^2}{m_{\\text{e}}e^2}"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.bohr-radius-reduced",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "aRed",
+    "args": 0,
+    "expansion": "a_{\\mu}"
+   },
+   "canonical_token": "a_\\mu",
+   "unicode": "a_μ",
+   "mathml": "<math><msub><mi>a</mi><mi>μ</mi></msub></math>",
+   "name_de": "Bohrscher Radius mit reduzierter Masse",
+   "name_en": "Bohr radius with the reduced mass",
+   "meaning_de": "a_μ = a₀ m_e/μ",
+   "meaning_en": "a_μ = a₀ m_e/μ",
+   "depth": "kern",
+   "first_fixed_in": "D63",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "plan",
+     "locus": "PLAN.md, section 1.3",
+     "verified": true,
+     "quote": "a_mu = a_0 m_e/mu each formula uses",
+     "how": "read in PLAN.md section 1.3 (hydrogen decision of 2026-10-11); the checker searches the whole file because its line numbers move"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.rydberg-energy",
+   "preinventory_row": 34,
+   "tex": {
+    "macro": "Ryd",
+    "args": 0,
+    "expansion": "\\mathrm{Ry}"
+   },
+   "canonical_token": "\\mathrmRy",
+   "unicode": "Ry",
+   "mathml": "<math><mi mathvariant=\"normal\">Ry</mi></math>",
+   "name_de": "Rydberg-Energie",
+   "name_en": "Rydberg energy",
+   "meaning_de": "Betrag der Grundzustandsenergie für Z = 1 und unendlich schweren Kern",
+   "meaning_en": "magnitude of the ground-state energy for Z = 1 and infinite nuclear mass",
+   "depth": "kern",
+   "first_fixed_in": "D64",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2.1",
+     "locus": "lectures/de/vl16.tex:53",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "E_n = -\\frac{(Ze)^2}{4\\pi\\epsilon_0}\\frac{1}{a_0}\\frac{1}{2n^2}"
+    },
+    {
+     "source": "not-on-disk",
+     "locus": "a definition of the Rydberg energy under that name (CODATA/NIST or a textbook)",
+     "verified": false,
+     "how": "no local copy; the entry stays proposed until one is registered"
+    }
+   ],
+   "legacy_aliases": [],
+   "needs_check": true,
+   "check": "the name 'Rydberg energy' and the symbol Ry are not in any source on disk; only the expression (vl16.tex:53 at n = 1, Z = 1) was read"
+  },
+  {
+   "symbol_id": "sym.reduced-mass",
+   "preinventory_row": 35,
+   "tex": {
+    "macro": "massRed",
+    "args": 0,
+    "expansion": "\\mu"
+   },
+   "canonical_token": "\\mu",
+   "unicode": "μ",
+   "mathml": "<math><mi>μ</mi></math>",
+   "name_de": "reduzierte Masse",
+   "name_en": "reduced mass",
+   "meaning_de": "reduzierte Masse des Zweikörperproblems",
+   "meaning_en": "reduced mass of the two-body problem",
+   "depth": "kern",
+   "first_fixed_in": "D62",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2.1",
+     "locus": "lectures/de/vl16.tex:29",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "$\\mu = m_{\\text{e}}m_{\\text{p}}/(m_{\\text{e}}+m_{\\text{p}})$"
+    },
+    {
+     "source": "reed-simon-3",
+     "locus": "section XI.4, p. 55 (DjVu page 62)",
+     "verified": true,
+     "quote": "m^{-1} = \\mu_1^{-1} + \\mu_2^{-1}",
+     "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+    }
+   ],
+   "legacy_aliases": [],
+   "collisions": [
+    "COL-MU"
+   ]
+  },
+  {
+   "symbol_id": "sym.electron-mass",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "massE",
+    "args": 0,
+    "expansion": "m_{\\mathrm{e}}"
+   },
+   "canonical_token": "m_\\mathrme",
+   "unicode": "m_e",
+   "mathml": "<math><msub><mi>m</mi><mi mathvariant=\"normal\">e</mi></msub></math>",
+   "name_de": "Elektronenmasse",
+   "name_en": "electron mass",
+   "meaning_de": "Masse des Elektrons",
+   "meaning_en": "mass of the electron",
+   "depth": "kern",
+   "first_fixed_in": "D60",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2.1",
+     "locus": "lectures/de/vl16.tex:29",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "m_{\\text{e}}m_{\\text{p}}"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.proton-mass",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "massP",
+    "args": 0,
+    "expansion": "m_{\\mathrm{p}}"
+   },
+   "canonical_token": "m_\\mathrmp",
+   "unicode": "m_p",
+   "mathml": "<math><msub><mi>m</mi><mi mathvariant=\"normal\">p</mi></msub></math>",
+   "name_de": "Protonenmasse",
+   "name_en": "proton mass",
+   "meaning_de": "Masse des Protons",
+   "meaning_en": "mass of the proton",
+   "depth": "kern",
+   "first_fixed_in": "D60",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2.1",
+     "locus": "lectures/de/vl16.tex:29",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "m_{\\text{e}}m_{\\text{p}}"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.total-mass",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "massTot",
+    "args": 0,
+    "expansion": "M"
+   },
+   "canonical_token": "M",
+   "unicode": "M",
+   "mathml": "<math><mi>M</mi></math>",
+   "name_de": "Gesamtmasse",
+   "name_en": "total mass",
+   "meaning_de": "M = m_e + m_p",
+   "meaning_en": "M = m_e + m_p",
+   "depth": "kern",
+   "first_fixed_in": "D61",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "reed-simon-3",
+     "locus": "section XI.4, p. 55 (DjVu page 62)",
+     "verified": true,
+     "quote": "R = (\\mu_1 + \\mu_2)^{-1}(\\mu_1 r_1 + \\mu_2 r_2)",
+     "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "Reed-Simon have the quantity μ_1 + μ_2 without a symbol of its own; the letter M is assigned by the Phase 0 registry brief."
+  },
+  {
+   "symbol_id": "sym.electron-position",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "posE",
+    "args": 0,
+    "expansion": "\\boldsymbol{r}_{\\mathrm{e}}"
+   },
+   "canonical_token": "\\boldsymbolr_\\mathrme",
+   "unicode": "𝒓_e",
+   "mathml": "<math><msub><mi>𝒓</mi><mi mathvariant=\"normal\">e</mi></msub></math>",
+   "name_de": "Ort des Elektrons",
+   "name_en": "position of the electron",
+   "meaning_de": "Ortsvektor des Elektrons",
+   "meaning_en": "position vector of the electron",
+   "depth": "kern",
+   "first_fixed_in": "D60",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "plan",
+     "locus": "PLAN.md, section 1.3",
+     "verified": true,
+     "quote": "r_e - r_p",
+     "how": "read in PLAN.md section 1.3 (hydrogen decision of 2026-10-11); the checker searches the whole file because its line numbers move"
+    },
+    {
+     "source": "reed-simon-3",
+     "locus": "section XI.4, p. 55 (DjVu page 62)",
+     "verified": true,
+     "quote": "where r \\in R^6 is written r = <r_1, r_2> with r_i \\in R^3",
+     "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.proton-position",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "posP",
+    "args": 0,
+    "expansion": "\\boldsymbol{r}_{\\mathrm{p}}"
+   },
+   "canonical_token": "\\boldsymbolr_\\mathrmp",
+   "unicode": "𝒓_p",
+   "mathml": "<math><msub><mi>𝒓</mi><mi mathvariant=\"normal\">p</mi></msub></math>",
+   "name_de": "Ort des Protons",
+   "name_en": "position of the proton",
+   "meaning_de": "Ortsvektor des Protons",
+   "meaning_en": "position vector of the proton",
+   "depth": "kern",
+   "first_fixed_in": "D60",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "plan",
+     "locus": "PLAN.md, section 1.3",
+     "verified": true,
+     "quote": "r_e - r_p",
+     "how": "read in PLAN.md section 1.3 (hydrogen decision of 2026-10-11); the checker searches the whole file because its line numbers move"
+    },
+    {
+     "source": "reed-simon-3",
+     "locus": "section XI.4, p. 55 (DjVu page 62)",
+     "verified": true,
+     "quote": "where r \\in R^6 is written r = <r_1, r_2> with r_i \\in R^3",
+     "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.centre-of-mass-coordinate",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "posCM",
+    "args": 0,
+    "expansion": "\\boldsymbol{R}"
+   },
+   "canonical_token": "\\boldsymbolR",
+   "unicode": "𝑹",
+   "mathml": "<math><mi>𝑹</mi></math>",
+   "name_de": "Schwerpunktskoordinate",
+   "name_en": "centre-of-mass coordinate",
+   "meaning_de": "Ort des Schwerpunkts",
+   "meaning_en": "position of the centre of mass",
+   "depth": "kern",
+   "first_fixed_in": "D61",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "reed-simon-3",
+     "locus": "section XI.4, p. 55 (DjVu page 62)",
+     "verified": true,
+     "quote": "R = (\\mu_1 + \\mu_2)^{-1}(\\mu_1 r_1 + \\mu_2 r_2)",
+     "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.relative-coordinate",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "posRel",
+    "args": 0,
+    "expansion": "\\boldsymbol{r}"
+   },
+   "canonical_token": "\\boldsymbolr",
+   "unicode": "𝒓",
+   "mathml": "<math><mi>𝒓</mi></math>",
+   "name_de": "Relativkoordinate",
+   "name_en": "relative coordinate",
+   "meaning_de": "Ort des Elektrons relativ zum Proton",
+   "meaning_en": "position of the electron relative to the proton",
+   "depth": "kern",
+   "first_fixed_in": "D61",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "reed-simon-3",
+     "locus": "section XI.4, p. 55 (DjVu page 62)",
+     "verified": true,
+     "quote": "r_{12} = r_1 - r_2",
+     "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+    },
+    {
+     "source": "plan",
+     "locus": "PLAN.md, section 1.3",
+     "verified": true,
+     "quote": "r_e - r_p",
+     "how": "read in PLAN.md section 1.3 (hydrogen decision of 2026-10-11); the checker searches the whole file because its line numbers move"
+    }
+   ],
+   "legacy_aliases": [],
+   "conventions": [
+    "CONV-CM"
+   ]
+  },
+  {
+   "symbol_id": "sym.radial-coordinate",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "rad",
+    "args": 0,
+    "expansion": "r"
+   },
+   "canonical_token": "r",
+   "unicode": "r",
+   "mathml": "<math><mi>r</mi></math>",
+   "name_de": "Radialkoordinate",
+   "name_en": "radial coordinate",
+   "meaning_de": "Betrag der Relativkoordinate",
+   "meaning_en": "modulus of the relative coordinate",
+   "depth": "kern",
+   "first_fixed_in": "D61",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2.1",
+     "locus": "lectures/de/vl16.tex:22",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "V(r) = -\\frac{Ze^2}{4\\pi \\epsilon_0 r}"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.nuclear-charge",
+   "preinventory_row": 36,
+   "tex": {
+    "macro": "Znuc",
+    "args": 0,
+    "expansion": "Z"
+   },
+   "canonical_token": "Z",
+   "unicode": "Z",
+   "mathml": "<math><mi>Z</mi></math>",
+   "name_de": "Kernladungszahl",
+   "name_en": "nuclear charge number",
+   "meaning_de": "Kernladungszahl; Z = 1 für Wasserstoff",
+   "meaning_en": "nuclear charge number; Z = 1 for hydrogen",
+   "depth": "kern",
+   "first_fixed_in": "D60",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2.1",
+     "locus": "lectures/de/vl16.tex:22",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "V(r) = -\\frac{Ze^2}{4\\pi \\epsilon_0 r}"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "Pre-inventory row 36: visually close to the partition function, which is \\mathcal{Z}; different tokens."
+  },
+  {
+   "symbol_id": "sym.elementary-charge",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "echarge",
+    "args": 0,
+    "expansion": "e"
+   },
+   "canonical_token": "e",
+   "unicode": "e",
+   "mathml": "<math><mi>e</mi></math>",
+   "name_de": "Elementarladung",
+   "name_en": "elementary charge",
+   "meaning_de": "Elementarladung",
+   "meaning_en": "elementary charge",
+   "depth": "kern",
+   "first_fixed_in": "D60",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2.1",
+     "locus": "lectures/de/vl16.tex:22",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "V(r) = -\\frac{Ze^2}{4\\pi \\epsilon_0 r}"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.vacuum-permittivity",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "epsz",
+    "args": 0,
+    "expansion": "\\epsilon_0"
+   },
+   "canonical_token": "\\epsilon_0",
+   "unicode": "ϵ₀",
+   "mathml": "<math><msub><mi>ϵ</mi><mn>0</mn></msub></math>",
+   "name_de": "elektrische Feldkonstante",
+   "name_en": "vacuum permittivity",
+   "meaning_de": "elektrische Feldkonstante (SI)",
+   "meaning_en": "vacuum permittivity (SI)",
+   "depth": "kern",
+   "first_fixed_in": "D60",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2.1",
+     "locus": "lectures/de/vl16.tex:22",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "V(r) = -\\frac{Ze^2}{4\\pi \\epsilon_0 r}"
+    }
+   ],
+   "legacy_aliases": [],
+   "conventions": [
+    "CONV-UNITS"
+   ]
+  },
+  {
+   "symbol_id": "sym.potential",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "Vpot",
+    "args": 0,
+    "expansion": "V"
+   },
+   "canonical_token": "V",
+   "unicode": "V",
+   "mathml": "<math><mi>V</mi></math>",
+   "name_de": "Potential",
+   "name_en": "potential",
+   "meaning_de": "potentielle Energie als Funktion der Relativkoordinate",
+   "meaning_en": "potential energy as a function of the relative coordinate",
+   "depth": "kern",
+   "first_fixed_in": "D60",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "reed-simon-3",
+     "locus": "section XI.4, p. 55 (DjVu page 62)",
+     "verified": true,
+     "quote": "\\tilde H = \\tilde H_0 + V(r_1 - r_2)",
+     "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+    },
+    {
+     "source": "tpc-script-v0.2.1",
+     "locus": "lectures/de/vl16.tex:22",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "V(r) = -\\frac{Ze^2}{4\\pi \\epsilon_0 r}"
+    }
+   ],
+   "legacy_aliases": [],
+   "collisions": [
+    "COL-V"
+   ]
+  },
+  {
+   "symbol_id": "sym.laplacian",
+   "preinventory_row": 65,
+   "tex": {
+    "macro": "Lap",
+    "args": 0,
+    "expansion": "\\Delta"
+   },
+   "canonical_token": "\\Delta",
+   "unicode": "Δ",
+   "mathml": "<math><mi mathvariant=\"normal\">Δ</mi></math>",
+   "name_de": "Laplace-Operator",
+   "name_en": "Laplacian",
+   "meaning_de": "Laplace-Operator; ein Index nennt die Koordinate",
+   "meaning_en": "Laplacian; a subscript names the coordinate",
+   "depth": "kern",
+   "first_fixed_in": "D60",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "reed-simon-3",
+     "locus": "section XI.4, p. 55 (DjVu page 62)",
+     "verified": true,
+     "quote": "\\Delta_i is the three-dimensional Laplacian associated to r_i",
+     "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+    },
+    {
+     "source": "tpc-macros",
+     "locus": "tpc-macros.sty:84",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\newcommand{\\lap}{\\Delta}"
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "lap",
+     "note": "same expansion under the lower-case name"
+    }
+   ],
+   "collisions": [
+    "COL-DELTA"
+   ]
+  },
+  {
+   "symbol_id": "sym.standard-deviation",
+   "preinventory_row": 65,
+   "tex": {
+    "macro": "stdev",
+    "args": 1,
+    "expansion": "\\Delta #1",
+    "arg_examples": [
+     "x"
+    ]
+   },
+   "canonical_token": "\\Deltax",
+   "unicode": "Δx",
+   "mathml": "<math><mrow><mi mathvariant=\"normal\">Δ</mi><mi>x</mi></mrow></math>",
+   "name_de": "Standardabweichung",
+   "name_en": "standard deviation",
+   "meaning_de": "Wurzel der Varianz",
+   "meaning_en": "square root of the variance",
+   "depth": "kern",
+   "first_fixed_in": "D31",
+   "status": "collision-open",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:85 (symbol row 65)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl09.tex:43",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "wenn man die $(\\Delta A)$ als Wurzel der Varianz (Standardabweichung) einführt"
+    }
+   ],
+   "legacy_aliases": [],
+   "collisions": [
+    "COL-DELTA"
+   ]
+  },
+  {
+   "symbol_id": "sym.hamiltonian",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "Ham",
+    "args": 0,
+    "expansion": "H"
+   },
+   "canonical_token": "H",
+   "unicode": "H",
+   "mathml": "<math><mi>H</mi></math>",
+   "name_de": "Hamiltonoperator",
+   "name_en": "Hamiltonian",
+   "meaning_de": "Hamiltonoperator eines Systems",
+   "meaning_en": "Hamiltonian of a system",
+   "depth": "kern",
+   "first_fixed_in": "D30",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "reed-simon-3",
+     "locus": "section XI.4, p. 55 (DjVu page 62)",
+     "verified": true,
+     "quote": "H = -(2m)^{-1}\\Delta + V(r)",
+     "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "Hop",
+     "note": "legacy \\Hop is \\widehat{H}; the hat question is open (sym.operator-hat)"
+    }
+   ],
+   "collisions": [
+    "COL-H"
+   ],
+   "notes": "Written without a hat provisionally, as in Reed-Simon (the registered authority for C11) and Plavala; the script writes \\widehat{H}."
+  },
+  {
+   "symbol_id": "sym.hamiltonian-two-body",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "HamTot",
+    "args": 0,
+    "expansion": "H_{\\mathrm{tot}}"
+   },
+   "canonical_token": "H_\\mathrmtot",
+   "unicode": "H_tot",
+   "mathml": "<math><msub><mi>H</mi><mi mathvariant=\"normal\">tot</mi></msub></math>",
+   "name_de": "Zweikörper-Hamiltonoperator",
+   "name_en": "two-body Hamiltonian",
+   "meaning_de": "Hamiltonoperator von Elektron und Proton auf L²(ℝ⁶)",
+   "meaning_en": "Hamiltonian of electron and proton on L²(ℝ⁶)",
+   "depth": "kern",
+   "first_fixed_in": "D60",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "reed-simon-3",
+     "locus": "section XI.4, p. 55 (DjVu page 62)",
+     "verified": true,
+     "quote": "\\tilde H = \\tilde H_0 + V(r_1 - r_2)",
+     "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "The object is read from Reed-Simon (their \\tilde H); the name H_tot is the registry's and is only proposed."
+  },
+  {
+   "symbol_id": "sym.hamiltonian-cm",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "HamCM",
+    "args": 0,
+    "expansion": "H_{\\mathrm{cm}}"
+   },
+   "canonical_token": "H_\\mathrmcm",
+   "unicode": "H_cm",
+   "mathml": "<math><msub><mi>H</mi><mi mathvariant=\"normal\">cm</mi></msub></math>",
+   "name_de": "Schwerpunkts-Hamiltonoperator",
+   "name_en": "centre-of-mass Hamiltonian",
+   "meaning_de": "kinetische Energie des Schwerpunkts",
+   "meaning_en": "kinetic energy of the centre of mass",
+   "depth": "kern",
+   "first_fixed_in": "C11",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "reed-simon-3",
+     "locus": "section XI.4, p. 55 (DjVu page 62)",
+     "verified": true,
+     "quote": "h_0 = -[2\\mu_1 + 2\\mu_2]^{-1}\\Delta",
+     "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "Reed-Simon write h_0; the name H_cm is the registry's and is only proposed."
+  },
+  {
+   "symbol_id": "sym.hamiltonian-relative",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "HamRel",
+    "args": 0,
+    "expansion": "H_{\\mathrm{rel}}"
+   },
+   "canonical_token": "H_\\mathrmrel",
+   "unicode": "H_rel",
+   "mathml": "<math><msub><mi>H</mi><mi mathvariant=\"normal\">rel</mi></msub></math>",
+   "name_de": "Hamiltonoperator der Relativbewegung",
+   "name_en": "Hamiltonian of the relative motion",
+   "meaning_de": "Hamiltonoperator der Relativbewegung mit reduzierter Masse",
+   "meaning_en": "Hamiltonian of the relative motion with the reduced mass",
+   "depth": "kern",
+   "first_fixed_in": "C11",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "reed-simon-3",
+     "locus": "section XI.4, p. 55 (DjVu page 62)",
+     "verified": true,
+     "quote": "H = -(2m)^{-1}\\Delta + V(r)",
+     "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "Reed-Simon write H; the name H_rel is the registry's and is only proposed."
+  },
+  {
+   "symbol_id": "sym.unitary",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "Uni",
+    "args": 0,
+    "expansion": "U"
+   },
+   "canonical_token": "U",
+   "unicode": "U",
+   "mathml": "<math><mi>U</mi></math>",
+   "name_de": "unitärer Operator",
+   "name_en": "unitary operator",
+   "meaning_de": "unitärer Operator; in C11 der Koordinatenwechsel auf L²(ℝ⁶)",
+   "meaning_en": "unitary operator; in C11 the change of coordinates on L²(ℝ⁶)",
+   "depth": "kern",
+   "first_fixed_in": "C11",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "reed-simon-3",
+     "locus": "section XI.4, p. 55 (DjVu page 62)",
+     "verified": true,
+     "quote": "Let U be the unitary operator on L^2(R^6) given by",
+     "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+    }
+   ],
+   "legacy_aliases": [],
+   "collisions": [
+    "COL-U"
+   ]
+  },
+  {
+   "symbol_id": "sym.radial-function",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "Rnl",
+    "args": 2,
+    "expansion": "R_{#1 #2}",
+    "arg_examples": [
+     "n",
+     "\\ell"
+    ]
+   },
+   "canonical_token": "R_n\\ell",
+   "unicode": "R_nℓ",
+   "mathml": "<math><msub><mi>R</mi><mrow><mi>n</mi><mi>ℓ</mi></mrow></msub></math>",
+   "name_de": "Radialfunktion",
+   "name_en": "radial function",
+   "meaning_de": "Radialanteil der Eigenfunktion zur Hauptquantenzahl n und Drehimpulsquantenzahl ℓ",
+   "meaning_en": "radial part of the eigenfunction with principal quantum number n and orbital quantum number ℓ",
+   "depth": "kern",
+   "first_fixed_in": "D66",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2.1",
+     "locus": "lectures/de/vl16.tex:45",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "R_{n\\ell}(r) = \\sqrt{\\frac{(n-\\ell-1)!(2\\kappa)^3}{2n(n+\\ell)!}}"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.hydrogen-eigenfunction",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "psinlm",
+    "args": 3,
+    "expansion": "\\psi_{#1 #2 #3}",
+    "arg_examples": [
+     "n",
+     "\\ell",
+     "m"
+    ]
+   },
+   "canonical_token": "\\psi_n\\ellm",
+   "unicode": "ψ_nℓm",
+   "mathml": "<math><msub><mi>ψ</mi><mrow><mi>n</mi><mi>ℓ</mi><mi>m</mi></mrow></msub></math>",
+   "name_de": "Eigenfunktion des Wasserstoffatoms",
+   "name_en": "hydrogen eigenfunction",
+   "meaning_de": "gebundene Eigenfunktion der Relativbewegung",
+   "meaning_en": "bound eigenfunction of the relative motion",
+   "depth": "kern",
+   "first_fixed_in": "D69",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2.1",
+     "locus": "lectures/de/vl16.tex:76",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\psi_{n\\ell m}(r,\\theta,\\phi) = R_{n\\ell}(r)\\text{Y}_{\\ell}^m(\\theta,\\phi)."
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.energy-level",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "En",
+    "args": 1,
+    "expansion": "E_{#1}",
+    "arg_examples": [
+     "n"
+    ]
+   },
+   "canonical_token": "E_n",
+   "unicode": "E_n",
+   "mathml": "<math><msub><mi>E</mi><mi>n</mi></msub></math>",
+   "name_de": "Energieniveau",
+   "name_en": "energy level",
+   "meaning_de": "Energieeigenwert zur Hauptquantenzahl n",
+   "meaning_en": "energy eigenvalue with principal quantum number n",
+   "depth": "kern",
+   "first_fixed_in": "C11",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2.1",
+     "locus": "lectures/de/vl16.tex:53",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "E_n = -\\frac{(Ze)^2}{4\\pi\\epsilon_0}\\frac{1}{a_0}\\frac{1}{2n^2}"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.total-energy",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "Etot",
+    "args": 0,
+    "expansion": "E_{\\mathrm{tot}}"
+   },
+   "canonical_token": "E_\\mathrmtot",
+   "unicode": "E_tot",
+   "mathml": "<math><msub><mi>E</mi><mi mathvariant=\"normal\">tot</mi></msub></math>",
+   "name_de": "Gesamtenergie",
+   "name_en": "total energy",
+   "meaning_de": "Energie des Zweikörpersystems einschließlich der Schwerpunktsbewegung",
+   "meaning_en": "energy of the two-body system including the centre-of-mass motion",
+   "depth": "kern",
+   "first_fixed_in": "C11",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "phase0-brief",
+     "locus": "coordinator amendment of 2026-10-11, item 5: internal versus total energy",
+     "verified": false,
+     "how": "name requested by the Phase 0 coordinator; no source checked"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.relative-energy",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "Eint",
+    "args": 0,
+    "expansion": "E_{\\mathrm{rel}}"
+   },
+   "canonical_token": "E_\\mathrmrel",
+   "unicode": "E_rel",
+   "mathml": "<math><msub><mi>E</mi><mi mathvariant=\"normal\">rel</mi></msub></math>",
+   "name_de": "Energie der Relativbewegung",
+   "name_en": "energy of the relative motion",
+   "meaning_de": "innere Energie des Atoms: Energie der Relativbewegung ohne Schwerpunktsanteil",
+   "meaning_en": "internal energy of the atom: energy of the relative motion without the centre-of-mass part",
+   "depth": "kern",
+   "first_fixed_in": "C11",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "phase0-brief",
+     "locus": "coordinator amendment of 2026-10-11, item 5: internal versus total energy",
+     "verified": false,
+     "how": "name requested by the Phase 0 coordinator; no source checked"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "Called 'internal energy' in the coordinator's request; rendered E_rel because U and 'innere Energie' are the thermodynamic quantity (COL-U)."
+  },
+  {
+   "symbol_id": "sym.l2-space",
+   "preinventory_row": 64,
+   "tex": {
+    "macro": "Ltwo",
+    "args": 1,
+    "expansion": "L^{2}(#1)",
+    "arg_examples": [
+     "\\mathbb{R}^3"
+    ]
+   },
+   "canonical_token": "L^2(\\mathbbR^3)",
+   "unicode": "L²(ℝ³)",
+   "mathml": "<math><mrow><msup><mi>L</mi><mn>2</mn></msup><mo>(</mo><msup><mi>ℝ</mi><mn>3</mn></msup><mo>)</mo></mrow></math>",
+   "name_de": "Raum der quadratintegrierbaren Funktionen",
+   "name_en": "space of square-integrable functions",
+   "meaning_de": "Hilbertraum der quadratintegrierbaren Funktionen",
+   "meaning_en": "Hilbert space of square-integrable functions",
+   "depth": "kern",
+   "first_fixed_in": "C5",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "reed-simon-3",
+     "locus": "section XI.4, p. 55 (DjVu page 62)",
+     "verified": true,
+     "quote": "L^2(R^6) = L^2(R^3) \\otimes L^2(R^3)",
+     "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.sobolev-h2",
+   "preinventory_row": 64,
+   "tex": {
+    "macro": "SobTwo",
+    "args": 1,
+    "expansion": "H^{2}(#1)",
+    "arg_examples": [
+     "\\mathbb{R}^3"
+    ]
+   },
+   "canonical_token": "H^2(\\mathbbR^3)",
+   "unicode": "H²(ℝ³)",
+   "mathml": "<math><mrow><msup><mi>H</mi><mn>2</mn></msup><mo>(</mo><msup><mi>ℝ</mi><mn>3</mn></msup><mo>)</mo></mrow></math>",
+   "name_de": "Sobolevraum zweiter Ordnung",
+   "name_en": "second-order Sobolev space",
+   "meaning_de": "Sobolevraum H²",
+   "meaning_en": "Sobolev space H²",
+   "depth": "fundament",
+   "first_fixed_in": "C11",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:84 (symbol row 64)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "Pre-inventory: collides with H for the Hamiltonian."
+  },
+  {
+   "symbol_id": "sym.test-functions",
+   "preinventory_row": 64,
+   "tex": {
+    "macro": "Ccinf",
+    "args": 1,
+    "expansion": "C_{c}^{\\infty}(#1)",
+    "arg_examples": [
+     "\\mathbb{R}^3"
+    ]
+   },
+   "canonical_token": "C_c^\\infty(\\mathbbR^3)",
+   "unicode": "C_c^∞(ℝ³)",
+   "mathml": "<math><mrow><msubsup><mi>C</mi><mi>c</mi><mi mathvariant=\"normal\">∞</mi></msubsup><mo>(</mo><msup><mi>ℝ</mi><mn>3</mn></msup><mo>)</mo></mrow></math>",
+   "name_de": "Testfunktionen",
+   "name_en": "test functions",
+   "meaning_de": "glatte Funktionen mit kompaktem Träger",
+   "meaning_en": "smooth functions with compact support",
+   "depth": "vertiefung",
+   "first_fixed_in": "C5",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:84 (symbol row 64)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "Reed-Simon III p. 55 write C_0^∞; see translation row TR-RS3-10."
+  },
+  {
+   "symbol_id": "sym.schwartz-space",
+   "preinventory_row": 64,
+   "tex": {
+    "macro": "Schw",
+    "args": 1,
+    "expansion": "\\mathcal{S}(#1)",
+    "arg_examples": [
+     "\\mathbb{R}^n"
+    ]
+   },
+   "canonical_token": "\\mathcalS(\\mathbbR^n)",
+   "unicode": "𝒮(ℝⁿ)",
+   "mathml": "<math><mrow><mi>𝒮</mi><mo>(</mo><msup><mi>ℝ</mi><mi>n</mi></msup><mo>)</mo></mrow></math>",
+   "name_de": "Schwartzraum",
+   "name_en": "Schwartz space",
+   "meaning_de": "Raum der schnell fallenden Funktionen",
+   "meaning_en": "space of rapidly decreasing functions",
+   "depth": "vertiefung",
+   "first_fixed_in": "C5",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:84 (symbol row 64)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.partition-function",
+   "preinventory_row": 37,
+   "tex": {
+    "macro": "Zcan",
+    "args": 0,
+    "expansion": "\\mathcal{Z}"
+   },
+   "canonical_token": "\\mathcalZ",
+   "unicode": "𝒵",
+   "mathml": "<math><mi>𝒵</mi></math>",
+   "name_de": "kanonische Zustandssumme",
+   "name_en": "canonical partition function",
+   "meaning_de": "kanonische Zustandssumme",
+   "meaning_en": "canonical partition function",
+   "depth": "kern",
+   "first_fixed_in": "D46",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:57 (symbol row 37)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "Zst",
+     "note": "legacy name"
+    },
+    {
+     "macro": "Zc",
+     "note": "legacy name"
+    }
+   ]
+  },
+  {
+   "symbol_id": "sym.grand-partition-function",
+   "preinventory_row": 38,
+   "tex": {
+    "macro": "Zgc",
+    "args": 0,
+    "expansion": "\\Xi"
+   },
+   "canonical_token": "\\Xi",
+   "unicode": "Ξ",
+   "mathml": "<math><mi mathvariant=\"normal\">Ξ</mi></math>",
+   "name_de": "großkanonische Zustandssumme",
+   "name_en": "grand canonical partition function",
+   "meaning_de": "großkanonische Zustandssumme",
+   "meaning_en": "grand canonical partition function",
+   "depth": "kern",
+   "first_fixed_in": "D47",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:58 (symbol row 38)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.permutation-operator",
+   "preinventory_row": 39,
+   "tex": {
+    "macro": "Uperm",
+    "args": 1,
+    "expansion": "U_{#1}",
+    "arg_examples": [
+     "\\pi"
+    ]
+   },
+   "canonical_token": "U_\\pi",
+   "unicode": "U_π",
+   "mathml": "<math><msub><mi>U</mi><mi>π</mi></msub></math>",
+   "name_de": "Permutationsoperator",
+   "name_en": "permutation operator",
+   "meaning_de": "unitäre Darstellung einer Permutation auf dem N-Teilchen-Raum",
+   "meaning_en": "unitary representation of a permutation on the N-particle space",
+   "depth": "kern",
+   "first_fixed_in": "D37",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:59 (symbol row 39)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.symmetriser",
+   "preinventory_row": 40,
+   "tex": {
+    "macro": "Psym",
+    "args": 0,
+    "expansion": "P_{\\pm}"
+   },
+   "canonical_token": "P_\\pm",
+   "unicode": "P_±",
+   "mathml": "<math><msub><mi>P</mi><mo>±</mo></msub></math>",
+   "name_de": "(Anti-)Symmetrisierer",
+   "name_en": "(anti)symmetriser",
+   "meaning_de": "Projektor auf den (anti)symmetrischen Unterraum",
+   "meaning_en": "projector onto the (anti)symmetric subspace",
+   "depth": "kern",
+   "first_fixed_in": "D38",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:60 (symbol row 40)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.n-particle-space",
+   "preinventory_row": 41,
+   "tex": {
+    "macro": "HilN",
+    "args": 1,
+    "expansion": "\\mathcal{H}_{\\pm}^{\\otimes #1}",
+    "arg_examples": [
+     "N"
+    ]
+   },
+   "canonical_token": "\\mathcalH_\\pm^\\otimesN",
+   "unicode": "ℋ_±^⊗N",
+   "mathml": "<math><msubsup><mi>ℋ</mi><mo>±</mo><mrow><mo>⊗</mo><mi>N</mi></mrow></msubsup></math>",
+   "name_de": "N-Teilchen-Raum",
+   "name_en": "N-particle space",
+   "meaning_de": "Raum von N Bosonen oder Fermionen",
+   "meaning_en": "space of N bosons or fermions",
+   "depth": "kern",
+   "first_fixed_in": "D38",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:61 (symbol row 41)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.fock-space",
+   "preinventory_row": 42,
+   "tex": {
+    "macro": "Fock",
+    "args": 1,
+    "expansion": "\\mathcal{F}_{\\pm}(#1)",
+    "arg_examples": [
+     "\\mathcal{H}"
+    ]
+   },
+   "canonical_token": "\\mathcalF_\\pm(\\mathcalH)",
+   "unicode": "ℱ_±(ℋ)",
+   "mathml": "<math><mrow><msub><mi>ℱ</mi><mo>±</mo></msub><mo>(</mo><mi>ℋ</mi><mo>)</mo></mrow></math>",
+   "name_de": "Fockraum",
+   "name_en": "Fock space",
+   "meaning_de": "bosonischer oder fermionischer Fockraum",
+   "meaning_en": "bosonic or fermionic Fock space",
+   "depth": "kern",
+   "first_fixed_in": "D39",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:62 (symbol row 42)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.vacuum",
+   "preinventory_row": 43,
+   "tex": {
+    "macro": "Vac",
+    "args": 0,
+    "expansion": "\\Omega"
+   },
+   "canonical_token": "\\Omega",
+   "unicode": "Ω",
+   "mathml": "<math><mi mathvariant=\"normal\">Ω</mi></math>",
+   "name_de": "Fock-Vakuum",
+   "name_en": "Fock vacuum",
+   "meaning_de": "Vakuumvektor des Fockraums",
+   "meaning_en": "vacuum vector of Fock space",
+   "depth": "kern",
+   "first_fixed_in": "D39",
+   "status": "collision-open",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:63 (symbol row 43)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [],
+   "collisions": [
+    "COL-OMEGA"
+   ]
+  },
+  {
+   "symbol_id": "sym.microcanonical-count",
+   "preinventory_row": 43,
+   "tex": {
+    "macro": "Nmc",
+    "args": 1,
+    "expansion": "N_{#1}",
+    "arg_examples": [
+     "E"
+    ]
+   },
+   "canonical_token": "N_E",
+   "unicode": "N_E",
+   "mathml": "<math><msub><mi>N</mi><mi>E</mi></msub></math>",
+   "name_de": "mikrokanonische Zustandszahl",
+   "name_en": "microcanonical state count",
+   "meaning_de": "Zahl der Zustände in der Energieschale",
+   "meaning_en": "number of states in the energy shell",
+   "depth": "kern",
+   "first_fixed_in": "D45",
+   "status": "collision-open",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:63 (symbol row 43)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "Om",
+     "note": "legacy \\Om is \\Omega with the meaning 'microcanonical state count'"
+    }
+   ],
+   "collisions": [
+    "COL-OMEGA"
+   ]
+  },
+  {
+   "symbol_id": "sym.annihilation-operator",
+   "preinventory_row": 44,
+   "tex": {
+    "macro": "ann",
+    "args": 1,
+    "expansion": "a(#1)",
+    "arg_examples": [
+     "f"
+    ]
+   },
+   "canonical_token": "a(f)",
+   "unicode": "a(f)",
+   "mathml": "<math><mrow><mi>a</mi><mo>(</mo><mi>f</mi><mo>)</mo></mrow></math>",
+   "name_de": "Vernichtungsoperator",
+   "name_en": "annihilation operator",
+   "meaning_de": "Vernichtungsoperator, antilinear in f",
+   "meaning_en": "annihilation operator, antilinear in f",
+   "depth": "kern",
+   "first_fixed_in": "D40",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:64 (symbol row 44)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "aop",
+     "note": "legacy \\aop is \\widehat{a}"
+    }
+   ]
+  },
+  {
+   "symbol_id": "sym.creation-operator",
+   "preinventory_row": 44,
+   "tex": {
+    "macro": "cre",
+    "args": 1,
+    "expansion": "a^{\\dagger}(#1)",
+    "arg_examples": [
+     "f"
+    ]
+   },
+   "canonical_token": "a^\\dagger(f)",
+   "unicode": "a†(f)",
+   "mathml": "<math><mrow><msup><mi>a</mi><mo>†</mo></msup><mo>(</mo><mi>f</mi><mo>)</mo></mrow></math>",
+   "name_de": "Erzeugungsoperator",
+   "name_en": "creation operator",
+   "meaning_de": "Erzeugungsoperator, linear in f",
+   "meaning_en": "creation operator, linear in f",
+   "depth": "kern",
+   "first_fixed_in": "D40",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:64 (symbol row 44)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "adop",
+     "note": "legacy \\adop is \\widehat{a}^{\\dagger}"
+    }
+   ]
+  },
+  {
+   "symbol_id": "sym.mode-operator",
+   "preinventory_row": 45,
+   "tex": {
+    "macro": "amode",
+    "args": 1,
+    "expansion": "a_{#1}",
+    "arg_examples": [
+     "k"
+    ]
+   },
+   "canonical_token": "a_k",
+   "unicode": "a_k",
+   "mathml": "<math><msub><mi>a</mi><mi>k</mi></msub></math>",
+   "name_de": "Modenoperator",
+   "name_en": "mode operator",
+   "meaning_de": "Vernichtungsoperator einer Mode",
+   "meaning_en": "annihilation operator of a mode",
+   "depth": "kern",
+   "first_fixed_in": "D40",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:65 (symbol row 45)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "The pre-inventory indexes modes by μ, which is in COL-MU; the example index is k."
+  },
+  {
+   "symbol_id": "sym.mode-number-operator",
+   "preinventory_row": 45,
+   "tex": {
+    "macro": "nmode",
+    "args": 1,
+    "expansion": "\\widehat{n}_{#1}",
+    "arg_examples": [
+     "k"
+    ]
+   },
+   "canonical_token": "\\widehatn_k",
+   "unicode": "n̂_k",
+   "mathml": "<math><msub><mover accent=\"true\"><mi>n</mi><mo>^</mo></mover><mi>k</mi></msub></math>",
+   "name_de": "Besetzungszahloperator",
+   "name_en": "occupation number operator",
+   "meaning_de": "Besetzungszahloperator einer Mode",
+   "meaning_en": "occupation number operator of a mode",
+   "depth": "kern",
+   "first_fixed_in": "D40",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:65 (symbol row 45)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "numop",
+     "note": "legacy \\numop is \\widehat{n}"
+    }
+   ]
+  },
+  {
+   "symbol_id": "sym.number-operator",
+   "preinventory_row": 45,
+   "tex": {
+    "macro": "Nop",
+    "args": 0,
+    "expansion": "\\widehat{N}"
+   },
+   "canonical_token": "\\widehatN",
+   "unicode": "N̂",
+   "mathml": "<math><mover accent=\"true\"><mi>N</mi><mo>^</mo></mover></math>",
+   "name_de": "Teilchenzahloperator",
+   "name_en": "number operator",
+   "meaning_de": "Teilchenzahloperator auf dem Fockraum",
+   "meaning_en": "particle number operator on Fock space",
+   "depth": "kern",
+   "first_fixed_in": "D43",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:65 (symbol row 45)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.second-quantisation",
+   "preinventory_row": 46,
+   "tex": {
+    "macro": "Gam",
+    "args": 1,
+    "expansion": "\\Gamma(#1)",
+    "arg_examples": [
+     "A"
+    ]
+   },
+   "canonical_token": "\\Gamma(A)",
+   "unicode": "Γ(A)",
+   "mathml": "<math><mrow><mi mathvariant=\"normal\">Γ</mi><mo>(</mo><mi>A</mi><mo>)</mo></mrow></math>",
+   "name_de": "zweite Quantisierung eines Operators",
+   "name_en": "second quantisation of an operator",
+   "meaning_de": "Fortsetzung eines Einteilchenoperators auf den Fockraum",
+   "meaning_en": "lift of a one-particle operator to Fock space",
+   "depth": "vertiefung",
+   "first_fixed_in": "D43",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:66 (symbol row 46)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.second-quantisation-generator",
+   "preinventory_row": 46,
+   "tex": {
+    "macro": "dGam",
+    "args": 1,
+    "expansion": "\\mathrm{d}\\Gamma(#1)",
+    "arg_examples": [
+     "H"
+    ]
+   },
+   "canonical_token": "\\mathrmd\\Gamma(H)",
+   "unicode": "dΓ(H)",
+   "mathml": "<math><mrow><mi mathvariant=\"normal\">d</mi><mi mathvariant=\"normal\">Γ</mi><mo>(</mo><mi>H</mi><mo>)</mo></mrow></math>",
+   "name_de": "zweite Quantisierung eines Generators",
+   "name_en": "second quantisation of a generator",
+   "meaning_de": "additive Fortsetzung eines Einteilchengenerators",
+   "meaning_en": "additive lift of a one-particle generator",
+   "depth": "vertiefung",
+   "first_fixed_in": "D43",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:66 (symbol row 46)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.field-operator",
+   "preinventory_row": 47,
+   "tex": {
+    "macro": "Field",
+    "args": 1,
+    "expansion": "\\widehat{\\Psi}(#1)",
+    "arg_examples": [
+     "x"
+    ]
+   },
+   "canonical_token": "\\widehat\\Psi(x)",
+   "unicode": "Ψ̂(x)",
+   "mathml": "<math><mrow><mover accent=\"true\"><mi mathvariant=\"normal\">Ψ</mi><mo>^</mo></mover><mo>(</mo><mi>x</mi><mo>)</mo></mrow></math>",
+   "name_de": "Feldoperator",
+   "name_en": "field operator",
+   "meaning_de": "Feldoperator am Ort x oder verschmiert mit f",
+   "meaning_en": "field operator at the point x or smeared with f",
+   "depth": "kern",
+   "first_fixed_in": "C14",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:67 (symbol row 47)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.normal-ordering",
+   "preinventory_row": 48,
+   "tex": {
+    "macro": "nord",
+    "args": 1,
+    "expansion": "{:}#1{:}",
+    "arg_examples": [
+     "A"
+    ]
+   },
+   "canonical_token": ":A:",
+   "unicode": ":A:",
+   "mathml": "<math><mrow><mo>:</mo><mi>A</mi><mo>:</mo></mrow></math>",
+   "name_de": "Normalordnung",
+   "name_en": "normal ordering",
+   "meaning_de": "Normalordnung bezüglich eines benannten Vakuums",
+   "meaning_en": "normal ordering relative to a named vacuum",
+   "depth": "vertiefung",
+   "first_fixed_in": "D42",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:68 (symbol row 48)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.von-neumann-entropy",
+   "preinventory_row": 49,
+   "tex": {
+    "macro": "SvN",
+    "args": 0,
+    "expansion": "S_{\\mathrm{vN}}"
+   },
+   "canonical_token": "S_\\mathrmvN",
+   "unicode": "S_vN",
+   "mathml": "<math><msub><mi>S</mi><mi mathvariant=\"normal\">vN</mi></msub></math>",
+   "name_de": "von-Neumann-Entropie",
+   "name_en": "von Neumann entropy",
+   "meaning_de": "dimensionslose Entropie eines Zustands",
+   "meaning_en": "dimensionless entropy of a state",
+   "depth": "kern",
+   "first_fixed_in": "D44",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:69 (symbol row 49)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [],
+   "collisions": [
+    "COL-S"
+   ]
+  },
+  {
+   "symbol_id": "sym.entropy",
+   "preinventory_row": 50,
+   "tex": {
+    "macro": "Sth",
+    "args": 0,
+    "expansion": "S"
+   },
+   "canonical_token": "S",
+   "unicode": "S",
+   "mathml": "<math><mi>S</mi></math>",
+   "name_de": "thermodynamische Entropie",
+   "name_en": "thermodynamic entropy",
+   "meaning_de": "Entropie mit Boltzmann-Konstante",
+   "meaning_en": "entropy with the Boltzmann constant",
+   "depth": "kern",
+   "first_fixed_in": "D44",
+   "status": "collision-open",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:70 (symbol row 50)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [],
+   "collisions": [
+    "COL-S"
+   ]
+  },
+  {
+   "symbol_id": "sym.boltzmann-constant",
+   "preinventory_row": 51,
+   "tex": {
+    "macro": "kB",
+    "args": 0,
+    "expansion": "k_{\\mathrm{B}}"
+   },
+   "canonical_token": "k_\\mathrmB",
+   "unicode": "k_B",
+   "mathml": "<math><msub><mi>k</mi><mi mathvariant=\"normal\">B</mi></msub></math>",
+   "name_de": "Boltzmann-Konstante",
+   "name_en": "Boltzmann constant",
+   "meaning_de": "Boltzmann-Konstante",
+   "meaning_en": "Boltzmann constant",
+   "depth": "kern",
+   "first_fixed_in": "C15",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:71 (symbol row 51)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "kB",
+     "note": "same name and expansion"
+    }
+   ]
+  },
+  {
+   "symbol_id": "sym.natural-logarithm",
+   "preinventory_row": 52,
+   "tex": {
+    "macro": "ln",
+    "args": 0,
+    "expansion": "\\ln",
+    "builtin": true
+   },
+   "canonical_token": "\\ln",
+   "unicode": "ln",
+   "mathml": "<math><mi mathvariant=\"normal\">ln</mi></math>",
+   "name_de": "natürlicher Logarithmus",
+   "name_en": "natural logarithm",
+   "meaning_de": "natürlicher Logarithmus",
+   "meaning_en": "natural logarithm",
+   "depth": "kern",
+   "first_fixed_in": "C15",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:72 (symbol row 52)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.inverse-temperature",
+   "preinventory_row": 53,
+   "tex": {
+    "macro": "beta",
+    "args": 0,
+    "expansion": "\\beta",
+    "builtin": true
+   },
+   "canonical_token": "\\beta",
+   "unicode": "β",
+   "mathml": "<math><mi>β</mi></math>",
+   "name_de": "inverse Temperatur",
+   "name_en": "inverse temperature",
+   "meaning_de": "inverse Temperatur",
+   "meaning_en": "inverse temperature",
+   "depth": "kern",
+   "first_fixed_in": "D46",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:73 (symbol row 53)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "betainv",
+     "note": "legacy \\betainv is the fraction 1/(k_B T)"
+    }
+   ]
+  },
+  {
+   "symbol_id": "sym.temperature",
+   "preinventory_row": 54,
+   "tex": {
+    "macro": "Temp",
+    "args": 0,
+    "expansion": "T"
+   },
+   "canonical_token": "T",
+   "unicode": "T",
+   "mathml": "<math><mi>T</mi></math>",
+   "name_de": "Temperatur",
+   "name_en": "temperature",
+   "meaning_de": "absolute Temperatur",
+   "meaning_en": "absolute temperature",
+   "depth": "kern",
+   "first_fixed_in": "D49",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:74 (symbol row 54)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "Pre-inventory: collides with time reversal, trace class T(ℋ) and kinetic energy; not among the ten."
+  },
+  {
+   "symbol_id": "sym.internal-energy",
+   "preinventory_row": 55,
+   "tex": {
+    "macro": "Uint",
+    "args": 0,
+    "expansion": "U"
+   },
+   "canonical_token": "U",
+   "unicode": "U",
+   "mathml": "<math><mi>U</mi></math>",
+   "name_de": "innere Energie",
+   "name_en": "internal energy",
+   "meaning_de": "innere Energie",
+   "meaning_en": "internal energy",
+   "depth": "kern",
+   "first_fixed_in": "C19",
+   "status": "collision-open",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:75 (symbol row 55)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [],
+   "collisions": [
+    "COL-U"
+   ]
+  },
+  {
+   "symbol_id": "sym.helmholtz-energy",
+   "preinventory_row": 56,
+   "tex": {
+    "macro": "Fhelm",
+    "args": 0,
+    "expansion": "F"
+   },
+   "canonical_token": "F",
+   "unicode": "F",
+   "mathml": "<math><mi>F</mi></math>",
+   "name_de": "freie Energie",
+   "name_en": "Helmholtz free energy",
+   "meaning_de": "freie Energie (Helmholtz)",
+   "meaning_en": "Helmholtz free energy",
+   "depth": "kern",
+   "first_fixed_in": "D52",
+   "status": "collision-open",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:76 (symbol row 56)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [],
+   "collisions": [
+    "COL-F"
+   ]
+  },
+  {
+   "symbol_id": "sym.gibbs-energy",
+   "preinventory_row": 57,
+   "tex": {
+    "macro": "Ggibbs",
+    "args": 0,
+    "expansion": "G"
+   },
+   "canonical_token": "G",
+   "unicode": "G",
+   "mathml": "<math><mi>G</mi></math>",
+   "name_de": "freie Enthalpie",
+   "name_en": "Gibbs energy",
+   "meaning_de": "freie Enthalpie (Gibbs)",
+   "meaning_en": "Gibbs energy",
+   "depth": "kern",
+   "first_fixed_in": "D52",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:77 (symbol row 57)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.enthalpy",
+   "preinventory_row": 57,
+   "tex": {
+    "macro": "Henth",
+    "args": 0,
+    "expansion": "H_{\\mathrm{enth}}"
+   },
+   "canonical_token": "H_\\mathrmenth",
+   "unicode": "H_enth",
+   "mathml": "<math><msub><mi>H</mi><mi mathvariant=\"normal\">enth</mi></msub></math>",
+   "name_de": "Enthalpie",
+   "name_en": "enthalpy",
+   "meaning_de": "Enthalpie",
+   "meaning_en": "enthalpy",
+   "depth": "kern",
+   "first_fixed_in": "D52",
+   "status": "collision-open",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:77 (symbol row 57)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [],
+   "collisions": [
+    "COL-H"
+   ]
+  },
+  {
+   "symbol_id": "sym.chemical-potential",
+   "preinventory_row": 58,
+   "tex": {
+    "macro": "chempot",
+    "args": 0,
+    "expansion": "\\mu"
+   },
+   "canonical_token": "\\mu",
+   "unicode": "μ",
+   "mathml": "<math><mi>μ</mi></math>",
+   "name_de": "chemisches Potential",
+   "name_en": "chemical potential",
+   "meaning_de": "chemisches Potential",
+   "meaning_en": "chemical potential",
+   "depth": "kern",
+   "first_fixed_in": "D47",
+   "status": "collision-open",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:78 (symbol row 58)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [],
+   "collisions": [
+    "COL-MU"
+   ]
+  },
+  {
+   "symbol_id": "sym.particle-number",
+   "preinventory_row": 58,
+   "tex": {
+    "macro": "Npart",
+    "args": 0,
+    "expansion": "N"
+   },
+   "canonical_token": "N",
+   "unicode": "N",
+   "mathml": "<math><mi>N</mi></math>",
+   "name_de": "Teilchenzahl",
+   "name_en": "particle number",
+   "meaning_de": "Teilchenzahl",
+   "meaning_en": "particle number",
+   "depth": "kern",
+   "first_fixed_in": "C13",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:78 (symbol row 58)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.volume",
+   "preinventory_row": 58,
+   "tex": {
+    "macro": "Vol",
+    "args": 0,
+    "expansion": "V"
+   },
+   "canonical_token": "V",
+   "unicode": "V",
+   "mathml": "<math><mi>V</mi></math>",
+   "name_de": "Volumen",
+   "name_en": "volume",
+   "meaning_de": "Volumen",
+   "meaning_en": "volume",
+   "depth": "kern",
+   "first_fixed_in": "C16",
+   "status": "collision-open",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:78 (symbol row 58)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [],
+   "collisions": [
+    "COL-V"
+   ]
+  },
+  {
+   "symbol_id": "sym.pressure",
+   "preinventory_row": 58,
+   "tex": {
+    "macro": "pres",
+    "args": 0,
+    "expansion": "p"
+   },
+   "canonical_token": "p",
+   "unicode": "p",
+   "mathml": "<math><mi>p</mi></math>",
+   "name_de": "Druck",
+   "name_en": "pressure",
+   "meaning_de": "Druck",
+   "meaning_en": "pressure",
+   "depth": "kern",
+   "first_fixed_in": "C19",
+   "status": "collision-open",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:78 (symbol row 58)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [],
+   "collisions": [
+    "COL-P"
+   ]
+  },
+  {
+   "symbol_id": "sym.heat",
+   "preinventory_row": 59,
+   "tex": {
+    "macro": "Qheat",
+    "args": 0,
+    "expansion": "Q"
+   },
+   "canonical_token": "Q",
+   "unicode": "Q",
+   "mathml": "<math><mi>Q</mi></math>",
+   "name_de": "Wärme",
+   "name_en": "heat",
+   "meaning_de": "dem System zugeführte Wärme",
+   "meaning_en": "heat supplied to the system",
+   "depth": "kern",
+   "first_fixed_in": "D51",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:79 (symbol row 59)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [],
+   "conventions": [
+    "CONV-WORK"
+   ]
+  },
+  {
+   "symbol_id": "sym.work",
+   "preinventory_row": 59,
+   "tex": {
+    "macro": "Wwork",
+    "args": 0,
+    "expansion": "W"
+   },
+   "canonical_token": "W",
+   "unicode": "W",
+   "mathml": "<math><mi>W</mi></math>",
+   "name_de": "Arbeit",
+   "name_en": "work",
+   "meaning_de": "am System verrichtete Arbeit",
+   "meaning_en": "work done on the system",
+   "depth": "kern",
+   "first_fixed_in": "D51",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:79 (symbol row 59)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [],
+   "conventions": [
+    "CONV-WORK"
+   ]
+  },
+  {
+   "symbol_id": "sym.inexact-differential",
+   "preinventory_row": 59,
+   "tex": {
+    "macro": "dinexact",
+    "args": 0,
+    "expansion": "\\bar{\\mathrm{d}}"
+   },
+   "canonical_token": "\\bar\\mathrmd",
+   "unicode": "đ",
+   "mathml": "<math><mover accent=\"true\"><mi mathvariant=\"normal\">d</mi><mo>¯</mo></mover></math>",
+   "name_de": "unvollständiges Differential",
+   "name_en": "inexact differential",
+   "meaning_de": "Kennzeichnung einer Prozessgröße",
+   "meaning_en": "mark of a process quantity",
+   "depth": "kern",
+   "first_fixed_in": "D51",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:79 (symbol row 59)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.efficiency",
+   "preinventory_row": 60,
+   "tex": {
+    "macro": "effic",
+    "args": 0,
+    "expansion": "\\eta"
+   },
+   "canonical_token": "\\eta",
+   "unicode": "η",
+   "mathml": "<math><mi>η</mi></math>",
+   "name_de": "Wirkungsgrad",
+   "name_en": "efficiency",
+   "meaning_de": "Wirkungsgrad einer Maschine",
+   "meaning_en": "efficiency of an engine",
+   "depth": "kern",
+   "first_fixed_in": "D51",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:80 (symbol row 60)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.carnot-efficiency",
+   "preinventory_row": 60,
+   "tex": {
+    "macro": "efficC",
+    "args": 0,
+    "expansion": "\\eta_{\\mathrm{C}}"
+   },
+   "canonical_token": "\\eta_\\mathrmC",
+   "unicode": "η_C",
+   "mathml": "<math><msub><mi>η</mi><mi mathvariant=\"normal\">C</mi></msub></math>",
+   "name_de": "Carnot-Wirkungsgrad",
+   "name_en": "Carnot efficiency",
+   "meaning_de": "Wirkungsgrad der Carnot-Maschine",
+   "meaning_en": "efficiency of the Carnot engine",
+   "depth": "kern",
+   "first_fixed_in": "C20",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:80 (symbol row 60)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.pauli-matrix",
+   "preinventory_row": 61,
+   "tex": {
+    "macro": "pauli",
+    "args": 1,
+    "expansion": "\\sigma_{#1}",
+    "arg_examples": [
+     "x"
+    ]
+   },
+   "canonical_token": "\\sigma_x",
+   "unicode": "σ_x",
+   "mathml": "<math><msub><mi>σ</mi><mi>x</mi></msub></math>",
+   "name_de": "Pauli-Matrix",
+   "name_en": "Pauli matrix",
+   "meaning_de": "Pauli-Matrix",
+   "meaning_en": "Pauli matrix",
+   "depth": "kern",
+   "first_fixed_in": "C7",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:81 (symbol row 61)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.spectrum",
+   "preinventory_row": 62,
+   "tex": {
+    "macro": "spec",
+    "args": 1,
+    "expansion": "\\sigma(#1)",
+    "arg_examples": [
+     "A"
+    ]
+   },
+   "canonical_token": "\\sigma(A)",
+   "unicode": "σ(A)",
+   "mathml": "<math><mrow><mi>σ</mi><mo>(</mo><mi>A</mi><mo>)</mo></mrow></math>",
+   "name_de": "Spektrum",
+   "name_en": "spectrum",
+   "meaning_de": "Spektrum eines Operators",
+   "meaning_en": "spectrum of an operator",
+   "depth": "vertiefung",
+   "first_fixed_in": "D25",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:82 (symbol row 62)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "Pre-inventory: collides with the Pauli σ; not among the ten."
+  },
+  {
+   "symbol_id": "sym.domain",
+   "preinventory_row": 63,
+   "tex": {
+    "macro": "dom",
+    "args": 1,
+    "expansion": "D(#1)",
+    "arg_examples": [
+     "A"
+    ]
+   },
+   "canonical_token": "D(A)",
+   "unicode": "D(A)",
+   "mathml": "<math><mrow><mi>D</mi><mo>(</mo><mi>A</mi><mo>)</mo></mrow></math>",
+   "name_de": "Definitionsbereich",
+   "name_en": "domain",
+   "meaning_de": "Definitionsbereich eines Operators",
+   "meaning_en": "domain of an operator",
+   "depth": "vertiefung",
+   "first_fixed_in": "D16",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:83 (symbol row 63)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    },
+    {
+     "source": "reed-simon-1",
+     "locus": "section VIII.1, p. 249 (DjVu page 261)",
+     "verified": true,
+     "quote": "This subspace, which we denote by D(T), is called the domain of the operator T.",
+     "how": "read from the page image (ddjvu -format=pnm -page=261 -scale=150), not from the text layer"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.time-automorphism",
+   "preinventory_row": 67,
+   "tex": {
+    "macro": "tauaut",
+    "args": 1,
+    "expansion": "\\tau_{#1}",
+    "arg_examples": [
+     "t"
+    ]
+   },
+   "canonical_token": "\\tau_t",
+   "unicode": "τ_t",
+   "mathml": "<math><msub><mi>τ</mi><mi>t</mi></msub></math>",
+   "name_de": "Zeitautomorphismus",
+   "name_en": "time automorphism",
+   "meaning_de": "Automorphismengruppe der Zeitentwicklung",
+   "meaning_en": "automorphism group of the time evolution",
+   "depth": "fundament",
+   "first_fixed_in": "D48",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:87 (symbol row 67)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.kms-state",
+   "preinventory_row": 67,
+   "tex": {
+    "macro": "kms",
+    "args": 0,
+    "expansion": "\\omega_{\\beta}"
+   },
+   "canonical_token": "\\omega_\\beta",
+   "unicode": "ω_β",
+   "mathml": "<math><msub><mi>ω</mi><mi>β</mi></msub></math>",
+   "name_de": "KMS-Zustand",
+   "name_en": "KMS state",
+   "meaning_de": "KMS-Zustand zur inversen Temperatur β",
+   "meaning_en": "KMS state at inverse temperature β",
+   "depth": "fundament",
+   "first_fixed_in": "D48",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:87 (symbol row 67)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.time-reversal",
+   "preinventory_row": 68,
+   "tex": {
+    "macro": "Trev",
+    "args": 0,
+    "expansion": "\\Theta"
+   },
+   "canonical_token": "\\Theta",
+   "unicode": "Θ",
+   "mathml": "<math><mi mathvariant=\"normal\">Θ</mi></math>",
+   "name_de": "Zeitumkehr",
+   "name_en": "time reversal",
+   "meaning_de": "antiunitäre Zeitumkehr",
+   "meaning_en": "antiunitary time reversal",
+   "depth": "vertiefung",
+   "first_fixed_in": "D27",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:88 (symbol row 68)",
+     "verified": false,
+     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.complex-conjugation",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "Conj",
+    "args": 0,
+    "expansion": "J"
+   },
+   "canonical_token": "J",
+   "unicode": "J",
+   "mathml": "<math><mi>J</mi></math>",
+   "name_de": "komplexe Konjugation",
+   "name_en": "complex conjugation",
+   "meaning_de": "antiunitäre komplexe Konjugation in einer Basis (Wigner-Beweise)",
+   "meaning_en": "antiunitary complex conjugation in a basis (Wigner proofs)",
+   "depth": "vertiefung",
+   "first_fixed_in": "D27",
+   "status": "collision-open",
+   "sources": [
+    {
+     "source": "preinventory",
+     "locus": "notation-preinventory.md:28 (symbol row 8)",
+     "verified": false,
+     "how": "mentioned in pre-inventory row 8 as K = complex conjugation; no source checked"
+    }
+   ],
+   "legacy_aliases": [],
+   "collisions": [
+    "COL-K"
+   ]
+  },
+  {
+   "symbol_id": "sym.electron-density",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "densE",
+    "args": 0,
+    "expansion": "\\rho_{\\mathrm{e}}"
+   },
+   "canonical_token": "\\rho_\\mathrme",
+   "unicode": "ρ_e",
+   "mathml": "<math><msub><mi>ρ</mi><mi mathvariant=\"normal\">e</mi></msub></math>",
+   "name_de": "Aufenthaltsdichte des Elektrons im Labor",
+   "name_en": "laboratory density of the electron",
+   "meaning_de": "Randdichte des Elektronenorts im Zweiteilchenzustand",
+   "meaning_en": "marginal density of the electron position in the two-particle state",
+   "depth": "kern",
+   "first_fixed_in": "D70",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "derivation-c11",
+     "locus": "DERIVATION.md:88",
+     "verified": true,
+     "how": "read in evidence/derivations/c11/DERIVATION.md at this line (derivation by codex, independently reviewed in REVIEW.md)",
+     "quote": "\\rho_e(x)=\\int f(x-br)g(r)\\,d^3r"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "ρ with a particle subscript is a density in position space; the bare ρ is the density operator (sym.density-operator)."
+  },
+  {
+   "symbol_id": "sym.proton-density",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "densP",
+    "args": 0,
+    "expansion": "\\rho_{\\mathrm{p}}"
+   },
+   "canonical_token": "\\rho_\\mathrmp",
+   "unicode": "ρ_p",
+   "mathml": "<math><msub><mi>ρ</mi><mi mathvariant=\"normal\">p</mi></msub></math>",
+   "name_de": "Aufenthaltsdichte des Protons im Labor",
+   "name_en": "laboratory density of the proton",
+   "meaning_de": "Randdichte des Protonenorts im Zweiteilchenzustand",
+   "meaning_en": "marginal density of the proton position in the two-particle state",
+   "depth": "kern",
+   "first_fixed_in": "D70",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "derivation-c11",
+     "locus": "DERIVATION.md:94",
+     "verified": true,
+     "how": "read in evidence/derivations/c11/DERIVATION.md at this line (derivation by codex, independently reviewed in REVIEW.md)",
+     "quote": "\\rho_p(x)=\\int f(x+ar)g(r)\\,d^3r"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.effective-potential",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "Veff",
+    "args": 1,
+    "expansion": "V_{#1}^{\\mathrm{eff}}",
+    "arg_examples": [
+     "\\ell"
+    ]
+   },
+   "canonical_token": "V_\\ell^\\mathrmeff",
+   "unicode": "V_ℓ^eff",
+   "mathml": "<math><msubsup><mi>V</mi><mi>ℓ</mi><mi mathvariant=\"normal\">eff</mi></msubsup></math>",
+   "name_de": "effektives Potential",
+   "name_en": "effective potential",
+   "meaning_de": "Coulombpotential plus Zentrifugalterm zur Drehimpulsquantenzahl ℓ, mit der reduzierten Masse",
+   "meaning_en": "Coulomb potential plus centrifugal term for orbital quantum number ℓ, with the reduced mass",
+   "depth": "kern",
+   "first_fixed_in": "D71",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "derivation-c11",
+     "locus": "DERIVATION.md:175",
+     "verified": true,
+     "how": "read in evidence/derivations/c11/DERIVATION.md at this line (derivation by codex, independently reviewed in REVIEW.md)",
+     "quote": "+\\frac{\\hbar^2\\ell(\\ell+1)}{2\\mu r^2}"
+    },
+    {
+     "source": "tpc-script-v0.2.1",
+     "locus": "lectures/de/vl16.tex:12",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "U_\\ell(r) = \\frac{\\hbar^2 \\ell(\\ell+1)}{2m_{\\text{e}}r^2}+V(r)"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "The script writes U_ℓ and uses the electron mass; the registry writes V_ℓ^eff (U is taken by the unitary operator and the internal energy) and the reduced mass."
+  },
+  {
+   "symbol_id": "sym.rydberg-energy-reduced",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "RydRed",
+    "args": 0,
+    "expansion": "\\mathrm{Ry}_{\\mu}"
+   },
+   "canonical_token": "\\mathrmRy_\\mu",
+   "unicode": "Ry_μ",
+   "mathml": "<math><msub><mi mathvariant=\"normal\">Ry</mi><mi>μ</mi></msub></math>",
+   "name_de": "Rydberg-Energie mit reduzierter Masse",
+   "name_en": "Rydberg energy with the reduced mass",
+   "meaning_de": "Ry_μ = Ry·μ/m_e, der Betrag der Grundzustandsenergie der Relativbewegung für Z = 1",
+   "meaning_en": "Ry_μ = Ry·μ/m_e, the modulus of the ground-state energy of the relative motion for Z = 1",
+   "depth": "kern",
+   "first_fixed_in": "C11",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "derivation-c11",
+     "locus": "DERIVATION.md:407",
+     "verified": true,
+     "how": "read in evidence/derivations/c11/DERIVATION.md at this line (derivation by codex, independently reviewed in REVIEW.md)",
+     "quote": "E_1(m_e)=-\\mathcal R,\\quad E_1(\\mu)=-\\eta\\mathcal R,\\quad"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "The derivation writes 𝓡 for Ry and η for μ/m_e."
+  },
+  {
+   "symbol_id": "sym.radial-density",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "Pnl",
+    "args": 2,
+    "expansion": "P_{#1 #2}",
+    "arg_examples": [
+     "n",
+     "\\ell"
+    ]
+   },
+   "canonical_token": "P_n\\ell",
+   "unicode": "P_nℓ",
+   "mathml": "<math><msub><mi>P</mi><mrow><mi>n</mi><mi>ℓ</mi></mrow></msub></math>",
+   "name_de": "radiale Aufenthaltsdichte",
+   "name_en": "radial probability density",
+   "meaning_de": "P_nℓ(r) = r² R_nℓ(r)², Wahrscheinlichkeitsdichte des Abstands r",
+   "meaning_en": "P_nℓ(r) = r² R_nℓ(r)², probability density of the distance r",
+   "depth": "kern",
+   "first_fixed_in": "D72",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "derivation-c11",
+     "locus": "DERIVATION.md:349",
+     "verified": true,
+     "how": "read in evidence/derivations/c11/DERIVATION.md at this line (derivation by codex, independently reviewed in REVIEW.md)",
+     "quote": "F_{n\\ell}(r)=\\int_0^r s^2|R_{n\\ell}(s)|^2ds,"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.radial-distribution",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "Fnl",
+    "args": 2,
+    "expansion": "F_{#1 #2}",
+    "arg_examples": [
+     "n",
+     "\\ell"
+    ]
+   },
+   "canonical_token": "F_n\\ell",
+   "unicode": "F_nℓ",
+   "mathml": "<math><msub><mi>F</mi><mrow><mi>n</mi><mi>ℓ</mi></mrow></msub></math>",
+   "name_de": "radiale Verteilungsfunktion",
+   "name_en": "radial distribution function",
+   "meaning_de": "Wahrscheinlichkeit, den Abstand kleiner als r zu finden",
+   "meaning_en": "probability of finding the distance smaller than r",
+   "depth": "vertiefung",
+   "first_fixed_in": "D73",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "derivation-c11",
+     "locus": "DERIVATION.md:349",
+     "verified": true,
+     "how": "read in evidence/derivations/c11/DERIVATION.md at this line (derivation by codex, independently reviewed in REVIEW.md)",
+     "quote": "F_{n\\ell}(r)=\\int_0^r s^2|R_{n\\ell}(s)|^2ds,"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.radial-tail-polynomial",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "Qnl",
+    "args": 2,
+    "expansion": "Q_{#1 #2}",
+    "arg_examples": [
+     "n",
+     "\\ell"
+    ]
+   },
+   "canonical_token": "Q_n\\ell",
+   "unicode": "Q_nℓ",
+   "mathml": "<math><msub><mi>Q</mi><mrow><mi>n</mi><mi>ℓ</mi></mrow></msub></math>",
+   "name_de": "Restpolynom der radialen Verteilungsfunktion",
+   "name_en": "tail polynomial of the radial distribution function",
+   "meaning_de": "Polynom in F_nℓ = 1 − e^{−2x/n} Q_nℓ(x), x = Zr/a_μ",
+   "meaning_en": "polynomial in F_nℓ = 1 − e^{−2x/n} Q_nℓ(x), x = Zr/a_μ",
+   "depth": "vertiefung",
+   "first_fixed_in": "C11",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "derivation-c11",
+     "locus": "DERIVATION.md:357",
+     "verified": true,
+     "how": "read in evidence/derivations/c11/DERIVATION.md at this line (derivation by codex, independently reviewed in REVIEW.md)",
+     "quote": "Thus \\(F_{n\\ell}=1-e^{-2x/n}Q_{n\\ell}(x)\\), where"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.planck-constant",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "hPlanck",
+    "args": 0,
+    "expansion": "h"
+   },
+   "canonical_token": "h",
+   "unicode": "h",
+   "mathml": "<math><mi>h</mi></math>",
+   "name_de": "Plancksches Wirkungsquantum",
+   "name_en": "Planck constant",
+   "meaning_de": "h = 2πℏ",
+   "meaning_en": "h = 2πℏ",
+   "depth": "kern",
+   "first_fixed_in": "C11",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "codata-2022",
+     "locus": "allascii.txt:271",
+     "verified": true,
+     "how": "read in the CODATA 2022 listing at this line",
+     "quote": "Planck constant 6.626 070 15 e-34 (exact) J Hz^-1"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.speed-of-light",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "clight",
+    "args": 0,
+    "expansion": "c"
+   },
+   "canonical_token": "c",
+   "unicode": "c",
+   "mathml": "<math><mi>c</mi></math>",
+   "name_de": "Lichtgeschwindigkeit im Vakuum",
+   "name_en": "speed of light in vacuum",
+   "meaning_de": "Lichtgeschwindigkeit im Vakuum",
+   "meaning_en": "speed of light in vacuum",
+   "depth": "kern",
+   "first_fixed_in": "C11",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "codata-2022",
+     "locus": "allascii.txt:330",
+     "verified": true,
+     "how": "read in the CODATA 2022 listing at this line",
+     "quote": "speed of light in vacuum 299 792 458 (exact) m s^-1"
+    }
+   ],
+   "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.rydberg-constant",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "Rinf",
+    "args": 0,
+    "expansion": "R_{\\infty}"
+   },
+   "canonical_token": "R_\\infty",
+   "unicode": "R_∞",
+   "mathml": "<math><msub><mi>R</mi><mi mathvariant=\"normal\">∞</mi></msub></math>",
+   "name_de": "Rydberg-Konstante",
+   "name_en": "Rydberg constant",
+   "meaning_de": "Rydberg-Konstante für unendlich schweren Kern; Ry = h c R_∞",
+   "meaning_en": "Rydberg constant for infinite nuclear mass; Ry = h c R_∞",
+   "depth": "kern",
+   "first_fixed_in": "C11",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "codata-2022",
+     "locus": "allascii.txt:309",
+     "verified": true,
+     "how": "read in the CODATA 2022 listing at this line",
+     "quote": "Rydberg constant 10 973 731.568 157 0.000 012 m^-1"
+    }
+   ],
+   "legacy_aliases": []
+  }
+ ],
+ "collisions": [
+  {
+   "id": "COL-F",
+   "token": "F",
+   "symbol_ids": [
+    "sym.effect-operator",
+    "sym.helmholtz-energy"
+   ],
+   "conflict": "F is the effect (detector) operator in the script (vl06.tex Postulat 3 and 4) and the Helmholtz free energy in thermodynamics. BRIEF.md P3/P4 write E for the effect, which would collide with energy eigenvalues E_n and with Plavala's E(K).",
+   "proposal": "Keep F for the effect operator in Parts I-III and F for the free energy in Parts IV-V as two semantic macros (\\EffOp, \\Fhelm) with disjoint chapter scopes recorded in the registry; if a chapter needs both, the free energy takes the IUPAC letter A there.",
+   "reason": "Both letters are the ones a Lehramt student meets at school and that the existing script uses (vl06.tex); E for effects would collide in every chapter that has an energy.",
+   "provisional": "none; no smoke chapter needs the quantum effect operator or the free energy (C2 uses Plavala's lower-case f as a bound variable)."
+  },
+  {
+   "id": "COL-U",
+   "token": "U",
+   "symbol_ids": [
+    "sym.unitary",
+    "sym.time-evolution",
+    "sym.internal-energy"
+   ],
+   "conflict": "U is a unitary (U_t, U_π, the coordinate change of Reed-Simon III p. 55) and the internal energy. vl16.tex:35 also uses U_ℓ(r) for the effective radial potential.",
+   "proposal": "U stays the unitary in Parts I-III; internal energy is U only in Parts IV-V (scoped), and the effective radial potential becomes V_eff,ℓ.",
+   "reason": "The effective potential is the only one of the three that shares a chapter (C11) with a unitary, and it is the only one without a fixed school letter.",
+   "provisional": "sym.unitary is blessed-provisional (needed for the coordinate change in C11)."
+  },
+  {
+   "id": "COL-H",
+   "token": "H",
+   "symbol_ids": [
+    "sym.hamiltonian",
+    "sym.hilbert-space",
+    "sym.enthalpy"
+   ],
+   "conflict": "H is the Hamiltonian, \\mathcal{H} the Hilbert space, H the enthalpy and H^2 the Sobolev space.",
+   "proposal": "Hamiltonian H, Hilbert space \\mathcal{H} (different glyphs, as in the script and in Plavala), enthalpy H_enth, Sobolev space always with its exponent and argument H^2(ℝ^3).",
+   "reason": "The Hamiltonian appears in Parts IV-V next to the enthalpy, so scoping by chapter cannot separate them; the enthalpy is the rarer symbol.",
+   "provisional": "sym.hamiltonian and sym.hilbert-space are blessed-provisional."
+  },
+  {
+   "id": "COL-S",
+   "token": "S",
+   "symbol_ids": [
+    "sym.entropy",
+    "sym.von-neumann-entropy",
+    "sym.spin",
+    "sym.simplex"
+   ],
+   "conflict": "S is the entropy, the spin operator, the symmetric group S_N and Plavala's simplex S_n (and his S(E)).",
+   "proposal": "S is reserved for entropy (S_vN dimensionless, S thermodynamic); the simplex is Δ_n; spin carries a hat and an index (Ŝ_j) if hats survive, otherwise spin becomes s for the quantum number and the operators need a decision; the symmetric group is written Sym(N).",
+   "reason": "Entropy is the meaning that cannot be renamed in a thermodynamics course.",
+   "provisional": "sym.simplex is blessed-provisional as Δ_n (needed in C2)."
+  },
+  {
+   "id": "COL-OMEGA",
+   "token": "\\Omega",
+   "symbol_ids": [
+    "sym.vacuum",
+    "sym.microcanonical-count"
+   ],
+   "conflict": "Ω is the Fock vacuum (Bratteli-Robinson, per the pre-inventory, unverified) and the legacy macro \\Om is the microcanonical state count; vl20.tex writes N_E for the count according to the pre-inventory.",
+   "proposal": "Ω is the vacuum; the count is N_E; the legacy macro \\Om is retired in the new course.",
+   "reason": "The script itself already writes N_E, so only an unused macro changes.",
+   "provisional": "none; no smoke chapter needs either."
+  },
+  {
+   "id": "COL-DELTA",
+   "token": "\\Delta",
+   "symbol_ids": [
+    "sym.laplacian",
+    "sym.simplex",
+    "sym.standard-deviation"
+   ],
+   "conflict": "Δ is the Laplacian (script \\lap, Reed-Simon), the standard deviation Δx (vl09.tex:41-43), the energy-shell width (vl20.tex, per the pre-inventory) and, if the simplex is renamed, Δ_n. Reed-Simon also subscript the Laplacian (Δ_1, Δ_R).",
+   "proposal": "Δ is the Laplacian, with a coordinate subscript where needed; Δ_n with an integer subscript is the simplex and appears only in Part I before any Laplacian; the standard deviation is written as the square root of the variance, with no symbol of its own; the shell width is δE.",
+   "reason": "The Laplacian is fixed by every source; a separate standard-deviation symbol is not needed once Var is registered.",
+   "provisional": "sym.laplacian and sym.simplex are both blessed-provisional; their tokens differ (Δ and Δ_n)."
+  },
+  {
+   "id": "COL-MU",
+   "token": "\\mu",
+   "symbol_ids": [
+    "sym.reduced-mass",
+    "sym.chemical-potential"
+   ],
+   "conflict": "μ is the reduced mass (vl16.tex:29; PLAN.md 1.3 writes a_mu) and the chemical potential. Reed-Simon III p. 55 use μ_1, μ_2 for the two masses.",
+   "proposal": "Two semantic macros (\\massRed, \\chempot) that both render μ, with disjoint chapter scopes (C11 against C17-C21) recorded in the registry. Fallback if TJO wants one glyph per meaning: reduced mass m_red and a_red, as the pre-inventory proposed.",
+   "reason": "Both are the universal letters in their field, the chapters do not overlap, and PLAN.md 1.3 already writes a_mu.",
+   "provisional": "sym.reduced-mass is blessed-provisional as μ (needed in C11)."
+  },
+  {
+   "id": "COL-P",
+   "token": "p",
+   "symbol_ids": [
+    "sym.probability-weight",
+    "sym.momentum-operator",
+    "sym.pressure"
+   ],
+   "conflict": "p is a probability weight (vl01.tex:108), the momentum and the pressure. Probability weights and pressure meet in Parts IV-V.",
+   "proposal": "p is the probability weight; the momentum operator always carries its hat (p̂), or is P if hats are dropped; pressure is capital P in Parts IV-V.",
+   "reason": "Probabilities run through the whole course, so they keep the bare letter; pressure and Boltzmann weights share chapters and cannot share a letter.",
+   "provisional": "sym.probability-weight is blessed-provisional (needed in C1)."
+  },
+  {
+   "id": "COL-V",
+   "token": "V",
+   "symbol_ids": [
+    "sym.potential",
+    "sym.volume"
+   ],
+   "conflict": "V is the potential (vl16.tex:22, Reed-Simon III p. 55), the volume, and Plavala's ambient vector space V.",
+   "proposal": "V is the potential in Parts I-III and the volume in Parts IV-V (two semantic macros, disjoint scopes); an external potential in Parts IV-V is written V_ext; Plavala's vector space is a source-scoped token in the translation guide only.",
+   "reason": "Both are school letters; they meet only where a gas sits in an external potential.",
+   "provisional": "sym.potential is blessed-provisional (needed in C11)."
+  },
+  {
+   "id": "COL-K",
+   "token": "K",
+   "symbol_ids": [
+    "sym.state-space",
+    "sym.complex-conjugation"
+   ],
+   "conflict": "K is Plavala's state space and, per the pre-inventory, the complex conjugation in Wigner proofs.",
+   "proposal": "K is the state space; the antiunitary conjugation is written J.",
+   "reason": "K is fixed by the source that C2 follows; the conjugation appears in one proof in C8 and no source for its letter is on disk.",
+   "provisional": "sym.state-space is blessed-provisional (needed in C2)."
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+% c11.fig.massen — where the centre of mass lies on the line between proton and electron.
+%
+% Generating formula (registry definition D61; DERIVATION.md Result 1.1):
+%     R = r_p + (m_e/M) r,   M = m_e + m_p,   r = r_e - r_p,
+% so the centre of mass divides the segment proton -> electron at the fraction m_e/M of its
+% length, measured from the proton.  Three rows, the segment has length 6.4 cm in each:
+%     m_p : m_e = 1 : 1          m_e/M = 1/2
+%     m_p : m_e = 3 : 1          m_e/M = 1/4       (the ratio used in c11.fig.zweikoerper)
+%     hydrogen                   m_e/M = q/(1 + q), q = m_e/m_p = 5.446170214889e-4 (CODATA 2022,
+%                                allascii.txt line 117); the cross is drawn at that fraction and
+%                                cannot be told apart from the proton at this scale.
+% Greyscale: proton filled, electron open, centre of mass a cross.
+\begin{tikzpicture}[x=1cm, y=1cm]
+  \foreach \y/\f in {2.4/0.5, 1.2/0.25, 0/{5.446170214889e-4/(1+5.446170214889e-4)}} {
+    \draw[tpc leader] (0,\y) -- (6.4,\y);
+    \fill[tpc-plate-ink] (0,\y) circle (3.4pt);
+    \draw[tpc-plate-ink, fill=tpc-plate, line width=\tpcstrokeregular] (6.4,\y) circle (2.4pt);
+    \draw[tpc-plate-ink, line width=\tpcstrokeregular]
+      ({6.4*\f},\y) ++(-3pt,-3pt) -- ++(6pt,6pt) ({6.4*\f},\y) ++(-3pt,3pt) -- ++(6pt,-6pt);
+  }
+  \node[tpc label, anchor=east] at (-0.3,2.4) {$m_{\mathrm{p}} : m_{\mathrm{e}} = 1 : 1$};
+  \node[tpc label, anchor=east] at (-0.3,1.2) {$m_{\mathrm{p}} : m_{\mathrm{e}} = 3 : 1$};
+  \node[tpc label, anchor=east] at (-0.3,0) {\tpcifenglish{hydrogen}{Wasserstoff}};
+  \node[tpc label, anchor=south] at (0,2.65) {\tpcifenglish{proton}{Proton}};
+  \node[tpc label, anchor=south] at (6.4,2.65) {\tpcifenglish{electron}{Elektron}};
+  \node[tpc label, anchor=south] at (3.2,2.65) {\tpcifenglish{centre of mass}{Schwerpunkt}};
+  \node[tpc label, anchor=north] at (3.2,2.25) {$\tfrac12\,r$};
+  \node[tpc label, anchor=north] at (1.6,1.05) {$\tfrac14\,r$};
+  \node[tpc label, anchor=north west] at (0.15,-0.15) {$\tfrac{m_{\mathrm{e}}}{M}\,r$};
+\end{tikzpicture}

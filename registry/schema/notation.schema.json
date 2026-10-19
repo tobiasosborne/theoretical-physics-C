@@ -1,0 +1,269 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "registry/notation.json",
+ "type": "object",
+ "additionalProperties": false,
+ "required": [
+  "schema_version",
+  "symbols"
+ ],
+ "properties": {
+  "schema_version": {
+   "type": "integer"
+  },
+  "preinventory": {
+   "type": "object",
+   "additionalProperties": false,
+   "properties": {
+    "symbol_rows": {
+     "type": "integer"
+    }
+   }
+  },
+  "symbols": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/symbol"
+   }
+  },
+  "collisions": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/collision"
+   }
+  }
+ },
+ "$defs": {
+  "source": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "source",
+    "verified",
+    "how"
+   ],
+   "properties": {
+    "source": {
+     "type": "string",
+     "minLength": 1
+    },
+    "locus": {
+     "type": "string"
+    },
+    "verified": {
+     "type": "boolean"
+    },
+    "how": {
+     "type": "string"
+    },
+    "quote": {
+     "type": "string"
+    }
+   }
+  },
+  "symbol": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "symbol_id",
+    "tex",
+    "canonical_token",
+    "unicode",
+    "mathml",
+    "name_de",
+    "name_en",
+    "meaning_de",
+    "meaning_en",
+    "depth",
+    "first_fixed_in",
+    "status",
+    "sources",
+    "legacy_aliases"
+   ],
+   "properties": {
+    "symbol_id": {
+     "type": "string",
+     "pattern": "^sym\\.[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "preinventory_row": {
+     "type": [
+      "integer",
+      "null"
+     ]
+    },
+    "tex": {
+     "type": "object",
+     "additionalProperties": false,
+     "required": [
+      "macro",
+      "args",
+      "expansion"
+     ],
+     "properties": {
+      "macro": {
+       "type": "string",
+       "pattern": "^[A-Za-z]+$"
+      },
+      "args": {
+       "type": "integer"
+      },
+      "expansion": {
+       "type": "string",
+       "minLength": 1
+      },
+      "arg_examples": {
+       "type": "array",
+       "items": {
+        "type": "string"
+       }
+      },
+      "builtin": {
+       "type": "boolean"
+      }
+     }
+    },
+    "canonical_token": {
+     "type": "string",
+     "minLength": 1
+    },
+    "unicode": {
+     "type": "string",
+     "minLength": 1
+    },
+    "mathml": {
+     "type": "string",
+     "pattern": "^<math>.*</math>$"
+    },
+    "name_de": {
+     "type": "string",
+     "minLength": 1
+    },
+    "name_en": {
+     "type": "string",
+     "minLength": 1
+    },
+    "meaning_de": {
+     "type": "string",
+     "minLength": 1
+    },
+    "meaning_en": {
+     "type": "string",
+     "minLength": 1
+    },
+    "depth": {
+     "enum": [
+      "kern",
+      "vertiefung",
+      "fundament"
+     ]
+    },
+    "first_fixed_in": {
+     "type": "string",
+     "pattern": "^(D[1-9][0-9]*|C([0-9]|1[0-9]|2[01]))$"
+    },
+    "status": {
+     "enum": [
+      "blessed-provisional",
+      "proposed",
+      "collision-open"
+     ]
+    },
+    "sources": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "$ref": "#/$defs/source"
+     }
+    },
+    "legacy_aliases": {
+     "type": "array",
+     "items": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+       "macro"
+      ],
+      "properties": {
+       "macro": {
+        "type": "string",
+        "pattern": "^[A-Za-z]+$"
+       },
+       "note": {
+        "type": "string"
+       }
+      }
+     }
+    },
+    "conventions": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "pattern": "^CONV-[A-Z0-9-]+$"
+     }
+    },
+    "collisions": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "pattern": "^COL-[A-Z0-9-]+$"
+     }
+    },
+    "notes": {
+     "type": "string"
+    },
+    "gap_tjo": {
+     "type": "string"
+    },
+    "needs_check": {
+     "type": "boolean"
+    },
+    "check": {
+     "type": "string"
+    }
+   }
+  },
+  "collision": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "id",
+    "token",
+    "symbol_ids",
+    "conflict",
+    "proposal",
+    "reason"
+   ],
+   "properties": {
+    "id": {
+     "type": "string",
+     "pattern": "^COL-[A-Z0-9-]+$"
+    },
+    "token": {
+     "type": "string"
+    },
+    "symbol_ids": {
+     "type": "array",
+     "minItems": 1,
+     "items": {
+      "type": "string"
+     }
+    },
+    "conflict": {
+     "type": "string",
+     "minLength": 1
+    },
+    "proposal": {
+     "type": "string",
+     "minLength": 1
+    },
+    "reason": {
+     "type": "string",
+     "minLength": 1
+    },
+    "provisional": {
+     "type": "string"
+    }
+   }
+  }
+ }
+}

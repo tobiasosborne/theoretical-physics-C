@@ -1,0 +1,7 @@
+{
+ "gate": "c11-formulas",
+ "what": "The 2p wave function for m = +-1 of latex/lectures/de/vl16.tex line 94: prefactor 1/(8 sqrt(2 pi)), norm squared 1/2.",
+ "cmd": "python3 scripts/c11/check_c11_formulas.py --content tests/red/c11-formulas/psi21-vl16-line94",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[norm\\] c11\\.eq\\.psi21pm: psi_211 is not normalised: norm squared is 1/2"
+}

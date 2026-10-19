@@ -1,0 +1,34 @@
+% c11.fig.zerfliessen — the width of a free centre-of-mass packet as a function of time.
+%
+% Generating formula (DERIVATION.md Result 1b.2, packets with finite second moments):
+%     Var R(t) = Var R(0) + (t/M) <dR.dP + dP.dR> + (t^2/M^2) Var P.
+% With the widths s_R = sqrt(Var R(0)), s_P = sqrt(Var P), the dimensionless time
+% tau = t s_P / (M s_R) and the dimensionless covariance k = <dR.dP + dP.dR> / (2 s_R s_P):
+%     Var R(t) / Var R(0) = 1 + 2 k tau + tau^2,          |k| <= 1 (Cauchy-Schwarz).
+% Drawn: sqrt(1 + 2 k tau + tau^2) for k = 0 (solid) and for k = -3/5 (dashed; the packet first
+% narrows, minimum sqrt(1 - k^2) = 4/5 at tau = -k = 3/5), and the line tau (thin),
+% showing their common asymptotic slope 1. The positive-time asymptotes are tau + k:
+% tau for the solid curve and tau - 3/5 for the dashed curve. The values of k are choices.
+% Greyscale: solid, dashed, thin.
+\begin{tikzpicture}
+  \pgfplotsset{c11/.style={
+    axis lines=left, clip=false, grid=none,
+    axis line style={draw=tpc-plate-ink, line width=\tpcstrokethin},
+    tick style={draw=tpc-plate-ink, line width=\tpcstrokehair},
+    tick label style={font=\tpcfontlabel, text=tpc-plate-ink},
+    label style={font=\tpcfontlabel, text=tpc-plate-ink},
+    every axis x label/.style={at={(ticklabel* cs:1.0)}, anchor=west, font=\tpcfontlabel},
+    every axis y label/.style={at={(ticklabel* cs:1.0)}, anchor=south, font=\tpcfontlabel}}}
+  \begin{axis}[c11, width=8.6cm, height=5.2cm,
+      xmin=0, xmax=4.2, ymin=0, ymax=4.4,
+      xtick={0,1,2,3,4}, ytick={0,1,2,3,4},
+      xlabel={$\tau$}, ylabel={$\sqrt{\operatorname{Var}\boldsymbol{R}(t)/\operatorname{Var}\boldsymbol{R}(0)}$}]
+    % The line shows the common asymptotic slope, not a common asymptote.
+    \addplot[tpc leader, domain=0:4.2, samples=2] {x};
+    \addplot[tpc state, domain=0:4.2, samples=120] {sqrt(1+x*x)};
+    \addplot[tpc state, dash pattern=on 5pt off 2pt, domain=0:4.2, samples=160] {sqrt(1-1.2*x+x*x)};
+    \node[tpc label, anchor=south east] at (axis cs:2.6,2.85) {$k = 0$};
+    \node[tpc label, anchor=north west] at (axis cs:2.75,2.15) {$k < 0$};
+    \fill[tpc-plate-ink] (axis cs:0.6,0.8) circle (1.4pt);
+  \end{axis}
+\end{tikzpicture}

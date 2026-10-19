@@ -1,0 +1,7 @@
+{
+  "gate": "red-runner",
+  "what": "A case regex matches a generic failure word alone.",
+  "cmd": "python3 tests/red/red-runner/no-cases/probe.py generic-regex",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "BROKEN .*generic failure word alone"
+}

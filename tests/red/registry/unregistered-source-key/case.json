@@ -1,0 +1,7 @@
+{
+ "gate": "registry",
+ "what": "A symbol cites the source key 'plavala' (the old short alias); the fixture's only registered source is sources/fixture-book/source.json and not_a_source is empty.",
+ "cmd": "python3 scripts/registry/check_registry.py --root tests/red/registry/unregistered-source-key --no-generated",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "unregistered source: sym\\.state-space: source key 'plavala' has no sources/plavala/source\\.json"
+}

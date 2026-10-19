@@ -158,3 +158,13 @@ Open choices: German mathematical convention is "Satz" for theorem; TPC uses "Th
 environments: Postulat/Postulate (numbered P0-P6, matching BRIEF), Beweis/Proof (exists via amsthm),
 Zoom/Zoom-in (rigorous-track box), Warnung/Pitfall (for the hazard list), Effektive Theorie/Effective
 theory (one per chapter).
+
+---
+
+## Correction note, 2026-10-11
+
+Added by the Phase 0 coordinator from the codex review (`../review/REVIEW.md`, sections B and G;
+path relative to `docs/plan/research/`). The text above is left as written, as evidence of the
+campaign; where it conflicts with this note, the note governs.
+
+- Line 113: see the vl04 correction in curriculum/REPORT.md's note: scope omission, not a false equation.

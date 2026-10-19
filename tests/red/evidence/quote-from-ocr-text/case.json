@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A text quote is taken from a book's OCR text layer.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/quote-from-ocr-text --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[ocr\\] provenance\\.json:P-0002: 'fake-scan/scan\\.txt' has role 'ocr-text'"
+}

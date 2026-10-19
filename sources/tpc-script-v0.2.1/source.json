@@ -1,0 +1,43 @@
+{
+ "schema_version": 1,
+ "key": "tpc-script-v0.2.1",
+ "kind": "script-snapshot",
+ "storage": "tracked",
+ "title": "Theoretische Physik C, script v0.2.1: corrected lecture 16 (German and English)",
+ "authors": [
+  "Tobias J. Osborne"
+ ],
+ "version": "v0.2.1",
+ "language": "de, en",
+ "identifiers": {
+  "parent_git_commit": "88996cf14ba45e2c89474d2896f76711ea3d959d"
+ },
+ "retrieval": {
+  "route": "working-tree lecture files after applying M-0001 and M-0002; no new Git commit",
+  "date": "2026-10-12"
+ },
+ "identity_check": "title and author read from the master file's \\title and \\author lines on 2026-10-11",
+ "files": [
+  {
+   "path": "../latex/lectures/de/vl16.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "cc8ff7310b9a50105ffd55b6a46edc8c4187e9b592cc8ad2ad9a64016993afb1"
+  },
+  {
+   "path": "../latex/lectures/en/lec16.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "06a697435e0f8e37bdbd8275ea5c02a9334094776bf3958b763f9b3fb8d34d77"
+  }
+ ],
+ "authority_for": "the corrected lecture-16 text; established course terminology and author choices",
+ "limitations": "Only the two changed lecture files are registered here. M-0003, M-0004 and M-0005 remain recorded; the Bohr-radius value is unchanged.",
+ "rights_ref": "rights.json",
+ "supersedes": "tpc-script-v0.2",
+ "errata": [
+  "evidence/migrations/M-0001.json",
+  "evidence/migrations/M-0002.json"
+ ],
+ "notes": "Partial successor snapshot: the unchanged lecture members remain in tpc-script-v0.2. The two corrected formulas are justified in evidence/derivations/c11/DERIVATION.md section 6 and REVIEW.md section B4."
+}

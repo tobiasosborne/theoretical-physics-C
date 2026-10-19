@@ -1,0 +1,7 @@
+{
+  "gate": "web",
+  "what": "The build record of the print build carries another sha256 for de.tex than the file has now: the .aux is stale and its numbers must not be used.",
+  "cmd": "node --import ./web/node_modules/tsx/dist/loader.mjs web/tools/build/main.ts --content tests/red/web/c-stale-aux/content --course-build tests/red/web/c-stale-aux/course --out build/red/web/c-stale-aux --chapters c98",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "numbering: print build tpc-de-full is stale.*content/c98-red/de\\.tex \\(changed since the print build"
+}

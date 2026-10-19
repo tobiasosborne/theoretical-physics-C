@@ -1,0 +1,7 @@
+{
+  "gate": "levels",
+  "what": "The bound log invokes another course master.",
+  "cmd": "python3 tests/red/levels/build-identity/probe.py build-master",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "B0 tpc-de-full: compiler input identity: log does not invoke course-de-full.tex"
+}

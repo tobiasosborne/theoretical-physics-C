@@ -597,3 +597,14 @@ Ranked. Each states the trade-off.
    single-file HTML per artifact for offline classroom use? This decides
    whether engines are bundled per page.
 9. **Prior widgets.** Correct the quantumcomputing Bloch page (3.2), or only supersede it?
+
+---
+
+## Correction note, 2026-10-11
+
+Added by the Phase 0 coordinator from the codex review (`../review/REVIEW.md`, sections B and G;
+path relative to `docs/plan/research/`). The text above is left as written, as evidence of the
+campaign; where it conflicts with this note, the note governs.
+
+- Lines 485-500 (effort totals and agent-day figures): TJO has rejected all time and effort estimates as unreliable; they are not to be used for planning.
+- Lines 294-304: a gate endpoint does not determine its animation path; state the generator. Line 427: 'Fisher information equals heat capacity' holds only as a parameter-dependent identity. Lines 540-551: 'error is zero' and 'nothing re-verified' are withdrawn; analytic shaders have floating-point and ray-integration error, and videos need their own representation checks.

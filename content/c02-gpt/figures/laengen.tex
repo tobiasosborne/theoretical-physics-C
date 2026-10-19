@@ -1,0 +1,42 @@
+% c02.fig.laengen — how well can a state x_1 be told apart from the centre?
+%
+% x_2 is the centre of the state space (r_2 = 0), priors 1/2, 1/2.  Then delta = 0,
+% v = r_1/2, and by the formulas c02.eq.opt-bit, c02.eq.opt-quadrat, c02.eq.opt-qubit
+%   P_opt = 1/2 + L(r_1)/4,
+% with L(r) = |r| (bit), max(|r_x|, |r_y|) (square bit), |r| Euclidean (qubit; drawn is
+% the section r_z = 0 of the ball).  Level sets P_opt = 5/8, 3/4 are L = 1/2, 1:
+% (a) the points r = +-1/2 and +-1 of the segment (the segment is drawn along r),
+% (b) the squares of half side 1/2 and 1,
+% (c) the circles of radius 1/2 and 1.
+% Greyscale: x_2 is a filled disc; level sets thin solid, the outer one is the boundary.
+\begin{tikzpicture}[x=1.15cm, y=1.15cm]
+  \begin{scope}
+    \draw[tpc axis] (-1,0) -- (1,0);
+    \foreach \c in {-1,-0.5,0.5,1} \draw[tpc leader] (\c,-0.1) -- (\c,0.1);
+    \fill[tpc-state] (0,0) circle (2pt);
+    \node[tpc label, above=3pt] at (0,0) {$x_2$};
+    \node[tpc label, below=3pt] at (-1,0) {$\tfrac34$};
+    \node[tpc label, below=3pt] at (-0.5,0) {$\tfrac58$};
+    \node[tpc label, below=3pt] at (0.5,0) {$\tfrac58$};
+    \node[tpc label, below=3pt] at (1,0) {$\tfrac34$};
+    \node[tpc label] at (0,-1.65) {(a) \tpcifenglish{classical bit}{klassisches Bit}};
+  \end{scope}
+  \begin{scope}[shift={(3.5,0)}]
+    \draw[tpc axis, fill=tpc-grey-1] (-1,-1) rectangle (1,1);
+    \draw[tpc leader] (-0.5,-0.5) rectangle (0.5,0.5);
+    \fill[tpc-state] (0,0) circle (2pt);
+    \node[tpc label, above=3pt] at (0,0) {$x_2$};
+    \node[tpc label, anchor=south west] at (0.5,0.5) {$\tfrac58$};
+    \node[tpc label, anchor=south west] at (1,1) {$\tfrac34$};
+    \node[tpc label] at (0,-1.65) {(b) \tpcifenglish{square bit}{Quadrat-Bit}};
+  \end{scope}
+  \begin{scope}[shift={(7,0)}]
+    \draw[tpc axis, fill=tpc-grey-1] (0,0) circle (1);
+    \draw[tpc leader] (0,0) circle (0.5);
+    \fill[tpc-state] (0,0) circle (2pt);
+    \node[tpc label, above=3pt] at (0,0) {$x_2$};
+    \node[tpc label, anchor=south west] at (0.3536,0.3536) {$\tfrac58$};
+    \node[tpc label, anchor=south west] at (0.7071,0.7071) {$\tfrac34$};
+    \node[tpc label] at (0,-1.65) {(c) Qubit, $r_z = 0$};
+  \end{scope}
+\end{tikzpicture}

@@ -1,0 +1,33 @@
+% c11.fig.verteilung — radial distribution functions F_10, F_20, F_21.
+%
+% Generating formulas (registry definition D73; DERIVATION.md Result 7.2; Z = 1, x = r/a_mu with
+% the Bohr radius a_mu of the REDUCED mass):
+%     F_nl(r) = 1 - exp(-2x/n) Q_nl(x),
+%     Q_10 = 1 + 2x + 2x^2,
+%     Q_20 = 1 + x + x^2/2 + x^4/8,
+%     Q_21 = 1 + x + x^2/2 + x^3/6 + x^4/24.
+% F_20 has a horizontal tangent at x = 2, where the radial density P_20 vanishes.
+% Greyscale: 1s solid, 2s dashed, 2p dash-dotted; curves labelled directly.
+\begin{tikzpicture}
+  \pgfplotsset{c11/.style={
+    axis lines=left, clip=false, grid=none,
+    axis line style={draw=tpc-plate-ink, line width=\tpcstrokethin},
+    tick style={draw=tpc-plate-ink, line width=\tpcstrokehair},
+    tick label style={font=\tpcfontlabel, text=tpc-plate-ink},
+    label style={font=\tpcfontlabel, text=tpc-plate-ink},
+    every axis x label/.style={at={(ticklabel* cs:1.0)}, anchor=west, font=\tpcfontlabel},
+    every axis y label/.style={at={(ticklabel* cs:1.0)}, anchor=south, font=\tpcfontlabel}}}
+  \begin{axis}[c11, width=9.4cm, height=5.2cm,
+      xmin=0, xmax=14.5, ymin=0, ymax=1.08,
+      xtick={0,2,4,6,8,10,12,14}, ytick={0,0.5,1}, yticklabels={$0$,$\tfrac12$,$1$},
+      xlabel={$r/a_{\mu}$}, ylabel={$F_{n\ell}$}]
+    \draw[tpc grid] (axis cs:0,1) -- (axis cs:14.5,1);
+    \addplot[tpc q1, domain=0:14.5, samples=200] {1-exp(-2*x)*(1+2*x+2*x*x)};
+    \addplot[tpc q3, dash pattern=on 5pt off 2pt, domain=0:14.5, samples=200] {1-exp(-x)*(1+x+x*x/2+x^4/8)};
+    \addplot[tpc q5, dash pattern=on 5pt off 1.5pt on 1.2pt off 1.5pt, domain=0:14.5, samples=200] {1-exp(-x)*(1+x+x*x/2+x^3/6+x^4/24)};
+    \node[tpc label, anchor=south east] at (axis cs:1.15,0.62) {$F_{10}$};
+    \node[tpc label, anchor=north west] at (axis cs:6.3,0.6) {$F_{20}$};
+    \node[tpc label, anchor=south east] at (axis cs:4.4,0.55) {$F_{21}$};
+    \fill[tpc-plate-ink] (axis cs:2,{1-exp(-2)*(1+2+2+2)}) circle (1.4pt);
+  \end{axis}
+\end{tikzpicture}

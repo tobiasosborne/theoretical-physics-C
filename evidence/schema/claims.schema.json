@@ -1,0 +1,189 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "evidence/claims.json",
+ "type": "object",
+ "required": [
+  "schema_version",
+  "claims"
+ ],
+ "properties": {
+  "schema_version": {
+   "enum": [
+    1
+   ]
+  },
+  "note": {
+   "type": "string"
+  },
+  "claims": {
+   "type": "array",
+   "items": {
+    "$ref": "#/$defs/claim"
+   }
+  }
+ },
+ "additionalProperties": false,
+ "$defs": {
+  "claim": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "id",
+    "kind",
+    "statement_de",
+    "statement_en",
+    "depth",
+    "evidence",
+    "presentation",
+    "scope",
+    "hypotheses",
+    "provenance_ids",
+    "definition_ids",
+    "review_receipt"
+   ],
+   "properties": {
+    "id": {
+     "type": "string",
+     "pattern": "^c[0-9]{2}\\.cl\\.[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "kind": {
+     "enum": [
+      "theorem",
+      "lemma",
+      "proposition",
+      "corollary",
+      "equation",
+      "definition",
+      "postulate",
+      "statement",
+      "value"
+     ]
+    },
+    "statement_de": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "statement_en": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "depth": {
+     "enum": [
+      "kern",
+      "vertiefung",
+      "fundament"
+     ]
+    },
+    "evidence": {
+     "enum": [
+      "source-quoted",
+      "source-backed",
+      "derived",
+      "numerically-checked",
+      "author-stipulated"
+     ]
+    },
+    "presentation": {
+     "enum": [
+      "proof-included",
+      "proof-omitted",
+      "proof-linked",
+      null
+     ]
+    },
+    "scope": {
+     "type": [
+      "string",
+      "null"
+     ]
+    },
+    "hypotheses": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "minLength": 1
+     }
+    },
+    "provenance_ids": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "pattern": "^P-[0-9]{4}$"
+     }
+    },
+    "derivation": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "pattern": "^evidence/[^#]+\\.md#[^#]+$"
+    },
+    "numerics": {
+     "type": [
+      "object",
+      "null"
+     ],
+     "additionalProperties": false,
+     "required": [
+      "script",
+      "command",
+      "expected",
+      "tolerance"
+     ],
+     "properties": {
+      "script": {
+       "type": "string",
+       "minLength": 1
+      },
+      "command": {
+       "type": "string",
+       "minLength": 1
+      },
+      "expected": {
+       "type": "number"
+      },
+      "tolerance": {
+       "type": "number",
+       "minimum": 0
+      },
+      "unit": {
+       "type": "string"
+      },
+      "inputs": {
+       "type": "array",
+       "items": {
+        "type": "string",
+        "minLength": 1
+       },
+       "uniqueItems": true
+      }
+     }
+    },
+    "definition_ids": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "pattern": "^[DT][1-9][0-9]*$"
+     }
+    },
+    "review_receipt": {
+     "type": [
+      "string",
+      "null"
+     ],
+     "pattern": "^R-[0-9]{4}$"
+    },
+    "gap_tjo": {
+     "type": "string"
+    },
+    "notes": {
+     "type": "string"
+    }
+   }
+  }
+ }
+}

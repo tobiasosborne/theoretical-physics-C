@@ -1,0 +1,280 @@
+% c99-contract-test/de.tex — Vertragstest (deutsche Leitfassung)
+%
+% Kein Kursinhalt.  Dieses Kapitel benutzt jedes Konstrukt aus
+% docs/authoring/CONTRACT.md mindestens einmal und ist die Vorlage für
+% scripts/course/check_levels.py und für den HTML-Konverter.  Der Stoff ist
+% absichtlich physikfrei: Rechnen mit ganzzahligen 2x2-Matrizen, jede
+% Aussage wird im Text ausgerechnet.  Gebaut wird es nur mit
+% --chapters c99 oder --with-test-chapter.
+
+\chapter{Vertragstest: Zwei-mal-zwei-Matrizen}\label{c99}
+
+Dieses Kapitel gehört nicht zum Kurs. Es ist eine Prüfvorlage: Es benutzt jede
+Bauform, die der Autorenvertrag erlaubt, und rechnet dabei nur mit ganzen Zahlen.
+Der eigentliche Kurs beginnt in Kapitel~\ref{c00}; dieser Verweis führt absichtlich
+aus dem Kapitel hinaus.
+
+\section{Zwei Matrizen und ihre Produkte}\label{c99.s1}
+
+Wir betrachten zwei feste Matrizen mit ganzzahligen Einträgen,
+\begin{equation}\label{c99.eq.matrizen}\claim{c99.cl.1}{author-stipulated}
+  A = \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix},
+  \qquad
+  B = \begin{pmatrix} 1 & 0 \\ 3 & 1 \end{pmatrix}.
+\end{equation}
+Diese Festlegung ist die erste der Prüfvorlage \srcref{c99-fixture}{STIPULATIONS.md, S1}.
+Ein Produkt zweier Matrizen entsteht nach der Regel „Zeile mal Spalte“. Für die
+beiden möglichen Reihenfolgen ergibt das
+\begin{align}
+  AB &= \begin{pmatrix} 1\cdot 1 + 2\cdot 3 & 1\cdot 0 + 2\cdot 1 \\
+                        0\cdot 1 + 1\cdot 3 & 0\cdot 0 + 1\cdot 1 \end{pmatrix}
+      = \begin{pmatrix} 7 & 2 \\ 3 & 1 \end{pmatrix},
+  \label{c99.eq.ab}\claim{c99.cl.2}{derived} \\
+  BA &= \begin{pmatrix} 1\cdot 1 + 0\cdot 0 & 1\cdot 2 + 0\cdot 1 \\
+                        3\cdot 1 + 1\cdot 0 & 3\cdot 2 + 1\cdot 1 \end{pmatrix}
+      = \begin{pmatrix} 1 & 2 \\ 3 & 7 \end{pmatrix}.
+  \label{c99.eq.ba}\claim{c99.cl.3}{derived}
+\end{align}
+
+\begin{proposition}[Die Reihenfolge zählt]\label{c99.prop.reihenfolge}\claim{c99.cl.4}{derived}
+  Für die Matrizen aus \eqref{c99.eq.matrizen} gilt $AB \neq BA$.
+\end{proposition}
+\begin{proof}
+  Der Eintrag oben links ist in \eqref{c99.eq.ab} gleich $7$ und in
+  \eqref{c99.eq.ba} gleich $1$.
+\end{proof}
+
+\begin{tpcfigure}{c99.fig.scherung}
+  \demo{c99.demo.scherung}
+  \caption{Die Matrix $A$ als Abbildung der Ebene: Der Punkt $(x,y)$ geht auf
+    $(x+2y,\,y)$. Das gestrichelte Einheitsquadrat wird dabei zum schraffierten
+    Parallelogramm mit den Ecken $(0,0)$, $(1,0)$, $(3,1)$ und $(2,1)$; die
+    Grundseite bleibt liegen, die Deckseite wandert um zwei Einheiten nach rechts.
+    Diese Bildunterschrift ist absichtlich lang, damit der Zeilenumbruch langer
+    deutscher Zusammensetzungen wie Parallelogrammflächeninhaltsberechnung und
+    Einheitsquadratverschiebungsabbildung in Druck und Netzfassung geprüft wird.}
+\end{tpcfigure}
+
+\tpcdef{T1}
+
+Mit \defref{T1} liest man aus \eqref{c99.eq.ab} und \eqref{c99.eq.ba} ab:
+\begin{equation}\label{c99.eq.spuren}\claim{c99.cl.5}{derived}
+  \tr(AB) = 7 + 1 = 8,
+  \qquad
+  \tr(BA) = 1 + 7 = 8.
+\end{equation}
+Der Mittelwert der vier Einträge von $AB$ ist \num[c99.cl.19]{3{,}25}{}.
+Die Produkte sind verschieden, ihre Spuren aber gleich. Das ist kein Zufall dieser
+beiden Matrizen\zoomref{c99.v1}:
+
+\begin{theorem}[Spur eines Produkts]\label{c99.thm.spur}\claim[proof-linked]{c99.cl.6}{derived}
+  Für alle $2\times 2$-Matrizen $X$ und $Y$ gilt $\tr(XY) = \tr(YX)$.
+\end{theorem}
+
+\begin{vertiefung}[id=c99.v1,
+    titel={Warum die Spuren übereinstimmen},
+    wozu={Der Kern stellt Theorem~\ref{c99.thm.spur} ohne Beweis hin; hier wird es
+      für beliebige Einträge ausgerechnet.},
+    voraussetzung={Kern~\ref{c99.s1} bis Gleichung~\eqref{c99.eq.spuren}; nicht
+      nötig für Abschnitt~\ref{c99.s2}.},
+    zurueck={Die Spur eines Produkts hängt nicht von der Reihenfolge der Faktoren
+      ab, das Produkt selbst schon.}]
+  Seien $X$ und $Y$ Matrizen mit Einträgen $x_{jk}$ und $y_{jk}$. Die
+  Diagonaleinträge der beiden Produkte sind
+  \begin{align}
+    (XY)_{11} &= x_{11}y_{11} + x_{12}y_{21}, &
+    (XY)_{22} &= x_{21}y_{12} + x_{22}y_{22},
+    \label{c99.eq.diag-xy}\claim{c99.cl.7}{derived} \\
+    (YX)_{11} &= y_{11}x_{11} + y_{12}x_{21}, &
+    (YX)_{22} &= y_{21}x_{12} + y_{22}x_{22}.
+    \label{c99.eq.diag-yx}\claim{c99.cl.8}{derived}
+  \end{align}
+
+  \begin{lemma}[Spur eines Produkts, ausgerechnet]\label{c99.lem.spur}\claim{c99.cl.9}{derived}
+    Für alle $2\times 2$-Matrizen $X$ und $Y$ gilt
+    \begin{equation}\label{c99.eq.spur-allgemein}
+      \tr(XY) = x_{11}y_{11} + x_{12}y_{21} + x_{21}y_{12} + x_{22}y_{22} = \tr(YX).
+    \end{equation}
+  \end{lemma}
+  \begin{proof}
+    Die Summe der beiden Einträge in \eqref{c99.eq.diag-xy} ist der mittlere
+    Ausdruck. Die Summe der beiden Einträge in \eqref{c99.eq.diag-yx} besteht aus
+    denselben vier Produkten in anderer Reihenfolge.
+  \end{proof}
+
+  \tpcdef{T2}
+
+  Für die beiden Matrizen des Kerns ist nach \eqref{c99.eq.ab} und \eqref{c99.eq.ba}
+  \begin{equation}\label{c99.eq.kommutator}\claim{c99.cl.10}{derived}
+    \comm{A}{B} = \begin{pmatrix} 7-1 & 2-2 \\ 3-3 & 1-7 \end{pmatrix}
+                = \begin{pmatrix} 6 & 0 \\ 0 & -6 \end{pmatrix},
+    \qquad
+    \tr\comm{A}{B} = 6 - 6 = 0.
+  \end{equation}
+
+  \begin{tpcfigure}{c99.fig.kommutator}
+    \caption{Der Kommutator aus \eqref{c99.eq.kommutator} als Abbildung: Er streckt
+      um den Faktor $6$ und spiegelt an der waagerechten Achse.}
+  \end{tpcfigure}
+
+  Dass die Spur Summen respektiert, wird im Fundament nachgerechnet\zoomref{c99.f2}.
+\end{vertiefung}
+
+Der nächste Absatz ist für Leserinnen und Leser geschrieben, die den Block
+übersprungen haben: Er benutzt nur \eqref{c99.eq.spuren} und Theorem~\ref{c99.thm.spur}.
+
+\begin{tpcfigure}{c99.fig.scherung-b}
+  \demo{c99.demo.scherung-b}
+  \caption{Die Matrix $B$ als Abbildung: $(x,y)$ geht auf $(x,\,3x+y)$. Zweites
+    Bild mit Demo auf derselben Seite.}
+\end{tpcfigure}
+
+\begin{tpctable}{c99.tab.produkte}
+  \caption{Die Einträge der beiden Produkte aus \eqref{c99.eq.ab} und \eqref{c99.eq.ba}.}
+  \begin{tabular}{lcccc}
+    \toprule
+    Produkt & $(1,1)$ & $(1,2)$ & $(2,1)$ & $(2,2)$ \\
+    \midrule
+    $AB$ & $7$ & $2$ & $3$ & $1$ \\
+    $BA$ & $1$ & $2$ & $3$ & $7$ \\
+    \bottomrule
+  \end{tabular}
+\end{tpctable}
+
+\begin{merksatz}[Merksatz]
+  Bei Matrizen kommt es auf die Reihenfolge der Faktoren an.
+\end{merksatz}
+
+\section{Scherungen}\label{c99.s2}
+
+\subsection{Eine Familie von Matrizen}\label{c99.s2.1}
+
+Für jede ganze Zahl $t$ sei
+\begin{equation}\label{c99.eq.scherung}\claim{c99.cl.11}{author-stipulated}
+  M(t) = \begin{pmatrix} 1 & t \\ 0 & 1 \end{pmatrix}.
+\end{equation}
+Die Matrix $A$ aus \eqref{c99.eq.matrizen} ist $M(2)$.
+
+\begin{theorem}[Scherungen addieren sich]\label{c99.thm.scherung}\claim[proof-included]{c99.cl.12}{derived}
+  Für alle ganzen Zahlen $s$ und $t$ gilt $M(s)M(t) = M(s+t)$. Für jede ganze Zahl
+  $n \geq 1$ gilt außerdem $M(t)^n = M(nt)$.
+\end{theorem}
+\begin{proof}
+  Die erste Aussage ist eine Multiplikation:
+  \begin{equation}\label{c99.eq.scherung-produkt}
+    M(s)M(t)
+    = \begin{pmatrix} 1\cdot 1 + s\cdot 0 & 1\cdot t + s\cdot 1 \\
+                      0\cdot 1 + 1\cdot 0 & 0\cdot t + 1\cdot 1 \end{pmatrix}
+    = \begin{pmatrix} 1 & s+t \\ 0 & 1 \end{pmatrix}
+    = M(s+t).
+  \end{equation}
+  Die zweite folgt durch vollständige Induktion über $n$. Für $n = 1$ ist nichts
+  zu zeigen. Der Induktionsschritt ist ein eigenes Lemma.
+  \begin{lemma}[Induktionsschritt]\label{c99.lem.schritt}\claim{c99.cl.13}{derived}
+    Gilt $M(t)^n = M(nt)$, so gilt auch $M(t)^{n+1} = M((n+1)t)$.
+  \end{lemma}
+  \begin{proof}
+    Nach Voraussetzung ist $M(t)^{n+1} = M(t)^n M(t) = M(nt)M(t)$, und nach
+    \eqref{c99.eq.scherung-produkt} mit $s = nt$ ist das $M(nt + t) = M((n+1)t)$.
+  \end{proof}
+  Mit Lemma~\ref{c99.lem.schritt} gilt die Aussage für alle $n \geq 1$.
+\end{proof}
+
+\begin{corollary}[Scherungen vertauschen]\label{c99.cor.vertauschen}\claim{c99.cl.18}{derived}
+  Für alle ganzen Zahlen $s$ und $t$ gilt $M(s)M(t) = M(t)M(s)$.
+\end{corollary}
+\begin{proof}
+  Nach Theorem~\ref{c99.thm.scherung} sind beide Seiten gleich $M(s+t)$, denn
+  $s + t = t + s$.
+\end{proof}
+
+\begin{example}[Zahlenbeispiel]\label{c99.ex.zahlen}
+  Mit $s = 2$ und $t = 3$ liefert \eqref{c99.eq.scherung-produkt} die Gleichung
+  $M(2)M(3) = M(5)$, und mit $t = 2$, $n = 3$ ergibt sich $A^3 = M(2)^3 = M(6)$.
+\end{example}
+
+\begin{remark}
+  Die Menge aller $M(t)$ ist unter Multiplikation abgeschlossen. Was daraus
+  folgt, steht im Fundament\zoomref{c99.f1}.
+\end{remark}
+
+\subsection{Eine Fallunterscheidung}\label{c99.s2.2}
+
+Der Betrag des Eintrags oben rechts von $M(t)$ ist
+\begin{equation}\label{c99.eq.betrag}\claim{c99.cl.14}{author-stipulated}
+  f(t) =
+  \begin{cases}
+    t  & \text{\tpcifenglish{if}{falls}}\ t \geq 0, \\
+    -t & \text{\tpcifenglish{if}{falls}}\ t < 0.
+  \end{cases}
+\end{equation}
+
+\begin{proposition}[Der Betrag ist nicht negativ]\label{c99.prop.betrag}\claim{c99.cl.15}{derived}
+  Für jede ganze Zahl $t$ gilt $f(t) \geq 0$ und $f(t)^2 = t^2$.
+\end{proposition}
+\begin{proof}
+  Wir unterscheiden die beiden Fälle aus \eqref{c99.eq.betrag}.
+  \begin{description}
+    \item[Fall 1: $t \geq 0$.] Dann ist $f(t) = t \geq 0$ und $f(t)^2 = t^2$.
+    \item[Fall 2: $t < 0$.] Dann ist $f(t) = -t > 0$ und
+      $f(t)^2 = (-t)^2 = t^2$.
+  \end{description}
+\end{proof}
+
+\begin{intuition}
+  Eine Scherung verschiebt jede waagerechte Linie in sich; nur der Betrag der
+  Verschiebung wächst mit der Höhe. Die Kästen für Elementtypen sind getönt, die
+  Tiefenblöcke nicht.
+\end{intuition}
+
+\begin{exercise}[Die Umkehrung]\label{c99.exc.umkehrung}
+  Berechne $M(t)M(-t)$.
+  \begin{enumerate}
+    \item Benutze \eqref{c99.eq.scherung-produkt}.
+    \item Vergleiche mit der direkten Multiplikation.
+  \end{enumerate}
+\end{exercise}
+\begin{solution}
+  Mit $s = t$ und $-t$ an der Stelle von $t$ liefert \eqref{c99.eq.scherung-produkt}
+  die Matrix $M(t - t) = M(0)$, und $M(0)$ hat die Einträge $1, 0, 0, 1$.
+  \begin{itemize}
+    \item Direkt: Der Eintrag oben rechts ist $1\cdot(-t) + t\cdot 1 = 0$.
+    \item Die übrigen Einträge sind wie in \eqref{c99.eq.scherung-produkt}.
+  \end{itemize}
+\end{solution}
+
+\begin{fundament}[id=c99.f1,
+    titel={Die Scherungen bilden eine Gruppe},
+    wozu={Der Kern benutzt nur das Produkt zweier Scherungen; hier wird
+      zusammengetragen, was daraus für die ganze Familie folgt.},
+    voraussetzung={Kern~\ref{c99.s2.1}, Theorem~\ref{c99.thm.scherung}.},
+    zurueck={Jede Scherung $M(t)$ lässt sich durch $M(-t)$ rückgängig machen.}]
+  \begin{proposition}[Einselement und Inverses]\label{c99.prop.gruppe}\claim{c99.cl.16}{derived}
+    Für alle ganzen Zahlen $t$ gilt $M(0)M(t) = M(t)$ und $M(t)M(-t) = M(0)$,
+    ebenso mit vertauschten Faktoren.
+  \end{proposition}
+  \begin{proof}
+    Beides ist Theorem~\ref{c99.thm.scherung} mit einer besonderen Wahl von $s$:
+    \begin{equation}\label{c99.eq.gruppe}
+      M(0)M(t) = M(0 + t) = M(t),
+      \qquad
+      M(t)M(-t) = M(t - t) = M(0).
+    \end{equation}
+    Die Gleichungen mit vertauschten Faktoren folgen genauso, weil $s + t = t + s$.
+  \end{proof}
+\end{fundament}
+
+\begin{fundament}[id=c99.f2,
+    titel={Die Spur respektiert Summen},
+    wozu={Die Vertiefung benutzt, dass die Spur einer Differenz die Differenz der
+      Spuren ist; hier steht die Rechnung.},
+    voraussetzung={\defref{T1}.},
+    zurueck={Aus $\tr(AB) = \tr(BA)$ folgt deshalb $\tr(AB - BA) = 0$.}]
+  Für Matrizen $X$ und $Y$ mit Einträgen $x_{jk}$ und $y_{jk}$ und eine ganze Zahl
+  $c$ ist
+  \begin{equation}\label{c99.eq.spur-linear}\claim{c99.cl.17}{derived}
+    \tr(X + cY) = (x_{11} + c\,y_{11}) + (x_{22} + c\,y_{22})
+                = \tr X + c\,\tr Y.
+  \end{equation}
+  Mit $c = -1$ ist das die Aussage über Differenzen.
+\end{fundament}

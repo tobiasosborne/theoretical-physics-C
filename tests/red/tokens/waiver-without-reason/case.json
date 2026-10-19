@@ -1,0 +1,7 @@
+{
+  "gate": "tokens",
+  "what": "A contrast waiver has no reason.",
+  "cmd": "python3 design/build_tokens.py --pkg 1 --ground light --tokens-dir tests/red/tokens/waiver-without-reason/tokens --measure",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "waiver 'fabricated-waiver-0' needs a nonempty reason"
+}

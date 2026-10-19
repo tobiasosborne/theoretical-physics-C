@@ -1,0 +1,66 @@
+%!TEX program = xelatex
+% Theoretische Physik C, new course: the one body shared by the four
+% edition masters (course-{de,en}-{full,kern}.tex).
+%
+% Normally driven by scripts/course/build_course.sh, which defines on the
+% command line:
+%   \tpcchapterlist   comma list of chapter directories under the content
+%                     root, e.g. {c00-auftakt,c11-wasserstoff}
+%   \tpccontentroot   absolute path of the content root
+%   \tpcpartialbuild  defined iff not every chapter of the course is built
+%   \tpcpkg \tpcground \tpcmath \tpcfonts   design flags
+% The edition masters fix \tpclang and \tpcedition.
+
+\providecommand{\tpclang}{de}
+\providecommand{\tpcedition}{full}
+\providecommand{\tpcpkg}{1}
+\providecommand{\tpcground}{light}
+\providecommand{\tpcmath}{stix}
+\providecommand{\tpcfonts}{open}
+\providecommand{\tpcpage}{design}   % design | fixed, see tpc-course.sty
+\providecommand{\tpccontentroot}{../../content}
+\ifdefined\tpcchapterlist\else
+  \errmessage{No chapter list. Build with scripts/course/build_course.sh}
+  \def\tpcchapterlist{}
+\fi
+
+\documentclass[12pt,oneside,reqno]{amsart}
+\edef\tpcloadcourse{\noexpand\usepackage[lang=\tpclang,edition=\tpcedition,
+  pkg=\tpcpkg,ground=\tpcground,math=\tpcmath,fonts=\tpcfonts,
+  page=\tpcpage]{tpc-course}}
+\tpcloadcourse
+\usepackage{tpc-tikz-templates}
+
+\makeatletter
+\ifdefined\tpcpartialbuild \tpcpartialtrue \fi
+% c11-wasserstoff -> ID c11, number 11
+\def\tpcmain@split c#1#2-#3\@nil{\def\tpcmain@num{#1#2}}
+\def\tpcchapterids{}
+\@for\tpcmain@dir:=\tpcchapterlist\do{%
+  \expandafter\tpcmain@split\tpcmain@dir\@nil
+  \edef\tpcchapterids{\tpcchapterids\ifx\tpcchapterids\@empty\else,\fi c\tpcmain@num}}
+\newcommand{\tpcmain@inputchapter}[1]{%
+  \tpcmain@split#1\@nil
+  \tpcsetchapter{\tpcmain@num}%
+  \def\tpcchapterdir{\tpccontentroot/#1}%
+  % test chapters only: a private stand-in for the definitions registry
+  \InputIfFileExists{\tpcchapterdir/fixture/tpc-definitions.tex}{}{}%
+  \input{\tpcchapterdir/\tpclang.tex}}
+\makeatother
+
+\title[\tpcifenglish{Theoretical Physics C}{Theoretische Physik C}]%
+  {\tpcifenglish{Theoretical Physics C}{Theoretische Physik C}%
+   \iftpcdepthshown\else\ \textperiodcentered\ \tpcifenglish{Core edition}{Kernausgabe}\fi}
+\author{Tobias J.\ Osborne}
+\date{\today}
+
+\begin{document}
+\maketitle
+\tableofcontents
+
+\makeatletter
+\@for\tpcmain@dir:=\tpcchapterlist\do{%
+  \expandafter\tpcmain@inputchapter\expandafter{\tpcmain@dir}}
+\makeatother
+
+\end{document}

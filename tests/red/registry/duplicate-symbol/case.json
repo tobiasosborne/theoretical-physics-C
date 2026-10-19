@@ -1,0 +1,7 @@
+{
+ "gate": "registry",
+ "what": "Two symbol records carry the same symbol_id sym.state-space.",
+ "cmd": "python3 scripts/registry/check_registry.py --root tests/red/registry/duplicate-symbol --no-generated",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "duplicate symbol: symbol_id 'sym\\.state-space'"
+}

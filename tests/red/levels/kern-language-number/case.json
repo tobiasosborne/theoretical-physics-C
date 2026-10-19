@@ -1,0 +1,7 @@
+{
+  "gate": "levels",
+  "what": "Corresponding Kern labels have different numbers in DE and EN.",
+  "cmd": "python3 tests/red/levels/build-identity/probe.py kern-language-number",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "K4 de/en: Kern label 'c99\\.eq\\.core' is numbered '99\\.1' in DE and '99\\.17' in EN"
+}

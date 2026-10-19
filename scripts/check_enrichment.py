@@ -97,9 +97,16 @@ ENRICHMENT_EXCEPTIONS = {
     16: {
         "reason": "literal Unicode − in the Bohr-radius value replaced by - "
                   "(no glyph guarantee in the maths font; the same substitution "
-                  "was already recorded for vl11 and vl12)",
+                  "was already recorded for vl11 and vl12); "
+                  "L_2^s leading term corrected from -x²/2 to +x²/2 "
+                  "(evidence/derivations/c11/DERIVATION.md section 6; "
+                  "evidence/migrations/M-0001.json); "
+                  "psi_{21,+-1} normalisation and Condon-Shortley signs corrected "
+                  "to coefficients -/+ 1/(8 sqrt(pi)), consistent with vl14:149 "
+                  "(evidence/derivations/c11/DERIVATION.md section 6; "
+                  "evidence/migrations/M-0002.json)",
         "labels_renamed": {},
-        "math_edited": 1,
+        "math_edited": 3,
     },
     17: {
         "reason": "the second \\label{eq:amcr} (spin commutators) renamed to "

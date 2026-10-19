@@ -1,0 +1,492 @@
+{
+ "$description": "RED FIXTURE (planted defect). Times LT Std + MathTime Pro 2 in local print, STIX Two everywhere else; Whitney labels (Inter when open); TJO's teal re-stepped. Lane: design-packages-A/PKG-1-times-mathtime.md.",
+ "$extensions": {
+  "org.tpc": {
+   "pkg": 1,
+   "title": "PKG-1 Times and MathTime, perfected",
+   "production_ready": true,
+   "waivers": []
+  }
+ },
+ "color": {
+  "ground": {
+   "$type": "color",
+   "$value": {
+    "colorSpace": "oklch",
+    "components": [
+     0.99,
+     0.003,
+     100
+    ]
+   },
+   "$extensions": {
+    "org.tpc.modes": {
+     "dark": {
+      "colorSpace": "oklch",
+      "components": [
+       0.2,
+       0.014,
+       240
+      ]
+     },
+     "print": {
+      "colorSpace": "oklch",
+      "components": [
+       1.0,
+       0.0,
+       0
+      ]
+     }
+    }
+   }
+  },
+  "ground-alt": {
+   "$type": "color",
+   "$value": {
+    "colorSpace": "oklch",
+    "components": [
+     0.965,
+     0.01,
+     230
+    ]
+   },
+   "$extensions": {
+    "org.tpc.modes": {
+     "dark": {
+      "colorSpace": "oklch",
+      "components": [
+       0.24,
+       0.016,
+       240
+      ]
+     }
+    }
+   }
+  },
+  "ink": {
+   "$type": "color",
+   "$value": {
+    "colorSpace": "oklch",
+    "components": [
+     0.22,
+     0.012,
+     240
+    ]
+   },
+   "$extensions": {
+    "org.tpc.modes": {
+     "dark": {
+      "colorSpace": "oklch",
+      "components": [
+       0.93,
+       0.008,
+       230
+      ]
+     },
+     "print": {
+      "colorSpace": "oklch",
+      "components": [
+       0.0,
+       0.0,
+       0
+      ]
+     }
+    }
+   }
+  },
+  "ink-muted": {
+   "$type": "color",
+   "$value": {
+    "colorSpace": "oklch",
+    "components": [
+     0.48,
+     0.012,
+     240
+    ]
+   },
+   "$extensions": {
+    "org.tpc.modes": {
+     "dark": {
+      "colorSpace": "oklch",
+      "components": [
+       0.74,
+       0.01,
+       230
+      ]
+     }
+    }
+   }
+  },
+  "rule": {
+   "$type": "color",
+   "$value": {
+    "colorSpace": "oklch",
+    "components": [
+     0.86,
+     0.006,
+     240
+    ]
+   },
+   "$extensions": {
+    "org.tpc.modes": {
+     "dark": {
+      "colorSpace": "oklch",
+      "components": [
+       0.36,
+       0.014,
+       240
+      ]
+     }
+    }
+   }
+  },
+  "accent": {
+   "$type": "color",
+   "$value": {
+    "colorSpace": "oklch",
+    "components": [
+     0.45,
+     0.065,
+     238
+    ]
+   },
+   "$description": "TJO's Whitney teal (dk2 #335B74), re-stepped",
+   "$extensions": {
+    "org.tpc.modes": {
+     "dark": {
+      "colorSpace": "oklch",
+      "components": [
+       0.8,
+       0.075,
+       228
+      ]
+     }
+    }
+   }
+  },
+  "link": {
+   "$type": "color",
+   "$value": {
+    "colorSpace": "oklch",
+    "components": [
+     0.6,
+     0.106,
+     216
+    ]
+   },
+   "$extensions": {
+    "org.tpc.modes": {
+     "dark": {
+      "colorSpace": "oklch",
+      "components": [
+       0.8,
+       0.1,
+       225
+      ]
+     }
+    }
+   }
+  },
+  "highlight": {
+   "$type": "color",
+   "$value": {
+    "colorSpace": "oklch",
+    "components": [
+     0.955,
+     0.055,
+     95
+    ]
+   },
+   "$extensions": {
+    "org.tpc.modes": {
+     "dark": {
+      "colorSpace": "oklch",
+      "components": [
+       0.3,
+       0.045,
+       95
+      ]
+     }
+    }
+   }
+  }
+ },
+ "font": {
+  "serif": {
+   "$type": "fontFamily",
+   "$value": [
+    "STIX Two Text",
+    "STIX Two Math",
+    "serif"
+   ],
+   "$extensions": {
+    "org.tpc.tex": {
+     "open": {
+      "font": "STIXTwoText",
+      "options": "Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,BoldFont=*-Bold,BoldItalicFont=*-BoldItalic,Scale=0.955",
+      "probe": "[STIXTwoText-Regular.otf]"
+     },
+     "local": {
+      "font": "Times LT Std",
+      "options": "Ligatures=TeX,BoldFont={Times LT Std Bold},ItalicFont={Times LT Std Italic},BoldItalicFont={Times LT Std Bold Italic}",
+      "probe": "Times LT Std",
+      "licence": "commercial (Linotype); local print only"
+     }
+    }
+   },
+   "$description": "open face scaled 0.955 so that STIX Two matches the x-height of Times at the same nominal size"
+  },
+  "sans": {
+   "$type": "fontFamily",
+   "$value": [
+    "Inter",
+    "system-ui",
+    "sans-serif"
+   ],
+   "$extensions": {
+    "org.tpc.tex": {
+     "open": {
+      "font": "Inter",
+      "options": "Extension=.otf,UprightFont=*-Regular,ItalicFont=*-Italic,BoldFont=*-SemiBold,BoldItalicFont=*-SemiBoldItalic,Scale=MatchLowercase,Numbers=Tabular",
+      "probe": "[Inter-Regular.otf]"
+     },
+     "local": {
+      "font": "Whitney-Book.otf",
+      "options": "BoldFont=Whitney-Semibold.otf,ItalicFont=Whitney-BookItalic.otf,BoldItalicFont=Whitney-SemiboldItalic.otf,Scale=MatchLowercase",
+      "probe": "[Whitney-Book.otf]",
+      "licence": "commercial (Hoefler&Co); local print only; lacks U+2192, take arrows from the math font"
+     }
+    }
+   }
+  },
+  "mono": {
+   "$type": "fontFamily",
+   "$value": [
+    "Iosevka",
+    "ui-monospace",
+    "monospace"
+   ],
+   "$extensions": {
+    "org.tpc.tex": {
+     "open": {
+      "font": "Iosevka",
+      "options": "Scale=MatchLowercase",
+      "probe": "Iosevka"
+     }
+    }
+   }
+  },
+  "math": {
+   "$type": "fontFamily",
+   "$value": [
+    "STIX Two Math",
+    "math"
+   ],
+   "$extensions": {
+    "org.tpc.tex": {
+     "open": {
+      "font": "STIXTwoMath-Regular.otf",
+      "options": "Scale=0.955",
+      "probe": "[STIXTwoMath-Regular.otf]"
+     },
+     "local": {
+      "engine": "mtpro2",
+      "probe": "mtpro2.sty",
+      "licence": "commercial (PCTeX MathTime Pro 2, Type 1); local print only; PDF maths not extractable"
+     }
+    }
+   }
+  }
+ },
+ "type": {
+  "body": {
+   "$type": "typography",
+   "$value": {
+    "fontFamily": "{font.serif}",
+    "fontSize": {
+     "value": 11,
+     "unit": "pt"
+    },
+    "lineHeight": 1.2364,
+    "fontWeight": 400,
+    "fontStyle": "normal"
+   }
+  },
+  "small": {
+   "$type": "typography",
+   "$value": {
+    "fontFamily": "{font.serif}",
+    "fontSize": {
+     "value": 10,
+     "unit": "pt"
+    },
+    "lineHeight": 1.2,
+    "fontWeight": 400,
+    "fontStyle": "normal"
+   }
+  },
+  "label": {
+   "$type": "typography",
+   "$value": {
+    "fontFamily": "{font.sans}",
+    "fontSize": {
+     "value": 8,
+     "unit": "pt"
+    },
+    "lineHeight": 1.3125,
+    "fontWeight": 400,
+    "fontStyle": "normal"
+   }
+  },
+  "h1": {
+   "$type": "typography",
+   "$value": {
+    "fontFamily": "{font.sans}",
+    "fontSize": {
+     "value": 19,
+     "unit": "pt"
+    },
+    "lineHeight": 1.2105,
+    "fontWeight": 600,
+    "fontStyle": "normal"
+   }
+  },
+  "h2": {
+   "$type": "typography",
+   "$value": {
+    "fontFamily": "{font.sans}",
+    "fontSize": {
+     "value": 12,
+     "unit": "pt"
+    },
+    "lineHeight": 1.25,
+    "fontWeight": 600,
+    "fontStyle": "normal"
+   }
+  },
+  "h3": {
+   "$type": "typography",
+   "$value": {
+    "fontFamily": "{font.sans}",
+    "fontSize": {
+     "value": 11,
+     "unit": "pt"
+    },
+    "lineHeight": 1.2364,
+    "fontWeight": 600,
+    "fontStyle": "normal"
+   }
+  },
+  "numeral": {
+   "$type": "typography",
+   "$value": {
+    "fontFamily": "{font.sans}",
+    "fontSize": {
+     "value": 30,
+     "unit": "pt"
+    },
+    "lineHeight": 1.0,
+    "fontWeight": 600,
+    "fontStyle": "normal"
+   }
+  },
+  "mono": {
+   "$type": "typography",
+   "$value": {
+    "fontFamily": "{font.mono}",
+    "fontSize": {
+     "value": 9,
+     "unit": "pt"
+    },
+    "lineHeight": 1.3333,
+    "fontWeight": 400,
+    "fontStyle": "normal"
+   }
+  },
+  "depth-label": {
+   "$type": "typography",
+   "$value": {
+    "fontFamily": "{font.sans}",
+    "fontSize": {
+     "value": 11,
+     "unit": "pt"
+    },
+    "lineHeight": 1.2364,
+    "fontWeight": 600,
+    "fontStyle": "normal"
+   }
+  },
+  "web-body": {
+   "$type": "dimension",
+   "$value": {
+    "value": 1.125,
+    "unit": "rem"
+   }
+  }
+ },
+ "measure": {
+  "text": {
+   "$type": "dimension",
+   "$value": {
+    "value": 114,
+    "unit": "mm"
+   }
+  },
+  "inner": {
+   "$type": "dimension",
+   "$value": {
+    "value": 22,
+    "unit": "mm"
+   }
+  },
+  "gap": {
+   "$type": "dimension",
+   "$value": {
+    "value": 6,
+    "unit": "mm"
+   }
+  },
+  "margin": {
+   "$type": "dimension",
+   "$value": {
+    "value": 46,
+    "unit": "mm"
+   }
+  },
+  "top": {
+   "$type": "dimension",
+   "$value": {
+    "value": 20,
+    "unit": "mm"
+   }
+  },
+  "bottom": {
+   "$type": "dimension",
+   "$value": {
+    "value": 22,
+    "unit": "mm"
+   }
+  },
+  "web-text": {
+   "$type": "dimension",
+   "$value": {
+    "value": 39,
+    "unit": "rem"
+   }
+  },
+  "web-gap": {
+   "$type": "dimension",
+   "$value": {
+    "value": 2.25,
+    "unit": "rem"
+   }
+  },
+  "web-margin": {
+   "$type": "dimension",
+   "$value": {
+    "value": 14,
+    "unit": "rem"
+   }
+  }
+ }
+}

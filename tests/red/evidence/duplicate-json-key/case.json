@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A claim record has the key 'evidence' twice (the last one wins in most parsers).",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/duplicate-json-key --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[schema\\] claims\\.json: not valid JSON \\(duplicate key 'evidence'\\)"
+}

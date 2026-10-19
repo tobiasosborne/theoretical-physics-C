@@ -1,0 +1,7 @@
+{
+  "gate": "levels",
+  "what": "Kern text cites \\defref{D6}; D6 is a Fundament definition in the real registry (registry/definitions.json).",
+  "cmd": "python3 scripts/course/check_levels.py --chapters c99 --content tests/red/levels/kern-cites-deeper-definition/content --lint-only",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "K1 [^\\n]*de\\.tex:\\d+: Kern text cites definition D6 of depth fundament"
+}

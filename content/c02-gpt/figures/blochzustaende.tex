@@ -1,0 +1,32 @@
+% c02.fig.blochzustaende — states of the qubit as points of the unit ball.
+%
+% ORTHOGRAPHIC projection (outline = unit circle), azimuth 25 deg, elevation 15 deg,
+% 1.6 cm per unit: e_x -> 1.6*(-0.4226,-0.2346), e_y -> 1.6*(0.9063,-0.1094),
+% e_z -> 1.6*(0,0.9659).
+% Drawn in the plane r_x = 0: the unit vectors n = (0, 0.6, 0.8) and
+% m = (0, 0.8, -0.6) (both of length 1), their antipodes, and the mixed state
+% r = q n with q = 1/2, i.e. r = (0, 0.3, 0.4) = 3/4 n + 1/4 (-n)
+% (weights (1+q)/2 and (1-q)/2).  The centre is the midpoint of n, -n and of m, -m.
+% The great circle r_x = 0 is the ellipse (0, cos t, sin t); its half with sin(t)-side
+% facing the viewer is not distinguished (it is seen almost face on), so it is drawn
+% thin and solid as a guide.
+% Greyscale: pure states are filled discs on the outline region, the mixed state an open
+% ring, the centre a small dot.
+\begin{tikzpicture}[x={(-0.6762cm,-0.3754cm)}, y={(1.4501cm,-0.1750cm)}, z={(0cm,1.5454cm)}]
+  \fill[tpc-grey-1] (0,0,0) circle[x radius=1.6cm, y radius=1.6cm];
+  \draw[tpc grid, dash pattern=on 1.5pt off 1.5pt]
+    plot[domain=115:295, samples=46, variable=\t] ({cos(\t)},{sin(\t)},0);
+  \draw[tpc grid] plot[domain=-65:115, samples=46, variable=\t] ({cos(\t)},{sin(\t)},0);
+  \draw[tpc grid] plot[domain=0:360, samples=73, variable=\t] (0,{cos(\t)},{sin(\t)});
+  \draw[tpc axis] (0,0,0) circle[x radius=1.6cm, y radius=1.6cm];
+  \draw[tpc state] (0,-0.6,-0.8) -- (0,0.6,0.8);
+  \draw[tpc state] (0,-0.8,0.6) -- (0,0.8,-0.6);
+  \foreach \p in {(0,0.6,0.8),(0,-0.6,-0.8),(0,0.8,-0.6),(0,-0.8,0.6)} \fill[tpc-state] \p circle (2pt);
+  \draw[tpc-state, line width=\tpcstrokethin, fill=tpc-plate] (0,0.3,0.4) circle (2.4pt);
+  \fill[tpc-plate-ink] (0,0,0) circle (1.3pt);
+  \node[tpc label, anchor=south west] at (0,0.6,0.8) {$\boldsymbol{n}$};
+  \node[tpc label, anchor=north east] at (0,-0.6,-0.8) {$-\boldsymbol{n}$};
+  \node[tpc label, anchor=north west] at (0,0.8,-0.6) {$\boldsymbol{m}$};
+  \node[tpc label, anchor=south east] at (0,-0.8,0.6) {$-\boldsymbol{m}$};
+  \node[tpc label, anchor=north west] at (0,0.32,0.4) {$\boldsymbol{r}$};
+\end{tikzpicture}

@@ -1,0 +1,7 @@
+{
+  "gate": "tokens",
+  "what": "PKG-1's link colour is set to the old munsell teal (L 0.60), 3.7:1 on the ground: below WCAG AA.",
+  "cmd": "python3 design/build_tokens.py --measure --base design/tokens/base.tokens.json --tokens-dir tests/red/tokens/link-fails-aa/tokens",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "FAIL\\s+pkg1 light: text-contrast link/ground = 3\\.\\d+, needs >= 4\\.5"
+}

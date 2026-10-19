@@ -1,0 +1,17 @@
+{
+ "job": "tpc-en-full",
+ "lang": "en",
+ "edition": "full",
+ "chapters": [
+  "c98-red"
+ ],
+ "partial": true,
+ "xelatex_exit_status": 0,
+ "passes": 3,
+ "finished": "2026-10-11T00:00:00",
+ "sources": {
+  "content/c98-red/chapter.json": "c2b7ff90f62d2acf393235253b20e13701ed74b75b411996a679da6ad40549e8",
+  "content/c98-red/de.tex": "0000000000000000000000000000000000000000000000000000000000000000",
+  "content/c98-red/en.tex": "7921138a463c4231d3b16d6a2c7a36338e6d0972eea20858acf8c5a61e220deb"
+ }
+}

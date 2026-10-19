@@ -1,0 +1,863 @@
+% content/c01-wahrscheinlichkeit/en.tex — Chapter 1: Probability for physicists
+% (English edition)
+%
+% Same structure, IDs and display equations as de.tex, which leads.  Migration of the
+% subsection "Probability" of the first lecture (latex/lectures/en/lec01.tex:93-216); see
+% evidence/migrations/maps/vl01-map.json.  Definitions: registry D53 to D56.  Derivations:
+% evidence/derivations/c01/DERIVATION.md, same IDs.  Framing: docs/plan/BRIEF.md:45-46
+% (author-stipulated, quoted verbatim here); hazard H1.1 in proposition
+% c01.prop.punktgewicht.
+
+\chapter{Probability for physicists}\label{c01}
+
+The numbers that a physical theory predicts in this course are probabilities. This chapter
+fixes how one calculates with them. It contains hardly anything conceptually new: an
+intuitive understanding of probability is taken for granted. What matters is the
+\emph{notation} in which quantum mechanics will later be formulated, and a language. To
+the language belongs a stipulation of the author:
+% docs/plan/BRIEF.md:46, first part of the sentence, verbatim.  GAP-TJO: the German wording
+% in de.tex is the chapter author's translation (G-0022).  The second part of the sentence
+% (measurements as elements of the dual space) belongs to Chapter 2 and is not quoted here.
+\begin{equation}\label{c01.eq.sprache}\claim{c01.cl.sprache}{author-stipulated}
+  \begin{aligned}
+    &\text{\tpcifenglish{Thus our presentation starts with probability theory,}{Unsere Darstellung beginnt deshalb mit der}} \\
+    &\text{\tpcifenglish{with notation and framing}{Wahrscheinlichkeitstheorie, mit Notation und Rahmung,}} \\
+    &\text{\tpcifenglish{adapted to physics: we use the language}{die der Physik angepasst sind: Wir benutzen die Sprache}} \\
+    &\text{\tpcifenglish{of preparations (= states)}{der Präparationen (= Zustände)}} \\
+    &\text{\tpcifenglish{instead of “probability measures”.}{statt der „Wahrscheinlichkeitsmaße“.}}
+  \end{aligned}
+\end{equation}
+What mathematics calls a probability distribution is thus called a preparation here, and
+what it calls a random variable is called a measurement. Table~\ref{c01.tab.sprache} at the
+end of Section~\ref{c01.s2} sets the words side by side.
+
+\section{Outcomes and preparations}\label{c01.s1}
+
+\tpcdef{D53}
+
+In this section and the next two, $\Outcomes$ is a finite set.
+
+\begin{example}[Die and coin]\label{c01.ex.wuerfel}
+  For a die the outcome set consists of the possible numbers of spots:
+  $\Outcomes = \{1, 2, 3, 4, 5, 6\}$. For a coin,
+  $\Outcomes = \{\text{\tpcifenglish{heads}{Kopf}}, \text{\tpcifenglish{tails}{Zahl}}\}$.
+  “The number of spots is even” is the event $S = \{2, 4, 6\}$.
+\end{example}
+
+\begin{exercise}[Two dice]\label{c01.exc.zwei-wuerfel}\claim{c01.cl.zwei-wuerfel}{derived}
+  Describe the outcome set for \emph{two} dice. How many elements does it have?
+\end{exercise}
+\begin{solution}
+  An outcome is a pair $(x_1, x_2)$ of the number of spots $x_1$ of the first die and the
+  number of spots $x_2$ of the second. The outcome set is the set of all such pairs with
+  $x_1, x_2 \in \{1, \dots, 6\}$. For each of the $6$ values of $x_1$ there are $6$ values
+  of $x_2$; so it has $6 \cdot 6 = 36$ elements
+  (Figure~\ref{c01.fig.ereignis}).
+\end{solution}
+
+\begin{tpcfigure}{c01.fig.ereignis}
+  \caption{Outcome sets and events. (a) One die: six outcomes; the event “even number of
+    spots” is the set of hatched cells. (b) Two dice: every point is a pair $(x_1, x_2)$,
+    $36$ outcomes in all. The event “the sum of the spots is $7$” consists of the six
+    pairs marked by squares.}
+\end{tpcfigure}
+
+A preparation fixes how probable every outcome is.
+
+\tpcdef{D54}
+
+The two conditions on $\pw$ are the only ones. The first holds because a negative
+probability would mean nothing; the second because some outcome certainly occurs. In what
+follows we call $\pw$ a \emph{weight} for short.
+
+\begin{example}[Fair and loaded die]\label{c01.ex.gezinkt}\claim{c01.cl.gezinkt}{derived}
+  For a fair die, $\pw(x) = \tfrac16$ for all $x$. Other weights describe \emph{loaded}
+  dice. In this chapter the loaded die is the weight
+  \begin{equation}\label{c01.eq.gezinkt}
+    \pw(1) = \tfrac{1}{12}, \qquad
+    \pw(2) = \pw(3) = \pw(4) = \pw(5) = \tfrac{2}{12}, \qquad
+    \pw(6) = \tfrac{3}{12} .
+  \end{equation}
+  The sum is $\tfrac{1 + 4\cdot 2 + 3}{12} = 1$. The event “even number of spots”,
+  $S = \{2,4,6\}$, has probability
+  $\Prob[S] = 3\cdot\tfrac16 = \tfrac12$ for the fair die and
+  $\Prob[S] = \tfrac{2 + 2 + 3}{12} = \tfrac{7}{12}$ for the loaded one.
+\end{example}
+
+\begin{tpcfigure}{c01.fig.gewichte}
+  \caption{Three weights on the outcome set $\{1, \dots, 6\}$ of a die. The height of a bar
+    is $\pw(x)$; in each picture the sum of all heights is $1$. (a) Fair die. (b) The
+    loaded die of equation~\eqref{c01.eq.gezinkt}. (c) A point weight: the whole weight
+    lies on the outcome $3$. Such weights describe deterministic preparations
+    (Proposition~\ref{c01.prop.punktgewicht}).}
+\end{tpcfigure}
+
+\begin{proposition}[Properties of the probability]\label{c01.prop.wahrscheinlichkeit}\claim[proof-included]{c01.cl.wahrscheinlichkeit}{derived}
+  Let $\pw$ be a weight on a finite outcome set $\Outcomes$, and let
+  $S, T \subset \Outcomes$ be events. Then:
+  \begin{enumerate}
+    \item $0 \leq \Prob[S] \leq 1$, $\Prob[\emptyset] = 0$ and $\Prob[\Outcomes] = 1$.
+    \item If $S_1, \dots, S_k$ are pairwise disjoint, that is, if no two of them have an
+      outcome in common, then
+      \begin{equation}\label{c01.eq.additiv}
+        \Prob[S_1 \cup \dots \cup S_k] = \Prob[S_1] + \dots + \Prob[S_k] .
+      \end{equation}
+    \item $\Prob[\Outcomes \setminus S] = 1 - \Prob[S]$.
+    \item $\Prob[S \cup T] = \Prob[S] + \Prob[T] - \Prob[S \cap T]$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  On~2: every outcome $x$ of the union lies in exactly one $S_j$. The sum of the
+  $\pw(x)$ over the union can therefore be arranged according to the $S_j$, and that is the
+  right-hand side. On~1: $\Prob[S]$ is a sum of numbers $\pw(x) \geq 0$, hence
+  $\Prob[S] \geq 0$; the empty sum is $0$, and $\Prob[\Outcomes] = 1$ is the second
+  condition on a weight. On~3: $S$ and $\Outcomes \setminus S$ are disjoint with
+  union $\Outcomes$, so by~2 $\Prob[S] + \Prob[\Outcomes \setminus S] = 1$.
+  From this $\Prob[S] \leq 1$ follows too. On~4: $S \cup T$ is the disjoint union of
+  $S$ and $T \setminus S$, and $T$ is the disjoint union of $T \setminus S$ and
+  $S \cap T$. By~2, $\Prob[S \cup T] = \Prob[S] + \Prob[T \setminus S]$ and
+  $\Prob[T] = \Prob[T \setminus S] + \Prob[S \cap T]$. Substituting gives the claim.
+\end{proof}
+
+Disjointness in~\eqref{c01.eq.additiv} is essential. If the events overlap, the right-hand
+side counts outcomes twice; part~4 shows for two events by how much.
+A function that assigns numbers $\geq 0$ to sets and satisfies \eqref{c01.eq.additiv} is called
+a \emph{measure} in mathematics, and a \emph{probability measure} if
+$\Prob[\Outcomes] = 1$. The Core of this course needs no more measure theory; the words
+are only meant to make the literature readable.
+
+Preparations can be mixed. If $\pw$ and $q$ are weights and $\lambda$ is a number
+between $0$ and $1$, one can prepare according to $\pw$ with probability $\lambda$ and
+according to $q$ otherwise. That too is a preparation, with the weight
+\begin{equation}\label{c01.eq.mischung}\claim{c01.cl.mischung}{derived}
+  \lambda\, \pw + (1-\lambda)\, q,
+  \qquad
+  \bigl(\lambda\, \pw + (1-\lambda)\, q\bigr)(x) = \lambda\, \pw(x) + (1-\lambda)\, q(x) .
+\end{equation}
+This is again a weight: all values are $\geq 0$ because $\lambda$, $1-\lambda$,
+$\pw(x)$ and $q(x)$ are, and the sum over $x$ is
+$\lambda \cdot 1 + (1-\lambda)\cdot 1 = 1$.
+
+\section{Measurements and expectation value}\label{c01.s2}
+
+Chapter~0 split every experiment into three stages. In classical probability theory each
+stage has a simple mathematical form
+\srcref{tpc-script-v0.2}{lec01, box “Every experiment in three steps”}.
+
+\begin{greybox}[The three stages, classically]
+  \begin{equation}\label{c01.eq.stadien}\claim{c01.cl.messung}{source-backed}
+    \begin{aligned}
+      &\text{\tpcifenglish{1. Preparation:}{1. Präparation:}} && \text{\tpcifenglish{a weight}{ein Gewicht}}\ \pw \\
+      &\text{\tpcifenglish{2. Run:}{2. Durchführung:}} && \text{\tpcifenglish{a map of weights to weights}{eine Abbildung von Gewichten auf Gewichte}} \\
+      &\text{\tpcifenglish{3. Measurement:}{3. Messung:}} && \text{\tpcifenglish{a function}{eine Funktion}}\ f\colon \Outcomes \to \mathbb{R}
+    \end{aligned}
+  \end{equation}
+  At the end of the measurement stands one of the possible outcomes. Which maps occur in
+  the second stage is not needed in this chapter.
+\end{greybox}
+
+\tpcdef{D55}
+
+No condition is imposed on a measurement: every function on $\Outcomes$ may count as a
+measurement. On a preparation, by contrast, we impose two. The value $f(x)$ is the
+measured value obtained when one knows for certain that the outcome $x$ has occurred.
+
+\begin{example}[Number of spots]\label{c01.ex.augenzahl}\claim{c01.cl.augenzahl}{derived}
+  For a die the number of spots $f(x) = x$ is a measurement. For the fair die
+  \begin{equation}\label{c01.eq.augenzahl-fair}
+    \Ex[f] = \tfrac16\,(1 + 2 + 3 + 4 + 5 + 6) = \tfrac{21}{6} = \tfrac72 ,
+  \end{equation}
+  for the loaded die of equation~\eqref{c01.eq.gezinkt}
+  \begin{equation}\label{c01.eq.augenzahl-gezinkt}
+    \Ex[f] = \tfrac{1}{12}\,(1\cdot 1 + 2\cdot 2 + 2\cdot 3 + 2\cdot 4 + 2\cdot 5 + 3\cdot 6)
+           = \tfrac{47}{12} .
+  \end{equation}
+  Neither of the two values is a number of spots. The expectation value need not be a
+  possible measured value.
+\end{example}
+
+\begin{tpcfigure}{c01.fig.erwartung}
+  \caption{The expectation value of the number of spots as a centre of mass. If one thinks
+    of the weights $\pw(x)$ as masses at the places $x$ of a beam, then $\Ex[f]$ is the
+    place at which the beam balances: (a) for the fair die in the middle, at
+    $\tfrac72$; (b) for the loaded die of equation~\eqref{c01.eq.gezinkt} shifted to the
+    right, at $\tfrac{47}{12}$.}
+\end{tpcfigure}
+
+\subsection{Relative frequencies}\label{c01.s2.1}
+
+Where does the formula for the expectation value come from? One repeats the experiment $N$
+times with the same preparation, where $N$ is a positive integer, and records the outcomes
+$x_1, \dots, x_N$. Let $N(x)$ be
+the number of runs with the outcome $x$. The \emph{relative frequency} of $x$ is
+\begin{equation}\label{c01.eq.haeufigkeit}\claim{c01.cl.haeufigkeit}{derived}
+  h_N(x) = \frac{N(x)}{N},
+  \qquad
+  h_N(x) \geq 0,
+  \qquad
+  \sum_{x \in \Outcomes} h_N(x) = 1 .
+\end{equation}
+The sum is $1$ because each of the $N$ runs has exactly one outcome, so that
+$\sum_x N(x) = N$. The relative frequencies of a series of runs are themselves a weight.
+For the mean of the measured values of a measurement $f$ over the series,
+\begin{equation}\label{c01.eq.stichprobenmittel}\claim{c01.cl.stichprobenmittel}{derived}
+  \frac{1}{N} \sum_{i=1}^{N} f(x_i)
+  = \frac{1}{N} \sum_{x \in \Outcomes} N(x)\, f(x)
+  = \sum_{x \in \Outcomes} h_N(x)\, f(x) ,
+\end{equation}
+because in the sum on the left the term $f(x)$ occurs exactly $N(x)$ times. The mean of a
+series of runs is thus the expectation value of $f$ in the weight $h_N$. This equation is
+exact and holds for every series.
+
+Here we restrict the statistical reading of the lectures to the model of independent
+repetitions of the same preparation: with many such repetitions the relative frequency
+$h_N(x)$ is likely to lie close to $\pw(x)$,
+\begin{equation}\label{c01.eq.lesart}\claim{c01.cl.lesart}{source-backed}
+  h_N(x) \approx \pw(x)
+  \qquad \text{\tpcifenglish{for large}{für große}}\ N .
+\end{equation}
+In this model, for large $N$ the outcome $x$ is likely to occur about $N \pw(x)$ times;
+the sum of the measured values is then about
+$\sum_x N \pw(x) f(x)$, and after division by $N$ the expectation value stands there
+\srcref{tpc-script-v0.2}{lec01, before the formula for the expectation value}. This reading
+is an interpretation in the stated model: in a single series $h_N$ may differ from $\pw$.
+For independent repetitions of the same preparation an upper bound on the probability of
+large deviations can be proved\zoomref{c01.v2}.
+
+\begin{tpcfigure}{c01.fig.haeufigkeit}
+  \demo{c01.demo.haeufigkeit}
+  \caption{A series of throws with the loaded die of equation~\eqref{c01.eq.gezinkt},
+    generated by a computer program with a fixed seed. Hatched bars: relative frequencies
+    $h_N(x)$ after the first (a) $12$, (b) $120$ and (c) $1200$ throws of the same series.
+    Heavy horizontal marks: the weights $\pw(x)$. In (a) the bars lie far from the marks,
+    in (c) close to them. The bars of one picture always have total height $1$, as in
+    equation~\eqref{c01.eq.haeufigkeit}.}
+\end{tpcfigure}
+
+\subsection{Calculating with expectation values}\label{c01.s2.2}
+
+Measurements are functions and can therefore be added, multiplied by numbers and
+multiplied with one another: $(\alpha f + \gamma g)(x) = \alpha f(x) + \gamma g(x)$ and
+$(fg)(x) = f(x)\,g(x)$. A number $c$ is read here as the constant measurement with the
+value $c$. We write $f \leq g$ if $f(x) \leq g(x)$ for all $x \in \Outcomes$.
+
+\begin{proposition}[Rules for the expectation value]\label{c01.prop.erwartung}\claim[proof-included]{c01.cl.erwartung}{derived}
+  Let $\pw$ be a weight on a finite outcome set $\Outcomes$, let $f$ and $g$ be
+  measurements and $\alpha$, $\gamma$, $c$ real numbers. Then:
+  \begin{enumerate}
+    \item Linearity: $\Ex[\alpha f + \gamma g] = \alpha\, \Ex[f] + \gamma\, \Ex[g]$.
+    \item Normalisation: $\Ex[c] = c$.
+    \item Monotonicity: $f \leq g$ implies $\Ex[f] \leq \Ex[g]$. In particular
+      $\Ex[f] \geq 0$ if $f \geq 0$.
+    \item The expectation value lies between the smallest and the largest measured value:
+      $\min_x f(x) \leq \Ex[f] \leq \max_x f(x)$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  On~1:
+  \begin{equation}\label{c01.eq.linear}
+    \sum_{x \in \Outcomes} \pw(x)\,\bigl(\alpha f(x) + \gamma g(x)\bigr)
+    = \alpha \sum_{x \in \Outcomes} \pw(x) f(x) + \gamma \sum_{x \in \Outcomes} \pw(x) g(x) .
+  \end{equation}
+  On~2: $\sum_x \pw(x)\, c = c \sum_x \pw(x) = c$. On~3: by~1,
+  $\Ex[g] - \Ex[f] = \Ex[g - f] = \sum_x \pw(x)\,(g(x) - f(x))$, and every term is a
+  product of two numbers $\geq 0$. On~4: with $m = \min_x f(x)$ and $M = \max_x f(x)$,
+  $m \leq f \leq M$; by~3 and~2, $m \leq \Ex[f] \leq M$ follows.
+\end{proof}
+
+\subsection{Yes-no measurements}\label{c01.s2.3}
+
+A special part is played by measurements that take only the values $0$ and $1$. They are
+the model for detectors that indicate the presence of a particle: the detector says click
+or no click. Quantum mechanics hinges on these two-valued measurements.
+Such a measurement $f$ is determined by the set $S = \{x \in \Outcomes \colon f(x) = 1\}$.
+One writes
+\begin{equation}\label{c01.eq.indikator-def}\claim{c01.cl.indikator-def}{source-backed}
+  \ind{S}(x) =
+  \begin{cases}
+    1, & x \in S, \\
+    0, & \text{\tpcifenglish{otherwise}{sonst}}
+  \end{cases}
+\end{equation}
+and calls $\ind{S}$ the \emph{indicator function} of the event $S$. Indicator functions
+\emph{are} measurements, not a separate object alongside them. The set $S$ may be
+arbitrary. Three limiting cases: $S = \Outcomes$ gives the constant measurement $1$,
+$S = \emptyset$ the constant measurement $0$, and for a single outcome $a$,
+$\ind{\{a\}}(x)$ equals $1$ for $x = a$ and $0$ otherwise.
+
+The expectation value of an indicator function is the probability of its event:
+\begin{equation}\label{c01.eq.indikator}\claim{c01.cl.indikator}{derived}
+  \Ex[\ind{S}] = \sum_{x \in \Outcomes} \pw(x)\, \ind{S}(x) = \sum_{x \in S} \pw(x) = \Prob[S] .
+\end{equation}
+Figure~\ref{c01.fig.indikator} shows the calculation for the loaded die.
+Probabilities are thus special expectation values. Conversely $\Prob$ fixes all
+expectation values, for with $S = \{x\}$ one has $\pw(x) = \Prob[\{x\}]$ and therefore
+$\Ex[f] = \sum_{x} \Prob[\{x\}]\, f(x)$.
+
+\begin{tpcfigure}{c01.fig.indikator}
+  \caption{A yes-no measurement on the loaded die of equation~\eqref{c01.eq.gezinkt}.
+    (a) The indicator function of the event $S = \{2,4,6\}$, dashed like all
+    measurements. (b) The weights $\pw(x)$ (outlines) and the products $\pw(x)\,\ind{S}(x)$
+    (hatched): the indicator function leaves only the bars over $S$. Their heights add
+    up to $\Ex[\ind{S}] = \Prob[S] = \tfrac{7}{12}$.}
+\end{tpcfigure}
+
+One calculates with indicator functions as with the sets:
+\begin{equation}\label{c01.eq.indikator-regeln}\claim{c01.cl.indikator-regeln}{derived}
+  \ind{S}\,\ind{T} = \ind{S \cap T},
+  \qquad
+  \ind{S}^2 = \ind{S},
+  \qquad
+  1 - \ind{S} = \ind{\Outcomes \setminus S} .
+\end{equation}
+This is checked outcome by outcome: the product $\ind{S}(x)\,\ind{T}(x)$ is $1$ exactly
+when both factors are $1$, that is, when $x$ lies in $S$ and in $T$. The second
+equation is the case $T = S$. The third: $1 - \ind{S}(x)$ is $0$ for $x \in S$ and $1$
+otherwise.
+
+Every measurement can be put together from yes-no measurements. For a measured value $v$
+let $\{f = v\}$ be the event $\{x \in \Outcomes \colon f(x) = v\}$, “the measurement gives
+$v$”. Then
+\begin{equation}\label{c01.eq.werteverteilung}\claim{c01.cl.werteverteilung}{derived}
+  f = \sum_{v} v\, \ind{\{f = v\}},
+  \qquad
+  \Ex[f] = \sum_{v} v\, \Prob[\{f = v\}] ,
+\end{equation}
+where $v$ runs through the distinct values that $f$ takes. The first equation holds
+because at every place $x$ exactly one indicator function equals one, the one with
+$v = f(x)$. If $f(x) = 0$, all weighted terms vanish. The second follows from it by linearity and equation~\eqref{c01.eq.indikator}. The
+expectation value is the mean of the measured values weighted with the probabilities.
+
+\begin{exercise}[Three outcomes]\label{c01.exc.drei}\claim{c01.cl.drei}{derived}
+  Let $\Outcomes = \{1, 2, 3\}$ and $\pw(x) = \tfrac13$ for all $x \in \Outcomes$.
+  Compute $\Prob[S]$ for $S = \{1, 2\}$ and the expectation value of the measurement
+  $f(x) = x^2$.
+\end{exercise}
+\begin{solution}
+  $\Prob[S] = \pw(1) + \pw(2) = \tfrac23$ and
+  $\Ex[f] = \tfrac13\,(1 + 4 + 9) = \tfrac{14}{3}$.
+\end{solution}
+
+\begin{tpctable}{c01.tab.sprache}
+  \caption{The same things in two languages. On the left the words of probability theory,
+    on the right those of physics, which this course uses.}
+  \begin{tabular}{lll}
+    \toprule
+    Symbol & Probability theory & Physics \\
+    \midrule
+    $\Outcomes$ & sample space & outcome set \\
+    $\pw$, $\Prob$ & probability distribution, measure & preparation \\
+    $f$ & random variable & measurement \\
+    $\ind{S}$ & indicator function of the event $S$ & yes-no measurement \\
+    $\Ex[f]$ & expectation value & expectation value \\
+    \bottomrule
+  \end{tabular}
+\end{tpctable}
+
+\section{Variance and determinism}\label{c01.s3}
+
+The expectation value says where the measured values lie on average. The variance says
+how far they scatter around this value.
+
+\tpcdef{D56}
+
+In the definition, $f - \Ex[f]$ is the measurement with the values $f(x) - \Ex[f]$, the
+deviation from the expectation value, and $(f - \Ex[f])^2$ is its square.
+
+\begin{proposition}[Properties of the variance]\label{c01.prop.varianz}\claim[proof-included]{c01.cl.varianz}{derived}
+  Let $\pw$ be a weight on a finite outcome set $\Outcomes$, $f$ a measurement
+  and $\alpha$, $\gamma$ real numbers. Then:
+  \begin{enumerate}
+    \item $\Var[f] = \Ex[f^2] - \Ex[f]^2$.
+    \item $\Var[f] \geq 0$.
+    \item $\Var[f] = 0$ holds if and only if $f(x) = \Ex[f]$ for all outcomes $x$ with
+      $\pw(x) > 0$.
+    \item $\Var[\alpha f + \gamma] = \alpha^2\, \Var[f]$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  We write $m = \Ex[f]$; this is a number. On~1:
+  $(f - m)^2 = f^2 - 2 m f + m^2$. With linearity and normalisation from
+  Proposition~\ref{c01.prop.erwartung},
+  \begin{equation}\label{c01.eq.varianzformel}
+    \Var[f] = \Ex[f^2] - 2m\, \Ex[f] + m^2 = \Ex[f^2] - 2m^2 + m^2 = \Ex[f^2] - m^2 .
+  \end{equation}
+  On~2 and~3: by definition $\Var[f] = \sum_x \pw(x)\,(f(x) - m)^2$. Every term
+  is $\geq 0$, hence so is the sum. It is $0$ exactly when every term is $0$,
+  and the term belonging to $x$ is $0$ exactly when $\pw(x) = 0$ or $f(x) = m$.
+  On~4: by linearity $\Ex[\alpha f + \gamma] = \alpha m + \gamma$. Hence
+  $\alpha f + \gamma - \Ex[\alpha f + \gamma] = \alpha (f - m)$, its square is
+  $\alpha^2 (f - m)^2$, and the expectation value of that is $\alpha^2\, \Var[f]$.
+\end{proof}
+
+\begin{example}[Variance of the number of spots]\label{c01.ex.wuerfel-varianz}\claim{c01.cl.wuerfel-varianz}{derived}
+  For the fair die and $f(x) = x$,
+  $\Ex[f^2] = \tfrac16\,(1 + 4 + 9 + 16 + 25 + 36) = \tfrac{91}{6}$, and with
+  equation~\eqref{c01.eq.augenzahl-fair}
+  \begin{equation}\label{c01.eq.varianz-fair}
+    \Var[f] = \tfrac{91}{6} - \bigl(\tfrac72\bigr)^2 = \tfrac{182 - 147}{12} = \tfrac{35}{12} .
+  \end{equation}
+  For the loaded die of equation~\eqref{c01.eq.gezinkt},
+  \begin{equation*}
+    \Ex[f^2] = \tfrac{1}{12}\,(1 + 2\cdot 4 + 2\cdot 9 + 2\cdot 16 + 2\cdot 25 + 3\cdot 36)
+    = \tfrac{217}{12} ,
+  \end{equation*}
+  and with equation~\eqref{c01.eq.augenzahl-gezinkt}
+  \begin{equation}\label{c01.eq.varianz-gezinkt}
+    \Var[f] = \tfrac{217}{12} - \bigl(\tfrac{47}{12}\bigr)^2
+            = \tfrac{2604 - 2209}{144} = \tfrac{395}{144} .
+  \end{equation}
+\end{example}
+
+\begin{example}[Two outcomes]\label{c01.ex.muenze}\claim{c01.cl.muenze}{derived}
+  Let $\Outcomes = \{0, 1\}$ with $\pw(1) = q$ and $\pw(0) = 1 - q$ for a number $q$
+  between $0$ and $1$, and let $f(x) = x$. Then $\Ex[f] = q$, and because $f^2 = f$,
+  also $\Ex[f^2] = q$. Hence
+  \begin{equation}\label{c01.eq.zwei-ergebnisse}
+    \Var[f] = q - q^2 = q\,(1 - q) = \tfrac14 - \bigl(q - \tfrac12\bigr)^2 .
+  \end{equation}
+  The variance is at most $\tfrac14$, and it equals $0$ exactly for $q = 0$ and $q = 1$:
+  when the outcome is certain.
+\end{example}
+
+The same calculation holds for every yes-no measurement. By
+equation~\eqref{c01.eq.indikator-regeln}, $\ind{S}^2 = \ind{S}$, hence
+\begin{equation}\label{c01.eq.var-indikator}\claim{c01.cl.var-indikator}{derived}
+  \Var[\ind{S}] = \Prob[S] - \Prob[S]^2 = \Prob[S]\,\bigl(1 - \Prob[S]\bigr) .
+\end{equation}
+
+\begin{tpcfigure}{c01.fig.varianz}
+  \caption{(a), (b) Two weights with the same expectation value $\tfrac72$ of the number of
+    spots $f(x) = x$ (dashed line) and different variance: the fair die of
+    equation~\eqref{c01.eq.varianz-fair} and a weight that lies half on $3$ and half on
+    $4$; for the latter $\Ex[f^2] = \tfrac{9 + 16}{2}$ and
+    $\Var[f] = \tfrac{25}{2} - \tfrac{49}{4} = \tfrac14$. (c) The variance
+    of a yes-no measurement as a function of $q = \Prob[S]$ by
+    equation~\eqref{c01.eq.var-indikator}: it vanishes exactly at the two ends, where
+    the answer is certain, and is largest at $q = \tfrac12$.}
+\end{tpcfigure}
+
+\subsection{Point weights}\label{c01.s3.1}
+
+For an outcome $a \in \Outcomes$,
+\begin{equation}\label{c01.eq.punktgewicht}\claim{c01.cl.punktgewicht-def}{source-backed}
+  \pw_a(x) =
+  \begin{cases}
+    1, & x = a, \\
+    0, & \text{\tpcifenglish{otherwise}{sonst}}
+  \end{cases}
+\end{equation}
+is called the \emph{point weight} on $a$. It is a weight, and it is concentrated on one
+point: the outcome $a$ is prepared with certainty. For every measurement $f$,
+$\Ex[f] = f(a)$. Every weight is a mixture of point weights, and in exactly one way:
+\begin{equation}\label{c01.eq.zerlegung}\claim{c01.cl.zerlegung}{derived}
+  \pw = \sum_{a \in \Outcomes} \pw(a)\, \pw_a .
+\end{equation}
+To check this, one evaluates both sides at a place $x$: on the right only the term with
+$a = x$ remains, and it is $\pw(x)$. The decomposition is unique because
+$\pw = \sum_a c_a\, \pw_a$ gives $c_x = \pw(x)$ at once on evaluating at the place $x$.
+
+\begin{proposition}[Determinism is a special case]\label{c01.prop.punktgewicht}\claim[proof-included]{c01.cl.punktgewicht}{derived}
+  For a weight $\pw$ on a finite outcome set $\Outcomes$ the following are equivalent:
+  \begin{enumerate}
+    \item $\pw$ is a point weight.
+    \item Every event has probability $0$ or $1$.
+    \item Every measurement has variance $0$.
+    \item $\pw$ is not a proper mixture: if $\pw = \lambda q + (1 - \lambda) r$ with
+      weights $q$, $r$ and $0 < \lambda < 1$, then $q = r = \pw$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  1 implies~2: for $\pw = \pw_a$, $\Prob[S] = \ind{S}(a)$, which is $0$ or $1$.
+
+  2 implies~1: for every $x$, $\pw(x) = \Prob[\{x\}]$ is $0$ or $1$. The sum
+  of all $\pw(x)$ is $1$; so exactly one $\pw(a)$ equals $1$ and all others are $0$.
+
+  1 implies~3: for $\pw = \pw_a$, $\Ex[f] = f(a)$, and $a$ is the only outcome
+  with $\pw(x) > 0$. By Proposition~\ref{c01.prop.varianz}, part~3, $\Var[f] = 0$.
+
+  3 implies~2: by equation~\eqref{c01.eq.var-indikator},
+  $\Prob[S]\,(1 - \Prob[S]) = \Var[\ind{S}] = 0$, hence $\Prob[S] = 0$ or $\Prob[S] = 1$.
+
+  1 implies~4: let $\pw_a = \lambda q + (1 - \lambda) r$. For $x \neq a$,
+  $0 = \lambda q(x) + (1 - \lambda) r(x)$. Both terms are $\geq 0$ and
+  $\lambda$, $1 - \lambda$ are positive, hence $q(x) = r(x) = 0$. Because $q$ and $r$
+  are weights, $q(a) = r(a) = 1$ remains.
+
+  4 implies~1: we show that a weight that is not a point weight is a proper
+  mixture. If $\pw$ is not a point weight, there are two distinct outcomes $a$
+  and $b$ with $\pw(a) > 0$ and $\pw(b) > 0$. Let $\varepsilon$ be the smaller of the two
+  numbers. Then
+  \begin{equation}\label{c01.eq.echte-mischung}
+    q = \pw + \varepsilon\,(\pw_a - \pw_b),
+    \qquad
+    r = \pw - \varepsilon\,(\pw_a - \pw_b)
+  \end{equation}
+  are weights: the sum of the values is $1 + \varepsilon\,(1 - 1) = 1$ in each case, and
+  only $q(b) = \pw(b) - \varepsilon$ and $r(a) = \pw(a) - \varepsilon$ could become
+  negative, but by the choice of $\varepsilon$ they are $\geq 0$. One has $q \neq r$ because
+  $q(a) - r(a) = 2\varepsilon > 0$, and $\pw = \tfrac12 q + \tfrac12 r$.
+\end{proof}
+
+\begin{tpcfigure}{c01.fig.mischung}
+  \caption{The construction of equation~\eqref{c01.eq.echte-mischung} for the loaded
+    die $\pw$ of equation~\eqref{c01.eq.gezinkt}, with $a = 6$, $b = 1$ and
+    $\varepsilon = \tfrac{1}{12}$. Starting from $\pw$ (left), the weight $\tfrac{1}{12}$ is
+    moved once from $1$ to $6$ (middle, $q$) and once from $6$ to $1$ (right, $r$); the
+    changed bars are hatched. Here $r$ is the fair die. The loaded die is the mixture
+    $\pw = \tfrac12 q + \tfrac12 r$ and therefore not a point weight.}
+\end{tpcfigure}
+
+In the finite model we call a preparation deterministic if its weight is a point weight.
+Then the outcome of every measurement is fixed: $f$ gives the value $f(a)$ with probability
+$1$. The chapter author proposes this as an example of the stipulation in Chapter~0 that
+deterministic theories are a subset of probabilistic ones. This reading awaits the
+author's decision (G-0023); the proposition about preparations specifies no dynamics
+for deterministic theories.
+
+\begin{merksatz}[Key statement]
+  A weight is a point weight if and only if every measurement has variance $0$, and if and
+  only if it is not a proper mixture of other weights. Every other weight is in exactly
+  one way a mixture of point weights.
+\end{merksatz}
+
+Chapter~2 calls states that are not proper mixtures \emph{pure}. The pure states of the
+finite classical model are thus the point weights.
+Equation~\eqref{c01.eq.zerlegung} decomposes every weight uniquely into point weights.
+Reading this decomposition as missing information about an outcome prepared with
+certainty is the chapter author's proposal and awaits the author's decision (G-0023). Geometrically the
+weights on $n$ outcomes form a body with $n$ corners, the point weights: a segment, a
+triangle, a tetrahedron\zoomref{c01.v1}.
+
+\begin{vertiefung}[id=c01.v1,
+    titel={The set of all preparations is a simplex},
+    wozu={The Core shows that every weight is uniquely mixed from point weights. Here this
+      becomes a picture: for $n$ outcomes the weights form a segment, a triangle, a
+      tetrahedron and so on, and the point weights are the corners.},
+    voraussetzung={Section~\ref{c01.s3.1}; vectors in $\mathbb{R}^n$. The rest of this
+      chapter does not need the block; Chapter~2 takes up the picture.},
+    zurueck={The weights on $n$ outcomes form a body with $n$ corners, the point weights;
+      every point in it is mixed from the corners in exactly one way.}]
+  Let $\Outcomes = \{1, \dots, n\}$. A weight $\pw$ is then the list
+  $(\pw(1), \dots, \pw(n))$ of its values, a vector in $\mathbb{R}^n$. The point weight
+  $\pw_a$ is the vector with a $1$ at the place $a$ and zeros elsewhere.
+
+  \begin{proposition}[The weights form a simplex]\label{c01.prop.simplex}\claim[proof-included]{c01.cl.simplex}{derived}
+    The set of all weights on $\{1, \dots, n\}$ is the set of all mixtures
+    $\lambda_1 \pw_1 + \dots + \lambda_n \pw_n$ of the $n$ point weights with
+    $\lambda_a \geq 0$ and $\lambda_1 + \dots + \lambda_n = 1$. The point weights are
+    affinely independent: from
+    \begin{equation}\label{c01.eq.affin-unabhaengig}
+      \alpha_1 \pw_1 + \dots + \alpha_n \pw_n = 0
+      \qquad \text{\tpcifenglish{and}{und}} \qquad
+      \alpha_1 + \dots + \alpha_n = 0
+    \end{equation}
+    it follows that $\alpha_1 = \dots = \alpha_n = 0$.
+  \end{proposition}
+  \begin{proof}
+    Every such mixture is a weight, for the same reasons as for
+    equation~\eqref{c01.eq.mischung}. Conversely every weight is such a mixture by
+    equation~\eqref{c01.eq.zerlegung}, with $\lambda_a = \pw(a)$. On affine
+    independence: the left-hand side of the first equation in
+    \eqref{c01.eq.affin-unabhaengig} is the vector $(\alpha_1, \dots, \alpha_n)$; if it is
+    $0$, all $\alpha_a = 0$. The second equation is not needed for this.
+  \end{proof}
+
+  The convex hull of $n$ affinely independent points is called a simplex in Chapter~2, and
+  a theory whose state space is a simplex is called classical there. For $n = 2$ the
+  simplex is a segment, for $n = 3$ a triangle (Figure~\ref{c01.fig.simplex}), for
+  $n = 4$ a tetrahedron. The numbers $\pw(1), \dots, \pw(n)$ are at once the
+  probabilities of the outcomes and the mixing weights of the corners.
+
+  \begin{tpcfigure}{c01.fig.simplex}
+    \caption{The set of all weights. (a) Two outcomes: the segment between the point
+      weights $\pw_1 = (1,0)$ and $\pw_2 = (0,1)$ in the plane of the coordinates
+      $\pw(1)$, $\pw(2)$; marked is $\pw = (\tfrac14, \tfrac34)$. (b) Three
+      outcomes: a triangle with the point weights as corners. Marked are the uniform
+      weight $(\tfrac13, \tfrac13, \tfrac13)$ at the centroid and the weight
+      $(\tfrac12, \tfrac13, \tfrac16)$, which lies closer to $\pw_1$. Filled points are
+      point weights, open circles proper mixtures.}
+  \end{tpcfigure}
+\end{vertiefung}
+
+\begin{vertiefung}[id=c01.v2,
+    titel={How close are relative frequencies to the probabilities?},
+    wozu={The Core restricts the statistical reading to independent repetitions of the
+      same preparation. Here an upper bound on the probability of a deviation of the
+      relative frequency by at least $\varepsilon > 0$ is proved; this bound decreases
+      with the positive integer number of repetitions.},
+    voraussetzung={Sections~\ref{c01.s2} and~\ref{c01.s3} up to
+      equation~\eqref{c01.eq.var-indikator}. The rest of the course uses only the result
+      in words.},
+    zurueck={The probability that the relative frequency of an event after $N$ independent
+      repetitions deviates from its probability by at least $\varepsilon$ is at most
+      $1/(4N\varepsilon^2)$.}]
+  The first step holds for every weight and every measurement.
+
+  \begin{lemma}[Chebyshev's inequality]\label{c01.lem.tschebyscheff}\claim[proof-included]{c01.cl.tschebyscheff}{derived}
+    Let $\pw$ be a weight on a finite outcome set $\Outcomes$, $f$ a measurement
+    and $\varepsilon > 0$. Let $S$ be the event that $f$ deviates from its expectation
+    value by at least $\varepsilon$,
+    $S = \{x \in \Outcomes \colon \abs{f(x) - \Ex[f]} \geq \varepsilon\}$. Then
+    \begin{equation}\label{c01.eq.tschebyscheff}
+      \Prob[S] \leq \frac{\Var[f]}{\varepsilon^2} .
+    \end{equation}
+  \end{lemma}
+  \begin{proof}
+    For $x \in S$, $(f(x) - \Ex[f])^2 \geq \varepsilon^2$, and for all $x$,
+    $(f(x) - \Ex[f])^2 \geq 0$. Hence $(f - \Ex[f])^2 \geq \varepsilon^2\, \ind{S}$ at
+    every place. With monotonicity and linearity (Proposition~\ref{c01.prop.erwartung}) and
+    equation~\eqref{c01.eq.indikator},
+    $\Var[f] \geq \varepsilon^2\, \Ex[\ind{S}] = \varepsilon^2\, \Prob[S]$ follows.
+  \end{proof}
+
+  Now to the model. Let $N$ be a positive integer and $\Outcomes$ finite. An outcome
+  of $N$ repetitions is a list $(x_1, \dots, x_N)$
+  of outcomes from $\Outcomes$. We \emph{assume} that the repetitions are carried out with
+  the same preparation $\pw$ and independently of one another, and describe this by the
+  \emph{product weight}
+  $\pw^{(N)}(x_1, \dots, x_N) = \pw(x_1)\cdots\pw(x_N)$ on the set of all such lists.
+  Expectation value, probability and variance in this weight are written $\Ex_N$,
+  $\Prob_N$ and $\Var_N$.
+
+  \begin{lemma}[Product weight]\label{c01.lem.produkt}\claim[proof-included]{c01.cl.produkt}{derived}
+    The product weight $\pw^{(N)}$ is a weight. If $g$ and $w$ are measurements on
+    $\Outcomes$ and $i \neq j$ are two of the numbers $1, \dots, N$, then for the
+    measurements $(x_1, \dots, x_N) \mapsto g(x_i)$ and
+    $(x_1, \dots, x_N) \mapsto g(x_i)\,w(x_j)$ on the lists
+    \begin{equation}\label{c01.eq.produkt}
+      \Ex_N[g(x_i)] = \Ex[g],
+      \qquad
+      \Ex_N[g(x_i)\,w(x_j)] = \Ex[g]\;\Ex[w] .
+    \end{equation}
+  \end{lemma}
+  \begin{proof}
+    A sum over all lists of products $u_1(x_1)\cdots u_N(x_N)$ is the product of the
+    single sums,
+    \begin{equation*}
+      \sum_{x_1, \dots, x_N} u_1(x_1)\cdots u_N(x_N)
+      = \Bigl(\sum_{x_1} u_1(x_1)\Bigr)\cdots\Bigl(\sum_{x_N} u_N(x_N)\Bigr) ;
+    \end{equation*}
+    this is the right-hand side multiplied out. With $u_l = \pw$ for all $l$ this gives the sum
+    $1$, and all values of $\pw^{(N)}$ are $\geq 0$. With $u_i = \pw\, g$ and $u_l = \pw$
+    otherwise, the single sum belonging to $i$ is $\Ex[g]$ and all others are $1$. With
+    $u_i = \pw\, g$, $u_j = \pw\, w$ and $u_l = \pw$ otherwise, the single sums belonging
+    to $i$ and $j$ are $\Ex[g]$ and $\Ex[w]$, all others $1$.
+  \end{proof}
+
+  \begin{theorem}[Relative frequencies in independent repetitions]\label{c01.thm.haeufigkeit}\claim[proof-included]{c01.cl.gesetz}{derived}
+    Let $\pw$ be a weight on a finite outcome set $\Outcomes$, $S$ an event
+    and $N$ a positive integer. Let $H_N$ be the relative frequency of $S$ in a list,
+    \begin{equation*}
+      H_N(x_1, \dots, x_N) = \tfrac{1}{N}\bigl(\ind{S}(x_1) + \dots + \ind{S}(x_N)\bigr) .
+    \end{equation*}
+    Then in the product weight $\pw^{(N)}$
+    \begin{equation}\label{c01.eq.gesetz-momente}
+      \Ex_N[H_N] = \Prob[S],
+      \qquad
+      \Var_N[H_N] = \frac{\Prob[S]\,(1 - \Prob[S])}{N} ,
+    \end{equation}
+    and for every $\varepsilon > 0$
+    \begin{equation}\label{c01.eq.gesetz}
+      \Prob_N\bigl[\,\abs{H_N - \Prob[S]} \geq \varepsilon\,\bigr]
+      \;\leq\; \frac{\Prob[S]\,(1 - \Prob[S])}{N \varepsilon^2}
+      \;\leq\; \frac{1}{4 N \varepsilon^2} .
+    \end{equation}
+  \end{theorem}
+  \begin{proof}
+    By equation~\eqref{c01.eq.produkt} with $g = \ind{S}$,
+    $\Ex_N[\ind{S}(x_i)] = \Prob[S]$ for every $i$, and by linearity
+    $\Ex_N[H_N] = \tfrac{1}{N}\cdot N\, \Prob[S] = \Prob[S]$. For the variance we put
+    $g = \ind{S} - \Prob[S]$; then $\Ex[g] = 0$ and $\Ex[g^2] = \Var[\ind{S}]$. One has
+    $H_N - \Prob[S] = \tfrac{1}{N}\sum_i g(x_i)$ and
+    \begin{equation}\label{c01.eq.gesetz-rechnung}
+      \begin{aligned}
+        \Var_N[H_N]
+        &= \frac{1}{N^2} \sum_{i} \Ex_N[g(x_i)^2]
+          + \frac{1}{N^2} \sum_{i \neq j} \Ex_N[g(x_i)\,g(x_j)] \\
+        &= \frac{1}{N^2}\cdot N\, \Var[\ind{S}] + 0 .
+      \end{aligned}
+    \end{equation}
+    By equation~\eqref{c01.eq.produkt} every mixed term equals
+    $\Ex[g]\,\Ex[g]$, that is $0$. With equation~\eqref{c01.eq.var-indikator} this is the
+    second statement in \eqref{c01.eq.gesetz-momente}. The first inequality in
+    \eqref{c01.eq.gesetz} is Lemma~\ref{c01.lem.tschebyscheff} for the measurement $H_N$ in
+    the weight $\pw^{(N)}$; the second follows from $q\,(1-q) \leq \tfrac14$
+    (equation~\eqref{c01.eq.zwei-ergebnisse}).
+  \end{proof}
+
+  The bound falls like $1/N$. It does not say that $h_N$ tends to $\pw$ in every series
+  of runs, and it says nothing about a single series. It says that series with a large
+  deviation carry little weight in the model. It is moreover crude: the actual probability
+  of the deviation can be much smaller than the bound.
+
+  For a coin the weight of $H_N$ can be given in full. Let
+  $\Outcomes = \{0, 1\}$, $\pw(1) = q$ with $0 \leq q \leq 1$ and $S = \{1\}$; let $N$ be a
+  positive integer. We use the convention $t^0 = 1$ also for $t = 0$: a product with no
+  factors is $1$. A list with exactly $k$ ones has
+  the weight $q^k (1-q)^{N-k}$, and there are $\binom{N}{k}$ such lists, as many as there
+  are ways of choosing the $k$ places of the ones among the $N$ places. Hence
+  \begin{equation}\label{c01.eq.binomial}\claim{c01.cl.binomial}{derived}
+    \Prob_N\bigl[H_N = \tfrac{k}{N}\bigr] = \binom{N}{k}\, q^k\, (1-q)^{N-k},
+    \qquad k = 0, 1, \dots, N .
+  \end{equation}
+  Figure~\ref{c01.fig.konzentration} shows these probabilities for the fair coin.
+
+  \begin{tpcfigure}{c01.fig.konzentration}
+    \caption{The weight of the relative frequency $H_N$ of “tails” for a fair coin,
+      $q = \tfrac12$, by equation~\eqref{c01.eq.binomial} for $N = 4$, $16$ and $64$
+      throws. Horizontally the value $k/N$ of $H_N$; the height of a line is its
+      probability, in each picture in units of the largest value. The bracket marks the
+      values with $\abs{H_N - \tfrac12} < \tfrac14$. As $N$ grows the weight gathers in
+      the middle.}
+  \end{tpcfigure}
+\end{vertiefung}
+
+\section{Continuous outcomes}\label{c01.s4}
+
+So far $\Outcomes$ was finite. For quantum mechanics, however,
+$\Outcomes = \mathbb{R}$ is decisive: a particle in one dimension has a position,
+and the possible positions are the real numbers. In this section we consider only
+preparations on $\mathbb{R}$ that admit a density. In this density model probabilities
+are obtained by integration, rather than by summing density values over points.
+Such a preparation is described by a \emph{probability density}: a function $\pw$ on
+$\mathbb{R}$ with
+\begin{equation}\label{c01.eq.dichte}\claim{c01.cl.dichte}{source-backed}
+  \begin{aligned}
+    \pw(x) &\geq 0,
+    &\int_{-\infty}^{\infty} \pw(x)\,\dd x &= 1, \\
+    \Prob[[a,b]] &= \int_a^b \pw(x)\,\dd x,
+    &\Ex[f] &= \int_{-\infty}^{\infty} \pw(x)\, f(x)\,\dd x .
+  \end{aligned}
+\end{equation}
+The two conditions of the first row correspond to those on a weight. For real endpoints
+$a \leq b$ the second row gives the interval probability. The expectation value of a
+measurement $f$ is used here provided
+$\int_{-\infty}^{\infty} \pw(x)\,\abs{f(x)}\,\dd x < \infty$. In the
+literature one also finds for the same thing the notation $\int \Prob(\dd x)\, f(x)$, with
+$\Prob(\dd x) = \pw(x)\,\dd x$. This course does not use it; one should merely be able to
+recognise it.
+
+\begin{merksatz}[A density is not a probability]
+  The value $\pw(x)$ of a density is not a probability. Probabilities are
+  areas under the curve, that is, integrals of $\pw$ over sets. A single point has
+  probability $0$, and $\pw(x)$ may be larger than $1$.
+\end{merksatz}
+
+Both can be seen in the uniform density on the interval from $0$ to $\tfrac12$:
+\begin{equation}\label{c01.eq.gleich}\claim{c01.cl.gleich}{derived}
+  \begin{aligned}
+    \pw(x) &=
+    \begin{cases}
+      2, & 0 \leq x \leq \tfrac12, \\
+      0, & \text{\tpcifenglish{otherwise}{sonst}},
+    \end{cases}
+    &\int_{-\infty}^{\infty} \pw(x)\,\dd x &= 2\cdot\tfrac12 = 1, \\
+    \Prob[[a,a]] &= \int_a^a \pw(x)\,\dd x = 0 .
+  \end{aligned}
+\end{equation}
+The density has the value $2$ and is normalised all the same. The last equation holds for
+every density and every point $a$: an integral over an interval of length $0$ is $0$.
+
+\begin{tpcfigure}{c01.fig.dichte}
+  \caption{(a) The density of the Gaussian distribution of Example~\ref{c01.ex.gauss}. The
+    probability that the outcome lies between real endpoints $a \leq b$ is the hatched
+    area and not the height of the curve. (b) The uniform density of
+    equation~\eqref{c01.eq.gleich}: it has height $2$, and the area under it is $1$.}
+\end{tpcfigure}
+
+\begin{example}[Gaussian distribution]\label{c01.ex.gauss}\claim{c01.cl.gauss}{derived}
+  The density
+  \begin{equation}\label{c01.eq.gauss}
+    \pw(x) = \frac{1}{\sqrt{2\pi}}\, e^{-\frac12 x^2}
+  \end{equation}
+  is called the \emph{normal} or \emph{Gaussian distribution}. It is normalised: the area
+  under the curve is $1$\zoomref{c01.v3}. How probable is an outcome
+  $x \geq 0$? Because $\pw(-x) = \pw(x)$, the areas to the left and to the right of the
+  origin are equal; together they are $1$. Hence
+  \begin{equation}\label{c01.eq.gauss-halb}
+    \int_0^\infty \pw(x)\,\dd x = \int_{-\infty}^0 \pw(x)\,\dd x = \tfrac12 .
+  \end{equation}
+  Asked physically: is the particle to the left or to the right of the origin? The
+  argument works \emph{only} for symmetric densities.
+\end{example}
+
+On $\mathbb{R}$ the most important measurement is the coordinate itself, $f(x) = x$, and
+its powers. Their expectation values are called \emph{moments}, provided the integrals
+$\int_{-\infty}^{\infty} \abs{x}^n\,\pw(x)\,\dd x$ are finite:
+\begin{equation}\label{c01.eq.momente}\claim{c01.cl.momente}{source-backed}
+  M_n = \int_{-\infty}^{\infty} x^n\, \pw(x)\,\dd x ,
+  \qquad n = 0, 1, 2, \dots
+\end{equation}
+Always $M_0 = 1$: this is the normalisation, geometrically the area under the curve.
+$M_1$ is called the \emph{mean}. The variance of the coordinate is, as in the finite case,
+\begin{equation}\label{c01.eq.var-momente}\claim{c01.cl.var-momente}{derived}
+  \begin{aligned}
+    \Var[\Prob] &= \int_{-\infty}^{\infty} (x - M_1)^2\, \pw(x)\,\dd x \\
+    &= M_2 - 2 M_1\cdot M_1 + M_1^2\cdot M_0 = M_2 - M_1^2 ,
+  \end{aligned}
+\end{equation}
+provided $\int_{-\infty}^{\infty} \abs{x}\,\pw(x)\,\dd x$ and
+$\int_{-\infty}^{\infty} x^2\,\pw(x)\,\dd x$ are finite. For quantum mechanics the variance matters more than
+the second moment; it returns with the uncertainty relation. Mean and variance
+carry the same information as $M_1$ and $M_2$.
+
+The moments other than $M_0$ need not exist.
+
+\begin{example}[A density without a mean]\label{c01.ex.kein-mittelwert}\claim{c01.cl.kein-mittelwert}{derived}
+  Let $\pw(x) = 1/x^2$ for $x \geq 1$ and $\pw(x) = 0$ otherwise. This is a density:
+  \begin{equation}\label{c01.eq.kein-mittelwert}
+    \begin{aligned}
+      \int_1^{b} \frac{\dd x}{x^2} &= 1 - \frac{1}{b} \;\longrightarrow\; 1, \\
+      \int_1^{b} x\cdot\frac{\dd x}{x^2} &= \ln b \;\longrightarrow\; \infty
+      \qquad (b \to \infty) .
+    \end{aligned}
+  \end{equation}
+  The integral for $M_1$ diverges: this preparation has no mean, and still less a
+  variance.
+\end{example}
+
+\begin{vertiefung}[id=c01.v3,
+    titel={Normalisation and moments of the Gaussian distribution},
+    wozu={Example~\ref{c01.ex.gauss} asserts that the Gaussian density is normalised. Here
+      this is calculated, together with mean and variance.},
+    voraussetzung={Section~\ref{c01.s4}; integrals in two variables, polar coordinates,
+      integration by parts. The Core uses only the result.},
+    zurueck={The Gaussian density $e^{-x^2/2}/\sqrt{2\pi}$ is normalised, its mean is $0$
+      and its variance $1$.}]
+  Let $I = \int_{-\infty}^{\infty} e^{-x^2/2}\,\dd x$. The integral exists because
+  $e^{-x^2/2} \leq e^{-\abs{x}/2}$ for $\abs{x} \geq 1$. One computes $I^2$ as an
+  integral over the plane and changes to polar coordinates $x = r\cos\varphi$,
+  $y = r\sin\varphi$ with $\dd x\,\dd y = r\,\dd r\,\dd\varphi$:
+  \begin{equation}\label{c01.eq.gauss-norm}\claim{c01.cl.gauss-norm}{derived}
+    \begin{aligned}
+      I^2 &= \int_{-\infty}^{\infty}\!\int_{-\infty}^{\infty} e^{-(x^2 + y^2)/2}\,\dd x\,\dd y
+           = \int_0^{2\pi}\!\int_0^\infty e^{-r^2/2}\, r\,\dd r\,\dd\varphi \\
+          &= 2\pi\,\Bigl[-e^{-r^2/2}\Bigr]_0^\infty = 2\pi .
+    \end{aligned}
+  \end{equation}
+  Because $I > 0$, $I = \sqrt{2\pi}$ follows, and the density \eqref{c01.eq.gauss} has
+  integral $1$.
+
+  For the moments,
+  \begin{equation}\label{c01.eq.gauss-momente}\claim{c01.cl.gauss-momente}{derived}
+    \begin{aligned}
+      M_1 &= 0, \\
+      M_2 &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} x\cdot x\,e^{-x^2/2}\,\dd x \\
+          &= \frac{1}{\sqrt{2\pi}}\Bigl[-x\,e^{-x^2/2}\Bigr]_{-\infty}^{\infty}
+            + \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} e^{-x^2/2}\,\dd x
+          = 0 + 1 .
+    \end{aligned}
+  \end{equation}
+  $M_1$ vanishes because $x\,e^{-x^2/2}$ is an odd function and its integral
+  over $x \geq 0$ exists: $\int_0^\infty x\,e^{-x^2/2}\,\dd x = 1$. For $M_2$ we
+  integrated by parts, with $x\,e^{-x^2/2}$ as the derivative of $-e^{-x^2/2}$; the
+  boundary term vanishes because $x\,e^{-x^2/2}$ tends to $0$ for $x \to \pm\infty$. By
+  equation~\eqref{c01.eq.var-momente} the variance is $M_2 - M_1^2 = 1$.
+\end{vertiefung}
+
+With this the language for this chapter's models is ready: preparations are weights on
+finite outcome sets or the densities on $\mathbb{R}$ considered here, measurements are
+functions, and the two together give expectation values when the integrals are finite. Chapter~2 lets go of the
+assumption that preparations are weights on an outcome set and keeps only what one can do
+with them: mix them and ask yes-no questions.

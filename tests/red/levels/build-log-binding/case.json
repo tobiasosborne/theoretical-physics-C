@@ -1,0 +1,7 @@
+{
+  "gate": "levels",
+  "what": "The log bytes changed after the record was written.",
+  "cmd": "python3 tests/red/levels/build-identity/probe.py build-log-binding",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "B0 tpc-de-full: the log is not the log of the recorded build"
+}

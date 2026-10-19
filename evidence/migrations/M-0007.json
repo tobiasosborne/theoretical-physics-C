@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "id": "M-0007",
+ "status": "recorded",
+ "title": "vl01 (v0.1): typo 'die Summer der Messwerte'",
+ "legacy": [
+  {
+   "version": "v0.1",
+   "file": "archive/skript-2022/Vorlesungen1.tex",
+   "line": 107,
+   "file_sha256": "169b2f6f9c71ecb3882c13889634f42a2d8ddee3d12d7189e64fb4d6ed983371",
+   "old_text": "ergibt sich die Summer der Messwerte mit",
+   "new_text": "ergibt sich die Summe der Messwerte mit"
+  }
+ ],
+ "reason": "A typo in the v0.1 script (Summer for Summe); no change of meaning. Already corrected in v0.2 (latex/lectures/de/vl01.tex:137), contrary to HANDOFF.md 'Next', item 2.",
+ "evidence": {
+  "independent_check": "HANDOFF.md, section 'Next', item 2 (second slip of vl01); compare latex/lectures/de/vl01.tex:137",
+  "provenance_ids": [],
+  "notes": "The sentence itself is reworded in the new chapter: see M-0009."
+ },
+ "destination": "c01.s2.1"
+}

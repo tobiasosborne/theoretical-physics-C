@@ -1,0 +1,7 @@
+{
+  "gate": "levels",
+  "what": "Two Kern equations carry the same ID c99.eq.eins.",
+  "cmd": "python3 scripts/course/check_levels.py --chapters c99 --content tests/red/levels/duplicate-id/content --lint-only",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "ID [^\\n]*duplicate id 'c99\\.eq\\.eins'"
+}

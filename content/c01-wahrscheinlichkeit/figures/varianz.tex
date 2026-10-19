@@ -1,0 +1,53 @@
+% c01.fig.varianz — same expectation, different variance; and the variance of a yes-no
+% measurement.
+%
+% (a), (b): two weights on X = {1,...,6} and the measurement f(x) = x.
+%     (a) fair die, p(x) = 1/6:        E[f] = 7/2,  Var[f] = 35/12   (c01.ex.wuerfel-varianz)
+%     (b) p(3) = p(4) = 1/2:           E[f] = 7/2,  E[f^2] = (9 + 16)/2 = 25/2,
+%                                      Var[f] = 25/2 - 49/4 = 1/4
+%     vertical scale 1 unit of probability = 3.6 cm; the expectation 7/2 is marked by a
+%     dashed vertical line (effect role: it belongs to the measurement).
+% (c): Var[chi_S] = q(1 - q) with q = P[S]  (c01.eq.var-indikator): a parabola with zeros
+%     at q = 0 and q = 1 and maximum 1/4 at q = 1/2; scale x: 1 = 3.4 cm, y: 1 = 7.2 cm.
+\begin{tikzpicture}[x=0.5cm, y=3.6cm]
+  \foreach \panel/\shift in {a/0, b/4.2} {
+    \begin{scope}[shift={(\shift cm,0)}]
+      \draw[tpc grid] (0.3,1/6) -- (6.7,1/6);
+      \draw[tpc grid] (0.3,1/2) -- (6.7,1/2);
+      \draw[tpc axis] (0.3,0) -- (6.7,0);
+      \draw[tpc axis] (0.3,0) -- (0.3,0.62);
+      \foreach \x in {1,...,6} \node[tpc label, anchor=north] at (\x,-0.02) {$\x$};
+      \draw[tpc effect] (3.5,0) -- (3.5,0.6);
+    \end{scope}
+  }
+  \node[tpc label, anchor=east] at (0.25,0) {$0$};
+  \node[tpc label, anchor=east] at (0.25,1/6) {$\tfrac16$};
+  \node[tpc label, anchor=east] at (0.25,1/2) {$\tfrac12$};
+  \foreach \x in {1,...,6}
+    \draw[tpc state, tpc tint state] (\x-0.3,0) rectangle (\x+0.3,1/6);
+  \node[tpc label, anchor=north] at (3.5,-0.15) {(a) $\operatorname{Var}[f] = \tfrac{35}{12}$};
+  \node[tpc label, anchor=south] at (3.5,0.61) {$\mathbb{E}[f] = \tfrac72$};
+  \begin{scope}[shift={(4.2cm,0)}]
+    \foreach \x in {3,4}
+      \draw[tpc state, tpc tint state] (\x-0.3,0) rectangle (\x+0.3,1/2);
+    \draw[tpc effect] (3.5,0) -- (3.5,0.6);
+    \node[tpc label, anchor=north] at (3.5,-0.15) {(b) $\operatorname{Var}[f] = \tfrac14$};
+    \node[tpc label, anchor=south] at (3.5,0.61) {$\mathbb{E}[f] = \tfrac72$};
+  \end{scope}
+  \begin{scope}[shift={(8.9cm,0)}, x=3.4cm, y=7.2cm]
+    \draw[tpc grid] (0,1/4) -- (1,1/4);
+    \draw[tpc leader] (1/2,0) -- (1/2,1/4);
+    \draw[tpc axis] (0,0) -- (1.08,0);
+    \draw[tpc axis] (0,0) -- (0,0.31);
+    \draw[tpc q1] plot[domain=0:1, samples=61] (\x,{\x*(1-\x)});
+    \fill[tpc-plate-ink] (0,0) circle (1.6pt);
+    \fill[tpc-plate-ink] (1,0) circle (1.6pt);
+    \node[tpc label, anchor=north] at (0,-0.01) {$0$};
+    \node[tpc label, anchor=north] at (1/2,-0.01) {$\tfrac12$};
+    \node[tpc label, anchor=north] at (1,-0.01) {$1$};
+    \node[tpc label, anchor=west] at (1.09,0) {$q$};
+    \node[tpc label, anchor=east] at (-0.02,1/4) {$\tfrac14$};
+    \node[tpc label, anchor=south] at (1/2,0.26) {$q(1-q)$};
+    \node[tpc label, anchor=north] at (0.5,-0.11) {(c) $\operatorname{Var}[\chi_S]$, $q = \mathbb{P}[S]$};
+  \end{scope}
+\end{tikzpicture}

@@ -1,0 +1,7 @@
+{
+  "gate": "levels",
+  "what": "The aux bytes changed after the record was written.",
+  "cmd": "python3 tests/red/levels/build-identity/probe.py build-aux-binding",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "B0 tpc-de-full: the aux is not the aux of the recorded build"
+}

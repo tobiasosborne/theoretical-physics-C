@@ -1,0 +1,5 @@
+{ "gate": "c11-render",
+  "what": "A view writes a literal colour (the hex value of the state token) instead of ctx.tokens.color('state').",
+  "cmd": "python3 design/lint_content.py tests/red/c11-render/hardcoded-colour",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "c11\\.demo\\.red\\.ts:4: literal in content: hex colour" }

@@ -1,0 +1,7 @@
+{
+  "gate": "web",
+  "what": "An unused language branch in math text hides an unknown macro.",
+  "cmd": "node --import ./web/node_modules/tsx/dist/loader.mjs web/tools/build/main.ts --parse-only --chapters c98 --content tests/red/web/unselected-math-text-branch/content",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "\\\\madeup inside \\\\text is not in the contract"
+}

@@ -1,0 +1,48 @@
+% c01.fig.mischung — a weight that is not a point weight is a proper mixture.
+%
+% The construction of the proof of c01.prop.punktgewicht (c01.eq.echte-mischung) for the
+% loaded die p = (1,2,2,2,2,3)/12 with a = 6, b = 1 and epsilon = min(p(6), p(1)) = 1/12:
+%     q = p + (1/12)(p_6 - p_1) = (0,2,2,2,2,4)/12,
+%     r = p - (1/12)(p_6 - p_1) = (2,2,2,2,2,2)/12   (the fair die),
+%     p = q/2 + r/2.
+% Three panels in the order of the equation p = (1/2) q + (1/2) r, with "=", "+" and the
+% factors 1/2 between them.  Bars of height p(x), q(x), r(x); vertical scale 1 unit of
+% probability = 7.5 cm.
+% Greyscale: all three are weights (state role); the bars in which q and r differ from p
+% are hatched.
+\begin{tikzpicture}[x=0.5cm, y=7.5cm]
+  \foreach \shift/\name in {0/p, 5.2/q, 10.4/r} {
+    \begin{scope}[shift={(\shift cm,0)}]
+      \draw[tpc grid] (0.3,1/12) -- (6.7,1/12);
+      \draw[tpc grid] (0.3,1/6) -- (6.7,1/6);
+      \draw[tpc grid] (0.3,1/3) -- (6.7,1/3);
+      \draw[tpc axis] (0.3,0) -- (6.7,0);
+      \draw[tpc axis] (0.3,0) -- (0.3,0.38);
+      \foreach \x in {1,...,6} \node[tpc label, anchor=north] at (\x,-0.01) {$\x$};
+      \node[tpc label, anchor=south] at (3.5,0.385) {$\name$};
+    \end{scope}
+  }
+  \node[tpc label, anchor=east] at (0.25,0) {$0$};
+  \node[tpc label, anchor=east] at (0.25,1/12) {$\tfrac1{12}$};
+  \node[tpc label, anchor=east] at (0.25,1/6) {$\tfrac16$};
+  \node[tpc label, anchor=east] at (0.25,1/3) {$\tfrac13$};
+  % p
+  \foreach \x/\a in {1/1, 2/2, 3/2, 4/2, 5/2, 6/3}
+    \draw[tpc state, tpc tint state] (\x-0.3,0) rectangle (\x+0.3,\a/12);
+  % q = (0,2,2,2,2,4)/12
+  \begin{scope}[shift={(5.2cm,0)}]
+    \foreach \x in {2,3,4,5}
+      \draw[tpc state, tpc tint state] (\x-0.3,0) rectangle (\x+0.3,2/12);
+    \draw[tpc state] (1-0.3,0) -- (1+0.3,0);
+    \draw[tpc state, tpc bath hatch] (6-0.3,0) rectangle (6+0.3,4/12);
+  \end{scope}
+  % r = (2,2,2,2,2,2)/12
+  \begin{scope}[shift={(10.4cm,0)}]
+    \foreach \x in {2,3,4,5}
+      \draw[tpc state, tpc tint state] (\x-0.3,0) rectangle (\x+0.3,2/12);
+    \foreach \x in {1,6}
+      \draw[tpc state, tpc bath hatch] (\x-0.3,0) rectangle (\x+0.3,2/12);
+  \end{scope}
+  \node[tpc label] at (4.55cm,0.2) {$= \tfrac12$};
+  \node[tpc label] at (9.75cm,0.2) {$+\, \tfrac12$};
+\end{tikzpicture}

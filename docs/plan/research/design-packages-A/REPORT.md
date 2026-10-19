@@ -137,3 +137,13 @@ of the text, which is slightly darker.
 8. Page budget: wide-margin layouts cost roughly 10-15 % more pages than the current 2.5 cm margins
    [estimate]. Is that acceptable for the printed edition? Is the print format A4, or a book trim
    such as 170 x 240 mm?
+
+---
+
+## Correction note, 2026-10-11
+
+Added by the Phase 0 coordinator from the codex review (`../review/REVIEW.md`, sections B and G;
+path relative to `docs/plan/research/`). The text above is left as written, as evidence of the
+campaign; where it conflicts with this note, the note governs.
+
+- Line 81: 'owned for print' exceeds the evidence; installed is not licensed. Lines 111-112: thickening a low-contrast stroke does not waive the 3:1 requirement for essential graphics.

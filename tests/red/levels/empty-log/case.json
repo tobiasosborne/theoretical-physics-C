@@ -1,0 +1,7 @@
+{
+  "gate": "levels",
+  "what": "The log of the full build is empty (truncated after the build), as after a crashed or interrupted compiler.",
+  "cmd": "bash scripts/course/build_course.sh --content tests/red/levels/empty-log/content --out build/red/levels/empty-log --chapters c99 --lang de --all-editions > /dev/null && : > build/red/levels/empty-log/tpc-de-full/tpc-de-full.log ; python3 scripts/course/check_levels.py --chapters c99 --content tests/red/levels/empty-log/content --build build/red/levels/empty-log --langs de",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "B0 tpc-de-full: tpc-de-full\\.log is empty"
+}

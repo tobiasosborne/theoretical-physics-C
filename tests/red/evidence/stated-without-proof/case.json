@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A ledger row has evidence 'stated-without-proof'.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/stated-without-proof --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[evidence-status\\] claims\\.json:c98\\.cl\\.1: 'stated-without-proof' is not an evidence status.*belongs in evidence/gaps\\.json"
+}

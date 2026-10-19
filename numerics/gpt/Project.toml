@@ -1,0 +1,10 @@
+# Reference implementation for the kernel web/src/kernels/gpt.ts (chapter C2, general
+# probabilistic theories; explorer and the game "Distinguish"). Its own small environment,
+# independent of numerics/Project.toml. Only Julia's standard library is used (SHA, Test,
+# Printf); nothing is installed, no Manifest is needed, it runs offline:
+#
+#   julia --project=numerics/gpt numerics/gpt/test/runtests.jl
+#   julia --project=numerics/gpt numerics/gpt/generate.jl            # writes web/tests/golden/gpt.json and web/src/kernels/gpt.levels.json
+#   julia --project=numerics/gpt numerics/gpt/generate.jl --check    # exit 1 unless both files are reproduced
+[compat]
+julia = "1.12"

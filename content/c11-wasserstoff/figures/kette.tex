@@ -1,0 +1,22 @@
+% c11.fig.kette — the chain rule of equation c11.eq.kette as a dependency diagram.
+%
+% A schematic, not a plot.  It restates c11.eq.partiell (DERIVATION.md Result 1.1): a function of
+% the new components (X, x) depends on the old component x_e through X with the factor
+% dX/dx_e = m_e/M and through x with the factor dx/dx_e = 1, and on x_p through X with
+% dX/dx_p = m_p/M and through x with dx/dx_p = -1.  The derivative with respect to an old
+% component is the sum over the two paths, each path contributing its factor.
+% Greyscale: arrows and labels only; the paths from x_e solid, those from x_p dashed.
+\begin{tikzpicture}[x=1cm, y=1cm, >={Stealth[length=5pt,width=4pt]}]
+  \node[tpc label, draw=tpc-plate-ink, line width=\tpcstrokethin, rounded corners=2pt, inner sep=4pt] (f) at (4,3.5)
+    {\tpcifenglish{function of}{Funktion von} $X$ \tpcifenglish{and}{und} $x$};
+  \node[tpc label, draw=tpc-plate-ink, line width=\tpcstrokethin, circle, inner sep=3pt] (X) at (2.2,1.8) {$X$};
+  \node[tpc label, draw=tpc-plate-ink, line width=\tpcstrokethin, circle, inner sep=3pt] (x) at (5.8,1.8) {$x$};
+  \node[tpc label, draw=tpc-plate-ink, line width=\tpcstrokethin, circle, inner sep=2pt] (xe) at (2.2,0) {$x_{\mathrm{e}}$};
+  \node[tpc label, draw=tpc-plate-ink, line width=\tpcstrokethin, circle, inner sep=2pt] (xp) at (5.8,0) {$x_{\mathrm{p}}$};
+  \draw[tpc axis, ->] (X) -- (f) node[pos=0.4, left=5pt, tpc label] {$\frac{\partial}{\partial X}$};
+  \draw[tpc axis, ->] (x) -- (f) node[pos=0.4, right=5pt, tpc label] {$\frac{\partial}{\partial x}$};
+  \draw[tpc axis, ->] (xe) -- (X) node[midway, left, tpc label] {$\frac{m_{\mathrm{e}}}{M}$};
+  \draw[tpc axis, ->] (xe) -- (x) node[pos=0.22, above=1pt, tpc label] {$1$};
+  \draw[tpc axis, ->, dash pattern=on 3pt off 2pt] (xp) -- (X) node[pos=0.22, above=1pt, tpc label] {$\frac{m_{\mathrm{p}}}{M}$};
+  \draw[tpc axis, ->, dash pattern=on 3pt off 2pt] (xp) -- (x) node[midway, right, tpc label] {$-1$};
+\end{tikzpicture}

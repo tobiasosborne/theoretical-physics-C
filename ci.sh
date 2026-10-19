@@ -243,6 +243,74 @@ check_build() {
 }
 
 # ══════════════════════════════════════════════════════════════
+#  5. Phase 0 contracts — the new course beside the old script
+#     (docs/plan/phase0/COORDINATION.md). Each gate is one command.
+# ══════════════════════════════════════════════════════════════
+run_gate() {
+    # run_gate "label" command...
+    local label="$1"; shift
+    local out
+    if out=$("$@" 2>&1); then
+        printf "  %-34s ${GREEN}ok${NC}   %s\n" "$label" "$(echo "$out" | tail -1 | cut -c1-90)"
+        return 0
+    fi
+    printf "  %-34s ${RED}FAIL${NC}\n" "$label"
+    echo "$out" | tail -15 | sed 's/^/      /'
+    return 1
+}
+
+check_contracts() {
+    stage "Contracts (tokens, registry, evidence, levels, red corpus)"
+    local bad=0
+    run_gate "tokens up to date + measured" python3 design/build_tokens.py --check || bad=$((bad+1))
+    run_gate "no design literals in content"  python3 design/lint_content.py || bad=$((bad+1))
+    run_gate "notation/definitions registry"  python3 scripts/registry/check_registry.py || bad=$((bad+1))
+    run_gate "special-function conventions"   python3 scripts/registry/check_special_functions.py || bad=$((bad+1))
+    # Private mode needs the gitignored source payloads; public mode checks the receipt.
+    if [[ -f sources/reed-simon-3/reed-simon-3.djvu ]]; then
+        run_gate "claims/provenance (private)" python3 scripts/evidence/check_evidence.py --private || bad=$((bad+1))
+    fi
+    run_gate "claims/provenance (public)"     python3 scripts/evidence/check_evidence.py --public || bad=$((bad+1))
+    for d in evidence/derivations/*/; do
+        for chk in "$d"check_*.py; do
+            [[ -f "$chk" ]] || continue
+            run_gate "golden values $(basename "$d")" python3 "$chk" --verify || bad=$((bad+1))
+        done
+    done
+    # Chapter-specific gates on the real content.
+    run_gate "c11 formulas (norms, signs, ODEs)" python3 scripts/c11/check_c11_formulas.py || bad=$((bad+1))
+    run_gate "c11 convolution figure data"       python3 scripts/c11/make_faltung.py --check || bad=$((bad+1))
+    run_gate "vl01 migration map complete"       python3 evidence/migrations/check_vl01_map.py || bad=$((bad+1))
+    if [[ $FAST -eq 1 ]]; then
+        run_gate "course lint (depth, IDs, parity)" python3 scripts/course/check_levels.py --with-test-chapter --lint-only || bad=$((bad+1))
+        run_gate "web: build + static gates"       bash web/check.sh --fast || bad=$((bad+1))
+        for g in tokens registry evidence; do
+            run_gate "red corpus: $g" python3 scripts/check_red.py --gate "$g" || bad=$((bad+1))
+        done
+    else
+        run_gate "course: four editions"       bash scripts/course/build_course.sh --all-editions --with-test-chapter || bad=$((bad+1))
+        run_gate "course: K1-K6 on the builds" python3 scripts/course/check_levels.py --with-test-chapter || bad=$((bad+1))
+        run_gate "web: build + browser gates"  bash web/check.sh || bad=$((bad+1))
+        if command -v julia >/dev/null 2>&1; then
+            run_gate "Julia reference: hydrogen"   julia --project=numerics numerics/test/runtests.jl || bad=$((bad+1))
+            run_gate "Julia golden reproduced"     julia --project=numerics numerics/generate/hydrogen_golden.jl --check || bad=$((bad+1))
+            run_gate "Julia reference: GPT"        julia --project=numerics/gpt numerics/gpt/test/runtests.jl || bad=$((bad+1))
+            run_gate "Julia GPT golden reproduced" julia --project=numerics/gpt numerics/gpt/generate.jl --check || bad=$((bad+1))
+        else
+            printf "  %-34s ${RED}FAIL${NC}  julia not found\n" "Julia reference"; bad=$((bad+1))
+        fi
+        run_gate "game: levels played to optimum" web/node_modules/.bin/tsx web/tests/kernels/gpt-play.browser.ts --standalone build/web/standalone || bad=$((bad+1))
+        run_gate "hydrogen views mount, repeat"   web/node_modules/.bin/tsx web/video/c11-views-check.ts --standalone build/web/standalone || bad=$((bad+1))
+        run_gate "red corpus: all gates"       python3 scripts/check_red.py --require tokens registry evidence levels web c11-formulas c11-render c02-game red-runner || bad=$((bad+1))
+    fi
+    if [[ $bad -gt 0 ]]; then
+        fail_stage "$bad contract gate(s) failed"
+    else
+        pass_stage "contracts hold"
+    fi
+}
+
+# ══════════════════════════════════════════════════════════════
 #  Run
 # ══════════════════════════════════════════════════════════════
 echo -e "${BOLD}Theoretische Physik C — local CI${NC}"
@@ -255,6 +323,7 @@ else
     check_enrichment
     check_figures
     [[ $FAST -eq 0 ]] && check_build
+    check_contracts
 fi
 
 echo

@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "Content cites \\srcref with a key that is not a registered source.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/srcref-unregistered-key --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[srcref\\] c98-red/de\\.tex:\\d+: \\\\srcref\\{ghost-book\\}: source key has no valid"
+}

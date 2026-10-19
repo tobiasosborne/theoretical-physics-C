@@ -1,0 +1,7 @@
+{
+  "gate": "c11-render",
+  "what": "The sampler draws the radius from R^2 instead of r^2 R^2 (density per volume mistaken for the radial density).",
+  "cmd": "HYDROGEN_KERNEL=tests/red/c11-render/radius-from-R2/kernel.ts bash web/run.sh test tests/kernels/hydrogen.test.ts -t 'radius \\(n, l\\)'",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "KS test failed: D = 0\\.[0-9]+ exceeds the derived bound"
+}

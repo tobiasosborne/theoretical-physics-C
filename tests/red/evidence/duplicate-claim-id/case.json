@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "Two ledger rows carry the same claim ID.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/duplicate-claim-id --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[duplicate-id\\] claims\\.json: ID 'c98\\.cl\\.3' occurs more than once"
+}

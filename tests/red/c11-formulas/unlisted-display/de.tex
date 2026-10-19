@@ -1,0 +1,18 @@
+% Red-corpus fixture for scripts/c11/check_c11_formulas.py (gate c11-formulas).
+% The chapter displays R_20 in closed form, but formulas.json does not list equation c11.eq.r20.
+% Not course content: a fragment with the displays the case needs.
+\chapter{Prüfvorlage}\label{c11}
+
+Prüfvorlage.
+\begin{align}
+  \Lag{1}{\alpha}(x) &= \alpha + 1 - x,
+    \label{c11.eq.lag1} \\
+  \Lag{2}{\alpha}(x) &= \frac{x^2}{2} - (\alpha + 2)\,x + \frac{(\alpha + 1)(\alpha + 2)}{2},
+    \label{c11.eq.lag2} \\
+  \Rnl{2}{0}(\rad) &= \frac{1}{2\sqrt{2}}\left(\frac{\Znuc}{\aRed}\right)^{3/2}\left(2 - \frac{\Znuc\rad}{\aRed}\right) e^{-\Znuc\rad/(2\aRed)},
+    \label{c11.eq.r20} \\
+  \psinlm{2}{1}{0}(\rad, \theta, \phi) &= \frac{1}{4\sqrt{2\pi}}\left(\frac{\Znuc}{\aRed}\right)^{3/2}\frac{\Znuc\rad}{\aRed}\,e^{-\Znuc\rad/(2\aRed)}\,\cos\theta,
+    \label{c11.eq.psi210} \\
+  \psinlm{2}{1}{\pm 1}(\rad, \theta, \phi) &= \mp\frac{1}{8\sqrt{\pi}}\left(\frac{\Znuc}{\aRed}\right)^{3/2}\frac{\Znuc\rad}{\aRed}\,e^{-\Znuc\rad/(2\aRed)}\,\sin\theta\,e^{\pm i\phi}.
+    \label{c11.eq.psi21pm}
+\end{align}

@@ -1,0 +1,7 @@
+{
+ "gate": "c11-formulas",
+ "what": "The Laguerre polynomial L_2 of latex/lectures/de/vl16.tex line 85: wrong sign of x^2/2 (TeX and expression agree with each other, the mathematics is wrong).",
+ "cmd": "python3 scripts/c11/check_c11_formulas.py --content tests/red/c11-formulas/laguerre-vl16-line85",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[laguerre\\] c11\\.eq\\.lag2: L_2\\^\\(alpha\\) does not equal its defining sum \\(D68\\): printed minus correct = -x\\*\\*2"
+}

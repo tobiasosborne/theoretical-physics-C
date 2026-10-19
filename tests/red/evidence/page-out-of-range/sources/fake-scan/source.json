@@ -1,0 +1,24 @@
+{
+ "schema_version": 1,
+ "key": "fake-scan",
+ "kind": "book",
+ "storage": "private",
+ "title": "Fixture source fake-scan",
+ "authors": [
+  "nobody (fixture)"
+ ],
+ "files": [
+  {
+   "path": "fake-scan/scan.bin",
+   "role": "scan",
+   "sha256": "4a66ac9199a94a5797770e8db699c91f95113f120fa4506b2bcf060bcf18bc9f",
+   "pages": 5
+  },
+  {
+   "path": "fake-scan/scan.txt",
+   "role": "ocr-text",
+   "sha256": "8271f3dec99f786da7c094c8c11cc33b693c870b3918c046a35ca2fdda7f75eb"
+  }
+ ],
+ "rights_ref": "rights.json"
+}

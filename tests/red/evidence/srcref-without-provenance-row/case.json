@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "Content cites \\srcref{fake-scan} in a file none of whose claims has a provenance row from that source (the row of c98.cl.2 is moved to fake-notes).",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/srcref-without-provenance-row --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[srcref\\] c98-red/de\\.tex:\\d+: \\\\srcref\\{fake-scan\\}: no claim tagged in this file"
+}

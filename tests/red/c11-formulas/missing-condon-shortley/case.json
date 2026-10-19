@@ -1,0 +1,7 @@
+{
+ "gate": "c11-formulas",
+ "what": "The 2p wave functions for m = +-1 correctly normalised but without the Condon-Shortley sign, so that psi_{2,1,-1} = -conj(psi_{2,1,1}) fails.",
+ "cmd": "python3 scripts/c11/check_c11_formulas.py --content tests/red/c11-formulas/missing-condon-shortley",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[condon-shortley\\] c11\\.eq\\.psi21pm: psi_2,1,-1 is not \\(-1\\)\\^1 conj\\(psi_2,1,1\\)"
+}

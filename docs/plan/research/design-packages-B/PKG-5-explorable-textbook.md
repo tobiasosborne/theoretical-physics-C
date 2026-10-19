@@ -279,3 +279,13 @@ Choose PKG-5 if "every figure is live and every live state can be printed" is th
 the course and one colour per physical role must be literally identical on paper, screen and video. It
 costs a scene-graph toolchain and gives up Times, dark-ground cinema and the slide identity's colour on
 chrome.
+
+---
+
+## Correction note, 2026-10-11
+
+Added by the Phase 0 coordinator from the codex review (`../review/REVIEW.md`, sections B and G;
+path relative to `docs/plan/research/`). The text above is left as written, as evidence of the
+campaign; where it conflicts with this note, the note governs.
+
+- Lines 100-101: 2.99:1 is below the 3:1 threshold, not at it. Line 248: half-maximum enclosed probability about 0.1771.

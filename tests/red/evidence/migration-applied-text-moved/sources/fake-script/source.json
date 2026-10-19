@@ -1,0 +1,18 @@
+{
+ "schema_version": 1,
+ "key": "fake-script",
+ "kind": "script-snapshot",
+ "storage": "tracked",
+ "title": "Fixture source fake-script",
+ "authors": [
+  "nobody (fixture)"
+ ],
+ "files": [
+  {
+   "path": "../legacy/old.tex",
+   "role": "text",
+   "sha256": "5432db6550f8a2a3cedd1cf5e137547e0a71b713727f8699840708a522796d98"
+  }
+ ],
+ "rights_ref": "rights.json"
+}

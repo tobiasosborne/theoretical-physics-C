@@ -1,0 +1,53 @@
+% c02.fig.niveaulinien — an effect is an affine function on the state space.
+%
+% (a) classical bit, drawn along p_1 (s_0 at 0, s_1 at 1): the graph of
+%     f(p_0,p_1) = q_0 p_0 + q_1 p_1 with q_0 = f(s_0) = 3/4 and q_1 = f(s_1) = 1/4
+%     is the straight line from height 3/4 to height 1/4.  State x: p_1 = 1/4,
+%     f(x) = 3/4*3/4 + 1/4*1/4 = 10/16 = 5/8.
+% (b) square bit: f(r) = 1/2 + r_x/4 + r_y/4 on [-1,1]^2 (an effect:
+%     |a_x| + |a_y| = 1/2 <= min(b, 1-b) = 1/2).  Level lines f = c are the straight
+%     lines r_x + r_y = 4c - 2: c = 0 touches the corner (-1,-1), c = 1 the corner (1,1).
+%     State x = (1/2, 0): f(x) = 1/2 + 1/8 = 5/8.
+% Greyscale: the effect is dashed (effect role), the state a filled disc.
+\begin{tikzpicture}[x=1cm, y=1cm]
+  % ---------- (a) ----------
+  \begin{scope}[x=3.2cm, y=2.6cm]
+    \draw[tpc grid] (0,1) -- (1,1);
+    \draw[tpc axis] (0,0) -- (1,0);
+    \draw[tpc axis] (0,0) -- (0,1.12);
+    \draw[tpc axis] (1,0) -- (1,1.12);
+    \foreach \v/\l in {0/0, 0.5/\tfrac12, 1/1}
+      { \draw[tpc leader] (-0.025,\v) -- (0,\v); \node[tpc label, left=2pt] at (-0.02,\v) {$\l$}; }
+    \node[tpc label, below=3pt] at (0,0) {$s_0$};
+    \node[tpc label, below=3pt] at (1,0) {$s_1$};
+    \draw[tpc effect] (0,0.75) -- (1,0.25);
+    \node[tpc label, anchor=south west] at (0.02,0.76) {$q_0 = \tfrac34$};
+    \node[tpc label, anchor=north east] at (0.98,0.23) {$q_1 = \tfrac14$};
+    \draw[tpc leader] (0.25,0) -- (0.25,0.625);
+    \fill[tpc-state] (0.25,0) circle (2pt);
+    \fill[tpc-plate-ink] (0.25,0.625) circle (1.3pt);
+    \node[tpc label, below=3pt] at (0.25,0) {$x$};
+    \node[tpc label, anchor=west] at (0.28,0.3) {$f(x) = \tfrac58$};
+    \node[tpc label] at (0.5,-0.42) {(a) \tpcifenglish{classical bit}{klassisches Bit}};
+  \end{scope}
+  % ---------- (b) ----------
+  \begin{scope}[shift={(7.6,1.3)}, x=1.3cm, y=1.3cm]
+    \draw[tpc axis, fill=tpc-grey-1] (-1,-1) rectangle (1,1);
+    \begin{scope}
+      \clip (-1,-1) rectangle (1,1);
+      \foreach \c in {-1,0,1} \draw[tpc effect] (-2,{2+\c}) -- (2,{-2+\c});
+    \end{scope}
+    \fill[tpc-effect] (-1,-1) ++(-1.8pt,-1.8pt) rectangle ++(3.6pt,3.6pt);
+    \fill[tpc-effect] (1,1) ++(-1.8pt,-1.8pt) rectangle ++(3.6pt,3.6pt);
+    \node[tpc label, anchor=north east] at (-1,-1) {$f = 0$};
+    \node[tpc label, anchor=south west] at (1,1) {$f = 1$};
+    \node[tpc label, anchor=south west] at (0,1) {$f = \tfrac34$};
+    \node[tpc label, anchor=south east] at (-1,1) {$f = \tfrac12$};
+    \node[tpc label, anchor=north west] at (0,-1) {$f = \tfrac14$};
+    \fill[tpc-state] (0.5,0) circle (2pt);
+    \node[tpc label, anchor=north] at (0.5,-0.06) {$x$};
+    \draw[tpc leader, -{Stealth[length=4pt]}] (-0.6,-0.6) -- (-0.2,-0.2);
+    \node[tpc label, anchor=east] at (-0.42,-0.3) {$\boldsymbol{a}$};
+    \node[tpc label] at (0,-1.85) {(b) \tpcifenglish{square bit}{Quadrat-Bit}};
+  \end{scope}
+\end{tikzpicture}

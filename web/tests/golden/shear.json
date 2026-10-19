@@ -1,0 +1,25 @@
+{
+  "kernel": "shear",
+  "reference": {"implementation": "Julia 1.12.5, exact rationals", "script": "web/tests/golden/reference/shear.jl"},
+  "tolerance": {"abs": 1e-12, "note": "inputs and outputs are exact binary fractions; 1e-12 is an unvalidated choice that only has to exceed double rounding"},
+  "cases": [
+    {"fn": "imageOfUnitSquare", "matrix": "shearMatrixX", "param": -3.000000, "expected": [[0.000000, 0.000000], [1.000000, 0.000000], [-2.000000, 1.000000], [-3.000000, 1.000000]]},
+    {"fn": "trace", "matrix": "shearMatrixX", "param": -3.000000, "expected": 2.000000},
+    {"fn": "imageOfUnitSquare", "matrix": "shearMatrixX", "param": -1.250000, "expected": [[0.000000, 0.000000], [1.000000, 0.000000], [-0.250000, 1.000000], [-1.250000, 1.000000]]},
+    {"fn": "trace", "matrix": "shearMatrixX", "param": -1.250000, "expected": 2.000000},
+    {"fn": "imageOfUnitSquare", "matrix": "shearMatrixX", "param": 0.000000, "expected": [[0.000000, 0.000000], [1.000000, 0.000000], [1.000000, 1.000000], [0.000000, 1.000000]]},
+    {"fn": "trace", "matrix": "shearMatrixX", "param": 0.000000, "expected": 2.000000},
+    {"fn": "imageOfUnitSquare", "matrix": "shearMatrixX", "param": 0.250000, "expected": [[0.000000, 0.000000], [1.000000, 0.000000], [1.250000, 1.000000], [0.250000, 1.000000]]},
+    {"fn": "trace", "matrix": "shearMatrixX", "param": 0.250000, "expected": 2.000000},
+    {"fn": "imageOfUnitSquare", "matrix": "shearMatrixX", "param": 2.000000, "expected": [[0.000000, 0.000000], [1.000000, 0.000000], [3.000000, 1.000000], [2.000000, 1.000000]]},
+    {"fn": "trace", "matrix": "shearMatrixX", "param": 2.000000, "expected": 2.000000},
+    {"fn": "imageOfUnitSquare", "matrix": "shearMatrixX", "param": 3.000000, "expected": [[0.000000, 0.000000], [1.000000, 0.000000], [4.000000, 1.000000], [3.000000, 1.000000]]},
+    {"fn": "trace", "matrix": "shearMatrixX", "param": 3.000000, "expected": 2.000000},
+    {"fn": "imageOfUnitSquare", "matrix": "shearMatrixY", "param": 0.000000, "expected": [[0.000000, 0.000000], [1.000000, 0.000000], [1.000000, 1.000000], [0.000000, 1.000000]]},
+    {"fn": "imageOfUnitSquare", "matrix": "shearMatrixY", "param": 0.750000, "expected": [[0.000000, 0.000000], [1.000000, 0.750000], [1.000000, 1.750000], [0.000000, 1.000000]]},
+    {"fn": "imageOfUnitSquare", "matrix": "shearMatrixY", "param": 3.000000, "expected": [[0.000000, 0.000000], [1.000000, 3.000000], [1.000000, 4.000000], [0.000000, 1.000000]]},
+    {"fn": "multiply", "matrix": "shearMatrixX", "param": [2.000000, 3.000000], "expected": [[1.000000, 5.000000], [0.000000, 1.000000]]},
+    {"fn": "multiply", "matrix": "shearMatrixX", "param": [-0.250000, 1.250000], "expected": [[1.000000, 1.000000], [0.000000, 1.000000]]},
+    {"fn": "multiply", "matrix": "shearMatrixX", "param": [3.000000, -3.000000], "expected": [[1.000000, 0.000000], [0.000000, 1.000000]]}
+  ]
+}

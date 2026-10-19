@@ -1,0 +1,49 @@
+{
+ "schema_version": 1,
+ "key": "bratteli-robinson-1",
+ "kind": "book",
+ "storage": "private",
+ "title": "Operator Algebras and Quantum Statistical Mechanics 1: C*- and W*-Algebras, Symmetry Groups, Decomposition of States",
+ "authors": [
+  "Ola Bratteli",
+  "Derek W. Robinson"
+ ],
+ "edition": "Second Edition 1987. Second Printing 2002",
+ "language": "en",
+ "publisher": "Springer-Verlag Berlin Heidelberg New York (Texts and Monographs in Physics)",
+ "year": "1987",
+ "identifiers": {
+  "isbn": "3-540-17093-6",
+  "issn": "0172-5998"
+ },
+ "retrieval": {
+  "route": "supplied by TJO on 2026-10-11 in ~/Downloads (PLAN.md section 1.3); unpacked into sources/ by the Phase 0 coordinator",
+  "date": "2026-10-11",
+  "original_file": "Functional analysis(1).zip, sha256 a1cce0cd24f161e282a3924fc75fded69f30df4bc1248514c9ffd05433f6601b",
+  "unchecked": "the zip itself was not re-hashed by the evidence package"
+ },
+ "identity_check": "title page (PDF page 3) and copyright page (PDF page 4) rendered with pdftoppm and read from the image on 2026-10-11: authors, title, subtitle, 'Second Edition', 'Second Edition 1987. Second Printing 2002', ISBN 3-540-17093-6, '(c) Springer-Verlag Berlin Heidelberg 1979, 1987'",
+ "extraction": "bratteli-robinson-1.txt is byte-identical to the output of `pdftotext -layout bratteli-robinson-1.pdf -` (poppler 24.02.0; checked 2026-10-11)",
+ "page_index_convention": "page_index is the 1-based PDF page; printed page numbers differ and are given separately in each locus",
+ "authority_for": "operator algebras, states (normal and singular), symmetry groups",
+ "limitations": "scanned PDF with OCR text layer; formulas are read from the page image; exact theorem loci not yet fixed",
+ "files": [
+  {
+   "path": "bratteli-robinson-1/bratteli-robinson-1.pdf",
+   "role": "scan",
+   "media_type": "application/pdf",
+   "sha256": "b81856071260df71a8ab80fe91edcbaabdf245d0e183ce19f3cb04027ef34ce7",
+   "pages": 520
+  },
+  {
+   "path": "bratteli-robinson-1/bratteli-robinson-1.txt",
+   "role": "ocr-text",
+   "media_type": "text/plain",
+   "sha256": "0e9eb0d5fac2851f1e39898ec9e6f7b14c5fe947fc318a5b712e0f90f85f66f7",
+   "notes": "for finding pages only; formulas and quotes are read from the page image"
+  }
+ ],
+ "rights_ref": "rights.json",
+ "supersedes": null,
+ "errata": []
+}

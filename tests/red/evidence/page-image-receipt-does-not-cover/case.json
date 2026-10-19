@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "The review receipt of a page-image quote covers another row.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/page-image-receipt-does-not-cover --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[review\\] provenance\\.json:P-0002: review receipt R-0001 does not cover 'P-0002'"
+}

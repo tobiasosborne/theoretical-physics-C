@@ -1,0 +1,26 @@
+%!TEX program = xelatex
+% One figure of the course on its own page, cropped: the input of the web
+% build (PDF -> SVG) and a quick way to look at a figure.
+%
+%   cd latex && TEXINPUTS=.:course:../registry/generated:../design/build/pkg1-light: \
+%     xelatex -output-directory=../build/course/figures -jobname=c99.fig.scherung-de \
+%     '\def\tpclang{de}\def\tpcfigurefile{../content/c99-contract-test/figures/scherung.tex}\input{figure-standalone.tex}'
+%
+% Flags as in tpc-course-main.tex: \tpclang \tpcpkg \tpcground \tpcmath \tpcfonts.
+\providecommand{\tpclang}{de}
+\providecommand{\tpcpkg}{1}
+\providecommand{\tpcground}{light}
+\providecommand{\tpcmath}{stix}
+\providecommand{\tpcfonts}{open}
+\ifdefined\tpcfigurefile\else\errmessage{Define \string\tpcfigurefile}\fi
+\documentclass[12pt,oneside,reqno]{amsart}
+\edef\tpcloadcourse{\noexpand\usepackage[lang=\tpclang,edition=full,
+  pkg=\tpcpkg,ground=\tpcground,math=\tpcmath,fonts=\tpcfonts]{tpc-course}}
+\tpcloadcourse
+\usepackage{tpc-tikz-templates}
+\usepackage[active,tightpage]{preview}
+\setlength{\PreviewBorder}{4pt}
+\pagestyle{empty}
+\begin{document}
+\begin{preview}\input{\tpcfigurefile}\end{preview}
+\end{document}

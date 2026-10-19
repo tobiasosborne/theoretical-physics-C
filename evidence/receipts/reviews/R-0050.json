@@ -1,0 +1,18 @@
+{
+  "id": "R-0050",
+  "reviewer": "codex gpt-6.1-sol, independent review 0e",
+  "date": "2026-10-12",
+  "covers": [
+    "P-0050"
+  ],
+  "verdict": "pass",
+  "method": "Independently rendered sources/reed-simon-3/reed-simon-3.djvu with ddjvu -format=pnm -page=62 into /tmp/smoke-b-review; inspected the rendered page image, printed page 55, and compared quote, context, and supported claim. Scan SHA256 47e47a11d12b6baadfba7c7c78389513ecafedf3af361934ae9dbcab04e45d1c independently matched.",
+  "notes": "The recorded transcription agrees with the rendered page image, with mathematical notation transcribed into TeX. Coverage is this provenance row; the supported chapter claim also needs its own stated hypotheses and derivation.",
+  "bindings": [
+    {
+      "provenance_id": "P-0050",
+      "member_sha256": "47e47a11d12b6baadfba7c7c78389513ecafedf3af361934ae9dbcab04e45d1c",
+      "quote_sha256": "bc5782ffb6247be0d370ce385eaa33108a19cbd227c1d0374ad96bfd07cd32c7"
+    }
+  ]
+}

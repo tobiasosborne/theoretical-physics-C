@@ -1,0 +1,46 @@
+% c02.fig.blochkugel — the qubit state ball with one extreme effect drawn as its level planes.
+%
+% State space: the unit ball in R^3, r = (r_x, r_y, r_z).
+% Effect: f(r) = (1 + n.r)/2 with n = (0,0,1), i.e. f(r) = (1 + r_z)/2.
+%   f = 1 on the plane r_z = +1 (touches the ball at n),
+%   f = 0 on the plane r_z = -1 (touches the ball at -n),
+%   f = c on the plane r_z = 2c - 1.
+% State x = (0, 0.6, 0.5): |x|^2 = 0.61 < 1; f(x) = (1 + 1/2)/2 = 3/4; the level plane
+% through x cuts the ball in the circle r_z = 1/2 of radius sqrt(3)/2 = 0.8660.
+% ORTHOGRAPHIC projection (the outline of the ball is a circle), azimuth 25 deg,
+% elevation 15 deg, 1.7 cm per unit:
+%   e_x -> 1.7*(-0.4226,-0.2346), e_y -> 1.7*(0.9063,-0.1094), e_z -> 1.7*(0,0.9659).
+% A horizontal circle (cos t, sin t, h) faces the viewer for -65 < t < 115 deg.
+% The planes are drawn as discs of radius 1.25 at r_z = +-1.
+% Greyscale: planes and level circle dashed (effect role); state: filled disc.
+\begin{tikzpicture}[x={(-0.7184cm,-0.3988cm)}, y={(1.5407cm,-0.1860cm)}, z={(0cm,1.6420cm)}]
+  % lower plane f = 0
+  \draw[tpc effect, fill=tpc-effect!8!tpc-plate]
+    plot[domain=0:360, samples=73, variable=\t] ({1.25*cos(\t)},{1.25*sin(\t)},-1) -- cycle;
+  % ball
+  \fill[tpc-grey-1] (0,0,0) circle[x radius=1.7cm, y radius=1.7cm];
+  \draw[tpc grid, dash pattern=on 1.5pt off 1.5pt]
+    plot[domain=115:295, samples=46, variable=\t] ({cos(\t)},{sin(\t)},0);
+  \draw[tpc grid] plot[domain=-65:115, samples=46, variable=\t] ({cos(\t)},{sin(\t)},0);
+  % level circle through x: r_z = 1/2, radius sqrt(3)/2
+  \draw[tpc effect, dash pattern=on 1pt off 2pt]
+    plot[domain=115:295, samples=46, variable=\t] ({0.8660*cos(\t)},{0.8660*sin(\t)},0.5);
+  \draw[tpc effect] plot[domain=-65:115, samples=46, variable=\t] ({0.8660*cos(\t)},{0.8660*sin(\t)},0.5);
+  \draw[tpc axis] (0,0,0) circle[x radius=1.7cm, y radius=1.7cm];
+  % axis n and the two touching points
+  \draw[tpc leader] (0,0,-1) -- (0,0,1);
+  \draw[tpc leader, -{Stealth[length=4pt]}] (0,0,0) -- (0,0,0.62);
+  \node[tpc label, anchor=east] at (0,0,0.4) {$\boldsymbol{n}$};
+  % upper plane f = 1 (in front of the ball's top)
+  \draw[tpc effect, fill=tpc-effect!8!tpc-plate, fill opacity=0.6]
+    plot[domain=0:360, samples=73, variable=\t] ({1.25*cos(\t)},{1.25*sin(\t)},1) -- cycle;
+  \fill[tpc-effect] (0,0,1) ++(-1.8pt,-1.8pt) rectangle ++(3.6pt,3.6pt);
+  \fill[tpc-effect] (0,0,-1) ++(-1.8pt,-1.8pt) rectangle ++(3.6pt,3.6pt);
+  % state
+  \draw[tpc leader] (0,0,0) -- (0,0.6,0.5);
+  \fill[tpc-state] (0,0.6,0.5) circle (2pt);
+  \node[tpc label, anchor=south west] at (0,0.6,0.5) {$x$};
+  \node[tpc label, anchor=west] at (0,1.25,1)   {\ $f = 1$};
+  \node[tpc label, anchor=west] at (0,1.25,-1)  {\ $f = 0$};
+  \node[tpc label, anchor=west] at (0,1.02,0.5) {\ $f = \tfrac34$};
+\end{tikzpicture}

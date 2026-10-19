@@ -1,0 +1,793 @@
+{
+ "schema_version": 1,
+ "not_a_source": {
+  "plan": {
+   "title": "PLAN.md, section 1.3: TJO's decisions of 2026-10-11",
+   "kind": "text",
+   "path": "docs/plan"
+  },
+  "preinventory": {
+   "title": "Notation and definitions pre-inventory (curriculum lane, not blessed)",
+   "kind": "text",
+   "path": "docs/plan/research/curriculum"
+  },
+  "phase0-brief": {
+   "title": "Phase 0 registry work-package brief and coordinator amendments of 2026-10-11 (not in the repository)",
+   "kind": "note"
+  },
+  "not-on-disk": {
+   "title": "placeholder key: a named source of which no local copy exists",
+   "kind": "note"
+  },
+  "tpc-macros": {
+   "title": "latex/tpc-macros.sty, the macro file of the existing script. A repository file, not a registered source: the snapshot tpc-script-v0.2 registers latex/lectures only",
+   "kind": "text",
+   "path": "latex"
+  },
+  "derivation-c11": {
+   "title": "evidence/derivations/c11: the hydrogen derivation by codex (DERIVATION.md) and its independent review (REVIEW.md). A repository file, not a registered source; it supports registry entries that Smoke B (chapter C11) had to add or complete",
+   "kind": "text",
+   "path": "evidence/derivations/c11"
+  }
+ },
+ "rows": [
+  {
+   "id": "TR-PLA-01",
+   "source": "plavala-2103.07469v2",
+   "locus": "what_v4.tex:23",
+   "quote": "Let $K$ denote a state space",
+   "source_token": "K",
+   "source_meaning": "state space (S1)-(S5), finite-dimensional",
+   "canonical": [
+    "sym.state-space",
+    "D3"
+   ],
+   "mapping": "identical token. K is the convex set of normalised states, not its span and not the cone A(K)^{*+}.",
+   "verified": true,
+   "how": "read in the arXiv TeX source at this line"
+  },
+  {
+   "id": "TR-PLA-02",
+   "source": "plavala-2103.07469v2",
+   "locus": "basic_v3.tex:9",
+   "quote": "Let $K$ be a state space and let $x \\in K$.",
+   "source_token": "x, y, z",
+   "source_meaning": "states (points of K)",
+   "canonical": [],
+   "mapping": "bound variables; kept as x, y, z in D2-D12. In the script x is an elementary outcome (TR-TPC-09); in a classical theory outcomes are the pure states, not the states.",
+   "verified": true,
+   "how": "read in the arXiv TeX source at this line"
+  },
+  {
+   "id": "TR-PLA-03",
+   "source": "plavala-2103.07469v2",
+   "locus": "basic_v3.tex:57",
+   "quote": "the \\emph{effect algebra} over $K$ will be denoted $E(K)$",
+   "source_token": "E(K)",
+   "source_meaning": "set of affine f: K → [0,1]",
+   "canonical": [
+    "sym.effect-algebra",
+    "D2"
+   ],
+   "mapping": "identical token, macro \\EffAlg{K}. Equals the whole order interval [0, 1_K] only because no restriction is assumed (D12).",
+   "verified": true,
+   "how": "read in the arXiv TeX source at this line"
+  },
+  {
+   "id": "TR-PLA-04",
+   "source": "plavala-2103.07469v2",
+   "locus": "basic_v3.tex:57",
+   "quote": "$E(K)$ is the set of all affine functions $f: K \\to [0,1]$",
+   "source_token": "f, g, h",
+   "source_meaning": "effects; elements of A(K)",
+   "canonical": [
+    "D2"
+   ],
+   "mapping": "bound variables; kept as f. In quantum theory f corresponds to the operator via f_X(ρ) = Tr(ρX) (TR-PLA-13); the letter of the quantum effect operator is open (COL-F).",
+   "verified": true,
+   "how": "read in the arXiv TeX source at this line"
+  },
+  {
+   "id": "TR-PLA-05",
+   "source": "plavala-2103.07469v2",
+   "locus": "basic_v3.tex:70",
+   "quote": "$1_K \\in E(K)$ is the constant function given as $1_K(x) = 1$ for all $x \\in K$.",
+   "source_token": "1_K",
+   "source_meaning": "unit effect",
+   "canonical": [
+    "sym.unit-effect",
+    "D58"
+   ],
+   "mapping": "identical token, macro \\UnitEff{K}. In quantum theory it corresponds to the identity operator.",
+   "verified": true,
+   "how": "read in the arXiv TeX source at this line"
+  },
+  {
+   "id": "TR-PLA-06",
+   "source": "plavala-2103.07469v2",
+   "locus": "basic_v3.tex:76",
+   "quote": "Let $A(K)$ be the vector space of affine functions on $K$ and let $A(K)^+$ be the cone of positive affine functions on $K$",
+   "source_token": "A(K), A(K)^+",
+   "source_meaning": "affine functions on K and their positive cone",
+   "canonical": [
+    "sym.affine-functions",
+    "sym.positive-cone",
+    "D57"
+   ],
+   "mapping": "identical tokens. A(K)^+ is the cone on the effect side; it must not be confused with the cone of unnormalised states A(K)^{*+}.",
+   "verified": true,
+   "how": "read in the arXiv TeX source at this line"
+  },
+  {
+   "id": "TR-PLA-07",
+   "source": "plavala-2103.07469v2",
+   "locus": "basic_v3.tex:154",
+   "quote": "Let $A(K)^*$ denote the dual vector space to $A(K)$",
+   "source_token": "A(K)^*",
+   "source_meaning": "dual vector space of A(K)",
+   "canonical": [
+    "sym.dual-space",
+    "D59"
+   ],
+   "mapping": "identical token.",
+   "verified": true,
+   "how": "read in the arXiv TeX source at this line"
+  },
+  {
+   "id": "TR-PLA-08",
+   "source": "plavala-2103.07469v2",
+   "locus": "basic_v3.tex:158",
+   "quote": "A(K)^{*+} = \\{ \\psi \\in A(K)^* : \\<\\psi, f\\> \\geq 0, \\forall f \\in A(K)^+ \\},",
+   "source_token": "A(K)^{*+}",
+   "source_meaning": "dual cone: positive functionals on A(K)",
+   "canonical": [
+    "sym.dual-cone",
+    "D59"
+   ],
+   "mapping": "identical token. K is its base, cut out by ⟨φ, 1_K⟩ = 1 (Plavala's theorem at basic_v3.tex:178-182).",
+   "verified": true,
+   "how": "read in the arXiv TeX source at this line"
+  },
+  {
+   "id": "TR-PLA-09",
+   "source": "plavala-2103.07469v2",
+   "locus": "basic_v3.tex:174",
+   "quote": "\\< x, f \\> = f(x).",
+   "source_token": "\\< x, f \\>",
+   "source_meaning": "pairing, state (functional) first, effect second",
+   "canonical": [
+    "sym.pairing"
+   ],
+   "mapping": "\\pair{x}{f}; same slot order (CONV-PAIRING). Not an inner product: the two slots are in different spaces.",
+   "verified": true,
+   "how": "read in the arXiv TeX source at this line"
+  },
+  {
+   "id": "TR-PLA-10",
+   "source": "plavala-2103.07469v2",
+   "locus": "basic_v3.tex:299",
+   "quote": "\\emph{Order unit space} $(V, \\leq, u)$ is an ordered vector space $(V, \\leq)$ with an order unit $u \\in V$",
+   "source_token": "u, (V, ≤, u)",
+   "source_meaning": "order unit; order unit space",
+   "canonical": [
+    "sym.order-unit",
+    "D6"
+   ],
+   "mapping": "identical token u. Plavala's V here is a generic ordered vector space; elsewhere (basic_v3.tex:218) V = aff(K) is the ambient space of K. V has no canonical symbol (COL-V).",
+   "verified": true,
+   "how": "read in the arXiv TeX source at this line"
+  },
+  {
+   "id": "TR-PLA-11",
+   "source": "plavala-2103.07469v2",
+   "locus": "CT_v3.tex:11",
+   "quote": "\\emph{Classical theory} is a theory where the state space is a simplex $S_n$, $n \\in \\NN$.",
+   "source_token": "S_n",
+   "source_meaning": "simplex with n pure states",
+   "canonical": [
+    "sym.simplex",
+    "D11"
+   ],
+   "mapping": "S_n → Δ_n (\\Simplex{n}); pure renaming, provisional (COL-S, COL-DELTA). Plavala's S(E) (basic_v3.tex:541) is a different object and has no canonical symbol.",
+   "verified": true,
+   "how": "read in the arXiv TeX source at this line"
+  },
+  {
+   "id": "TR-PLA-12",
+   "source": "plavala-2103.07469v2",
+   "locus": "channels_v3.tex:16",
+   "quote": "We will denote the set of all channels $\\Phi: K_A \\to K_B$ by $\\chan(K_A, K_B)$.",
+   "source_token": "\\chan(K_A, K_B) = \\mathcal{C}(K_A, K_B)",
+   "source_meaning": "set of channels",
+   "canonical": [
+    "sym.channels",
+    "D8"
+   ],
+   "mapping": "identical token, macro \\Chan{K_A}{K_B}.",
+   "verified": true,
+   "how": "read in the arXiv TeX source at this line"
+  },
+  {
+   "id": "TR-PLA-13",
+   "source": "plavala-2103.07469v2",
+   "locus": "channels_v3.tex:230",
+   "quote": "$n$-outcome \\emph{measurement} is a channel $m \\in \\chan(K, S_n)$.",
+   "source_token": "m",
+   "source_meaning": "measurement as a channel into the simplex",
+   "canonical": [
+    "D9"
+   ],
+   "mapping": "bound variable m inside D9 only. Globally m is the magnetic quantum number (sym.magnetic-quantum-number).",
+   "verified": true,
+   "how": "read in the arXiv TeX source at this line"
+  },
+  {
+   "id": "TR-PLA-14",
+   "source": "plavala-2103.07469v2",
+   "locus": "QT_v3.tex:13",
+   "quote": "the corresponding function $f_X \\in A(\\dens(\\Ha))$ is given as $f_X(\\rho) = \\Tr(\\rho X)$",
+   "source_token": "f_X(\\rho) = \\Tr(\\rho X)",
+   "source_meaning": "effect-side functional of a self-adjoint operator",
+   "canonical": [
+    "sym.trace",
+    "sym.density-operator"
+   ],
+   "mapping": "⟨ρ, X⟩ = tr(ρX): the GPT pairing becomes the trace pairing. Holds for finite-dimensional ℋ only (QT_v3.tex:6).",
+   "verified": true,
+   "how": "read in the arXiv TeX source at this line"
+  },
+  {
+   "id": "TR-PLA-15",
+   "source": "plavala-2103.07469v2",
+   "locus": "QT_v3.tex:11",
+   "quote": "\\dens(\\Ha) = \\{ \\rho \\in \\bound_H^+(\\Ha) : \\Tr(\\rho) = 1 \\}.",
+   "source_token": "\\dens(\\Ha) = \\mathcal{D}(\\mathcal{H})",
+   "source_meaning": "set of density operators",
+   "canonical": [
+    "sym.density-operators",
+    "D22"
+   ],
+   "mapping": "identical token, macro \\DensOps{\\Hil} (proposed). Finite-dimensional ℋ.",
+   "verified": true,
+   "how": "read in the arXiv TeX source at this line"
+  },
+  {
+   "id": "TR-PLA-16",
+   "source": "plavala-2103.07469v2",
+   "locus": "QT_v3.tex:6",
+   "quote": "$\\bound_H(\\Ha)$ will denote the real vector space of self-adjoint operators",
+   "source_token": "\\bound_H(\\Ha) = \\mathcal{B}_H(\\mathcal{H})",
+   "source_meaning": "real vector space of self-adjoint operators (finite dimension)",
+   "canonical": [
+    "sym.bounded-selfadjoint"
+   ],
+   "mapping": "→ B(ℋ)_sa (proposed). Plavala's \\mathcal{B} carries the subscript H for Hermitian; without it the symbol does not occur in his text. His \\lin(\\Ha) = \\mathcal{L}(\\mathcal{H}) is all operators.",
+   "verified": true,
+   "how": "read in the arXiv TeX source at this line"
+  },
+  {
+   "id": "TR-PLA-17",
+   "source": "plavala-2103.07469v2",
+   "locus": "QT_v3.tex:23",
+   "quote": "E(\\dens(\\Ha)) = \\effect(\\Ha) = \\{ X \\in \\bound_H(\\Ha): 0 \\leq X \\leq \\I \\}",
+   "source_token": "\\effect(\\Ha) = \\mathcal{E}(\\mathcal{H})",
+   "source_meaning": "set of effect operators",
+   "canonical": [
+    "sym.effect-operators"
+   ],
+   "mapping": "identical token, macro \\EffOps{\\Hil} (proposed).",
+   "verified": true,
+   "how": "read in the arXiv TeX source at this line"
+  },
+  {
+   "id": "TR-PLA-18",
+   "source": "plavala-2103.07469v2",
+   "locus": "mplmacros.sty:221",
+   "quote": "\\DeclareMathOperator{\\I}{\\mathds{1}}",
+   "source_token": "\\I = \\mathds{1}",
+   "source_meaning": "identity operator",
+   "canonical": [
+    "sym.identity"
+   ],
+   "mapping": "𝟙 → 𝕀 (\\Id); glyph only.",
+   "verified": true,
+   "how": "read in the arXiv TeX source at this line"
+  },
+  {
+   "id": "TR-PLA-19",
+   "source": "plavala-2103.07469v2",
+   "locus": "mplmacros.sty:216",
+   "quote": "\\DeclareMathOperator{\\Tr}{Tr}",
+   "source_token": "\\Tr",
+   "source_meaning": "trace",
+   "canonical": [
+    "sym.trace"
+   ],
+   "mapping": "Tr → tr; same unnormalised trace (CONV-TRACE).",
+   "verified": true,
+   "how": "read in the arXiv TeX source at this line"
+  },
+  {
+   "id": "TR-PLA-20",
+   "source": "plavala-2103.07469v2",
+   "locus": "QT_v3.tex:6",
+   "quote": "the inner product of $\\ket{\\psi}, \\ket{\\varphi} \\in \\Ha$ is then denoted $\\braket{\\varphi|\\psi}$ and it is linear in the second argument",
+   "source_token": "\\braket{\\varphi|\\psi}",
+   "source_meaning": "inner product, linear in the second argument",
+   "canonical": [
+    "sym.inner-product"
+   ],
+   "mapping": "same convention (CONV-INNER); Plavala's \\braket takes one argument, the registry's two.",
+   "verified": true,
+   "how": "read in the arXiv TeX source at this line"
+  },
+  {
+   "id": "TR-PLA-21",
+   "source": "plavala-2103.07469v2",
+   "locus": "basic_v3.tex:531",
+   "quote": "This assumption is in literature called the no-restriction hypothesis.",
+   "source_token": "no-restriction hypothesis",
+   "source_meaning": "every element of E(K) is a physical yes-no question",
+   "canonical": [
+    "D12"
+   ],
+   "mapping": "same term; German rendering 'Hypothese der Nichteinschränkung' is the registry's.",
+   "verified": true,
+   "how": "read in the arXiv TeX source at this line"
+  },
+  {
+   "id": "TR-PLA-22",
+   "source": "plavala-2103.07469v2",
+   "locus": "mplmacros.sty:206",
+   "quote": "\\DeclareMathOperator{\\ext}{ext}",
+   "source_token": "\\ext, \\conv, \\cone",
+   "source_meaning": "extreme points, convex hull, generated cone",
+   "canonical": [
+    "sym.extreme-points",
+    "sym.convex-hull",
+    "sym.cone-hull"
+   ],
+   "mapping": "identical tokens and macro names.",
+   "verified": true,
+   "how": "read in the arXiv TeX source at this line"
+  },
+  {
+   "id": "TR-RS3-01",
+   "source": "reed-simon-3",
+   "locus": "section XI.4, p. 55 (DjVu page 62)",
+   "quote": "\\tilde H_0 = -\\frac{1}{2\\mu_1}\\Delta_1 - \\frac{1}{2\\mu_2}\\Delta_2",
+   "source_token": "\\mu_1, \\mu_2",
+   "source_meaning": "masses of the two particles",
+   "canonical": [
+    "sym.electron-mass",
+    "sym.proton-mass"
+   ],
+   "mapping": "μ_1 → m_e, μ_2 → m_p (assignment 1 = electron is the registry's, CONV-CM). Warning: Reed-Simon's μ is a mass of one particle, the registry's μ is the reduced mass.",
+   "verified": true,
+   "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+  },
+  {
+   "id": "TR-RS3-02",
+   "source": "reed-simon-3",
+   "locus": "section XI.4, p. 55 (DjVu page 62)",
+   "quote": "\\tilde H_0 = -\\frac{1}{2\\mu_1}\\Delta_1 - \\frac{1}{2\\mu_2}\\Delta_2",
+   "source_token": "\\hbar = 1",
+   "source_meaning": "units with ℏ = 1 (no ℏ in the kinetic term)",
+   "canonical": [
+    "sym.hbar"
+   ],
+   "mapping": "multiply each kinetic term by ℏ²: 1/(2μ_i) → ℏ²/(2 m_i) (CONV-UNITS). Read off the formula; the page does not state the unit choice in words.",
+   "verified": true,
+   "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+  },
+  {
+   "id": "TR-RS3-03",
+   "source": "reed-simon-3",
+   "locus": "section XI.4, p. 55 (DjVu page 62)",
+   "quote": "where m^{-1} = \\mu_1^{-1} + \\mu_2^{-1} (Problem 40)",
+   "source_token": "m",
+   "source_meaning": "reduced mass",
+   "canonical": [
+    "sym.reduced-mass",
+    "D62"
+   ],
+   "mapping": "m → μ. Warning: the registry's m is the magnetic quantum number.",
+   "verified": true,
+   "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+  },
+  {
+   "id": "TR-RS3-04",
+   "source": "reed-simon-3",
+   "locus": "section XI.4, p. 55 (DjVu page 62)",
+   "quote": "R = (\\mu_1 + \\mu_2)^{-1}(\\mu_1 r_1 + \\mu_2 r_2), r_{12} = r_1 - r_2",
+   "source_token": "\\mathbf{R}, \\mathbf{r}_{12}, \\mathbf{r}_1, \\mathbf{r}_2",
+   "source_meaning": "centre-of-mass coordinate, relative coordinate, particle positions",
+   "canonical": [
+    "sym.centre-of-mass-coordinate",
+    "sym.relative-coordinate",
+    "sym.electron-position",
+    "sym.proton-position",
+    "D61"
+   ],
+   "mapping": "R → R, r_12 → r, r_1 → r_e, r_2 → r_p. Reed-Simon set vectors in upright bold, the registry in bold italic.",
+   "verified": true,
+   "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+  },
+  {
+   "id": "TR-RS3-05",
+   "source": "reed-simon-3",
+   "locus": "section XI.4, p. 55 (DjVu page 62)",
+   "quote": "R = (\\mu_1 + \\mu_2)^{-1}(\\mu_1 r_1 + \\mu_2 r_2)",
+   "source_token": "\\mu_1 + \\mu_2",
+   "source_meaning": "total mass, without a symbol of its own",
+   "canonical": [
+    "sym.total-mass"
+   ],
+   "mapping": "μ_1 + μ_2 → M = m_e + m_p.",
+   "verified": true,
+   "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+  },
+  {
+   "id": "TR-RS3-06",
+   "source": "reed-simon-3",
+   "locus": "section XI.4, p. 55 (DjVu page 62)",
+   "quote": "\\tilde H = \\tilde H_0 + V(r_1 - r_2)",
+   "source_token": "\\tilde H, \\tilde H_0",
+   "source_meaning": "interacting and free two-body Hamiltonians on L²(ℝ⁶)",
+   "canonical": [
+    "sym.hamiltonian-two-body",
+    "D60"
+   ],
+   "mapping": "\\tilde H → H_tot (proposed name); \\tilde H_0 has no canonical symbol yet.",
+   "verified": true,
+   "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+  },
+  {
+   "id": "TR-RS3-07",
+   "source": "reed-simon-3",
+   "locus": "section XI.4, p. 55 (DjVu page 62)",
+   "quote": "U \\tilde H U^{-1} = h_0 \\otimes I + I \\otimes H",
+   "source_token": "h_0, H, H_0",
+   "source_meaning": "centre-of-mass kinetic operator; relative Hamiltonian; free relative Hamiltonian",
+   "canonical": [
+    "sym.hamiltonian-cm",
+    "sym.hamiltonian-relative"
+   ],
+   "mapping": "h_0 → H_cm, H → H_rel (proposed names); with ℏ restored H_rel = −ℏ²/(2μ) Δ + V. The identity holds on C_0^∞(ℝ³) ⊗ C_0^∞(ℝ³) as stated on the page; it is a claim, not a definition.",
+   "verified": true,
+   "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+  },
+  {
+   "id": "TR-RS3-08",
+   "source": "reed-simon-3",
+   "locus": "section XI.4, p. 55 (DjVu page 62)",
+   "quote": "(Uf)(x, y) = f((\\mu_1 + \\mu_2)^{-1}(\\mu_1 x + \\mu_2 y), x - y)",
+   "source_token": "U",
+   "source_meaning": "unitary change of coordinates on L²(ℝ⁶)",
+   "canonical": [
+    "sym.unitary"
+   ],
+   "mapping": "identical token.",
+   "verified": true,
+   "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+  },
+  {
+   "id": "TR-RS3-09",
+   "source": "reed-simon-3",
+   "locus": "section XI.4, p. 55 (DjVu page 62)",
+   "quote": "\\Delta_i is the three-dimensional Laplacian associated to r_i",
+   "source_token": "\\Delta_i, \\Delta_{\\mathbf{R}}, \\Delta_{r_{12}}",
+   "source_meaning": "Laplacians in the named coordinate",
+   "canonical": [
+    "sym.laplacian"
+   ],
+   "mapping": "identical token; the subscript names the coordinate.",
+   "verified": true,
+   "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+  },
+  {
+   "id": "TR-RS3-10",
+   "source": "reed-simon-3",
+   "locus": "section XI.4, p. 55 (DjVu page 62)",
+   "quote": "\\tilde D \\equiv C_0^\\infty(R^3) \\otimes C_0^\\infty(R^3) \\subset C_0^\\infty(R^6)",
+   "source_token": "C_0^\\infty",
+   "source_meaning": "smooth functions with compact support",
+   "canonical": [
+    "sym.test-functions"
+   ],
+   "mapping": "C_0^∞ → C_c^∞ (proposed). Reading C_0^∞ as 'compact support' is Reed-Simon's usual convention and was not checked at its definition in volume I.",
+   "verified": true,
+   "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+  },
+  {
+   "id": "TR-RS3-11",
+   "source": "reed-simon-3",
+   "locus": "section XI.4, p. 55 (DjVu page 62)",
+   "quote": "where V is a function in L^2(R^3) + L^\\infty(R^3)",
+   "source_token": "V",
+   "source_meaning": "two-body potential, function of the relative coordinate",
+   "canonical": [
+    "sym.potential"
+   ],
+   "mapping": "identical token.",
+   "verified": true,
+   "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+  },
+  {
+   "id": "TR-RS3-12",
+   "source": "reed-simon-3",
+   "locus": "section XI.4, p. 55 (DjVu page 62)",
+   "quote": "U \\tilde H U^{-1} = h_0 \\otimes I + I \\otimes H",
+   "source_token": "I",
+   "source_meaning": "identity operator",
+   "canonical": [
+    "sym.identity"
+   ],
+   "mapping": "I → 𝕀; glyph only.",
+   "verified": true,
+   "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+  },
+  {
+   "id": "TR-RS1-01",
+   "source": "reed-simon-1",
+   "locus": "section II.1, p. 36 (DjVu page 48)",
+   "quote": "(iii) (x, \\alpha y) = \\alpha (x, y)",
+   "source_token": "(x, y)",
+   "source_meaning": "inner product, linear in the second argument",
+   "canonical": [
+    "sym.inner-product",
+    "D14"
+   ],
+   "mapping": "(x, y) → ⟨x|y⟩; same slot convention (CONV-INNER). Resolves the [UNVERIFIED] entry for Reed-Simon in pre-inventory row 2.",
+   "verified": true,
+   "how": "read from the page image (ddjvu -format=pnm -page=48 -scale=180), not from the text layer"
+  },
+  {
+   "id": "TR-TPC-01",
+   "source": "tpc-macros",
+   "locus": "tpc-macros.sty:38",
+   "quote": "\\newcommand{\\Hil}{\\mathcal{H}}",
+   "source_token": "\\Hil",
+   "source_meaning": "Hilbert space",
+   "canonical": [
+    "sym.hilbert-space"
+   ],
+   "mapping": "same macro and expansion.",
+   "verified": true,
+   "how": "read in the script source at this line"
+  },
+  {
+   "id": "TR-TPC-02",
+   "source": "tpc-macros",
+   "locus": "tpc-macros.sty:39",
+   "quote": "\\newcommand{\\Lop}{\\mathcal{L}}            % bounded operators / Liouvillian",
+   "source_token": "\\Lop = \\mathcal{L}",
+   "source_meaning": "bounded operators and Liouvillian (two meanings in one macro)",
+   "canonical": [
+    "sym.bounded-operators"
+   ],
+   "mapping": "not reused. Bounded operators → \\BdOp{\\Hil} = B(ℋ) (proposed); a Liouvillian has no canonical symbol yet.",
+   "verified": true,
+   "how": "read in the script source at this line"
+  },
+  {
+   "id": "TR-TPC-03",
+   "source": "tpc-macros",
+   "locus": "tpc-macros.sty:101",
+   "quote": "\\newcommand{\\Om}{\\Omega}                  % microcanonical state count",
+   "source_token": "\\Om = \\Omega",
+   "source_meaning": "microcanonical state count",
+   "canonical": [
+    "sym.microcanonical-count"
+   ],
+   "mapping": "collision COL-OMEGA; proposed N_E.",
+   "verified": true,
+   "how": "read in the script source at this line"
+  },
+  {
+   "id": "TR-TPC-04",
+   "source": "tpc-macros",
+   "locus": "tpc-macros.sty:100",
+   "quote": "\\newcommand{\\Zc}{\\mathcal{Z}}             % canonical partition function",
+   "source_token": "\\Zc, \\Zst = \\mathcal{Z}",
+   "source_meaning": "partition function (two macros, one glyph)",
+   "canonical": [
+    "sym.partition-function"
+   ],
+   "mapping": "→ \\Zcan (proposed).",
+   "verified": true,
+   "how": "read in the script source at this line"
+  },
+  {
+   "id": "TR-TPC-05",
+   "source": "tpc-macros",
+   "locus": "tpc-macros.sty:84",
+   "quote": "\\newcommand{\\lap}{\\Delta}",
+   "source_token": "\\lap",
+   "source_meaning": "Laplacian",
+   "canonical": [
+    "sym.laplacian"
+   ],
+   "mapping": "→ \\Lap; same expansion.",
+   "verified": true,
+   "how": "read in the script source at this line"
+  },
+  {
+   "id": "TR-TPC-06",
+   "source": "tpc-macros",
+   "locus": "tpc-macros.sty:70",
+   "quote": "\\newcommand{\\Hop}{\\widehat{H}}",
+   "source_token": "\\Hop = \\widehat{H}",
+   "source_meaning": "Hamiltonian, with hat",
+   "canonical": [
+    "sym.hamiltonian"
+   ],
+   "mapping": "→ \\Ham = H, without hat, provisional (COL-H; hat question open).",
+   "verified": true,
+   "how": "read in the script source at this line"
+  },
+  {
+   "id": "TR-TPC-07",
+   "source": "tpc-script-v0.2",
+   "locus": "lectures/de/vl06.tex:83",
+   "quote": "$\\tr(\\rho F)$",
+   "source_token": "F",
+   "source_meaning": "effect operator in the Born rule (Postulat 4)",
+   "canonical": [
+    "sym.effect-operator",
+    "D26"
+   ],
+   "mapping": "→ \\EffOp; letter open (COL-F), BRIEF.md writes E.",
+   "verified": true,
+   "how": "read in the script source at this line"
+  },
+  {
+   "id": "TR-TPC-08",
+   "source": "tpc-script-v0.2.1",
+   "locus": "lectures/de/vl16.tex:29",
+   "quote": "$\\mu = m_{\\text{e}}m_{\\text{p}}/(m_{\\text{e}}+m_{\\text{p}})$",
+   "source_token": "\\mu, m_{\\text{e}}, m_{\\text{p}}",
+   "source_meaning": "reduced mass, electron mass, proton mass",
+   "canonical": [
+    "sym.reduced-mass",
+    "sym.electron-mass",
+    "sym.proton-mass"
+   ],
+   "mapping": "identical tokens (subscripts upright).",
+   "verified": true,
+   "how": "read in the script source at this line"
+  },
+  {
+   "id": "TR-TPC-09",
+   "source": "tpc-script-v0.2",
+   "locus": "lectures/de/vl01.tex:108",
+   "quote": "Eine \\emph{Präparation} wird durch die Angabe einer Wahrscheinlichkeit $p(x)$ für jedes $x\\in X$ charakterisiert.",
+   "source_token": "X, x, p(x)",
+   "source_meaning": "sample space, elementary outcome, probability weight",
+   "canonical": [
+    "sym.outcome-set",
+    "sym.probability-weight",
+    "D53",
+    "D54"
+   ],
+   "mapping": "X → \\Outcomes, p → \\pw; x is a bound variable. Classical preparations p are the points of the simplex Δ_n with n = |X| (D11).",
+   "verified": true,
+   "how": "read in the script source at this line"
+  },
+  {
+   "id": "TR-TPC-10",
+   "source": "tpc-script-v0.2",
+   "locus": "lectures/de/vl01.tex:129-131",
+   "quote": "f:X\\rightarrow \\mathbb{R}",
+   "source_token": "f",
+   "source_meaning": "measurement (observable, random variable): any real function on X",
+   "canonical": [
+    "D55"
+   ],
+   "mapping": "bound variable. A [0,1]-valued f is an effect on the simplex in the sense of D2; a general f is an element of A(Δ_n), not an effect.",
+   "verified": true,
+   "how": "read in the script source at this line"
+  },
+  {
+   "id": "TR-TPC-11",
+   "source": "tpc-script-v0.2",
+   "locus": "lectures/de/vl01.tex:212",
+   "quote": "\\text{Var}[\\mathbb{P}] \\equiv \\mathbb{E}[(x-M_1)^2]",
+   "source_token": "\\text{Var}[\\mathbb{P}], \\text{var}(\\cdot)",
+   "source_meaning": "variance (of a measure in vl01, of an observable in vl09)",
+   "canonical": [
+    "sym.variance",
+    "D56"
+   ],
+   "mapping": "→ \\Var. The script is not uniform: vl01.tex:212 writes Var[ℙ], vl09.tex:41 writes var(p_j).",
+   "verified": true,
+   "how": "read in the script source at this line"
+  },
+  {
+   "id": "TR-TPC-12",
+   "source": "tpc-script-v0.2.1",
+   "locus": "lectures/de/vl16.tex:57",
+   "quote": "a_0 = \\frac{4\\pi\\epsilon_0\\hbar^2}{m_{\\text{e}}e^2}",
+   "source_token": "a_0",
+   "source_meaning": "Bohr radius with the electron mass",
+   "canonical": [
+    "sym.bohr-radius",
+    "D63"
+   ],
+   "mapping": "identical token. Every a_0 in vl16.tex is the infinite-nuclear-mass value; the new C11 uses a_μ = a_0 m_e/μ where the two-body problem requires it (CONV-A0).",
+   "verified": true,
+   "how": "read in the script source at this line"
+  },
+  {
+   "id": "TR-TPC-13",
+   "source": "tpc-script-v0.2.1",
+   "locus": "lectures/de/vl16.tex:45",
+   "quote": "\\text{L}_{n-\\ell-1}^{2\\ell +1}(2\\kappa r)",
+   "source_token": "\\text{L}_r^s",
+   "source_meaning": "generalised Laguerre polynomial, lower index = degree",
+   "canonical": [
+    "sym.laguerre",
+    "D68"
+   ],
+   "mapping": "L_r^s → L_r^{(s)}: same index placement, parentheses added around the upper index (CONV-LAGUERRE). vl16.tex:85 (L_2) is defective.",
+   "verified": true,
+   "how": "read in the script source at this line"
+  },
+  {
+   "id": "TR-TPC-14",
+   "source": "tpc-script-v0.2",
+   "locus": "lectures/de/vl14.tex:133",
+   "quote": "\\text{Y}_\\ell^m (\\theta,\\phi) \\equiv (-1)^m",
+   "source_token": "\\text{Y}_\\ell^m, \\text{P}_\\ell^m",
+   "source_meaning": "spherical harmonics and associated Legendre functions, upright",
+   "canonical": [
+    "sym.spherical-harmonic",
+    "sym.associated-legendre",
+    "D67"
+   ],
+   "mapping": "upright → italic; same index placement and phase (CONV-CS).",
+   "verified": true,
+   "how": "read in the script source at this line"
+  },
+  {
+   "id": "TR-TPC-15",
+   "source": "tpc-script-v0.2.1",
+   "locus": "lectures/de/vl16.tex:35",
+   "quote": "$U_\\ell(r)$ des Bildes oben.",
+   "source_token": "U_\\ell(r)",
+   "source_meaning": "effective radial potential",
+   "canonical": [],
+   "mapping": "no canonical symbol yet; clashes with U (COL-U). Proposed V_eff,ℓ.",
+   "verified": true,
+   "how": "read in the script source at this line"
+  },
+  {
+   "id": "TR-TPC-16",
+   "source": "tpc-script-v0.2",
+   "locus": "lectures/de/vl08.tex:71",
+   "quote": "\\eqbox{F(k)\\equiv \\frac{1}{\\sqrt{2\\pi}}\\int_{-\\infty}^\\infty f(x)e^{-ikx}\\, dx.}",
+   "source_token": "F(k)",
+   "source_meaning": "Fourier transform of f",
+   "canonical": [
+    "sym.fourier-transform"
+   ],
+   "mapping": "F → \\FT{f} (proposed); same convention (CONV-FOURIER). The script's F here is a third meaning of F besides effect and free energy (COL-F).",
+   "verified": true,
+   "how": "read in the script source at this line"
+  },
+  {
+   "id": "TR-TPC-17",
+   "source": "tpc-script-v0.2",
+   "locus": "lectures/de/vl04.tex:9",
+   "quote": "Der \\emph{Einsoperator} $\\mathbb{I}$ wird durch",
+   "source_token": "\\mathbb{I}",
+   "source_meaning": "identity operator",
+   "canonical": [
+    "sym.identity"
+   ],
+   "mapping": "identical token.",
+   "verified": true,
+   "how": "read in the script source at this line"
+  }
+ ]
+}

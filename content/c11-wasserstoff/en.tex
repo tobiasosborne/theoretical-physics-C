@@ -1,0 +1,1513 @@
+% c11-wasserstoff/en.tex — Chapter 11, The hydrogen atom (English, follows de.tex)
+%
+% Smoke B of Phase 0.  Mathematics from evidence/derivations/c11/DERIVATION.md
+% (derivation) and REVIEW.md (independent check); every statement has its row in
+% evidence/claims.json (c11.cl.*). scripts/c11/check_c11_formulas.py checks exactly
+% the rows listed in formulas.json from unstarred equation/align environments,
+% whose left-hand side is a Ylm, Rnl, psinlm or Lag function with numeric indices
+% and an argument list (Lag may have a symbolic upper index). Starred displays,
+% symbolic definitions, integrals, CDFs and tpcdef bodies are outside this check.
+% Listed equations and formulas.json are changed together.
+
+\chapter{The hydrogen atom}\label{c11}
+
+The hydrogen atom consists of an electron and a proton. It is the simplest atom. In
+this chapter we construct a family of bound states in a quantum-mechanical model:
+their energies and wave functions, and the wavelengths compared under an additional
+photon-energy convention, are given as closed formulas.
+
+We proceed in three steps. First we write the atom down as what it is, namely a system
+of \emph{two} particles. Then we split off the motion of the centre of mass; we carry
+this calculation out in full, because it decides what the famous orbital pictures
+actually show. What remains is a problem for a single particle with the so-called
+reduced mass, and this we solve.
+
+\section{Two particles, one atom}\label{c11.s1}
+
+The electron sits at the position $\posE$, the proton at the position $\posP$; both
+positions are vectors in three-dimensional space. The two particles have the masses
+$\massE$ and $\massP$ and attract each other electrically. Our model contains nothing
+more:
+
+\tpcdef{D60}
+
+For hydrogen $\Znuc = 1$. We keep $\Znuc$ in the formulas; they then hold equally for a
+nucleus of charge $\Znuc\echarge$ with a single electron, if one inserts the mass of that
+nucleus for $\massP$.
+
+\begin{tpcfigure}{c11.fig.zweikoerper}
+  \caption{The positions $\posE$ of the electron and $\posP$ of the proton, measured from
+    the origin $O$, and the two new coordinates of Section~\ref{c11.s2}: the
+    centre-of-mass coordinate $\posCM$ and the relative coordinate
+    $\posRel = \posE - \posP$. The centre of mass divides the connecting segment in the
+    ratio of the masses. The picture is drawn for the mass ratio
+    $\massP : \massE = 3 : 1$, so that the centre of mass can be told apart from the
+    proton; this is not the ratio in the hydrogen atom.}
+\end{tpcfigure}
+
+% GAP-TJO: Die Formulierung der Brücke vom endlichdimensionalen Kern (C0-C4) zu L^2 ist
+% TJOs (PLAN.md Abschnitt 14, Punkt 7; sie gehört nach C5).  Der folgende Absatz hält sich
+% an die Aufzählung dort und erfindet nichts hinzu.
+What do “state” and “operator” mean here? From Chapter~\ref{c05} on we work with wave
+functions, and the following is meant in exactly that sense: the states we compute with
+are given by a wave function $\Psi(\posE, \posP)$, a complex-valued function of six real
+variables whose squared modulus integrates to one over all of $\mathbb{R}^6$; the inner
+product of two wave functions is an integral; and we initially use the differential
+expression of \defref{D60} on functions that can be differentiated twice away from
+collision points. Twice differentiability alone does not specify an operator domain on
+$\Ltwo{\mathbb{R}^6}$. The eigenfunction equations hold away from collision points and
+as $L^2$ identities almost everywhere. On which functions exactly the rule defines an
+operator is a separate question\zoomref{c11.f1}.
+
+That functions of six variables belong to two particles is written as
+\begin{equation}\label{c11.eq.hilbertraum}\claim{c11.cl.hilbertraum}{source-quoted}
+  \Ltwo{\mathbb{R}^3} \otimes \Ltwo{\mathbb{R}^3} = \Ltwo{\mathbb{R}^6},
+  \qquad
+  (f \otimes g)(\posE, \posP) = f(\posE)\, g(\posP).
+\end{equation}
+On the left is the tensor product with which systems are composed in quantum mechanics;
+on the right is what this means for wave functions: the product $f \otimes g$ of a
+function of the electron position and a function of the proton position is the ordinary
+product function \srcref{reed-simon-1}{Theorem II.10 (a), p. 52}. Only the right-hand
+side matters to us: we compute with functions of six variables.
+
+Our model leaves out a great deal, and we say so at once. Electron and proton are point
+charges without spin; the motion is non-relativistic; the only interaction is the Coulomb
+attraction; a light field that the atom could emit or absorb does not occur in $\HamTot$.
+All results of this chapter are statements about this model.
+
+\section{Centre of mass and relative motion}\label{c11.s2}
+
+The potential in $\HamTot$ depends only on the separation vector $\posE - \posP$. This
+suggests taking that vector as one of the new coordinates. As the second we take the
+centre of mass.
+
+\tpcdef{D61}
+
+\tpcdef{D62}
+
+\begin{tpcfigure}{c11.fig.massen}
+  \caption{Where the centre of mass lies on the segment from the proton to the electron: by \defref{D61} at the distance $(\massE/\massTot)\,\rad$ from the proton. For equal masses this is the middle, for the mass ratio of Figure~\ref{c11.fig.zweikoerper} a quarter of the segment. In the hydrogen atom the proton is so much heavier than the electron that, at the scale of this picture, the centre of mass coincides with the proton.}
+\end{tpcfigure}
+
+\subsection{The new coordinates}\label{c11.s2.1}
+
+First we solve for the old coordinates. From $\posRel = \posE - \posP$ it follows that
+$\posE = \posP + \posRel$. Inserted into
+$\massTot\posCM = \massE\posE + \massP\posP$ this gives
+$\massTot\posCM = \massTot\posP + \massE\posRel$, hence
+\begin{equation}\label{c11.eq.umkehr}\claim{c11.cl.umkehr}{derived}
+  \posP = \posCM - \frac{\massE}{\massTot}\,\posRel,
+  \qquad
+  \posE = \posCM + \frac{\massP}{\massTot}\,\posRel.
+\end{equation}
+To every pair $(\posE, \posP)$ there belongs exactly one pair $(\posCM, \posRel)$ and
+conversely (Figure~\ref{c11.fig.zweikoerper}). We can therefore write a wave function
+just as well as a function of the new coordinates. We call this function
+$\widetilde{\Psi}$:
+\begin{equation}\label{c11.eq.tilde}\claim{c11.cl.tilde}{derived}
+  \widetilde{\Psi}(\posCM, \posRel)
+  = \Psi\Bigl(\posCM + \frac{\massP}{\massTot}\,\posRel,\;
+              \posCM - \frac{\massE}{\massTot}\,\posRel\Bigr),
+  \qquad
+  \widetilde{\Psi} = \Uni\Psi.
+\end{equation}
+The letter $\Uni$ stands for the map that turns $\Psi$ into the function
+$\widetilde{\Psi}$. It changes nothing about the physics, only the labelling.
+
+Does it change the normalisation? In a change of integration variables what matters is
+the modulus of the determinant of the coordinate transformation. The transformation does
+not mix the three directions of space: the same holds in each direction, for example for
+the $x$-components $x_{\mathrm{e}}$, $x_{\mathrm{p}}$ of the old and $X$, $x$ of the new
+coordinates
+\begin{equation}\label{c11.eq.jacobi}\claim{c11.cl.jacobi}{derived}
+  \begin{aligned}
+    \begin{pmatrix} X \\ x \end{pmatrix}
+    &= \begin{pmatrix} \massE/\massTot & \massP/\massTot \\ 1 & -1 \end{pmatrix}
+      \begin{pmatrix} x_{\mathrm{e}} \\ x_{\mathrm{p}} \end{pmatrix}, \\
+    \det \begin{pmatrix} \massE/\massTot & \massP/\massTot \\ 1 & -1 \end{pmatrix}
+    &= -\frac{\massE + \massP}{\massTot} = -1.
+  \end{aligned}
+\end{equation}
+For all three directions together the determinant is $(-1)^3 = -1$. Its modulus is
+one: the full Jacobian preserves the integration volume and hence the normalisation.
+The particular planar cell in Figure~\ref{c11.fig.koordinaten} has the same area as
+the unit square shown there.
+\begin{equation}\label{c11.eq.norm}\claim{c11.cl.norm}{derived}
+  \int \abs{\widetilde{\Psi}(\posCM, \posRel)}^2 \,\dd^3\posCM\,\dd^3\posRel
+  = \int \abs{\Psi(\posE, \posP)}^2 \,\dd^3\posE\,\dd^3\posP .
+\end{equation}
+
+\begin{tpcfigure}{c11.fig.koordinaten}
+  \caption{The change of coordinates for one direction of space, again drawn for
+    $\massP : \massE = 3 : 1$. Solid lines: $X$ fixed; dashed lines: $x$ fixed. The new
+    coordinate lines are not perpendicular to each other, but the mesh between $X = 1$,
+    $X = 2$, $x = 0$ and $x = 1$ has the same area as the unit square of the old
+    coordinates: the modulus of the determinant in \eqref{c11.eq.jacobi} is one.}
+\end{tpcfigure}
+
+\subsection{The kinetic energy in the new coordinates}\label{c11.s2.2}
+
+Now comes the actual calculation. We need the second derivatives with respect to the old
+coordinates, expressed through derivatives with respect to the new ones. The tool is the
+chain rule, and again one direction of space suffices. By \defref{D61},
+$X = (\massE x_{\mathrm{e}} + \massP x_{\mathrm{p}})/\massTot$ and
+$x = x_{\mathrm{e}} - x_{\mathrm{p}}$, hence
+\begin{equation}\label{c11.eq.partiell}\claim{c11.cl.partiell}{derived}
+  \frac{\partial X}{\partial x_{\mathrm{e}}} = \frac{\massE}{\massTot},
+  \qquad
+  \frac{\partial x}{\partial x_{\mathrm{e}}} = 1,
+  \qquad
+  \frac{\partial X}{\partial x_{\mathrm{p}}} = \frac{\massP}{\massTot},
+  \qquad
+  \frac{\partial x}{\partial x_{\mathrm{p}}} = -1.
+\end{equation}
+A function of the new coordinates depends on $x_{\mathrm{e}}$ through $X$ and through
+$x$. The chain rule collects both dependences:
+\begin{equation}\label{c11.eq.kette}\claim{c11.cl.kette}{derived}
+  \frac{\partial}{\partial x_{\mathrm{e}}}
+  = \frac{\massE}{\massTot}\frac{\partial}{\partial X} + \frac{\partial}{\partial x},
+  \qquad
+  \frac{\partial}{\partial x_{\mathrm{p}}}
+  = \frac{\massP}{\massTot}\frac{\partial}{\partial X} - \frac{\partial}{\partial x}.
+\end{equation}
+
+\begin{tpcfigure}{c11.fig.kette}
+  \caption{The chain rule \eqref{c11.eq.kette} as a diagram. A function of $X$ and $x$ depends on $x_{\mathrm{e}}$ along two routes (solid) and on $x_{\mathrm{p}}$ along two routes (dashed). Each arrow carries the factor of \eqref{c11.eq.partiell}; the derivative with respect to an old coordinate is the sum over its two routes.}
+\end{tpcfigure}
+
+We apply this twice. If the function is twice continuously differentiable, the order of
+the derivatives does not matter, and one may compute as in a binomial formula:
+\begin{equation}\label{c11.eq.zweite}\claim{c11.cl.zweite}{derived}
+  \begin{aligned}
+    \frac{\partial^2}{\partial x_{\mathrm{e}}^2}
+    &= \frac{\massE^2}{\massTot^2}\frac{\partial^2}{\partial X^2}
+     + \frac{2\massE}{\massTot}\frac{\partial^2}{\partial X\,\partial x}
+     + \frac{\partial^2}{\partial x^2}, \\
+    \frac{\partial^2}{\partial x_{\mathrm{p}}^2}
+    &= \frac{\massP^2}{\massTot^2}\frac{\partial^2}{\partial X^2}
+     - \frac{2\massP}{\massTot}\frac{\partial^2}{\partial X\,\partial x}
+     + \frac{\partial^2}{\partial x^2}.
+  \end{aligned}
+\end{equation}
+The same holds for the $y$- and the $z$-direction. The sum over the three directions
+turns the second derivatives into Laplacians; the mixed terms add up to
+$\nabla_{\posCM} \cdot \nabla_{\posRel}$, the scalar product of the two gradients:
+\begin{equation}\label{c11.eq.laplace}\claim{c11.cl.laplace}{derived}
+  \begin{aligned}
+    \Lap_{\mathrm{e}}
+    &= \frac{\massE^2}{\massTot^2}\,\Lap_{\posCM}
+     + \frac{2\massE}{\massTot}\,\nabla_{\posCM} \cdot \nabla_{\posRel}
+     + \Lap_{\posRel}, \\
+    \Lap_{\mathrm{p}}
+    &= \frac{\massP^2}{\massTot^2}\,\Lap_{\posCM}
+     - \frac{2\massP}{\massTot}\,\nabla_{\posCM} \cdot \nabla_{\posRel}
+     + \Lap_{\posRel}.
+  \end{aligned}
+\end{equation}
+In $\HamTot$, $\Lap_{\mathrm{e}}$ is divided by $\massE$ and $\Lap_{\mathrm{p}}$ by
+$\massP$. Exactly these weights make the mixed terms vanish:
+\begin{equation}\label{c11.eq.koeff}\claim{c11.cl.koeff}{derived}
+  \begin{aligned}
+    \frac{1}{\massE}\,\Lap_{\mathrm{e}} + \frac{1}{\massP}\,\Lap_{\mathrm{p}}
+    &= \frac{\massE + \massP}{\massTot^2}\,\Lap_{\posCM}
+     + \Bigl(\frac{2}{\massTot} - \frac{2}{\massTot}\Bigr)\,
+       \nabla_{\posCM} \cdot \nabla_{\posRel}
+     + \Bigl(\frac{1}{\massE} + \frac{1}{\massP}\Bigr)\,\Lap_{\posRel} \\
+    &= \frac{1}{\massTot}\,\Lap_{\posCM} + \frac{1}{\massRed}\,\Lap_{\posRel}.
+  \end{aligned}
+\end{equation}
+In front of $\Lap_{\posCM}$ stands the reciprocal of the total mass, in front of
+$\Lap_{\posRel}$ the reciprocal of the reduced mass of \defref{D62}. Multiplying by
+$-\hbar^2/2$ and adding the potential, which depends only on $\posRel$, gives the result.
+
+\begin{theorem}[Splitting off the centre-of-mass motion]\label{c11.thm.separation}\claim[proof-included]{c11.cl.separation}{derived}
+  Let the function $\Psi$ of the two positions be twice continuously differentiable
+  wherever $\posE \neq \posP$, and let $\widetilde{\Psi} = \Uni\Psi$ be the same function
+  in the new coordinates as in \eqref{c11.eq.tilde}. Then at all these points
+  \begin{equation}\label{c11.eq.separation}
+    \begin{aligned}
+      \Uni\,\HamTot\Psi &= \HamCM\widetilde{\Psi} + \HamRel\widetilde{\Psi}, \\
+      \HamCM &= -\frac{\hbar^2}{2\massTot}\,\Lap_{\posCM},
+      \qquad
+      \HamRel = -\frac{\hbar^2}{2\massRed}\,\Lap_{\posRel} + \Vpot(\posRel).
+    \end{aligned}
+  \end{equation}
+  Here $\HamCM$ acts only on the centre-of-mass coordinate and $\HamRel$ only on the
+  relative coordinate.
+\end{theorem}
+\begin{proof}
+  The kinetic energy in $\HamTot$ is the left-hand side of \eqref{c11.eq.koeff},
+  multiplied by $-\hbar^2/2$. The right-hand side of \eqref{c11.eq.koeff} then supplies
+  the two Laplacians in \eqref{c11.eq.separation}. The potential $\Vpot(\posE - \posP)$ is
+  $\Vpot(\posRel)$ in the new coordinates. The points with $\posE = \posP$, that is
+  $\posRel = 0$, are excluded because the potential is not defined there.
+\end{proof}
+
+\begin{tpcfigure}{c11.fig.zerlegung}
+  \caption{Theorem~\ref{c11.thm.separation} as a diagram; the lengths in the picture mean nothing. Left, the atom as it stands: two particles, coupled by the potential. Right, the same system in the new coordinates: a free particle of mass $\massTot$ and, independently of it, one particle of mass $\massRed$ in the potential $\Vpot$.}
+\end{tpcfigure}
+
+The theorem is a statement about differential expressions. With the tensor product of
+\eqref{c11.eq.hilbertraum}, now for the variables $\posCM$ and $\posRel$, the same is
+written briefly as $\Uni\,\HamTot\,\Uni^{-1} = \HamCM \otimes \Id + \Id \otimes \HamRel$
+\srcref{reed-simon-3}{§\,XI.4, p. 55}.
+
+So the Hamiltonian falls into two parts that know nothing of each other. We exploit this
+with a product ansatz. If $\widetilde{\Psi}(\posCM, \posRel) =
+\Phi(\posCM)\,\psi(\posRel)$, then $\HamCM$ acts only on $\Phi$ and $\HamRel$ only on
+$\psi$:
+\begin{equation}\label{c11.eq.produkt}\claim{c11.cl.produkt}{derived}
+  (\HamCM + \HamRel)\,\Phi\,\psi
+  = (\HamCM\Phi)\,\psi + \Phi\,(\HamRel\psi).
+\end{equation}
+The first term describes a free particle of mass $\massTot$: the centre of mass of the
+atom moves as if the inner life did not exist. The second term describes \emph{one}
+particle of mass $\massRed$ in the potential $\Vpot$. All the atomic physics of this
+chapter is contained in $\HamRel$.
+
+\begin{merksatz}[Exact, not approximate]
+  The reduction of the two-particle problem to a one-particle problem with the reduced
+  mass $\massRed$ is exact in our model. It becomes an approximation only when one
+  replaces $\massRed$ by $\massE$, that is, pretends that the proton were infinitely
+  heavy.
+\end{merksatz}
+
+How good would this approximation be? The electron is much lighter than the proton. The
+ratio of the masses is $\massE/\massP = \num[c11.cl.q]{5.44617 \times 10^{-4}}{}$. For
+the reduced mass it follows that $\massRed/\massE = 1/(1 + \massE/\massP)$, in numbers
+\num[c11.cl.mu-ratio]{0.999456}{}. It is thus only slightly smaller than the electron
+mass (Figure~\ref{c11.fig.reduziert}). But because the
+calculation with $\massRed$ is no harder than the one with $\massE$, we compute with
+$\massRed$ throughout and say for every quantity which mass it contains.
+
+\begin{tpcfigure}{c11.fig.reduziert}
+  \caption{The reduced mass of \defref{D62}, in units of the electron mass, as a function of the mass ratio; the horizontal axis is logarithmic. For equal masses $\massRed$ is half of $\massE$. The heavier the second particle, the closer $\massRed$ comes to the electron mass; the right-hand point is hydrogen.}
+\end{tpcfigure}
+
+\section{What the relative wave function is and what it is not}\label{c11.s3}
+
+The functions $\psi(\posRel)$ that we compute in the next sections are functions of the
+relative coordinate. Before we do so, we clarify what such a function says about the atom
+in the laboratory. For this we need the second half of the state, the wave function
+$\Phi(\posCM)$ of the centre of mass.
+
+We consider a product state
+$\widetilde{\Psi}(\posCM, \posRel) = \Phi(\posCM)\,\psi(\posRel)$ in which $\Phi$ and
+$\psi$ are each normalised. By \eqref{c11.eq.norm}, $\Psi$ is then normalised as well.
+Integrating the squared modulus over one of the two new coordinates leaves the density of
+the other:
+\begin{equation}\label{c11.eq.relativdichte}\claim{c11.cl.relativdichte}{derived}
+  \int \abs{\widetilde{\Psi}(\posCM, \posRel)}^2 \,\dd^3\posCM = \abs{\psi(\posRel)}^2,
+  \qquad
+  \int \abs{\widetilde{\Psi}(\posCM, \posRel)}^2 \,\dd^3\posRel = \abs{\Phi(\posCM)}^2.
+\end{equation}
+% GAP-TJO: Wie der Kurs operational sagt, was |psi|^2 "ist" (Wahrscheinlichkeitsdichte
+% wofür, gemessen wie), ist TJOs Formulierung; hier steht nur die Randdichte der Formel.
+So $\abs{\psi(\posRel)}^2$ is the probability density of the separation vector
+$\posRel = \posE - \posP$ from the proton to the electron, and $\abs{\Phi(\posCM)}^2$ is
+that of the position of the centre of mass. Neither is the density of the electron in the
+laboratory. That we define separately.
+
+\tpcdef{D70}
+
+\begin{tpcfigure}{c11.fig.kopien}
+  \caption{How the density of the electron in the laboratory comes about, as a diagram; lengths and line weights mean nothing. Every possible position of the centre of mass (crosses) carries a scaled copy of the relative density (rings), with $g_b(\boldsymbol{y}) = b^{-3}g(\boldsymbol{y}/b)$, $g = \abs{\psi}^2$ and $b = \massP/\massTot$, weighted by the probability of this position in the centre-of-mass state. The sum of all copies is $\densE$. The calculation follows.}
+\end{tpcfigure}
+
+For the product state $\densE$ can be computed. We hold the electron position
+$\posE = \boldsymbol{x}$ fixed and integrate over $\posP$. Instead of $\posP$ we
+integrate over $\posRel = \boldsymbol{x} - \posP$; here $\dd^3\posP = \dd^3\posRel$, and
+by \eqref{c11.eq.umkehr} the centre of mass lies at
+$\posCM = \boldsymbol{x} - (\massP/\massTot)\,\posRel$. This gives
+\begin{equation}\label{c11.eq.faltung}\claim{c11.cl.faltung}{derived}
+  \densE(\boldsymbol{x})
+  = \int \Bigl\lvert \Phi\Bigl(\boldsymbol{x} - \frac{\massP}{\massTot}\,\posRel\Bigr)
+    \Bigr\rvert^2 \abs{\psi(\posRel)}^2 \,\dd^3\posRel .
+\end{equation}
+In the same way one finds for the proton, with $\posRel = \posE - \boldsymbol{x}$ and
+$\posCM = \boldsymbol{x} + (\massE/\massTot)\,\posRel$,
+\begin{equation}\label{c11.eq.protondichte}\claim{c11.cl.protondichte}{derived}
+  \densP(\boldsymbol{x})
+  = \int \Bigl\lvert \Phi\Bigl(\boldsymbol{x} + \frac{\massE}{\massTot}\,\posRel\Bigr)
+    \Bigr\rvert^2 \abs{\psi(\posRel)}^2 \,\dd^3\posRel .
+\end{equation}
+With $f = \abs{\Phi}^2$, $g = \abs{\psi}^2$, $b = \massP/\massTot$ and
+$g_b(\boldsymbol{y}) = b^{-3}g(\boldsymbol{y}/b)$, equation \eqref{c11.eq.faltung} is
+the convolution $\densE = f * g_b$. Every possible position of the centre of mass
+contributes a scaled copy of the relative density, weighted by the probability of
+that position. The density of the electron in the laboratory is this scaled relative
+density smeared by the uncertainty of the centre of mass (Figure~\ref{c11.fig.faltung}).
+
+\begin{tpcfigure}{c11.fig.faltung}
+  \caption{The convolution \eqref{c11.eq.faltung} along a straight line through the
+    centre of the centre-of-mass packet, for $\Znuc = 1$. Thin solid: the relative
+    density $\abs{\psinlm{1}{0}{0}}^2$ of the state 1s of Section~\ref{c11.s5}.
+    Dashed: the density $\abs{\Phi}^2$ of a centre-of-mass packet in the shape of a bell
+    curve; its width, $\num[c11.cl.wolke]{0.7}{}$ units of length, is chosen for the
+    picture. Heavy: the density $\densE$ of the electron in the laboratory. It is wider
+    and flatter than both. At the marked point, one unit of length from the centre,
+    $\densE\,\aRed^3 = \num[c11.cl.wolke]{0.0379}{}$. The unit of length is the Bohr
+    radius $\aRed$ with the reduced mass of Section~\ref{c11.s4}.}
+\end{tpcfigure}
+
+In two limiting cases the smeared density becomes the familiar picture.
+
+\emph{Sharp centre of mass.} We contract the packet $\abs{\Phi}^2$ ever more tightly
+around a point $\posCM_0$. A normalisable state of width zero does not exist; what is
+meant is a sequence of ever narrower packets. In the limit only that contribution to the
+integral \eqref{c11.eq.faltung} remains for which the argument of $\Phi$ equals
+$\posCM_0$.
+
+\emph{Infinitely heavy proton.} If the proton mass grows beyond all bounds,
+$\massP/\massTot$ tends to one and $\massE/\massTot$ to zero, and the reduced mass
+tends to $\massE$. The proton density \eqref{c11.eq.protondichte} then becomes
+$\abs{\Phi}^2$: the proton sits at the centre of mass.
+
+In formulas, in the first line for the sharp centre of mass at $\posCM_0$, in the second
+when in addition $\massP \to \infty$:
+\begin{equation}\label{c11.eq.grenzfall}\claim{c11.cl.grenzfall}{derived}
+  \begin{aligned}
+    \densE(\boldsymbol{x})
+    &\longrightarrow \Bigl(\frac{\massTot}{\massP}\Bigr)^{3}
+      \Bigl\lvert \psi\Bigl(\frac{\massTot}{\massP}\,(\boldsymbol{x} - \posCM_0)\Bigr)
+      \Bigr\rvert^2, \\
+    \densE(\boldsymbol{x})
+    &\longrightarrow \abs{\psi(\boldsymbol{x} - \posCM_0)}^2 .
+  \end{aligned}
+\end{equation}
+Only when both come together, a sharply localised centre of mass \emph{and} an infinitely
+heavy proton, is $\abs{\psi}^2$ the density of the electron around a fixed point. For
+finite proton mass the electron density is compressed by the factor $\massP/\massTot$,
+and the proton for its part has a small cloud around the centre of mass.
+
+\begin{merksatz}[What an orbital picture shows]
+  An orbital picture shows $\abs{\psi(\posRel)}^2$, the density of the relative
+  coordinate $\posRel = \posE - \posP$. It does not show where the electron is in the
+  laboratory: for that one has to say how the centre of mass is prepared, and carry out
+  the convolution \eqref{c11.eq.faltung}.
+\end{merksatz}
+
+For the energy, too, the two halves have to be kept apart. If $\psi$ is a solution of
+$\HamRel\psi = E\psi$, the expectation value of the total energy in the product state is
+\begin{equation}\label{c11.eq.energie}\claim{c11.cl.energie}{derived}
+  \Etot = \frac{\hbar^2}{2\massTot} \int \abs{\nabla\Phi(\posCM)}^2 \,\dd^3\posCM + E ,
+\end{equation}
+provided the integral is finite. The first term is the kinetic energy of the centre of
+mass; it depends on how the atom as a whole was prepared, and it is never zero, because a
+normalised function $\Phi$ cannot be constant. The second term, $E$, is the
+\emph{internal} energy of the atom. The energies $\En{\nqn}$ that we are about to compute
+are internal energies. An atom at rest with a sharp total energy is not a normalisable
+state in this model; the centre of mass is always a free wave packet. Its probability
+in every fixed bounded region tends to zero at large times. When second moments
+exist, its width grows at large times; it can initially narrow\zoomref{c11.v1}.
+
+\begin{tpcfigure}{c11.fig.energie}
+  \caption{Internal energy and total energy according to \eqref{c11.eq.energie}, for $\Znuc = 1$ and in units of the Rydberg energy $\RydRed$ of Section~\ref{c11.s4}. The heavy strokes are the internal energies $\En{1}$, $\En{2}$, $\En{3}$ of Theorem~\ref{c11.thm.spektrum}. Hatched in each case is the range in which the expectation value of the total energy can lie: it begins at the internal energy and has no upper end, because the kinetic energy of the centre of mass can have any positive value.}
+\end{tpcfigure}
+
+\begin{vertiefung}[id=c11.v1,
+    titel={Why the centre of mass spreads},
+    wozu={The Core text asserts that the centre of mass of an atom cannot be an energy
+      eigenstate but is always a wave packet, and that this packet spreads. Here is the
+      calculation.},
+    voraussetzung={Core~\ref{c11.s2} and \ref{c11.s3}; the Fourier transform of
+      Chapter~\ref{c05}. Not needed for Sections~\ref{c11.s4} to \ref{c11.s7}.},
+    zurueck={The internal density $\abs{\psi}^2$ of an energy eigenstate stands still;
+      the density of the centre of mass, and with it the densities of electron and
+      proton in the laboratory, spread out.}]
+  The centre of mass is a free particle of mass $\massTot$. We write
+  $\FT{\Phi}(\boldsymbol{k})$ for the Fourier transform of $\Phi(\posCM)$; it is again
+  normalised, and integrating by parts twice turns $-\Lap_{\posCM}\Phi$ into
+  $\abs{\boldsymbol{k}}^2\,\FT{\Phi}$.
+
+  \begin{proposition}[No normalisable eigenstate]\label{c11.prop.kein-eigenzustand}\claim[proof-included]{c11.cl.kein-eigenzustand}{derived}
+    There is no real number $\lambda$ and no square-integrable function $\Phi \neq 0$ with
+    $-\Lap_{\posCM}\Phi = \lambda\Phi$.
+  \end{proposition}
+  \begin{proof}
+    After Fourier transformation the equation reads
+    $(\abs{\boldsymbol{k}}^2 - \lambda)\,\FT{\Phi}(\boldsymbol{k}) = 0$ for almost all
+    $\boldsymbol{k}$. For $\lambda < 0$ the prefactor is nowhere zero. For
+    $\lambda \geq 0$ it is zero only on a sphere (for $\lambda = 0$: at one point), and
+    that is a set of volume zero. In both cases $\FT{\Phi}$ is zero almost everywhere,
+    hence $\Phi = 0$.
+  \end{proof}
+
+  A plane wave $e^{i\boldsymbol{k}\cdot\posCM}$ does solve the eigenvalue equation, but
+  it has modulus one everywhere and is not normalisable. A normalisable centre-of-mass
+  state is therefore always a superposition of many momenta, a wave packet. How wide it
+  is, is measured by the variance $\Var\posCM$, the sum of the variances of the three
+  components. For a free particle, in the Heisenberg picture
+  $\posCM(t) = \posCM(0) + t\,\boldsymbol{P}/\massTot$ with the total momentum
+  $\boldsymbol{P}$. With the deviations $\delta\posCM$ and $\delta\boldsymbol{P}$ from
+  the expectation values it follows, for packets whose second moments are finite, that
+  \begin{equation}\label{c11.eq.varianz}\claim{c11.cl.varianz}{derived}
+    \Var\posCM(t) = \Var\posCM(0)
+    + \frac{t}{\massTot}\,\expval{\delta\posCM \cdot \delta\boldsymbol{P}
+      + \delta\boldsymbol{P} \cdot \delta\posCM}
+    + \frac{t^2}{\massTot^2}\,\Var\boldsymbol{P}.
+  \end{equation}
+  The momentum variance $\Var\boldsymbol{P}$ of a normalisable packet is not zero. For
+  large times the last term therefore wins, and the width grows in proportion to
+  $\abs{t}$. At the beginning the packet can become narrower if the middle term is
+  negative (Figure~\ref{c11.fig.zerfliessen}).
+
+  \begin{tpcfigure}{c11.fig.zerfliessen}
+    \caption{The width of a free centre-of-mass packet according to
+      \eqref{c11.eq.varianz}, relative to the initial width. Horizontally the time,
+      measured in units of $\massTot\sqrt{\Var\posCM(0)}/\sqrt{\Var\boldsymbol{P}}$. The
+      number $k$ is the expectation value in the middle term of \eqref{c11.eq.varianz},
+      divided by $2\sqrt{\Var\posCM(0)\,\Var\boldsymbol{P}}$. Solid: $k = 0$. Dashed: a packet with
+      $k < 0$, which first becomes narrower and then wider; the dot marks its smallest
+      width. Thin: a line with the common asymptotic slope.}
+  \end{tpcfigure}
+
+  Without an assumption on second moments a weaker but general statement holds.
+
+  \begin{proposition}[Local spreading]\label{c11.prop.zerfliessen}\claim[proof-included]{c11.cl.zerfliessen}{derived}
+    Let $\Phi_t$ be the free time evolution of a normalised $\Phi_0$ and $B$ a bounded
+    region. Then the probability $\int_B \abs{\Phi_t(\posCM)}^2 \,\dd^3\posCM$ of finding
+    the centre of mass in $B$ tends to zero for $\abs{t} \to \infty$.
+  \end{proposition}
+  \begin{proof}
+    The free time evolution multiplies $\FT{\Phi}(\boldsymbol{k})$ by
+    $e^{-i\hbar\abs{\boldsymbol{k}}^2 t/(2\massTot)}$. Back in position space this is an
+    integral $\Phi_t(\posCM) = \int K_t(\posCM - \posCM')\,\Phi_0(\posCM')\,\dd^3\posCM'$
+    with a kernel whose modulus does not depend on position:
+    \begin{equation}\label{c11.eq.freikern}
+      K_t(\boldsymbol{z}) = \Bigl(\frac{\massTot}{2\pi i\hbar t}\Bigr)^{3/2}
+        e^{i\massTot\abs{\boldsymbol{z}}^2/(2\hbar t)},
+      \qquad
+      \abs{K_t(\boldsymbol{z})} = \Bigl(\frac{\massTot}{2\pi\hbar\abs{t}}\Bigr)^{3/2}.
+    \end{equation}
+    The kernel arises from a Gaussian integral over $\boldsymbol{k}$. For a smooth,
+    rapidly decreasing $g$ in place of $\Phi_0$ we therefore have everywhere
+    \begin{equation}\label{c11.eq.schranke}
+      \abs{g_t(\posCM)} \leq \Bigl(\frac{\massTot}{2\pi\hbar\abs{t}}\Bigr)^{3/2}
+        \int \abs{g(\posCM')}\,\dd^3\posCM' ,
+    \end{equation}
+    and the integral of $\abs{g_t}^2$ over $B$ is at most the volume of $B$ times the
+    square of this bound; it tends to zero. An arbitrary normalised $\Phi_0$ can be
+    approximated by such $g$ in the mean square as closely as one likes, and the free
+    time evolution does not change the distance in the mean square. So for large
+    $\abs{t}$ the square root of the probability in question lies below every prescribed
+    bound.
+  \end{proof}
+
+  The statement does not say that the density decreases at every point, nor that the
+  width grows from the beginning. For the relative motion things are different: an
+  energy eigenstate evolves as $\psi(t) = e^{-i\En{\nqn}t/\hbar}\,\psi(0)$; its density
+  $\abs{\psi}^2$ does not change.
+\end{vertiefung}
+
+
+\section{The relative motion: radial equation and energies}\label{c11.s4}
+
+We now look for the solutions of $\HamRel\psi = E\psi$ with negative energy $E$, the
+bound states. This is the problem of a single particle of mass $\massRed$ in a potential
+that depends only on the distance $\rad = \abs{\posRel}$. For such potentials we used
+spherical coordinates $(\rad, \theta, \phi)$ in Chapter~\ref{c10} and solved the angular
+part once and for all: with the spherical harmonics $\Ylm{\lqn}{\mqn}$ of \defref{D67}.
+From there we take over a single fact. On a product of a function $R(\rad)$ of the
+distance and a spherical harmonic the Laplacian acts like this:
+\begin{equation}\label{c11.eq.winkel}\claim{c11.cl.winkel}{numerically-checked}
+  \Lap_{\posRel}\bigl(R(\rad)\,\Ylm{\lqn}{\mqn}(\theta, \phi)\bigr)
+  = \Bigl(\frac{1}{\rad^2}\frac{\dd}{\dd\rad}\Bigl(\rad^2\frac{\dd R}{\dd\rad}\Bigr)
+    - \frac{\lqn(\lqn + 1)}{\rad^2}\,R\Bigr)\,\Ylm{\lqn}{\mqn}(\theta, \phi).
+\end{equation}
+With this the angles are dealt with; the number $\lqn$ remembers how much angular
+momentum there is in the motion. For $\lqn = 0$, $1$ and $2$, and we need no more in this
+chapter, \eqref{c11.eq.winkel} has been verified exactly for arbitrary $R$.
+
+There remains an equation for $R(\rad)$. It becomes simpler still if instead of $R$ one
+uses the function $u(\rad) = \rad\,R(\rad)$, for then
+\begin{equation}\label{c11.eq.usubst}\claim{c11.cl.usubst}{derived}
+  \frac{1}{\rad^2}\frac{\dd}{\dd\rad}\Bigl(\rad^2\frac{\dd}{\dd\rad}\frac{u}{\rad}\Bigr)
+  = \frac{1}{\rad}\frac{\dd^2 u}{\dd\rad^2} .
+\end{equation}
+The rest we collect into a potential.
+
+\tpcdef{D71}
+
+Inserting $\psi = (u/\rad)\,\Ylm{\lqn}{\mqn}$ into $\HamRel\psi = E\psi$, using
+\eqref{c11.eq.winkel} and multiplying by $\rad$, one obtains the \emph{radial equation}
+\begin{equation}\label{c11.eq.radial}\claim{c11.cl.radial}{derived}
+  \begin{aligned}
+    -\frac{\hbar^2}{2\massRed}\,\frac{\dd^2 u}{\dd\rad^2} + \Veff{\lqn}(\rad)\,u(\rad)
+    &= E\,u(\rad), \\
+    \Veff{\lqn}(\rad) &= \frac{\hbar^2\lqn(\lqn + 1)}{2\massRed\,\rad^2}
+      - \frac{\Znuc\echarge^2}{4\pi\epsz\,\rad}.
+  \end{aligned}
+\end{equation}
+This is the Schrödinger equation of a particle on the half-line $\rad > 0$ in the
+effective potential $\Veff{\lqn}$, hence a one-dimensional problem.
+Figure~\ref{c11.fig.potential} shows this potential. We look for solutions that are
+normalisable. Because
+the spherical harmonics are normalised on the sphere, this means
+\begin{equation}\label{c11.eq.unorm}\claim{c11.cl.unorm}{derived}
+  \int_0^\infty \abs{R(\rad)}^2\,\rad^2\,\dd\rad = \int_0^\infty \abs{u(\rad)}^2\,\dd\rad = 1 .
+\end{equation}
+The factor $\rad^2$ comes from the volume element in spherical coordinates; it is the
+reason why $u$ is more convenient than $R$.
+
+\begin{tpcfigure}{c11.fig.potential}
+  \caption{The effective potential $\Veff{\lqn}$ of \eqref{c11.eq.radial} for
+    $\Znuc = 1$. Solid: $\lqn = 0$, the pure Coulomb potential. Dashed: $\lqn = 1$; the
+    centrifugal term keeps the particle away from the origin and produces a well whose
+    lowest point is marked. Thin horizontal lines: the energies $\En{1}$, $\En{2}$,
+    $\En{3}$ of Theorem~\ref{c11.thm.spektrum}. Lengths in units of $\aRed$, energies in
+    units of $\RydRed$; both contain the reduced mass.}
+\end{tpcfigure}
+
+\subsection{The natural units of the atom}\label{c11.s4.1}
+
+The constants in \eqref{c11.eq.radial} fix a length and an energy. In these units the
+equation becomes easy to survey.
+
+\tpcdef{D63}
+
+\tpcdef{D64}
+
+So there are two Bohr radii, and for every formula one has to say which one is meant.
+The radial equation contains the reduced mass, hence $\aRed$. From the two definitions
+it follows that
+\begin{equation}\label{c11.eq.bohr}\claim{c11.cl.bohr}{derived}
+  \begin{aligned}
+    \aRed &= \frac{4\pi\epsz\hbar^2}{\massRed\,\echarge^2}
+           = \aBohr\,\frac{\massE}{\massRed}
+           = \aBohr\,\Bigl(1 + \frac{\massE}{\massP}\Bigr), \\
+    \RydRed &= \frac{\hbar^2}{2\massRed\,\aRed^2}
+             = \frac{\echarge^2}{8\pi\epsz\,\aRed}
+             = \frac{\massRed}{\massE}\,\Ryd .
+  \end{aligned}
+\end{equation}
+The energy $\RydRed$ is the Rydberg energy with the reduced mass. In numbers:
+$\aBohr = \num[c11.cl.a0]{5.29177 \times 10^{-11}}{m}$ and
+$\aRed = \num[c11.cl.amu]{5.29465 \times 10^{-11}}{m}$. Further,
+$\Ryd = \num[c11.cl.ry]{13.6057}{eV}$ and
+$\RydRed = \num[c11.cl.e1-mu]{13.5983}{eV}$.
+
+With the dimensionless length $x = \Znuc\rad/\aRed$ and the dimensionless energy
+$\varepsilon = E/(\Znuc^2\,\RydRed)$ all constants disappear from the radial equation.
+Equation \eqref{c11.eq.radial} becomes, with $u$ as a function of $x$,
+\begin{equation}\label{c11.eq.dimlos}\claim{c11.cl.dimlos}{derived}
+  -\frac{\dd^2 u}{\dd x^2} + \Bigl(\frac{\lqn(\lqn + 1)}{x^2} - \frac{2}{x}\Bigr)\,u
+  = \varepsilon\,u .
+\end{equation}
+
+\subsection{Solutions by substitution}\label{c11.s4.2}
+
+Equations such as \eqref{c11.eq.dimlos} are solved systematically with a power-series
+ansatz. That is laborious. We take the short route: we write solutions down and check
+them by substitution. The simplest is $u(x) = x\,e^{-x}$ for $\lqn = 0$. Its derivatives
+are $u' = (1 - x)\,e^{-x}$ and $u'' = (x - 2)\,e^{-x}$, and so
+\begin{equation}\label{c11.eq.grundzustand}\claim{c11.cl.grundzustand}{derived}
+  -u'' - \frac{2}{x}\,u = (2 - x)\,e^{-x} - 2\,e^{-x} = -x\,e^{-x} = -u .
+\end{equation}
+So the function solves \eqref{c11.eq.dimlos} with $\varepsilon = -1$, that is, with the
+energy $E = -\Znuc^2\,\RydRed$. It vanishes at $x = 0$ and decays exponentially for large
+$x$; it is normalisable. It has the lowest energy in the constructed family. Each of
+the following solutions is checked in the same way.
+
+\begin{tpcfigure}{c11.fig.grundzustand}
+  \caption{The solution $u(x) = x\,e^{-x}$ of \eqref{c11.eq.grundzustand} in the potential, for $\Znuc = 1$. Heavy: the effective potential for $\lqn = 0$. Thin horizontal line: the energy $\En{1} = -\RydRed$. As is usual in such pictures, the function $u$ is drawn on this line as its base line; its height is scaled freely. It starts at zero, has its maximum at $\rad = \aRed$ and decays exponentially outwards.}
+\end{tpcfigure}
+
+\begin{theorem}[Energies of the constructed bound states]\label{c11.thm.spektrum}\claim[proof-linked]{c11.cl.spektrum}{derived}
+  Let $\nqn$ be one of the numbers $1, 2, 3, \ldots$ and $\lqn$ one of the numbers
+  $0, 1, \ldots, \nqn - 1$. Then the radial equation \eqref{c11.eq.radial} has a
+  normalisable solution $u \neq 0$ with $u(0) = 0$ at the energy
+  \begin{equation}\label{c11.eq.energien}
+    \En{\nqn} = -\frac{\Znuc^2\,\RydRed}{\nqn^2}
+              = -\frac{\Znuc^2\echarge^2}{8\pi\epsz\,\aRed}\,\frac{1}{\nqn^2} .
+  \end{equation}
+  The energy depends only on $\nqn$, not on $\lqn$.
+\end{theorem}
+
+For $\nqn = 1$ we have just verified this; the solutions for $\nqn = 2$ are in
+Section~\ref{c11.s5}, and Exercise~\ref{c11.exc.zweip} checks one of them. For larger
+$\nqn$ one proceeds in the same way; the general proof we do not give
+here\zoomref{c11.v2}. The theorem says that these solutions exist. That the relative motion has no further bound states we do not show in this
+chapter.
+
+\tpcdef{D65}
+
+The count of the constructed family begins at $\nqn = 1$. Its lowest energy is
+$\En{1} = -\Znuc^2\,\RydRed$, that of the state 1s. Above it lie infinitely many
+further levels in this family, which move ever closer together and accumulate at
+$E = 0$ (Figure~\ref{c11.fig.termschema} in Section~\ref{c11.s6}). For hydrogen
+$\En{1} = \num[c11.cl.e1-mu]{-13.5983}{eV}$; with the electron mass in place of the
+reduced mass one would get $\num[c11.cl.e1-me]{-13.6057}{eV}$.
+
+To every $\nqn$ there belong several states with the same energy. One counts them with
+\defref{D65}: for every $\lqn$ there are $2\lqn + 1$ values of $\mqn$, so in total
+\begin{equation}\label{c11.eq.entartung}\claim{c11.cl.entartung}{derived}
+  \sum_{\lqn = 0}^{\nqn - 1} (2\lqn + 1) = \nqn^2 .
+\end{equation}
+
+\begin{tpctable}{c11.tab.zustaende}
+  \caption{The states of the relative motion up to $\nqn = 3$. The letters s, p, d stand
+    for $\lqn = 0, 1, 2$; the last column gives the number of states of equal energy
+    according to \eqref{c11.eq.entartung}. Spin is not counted.}
+  \begin{tabular}{ccccc}
+    \toprule
+    $\nqn$ & $\lqn$ & $\mqn$ & name & states at $\En{\nqn}$ \\
+    \midrule
+    $1$ & $0$ & $0$ & 1s & $1$ \\
+    \midrule
+    $2$ & $0$ & $0$ & 2s & \\
+    $2$ & $1$ & $-1, 0, 1$ & 2p & $4$ \\
+    \midrule
+    $3$ & $0$ & $0$ & 3s & \\
+    $3$ & $1$ & $-1, 0, 1$ & 3p & \\
+    $3$ & $2$ & $-2, -1, 0, 1, 2$ & 3d & $9$ \\
+    \bottomrule
+  \end{tabular}
+\end{tpctable}
+
+\begin{tpcfigure}{c11.fig.entartung}
+  \caption{The same states as in Table~\ref{c11.tab.zustaende}, sorted by $\nqn$ and $\lqn$, for $\Znuc = 1$. Each short stroke is one state; its height is the energy $\En{\nqn}$ in units of $\RydRed$. Strokes at the same height have the same energy, whichever column they stand in. On the right is their number $\nqn^2$.}
+\end{tpcfigure}
+
+\begin{vertiefung}[id=c11.v2,
+    titel={The general radial function},
+    wozu={The Core text checks the solutions for $\nqn \leq 2$ by substitution. Here is
+      the formula for all $\nqn$ and $\lqn$, the proof of Theorem~\ref{c11.thm.spektrum}
+      and the proof that the prefactor normalises the radial functions.},
+    voraussetzung={Core~\ref{c11.s4}. Not needed for Sections~\ref{c11.s5} to
+      \ref{c11.s7}, which work with the functions for $\nqn \leq 2$ written out.},
+    zurueck={For every $\nqn$ and every $\lqn < \nqn$ there is a normalised radial
+      function at the energy $\En{\nqn}$: a polynomial of degree $\nqn - \lqn - 1$ times
+      $\rad^{\lqn}$ times a decaying exponential.}]
+  The polynomials that occur in the radial functions have a name. How they are
+  normalised and labelled is a convention; we fix it.
+
+  \tpcdef{D68}
+
+  The first three are
+  \begin{align}
+    \Lag{0}{\alpha}(x) &= 1,
+      \label{c11.eq.lag0}\claim{c11.cl.lag0}{numerically-checked} \\
+    \Lag{1}{\alpha}(x) &= \alpha + 1 - x,
+      \label{c11.eq.lag1}\claim{c11.cl.lag1}{numerically-checked} \\
+    \Lag{2}{\alpha}(x) &= \frac{x^2}{2} - (\alpha + 2)\,x + \frac{(\alpha + 1)(\alpha + 2)}{2}.
+      \label{c11.eq.lag2}\claim{c11.cl.lag2}{numerically-checked}
+  \end{align}
+
+  \begin{tpcfigure}{c11.fig.laguerre}
+    \caption{The polynomials $\Lag{k}{1}$ for $k = 0, 1, 2, 3$ according to \defref{D68}. The polynomial with index $k$ has degree $k$ and the value $k + 1$ at $x = 0$. With $\alpha = 1$ these are the polynomials that occur in the radial functions of the s states.}
+  \end{tpcfigure}
+
+  \tpcdef{D66}
+
+  \begin{proof}[Proof of Theorem~\ref{c11.thm.spektrum}]
+    For $E < 0$ we set $\kappa = \sqrt{-2\massRed E}/\hbar$, $s = 2\kappa\rad$ and
+    $u = s^{\lqn + 1}\,e^{-s/2}\,v(s)$. Inserting into \eqref{c11.eq.radial} and
+    cancelling gives for $v$ the equation
+    \begin{equation}\label{c11.eq.laguerre-dgl}\claim{c11.cl.laguerre-dgl}{derived}
+      s\,v'' + (2\lqn + 2 - s)\,v' + k\,v = 0,
+      \qquad
+      k = \frac{\Znuc}{\kappa\,\aRed} - \lqn - 1 .
+    \end{equation}
+    With the power-series ansatz $v = \sum_j c_j\,s^j$, comparing coefficients gives
+    \begin{equation}\label{c11.eq.rekursion}\claim{c11.cl.rekursion}{derived}
+      c_{j + 1} = \frac{j - k}{(j + 1)(j + 2\lqn + 2)}\;c_j .
+    \end{equation}
+    If $k$ is one of the numbers $0, 1, 2, \ldots$, then $c_{k + 1} = 0$ and with it all
+    following coefficients: $v$ is a polynomial of degree $k$. We write
+    $k = \nqn - \lqn - 1$; then $\nqn \geq \lqn + 1$ is an integer, and from the
+    definition of $k$ it follows that
+    \begin{equation}\label{c11.eq.abbruch}\claim{c11.cl.abbruch}{derived}
+      \kappa = \frac{\Znuc}{\nqn\,\aRed},
+      \qquad
+      E = -\frac{\hbar^2\kappa^2}{2\massRed}
+        = -\frac{\hbar^2\Znuc^2}{2\massRed\,\aRed^2\,\nqn^2}
+        = -\frac{\Znuc^2\,\RydRed}{\nqn^2} .
+    \end{equation}
+    The polynomial is, up to a factor, $\Lag{\nqn - \lqn - 1}{2\lqn + 1}(s)$: the ratio
+    of successive coefficients of the sum in \defref{D68} is, for $\alpha = 2\lqn + 1$,
+    exactly that in \eqref{c11.eq.rekursion}. The solution
+    $u = s^{\lqn + 1}\,e^{-s/2}\,v$ vanishes at $\rad = 0$ and decays exponentially, so
+    it is normalisable, and $R = u/\rad$ is, up to the prefactor, the radial function of
+    \defref{D66}.
+  \end{proof}
+
+  The proof constructs solutions. It does not show that a power series that does not
+  terminate is never normalisable; this question remains open here.
+
+  \begin{proposition}[Normalisation of the radial functions]\label{c11.prop.norm}\claim[proof-included]{c11.cl.radialnorm}{derived}
+    For all $\nqn \geq 1$ and $0 \leq \lqn \leq \nqn - 1$,
+    $\int_0^\infty \Rnl{\nqn}{\lqn}(\rad)^2\,\rad^2\,\dd\rad = 1$.
+  \end{proposition}
+  \begin{proof}
+    We write $k = \nqn - \lqn - 1$ and $\alpha = 2\lqn + 1$. From the sum in
+    \defref{D68}, differentiating out with the product rule gives the representation
+    \begin{equation}\label{c11.eq.rodrigues}
+      \Lag{k}{\alpha}(s) = \frac{s^{-\alpha}\,e^{s}}{k!}\,
+        \frac{\dd^k}{\dd s^k}\bigl(e^{-s}\,s^{k + \alpha}\bigr).
+    \end{equation}
+    Integrating $s^\alpha e^{-s}\,\Lag{k}{\alpha}$ against a polynomial and shifting the
+    $k$ derivatives onto the polynomial by integration by parts, the integral vanishes
+    for every polynomial of degree less than $k$; the boundary terms are zero. Against
+    $\Lag{k}{\alpha}$ itself, whose leading coefficient is $(-1)^k/k!$, there remains
+    \begin{equation}\label{c11.eq.lagnorm}
+      \int_0^\infty s^{\alpha}\,e^{-s}\,\bigl(\Lag{k}{\alpha}(s)\bigr)^2\,\dd s
+      = \frac{(k + \alpha)!}{k!} .
+    \end{equation}
+    For the radial functions we need one more power of $s$. Comparing coefficients in the
+    sums gives, with $\Lag{-1}{\alpha} = 0$,
+    \begin{equation}\label{c11.eq.dreiterm}
+      s\,\Lag{k}{\alpha} = (2k + \alpha + 1)\,\Lag{k}{\alpha}
+        - (k + 1)\,\Lag{k + 1}{\alpha} - (k + \alpha)\,\Lag{k - 1}{\alpha} .
+    \end{equation}
+    Multiplying by $s^\alpha e^{-s}\,\Lag{k}{\alpha}$ and integrating, the last two terms
+    drop out by orthogonality, and with \eqref{c11.eq.lagnorm} there remains
+    \begin{equation}\label{c11.eq.lagnorm2}
+      \int_0^\infty s^{\alpha + 1}\,e^{-s}\,\bigl(\Lag{k}{\alpha}(s)\bigr)^2\,\dd s
+      = (2k + \alpha + 1)\,\frac{(k + \alpha)!}{k!}
+      = \frac{2\nqn\,(\nqn + \lqn)!}{(\nqn - \lqn - 1)!} .
+    \end{equation}
+    With $s = 2\kappa\rad$ we have $\rad^2\,\dd\rad = s^2\,\dd s/(2\kappa)^3$, and
+    $\Rnl{\nqn}{\lqn}^2\,\rad^2$ contains $s^{2\lqn + 2} = s^{\alpha + 1}$. The
+    normalisation integral is therefore the square of the prefactor of \defref{D66},
+    divided by $(2\kappa)^3$, times the right-hand side of \eqref{c11.eq.lagnorm2}, and
+    that is one.
+  \end{proof}
+\end{vertiefung}
+
+\section{The first wave functions}\label{c11.s5}
+
+
+Now we put the parts together and write out the wave functions of the relative motion
+for $\nqn = 1$ and $\nqn = 2$ in full. For this we need the spherical harmonics for
+$\lqn = 0$ and $\lqn = 1$. By \defref{D67} these are
+\begin{align}
+  \Ylm{0}{0}(\theta, \phi) &= \frac{1}{\sqrt{4\pi}},
+    \label{c11.eq.y00}\claim{c11.cl.y00}{numerically-checked} \\
+  \Ylm{1}{0}(\theta, \phi) &= \sqrt{\frac{3}{4\pi}}\,\cos\theta,
+    \label{c11.eq.y10}\claim{c11.cl.y10}{numerically-checked} \\
+  \Ylm{1}{\pm 1}(\theta, \phi) &= \mp\sqrt{\frac{3}{8\pi}}\,\sin\theta\,e^{\pm i\phi}.
+    \label{c11.eq.y1pm}\claim{c11.cl.y1pm}{numerically-checked}
+\end{align}
+In the last line the upper and the lower signs belong together. The minus sign in front
+of $\Ylm{1}{1}$ is not a law of nature but an agreement, the Condon-Shortley convention.
+Any other choice of signs would describe the same physics; one only has to stick to one.
+
+To the solutions $u$ of Theorem~\ref{c11.thm.spektrum} belong the radial functions
+$\Rnl{\nqn}{\lqn} = u/\rad$. Normalised they are
+\begin{align}
+  \Rnl{1}{0}(\rad) &= 2\left(\frac{\Znuc}{\aRed}\right)^{3/2} e^{-\Znuc\rad/\aRed},
+    \label{c11.eq.r10}\claim{c11.cl.r10}{numerically-checked} \\
+  \Rnl{2}{0}(\rad) &= \frac{1}{2\sqrt{2}}\left(\frac{\Znuc}{\aRed}\right)^{3/2}
+    \left(2 - \frac{\Znuc\rad}{\aRed}\right) e^{-\Znuc\rad/(2\aRed)},
+    \label{c11.eq.r20}\claim{c11.cl.r20}{numerically-checked} \\
+  \Rnl{2}{1}(\rad) &= \frac{1}{2\sqrt{6}}\left(\frac{\Znuc}{\aRed}\right)^{3/2}
+    \frac{\Znuc\rad}{\aRed}\,e^{-\Znuc\rad/(2\aRed)}.
+    \label{c11.eq.r21}\claim{c11.cl.r21}{numerically-checked}
+\end{align}
+All three contain the Bohr radius $\aRed$ with the reduced mass
+(Figure~\ref{c11.fig.radial}).
+
+\begin{tpcfigure}{c11.fig.radial}
+  \caption{The radial functions \eqref{c11.eq.r10} to \eqref{c11.eq.r21} for
+    $\Znuc = 1$. $\Rnl{1}{0}$ and $\Rnl{2}{0}$ are different from zero at the origin,
+    $\Rnl{2}{1}$ starts at zero. $\Rnl{2}{0}$ changes sign at $\rad = 2\aRed$; such a
+    zero is called a node.}
+\end{tpcfigure}
+
+\tpcdef{D69}
+
+Multiplied out, this gives five functions for $\nqn = 1$ and $\nqn = 2$:
+\begin{align}
+  \psinlm{1}{0}{0}(\rad, \theta, \phi) &= \frac{1}{\sqrt{\pi}}
+    \left(\frac{\Znuc}{\aRed}\right)^{3/2} e^{-\Znuc\rad/\aRed},
+    \label{c11.eq.psi100}\claim{c11.cl.psi100}{numerically-checked} \\
+  \psinlm{2}{0}{0}(\rad, \theta, \phi) &= \frac{1}{4\sqrt{2\pi}}
+    \left(\frac{\Znuc}{\aRed}\right)^{3/2}
+    \left(2 - \frac{\Znuc\rad}{\aRed}\right) e^{-\Znuc\rad/(2\aRed)},
+    \label{c11.eq.psi200}\claim{c11.cl.psi200}{numerically-checked} \\
+  \psinlm{2}{1}{0}(\rad, \theta, \phi) &= \frac{1}{4\sqrt{2\pi}}
+    \left(\frac{\Znuc}{\aRed}\right)^{3/2}
+    \frac{\Znuc\rad}{\aRed}\,e^{-\Znuc\rad/(2\aRed)}\,\cos\theta,
+    \label{c11.eq.psi210}\claim{c11.cl.psi210}{numerically-checked} \\
+  \psinlm{2}{1}{\pm 1}(\rad, \theta, \phi) &= \mp\frac{1}{8\sqrt{\pi}}
+    \left(\frac{\Znuc}{\aRed}\right)^{3/2}
+    \frac{\Znuc\rad}{\aRed}\,e^{-\Znuc\rad/(2\aRed)}\,\sin\theta\,e^{\pm i\phi}.
+    \label{c11.eq.psi21pm}\claim{c11.cl.psi21pm}{numerically-checked}
+\end{align}
+The first is called 1s, the second 2s, the remaining three 2p. The states 1s and 2s do
+not depend on the angles; they are spherically symmetric. The state 1s is largest
+at the origin and decays exponentially outwards. For the 2p states the dependence on the
+angles is added (Figure~\ref{c11.fig.schnitt}).
+
+\begin{tpcfigure}{c11.fig.schnitt}
+  \demo{c11.demo.cloud}
+  \caption{The density $\abs{\psi}^2$ of the relative coordinate for the 2p states, as a
+    section through the plane $y = 0$ and for $\Znuc = 1$; darker means larger, and both
+    panels use the same linear grey scale. Left $\psinlm{2}{1}{0}$: two lobes along the
+    $z$-axis, separated by the plane $z = 0$, in which the density vanishes. Right
+    $\psinlm{2}{1}{\pm 1}$: in space this is a ring around the $z$-axis, on which the
+    density vanishes; the section meets the ring twice. The axes are components of
+    $\posRel = \posE - \posP$, not positions in the laboratory.}
+\end{tpcfigure}
+
+That these functions are normalised we show for the state 1s. In spherical
+coordinates the volume element is $\rad^2\sin\theta\,\dd\rad\,\dd\theta\,\dd\phi$;
+because $\psinlm{1}{0}{0}$ does not depend on the angles, the angular integral gives the
+surface of the sphere, $4\pi$, and with $x = \Znuc\rad/\aRed$ there remains
+\begin{equation}\label{c11.eq.norm100}\claim{c11.cl.norm100}{derived}
+  \begin{aligned}
+    \int \abs{\psinlm{1}{0}{0}}^2\,\dd^3\posRel
+    &= \frac{1}{\pi}\Bigl(\frac{\Znuc}{\aRed}\Bigr)^{3}\,4\pi
+      \int_0^\infty \rad^2\,e^{-2\Znuc\rad/\aRed}\,\dd\rad \\
+    &= 4\int_0^\infty x^2\,e^{-2x}\,\dd x
+     = 4 \cdot \frac{2}{2^3} = 1 .
+  \end{aligned}
+\end{equation}
+We have used $\int_0^\infty x^k\,e^{-cx}\,\dd x = k!/c^{k + 1}$, here with $k = 2$ and
+$c = 2$. For the other four functions it works in the same way, only with more writing.
+All five are normalised, are pairwise orthogonal and solve the equation of the relative
+motion at the energy of Theorem~\ref{c11.thm.spektrum}. The eigenfunction equation holds
+for $\posRel \neq 0$ and as an $L^2$ identity almost everywhere:
+\begin{equation}\label{c11.eq.orthonormal}\claim{c11.cl.orthonormal}{numerically-checked}
+  \begin{aligned}
+    \int \overline{\psinlm{\nqn}{\lqn}{\mqn}}\;\psinlm{\nqn'}{\lqn'}{\mqn'}\,\dd^3\posRel
+    &= \delta_{\nqn\nqn'}\,\delta_{\lqn\lqn'}\,\delta_{\mqn\mqn'}, \\
+    \HamRel\,\psinlm{\nqn}{\lqn}{\mqn} &= \En{\nqn}\,\psinlm{\nqn}{\lqn}{\mqn}.
+  \end{aligned}
+\end{equation}
+The symbol $\delta_{jk}$ is one for $j = k$ and zero otherwise. Both statements have been
+verified with exact arithmetic for the functions written out here.
+
+The two functions $\psinlm{2}{1}{1}$ and $\psinlm{2}{1}{-1}$ are complex-valued. They
+differ in the sense of rotation of the phase $e^{\pm i\phi}$ and, because of the
+Condon-Shortley convention, in sign:
+\begin{equation}\label{c11.eq.cs}\claim{c11.cl.cs}{numerically-checked}
+  \psinlm{2}{1}{-1} = -\,\overline{\psinlm{2}{1}{1}},
+  \qquad
+  \abs{\psinlm{2}{1}{-1}}^2 = \abs{\psinlm{2}{1}{1}}^2 .
+\end{equation}
+The densities of the two states are therefore equal. A picture of the density cannot
+tell them apart (Figure~\ref{c11.fig.schnitt}); the difference lies in the phase
+(Figure~\ref{c11.fig.phase}).
+
+\begin{tpcfigure}{c11.fig.phase}
+  \demo{c11.demo.phase}
+  \caption{Sign and phase of the 2p wave functions for $\Znuc = 1$; the grey values again
+    show $\abs{\psi}^2$. Left $\psinlm{2}{1}{0}$ in the plane $y = 0$: the function is
+    real, positive above, negative below. Right $\psinlm{2}{1}{1}$ in the plane $z = 0$:
+    the modulus depends only on the distance from the centre, the phase
+    $\arg\psinlm{2}{1}{1} = \phi + \pi$ only on the angle $\phi$; its value is written at
+    the four rays, and the arrow shows in which direction it grows. For
+    $\psinlm{2}{1}{-1}$ the phase runs the other way.}
+\end{tpcfigure}
+
+\begin{remark}
+  The usual orbital pictures show $\abs{\psi}^2$. Information is lost in this: if one
+  multiplies $\psi$ at every point by a number of modulus one, which may depend on the
+  position, the density does not change, but the wave function does. A picture of the
+  density therefore always has to come with the statement which state is meant.
+\end{remark}
+
+For $\nqn = 3$ and beyond it continues after the same pattern\zoomref{c11.v3}.
+
+\begin{vertiefung}[id=c11.v3,
+    titel={The wave functions for $\nqn = 3$},
+    wozu={The Core text writes out the states up to $\nqn = 2$. Here are the nine states
+      for $\nqn = 3$, among them the first d states.},
+    voraussetzung={Core~\ref{c11.s5}; the general formula of Deeper block~\ref{c11.v2}
+      helps but is not needed. Not needed for Sections~\ref{c11.s6} and \ref{c11.s7}.},
+    zurueck={With growing $\nqn$ nodes are added and the functions reach further out;
+      the construction, radial function times spherical harmonic, does not change.}]
+  For $\lqn = 2$ we need five further spherical harmonics, again in the Condon-Shortley
+  convention of \defref{D67}:
+  \begin{align}
+    \Ylm{2}{0}(\theta, \phi) &= \sqrt{\frac{5}{16\pi}}\,\bigl(3\cos^2\theta - 1\bigr),
+      \label{c11.eq.y20}\claim{c11.cl.y20}{numerically-checked} \\
+    \Ylm{2}{\pm 1}(\theta, \phi) &= \mp\sqrt{\frac{15}{8\pi}}\,\sin\theta\,\cos\theta\,e^{\pm i\phi},
+      \label{c11.eq.y2pm1}\claim{c11.cl.y2pm1}{numerically-checked} \\
+    \Ylm{2}{\pm 2}(\theta, \phi) &= \sqrt{\frac{15}{32\pi}}\,\sin^2\theta\,e^{\pm 2i\phi}.
+      \label{c11.eq.y2pm2}\claim{c11.cl.y2pm2}{numerically-checked}
+  \end{align}
+
+  \begin{tpcfigure}{c11.fig.schnitt3}
+    \caption{The density $\abs{\psi}^2$ of the relative coordinate for the d states with $\nqn = 3$, as a section through the plane $y = 0$ and for $\Znuc = 1$, in the same representation as Figure~\ref{c11.fig.schnitt}; all three panels use a common linear grey scale. The axes are components of $\posRel = \posE - \posP$.}
+  \end{tpcfigure}
+
+  The three radial functions for $\nqn = 3$ are
+  \begin{align}
+    \Rnl{3}{0}(\rad) &= \frac{2}{81\sqrt{3}}\left(\frac{\Znuc}{\aRed}\right)^{3/2}
+      \left(27 - 18\,\frac{\Znuc\rad}{\aRed} + 2\,\frac{\Znuc^2\rad^2}{\aRed^2}\right)
+      e^{-\Znuc\rad/(3\aRed)},
+      \label{c11.eq.r30}\claim{c11.cl.r30}{numerically-checked} \\
+    \Rnl{3}{1}(\rad) &= \frac{4}{81\sqrt{6}}\left(\frac{\Znuc}{\aRed}\right)^{3/2}
+      \frac{\Znuc\rad}{\aRed}\left(6 - \frac{\Znuc\rad}{\aRed}\right)
+      e^{-\Znuc\rad/(3\aRed)},
+      \label{c11.eq.r31}\claim{c11.cl.r31}{numerically-checked} \\
+    \Rnl{3}{2}(\rad) &= \frac{4}{81\sqrt{30}}\left(\frac{\Znuc}{\aRed}\right)^{3/2}
+      \frac{\Znuc^2\rad^2}{\aRed^2}\,e^{-\Znuc\rad/(3\aRed)},
+      \label{c11.eq.r32}\claim{c11.cl.r32}{numerically-checked}
+  \end{align}
+  and the wave functions $\psinlm{3}{\lqn}{\mqn} = \Rnl{3}{\lqn}\,\Ylm{\lqn}{\mqn}$,
+  written out, are
+  \begin{align}
+    \psinlm{3}{0}{0}(\rad, \theta, \phi) &= \frac{1}{81\sqrt{3\pi}}
+      \left(\frac{\Znuc}{\aRed}\right)^{3/2}
+      \left(27 - 18\,\frac{\Znuc\rad}{\aRed} + 2\,\frac{\Znuc^2\rad^2}{\aRed^2}\right)
+      e^{-\Znuc\rad/(3\aRed)},
+      \label{c11.eq.psi300}\claim{c11.cl.psi300}{numerically-checked} \\
+    \psinlm{3}{1}{0}(\rad, \theta, \phi) &= \frac{2}{81\sqrt{2\pi}}
+      \left(\frac{\Znuc}{\aRed}\right)^{3/2}
+      \frac{\Znuc\rad}{\aRed}\left(6 - \frac{\Znuc\rad}{\aRed}\right)
+      e^{-\Znuc\rad/(3\aRed)}\,\cos\theta,
+      \label{c11.eq.psi310}\claim{c11.cl.psi310}{numerically-checked} \\
+    \psinlm{3}{1}{\pm 1}(\rad, \theta, \phi) &= \mp\frac{1}{81\sqrt{\pi}}
+      \left(\frac{\Znuc}{\aRed}\right)^{3/2}
+      \frac{\Znuc\rad}{\aRed}\left(6 - \frac{\Znuc\rad}{\aRed}\right)
+      e^{-\Znuc\rad/(3\aRed)}\,\sin\theta\,e^{\pm i\phi},
+      \label{c11.eq.psi31pm}\claim{c11.cl.psi31pm}{numerically-checked} \\
+    \psinlm{3}{2}{0}(\rad, \theta, \phi) &= \frac{1}{81\sqrt{6\pi}}
+      \left(\frac{\Znuc}{\aRed}\right)^{3/2}
+      \frac{\Znuc^2\rad^2}{\aRed^2}\,e^{-\Znuc\rad/(3\aRed)}\,
+      \bigl(3\cos^2\theta - 1\bigr),
+      \label{c11.eq.psi320}\claim{c11.cl.psi320}{numerically-checked} \\
+    \psinlm{3}{2}{\pm 1}(\rad, \theta, \phi) &= \mp\frac{1}{81\sqrt{\pi}}
+      \left(\frac{\Znuc}{\aRed}\right)^{3/2}
+      \frac{\Znuc^2\rad^2}{\aRed^2}\,e^{-\Znuc\rad/(3\aRed)}\,
+      \sin\theta\,\cos\theta\,e^{\pm i\phi},
+      \label{c11.eq.psi32pm1}\claim{c11.cl.psi32pm1}{numerically-checked} \\
+    \psinlm{3}{2}{\pm 2}(\rad, \theta, \phi) &= \frac{1}{162\sqrt{\pi}}
+      \left(\frac{\Znuc}{\aRed}\right)^{3/2}
+      \frac{\Znuc^2\rad^2}{\aRed^2}\,e^{-\Znuc\rad/(3\aRed)}\,
+      \sin^2\theta\,e^{\pm 2i\phi}.
+      \label{c11.eq.psi32pm2}\claim{c11.cl.psi32pm2}{numerically-checked}
+  \end{align}
+  The six lines enumerate nine states. Together with the five states of the Core text
+  there are fourteen; for all fourteen, normalisation, orthogonality and the eigenvalue
+  equation of \eqref{c11.eq.orthonormal} have been verified exactly. $\Rnl{3}{0}$ has two
+  nodes, at $\Znuc\rad/\aRed = (9 \mp 3\sqrt{3})/2$, the zeros of the quadratic factor;
+  $\Rnl{3}{1}$ has one at $\Znuc\rad/\aRed = 6$, and $\Rnl{3}{2}$ has none
+  (Figure~\ref{c11.fig.radial3}).
+
+  \begin{tpcfigure}{c11.fig.radial3}
+    \caption{Above, the radial functions \eqref{c11.eq.r30} to \eqref{c11.eq.r32} for
+      $\Znuc = 1$; below, the corresponding radial probability densities
+      $\Pnl{3}{\lqn}(\rad) = \rad^2\,\Rnl{3}{\lqn}(\rad)^2$ of \defref{D72} in
+      Section~\ref{c11.s7}. Solid 3s, dashed 3p, dash-dotted 3d. The
+      smaller $\lqn$, the more nodes.}
+  \end{tpcfigure}
+\end{vertiefung}
+
+
+\section{Spectral lines}\label{c11.s6}
+
+For the spectral comparison of equation \eqref{c11.eq.energien} with the laboratory,
+we use differences of the internal levels.
+
+\begin{merksatz}[Spectral comparison]
+  For the spectral comparison made here, we use differences of the internal levels.
+  The following additional photon-energy convention connects them to wavelengths.
+\end{merksatz}
+
+An atom can pass from a state of energy $\En{\nqn}$ into one of lower energy
+$\En{\nqn'}$ and emit light in doing so; the energy of a quantum of light is compared
+with the difference $\En{\nqn} - \En{\nqn'}$. Our model contains no light field. That
+the difference appears as light is therefore an assumption here, added to the model, and
+the recoil that the atom receives on emission is neglected. Under this assumption a
+vacuum wavelength $\lambda$ belongs to every pair $\nqn > \nqn'$. For hydrogen,
+$\Znuc = 1$,
+\begin{equation}\label{c11.eq.linie}\claim{c11.cl.linie}{derived}
+  \begin{aligned}
+    \En{\nqn} - \En{\nqn'} &= \RydRed\,\Bigl(\frac{1}{\nqn'^2} - \frac{1}{\nqn^2}\Bigr), \\
+    \lambda &= \frac{\hPlanck\,\clight}{\En{\nqn} - \En{\nqn'}}
+             = \frac{1 + \massE/\massP}{\Rinf}\,
+               \Bigl(\frac{1}{\nqn'^2} - \frac{1}{\nqn^2}\Bigr)^{-1} .
+  \end{aligned}
+\end{equation}
+Here $\hPlanck = 2\pi\hbar$ is the Planck constant, $\clight$ the speed of light and
+$\Rinf$ the Rydberg constant \srcref{codata-2022}{line “Rydberg constant”}, with which
+the Rydberg energy is written as $\Ryd = \hPlanck\,\clight\,\Rinf$. The factor $1 + \massE/\massP$ comes from the reduced
+mass; it is the trace the proton leaves in the spectrum.
+
+The transitions that end at $\nqn' = 1$ form the Lyman series, those that end at
+$\nqn' = 2$ the Balmer series (Figure~\ref{c11.fig.termschema}). In each series the
+longest wavelength belongs to the smallest jump. Our model gives the wavelength
+$\num[c11.cl.lyman]{121.568}{nm}$ for the transition $2 \to 1$ and the wavelength
+$\num[c11.cl.balmer]{656.470}{nm}$ for the transition $3 \to 2$. The corresponding energy
+differences are in the ratio
+\begin{equation}\label{c11.eq.verhaeltnis}\claim{c11.cl.verhaeltnis}{derived}
+  \frac{\En{2} - \En{1}}{\En{3} - \En{2}}
+  = \frac{1 - \tfrac14}{\tfrac14 - \tfrac19}
+  = \frac{3/4}{5/36} = \frac{27}{5} .
+\end{equation}
+
+\begin{tpcfigure}{c11.fig.termschema}
+  \caption{The term scheme of the relative motion: the energies $\En{\nqn}$ of
+    \eqref{c11.eq.energien} for $\Znuc = 1$ in units of $\RydRed$. The levels accumulate
+    at $E = 0$. The arrows are transitions; their length is the energy difference, to
+    scale. Solid: Lyman series, $\nqn \to 1$. Dashed: Balmer series, $\nqn \to 2$.}
+\end{tpcfigure}
+
+\begin{tpcfigure}{c11.fig.spektrum}
+  \caption{The same transitions as wavelengths according to \eqref{c11.eq.linie}, on a
+    logarithmic axis. Each stroke is a line; solid the Lyman series
+    ($\nqn = 2, \ldots, 12$), dashed the Balmer series ($\nqn = 3, \ldots, 12$). Just as
+    the levels accumulate at $E = 0$, the lines of each series crowd at their series
+    limit, the wavelength for $\nqn \to \infty$. Between the two series lies no line of
+    either.}
+\end{tpcfigure}
+
+How seriously may one take these numbers? As consequences of the model and of measured
+constants of nature they are exact\zoomref{c11.v4}. The model itself, however, leaves
+things out. It lacks the fine structure, the Lamb shift, the finite extent of the
+nucleus, spin, external fields, the dynamics of the emission and the recoil. The wavelengths are therefore statements
+about the spinless Coulomb model and not predictions at the accuracy with which real
+spectral lines can be resolved. Our Hamiltonian also says nothing about which
+transitions occur how often.
+
+\begin{vertiefung}[id=c11.v4,
+    titel={How accurate are the numbers?},
+    wozu={The Core text gives energies and wavelengths to a few digits. Here are the
+      input data, the full results, and the information how many of their digits mean
+      something.},
+    voraussetzung={Core~\ref{c11.s4} and \ref{c11.s6}. Not needed for
+      Section~\ref{c11.s7}.},
+    zurueck={The calculation is accurate to many digits. What these digits mean
+      physically is decided by the model, not by the arithmetic.}]
+  The adopted natural-constant inputs come from the 2022 list of recommended values
+  (CODATA), from which the Rydberg constant in \eqref{c11.eq.linie} already came.
+  Derived model values use these inputs; illustrative parameters are choices.
+  Table~\ref{c11.tab.codata} shows the lines used. The values of $\hPlanck$, $\clight$ and $\echarge$ are marked
+  as exact there; the others carry a standard uncertainty.
+
+  \begin{tpctable}{c11.tab.codata}
+    \caption{Input data: value and standard uncertainty as they stand in the list.}
+    \begin{tabular}{lll}
+      \toprule
+      quantity & value & standard uncertainty \\
+      \midrule
+      $\massE/\massP$ & $\num[c11.cl.q]{5.446170214889 \times 10^{-4}}{}$
+        & $\num[c11.cl.q]{9.4 \times 10^{-15}}{}$ \\
+      $\aBohr$ & $\num[c11.cl.a0]{5.29177210544 \times 10^{-11}}{m}$
+        & $\num[c11.cl.a0]{8.2 \times 10^{-21}}{m}$ \\
+      $\Rinf$ & $\num[c11.cl.rinf]{10973731.568157}{m^{-1}}$
+        & $\num[c11.cl.rinf]{1.2 \times 10^{-5}}{m^{-1}}$ \\
+      $\hPlanck\,\clight\,\Rinf$ & $\num[c11.cl.ry]{13.605693122990}{eV}$
+        & $\num[c11.cl.ry]{1.5 \times 10^{-11}}{eV}$ \\
+      $\hPlanck$ & $\num[c11.cl.h]{6.62607015 \times 10^{-34}}{J\,Hz^{-1}}$ & exact \\
+      $\clight$ & $\num[c11.cl.c]{299792458}{m\,s^{-1}}$ & exact \\
+      $\echarge$ & $\num[c11.cl.e]{1.602176634 \times 10^{-19}}{C}$ & exact \\
+      \bottomrule
+    \end{tabular}
+  \end{tpctable}
+
+  From these lines the numbers of the chapter follow through
+  $\massRed/\massE = 1/(1 + \massE/\massP)$, through \eqref{c11.eq.bohr} and through
+  \eqref{c11.eq.linie}. Table~\ref{c11.tab.ergebnisse} shows them with all the digits
+  that the input data support.
+
+  \begin{tpctable}{c11.tab.ergebnisse}
+    \caption{Results of the model for $\Znuc = 1$ and the scale of their uncertainty
+      according to \eqref{c11.eq.fehler}, rounded up.}
+    \begin{tabular}{lll}
+      \toprule
+      quantity & value & uncertainty scale \\
+      \midrule
+      $\massRed/\massE$ & $\num[c11.cl.mu-ratio]{0.999455679424762}{}$
+        & $\num[c11.cl.mu-ratio]{9.4 \times 10^{-15}}{}$ \\
+      $\aRed$ & $\num[c11.cl.amu]{5.29465409460 \times 10^{-11}}{m}$
+        & $\num[c11.cl.amu]{8.21 \times 10^{-21}}{m}$ \\
+      $\En{1}$ with $\massRed$ & $\num[c11.cl.e1-mu]{-13.598287264283}{eV}$
+        & $\num[c11.cl.e1-mu]{1.50 \times 10^{-11}}{eV}$ \\
+      $\En{1}$ with $\massE$ & $\num[c11.cl.e1-me]{-13.605693122991}{eV}$
+        & $\num[c11.cl.e1-me]{1.49 \times 10^{-11}}{eV}$ \\
+      $\lambda$ for $2 \to 1$ & $\num[c11.cl.lyman]{121.5684456173}{nm}$
+        & $\num[c11.cl.lyman]{1.35 \times 10^{-10}}{nm}$ \\
+      $\lambda$ for $3 \to 2$ & $\num[c11.cl.balmer]{656.4696063332}{nm}$
+        & $\num[c11.cl.balmer]{7.25 \times 10^{-10}}{nm}$ \\
+      \bottomrule
+    \end{tabular}
+  \end{tpctable}
+
+  \begin{tpcfigure}{c11.fig.unsicherheit}
+    \caption{The uncertainty of each row of Tables~\ref{c11.tab.codata} and \ref{c11.tab.ergebnisse}, divided by the modulus of the value, on a logarithmic axis. Solid the input data, dashed the results. The least accurate are the lengths $\aBohr$ and $\aRed$; the energies and wavelengths inherit the accuracy of the Rydberg constant.}
+  \end{tpcfigure}
+
+  Let $f$ be a quantity computed from input values $c_1, c_2, \ldots$ whose standard
+  uncertainties are $u(c_1), u(c_2), \ldots$ We form its uncertainty scale like this:
+  \begin{equation}\label{c11.eq.fehler}\claim{c11.cl.fehler}{derived}
+    \sum_i \Bigl\lvert \frac{\partial f}{\partial c_i} \Bigr\rvert\, u(c_i) .
+  \end{equation}
+  This is a first-order bound that holds whatever the relation between the uncertainties
+  of the input values; it is not a propagated standard uncertainty in the strict sense,
+  because for that one would have to know these relations.
+
+  The tables say two things. The calculation itself is not a bottleneck: the input data
+  limit the results only far behind the decimal point. And for exactly that reason the
+  many digits must not be taken for physics. The wavelengths are those of the model of
+  Section~\ref{c11.s1}; what it leaves out is listed at the end of Section~\ref{c11.s6}.
+\end{vertiefung}
+
+\section{The distance between electron and proton}\label{c11.s7}
+
+The wave functions of Section~\ref{c11.s5} say how the separation vector $\posRel$ is
+distributed. Often one wants to know less: only how large the distance
+$\rad = \abs{\posRel}$ between electron and proton is, whatever the direction.
+
+For \defref{D72} we choose the radial functions constructed here to be real; their
+squares therefore equal their squared moduli.
+
+\tpcdef{D72}
+
+The name is justified: integrating $\abs{\psinlm{\nqn}{\lqn}{\mqn}}^2$ over a spherical
+shell, the angles contribute the factor one, because the spherical harmonics are
+normalised, and there remains
+\begin{equation}\label{c11.eq.schale}\claim{c11.cl.schale}{derived}
+  \int_{r_1 \leq \abs{\posRel} \leq r_2} \abs{\psinlm{\nqn}{\lqn}{\mqn}(\posRel)}^2\,\dd^3\posRel
+  = \int_{r_1}^{r_2} \Pnl{\nqn}{\lqn}(\rad)\,\dd\rad .
+\end{equation}
+So $\Pnl{\nqn}{\lqn}(\rad)\,\dd\rad$ is the probability of finding the distance between
+$\rad$ and $\rad + \dd\rad$, and it is the same for every $\mqn$. With the radial
+functions \eqref{c11.eq.r10} to \eqref{c11.eq.r21} and $x = \Znuc\rad/\aRed$ one obtains
+\begin{equation}\label{c11.eq.pnl}\claim{c11.cl.pnl}{derived}
+  \Pnl{1}{0} = \frac{\Znuc}{\aRed}\,4x^2\,e^{-2x},
+  \qquad
+  \Pnl{2}{0} = \frac{\Znuc}{\aRed}\,\frac{x^2(2 - x)^2}{8}\,e^{-x},
+  \qquad
+  \Pnl{2}{1} = \frac{\Znuc}{\aRed}\,\frac{x^4}{24}\,e^{-x} .
+\end{equation}
+
+\begin{tpcfigure}{c11.fig.dichte}
+  \demo{c11.demo.radial}
+  \caption{The radial probability densities \eqref{c11.eq.pnl} for $\Znuc = 1$. Solid
+    1s, dashed 2s, dash-dotted 2p. The dotted line marks the maximum of $\Pnl{1}{0}$ at
+    $\rad = \aRed$, the dot the node of $\Pnl{2}{0}$ at $\rad = 2\aRed$. The short
+    strokes below the axis are the mean distances \eqref{c11.eq.mittel}. All curves
+    start at zero, including those of the s states: the factor $\rad^2$ comes from the
+    volume of the spherical shell.}
+\end{tpcfigure}
+
+Three things can be read off Figure~\ref{c11.fig.dichte}.
+
+First, the \emph{most probable distance} in the state 1s. The derivative of
+$x^2 e^{-2x}$ is $2x(1 - x)\,e^{-2x}$; for $x > 0$ it vanishes only at $x = 1$. So
+$\Pnl{1}{0}$ has its maximum at
+\begin{equation}\label{c11.eq.maximum}\claim{c11.cl.maximum}{numerically-checked}
+  \rad = \frac{\aRed}{\Znuc} .
+\end{equation}
+This gives the Bohr radius an intuitive meaning: for hydrogen $\aRed$ is the most
+probable distance between electron and proton in the state 1s. The wave function
+$\psinlm{1}{0}{0}$ itself, by contrast, is largest at $\rad = 0$. This is no
+contradiction: $\abs{\psi}^2$ is a density per volume, $\Pnl{1}{0}$ a density per
+distance, and a larger distance comes with a larger spherical shell.
+
+\begin{tpcfigure}{c11.fig.kugelschale}
+  \caption{Why the radial probability density of 1s starts at zero, for $\Znuc = 1$. Dashed: the scaled density $\pi\aRed^3\abs{\psinlm{1}{0}{0}}^2 = e^{-2x}$ per volume, largest at the origin. Thin: $\rad^2/\aRed^2 = x^2$, the sphere's area divided by $4\pi\aRed^2$. Heavy: $\aRed\Pnl{1}{0} = 4x^2 e^{-2x}$, the scaled density per distance, hence four times the product of the thin and dashed curves; its maximum lies at $\rad = \aRed$. Here $x = \rad/\aRed$.}
+\end{tpcfigure}
+
+Second, the \emph{nodes}. $\Pnl{2}{0}$ vanishes at $x = 2$, that is, at
+$\rad = 2\aRed/\Znuc$, because $\Rnl{2}{0}$ changes sign there. In the state 2s the
+density is zero on the whole sphere of this radius. The states 1s and 2p have no such
+node.
+
+Third, the \emph{mean distance} $\expval{\rad} = \int_0^\infty \rad\,
+\Pnl{\nqn}{\lqn}(\rad)\,\dd\rad$. For the state 1s this is
+$(\aRed/\Znuc) \cdot 4\int_0^\infty x^3 e^{-2x}\,\dd x = (\aRed/\Znuc) \cdot 4 \cdot
+3!/2^4$. The same calculation for the other two densities gives altogether
+\begin{equation}\label{c11.eq.mittel}\claim{c11.cl.mittel}{derived}
+  \expval{\rad}_{10} = \frac{3}{2}\,\frac{\aRed}{\Znuc},
+  \qquad
+  \expval{\rad}_{20} = 6\,\frac{\aRed}{\Znuc},
+  \qquad
+  \expval{\rad}_{21} = 5\,\frac{\aRed}{\Znuc} .
+\end{equation}
+The indices are $\nqn$ and $\lqn$. The mean distance is larger than the most probable
+one because the density tails off slowly outwards. And although 2s and 2p have the same
+energy, the mean distance is different. For all $\nqn$ and $\lqn$ there is a closed
+formula for it\zoomref{c11.v5}.
+
+The constructed bound states and their densities have now been described. The motion
+of the centre of mass is free, the constructed family has the energies
+\eqref{c11.eq.energien} and the wave functions of Section~\ref{c11.s5}, and what one
+sees of an atom in the laboratory requires both halves (Figure~\ref{c11.fig.ueberblick}).
+
+\begin{tpcfigure}{c11.fig.ueberblick}
+  \caption{The route of the chapter as a diagram. The two-particle problem becomes two independent problems; the relative motion yields energies and wave functions. What is compared with the laboratory are the differences of the energies, as spectral lines, and densities, into which the state of the centre of mass enters.}
+\end{tpcfigure}
+
+
+\begin{vertiefung}[id=c11.v5,
+    titel={Moments and distribution function},
+    wozu={The Core text computes mean distances for $\nqn \leq 2$ one by one. Here is a
+      formula for all states, together with the probability of finding the distance
+      below a given radius.},
+    voraussetzung={Core~\ref{c11.s7}; for the general case the radial functions of
+      Deeper block~\ref{c11.v2}.},
+    zurueck={Mean distances and enclosed probabilities can be given for every state
+      without numerical integration.}]
+  We again measure lengths with $x = \Znuc\rad/\aRed$ and write $u(x)$ for the real solution
+  of \eqref{c11.eq.dimlos} at $\varepsilon = -1/\nqn^2$, normalised to
+  $\int_0^\infty u^2\,\dd x = 1$. The moments are
+  $I_s = \int_0^\infty x^s\,u(x)^2\,\dd x$. Multiplying \eqref{c11.eq.dimlos} once by
+  $x^s u$ and once by $x^{s + 1} u'$ and integrating by parts, one obtains two equations
+  from which the integral over $x^s (u')^2$ can be eliminated. For $s = 0, 1, 2$ the
+  boundary terms vanish, and there remains
+  \begin{equation}\label{c11.eq.kramers}\claim{c11.cl.kramers}{derived}
+    s\,\Bigl(\frac{s^2 - 1}{4} - \lqn(\lqn + 1)\Bigr)\,I_{s - 2}
+    + (2s + 1)\,I_{s - 1} - \frac{s + 1}{\nqn^2}\,I_s = 0 .
+  \end{equation}
+  With $I_0 = 1$, the cases $s = 0$, $s = 1$ and $s = 2$ give in turn
+  \begin{equation}\label{c11.eq.momente}\claim{c11.cl.momente}{derived}
+    \begin{aligned}
+      \Bigl\langle \frac{1}{\rad} \Bigr\rangle &= \frac{\Znuc}{\aRed\,\nqn^2},
+      \qquad
+      \expval{\rad} = \frac{\aRed}{2\Znuc}\,\bigl(3\nqn^2 - \lqn(\lqn + 1)\bigr), \\
+      \expval{\rad^2} &= \frac{\aRed^2\,\nqn^2}{2\Znuc^2}\,
+        \bigl(5\nqn^2 + 1 - 3\lqn(\lqn + 1)\bigr).
+    \end{aligned}
+  \end{equation}
+  For $\nqn \leq 2$ these are the values of \eqref{c11.eq.mittel}. For fixed $\nqn$ the
+  mean distance is the smaller, the larger $\lqn$ is.
+
+  For the second question we define the distribution function.
+
+  \tpcdef{D73}
+
+  Because $\Pnl{\nqn}{\lqn}$ is a polynomial times $e^{-2x/\nqn}$, the integral can be
+  carried out in closed form by repeated integration by parts:
+  \begin{equation}\label{c11.eq.cdf}\claim{c11.cl.cdf}{derived}
+    \Fnl{\nqn}{\lqn}(\rad) = 1 - e^{-2x/\nqn}\,\Qnl{\nqn}{\lqn}(x),
+    \qquad
+    x = \frac{\Znuc\rad}{\aRed},
+  \end{equation}
+  with a polynomial $\Qnl{\nqn}{\lqn}$. For the states up to $\nqn = 3$,
+  \begin{equation}\label{c11.eq.qpolynome}\claim{c11.cl.qpolynome}{derived}
+    \begin{aligned}
+      \Qnl{1}{0} &= 1 + 2x + 2x^2, \\
+      \Qnl{2}{0} &= 1 + x + \frac{x^2}{2} + \frac{x^4}{8}, \\
+      \Qnl{2}{1} &= 1 + x + \frac{x^2}{2} + \frac{x^3}{6} + \frac{x^4}{24}, \\
+      \Qnl{3}{0} &= 1 + \frac{2x}{3} + \frac{2x^2}{9} + \frac{4x^4}{81}
+                    - \frac{8x^5}{729} + \frac{8x^6}{6561}, \\
+      \Qnl{3}{1} &= 1 + \frac{2x}{3} + \frac{2x^2}{9} + \frac{4x^3}{81}
+                    + \frac{2x^4}{243} - \frac{4x^5}{2187} + \frac{4x^6}{6561}, \\
+      \Qnl{3}{2} &= 1 + \frac{2x}{3} + \frac{2x^2}{9} + \frac{4x^3}{81}
+                    + \frac{2x^4}{243} + \frac{4x^5}{3645} + \frac{4x^6}{32805}.
+    \end{aligned}
+  \end{equation}
+
+  \begin{tpcfigure}{c11.fig.verteilung}
+    \caption{The distribution functions $\Fnl{1}{0}$, $\Fnl{2}{0}$ and $\Fnl{2}{1}$
+      according to \eqref{c11.eq.cdf} for $\Znuc = 1$: the probability of finding the
+      distance smaller than $\rad$. At the node of 2s, the marked point at
+      $\rad = 2\aRed$, $\Fnl{2}{0}$ has a horizontal tangent.}
+  \end{tpcfigure}
+
+  With $\Fnl{\nqn}{\lqn}$ one can say what the surface in an orbital picture is supposed
+  to mean, and for this there are two different agreements. The sphere with the radius
+  $r_p$ for which $\Fnl{\nqn}{\lqn}(r_p) = p$ encloses the probability $p$, for every
+  $\mqn$; but in general it is not a surface of equal density. A surface of equal
+  density that encloses the probability $p$ is obtained from a threshold $c_p$ with
+  \begin{equation}\label{c11.eq.isoflaeche}\claim{c11.cl.isoflaeche}{derived}
+    \int_{\abs{\psi}^2 \geq c_p} \abs{\psi(\posRel)}^2\,\dd^3\posRel = p ;
+  \end{equation}
+  the enclosed region can consist of several parts. For the state 1s, in which the
+  density decreases strictly with the distance, the two agreements coincide. A density
+  threshold that has not been integrated must not be labelled with a probability.
+\end{vertiefung}
+
+\begin{exercise}[The state 2p by substitution]\label{c11.exc.zweip}
+  Show that $u(x) = x^2\,e^{-x/2}$ solves equation \eqref{c11.eq.dimlos} for $\lqn = 1$,
+  and read off $\varepsilon$. Compare with \eqref{c11.eq.r21}.
+\end{exercise}
+\begin{solution}
+  We have $u' = (2x - \tfrac12 x^2)\,e^{-x/2}$ and
+  $u'' = (2 - 2x + \tfrac14 x^2)\,e^{-x/2}$. For $\lqn = 1$,
+  $\lqn(\lqn + 1)/x^2 - 2/x = 2/x^2 - 2/x$, and this factor times $u$ is
+  $(2 - 2x)\,e^{-x/2}$. Together:
+  $-u'' + (2/x^2 - 2/x)\,u = -\tfrac14 x^2\,e^{-x/2} = -\tfrac14 u$. So
+  $\varepsilon = -\tfrac14$, which is $\En{2}$ in units of $\Znuc^2\,\RydRed$. The radial
+  function $u/x$ is $\Rnl{2}{1}$ up to the prefactor.
+\end{solution}
+
+\begin{exercise}[Mean distance in the state 2p]\label{c11.exc.mittel}
+  Compute $\expval{\rad}$ for the state 2p from $\Pnl{2}{1}$ in \eqref{c11.eq.pnl}.
+\end{exercise}
+\begin{solution}
+  With $\rad = (\aRed/\Znuc)\,x$ and $\dd\rad = (\aRed/\Znuc)\,\dd x$,
+  \begin{equation*}
+    \expval{\rad} = \frac{\aRed}{\Znuc} \cdot \frac{1}{24}\int_0^\infty x^5 e^{-x}\,\dd x
+    = \frac{\aRed}{\Znuc} \cdot \frac{5!}{24} = 5\,\frac{\aRed}{\Znuc},
+  \end{equation*}
+  as in \eqref{c11.eq.mittel}.
+\end{solution}
+
+\begin{exercise}[The infinitely heavy proton]\label{c11.exc.unendlich}
+  By which factor do the Bohr radius and the energies $\En{\nqn}$ change if the reduced
+  mass $\massRed$ is replaced by the electron mass $\massE$?
+  \begin{enumerate}
+    \item Use \eqref{c11.eq.bohr}.
+    \item What does this mean for the wavelengths in \eqref{c11.eq.linie}?
+  \end{enumerate}
+\end{exercise}
+\begin{solution}
+  $\aRed$ becomes $\aBohr = \aRed\,\massRed/\massE$: the radius becomes smaller by the
+  factor $\massRed/\massE = 1/(1 + \massE/\massP)$. $\RydRed$ becomes
+  $\Ryd = \RydRed\,\massE/\massRed$: all energies become larger in modulus by the factor
+  $1 + \massE/\massP$.
+  \begin{itemize}
+    \item The energy differences grow by the same factor.
+    \item The wavelengths become shorter by this factor: in \eqref{c11.eq.linie} the
+      factor $1 + \massE/\massP$ drops out.
+  \end{itemize}
+\end{solution}
+
+
+\begin{fundament}[id=c11.f1,
+    titel={Self-adjointness of the Hamiltonians of the hydrogen atom},
+    wozu={In the Core text $\HamTot$ and $\HamRel$ are rules for differentiable
+      functions. Here it is stated on which domains they fix self-adjoint operators, and
+      on which theorem this rests.},
+    voraussetzung={Core~\ref{c11.s1} and \ref{c11.s2}; the notions of domain and of
+      (essentially) self-adjoint from \defref{D16} and \defref{D19}.},
+    zurueck={The rules of \defref{D60} and of Theorem~\ref{c11.thm.separation}, started
+      on smooth functions with compact support, each fix a self-adjoint operator: their
+      closure.}]
+  By \defref{D16} an operator is specified only when its domain is named. We start with
+  a small domain on which there is nothing to interpret about the rules: the smooth
+  functions with compact support, $\Ccinf{\mathbb{R}^3}$ for the relative motion and
+  $\Ccinf{\mathbb{R}^6}$ for the whole atom. The question is whether the operators are
+  essentially self-adjoint there (\defref{D19}); then, and this block is about nothing
+  else, their closure is self-adjoint.
+
+  \begin{tpcfigure}{c11.fig.bereiche}
+    \caption{The three sets of functions of this block as a diagram: the smooth functions with compact support, the domain $\dom{-\Lap}$ of the Laplacian and the whole space $\Ltwo{\mathbb{R}^3}$. Entered is what Corollary~\ref{c11.cor.relativ} says about $\HamRel$.}
+  \end{tpcfigure}
+
+  The answer hinges on a property of the potential. One writes
+  $\Ltwo{\mathbb{R}^3} + L^{\infty}(\mathbb{R}^3)$ for the set of measurable functions
+  $f$ on $\mathbb{R}^3$ that can be written as a sum $f = f_1 + f_2$ of a
+  square-integrable function $f_1$ and a bounded function $f_2$. For such potentials two
+  theorems of Kato hold, which we take over without proof. In the first, $\Lap$ is the
+  Laplacian on $\mathbb{R}^3$ and $\dom{-\Lap}$ its domain.
+
+  \begin{theorem}[Kato; Reed and Simon, Theorem X.15]\label{c11.thm.kato15}\claim[proof-omitted]{c11.cl.kato15}{source-quoted}
+    Let $\Vpot \in \Ltwo{\mathbb{R}^3} + L^{\infty}(\mathbb{R}^3)$ be real-valued. Then
+    $-\Lap + \Vpot$ is essentially self-adjoint on $\Ccinf{\mathbb{R}^3}$ and
+    self-adjoint on $\dom{-\Lap}$.
+  \end{theorem}
+
+  \begin{theorem}[Kato's theorem; Reed and Simon, Theorem X.16]\label{c11.thm.kato16}\claim[proof-omitted]{c11.cl.kato16}{source-quoted}
+    Let $\Vpot_1, \ldots, \Vpot_m$ be real-valued measurable functions, each of which is
+    in $\Ltwo{\mathbb{R}^3} + L^{\infty}(\mathbb{R}^3)$. Let $\Vpot_k(y_k)$ be the
+    multiplication operator on $\Ltwo{\mathbb{R}^{3n}}$ obtained by choosing $y_k$ to be
+    three coordinates of $\mathbb{R}^{3n}$. Then
+    $-\Lap + \sum_{k = 1}^{m} \Vpot_k(y_k)$ is essentially self-adjoint on
+    $\Ccinf{\mathbb{R}^{3n}}$, where $\Lap$ denotes the Laplacian on $\mathbb{R}^{3n}$.
+  \end{theorem}
+
+  Both theorems are in \srcref{reed-simon-2}{§\,X.2, pp. 165--166}; the factor $\hbar^2$
+  is absent there because the computation is done with $\hbar = 1$. That the Coulomb
+  potential satisfies the hypothesis we verify.
+
+  \begin{lemma}[The Coulomb potential is admissible]\label{c11.lem.coulomb}\claim[proof-included]{c11.cl.coulomb}{derived}
+    Let $c > 0$ and $\Vpot(\posRel) = -c/\abs{\posRel}$. For every $b > 0$ we decompose
+    $\Vpot = \Vpot_1 + \Vpot_2$, where $\Vpot_1$ equals $\Vpot$ for $\abs{\posRel} < b$
+    and is zero otherwise. Then
+    \begin{equation}\label{c11.eq.coulombsplit}
+      \int \abs{\Vpot_1(\posRel)}^2\,\dd^3\posRel = 4\pi c^2 b,
+      \qquad
+      \abs{\Vpot_2(\posRel)} \leq \frac{c}{b}\quad\text{\tpcifenglish{for all}{für alle}}\ \posRel .
+    \end{equation}
+    In particular $\Vpot$ is in $\Ltwo{\mathbb{R}^3} + L^{\infty}(\mathbb{R}^3)$.
+  \end{lemma}
+  \begin{proof}
+    In spherical coordinates $\dd^3\posRel = 4\pi\rad^2\,\dd\rad$ for functions that
+    depend only on $\rad$. So the integral equals
+    $4\pi\int_0^b (c^2/\rad^2)\,\rad^2\,\dd\rad = 4\pi c^2 b$: the factor $\rad^2$ of the
+    volume element cancels the singularity. Outside the ball,
+    $c/\abs{\posRel} \leq c/b$ (Figure~\ref{c11.fig.coulombsplit}).
+  \end{proof}
+
+  \begin{tpcfigure}{c11.fig.coulombsplit}
+    \caption{The decomposition of Lemma~\ref{c11.lem.coulomb}. Inside the radius $b$
+      (solid) $\abs{\Vpot}$ grows beyond all bounds but is square-integrable; outside
+      (dashed) $\abs{\Vpot}$ is bounded by $c/b$.}
+  \end{tpcfigure}
+
+  \begin{corollary}[Relative motion]\label{c11.cor.relativ}\claim[proof-included]{c11.cl.sa-relativ}{source-backed}
+    The operator $\HamRel = -\frac{\hbar^2}{2\massRed}\Lap + \Vpot$ with the Coulomb
+    potential of \defref{D60} is essentially self-adjoint on $\Ccinf{\mathbb{R}^3}$ and
+    self-adjoint on $\dom{-\Lap}$.
+  \end{corollary}
+  \begin{proof}
+    We have $\HamRel = \frac{\hbar^2}{2\massRed}\,(-\Lap + W)$ with
+    $W = \frac{2\massRed}{\hbar^2}\,\Vpot$, and $W(\posRel) = -c/\abs{\posRel}$ with
+    $c = 2\Znuc/\aRed > 0$. By Lemma~\ref{c11.lem.coulomb}, $W$ satisfies the hypothesis
+    of Theorem~\ref{c11.thm.kato15}. A real scalar $c \neq 0$ preserves the domains
+    and essential self-adjointness: $(cA)^* = cA^*$ and
+    $\overline{cA} = c\overline{A}$. The first identity follows from the defining
+    equation for the adjoint, the second from the invertible graph map
+    $(f,g) \mapsto (f,cg)$. The positive scalar therefore carries both statements
+    over from $-\Lap + W$ to $\HamRel$.
+  \end{proof}
+
+  For the Coulomb potential the first statement of the corollary is given by Reed and
+  Simon as Example~1 directly after the proof of Theorem X.15.
+
+  \begin{proposition}[The whole atom]\label{c11.prop.zweikoerper}\claim[proof-included]{c11.cl.sa-zweikoerper}{source-backed}
+    With the Coulomb potential, the two-body Hamiltonian $\HamTot$ of \defref{D60} is
+    essentially self-adjoint on the domain $\Ccinf{\mathbb{R}^6}$.
+  \end{proposition}
+  \begin{proof}
+    Theorem~\ref{c11.thm.kato16} requires the Laplacian of $\mathbb{R}^6$ without mass
+    factors and a potential that depends on three of the coordinates. We arrange both in
+    two steps.
+    \begin{description}
+      \item[Step 1, scaling away the masses] We introduce new variables,
+        \begin{equation*}
+          \boldsymbol{x}_{\mathrm{e}} = \frac{\sqrt{2\massE}}{\hbar}\,\posE,
+          \qquad
+          \boldsymbol{x}_{\mathrm{p}} = \frac{\sqrt{2\massP}}{\hbar}\,\posP .
+        \end{equation*}
+        In them the kinetic energy becomes $-\Lap$ on $\mathbb{R}^6$. The rescaling, supplied with a constant
+        normalisation factor, is a norm-preserving, invertible map that maps
+        $\Ccinf{\mathbb{R}^6}$ onto itself.
+      \item[Step 2, the relative direction] The potential contains
+        $\posE - \posP = \hbar\gamma\,\boldsymbol{z}$ with
+        \begin{equation}\label{c11.eq.drehung}
+          \boldsymbol{z} = \frac{1}{\gamma}\Bigl(
+            \frac{\boldsymbol{x}_{\mathrm{e}}}{\sqrt{2\massE}}
+            - \frac{\boldsymbol{x}_{\mathrm{p}}}{\sqrt{2\massP}}\Bigr),
+          \qquad
+          \gamma = \sqrt{\frac{1}{2\massE} + \frac{1}{2\massP}}
+                 = \frac{1}{\sqrt{2\massRed}} .
+        \end{equation}
+        The two prefactors have the squares $1/(2\massE\gamma^2)$ and
+        $1/(2\massP\gamma^2)$; their sum is one. The three components of
+        $\boldsymbol{z}$ are therefore coordinates of $\mathbb{R}^6$ along three
+        mutually perpendicular unit directions; after a rotation of $\mathbb{R}^6$ they
+        are three of the six coordinates. In them the potential is
+        $-c/\abs{\boldsymbol{z}}$ with some $c > 0$, hence admissible by
+        Lemma~\ref{c11.lem.coulomb}.
+    \end{description}
+    Theorem~\ref{c11.thm.kato16} with $n = 2$ and $m = 1$ is formulated for three of the
+    coordinates themselves; its proof in Reed and Simon begins with exactly this
+    rotation of the variables and covers the rotated case. Rotation and rescaling map
+    $\Ccinf{\mathbb{R}^6}$ onto itself and preserve essential self-adjointness.
+  \end{proof}
+
+  \begin{tpcfigure}{c11.fig.drehung}
+    \caption{Step 2 of the proof for one direction of space, drawn for $\massP : \massE = 3 : 1$. In the plane of the scaled coordinates $x_{\mathrm{e}}$, $x_{\mathrm{p}}$, $z$ is the coordinate along the unit vector with the components $\sqrt{\massP/\massTot}$ and $-\sqrt{\massE/\massTot}$. This direction and the one perpendicular to it form a rotated pair of axes; the circle is the unit circle.}
+  \end{tpcfigure}
+
+  Reed and Simon draw the same conclusion for every potential of the class
+  $\Ltwo{\mathbb{R}^3} + L^{\infty}(\mathbb{R}^3)$ in one sentence
+  \srcref{reed-simon-3}{§\,XI.4, p. 55}. In comparing with that page one should note: the
+  two masses and the reduced mass carry other letters there (the reduced mass is called
+  $m$); $\hbar = 1$; the smooth functions with compact support are called
+  $C_0^{\infty}$; and the map called $U$ there turns a function of the new coordinates
+  into a function of the old ones, so it is the inverse of our map $\Uni$ of
+  \eqref{c11.eq.tilde}. The calculation that leads to
+  Theorem~\ref{c11.thm.separation} is an exercise there.
+\end{fundament}

@@ -1,0 +1,28 @@
+% c01.fig.erwartung — the expectation value of the number of spots as a balance point.
+%
+% For a weight p on X = {1,...,6} and the measurement f(x) = x, E[f] = sum_x p(x) x
+% (definition D55) is the centre of mass of masses p(x) placed at the points x of a beam:
+% sum_x p(x) (x - E[f]) = 0 by linearity (c01.prop.erwartung).  The fulcrum (triangle) is
+% drawn at E[f]:
+%   (a) fair die:    E[f] = 7/2      (c01.eq.augenzahl-fair)
+%   (b) loaded die:  E[f] = 47/12    (c01.eq.augenzahl-gezinkt), numerators 1,2,2,2,2,3 over 12
+% Scale: x: 1 = 0.8 cm; bar height: 1 unit of probability = 4.8 cm.
+% Greyscale: weights are bars in the state role; the fulcrum is drawn in plate ink and
+% labelled.
+\begin{tikzpicture}[x=0.8cm, y=4.8cm]
+  \foreach \shift/\title/\m/\mlabel in {0/{(a) \tpcifenglish{fair}{fair}}/3.5/{\tfrac72}, 7.0/{(b) \tpcifenglish{loaded}{gezinkt}}/3.916667/{\tfrac{47}{12}}} {
+    \begin{scope}[shift={(\shift cm,0)}]
+      \draw[tpc axis] (0.4,0) -- (6.6,0);
+      \foreach \x in {1,...,6} \node[tpc label, anchor=south] at (\x,0.27) {$\x$};
+      \draw[tpc axis, fill=tpc-plate] (\m,0) -- (\m-0.22,-0.075) -- (\m+0.22,-0.075) -- cycle;
+      \node[tpc label, anchor=north] at (\m,-0.085) {$\mathbb{E}[f] = \mlabel$};
+      \node[tpc label, anchor=north] at (3.5,-0.19) {\title};
+    \end{scope}
+  }
+  \foreach \x in {1,...,6}
+    \draw[tpc state, tpc tint state] (\x-0.25,0) rectangle (\x+0.25,1/6);
+  \begin{scope}[shift={(7.0cm,0)}]
+    \foreach \x/\a in {1/1, 2/2, 3/2, 4/2, 5/2, 6/3}
+      \draw[tpc state, tpc tint state] (\x-0.25,0) rectangle (\x+0.25,\a/12);
+  \end{scope}
+\end{tikzpicture}

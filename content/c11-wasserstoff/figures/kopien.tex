@@ -1,0 +1,26 @@
+% c11.fig.kopien — how the convolution c11.eq.faltung builds the laboratory density of the electron.
+%
+% A schematic, not a plot: no length or line weight in this picture is data.  It restates
+%     rho_e(x) = integral |Phi(R)|^2 (M/m_p)^3 |psi((M/m_p)(x - R))|^2 d^3R
+% (DERIVATION.md Result 1b.1): every possible position R of the centre of mass (crosses, inside the
+% dashed region where |Phi|^2 is appreciable) carries a scaled copy g_b(y) = b^-3 g(y/b)
+% of the relative density g = |psi|^2 (rings), b = m_p/M, weighted with |Phi(R)|^2
+% (heavier rings near the middle). The sum of all copies is rho_e = f*g_b, f = |Phi|^2.
+% Greyscale: outlines only.
+\begin{tikzpicture}[x=1cm, y=1cm]
+  \draw[tpc leader, dash pattern=on 3pt off 2pt] (3.2,1.6) ellipse [x radius=2.3, y radius=1.25];
+  \foreach \cx/\cy/\w in {3.2/1.6/1.1, 1.9/1.35/0.5, 4.5/1.9/0.5, 3.6/0.75/0.7, 2.6/2.35/0.7} {
+    \foreach \rr in {0.25,0.5,0.8}
+      \draw[draw=tpc-state, line width=\w pt] (\cx,\cy) circle (\rr);
+    \draw[tpc-plate-ink, line width=\tpcstrokethin] (\cx,\cy) ++(-2pt,-2pt) -- ++(4pt,4pt) (\cx,\cy) ++(-2pt,2pt) -- ++(4pt,-4pt);
+  }
+  \node[tpc label, anchor=west, align=left] at (6.1,2.5)
+    {\tpcifenglish{possible positions of}{mögliche Orte des}\\ \tpcifenglish{the centre of mass}{Schwerpunkts}};
+  \draw[tpc leader] (6.05,2.5) -- (4.58,1.95);
+  \node[tpc label, anchor=west, align=left] at (6.1,1.2)
+    {\tpcifenglish{a scaled copy of the}{eine skalierte Kopie der}\\ \tpcifenglish{relative density around each}{Relativdichte um jeden Ort}};
+  \draw[tpc leader] (6.05,1.2) -- (4.35,0.9);
+  \node[tpc label, anchor=west, align=left] at (6.1,0.1)
+    {\tpcifenglish{region where $\lvert\Phi\rvert^2$}{Gebiet, in dem $\lvert\Phi\rvert^2$}\\ \tpcifenglish{is appreciable}{merklich ist}};
+  \draw[tpc leader] (6.05,0.1) -- (5.0,0.72);
+\end{tikzpicture}

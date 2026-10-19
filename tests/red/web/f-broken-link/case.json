@@ -1,0 +1,7 @@
+{
+  "gate": "web",
+  "what": "A page links to an ID that does not exist on it, and to a chapter page that was not built.",
+  "cmd": "node --import ./web/node_modules/tsx/dist/loader.mjs web/tools/checks/static.ts --only links --site tests/red/web/f-broken-link/site --chapters c98",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "links: FAIL .*broken internal link href=\\\"#c98\\.eq\\.gibt-es-nicht\\\".*links: FAIL .*c97/index\\.html does not exist"
+}

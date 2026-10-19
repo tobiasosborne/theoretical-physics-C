@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A corollary (unnumbered, no label) carries no \\claim.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/corollary-without-claim --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[unit-without-claim\\] c98-red/en\\.tex:\\d+: corollary without \\\\claim"
+}

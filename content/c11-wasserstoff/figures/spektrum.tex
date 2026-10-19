@@ -1,0 +1,44 @@
+% c11.fig.spektrum — the wavelengths of the Lyman and Balmer series on a logarithmic axis.
+% Reworked from latex/figures/fig_vl16_termschema.tex, panel (b).
+%
+% Generating formula (DERIVATION.md Result 8.2, vacuum wavelength of the internal gap, Z = 1):
+%     lambda(n -> n') = h c / (E_n - E_n') = lambda_inf / (1/n'^2 - 1/n^2),
+%     lambda_inf = (1 + m_e/m_p)/R_inf = (3/4) * 121.5684456173 nm = 91.17633421 nm
+% (reduced mass included; the derivation gives lambda(2 -> 1) = 4(1 + m_e/m_p)/(3 R_inf) = 121.5684456173 nm
+% and lambda(3 -> 2) = 656.4696063332 nm, which this formula reproduces).
+% Lyman n' = 1, n = 2..12; Balmer n' = 2, n = 3..12; series limits lambda_inf n'^2 (n -> infinity).
+% Greyscale: Lyman solid, Balmer dashed; both labelled directly.
+\begin{tikzpicture}
+  \pgfplotsset{c11/.style={
+    clip=false, grid=none,
+    axis line style={draw=tpc-plate-ink, line width=\tpcstrokethin},
+    tick style={draw=tpc-plate-ink, line width=\tpcstrokehair},
+    tick label style={font=\tpcfontlabel, text=tpc-plate-ink},
+    label style={font=\tpcfontlabel, text=tpc-plate-ink}}}
+  \begin{axis}[c11, width=10.2cm, height=4.6cm,
+      axis y line=none, axis x line=bottom,
+      xmode=log, log ticks with fixed point,
+      xmin=82, xmax=900, ymin=0, ymax=1.5,
+      xtick={100,200,400,800}, minor xtick={90,300,500,600,700},
+      xlabel={$\lambda/\mathrm{nm}$},
+      every axis x label/.style={at={(ticklabel* cs:1.0)}, anchor=west, font=\tpcfontlabel}]
+    \pgfplotsinvokeforeach{2,...,12}{
+      \draw[tpc q1, line width=\tpcstrokeregular] (axis cs:{91.17633421/(1-1/(#1*#1))},0) -- (axis cs:{91.17633421/(1-1/(#1*#1))},1);}
+    \pgfplotsinvokeforeach{3,...,12}{
+      \draw[tpc q4, line width=\tpcstrokeregular, dash pattern=on 3.5pt off 1.5pt]
+        (axis cs:{91.17633421/(0.25-1/(#1*#1))},0) -- (axis cs:{91.17633421/(0.25-1/(#1*#1))},1);}
+    % series limits
+    \draw[tpc leader, draw=tpc-plate-muted] (axis cs:91.17633421,0) -- (axis cs:91.17633421,1.22);
+    \draw[tpc leader, draw=tpc-plate-muted] (axis cs:{4*91.17633421},0) -- (axis cs:{4*91.17633421},1.22);
+    \node[tpc label, anchor=south west, text=tpc-plate-muted] at (axis cs:91.17633421,1.2)
+      {\tpcifenglish{series limit}{Seriengrenze}};
+    \node[tpc label, anchor=south west, text=tpc-plate-muted] at (axis cs:{4*91.17633421},1.2)
+      {\tpcifenglish{series limit}{Seriengrenze}};
+    \node[tpc label, anchor=south] at (axis cs:121.5684456,1.0) {$2 \to 1$};
+    \node[tpc label, anchor=south] at (axis cs:656.4696063,1.0) {$3 \to 2$};
+    \node[tpc label, anchor=north] at (axis cs:106,-0.36) {Lyman};
+    \node[tpc label, anchor=north] at (axis cs:490,-0.36) {Balmer};
+    \node[tpc label, text=tpc-plate-muted, align=center] at (axis cs:215,0.5)
+      {\tpcifenglish{no line of}{keine Linie}\\ \tpcifenglish{either series}{der beiden Serien}};
+  \end{axis}
+\end{tikzpicture}

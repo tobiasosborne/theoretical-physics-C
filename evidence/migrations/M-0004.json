@@ -1,0 +1,58 @@
+{
+ "schema_version": 1,
+ "id": "M-0004",
+ "status": "recorded",
+ "title": "vl19, vl16: superseded values of the Boltzmann constant and the Bohr radius",
+ "legacy": [
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl19.tex",
+   "line": 21,
+   "file_sha256": "95d5b9e454cf1b6c63d32226461bad9af63658dafc8552829e8ff90328331155",
+   "old_text": "$k=1,38064852 \\times 10^{-23} \\, \\text{m}^2 \\,\\text{kg} \\,\\text{s}^{-2} \\,\\text{K}^{-1}$",
+   "new_text": "$k=1,380649 \\times 10^{-23} \\, \\text{J} \\,\\text{K}^{-1}$"
+  },
+  {
+   "version": "v0.2-en",
+   "file": "latex/lectures/en/lec19.tex",
+   "line": 21,
+   "file_sha256": "9066c34c8fd753c3bbf4949c659d1109d2fc45dedccd81c9946a799f0c6dec87",
+   "old_text": "$k=1.38064852 \\times 10^{-23} \\, \\text{m}^2 \\,\\text{kg} \\,\\text{s}^{-2} \\,\\text{K}^{-1}$",
+   "new_text": "$k=1.380649 \\times 10^{-23} \\, \\text{J} \\,\\text{K}^{-1}$"
+  },
+  {
+   "version": "v0.1",
+   "file": "archive/skript-2022/Vorlesungen19.tex",
+   "line": 15,
+   "file_sha256": "3d35947ebbb0ba1f37eec61010be7f40d8cda03942fc5966d48945f7b7a94c96",
+   "old_text": "$k=1,38064852 \\times 10^{-23} \\, \\text{m}^2 \\,\\text{kg} \\,\\text{s}^{-2} \\,\\text{K}^{-1}$",
+   "new_text": "$k=1,380649 \\times 10^{-23} \\, \\text{J} \\,\\text{K}^{-1}$"
+  },
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl16.tex",
+   "line": 57,
+   "file_sha256": "ee5a38ebbc2b30ba85fd76ba198131b6a7cfdab2835ba25e352861e123b7128c",
+   "old_text": "a_0 = \\frac{4\\pi\\epsilon_0\\hbar^2}{m_{\\text{e}}e^2} = 5.29177210903(80) \\times 10^{-11} \\text{m}.",
+   "new_text": "a_0 = \\frac{4\\pi\\epsilon_0\\hbar^2}{m_{\\text{e}}e^2} = 5.29177210544(82) \\times 10^{-11} \\text{m}."
+  },
+  {
+   "version": "v0.2-en",
+   "file": "latex/lectures/en/lec16.tex",
+   "line": 57,
+   "file_sha256": "314189855e5cb713dbf5f8ecc21a010adb1b5ecd1dafe1e97281271f6d531a8d",
+   "old_text": "a_0 = \\frac{4\\pi\\epsilon_0\\hbar^2}{m_{\\text{e}}e^2} = 5.29177210903(80) \\times 10^{-11} \\text{m}.",
+   "new_text": "a_0 = \\frac{4\\pi\\epsilon_0\\hbar^2}{m_{\\text{e}}e^2} = 5.29177210544(82) \\times 10^{-11} \\text{m}."
+  }
+ ],
+ "reason": "k = 1.38064852e-23 is a superseded value (HANDOFF.md: CODATA 2014); since the 2019 SI the Boltzmann constant is exactly 1.380649e-23 J/K. The a_0 value in vl16 is likewise superseded (the curriculum report H11.6 calls it CODATA 2018); CODATA 2022 gives 5.29177210544(82)e-11 m.",
+ "evidence": {
+  "independent_check": "docs/plan/research/review/REVIEW.md:62 (section B, row 'vl19 Boltzmann constant': CONFIRMED). The a_0 part was not checked by the review; it rests on HANDOFF.md and on the CODATA row P-0011.",
+  "provenance_ids": [
+   "P-0010",
+   "P-0011"
+  ]
+ },
+ "destination": "c15",
+ "notes": "The unit in new_text is written as J/K, as CODATA does; m^2 kg s^-2 K^-1 is the same unit. The new hydrogen chapter (c11) uses the reduced-mass length a_mu; the a_0 correction there is the hydrogen smoke's. The v0.1 locus of a_0 was not recorded."
+}

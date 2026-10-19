@@ -1,0 +1,7 @@
+{
+  "gate": "levels",
+  "what": "An equation's claim carries a presentation, which is admitted only on theorem-like units.",
+  "cmd": "python3 scripts/course/check_levels.py --chapters c99 --content tests/red/levels/presentation-on-equation/content --lint-only",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "CL [^\\n]*de\\.tex:\\d+: claim c99\\.cl\\.1: a presentation \\('proof-omitted'\\) is admitted only"
+}

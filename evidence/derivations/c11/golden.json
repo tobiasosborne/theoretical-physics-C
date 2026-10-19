@@ -1,0 +1,441 @@
+{
+  "checks": {
+    "cloud_convolution_relative_tolerance": "1e-14",
+    "explicit_wavefunction_norms_exact": 14,
+    "lecture_defects": {
+      "line_85_printed_minus_correct": "-x**2",
+      "line_94_printed_norm_squared": "1/2",
+      "line_94_printed_over_CS_m_minus_1": "sqrt(2)/2",
+      "line_94_printed_over_CS_m_plus_1": "-sqrt(2)/2"
+    },
+    "lecture_line_57_bohr_radius_minus_codata_2022_m": "3.59e-20",
+    "moments_exact": 30,
+    "radial_cdfs_exact": 6,
+    "radial_equations_exact": 10,
+    "radial_norms_exact": 21,
+    "spherical_harmonic_inner_products_exact": 81
+  },
+  "codata_inputs": {
+    "Bohr radius": {
+      "line": 61,
+      "source_line": "Bohr radius                                                 5.291 772 105 44 e-11    0.000 000 000 82 e-11    m",
+      "standard_uncertainty_exact_decimal": "41/5000000000000000000000",
+      "unit": "m",
+      "value_exact_decimal": "33073575659/625000000000000000000"
+    },
+    "Planck constant": {
+      "line": 271,
+      "source_line": "Planck constant                                             6.626 070 15 e-34        (exact)                  J Hz^-1",
+      "standard_uncertainty_exact_decimal": "0",
+      "unit": "J Hz^-1",
+      "value_exact_decimal": "132521403/200000000000000000000000000000000000000000"
+    },
+    "Rydberg constant": {
+      "line": 309,
+      "source_line": "Rydberg constant                                            10 973 731.568 157       0.000 012                m^-1",
+      "standard_uncertainty_exact_decimal": "3/250000",
+      "unit": "m^-1",
+      "value_exact_decimal": "10973731568157/1000000"
+    },
+    "Rydberg constant times hc in J": {
+      "line": 312,
+      "source_line": "Rydberg constant times hc in J                              2.179 872 361 1030 e-18  0.000 000 000 0024 e-18  J",
+      "standard_uncertainty_exact_decimal": "3/1250000000000000000000000000000",
+      "unit": "J",
+      "value_exact_decimal": "2179872361103/1000000000000000000000000000000"
+    },
+    "Rydberg constant times hc in eV": {
+      "line": 311,
+      "source_line": "Rydberg constant times hc in eV                             13.605 693 122 990       0.000 000 000 015        eV",
+      "standard_uncertainty_exact_decimal": "3/200000000000",
+      "unit": "eV",
+      "value_exact_decimal": "1360569312299/100000000000"
+    },
+    "electron mass": {
+      "line": 107,
+      "source_line": "electron mass                                               9.109 383 7139 e-31      0.000 000 0028 e-31      kg",
+      "standard_uncertainty_exact_decimal": "7/25000000000000000000000000000000000000000",
+      "unit": "kg",
+      "value_exact_decimal": "91093837139/100000000000000000000000000000000000000000"
+    },
+    "electron volt": {
+      "line": 124,
+      "source_line": "electron volt                                               1.602 176 634 e-19       (exact)                  J",
+      "standard_uncertainty_exact_decimal": "0",
+      "unit": "J",
+      "value_exact_decimal": "801088317/5000000000000000000000000000"
+    },
+    "electron-proton mass ratio": {
+      "line": 117,
+      "source_line": "electron-proton mass ratio                                  5.446 170 214 889 e-4    0.000 000 000 094 e-4",
+      "standard_uncertainty_exact_decimal": "47/5000000000000000",
+      "unit": "",
+      "value_exact_decimal": "5446170214889/10000000000000000"
+    },
+    "elementary charge": {
+      "line": 132,
+      "source_line": "elementary charge                                           1.602 176 634 e-19       (exact)                  C",
+      "standard_uncertainty_exact_decimal": "0",
+      "unit": "C",
+      "value_exact_decimal": "801088317/5000000000000000000000000000"
+    },
+    "proton mass": {
+      "line": 288,
+      "source_line": "proton mass                                                 1.672 621 925 95 e-27    0.000 000 000 52 e-27    kg",
+      "standard_uncertainty_exact_decimal": "13/25000000000000000000000000000000000000",
+      "unit": "kg",
+      "value_exact_decimal": "33452438519/20000000000000000000000000000000000000"
+    },
+    "speed of light in vacuum": {
+      "line": 330,
+      "source_line": "speed of light in vacuum                                    299 792 458              (exact)                  m s^-1",
+      "standard_uncertainty_exact_decimal": "0",
+      "unit": "m s^-1",
+      "value_exact_decimal": "299792458"
+    },
+    "vacuum electric permittivity": {
+      "line": 360,
+      "source_line": "vacuum electric permittivity                                8.854 187 8188 e-12      0.000 000 0014 e-12      F m^-1",
+      "standard_uncertainty_exact_decimal": "7/5000000000000000000000",
+      "unit": "F m^-1",
+      "value_exact_decimal": "22135469547/2500000000000000000000"
+    }
+  },
+  "constants": {
+    "Balmer_alpha_vacuum": {
+      "first_order_uncertainty_scale_upper_bound": "7.2403040175087116e-19",
+      "unit": "m",
+      "value": "6.5646960633324418e-7"
+    },
+    "E_1_m_e_J": {
+      "first_order_uncertainty_scale_upper_bound": "2.3837350285787144e-30",
+      "unit": "J",
+      "value": "-2.1798723611029889e-18"
+    },
+    "E_1_m_e_eV": {
+      "first_order_uncertainty_scale_upper_bound": "1.4878103811984031e-11",
+      "unit": "eV",
+      "value": "-13.605693122990514"
+    },
+    "E_1_mu_J": {
+      "first_order_uncertainty_scale_upper_bound": "2.4029060116939271e-30",
+      "unit": "J",
+      "value": "-2.1786858117254469e-18"
+    },
+    "E_1_mu_eV": {
+      "first_order_uncertainty_scale_upper_bound": "1.4997759677063965e-11",
+      "unit": "eV",
+      "value": "-13.598287264283289"
+    },
+    "Lyman_alpha_vacuum": {
+      "first_order_uncertainty_scale_upper_bound": "1.3407970402793910e-19",
+      "unit": "m",
+      "value": "1.2156844561726744e-7"
+    },
+    "a_0": {
+      "first_order_uncertainty_scale_upper_bound": "8.2000000000000000e-21",
+      "unit": "m",
+      "value": "5.2917721054400000e-11"
+    },
+    "a_mu": {
+      "first_order_uncertainty_scale_upper_bound": "8.2049632861541203e-21",
+      "unit": "m",
+      "value": "5.2946540946024628e-11"
+    },
+    "m_e_over_m_p": {
+      "first_order_uncertainty_scale_upper_bound": "9.4000000000000000e-15",
+      "unit": "1",
+      "value": "5.4461702148890000e-4"
+    },
+    "mu_over_m_e": {
+      "first_order_uncertainty_scale_upper_bound": "9.3897695582634697e-15",
+      "unit": "1",
+      "value": "0.99945567942476152"
+    }
+  },
+  "model": "spinless nonrelativistic point-nucleus Coulomb; Z=1; reduced electron-proton mass",
+  "precision": {
+    "decimal_significant_digits": 17,
+    "exact_string_syntax": "SymPy; x=r/a_mu",
+    "physical_accuracy": "limited by CODATA inputs and the stated Coulomb model"
+  },
+  "radial": [
+    {
+      "R_exact": "2*exp(-x)",
+      "cdf_exact": "-(2*x**2 + 2*x + 1)*exp(-2*x) + 1",
+      "l": 0,
+      "moments": {
+        "inverse_r_times_a_mu": "1.0000000000000000",
+        "r_over_a_mu": "1.5000000000000000",
+        "r_squared_over_a_mu_squared": "3.0000000000000000"
+      },
+      "moments_exact": {
+        "inverse_r_times_a_mu": "1",
+        "r_over_a_mu": "3/2",
+        "r_squared_over_a_mu_squared": "3"
+      },
+      "n": 1,
+      "normalization_constant_definition": "a_mu^(3/2) N_nl in R=N_nl*(2r/(n*a_mu))^l*exp(-r/(n*a_mu))*L",
+      "normalization_constant_exact": "2",
+      "samples": [
+        {
+          "R_times_a_mu_to_3_over_2": "1.2130613194252668",
+          "cdf": "0.080301397071394196",
+          "r_over_a_mu": 0.5
+        },
+        {
+          "R_times_a_mu_to_3_over_2": "0.73575888234288464",
+          "cdf": "0.32332358381693654",
+          "r_over_a_mu": 1.0
+        },
+        {
+          "R_times_a_mu_to_3_over_2": "0.27067056647322538",
+          "cdf": "0.76189669444645566",
+          "r_over_a_mu": 2.0
+        },
+        {
+          "R_times_a_mu_to_3_over_2": "0.013475893998170934",
+          "cdf": "0.99723060428448842",
+          "r_over_a_mu": 5.0
+        },
+        {
+          "R_times_a_mu_to_3_over_2": "9.0799859524969703e-5",
+          "cdf": "0.99999954448504944",
+          "r_over_a_mu": 10.0
+        }
+      ]
+    },
+    {
+      "R_exact": "sqrt(2)*(2 - x)*exp(-x/2)/4",
+      "cdf_exact": "-(x**4/8 + x**2/2 + x + 1)*exp(-x) + 1",
+      "l": 0,
+      "moments": {
+        "inverse_r_times_a_mu": "0.25000000000000000",
+        "r_over_a_mu": "6.0000000000000000",
+        "r_squared_over_a_mu_squared": "42.000000000000000"
+      },
+      "moments_exact": {
+        "inverse_r_times_a_mu": "1/4",
+        "r_over_a_mu": "6",
+        "r_squared_over_a_mu_squared": "42"
+      },
+      "n": 2,
+      "normalization_constant_definition": "a_mu^(3/2) N_nl in R=N_nl*(2r/(n*a_mu))^l*exp(-r/(n*a_mu))*L",
+      "normalization_constant_exact": "sqrt(2)/4",
+      "samples": [
+        {
+          "R_times_a_mu_to_3_over_2": "0.41302148617738781",
+          "cdf": "0.0096491571879657380",
+          "r_over_a_mu": 0.5
+        },
+        {
+          "R_times_a_mu_to_3_over_2": "0.21444097124017670",
+          "cdf": "0.034316466924963906",
+          "r_over_a_mu": 1.0
+        },
+        {
+          "R_times_a_mu_to_3_over_2": "0.0",
+          "cdf": "0.052653017343711157",
+          "r_over_a_mu": 2.0
+        },
+        {
+          "R_times_a_mu_to_3_over_2": "-0.087064288740970890",
+          "cdf": "0.34894587121336674",
+          "r_over_a_mu": 5.0
+        },
+        {
+          "R_times_a_mu_to_3_over_2": "-0.019057792057315528",
+          "cdf": "0.94048069208138236",
+          "r_over_a_mu": 10.0
+        }
+      ]
+    },
+    {
+      "R_exact": "sqrt(6)*x*exp(-x/2)/12",
+      "cdf_exact": "-(x**4/24 + x**3/6 + x**2/2 + x + 1)*exp(-x) + 1",
+      "l": 1,
+      "moments": {
+        "inverse_r_times_a_mu": "0.25000000000000000",
+        "r_over_a_mu": "5.0000000000000000",
+        "r_squared_over_a_mu_squared": "30.000000000000000"
+      },
+      "moments_exact": {
+        "inverse_r_times_a_mu": "1/4",
+        "r_over_a_mu": "5",
+        "r_squared_over_a_mu_squared": "30"
+      },
+      "n": 2,
+      "normalization_constant_definition": "a_mu^(3/2) N_nl in R=N_nl*(2r/(n*a_mu))^l*exp(-r/(n*a_mu))*L",
+      "normalization_constant_exact": "sqrt(6)/12",
+      "samples": [
+        {
+          "R_times_a_mu_to_3_over_2": "0.079486022075204716",
+          "cdf": "1.7211562995584078e-4",
+          "r_over_a_mu": 0.5
+        },
+        {
+          "R_times_a_mu_to_3_over_2": "0.12380755247080081",
+          "cdf": "0.0036598468273437123",
+          "r_over_a_mu": 1.0
+        },
+        {
+          "R_times_a_mu_to_3_over_2": "0.15018615295504259",
+          "cdf": "0.052653017343711157",
+          "r_over_a_mu": 2.0
+        },
+        {
+          "R_times_a_mu_to_3_over_2": "0.083777650902338078",
+          "cdf": "0.55950671493478759",
+          "r_over_a_mu": 5.0
+        },
+        {
+          "R_times_a_mu_to_3_over_2": "0.013753776718063790",
+          "cdf": "0.97074731192303893",
+          "r_over_a_mu": 10.0
+        }
+      ]
+    },
+    {
+      "R_exact": "2*sqrt(3)*(2*x**2/9 - 2*x + 3)*exp(-x/3)/27",
+      "cdf_exact": "-(8*x**6/6561 - 8*x**5/729 + 4*x**4/81 + 2*x**2/9 + 2*x/3 + 1)*exp(-2*x/3) + 1",
+      "l": 0,
+      "moments": {
+        "inverse_r_times_a_mu": "0.11111111111111111",
+        "r_over_a_mu": "13.500000000000000",
+        "r_squared_over_a_mu_squared": "207.00000000000000"
+      },
+      "moments_exact": {
+        "inverse_r_times_a_mu": "1/9",
+        "r_over_a_mu": "27/2",
+        "r_squared_over_a_mu_squared": "207"
+      },
+      "n": 3,
+      "normalization_constant_definition": "a_mu^(3/2) N_nl in R=N_nl*(2r/(n*a_mu))^l*exp(-r/(n*a_mu))*L",
+      "normalization_constant_exact": "2*sqrt(3)/27",
+      "samples": [
+        {
+          "R_times_a_mu_to_3_over_2": "0.22324084832097169",
+          "cdf": "0.0028381805200724776",
+          "r_over_a_mu": 0.5
+        },
+        {
+          "R_times_a_mu_to_3_over_2": "0.11236012334489625",
+          "cdf": "0.0098663607499791318",
+          "r_over_a_mu": 1.0
+        },
+        {
+          "R_times_a_mu_to_3_over_2": "-0.0073190496760501022",
+          "cdf": "0.014353209969040565",
+          "r_over_a_mu": 2.0
+        },
+        {
+          "R_times_a_mu_to_3_over_2": "-0.035002862761507388",
+          "cdf": "0.089902655013495875",
+          "r_over_a_mu": 5.0
+        },
+        {
+          "R_times_a_mu_to_3_over_2": "0.023901983064665167",
+          "cdf": "0.17832566400101153",
+          "r_over_a_mu": 10.0
+        }
+      ]
+    },
+    {
+      "R_exact": "sqrt(6)*x*(4 - 2*x/3)*exp(-x/3)/81",
+      "cdf_exact": "-(4*x**6/6561 - 4*x**5/2187 + 2*x**4/243 + 4*x**3/81 + 2*x**2/9 + 2*x/3 + 1)*exp(-2*x/3) + 1",
+      "l": 1,
+      "moments": {
+        "inverse_r_times_a_mu": "0.11111111111111111",
+        "r_over_a_mu": "12.500000000000000",
+        "r_squared_over_a_mu_squared": "180.00000000000000"
+      },
+      "moments_exact": {
+        "inverse_r_times_a_mu": "1/9",
+        "r_over_a_mu": "25/2",
+        "r_squared_over_a_mu_squared": "180"
+      },
+      "n": 3,
+      "normalization_constant_definition": "a_mu^(3/2) N_nl in R=N_nl*(2r/(n*a_mu))^l*exp(-r/(n*a_mu))*L",
+      "normalization_constant_exact": "sqrt(6)/54",
+      "samples": [
+        {
+          "R_times_a_mu_to_3_over_2": "0.046929899852474657",
+          "cdf": "6.0133696002859515e-5",
+          "r_over_a_mu": 0.5
+        },
+        {
+          "R_times_a_mu_to_3_over_2": "0.072227822865575495",
+          "cdf": "0.0012585443967425638",
+          "r_over_a_mu": 1.0
+        },
+        {
+          "R_times_a_mu_to_3_over_2": "0.082805594524419699",
+          "cdf": "0.016924497400744043",
+          "r_over_a_mu": 2.0
+        },
+        {
+          "R_times_a_mu_to_3_over_2": "0.019039047399695352",
+          "cdf": "0.10757381465052838",
+          "r_over_a_mu": 5.0
+        },
+        {
+          "R_times_a_mu_to_3_over_2": "-0.028768092440562990",
+          "cdf": "0.25125819094869754",
+          "r_over_a_mu": 10.0
+        }
+      ]
+    },
+    {
+      "R_exact": "2*sqrt(30)*x**2*exp(-x/3)/1215",
+      "cdf_exact": "-(4*x**6/32805 + 4*x**5/3645 + 2*x**4/243 + 4*x**3/81 + 2*x**2/9 + 2*x/3 + 1)*exp(-2*x/3) + 1",
+      "l": 2,
+      "moments": {
+        "inverse_r_times_a_mu": "0.11111111111111111",
+        "r_over_a_mu": "10.500000000000000",
+        "r_squared_over_a_mu_squared": "126.00000000000000"
+      },
+      "moments_exact": {
+        "inverse_r_times_a_mu": "1/9",
+        "r_over_a_mu": "21/2",
+        "r_squared_over_a_mu_squared": "126"
+      },
+      "n": 3,
+      "normalization_constant_definition": "a_mu^(3/2) N_nl in R=N_nl*(2r/(n*a_mu))^l*exp(-r/(n*a_mu))*L",
+      "normalization_constant_exact": "sqrt(30)/270",
+      "samples": [
+        {
+          "R_times_a_mu_to_3_over_2": "0.0019079717499525579",
+          "cdf": "6.7818725678583643e-8",
+          "r_over_a_mu": 0.5
+        },
+        {
+          "R_times_a_mu_to_3_over_2": "0.0064602528717696185",
+          "cdf": "6.4983817263357115e-6",
+          "r_over_a_mu": 1.0
+        },
+        {
+          "R_times_a_mu_to_3_over_2": "0.018515893827388682",
+          "cdf": "4.6825783784178904e-4",
+          "r_over_a_mu": 2.0
+        },
+        {
+          "R_times_a_mu_to_3_over_2": "0.042572604212559416",
+          "cdf": "0.053201015767351433",
+          "r_over_a_mu": 5.0
+        },
+        {
+          "R_times_a_mu_to_3_over_2": "0.032163705140048337",
+          "cdf": "0.49953913374933077",
+          "r_over_a_mu": 10.0
+        }
+      ]
+    }
+  ],
+  "schema_version": 1,
+  "units": {
+    "R": "a_mu^(-3/2)",
+    "inverse_r": "a_mu^(-1)",
+    "r": "a_mu",
+    "r_squared": "a_mu^2"
+  }
+}

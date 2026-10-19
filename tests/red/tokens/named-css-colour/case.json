@@ -1,0 +1,7 @@
+{
+  "gate": "tokens",
+  "what": "CSS uses a literal named colour.",
+  "cmd": "python3 design/lint_content.py tests/red/tokens/named-css-colour/probe.css",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "named CSS colour: red"
+}

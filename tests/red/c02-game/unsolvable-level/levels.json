@@ -1,0 +1,38 @@
+{
+ "generated_by": "RED FIXTURE: a square-bit level that claims P_opt = 1 through an \"effect\" outside E(K)",
+ "levels": [
+  {
+   "id": "X1",
+   "theory": "square_bit",
+   "omega_1": [
+    "1",
+    "0"
+   ],
+   "omega_2": [
+    "0",
+    "1"
+   ],
+   "priors": [
+    "1/2",
+    "1/2"
+   ],
+   "p_opt": {
+    "x": "1",
+    "y": "0",
+    "m": "1"
+   },
+   "optimal_extreme_effects": [
+    {
+     "f": [
+      "1/2",
+      "1/2",
+      "-1/2"
+     ]
+    }
+   ],
+   "all_effects_optimal": false,
+   "derivation": "none (red fixture)",
+   "note": "(1/2; 1/2, -1/2) has |a_x| + |a_y| = 1 > 1/2; the true optimum of this pair is 3/4"
+  }
+ ]
+}

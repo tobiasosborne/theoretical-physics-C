@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A provenance row lacks its locus.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/schema-missing-field --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[schema\\] provenance\\.json:P-0001: .*missing required field 'locus'"
+}

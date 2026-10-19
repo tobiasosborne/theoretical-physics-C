@@ -1,0 +1,41 @@
+{
+ "schema_version": 1,
+ "id": "M-0011",
+ "status": "recorded",
+ "title": "vl01: 'variances vanish only when P is concentrated on one point' is proved for finite outcome sets only",
+ "legacy": [
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl01.tex",
+   "line": 214,
+   "file_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "old_text": "Aufgrund der Definition ist klar, dass Varianzen stets $\\ge 0$ sind und nur dann verschwinden, wenn $\\mathbb{P}$ auf einen Punkt konzentriert ist.",
+   "new_text": "$\\operatorname{Var}[f] \\geq 0$, und $\\operatorname{Var}[f] = 0$ gilt genau dann, wenn $f(x) = \\mathbb{E}[f]$ für alle Ergebnisse $x$ mit $p(x) > 0$ ist. [Proposition c01.prop.varianz, endliche Ergebnismenge; für eine Dichte auf $\\mathbb{R}$ wird nur $\\operatorname{Var}[\\mathbb{P}] = M_2 - M_1^2$ gezeigt.]"
+  },
+  {
+   "version": "v0.2-en",
+   "file": "latex/lectures/en/lec01.tex",
+   "line": 214,
+   "file_sha256": "b0ccc8af69cc09146698d13dcbf0667b5ee2295def8dc4133611ade213eab270",
+   "old_text": "From the definition it is clear that variances are always $\\ge 0$ and vanish only when $\\mathbb{P}$ is concentrated on a single point.",
+   "new_text": "$\\operatorname{Var}[f] \\geq 0$, and $\\operatorname{Var}[f] = 0$ holds if and only if $f(x) = \\mathbb{E}[f]$ for all outcomes $x$ with $p(x) > 0$. [Proposition c01.prop.varianz, finite outcome set; for a density on $\\mathbb{R}$ only $\\operatorname{Var}[\\mathbb{P}] = M_2 - M_1^2$ is shown.]"
+  },
+  {
+   "version": "v0.1",
+   "file": "archive/skript-2022/Vorlesungen1.tex",
+   "line": 178,
+   "file_sha256": "169b2f6f9c71ecb3882c13889634f42a2d8ddee3d12d7189e64fb4d6ed983371",
+   "old_text": "Aufgrund der Definition ist klar, dass Varianzen stets $\\ge 0$ sind und nur dann verschwinden, wenn $\\mathbb{P}$ auf einen Punkt konzentriert ist.",
+   "new_text": null,
+   "gap_tjo": "v0.1 is evidence only; the new wording is that of the v0.2 entries."
+  }
+ ],
+ "reason": "The script states the sentence for probability measures on the real line, where 'concentrated on one point' is a measure without a density; the new chapter treats only densities on the real line (curriculum report, section 5: 'continuous case stated with densities only') and has no source on disk for measure theory. The statement is therefore proved where the chapter can prove it: for a measurement f on a finite outcome set the variance vanishes exactly when f is constant on the outcomes of positive weight, and all measurements have variance zero exactly for point weights (c01.prop.punktgewicht). The statement for measures on the real line is on the gap list (G-0026).",
+ "evidence": {
+  "independent_check": "evidence/derivations/c01/DERIVATION.md (c01.cl.varianz, parts 2 and 3; c01.cl.punktgewicht); docs/plan/research/curriculum/REPORT.md:474",
+  "provenance_ids": [],
+  "derivation": "evidence/derivations/c01/DERIVATION.md#c01.cl.varianz",
+  "notes": "A change of scope (real line to finite outcome sets), made by the chapter author."
+ },
+ "destination": "c01.prop.varianz"
+}

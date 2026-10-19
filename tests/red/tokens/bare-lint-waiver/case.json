@@ -1,0 +1,7 @@
+{
+  "gate": "tokens",
+  "what": "A bare lint waiver suppresses a literal without giving a reason.",
+  "cmd": "python3 design/lint_content.py tests/red/tokens/bare-lint-waiver/probe.css",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "lint waiver needs allow\\(<reason>\\)"
+}

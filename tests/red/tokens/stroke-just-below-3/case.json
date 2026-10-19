@@ -1,0 +1,7 @@
+{
+  "gate": "tokens",
+  "what": "PKG-2 overrides dynamics to L 0.66, which is 2.98:1 on its plate: essential graphics need 3:1 and 2.99 does not pass.",
+  "cmd": "python3 design/build_tokens.py --measure --base design/tokens/base.tokens.json --tokens-dir tests/red/tokens/stroke-just-below-3/tokens",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "FAIL\\s+pkg2 light: stroke-contrast dynamics/plate = 2\\.9\\d+, needs >= 3\\.0"
+}

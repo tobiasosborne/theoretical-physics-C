@@ -1,0 +1,7 @@
+{
+  "gate": "red-runner",
+  "what": "A case regex matches the empty string.",
+  "cmd": "python3 tests/red/red-runner/no-cases/probe.py empty-regex",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "BROKEN .*expect_output_regex matches empty output"
+}

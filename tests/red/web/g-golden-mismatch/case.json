@@ -1,0 +1,7 @@
+{
+  "gate": "web",
+  "what": "A golden value of the reference implementation differs from what the TypeScript kernel computes (one number changed by hand).",
+  "cmd": "GOLDEN_DIR=tests/red/web/g-golden-mismatch bash web/run.sh test tests/kernels",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "golden mismatch: imageOfUnitSquare\\(shearMatrixX\\(-3\\)\\)\\[2\\]\\[0\\]: kernel -2, reference -2\\.5"
+}

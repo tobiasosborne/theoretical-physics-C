@@ -1,0 +1,17 @@
+/* Demo frame. Token names only (design/README.md). */
+.tpcd { width: 100%; font-family: var(--tpc-family-label); font-size: var(--tpc-size-label); line-height: var(--tpc-leading-label); color: var(--tpc-ink); }
+.tpcd-stage { position: relative; width: 100%; background: var(--tpc-stage); outline: none; overflow: hidden; }
+.tpcd-stage.tpcd-plate { background: var(--tpc-plate); }
+.tpcd-stage:focus-visible { outline: var(--tpc-stroke-box) solid var(--tpc-link); outline-offset: 2px; }
+.tpcd-stage > canvas, .tpcd-stage > svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.tpcd-controls { display: flex; flex-wrap: wrap; align-items: center; gap: var(--tpc-space-xs) var(--tpc-space-s); padding: var(--tpc-space-xs) 0 0; }
+.tpcd-control { display: inline-flex; align-items: center; gap: 0.5em; min-height: 2rem; }
+.tpcd-control input[type="range"] { width: 11rem; max-width: 45vw; accent-color: var(--tpc-accent); }
+.tpcd-control output, .tpcd-readout output { font-variant-numeric: tabular-nums; min-width: 3.2em; }
+.tpcd button { font: inherit; color: var(--tpc-ink); background: var(--tpc-ground-alt); border: var(--tpc-stroke-hair) solid var(--tpc-rule); border-radius: 0.25rem; padding: 0.3em 0.8em; min-height: 2rem; cursor: pointer; }
+.tpcd button:focus-visible, .tpcd input:focus-visible { outline: var(--tpc-stroke-box) solid var(--tpc-link); outline-offset: 2px; }
+.tpcd-readout { display: inline-flex; gap: 0.4em; align-items: baseline; }
+.tpcd-readout math, .tpcd-control math { font-family: var(--tpc-font-math); font-size: 1.1em; }
+.tpcd-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.tpcd-capture .tpcd-controls { display: none; }
+.tpcd-capture .tpcd-stage { outline: none; }

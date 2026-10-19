@@ -1,0 +1,7 @@
+{
+  "gate": "levels",
+  "what": "The source hash list omits the required token inventory.",
+  "cmd": "python3 tests/red/levels/build-identity/probe.py build-token-inventory",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "B0 tpc-de-full: required token inventory missing from hash list"
+}

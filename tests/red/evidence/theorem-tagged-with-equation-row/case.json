@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A theorem is tagged with a ledger row of kind equation.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/theorem-tagged-with-equation-row --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[claim-mismatch\\] c98-red/de\\.tex:5: \\\\claim\\{c98\\.cl\\.1\\}: theorem-like unit in content is 'theorem', the ledger says 'None'"
+}

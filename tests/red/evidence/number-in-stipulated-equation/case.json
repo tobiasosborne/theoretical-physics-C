@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A decimal stands bare in a display whose only claim is author-stipulated.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/number-in-stipulated-equation --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[number\\] c98-red/de\\.tex:\\d+: underived number '0\\.5'"
+}

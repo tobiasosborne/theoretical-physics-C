@@ -1,0 +1,522 @@
+{
+ "mode": "private",
+ "result": "pass",
+ "inputs": {
+  "evidence/claims.json": "c7d0b564f088fd9f025039cc8a34793f1f664ce13eabe529089506d17388203c",
+  "evidence/provenance.json": "9f43b1060040b28888d91454552caffd60d5d7811856f12282ecc530fabfbb8f",
+  "evidence/gaps.json": "574b282868171c47a7137af514e41b472fcc97100603dd0d2f7845281e6d3a6e",
+  "evidence/migrations/M-0001.json": "05fb279f34750f7a3745807c3e870deb71d5d72e9a8a8d70b57746c3018268a4",
+  "evidence/migrations/M-0002.json": "4409d6422a50499f0b6de0421b184dbb4f5fcb1819fb62fec918a34c2a57fe95",
+  "evidence/migrations/M-0003.json": "86205bb2e56250516fe6278f647ed4a3ef5475c0dee0379b09dc63ad76b33852",
+  "evidence/migrations/M-0004.json": "05b7130e898023991f80225e1ec3c5b36b1168e201c3cc2bc30ff42bffc17e03",
+  "evidence/migrations/M-0005.json": "1eaa997266478cf46aac820ad0fbff1a7a9e2a28726193fa5786decea2095c8e",
+  "evidence/migrations/M-0006.json": "d66af3a32c857528e37598dafa6ff851c6928e28f36bbc3ad6b2075c51dc63f9",
+  "evidence/migrations/M-0007.json": "dd7b6b237401730a8cf5baa720f0e9cb5df21ad82b24b73dc987ee9da5eeed27",
+  "evidence/migrations/M-0008.json": "b27142acf98a67c55b2bbaa0ad300e9adc603699774ab8ee83070da316e49057",
+  "evidence/migrations/M-0009.json": "3da3efab8e6e2f6c85217baf2f7299e6c2cdb258fb0a94e16dcffcda222322a3",
+  "evidence/migrations/M-0010.json": "d322cf9f217b73764ea0ea297beaeacf3e27261f492d9f84c4c9df6013233f5c",
+  "evidence/migrations/M-0011.json": "f87ac1f98b7f075d1b2aa3f82432e0d8c2026d6578bad3d96d08458dba3a5d64",
+  "evidence/migrations/M-0012.json": "56dc32da9512afa493f9dc659b4fd02e65521dec7a9ff59da7e006457fd361da",
+  "evidence/receipts/reviews/R-0050.json": "e3c6b8f698271c806b79ab7bf97cfa3a2f3c0b3801f6b56ddb420d0b3b0f32c6",
+  "evidence/receipts/reviews/R-0051.json": "0104c7aff9483e983575ba40f28d457efe206b3614f5322ea41bbf9e2d22cd05",
+  "evidence/receipts/reviews/R-0052.json": "97502d364e9fde1abcfdcc8b8a20fef0b27e5de91660f84b9e4ca3b0805b0fc8",
+  "evidence/receipts/reviews/R-0053.json": "2990a7c25529a8818f8d4aa765a8f54d86832c4a487c26b95a6a07e7814eba08",
+  "evidence/receipts/reviews/R-0054.json": "2ade41fec5ddc28784747fe53cf5b31e5a2f3d12ef5ccdefd9fe15f23c29edf1",
+  "evidence/receipts/reviews/R-0055.json": "c978ca41519f06a0f740339bd8646d7736e75ef10d14422e47a8af61b49dd1f8",
+  "evidence/receipts/reviews/R-0056.json": "85bf640dbc1dacab8af0dd207453e8299586253fd6e4c18686e54bd96fc5ba68",
+  "evidence/receipts/reviews/R-0057.json": "16ede6c01469a76ee827c9e0222280c84aefb351b8d1def63a25aaa7a1b0460e",
+  "evidence/receipts/reviews/R-0058.json": "caffbad103f4771d1259b1406df49135d0ba42a1d4dd4cac78acf624ec9cb157",
+  "evidence/receipts/reviews/R-0059.json": "efdd12edc797719c831f29b6f394124733da1859f1d2ec392e6a3f7198051f4a",
+  "sources/MANIFEST.sha256": "10425fc5dd7b40a74c69d5a43d8d4db8403b602e391226db5968cbb1b93c26b4",
+  "sources/bratteli-robinson-1/source.json": "3f9c3d2c75d3dc2e7b72eeda37e8fa290a80c658807fda7d363e4114c0f61b2a",
+  "sources/bratteli-robinson-2/source.json": "0fe93375944faa3a9ce1acd8b9529a967bde52e193415b77997705ff86845ff7",
+  "sources/brief/source.json": "d74a5835feaeab98ec4b1c0180664153140a0d8fdaf7dd7660849ea8bcfea0b6",
+  "sources/c99-fixture/source.json": "c2d3d5108a933f6e895c8d91fad6194d381627415df76bb71ae1c04487bc5d53",
+  "sources/cfks/source.json": "d527aa2a90ee65ab4c476717ebd1fa200716afd77e55562c733a1a692c063f75",
+  "sources/codata-2022/source.json": "fc5d3dd468c125f6a5690a13d5780c742a2860885a18d9ce2dc583fd09ac6c97",
+  "sources/plavala-2103.07469v2/source.json": "569aab03e53443777d2480af4499d052456b7a798a4c726714b346e05eb336cf",
+  "sources/reed-simon-1/source.json": "72555fbdd474c9265fc6bc2a98cb346bf9df1614297b2aa06fa6fc7e57525040",
+  "sources/reed-simon-2/source.json": "7f533fd91599412352023df2fb2d38e0f9971f61d5b29c4bcfebc4325b97b856",
+  "sources/reed-simon-3/source.json": "849e550e1dc2f3e23d96a520160bd51178869131763da8fd77d349b0ececd01a",
+  "sources/reed-simon-4/source.json": "5f4146f2228f1bef1ef294f0edb9ff4700183400221ef8ec5ec25ca1c5cbc8e8",
+  "sources/tpc-script-v0.1/source.json": "27b7c249638f464f8524c814debf0141e7770bcca45315f67b1240fad8052334",
+  "sources/tpc-script-v0.2/source.json": "2d688ef65a9da3da356d9efd630ad06004a19aed9d602ecccddc8d38b02a3b9c",
+  "sources/tpc-script-v0.2.1/source.json": "a21570ef37768bfd733c893dc9dcef27c0c8dff322a6bc807b32e1348cc506fe",
+  "sources/bratteli-robinson-1/rights.json": "61baac186a47ba36ccbf878a7afd4ca1356f30cc5040b9e7bb745ec230cadfd9",
+  "sources/bratteli-robinson-2/rights.json": "7f1660d03285235a7cbf0910dd58bcd849cd74cc4bf070b42310866fd11928be",
+  "sources/brief/rights.json": "7a5819f20fdff06953ceca01bb1670baf49d570a2e88c1d58a1067e774aa4d0c",
+  "sources/c99-fixture/rights.json": "8644ba58fcdb7bce5e5f85d5b610d81b320d2c7bde605d8eeff979c5d4d5b25a",
+  "sources/cfks/rights.json": "649fafd5a9f8cb46be5ef5c232c1650079ace5988825aba58e7dd0b74fdd2074",
+  "sources/codata-2022/rights.json": "613f9aeb43b2943149d760f4c8cdd4fbeb84bbab91f654c795d79d4f3b0fe83f",
+  "sources/plavala-2103.07469v2/rights.json": "8ffaf9c1fb2cc0e5003ad8e63e5bd3fbc4947dcb8e4dc7f731e7fdda0cee6f1b",
+  "sources/reed-simon-1/rights.json": "bf5102458f67d659988c53a7df5d3526f01785350c2d0f45e33f57c95257570b",
+  "sources/reed-simon-2/rights.json": "6b714ba57e64afb54d1f7336c83033aba7df33fe6ade4f74279952059bc855e3",
+  "sources/reed-simon-3/rights.json": "f36972ce7690aaf67ae3cc8605d2ac37b08324600e29e980d7a343bcdb4ed58b",
+  "sources/reed-simon-4/rights.json": "4119519799f99bfb8d7d955105890318b0258c34603577dac7856d1b54e3da77",
+  "sources/tpc-script-v0.1/rights.json": "db33f9cf06638751dbce96cebdb81d258f75dabcbf2312d2ce3b239a17316405",
+  "sources/tpc-script-v0.2/rights.json": "63484070582c6fe08fbdbeff22cc77322029717cae75c555709062acc2b688d2",
+  "sources/tpc-script-v0.2.1/rights.json": "18a7396d6ce100c3bcd2619fc4a3942f2036e9268ccba90871892e8bc511292d",
+  "evidence/c99-fixture/DERIVATION.md": "d676433be98f023bb4c1edb41513807d09bf2c9c206fb816741ab11492c710b2",
+  "evidence/derivations/c02/DERIVATION.md": "3bcd81c530f51aaa34403dbca0c34188b40815898c17959f994888c21ab16ffd",
+  "evidence/derivations/c02/ADDENDUM-chapter.md": "269dedb736d3efe19bc6c61248cf4c4a1282864906ce5da95757ac01faedf1bc",
+  "scripts/c02/c02_numerics.py": "a6456794a2bbef6bd54739be6c935cd4b9ee81e52ea52f8a09c2a522569afd2e",
+  "evidence/derivations/c11/DERIVATION.md": "61e8adafe5a9ea7343cc1fd5e4327483cdeb2e8160368ca426a9f214a9202a25",
+  "scripts/c11/c11_numerics.py": "7fe0562075bfeb933c632f72bfa1df85ba628914d4dd0dbacbcd044446a2caaf",
+  "evidence/derivations/c11/REVIEW.md": "c18afa04a943e260771103789781cbbfbc79c320f2e6a1d3a2af94db2338eceb",
+  "evidence/derivations/c01/DERIVATION.md": "4113875b7d4ce3deb046fe30e421e2c7781e6bd29b889644134c3699521f7fed",
+  "checker:scripts/evidence/check_evidence.py": "d6ea08073dd27121af72779fede43e9ace0ca6cc76630bb94f0ec0a59941564b",
+  "schema:claims.schema.json": "5b799e97a72a4f787ae91159eb3ef27dbc6c081714fb7100e5fc51a38369b918",
+  "schema:gaps.schema.json": "b87f200d0cdc1ce6c75b295031f4bfa5b66bfba0be326163bbad0597c9957e04",
+  "schema:migration.schema.json": "8b2c4e26f1fff7d500a04af576312ddc857a8ceb2a67379d9a541260fae30f7f",
+  "schema:provenance.schema.json": "18f370f733e071569269fdd1b0790d06a3ad3836173aca909cf9f5c0221b9eca",
+  "schema:review.schema.json": "ba9156c6cd4b67453b29a879b7742e989531d4e9f9d2365f98bf07eff7922db6",
+  "schema:rights.schema.json": "c04836c5c4b071e416a82d39d7ce01950ec2fccdc5cba7f0920e98d10cbe521b",
+  "schema:source.schema.json": "19172cf301e6438060b048e2640b6df033d49391d970848ca2b28f33a7b35f56"
+ },
+ "counts": {
+  "awaiting_content": 6,
+  "claims": 230,
+  "gaps": 32,
+  "manifest_checked": 144,
+  "manifest_skipped": 0,
+  "migrations": 12,
+  "numerics_not_run": 0,
+  "numerics_run": 47,
+  "page_image": 10,
+  "provenance": 139,
+  "sources": 14,
+  "text_skipped": 0,
+  "text_verified": 129
+ },
+ "numerics_run": true,
+ "numerics_results": {
+  "c02.cl.level-b1": {
+   "result": "pass",
+   "script": "scripts/c02/c02_numerics.py",
+   "command": "python3 scripts/c02/c02_numerics.py level B1",
+   "value": 1.0,
+   "expected": 1.0,
+   "tolerance": 1e-12,
+   "exit_status": 0
+  },
+  "c02.cl.level-b2": {
+   "result": "pass",
+   "script": "scripts/c02/c02_numerics.py",
+   "command": "python3 scripts/c02/c02_numerics.py level B2",
+   "value": 0.75,
+   "expected": 0.75,
+   "tolerance": 1e-12,
+   "exit_status": 0
+  },
+  "c02.cl.level-s1": {
+   "result": "pass",
+   "script": "scripts/c02/c02_numerics.py",
+   "command": "python3 scripts/c02/c02_numerics.py level S1",
+   "value": 1.0,
+   "expected": 1.0,
+   "tolerance": 1e-12,
+   "exit_status": 0
+  },
+  "c02.cl.level-s2": {
+   "result": "pass",
+   "script": "scripts/c02/c02_numerics.py",
+   "command": "python3 scripts/c02/c02_numerics.py level S2",
+   "value": 1.0,
+   "expected": 1.0,
+   "tolerance": 1e-12,
+   "exit_status": 0
+  },
+  "c02.cl.level-q1": {
+   "result": "pass",
+   "script": "scripts/c02/c02_numerics.py",
+   "command": "python3 scripts/c02/c02_numerics.py level Q1",
+   "value": 0.8535533905932737,
+   "expected": 0.8535533905932737,
+   "tolerance": 1e-12,
+   "exit_status": 0
+  },
+  "c02.cl.level-q2": {
+   "result": "pass",
+   "script": "scripts/c02/c02_numerics.py",
+   "command": "python3 scripts/c02/c02_numerics.py level Q2",
+   "value": 0.9,
+   "expected": 0.9,
+   "tolerance": 1e-12,
+   "exit_status": 0
+  },
+  "c02.cl.level-p1": {
+   "result": "pass",
+   "script": "scripts/c02/c02_numerics.py",
+   "command": "python3 scripts/c02/c02_numerics.py level P1",
+   "value": 0.8090169943749475,
+   "expected": 0.8090169943749475,
+   "tolerance": 1e-12,
+   "exit_status": 0
+  },
+  "c02.cl.level-h1": {
+   "result": "pass",
+   "script": "scripts/c02/c02_numerics.py",
+   "command": "python3 scripts/c02/c02_numerics.py level H1",
+   "value": 1.0,
+   "expected": 1.0,
+   "tolerance": 1e-12,
+   "exit_status": 0
+  },
+  "c02.cl.level-c1": {
+   "result": "pass",
+   "script": "scripts/c02/c02_numerics.py",
+   "command": "python3 scripts/c02/c02_numerics.py level C1",
+   "value": 1.0,
+   "expected": 1.0,
+   "tolerance": 1e-12,
+   "exit_status": 0
+  },
+  "c02.cl.level-c2": {
+   "result": "pass",
+   "script": "scripts/c02/c02_numerics.py",
+   "command": "python3 scripts/c02/c02_numerics.py level C2",
+   "value": 0.9836881039375368,
+   "expected": 0.9836881039375368,
+   "tolerance": 1e-12,
+   "exit_status": 0
+  },
+  "c02.cl.level-c3": {
+   "result": "pass",
+   "script": "scripts/c02/c02_numerics.py",
+   "command": "python3 scripts/c02/c02_numerics.py level C3",
+   "value": 0.9419417382415922,
+   "expected": 0.9419417382415922,
+   "tolerance": 1e-12,
+   "exit_status": 0
+  },
+  "c11.cl.mu-ratio": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py mu-ratio",
+   "value": 0.9994556794247615,
+   "expected": 0.9994556794247615,
+   "tolerance": 1e-15,
+   "exit_status": 0
+  },
+  "c11.cl.wolke": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py wolke",
+   "value": 0.037922550162930974,
+   "expected": 0.037922550162930974,
+   "tolerance": 1e-15,
+   "exit_status": 0
+  },
+  "c11.cl.winkel": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py winkel",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.amu": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py amu",
+   "value": 5.2946540946024625e-11,
+   "expected": 5.2946540946024625e-11,
+   "tolerance": 1e-25,
+   "exit_status": 0
+  },
+  "c11.cl.e1-mu": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py e1-mu",
+   "value": -13.59828726428329,
+   "expected": -13.59828726428329,
+   "tolerance": 1e-12,
+   "exit_status": 0
+  },
+  "c11.cl.e1-me": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py e1-me",
+   "value": -13.605693122990514,
+   "expected": -13.605693122990514,
+   "tolerance": 1e-12,
+   "exit_status": 0
+  },
+  "c11.cl.lag0": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.lag0",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.lag1": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.lag1",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.lag2": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.lag2",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.y00": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.y00",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.y10": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.y10",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.y1pm": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.y1pm",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.r10": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.r10",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.r20": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.r20",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.r21": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.r21",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.psi100": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.psi100",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.psi200": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.psi200",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.psi210": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.psi210",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.psi21pm": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.psi21pm",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.y20": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.y20",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.y2pm1": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.y2pm1",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.y2pm2": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.y2pm2",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.r30": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.r30",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.r31": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.r31",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.r32": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.r32",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.psi300": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.psi300",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.psi310": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.psi310",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.psi31pm": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.psi31pm",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.psi320": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.psi320",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.psi32pm1": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.psi32pm1",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.psi32pm2": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.psi32pm2",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.orthonormal": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.cs": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py formulas c11.eq.psi21pm",
+   "value": 0.0,
+   "expected": 0.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  },
+  "c11.cl.lyman": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py lyman",
+   "value": 121.56844561726744,
+   "expected": 121.56844561726744,
+   "tolerance": 1e-10,
+   "exit_status": 0
+  },
+  "c11.cl.balmer": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py balmer",
+   "value": 656.4696063332442,
+   "expected": 656.4696063332442,
+   "tolerance": 1e-09,
+   "exit_status": 0
+  },
+  "c11.cl.maximum": {
+   "result": "pass",
+   "script": "scripts/c11/c11_numerics.py",
+   "command": "python3 scripts/c11/c11_numerics.py maximum",
+   "value": 1.0,
+   "expected": 1.0,
+   "tolerance": 0.0,
+   "exit_status": 0
+  }
+ },
+ "tools": {
+  "python": "3.12.3",
+  "hash": "sha256 (hashlib)"
+ },
+ "date": "2026-10-20"
+}

@@ -1,0 +1,54 @@
+% c02.fig.affin — mixing the states or mixing the probabilities.
+%
+% Horizontal axis: the segment between two states x and y; the mixture
+% z = lambda x + (1 - lambda) y is drawn for lambda = 1/4 (three quarters of the way to y).
+% (a) An affine function, here with f(x) = 1/4 and f(y) = 3/4: its graph is the straight
+%     line through (x, f(x)) and (y, f(y)); at z it has the value
+%     1/4 * 1/4 + 3/4 * 3/4 = 10/16 = 5/8, the same mixture of the two values.
+% (b) The function r -> r^2 on [-1,1] of the grey box, with x = -1, y = 1: values 1 and 1
+%     at the ends; mixing the probabilities gives 1 for every lambda (straight line),
+%     but the function itself is the parabola; at the midpoint (lambda = 1/2) it is 0.
+% Greyscale: the affine graph is dashed (effect role); the parabola is thin and solid;
+% states are filled discs on the axis.
+\begin{tikzpicture}[x=1cm, y=1cm]
+  \begin{scope}[x=3.4cm, y=2.3cm]
+    \draw[tpc grid] (0,1) -- (1,1);
+    \draw[tpc axis] (0,0) -- (1,0);
+    \draw[tpc axis] (0,0) -- (0,1.12);
+    \node[tpc label, left=2pt] at (0,0) {$0$};
+    \node[tpc label, left=2pt] at (0,1) {$1$};
+    \draw[tpc effect] (0,0.25) -- (1,0.75);
+    \draw[tpc leader] (0.75,0) -- (0.75,0.625);
+    \fill[tpc-plate-ink] (0.75,0.625) circle (1.3pt);
+    \fill[tpc-plate-ink] (0,0.25) circle (1.3pt);
+    \fill[tpc-plate-ink] (1,0.75) circle (1.3pt);
+    \fill[tpc-state] (0,0) circle (2pt);
+    \fill[tpc-state] (1,0) circle (2pt);
+    \draw[tpc-state, line width=\tpcstrokethin, fill=tpc-plate] (0.75,0) circle (2.4pt);
+    \node[tpc label, below=3pt] at (0,0) {$x$};
+    \node[tpc label, below=3pt] at (1,0) {$y$};
+    \node[tpc label, below=3pt] at (0.75,0) {$z$};
+    \node[tpc label, anchor=north west] at (0.03,0.2) {$f(x) = \tfrac14$};
+    \node[tpc label, anchor=west] at (1.02,0.75) {$f(y) = \tfrac34$};
+    \node[tpc label, anchor=south east] at (0.74,0.64) {$f(z) = \tfrac58$};
+    \node[tpc label] at (0.5,-0.5) {(a) \tpcifenglish{affine}{affin}};
+  \end{scope}
+  \begin{scope}[shift={(6.9,0)}, x=1.7cm, y=2.3cm]
+    \draw[tpc axis] (-1,0) -- (1,0);
+    \draw[tpc axis] (-1,0) -- (-1,1.12);
+    \node[tpc label, left=2pt] at (-1,0) {$0$};
+    \node[tpc label, left=2pt] at (-1,1) {$1$};
+    \draw[tpc effect] (-1,1) -- (1,1);
+    \draw[tpc axis] plot[domain=-1:1, samples=41] (\x,{\x*\x});
+    \fill[tpc-plate-ink] (0,0) circle (1.6pt);
+    \fill[tpc-plate-ink] (0,1) circle (1.3pt);
+    \fill[tpc-state] (-1,0) circle (2pt);
+    \fill[tpc-state] (1,0) circle (2pt);
+    \node[tpc label, below=3pt] at (-1,0) {$-1$};
+    \node[tpc label, below=3pt] at (1,0) {$1$};
+    \node[tpc label, below=3pt] at (0,0) {$0$};
+    \node[tpc label, anchor=south] at (0,1.02) {\tpcifenglish{mean of the end values}{Mittel der Randwerte}};
+    \node[tpc label, anchor=west] at (0.66,0.2) {$r^2$};
+    \node[tpc label] at (0,-0.5) {(b) \tpcifenglish{not affine}{nicht affin}};
+  \end{scope}
+\end{tikzpicture}

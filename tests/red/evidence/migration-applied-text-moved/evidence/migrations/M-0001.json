@@ -1,0 +1,27 @@
+{
+ "schema_version": 1,
+ "id": "M-0001",
+ "status": "applied",
+ "title": "strict inequality in the old text",
+ "legacy": [
+  {
+   "version": "v0.2-de",
+   "file": "legacy/old.tex",
+   "line": 2,
+   "file_sha256": "5432db6550f8a2a3cedd1cf5e137547e0a71b713727f8699840708a522796d98",
+   "old_text": "the count is n > 0",
+   "new_text": "the count is n >= 0",
+   "applied_file_sha256": "5432db6550f8a2a3cedd1cf5e137547e0a71b713727f8699840708a522796d98",
+   "applied_source_key": "fake-script"
+  }
+ ],
+ "reason": "the empty heap has count zero",
+ "evidence": {
+  "independent_check": "fixture",
+  "provenance_ids": [
+   "P-0001"
+  ]
+ },
+ "destination": "c98",
+ "applied_date": "2026-10-12"
+}

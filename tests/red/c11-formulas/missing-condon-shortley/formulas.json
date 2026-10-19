@@ -1,0 +1,52 @@
+{
+ "schema_version": 1,
+ "note": "red-corpus fixture: The 2p wave functions for m = +-1 correctly normalised but without the Condon-Shortley sign, so that psi_{2,1,-1} = -conj(psi_{2,1,1}) fails.",
+ "formulas": [
+  {
+   "id": "c11.eq.lag1",
+   "kind": "laguerre",
+   "k": 1,
+   "alpha": "alpha",
+   "tex": "\\Lag{1}{\\alpha}(x) &= \\alpha + 1 - x,",
+   "expr": "alpha + 1 - x"
+  },
+  {
+   "id": "c11.eq.lag2",
+   "kind": "laguerre",
+   "k": 2,
+   "alpha": "alpha",
+   "tex": "\\Lag{2}{\\alpha}(x) &= \\frac{x^2}{2} - (\\alpha + 2)\\,x + \\frac{(\\alpha + 1)(\\alpha + 2)}{2},",
+   "expr": "x**2/2 - (alpha + 2)*x + (alpha + 1)*(alpha + 2)/2"
+  },
+  {
+   "id": "c11.eq.r20",
+   "kind": "radial",
+   "n": 2,
+   "l": 0,
+   "tex": "\\Rnl{2}{0}(\\rad) &= \\frac{1}{2\\sqrt{2}}\\left(\\frac{\\Znuc}{\\aRed}\\right)^{3/2}\\left(2 - \\frac{\\Znuc\\rad}{\\aRed}\\right) e^{-\\Znuc\\rad/(2\\aRed)},",
+   "expr": "(Z/a)**(3/2)*(2 - Z*r/a)*exp(-Z*r/(2*a))/(2*sqrt(2))"
+  },
+  {
+   "id": "c11.eq.psi210",
+   "kind": "wavefunction",
+   "n": 2,
+   "l": 1,
+   "m": 0,
+   "tex": "\\psinlm{2}{1}{0}(\\rad, \\theta, \\phi) &= \\frac{1}{4\\sqrt{2\\pi}}\\left(\\frac{\\Znuc}{\\aRed}\\right)^{3/2}\\frac{\\Znuc\\rad}{\\aRed}\\,e^{-\\Znuc\\rad/(2\\aRed)}\\,\\cos\\theta,",
+   "expr": "(Z/a)**(3/2)*(Z*r/a)*exp(-Z*r/(2*a))*cos(theta)/(4*sqrt(2*pi))"
+  },
+  {
+   "id": "c11.eq.psi21pm",
+   "kind": "wavefunction",
+   "n": 2,
+   "l": 1,
+   "m": 1,
+   "pm": true,
+   "tex": "\\psinlm{2}{1}{\\pm 1}(\\rad, \\theta, \\phi) &= \\frac{1}{8\\sqrt{\\pi}}\\left(\\frac{\\Znuc}{\\aRed}\\right)^{3/2}\\frac{\\Znuc\\rad}{\\aRed}\\,e^{-\\Znuc\\rad/(2\\aRed)}\\,\\sin\\theta\\,e^{\\pm i\\phi}.",
+   "expr": {
+    "+": "(Z/a)**(3/2)*(Z*r/a)*exp(-Z*r/(2*a))*sin(theta)*exp(I*phi)/(8*sqrt(pi))",
+    "-": "(Z/a)**(3/2)*(Z*r/a)*exp(-Z*r/(2*a))*sin(theta)*exp(-I*phi)/(8*sqrt(pi))"
+   }
+  }
+ ]
+}

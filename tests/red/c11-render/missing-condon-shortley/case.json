@@ -1,0 +1,7 @@
+{
+  "gate": "c11-render",
+  "what": "The spherical harmonics lack the Condon-Shortley sign (-1)^m for positive m.",
+  "cmd": "HYDROGEN_KERNEL=tests/red/c11-render/missing-condon-shortley/kernel.ts bash web/run.sh test tests/kernels/hydrogen.test.ts -t 'Condon-Shortley:'",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "Condon-Shortley sign missing: Y_1\\^1\\(pi/2, 0\\)"
+}

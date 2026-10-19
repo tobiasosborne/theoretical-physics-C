@@ -242,4 +242,13 @@ Ranked by impact on coherence; trade-off stated.
 7. Games: formal puzzle only, or also light narrative/character elements for Lehramt students who will use them with pupils?
 8. Baskerville Companion Math: a candidate for one design package (needs non-swash italic capitals, specimen E), or a separate project?
 
+---
 
+## Correction note, 2026-10-11
+
+Added by the Phase 0 coordinator from the codex review (`../review/REVIEW.md`, sections B and G;
+path relative to `docs/plan/research/`). The text above is left as written, as evidence of the
+campaign; where it conflicts with this note, the note governs.
+
+- Line 22: BRIEF.md does not name the three designers attributed to it.
+- Lines 27, 106: STIX Two is the specimens' preferred Times-family face, not technically unique; MathJax 4 ships a Termes face.

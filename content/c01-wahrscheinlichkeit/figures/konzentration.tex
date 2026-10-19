@@ -1,0 +1,39 @@
+% c01.fig.konzentration — the weight of the relative frequency H_N for a fair coin.
+%
+% Formula (c01.eq.binomial with q = 1/2):
+%     P_N[H_N = k/N] = binom(N, k) / 2^N,   k = 0, ..., N,
+% for N = 4, 16, 64.  Horizontal: the value k/N of the relative frequency (scale 1 =
+% 3.4 cm).  Vertical: the probability, in each panel in units of its largest value
+% binom(N, N/2)/2^N, so that the three shapes can be compared (bar height 2.6 cm at the
+% maximum); the largest values themselves are
+%     N = 4:  6/16 = 3/8,   N = 16:  12870/65536 = 6435/32768,
+%     N = 64: binom(64,32)/2^64.
+% The ratio binom(N,k)/binom(N,N/2) is evaluated by pgfmath as the product
+%     prod_{j=1}^{|k - N/2|} (N/2 - j + 1)/(N/2 + j),
+% which follows from binom(N, m+1)/binom(N, m) = (N - m)/(m + 1).
+% The bracket marks the interval |k/N - 1/2| < 1/4, i.e. epsilon = 1/4.
+\begin{tikzpicture}[x=3.4cm, y=2.6cm]
+  \foreach \panel/\shift/\n in {a/0/4, b/4.25/16, c/8.5/64} {
+    \begin{scope}[shift={(\shift cm,0)}]
+      \draw[tpc axis] (-0.04,0) -- (1.04,0);
+      \pgfmathtruncatemacro{\half}{\n/2}
+      \foreach \k in {0,...,\n} {
+        \pgfmathtruncatemacro{\dist}{abs(\k-\half)}
+        \def\ratio{1}
+        \ifnum\dist>0
+          \foreach \j in {1,...,\dist} {
+            \pgfmathparse{\ratio*(\half-\j+1)/(\half+\j)}
+            \global\let\ratio\pgfmathresult
+          }
+        \fi
+        \draw[tpc state] (\k/\n,0) -- (\k/\n,\ratio);
+      }
+      \node[tpc label, anchor=north] at (0,-0.03) {$0$};
+      \node[tpc label, anchor=north] at (0.5,-0.03) {$\tfrac12$};
+      \node[tpc label, anchor=north] at (1,-0.03) {$1$};
+      \draw[tpc leader] (0.25,1.08) -- (0.25,1.14) -- (0.75,1.14) -- (0.75,1.08);
+      \node[tpc label, anchor=north] at (0.5,-0.3) {(\panel) $N = \n$};
+    \end{scope}
+  }
+  \node[tpc label, anchor=south] at (0.5,1.15) {$\lvert H_N - \tfrac12\rvert < \tfrac14$};
+\end{tikzpicture}

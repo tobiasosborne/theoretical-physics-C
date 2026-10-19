@@ -1,0 +1,52 @@
+{
+ "schema_version": 1,
+ "key": "reed-simon-1",
+ "kind": "book",
+ "storage": "private",
+ "title": "Methods of Modern Mathematical Physics I: Functional Analysis",
+ "authors": [
+  "Michael Reed",
+  "Barry Simon"
+ ],
+ "edition": "Revised and Enlarged Edition",
+ "language": "en",
+ "publisher": "Academic Press, Inc. (Harcourt Brace Jovanovich); San Diego, New York, Berkeley, Boston, London, Sydney, Tokyo, Toronto",
+ "year": "1980",
+ "identifiers": {
+  "isbn": "0-12-585050-6 (v. 1)",
+  "lccn": "75-182650"
+ },
+ "retrieval": {
+  "route": "supplied by TJO on 2026-10-11 in ~/Downloads (PLAN.md section 1.3); unpacked into sources/ by the Phase 0 coordinator",
+  "date": "2026-10-11",
+  "original_file": "Functional analysis.zip, sha256 ea36ca07d67e0e6a8d9ede984443c8a6992c66a6b907b58d5c20bdfd910a1ee3",
+  "unchecked": "the zip itself was not re-hashed by the evidence package"
+ },
+ "identity_check": "title page (DjVu page 1) and copyright page (DjVu page 2) rendered with ddjvu -format=pnm and read from the image on 2026-10-11: title, authors, publisher, 'Copyright (c) 1980, by Academic Press, Inc.', ISBN 0-12-585050-6 (v. 1)",
+ "extraction": "reed-simon-1.txt is byte-identical to the output of `djvutxt reed-simon-1.djvu` (checked 2026-10-11; djvulibre as installed)",
+ "page_index_convention": "page_index is the 1-based DjVu page; printed page numbers differ (front matter) and are given separately in each locus",
+ "authority_for": "Hilbert spaces, bounded and unbounded operators, the spectral theorem; exact loci to be fixed per claim",
+ "limitations": "scan; text layer garbles formulas. PLAN.md 1.3 and registry/translation.json give the year as 1981; the copyright page says 1980.",
+ "registry_aliases": [
+  "reed-simon-1"
+ ],
+ "files": [
+  {
+   "path": "reed-simon-1/reed-simon-1.djvu",
+   "role": "scan",
+   "media_type": "image/vnd.djvu",
+   "sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "pages": 412
+  },
+  {
+   "path": "reed-simon-1/reed-simon-1.txt",
+   "role": "ocr-text",
+   "media_type": "text/plain",
+   "sha256": "778bc8f58bd79c2618de30324bc010fa82357b96387b8618f6e5a43a3ab518b3",
+   "notes": "for finding pages only; formulas and quotes are read from the page image"
+  }
+ ],
+ "rights_ref": "rights.json",
+ "supersedes": null,
+ "errata": []
+}

@@ -1,0 +1,11 @@
+Fixture source: made-up notes on heaps of pebbles. Not a real publication.
+
+Section 1. Counting.
+
+For every heap of pebbles the count n satisfies n >= 0.
+The count of two heaps put together is the sum of the two counts.
+
+Section 2. Names.
+
+A heap with no pebbles is called empty.
+An added line.

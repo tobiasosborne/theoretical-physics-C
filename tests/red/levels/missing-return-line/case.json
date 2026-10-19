@@ -1,0 +1,7 @@
+{
+  "gate": "levels",
+  "what": "A vertiefung block has no return line (key zurueck).",
+  "cmd": "python3 scripts/course/check_levels.py --chapters c99 --content tests/red/levels/missing-return-line/content --lint-only",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "C3 [^\\n]*depth block c99\\.v1: missing return line"
+}

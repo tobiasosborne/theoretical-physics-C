@@ -534,3 +534,13 @@ Papers (DOIs resolved via Crossref 2026-10-09):
 - [R40] Mayer (2017). Using multimedia for e-learning. *Journal of Computer Assisted Learning* 33, 403-423. doi:10.1111/jcal.12197
 - [R41] Noetel, Griffith, Delaney, Harris, et al. (2021/2022). Multimedia design for learning: an overview of reviews with meta-meta-analysis. *Review of Educational Research* 92, 413-454. doi:10.3102/00346543211052329
 - Used in EXAMPLES.md: Busch (2003). Quantum states and generalized observables: a simple proof of Gleason's theorem. *Physical Review Letters* 91, 120403. doi:10.1103/PhysRevLett.91.120403 ; M. Plavala, "General probabilistic theories: an introduction", arXiv:2103.07469 (local tarball `~/Downloads/arXiv-2103.07469v2.tar.gz`, not read by this lane).
+
+---
+
+## Correction note, 2026-10-11
+
+Added by the Phase 0 coordinator from the codex review (`../review/REVIEW.md`, sections B and G;
+path relative to `docs/plan/research/`). The text above is left as written, as evidence of the
+campaign; where it conflicts with this note, the note governs.
+
+- Lines 419-422: 'provably self-contained' overstates the prototype; check_levels.py checks structure on a three-label example and would pass on empty logs.

@@ -1,0 +1,79 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "title": "sources/<key>/rights.json",
+ "$ref": "#/$defs/rights",
+ "$defs": {
+  "rights": {
+   "type": "object",
+   "additionalProperties": false,
+   "required": [
+    "schema_version",
+    "key",
+    "holder",
+    "status",
+    "redistribution",
+    "quotation",
+    "storage_policy",
+    "basis"
+   ],
+   "properties": {
+    "schema_version": {
+     "enum": [
+      1
+     ]
+    },
+    "key": {
+     "type": "string",
+     "pattern": "^[a-z0-9][a-z0-9.-]*$"
+    },
+    "holder": {
+     "type": "string",
+     "minLength": 2
+    },
+    "status": {
+     "enum": [
+      "copyright",
+      "arxiv-nonexclusive",
+      "public",
+      "own-work",
+      "unchecked"
+     ]
+    },
+    "licence": {
+     "type": "string"
+    },
+    "redistribution": {
+     "enum": [
+      "never",
+      "allowed",
+      "unchecked"
+     ]
+    },
+    "quotation": {
+     "type": "string",
+     "minLength": 3
+    },
+    "storage_policy": {
+     "type": "string",
+     "minLength": 3
+    },
+    "public_artifacts": {
+     "type": "string"
+    },
+    "basis": {
+     "type": "string",
+     "minLength": 3
+    },
+    "unchecked": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "notes": {
+     "type": "string"
+    }
+   }
+  }
+ }
+}

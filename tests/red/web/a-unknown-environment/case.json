@@ -1,0 +1,7 @@
+{
+  "gate": "web",
+  "what": "A content file uses an environment that is neither listed nor forbidden in the contract.",
+  "cmd": "node --import ./web/node_modules/tsx/dist/loader.mjs web/tools/build/main.ts --parse-only --content tests/red/web/a-unknown-environment/content --chapters c98",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "c98-red/de\\.tex:6:\\d+: environment 'wrapfigure' is not in the contract"
+}

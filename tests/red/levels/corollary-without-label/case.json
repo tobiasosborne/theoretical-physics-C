@@ -1,0 +1,7 @@
+{
+  "gate": "levels",
+  "what": "A corollary carries no \\label (corollaries are numbered units in the course).",
+  "cmd": "python3 scripts/course/check_levels.py --chapters c99 --content tests/red/levels/corollary-without-label/content --lint-only",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "ID [^\\n]*de\\.tex:\\d+: environment 'corollary' has no \\\\label directly after it"
+}

@@ -1,0 +1,7 @@
+{
+  "gate": "web",
+  "what": "A page whose Kern text has an ordinary visible link to an equation inside a closed Vertiefung block (C7 of the layered-docs report).",
+  "cmd": "node --import ./web/node_modules/tsx/dist/loader.mjs web/tools/checks/browser.ts --only c7 --site tests/red/web/d-link-into-closed-block/site --content tests/red/web/d-link-into-closed-block/content --chapters c98",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "c7: FAIL .*visible link .* points into the closed block c98\\.v1"
+}

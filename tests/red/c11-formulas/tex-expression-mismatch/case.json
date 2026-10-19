@@ -1,0 +1,7 @@
+{
+ "gate": "c11-formulas",
+ "what": "The display of psi_210 is correct, but the SymPy expression listed for it has the prefactor 1/(4 sqrt(pi)): what is checked is not what is printed.",
+ "cmd": "python3 scripts/c11/check_c11_formulas.py --content tests/red/c11-formulas/tex-expression-mismatch",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[mismatch\\] c11\\.eq\\.psi210: TeX/expression mismatch"
+}

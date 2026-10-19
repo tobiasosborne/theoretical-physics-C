@@ -1,0 +1,41 @@
+% c11.fig.schnitt3 — density of the relative coordinate for the 3d states in the plane y = 0.
+%
+% Generating formulas (DERIVATION.md Result 5.1; Z = 1, lengths in the Bohr radius a_mu of the
+% REDUCED mass, (x, z) components of the RELATIVE coordinate, y = 0, r = sqrt(x^2 + z^2),
+% r cos(theta) = z, r sin(theta) = |x|):
+%     a_mu^3 |psi_320|^2    = r^4 exp(-2r/3) (3 cos^2(theta) - 1)^2 / (6561 * 6 pi)
+%                           = (3 z^2 - r^2)^2 exp(-2r/3) / (39366 pi),
+%     a_mu^3 |psi_32+-1|^2  = r^4 exp(-2r/3) sin^2 cos^2 / (6561 pi) = x^2 z^2 exp(-2r/3) / (6561 pi),
+%     a_mu^3 |psi_32+-2|^2  = r^4 exp(-2r/3) sin^4 / (26244 pi)      = x^4 exp(-2r/3) / (26244 pi).
+% One linear grey scale for the three panels, from 0 to the maximum of the first,
+% 4 * 6^4 exp(-4) / (39366 pi) at (x, z) = (0, +-6).  Cells as in c11.fig.schnitt.
+% Greyscale: the value is carried by lightness only.
+\begin{tikzpicture}
+  \pgfplotsset{
+    colormap={c11dens}{color(0cm)=(tpc-plate) color(1cm)=(tpc-state)},
+    c11/.style={
+      view={0}{90}, axis equal image, axis on top, grid=none, clip=true,
+      width=4.55cm, height=4.55cm,
+      xmin=-21, xmax=21, ymin=-21, ymax=21, xtick={-15,0,15}, ytick={-15,0,15},
+      axis line style={draw=tpc-plate-ink, line width=\tpcstrokethin},
+      tick style={draw=tpc-plate-ink, line width=\tpcstrokehair},
+      tick label style={font=\tpcfontlabel, text=tpc-plate-ink},
+      label style={font=\tpcfontlabel, text=tpc-plate-ink},
+      title style={font=\tpcfontlabel, text=tpc-plate-ink, yshift=-4pt},
+      point meta min=0, point meta max=7.677e-4,
+      xlabel={$x/a_{\mu}$}}}
+  \begin{axis}[c11, name=a, ylabel={$z/a_{\mu}$}, ylabel shift=-5pt, title={$\lvert\psi_{320}\rvert^2$}]
+    \addplot3[surf, shader=flat corner, draw=none, samples=43, domain=-21:21, y domain=-21:21,
+              point meta={(3*y*y-(x*x+y*y))^2*exp(-2*sqrt(x*x+y*y)/3)/(39366*pi)}] {0};
+  \end{axis}
+  \begin{axis}[c11, name=b, at={(a.outer east)}, anchor=outer west, xshift=-1mm, yticklabels={},
+               title={$\lvert\psi_{32\pm1}\rvert^2$}]
+    \addplot3[surf, shader=flat corner, draw=none, samples=43, domain=-21:21, y domain=-21:21,
+              point meta={x*x*y*y*exp(-2*sqrt(x*x+y*y)/3)/(6561*pi)}] {0};
+  \end{axis}
+  \begin{axis}[c11, at={(b.outer east)}, anchor=outer west, xshift=-1mm, yticklabels={},
+               title={$\lvert\psi_{32\pm2}\rvert^2$}]
+    \addplot3[surf, shader=flat corner, draw=none, samples=43, domain=-21:21, y domain=-21:21,
+              point meta={x^4*exp(-2*sqrt(x*x+y*y)/3)/(26244*pi)}] {0};
+  \end{axis}
+\end{tikzpicture}

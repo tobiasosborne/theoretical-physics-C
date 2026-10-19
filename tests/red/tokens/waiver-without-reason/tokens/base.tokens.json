@@ -1,0 +1,658 @@
+{
+  "$description": "Theoretische Physik C: shared design tokens (DTCG format, colours authored in OKLCH). Source of truth for print, web, 3D demos and video. Compile with design/build_tokens.py; never edit design/build/.",
+  "$extensions": {
+    "org.tpc": {
+      "format": "DTCG 2025.10 colour objects; a token's $value is its light-ground value, other modes sit in $extensions['org.tpc.modes'] (lane A layout)",
+      "modes": {
+        "light": "$value. Default ground. Stills of the stage are print figures.",
+        "dark": "dark ground: page chrome and the 3D/video stage go dark; the figure plate stays light",
+        "print": "overrides applied only to tpc-tokens.sty when ground=light: text is 100 % K on unprinted paper"
+      },
+      "rules": [
+        "Colour carries physics only: chrome uses ink, accent, link and the depth roles; the four physics roles and the ladder are never used for chrome.",
+        "2D figures sit on the plate, which is light in every mode. Plate roles (state, effect, dynamics, bath, q1..q6) are measured against the plate.",
+        "3D and video draw on the stage. With ground=light the stage is the plate and every stage role equals its plate role. With ground=dark the stage roles are re-stepped for the dark stage.",
+        "Depth marking is the same device in every package: body size, a rule in the outer margin, a run-in label, no tint, no small type. A package varies only the rule colour (depth-v, depth-f) and weight (stroke.depth-v, stroke.depth-f) and the label face and case (type.depth-label).",
+        "Greyscale budget (PLAN S8): the four data roles are at least 0.15 apart in OKLCH L; everything else is redundantly coded (stroke tokens, labels)."
+      ]
+    }
+  },
+  "color": {
+    "ground": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.99, 0.003, 90] },
+      "$description": "page or screen background",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.2, 0.01, 240] },
+          "print": { "colorSpace": "oklch", "components": [1.0, 0.0, 0] }
+        }
+      }
+    },
+    "ground-alt": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.96, 0.005, 90] },
+      "$description": "quiet tint for boxes, code and table stripes",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.245, 0.012, 240] }
+        }
+      }
+    },
+    "ink": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.22, 0.006, 250] },
+      "$description": "running text on ground",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.93, 0.006, 230] },
+          "print": { "colorSpace": "oklch", "components": [0.0, 0.0, 0] }
+        }
+      }
+    },
+    "ink-muted": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.48, 0.008, 250] },
+      "$description": "captions, margin notes, secondary text on ground",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.74, 0.01, 230] }
+        }
+      }
+    },
+    "rule": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.84, 0.004, 90] },
+      "$description": "hairlines and borders on ground",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.38, 0.012, 240] }
+        }
+      }
+    },
+    "accent": {
+      "$type": "color",
+      "$value": "{color.ink}",
+      "$description": "headings, run-in labels, box rules (package identity colour)"
+    },
+    "link": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.42, 0.09, 250] },
+      "$description": "hyperlinks on ground; always underlined on screen",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.8, 0.09, 240] }
+        }
+      }
+    },
+    "highlight": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.955, 0.05, 95] },
+      "$description": "Merksatz and key-equation tint; ink must stay AA on it",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.3, 0.04, 95] }
+        }
+      }
+    },
+    "depth-k": {
+      "$type": "color",
+      "$value": "{color.ink}",
+      "$description": "Kern: no marker; the role exists so every depth has a name"
+    },
+    "depth-v": {
+      "$type": "color",
+      "$value": "{color.accent}",
+      "$description": "Vertiefung marker (margin rule and run-in label)"
+    },
+    "depth-f": {
+      "$type": "color",
+      "$value": "{color.ink-muted}",
+      "$description": "Fundament marker (double margin rule and run-in label)"
+    },
+    "plate": {
+      "$type": "color",
+      "$value": "{color.ground}",
+      "$description": "figure surface: light in every mode (PKG-5 rule)",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.975, 0.004, 90] }
+        }
+      }
+    },
+    "plate-ink": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.22, 0.006, 250] },
+      "$description": "labels and axes on the plate",
+      "$extensions": {
+        "org.tpc.modes": {
+          "print": { "colorSpace": "oklch", "components": [0.0, 0.0, 0] }
+        }
+      }
+    },
+    "plate-muted": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.48, 0.008, 250] },
+      "$description": "secondary labels on the plate"
+    },
+    "plate-rule": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.84, 0.004, 90] },
+      "$description": "grid lines and frames on the plate"
+    },
+    "state": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.32, 0.085, 245] },
+      "$description": "physics: state, preparation (rho, psi, Bloch vector)",
+      "$extensions": {
+        "org.tpc.use": "stroke"
+      }
+    },
+    "effect": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.48, 0.093, 172] },
+      "$description": "physics: effect, measurement, detector",
+      "$extensions": {
+        "org.tpc.use": "stroke"
+      }
+    },
+    "dynamics": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.64, 0.145, 65] },
+      "$description": "physics: dynamics, energy, time evolution",
+      "$extensions": {
+        "org.tpc.use": "stroke"
+      }
+    },
+    "bath": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.84, 0.006, 90] },
+      "$description": "physics: environment, bath, forbidden region; fill only, always bounded or hatched in bath-edge",
+      "$extensions": {
+        "org.tpc.use": "fill"
+      }
+    },
+    "bath-edge": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.55, 0.006, 90] },
+      "$description": "boundary and hatching of a bath region: the part of the bath role that must reach 3:1",
+      "$extensions": {
+        "org.tpc.use": "stroke"
+      }
+    },
+    "q1": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.11, 0.04, 275] },
+      "$description": "quantum-number ladder, rung 1 (1 = most ink)",
+      "$extensions": {
+        "org.tpc.use": "ladder"
+      }
+    },
+    "q2": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.214, 0.08, 266] },
+      "$description": "quantum-number ladder, rung 2 (1 = most ink)",
+      "$extensions": {
+        "org.tpc.use": "ladder"
+      }
+    },
+    "q3": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.318, 0.11, 257] },
+      "$description": "quantum-number ladder, rung 3 (1 = most ink)",
+      "$extensions": {
+        "org.tpc.use": "ladder"
+      }
+    },
+    "q4": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.422, 0.12, 247] },
+      "$description": "quantum-number ladder, rung 4 (1 = most ink)",
+      "$extensions": {
+        "org.tpc.use": "ladder"
+      }
+    },
+    "q5": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.526, 0.115, 233] },
+      "$description": "quantum-number ladder, rung 5 (1 = most ink)",
+      "$extensions": {
+        "org.tpc.use": "ladder"
+      }
+    },
+    "q6": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.63, 0.105, 212] },
+      "$description": "quantum-number ladder, rung 6 (1 = most ink)",
+      "$extensions": {
+        "org.tpc.use": "ladder"
+      }
+    },
+    "stage": {
+      "$type": "color",
+      "$value": "{color.plate}",
+      "$description": "3D and video surface",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.13, 0.014, 240] }
+        }
+      }
+    },
+    "stage-ink": {
+      "$type": "color",
+      "$value": "{color.plate-ink}",
+      "$description": "labels on the stage",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.95, 0.006, 230] }
+        }
+      }
+    },
+    "stage-rule": {
+      "$type": "color",
+      "$value": "{color.plate-rule}",
+      "$description": "grid lines on the stage",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.36, 0.014, 240] }
+        }
+      }
+    },
+    "stage-state": {
+      "$type": "color",
+      "$value": "{color.state}",
+      "$description": "state on the stage",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.91, 0.07, 230] }
+        },
+        "org.tpc.use": "stroke"
+      }
+    },
+    "stage-effect": {
+      "$type": "color",
+      "$value": "{color.effect}",
+      "$description": "effect on the stage",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.75, 0.14, 165] }
+        },
+        "org.tpc.use": "stroke"
+      }
+    },
+    "stage-dynamics": {
+      "$type": "color",
+      "$value": "{color.dynamics}",
+      "$description": "dynamics on the stage",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.59, 0.16, 50] }
+        },
+        "org.tpc.use": "stroke"
+      }
+    },
+    "stage-bath": {
+      "$type": "color",
+      "$value": "{color.bath}",
+      "$description": "bath on the stage; fill only",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.43, 0.012, 240] }
+        },
+        "org.tpc.use": "fill"
+      }
+    },
+    "stage-bath-edge": {
+      "$type": "color",
+      "$value": "{color.bath-edge}",
+      "$description": "boundary and hatching of a bath region on the stage",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.66, 0.012, 240] }
+        },
+        "org.tpc.use": "stroke"
+      }
+    },
+    "stage-q1": {
+      "$type": "color",
+      "$value": "{color.q1}",
+      "$description": "ladder rung 1 on the stage",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [1.0, 0.0, 205] }
+        },
+        "org.tpc.use": "ladder"
+      }
+    },
+    "stage-q2": {
+      "$type": "color",
+      "$value": "{color.q2}",
+      "$description": "ladder rung 2 on the stage",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.897, 0.055, 212] }
+        },
+        "org.tpc.use": "ladder"
+      }
+    },
+    "stage-q3": {
+      "$type": "color",
+      "$value": "{color.q3}",
+      "$description": "ladder rung 3 on the stage",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.794, 0.09, 225] }
+        },
+        "org.tpc.use": "ladder"
+      }
+    },
+    "stage-q4": {
+      "$type": "color",
+      "$value": "{color.q4}",
+      "$description": "ladder rung 4 on the stage",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.691, 0.115, 238] }
+        },
+        "org.tpc.use": "ladder"
+      }
+    },
+    "stage-q5": {
+      "$type": "color",
+      "$value": "{color.q5}",
+      "$description": "ladder rung 5 on the stage",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.588, 0.125, 250] }
+        },
+        "org.tpc.use": "ladder"
+      }
+    },
+    "stage-q6": {
+      "$type": "color",
+      "$value": "{color.q6}",
+      "$description": "ladder rung 6 on the stage",
+      "$extensions": {
+        "org.tpc.modes": {
+          "dark": { "colorSpace": "oklch", "components": [0.485, 0.125, 262] }
+        },
+        "org.tpc.use": "ladder"
+      }
+    },
+    "grey-1": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.93, 0.004, 90] },
+      "$description": "neutral grey 1 on the plate (1 lightest)"
+    },
+    "grey-2": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.84, 0.004, 90] },
+      "$description": "neutral grey 2 on the plate (1 lightest)"
+    },
+    "grey-3": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.7, 0.004, 90] },
+      "$description": "neutral grey 3 on the plate (1 lightest)"
+    },
+    "grey-4": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.55, 0.004, 90] },
+      "$description": "neutral grey 4 on the plate (1 lightest)"
+    },
+    "grey-5": {
+      "$type": "color",
+      "$value": { "colorSpace": "oklch", "components": [0.4, 0.004, 90] },
+      "$description": "neutral grey 5 on the plate (1 lightest)"
+    }
+  },
+  "space": {
+    "$description": "spacing steps as multiples of the body leading",
+    "xs": {
+      "$type": "number",
+      "$value": 0.25
+    },
+    "s": {
+      "$type": "number",
+      "$value": 0.5
+    },
+    "m": {
+      "$type": "number",
+      "$value": 1
+    },
+    "l": {
+      "$type": "number",
+      "$value": 1.5
+    },
+    "xl": {
+      "$type": "number",
+      "$value": 2
+    },
+    "xxl": {
+      "$type": "number",
+      "$value": 3
+    }
+  },
+  "stroke": {
+    "$description": "line widths (pt) and dash patterns (pt on, pt off): the redundant coding of the physics roles",
+    "hair": {
+      "$type": "dimension",
+      "$value": { "value": 0.3, "unit": "pt" }
+    },
+    "thin": {
+      "$type": "dimension",
+      "$value": { "value": 0.5, "unit": "pt" }
+    },
+    "regular": {
+      "$type": "dimension",
+      "$value": { "value": 0.8, "unit": "pt" }
+    },
+    "state": {
+      "$type": "dimension",
+      "$value": { "value": 1.2, "unit": "pt" }
+    },
+    "effect": {
+      "$type": "dimension",
+      "$value": { "value": 1.2, "unit": "pt" }
+    },
+    "dynamics": {
+      "$type": "dimension",
+      "$value": { "value": 1.7, "unit": "pt" }
+    },
+    "bath": {
+      "$type": "dimension",
+      "$value": { "value": 0.5, "unit": "pt" }
+    },
+    "dash-effect": {
+      "$type": "strokeStyle",
+      "$value": {
+        "dashArray": [
+          { "value": 4.5, "unit": "pt" },
+          { "value": 1.8, "unit": "pt" }
+        ],
+        "lineCap": "butt"
+      }
+    },
+    "dash-bath": {
+      "$type": "strokeStyle",
+      "$value": {
+        "dashArray": [
+          { "value": 0.9, "unit": "pt" },
+          { "value": 1.8, "unit": "pt" }
+        ],
+        "lineCap": "butt"
+      }
+    },
+    "depth-v": {
+      "$type": "dimension",
+      "$value": { "value": 1.5, "unit": "pt" }
+    },
+    "depth-f": {
+      "$type": "dimension",
+      "$value": { "value": 0.5, "unit": "pt" }
+    },
+    "box": {
+      "$type": "dimension",
+      "$value": { "value": 1.2, "unit": "pt" }
+    }
+  },
+  "type": {
+    "$description": "type-scale roles; packages override whole roles. depth-label is the run-in label of Vertiefung and Fundament: always body size (checked); a package varies only its face, weight and case",
+    "body": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.serif}",
+        "fontSize": { "value": 11, "unit": "pt" },
+        "lineHeight": 1.2364,
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      }
+    },
+    "small": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.serif}",
+        "fontSize": { "value": 10, "unit": "pt" },
+        "lineHeight": 1.2,
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      }
+    },
+    "label": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.sans}",
+        "fontSize": { "value": 8, "unit": "pt" },
+        "lineHeight": 1.3125,
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      }
+    },
+    "h1": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.sans}",
+        "fontSize": { "value": 19, "unit": "pt" },
+        "lineHeight": 1.2105,
+        "fontWeight": 600,
+        "fontStyle": "normal"
+      }
+    },
+    "h2": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.sans}",
+        "fontSize": { "value": 12, "unit": "pt" },
+        "lineHeight": 1.25,
+        "fontWeight": 600,
+        "fontStyle": "normal"
+      }
+    },
+    "h3": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.sans}",
+        "fontSize": { "value": 11, "unit": "pt" },
+        "lineHeight": 1.2364,
+        "fontWeight": 600,
+        "fontStyle": "normal"
+      }
+    },
+    "numeral": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.sans}",
+        "fontSize": { "value": 30, "unit": "pt" },
+        "lineHeight": 1.0,
+        "fontWeight": 600,
+        "fontStyle": "normal"
+      }
+    },
+    "mono": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.mono}",
+        "fontSize": { "value": 9, "unit": "pt" },
+        "lineHeight": 1.3333,
+        "fontWeight": 400,
+        "fontStyle": "normal"
+      }
+    },
+    "depth-label": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.sans}",
+        "fontSize": { "value": 11, "unit": "pt" },
+        "lineHeight": 1.2364,
+        "fontWeight": 600,
+        "fontStyle": "normal"
+      }
+    },
+    "web-leading": {
+      "$type": "number",
+      "$value": 1.55,
+      "$description": "line-height of running text on screen (body, small, depth-label); print uses each role's own lineHeight"
+    },
+    "web-body": {
+      "$type": "dimension",
+      "$value": { "value": 1.125, "unit": "rem" }
+    }
+  },
+  "measure": {
+    "$description": "page grid in mm (A4, 210 wide) and the web column",
+    "text": {
+      "$type": "dimension",
+      "$value": { "value": 114, "unit": "mm" }
+    },
+    "inner": {
+      "$type": "dimension",
+      "$value": { "value": 22, "unit": "mm" }
+    },
+    "gap": {
+      "$type": "dimension",
+      "$value": { "value": 6, "unit": "mm" }
+    },
+    "margin": {
+      "$type": "dimension",
+      "$value": { "value": 46, "unit": "mm" }
+    },
+    "top": {
+      "$type": "dimension",
+      "$value": { "value": 20, "unit": "mm" }
+    },
+    "bottom": {
+      "$type": "dimension",
+      "$value": { "value": 22, "unit": "mm" }
+    },
+    "web-text": {
+      "$type": "dimension",
+      "$value": { "value": 39, "unit": "rem" }
+    },
+    "web-gap": {
+      "$type": "dimension",
+      "$value": { "value": 2.25, "unit": "rem" }
+    },
+    "web-margin": {
+      "$type": "dimension",
+      "$value": { "value": 14, "unit": "rem" }
+    },
+    "plate-pad": {
+      "$type": "dimension",
+      "$value": { "value": 6, "unit": "pt" }
+    }
+  },
+  "video": {
+    "$description": "frame geometry shared by every package; the palette comes from the stage roles",
+    "width": {
+      "$type": "number",
+      "$value": 1920
+    },
+    "height": {
+      "$type": "number",
+      "$value": 1080
+    },
+    "fps": {
+      "$type": "number",
+      "$value": 30
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+ "schema_version": 1,
+ "key": "c99-fixture",
+ "holder": "this project",
+ "status": "own-work",
+ "redistribution": "allowed",
+ "quotation": "free",
+ "storage_policy": "tracked in this repository",
+ "basis": "project-authored fixture text"
+}

@@ -1,0 +1,51 @@
+{
+  "id": "c11",
+  "slug": "wasserstoff",
+  "title": {
+    "de": "Das Wasserstoffatom",
+    "en": "The hydrogen atom"
+  },
+  "effective_theory": {
+    "de": "Das Coulomb-Modell des Wasserstoffatoms: zwei spinlose Punktladungen, nichtrelativistisch, ohne Lichtfeld; seine exakte Lösung ist der Bezugspunkt, an dem Feinstruktur, Lamb-Verschiebung und Hyperfeinstruktur als nächste Korrekturen gemessen werden.",
+    "en": "The Coulomb model of the hydrogen atom: two spinless point charges, non-relativistic, without a light field; its exact solution is the reference against which fine structure, Lamb shift and hyperfine structure are the next corrections."
+  },
+  "zoom_scale": "single-system",
+  "prerequisites": ["c05", "c10"],
+  "assets": [
+    {"id": "c11.fig.zweikoerper", "kind": "figure", "file": "figures/zweikoerper.tex"},
+    {"id": "c11.fig.massen", "kind": "figure", "file": "figures/massen.tex"},
+    {"id": "c11.fig.koordinaten", "kind": "figure", "file": "figures/koordinaten.tex"},
+    {"id": "c11.fig.kette", "kind": "figure", "file": "figures/kette.tex"},
+    {"id": "c11.fig.zerlegung", "kind": "figure", "file": "figures/zerlegung.tex"},
+    {"id": "c11.fig.reduziert", "kind": "figure", "file": "figures/reduziert.tex"},
+    {"id": "c11.fig.kopien", "kind": "figure", "file": "figures/kopien.tex"},
+    {"id": "c11.fig.faltung", "kind": "figure", "file": "figures/faltung.tex", "generator": "python3 scripts/c11/make_faltung.py"},
+    {"id": "c11.fig.energie", "kind": "figure", "file": "figures/energie.tex"},
+    {"id": "c11.fig.zerfliessen", "kind": "figure", "file": "figures/zerfliessen.tex"},
+    {"id": "c11.fig.potential", "kind": "figure", "file": "figures/potential.tex"},
+    {"id": "c11.fig.grundzustand", "kind": "figure", "file": "figures/grundzustand.tex"},
+    {"id": "c11.tab.zustaende", "kind": "table"},
+    {"id": "c11.fig.entartung", "kind": "figure", "file": "figures/entartung.tex"},
+    {"id": "c11.fig.laguerre", "kind": "figure", "file": "figures/laguerre.tex"},
+    {"id": "c11.fig.radial", "kind": "figure", "file": "figures/radial.tex"},
+    {"id": "c11.fig.schnitt", "kind": "figure", "file": "figures/schnitt.tex"},
+    {"id": "c11.fig.phase", "kind": "figure", "file": "figures/phase.tex"},
+    {"id": "c11.fig.schnitt3", "kind": "figure", "file": "figures/schnitt3.tex"},
+    {"id": "c11.fig.radial3", "kind": "figure", "file": "figures/radial3.tex"},
+    {"id": "c11.fig.termschema", "kind": "figure", "file": "figures/termschema.tex"},
+    {"id": "c11.fig.spektrum", "kind": "figure", "file": "figures/spektrum.tex"},
+    {"id": "c11.tab.codata", "kind": "table"},
+    {"id": "c11.tab.ergebnisse", "kind": "table"},
+    {"id": "c11.fig.unsicherheit", "kind": "figure", "file": "figures/unsicherheit.tex"},
+    {"id": "c11.fig.dichte", "kind": "figure", "file": "figures/dichte.tex"},
+    {"id": "c11.fig.kugelschale", "kind": "figure", "file": "figures/kugelschale.tex"},
+    {"id": "c11.fig.ueberblick", "kind": "figure", "file": "figures/ueberblick.tex"},
+    {"id": "c11.fig.verteilung", "kind": "figure", "file": "figures/verteilung.tex"},
+    {"id": "c11.fig.bereiche", "kind": "figure", "file": "figures/bereiche.tex"},
+    {"id": "c11.fig.coulombsplit", "kind": "figure", "file": "figures/coulombsplit.tex"},
+    {"id": "c11.fig.drehung", "kind": "figure", "file": "figures/drehung.tex"},
+    {"id": "c11.demo.cloud", "kind": "demo", "still": "c11.fig.schnitt", "title": {"de": "Die Wolke der Relativkoordinate", "en": "The cloud of the relative coordinate"}},
+    {"id": "c11.demo.phase", "kind": "demo", "still": "c11.fig.phase", "title": {"de": "Phasenschnitt durch die 2p-Zustände", "en": "Phase slice through the 2p states"}},
+    {"id": "c11.demo.radial", "kind": "demo", "still": "c11.fig.dichte", "title": {"de": "Radiale Aufenthaltsdichte und Knoten", "en": "Radial probability density and nodes"}}
+  ]
+}

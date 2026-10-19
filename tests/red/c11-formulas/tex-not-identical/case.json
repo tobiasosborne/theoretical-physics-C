@@ -1,0 +1,7 @@
+{
+ "gate": "c11-formulas",
+ "what": "The display of R_20 in en.tex differs from the listed TeX (and from de.tex) by one thin space.",
+ "cmd": "python3 scripts/c11/check_c11_formulas.py --content tests/red/c11-formulas/tex-not-identical",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[tex\\] c11\\.eq\\.r20: the listed TeX is not byte-identical to the display in en\\.tex"
+}

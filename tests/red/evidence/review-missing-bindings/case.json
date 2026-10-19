@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A page review without hashes does not bind the reviewed row.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/review-missing-bindings --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[schema\\] evidence/receipts/reviews/R-0001\\.json: .*missing required field 'bindings'"
+}

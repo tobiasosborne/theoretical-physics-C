@@ -292,3 +292,13 @@ Vertiefung/Deeper, Zurück zum Kern/Back to the core, Abb./Fig. Figure prose lab
 PKG-1 is right if the printed book is the artefact TJO will be judged by and he accepts that the web
 and games use a Times relative rather than MathTime itself. It is the wrong choice if the PDF must be
 accessible or built in Typst before `mathtime-otf` exists.
+
+---
+
+## Correction note, 2026-10-11
+
+Added by the Phase 0 coordinator from the codex review (`../review/REVIEW.md`, sections B and G;
+path relative to `docs/plan/research/`). The text above is left as written, as evidence of the
+campaign; where it conflicts with this note, the note governs.
+
+- Lines 39-43: the failed text extraction is a measured property of this XeLaTeX pipeline, not a proven impossibility for Type 1 fonts. Lines 270-276: replace the second-seat speculation by the local EULA (/usr/share/texmf/doc/fonts/mtpro2/EULA.txt). Lines 122-123: no thick-stroke contrast exemption.

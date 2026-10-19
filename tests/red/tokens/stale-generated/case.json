@@ -1,0 +1,7 @@
+{
+  "gate": "tokens",
+  "what": "A generated tpc-tokens.sty was edited by hand (tpc-link changed), so it no longer matches the token files.",
+  "cmd": "python3 design/build_tokens.py --check --pkg 1 --ground light --out-dir tests/red/tokens/stale-generated/generated",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "stale\\s+\\S*stale-generated/generated/pkg1-light/tpc-tokens\\.sty: differs"
+}

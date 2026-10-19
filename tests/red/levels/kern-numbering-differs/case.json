@@ -1,0 +1,7 @@
+{
+  "gate": "levels",
+  "what": "A numbered Kern equation sits inside a depth conditional, so the following Kern equation is 99.3 in the full edition and 99.2 in the Kern edition. Run with --no-lint so that only the comparison of the two .aux files can catch it.",
+  "cmd": "python3 scripts/course/check_levels.py --chapters c99 --content tests/red/levels/kern-numbering-differs/content --build build/red/levels/kern-numbering-differs --langs de --run-build --no-lint",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "K4 de: label 'c99\\.eq\\.zwei' is numbered 99\\.2 in the Kern edition and 99\\.3 in the full edition"
+}

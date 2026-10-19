@@ -1,0 +1,18 @@
+{
+ "schema_version": 1,
+ "key": "fake-notes",
+ "kind": "paper",
+ "storage": "private",
+ "title": "Fixture source fake-notes",
+ "authors": [
+  "nobody (fixture)"
+ ],
+ "files": [
+  {
+   "path": "fake-notes/notes.txt",
+   "role": "text",
+   "sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+  }
+ ],
+ "rights_ref": "rights.json"
+}

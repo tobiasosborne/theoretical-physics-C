@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "The receipt does not record a passing private run.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/failed-receipt-public --public",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[receipt\\] .*does not record a passing private run"
+}

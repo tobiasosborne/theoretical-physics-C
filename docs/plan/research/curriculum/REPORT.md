@@ -434,7 +434,7 @@ S27 Callen, Thermodynamics and an Introduction to Thermostatistics, 2nd ed., Wil
 S28 Carnot, Réflexions sur la puissance motrice du feu (1824) | C20 | not on disk | Gallica (BnF) [UNVERIFIED URL] | public domain
 S29 Masanes, Oppenheim, Nat. Commun. 8, 14538 (2017), doi:10.1038/ncomms14538, arXiv:1412.3828 | C19 third law | not on disk | open access | CC licence [UNVERIFIED which]
 S30 NIST CODATA 2022 (`a_0`, https://physics.nist.gov/cgi-bin/cuu/Value?bohrrada0); SI 2019 `k_B` exact | C11, C15 constants | web | NIST | public
-S31 This repo: v0.2 script vl01-vl22 (commit 8bfab65), transcripts/clean, archive/skript-2021, -2022 | all reused chapters | on disk | - | Apache 2.0 (README); `archive/third-party/` excluded
+S31 This repo: v0.2 script vl01-vl22 (commit 8bfab65), transcripts/clean, archive/skript-2021, -2022 | all reused chapters | on disk | - | AGPL-3.0-or-later (LICENSE); `archive/third-party/` excluded
 S32 Hammerer Theo C, handwritten student notes, 88 scanned pages (`archive/third-party/Script_TheoC_VorlesungProfHammerer_Feb2020.pdf`, sha256 c107fa1b...) | comparison only (page 80 shows microcanonical ideal gas) | on disk | - | third party, not redistributable
 S33 Wilming, "Dynamics and entanglement in quantum many-body systems", LUH lecture notes (22 Apr 2026, 52 pp., `~/Downloads/many-body-notes-current-upload.4.pdf`, sha256 4dfef908...) | C16 typicality, C18 Lieb-Robinson | on disk | author (LUH colleague) | marked "do not distribute": read only, ask before quoting
 S34 TJO, "Symmetries and quantum mechanics" (`../remarkable-stuff/raw/Teaching/Symmetries and quantum mechanics.rmdoc`) | C8-C10, TJO's own route | on disk, untranscribed | transcription via the `codex-vision` skill | TJO's own
@@ -590,3 +590,19 @@ What TJO must supply himself (no source on disk can substitute):
 9. May Astwood's notes and Wilming's notes be quoted, or only used as pointers?
 10. Is the "fundamental hypothesis" presented as equal a priori probabilities (Postulat) with max-ent and
     typicality as justifications, or is max-ent the postulate (as vl20.tex currently suggests)?
+
+---
+
+## Correction note, 2026-10-11
+
+Added by the Phase 0 coordinator from the codex review (`../review/REVIEW.md`, sections B and G;
+path relative to `docs/plan/research/`). The text above is left as written, as evidence of the
+campaign; where it conflicts with this note, the note governs.
+
+- Lines 12, 527: the enumerated reuse set has 14 chapters, not 13.
+- Lines 262-263 (and notation-preinventory.md:113): the vl04 defect is a scope/domain omission; vl04.tex:62 defines Hermitian by A^dagger = A, so the sentence is not a false equation.
+- Lines 351-352: the quoted identity is a corrected form, not what the Astwood notes print (:637-640); the notes also have a swapped-argument defect at :630-632.
+- Lines 357-358: a normal-ordered vacuum expectation vanishes only for polynomials without a scalar term.
+- Line 155: independent preparability does not force the quantum tensor product. Lines 236-238: convexity or concavity of potentials is variable by variable (Helmholtz free energy is concave in T). Line 487: a particle in a box is not finite-dimensional without truncation.
+- Lines 269-272: say that B(H) is not the full Banach bidual of B(H)^*, rather than that the state/effect pairing fails.
+- Lines 413, 415: attributions to BRIEF.md of a 2016 publication date and a title are not in the brief.

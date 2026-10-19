@@ -1,0 +1,46 @@
+% c11.fig.unsicherheit — relative size of the uncertainty of the numbers of this chapter.
+%
+% Generating data: the two tables of the Vertiefung "Wie genau sind die Zahlen?" (c11.tab.codata,
+% c11.tab.ergebnisse).  Each stroke ends at (uncertainty)/(|value|), computed by pgfplots from the
+% two numbers of the table row:
+%     inputs (CODATA 2022, allascii.txt lines 117, 61, 309, 311), standard uncertainty / value:
+%       m_e/m_p      9.4e-15  / 5.446170214889e-4
+%       a_0          8.2e-21  / 5.29177210544e-11
+%       R_inf        1.2e-5   / 10973731.568157
+%       h c R_inf    1.5e-11  / 13.605693122990
+%     results (DERIVATION.md Result 8.2), uncertainty scale (rounded up) / |value|:
+%       mu/m_e       9.4e-15  / 0.999455679424762
+%       a_mu         8.21e-21 / 5.29465409460e-11
+%       E_1 (mu)     1.50e-11 / 13.598287264283
+%       lambda 2->1  1.35e-10 / 121.5684456173
+% The horizontal axis is logarithmic.  Greyscale: inputs solid, results dashed, labelled rows.
+\begin{tikzpicture}
+  \pgfplotsset{c11/.style={
+    axis lines=left, clip=false, grid=none,
+    axis line style={draw=tpc-plate-ink, line width=\tpcstrokethin},
+    tick style={draw=tpc-plate-ink, line width=\tpcstrokehair},
+    tick label style={font=\tpcfontlabel, text=tpc-plate-ink},
+    label style={font=\tpcfontlabel, text=tpc-plate-ink},
+    every axis x label/.style={at={(ticklabel* cs:1.0)}, anchor=west, font=\tpcfontlabel},
+    every axis y label/.style={at={(ticklabel* cs:1.0)}, anchor=south, font=\tpcfontlabel}}}
+  \begin{axis}[c11, width=8.4cm, height=5.6cm,
+      xmode=log, xmin=1e-15, xmax=1e-9, ymin=0.3, ymax=9.0,
+      xtick={1e-15,1e-14,1e-13,1e-12,1e-11,1e-10,1e-9},
+      ytick={8,7,6,5,4,3,2,1},
+      yticklabels={$m_{\mathrm{e}}/m_{\mathrm{p}}$, $a_0$, $R_{\infty}$, $h c R_{\infty}$,
+                   $\mu/m_{\mathrm{e}}$, $a_{\mu}$, $E_1$, $\lambda_{2 \to 1}$},
+      axis y line=left, y axis line style={draw=none}, ytick style={draw=none},
+      xlabel={\tpcifenglish{uncertainty/value}{Unsicherheit/Wert}},
+      every axis x label/.style={at={(axis description cs:0.5,-0.2)}, anchor=north, font=\tpcfontlabel}]
+    \draw[tpc dynamics] (axis cs:1e-15,8) -- (axis cs:{9.4e-15/5.446170214889e-4},8);
+    \draw[tpc dynamics] (axis cs:1e-15,7) -- (axis cs:{8.2e-21/5.29177210544e-11},7);
+    \draw[tpc dynamics] (axis cs:1e-15,6) -- (axis cs:{1.2e-5/10973731.568157},6);
+    \draw[tpc dynamics] (axis cs:1e-15,5) -- (axis cs:{1.5e-11/13.605693122990},5);
+    \draw[tpc dynamics, dash pattern=on 4pt off 2pt] (axis cs:1e-15,4) -- (axis cs:{9.4e-15/0.999455679424762},4);
+    \draw[tpc dynamics, dash pattern=on 4pt off 2pt] (axis cs:1e-15,3) -- (axis cs:{8.21e-21/5.29465409460e-11},3);
+    \draw[tpc dynamics, dash pattern=on 4pt off 2pt] (axis cs:1e-15,2) -- (axis cs:{1.50e-11/13.598287264283},2);
+    \draw[tpc dynamics, dash pattern=on 4pt off 2pt] (axis cs:1e-15,1) -- (axis cs:{1.35e-10/121.5684456173},1);
+    \node[tpc label, anchor=south west, text=tpc-plate-muted] at (axis cs:1e-15,8.2) {\tpcifenglish{inputs}{Eingangsdaten}};
+    \node[tpc label, anchor=west, text=tpc-plate-muted, fill=tpc-plate, inner sep=1pt] at (axis cs:1.2e-15,4.5) {\tpcifenglish{results}{Ergebnisse}};
+  \end{axis}
+\end{tikzpicture}

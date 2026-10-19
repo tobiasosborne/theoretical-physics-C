@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A claim cites a definition ID that the registry does not have.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/unknown-definition-id --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[definition\\] claims\\.json:c98\\.cl\\.1: definition 'D999' is not in the definitions"
+}

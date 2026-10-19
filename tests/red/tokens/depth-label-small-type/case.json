@@ -1,0 +1,7 @@
+{
+  "gate": "tokens",
+  "what": "PKG-4 sets the Vertiefung run-in label in 9 pt: depth marking must be body size in every package.",
+  "cmd": "python3 design/build_tokens.py --measure --base design/tokens/base.tokens.json --tokens-dir tests/red/tokens/depth-label-small-type/tokens",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "FAIL\\s+pkg4 \\w+: depth-label 9(\\.0)?/\\S+ pt is not the body size"
+}

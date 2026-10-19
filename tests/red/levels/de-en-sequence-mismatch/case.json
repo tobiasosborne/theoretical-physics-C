@@ -1,0 +1,7 @@
+{
+  "gate": "levels",
+  "what": "The English file lacks the vertiefung block that the German file has.",
+  "cmd": "python3 scripts/course/check_levels.py --chapters c99 --content tests/red/levels/de-en-sequence-mismatch/content --lint-only",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "K6 [^\\n]*depth-block sequence differs between DE and EN"
+}

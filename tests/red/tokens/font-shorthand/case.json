@@ -1,0 +1,7 @@
+{
+  "gate": "tokens",
+  "what": "CSS uses a font shorthand with literal size and family.",
+  "cmd": "python3 design/lint_content.py tests/red/tokens/font-shorthand/probe.css",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "font shorthand literal: font: 12px Arial"
+}

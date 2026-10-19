@@ -1,0 +1,25 @@
+{
+  "id": "c99",
+  "slug": "contract-test",
+  "test_fixture": true,
+  "title": {
+    "de": "Vertragstest: Zwei-mal-zwei-Matrizen",
+    "en": "Contract test: two-by-two matrices"
+  },
+  "effective_theory": {
+    "de": "Keine: Dieses Kapitel ist eine physikfreie Prüfvorlage für den Autorenvertrag.",
+    "en": "None: this chapter is a physics-free fixture for the authoring contract."
+  },
+  "zoom_scale": "none",
+  "prerequisites": ["c00"],
+  "assets": [
+    { "id": "c99.fig.scherung", "kind": "figure", "file": "figures/scherung.tex" },
+    { "id": "c99.fig.scherung-b", "kind": "figure", "file": "figures/scherung-b.tex" },
+    { "id": "c99.fig.kommutator", "kind": "figure", "file": "figures/kommutator.tex" },
+    { "id": "c99.tab.produkte", "kind": "table" },
+    { "id": "c99.demo.scherung", "kind": "demo", "still": "c99.fig.scherung",
+      "title": { "de": "Scherung des Einheitsquadrats", "en": "Shear of the unit square" } },
+    { "id": "c99.demo.scherung-b", "kind": "demo", "still": "c99.fig.scherung-b",
+      "title": { "de": "Scherung in der anderen Richtung", "en": "Shear in the other direction" } }
+  ]
+}

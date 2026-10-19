@@ -1,0 +1,35 @@
+% c01.fig.ereignis — outcome sets and events (definition D53).
+%
+% (a) One die: X = {1,...,6}, drawn as six cells; the event S = {2,4,6} ("even") is the
+%     set of hatched cells.
+% (b) Two dice (exercise c01.exc.zwei-wuerfel): X is the set of the 36 pairs (x_1, x_2),
+%     drawn as a 6 x 6 grid of points; the event "the sum is 7" consists of the six pairs
+%     (1,6), (2,5), (3,4), (4,3), (5,2), (6,1), marked by squares on the anti-diagonal.
+% Greyscale: events are marked by hatching (a) and by a different mark shape (b), not by
+% colour.  Cell size 0.7 cm; grid spacing 0.5 cm.
+\begin{tikzpicture}[x=1cm, y=1cm]
+  \begin{scope}[shift={(0,1.2)}]
+    \foreach \x in {2,4,6} \path[tpc bath hatch] (0.7*\x-0.7,0) rectangle (0.7*\x,0.7);
+    \foreach \x in {1,...,6} {
+      \draw[tpc axis] (0.7*\x-0.7,0) rectangle (0.7*\x,0.7);
+      \node[tpc label, fill=tpc-plate, inner sep=1.2pt] at (0.7*\x-0.35,0.35) {$\x$};
+    }
+    \draw[tpc leader] (0.7,-0.12) -- (0.7,-0.3) -- (4.2,-0.3) -- (4.2,-0.12);
+    \node[tpc label, anchor=north] at (2.45,-0.33) {$S = \{2,4,6\}$};
+    \node[tpc label, anchor=south] at (2.1,0.8) {$X = \{1,\dots,6\}$};
+    \node[tpc label] at (2.1,-1.75) {(a) \tpcifenglish{one die}{ein Würfel}};
+  \end{scope}
+  \begin{scope}[shift={(6.8,-0.45)}, x=0.5cm, y=0.5cm]
+    \foreach \x in {1,...,6} \foreach \y in {1,...,6} \fill[tpc-plate-ink] (\x,\y) circle (1.1pt);
+    \foreach \x in {1,...,6} \draw[tpc state, fill=tpc-plate] (\x-0.24,7-\x-0.24) rectangle (\x+0.24,7-\x+0.24);
+    \foreach \x in {1,...,6} {
+      \node[tpc label, anchor=north] at (\x,0.5) {$\x$};
+      \node[tpc label, anchor=east] at (0.5,\x) {$\x$};
+    }
+    \node[tpc label, anchor=west] at (6.6,0.1) {$x_1$};
+    \node[tpc label, anchor=south] at (0.1,6.6) {$x_2$};
+    \draw[tpc leader] (5.3,2.3) -- (7.4,3.6);
+    \node[tpc label, anchor=west] at (7.45,3.7) {$x_1 + x_2 = 7$};
+    \node[tpc label] at (3.5,-1.1) {(b) \tpcifenglish{two dice}{zwei Würfel}};
+  \end{scope}
+\end{tikzpicture}

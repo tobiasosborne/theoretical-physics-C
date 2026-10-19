@@ -1,0 +1,7 @@
+{
+  "gate": "levels",
+  "what": "A vertiefung block inside a vertiefung block.",
+  "cmd": "python3 scripts/course/check_levels.py --chapters c99 --content tests/red/levels/nested-vertiefung/content --lint-only",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "C3 [^\\n]*nested depth block: vertiefung 'c99\\.v2'"
+}

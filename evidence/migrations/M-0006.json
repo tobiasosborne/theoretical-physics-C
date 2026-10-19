@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "id": "M-0006",
+ "status": "recorded",
+ "title": "vl01 (v0.1): doubled phrase 'eine endliche Menge ist.Menge ist.'",
+ "legacy": [
+  {
+   "version": "v0.1",
+   "file": "archive/skript-2022/Vorlesungen1.tex",
+   "line": 81,
+   "file_sha256": "169b2f6f9c71ecb3882c13889634f42a2d8ddee3d12d7189e64fb4d6ed983371",
+   "old_text": "Nehmen wir den einfachsten Fall, in dem $X$ eine endliche Menge ist.Menge ist.",
+   "new_text": "Nehmen wir den einfachsten Fall, in dem $X$ eine endliche Menge ist."
+  }
+ ],
+ "reason": "A doubled phrase in the v0.1 script; a wording slip with no change of meaning. HANDOFF.md ('Next', item 2) lists it as left alone in v0.2, but the v0.2 file already has the corrected sentence (latex/lectures/de/vl01.tex:101), so only the v0.1 line is recorded.",
+ "evidence": {
+  "independent_check": "HANDOFF.md, section 'Next', item 2 (first slip of vl01); compare latex/lectures/de/vl01.tex:101",
+  "provenance_ids": [],
+  "notes": "In the new chapter the sentence is replaced by 'In diesem und den nächsten beiden Abschnitten ist X eine endliche Menge.' before example c01.ex.wuerfel."
+ },
+ "destination": "c01.ex.wuerfel"
+}

@@ -1,0 +1,7 @@
+{
+  "gate": "levels",
+  "what": "No build evidence at all: the gate must not pass on sources alone.",
+  "cmd": "python3 scripts/course/check_levels.py --chapters c99 --content tests/red/levels/missing-build/content --build tests/red/levels/missing-build/no-such-build --langs de",
+  "expect_exit_nonzero": true,
+  "expect_output_regex": "B0 tpc-de-full: tpc-de-full\\.log is missing"
+}

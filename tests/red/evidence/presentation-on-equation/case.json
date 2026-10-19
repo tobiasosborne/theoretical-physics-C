@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A ledger row of kind equation carries a presentation.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/presentation-on-equation --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[claim-mismatch\\] claims\\.json:c98\\.cl\\.4: presentation 'proof-omitted' on a row of kind 'equation'"
+}
