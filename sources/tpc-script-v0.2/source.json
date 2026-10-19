@@ -10,8 +10,8 @@
  "version": "v0.2",
  "language": "de, en",
  "identifiers": {
-  "git_commit": "88996cf14ba45e2c89474d2896f76711ea3d959d",
-  "last_commit_touching_these_files": "e126ae527507b4bd000c4f255c9a9be85a4733f1"
+  "git_commit": "90fe735d7ca7bf14dfdf0d056ec874e9bc265490",
+  "last_commit_touching_these_files": "cafa7d18d5196e1b6357d67fdb552c0a453d1dc6"
  },
  "retrieval": {
   "route": "tracked files under latex/lectures in this repository; `git diff --quiet HEAD -- latex/lectures` was clean when the hashes were taken",
@@ -96,12 +96,6 @@
    "sha256": "202c7044f48c57ae7e9f93b8c45428cd186d3fde7253abff5bbba178420079a7"
   },
   {
-   "path": "../latex/lectures/de/vl13.pdf",
-   "role": "binary",
-   "media_type": "application/pdf",
-   "sha256": "1cdb3109716ad0cfa6e101ca45da36a7a8dc6bda7bda88b0a12a7f05ad864f72"
-  },
-  {
    "path": "../latex/lectures/de/vl13.tex",
    "role": "text",
    "media_type": "text/x-tex",
@@ -126,12 +120,6 @@
    "sha256": "ee5a38ebbc2b30ba85fd76ba198131b6a7cfdab2835ba25e352861e123b7128c"
   },
   {
-   "path": "../latex/lectures/de/vl17.pdf",
-   "role": "binary",
-   "media_type": "application/pdf",
-   "sha256": "e91e7f6f98d5d6868819c0195fab2375b9e7734f832f5dad75e716ac5d59a7b7"
-  },
-  {
    "path": "../latex/lectures/de/vl17.tex",
    "role": "text",
    "media_type": "text/x-tex",
@@ -142,12 +130,6 @@
    "role": "text",
    "media_type": "text/x-tex",
    "sha256": "fbba8ef428572aebe2c9f5212baa1d93e6aefabffff87c26a9fb0279241a5758"
-  },
-  {
-   "path": "../latex/lectures/de/vl19.pdf",
-   "role": "binary",
-   "media_type": "application/pdf",
-   "sha256": "d3a49a37ebec11177950295a5f871c3180ee39e4f90b85446b16b97125792f2d"
   },
   {
    "path": "../latex/lectures/de/vl19.tex",
@@ -307,7 +289,7 @@
   }
  ],
  "authority_for": "what the current script says; established course terminology and author choices",
- "limitations": "contains verified defects (HANDOFF.md, 'Verified defects in the current script'); mathematical statements need their own evidence. Only latex/lectures/ is registered, not the masters, styles or figures.",
+ "limitations": "contains verified defects (HANDOFF.md, 'Verified defects in the current script'); mathematical statements need their own evidence. Only latex/lectures/ is registered, not the masters, styles or figures. Compiled PDFs that were members of this snapshot (they embed commercial font subsets) were untracked on 2026-10-20 for the public release and removed from the member list; the .tex members are unchanged.",
  "rights_ref": "rights.json",
  "supersedes": "tpc-script-v0.1",
  "errata": [

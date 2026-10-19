@@ -10,7 +10,7 @@
  "version": "as stated on 2026-10-09 (file header)",
  "language": "en",
  "identifiers": {
-  "git_commit": "88996cf14ba45e2c89474d2896f76711ea3d959d"
+  "git_commit": "90fe735d7ca7bf14dfdf0d056ec874e9bc265490"
  },
  "retrieval": {
   "route": "tracked file docs/plan/BRIEF.md",

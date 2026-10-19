@@ -20,7 +20,10 @@ cards, consent-form template), every compiled PDF that embeds subsets of the com
 local copies of third-party books and private folders. The wording "lawfully acquired" /
 "origin of the scan is not recorded" was dropped from `sources/*/rights.json` and
 `source.json` and the private receipt regenerated. Licence mentions changed from Apache 2.0 to
-AGPL. All of this is reversible by editing `.gitignore`.
+AGPL. All of this is reversible by editing `.gitignore`. The history was rewritten with
+`git filter-repo` (commit map in `.git/filter-repo/commit-map`, pre-rewrite bundle kept by TJO);
+the snapshot commits pinned in `sources/*/source.json` were remapped to the new hashes and the
+four untracked PDFs dropped from the member lists and the manifest.
 
 
 **2026-10-09: a planning campaign for a major upgrade is complete and landed in

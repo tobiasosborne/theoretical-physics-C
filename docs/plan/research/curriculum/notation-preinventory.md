@@ -4,7 +4,7 @@
 # Notation and definitions pre-inventory
 
 Sources compared (keys as in REPORT.md section 3):
-`TPC` = this repo, `latex/tpc-macros.sty` and `latex/lectures/de/vl01-vl22.tex` at commit 8bfab65;
+`TPC` = this repo, `latex/tpc-macros.sty` and `latex/lectures/de/vl01-vl22.tex` at commit 27234fd;
 `PLA` = Plavala arXiv:2103.07469v2 source (`plavala-src/`, macros in `plavala-src/mplmacros.sty`);
 `AST` = Astwood notes `advancedquantum.tex` (sha256 0e88fd13...);
 `TES` = Teschl, GSM 157, 2nd ed. (local scratch copy, sha256 ee2cfd1c...);

@@ -78,7 +78,7 @@ The applied-migration mechanism preserves the historical record and validates th
 - The checker enforces the date and destination requirements explicitly because its local JSON Schema validator implements a subset of the standard. It verifies the old text and historical hash, then the current destination hash, membership in the named source, and `new_text` on the recorded destination line. A replacement occurring elsewhere in the file fails.
 - Changes to `scripts/evidence/check_evidence.py` were local patches to Registry payload access, manifest/text-quote reads, migration checking and its call site. The file was re-read immediately before each edit; it was never rewritten wholesale. Concurrent repairs elsewhere in that file were preserved.
 
-The original snapshot remains `tpc-script-v0.2`, at commit `88996cf14ba45e2c89474d2896f76711ea3d959d`. Its two superseded lecture members now have distinct manifest names:
+The original snapshot remains `tpc-script-v0.2`, at commit `90fe735d7ca7bf14dfdf0d056ec874e9bc265490`. Its two superseded lecture members now have distinct manifest names:
 
 ```text
 tpc-script-v0.2/git/latex/lectures/de/vl16.tex

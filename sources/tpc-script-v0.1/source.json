@@ -10,8 +10,8 @@
  "version": "v0.1",
  "language": "de",
  "identifiers": {
-  "git_commit": "88996cf14ba45e2c89474d2896f76711ea3d959d",
-  "last_commit_touching_these_files": "fa318f67fe1e71d208a75afa89ee8f69478c8f09"
+  "git_commit": "90fe735d7ca7bf14dfdf0d056ec874e9bc265490",
+  "last_commit_touching_these_files": "eebfbfbef1401f2bfc6fc9b21b869f214682c0c2"
  },
  "retrieval": {
   "route": "tracked files under archive/skript-2022 in this repository; `git diff --quiet HEAD -- archive/skript-2022` was clean when the hashes were taken",
@@ -174,12 +174,6 @@
    "role": "text",
    "media_type": "text/x-tex",
    "sha256": "556c2673f78383064df3edca0f34872d5335e916189696efd04e7b5c5afec172"
-  },
-  {
-   "path": "../archive/skript-2022/TheoretischePhysikC.pdf",
-   "role": "binary",
-   "media_type": "application/pdf",
-   "sha256": "0f60c2f5c51a9b63a4da2245aeb898954c5b5457c2c018ecd902ddabc46c4d81"
   },
   {
    "path": "../archive/skript-2022/TheoretischePhysikC.tex",
@@ -345,7 +339,7 @@
   }
  ],
  "authority_for": "what was written and taught in 2022",
- "limitations": "contains the same defects as v0.2 (inherited); registered as far as it is tracked (54 files, including the compiled TheoretischePhysikC.pdf)",
+ "limitations": "contains the same defects as v0.2 (inherited); registered as far as it is tracked (54 files, including the compiled TheoretischePhysikC.pdf) Compiled PDFs that were members of this snapshot (they embed commercial font subsets) were untracked on 2026-10-20 for the public release and removed from the member list; the .tex members are unchanged.",
  "rights_ref": "rights.json",
  "supersedes": null,
  "errata": [
