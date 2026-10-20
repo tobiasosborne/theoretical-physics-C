@@ -10,11 +10,13 @@
 
 \chapter{Probability for physicists}\label{c01}
 
-The numbers that a physical theory predicts in this course are probabilities. This chapter
-fixes how one calculates with them. It contains hardly anything conceptually new: an
-intuitive understanding of probability is taken for granted. What matters is the
-\emph{notation} in which quantum mechanics will later be formulated, and a language. To
-the language belongs a stipulation of the author:
+The numbers that quantum mechanics delivers as its results are \emph{probabilities}. How
+are such quantities to be understood, and how do we work with them? The right framework for
+that is probability theory, and we build it up in this chapter. Do not expect anything
+conceptually new: I take an intuitive understanding of probabilities, distributions and
+expectation values for granted. What matters is the \emph{notation} in which we shall later
+formulate quantum mechanics, and a language. To it belongs a stipulation that I make for the
+whole course:
 % docs/plan/BRIEF.md:46, first part of the sentence, verbatim.  GAP-TJO: the German wording
 % in de.tex is the chapter author's translation (G-0022).  The second part of the sentence
 % (measurements as elements of the dual space) belongs to Chapter 2 and is not quoted here.
@@ -31,17 +33,26 @@ What mathematics calls a probability distribution is thus called a preparation h
 what it calls a random variable is called a measurement. Table~\ref{c01.tab.sprache} at the
 end of Section~\ref{c01.s2} sets the words side by side.
 
+To model an experiment in terms of probability we need exactly three things: the set of
+possible outcomes, the preparation and the measurement. All three must be fixed before we
+can even begin to calculate. We take them in this order.
+
 \section{Outcomes and preparations}\label{c01.s1}
+
+The first step in modelling any probabilistic experiment is to assign a set to it. One
+obtains it by listing all possible outcomes.
 
 \tpcdef{D53}
 
 In this section and the next two, $\Outcomes$ is a finite set.
 
-\begin{example}[Die and coin]\label{c01.ex.wuerfel}
+\begin{example}[Die and coins]\label{c01.ex.wuerfel}
   For a die the outcome set consists of the possible numbers of spots:
   $\Outcomes = \{1, 2, 3, 4, 5, 6\}$. For a coin,
-  $\Outcomes = \{\text{\tpcifenglish{heads}{Kopf}}, \text{\tpcifenglish{tails}{Zahl}}\}$.
-  “The number of spots is even” is the event $S = \{2, 4, 6\}$.
+  $\Outcomes = \{\text{\tpcifenglish{heads}{Kopf}}, \text{\tpcifenglish{tails}{Zahl}}\}$,
+  for two coins, with H for heads and T for tails,
+  $\Outcomes = \{\text{HH}, \text{HT}, \text{TH}, \text{TT}\}$. “The number of spots is
+  even” is the event $S = \{2, 4, 6\}$.
 \end{example}
 
 \begin{exercise}[Two dice]\label{c01.exc.zwei-wuerfel}\claim{c01.cl.zwei-wuerfel}{derived}
@@ -62,13 +73,16 @@ In this section and the next two, $\Outcomes$ is a finite set.
     pairs marked by squares.}
 \end{tpcfigure}
 
-A preparation fixes how probable every outcome is.
+Step two is the preparation. How does one model a fair die, a fair coin or a loaded die?
+In a probabilistic theory by giving a probability for every outcome.
 
 \tpcdef{D54}
 
 The two conditions on $\pw$ are the only ones. The first holds because a negative
-probability would mean nothing; the second because some outcome certainly occurs. In what
-follows we call $\pw$ a \emph{weight} for short.
+probability cannot be interpreted; the second because the probability that some outcome
+occurs is always one. For the fair coin,
+$\pw(\text{\tpcifenglish{heads}{Kopf}}) = \pw(\text{\tpcifenglish{tails}{Zahl}}) = \tfrac12$.
+In what follows we call $\pw$ a \emph{weight} for short.
 
 \begin{example}[Fair and loaded die]\label{c01.ex.gezinkt}\claim{c01.cl.gezinkt}{derived}
   For a fair die, $\pw(x) = \tfrac16$ for all $x$. Other weights describe \emph{loaded}
@@ -153,14 +167,17 @@ stage has a simple mathematical form
     \end{aligned}
   \end{equation}
   At the end of the measurement stands one of the possible outcomes. Which maps occur in
-  the second stage is not needed in this chapter.
+  the second stage is not needed in this chapter; in quantum mechanics this picture will
+  come back again and again.
 \end{greybox}
 
 \tpcdef{D55}
 
-No condition is imposed on a measurement: every function on $\Outcomes$ may count as a
-measurement. On a preparation, by contrast, we impose two. The value $f(x)$ is the
-measured value obtained when one knows for certain that the outcome $x$ has occurred.
+Note how generous this is: we impose no condition on a measurement, practically every
+function on $\Outcomes$ may count as a measurement. On the preparation, by contrast, we
+impose two. The value $f(x)$ is the measured value obtained when one knows for certain that
+the outcome $x$ has occurred. The expectation value connects preparation and measurement: it
+is the sum of the measured values weighted with the probabilities.
 
 \begin{example}[Number of spots]\label{c01.ex.augenzahl}\claim{c01.cl.augenzahl}{derived}
   For a die the number of spots $f(x) = x$ is a measurement. For the fair die
@@ -173,7 +190,9 @@ measured value obtained when one knows for certain that the outcome $x$ has occu
            = \tfrac{47}{12} .
   \end{equation}
   Neither of the two values is a number of spots. The expectation value need not be a
-  possible measured value.
+  possible measured value. Nor is the number of spots the only measurement on a die: “Is
+  the number of spots even?” and “Is the number of spots six?” are measurements too, with
+  yes or no as the answer.
 \end{example}
 
 \begin{tpcfigure}{c01.fig.erwartung}
@@ -186,7 +205,8 @@ measured value obtained when one knows for certain that the outcome $x$ has occu
 
 \subsection{Relative frequencies}\label{c01.s2.1}
 
-Where does the formula for the expectation value come from? One repeats the experiment $N$
+Where does the formula for the expectation value come from? It does not fall from the sky.
+One repeats the experiment $N$
 times with the same preparation, where $N$ is a positive integer, and records the outcomes
 $x_1, \dots, x_N$. Let $N(x)$ be
 the number of runs with the outcome $x$. The \emph{relative frequency} of $x$ is
@@ -209,9 +229,9 @@ because in the sum on the left the term $f(x)$ occurs exactly $N(x)$ times. The 
 series of runs is thus the expectation value of $f$ in the weight $h_N$. This equation is
 exact and holds for every series.
 
-Here we restrict the statistical reading of the lectures to the model of independent
-repetitions of the same preparation: with many such repetitions the relative frequency
-$h_N(x)$ is likely to lie close to $\pw(x)$,
+And how is $h_N$ related to $\pw$? If we carry out the experiment $N$ times independently
+with the same preparation, then with many repetitions the relative frequency $h_N(x)$ is
+likely to lie close to $\pw(x)$,
 \begin{equation}\label{c01.eq.lesart}\claim{c01.cl.lesart}{source-backed}
   h_N(x) \approx \pw(x)
   \qquad \text{\tpcifenglish{for large}{für große}}\ N .
@@ -267,9 +287,10 @@ value $c$. We write $f \leq g$ if $f(x) \leq g(x)$ for all $x \in \Outcomes$.
 
 \subsection{Yes-no measurements}\label{c01.s2.3}
 
-A special part is played by measurements that take only the values $0$ and $1$. They are
-the model for detectors that indicate the presence of a particle: the detector says click
-or no click. Quantum mechanics hinges on these two-valued measurements.
+Of the infinitely many possible measurements the most important are those that take only
+the values $0$ and $1$. They are the model for detectors that indicate the presence of a
+particle, such as a photon detector: the detector says click or no click. Quantum mechanics
+hinges on these two-valued measurements.
 Such a measurement $f$ is determined by the set $S = \{x \in \Outcomes \colon f(x) = 1\}$.
 One writes
 \begin{equation}\label{c01.eq.indikator-def}\claim{c01.cl.indikator-def}{source-backed}
@@ -279,18 +300,29 @@ One writes
     0, & \text{\tpcifenglish{otherwise}{sonst}}
   \end{cases}
 \end{equation}
-and calls $\ind{S}$ the \emph{indicator function} of the event $S$. Indicator functions
-\emph{are} measurements, not a separate object alongside them. The set $S$ may be
-arbitrary. Three limiting cases: $S = \Outcomes$ gives the constant measurement $1$,
-$S = \emptyset$ the constant measurement $0$, and for a single outcome $a$,
-$\ind{\{a\}}(x)$ equals $1$ for $x = a$ and $0$ otherwise.
+and calls $\ind{S}$ the \emph{indicator function} of the event $S$. Function and set carry
+exactly the same information. Hold on to this: indicator functions \emph{are} measurements,
+not a separate object alongside them. The set $S$ may be arbitrary. Three limiting cases:
+$S = \Outcomes$ gives the constant measurement $1$, $S = \emptyset$ the constant measurement
+$0$, and for a single outcome $a$, $\ind{\{a\}}(x)$ equals $1$ for $x = a$ and $0$
+otherwise; that is the Kronecker delta.
+
+\begin{remark}
+  Indicator functions turn up wherever probabilities occur. In gambling the most important
+  measurement of all is: have I won or not? For a scratch card the outcome set is the set of
+  all combinations of numbers that can appear. The measurement is $1$ for a win and $0$
+  otherwise. Written out, this function is enormously complicated, for one has to test every
+  combination for whether it wins; and yet it is only an indicator function. All the
+  complexity sits in the set $S$.
+\end{remark}
 
 The expectation value of an indicator function is the probability of its event:
 \begin{equation}\label{c01.eq.indikator}\claim{c01.cl.indikator}{derived}
   \Ex[\ind{S}] = \sum_{x \in \Outcomes} \pw(x)\, \ind{S}(x) = \sum_{x \in S} \pw(x) = \Prob[S] .
 \end{equation}
-Figure~\ref{c01.fig.indikator} shows the calculation for the loaded die.
-Probabilities are thus special expectation values. Conversely $\Prob$ fixes all
+Figure~\ref{c01.fig.indikator} shows the calculation for the loaded die. The expectation
+value of an indicator function thus has a special form: it is a pure sum of probabilities.
+Probabilities are special expectation values. Conversely $\Prob$ fixes all
 expectation values, for with $S = \{x\}$ one has $\pw(x) = \Prob[\{x\}]$ and therefore
 $\Ex[f] = \sum_{x} \Prob[\{x\}]\, f(x)$.
 
@@ -328,6 +360,65 @@ because at every place $x$ exactly one indicator function equals one, the one wi
 $v = f(x)$. If $f(x) = 0$, all weighted terms vanish. The second follows from it by linearity and equation~\eqref{c01.eq.indikator}. The
 expectation value is the mean of the measured values weighted with the probabilities.
 
+A completely worked example shows the whole apparatus in miniature. In quantum mechanics we
+shall calculate a great many expectation values; in the end that should come very easily to
+you. It pays to do many such calculations yourself.
+
+\begin{example}[An experiment with three outcomes]\label{c01.ex.drei-ergebnisse}\claim{c01.cl.drei-ergebnisse}{derived}
+  The three outcomes of $\Outcomes = \{1, 2, 3\}$ might be, say, the number of photons that a
+  detector counts. As the preparation we choose, arbitrarily but admissibly,
+  $\pw(1) = \tfrac12$ and $\pw(2) = \pw(3) = \tfrac14$: all values are $\geq 0$, and
+  $\tfrac12 + \tfrac14 + \tfrac14 = 1$. A set with three elements has $2^3 = 8$ subsets;
+  each is an event and has its indicator function. Table~\ref{c01.tab.ereignisse} lists all
+  eight with their probabilities. How large is the probability that no outcome occurs? One
+  always occurs, so $\Prob[\emptyset] = 0$. The one-element sets have the values of $\pw$,
+  the two-element sets follow from additivity~\eqref{c01.eq.additiv}, and
+  $\Prob[\Outcomes] = 1$. With that the entire information about the experiment is listed,
+  and along the way we have already computed eight expectation values:
+  $\Prob[\{2,3\}] = \tfrac12$ \emph{is} the expectation value of the indicator function
+  $\ind{\{2,3\}}$.
+
+  Now a measurement that is not an indicator function: $f(1) = -1$, $f(2) = 0$,
+  $f(3) = +1$. Its expectation value is
+  \begin{equation}\label{c01.eq.drei-ergebnisse}
+    \Ex[f] = \tfrac12\cdot(-1) + \tfrac14\cdot 0 + \tfrac14\cdot(+1) = -\tfrac14 .
+  \end{equation}
+  It is negative, and that is no problem. Only probabilities must be $\geq 0$; measured
+  values and expectation values may be negative.
+\end{example}
+
+\begin{tpctable}{c01.tab.ereignisse}
+  \caption{All eight events of the experiment of Example~\ref{c01.ex.drei-ergebnisse}, with
+    the values of their indicator function at the points $1$, $2$, $3$ and their probability
+    for $\pw = (\tfrac12, \tfrac14, \tfrac14)$. Every row is a yes-no measurement and its
+    expectation value.}
+  \begin{tabular}{lcccc}
+    \toprule
+    $S$ & $\ind{S}(1)$ & $\ind{S}(2)$ & $\ind{S}(3)$ & $\Prob[S] = \Ex[\ind{S}]$ \\
+    \midrule
+    $\emptyset$ & $0$ & $0$ & $0$ & $0$ \\
+    $\{1\}$ & $1$ & $0$ & $0$ & $1/2$ \\
+    $\{2\}$ & $0$ & $1$ & $0$ & $1/4$ \\
+    $\{3\}$ & $0$ & $0$ & $1$ & $1/4$ \\
+    $\{1, 2\}$ & $1$ & $1$ & $0$ & $3/4$ \\
+    $\{1, 3\}$ & $1$ & $0$ & $1$ & $3/4$ \\
+    $\{2, 3\}$ & $0$ & $1$ & $1$ & $1/2$ \\
+    $\{1, 2, 3\}$ & $1$ & $1$ & $1$ & $1$ \\
+    \bottomrule
+  \end{tabular}
+\end{tpctable}
+
+Measured values $-1$, $0$, $+1$ are not an invention for the exercise. For angular momentum
+we shall meet, in Chapter~10, states $\ket{\lqn, \mqn}$ on which the angular-momentum
+component $\Lj{3}$ has the value $\hbar \mqn$, with
+\begin{equation}\label{c01.eq.drehimpuls}\claim{c01.cl.drehimpuls}{source-backed}
+  \mqn \in \{-\lqn, -\lqn + 1, \dots, \lqn\},
+  \qquad
+  \lqn = 1\colon \quad \mqn \in \{-1, 0, 1\} .
+\end{equation}
+In units of $\hbar$ these are, for $\lqn = 1$, exactly the measured values of $f$
+\srcref{tpc-script-v0.2}{lec14, eigenvalues of angular momentum}.
+
 \begin{exercise}[Three outcomes]\label{c01.exc.drei}\claim{c01.cl.drei}{derived}
   Let $\Outcomes = \{1, 2, 3\}$ and $\pw(x) = \tfrac13$ for all $x \in \Outcomes$.
   Compute $\Prob[S]$ for $S = \{1, 2\}$ and the expectation value of the measurement
@@ -357,7 +448,8 @@ expectation value is the mean of the measured values weighted with the probabili
 \section{Variance and determinism}\label{c01.s3}
 
 The expectation value says where the measured values lie on average. The variance says
-how far they scatter around this value.
+how far they scatter around this value. In quantum mechanics it plays a large part; we shall
+meet it again in the uncertainty relation.
 
 \tpcdef{D56}
 
@@ -510,10 +602,10 @@ $\pw = \sum_a c_a\, \pw_a$ gives $c_x = \pw(x)$ at once on evaluating at the pla
 
 In the finite model we call a preparation deterministic if its weight is a point weight.
 Then the outcome of every measurement is fixed: $f$ gives the value $f(a)$ with probability
-$1$. The chapter author proposes this as an example of the stipulation in Chapter~0 that
-deterministic theories are a subset of probabilistic ones. This reading awaits the
-author's decision (G-0023); the proposition about preparations specifies no dynamics
-for deterministic theories.
+$1$. This is what the definite predictions look like of which Chapter~0 spoke, and this
+is how they fit into a probabilistic theory: as preparations that are not proper mixtures.
+% GAP-TJO: reading point weights as the example of "deterministic as a subset of
+% probabilistic" (BRIEF.md:45) is the chapter author's (G-0023 d).
 
 \begin{merksatz}[Key statement]
   A weight is a point weight if and only if every measurement has variance $0$, and if and
@@ -524,10 +616,13 @@ for deterministic theories.
 Chapter~2 calls states that are not proper mixtures \emph{pure}. The pure states of the
 finite classical model are thus the point weights.
 Equation~\eqref{c01.eq.zerlegung} decomposes every weight uniquely into point weights.
-Reading this decomposition as missing information about an outcome prepared with
-certainty is the chapter author's proposal and awaits the author's decision (G-0023). Geometrically the
-weights on $n$ outcomes form a body with $n$ corners, the point weights: a segment, a
-triangle, a tetrahedron\zoomref{c01.v1}.
+The same weight can also be produced by preparing, with probability $\pw(a)$, the outcome
+$a$ with certainty.
+Geometrically the weights on $n$ outcomes form a body with $n$ corners, the point weights:
+a segment, a triangle, a tetrahedron\zoomref{c01.v1}.
+% GAP-TJO: reading the decomposition as missing information (taken out of the prose after
+% REVIEW-lec1) is the chapter author's link of
+% c01.eq.zerlegung with lec01.tex:83 (G-0023 d).
 
 \begin{vertiefung}[id=c01.v1,
     titel={The set of all preparations is a simplex},
@@ -717,7 +812,10 @@ triangle, a tetrahedron\zoomref{c01.v1}.
 
 So far $\Outcomes$ was finite. For quantum mechanics, however,
 $\Outcomes = \mathbb{R}$ is decisive: a particle in one dimension has a position,
-and the possible positions are the real numbers. In this section we consider only
+and the possible positions are the real numbers. How to treat probabilities on arbitrary
+sets properly is the business of measure theory. We get round it: we take the important
+properties of the finite case and make new definitions from them, and only for the special
+case that we actually need in the course. In this section we consider only
 preparations on $\mathbb{R}$ that admit a density. In this density model probabilities
 are obtained by integration, rather than by summing density values over points.
 Such a preparation is described by a \emph{probability density}: a function $\pw$ on
@@ -733,10 +831,11 @@ $\mathbb{R}$ with
 The two conditions of the first row correspond to those on a weight. For real endpoints
 $a \leq b$ the second row gives the interval probability. The expectation value of a
 measurement $f$ is used here provided
-$\int_{-\infty}^{\infty} \pw(x)\,\abs{f(x)}\,\dd x < \infty$. In the
-literature one also finds for the same thing the notation $\int \Prob(\dd x)\, f(x)$, with
-$\Prob(\dd x) = \pw(x)\,\dd x$. This course does not use it; one should merely be able to
-recognise it.
+$\int_{-\infty}^{\infty} \pw(x)\,\abs{f(x)}\,\dd x < \infty$. Compared with the finite
+case, only the sum has been replaced by an integral. In the literature one also finds for the
+expectation value the notation $\int \Prob(\dd x)\, f(x)$, with
+$\Prob(\dd x) = \pw(x)\,\dd x$. I am not especially fond of it and shall hardly use it;
+you should merely be able to recognise it.
 
 \begin{merksatz}[A density is not a probability]
   The value $\pw(x)$ of a density is not a probability. Probabilities are
@@ -771,26 +870,33 @@ every density and every point $a$: an integral over an interval of length $0$ is
   \begin{equation}\label{c01.eq.gauss}
     \pw(x) = \frac{1}{\sqrt{2\pi}}\, e^{-\frac12 x^2}
   \end{equation}
-  is called the \emph{normal} or \emph{Gaussian distribution}. It is normalised: the area
-  under the curve is $1$\zoomref{c01.v3}. How probable is an outcome
-  $x \geq 0$? Because $\pw(-x) = \pw(x)$, the areas to the left and to the right of the
-  origin are equal; together they are $1$. Hence
+  is called the \emph{normal} or \emph{Gaussian distribution}, the bell curve. It is really
+  the most important example in all of probability theory. It is normalised: the area under
+  the curve is $1$\zoomref{c01.v3}. We prepare a particle in this state and at the end look
+  at its position. How probable is an outcome $x \geq 0$? Because $\pw(-x) = \pw(x)$, the
+  areas to the left and to the right of the origin are equal; together they are $1$.
+  Hence
   \begin{equation}\label{c01.eq.gauss-halb}
     \int_0^\infty \pw(x)\,\dd x = \int_{-\infty}^0 \pw(x)\,\dd x = \tfrac12 .
   \end{equation}
-  Asked physically: is the particle to the left or to the right of the origin? The
-  argument works \emph{only} for symmetric densities.
+  Asked physically: is the particle to the left or to the right of the origin? Intuitively
+  the result was clear beforehand. But be careful with the argument: it works \emph{only}
+  for symmetric densities. For an asymmetric density such an integral is by no means
+  obvious.
 \end{example}
 
-On $\mathbb{R}$ the most important measurement is the coordinate itself, $f(x) = x$, and
-its powers. Their expectation values are called \emph{moments}, provided the integrals
+For measures on $\mathbb{R}$ it is often particularly easy to compute the expectation values
+of the coordinate function $f(x) = x$ and its powers. These expectation values are called
+\emph{moments}, provided the integrals
 $\int_{-\infty}^{\infty} \abs{x}^n\,\pw(x)\,\dd x$ are finite:
 \begin{equation}\label{c01.eq.momente}\claim{c01.cl.momente}{source-backed}
   M_n = \int_{-\infty}^{\infty} x^n\, \pw(x)\,\dd x ,
   \qquad n = 0, 1, 2, \dots
 \end{equation}
-Always $M_0 = 1$: this is the normalisation, geometrically the area under the curve.
-$M_1$ is called the \emph{mean}. The variance of the coordinate is, as in the finite case,
+The $n$-th moment is thus nothing but the expectation value of the measurement $x^n$.
+Always $M_0 = 1$: this is the normalisation, geometrically the area under the curve. The
+moments that matter most in practice are $M_1$ and $M_2$; $M_1$ is called the
+\emph{mean}. The variance of the coordinate is, as in the finite case,
 \begin{equation}\label{c01.eq.var-momente}\claim{c01.cl.var-momente}{derived}
   \begin{aligned}
     \Var[\Prob] &= \int_{-\infty}^{\infty} (x - M_1)^2\, \pw(x)\,\dd x \\
@@ -839,7 +945,8 @@ The moments other than $M_0$ need not exist.
   Because $I > 0$, $I = \sqrt{2\pi}$ follows, and the density \eqref{c01.eq.gauss} has
   integral $1$.
 
-  For the moments,
+  That the expected position is zero is intuitively clear; it is proved all the same. For
+  the moments,
   \begin{equation}\label{c01.eq.gauss-momente}\claim{c01.cl.gauss-momente}{derived}
     \begin{aligned}
       M_1 &= 0, \\

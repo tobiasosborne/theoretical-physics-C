@@ -2,10 +2,10 @@
  "_generated": {
   "by": "scripts/registry/gen_registry.py",
   "inputs_sha256": {
-   "notation.json": "ac64b8bc61d03c8abe4a9b4a634260088b4f26f4395f994c4358de234f9ab93e",
-   "definitions.json": "08ebd322de01899c868d738519343b833e828dfcaff557a987a470afd1faf4a5",
+   "notation.json": "f69ab547ee170b454644e4c14fbe06b6e5a4c6aa91debc8788c6ebcc348f13e4",
+   "definitions.json": "20f74487af8adf8ad5bf1034192d57906b864e641c47bb3d530d112681601783",
    "conventions.json": "a376a57b23b3a84aa2eb310817d70bacf219028f2e639533d9f68856071ebf23",
-   "translation.json": "d83ac8b9bdfbee8cdc381aa08fd443116fb86c02ac3b9a5028bf742810cd0ccb"
+   "translation.json": "b6c82517800df4b56f6a23748542a780295112a32d409cb13b1a71e7c7268cf9"
   }
  },
  "schema_version": 1,
@@ -772,13 +772,13 @@
     "en": "adjoint"
    },
    "meaning": {
-    "de": "adjungierter Operator, als Suffix geschrieben",
-    "en": "adjoint operator, written as a suffix"
+    "de": "Kreuz-Operation: der Zeilenvektor zu einem Spaltenvektor (D76) und der adjungierte Operator (D17), als Suffix geschrieben",
+    "en": "dagger operation: the row vector of a column vector (D76) and the adjoint operator (D17), written as a suffix"
    },
    "depth": "kern",
-   "first_fixed_in": "D17",
-   "status": "proposed",
-   "verified": false
+   "first_fixed_in": "D76",
+   "status": "blessed-provisional",
+   "verified": true
   },
   {
    "symbol_id": "sym.operator-hat",
@@ -1854,7 +1854,7 @@
     "en": "Hilbert space of square-integrable functions"
    },
    "depth": "kern",
-   "first_fixed_in": "C5",
+   "first_fixed_in": "D80",
    "status": "blessed-provisional",
    "verified": true
   },
@@ -3087,6 +3087,28 @@
    },
    "depth": "kern",
    "first_fixed_in": "C11",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.sequence-l2",
+   "macro": "elltwo",
+   "args": 0,
+   "expansion": "\\ell^{2}",
+   "tex": "\\ell^{2}",
+   "usage": "\\elltwo",
+   "unicode": "ℓ²",
+   "mathml": "<math><msup><mi>ℓ</mi><mn>2</mn></msup></math>",
+   "name": {
+    "de": "Raum der quadratsummierbaren Folgen",
+    "en": "space of square-summable sequences"
+   },
+   "meaning": {
+    "de": "Folgen komplexer Zahlen mit endlicher Summe der Betragsquadrate, mit dem Skalarprodukt als Reihe",
+    "en": "sequences of complex numbers with finite sum of squared moduli, with the inner product as a series"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D77",
    "status": "blessed-provisional",
    "verified": true
   }

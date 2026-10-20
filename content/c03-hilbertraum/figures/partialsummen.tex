@@ -1,0 +1,39 @@
+% c03.fig.partialsummen — the admission test for l^2: partial sums S_N = sum_{j<=N} |v_j|^2.
+%
+% Exact partial sums, N = 1..25, computed in Python (fractions summed in floating point and
+% rounded to four places; the rounding is below the drawing resolution):
+%   v_j = 1/j       : S_N = sum 1/j^2, bounded by 2 - 1/N < 2 (c03.eq.rate, first line);
+%   v_j = 1/sqrt(j) : S_N = H_N = sum 1/j >= ln(N+1) (c03.eq.rate, second line);
+%   v_j = 1         : S_N = N (c03.eq.einsen).
+% The thin horizontal line is the bound 2 of c03.eq.rate, not the limit of the series.
+% Greyscale: solid, dashed, dash-dotted, each with its own label.
+\begin{tikzpicture}
+  \pgfplotsset{c03/.style={
+    axis lines=left, clip=false, grid=none,
+    axis line style={draw=tpc-plate-ink, line width=\tpcstrokethin},
+    tick style={draw=tpc-plate-ink, line width=\tpcstrokehair},
+    tick label style={font=\tpcfontlabel, text=tpc-plate-ink},
+    label style={font=\tpcfontlabel, text=tpc-plate-ink},
+    every axis x label/.style={at={(ticklabel* cs:1.0)}, anchor=west, font=\tpcfontlabel},
+    every axis y label/.style={at={(ticklabel* cs:1.0)}, anchor=south, font=\tpcfontlabel}}}
+  \begin{axis}[c03, width=9.6cm, height=6.0cm,
+      xmin=0, xmax=26, ymin=0, ymax=5.2,
+      xtick={0,5,10,15,20,25}, ytick={0,1,2,3,4,5},
+      xlabel={$N$}, ylabel={$\sum_{j=1}^{N}\lvert v_j\rvert^{2}$}]
+    \draw[tpc leader] (axis cs:0,2) -- (axis cs:26,2);
+    \addplot[tpc q1, mark=*, mark size=1.1pt, mark options={solid, fill=tpc-q1, draw=tpc-q1}] coordinates {
+      (1,1.0000)(2,1.2500)(3,1.3611)(4,1.4236)(5,1.4636)(6,1.4914)(7,1.5118)(8,1.5274)(9,1.5398)
+      (10,1.5498)(11,1.5580)(12,1.5650)(13,1.5709)(14,1.5760)(15,1.5804)(16,1.5843)(17,1.5878)
+      (18,1.5909)(19,1.5937)(20,1.5962)(21,1.5984)(22,1.6005)(23,1.6024)(24,1.6041)(25,1.6057)};
+    \addplot[tpc q3, dash pattern=on 5pt off 2pt, mark=*, mark size=1.1pt, mark options={solid, fill=tpc-q3, draw=tpc-q3}] coordinates {
+      (1,1.0000)(2,1.5000)(3,1.8333)(4,2.0833)(5,2.2833)(6,2.4500)(7,2.5929)(8,2.7179)(9,2.8290)
+      (10,2.9290)(11,3.0199)(12,3.1032)(13,3.1801)(14,3.2516)(15,3.3182)(16,3.3807)(17,3.4396)
+      (18,3.4951)(19,3.5477)(20,3.5977)(21,3.6454)(22,3.6908)(23,3.7343)(24,3.7760)(25,3.8160)};
+    \addplot[tpc q5, dash pattern=on 5pt off 1.5pt on 1.2pt off 1.5pt, mark=*, mark size=1.1pt, mark options={solid, fill=tpc-q5, draw=tpc-q5}] coordinates {
+      (1,1)(2,2)(3,3)(4,4)(5,5)};
+    \node[tpc label, anchor=north west] at (axis cs:12,1.5) {$v_j = 1/j$: \tpcifenglish{admitted}{zugelassen}};
+    \node[tpc label, anchor=south east] at (axis cs:25.5,2.02) {\tpcifenglish{bound}{Schranke} $2$};
+    \node[tpc label, anchor=south east] at (axis cs:24,3.95) {$v_j = 1/\sqrt{j}$: $\geq \ln(N+1)$};
+    \node[tpc label, anchor=west] at (axis cs:5.6,4.9) {$v_j = 1$: $N$};
+  \end{axis}
+\end{tikzpicture}

@@ -788,6 +788,51 @@
    "mapping": "identical token.",
    "verified": true,
    "how": "read in the script source at this line"
+  },
+  {
+   "id": "TR-RS1-02",
+   "source": "reed-simon-1",
+   "locus": "section II.1, Example 1, p. 37 (DjVu page 49)",
+   "quote": "(x, y) = \\sum_{j=1}^n \\bar x_j y_j",
+   "source_token": "\\bar x_j",
+   "source_meaning": "complex conjugate of a number; (x, y) the standard inner product on C^n",
+   "canonical": [
+    "sym.adjoint",
+    "D76"
+   ],
+   "mapping": "\\bar z → z^*; (x, y) on C^n → \\vb{x}\\adj\\vb{y} (D76) in C3 before Dirac notation, \\braket{x}{y} after it. Same slot convention (CONV-INNER).",
+   "verified": true,
+   "how": "read from the page image (ddjvu -format=pnm -page=49 -scale=150), not from the text layer"
+  },
+  {
+   "id": "TR-RS1-03",
+   "source": "reed-simon-1",
+   "locus": "section II.1, Example 3, p. 40 (DjVu page 51)",
+   "quote": "Define \\ell_2 to be the set of sequences",
+   "source_token": "\\ell_2",
+   "source_meaning": "the space of square-summable complex sequences",
+   "canonical": [
+    "sym.sequence-l2",
+    "D77"
+   ],
+   "mapping": "\\ell_2 → \\elltwo (exponent instead of subscript, as in the script vl02.tex:112).",
+   "verified": true,
+   "how": "read from the page image (ddjvu -format=pnm -page=51 -scale=150), not from the text layer"
+  },
+  {
+   "id": "TR-TPCC3-01",
+   "source": "tpc-script-v0.2",
+   "locus": "lectures/de/vl02.tex:120",
+   "quote": "\\langle f, g\\rangle \\equiv \\int_{-\\infty}^\\infty f^*(x)\\, g(x)\\, dx.",
+   "source_token": "\\langle f, g\\rangle",
+   "source_meaning": "inner product on square-integrable functions, written with a comma before Dirac notation",
+   "canonical": [
+    "sym.inner-product",
+    "D78"
+   ],
+   "mapping": "\\langle f, g\\rangle → \\braket{f}{g}; same slot convention (CONV-INNER). Chapter c03 uses the vertical bar already in Vertiefung c03.v2, before Dirac notation (gap G-0033 (d)).",
+   "verified": true,
+   "how": "read in the script source at this line"
   }
  ]
 }

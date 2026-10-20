@@ -3519,7 +3519,8 @@
    "scope": "TJOs Festlegung im Wortlaut von docs/plan/BRIEF.md; über die zitierten Worte hinaus wird nichts behauptet. / TJO's stipulation as worded in docs/plan/BRIEF.md; nothing beyond the quoted words is asserted.",
    "hypotheses": [],
    "provenance_ids": [
-    "P-0069"
+    "P-0069",
+    "P-0306"
    ],
    "definition_ids": [],
    "review_receipt": null,
@@ -3599,7 +3600,8 @@
     "P-0077",
     "P-0078",
     "P-0079",
-    "P-0080"
+    "P-0080",
+    "P-0301"
    ],
    "definition_ids": [],
    "review_receipt": null,
@@ -3608,17 +3610,19 @@
   {
    "id": "c00.cl.lichtquant",
    "kind": "equation",
-   "statement_de": "Lichtquanten der Energie E = hν: Diese Annahme liefert nach dem Skript das richtige Spektrum der Schwarzkörperstrahlung. Das Skript beschreibt einen nicht reflektierenden, bei Temperatur T strahlenden Schwarzkörper und nennt eine Kiste mit kleinem Loch als Realisierung. Sein Spektrum ist nach dem Skript klassisch nicht erklärbar; das Strahlungsgesetz wird im statistischen Teil hergeleitet.",
-   "statement_en": "Light quanta of energy E = hν: according to the lecture notes this assumption yields the right spectrum of black-body radiation. The notes describe a non-reflecting black body radiating at temperature T and name a box with a small hole as a realisation. According to the notes its spectrum cannot be explained classically; the radiation law is derived in the statistical part.",
+   "statement_de": "Lichtquanten der Energie E = hν: Diese Annahme liefert nach dem Skript das richtige Spektrum der Schwarzkörperstrahlung. Ein erhitzter Schwarzkörper strahlt mit einem Spektrum, das nur von der Temperatur abhängt, nicht vom Material (NobelPrize.org, Planck). Eine Kiste mit kleinem Loch, deren Wände überall dieselbe Temperatur T haben und mit der Strahlung im Innern im thermischen Gleichgewicht sind (Voraussetzung), ist eine Näherung eines Schwarzkörpers; aus dem Loch tritt näherungsweise Schwarzkörperstrahlung der Temperatur T aus. Das Spektrum ist nach dem Skript klassisch nicht erklärbar; das Strahlungsgesetz wird im statistischen Teil hergeleitet.",
+   "statement_en": "Light quanta of energy E = hν: according to the lecture notes this assumption yields the right spectrum of black-body radiation. A heated black body radiates with a spectrum that depends only on the temperature, not on the material (NobelPrize.org, Planck). A box with a small hole whose walls all have the same temperature T and are in thermal equilibrium with the radiation inside (premise) approximates a black body; approximately black-body radiation of temperature T emerges from the hole. According to the notes the spectrum cannot be explained classically; the radiation law is derived in the statistical part.",
    "depth": "kern",
    "evidence": "source-backed",
    "presentation": null,
-   "scope": "Wie im Vorlesungsskript des Autors angegeben; keine externe Quelle geprüft. / As stated in the author's lecture notes; no external source checked. Die Hohlraumidealisierung braucht eine Quelle oder Formulierung des Autors (G-0024); die Grenzform wird nur algebraisch behandelt. / The cavity idealisation needs a source or wording from the author (G-0024); the limiting form is treated algebraically only.",
+   "scope": "Wie im Vorlesungsskript des Autors angegeben, ergänzt um NobelPrize.org (Planck, Facts); thermisches Gleichgewicht bei einheitlicher Temperatur ist Voraussetzung, nicht Ergebnis; die Rechnung c00.cl.reflexion betrifft nur die Abschwächung einfallender Strahlung, nicht die Emission; die Grenzform wird nur algebraisch behandelt. / As stated in the author's lecture notes, with NobelPrize.org (Planck, Facts); thermal equilibrium at uniform temperature is a premise, not a result; the calculation c00.cl.reflexion concerns only the attenuation of incident radiation, not emission; the limiting form is treated algebraically only.",
    "hypotheses": [],
    "provenance_ids": [
     "P-0081",
     "P-0082",
-    "P-0083"
+    "P-0083",
+    "P-0302",
+    "P-0309"
    ],
    "definition_ids": [],
    "review_receipt": null,
@@ -3690,6 +3694,24 @@
    ],
    "definition_ids": [],
    "review_receipt": null
+  },
+  {
+   "id": "c00.cl.reflexion",
+   "kind": "equation",
+   "statement_de": "Wirft die Wand bei jeder Reflexion den festen Bruchteil r der auftreffenden Energie zurück, 0 ≤ r < 1, so ist nach n Reflexionen von einem eintretenden Strahl der Bruchteil r^n übrig, und r^n → 0 für n → ∞.",
+   "statement_en": "If the wall sends back the fixed fraction r of the incident energy at every reflection, 0 ≤ r < 1, then after n reflections the fraction r^n of an entering ray is left, and r^n → 0 as n → ∞.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Modellannahme: fester Reflexionsgrad r < 1 für jede Reflexion, unabhängig von Frequenz und Winkel; keine Aussage über thermisches Gleichgewicht der Wände, über die Emission oder darüber, wie viele Reflexionen ein Strahl vor dem Wiederfinden des Lochs macht. / Model assumption: a fixed reflectance r < 1 at every reflection, independent of frequency and angle; no statement about thermal equilibrium of the walls, about emission, or about how many reflections a ray makes before it finds the hole again.",
+   "hypotheses": [
+    "Jede Reflexion wirft den Bruchteil r der auftreffenden Energie zurück, 0 ≤ r < 1; den Rest nimmt die Wand auf. / Every reflection sends back the fraction r of the incident energy, 0 ≤ r < 1; the wall takes up the rest."
+   ],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c01/DERIVATION.md#c00.cl.reflexion",
+   "definition_ids": [],
+   "review_receipt": null,
+   "notes": "Added in the Lecture 1 revision (2026-10-20) to give the script's 'Einfallende Strahlung verschwindet innen durch Vielfachreflexion' (vl01.tex:47) its mechanism under a stated premise (partial absorption at each reflection); addresses the absorption part of G-0032, not the thermal-equilibrium part."
   },
   {
    "id": "c00.cl.grenzform",
@@ -3765,14 +3787,16 @@
   {
    "id": "c00.cl.photoeffekt",
    "kind": "equation",
-   "statement_de": "Die Vorlesung gibt für die Photoelektronen die Beziehung E_el = ½ m_e v² = hν − W mit Bindungsenergie W an. Für festes W ist ihre algebraische Darstellung eine Gerade mit Steigung h.",
-   "statement_en": "The lectures give the relation E_el = ½ m_e v² = hν − W with binding energy W for photoelectrons. For fixed W its algebraic plot is a line of slope h.",
+   "statement_de": "Bei festem Material hängt die maximale kinetische Energie der Photoelektronen von der Lichtfrequenz ab, nicht von der Intensität; im Einphotonenmodell ist E_kin,max = ½ m_e v_max² = hν − W mit der Bindungsenergie W des Materials (der kleinsten Energie, die das Herauslösen kostet). Für festes W ist das eine Gerade mit Steigung h.",
+   "statement_en": "For a fixed material the maximum kinetic energy of the photoelectrons depends on the frequency of the light, not on its intensity; in the one-photon model E_kin,max = ½ m_e v_max² = hν − W with the binding energy W of the material (the smallest energy that release costs). For fixed W this is a line of slope h.",
    "depth": "kern",
    "evidence": "source-backed",
    "presentation": null,
-   "scope": "Wie im Vorlesungsskript des Autors angegeben; keine externe Quelle geprüft. / As stated in the author's lecture notes; no external source checked. Der physikalische Geltungsbereich wartet auf eine Quelle oder Formulierung des Autors (G-0024). / The physical regime awaits a source or wording from the author (G-0024).",
+   "scope": "Die Formel wie im Vorlesungsskript des Autors (vl01.tex:57); ihre Lesart als maximale kinetische Energie bei festem Material ist in c00.cl.schwelle im Einphotonenmodell hergeleitet (Migration M-0051). Nichtrelativistisch: ½ m_e v² setzt Elektronen voraus, die langsam gegen das Licht sind. Keine Aussage über Prozesse mit mehreren Lichtquanten. / The formula as in the author's lecture notes (vl01.tex:57); its reading as the maximum kinetic energy at fixed material is derived in c00.cl.schwelle in the one-photon model (migration M-0051). Nonrelativistic: ½ m_e v² presupposes electrons slow compared with light. No statement about multi-quantum processes.",
    "hypotheses": [
-    "Festes W für jede algebraisch gezeichnete Gerade. / Fixed W for each algebraically plotted line."
+    "Festes Material, also festes W, für jede gezeichnete Gerade. / Fixed material, so fixed W, for each plotted line.",
+    "Einphotonenmodell (Hypothesen von c00.cl.schwelle). / One-photon model (hypotheses of c00.cl.schwelle).",
+    "Nichtrelativistische kinetische Energie. / Nonrelativistic kinetic energy."
    ],
    "provenance_ids": [
     "P-0089",
@@ -3786,14 +3810,16 @@
   {
    "id": "c00.cl.schwelle",
    "kind": "equation",
-   "statement_de": "Gilt c00.eq.photoeffekt, so ist hν ≥ W, also ν ≥ W/h.",
-   "statement_en": "If c00.eq.photoeffekt holds, then hν ≥ W, that is ν ≥ W/h.",
+   "statement_de": "Gibt ein Lichtquant seine Energie hν an ein einzelnes Elektron ab, das zum Herauskommen die Energie W' ≥ W aufbringen muss (W die kleinste solche Energie), so ist für ein tatsächlich herausgelöstes Elektron 0 ≤ ½ m_e v² = hν − W' ≤ hν − W, also ν ≥ W/h. Gleichheit hν − W gilt für W' = W; c00.eq.photoeffekt ist in diesem Modell die maximale kinetische Energie, und für hν < W löst ein einzelnes Lichtquant kein Elektron aus.",
+   "statement_en": "If a light quantum gives its energy hν to a single electron that must spend W' ≥ W to get out (W the smallest such energy), then for an electron actually released 0 ≤ ½ m_e v² = hν − W' ≤ hν − W, hence ν ≥ W/h. Equality hν − W holds for W' = W; in this model c00.eq.photoeffekt is the maximum kinetic energy, and for hν < W a single light quantum releases no electron.",
    "depth": "kern",
    "evidence": "derived",
    "presentation": null,
-   "scope": "Notwendige Bedingung für die Gleichung; keine Aussage darüber, was für hν < W geschieht. / A necessary condition for the relation; no statement about what happens for hν < W.",
+   "scope": "Im Bild eines Lichtquants pro Elektron mit Energieerhaltung und nichtrelativistischer kinetischer Energie; keine Aussage über Prozesse mit mehreren Lichtquanten, über die Verteilung der W' oder über Raten. / In the picture of one light quantum per electron with energy conservation and nonrelativistic kinetic energy; no statement about processes with several light quanta, about the distribution of W' or about rates.",
    "hypotheses": [
-    "c00.eq.photoeffekt (c00.cl.photoeffekt)"
+    "Ein Lichtquant der Energie hν (c00.eq.lichtquant) gibt seine ganze Energie an ein einzelnes Elektron ab. / One light quantum of energy hν (c00.eq.lichtquant) gives all its energy to a single electron.",
+    "Das Herauslösen kostet das Elektron die Energie W' ≥ W; W ist die kleinste solche Energie (die Bindungsenergie W von c00.eq.photoeffekt). / Release costs the electron the energy W' ≥ W; W is the smallest such energy (the binding energy W of c00.eq.photoeffekt).",
+    "Energieerhaltung; kinetische Energie ½ m_e v² ≥ 0 mit m_e > 0. / Energy conservation; kinetic energy ½ m_e v² ≥ 0 with m_e > 0."
    ],
    "provenance_ids": [],
    "derivation": "evidence/derivations/c01/DERIVATION.md#c00.cl.schwelle",
@@ -3803,54 +3829,61 @@
   {
    "id": "c00.cl.impuls",
    "kind": "equation",
-   "statement_de": "Nach dem Skript: Impuls eines Lichtquants der Wellenlänge λ: p = h/λ. Die Vorlesung nennt instabile klassische Elektronenbahnen, diskrete Energieniveaus (Linienspektren, Franck-Hertz), den Compton-Effekt unter Heranziehung von E = hν, p = h/λ und Energie- und Impulserhaltung, den Stern-Gerlach-Versuch mit endlich vielen Ausrichtungen relativ zum Magnetfeld sowie Elektroneninterferenz als Hinweis auf Welleneigenschaften.",
-   "statement_en": "According to the lecture notes: momentum of a light quantum of wavelength λ: p = h/λ. The lectures name unstable classical electron orbits, discrete energy levels (line spectra, Franck-Hertz), the Compton effect using E = hν, p = h/λ and energy and momentum conservation, the Stern-Gerlach experiment in terms of finitely many orientations relative to the magnetic field, and electron interference as an indication of wave properties.",
+   "statement_de": "Nach dem Skript: Impuls eines Lichtquants der Wellenlänge λ: p = h/λ. Die Vorlesung nennt instabile klassische Elektronenbahnen, diskrete Energieniveaus (Linienspektren, Franck-Hertz), den Compton-Effekt (die Verteilung von Energie und Impuls auf Lichtquant und Elektron, beschrieben mit E = hν, p = h/λ und Energie- und Impulserhaltung), den Stern-Gerlach-Versuch (ein Strahl von Silberatomen im inhomogenen Magnetfeld spaltet in zwei getrennte Strahlen statt in eine klassisch erwartete kontinuierliche Verteilung; bei fester Drehimpulsquantenzahl ℓ nimmt die Komponente des Drehimpulses in Feldrichtung nur endlich viele Werte ħm, m = −ℓ, …, ℓ an; aus solchen quantisierten Drehimpulsen kann man Qubits bauen) sowie Elektroneninterferenz als Hinweis auf Welleneigenschaften.",
+   "statement_en": "According to the lecture notes: momentum of a light quantum of wavelength λ: p = h/λ. The lectures name unstable classical electron orbits, discrete energy levels (line spectra, Franck-Hertz), the Compton effect (how energy and momentum are shared between light quantum and electron, described with E = hν, p = h/λ and energy and momentum conservation), the Stern-Gerlach experiment (a beam of silver atoms in an inhomogeneous magnetic field splits into two separate beams instead of a classically expected continuous distribution; at fixed angular-momentum quantum number ℓ the component of angular momentum along the field takes only finitely many values ħm, m = −ℓ, …, ℓ; from such quantised angular momenta qubits can be built), and electron interference as an indication of wave properties.",
    "depth": "kern",
    "evidence": "source-backed",
    "presentation": null,
-   "scope": "Wie im Vorlesungsskript des Autors angegeben; keine externe Quelle geprüft. / As stated in the author's lecture notes; no external source checked. Geltungsbereich der Stern-Gerlach-Beschreibung und Reichweite der Compton-Vorhersage sind offen (G-0024). / The scope of the Stern-Gerlach description and the reach of the Compton prediction remain open (G-0024).",
+   "scope": "Wie im Vorlesungsskript des Autors angegeben (vl01, vl14), der Stern-Gerlach-Befund zusätzlich nach NobelPrize.org (Stern, Facts); keine weitere externe Quelle geprüft. Endlich viele Werte nur bei festem ℓ. Compton: nur die Verteilung von Energie und Impuls, keine Raten. / As stated in the author's lecture notes (vl01, vl14), the Stern-Gerlach finding also from NobelPrize.org (Stern, Facts); no further external source checked. Finitely many values only at fixed ℓ. Compton: only the sharing of energy and momentum, no rates.",
    "hypotheses": [],
    "provenance_ids": [
     "P-0092",
     "P-0093",
     "P-0094",
     "P-0095",
-    "P-0096"
+    "P-0096",
+    "P-0300",
+    "P-0307",
+    "P-0308",
+    "P-0312"
    ],
    "definition_ids": [],
    "review_receipt": null,
-   "notes": "Covers c00.s4.3 as lecture statements. Removed the assertion of radiation continuously over all frequencies and the inference to present-day qubit construction. Conservation is no longer asserted to supply the complete scattering prediction. The chapter writes um den Kern where the script writes um das Proton."
+   "notes": "Covers c00.s4.3 as lecture statements. Removed the assertion of radiation continuously over all frequencies. Conservation is no longer asserted to supply the complete scattering prediction: the Lecture 1 revision (2026-10-20) states it for the sharing of energy and momentum only. The qubit remark is restored in the narrowed form 'from such quantised angular momenta one can build qubits' (entailed by vl01.tex:62, P-0300), not as 'precisely because ... we can build qubits'. After REVIEW-lec1 (M-0051) the Stern-Gerlach wording states the fixed angular-momentum quantum number ℓ (vl14.tex:92, 96; closes G-0030) and the silver-atom finding with its classical expectation (P-0312). The chapter writes um den Kern where the script writes um das Proton."
   },
   {
    "id": "c00.cl.geschichte",
    "kind": "statement",
-   "statement_de": "Jahreszahlen und Namen der Vorgeschichte, wie das Skript sie angibt (Tabelle c00.tab.jahre und der Text der Vertiefung c00.v2): Geburtsjahr 1926; Planck 1899; Lenard 1899, Einstein 1905; Franck-Hertz um 1911; Stern-Gerlach 1922; de Broglie 1924; Davisson-Germer 1929; Schrödinger, Heisenberg, Born, Jordan, Dirac 1925/26; Wiener, Hilbert (WS 1926/27), von Neumann, Wigner, Weyl; Interpretation umstritten; kein Widerspruch zur QM bis heute.",
-   "statement_en": "Years and names of the prehistory as the lecture notes give them (table c00.tab.jahre and the text of Vertiefung c00.v2): year of birth 1926; Planck 1899; Lenard 1899, Einstein 1905; Franck-Hertz about 1911; Stern-Gerlach 1922; de Broglie 1924; Davisson-Germer 1929; Schrödinger, Heisenberg, Born, Jordan, Dirac 1925/26; Wiener, Hilbert (winter 1926/27), von Neumann, Wigner, Weyl; interpretation disputed; no contradiction with QM to this day.",
+   "statement_de": "Jahreszahlen und Namen der Vorgeschichte (Tabelle c00.tab.jahre und der Text der Vertiefung c00.v2): Strahlungsgesetz und Lichtquanten Planck 1900; Photoeffekt Lenard (ohne Jahr), Einstein ab 1905; Franck-Hertz 1914; Stern-Gerlach 1922 (Silberatome, zwei getrennte Strahlen statt einer klassisch erwarteten Verteilung); de Broglie 1924; Davisson-Germer 1927. Nach dem Skript: Geburtsjahr 1926; Schrödinger Wellenmechanik 1926; Heisenberg 1925, daraus Matrizenmechanik von Born, Jordan und Heisenberg; Dirac eigene Fassung; Schrödinger zeigt 1926 die Äquivalenz von Wellen- und Matrizenmechanik; Born 1926 statistische Interpretation; Wiener, Hilbert (WS 1926/27), von Neumann, Wigner, Weyl; Interpretation umstritten; kein Widerspruch zur QM bis heute.",
+   "statement_en": "Years and names of the prehistory (table c00.tab.jahre and the text of Vertiefung c00.v2): radiation law and light quanta Planck 1900; photoelectric effect Lenard (no year), Einstein from 1905; Franck-Hertz 1914; Stern-Gerlach 1922 (silver atoms, two separate beams instead of a classically expected distribution); de Broglie 1924; Davisson-Germer 1927. According to the notes: year of birth 1926; Schrödinger wave mechanics 1926; Heisenberg 1925, from it matrix mechanics of Born, Jordan and Heisenberg; Dirac a version of his own; Schrödinger shows in 1926 the equivalence of wave and matrix mechanics; Born 1926 statistical interpretation; Wiener, Hilbert (winter 1926/27), von Neumann, Wigner, Weyl; interpretation disputed; no contradiction with QM to this day.",
    "depth": "vertiefung",
    "evidence": "source-backed",
    "presentation": null,
-   "scope": null,
+   "scope": "Jahre der Experimente nach den Laureatenseiten von NobelPrize.org und dem Crossref-Eintrag der Arbeit von Davisson und Germer (nobelprize-history-2026, Sekundärdarstellungen); die übrige Geschichte wie im Vorlesungsskript des Autors angegeben, keine externe Quelle geprüft. / Years of the experiments from the NobelPrize.org laureate pages and the Crossref record of the Davisson-Germer paper (nobelprize-history-2026, secondary summaries); the rest of the history as stated in the author's lecture notes, no external source checked.",
    "hypotheses": [],
    "provenance_ids": [
     "P-0097",
     "P-0098",
     "P-0099",
     "P-0100",
-    "P-0101",
-    "P-0102",
-    "P-0103",
     "P-0104",
-    "P-0105",
     "P-0106",
     "P-0107",
     "P-0108",
     "P-0109",
     "P-0110",
-    "P-0111"
+    "P-0111",
+    "P-0310",
+    "P-0311",
+    "P-0312",
+    "P-0313",
+    "P-0314",
+    "P-0315",
+    "P-0316"
    ],
    "definition_ids": [],
    "review_receipt": null,
-   "notes": "Historical statements with no source but the script; none was checked against a history of physics. Scope: as stated in the author's lecture notes; no external source checked. The chapter author doubts three of the dates (Planck 1899, Franck-Hertz about 1911, Davisson-Germer 1929) but has no source on disk to confirm or correct them: G-0025. The chapter omits the script's 'mit einer Publikation in den Göttinger Mathematischen Nachrichten' and 'Diese wurde von Physikern zunächst nicht gelesen'."
+   "notes": "Dates corrected after docs/review/lectures/REVIEW-lec1.md (migration M-0050): the script's Planck 1899, Franck-Hertz about 1911 and Davisson-Germer 1929 are replaced by 1900, 1914 and 1927; P-0101, P-0103, P-0105 (the old dates) and P-0102 (Lenard 1899) now only support M-0050. Lenard's year is not established by the registered pages and is left out. The pairing 'Wellenmechanik und Matrizenmechanik' for Schrödinger's equivalence reads 'Äquivalenz beider Zugänge' of vl01.tex:72 explicitly. The chapter omits the script's 'mit einer Publikation in den Göttinger Mathematischen Nachrichten'."
   },
   {
    "id": "c00.cl.welle-teilchen",
@@ -3883,7 +3916,10 @@
    "provenance_ids": [
     "P-0115",
     "P-0116",
-    "P-0117"
+    "P-0117",
+    "P-0303",
+    "P-0304",
+    "P-0305"
    ],
    "definition_ids": [],
    "review_receipt": null,
@@ -4164,6 +4200,46 @@
    ],
    "review_receipt": null,
    "notes": "At every x exactly one indicator equals one (v = f(x)); if f(x) = 0, every weighted summand vanishes."
+  },
+  {
+   "id": "c01.cl.drei-ergebnisse",
+   "kind": "statement",
+   "statement_de": "X = {1,2,3} mit p(1) = 1/2, p(2) = p(3) = 1/4 ist ein Gewicht; X hat 2³ = 8 Teilmengen mit P[∅] = 0, P[{1}] = 1/2, P[{2}] = P[{3}] = 1/4, P[{1,2}] = P[{1,3}] = 3/4, P[{2,3}] = 1/2, P[X] = 1 (Tabelle c01.tab.ereignisse); für f(1) = −1, f(2) = 0, f(3) = +1 ist E[f] = −1/4.",
+   "statement_en": "X = {1,2,3} with p(1) = 1/2, p(2) = p(3) = 1/4 is a weight; X has 2³ = 8 subsets with P[∅] = 0, P[{1}] = 1/2, P[{2}] = P[{3}] = 1/4, P[{1,2}] = P[{1,3}] = 3/4, P[{2,3}] = 1/2, P[X] = 1 (table c01.tab.ereignisse); for f(1) = −1, f(2) = 0, f(3) = +1, E[f] = −1/4.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endliche Ergebnismenge, Gewicht nach D54, Messung nach D55. Die Lesart der Ergebnisse als Photonenzahl ist nur ein Bild. / Finite outcome set, weight as in D54, measurement as in D55. Reading the outcomes as photon numbers is only a picture.",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c01/DERIVATION.md#c01.cl.drei-ergebnisse",
+   "definition_ids": [
+    "D53",
+    "D54",
+    "D55"
+   ],
+   "review_receipt": null,
+   "notes": "The worked example of TJO's second recorded lecture (transcripts/clean/v02.md [38:07]-[48:44]); not in vl01.tex. Added in the Lecture 1 revision, 2026-10-20."
+  },
+  {
+   "id": "c01.cl.drehimpuls",
+   "kind": "equation",
+   "statement_de": "Nach dem Skript (vl14) hat die Drehimpulskomponente L̂_3 auf den Zuständen |ℓ, m⟩ den Eigenwert ħm mit m = −ℓ, −ℓ+1, …, ℓ; für ℓ = 1 also m ∈ {−1, 0, 1}.",
+   "statement_en": "According to the lecture notes (lec14), the angular-momentum component L̂_3 has the eigenvalue ħm on the states |ℓ, m⟩, with m = −ℓ, −ℓ+1, …, ℓ; for ℓ = 1 therefore m ∈ {−1, 0, 1}.",
+   "depth": "kern",
+   "evidence": "source-backed",
+   "presentation": null,
+   "scope": "Wie im Vorlesungsskript des Autors angegeben; keine externe Quelle geprüft. Vorgriff auf Kapitel 10; hier nur als Herkunft der Messwerte −1, 0, +1 (in Einheiten von ħ) genannt. / As stated in the author's lecture notes; no external source checked. A forward reference to Chapter 10, cited here only as the origin of the measured values −1, 0, +1 (in units of ħ).",
+   "hypotheses": [
+    "ℓ = 1 für den Spezialfall. / ℓ = 1 for the special case."
+   ],
+   "provenance_ids": [
+    "P-0307",
+    "P-0308"
+   ],
+   "definition_ids": [],
+   "review_receipt": null,
+   "notes": "TJO makes this link in the recorded lecture (transcripts/clean/v02.md [46:26]); the eigenvalue statement itself is taken from vl14.tex. That eigenvalues are the possible measured values is a postulate of later chapters, not of this one."
   },
   {
    "id": "c01.cl.drei",
@@ -4480,7 +4556,8 @@
     "P-0136",
     "P-0137",
     "P-0138",
-    "P-0139"
+    "P-0139",
+    "P-0317"
    ],
    "definition_ids": [],
    "review_receipt": null
@@ -4551,6 +4628,402 @@
    "provenance_ids": [],
    "derivation": "evidence/derivations/c01/DERIVATION.md#c01.cl.gauss-momente",
    "definition_ids": [],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.c2",
+   "kind": "statement",
+   "statement_de": "Für v = (1+i, 1−i) und w = (1, −1) in ℂ² ist v + w = (2+i, −i) und i v = (−1+i, 1+i).",
+   "statement_en": "For v = (1+i, 1−i) and w = (1, −1) in ℂ², v + w = (2+i, −i) and i v = (−1+i, 1+i).",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: Vektoren in ℂⁿ (D75, D76). / Finite-dimensional: vectors in ℂⁿ (D75, D76).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.c2",
+   "definition_ids": [
+    "D75"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.selbst",
+   "kind": "equation",
+   "statement_de": "v†v = Σ_j |v_j|² ≥ 0; das Skalarprodukt eines Vektors mit sich selbst ist reell und nicht negativ.",
+   "statement_en": "v†v = Σ_j |v_j|² ≥ 0; the inner product of a vector with itself is real and non-negative.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: Vektoren in ℂⁿ (D75, D76). / Finite-dimensional: vectors in ℂⁿ (D75, D76).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.selbst",
+   "definition_ids": [
+    "D76"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.ohne-stern",
+   "kind": "statement",
+   "statement_de": "Für v = (1, i) ist Σ_j v_j v_j = 0, aber v†v = 2: Ohne Konjugation hätte ein von null verschiedener Vektor die Länge null.",
+   "statement_en": "For v = (1, i), Σ_j v_j v_j = 0 but v†v = 2: without conjugation a nonzero vector would have length zero.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: Vektoren in ℂⁿ (D75, D76). / Finite-dimensional: vectors in ℂⁿ (D75, D76).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.ohne-stern",
+   "definition_ids": [
+    "D76"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.vw",
+   "kind": "statement",
+   "statement_de": "Für v = (1+i, 1−i), w = (1, −1) ist v†w = −2i und w†v = 2i = (v†w)*.",
+   "statement_en": "For v = (1+i, 1−i), w = (1, −1), v†w = −2i and w†v = 2i = (v†w)*.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: Vektoren in ℂⁿ (D75, D76). / Finite-dimensional: vectors in ℂⁿ (D75, D76).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.vw",
+   "definition_ids": [
+    "D76"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.skalarprodukt",
+   "kind": "proposition",
+   "statement_de": "In ℂⁿ gilt w†v = (v†w)*; das Skalarprodukt ist linear im zweiten und antilinear im ersten Faktor; v†v ≥ 0 mit Gleichheit nur für v = 0.",
+   "statement_en": "In ℂⁿ, w†v = (v†w)*; the inner product is linear in the second and antilinear in the first factor; v†v ≥ 0 with equality only for v = 0.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": "Endlichdimensional: Vektoren in ℂⁿ (D75, D76). / Finite-dimensional: vectors in ℂⁿ (D75, D76).",
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0145"
+   ],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.skalarprodukt",
+   "definition_ids": [
+    "D75",
+    "D76"
+   ],
+   "review_receipt": null,
+   "notes": "Convention CONV-INNER. P-0145 supports only the remark that some books use the opposite convention."
+  },
+  {
+   "id": "c03.cl.rechnen",
+   "kind": "statement",
+   "statement_de": "Für v = (i, 2), w = (1, i): 3v = (3i, 6), v + w = (1+i, 2+i), v†w = i, w†v = −i, v†v = 5.",
+   "statement_en": "For v = (i, 2), w = (1, i): 3v = (3i, 6), v + w = (1+i, 2+i), v†w = i, w†v = −i, v†v = 5.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: Vektoren in ℂⁿ (D75, D76). / Finite-dimensional: vectors in ℂⁿ (D75, D76).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.rechnen",
+   "definition_ids": [
+    "D75",
+    "D76"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.drei-raeume",
+   "kind": "statement",
+   "statement_de": "Drei Räume, drei Systeme: ℂ² gehört zum Qubit, ℓ² zum harmonischen Oszillator, L²(ℝ) zu einem Teilchen ohne Spin in einer Dimension; damit sind praktisch alle Hilberträume des Kurses beisammen.",
+   "statement_en": "Three spaces, three systems: ℂ² belongs to the qubit, ℓ² to the harmonic oscillator, L²(ℝ) to a spinless particle in one dimension; these are practically all the Hilbert spaces of the course.",
+   "depth": "vertiefung",
+   "evidence": "source-backed",
+   "presentation": null,
+   "scope": "Wie im Vorlesungsskript des Autors angegeben; keine externe Quelle geprüft. / As stated in the author's lecture notes; no external source checked. Zuordnung als Modellwahl des Autors, in Vertiefung c03.v3; L²(ℝ) im genauen Sinn aus Klassen fast überall gleicher Funktionen (D80). / Assignment as the author's modelling choice, in block c03.v3; L²(ℝ) in the precise sense of classes of functions equal almost everywhere (D80).",
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0151"
+   ],
+   "definition_ids": [],
+   "review_receipt": null,
+   "gap_tjo": "Whether the box should say that the oscillator is equally described on L²(ℝ) (number basis versus position) is TJO's choice (G-0034).",
+   "notes": "Also said in lecture video v03 [37:39]-[39:46]. Moved from the Kern into Vertiefung c03.v3 after the second review (docs/review/lectures/REVIEW-lec2.md, row SCOPE). The script and the lecture add the example 'ein Photon in einer Glasfaser'; it is left out of the text until TJO says what he meant (G-0033 (e)). 'Spinless particle' is the chapter's precision. That ℓ² and L²(ℝ) are isomorphic as Hilbert spaces (so the systems differ by their operators, not by the space) is left out; gap G-0034."
+  },
+  {
+   "id": "c03.cl.einsen",
+   "kind": "statement",
+   "statement_de": "Für den Vektor mit lauter Einsen sind die Teilsummen Σ_{j≤N} |v_j|² = N unbeschränkt.",
+   "statement_en": "For the vector of all ones the partial sums Σ_{j≤N} |v_j|² = N are unbounded.",
+   "depth": "vertiefung",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": null,
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.einsen",
+   "definition_ids": [
+    "D77"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.elltwo",
+   "kind": "proposition",
+   "statement_de": "ℓ² ist abgeschlossen unter Addition und Multiplikation mit Skalaren; die Reihe Σ v_j* w_j konvergiert absolut mit Σ|v_j* w_j| ≤ ½ v†v + ½ w†w; die vier Rechenregeln des Skalarprodukts gelten in ℓ².",
+   "statement_en": "ℓ² is closed under addition and multiplication by scalars; the series Σ v_j* w_j converges absolutely with Σ|v_j* w_j| ≤ ½ v†v + ½ w†w; the four rules of the inner product hold in ℓ².",
+   "depth": "vertiefung",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": null,
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0140"
+   ],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.elltwo",
+   "definition_ids": [
+    "D77",
+    "D76"
+   ],
+   "review_receipt": null,
+   "notes": "P-0140 is Reed-Simon's definition of l_2 with this inner product; the proof is the chapter's."
+  },
+  {
+   "id": "c03.cl.rate",
+   "kind": "statement",
+   "statement_de": "Σ_{j=1}^N 1/j² ≤ 2 − 1/N < 2 für N ≥ 2, also (1/j) ∈ ℓ²; Σ_{j=1}^N 1/j ≥ ln(N+1) → ∞, also (1/√j) ∉ ℓ², obwohl 1/√j → 0.",
+   "statement_en": "Σ_{j=1}^N 1/j² ≤ 2 − 1/N < 2 for N ≥ 2, so (1/j) ∈ ℓ²; Σ_{j=1}^N 1/j ≥ ln(N+1) → ∞, so (1/√j) ∉ ℓ² although 1/√j → 0.",
+   "depth": "vertiefung",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": null,
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.rate",
+   "definition_ids": [
+    "D77"
+   ],
+   "review_receipt": null,
+   "notes": "Corrects vl02.tex:133-136, which says the norm grows logarithmically; it is the squared norm's partial sums (M-0013)."
+  },
+  {
+   "id": "c03.cl.ltwo",
+   "kind": "proposition",
+   "statement_de": "Für quadratintegrierbare (in der Vertiefung stückweise stetige) f, g und a ∈ ℂ sind af und f + g quadratintegrierbar, ∫ f* g dx konvergiert absolut mit ∫|f* g| ≤ ½⟨f|f⟩ + ½⟨g|g⟩; die Regeln 1–3 gelten und ⟨f|f⟩ ≥ 0.",
+   "statement_en": "For square-integrable (in the block piecewise continuous) f, g and a ∈ ℂ, af and f + g are square-integrable, ∫ f* g dx converges absolutely with ∫|f* g| ≤ ½⟨f|f⟩ + ½⟨g|g⟩; rules 1–3 hold and ⟨f|f⟩ ≥ 0.",
+   "depth": "vertiefung",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": null,
+   "hypotheses": [
+    "f, g stückweise stetig; Integrale als uneigentliche Riemann-Integrale. / f, g piecewise continuous; integrals as improper Riemann integrals."
+   ],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.ltwo",
+   "definition_ids": [
+    "D78"
+   ],
+   "review_receipt": null,
+   "notes": "Rule 4 (definiteness) is deliberately not claimed: c03.cl.punkt."
+  },
+  {
+   "id": "c03.cl.eins",
+   "kind": "statement",
+   "statement_de": "∫_{−X}^{X} 1 dx = 2X → ∞: die Funktion 1 ist nicht quadratintegrierbar.",
+   "statement_en": "∫_{−X}^{X} 1 dx = 2X → ∞: the function 1 is not square-integrable.",
+   "depth": "vertiefung",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": null,
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.eins",
+   "definition_ids": [
+    "D78"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.gauss",
+   "kind": "statement",
+   "statement_de": "∫ e^{−x²} dx = √π, also sind e^{−x²/2} und e^{−x²/2} e^{2ix} quadratintegrierbar; ∫_{−X}^{X} dx/(1+|x|) = 2 ln(1+X) → ∞, also ist 1/√(1+|x|) nicht quadratintegrierbar, obwohl die Funktion gegen null geht.",
+   "statement_en": "∫ e^{−x²} dx = √π, so e^{−x²/2} and e^{−x²/2} e^{2ix} are square-integrable; ∫_{−X}^{X} dx/(1+|x|) = 2 ln(1+X) → ∞, so 1/√(1+|x|) is not square-integrable although the function tends to zero.",
+   "depth": "vertiefung",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": null,
+   "hypotheses": [
+    "∫ e^{−y²/2} dy = √(2π) (c01.cl.gauss-norm)."
+   ],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.gauss",
+   "definition_ids": [
+    "D78"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.cs",
+   "kind": "lemma",
+   "statement_de": "Cauchy-Schwarz in ℂⁿ: |v†w|² ≤ (v†v)(w†w).",
+   "statement_en": "Cauchy-Schwarz in ℂⁿ: |v†w|² ≤ (v†v)(w†w).",
+   "depth": "fundament",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": null,
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0144"
+   ],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.cs",
+   "definition_ids": [
+    "D76"
+   ],
+   "review_receipt": null,
+   "notes": "Reed-Simon I p. 38 state it for every inner product space (P-0144); the chapter's proof is the direct one."
+  },
+  {
+   "id": "c03.cl.cs-elltwo",
+   "kind": "proposition",
+   "statement_de": "Cauchy-Schwarz in ℓ²: |v†w|² ≤ (v†v)(w†w).",
+   "statement_en": "Cauchy-Schwarz in ℓ²: |v†w|² ≤ (v†v)(w†w).",
+   "depth": "fundament",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": null,
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.cs-elltwo",
+   "definition_ids": [
+    "D77"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.punkt",
+   "kind": "statement",
+   "statement_de": "Die Funktion mit f(0) = 1 und f(x) = 0 sonst ist stückweise stetig, nicht null, und hat ⟨f|f⟩ = 0; Regel 4 gilt für Funktionen nicht.",
+   "statement_en": "The function with f(0) = 1 and f(x) = 0 otherwise is piecewise continuous, not zero, and has ⟨f|f⟩ = 0; rule 4 fails for functions.",
+   "depth": "fundament",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": null,
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.punkt",
+   "definition_ids": [
+    "D78"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.klassen",
+   "kind": "equation",
+   "statement_de": "Für quadratintegrierbare f, g gilt f ∼ g genau dann, wenn ∫|f − g|² dx = 0; das Skalarprodukt hängt nicht von den Vertretern ab, und auf Klassen gilt Regel 4.",
+   "statement_en": "For square-integrable f, g, f ∼ g if and only if ∫|f − g|² dx = 0; the inner product does not depend on representatives, and rule 4 holds on classes.",
+   "depth": "fundament",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": null,
+   "hypotheses": [
+    "Reed-Simon I S. 17: f = g fast überall ⇔ ∫|f − g| dx = 0 für integrierbare f, g (P-0146). / Reed-Simon I p. 17: f = g a.e. ⇔ ∫|f − g| dx = 0 for integrable f, g (P-0146)."
+   ],
+   "provenance_ids": [
+    "P-0146"
+   ],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.klassen",
+   "definition_ids": [
+    "D80"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.stetig",
+   "kind": "proposition",
+   "statement_de": "Enthält eine Klasse fast überall gleicher Funktionen eine stetige Funktion, so keine andere; dann darf man f(x) für deren Wert schreiben. Für ein allgemeines Element hat f(x) an einer Stelle keinen Sinn.",
+   "statement_en": "If a class of functions equal almost everywhere contains a continuous function, it contains no other; one may then write f(x) for its value. For a general element, f(x) at a point has no meaning.",
+   "depth": "fundament",
+   "evidence": "source-quoted",
+   "presentation": "proof-omitted",
+   "scope": "Reed-Simon sagen es für Klassen integrierbarer Funktionen (L¹); das Kapitel wendet es auf L²(ℝ) an, wo die Äquivalenzrelation (fast überall gleich, D80) dieselbe ist. / Reed-Simon state it for classes of integrable functions (L¹); the chapter applies it to L²(ℝ), where the equivalence relation (a.e. equality, D80) is the same.",
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0147",
+    "P-0148"
+   ],
+   "definition_ids": [
+    "D80"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.cn-vollstaendig",
+   "kind": "proposition",
+   "statement_de": "ℂⁿ ist vollständig: Jede Cauchy-Folge konvergiert gegen einen Vektor in ℂⁿ.",
+   "statement_en": "ℂⁿ is complete: every Cauchy sequence converges to a vector in ℂⁿ.",
+   "depth": "fundament",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": null,
+   "hypotheses": [
+    "ℝ ist vollständig (Reed-Simon I S. 6, P-0149). / ℝ is complete (Reed-Simon I p. 6, P-0149)."
+   ],
+   "provenance_ids": [
+    "P-0149"
+   ],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.cn-vollstaendig",
+   "definition_ids": [
+    "D79",
+    "D75"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.endlich",
+   "kind": "statement",
+   "statement_de": "Der Raum F der abbrechenden Folgen mit dem Skalarprodukt von ℓ² ist nicht vollständig: (1, 1/2, …, 1/N, 0, …) ist eine Cauchy-Folge mit d² < 1/N − 1/M ohne Grenzwert in F; in ℓ² konvergiert sie gegen (1/j) mit Abstand ≤ 1/√N.",
+   "statement_en": "The space F of finitely supported sequences with the ℓ² inner product is not complete: (1, 1/2, …, 1/N, 0, …) is a Cauchy sequence with d² < 1/N − 1/M and no limit in F; in ℓ² it converges to (1/j) at distance ≤ 1/√N.",
+   "depth": "fundament",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": null,
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0150"
+   ],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.endlich",
+   "definition_ids": [
+    "D79",
+    "D77"
+   ],
+   "review_receipt": null,
+   "notes": "P-0150 (density of finitely supported sequences in l_p) supports only the remark after the example."
+  },
+  {
+   "id": "c03.cl.vollstaendig",
+   "kind": "theorem",
+   "statement_de": "ℓ² ist vollständig; L²(ℝ) in der Fassung von D80 ist vollständig (Satz von Riesz und Fischer).",
+   "statement_en": "ℓ² is complete; L²(ℝ) in the version of D80 is complete (Riesz-Fischer theorem).",
+   "depth": "fundament",
+   "evidence": "source-quoted",
+   "presentation": "proof-omitted",
+   "scope": "Reed-Simon: ℓ_p ist ein Banachraum (Fall p = 2), L^p(X, dμ) ist vollständig (Fall p = 2, X = ℝ, Lebesgue-Maß), L²(ℝⁿ, dμ) ist ein Hilbertraum. / Reed-Simon: ℓ_p is a Banach space (case p = 2), L^p(X, dμ) is complete (case p = 2, X = ℝ, Lebesgue measure), L²(ℝⁿ, dμ) is a Hilbert space.",
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0141",
+    "P-0142",
+    "P-0143"
+   ],
+   "definition_ids": [
+    "D77",
+    "D79",
+    "D80"
+   ],
    "review_receipt": null
   }
  ]

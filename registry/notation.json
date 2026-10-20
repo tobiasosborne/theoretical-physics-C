@@ -1206,19 +1206,27 @@
    "mathml": "<math><msup><mrow/><mo>†</mo></msup></math>",
    "name_de": "Adjungierte",
    "name_en": "adjoint",
-   "meaning_de": "adjungierter Operator, als Suffix geschrieben",
-   "meaning_en": "adjoint operator, written as a suffix",
+   "meaning_de": "Kreuz-Operation: der Zeilenvektor zu einem Spaltenvektor (D76) und der adjungierte Operator (D17), als Suffix geschrieben",
+   "meaning_en": "dagger operation: the row vector of a column vector (D76) and the adjoint operator (D17), written as a suffix",
    "depth": "kern",
-   "first_fixed_in": "D17",
-   "status": "proposed",
+   "first_fixed_in": "D76",
+   "status": "blessed-provisional",
    "sources": [
     {
      "source": "preinventory",
      "locus": "notation-preinventory.md:41 (symbol row 21)",
      "verified": false,
      "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl02.tex:45",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\mbf{v}^\\dag\\mbf{w} = \\begin{pmatrix}"
     }
    ],
+   "notes": "Changed by the author of chapter C3 (2026-10-20): first fixed for vectors in D76 (the script's 'Kreuz-Operation', vl02.tex:35-42) and blessed provisionally, because chapter c03 needs it; the meaning for operators (D17) is unchanged. The script uses one dagger for both (vl03: (|v>)^dagger = <v|; vl04: operators).",
    "legacy_aliases": [
     {
      "macro": "adj",
@@ -2853,7 +2861,7 @@
    "meaning_de": "Hilbertraum der quadratintegrierbaren Funktionen",
    "meaning_en": "Hilbert space of square-integrable functions",
    "depth": "kern",
-   "first_fixed_in": "C5",
+   "first_fixed_in": "D80",
    "status": "blessed-provisional",
    "sources": [
     {
@@ -2862,8 +2870,16 @@
      "verified": true,
      "quote": "L^2(R^6) = L^2(R^3) \\otimes L^2(R^3)",
      "how": "read from the page image (ddjvu -format=pnm -page=62 -scale=200), not from the text layer"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl02.tex:114",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "(der als $L^{2}(\\mathbb{R})$ bezeichnet wird)"
     }
    ],
+   "notes": "first_fixed_in changed from C5 to D80 by the author of chapter C3 (2026-10-20): L^2(R) as a space of classes of functions equal almost everywhere is defined in Fundament c03.f2 (D80); D78 (Vertiefung c03.v2) defines only the preliminary space of square-integrable functions and points to D80. The symbol stays at depth kern because the Kern uses it from C5 on (PLAN.md 14.7).",
    "legacy_aliases": []
   },
   {
@@ -4617,6 +4633,44 @@
     }
    ],
    "legacy_aliases": []
+  },
+  {
+   "symbol_id": "sym.sequence-l2",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "elltwo",
+    "args": 0,
+    "expansion": "\\ell^{2}"
+   },
+   "canonical_token": "\\ell^2",
+   "unicode": "ℓ²",
+   "mathml": "<math><msup><mi>ℓ</mi><mn>2</mn></msup></math>",
+   "name_de": "Raum der quadratsummierbaren Folgen",
+   "name_en": "space of square-summable sequences",
+   "meaning_de": "Folgen komplexer Zahlen mit endlicher Summe der Betragsquadrate, mit dem Skalarprodukt als Reihe",
+   "meaning_en": "sequences of complex numbers with finite sum of squared moduli, with the inner product as a series",
+   "depth": "kern",
+   "first_fixed_in": "D77",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl02.tex:112",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "man bezeichnet ihn mit $\\ell^2$"
+    },
+    {
+     "source": "reed-simon-1",
+     "locus": "section II.1, Example 3, p. 40 (DjVu page 51)",
+     "verified": true,
+     "quote": "Define \\ell_2 to be the set of sequences",
+     "how": "read from the page image (ddjvu -format=pnm -page=51 -scale=150), not from the text layer"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "Added by the author of chapter C3 (2026-10-20). Defined in Vertiefung c03.v1 (D77); the symbol is at depth kern because the Kern box c03.eq.drei-raeume names the space. Reed-Simon write the 2 as a subscript (TR-RS1-03). The glyph ℓ is also the orbital quantum number (sym.orbital-quantum-number, \\lqn); the canonical tokens differ (\\ell^2 against \\ell), and the space always carries its exponent.",
+   "gap_tjo": "Is the shared glyph ℓ (sequence space ℓ² and orbital quantum number ℓ) acceptable, or should the space be written differently (for example l² upright)?"
   }
  ],
  "collisions": [

@@ -1,0 +1,83 @@
+{
+ "schema_version": 1,
+ "id": "M-0051",
+ "status": "recorded",
+ "title": "vl01: photoelectric relation read as maximum kinetic energy, Stern-Gerlach values at fixed l, 'zum ersten Mal' dropped, Schroedinger's equivalence named",
+ "legacy": [
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl01.tex",
+   "line": 55,
+   "file_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "old_text": "Die Energie der durch Licht ausgelösten Elektronen (Photoelektronen) ist nur durch die Lichtfrequenz bestimmt",
+   "new_text": "Bei festem Material hängt die maximale kinetische Energie der Photoelektronen von der Lichtfrequenz ab, nicht von der Intensität. Im Einphotonenmodell lautet die Bilanz E_kin,max = ½ m_e v_max² = hν − W [...] nichtrelativistisch"
+  },
+  {
+   "version": "v0.2-en",
+   "file": "latex/lectures/en/lec01.tex",
+   "line": 55,
+   "file_sha256": "b0ccc8af69cc09146698d13dcbf0667b5ee2295def8dc4133611ade213eab270",
+   "old_text": "The energy of the electrons released by light (photoelectrons) is determined by the frequency of the light alone",
+   "new_text": "for a fixed material the maximum kinetic energy of the photoelectrons depends on the frequency of the light, not on its intensity. In the one-photon model the balance reads E_kin,max = ½ m_e v_max² = hν − W [...] non-relativistically"
+  },
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl01.tex",
+   "line": 62,
+   "file_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "old_text": "Der Drehimpuls hat endlich viele Möglichkeiten der Ausrichtung relativ zu einem angelegten Magnetfeld (Richtungsquantelung).",
+   "new_text": "Ein Strahl von Silberatomen läuft durch ein inhomogenes Magnetfeld. Klassisch sollte er sich zu einer kontinuierlichen Verteilung auffächern; beobachtet werden stattdessen zwei getrennte Strahlen. Der Drehimpuls ist quantisiert: Bei fester Drehimpulsquantenzahl ℓ nimmt seine Komponente in Feldrichtung nur endlich viele Werte an (Richtungsquantelung)."
+  },
+  {
+   "version": "v0.2-en",
+   "file": "latex/lectures/en/lec01.tex",
+   "line": 62,
+   "file_sha256": "b0ccc8af69cc09146698d13dcbf0667b5ee2295def8dc4133611ade213eab270",
+   "old_text": "Angular momentum has only finitely many possible orientations relative to an applied magnetic field (space quantisation).",
+   "new_text": "A beam of silver atoms passes through an inhomogeneous magnetic field. Classically it should spread out into a continuous distribution; instead two separate beams are observed. Angular momentum is quantised: at fixed angular-momentum quantum number ℓ its component in the direction of the field takes only finitely many values (space quantisation)."
+  },
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl01.tex",
+   "line": 28,
+   "file_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "old_text": "Jetzt haben wir die Möglichkeit, zum ersten Mal, direkt mit Quantensystemen zu experimentieren",
+   "new_text": "über Cloud-Dienste können Sie selbst mit echten Quantenrechnern experimentieren"
+  },
+  {
+   "version": "v0.2-en",
+   "file": "latex/lectures/en/lec01.tex",
+   "line": 28,
+   "file_sha256": "b0ccc8af69cc09146698d13dcbf0667b5ee2295def8dc4133611ade213eab270",
+   "old_text": "For the first time we now have the chance to experiment directly with quantum systems",
+   "new_text": "through cloud services you can experiment yourself with real quantum computers"
+  },
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl01.tex",
+   "line": 72,
+   "file_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "old_text": "Noch 1926 zeigt Schrödinger die Äquivalenz beider Zugänge.",
+   "new_text": "Noch 1926 zeigte Schrödinger, dass Wellenmechanik und Matrizenmechanik äquivalent sind. Heisenbergs Arbeit regte außerdem Dirac zu einer eigenen Fassung der Quantenmechanik an."
+  },
+  {
+   "version": "v0.2-en",
+   "file": "latex/lectures/en/lec01.tex",
+   "line": 72,
+   "file_sha256": "b0ccc8af69cc09146698d13dcbf0667b5ee2295def8dc4133611ade213eab270",
+   "old_text": "Later that same year Schrödinger shows the equivalence of the two approaches.",
+   "new_text": "Still in 1926 Schrödinger showed that wave mechanics and matrix mechanics are equivalent. Heisenberg's work also led Dirac to a version of quantum mechanics of his own."
+  }
+ ],
+ "reason": "Corrections from docs/review/lectures/REVIEW-lec1.md (rows 2, 3, 4, 5). (a) The script's sentence gives every photoelectron one energy and omits the material; in the one-photon model the relation is the maximum kinetic energy at fixed material (derived, c00.cl.schwelle), with the nonrelativistic premise now printed. (b) A component of angular momentum has finitely many values only at fixed angular-momentum quantum number; vl14.tex:92 and 96 give the values ħm, m = −ℓ, …, ℓ. The silver-atom finding and its classical expectation are now quoted from NobelPrize.org (Stern). (c) 'zum ersten Mal' is a false historical exclusivity claim and is dropped. (d) 'Äquivalenz beider Zugänge' is named as the equivalence of wave and matrix mechanics; Dirac is mentioned separately.",
+ "evidence": {
+  "independent_check": "docs/review/lectures/REVIEW-lec1.md rows 2 to 5",
+  "provenance_ids": [
+   "P-0307",
+   "P-0308",
+   "P-0312"
+  ],
+  "derivation": "evidence/derivations/c01/DERIVATION.md#c00.cl.schwelle"
+ },
+ "destination": "c00.s4"
+}

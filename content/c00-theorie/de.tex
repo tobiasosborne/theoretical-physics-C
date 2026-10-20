@@ -1,21 +1,26 @@
 % content/c00-theorie/de.tex — Kapitel 0: Was eine physikalische Theorie liefert
 % (deutsche Leitfassung)
 %
-% Migration der ersten Vorlesung latex/lectures/de/vl01.tex (Vorspann, Abschnitt
-% „Der Geburt der Quantenmechanik“, Unterabschnitt „Vorgeschichte“ und der graue Kasten
-% „Jedes Experiment in drei Schritten“).  Wohin jede Gleichung, jeder Kasten und jede
+% Erste Vorlesung, erster Teil.  Migration von latex/lectures/de/vl01.tex (Vorspann,
+% Abschnitt „Die Geburt der Quantenmechanik“, Unterabschnitt „Vorgeschichte“ und der graue
+% Kasten „Jedes Experiment in drei Schritten“).  Wohin jede Gleichung, jeder Kasten und jede
 % Abbildung von vl01 gegangen ist, steht in evidence/migrations/maps/vl01-map.json.
 %
+% Stimme (Überarbeitung „Lecture 1“, 2026-10-20): Die Prosa folgt TJOs eigenen Sätzen aus
+%   vl01.tex und seinen Vorlesungsvideos (transcripts/clean/v01.md, v02.md bis 75:00; die
+%   Rohtranskripte transcripts/raw/v01_*.txt).  Zeitmarken stehen als Kommentar an der
+%   Stelle.  Die Transkripte sind keine registrierte Quelle: Aus ihnen kommen Wortlaut,
+%   Beispiele und didaktische Bemerkungen, keine physikalische Aussage.  Physik kommt aus
+%   dem Skript (tpc-script-v0.2, source-backed mit dem Geltungsbereich „wie im
+%   Vorlesungsskript des Autors angegeben“), aus CODATA 2022 oder ist hergeleitet
+%   (evidence/derivations/c01/DERIVATION.md, Teil A).
+% Reihenfolge: wie in der Vorlesung zuerst die Vorgeschichte und die beiden Merksätze, dann
+%   die Rahmung des Kurses (BRIEF.md), die aus dem zweiten Merksatz einen Grundsatz macht.
+%   Die Abschnitts-IDs sind Namen und bleiben; c00.s4 steht deshalb vor c00.s1.
 % Rahmung: docs/plan/BRIEF.md, Abschnitt „The physics approach“ (Zeilen 38, 40, 44, 45,
-%   50, 90).  Sie ist TJOs Festlegung (author-stipulated) und wird hier nur zitiert und
-%   angeordnet.  Die deutschen Fassungen der zitierten Sätze sind Übersetzungen des
-%   Kapitelautors; jede ist mit „GAP-TJO“ markiert.
-% Physik der Vorgeschichte: einzige Quelle ist TJOs Skript (Quellenschlüssel
-%   tpc-script-v0.2); jede Formel daraus ist source-backed mit dem Geltungsbereich „wie im
-%   Vorlesungsskript des Autors angegeben; keine externe Quelle geprüft“.  Zahlenwerte
-%   der Konstanten: CODATA 2022.
-% Herleitungen (Grenzform, Schranken, Schwelle): evidence/derivations/c01/DERIVATION.md,
-%   Teil „Kapitel 0“.
+%   48, 50, 90), TJOs Festlegung (author-stipulated).  Die deutschen Fassungen sind
+%   Übersetzungen (G-0022).  Wo der Text die Rahmung verbindet (Durchführung = Dynamik,
+%   P0 = Merksatz für jede Theorie), steht ein GAP-TJO-Kommentar (G-0023).
 %
 % Schreibweise: Das Skript schreibt U(nu) für die spektrale Energiedichte; hier steht
 % u(nu, T), weil U in der Registry mehrfach belegt ist (COL-U) und die Temperatur als
@@ -23,202 +28,118 @@
 
 \chapter{Was eine physikalische Theorie liefert}\label{c00}
 
-Dieses Kapitel sagt zwei Dinge. Erstens: was in diesem Kurs unter einer physikalischen
-Theorie verstanden wird und in welcher Reihenfolge der Kurs seine Theorien behandelt.
-Zweitens: an welchen Befunden die klassische Physik gescheitert ist, sodass eine neue
-Theorie nötig wurde. Gerechnet wird hier wenig. Die Mathematik beginnt in Kapitel~1 mit
-der Wahrscheinlichkeitsrechnung.
+% Stimme: vl01.tex:26; v01 [03:20]-[06:37] („das war immer so und wird immer so sein“,
+% „extrem gut und extrem problematisch“).
+Wir befinden uns in einem Quanten-Universum. Das war immer so und wird immer so sein.
+Allerdings haben wir bis 1900 die Quantenaspekte des Universums nicht bemerkt, weil uns die
+klassische Physik eine sehr gute Annäherung an die Physik des Alltags geliefert hat. Das ist
+ein großer Erfolg und zugleich ein Problem: Wie soll man Quantenaspekte entdecken, wenn die
+klassische Näherung so gut funktioniert? Die Quantenmechanik wäre viel einfacher zu
+verstehen, wenn wir Quantenaspekte jeden Tag beobachten könnten.
 
-\section{Die Rahmung des Kurses}\label{c00.s1}
+Erklärungsbedürftig ist also nicht die Quantenmechanik, sondern die Güte der klassischen
+Näherung. Eine der größten Herausforderungen beim Erlernen der Quantenmechanik ist, zu
+verstehen, warum die klassische Physik so gut funktioniert. Das Stichwort dazu heißt
+\emph{Dekohärenz}; sie gehört in die fortgeschrittene Quantenmechanik, und wir schaffen sie
+in diesem Kurs nicht \srcref{tpc-script-v0.2}{vl01, Abschnitt „Die Geburt der Quantenmechanik“}.
 
-Der Kurs folgt einer Rahmung, die sein Autor festgelegt hat. Sie wird nicht hergeleitet;
-sie sagt, wie der Stoff angeordnet und in welcher Sprache er formuliert wird. Ihre ersten
-Sätze lauten:
-% GAP-TJO: Die deutsche Fassung der drei folgenden Sätze ist eine Übersetzung aus
-% docs/plan/BRIEF.md:44, 45 und 50 und nicht von TJO geschrieben; der englische Wortlaut
-% steht wörtlich in der englischen Ausgabe und in evidence/claims.json (G-0022).
-\begin{equation}\label{c00.eq.liefert}\claim{c00.cl.liefert}{author-stipulated}
-  \begin{aligned}
-    &\text{\tpcifenglish{A physical theory supplies data for}{Eine physikalische Theorie liefert Daten für}} \\
-    &\text{\tpcifenglish{preparations + dynamics + measurement.}{Präparationen + Dynamik + Messung.}}
-  \end{aligned}
-\end{equation}
-\begin{equation}\label{c00.eq.probabilistisch}\claim{c00.cl.probabilistisch}{author-stipulated}
-  \begin{aligned}
-    &\text{\tpcifenglish{All physical theories are}{Alle physikalischen Theorien sind}} \\
-    &\text{\tpcifenglish{probabilistic theories (I think of deterministic}{probabilistische Theorien (deterministische fasse ich}} \\
-    &\text{\tpcifenglish{as a subset of probabilistic).}{als Teilmenge der probabilistischen auf).}}
-  \end{aligned}
-\end{equation}
-\begin{equation}\label{c00.eq.p0}\claim{c00.cl.p0}{author-stipulated}
-  \begin{aligned}
-    &\text{\tpcifenglish{Physical theories are probabilistic theories:}{Physikalische Theorien sind probabilistische Theorien:}} \\
-    &\text{\tpcifenglish{predictions in the form of probabilities.}{Vorhersagen in Form von Wahrscheinlichkeiten.}}
-  \end{aligned}
-\end{equation}
-Der Brief nennt Satz~\eqref{c00.eq.p0} P0. Der Kapitelautor liest ihn als Auftakt der
-schrittweisen Spezialisierung der Postulate; diese verbindende Formulierung steht zur
-Entscheidung des Autors aus (G-0023).
+% Stimme: vl01.tex:28; v01 [06:37].  Das Versprechen von Übungen auf Quantenrechnern gegen
+% Semesterende ist weggelassen (semestergebunden).
+% GAP-TJO: Ob die Übungen auf echten Quantenrechnern in den neuen Kurs gehören, entscheidet
+% TJO (G-0070).
+Heute ist das anders als um 1900. Die ersten Quantencomputer sind entwickelt worden, und über
+Cloud-Dienste können Sie selbst mit echten Quantenrechnern experimentieren.
+Quantenaspekte werden langsam sichtbar. Bevor wir damit spielen können, brauchen wir die
+Vorgeschichte und den formalen Aufbau der Theorie: Auf welchen Grundlagen ruht sie, und
+welche Gleichungen braucht man?
 
-Satz~\eqref{c00.eq.liefert} nennt drei Zutaten. Der nächste Abschnitt zeigt, wo sie in
-einem Experiment vorkommen. Satz~\eqref{c00.eq.probabilistisch} sagt, dass deterministische
-Theorien als Teil der probabilistischen aufgefasst werden. Kapitel~1 beweist eine
-Proposition über Punktgewichte auf endlichen Ergebnismengen. Ihre Deutung als Beispiel
-dieser Festlegung ist ein Vorschlag des Kapitelautors und wartet auf die Entscheidung
-des Autors (G-0023); eine Definition deterministischer Theorien samt Dynamik steht aus.
+% Stimme: vl01.tex:33; v01 [18:44] (Rohtranskript: „das ist nicht mein Stil“).
+Vorweg eine Bemerkung zur Methode, die für den ganzen Kurs gilt. Man kann Quantenmechanik so
+lehren, dass man erst die falschen, klassischen oder halbklassischen Modelle durchrechnet, um
+dann zu zeigen, dass sie nicht funktionieren. Das ist nicht mein Stil. Wir betrachten von
+Anfang an alles richtig; das Bohrsche Atommodell rechnen wir nirgends durch. Die
+historischen Experimente nenne ich trotzdem, aber nur als Liste.
 
-\section{Jedes Experiment in drei Schritten}\label{c00.s2}
+% Stimme: vl01.tex:23; v01 [46:45].  Der Satz über Fehlerprämien ist weggelassen.
+Ein Lehrbuch empfehle ich Ihnen nicht: Das beste Buch über Quantenmechanik existiert meiner
+Meinung nach noch nicht. Es gibt kein schlechtes, aber eben auch kein perfektes. Lesen Sie
+gern nebenbei andere Bücher; verbindlich ist dieser Text.
 
-Die Vorlesung, aus der dieser Kurs entstanden ist, beschreibt Experimente mit einem
-einzigen Schema \srcref{tpc-script-v0.2}{vl01, Kasten „Jedes Experiment in drei Schritten“}:
-\begin{equation}\label{c00.eq.drei-stadien}\claim{c00.cl.drei-stadien}{source-quoted}
-  \begin{aligned}
-    &\text{\tpcifenglish{To the theorist all experiments in physics}{Für den Theoretiker sehen alle Experimente}} \\
-    &\text{\tpcifenglish{look the same; they consist of three stages.}{der Physik gleich aus; sie bestehen aus drei Stadien.}}
-  \end{aligned}
-\end{equation}
-\begin{enumerate}
-  \item \emph{Präparation.} Etwas wird hergerichtet: ein Würfel, im Labor etwa ein
-    Lichtstrahl.
-  \item \emph{Durchführung.} Das Experiment läuft.
-  \item \emph{Messung.} Am Ende schauen wir hin und erhalten eines der möglichen
-    Ergebnisse.
-\end{enumerate}
-Abbildung~\ref{c00.fig.experiment} zeigt das Schema. Ein Experimentalphysiker würde diese
-Vereinfachung nicht anerkennen; abstrakt sieht aber jedes Experiment so aus.
-
-\begin{tpcfigure}{c00.fig.experiment}
-  \caption{Die drei Stadien eines Experiments. Die Klammer fasst die ersten beiden zu
-    einer einzigen Präparation zusammen. Die Präparation ist durchgezogen gezeichnet, die
-    Durchführung mit dickerem Strich, die Messung gestrichelt.}
-\end{tpcfigure}
-
-Die ersten beiden Schritte lassen sich zu \emph{einer} komplizierteren Präparation
-zusammenfassen. Ein gezinkter Würfel ist nichts anderes als ein normaler Würfel, an dem man
-vorher etwas gemacht hat. Deshalb kommt man oft mit zwei Begriffen aus: Präparation und
-Messung. Der Kapitelautor stellt diese Stadien den drei Zutaten in
-Satz~\eqref{c00.eq.liefert} gegenüber: Präparation, Dynamik, Messung. Diese Zuordnung
-wartet auf die Entscheidung des Autors (G-0023).
-% GAP-TJO: Dass die „Durchführung“ des Skripts (vl01.tex:122) die „dynamics“ des Briefs
-% (BRIEF.md:44) ist, steht in keiner der beiden Quellen ausdrücklich; die Gegenüberstellung
-% ist die des Kapitelautors (G-0023).
-
-Die folgende Definition ist aus Plávala übernommen; die Abweichungen des Kursautors
-von Ludwig-Werner sind noch nicht formuliert (G-0023).
-
-\tpcdef{D1}
-
-Die folgende Erläuterung ist die Lesart des Kapitelautors und wartet auf die Entscheidung
-des Autors (G-0023). Eine Präparation ist zunächst etwas, das man \emph{tut}: eine Liste
-von Anweisungen. Für die Vorhersagen zählt, welche Wahrscheinlichkeiten die anschließenden
-Ja-Nein-Messungen liefern. Zwei Verfahren, die auf alle Ja-Nein-Fragen dieselben
-Wahrscheinlichkeiten liefern, beschreibt die Theorie durch denselben Zustand. Die Ja-Nein-Fragen, von
-denen die Definition spricht, sind die einfachsten Messungen: solche mit nur zwei möglichen
-Ergebnissen. In Kapitel~1 sind es die Indikatorfunktionen, und Kapitel~2 definiert sie
-allgemein.
-
-\section{Vom Kleinen zum Großen}\label{c00.s3}
-
-Auch die Reihenfolge des Stoffs ist festgelegt:
-% GAP-TJO: Deutsche Fassung der beiden folgenden Sätze (BRIEF.md:38 und 90) und der
-% Beschriftungen in Abbildung c00.fig.leiter (BRIEF.md:40): Übersetzung des Kapitelautors
-% (G-0022).  Im Brief ist das Wort „effective“ hervorgehoben.
-\begin{equation}\label{c00.eq.leiter}\claim{c00.cl.leiter}{author-stipulated}
-  \begin{aligned}
-    &\text{\tpcifenglish{Our entire presentation works like this:}{Unsere ganze Darstellung geht so vor:}} \\
-    &\text{\tpcifenglish{we go from microscopic to macroscopic.}{Wir gehen vom Mikroskopischen zum Makroskopischen.}}
-  \end{aligned}
-\end{equation}
-Abbildung~\ref{c00.fig.leiter} zeigt die Stufen mit ausgewählten Auszügen aus der
-Festlegung des Autors; die deutschen Beschriftungen sind Übersetzungen des Kapitelautors
-und warten auf den Wortlaut des Autors (G-0022). Von Stufe zu
-Stufe wird „herausgezoomt“; an einer Stelle geht dabei ausdrücklich Information verloren.
-% GAP-TJO: Welche Operation hinter jedem Pfeil der Leiter steht (PLAN.md 13.1, A11:
-% Modellwahl, Erweiterung, Vergröberung mit Grenzübergang), ist hier nicht ausgeführt:
-% Der Brief nennt sie nicht, und die Kapitel, die die Schritte gehen, sind noch nicht
-% geschrieben (G-0023).
-
-\begin{tpcfigure}{c00.fig.leiter}
-  \caption{Die Leiter der Theorien dieses Kurses, von unten (mikroskopisch) nach oben
-    (makroskopisch). Die Beschriftungen der sechs Stufen und der fünf Pfeile sind
-    ausgewählte Auszüge aus der Festlegung des Autors, auf die sich
-    Satz~\eqref{c00.eq.leiter} bezieht. Die letzte Stufe nennt der Brief vollständig
-    „Thermodynamik als die ultimative effektive Theorie der gesamten Physik auf
-    makroskopischer Skala“; auch diese Übersetzung wartet auf den Wortlaut des Autors
-    (G-0022). GPT
-    steht für „general probabilistic theory“, QM für Quantenmechanik. Der Kurs beginnt
-    unten: Kapitel~1 und~2 behandeln Stufe~1.}
-\end{tpcfigure}
-
-Zu jeder Stufe gehört derselbe Gedanke:
-\begin{equation}\label{c00.eq.effektiv}\claim{c00.cl.effektiv}{author-stipulated}
-  \begin{aligned}
-    &\text{\tpcifenglish{At each stage the student learns that}{Auf jeder Stufe lernt man, dass}} \\
-    &\text{\tpcifenglish{every theory is an effective theory of the one below it:}{jede Theorie eine effektive Theorie der darunterliegenden ist:}} \\
-    &\text{\tpcifenglish{an approximation to the fundamental underlying physics.}{eine Näherung an die grundlegende Physik darunter.}}
-  \end{aligned}
-\end{equation}
-Was „herauszoomen“ bei einem bestimmten Schritt bedeutet, ist Gegenstand des Kapitels,
-das diesen Schritt geht. Hier steht nur die Reihenfolge.
+Dieses Kapitel hat zwei Teile. Zuerst die Befunde, an denen die klassische Physik gescheitert
+ist, und die zwei Sätze, in denen ich sie zusammenfasse. Dann die Rahmung des Kurses: was
+eine physikalische Theorie liefert und in welcher Reihenfolge wir die Theorien behandeln.
+Gerechnet wird hier wenig; die Mathematik beginnt in Kapitel~1 mit der
+Wahrscheinlichkeitsrechnung.
 
 \section{Warum eine neue Theorie nötig war}\label{c00.s4}
 
-Die Vorlesung beginnt mit einer Feststellung: Wir befinden uns in einem Quanten-Universum.
-Bis 1900 blieben dessen Quantenaspekte unbemerkt, weil die klassische Physik eine sehr gute
-Annäherung an die Physik des Alltags liefert. Erklärungsbedürftig ist deshalb nicht die
-Quantenmechanik, sondern die Güte der klassischen Näherung. Das Stichwort dazu heißt
-\emph{Dekohärenz}; sie gehört in die fortgeschrittene Quantenmechanik und wird hier nicht
-behandelt \srcref{tpc-script-v0.2}{vl01, Abschnitt 1}. Der Kurs arbeitet mit der Annahme
-\begin{equation}\label{c00.eq.annahme}\claim{c00.cl.annahme}{source-quoted}
-  \begin{aligned}
-    &\text{\tpcifenglish{Our assumption is that quantum mechanics}{Unsere Annahme ist, dass die Quantenmechanik}} \\
-    &\text{\tpcifenglish{is the correct description of the universe.}{die korrekte Beschreibung des Universums ist.}}
-  \end{aligned}
-\end{equation}
-
-Zur Methode: Man kann Quantenmechanik so lehren, dass man erst die falschen, klassischen
-oder halbklassischen Modelle durchrechnet und dann zeigt, dass sie nicht funktionieren.
-Diesen Weg geht der Kurs nicht. Das Bohrsche Atommodell wird nirgends durchgerechnet. Die
-Befunde, an denen die klassische Physik gescheitert ist, werden trotzdem genannt: zwei
-davon mit ihrer Formel, die übrigen als Liste. Keiner wird in diesem Kapitel hergeleitet.
-Alle Aussagen dieses Abschnitts über Experimente stammen aus dem Vorlesungsskript und sind
-hier nicht gegen eine weitere Quelle geprüft.
+% Stimme: vl01.tex:35; v01 [09:12], [20:28] (Rohtranskript: „in der gymnasialen Oberstufe
+% ... schöne spannende Geschichte erzählen“, „diese Experimente machen eigentlich kaum Sinn
+% mehr“).
+Die Vorgeschichte der Quantenmechanik ist eine Reihe von Beobachtungen, die die These, unser
+Universum werde durch die klassische Physik beschrieben, allmählich in Frage stellten. Als
+Beweisführung machen diese alten Experimente heute kaum noch Sinn: Dass die Quantenmechanik
+die richtige Theorie ist, davon sind wir längst überzeugt. Schön zu kennen sind sie trotzdem.
+Wer in der Oberstufe unterrichtet, kann mit ihnen eine spannende Geschichte erzählen. Zwei
+der Befunde nenne ich mit ihrer Formel, die übrigen als Liste.
 
 \subsection{Schwarzkörperstrahlung}\label{c00.s4.1}
 
-Das Skript beschreibt einen Schwarzkörper als Körper, der keine einfallende Strahlung
-reflektiert und bei einer Temperatur $\Temp$ wegen der thermisch angeregten Atome dennoch
-strahlt. Als übliche Realisierung nennt es eine Kiste mit einem kleinen Loch, aus dem
-Schwarzkörperstrahlung austritt (Abbildung~\ref{c00.fig.hohlraum}). Die Beschreibung ist
-eine Aussage der Vorlesung; die physikalische Begründung der Hohlraumidealisierung
-wartet auf eine Quelle oder Formulierung des Autors (G-0024).
+% Stimme: vl01.tex:47; v01 [11:12] („ein echter Schwarzkörper ist schwer herzustellen“).
+Ein Schwarzkörper reflektiert keine einfallende Strahlung, strahlt bei einer Temperatur
+$\Temp$ wegen der thermisch angeregten Atome aber dennoch. Erhitzt man ihn, so hat seine
+Strahlung ein Spektrum, das nur von der Temperatur abhängt und nicht vom Material
+\srcref{nobelprize-history-2026}{Max Planck, Facts}. Ein echter Schwarzkörper ist schwer
+herzustellen. Die übliche Näherung ist eine Kiste mit kleinem Loch
+(Abbildung~\ref{c00.fig.hohlraum}), deren Wände überall dieselbe Temperatur $\Temp$ haben und
+mit der Strahlung im Innern im thermischen Gleichgewicht sind. Diese Annahme setzen wir
+voraus. Einfallende Strahlung verschwindet innen durch Vielfachreflexion, und aus dem Loch
+tritt näherungsweise Schwarzkörperstrahlung der Temperatur $\Temp$ aus.
+
+Warum verschwindet die einfallende Strahlung? Nehmen wir an, die Wand wirft bei jeder Reflexion einen
+festen Bruchteil $r$ der auftreffenden Energie zurück, mit $0 \leq r < 1$, und schluckt den
+Rest. Nach $n$ Reflexionen ist von einem eintretenden Strahl noch der Bruchteil $r^n$
+übrig, und
+\begin{equation}\label{c00.eq.reflexion}\claim{c00.cl.reflexion}{derived}
+  r^n \;\longrightarrow\; 0
+  \qquad (n \to \infty) .
+\end{equation}
+Ein Strahl, der das kleine Loch erst nach vielen Reflexionen wiederfindet, bringt
+kaum noch Energie hinaus. Das Loch wirkt deshalb näherungsweise wie ein Körper, der alles
+schluckt. Über die Strahlung, die aus dem Loch herauskommt, sagt diese Rechnung nichts; dafür
+braucht man die Annahme des thermischen Gleichgewichts.
 
 \begin{tpcfigure}{c00.fig.hohlraum}
-  \caption{Die im Skript genannte Realisierung eines Schwarzkörpers: eine Kiste mit einem
-    kleinen Loch. Die gezeichneten Reflexionen treffen das Loch nicht; gezeigt sind die
-    ersten sechs Reflexionen eines Strahls nach dem Reflexionsgesetz. Das Skript bezeichnet
-    die aus dem Loch austretende Strahlung als Schwarzkörperstrahlung. Die Zeichnung zeigt
-    den Strahlengang; die physikalische Begründung der Idealisierung steht aus (G-0024).}
+  \caption{Ein Schwarzkörper als Kiste mit kleinem Loch. Gezeichnet sind die ersten
+    Reflexionen eines eintretenden Strahls nach dem Reflexionsgesetz; keine davon trifft
+    das Loch. Behält die Wand bei jeder Reflexion den Bruchteil $1 - r$ der Energie, so
+    ist nach $n$ Reflexionen nur noch der Bruchteil $r^n$ übrig,
+    Gleichung~\eqref{c00.eq.reflexion}.}
 \end{tpcfigure}
 
-Das Spektrum dieser Strahlung ist mit klassischer Physik nicht erklärbar. Das richtige
-Spektrum liefert die Annahme, dass Licht der Frequenz $\nu$ aus Lichtquanten der Energie
+% Stimme: vl01.tex:37; v01 [14:39] („schockierend war um 1900“, „Hilfsgröße“).
+Schockierend war um 1900, dass das Spektrum dieser Strahlung mit klassischer Physik nicht
+erklärbar ist. Das richtige Spektrum liefert die Annahme, dass Licht der Frequenz $\nu$ aus
+Lichtquanten der Energie
 \begin{equation}\label{c00.eq.lichtquant}\claim{c00.cl.lichtquant}{source-backed}
   E = \hPlanck \nu
 \end{equation}
-besteht. Die Konstante $\hPlanck$ heißt Plancksches Wirkungsquantum. Das Strahlungsgesetz
-selbst gibt an, wie viel Energie pro Volumen auf die Frequenzen zwischen $\nu$ und
-$\nu + \dd\nu$ entfällt:
+besteht. Die Konstante $\hPlanck$ heißt Plancksches Wirkungsquantum. Planck hat sie
+ursprünglich als „Hilfsgröße“ postuliert, um das Strahlungsgesetz herzuleiten. Es gibt an,
+wie viel Energie pro Volumen auf die Frequenzen zwischen $\nu$ und $\nu + \dd\nu$
+entfällt:
 \begin{equation}\label{c00.eq.planck}\claim{c00.cl.planck}{source-backed}
   u(\nu, \Temp)\,\dd\nu
   = \frac{8\pi \hPlanck \nu^3}{\clight^3}\,\frac{\dd\nu}{e^{\hPlanck\nu/(\kB \Temp)} - 1} .
 \end{equation}
-Darin ist $\clight$ die Lichtgeschwindigkeit und $\kB$ die Boltzmann-Konstante. Der Kurs
-leitet dieses Gesetz im Teil über statistische Physik selbst her, aus der Annahme, dass
-Licht quantisiert ist. Hier wird es nur benutzt.
+Darin ist $\clight$ die Lichtgeschwindigkeit und $\kB$ die Boltzmann-Konstante. Dieses Gesetz
+leiten wir im statistischen Teil des Kurses selbst her, aus der Annahme, dass Licht
+quantisiert ist. Hier wird es nur benutzt
+\srcref{tpc-script-v0.2}{vl01, Vorgeschichte, Punkt 1}.
 
-In der theoretischen Physik verwendet man statt $\hPlanck$ meist die \emph{reduzierte
-Planck-Konstante}
+% Stimme: vl01.tex:41; v01 [21:23] („h wird heute in der theoretischen Physik selten benutzt“).
+In der theoretischen Physik benutzt man $\hPlanck$ heute selten; vorwiegend verwendet man
+die \emph{reduzierte Planck-Konstante}
 \begin{equation}\label{c00.eq.hbar}\claim{c00.cl.hbar}{source-backed}
   \hbar = \frac{\hPlanck}{2\pi} .
 \end{equation}
@@ -227,10 +148,10 @@ $\hPlanck = \num[c00.cl.h-wert]{6{,}62607015 \cdot 10^{-34}}{J\,s}$ und
 $\hbar = \num[c00.cl.hbar-wert]{1{,}054571817 \cdot 10^{-34}}{J\,s}$; der zweite ist auf
 zehn Stellen abgebrochen.
 
-Für $\nu > 0$ und $\Temp > 0$ betrachten wir den Exponenten
-$x = \hPlanck\nu/(\kB \Temp)$. Für kleine $x$ ist
-$e^x - 1$ nahezu gleich $x$. Setzt man das in \eqref{c00.eq.planck} ein, so kürzt sich
-$\hPlanck$ heraus, und es bleibt die Funktion
+Was macht die Konstante $\hPlanck$ im Strahlungsgesetz? Für $\nu > 0$ und $\Temp > 0$
+betrachten wir den Exponenten $x = \hPlanck\nu/(\kB \Temp)$. Für kleine $x$ ist $e^x - 1$
+nahezu gleich $x$. Setzt man das in \eqref{c00.eq.planck} ein, so kürzt sich $\hPlanck$
+heraus, und es bleibt die Funktion
 \begin{equation}\label{c00.eq.grenzform}\claim{c00.cl.grenzform}{derived}
   u_{\mathrm{kl}}(\nu, \Temp) = \frac{8\pi \nu^2 \kB \Temp}{\clight^3},
   \qquad
@@ -239,10 +160,11 @@ $\hPlanck$ heraus, und es bleibt die Funktion
 \end{equation}
 Die zweite Gleichung gilt exakt für $\nu > 0$ und $\Temp > 0$; man erhält sie, indem man
 \eqref{c00.eq.planck} durch $u_{\mathrm{kl}}$ teilt. Das Verhältnis $x/(e^x - 1)$ liegt für
-kleine $x$ nahe bei $1$ und fällt für große $x$ gegen $0$\zoomref{c00.v1}. Die Funktion
-$u_{\mathrm{kl}}$ enthält $\hPlanck$ nicht mehr und ist hier die algebraisch gewonnene
-Grenzform des im Skript angegebenen Strahlungsgesetzes
-\srcref{tpc-script-v0.2}{vl01, Vorgeschichte, Punkt 1}.
+kleine $x$ nahe bei $1$ und fällt für große $x$ gegen $0$\zoomref{c00.v1}. Die Grenzform
+$u_{\mathrm{kl}}$ enthält $\hPlanck$ nicht mehr.
+% GAP-TJO: Dass u_kl die Vorhersage der klassischen Physik ist (Rayleigh-Jeans,
+% „Ultraviolettkatastrophe“, v01 [12:31]), steht nur in der alten Abbildungsdatei, nicht in
+% einer registrierten Quelle; hier ist u_kl nur die Grenzform (G-0024).
 
 \begin{tpcfigure}{c00.fig.planck}
   \caption{Das Strahlungsgesetz~\eqref{c00.eq.planck} und seine Grenzform
@@ -250,13 +172,13 @@ Grenzform des im Skript angegebenen Strahlungsgesetzes
     $\tfrac56 T_0$ und $\tfrac23 T_0$ (durchgezogen, gestrichelt, strichpunktiert),
     aufgetragen gegen $\hPlanck\nu/(\kB T_0)$ in Einheiten von
     $u_0 = 8\pi(\kB T_0)^3/(\hPlanck^2\clight^3)$. Die dünn gestrichelte Parabel ist
-    die algebraische Grenzform $u_{\mathrm{kl}}$ für die höchste Temperatur $T_0$. Bei
-    kleinen positiven Frequenzen liegt ihr Verhältnis zur durchgezogenen theoretischen
-    Kurve nahe bei $1$; danach läuft die Parabel nach oben aus dem Bild.
+    die Grenzform $u_{\mathrm{kl}}$ für die höchste Temperatur $T_0$. Achten Sie darauf,
+    dass sie bei kleinen Frequenzen näherungsweise auf der durchgezogenen Kurve liegt, zu
+    der sie gehört, und sich erst dann von ihr löst; danach läuft sie nach oben aus dem Bild.
     (b) Das Verhältnis $u/u_{\mathrm{kl}} = x/(e^x-1)$ für $\nu > 0$ und $\Temp > 0$.
-    Es hängt nur von
-    $x = \hPlanck\nu/(\kB\Temp)$ ab. Die schraffierte Fläche ist der Abstand zur
-    Grenzform. Er wird merklich, sobald $\hPlanck\nu$ die Größe von $\kB\Temp$ erreicht.}
+    Es hängt nur von $x = \hPlanck\nu/(\kB\Temp)$ ab. Die schraffierte Fläche ist der
+    Abstand zur Grenzform. Er wird merklich, sobald $\hPlanck\nu$ die Größe von
+    $\kB\Temp$ erreicht.}
 \end{tpcfigure}
 
 Abbildung~\ref{c00.fig.planck} zeigt beides. Die Grenzform wächst wie $\nu^2$ ohne Ende,
@@ -273,8 +195,8 @@ klein gegen $\kB\Temp$ ist.
     voraussetzung={Kern bis Gleichung~\eqref{c00.eq.grenzform}; die Exponentialreihe und
       Integrale von Potenzen. Der Rest des Kapitels braucht diesen Block nicht.},
     zurueck={Für $\hPlanck\nu$ klein gegen $\kB\Temp$ stimmen Strahlungsgesetz und
-      Grenzform überein; für große Frequenzen ist die Grenzform falsch, und zwar beliebig
-      falsch.}]
+      Grenzform näherungsweise überein, ihr Verhältnis geht gegen $1$; für große Frequenzen
+      ist die Grenzform falsch, und zwar beliebig falsch.}]
   Für $x > 0$ ist $e^x = 1 + x + \tfrac12 x^2 + \tfrac16 x^3 + \dots$ eine Summe positiver
   Glieder. Daraus folgen zwei Abschätzungen für $e^x - 1$. Lässt man alle Glieder ab dem
   dritten weg, so wird die Summe kleiner: $e^x - 1 \geq x + \tfrac12 x^2$. Klammert man
@@ -311,131 +233,177 @@ klein gegen $\kB\Temp$ ist.
   $e^x - 1 \geq x^5/120$, also $x^3/(e^x-1) \leq 120/x^2$, und
   $\int_1^\infty 120\,x^{-2}\,\dd x = 120$. Das Integral ist eine reine Zahl. Die gesamte
   Energiedichte des Strahlungsgesetzes ist also endlich und proportional zu $\Temp^4$.
-  Den Wert der Zahl braucht dieser Kurs erst im Teil über statistische Physik.
+  Den Wert der Zahl brauchen wir erst im statistischen Teil.
 \end{vertiefung}
 
 \subsection{Photoeffekt}\label{c00.s4.2}
 
-Licht kann nach dem Skript Elektronen auslösen. Für die Energie dieser Photoelektronen
-gibt die Vorlesung die Beziehung an:
+% Stimme: vl01.tex:55-59; v01 [25:04], [29:01] (zweimal betont: „normalerweise bedeutet
+% mehr Intensität mehr Energie“).
+Das zweite Experiment betrifft Licht und Materie. Licht kann Elektronen auslösen, die
+Photoelektronen. Der Befund: Bei festem Material hängt die \emph{maximale} kinetische Energie
+der Photoelektronen von der Lichtfrequenz ab, nicht von der Intensität. Klassisch ist das sehr
+merkwürdig. Sonst bedeutet mehr Intensität mehr Energie; hier hängt die Energie der
+schnellsten Elektronen allein an der Frequenz. Im Einphotonenmodell lautet die Bilanz
 \begin{equation}\label{c00.eq.photoeffekt}\claim{c00.cl.photoeffekt}{source-backed}
-  E_{\mathrm{el}} = \tfrac12 \massE v^2 = \hPlanck\nu - W .
+  E_{\mathrm{kin,max}} = \tfrac12 \massE v_{\max}^2 = \hPlanck\nu - W
 \end{equation}
-Dabei ist $\massE$ die Masse und $v$ die Geschwindigkeit des Elektrons, und $W$ ist seine
-Bindungsenergie im Skript. Der Geltungsbereich dieser Beziehung wartet auf eine Quelle
-oder Formulierung des Autors (G-0024). Die Vorlesung deutet die Beobachtung als Hinweis
-auf Lichtquanten der Energie~\eqref{c00.eq.lichtquant}
-\srcref{tpc-script-v0.2}{vl01, Vorgeschichte, Punkt 2}.
+mit der Masse $\massE$ des Elektrons, seiner größten vorkommenden Geschwindigkeit
+$v_{\max}$ und der Bindungsenergie $W$ des Materials
+\srcref{tpc-script-v0.2}{vl01, Vorgeschichte, Punkt 2}. Die kinetische Energie ist hier
+nichtrelativistisch als $\tfrac12 \massE v^2$ geschrieben; das setzt voraus, dass die
+Elektronen langsam gegen das Licht sind. Diese Beobachtung war ein Hinweis auf Lichtquanten
+mit der Energie~\eqref{c00.eq.lichtquant}.
 
-Eine kinetische Energie ist nie negativ. Gleichung~\eqref{c00.eq.photoeffekt} kann also
-nur gelten, wenn
+Rechnen wir die Bilanz im Einphotonenmodell nach. Ein Lichtquant gibt seine Energie
+$\hPlanck\nu$ an ein einzelnes Elektron ab. Um herauszukommen, muss dieses Elektron eine
+Energie $W'$ aufbringen; $W$ ist die kleinste solche Energie, also $W' \geq W$. Für ein
+Elektron, das tatsächlich herauskommt, bleibt eine kinetische Energie, und die ist nie
+negativ:
 \begin{equation}\label{c00.eq.schwelle}\claim{c00.cl.schwelle}{derived}
-  \hPlanck\nu \geq W,
-  \qquad \text{\tpcifenglish{that is}{das heißt}} \qquad
+  0 \;\leq\; \tfrac12 \massE v^2 = \hPlanck\nu - W' \;\leq\; \hPlanck\nu - W,
+  \qquad \text{\tpcifenglish{hence}{also}} \qquad
   \nu \geq \frac{W}{\hPlanck} .
 \end{equation}
-Für festes $W$ beschreibt die angegebene Beziehung $E_{\mathrm{el}}$ als Gerade mit der
-Steigung $\hPlanck$,
-die bei $\nu = W/\hPlanck$ beginnt (Abbildung~\ref{c00.fig.photoeffekt}). Die Steigung ist
-für jeden Wert von $W$ dieselbe.
+Gleichung~\eqref{c00.eq.photoeffekt} gibt also die größte kinetische Energie an, die mit
+$W' = W$. Unterhalb der Schwellenfrequenz $W/\hPlanck$ löst in diesem Modell ein einzelnes
+Lichtquant kein Elektron aus. Für festes $W$ ist $E_{\mathrm{kin,max}}$ eine Gerade in $\nu$
+mit der Steigung $\hPlanck$, die bei
+$\nu = W/\hPlanck$ beginnt (Abbildung~\ref{c00.fig.photoeffekt}). Die Steigung ist für jeden
+Wert von $W$ dieselbe.
 
 \begin{tpcfigure}{c00.fig.photoeffekt}
-  \caption{Die im Skript angegebene Beziehung~\eqref{c00.eq.photoeffekt}, algebraisch
-    aufgetragen für zwei feste Werte der Bindungsenergie, $W_1$
-    (durchgezogen) und $W_2 = \tfrac85 W_1$ (gestrichelt; das Verhältnis ist für das Bild
-    gewählt). Beide Geraden haben dieselbe Steigung $\hPlanck$: Zu einem Frequenzunterschied
-    $\nu' - \nu$ gehört der Energieunterschied $\hPlanck(\nu' - \nu)$. Jede Gerade beginnt bei
-    ihrer Schwelle $\nu = W/\hPlanck$ aus Gleichung~\eqref{c00.eq.schwelle}. Die
-    gepunkteten Verlängerungen treffen die Achse bei $-W$; dort ist die Energie negativ.
-    Der physikalische Geltungsbereich der Beziehung steht aus (G-0024).}
+  \caption{Die maximale kinetische Energie~\eqref{c00.eq.photoeffekt} der Photoelektronen,
+    aufgetragen für zwei feste Werte der Bindungsenergie, $W_1$ (durchgezogen) und
+    $W_2 = \tfrac85 W_1$ (gestrichelt; das Verhältnis ist für das Bild gewählt). Beide
+    Geraden haben dieselbe Steigung $\hPlanck$: Zu einem Frequenzunterschied $\nu' - \nu$
+    gehört der Energieunterschied $\hPlanck(\nu' - \nu)$. Jede Gerade beginnt bei ihrer
+    Schwelle $\nu = W/\hPlanck$ aus Gleichung~\eqref{c00.eq.schwelle}. Die gepunkteten
+    Verlängerungen treffen die Achse bei $-W$; dort wäre die kinetische Energie negativ.}
 \end{tpcfigure}
 
 \subsection{Weitere Befunde}\label{c00.s4.3}
 
-Die Vorlesung nennt vier weitere Befunde \srcref{tpc-script-v0.2}{vl01, Vorgeschichte, Punkte 3 bis 6}.
+% Stimme: vl01.tex:60-63; v01 [30:20]-[41:56] („das dritte Experiment ist eigentlich eine
+% Beobachtung“, „die haben Sie schon gesehen“, Stern-Gerlach „mir besonders wichtig“,
+% Symmetrie Licht/Elektron).
+% Die klassische Erwartung beim Stern-Gerlach-Versuch (v01 [37:40]) ist seit der Überarbeitung
+% nach REVIEW-lec1 durch nobelprize-history-2026 (Stern, Facts) belegt.  Nicht übernommen,
+% weil nur im Video: das Tafelbild des Metalls beim Photoeffekt (v01 [26:00]) (G-0024).
 \begin{enumerate}
-  \item \emph{Stabilität der Atome, Linienspektren, Franck-Hertz-Versuch.} Nach dem Skript
-    wären Elektronenbahnen in der klassischen Physik instabil: Nach den
-    Liénard-Wiechert-Potentialen der Elektrodynamik strahlt jede beschleunigte Punktladung.
-    Ein Elektron auf einer Bahn um den Kern verlöre ständig Energie und müsste in den Kern
-    stürzen, was es nicht tut. Linienspektren und die Versuche von Franck und Hertz deutet
-    das Skript als Hinweis auf bestimmte, diskrete Energieniveaus in Atomen.
-  \item \emph{Compton-Effekt.} Die Vorlesung behandelt die Streuung von Licht an
-    Elektronen mit Lichtquanten der Energie~\eqref{c00.eq.lichtquant} und des Impulses $p$
-    aus Gleichung~\eqref{c00.eq.impuls} und zieht Energie- und Impulserhaltung heran.
-    Welchen Teil der Streuvorhersage dies erfasst, wartet auf eine Quelle oder
-    Formulierung des Autors (G-0024).
-  \item \emph{Stern-Gerlach-Versuch.} Das Skript beschreibt den Versuch mit endlich vielen
-    Möglichkeiten der Ausrichtung des Drehimpulses relativ zu einem angelegten Magnetfeld.
-    Der Geltungsbereich dieser Beschreibung wartet auf eine Quelle oder Formulierung
-    des Autors (G-0024).
+  \item \emph{Stabilität der Atome, Linienspektren, Franck-Hertz-Versuch.} Das ist
+    eigentlich eine Beobachtung: Atome sind stabil, und klassisch lässt sich das nicht
+    begründen. Nach den Liénard-Wiechert-Potentialen, die Sie aus der Elektrodynamik
+    kennen, strahlt jede beschleunigte Punktladung. Ein Elektron auf einer Bahn um den Kern
+    verlöre also ständig Energie und müsste in den Kern stürzen, was es nicht tut.
+    Linienspektren und die Versuche von Franck und Hertz deuten darauf hin, dass in Atomen
+    nur bestimmte, diskrete Energieniveaus erlaubt sind. Erklären lässt sich das erst mit
+    der Quantenmechanik; das Linienspektrum des Wasserstoffs besprechen wir in Kapitel~11
+    ausführlich.
+  \item \emph{Compton-Effekt.} Licht wird an Elektronen gestreut. Wie sich dabei Energie
+    und Impuls auf Lichtquant und Elektron verteilen, beschreibt man richtig mit
+    Lichtquanten der Energie~\eqref{c00.eq.lichtquant} und des Impulses
+    $p = \hPlanck/\lambda$ aus Gleichung~\eqref{c00.eq.impuls} und mit Energie- und
+    Impulserhaltung.
+  \item \emph{Stern-Gerlach-Versuch.} Dieser Versuch ist mir besonders wichtig. Ein
+    Strahl von Silberatomen läuft durch ein inhomogenes Magnetfeld. Klassisch sollte er sich
+    zu einer kontinuierlichen Verteilung auffächern; beobachtet werden stattdessen zwei
+    getrennte Strahlen. Der Drehimpuls ist quantisiert: Bei fester Drehimpulsquantenzahl
+    $\lqn$ nimmt seine Komponente in Feldrichtung nur endlich viele Werte an
+    (Richtungsquantelung). Aus solchen quantisierten Drehimpulsen kann man heute Qubits
+    bauen, die Bausteine der Quantenrechner.
   \item \emph{Interferenz bei Elektronen.} Die Beugung von Elektronen an Kristallen
-    (Davisson-Germer-Experiment) ist ein Hinweis auf Welleneigenschaften des Elektrons.
+    (Davisson-Germer-Experiment) war ein Hinweis auf Welleneigenschaften des Elektrons.
+    Licht hat Wellen-, aber auch Teilcheneigenschaften, davon handelten Photoeffekt und
+    Compton-Effekt. Elektronen haben Teilchen-, aber auch Welleneigenschaften.
 \end{enumerate}
 Der Impuls eines Lichtquants der Wellenlänge $\lambda$ ist dabei
 \begin{equation}\label{c00.eq.impuls}\claim{c00.cl.impuls}{source-backed}
-  p = \frac{\hPlanck}{\lambda} .
+  p = \frac{\hPlanck}{\lambda}
 \end{equation}
-Das Linienspektrum des Wasserstoffs wird der Kurs in Kapitel~11 ausführlich behandeln.
-Jahreszahlen und Namen zu diesen Befunden gehören nicht zum Kern\zoomref{c00.v2}.
+\srcref{tpc-script-v0.2}{vl01, Vorgeschichte, Punkte 3 bis 6}. Die Geschichte mit Namen und
+Jahreszahlen ist schön zu kennen; für den Rest des Kurses brauchen Sie sie
+nicht\zoomref{c00.v2}.
+
+% GAP-TJO: Die Gliederung der Stern-Gerlach-Aussage auf „bei fester Drehimpulsquantenzahl
+% die Komponente in Feldrichtung“ (vl14.tex:92, 96) und „kann man Qubits bauen“ (statt „gerade weil ... können wir Qubits bauen“) ist eine
+% Einschränkung des Skriptsatzes vl01.tex:62 nach der Durchsicht (REVIEW-smoke-A, SCOPE);
+% ebenso beim Compton-Effekt die Einschränkung auf die Verteilung von Energie und Impuls.
 
 \begin{vertiefung}[id=c00.v2,
-    titel={Namen und Jahreszahlen, wie die Vorlesung sie nennt},
+    titel={Namen und Jahreszahlen},
     wozu={Der Kern nennt die Befunde ohne Geschichte. Hier stehen die Jahreszahlen und
-      Namen aus dem Vorlesungsskript, für alle, die die Geschichte erzählen wollen.},
+      Namen, für alle, die die Geschichte erzählen wollen.},
     voraussetzung={Abschnitt~\ref{c00.s4}. Der Rest des Kurses braucht diesen Block
       nicht.},
     zurueck={Die mathematische Form der Quantenmechanik und ihre statistische Deutung
-      stammen nach dem Skript aus den Jahren 1925 bis 1927.}]
-  Die Angaben dieses Blocks sind dem Vorlesungsskript entnommen und nicht gegen eine
-  historische Quelle geprüft \srcref{tpc-script-v0.2}{vl01, Vorgeschichte}. Sein
-  Ausgangspunkt:
+      entstanden in den Jahren 1925 bis 1927.}]
+  % Jahreszahlen nach der Durchsicht REVIEW-lec1 berichtigt (M-0050): Strahlungsgesetz 1900
+  % (nicht 1899), Franck-Hertz 1914 (nicht um 1911), Davisson-Germer 1927 (nicht 1929),
+  % belegt durch nobelprize-history-2026.  Lenards Jahr (Skript: 1899) ist dort nicht belegt
+  % und deshalb weggelassen (G-0025).
+  Der Text dieses Blocks folgt meinem Vorlesungsskript \srcref{tpc-script-v0.2}{vl01,
+  Vorgeschichte}; die Jahreszahlen der Experimente sind mit den Laureatenseiten der
+  Nobelstiftung abgeglichen \srcref{nobelprize-history-2026}{Facts-Seiten zu Planck, Franck,
+  Stern, de Broglie, Einstein, Davisson; Crossref-Eintrag zu Phys. Rev. 30, 705}. Man kann gut
+  begründen:
   \begin{equation}\label{c00.eq.geburtsjahr}\claim{c00.cl.geschichte}{source-backed}
     \text{\tpcifenglish{The year of birth of quantum mechanics is 1926.}{Das Geburtsjahr der Quantenmechanik ist 1926.}}
   \end{equation}
 
   \begin{tpctable}{c00.tab.jahre}
-    \caption{Jahreszahlen und Namen zu den Befunden des Abschnitts~\ref{c00.s4}, wie das
-      Vorlesungsskript sie angibt.}
+    \caption{Jahreszahlen und Namen zu den Befunden des Abschnitts~\ref{c00.s4}. Die Jahre
+      folgen den Laureatenseiten der Nobelstiftung und, für Davisson und Germer, dem
+      Erscheinungsjahr ihrer Arbeit in der Physical Review.}
     \begin{tabular}{ll}
       \toprule
-      Befund & Angabe des Skripts \\
+      Befund & Namen, Jahr \\
       \midrule
-      Strahlungsgesetz, Konstante $\hPlanck$ & Planck, 1899 \\
-      Photoeffekt & Lenard, 1899; Einstein, 1905 \\
-      Franck-Hertz-Versuch & um 1911 \\
-      Stern-Gerlach-Versuch & 1922 \\
+      Strahlungsgesetz, Lichtquanten & Planck, 1900 \\
+      Photoeffekt & Lenard; Einstein, ab 1905 \\
+      Franck-Hertz-Versuch & Franck und Hertz, 1914 \\
+      Stern-Gerlach-Versuch & Stern und Gerlach, 1922 \\
       Welleneigenschaften des Elektrons & de Broglie, 1924 (Postulat) \\
-      Davisson-Germer-Experiment & 1929 \\
+      Davisson-Germer-Experiment & Davisson und Germer, 1927 \\
       \bottomrule
     \end{tabular}
   \end{tpctable}
 
-  Planck führte die Konstante $\hPlanck$ nach dem Skript ursprünglich als „Hilfsgröße“ ein.
-  Im Jahr 1926 veröffentlichte Schrödinger eine Reihe von Arbeiten über Wellenmechanik.
-  Ein paralleler Zugang begann 1925 mit Überlegungen von Heisenberg; daraus entstanden die
-  Matrizenmechanik von Born, Jordan und Heisenberg und eine Fassung von Dirac. Noch 1926
-  zeigte Schrödinger die Äquivalenz beider Zugänge, und Born lieferte die statistische
-  Interpretation der Theorie. Der Autor der Vorlesung hält Borns Beitrag für den
-  wichtigsten Aspekt der ganzen Theorie.
+  % Stimme: vl01.tex:72; v01 [43:52] („man hatte quasi zwei Quantentheorien“).
+  Im Jahr 1926 veröffentlichte Schrödinger eine spannende Reihe von Arbeiten über die
+  Wellenmechanik. Ein paralleler Zugang begann 1925 mit Überlegungen von Heisenberg; daraus
+  entwickelten Born und Jordan mit Heisenberg die Matrizenmechanik. Man hatte also quasi zwei
+  Quantentheorien, Wellenmechanik und Matrizenmechanik. Noch 1926 zeigte Schrödinger, dass
+  Wellenmechanik und Matrizenmechanik äquivalent sind. Heisenbergs Arbeit regte außerdem
+  Dirac zu einer eigenen Fassung der Quantenmechanik an. Born lieferte, ebenfalls 1926, die
+  statistische Interpretation der Theorie. Borns Beitrag ist
+  meiner Ansicht nach der wichtigste Aspekt der ganzen Theorie.
 
-  Fast gleichzeitig erhielt die Theorie ihre heutige mathematische Form. Born ließ sich
-  von Norbert Wiener beraten, wie man aus Matrizen Operatoren macht. Hilbert hielt im
-  Wintersemester 1926/27 in Göttingen eine Vorlesung über Quantenmechanik, und sein
-  Assistent John von Neumann führte den Hilbertraum, Dichtematrizen und die Entropie für
-  Quantenzustände ein. Die Rolle der Gruppentheorie klärten Wigner und Weyl. Die
-  Interpretation der Theorie blieb umstritten und ist es noch; einen Widerspruch zur
-  Quantenmechanik gibt es nach dem Skript bis heute nicht.
+  % Stimme: vl01.tex:85; v01 [55:59].
+  Fast gleichzeitig wurde die Theorie in ihre heutige mathematische Form gebracht. Born ließ
+  sich von Norbert Wiener beraten, wie man aus Matrizen Operatoren macht. Hilbert hielt im
+  Wintersemester 1926/27 in Göttingen eine Vorlesung über Quantenmechanik, und nebenbei
+  führte sein junger Assistent John von Neumann den Hilbertraum, Dichtematrizen und die
+  Entropie für Quantenzustände ein. Von den Physikern wurde das zunächst nicht gelesen. Die
+  Rolle der Gruppentheorie klärten Wigner und Weyl. Bemerkenswert ist, dass trotz der
+  phantastischen Erfolge der Theorie die Interpretation umstritten blieb; einen Widerspruch
+  zur Quantenmechanik gibt es bis heute nicht.
 
+  % Stimme: vl01.tex:75; v01 [16:53].
   \begin{historical}
-    Wer Deutsch liest, hat Glück: Die Originalarbeiten von Planck, Schrödinger, Heisenberg
-    und Born sind auf Deutsch geschrieben.
+    Sie haben übrigens das Glück, Deutsch zu sprechen: Die Originalarbeiten von Planck,
+    Schrödinger, Heisenberg und Born sind auf Deutsch geschrieben. Diese Möglichkeit hatte
+    ich beim Erlernen der Quantenmechanik nicht.
   \end{historical}
 \end{vertiefung}
 
-\subsection{Zwei Sätze der Vorlesung}\label{c00.s4.4}
+\subsection{Zwei Merksätze}\label{c00.s4.4}
 
-Die Vorlesung fasst die Befunde in zwei Sätzen zusammen
+% Stimme: vl01.tex:65-83; v01 [41:56], [50:58]-[55:36], [58:17] (Rohtranskript: „das ist
+% die Hauptnachricht dieser Vorlesung“, „es gibt gar keine fundamentalen
+% Wahrscheinlichkeiten in der klassischen Physik“, „nach meinem Geschmack“).
+Alle diese Beobachtungen zusammen sind Hinweise darauf, dass die Quantenmechanik die richtige
+Theorie des Universums ist. Ich fasse sie in zwei Sätzen zusammen
 \srcref{tpc-script-v0.2}{vl01, die beiden gelben Kästen}. Der erste:
 \begin{equation}\label{c00.eq.welle-teilchen}\claim{c00.cl.welle-teilchen}{source-quoted}
   \begin{aligned}
@@ -443,7 +411,7 @@ Die Vorlesung fasst die Befunde in zwei Sätzen zusammen
     &\text{\tpcifenglish{both wave and particle properties.}{sowohl Wellen- als auch Teilcheneigenschaften.}}
   \end{aligned}
 \end{equation}
-Der zweite:
+Der zweite ist die Hauptnachricht dieses Kurses:
 \begin{equation}\label{c00.eq.kernsatz}\claim{c00.cl.kernsatz}{source-quoted}
   \begin{aligned}
     &\text{\tpcifenglish{Quantum mechanics is a probabilistic theory.}{Die Quantenmechanik ist eine probabilistische Theorie.}} \\
@@ -451,25 +419,165 @@ Der zweite:
     &\text{\tpcifenglish{only in the form of probabilities.}{in Form von Wahrscheinlichkeiten.}}
   \end{aligned}
 \end{equation}
-Der zweite Satz ist dem ersten übergeordnet. „Wellen- und Teilcheneigenschaften“ bleibt ein
-wenig schwammig; die probabilistische Aussage ist präzise und liegt allen Quantenphänomenen
-zugrunde. In der Vorlesung heißt es dazu: In jeder mündlichen Prüfung wird gefragt, was die
-wichtigste Aussage über die Quantenmechanik ist.
+Diese zweite Aussage ist der ersten übergeordnet. „Wellen- und Teilcheneigenschaften“ bleibt
+ein wenig schwammig; die probabilistische Aussage dagegen ist präzise und liegt allen
+Quantenphänomenen zugrunde. Klassisch lauten die Vorhersagen definitiv: Das Teilchen ist zu
+dieser Zeit an dieser Stelle. Wahrscheinlichkeiten treten in der klassischen Physik allein
+wegen fehlender Information auf, etwa in der statistischen Physik; fundamentale
+Wahrscheinlichkeiten gibt es dort nicht. In der Quantenmechanik ist es umgekehrt: Sie sagt
+nur, mit welcher Wahrscheinlichkeit ein Ereignis stattfindet. Diese statistische Deutung hat
+Born geliefert, und sie ist für mich der wichtigste Aspekt der Theorie.
 
-\begin{merksatz}[Merksatz]
-  Die Quantenmechanik ist eine probabilistische Theorie: Sie sagt Wahrscheinlichkeiten
-  voraus. Das ist Satz~\eqref{c00.eq.kernsatz} der Vorlesung. Der Kapitelautor schlägt
-  vor, ihn mit P0 in Satz~\eqref{c00.eq.p0} für die Quantenmechanik zu verbinden;
-  diese Lesart wartet auf die Entscheidung des Autors (G-0023).
+\begin{merksatz}[Die wichtigste Aussage über die Quantenmechanik]
+  Die Quantenmechanik ist eine probabilistische Theorie: Sie liefert Vorhersagen nur in
+  Form von Wahrscheinlichkeiten. Nehmen Sie diesen Satz bitte mit. In jeder mündlichen
+  Prüfung frage ich, was die wichtigste Aussage über die Quantenmechanik ist.
 \end{merksatz}
 
-Das Skript stellt dem die klassische Physik gegenüber: Dort lauten die Vorhersagen
-definitiv, das Teilchen ist zu dieser Zeit an dieser Stelle. Der Kapitelautor schlägt
-als endliches Beispiel zu Satz~\eqref{c00.eq.probabilistisch} die Punktgewichte aus
-Kapitel~1 vor: Eine solche Präparation legt ihr ganzes Gewicht auf ein einziges Ergebnis.
-Diese Deutung wartet auf die Entscheidung des Autors (G-0023); der Satz über
-Präparationen legt keine Dynamik deterministischer Theorien fest.
+Ich will ehrlich sein: Die Interpretation der Quantenmechanik ist trotz vieler Ideen bis
+heute umstritten. Nach meinem Geschmack ist die probabilistische Aussage die richtige. Die Quantenmechanik ist das beste Modell, das wir in
+der Physik haben, und einen Widerspruch zu ihr gibt es bis heute nicht.
 
-Die Zahlen, die die Quantenmechanik liefert, sind Wahrscheinlichkeiten. Bevor ihre
-mathematischen Grundlagen aufgebaut werden können, muss deshalb geklärt sein, wie man mit
-Wahrscheinlichkeiten rechnet. Das tut das nächste Kapitel.
+Damit verlassen wir die spannende Geschichte der Quantenmechanik. Von jetzt an gilt:
+\begin{equation}\label{c00.eq.annahme}\claim{c00.cl.annahme}{source-quoted}
+  \begin{aligned}
+    &\text{\tpcifenglish{Our assumption is that quantum mechanics}{Unsere Annahme ist, dass die Quantenmechanik}} \\
+    &\text{\tpcifenglish{is the correct description of the universe.}{die korrekte Beschreibung des Universums ist.}}
+  \end{aligned}
+\end{equation}
+
+\section{Die Rahmung des Kurses}\label{c00.s1}
+
+% GAP-TJO: Die deutschen Fassungen der Sätze dieses Abschnitts (BRIEF.md:44, 45, 50) sind
+% Übersetzungen, nicht TJOs Wortlaut (G-0022).  Dass P0 der zweite Merksatz ist,
+% ausgesprochen für jede physikalische Theorie, ist ein Vergleich der beiden Wortlaute
+% (beide: „Vorhersagen in Form von Wahrscheinlichkeiten“); die Verbindung selbst steht im
+% Brief nicht (G-0023 c).
+Aus dem zweiten Merksatz mache ich für den ganzen Kurs einen Grundsatz. Er gilt nicht nur für
+die Quantenmechanik, sondern für jede physikalische Theorie:
+\begin{equation}\label{c00.eq.p0}\claim{c00.cl.p0}{author-stipulated}
+  \begin{aligned}
+    &\text{\tpcifenglish{Physical theories are probabilistic theories:}{Physikalische Theorien sind probabilistische Theorien:}} \\
+    &\text{\tpcifenglish{predictions in the form of probabilities.}{Vorhersagen in Form von Wahrscheinlichkeiten.}}
+  \end{aligned}
+\end{equation}
+Ich nenne diesen Satz P0. Er ist das erste der Postulate, die wir Schritt für Schritt
+aufstellen; mit jedem weiteren Postulat wird die Theorie spezieller, bis sie die
+Quantenmechanik ist. Zwei weitere Festlegungen gehören dazu:
+\begin{equation}\label{c00.eq.liefert}\claim{c00.cl.liefert}{author-stipulated}
+  \begin{aligned}
+    &\text{\tpcifenglish{A physical theory supplies data for}{Eine physikalische Theorie liefert Daten für}} \\
+    &\text{\tpcifenglish{preparations + dynamics + measurement.}{Präparationen + Dynamik + Messung.}}
+  \end{aligned}
+\end{equation}
+\begin{equation}\label{c00.eq.probabilistisch}\claim{c00.cl.probabilistisch}{author-stipulated}
+  \begin{aligned}
+    &\text{\tpcifenglish{All physical theories are}{Alle physikalischen Theorien sind}} \\
+    &\text{\tpcifenglish{probabilistic theories (I think of deterministic}{probabilistische Theorien (deterministische fasse ich}} \\
+    &\text{\tpcifenglish{as a subset of probabilistic).}{als Teilmenge der probabilistischen auf).}}
+  \end{aligned}
+\end{equation}
+Satz~\eqref{c00.eq.liefert} nennt drei Zutaten; der nächste Abschnitt zeigt, wo Präparation
+und Messung in einem Experiment vorkommen. Satz~\eqref{c00.eq.probabilistisch} sagt, dass auch die definitiven
+Vorhersagen der klassischen Physik in diesen Rahmen passen. Wie das im einfachsten Modell
+aussieht, sehen wir in Kapitel~1: Dort gibt es Präparationen, bei denen jede Messung mit
+Wahrscheinlichkeit $1$ einen festen Wert ergibt.
+% GAP-TJO: Eine Definition deterministischer Theorien samt Dynamik steht aus; Kapitel 1
+% zeigt nur Präparationen mit festen Messwerten (Punktgewichte) (G-0023 d).
+
+\section{Jedes Experiment in drei Schritten}\label{c00.s2}
+
+% Stimme: vl01.tex:118-126; v01 [77:53] (Tafeldiagramm; Rohtranskript: „das Licht wird
+% präpariert, mithilfe [einer Linse?] irgendwas durchgeführt, und dann wird der Zustand
+% des Lichtes beobachtet“); v02 [04:15]-[06:33] („wo man die Grenze zieht, ist
+% Geschmackssache“).
+Für den Theoretiker sehen alle Experimente der Physik gleich aus
+\srcref{tpc-script-v0.2}{vl01, Kasten „Jedes Experiment in drei Schritten“}:
+\begin{equation}\label{c00.eq.drei-stadien}\claim{c00.cl.drei-stadien}{source-quoted}
+  \begin{aligned}
+    &\text{\tpcifenglish{To the theorist all experiments in physics}{Für den Theoretiker sehen alle Experimente}} \\
+    &\text{\tpcifenglish{look the same; they consist of three stages.}{der Physik gleich aus; sie bestehen aus drei Stadien.}}
+  \end{aligned}
+\end{equation}
+\begin{enumerate}
+  \item \emph{Präparation.} Etwas wird hergerichtet: der Würfel, im Labor etwa ein
+    Lichtstrahl.
+  \item \emph{Durchführung.} Das Experiment läuft; wir machen etwas mit dem, was
+    präpariert wurde.
+  \item \emph{Messung.} Am Ende schauen wir hin und erhalten eines der möglichen
+    Ergebnisse.
+\end{enumerate}
+Abbildung~\ref{c00.fig.experiment} zeigt das Schema. Ein Experimentalphysiker würde diese
+Vereinfachung nicht anerkennen; abstrakt sieht aber jedes Experiment so aus: präparieren,
+durchführen, messen.
+
+\begin{tpcfigure}{c00.fig.experiment}
+  \caption{Die drei Stadien eines Experiments. Die Klammer fasst die ersten beiden zu
+    einer einzigen Präparation zusammen. Die Präparation ist durchgezogen gezeichnet, die
+    Durchführung mit dickerem Strich, die Messung gestrichelt.}
+\end{tpcfigure}
+
+Die ersten beiden Schritte lassen sich zu \emph{einer} komplizierteren Präparation
+zusammenfassen. Ein gezinkter Würfel ist nichts anderes als ein normaler Würfel, an dem man
+vorher etwas gemacht hat. Wo man die Grenze zieht, ist Geschmackssache; deshalb kommt man oft
+mit zwei Begriffen aus, Präparation und Messung. Diese beiden kommen auch in
+Satz~\eqref{c00.eq.liefert} vor.
+% GAP-TJO: Dass die „Durchführung“ des Skripts (vl01.tex:123) die „dynamics“ des Briefs
+% (BRIEF.md:44) ist, steht in keiner der beiden Quellen ausdrücklich; im Video sagt TJO,
+% die Durchführung bilde Wahrscheinlichkeitsfunktionen auf Wahrscheinlichkeitsfunktionen ab
+% (v02 [04:15]) (G-0023 a).
+
+Was eine Präparation genau ist, legen wir vorläufig mit einer Definition fest, die aus
+Plávalas Darstellung übernommen ist:
+
+\tpcdef{D1}
+
+Die Ja-Nein-Fragen der Definition sind die einfachsten Messungen: solche mit nur zwei
+möglichen Ergebnissen, etwa ein Detektor, der Klick oder kein Klick sagt. In Kapitel~1 sind
+es die Indikatorfunktionen, und Kapitel~2 definiert sie allgemein.
+% GAP-TJO: D1 ist aus Plávala übernommen; TJOs Abweichungen von Ludwig-Werner sind noch nicht
+% formuliert (G-0023 e).
+
+\section{Vom Kleinen zum Großen}\label{c00.s3}
+
+% GAP-TJO: Deutsche Fassung der beiden folgenden Sätze (BRIEF.md:38 und 90) und der
+% Beschriftungen in Abbildung c00.fig.leiter (BRIEF.md:40): Übersetzung (G-0022).  Welche
+% Operation hinter jedem Pfeil der Leiter steht (PLAN.md 13.1, A11: Modellwahl,
+% Erweiterung, Vergröberung mit Grenzübergang), führt der Brief nicht aus; die Kapitel, die
+% die Schritte gehen, sind noch nicht geschrieben (G-0023 b).
+Auch die Reihenfolge des Stoffs ist festgelegt:
+\begin{equation}\label{c00.eq.leiter}\claim{c00.cl.leiter}{author-stipulated}
+  \begin{aligned}
+    &\text{\tpcifenglish{Our entire presentation works like this:}{Unsere ganze Darstellung geht so vor:}} \\
+    &\text{\tpcifenglish{we go from microscopic to macroscopic.}{Wir gehen vom Mikroskopischen zum Makroskopischen.}}
+  \end{aligned}
+\end{equation}
+Abbildung~\ref{c00.fig.leiter} zeigt die Stufen. Von Stufe zu Stufe wird „herausgezoomt“; an
+einer Stelle geht dabei ausdrücklich Information verloren.
+
+\begin{tpcfigure}{c00.fig.leiter}
+  \caption{Die Leiter der Theorien dieses Kurses, von unten (mikroskopisch) nach oben
+    (makroskopisch). Die Beschriftungen der sechs Stufen und der fünf Pfeile sind
+    ausgewählte Auszüge aus der Festlegung, auf die sich Satz~\eqref{c00.eq.leiter}
+    bezieht. Die letzte Stufe heißt dort vollständig „Thermodynamik als die ultimative
+    effektive Theorie der gesamten Physik auf makroskopischer Skala“. GPT steht für
+    „general probabilistic theory“, QM für Quantenmechanik. Der Kurs beginnt unten:
+    Kapitel~1 und~2 behandeln Stufe~1.}
+\end{tpcfigure}
+
+Zu jeder Stufe gehört derselbe Gedanke:
+\begin{equation}\label{c00.eq.effektiv}\claim{c00.cl.effektiv}{author-stipulated}
+  \begin{aligned}
+    &\text{\tpcifenglish{At each stage the student learns that}{Auf jeder Stufe lernt man, dass}} \\
+    &\text{\tpcifenglish{every theory is an effective theory of the one below it:}{jede Theorie eine effektive Theorie der darunterliegenden ist:}} \\
+    &\text{\tpcifenglish{an approximation to the fundamental underlying physics.}{eine Näherung an die grundlegende Physik darunter.}}
+  \end{aligned}
+\end{equation}
+Was „herauszoomen“ bei einem bestimmten Schritt bedeutet, ist Gegenstand des Kapitels, das
+diesen Schritt geht. Hier steht nur die Reihenfolge.
+
+% Stimme: vl01.tex:91; v01 [60:37].
+Unser nächstes Ziel ist, die mathematischen Grundlagen der Quantenmechanik aufzubauen. Die
+Zahlen, die sie als Ergebnis liefert, sind Wahrscheinlichkeiten. Um das Ziel zu erreichen,
+müssen wir deshalb erst die Wahrscheinlichkeit mathematisch behandeln. Das tut das nächste
+Kapitel.

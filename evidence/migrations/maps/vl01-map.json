@@ -1,6 +1,6 @@
 {
  "schema_version": 1,
- "note": "Migration map of the first lecture into chapters c00 and c01 (Smoke A). One entry per item of latex/lectures/de/vl01.tex as parsed by evidence/migrations/check_vl01_map.py: sections, display equations, environments, figure inputs, list items and paragraphs of running text. 'item' is '<kind>@<line>'. status: kept (destination = IDs in content/c00-theorie or content/c01-wahrscheinlichkeit, or registry definitions transcluded there), deferred (to a later chapter, with reason) or dropped (with reason). The English edition latex/lectures/en/lec01.tex has the same structure line for line and goes to the same destinations in en.tex.",
+ "note": "Migration map of the first lecture into chapters c00 and c01 (Smoke A). One entry per item of latex/lectures/de/vl01.tex as parsed by evidence/migrations/check_vl01_map.py: sections, display equations, environments, figure inputs, list items and paragraphs of running text. 'item' is '<kind>@<line>'. status: kept (destination = IDs in content/c00-theorie or content/c01-wahrscheinlichkeit, or registry definitions transcluded there), deferred (to a later chapter, with reason) or dropped (with reason). The English edition latex/lectures/en/lec01.tex has the same structure line for line and goes to the same destinations in en.tex. Updated in the Lecture 1 revision of 2026-10-20 (voice restoration from the script and the recorded lectures v01, v02; see the notes of the changed entries).",
  "legacy_file": "latex/lectures/de/vl01.tex",
  "legacy_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
  "partly_deferred": [
@@ -123,9 +123,11 @@
   {
    "item": "text@23",
    "what": "Ein Lehrbuch empfehle ich Ihnen nicht: Das beste Buch über Q",
-   "status": "dropped",
-   "reason": "Remark on textbooks and on the script being written during the semester (errors rewarded by e-mail): course logistics. The statement 'the best book on quantum mechanics does not yet exist' is the author's opinion and is not carried into the chapter; TJO may want it in a preface.",
-   "note": "Listed in the return of Smoke A."
+   "status": "kept",
+   "note": "Lecture 1 revision (2026-10-20): restored in TJO's voice in the opening of chapter c00 ('Ein Lehrbuch empfehle ich Ihnen nicht ... verbindlich ist dieser Text'), as in the recorded lecture v01 [46:45]. Dropped: 'Da es während des Semesters entsteht, enthält es Fehler; Fundmeldungen per E-Mail werden am Semesterende prämiert' (semester logistics).",
+   "destination": [
+    "c00"
+   ]
   },
   {
    "item": "section@25",
@@ -144,18 +146,24 @@
    "what": "Wir befinden uns in einem Quanten-Universum. Allerdings habe",
    "status": "kept",
    "destination": [
-    "c00.s4",
+    "c00",
     "c00.eq.annahme",
     "c00.cl.annahme"
    ],
-   "note": "Quantum universe, classical physics as a very good approximation, decoherence named and not treated: first paragraph of c00.s4, provenance rows of c00.cl.annahme. The sentence 'Die Quantenmechanik wäre viel einfacher zu verstehen, wenn wir Quantenaspekte jeden Tag beobachten könnten!' is not carried over (a remark, no statement of the course)."
+   "note": "Quantum universe, classical physics as a very good approximation, decoherence named and not treated: opening paragraphs of chapter c00, provenance rows of c00.cl.annahme. Lecture 1 revision (2026-10-20): the sentence 'Die Quantenmechanik wäre viel einfacher zu verstehen, wenn wir Quantenaspekte jeden Tag beobachten könnten' is restored; the opening now stands before section c00.s4."
   },
   {
    "item": "text@28",
    "what": "Vor kurzem konnten wir eine sensationelle Entwicklung in der",
-   "status": "dropped",
-   "reason": "Time-bound remark of the lecture ('vor kurzem ... die ersten Quantencomputer', IBM Q experience, exercises on real quantum computers at the end of the semester): a promise of one semester and a statement about the state of technology with no source. The new course plans its own interactive pieces (demos and games).",
-   "note": "Listed in the return of Smoke A."
+   "status": "kept",
+   "note": "Lecture 1 revision (2026-10-20): kept without date and provider: the first quantum computers exist and cloud services allow direct experiments with quantum systems (provenance P-0301 on c00.cl.annahme). Dropped: 'Vor kurzem', 'IBM Q experience' and the promise of exercises on real quantum computers at the end of the semester (gap G-0070). REVIEW-lec1 repair (2026-10-20): 'zum ersten Mal' dropped.",
+   "destination": [
+    "c00",
+    "c00.cl.annahme"
+   ],
+   "migration": [
+    "M-0051"
+   ]
   },
   {
    "item": "text@30",
@@ -182,9 +190,9 @@
    "what": "Vorweg eine Bemerkung zur Methode, die für den ganzen Kurs g",
    "status": "kept",
    "destination": [
-    "c00.s4"
+    "c00"
    ],
-   "note": "Remark on method (no wrong models first; the Bohr model is worked through nowhere; the historical experiments are only listed): second paragraph of c00.s4."
+   "note": "Remark on method (no wrong models first; the Bohr model is worked through nowhere; the historical experiments are only listed): opening of chapter c00. Lecture 1 revision (2026-10-20): 'Ich bin kein Freund dieses Weges' is rendered with TJO's spoken 'Das ist nicht mein Stil' (v01 [18:44])."
   },
   {
    "item": "text@35",
@@ -238,7 +246,10 @@
     "c00.tab.jahre",
     "c00.cl.geschichte"
    ],
-   "note": "'postuliert (1899)': the year is in table c00.tab.jahre of Vertiefung c00.v2 as the script gives it (doubted by the chapter author, G-0025). 'Heute wird ... die reduzierte Planck-Konstante verwendet': sentence before c00.eq.hbar."
+   "note": "'postuliert (1899)': the year is in table c00.tab.jahre of Vertiefung c00.v2 as the script gives it (doubted by the chapter author, G-0025). 'Heute wird ... die reduzierte Planck-Konstante verwendet': sentence before c00.eq.hbar. REVIEW-lec1 repair (2026-10-20): radiation law dated 1900 (NobelPrize.org), not 1899; no year printed for earlier work on the constant.",
+   "migration": [
+    "M-0050"
+   ]
   },
   {
    "item": "equation@42",
@@ -268,7 +279,7 @@
     "c00.fig.hohlraum",
     "c00.cl.lichtquant"
    ],
-   "note": "Black body, box with a small hole (new figure c00.fig.hohlraum), announcement that the law is derived in the statistical part."
+   "note": "Black body, box with a small hole (figure c00.fig.hohlraum), announcement that the law is derived in the statistical part. Lecture 1 revision (2026-10-20): the vanishing by multiple reflection gets a derived mechanism under a stated premise, c00.eq.reflexion (G-0032)."
   },
   {
    "item": "figure@49",
@@ -300,7 +311,11 @@
     "c00.cl.photoeffekt",
     "c00.tab.jahre"
    ],
-   "note": "The names and years '(Lenard, 1899; Einstein 1905)' are in table c00.tab.jahre."
+   "note": "The names and years '(Lenard, 1899; Einstein 1905)' are in table c00.tab.jahre. REVIEW-lec1 repair (2026-10-20): Lenard's year dropped (not established by a registered source); Einstein from 1905. M-0051: relation read as maximum kinetic energy at fixed material, one-photon model, nonrelativistic premise printed.",
+   "migration": [
+    "M-0050",
+    "M-0051"
+   ]
   },
   {
    "item": "equation@56",
@@ -333,7 +348,10 @@
     "c00.cl.impuls",
     "c00.tab.jahre"
    ],
-   "note": "'um das Proton' becomes 'um den Kern'; the year '(~1911)' is in table c00.tab.jahre (doubted, G-0025); the forward reference to the hydrogen spectrum names chapter 11."
+   "note": "'um das Proton' becomes 'um den Kern'; the year '(~1911)' is in table c00.tab.jahre (doubted, G-0025); the forward reference to the hydrogen spectrum names chapter 11. REVIEW-lec1 repair (2026-10-20): Franck-Hertz dated 1914 (NobelPrize.org), not about 1911.",
+   "migration": [
+    "M-0050"
+   ]
   },
   {
    "item": "item@61",
@@ -343,7 +361,8 @@
     "c00.s4.3",
     "c00.eq.impuls",
     "c00.cl.impuls"
-   ]
+   ],
+   "note": "Lecture 1 revision (2026-10-20): narrowed to the sharing of energy and momentum between light quantum and electron (REVIEW-smoke-A SCOPE; gap G-0031)."
   },
   {
    "item": "item@62",
@@ -353,6 +372,10 @@
     "c00.s4.3",
     "c00.cl.impuls",
     "c00.tab.jahre"
+   ],
+   "note": "Lecture 1 revision (2026-10-20): the component along the field takes finitely many values; the qubit sentence is restored in the narrowed form 'Aus solchen quantisierten Drehimpulsen kann man heute Qubits bauen' (P-0300). The fixed-multiplet condition (G-0030) is not added. REVIEW-lec1 repair (2026-10-20): finitely many values of the component only at fixed angular-momentum quantum number; silver-atom finding and classical expectation quoted from NobelPrize.org.",
+   "migration": [
+    "M-0051"
    ]
   },
   {
@@ -364,7 +387,10 @@
     "c00.cl.impuls",
     "c00.tab.jahre"
    ],
-   "note": "The year 1929 is doubted by the chapter author (G-0025)."
+   "note": "The year 1929 is doubted by the chapter author (G-0025). REVIEW-lec1 repair (2026-10-20): Davisson-Germer dated 1927 (NobelPrize.org; Crossref, Phys. Rev. 30, 705), not 1929.",
+   "migration": [
+    "M-0050"
+   ]
   },
   {
    "item": "environment@67",
@@ -385,7 +411,10 @@
     "c00.eq.geburtsjahr",
     "c00.cl.geschichte"
    ],
-   "note": "History of 1925 to 1926: Vertiefung c00.v2. Not carried over: 'und Quantisierung', 'über die Messbarkeit von Phasenbeziehungen von Teilchen im Bohrschen Atommodell', 'Damit ist die Grundlage der Theorie abgeschlossen und Begriffe wie Welle-Teilchen Dualismus sind entstanden' (historical detail with no source but the script; shortened)."
+   "note": "History of 1925 to 1926: Vertiefung c00.v2. Not carried over: 'und Quantisierung', 'über die Messbarkeit von Phasenbeziehungen von Teilchen im Bohrschen Atommodell', 'Damit ist die Grundlage der Theorie abgeschlossen und Begriffe wie Welle-Teilchen Dualismus sind entstanden' (historical detail with no source but the script; shortened). REVIEW-lec1 repair (2026-10-20): Schroedinger's equivalence named as wave mechanics and matrix mechanics; Dirac separate.",
+   "migration": [
+    "M-0051"
+   ]
   },
   {
    "item": "environment@74",
@@ -404,7 +433,7 @@
     "c00.v2",
     "c00.cl.geschichte"
    ],
-   "note": "The personal clause 'Diese Möglichkeit hatte ich beim Erlernen der Quantenmechanik nicht' is not carried over."
+   "note": "Lecture 1 revision (2026-10-20): the personal clause 'Diese Möglichkeit hatte ich beim Erlernen der Quantenmechanik nicht' is restored in the historical box of c00.v2."
   },
   {
    "item": "environment@80",
@@ -425,7 +454,7 @@
     "c00.cl.kernsatz",
     "c01.prop.punktgewicht"
    ],
-   "note": "'Diese zweite Aussage ist der ersten übergeordnet' and the examination remark: kept. 'Klassisch lauten die Vorhersagen definitiv ... Wahrscheinlichkeiten treten dort allein wegen fehlender Information auf': reframed as the point-weight special case (hazard H1.1), M-0010.",
+   "note": "'Diese zweite Aussage ist der ersten übergeordnet' and the examination remark: kept, the examination remark in the first person and in the Merksatz box. 'Klassisch lauten die Vorhersagen definitiv ... allein wegen fehlender Information': kept in the script's words in c00.s4.4 (Lecture 1 revision); the point-weight reading is in c01.s3.1 (M-0010).",
    "migration": [
     "M-0010"
    ]
@@ -446,9 +475,11 @@
    "status": "kept",
    "destination": [
     "c00.v2",
-    "c00.cl.geschichte"
+    "c00.cl.geschichte",
+    "c00.s4.4",
+    "c00.cl.kernsatz"
    ],
-   "note": "Interpretation disputed; no contradiction with quantum mechanics to this day: last sentences of the second paragraph of c00.v2, as statements of the script. Explicitly dropped: 'Dennoch ist die QM heute allgemein akzeptiert' and 'liefert uns das beste physikalische Modell, das wir in der Physik haben'. Reason: the chapter retains the lecture's controversy/no-contradiction narrative only; these broad evaluative assertions about acceptance and superiority require the author's source or wording before being restored."
+   "note": "Interpretation disputed; no contradiction with quantum mechanics: c00.v2 and c00.s4.4. Lecture 1 revision (2026-10-20): 'liefert uns das beste physikalische Modell, das wir in der Physik haben' is restored in c00.s4.4 as the lecture's statement (P-0305 on c00.cl.kernsatz), and the dispute is said in TJO's spoken framing ('Ich will ehrlich sein', 'nach meinem Geschmack', v01 [58:17]). Still dropped: 'Dennoch ist die QM heute allgemein akzeptiert'."
   },
   {
    "item": "text@89",
@@ -685,7 +716,8 @@
    "destination": [
     "c01.s2",
     "c01.cl.messung"
-   ]
+   ],
+   "note": "Lecture 1 revision (2026-10-20): 'Beachten Sie, wie großzügig das ist' restored verbatim."
   },
   {
    "item": "environment@134",
@@ -918,7 +950,8 @@
    "status": "kept",
    "destination": [
     "c01.s4"
-   ]
+   ],
+   "note": "Lecture 1 revision (2026-10-20): 'Die erste Schreibweise mag ich nicht besonders und werde sie kaum verwenden; Sie sollen sie nur erkennen können' restored in the first person."
   },
   {
    "item": "environment@189",

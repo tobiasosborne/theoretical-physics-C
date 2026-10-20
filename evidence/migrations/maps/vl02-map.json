@@ -1,0 +1,772 @@
+{
+ "schema_version": 1,
+ "note": "Migration map of the second lecture into chapter c03 (Lecture 2 draft, 2026-10-20). One entry per item of latex/lectures/de/vl02.tex as parsed by evidence/migrations/check_vl02_map.py (the parser of check_vl01_map.py): sections, display equations, environments (including the pmatrix columns), figure inputs, list items and paragraphs of running text. 'item' is '<kind>@<line>'. status: kept (destination = IDs in content/c03-hilbertraum/de.tex, or registry definitions transcluded there). The English edition latex/lectures/en/lec02.tex has the same structure line for line and goes to the same destinations in en.tex. Material not in vl02.tex is listed in two separate lists: 'added_spoken' (what TJO says in the recorded lectures, with the locus in the timestamped raw transcript transcripts/raw/v0N_*.json) and 'added_author' (examples, proofs and repairs written by the chapter author, with the repository derivation that supports them).",
+ "legacy_file": "latex/lectures/de/vl02.tex",
+ "legacy_sha256": "0acb89f372aca2f40a5c43affa8bf833418ff40bfb407f34d22125fb62415c44",
+ "partly_deferred": [],
+ "items": [
+  {
+   "item": "section@3",
+   "what": "\\section{Vorlesung: Hilbertraum}",
+   "status": "kept",
+   "destination": [
+    "c03"
+   ]
+  },
+  {
+   "item": "text@4",
+   "what": "Um die Zustände der Quantenmechanik zu beschreiben wird der ",
+   "status": "kept",
+   "destination": [
+    "c03"
+   ]
+  },
+  {
+   "item": "text@6",
+   "what": "Warum hier \\emph{komplexe} und nicht reelle Vektoren auftret",
+   "status": "kept",
+   "destination": [
+    "c03"
+   ]
+  },
+  {
+   "item": "text@8",
+   "what": "Ein \\emph{komplexer Vektor} $\\mbf{v}\\in \\mathbb{C}^n$ ist ei",
+   "status": "kept",
+   "destination": [
+    "D75"
+   ]
+  },
+  {
+   "item": "equation@9",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D75"
+   ]
+  },
+  {
+   "item": "environment@11",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "D75"
+   ]
+  },
+  {
+   "item": "text@15",
+   "what": "Es gelten die folgenden Rechenoperationen",
+   "status": "kept",
+   "destination": [
+    "D75"
+   ]
+  },
+  {
+   "item": "environment@16",
+   "what": "enumerate",
+   "status": "kept",
+   "destination": [
+    "D75",
+    "D76"
+   ]
+  },
+  {
+   "item": "item@17",
+   "what": "\\item Multiplikation mit Skalar $a\\in\\mathbb{C}$",
+   "status": "kept",
+   "destination": [
+    "D75"
+   ]
+  },
+  {
+   "item": "equation@18",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D75"
+   ]
+  },
+  {
+   "item": "environment@20",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "D75"
+   ]
+  },
+  {
+   "item": "item@24",
+   "what": "\\item Addition",
+   "status": "kept",
+   "destination": [
+    "D75",
+    "c03.eq.c2-rechnung"
+   ]
+  },
+  {
+   "item": "equation@25",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D75",
+    "c03.eq.c2-rechnung"
+   ]
+  },
+  {
+   "item": "environment@26",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "D75",
+    "c03.eq.c2-rechnung"
+   ]
+  },
+  {
+   "item": "environment@28",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "D75",
+    "c03.eq.c2-rechnung"
+   ]
+  },
+  {
+   "item": "environment@31",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "D75",
+    "c03.eq.c2-rechnung"
+   ]
+  },
+  {
+   "item": "item@35",
+   "what": "\\item Kreuz-Operation",
+   "status": "kept",
+   "destination": [
+    "D76",
+    "c03.fig.kreuz"
+   ],
+   "migration": [
+    "M-0016"
+   ]
+  },
+  {
+   "item": "equation@36",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D76",
+    "c03.fig.kreuz"
+   ],
+   "migration": [
+    "M-0016"
+   ]
+  },
+  {
+   "item": "environment@37",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "D76",
+    "c03.fig.kreuz"
+   ],
+   "migration": [
+    "M-0016"
+   ]
+  },
+  {
+   "item": "environment@39",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "D76",
+    "c03.fig.kreuz"
+   ],
+   "migration": [
+    "M-0016"
+   ]
+  },
+  {
+   "item": "item@43",
+   "what": "\\item Skalarprodukt",
+   "status": "kept",
+   "destination": [
+    "D76",
+    "c03.eq.selbst"
+   ]
+  },
+  {
+   "item": "equation@44",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D76",
+    "c03.eq.selbst"
+   ]
+  },
+  {
+   "item": "environment@45",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "D76",
+    "c03.eq.selbst"
+   ]
+  },
+  {
+   "item": "environment@47",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "D76",
+    "c03.eq.selbst"
+   ]
+  },
+  {
+   "item": "text@53",
+   "what": "Der Raum $V$ aller solcher Vektoren mit festem $n$ wird als ",
+   "status": "kept",
+   "destination": [
+    "D75"
+   ]
+  },
+  {
+   "item": "text@55",
+   "what": "Für den Vektorraum selbst genügen die ersten beiden Regeln; ",
+   "status": "kept",
+   "destination": [
+    "c03.s1"
+   ]
+  },
+  {
+   "item": "text@57",
+   "what": "Hierbei wird $n$ als \\emph{Dimension} von $V$ definiert. Oft",
+   "status": "kept",
+   "destination": [
+    "D75"
+   ]
+  },
+  {
+   "item": "environment@59",
+   "what": "beispiel",
+   "status": "kept",
+   "destination": [
+    "c03.ex.c2",
+    "c03.ex.skalarprodukt"
+   ]
+  },
+  {
+   "item": "text@60",
+   "what": "Der Vektorraum $\\mathbb{C}^2$ besteht aus allen zweidimensio",
+   "status": "kept",
+   "destination": [
+    "c03.ex.c2"
+   ]
+  },
+  {
+   "item": "equation@61",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.ex.c2"
+   ]
+  },
+  {
+   "item": "environment@63",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.ex.c2"
+   ]
+  },
+  {
+   "item": "text@67",
+   "what": "Seien",
+   "status": "kept",
+   "destination": [
+    "c03.eq.c2-vektoren"
+   ]
+  },
+  {
+   "item": "equation@68",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.c2-vektoren"
+   ]
+  },
+  {
+   "item": "environment@69",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.c2-vektoren"
+   ]
+  },
+  {
+   "item": "environment@71",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.c2-vektoren"
+   ]
+  },
+  {
+   "item": "text@75",
+   "what": "zwei Vektoren. Deren Skalarprodukt lautet",
+   "status": "kept",
+   "destination": [
+    "c03.eq.vw",
+    "c03.cl.vw"
+   ]
+  },
+  {
+   "item": "equation@76",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.vw",
+    "c03.cl.vw"
+   ]
+  },
+  {
+   "item": "environment@77",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.vw",
+    "c03.cl.vw"
+   ]
+  },
+  {
+   "item": "environment@79",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.vw",
+    "c03.cl.vw"
+   ]
+  },
+  {
+   "item": "text@85",
+   "what": "Unendlich dimensionale Vektorräume sind ebenfalls möglich un",
+   "status": "kept",
+   "destination": [
+    "c03.s3",
+    "c03.v1"
+   ],
+   "migration": [
+    "M-0016"
+   ]
+  },
+  {
+   "item": "equation@86",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.v1"
+   ]
+  },
+  {
+   "item": "environment@87",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.v1"
+   ]
+  },
+  {
+   "item": "text@91",
+   "what": "Alle Rechenregeln für Vektorräume gelten auch in den unendli",
+   "status": "kept",
+   "destination": [
+    "c03.v1"
+   ],
+   "migration": [
+    "M-0014"
+   ],
+   "note": "The first sentence (componentwise vector-space rules for infinite columns) is correct and kept in c03.v1; M-0014 concerns only the inner-product series."
+  },
+  {
+   "item": "equation@92",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D77",
+    "c03.prop.elltwo"
+   ],
+   "migration": [
+    "M-0014"
+   ]
+  },
+  {
+   "item": "text@96",
+   "what": "Das heißt, in der Regel, dass man in allen Gleichungen $n=\\i",
+   "status": "kept",
+   "destination": [
+    "c03.v1"
+   ],
+   "migration": [
+    "M-0014"
+   ]
+  },
+  {
+   "item": "text@98",
+   "what": "Einer davon tritt sofort auf. Der Vektor mit lauter Einsen,",
+   "status": "kept",
+   "destination": [
+    "c03.ex.einsen",
+    "c03.eq.einsen"
+   ]
+  },
+  {
+   "item": "equation@99",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.ex.einsen",
+    "c03.eq.einsen"
+   ]
+  },
+  {
+   "item": "environment@100",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.ex.einsen",
+    "c03.eq.einsen"
+   ]
+  },
+  {
+   "item": "text@104",
+   "what": "ist eine legale unendliche Liste, aber sein Skalarprodukt mi",
+   "status": "kept",
+   "destination": [
+    "c03.ex.einsen",
+    "c03.eq.einsen"
+   ]
+  },
+  {
+   "item": "equation@105",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.ex.einsen",
+    "c03.eq.einsen"
+   ]
+  },
+  {
+   "item": "text@108",
+   "what": "Physikalisch ist die Antwort darauf einfach --- wir lassen s",
+   "status": "kept",
+   "destination": [
+    "D77"
+   ]
+  },
+  {
+   "item": "equation@109",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D77"
+   ]
+  },
+  {
+   "item": "text@112",
+   "what": "gilt. Diese Menge ist wieder ein komplexer Vektorraum; man b",
+   "status": "kept",
+   "destination": [
+    "D77",
+    "c03.prop.elltwo"
+   ]
+  },
+  {
+   "item": "text@114",
+   "what": "Für uns ist das wichtigste Beispiel einen unendlich dimensio",
+   "status": "kept",
+   "destination": [
+    "D78",
+    "c03.v2"
+   ],
+   "migration": [
+    "M-0016"
+   ]
+  },
+  {
+   "item": "equation@115",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D78"
+   ]
+  },
+  {
+   "item": "text@118",
+   "what": "Quadratintegrierbare Funktionen können addiert, subtrahiert,",
+   "status": "kept",
+   "destination": [
+    "c03.prop.ltwo"
+   ],
+   "migration": [
+    "M-0015"
+   ]
+  },
+  {
+   "item": "equation@119",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D78",
+    "c03.f2"
+   ],
+   "migration": [
+    "M-0015"
+   ]
+  },
+  {
+   "item": "environment@123",
+   "what": "beispiel",
+   "status": "kept",
+   "destination": [
+    "c03.ex.eins",
+    "c03.eq.eins"
+   ]
+  },
+  {
+   "item": "text@124",
+   "what": "Ein \\emph{Nicht}-Beispiel von einer quadratintegrierbaren Fu",
+   "status": "kept",
+   "destination": [
+    "c03.ex.eins",
+    "c03.eq.eins"
+   ]
+  },
+  {
+   "item": "equation@125",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.ex.eins",
+    "c03.eq.eins"
+   ]
+  },
+  {
+   "item": "text@128",
+   "what": "Das ist das Gegenstück zum Vektor mit lauter Einsen von vorh",
+   "status": "kept",
+   "destination": [
+    "c03.ex.eins",
+    "c03.eq.eins"
+   ]
+  },
+  {
+   "item": "figure@131",
+   "what": "\\input{figures/fig_vl02_raeume}",
+   "status": "kept",
+   "destination": [
+    "c03.fig.partialsummen",
+    "c03.fig.partialintegrale"
+   ],
+   "note": "The two panels of fig_vl02_raeume became two figures, one in each Vertiefung; the curves and data are the same; the reference lines are the derived bound 2 (instead of pi^2/6, which has no source on disk) and sqrt(pi)."
+  },
+  {
+   "item": "text@133",
+   "what": "Achten Sie auf die mittlere Kurve in beiden Bildern: bei $v_",
+   "status": "kept",
+   "destination": [
+    "c03.ex.rate",
+    "c03.ex.gauss"
+   ],
+   "migration": [
+    "M-0013"
+   ]
+  },
+  {
+   "item": "environment@138",
+   "what": "greybox",
+   "status": "kept",
+   "destination": [
+    "c03.v3",
+    "c03.eq.drei-raeume",
+    "c03.fig.raeume"
+   ]
+  },
+  {
+   "item": "text@139",
+   "what": "Damit haben wir praktisch alle Hilberträume beisammen, die w",
+   "status": "kept",
+   "destination": [
+    "c03.v3",
+    "c03.eq.drei-raeume",
+    "c03.fig.raeume"
+   ],
+   "note": "The example 'etwa einem Photon in einer Glasfaser' is left out of the chapter until TJO decides what he meant (G-0033 (e))."
+  }
+ ],
+ "added_spoken": [
+  {
+   "what": "why the conjugation in the dagger operation: one need not conjugate, but it helps later when the norm/Hilbert space is defined",
+   "locus": "v03 [04:40]-[05:02]",
+   "destination": [
+    "c03.s2"
+   ]
+  },
+  {
+   "what": "the inner product is the tool for computing probabilities",
+   "locus": "v03 [07:16]-[07:47]; also vl03.tex:132",
+   "destination": [
+    "c03.s2"
+   ]
+  },
+  {
+   "what": "C^1 is boring, C^2 the first interesting case; qubit and electron spin",
+   "locus": "v03 [08:52]-[10:31]",
+   "destination": [
+    "c03.s1"
+   ]
+  },
+  {
+   "what": "the order of the factors matters: w^dagger v = 2i against v^dagger w = -2i, and w^dagger v = (v^dagger w)^* (audience question)",
+   "locus": "v03 [12:59]-[15:28]",
+   "destination": [
+    "c03.eq.wv"
+   ]
+  },
+  {
+   "what": "finite-dimensional Hilbert spaces could be defined here but are postponed; infinite dimension because our best models are fields",
+   "locus": "v03 [16:54]-[18:28]",
+   "destination": [
+    "c03.s3"
+   ]
+  },
+  {
+   "what": "'in der mathematischen Literatur sehr kompliziert, physikalisch einfach: wir erlauben diese Vektoren nicht'; the name l^2 and where the 2 comes from",
+   "locus": "v03 [23:26]-[27:47]",
+   "destination": [
+    "c03.v1",
+    "D77"
+   ]
+  },
+  {
+   "what": "the admitted vectors again form a vector space ('nicht offensichtlich, aber ja'), asserted without proof",
+   "locus": "v03 [28:03]-[28:18]",
+   "destination": [
+    "c03.v1"
+   ]
+  },
+  {
+   "what": "l^2 is the state space of the harmonic oscillator; 'als Quantenmechaniker arbeite ich quasi jeden Tag mit diesen beiden Vektorräumen'",
+   "locus": "v03 [28:28]-[29:29]",
+   "destination": [
+    "c03.v1"
+   ]
+  },
+  {
+   "what": "'diese Vektoren beschreiben z.B. den Zustand eines Photons in einer Glasfaser' (left out, G-0033 (e))",
+   "locus": "v03 [29:58]",
+   "destination": []
+  },
+  {
+   "what": "complex-valued functions need a third dimension to be drawn",
+   "locus": "v03 [31:35]-[32:36]",
+   "destination": [
+    "c03.v2",
+    "c03.fig.komplex"
+   ]
+  },
+  {
+   "what": "square-integrable functions are like the fields of Theoretical Physics B",
+   "locus": "v03 [35:23]-[36:22]",
+   "destination": [
+    "c03.s3"
+   ]
+  },
+  {
+   "what": "three spaces, three systems; 'a vector space with inner product forms a Hilbert space, up to one more condition'",
+   "locus": "v03 [37:39]-[39:46]",
+   "destination": [
+    "c03.v3",
+    "c03.s3"
+   ]
+  },
+  {
+   "what": "notation as the real hurdle; Dirac notation as a one-way street",
+   "locus": "v03 [39:46]-[42:02]",
+   "destination": [
+    "c03.s3"
+   ]
+  },
+  {
+   "what": "completeness is ignored in the lecture; 'ich werde nur legale Rechnungen durchführen, zumindest hoffe ich'; 'sobald etwas unendlich wird, haben wir einen Fehler gemacht'; in the mathematical direction the conditions are really important",
+   "locus": "v03 [87:13]-[89:12]",
+   "destination": [
+    "c03.f3",
+    "c03.s3"
+   ]
+  }
+ ],
+ "added_author": [
+  {
+   "what": "example v = (1, i): without conjugation the 'length' is zero",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.ohne-stern",
+   "destination": [
+    "c03.ex.ohne-stern"
+   ]
+  },
+  {
+   "what": "proposition: the four rules of the inner product in C^n, with proof",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.skalarprodukt",
+   "destination": [
+    "c03.prop.skalarprodukt"
+   ]
+  },
+  {
+   "what": "exercise with solution",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.rechnen",
+   "destination": [
+    "c03.exc.rechnen"
+   ]
+  },
+  {
+   "what": "proof that l^2 is closed under the operations and that the series converges",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.elltwo",
+   "destination": [
+    "c03.prop.elltwo"
+   ]
+  },
+  {
+   "what": "rate examples with derived bounds (1/j in l^2, 1/sqrt j not)",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.rate",
+   "destination": [
+    "c03.ex.rate",
+    "c03.fig.partialsummen"
+   ]
+  },
+  {
+   "what": "square-integrable functions form a vector space, with proof; Gaussian and 1/sqrt(1+|x|) examples",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.ltwo, #c03.cl.gauss",
+   "destination": [
+    "c03.prop.ltwo",
+    "c03.ex.gauss",
+    "c03.fig.partialintegrale"
+   ]
+  },
+  {
+   "what": "Fundament blocks: Cauchy-Schwarz, equivalence classes, completeness (Reed-Simon I, P-0140 to P-0150)",
+   "support": "evidence/derivations/c03/DERIVATION.md (c03.cl.cs to c03.cl.endlich); REVIEW.md",
+   "destination": [
+    "c03.f1",
+    "c03.f2",
+    "c03.f3"
+   ]
+  },
+  {
+   "what": "the editorial caveat after TJO's rule of thumb, with the counterexample sum_j j |1/j|^2 = infinity",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.rate",
+   "destination": [
+    "c03.f3"
+   ]
+  }
+ ]
+}

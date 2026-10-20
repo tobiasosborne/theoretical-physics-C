@@ -2662,6 +2662,287 @@
    ],
    "needs_check": true,
    "check": "Plavala defines extreme points for a state space K; he does not use the term 'extreme effect' in the files read for C2 (basic_v3.tex, what_v4.tex, CT_v3.tex, QT_v3.tex, boxworld_v3.tex). The registry applies his definition word for word to the convex set E(K), as evidence/derivations/c02/DERIVATION.md does (sections 3.1 to 3.5, 4.2). That mixtures of effects are effects is a claim of the chapter (c02.cl.effekt-mischung), not part of this definition."
+  },
+  {
+   "id": "D75",
+   "preinventory_row": null,
+   "name_de": "komplexer Vektor, komplexer Vektorraum",
+   "name_en": "complex vector, complex vector space",
+   "body_de": "Ein \\emph{komplexer Vektor} $\\vb{v} \\in \\mathbb{C}^n$ ist eine Spalte $\\vb{v} = \\begin{pmatrix} v_1 \\\\ \\vdots \\\\ v_n \\end{pmatrix}$ von $n$ komplexen Zahlen $v_1, \\dots, v_n$, seinen \\emph{Einträgen}. Für eine komplexe Zahl $a$ (einen \\emph{Skalar}) und zwei Vektoren $\\vb{v}$, $\\vb{w}$ sind die \\emph{Multiplikation mit dem Skalar} und die \\emph{Addition} Eintrag für Eintrag erklärt: $a\\vb{v}$ hat die Einträge $a v_j$, und $\\vb{v} + \\vb{w}$ hat die Einträge $v_j + w_j$, für $j = 1, \\dots, n$. Der Raum aller solcher Vektoren mit festem $n$, zusammen mit diesen beiden Rechenoperationen, heißt \\emph{komplexer Vektorraum} $\\mathbb{C}^n$; die Zahl $n$ heißt seine \\emph{Dimension}.",
+   "body_en": "A \\emph{complex vector} $\\vb{v} \\in \\mathbb{C}^n$ is a column $\\vb{v} = \\begin{pmatrix} v_1 \\\\ \\vdots \\\\ v_n \\end{pmatrix}$ of $n$ complex numbers $v_1, \\dots, v_n$, its \\emph{entries}. For a complex number $a$ (a \\emph{scalar}) and two vectors $\\vb{v}$, $\\vb{w}$, \\emph{multiplication by the scalar} and \\emph{addition} are defined entry by entry: $a\\vb{v}$ has the entries $a v_j$, and $\\vb{v} + \\vb{w}$ has the entries $v_j + w_j$, for $j = 1, \\dots, n$. The space of all such vectors with fixed $n$, together with these two operations, is called the \\emph{complex vector space} $\\mathbb{C}^n$; the number $n$ is called its \\emph{dimension}.",
+   "symbol_ids": [],
+   "depth": "kern",
+   "origin": {
+    "type": "source-adapted",
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl02.tex:8-34, 53-57"
+   },
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl02.tex:8",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Ein \\emph{komplexer Vektor} $\\mbf{v}\\in \\mathbb{C}^n$ ist eine Spalte von $n$ komplexen Zahlen"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl02.tex:53",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Der Raum $V$ aller solcher Vektoren mit festem $n$ wird als \\emph{komplexer Vektorraum} bezeichnet."
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl02.tex:57",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Hierbei wird $n$ als \\emph{Dimension} von $V$ definiert."
+    },
+    {
+     "source": "reed-simon-1",
+     "locus": "section II.1, p. 37 (DjVu page 49)",
+     "verified": true,
+     "how": "read from the page image (ddjvu -format=pnm -page=49 -scale=150), not from the text layer",
+     "quote": "Let C^n denote the set of all n-tuples of complex numbers."
+    }
+   ],
+   "notes": "Added by the author of chapter C3 (Lecture 2 draft, 2026-10-20). The script writes vectors \\mbf{v} (bold) and calls the space V before naming it C^n; the body uses the legacy macro \\vb (bold) as chapters c02 and c11 do. That the dimension so defined is the number of vectors in a basis is vl03 material and is not part of this definition."
+  },
+  {
+   "id": "D76",
+   "preinventory_row": null,
+   "name_de": "Kreuz-Operation, Skalarprodukt",
+   "name_en": "dagger operation, inner product",
+   "body_de": "Die \\emph{Kreuz-Operation} macht aus einem Spaltenvektor $\\vb{v} \\in \\mathbb{C}^n$ den Zeilenvektor mit den komplex konjugierten Einträgen: $\\vb{v}\\adj = \\begin{pmatrix} v_1^* & \\cdots & v_n^* \\end{pmatrix}$. Das \\emph{Skalarprodukt} zweier Vektoren $\\vb{v}, \\vb{w} \\in \\mathbb{C}^n$ ist die komplexe Zahl $\\vb{v}\\adj\\vb{w} = \\sum_{j=1}^{n} v_j^* w_j$, das Produkt der Zeile $\\vb{v}\\adj$ mit der Spalte $\\vb{w}$. Das Kreuz steht immer auf dem ersten Vektor.",
+   "body_en": "The \\emph{dagger operation} turns a column vector $\\vb{v} \\in \\mathbb{C}^n$ into the row vector with the complex conjugate entries: $\\vb{v}\\adj = \\begin{pmatrix} v_1^* & \\cdots & v_n^* \\end{pmatrix}$. The \\emph{inner product} of two vectors $\\vb{v}, \\vb{w} \\in \\mathbb{C}^n$ is the complex number $\\vb{v}\\adj\\vb{w} = \\sum_{j=1}^{n} v_j^* w_j$, the product of the row $\\vb{v}\\adj$ with the column $\\vb{w}$. The dagger always sits on the first vector.",
+   "symbol_ids": [
+    "sym.adjoint"
+   ],
+   "depth": "kern",
+   "origin": {
+    "type": "source-adapted",
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl02.tex:35-51"
+   },
+   "choices": [
+    "CONV-INNER"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl02.tex:35",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\item Kreuz-Operation"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl02.tex:40",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "v_1^* & v_2^* & \\cdots & v_n^*"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl02.tex:43",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\item Skalarprodukt"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl02.tex:50",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\sum_{j=1}^n v_j^*w_j."
+    },
+    {
+     "source": "reed-simon-1",
+     "locus": "section II.1, p. 37 (DjVu page 49)",
+     "verified": true,
+     "how": "read from the page image (ddjvu -format=pnm -page=49 -scale=150), not from the text layer",
+     "quote": "(x, y) = \\sum_{j=1}^n \\bar x_j y_j"
+    }
+   ],
+   "notes": "Added by the author of chapter C3 (2026-10-20). 'Kreuz-Operation' is the script's name; the English edition of the script says 'dagger operation'. Reed-Simon write (x, y) and a bar for the conjugate; the course writes v^dagger w and z^* (TR-RS1-02). The same dagger is used for the adjoint of operators (D17, sym.adjoint)."
+  },
+  {
+   "id": "D77",
+   "preinventory_row": null,
+   "name_de": "quadratsummierbare Folgen",
+   "name_en": "square-summable sequences",
+   "body_de": "Ein Vektor mit unendlich vielen Einträgen ist eine Folge $\\vb{v} = (v_1, v_2, \\dots)$ komplexer Zahlen, geschrieben als Spalte, die nicht aufhört. Er heißt \\emph{quadratsummierbar}, wenn $\\vb{v}\\adj\\vb{v} = \\sum_{j=1}^{\\infty} \\abs{v_j}^2 < \\infty$ ist. Der Raum $\\elltwo$ besteht aus allen quadratsummierbaren Vektoren, mit Addition und Multiplikation mit Skalaren Eintrag für Eintrag und dem Skalarprodukt $\\vb{v}\\adj\\vb{w} = \\sum_{j=1}^{\\infty} v_j^* w_j$.",
+   "body_en": "A vector with infinitely many entries is a sequence $\\vb{v} = (v_1, v_2, \\dots)$ of complex numbers, written as a column that does not end. It is called \\emph{square-summable} if $\\vb{v}\\adj\\vb{v} = \\sum_{j=1}^{\\infty} \\abs{v_j}^2 < \\infty$. The space $\\elltwo$ consists of all square-summable vectors, with addition and multiplication by scalars entry by entry and the inner product $\\vb{v}\\adj\\vb{w} = \\sum_{j=1}^{\\infty} v_j^* w_j$.",
+   "symbol_ids": [
+    "sym.sequence-l2",
+    "sym.adjoint"
+   ],
+   "depth": "vertiefung",
+   "origin": {
+    "type": "source-adapted",
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl02.tex:108-112"
+   },
+   "choices": [
+    "CONV-INNER"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl02.tex:110",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\eqbox{\\mbf{v}^\\dag\\mbf{v} = \\sum_{j=1}^\\infty |v_j|^2 < \\infty}"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl02.tex:112",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Diese Menge ist wieder ein komplexer Vektorraum; man bezeichnet ihn mit $\\ell^2$"
+    },
+    {
+     "source": "reed-simon-1",
+     "locus": "section II.1, Example 3, p. 40 (DjVu page 51)",
+     "verified": true,
+     "how": "read from the page image (ddjvu -format=pnm -page=51 -scale=150), not from the text layer",
+     "quote": "Define \\ell_2 to be the set of sequences \\{x_n\\}_{n=1}^\\infty of complex numbers which satisfy \\sum_{n=1}^\\infty |x_n|^2 < \\infty with the inner product"
+    }
+   ],
+   "notes": "Added by the author of chapter C3 (2026-10-20). Depth vertiefung by decision D4 (PLAN.md 1.3, 14.7): the Kern of C0-C4 is finite-dimensional. That the series of the inner product converges and that the set is a vector space is proposition c03.prop.elltwo (claim c03.cl.elltwo), not part of the definition. Reed-Simon write l_2 with a subscript (TR-RS1-03)."
+  },
+  {
+   "id": "D78",
+   "preinventory_row": null,
+   "name_de": "quadratintegrierbare Funktionen",
+   "name_en": "square-integrable functions",
+   "body_de": "Eine Funktion $f\\colon \\mathbb{R} \\to \\mathbb{C}$ heißt \\emph{quadratintegrierbar}, wenn $\\int_{-\\infty}^{\\infty} \\abs{f(x)}^2\\, \\dd x < \\infty$ ist. Die quadratintegrierbaren Funktionen bilden einen Funktionenraum, mit der Addition $(f + g)(x) = f(x) + g(x)$ und der Multiplikation mit Skalaren $(af)(x) = a f(x)$ an jeder Stelle und dem Integral $\\braket{f}{g} = \\int_{-\\infty}^{\\infty} f^*(x)\\, g(x)\\, \\dd x$. Dieses Integral hat die Eigenschaften eines Skalarprodukts bis auf eine: Aus $\\braket{f}{f} = 0$ folgt nicht $f = 0$. Ein Skalarprodukt wird es erst auf dem Raum $\\Ltwo{\\mathbb{R}}$ (D80), der aus Klassen quadratintegrierbarer Funktionen besteht, die fast überall übereinstimmen; dieser Funktionenraum hier ist noch nicht $\\Ltwo{\\mathbb{R}}$.",
+   "body_en": "A function $f\\colon \\mathbb{R} \\to \\mathbb{C}$ is called \\emph{square-integrable} if $\\int_{-\\infty}^{\\infty} \\abs{f(x)}^2\\, \\dd x < \\infty$. The square-integrable functions form a function space, with addition $(f + g)(x) = f(x) + g(x)$ and multiplication by scalars $(af)(x) = a f(x)$ at every point and the integral $\\braket{f}{g} = \\int_{-\\infty}^{\\infty} f^*(x)\\, g(x)\\, \\dd x$. This integral has the properties of an inner product except one: $\\braket{f}{f} = 0$ does not imply $f = 0$. It becomes an inner product only on the space $\\Ltwo{\\mathbb{R}}$ (D80), which consists of classes of square-integrable functions that agree almost everywhere; this function space is not yet $\\Ltwo{\\mathbb{R}}$.",
+   "symbol_ids": [
+    "sym.l2-space",
+    "sym.inner-product"
+   ],
+   "depth": "vertiefung",
+   "origin": {
+    "type": "source-adapted",
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl02.tex:114-121"
+   },
+   "choices": [
+    "CONV-INNER"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl02.tex:116",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\int_{-\\infty}^\\infty |f(x)|^2 \\, dx < \\infty."
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl02.tex:120",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\langle f, g\\rangle \\equiv \\int_{-\\infty}^\\infty f^*(x)\\, g(x)\\, dx."
+    },
+    {
+     "source": "reed-simon-1",
+     "locus": "section II.1, Example 4, p. 40 (DjVu page 51)",
+     "verified": true,
+     "how": "read from the page image (ddjvu -format=pnm -page=51 -scale=150), not from the text layer",
+     "quote": "L^2(R^n, d\\mu) is the set of complex-valued measurable functions on R^n which satisfy \\int_{R^n} |f(x)|^2 d\\mu < \\infty."
+    }
+   ],
+   "notes": "Added by the author of chapter C3 (2026-10-20). The script writes <f, g> with a comma; the registry's inner-product symbol is <f|g> (sym.inner-product), and the chapter uses it before Dirac notation is introduced, reading the symbol as one sign for a number (gap G-0033 (d)). In Vertiefung c03.v2 the functions are piecewise continuous, so all integrals are improper Riemann integrals; <f|f> >= 0 holds for functions, positive definiteness only for classes (D80). Wording 'Integral' instead of 'Skalarprodukt' after the independent codex review of c03 (2026-10-20, finding B1); after the second review (docs/review/lectures/REVIEW-lec2.md) D78 no longer calls the function space L^2(R): that name belongs to the classes of D80."
+  },
+  {
+   "id": "D79",
+   "preinventory_row": null,
+   "name_de": "Cauchy-Folge, vollständig",
+   "name_en": "Cauchy sequence, complete",
+   "body_de": "Sei $V$ einer der Räume $\\mathbb{C}^n$, $\\elltwo$ oder $\\Ltwo{\\mathbb{R}}$, mit dem Abstand $d(\\vb{v}, \\vb{w}) = \\sqrt{(\\vb{v} - \\vb{w})\\adj(\\vb{v} - \\vb{w})}$ (in $\\Ltwo{\\mathbb{R}}$: $d(f, g) = \\sqrt{\\braket{f - g}{f - g}}$). Eine Folge $\\vb{v}^{(1)}, \\vb{v}^{(2)}, \\dots$ in $V$ heißt \\emph{Cauchy-Folge}, wenn es zu jedem $\\varepsilon > 0$ ein $N$ gibt, so dass $d(\\vb{v}^{(m)}, \\vb{v}^{(k)}) < \\varepsilon$ für alle $m, k \\geq N$ ist. Sie \\emph{konvergiert} gegen $\\vb{v} \\in V$, wenn $d(\\vb{v}^{(m)}, \\vb{v}) \\to 0$ für $m \\to \\infty$. Der Raum heißt \\emph{vollständig}, wenn jede Cauchy-Folge in $V$ gegen ein Element von $V$ konvergiert. Die Begriffe gelten ebenso für einen Unterraum dieser Räume mit demselben Abstand; vollständig muss ein solcher Unterraum nicht sein.",
+   "body_en": "Let $V$ be one of the spaces $\\mathbb{C}^n$, $\\elltwo$ or $\\Ltwo{\\mathbb{R}}$, with the distance $d(\\vb{v}, \\vb{w}) = \\sqrt{(\\vb{v} - \\vb{w})\\adj(\\vb{v} - \\vb{w})}$ (in $\\Ltwo{\\mathbb{R}}$: $d(f, g) = \\sqrt{\\braket{f - g}{f - g}}$). A sequence $\\vb{v}^{(1)}, \\vb{v}^{(2)}, \\dots$ in $V$ is called a \\emph{Cauchy sequence} if for every $\\varepsilon > 0$ there is an $N$ such that $d(\\vb{v}^{(m)}, \\vb{v}^{(k)}) < \\varepsilon$ for all $m, k \\geq N$. It \\emph{converges} to $\\vb{v} \\in V$ if $d(\\vb{v}^{(m)}, \\vb{v}) \\to 0$ as $m \\to \\infty$. The space is called \\emph{complete} if every Cauchy sequence in $V$ converges to an element of $V$. The notions apply equally to a subspace of these spaces with the same distance; such a subspace need not be complete.",
+   "symbol_ids": [
+    "sym.sequence-l2",
+    "sym.l2-space",
+    "sym.adjoint",
+    "sym.inner-product"
+   ],
+   "depth": "fundament",
+   "origin": {
+    "type": "source-adapted",
+    "source": "reed-simon-1",
+    "locus": "section I.2, pp. 5, 6 (DjVu pages 17, 20)"
+   },
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "sources": [
+    {
+     "source": "reed-simon-1",
+     "locus": "section I.2, p. 5 (DjVu page 17)",
+     "verified": true,
+     "how": "read from the page image (ddjvu -format=pnm -page=17 -scale=150), not from the text layer",
+     "quote": "A sequence of elements \\{x_n\\} of a metric space \\langle M, d\\rangle is called a Cauchy sequence if (\\forall \\varepsilon > 0)(\\exists N) n, m \\geq N implies d(x_n, x_m) < \\varepsilon."
+    },
+    {
+     "source": "reed-simon-1",
+     "locus": "section I.2, p. 6 (DjVu page 20)",
+     "verified": true,
+     "how": "read from the page image (ddjvu -format=pnm -page=20 -scale=150), not from the text layer",
+     "quote": "A metric space in which all Cauchy sequences converge is called complete."
+    }
+   ],
+   "notes": "Added by the author of chapter C3 (2026-10-20). Reed-Simon define both for metric spaces; the body specialises to the distance induced by the inner product, because the chapter has no norm yet (the norm is vl03 material). Depth fundament (Fundament block c03.f3)."
+  },
+  {
+   "id": "D80",
+   "preinventory_row": null,
+   "name_de": "fast überall gleich, Klassen quadratintegrierbarer Funktionen",
+   "name_en": "equal almost everywhere, classes of square-integrable functions",
+   "body_de": "Eine Aussage über die Stellen $x \\in \\mathbb{R}$ gilt \\emph{fast überall}, wenn die Menge der Stellen, an denen sie falsch ist, in einer Menge vom Lebesgue-Maß null liegt. Zwei messbare Funktionen $f, g\\colon \\mathbb{R} \\to \\mathbb{C}$ heißen \\emph{äquivalent}, $f \\sim g$, wenn $f(x) = g(x)$ fast überall gilt. In der genauen Fassung besteht $\\Ltwo{\\mathbb{R}}$ aus den Äquivalenzklassen messbarer Funktionen $f$ mit $\\int_{-\\infty}^{\\infty} \\abs{f(x)}^2\\, \\dd x < \\infty$, das Integral im Sinn von Lebesgue; Addition, Multiplikation mit Skalaren und das Skalarprodukt $\\braket{f}{g}$ werden mit beliebigen Funktionen aus den Klassen berechnet.",
+   "body_en": "A statement about the points $x \\in \\mathbb{R}$ holds \\emph{almost everywhere} if the set of points where it is false lies in a set of Lebesgue measure zero. Two measurable functions $f, g\\colon \\mathbb{R} \\to \\mathbb{C}$ are called \\emph{equivalent}, $f \\sim g$, if $f(x) = g(x)$ almost everywhere. In the precise version $\\Ltwo{\\mathbb{R}}$ consists of the equivalence classes of measurable functions $f$ with $\\int_{-\\infty}^{\\infty} \\abs{f(x)}^2\\, \\dd x < \\infty$, the integral in the sense of Lebesgue; addition, multiplication by scalars and the inner product $\\braket{f}{g}$ are computed with arbitrary functions from the classes.",
+   "symbol_ids": [
+    "sym.l2-space",
+    "sym.inner-product"
+   ],
+   "depth": "fundament",
+   "origin": {
+    "type": "source-adapted",
+    "source": "reed-simon-1",
+    "locus": "section I.3, p. 17 (DjVu page 29); section III.1, p. 68 (DjVu page 80)"
+   },
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "sources": [
+    {
+     "source": "reed-simon-1",
+     "locus": "section I.3, p. 17 (DjVu page 29)",
+     "verified": true,
+     "how": "read from the page image (ddjvu -format=pnm -page=29 -scale=150), not from the text layer",
+     "quote": "We say a condition C(x) holds almost everywhere (a.e.) if \\{x | C(x) is false\\} is a subset of a set of measure zero."
+    },
+    {
+     "source": "reed-simon-1",
+     "locus": "section III.1, Example 2, p. 68 (DjVu page 80)",
+     "verified": true,
+     "how": "read from the page image (ddjvu -format=pnm -page=80 -scale=150), not from the text layer",
+     "quote": "We denote by L^p(X, d\\mu) the set of equivalence classes of measurable functions which satisfy: \\|f\\|_p \\equiv (\\int_X |f(x)|^p d\\mu(x))^{1/p} < \\infty"
+    }
+   ],
+   "notes": "Added by the author of chapter C3 (2026-10-20). Depth fundament (Fundament block c03.f2). Reed-Simon state the equivalence for L^1 (p. 17) and use equivalence classes for every L^p (p. 68); the body specialises to p = 2, X = R with Lebesgue measure. That the inner product does not depend on the representatives is derived in the chapter (c03.cl.klassen)."
   }
  ]
 }

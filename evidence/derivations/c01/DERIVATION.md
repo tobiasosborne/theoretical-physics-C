@@ -17,6 +17,20 @@ by parts, polar coordinates).
 
 ## Part A. Chapter 0
 
+<a id="c00.cl.reflexion"></a>
+**c00.cl.reflexion** (Kern, equation c00.eq.reflexion; added 2026-10-20). *Statement.* If
+every reflection sends back the fixed fraction $r$ of the incident energy, $0\le r<1$, and
+the wall takes up the rest, then after $n$ reflections the fraction $r^n$ of the energy of an
+entering ray is left, and $r^n\to0$ as $n\to\infty$.
+*Uses.* The stated premise only.
+*Derivation.* By induction on $n$: before the first reflection the fraction is $1=r^0$; if
+after $k$ reflections it is $r^k$, the $(k+1)$-st reflection sends back $r\cdot r^k=r^{k+1}$.
+For $r=0$, $r^n=0$ for $n\ge1$. For $0<r<1$, $r^n=e^{-n\ln(1/r)}$ with $\ln(1/r)>0$, which
+tends to $0$. *Scope.* No statement about emission by the walls, thermal equilibrium, the
+number of reflections before the hole is reached, or a dependence of $r$ on frequency or
+angle. The chapter states thermal equilibrium at a uniform wall temperature as a separate
+premise for the emitted radiation; this derivation is not cited for emission (REVIEW-lec1).
+
 <a id="c00.cl.grenzform"></a>
 **c00.cl.grenzform** (Kern, equation c00.eq.grenzform). *Statement.* With
 $u(\nu,T)=\dfrac{8\pi h\nu^3}{c^3}\dfrac{1}{e^{h\nu/(k_BT)}-1}$ (c00.eq.planck, taken from the
@@ -63,11 +77,21 @@ of $T$, $h$, $c$, $k_B$; it is positive. Therefore $\int_0^\infty u\,d\nu=\text{
 *Not derived.* The exact value of the integral is not supplied.
 
 <a id="c00.cl.schwelle"></a>
-**c00.cl.schwelle** (Kern, c00.eq.schwelle). *Statement.* If
-$\tfrac12m_ev^2=h\nu-W$ (c00.eq.photoeffekt, from the script) holds with $m_e>0$ and real $v$,
-then $h\nu\ge W$, i.e. $\nu\ge W/h$ (as $h>0$).
-*Derivation.* $\tfrac12m_ev^2\ge0$. *Scope.* A necessary condition for the relation; nothing
-is derived about what happens for $h\nu<W$.
+**c00.cl.schwelle** (Kern, c00.eq.schwelle; extended 2026-10-20). *Statement.* Premises:
+(i) one light quantum of energy $h\nu$ gives all its energy to a single electron;
+(ii) to get out the electron must spend an energy $W'$, and $W$ is the smallest such energy,
+so $W'\ge W$; (iii) energy conservation, kinetic energy $\tfrac12m_ev^2$ with $m_e>0$ and real
+$v$. Then for an electron that is actually released $0\le\tfrac12m_ev^2=h\nu-W'\le h\nu-W$,
+hence $\nu\ge W/h$; equality $\tfrac12m_ev^2=h\nu-W$ holds exactly for $W'=W$, so
+c00.eq.photoeffekt, $E_{\rm kin,max}=\tfrac12m_ev_{\max}^2=h\nu-W$, is the maximum kinetic
+energy at fixed material (fixed $W$) in this model; for $h\nu<W$ no electron is released by a single quantum.
+*Derivation.* By (i) and (iii) the energy left after release is $h\nu-W'$, which is the
+kinetic energy, so $\tfrac12m_ev^2=h\nu-W'$. It is $\ge0$ because $m_e>0$ and $v^2\ge0$.
+By (ii), $-W'\le-W$, so $h\nu-W'\le h\nu-W$, with equality iff $W'=W$. From
+$0\le h\nu-W'\le h\nu-W$ follows $h\nu\ge W$, and $h>0$ gives $\nu\ge W/h$. If
+$h\nu<W\le W'$, then $h\nu-W'<0$ would be a negative kinetic energy, so no release by (i).
+*Scope.* Only the one-quantum picture; no statement about several quanta acting together, the
+distribution of $W'$, rates, or relativistic electrons.
 
 ## Part B. Chapter 1
 
@@ -133,6 +157,17 @@ distinct values of $f$. At a point $x$, $\chi_{\{f=v\}}(x)=1$ for $v=f(x)$ and 0
 other $v$, so $\sum_vv\chi_{\{f=v\}}(x)=f(x)$. If $f(x)=0$, all weighted terms vanish,
 while exactly one indicator still equals one. By linearity (c01.cl.erwartung) and
 c01.cl.indikator, $E[f]=\sum_vvE[\chi_{\{f=v\}}]=\sum_vvP[\{f=v\}]$.
+
+<a id="c01.cl.drei-ergebnisse"></a>
+**c01.cl.drei-ergebnisse** (added 2026-10-20). $X=\{1,2,3\}$, $p=(\tfrac12,\tfrac14,\tfrac14)$:
+all values $\ge0$, sum $\tfrac12+\tfrac14+\tfrac14=1$, so $p$ is a weight (D54). A set of $n$
+elements has $2^n$ subsets (each element in or out); $2^3=8$: $\emptyset$, $\{1\}$, $\{2\}$,
+$\{3\}$, $\{1,2\}$, $\{1,3\}$, $\{2,3\}$, $X$. $P[S]=\sum_{x\in S}p(x)$:
+$P[\emptyset]=0$ (empty sum), $P[\{1\}]=\tfrac12$, $P[\{2\}]=P[\{3\}]=\tfrac14$,
+$P[\{1,2\}]=\tfrac12+\tfrac14=\tfrac34$, $P[\{1,3\}]=\tfrac34$,
+$P[\{2,3\}]=\tfrac14+\tfrac14=\tfrac12$, $P[X]=1$. The indicator values in the table are
+$\chi_S(x)=1$ iff $x\in S$. By c01.cl.indikator, $P[S]=E[\chi_S]$. For $f=(-1,0,+1)$:
+$E[f]=\tfrac12(-1)+\tfrac14\cdot0+\tfrac14(+1)=-\tfrac12+\tfrac14=-\tfrac14$.
 
 <a id="c01.cl.drei"></a>
 **c01.cl.drei.** $X=\{1,2,3\}$, $p=1/3$: $P[\{1,2\}]=2/3$; $E[x^2]=(1+4+9)/3=14/3$.

@@ -11,17 +11,28 @@
 % Rahmung: docs/plan/BRIEF.md:45-46 (author-stipulated); Gefahr H1.1 des Curriculum-Berichts
 %   (Determinismus ist der Sonderfall des Punktgewichts) in Proposition c01.prop.punktgewicht.
 %
+% Stimme (Überarbeitung „Lecture 1“, 2026-10-20): Die Prosa folgt TJOs Sätzen aus vl01.tex
+%   und seinen Vorlesungsvideos v01 (ab [60:37]) und v02 (bis [75:00]); Zeitmarken stehen als
+%   Kommentar an der Stelle.  Die Transkripte sind keine registrierte Quelle; aus ihnen
+%   kommen Wortlaut, Beispiele (zwei Münzen, das Rubbellos, das durchgerechnete Beispiel
+%   mit drei Ergebnissen) und didaktische Bemerkungen.  Die Rechnungen der Beispiele sind
+%   hergeleitet (DERIVATION.md, Teil B).
+%
 % Schreibweise (Registry): Ergebnismenge X = \Outcomes, Gewicht p = \pw, \Prob, \Ex, \Var,
 % Indikatorfunktion \ind{S}.  Das Punktgewicht auf a heißt hier p_a, das Produktgewicht
 % für N Wiederholungen p^{(N)}; beide sind Schreibweisen dieses Kapitels.
 
 \chapter{Wahrscheinlichkeit für Physiker}\label{c01}
 
-Die Zahlen, die eine physikalische Theorie in diesem Kurs vorhersagt, sind
-Wahrscheinlichkeiten. Dieses Kapitel legt fest, wie mit ihnen gerechnet wird. Konzeptionell
-Neues enthält es kaum: Ein intuitives Verständnis von Wahrscheinlichkeit wird vorausgesetzt.
-Es geht um die \emph{Notation}, in der später die Quantenmechanik formuliert wird, und um
-eine Sprache. Zur Sprache gehört eine Festlegung des Autors:
+% Stimme: vl01.tex:94; v01 [60:37]-[64:24] („ein intuitives Verständnis von
+% Wahrscheinlichkeiten setze ich voraus“).
+Die Zahlen, welche die Quantenmechanik als Ergebnis liefert, sind \emph{Wahrscheinlichkeiten}.
+Wie sind solche Größen zu verstehen, und wie arbeiten wir damit? Der richtige Rahmen dafür ist
+die Wahrscheinlichkeitstheorie, und die bauen wir in diesem Kapitel auf. Erwarten Sie nichts
+konzeptionell Neues: Ein intuitives Verständnis von Wahrscheinlichkeiten, Verteilungen und
+Erwartungswerten setze ich voraus. Es geht um die \emph{Notation}, in der wir später die
+Quantenmechanik formulieren, und um eine Sprache. Dazu gehört eine Festlegung, die ich für
+den ganzen Kurs treffe:
 % GAP-TJO: Deutsche Fassung von docs/plan/BRIEF.md:46 (erster Teil des Satzes): Übersetzung
 % des Kapitelautors (G-0022).  Der zweite Teil des Satzes (Messungen als Elemente des
 % Dualraums) gehört zu Kapitel 2 und ist hier nicht zitiert.
@@ -38,17 +49,31 @@ Was die Mathematik eine Wahrscheinlichkeitsverteilung nennt, heißt hier also Pr
 und was sie eine Zufallsvariable nennt, heißt Messung. Tabelle~\ref{c01.tab.sprache} am Ende
 von Abschnitt~\ref{c01.s2} stellt die Wörter nebeneinander.
 
+% Stimme: v02 [00:00] („alle drei müssen spezifiziert sein, bevor man überhaupt anfangen
+% kann zu rechnen“).
+Um ein Experiment wahrscheinlichkeitstheoretisch zu modellieren, brauchen wir genau drei
+Dinge: die Menge der möglichen Ergebnisse, die Präparation und die Messung. Alle drei müssen
+festgelegt sein, bevor wir überhaupt anfangen können zu rechnen. Wir nehmen sie in dieser
+Reihenfolge.
+
 \section{Ergebnisse und Präparationen}\label{c01.s1}
+
+% Stimme: vl01.tex:98-101; v01 [64:24] („man erhält ihn, indem man alle möglichen
+% Ergebnisse auflistet“; zwei Münzen an der Tafel).
+Der erste Schritt bei der Modellierung jedes probabilistischen Experiments ist, ihm eine
+Menge zuzuordnen. Man erhält sie, indem man alle möglichen Ergebnisse auflistet.
 
 \tpcdef{D53}
 
 In diesem und den nächsten beiden Abschnitten ist $\Outcomes$ eine endliche Menge.
 
-\begin{example}[Würfel und Münze]\label{c01.ex.wuerfel}
+\begin{example}[Würfel und Münzen]\label{c01.ex.wuerfel}
   Bei einem Würfel besteht die Ergebnismenge aus den möglichen Augenzahlen:
   $\Outcomes = \{1, 2, 3, 4, 5, 6\}$. Bei einer Münze ist
-  $\Outcomes = \{\text{\tpcifenglish{heads}{Kopf}}, \text{\tpcifenglish{tails}{Zahl}}\}$.
-  „Die Augenzahl ist gerade“ ist das Ereignis $S = \{2, 4, 6\}$.
+  $\Outcomes = \{\text{\tpcifenglish{heads}{Kopf}}, \text{\tpcifenglish{tails}{Zahl}}\}$,
+  bei zwei Münzen mit K für Kopf und Z für Zahl
+  $\Outcomes = \{\text{KK}, \text{KZ}, \text{ZK}, \text{ZZ}\}$. „Die Augenzahl ist gerade“
+  ist das Ereignis $S = \{2, 4, 6\}$.
 \end{example}
 
 \begin{exercise}[Zwei Würfel]\label{c01.exc.zwei-wuerfel}\claim{c01.cl.zwei-wuerfel}{derived}
@@ -69,13 +94,19 @@ In diesem und den nächsten beiden Abschnitten ist $\Outcomes$ eine endliche Men
     Augensumme ist $7$“ besteht aus den sechs mit Quadraten markierten Paaren.}
 \end{tpcfigure}
 
-Eine Präparation legt fest, wie wahrscheinlich jedes Ergebnis ist.
+% Stimme: vl01.tex:108-116; v01 [70:32] („wie modelliert man einen fairen Würfel, eine faire
+% Münze oder einen gezinkten Würfel?“).
+Schritt zwei ist die Präparation. Wie modelliert man einen fairen Würfel, eine faire Münze
+oder einen gezinkten Würfel? In einer probabilistischen Theorie durch die Angabe einer
+Wahrscheinlichkeit für jedes Ergebnis.
 
 \tpcdef{D54}
 
 Die beiden Bedingungen an $\pw$ sind die einzigen. Die erste gilt, weil eine negative
-Wahrscheinlichkeit nichts bedeuten würde; die zweite, weil sicher irgendein Ergebnis
-eintritt. Wir nennen $\pw$ im Folgenden kurz ein \emph{Gewicht}.
+Wahrscheinlichkeit nicht interpretierbar ist; die zweite, weil die Wahrscheinlichkeit, dass
+irgendein Ergebnis eintritt, immer eins ist. Für die faire Münze ist
+$\pw(\text{\tpcifenglish{heads}{Kopf}}) = \pw(\text{\tpcifenglish{tails}{Zahl}}) = \tfrac12$.
+Wir nennen $\pw$ im Folgenden kurz ein \emph{Gewicht}.
 
 \begin{example}[Fairer und gezinkter Würfel]\label{c01.ex.gezinkt}\claim{c01.cl.gezinkt}{derived}
   Für einen fairen Würfel ist $\pw(x) = \tfrac16$ für alle $x$. Andere Gewichte beschreiben
@@ -147,6 +178,9 @@ $\lambda \cdot 1 + (1-\lambda)\cdot 1 = 1$.
 
 \section{Messungen und Erwartungswert}\label{c01.s2}
 
+% Stimme: vl01.tex:118-126; v01 [77:53]; v02 [04:15] („das Experiment selbst bildet
+% Wahrscheinlichkeitsfunktionen auf Wahrscheinlichkeitsfunktionen ab; genau das wird in der
+% Quantenmechanik immer wieder vorkommen“).
 Kapitel~0 hat jedes Experiment in drei Stadien zerlegt. In der klassischen
 Wahrscheinlichkeitstheorie hat jedes Stadium eine einfache mathematische Gestalt
 \srcref{tpc-script-v0.2}{vl01, Kasten „Jedes Experiment in drei Schritten“}.
@@ -160,14 +194,19 @@ Wahrscheinlichkeitstheorie hat jedes Stadium eine einfache mathematische Gestalt
     \end{aligned}
   \end{equation}
   Am Ende der Messung steht eines der möglichen Ergebnisse. Was für Abbildungen im zweiten
-  Stadium vorkommen, braucht dieses Kapitel nicht.
+  Stadium vorkommen, braucht dieses Kapitel nicht; in der Quantenmechanik wird uns dieses
+  Bild immer wieder begegnen.
 \end{greybox}
 
 \tpcdef{D55}
 
-An eine Messung wird keine Bedingung gestellt: Jede Funktion auf $\Outcomes$ darf als
-Messung gelten. An eine Präparation stellen wir dagegen zwei. Der Wert $f(x)$ ist der
-Messwert, der sich ergibt, wenn man sicher weiß, dass das Ergebnis $x$ vorliegt.
+% Stimme: vl01.tex:133; v01 [81:48]-[83:27] („quasi alle Funktionen dürfen als Messung
+% interpretiert werden“), [86:09].
+Beachten Sie, wie großzügig das ist: An eine Messung stellen wir keine Bedingung, quasi jede
+Funktion auf $\Outcomes$ darf als Messung gelten. An die Präparation stellen wir dagegen
+zwei. Der Wert $f(x)$ ist der Messwert, der sich ergibt, wenn man sicher weiß, dass das
+Ergebnis $x$ vorliegt. Der Erwartungswert verbindet Präparation und Messung: Er ist die mit
+den Wahrscheinlichkeiten gewichtete Summe der Messwerte.
 
 \begin{example}[Augenzahl]\label{c01.ex.augenzahl}\claim{c01.cl.augenzahl}{derived}
   Für einen Würfel ist die Augenzahl $f(x) = x$ eine Messung. Für den fairen Würfel ist
@@ -180,7 +219,9 @@ Messwert, der sich ergibt, wenn man sicher weiß, dass das Ergebnis $x$ vorliegt
            = \tfrac{47}{12} .
   \end{equation}
   Keiner der beiden Werte ist eine Augenzahl. Der Erwartungswert muss kein möglicher
-  Messwert sein.
+  Messwert sein. Die Augenzahl ist auch nicht die einzige Messung am Würfel: „Ist die
+  Augenzahl gerade?“ und „Ist die Augenzahl gleich sechs?“ sind ebenfalls Messungen, mit
+  Ja oder Nein als Antwort.
 \end{example}
 
 \begin{tpcfigure}{c01.fig.erwartung}
@@ -193,7 +234,10 @@ Messwert, der sich ergibt, wenn man sicher weiß, dass das Ergebnis $x$ vorliegt
 
 \subsection{Relative Häufigkeiten}\label{c01.s2.1}
 
-Woher kommt die Formel für den Erwartungswert? Man wiederholt das Experiment $N$-mal mit
+% Stimme: vl01.tex:137; v02 [06:44] (der Erwartungswert wird nicht vom Himmel geworfen,
+% sondern motiviert).
+Woher kommt die Formel für den Erwartungswert? Sie fällt nicht vom Himmel. Man wiederholt
+das Experiment $N$-mal mit
 derselben Präparation, wobei $N$ eine positive ganze Zahl ist, und notiert die Ergebnisse
 $x_1, \dots, x_N$. Sei $N(x)$ die Anzahl
 der Durchläufe mit dem Ergebnis $x$. Die \emph{relative Häufigkeit} von $x$ ist
@@ -216,9 +260,9 @@ denn in der linken Summe kommt der Summand $f(x)$ genau $N(x)$-mal vor. Der Mitt
 einer Messreihe ist also der Erwartungswert von $f$ im Gewicht $h_N$. Diese Gleichung ist
 exakt und gilt für jede Messreihe.
 
-Die statistische Lesart der Vorlesung beschränken wir hier auf das Modell unabhängiger
-Wiederholungen derselben Präparation: Bei vielen solchen Wiederholungen liegt die relative
-Häufigkeit $h_N(x)$ mit hoher Wahrscheinlichkeit nahe bei $\pw(x)$,
+Und wie hängt $h_N$ mit $\pw$ zusammen? Führen wir das Experiment $N$-mal unabhängig mit
+derselben Präparation durch, so liegt bei vielen Wiederholungen die relative Häufigkeit
+$h_N(x)$ mit hoher Wahrscheinlichkeit nahe bei $\pw(x)$,
 \begin{equation}\label{c01.eq.lesart}\claim{c01.cl.lesart}{source-backed}
   h_N(x) \approx \pw(x)
   \qquad \text{\tpcifenglish{for large}{für große}}\ N .
@@ -274,9 +318,12 @@ gelesen. Wir schreiben $f \leq g$, wenn $f(x) \leq g(x)$ für alle $x \in \Outco
 
 \subsection{Ja-Nein-Messungen}\label{c01.s2.3}
 
-Eine besondere Rolle spielen Messungen, die nur die Werte $0$ und $1$ annehmen. Sie sind
-das Modell für Detektoren, die das Vorhandensein eines Teilchens anzeigen: Der Detektor
-sagt Klick oder kein Klick. An diesen zweiwertigen Messungen hängt die Quantenmechanik.
+% Stimme: vl01.tex:142; v01 [86:09] („die meisten Messungen in der Quantenmechanik sind von
+% dieser Art: Teilchen ist da, Teilchen ist nicht da“); v02 [12:00]-[25:40].
+Von den unendlich vielen möglichen Messungen sind die wichtigsten die, die nur die Werte $0$
+und $1$ annehmen. Sie sind das Modell für Detektoren, die das Vorhandensein eines Teilchens
+anzeigen, etwa einen Photonendetektor: Der Detektor sagt Klick oder kein Klick. An diesen
+zweiwertigen Messungen hängt die Quantenmechanik.
 Eine solche Messung $f$ ist durch die Menge $S = \{x \in \Outcomes \colon f(x) = 1\}$
 bestimmt. Man schreibt
 \begin{equation}\label{c01.eq.indikator-def}\claim{c01.cl.indikator-def}{source-backed}
@@ -286,18 +333,30 @@ bestimmt. Man schreibt
     0, & \text{\tpcifenglish{otherwise}{sonst}}
   \end{cases}
 \end{equation}
-und nennt $\ind{S}$ die \emph{Indikatorfunktion} des Ereignisses $S$. Indikatorfunktionen
-\emph{sind} Messungen, kein eigenes Objekt daneben. Die Menge $S$ darf beliebig sein. Drei
-Grenzfälle: $S = \Outcomes$ gibt die konstante Messung $1$, $S = \emptyset$ die konstante
-Messung $0$, und für ein einzelnes Ergebnis $a$ ist $\ind{\{a\}}(x)$ gleich $1$ für
-$x = a$ und sonst $0$.
+und nennt $\ind{S}$ die \emph{Indikatorfunktion} des Ereignisses $S$. Funktion und Menge
+enthalten genau dieselbe Information. Halten Sie fest: Indikatorfunktionen \emph{sind}
+Messungen, kein eigenes Objekt daneben. Die Menge $S$ darf beliebig sein. Drei Grenzfälle:
+$S = \Outcomes$ gibt die konstante Messung $1$, $S = \emptyset$ die konstante Messung $0$,
+und für ein einzelnes Ergebnis $a$ ist $\ind{\{a\}}(x)$ gleich $1$ für $x = a$ und sonst
+$0$; das ist das Kronecker-Delta.
+
+% Stimme: v02 [17:24] (das Rubbellos).
+\begin{remark}
+  Indikatorfunktionen begegnen einem überall, wo Wahrscheinlichkeiten vorkommen. Beim
+  Glücksspiel ist die wichtigste Messung überhaupt: Habe ich gewonnen oder nicht? Bei einem
+  Rubbellos ist die Ergebnismenge die Menge aller Zahlenkombinationen, die auftauchen
+  können. Die Messung ist $1$ bei Gewinn und $0$ sonst. Ausgeschrieben ist diese Funktion
+  enorm kompliziert, denn man muss jede Kombination daraufhin prüfen, ob sie gewinnt; und
+  doch ist sie nur eine Indikatorfunktion. Die ganze Komplexität steckt in der Menge $S$.
+\end{remark}
 
 Der Erwartungswert einer Indikatorfunktion ist die Wahrscheinlichkeit ihres Ereignisses:
 \begin{equation}\label{c01.eq.indikator}\claim{c01.cl.indikator}{derived}
   \Ex[\ind{S}] = \sum_{x \in \Outcomes} \pw(x)\, \ind{S}(x) = \sum_{x \in S} \pw(x) = \Prob[S] .
 \end{equation}
-Abbildung~\ref{c01.fig.indikator} zeigt die Rechnung für den gezinkten Würfel.
-Wahrscheinlichkeiten sind also besondere Erwartungswerte. Umgekehrt legt $\Prob$ alle
+Abbildung~\ref{c01.fig.indikator} zeigt die Rechnung für den gezinkten Würfel. Der
+Erwartungswert einer Indikatorfunktion hat also eine Sonderform: Er ist eine reine Summe von
+Wahrscheinlichkeiten. Wahrscheinlichkeiten sind besondere Erwartungswerte. Umgekehrt legt $\Prob$ alle
 Erwartungswerte fest, denn mit $S = \{x\}$ ist $\pw(x) = \Prob[\{x\}]$ und deshalb
 $\Ex[f] = \sum_{x} \Prob[\{x\}]\, f(x)$.
 
@@ -335,6 +394,69 @@ weil an jeder Stelle $x$ genau eine Indikatorfunktion gleich eins ist, die mit
 $v = f(x)$. Ist $f(x) = 0$, verschwinden alle gewichteten Summanden. Die zweite folgt daraus mit der Linearität und Gleichung~\eqref{c01.eq.indikator}. Der
 Erwartungswert ist das mit den Wahrscheinlichkeiten gewichtete Mittel der Messwerte.
 
+% Stimme: v02 [38:07]-[48:44] (das durchgerechnete Beispiel der Vorlesung: Photonenzahl,
+% alle 2^3 Teilmengen, „wie groß ist die Wahrscheinlichkeit, dass kein Ereignis vorliegt?
+% Es liegt immer eines vor“, „wir haben längst Erwartungswerte berechnet“, negative
+% Messwerte, Drehimpuls).
+Ein vollständig durchgerechnetes Beispiel zeigt den ganzen Apparat im Kleinen. In der
+Quantenmechanik werden wir sehr viele Erwartungswerte berechnen; das soll Ihnen am Ende sehr
+leicht fallen. Es lohnt sich, viele solche Rechnungen selbst zu machen.
+
+\begin{example}[Ein Experiment mit drei Ergebnissen]\label{c01.ex.drei-ergebnisse}\claim{c01.cl.drei-ergebnisse}{derived}
+  Die drei Ergebnisse von $\Outcomes = \{1, 2, 3\}$ mögen etwa die Anzahl der Photonen sein,
+  die ein Detektor zählt. Als Präparation wählen wir, beliebig, aber zulässig,
+  $\pw(1) = \tfrac12$ und $\pw(2) = \pw(3) = \tfrac14$: Alle Werte sind $\geq 0$, und
+  $\tfrac12 + \tfrac14 + \tfrac14 = 1$. Eine Menge mit drei Elementen hat $2^3 = 8$
+  Teilmengen; jede ist ein Ereignis und hat ihre Indikatorfunktion.
+  Tabelle~\ref{c01.tab.ereignisse} listet alle acht mit ihren Wahrscheinlichkeiten. Wie groß
+  ist die Wahrscheinlichkeit, dass kein Ergebnis vorliegt? Es liegt immer eines vor, also
+  ist $\Prob[\emptyset] = 0$. Die Einermengen haben die Werte von $\pw$, die Zweiermengen
+  folgen aus der Additivität~\eqref{c01.eq.additiv}, und $\Prob[\Outcomes] = 1$. Damit ist
+  die gesamte Information über das Experiment aufgelistet, und nebenbei haben wir schon acht
+  Erwartungswerte berechnet: $\Prob[\{2,3\}] = \tfrac12$ \emph{ist} der Erwartungswert der
+  Indikatorfunktion $\ind{\{2,3\}}$.
+
+  Nun eine Messung, die keine Indikatorfunktion ist: $f(1) = -1$, $f(2) = 0$, $f(3) = +1$.
+  Ihr Erwartungswert ist
+  \begin{equation}\label{c01.eq.drei-ergebnisse}
+    \Ex[f] = \tfrac12\cdot(-1) + \tfrac14\cdot 0 + \tfrac14\cdot(+1) = -\tfrac14 .
+  \end{equation}
+  Er ist negativ, und das ist kein Problem. Nur Wahrscheinlichkeiten müssen $\geq 0$ sein;
+  Messwerte und Erwartungswerte dürfen negativ sein.
+\end{example}
+
+\begin{tpctable}{c01.tab.ereignisse}
+  \caption{Alle acht Ereignisse des Experiments aus Beispiel~\ref{c01.ex.drei-ergebnisse},
+    mit den Werten ihrer Indikatorfunktion an den Stellen $1$, $2$, $3$ und ihrer
+    Wahrscheinlichkeit für $\pw = (\tfrac12, \tfrac14, \tfrac14)$. Jede Zeile ist eine
+    Ja-Nein-Messung und ihr Erwartungswert.}
+  \begin{tabular}{lcccc}
+    \toprule
+    $S$ & $\ind{S}(1)$ & $\ind{S}(2)$ & $\ind{S}(3)$ & $\Prob[S] = \Ex[\ind{S}]$ \\
+    \midrule
+    $\emptyset$ & $0$ & $0$ & $0$ & $0$ \\
+    $\{1\}$ & $1$ & $0$ & $0$ & $1/2$ \\
+    $\{2\}$ & $0$ & $1$ & $0$ & $1/4$ \\
+    $\{3\}$ & $0$ & $0$ & $1$ & $1/4$ \\
+    $\{1, 2\}$ & $1$ & $1$ & $0$ & $3/4$ \\
+    $\{1, 3\}$ & $1$ & $0$ & $1$ & $3/4$ \\
+    $\{2, 3\}$ & $0$ & $1$ & $1$ & $1/2$ \\
+    $\{1, 2, 3\}$ & $1$ & $1$ & $1$ & $1$ \\
+    \bottomrule
+  \end{tabular}
+\end{tpctable}
+
+Messwerte $-1$, $0$, $+1$ sind keine Erfindung für die Übung. Beim Drehimpuls werden wir
+in Kapitel~10 Zustände $\ket{\lqn, \mqn}$ kennenlernen, auf denen die
+Drehimpulskomponente $\Lj{3}$ den Wert $\hbar \mqn$ hat, mit
+\begin{equation}\label{c01.eq.drehimpuls}\claim{c01.cl.drehimpuls}{source-backed}
+  \mqn \in \{-\lqn, -\lqn + 1, \dots, \lqn\},
+  \qquad
+  \lqn = 1\colon \quad \mqn \in \{-1, 0, 1\} .
+\end{equation}
+In Einheiten von $\hbar$ sind das für $\lqn = 1$ genau die Messwerte von $f$
+\srcref{tpc-script-v0.2}{vl14, Eigenwerte des Drehimpulses}.
+
 \begin{exercise}[Drei Ergebnisse]\label{c01.exc.drei}\claim{c01.cl.drei}{derived}
   Sei $\Outcomes = \{1, 2, 3\}$ und $\pw(x) = \tfrac13$ für alle $x \in \Outcomes$.
   Berechnen Sie $\Prob[S]$ für $S = \{1, 2\}$ und den Erwartungswert der Messung
@@ -364,7 +486,8 @@ Erwartungswert ist das mit den Wahrscheinlichkeiten gewichtete Mittel der Messwe
 \section{Varianz und Determinismus}\label{c01.s3}
 
 Der Erwartungswert sagt, wo die Messwerte im Mittel liegen. Die Varianz sagt, wie weit sie
-um diesen Wert streuen.
+um diesen Wert streuen. In der Quantenmechanik spielt sie eine große Rolle; bei der
+Unschärferelation wird sie uns wieder begegnen.
 
 \tpcdef{D56}
 
@@ -518,10 +641,12 @@ $\pw = \sum_a c_a\, \pw_a$ durch Auswerten an der Stelle $x$ sofort $c_x = \pw(x
 
 Im endlichen Modell nennen wir eine Präparation deterministisch, wenn ihr Gewicht ein
 Punktgewicht ist. Dann steht das Ergebnis jeder Messung fest: $f$ ergibt mit
-Wahrscheinlichkeit $1$ den Wert $f(a)$. Der Kapitelautor schlägt dies als Beispiel für
-die Festlegung aus Kapitel~0 vor, dass deterministische Theorien eine Teilmenge der
-probabilistischen sind. Diese Deutung wartet auf die Entscheidung des Autors (G-0023);
-die Proposition über Präparationen legt keine Dynamik deterministischer Theorien fest.
+Wahrscheinlichkeit $1$ den Wert $f(a)$. So sehen die definitiven Vorhersagen aus, von denen
+in Kapitel~0 die Rede war, und so passen sie in eine probabilistische Theorie: als
+Präparationen, die keine echten Mischungen sind.
+% GAP-TJO: Dass Punktgewichte das Beispiel zu „deterministic as a subset of probabilistic“
+% (BRIEF.md:45) sind, ist die Lesart des Kapitelautors; die Proposition sagt nichts über die
+% Dynamik deterministischer Theorien (G-0023 d).
 
 \begin{merksatz}[Merksatz]
   Ein Gewicht ist genau dann ein Punktgewicht, wenn jede Messung die Varianz $0$ hat, und
@@ -532,10 +657,13 @@ die Proposition über Präparationen legt keine Dynamik deterministischer Theori
 Kapitel~2 nennt Zustände, die keine echten Mischungen sind, \emph{rein}. Die reinen
 Zustände dieses endlichen klassischen Modells sind also die Punktgewichte.
 Gleichung~\eqref{c01.eq.zerlegung} zerlegt jedes Gewicht eindeutig in Punktgewichte.
-Die Deutung dieser Zerlegung als fehlende Information über ein sicher präpariertes
-Ergebnis ist ein Vorschlag des Kapitelautors und wartet auf die Entscheidung des Autors
-(G-0023). Geometrisch bilden die Gewichte auf $n$ Ergebnissen einen Körper mit $n$
-Ecken, den Punktgewichten: eine Strecke, ein Dreieck, ein Tetraeder\zoomref{c01.v1}.
+Dasselbe Gewicht lässt sich auch herstellen, indem man mit Wahrscheinlichkeit $\pw(a)$ das
+Ergebnis $a$ sicher präpariert.
+Geometrisch bilden die Gewichte auf $n$ Ergebnissen einen Körper mit $n$ Ecken, den
+Punktgewichten: eine Strecke, ein Dreieck, ein Tetraeder\zoomref{c01.v1}.
+% GAP-TJO: Die Lesart der Zerlegung als fehlende Information über ein sicher präpariertes
+% Ergebnis (nach REVIEW-lec1 aus dem Text genommen) verbindet Gleichung c01.eq.zerlegung mit vl01.tex:83 („Wahrscheinlichkeiten treten
+% dort allein wegen fehlender Information auf“); TJO bestätigt oder verwirft sie (G-0023 d).
 
 \begin{vertiefung}[id=c01.v1,
     titel={Die Menge aller Präparationen ist ein Simplex},
@@ -726,9 +854,15 @@ Ecken, den Punktgewichten: eine Strecke, ein Dreieck, ein Tetraeder\zoomref{c01.
 
 \section{Kontinuierliche Ergebnisse}\label{c01.s4}
 
+% Stimme: vl01.tex:176-187; v02 [49:00]-[56:35] („wir umgehen das Problem, indem wir die
+% wichtigen Eigenschaften nehmen und daraus neue Definitionen machen“; „ich persönlich mag
+% diese Notation nicht so gern“).
 Bisher war $\Outcomes$ endlich. Für die Quantenmechanik ist aber
 $\Outcomes = \mathbb{R}$ entscheidend: Ein Teilchen in einer Dimension hat eine Position,
-und die möglichen Positionen sind die reellen Zahlen. In diesem Abschnitt betrachten wir
+und die möglichen Positionen sind die reellen Zahlen. Wie man Wahrscheinlichkeiten auf
+beliebigen Mengen sauber behandelt, ist Sache der Maßtheorie. Wir umgehen das: Wir nehmen
+die wichtigen Eigenschaften des endlichen Falls und machen daraus neue Definitionen, und zwar
+nur für den Spezialfall, den wir im Kurs tatsächlich brauchen. In diesem Abschnitt betrachten wir
 nur Präparationen auf $\mathbb{R}$, die eine Dichte haben. In diesem Dichtemodell werden
 Wahrscheinlichkeiten durch Integration gewonnen, statt Dichtewerte über Punkte zu summieren.
 Eine solche Präparation wird durch eine \emph{Wahrscheinlichkeitsdichte} beschrieben:
@@ -744,10 +878,11 @@ eine Funktion $\pw$ auf $\mathbb{R}$ mit
 Die beiden Bedingungen der ersten Zeile entsprechen denen an ein Gewicht. Für reelle
 Endpunkte $a \leq b$ gibt die zweite Zeile die Intervallwahrscheinlichkeit an. Der
 Erwartungswert einer Messung $f$ wird hier verwendet, sofern
-$\int_{-\infty}^{\infty} \pw(x)\,\abs{f(x)}\,\dd x < \infty$ ist. In der
-Literatur findet man für dasselbe auch die Schreibweise $\int \Prob(\dd x)\, f(x)$, mit
-$\Prob(\dd x) = \pw(x)\,\dd x$. Dieser Kurs benutzt sie nicht; man soll sie nur erkennen
-können.
+$\int_{-\infty}^{\infty} \pw(x)\,\abs{f(x)}\,\dd x < \infty$ ist. Gegenüber dem
+endlichen Fall ist also nur die Summe durch ein Integral ersetzt. In der Literatur findet man
+für den Erwartungswert auch die Schreibweise $\int \Prob(\dd x)\, f(x)$, mit
+$\Prob(\dd x) = \pw(x)\,\dd x$. Ich mag sie nicht besonders und werde sie kaum
+verwenden; Sie sollen sie nur erkennen können.
 
 \begin{merksatz}[Eine Dichte ist keine Wahrscheinlichkeit]
   Der Wert $\pw(x)$ einer Dichte ist keine Wahrscheinlichkeit. Wahrscheinlichkeiten sind
@@ -782,26 +917,33 @@ Dichte und jeden Punkt $a$: Ein Integral über ein Intervall der Länge $0$ ist 
   \begin{equation}\label{c01.eq.gauss}
     \pw(x) = \frac{1}{\sqrt{2\pi}}\, e^{-\frac12 x^2}
   \end{equation}
-  heißt \emph{Normal-} oder \emph{Gauß-Verteilung}. Sie ist normiert: Die Fläche unter der
-  Kurve ist $1$\zoomref{c01.v3}. Wie wahrscheinlich ist ein Ergebnis
-  $x \geq 0$? Weil $\pw(-x) = \pw(x)$ ist, sind die Flächen links und rechts vom Nullpunkt
-  gleich groß; zusammen sind sie $1$. Also ist
+  heißt \emph{Normal-} oder \emph{Gauß-Verteilung}, die Glockenkurve. Sie ist eigentlich das
+  wichtigste Beispiel der Wahrscheinlichkeitstheorie überhaupt. Sie ist normiert: Die Fläche
+  unter der Kurve ist $1$\zoomref{c01.v3}. Wir präparieren ein Teilchen in diesem Zustand
+  und schauen am Ende seine Position an. Wie wahrscheinlich ist ein Ergebnis $x \geq 0$?
+  Weil $\pw(-x) = \pw(x)$ ist, sind die Flächen links und rechts vom Nullpunkt gleich groß;
+  zusammen sind sie $1$. Also ist
   \begin{equation}\label{c01.eq.gauss-halb}
     \int_0^\infty \pw(x)\,\dd x = \int_{-\infty}^0 \pw(x)\,\dd x = \tfrac12 .
   \end{equation}
-  Physikalisch gefragt: Ist das Teilchen links oder rechts vom Ursprung? Das Argument
-  funktioniert \emph{nur} für symmetrische Dichten.
+  Physikalisch gefragt: Ist das Teilchen links oder rechts vom Ursprung? Anschaulich war das
+  Ergebnis schon vorher klar. Seien Sie mit dem Argument aber vorsichtig: Es funktioniert
+  \emph{nur} für symmetrische Dichten. Für eine unsymmetrische Dichte ist ein solches
+  Integral keineswegs offensichtlich.
 \end{example}
 
-Auf $\mathbb{R}$ ist die wichtigste Messung die Koordinate selbst, $f(x) = x$, und ihre
-Potenzen. Ihre Erwartungswerte heißen \emph{Momente}, sofern die Integrale
+% Stimme: vl01.tex:204, wörtlich (REVIEW-lec1).
+Für Maße auf $\mathbb{R}$ ist es oft besonders einfach, die Erwartungswerte der
+Koordinatenfunktion $f(x) = x$ und ihrer Potenzen zu berechnen. Diese Erwartungswerte heißen
+\emph{Momente}, sofern die Integrale
 $\int_{-\infty}^{\infty} \abs{x}^n\,\pw(x)\,\dd x$ endlich sind:
 \begin{equation}\label{c01.eq.momente}\claim{c01.cl.momente}{source-backed}
   M_n = \int_{-\infty}^{\infty} x^n\, \pw(x)\,\dd x ,
   \qquad n = 0, 1, 2, \dots
 \end{equation}
-Es ist immer $M_0 = 1$: Das ist die Normierung, geometrisch die Fläche unter der Kurve.
-$M_1$ heißt \emph{Mittelwert}. Die Varianz der Koordinate ist wie im endlichen Fall
+Das $n$-te Moment ist also nichts anderes als der Erwartungswert der Messung $x^n$. Es ist
+immer $M_0 = 1$: Das ist die Normierung, geometrisch die Fläche unter der Kurve. Die
+praktisch wichtigsten Momente sind $M_1$ und $M_2$; $M_1$ heißt \emph{Mittelwert}. Die Varianz der Koordinate ist wie im endlichen Fall
 \begin{equation}\label{c01.eq.var-momente}\claim{c01.cl.var-momente}{derived}
   \begin{aligned}
     \Var[\Prob] &= \int_{-\infty}^{\infty} (x - M_1)^2\, \pw(x)\,\dd x \\
@@ -850,7 +992,10 @@ Die Momente außer $M_0$ müssen nicht existieren.
   Weil $I > 0$ ist, folgt $I = \sqrt{2\pi}$, und die Dichte \eqref{c01.eq.gauss} hat das
   Integral $1$.
 
-  Für die Momente gilt
+  % Stimme: v02 [63:27]-[65:07] („intuitiv soll klar sein, dass die erwartete Position null
+  % ist; bewiesen wird es trotzdem“).
+  Dass die erwartete Position null ist, ist intuitiv klar; bewiesen wird es trotzdem. Für die
+  Momente gilt
   \begin{equation}\label{c01.eq.gauss-momente}\claim{c01.cl.gauss-momente}{derived}
     \begin{aligned}
       M_1 &= 0, \\

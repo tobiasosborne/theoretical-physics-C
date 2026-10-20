@@ -1,0 +1,43 @@
+% c03.fig.kreuz — the dagger (Kreuz) operation and the inner product.
+%
+% (a) The complex plane with the entries of v = (2+i, -1+2i) (filled discs) and their
+%     conjugates v_1^* = 2-i, v_2^* = -1-2i (open circles): conjugation is reflection in the
+%     real axis.  Scale 1 = 0.62 cm.
+% (b) The inner product of example c03.ex.skalarprodukt: the row v^dagger = (1-i, 1+i) times
+%     the column w = (1, -1), written out entry by entry: (1-i)*1 + (1+i)*(-1) = -2i (c03.eq.vw).
+% Greyscale: vector entries in the state role; conjugates open; leaders hairline.
+\begin{tikzpicture}[x=1cm, y=1cm]
+  \begin{scope}[x=0.62cm, y=0.62cm]
+    \draw[tpc axis, -{Stealth[length=5pt]}] (-2.6,0) -- (3.4,0);
+    \draw[tpc axis, -{Stealth[length=5pt]}] (0,-2.7) -- (0,2.8);
+    \node[tpc label, anchor=west] at (3.45,0) {$\operatorname{Re}$};
+    \node[tpc label, anchor=south] at (0,2.85) {$\operatorname{Im}$};
+    \foreach \t in {-2,-1,1,2} {
+      \draw[tpc leader] (\t,-0.08) -- (\t,0.08);
+      \draw[tpc leader] (-0.08,\t) -- (0.08,\t);
+    }
+    \node[tpc label, anchor=north] at (1,-0.1) {$1$};
+    \node[tpc label, anchor=east] at (-0.1,1) {$1$};
+    \draw[tpc leader, dashed, -{Stealth[length=4pt]}] (2,0.82) -- (2,-0.82);
+    \draw[tpc leader, dashed, -{Stealth[length=4pt]}] (-1,1.82) -- (-1,-1.82);
+    \fill[tpc-state] (2,1) circle (2.6pt);
+    \fill[tpc-state] (-1,2) circle (2.6pt);
+    \draw[tpc-state, line width=\tpcstrokethin, fill=tpc-plate] (2,-1) circle (2.6pt);
+    \draw[tpc-state, line width=\tpcstrokethin, fill=tpc-plate] (-1,-2) circle (2.6pt);
+    \node[tpc label, anchor=west] at (2.18,1) {$v_1 = 2+i$};
+    \node[tpc label, anchor=west] at (2.18,-1) {$v_1^* = 2-i$};
+    \node[tpc label, anchor=east] at (-1.2,2) {$v_2 = -1+2i$};
+    \node[tpc label, anchor=east] at (-1.2,-2) {$v_2^* = -1-2i$};
+    \node[tpc label] at (0.4,-3.5) {(a)};
+  \end{scope}
+  \begin{scope}[shift={(7.6,0.2)}]
+    \node[tpc label, anchor=east] (row) at (1.15,1.0)
+      {$\vb{v}^{\dagger} = \begin{pmatrix} 1-i & 1+i \end{pmatrix}$};
+    \node[tpc label, anchor=west] (col) at (1.45,1.0)
+      {$\begin{pmatrix} 1 \\ -1 \end{pmatrix} = \vb{w}$};
+    \node[tpc label] at (1.3,1.0) {$\cdot$};
+    \node[tpc label, anchor=north] at (1.25,0.15)
+      {$\begin{aligned} \vb{v}^{\dagger}\vb{w} &= (1-i)\cdot 1 \\ &\quad + (1+i)\cdot(-1) \\ &= -2i \end{aligned}$};
+    \node[tpc label] at (1.25,-1.75) {(b)};
+  \end{scope}
+\end{tikzpicture}

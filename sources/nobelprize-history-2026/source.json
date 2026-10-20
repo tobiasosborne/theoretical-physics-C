@@ -1,0 +1,95 @@
+{
+ "schema_version": 1,
+ "key": "nobelprize-history-2026",
+ "kind": "data",
+ "storage": "private",
+ "title": "Historical dates of the prehistory of quantum mechanics: NobelPrize.org laureate fact pages and the Crossref record of Davisson and Germer, Phys. Rev. 30, 705 (1927)",
+ "authors": [
+  "Nobel Prize Outreach (NobelPrize.org, laureate 'Facts' pages)",
+  "Crossref (metadata registry; record deposited by the American Physical Society)"
+ ],
+ "version": "pages as served on 2026-10-20",
+ "language": "en",
+ "identifiers": {
+  "urls": [
+   "https://www.nobelprize.org/prizes/physics/1918/planck/facts/",
+   "https://www.nobelprize.org/prizes/physics/1925/franck/facts/",
+   "https://www.nobelprize.org/prizes/physics/1937/davisson/facts/",
+   "https://www.nobelprize.org/prizes/physics/1921/einstein/facts/",
+   "https://www.nobelprize.org/prizes/physics/1943/stern/facts/",
+   "https://www.nobelprize.org/prizes/physics/1929/broglie/facts/",
+   "https://api.crossref.org/works/10.1103/PhysRev.30.705"
+  ],
+  "doi_davisson_germer": "10.1103/PhysRev.30.705"
+ },
+ "retrieval": {
+  "route": "fetched with curl by the Lecture 1 agent on 2026-10-20 (HTTP 200 each); the APS abstract page https://journals.aps.org/pr/abstract/10.1103/PhysRev.30.705 answered 403 and was replaced by the Crossref record of the same DOI",
+  "date": "2026-10-20",
+  "files": {
+   "planck-facts.html": "https://www.nobelprize.org/prizes/physics/1918/planck/facts/",
+   "franck-facts.html": "https://www.nobelprize.org/prizes/physics/1925/franck/facts/",
+   "davisson-facts.html": "https://www.nobelprize.org/prizes/physics/1937/davisson/facts/",
+   "einstein-facts.html": "https://www.nobelprize.org/prizes/physics/1921/einstein/facts/",
+   "stern-facts.html": "https://www.nobelprize.org/prizes/physics/1943/stern/facts/",
+   "broglie-facts.html": "https://www.nobelprize.org/prizes/physics/1929/broglie/facts/",
+   "crossref-physrev-30-705.json": "https://api.crossref.org/works/10.1103/PhysRev.30.705"
+  }
+ },
+ "identity_check": "each HTML page carries its own citation line 'MLA style: <Laureate> – Facts. NobelPrize.org. Nobel Prize Outreach 2026. Tue. 20 Oct 2026. <url>'; the Crossref JSON names title 'Diffraction of Electrons by a Crystal of Nickel', authors Davisson and Germer, container 'Physical Review', volume 30, page 705-740",
+ "files": [
+  {
+   "path": "nobelprize-history-2026/planck-facts.html",
+   "role": "text",
+   "media_type": "text/html",
+   "sha256": "1979cfa0ff489e290450d597292d7697a53fb897b662335d1b494d20b68448cc",
+   "notes": "https://www.nobelprize.org/prizes/physics/1918/planck/facts/"
+  },
+  {
+   "path": "nobelprize-history-2026/franck-facts.html",
+   "role": "text",
+   "media_type": "text/html",
+   "sha256": "44105236f124979215522e1b1ceb7374e4485928fcf6577d8a3d56b76fb21415",
+   "notes": "https://www.nobelprize.org/prizes/physics/1925/franck/facts/"
+  },
+  {
+   "path": "nobelprize-history-2026/davisson-facts.html",
+   "role": "text",
+   "media_type": "text/html",
+   "sha256": "617491b5bb45815f80fa50d6a5dd0a57008cc1e015ee39606c1665f10f18c5a9",
+   "notes": "https://www.nobelprize.org/prizes/physics/1937/davisson/facts/"
+  },
+  {
+   "path": "nobelprize-history-2026/einstein-facts.html",
+   "role": "text",
+   "media_type": "text/html",
+   "sha256": "3038ff9b54aff34ac93fbd9ae954e2e35eeae9ecc2926a7ac66a0d6a90425906",
+   "notes": "https://www.nobelprize.org/prizes/physics/1921/einstein/facts/"
+  },
+  {
+   "path": "nobelprize-history-2026/stern-facts.html",
+   "role": "text",
+   "media_type": "text/html",
+   "sha256": "b177a6ac4b2b6f35bde5b9d2e27be10214a9f7016562681cc23ca0ac2a06155e",
+   "notes": "https://www.nobelprize.org/prizes/physics/1943/stern/facts/"
+  },
+  {
+   "path": "nobelprize-history-2026/broglie-facts.html",
+   "role": "text",
+   "media_type": "text/html",
+   "sha256": "97706685e4a782eb62e0a7369776790d16a9b354652ca5d8a0cd5a8328c2cd01",
+   "notes": "https://www.nobelprize.org/prizes/physics/1929/broglie/facts/"
+  },
+  {
+   "path": "nobelprize-history-2026/crossref-physrev-30-705.json",
+   "role": "text",
+   "media_type": "application/json",
+   "sha256": "7d4f7879e8c1212a936dd99cee98e3d99482bafe878eb18f80b86f1036e885d4",
+   "notes": "https://api.crossref.org/works/10.1103/PhysRev.30.705"
+  }
+ ],
+ "authority_for": "years of the experiments and results named in the prehistory of chapter c00 (Planck's radiation law 1900, Franck-Hertz 1914, Stern-Gerlach 1922, de Broglie 1924, Davisson-Germer 1927, Einstein's photoelectric work from 1905); the black-body and Stern-Gerlach summary sentences of the Planck and Stern pages",
+ "limitations": "secondary summaries written by Nobel Prize Outreach, not the original papers (except the Crossref bibliographic record); a quote is a sentence of the raw HTML line, which also contains the surrounding paragraph markup; the pages may change after the retrieval date. Lenard's date (1899 in the script) is not established by these pages.",
+ "rights_ref": "rights.json",
+ "supersedes": null,
+ "errata": []
+}

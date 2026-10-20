@@ -69,6 +69,10 @@
       "kind": "table"
     },
     {
+      "id": "c01.tab.ereignisse",
+      "kind": "table"
+    },
+    {
       "id": "c01.demo.haeufigkeit",
       "kind": "demo",
       "still": "c01.fig.haeufigkeit",

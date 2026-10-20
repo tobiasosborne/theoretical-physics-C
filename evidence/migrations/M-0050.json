@@ -1,0 +1,89 @@
+{
+ "schema_version": 1,
+ "id": "M-0050",
+ "status": "recorded",
+ "title": "vl01: three dates of the prehistory corrected (Planck's radiation law 1900, Franck-Hertz 1914, Davisson-Germer 1927); Lenard's year dropped",
+ "legacy": [
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl01.tex",
+   "line": 41,
+   "file_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "old_text": "postuliert (1899).",
+   "new_text": "Tabelle c00.tab.jahre: „Strahlungsgesetz, Lichtquanten | Planck, 1900“"
+  },
+  {
+   "version": "v0.2-en",
+   "file": "latex/lectures/en/lec01.tex",
+   "line": 41,
+   "file_sha256": "b0ccc8af69cc09146698d13dcbf0667b5ee2295def8dc4133611ade213eab270",
+   "old_text": "(1899). Today",
+   "new_text": "table c00.tab.jahre: 'Radiation law, light quanta | Planck, 1900'"
+  },
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl01.tex",
+   "line": 55,
+   "file_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "old_text": "(Lenard, 1899; Einstein 1905)",
+   "new_text": "Tabelle c00.tab.jahre: „Photoeffekt | Lenard; Einstein, ab 1905“"
+  },
+  {
+   "version": "v0.2-en",
+   "file": "latex/lectures/en/lec01.tex",
+   "line": 55,
+   "file_sha256": "b0ccc8af69cc09146698d13dcbf0667b5ee2295def8dc4133611ade213eab270",
+   "old_text": "(Lenard, 1899; Einstein 1905)",
+   "new_text": "table c00.tab.jahre: 'Photoelectric effect | Lenard; Einstein, from 1905'"
+  },
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl01.tex",
+   "line": 60,
+   "file_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "old_text": "($\\sim$1911)",
+   "new_text": "Tabelle c00.tab.jahre: „Franck-Hertz-Versuch | Franck und Hertz, 1914“"
+  },
+  {
+   "version": "v0.2-en",
+   "file": "latex/lectures/en/lec01.tex",
+   "line": 60,
+   "file_sha256": "b0ccc8af69cc09146698d13dcbf0667b5ee2295def8dc4133611ade213eab270",
+   "old_text": "($\\sim$1911)",
+   "new_text": "table c00.tab.jahre: 'Franck-Hertz experiment | Franck and Hertz, 1914'"
+  },
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl01.tex",
+   "line": 63,
+   "file_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "old_text": "(Davisson-Germer-Experiment, 1929; Beugung an Kristallen)",
+   "new_text": "Tabelle c00.tab.jahre: „Davisson-Germer-Experiment | Davisson und Germer, 1927“"
+  },
+  {
+   "version": "v0.2-en",
+   "file": "latex/lectures/en/lec01.tex",
+   "line": 63,
+   "file_sha256": "b0ccc8af69cc09146698d13dcbf0667b5ee2295def8dc4133611ade213eab270",
+   "old_text": "(Davisson-Germer experiment, 1929; diffraction from crystals)",
+   "new_text": "table c00.tab.jahre: 'Davisson-Germer experiment | Davisson and Germer, 1927'"
+  }
+ ],
+ "reason": "The independent review docs/review/lectures/REVIEW-lec1.md (row 1, WRONG) found the script's dates doubtful, as G-0025 had. The NobelPrize.org laureate facts pages fetched on 2026-10-20 (source nobelprize-history-2026) date Planck's solution of the black-body problem by quanta to 1900, the Franck-Hertz experiment to 1914 and Davisson's electron-wave demonstration to 1927; the Crossref record of Davisson and Germer, Phys. Rev. 30, 705 gives the issue date 1927-12-01. The script attached 1899 to the postulation of h together with the radiation law; the radiation law is now dated 1900 and no year is printed for earlier work on the constant. Lenard's year 1899 is not established by any registered source and is dropped; Einstein's from-1905 is supported by the Einstein facts page.",
+ "evidence": {
+  "independent_check": "docs/review/lectures/REVIEW-lec1.md row 1 (reviewer's own knowledge, corroborated by the same public pages)",
+  "provenance_ids": [
+   "P-0101",
+   "P-0102",
+   "P-0103",
+   "P-0105",
+   "P-0310",
+   "P-0311",
+   "P-0314",
+   "P-0315",
+   "P-0316"
+  ],
+  "notes": "P-0101, P-0102, P-0103, P-0105 quote the old dates and now only support this record; P-0310 to P-0316 quote the registered pages."
+ },
+ "destination": "c00.v2"
+}

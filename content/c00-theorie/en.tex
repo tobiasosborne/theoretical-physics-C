@@ -2,26 +2,399 @@
 %
 % Same structure, IDs and display equations as de.tex, which leads.  Migration of the first
 % lecture (latex/lectures/en/lec01.tex is the English v0.2 text); see
-% evidence/migrations/maps/vl01-map.json.  Framing: docs/plan/BRIEF.md (author-stipulated,
-% quoted verbatim here).  Physics of the prehistory: the author's lecture notes only
+% evidence/migrations/maps/vl01-map.json.  Voice: TJO's own sentences from the script and
+% from his recorded lectures (transcripts/clean/v01.md, v02.md); timestamps are in de.tex.
+% The transcripts are not a registered source and supply wording, examples and didactic
+% remarks only, no physics.  Framing: docs/plan/BRIEF.md (author-stipulated, quoted
+% verbatim here).  Physics of the prehistory: the author's lecture notes only
 % (tpc-script-v0.2), scope "as stated in the author's lecture notes; no external source
-% checked".  Constants: CODATA 2022.  Derivations: evidence/derivations/c01/DERIVATION.md,
-% part "Chapter 0".
+% checked", or derived (evidence/derivations/c01/DERIVATION.md, part A).  Constants:
+% CODATA 2022.  Order as in the lecture: prehistory and the two maxims first, then the
+% framing of the course; section IDs are names, so c00.s4 precedes c00.s1.
 
 \chapter{What a physical theory supplies}\label{c00}
 
-This chapter says two things. First: what this course means by a physical theory, and in
-which order it treats its theories. Second: on which findings classical physics failed, so
-that a new theory was needed. There is little calculation here. The mathematics begins in
-Chapter~1 with probability.
+We find ourselves in a quantum universe. It has always been so and always will be. Until
+1900, however, we did not notice the quantum aspects of the universe, because classical
+physics supplied us with a very good approximation to the physics of everyday life. That is
+a great success and at the same time a problem: how is one to discover quantum aspects when
+the classical approximation works so well? Quantum mechanics would be far easier to
+understand if we could observe quantum aspects every day.
+
+What stands in need of explanation is therefore not quantum mechanics, but the quality of
+the classical approximation. One of the greatest challenges in learning quantum mechanics is
+to understand why classical physics works so well. The keyword for that is
+\emph{decoherence}; it belongs to advanced quantum mechanics, and we shall not manage it in
+this course \srcref{tpc-script-v0.2}{lec01, section “The Birth of Quantum Mechanics”}.
+
+% GAP-TJO: whether exercises on real quantum computers belong to the new course is TJO's
+% decision (G-0070).
+Today things are different from 1900. The first quantum computers have been built, and
+through cloud services you can experiment yourself with real quantum computers. Quantum aspects are slowly becoming visible. Before we can play with them we need
+the prehistory and the formal structure of the theory: on which foundations does it rest,
+and which equations does one need?
+
+First a remark on method, one that holds for the whole course. One can teach quantum
+mechanics by working through the wrong, classical or semiclassical, models first, in order to
+show afterwards that they do not work. That is not my style. From the very beginning we look
+at everything correctly; nowhere do we work through the Bohr model of the atom. The
+historical experiments I shall name nonetheless, but only as a list.
+
+I am not recommending a textbook to you: in my opinion the best book on quantum mechanics
+does not exist yet. There is no bad one, but equally no perfect one. Do read other books
+alongside; the authoritative text is this one.
+
+This chapter has two parts. First the findings on which classical physics failed, and the two
+sentences in which I sum them up. Then the framing of the course: what a physical theory
+supplies, and in which order we treat the theories. There is little calculation here; the
+mathematics begins in Chapter~1 with probability.
+
+\section{Why a new theory was needed}\label{c00.s4}
+
+The prehistory of quantum mechanics is a series of observations which gradually called into
+question the thesis that our universe is described by classical physics. As a line of proof
+these old experiments hardly make sense today: we have long been convinced that quantum
+mechanics is the right theory. They are good to know all the same. Whoever teaches in the
+upper forms of a secondary school can tell an exciting story with them. Two of the findings
+I give with their formula, the rest as a list.
+
+\subsection{Black-body radiation}\label{c00.s4.1}
+
+A black body reflects no incident radiation, yet at a temperature $\Temp$ it radiates all the
+same, on account of its thermally excited atoms. When it is heated, its radiation has a
+spectrum that depends only on the temperature and not on the material
+\srcref{nobelprize-history-2026}{Max Planck, Facts}. A true black body is hard to make. The
+usual approximation is a box with a small hole (Figure~\ref{c00.fig.hohlraum}) whose walls
+all have the same temperature $\Temp$ and are in thermal equilibrium with the radiation
+inside. We take this as a premise. Incident radiation vanishes inside through multiple
+reflection, and approximately black-body radiation of temperature $\Temp$ emerges from the
+hole.
+
+Why does the incident radiation vanish? Suppose the wall sends back a fixed fraction $r$ of the
+incident energy at every reflection, with $0 \leq r < 1$, and swallows the rest. After $n$
+reflections the fraction $r^n$ of an entering ray is left, and
+\begin{equation}\label{c00.eq.reflexion}\claim{c00.cl.reflexion}{derived}
+  r^n \;\longrightarrow\; 0
+  \qquad (n \to \infty) .
+\end{equation}
+A ray that finds the small hole again only after many reflections carries hardly any energy
+out. The hole therefore acts approximately like a body that swallows everything. About the
+radiation that comes out of the hole this calculation says nothing; for that one needs the
+premise of thermal equilibrium.
+
+\begin{tpcfigure}{c00.fig.hohlraum}
+  \caption{A black body as a box with a small hole. Drawn are the first reflections of an
+    entering ray according to the law of reflection; none of them hits the hole. If the
+    wall keeps the fraction $1 - r$ of the energy at every reflection, only the fraction
+    $r^n$ is left after $n$ reflections, equation~\eqref{c00.eq.reflexion}.}
+\end{tpcfigure}
+
+What was shocking around 1900 was that the spectrum of this radiation cannot be explained
+with classical physics. The right spectrum follows from the assumption that light of
+frequency $\nu$ consists of light quanta of energy
+\begin{equation}\label{c00.eq.lichtquant}\claim{c00.cl.lichtquant}{source-backed}
+  E = \hPlanck \nu
+\end{equation}
+The constant $\hPlanck$ is called Planck's constant. Planck originally postulated it as an
+“auxiliary quantity” in deriving the radiation law. The law gives how much energy per volume
+falls on the frequencies between $\nu$ and $\nu + \dd\nu$:
+\begin{equation}\label{c00.eq.planck}\claim{c00.cl.planck}{source-backed}
+  u(\nu, \Temp)\,\dd\nu
+  = \frac{8\pi \hPlanck \nu^3}{\clight^3}\,\frac{\dd\nu}{e^{\hPlanck\nu/(\kB \Temp)} - 1} .
+\end{equation}
+Here $\clight$ is the speed of light and $\kB$ Boltzmann's constant. We shall derive this law
+ourselves in the statistical part of the course, from the assumption that light is
+quantised. Here it is only used \srcref{tpc-script-v0.2}{lec01, prehistory, item 1}.
+
+Theoretical physics rarely uses $\hPlanck$ today; predominantly one uses the \emph{reduced
+Planck constant}
+\begin{equation}\label{c00.eq.hbar}\claim{c00.cl.hbar}{source-backed}
+  \hbar = \frac{\hPlanck}{2\pi} .
+\end{equation}
+The numerical values are
+$\hPlanck = \num[c00.cl.h-wert]{6.62607015 \cdot 10^{-34}}{J\,s}$ and
+$\hbar = \num[c00.cl.hbar-wert]{1.054571817 \cdot 10^{-34}}{J\,s}$; the second is
+truncated to ten digits.
+
+What does the constant $\hPlanck$ do in the radiation law? For $\nu > 0$ and $\Temp > 0$ we
+look at the exponent $x = \hPlanck\nu/(\kB \Temp)$. For small $x$, $e^x - 1$ is nearly equal
+to $x$. Inserting this into \eqref{c00.eq.planck}, $\hPlanck$ cancels and the function
+\begin{equation}\label{c00.eq.grenzform}\claim{c00.cl.grenzform}{derived}
+  u_{\mathrm{kl}}(\nu, \Temp) = \frac{8\pi \nu^2 \kB \Temp}{\clight^3},
+  \qquad
+  \frac{u(\nu, \Temp)}{u_{\mathrm{kl}}(\nu, \Temp)} = \frac{x}{e^{x} - 1}
+  \quad \text{\tpcifenglish{with}{mit}}\ x = \frac{\hPlanck\nu}{\kB \Temp} .
+\end{equation}
+remains. The second equation holds exactly for $\nu > 0$ and $\Temp > 0$; one obtains it by
+dividing \eqref{c00.eq.planck} by $u_{\mathrm{kl}}$. The ratio $x/(e^x - 1)$ is close to $1$
+for small $x$ and falls to $0$ for large $x$\zoomref{c00.v1}. The limiting form
+$u_{\mathrm{kl}}$ no longer contains $\hPlanck$.
+% GAP-TJO: that u_kl is the prediction of classical physics (Rayleigh-Jeans, "ultraviolet
+% catastrophe") rests only on the old figure file, not on a registered source (G-0024).
+
+\begin{tpcfigure}{c00.fig.planck}
+  \caption{The radiation law~\eqref{c00.eq.planck} and its limiting form
+    \eqref{c00.eq.grenzform}. (a) The energy density $u$ for three temperatures $T_0$,
+    $\tfrac56 T_0$ and $\tfrac23 T_0$ (solid, dashed, dash-dotted), plotted against
+    $\hPlanck\nu/(\kB T_0)$ in units of $u_0 = 8\pi(\kB T_0)^3/(\hPlanck^2\clight^3)$. The
+    thin dashed parabola is the limiting form $u_{\mathrm{kl}}$ for the highest temperature
+    $T_0$. Notice how at small frequencies it lies approximately on the solid curve to which
+    it belongs, and only then parts company with it; after that it runs off the top of the
+    picture. (b) The ratio $u/u_{\mathrm{kl}} = x/(e^x-1)$ for $\nu > 0$ and $\Temp > 0$. It
+    depends only on $x = \hPlanck\nu/(\kB\Temp)$. The hatched area is the distance from the
+    limiting form. It becomes noticeable as soon as $\hPlanck\nu$ reaches the size of
+    $\kB\Temp$.}
+\end{tpcfigure}
+
+Figure~\ref{c00.fig.planck} shows both. The limiting form grows like $\nu^2$ without end,
+while the curves of the radiation law have a maximum and fall off afterwards. The difference
+becomes visible as soon as the energy $\hPlanck\nu$ of a light quantum is no longer small
+compared with $\kB\Temp$.
+
+\begin{vertiefung}[id=c00.v1,
+    titel={The limiting form, precisely},
+    wozu={The Core says that the ratio $x/(e^x-1)$ is close to $1$ for small $x$ and falls
+      to $0$ for large $x$. Here are two bounds that prove it, and a consequence: the
+      limiting form predicts an infinite energy density, the radiation law a finite one.},
+    voraussetzung={Core up to equation~\eqref{c00.eq.grenzform}; the exponential series and
+      integrals of powers. The rest of the chapter does not need this block.},
+    zurueck={For $\hPlanck\nu$ small compared with $\kB\Temp$ the radiation law and the
+      limiting form agree approximately, their ratio tends to $1$; for large frequencies the
+      limiting form is wrong, and arbitrarily wrong.}]
+  For $x > 0$, $e^x = 1 + x + \tfrac12 x^2 + \tfrac16 x^3 + \dots$ is a sum of positive
+  terms. Two estimates for $e^x - 1$ follow. Dropping all terms from the third on makes the
+  sum smaller: $e^x - 1 \geq x + \tfrac12 x^2$. Factoring out $x$ instead leaves
+  $1 + \tfrac12 x + \tfrac16 x^2 + \dots$ in the bracket, and each of its terms is at most as
+  large as the corresponding term $1 + x + \tfrac12 x^2 + \dots$ of the series for $e^x$:
+  so $e^x - 1 \leq x\,e^x$. Together, for all $x > 0$,
+  \begin{equation}\label{c00.eq.schranken}\claim{c00.cl.schranken}{derived}
+    e^{-x} \;\leq\; \frac{x}{e^{x} - 1} \;\leq\; \frac{1}{1 + \tfrac12 x} .
+  \end{equation}
+  As $x \to 0$ both bounds tend to $1$, as $x \to \infty$ both tend to $0$. At $x = 1$, that
+  is $\hPlanck\nu = \kB\Temp$, the ratio lies between $1/e$ and $\tfrac23$.
+
+  Now to the total energy density, the integral over all frequencies. For the limiting form,
+  \begin{equation}\label{c00.eq.divergenz}\claim{c00.cl.divergenz}{derived}
+    \int_0^{\nu_1} u_{\mathrm{kl}}(\nu, \Temp)\,\dd\nu
+    = \frac{8\pi \kB \Temp}{3\,\clight^3}\,\nu_1^3 ,
+  \end{equation}
+  and this grows beyond every bound with the upper limit $\nu_1$. The limiting form predicts
+  an infinite energy density for every temperature $\Temp > 0$.
+
+  For the radiation law the substitution $\nu = x\,\kB\Temp/\hPlanck$ gives
+  \begin{equation}\label{c00.eq.gesamt}\claim{c00.cl.gesamt}{derived}
+    \begin{aligned}
+      \int_0^{\infty} u(\nu, \Temp)\,\dd\nu
+      &= \frac{8\pi (\kB\Temp)^4}{\hPlanck^3 \clight^3} \int_0^\infty \frac{x^3}{e^x - 1}\,\dd x , \\
+      \int_0^\infty \frac{x^3}{e^x - 1}\,\dd x &\leq \frac13 + 120 .
+    \end{aligned}
+  \end{equation}
+  The bound on the integral comes in two pieces. For $0 < x \leq 1$,
+  \eqref{c00.eq.schranken} gives $x^3/(e^x-1) \leq x^2$, and
+  $\int_0^1 x^2\,\dd x = \tfrac13$. For $x \geq 1$ one uses the term $x^5/120$ of the
+  exponential series: $e^x - 1 \geq x^5/120$, so $x^3/(e^x-1) \leq 120/x^2$, and
+  $\int_1^\infty 120\,x^{-2}\,\dd x = 120$. The integral is a pure number. The total energy
+  density of the radiation law is therefore finite and proportional to $\Temp^4$. We need the
+  value of the number only in the statistical part.
+\end{vertiefung}
+
+\subsection{Photoelectric effect}\label{c00.s4.2}
+
+The second experiment concerns light and matter. Light can release electrons, the
+photoelectrons. The finding: for a fixed material the \emph{maximum} kinetic energy of the
+photoelectrons depends on the frequency of the light, not on its intensity. Classically that
+is very strange. Everywhere else more intensity means more energy; here the energy of the
+fastest electrons depends on the frequency alone. In the one-photon model the balance reads
+\begin{equation}\label{c00.eq.photoeffekt}\claim{c00.cl.photoeffekt}{source-backed}
+  E_{\mathrm{kin,max}} = \tfrac12 \massE v_{\max}^2 = \hPlanck\nu - W
+\end{equation}
+with the mass $\massE$ of the electron, its largest occurring speed $v_{\max}$ and the
+binding energy $W$ of the material \srcref{tpc-script-v0.2}{lec01, prehistory, item 2}. The
+kinetic energy is written here non-relativistically as $\tfrac12 \massE v^2$; this assumes
+that the electrons are slow compared with light. This observation pointed to light quanta
+with the energy~\eqref{c00.eq.lichtquant}.
+
+Let us check the balance in the one-photon model. A light quantum gives its energy
+$\hPlanck\nu$ to a single electron. To get out, this electron has to spend an energy $W'$;
+$W$ is the smallest such energy, so $W' \geq W$. For an electron that actually gets out,
+a kinetic energy is left, and that is never negative:
+\begin{equation}\label{c00.eq.schwelle}\claim{c00.cl.schwelle}{derived}
+  0 \;\leq\; \tfrac12 \massE v^2 = \hPlanck\nu - W' \;\leq\; \hPlanck\nu - W,
+  \qquad \text{\tpcifenglish{hence}{also}} \qquad
+  \nu \geq \frac{W}{\hPlanck} .
+\end{equation}
+Equation~\eqref{c00.eq.photoeffekt} thus gives the largest kinetic energy, the one with
+$W' = W$. Below the threshold frequency $W/\hPlanck$ a single light quantum releases no
+electron in this model. For fixed $W$, $E_{\mathrm{kin,max}}$ is a straight line in $\nu$ with slope $\hPlanck$, starting at $\nu = W/\hPlanck$
+(Figure~\ref{c00.fig.photoeffekt}). The slope is the same for every value of $W$.
+
+\begin{tpcfigure}{c00.fig.photoeffekt}
+  \caption{The maximum kinetic energy~\eqref{c00.eq.photoeffekt} of the photoelectrons,
+    plotted for two fixed values of the binding energy, $W_1$ (solid) and
+    $W_2 = \tfrac85 W_1$ (dashed; the ratio is chosen for the picture). Both lines have the
+    same slope $\hPlanck$: a frequency difference $\nu' - \nu$ goes with the energy
+    difference $\hPlanck(\nu' - \nu)$. Each line starts at its threshold
+    $\nu = W/\hPlanck$ from equation~\eqref{c00.eq.schwelle}. The dotted continuations meet
+    the axis at $-W$; there the kinetic energy would be negative.}
+\end{tpcfigure}
+
+\subsection{Further findings}\label{c00.s4.3}
+
+\begin{enumerate}
+  \item \emph{Stability of atoms, line spectra, Franck-Hertz experiment.} This is really an
+    observation: atoms are stable, and classically that cannot be explained. By the
+    Liénard-Wiechert potentials, which you know from electrodynamics, every accelerated point
+    charge radiates. An electron on an orbit around the nucleus would therefore lose energy
+    all the time and ought to crash into the nucleus, which it does not do. Line spectra and
+    the experiments of Franck and Hertz indicate that only certain discrete energy levels
+    are allowed in atoms. Only quantum mechanics can explain this; we shall discuss the line
+    spectrum of hydrogen in detail in Chapter~11.
+  \item \emph{Compton effect.} Light is scattered off electrons. How energy and momentum are
+    shared between light quantum and electron is described correctly with light quanta of
+    energy~\eqref{c00.eq.lichtquant} and momentum $p = \hPlanck/\lambda$ from
+    equation~\eqref{c00.eq.impuls}, together with conservation of energy and momentum.
+  \item \emph{Stern-Gerlach experiment.} This experiment matters particularly to me. A beam
+    of silver atoms passes through an inhomogeneous magnetic field. Classically it should
+    spread out into a continuous distribution; instead two separate beams are observed.
+    Angular momentum is quantised: at fixed angular-momentum quantum number $\lqn$ its
+    component in the direction of the field takes only finitely many values (space
+    quantisation). From such quantised angular momenta one can build qubits today,
+    the building blocks of quantum computers.
+  \item \emph{Interference of electrons.} The diffraction of electrons from crystals
+    (Davisson-Germer experiment) gave an indication of wave properties of the electron.
+    Light has wave but also particle properties; the photoelectric and Compton effects were
+    about that. Electrons have particle but also wave properties.
+\end{enumerate}
+The momentum of a light quantum of wavelength $\lambda$ is
+\begin{equation}\label{c00.eq.impuls}\claim{c00.cl.impuls}{source-backed}
+  p = \frac{\hPlanck}{\lambda}
+\end{equation}
+\srcref{tpc-script-v0.2}{lec01, prehistory, items 3 to 6}. The history with names and dates is
+good to know; you will not need it for the rest of the course\zoomref{c00.v2}.
+
+\begin{vertiefung}[id=c00.v2,
+    titel={Names and dates},
+    wozu={The Core names the findings without their history. Here are the dates and names,
+      for those who want to tell the story.},
+    voraussetzung={Section~\ref{c00.s4}. The rest of the course does not need this block.},
+    zurueck={The mathematical form of quantum mechanics and its statistical interpretation
+      arose in the years 1925 to 1927.}]
+  % Dates corrected after REVIEW-lec1 (M-0050); Lenard's year is not established by the
+  % registered pages and is left out (G-0025).
+  The text of this block follows my lecture notes \srcref{tpc-script-v0.2}{lec01,
+  prehistory}; the years of the experiments have been checked against the laureate pages of
+  the Nobel Foundation \srcref{nobelprize-history-2026}{Facts pages on Planck, Franck,
+  Stern, de Broglie, Einstein, Davisson; Crossref record of Phys. Rev. 30, 705}. One can argue
+  well:
+  \begin{equation}\label{c00.eq.geburtsjahr}\claim{c00.cl.geschichte}{source-backed}
+    \text{\tpcifenglish{The year of birth of quantum mechanics is 1926.}{Das Geburtsjahr der Quantenmechanik ist 1926.}}
+  \end{equation}
+
+  \begin{tpctable}{c00.tab.jahre}
+    \caption{Dates and names for the findings of Section~\ref{c00.s4}. The years follow the
+      laureate pages of the Nobel Foundation and, for Davisson and Germer, the year their
+      paper appeared in the Physical Review.}
+    \begin{tabular}{ll}
+      \toprule
+      Finding & Names, year \\
+      \midrule
+      Radiation law, light quanta & Planck, 1900 \\
+      Photoelectric effect & Lenard; Einstein, from 1905 \\
+      Franck-Hertz experiment & Franck and Hertz, 1914 \\
+      Stern-Gerlach experiment & Stern and Gerlach, 1922 \\
+      Wave properties of the electron & de Broglie, 1924 (postulate) \\
+      Davisson-Germer experiment & Davisson and Germer, 1927 \\
+      \bottomrule
+    \end{tabular}
+  \end{tpctable}
+
+  In 1926 Schrödinger published an exciting series of papers on wave mechanics. A parallel
+  approach began in 1925 with reflections by Heisenberg; from it Born and Jordan with
+  Heisenberg developed matrix mechanics. So one had, as it were, two quantum theories, wave
+  mechanics and matrix mechanics. Still in 1926 Schrödinger showed that wave mechanics and
+  matrix mechanics are equivalent. Heisenberg's work also led Dirac to a version of quantum
+  mechanics of his own. Born supplied, likewise in 1926, the statistical interpretation of
+  the theory. In my view Born's contribution is the
+  most important aspect of the whole theory.
+
+  Almost at the same time the theory took on the mathematical form it has today. Born took
+  advice from Norbert Wiener on turning matrices into operators. Hilbert gave a lecture
+  course on quantum mechanics in Göttingen in the winter semester 1926/27, and alongside it
+  his young assistant John von Neumann introduced the Hilbert space, density matrices and the
+  entropy of quantum states. Physicists did not read it at first. Wigner and Weyl clarified
+  the role of group theory. It is remarkable that, in spite of the theory's fantastic
+  successes, its interpretation remained disputed; to this day there is no contradiction
+  with quantum mechanics.
+
+  \begin{historical}
+    You are, by the way, in luck if you read German: the original papers of Planck,
+    Schrödinger, Heisenberg and Born are written in German. I did not have that opportunity
+    when I learnt quantum mechanics.
+  \end{historical}
+\end{vertiefung}
+
+\subsection{Two maxims}\label{c00.s4.4}
+
+All these observations together are indications that quantum mechanics is the right theory
+of the universe. I sum them up in two sentences
+\srcref{tpc-script-v0.2}{lec01, the two yellow boxes}. The first:
+\begin{equation}\label{c00.eq.welle-teilchen}\claim{c00.cl.welle-teilchen}{source-quoted}
+  \begin{aligned}
+    &\text{\tpcifenglish{Matter and radiation possess}{Materie und Strahlung besitzen}} \\
+    &\text{\tpcifenglish{both wave and particle properties.}{sowohl Wellen- als auch Teilcheneigenschaften.}}
+  \end{aligned}
+\end{equation}
+The second is the main message of this course:
+\begin{equation}\label{c00.eq.kernsatz}\claim{c00.cl.kernsatz}{source-quoted}
+  \begin{aligned}
+    &\text{\tpcifenglish{Quantum mechanics is a probabilistic theory.}{Die Quantenmechanik ist eine probabilistische Theorie.}} \\
+    &\text{\tpcifenglish{It therefore gives us predictions}{Sie liefert uns somit nur Vorhersagen}} \\
+    &\text{\tpcifenglish{only in the form of probabilities.}{in Form von Wahrscheinlichkeiten.}}
+  \end{aligned}
+\end{equation}
+This second statement stands above the first. “Wave and particle properties” remains a
+little vague; the probabilistic statement is precise and underlies every quantum phenomenon.
+Classically the predictions are definite: the particle is at this place at this time.
+Probabilities enter classical physics purely through missing information, for instance in
+statistical physics; there are no fundamental probabilities there. In quantum mechanics it is
+the other way round: it only says with which probability an event takes place. This
+statistical interpretation was supplied by Born, and for me it is the most important aspect
+of the theory.
+
+\begin{merksatz}[The most important statement about quantum mechanics]
+  Quantum mechanics is a probabilistic theory: it gives predictions only in the form of
+  probabilities. Please take this sentence away with you. In every oral examination I ask
+  what the most important statement about quantum mechanics is.
+\end{merksatz}
+
+I want to be honest: the interpretation of quantum mechanics is still disputed today, despite
+many ideas. To my taste the probabilistic statement is the right one. Quantum mechanics is the
+best model we have in physics, and to this day there is no contradiction with it.
+
+We now leave the exciting history of quantum mechanics behind. From now on:
+\begin{equation}\label{c00.eq.annahme}\claim{c00.cl.annahme}{source-quoted}
+  \begin{aligned}
+    &\text{\tpcifenglish{Our assumption is that quantum mechanics}{Unsere Annahme ist, dass die Quantenmechanik}} \\
+    &\text{\tpcifenglish{is the correct description of the universe.}{die korrekte Beschreibung des Universums ist.}}
+  \end{aligned}
+\end{equation}
 
 \section{The framing of the course}\label{c00.s1}
 
-The course follows a framing that its author has stipulated. It is not derived; it says
-how the material is ordered and in which language it is formulated. Its first sentences
-are:
-% The three sentences are docs/plan/BRIEF.md:44, 45 and 50 verbatim (without the labels
-% "0.", "1." and "P0.").  GAP-TJO: the German wording in de.tex is a translation (G-0022).
+% The three sentences of this section are docs/plan/BRIEF.md:50, 44 and 45 verbatim
+% (without the labels).  GAP-TJO: the German wording in de.tex is a translation (G-0022);
+% reading P0 as the second maxim said for every theory compares the two wordings (G-0023 c).
+From the second maxim I make a principle for the whole course. It holds not only for quantum
+mechanics but for every physical theory:
+\begin{equation}\label{c00.eq.p0}\claim{c00.cl.p0}{author-stipulated}
+  \begin{aligned}
+    &\text{\tpcifenglish{Physical theories are probabilistic theories:}{Physikalische Theorien sind probabilistische Theorien:}} \\
+    &\text{\tpcifenglish{predictions in the form of probabilities.}{Vorhersagen in Form von Wahrscheinlichkeiten.}}
+  \end{aligned}
+\end{equation}
+I call this sentence P0. It is the first of the postulates that we set up step by step; with
+each further postulate the theory becomes more special, until it is quantum mechanics. Two
+further stipulations belong with it:
 \begin{equation}\label{c00.eq.liefert}\claim{c00.cl.liefert}{author-stipulated}
   \begin{aligned}
     &\text{\tpcifenglish{A physical theory supplies data for}{Eine physikalische Theorie liefert Daten für}} \\
@@ -35,27 +408,18 @@ are:
     &\text{\tpcifenglish{as a subset of probabilistic).}{als Teilmenge der probabilistischen auf).}}
   \end{aligned}
 \end{equation}
-\begin{equation}\label{c00.eq.p0}\claim{c00.cl.p0}{author-stipulated}
-  \begin{aligned}
-    &\text{\tpcifenglish{Physical theories are probabilistic theories:}{Physikalische Theorien sind probabilistische Theorien:}} \\
-    &\text{\tpcifenglish{predictions in the form of probabilities.}{Vorhersagen in Form von Wahrscheinlichkeiten.}}
-  \end{aligned}
-\end{equation}
-The brief calls sentence~\eqref{c00.eq.p0} P0. The chapter author reads it as the opening
-of the incremental specialisation of the postulates; this connective wording awaits the
-author's decision (G-0023).
-
-Sentence~\eqref{c00.eq.liefert} names three ingredients. The next section shows where they
-occur in an experiment. Sentence~\eqref{c00.eq.probabilistisch} says that deterministic
-theories are regarded as part of the probabilistic ones. Chapter~1 proves a proposition
-about point weights on finite outcome sets. Reading it as an example of this stipulation
-is the chapter author's proposal and awaits the author's decision (G-0023); a definition
-of deterministic theories including dynamics remains open.
+Sentence~\eqref{c00.eq.liefert} names three ingredients; the next section shows where
+preparation and measurement occur in an experiment. Sentence~\eqref{c00.eq.probabilistisch} says that the definite
+predictions of classical physics fit into this frame too. What that looks like in the
+simplest model we see in Chapter~1: there are preparations for which every measurement gives
+a fixed value with probability $1$.
+% GAP-TJO: a definition of deterministic theories including dynamics is outstanding
+% (G-0023 d).
 
 \section{Every experiment in three steps}\label{c00.s2}
 
-The lecture course from which this course grew describes experiments with a single
-scheme \srcref{tpc-script-v0.2}{lec01, box “Every experiment in three steps”}:
+To the theorist all experiments in physics look the same
+\srcref{tpc-script-v0.2}{lec01, box “Every experiment in three steps”}:
 \begin{equation}\label{c00.eq.drei-stadien}\claim{c00.cl.drei-stadien}{source-quoted}
   \begin{aligned}
     &\text{\tpcifenglish{To the theorist all experiments in physics}{Für den Theoretiker sehen alle Experimente}} \\
@@ -63,77 +427,61 @@ scheme \srcref{tpc-script-v0.2}{lec01, box “Every experiment in three steps”
   \end{aligned}
 \end{equation}
 \begin{enumerate}
-  \item \emph{Preparation.} Something is set up: a die, or in the laboratory a beam of
-    light, say.
-  \item \emph{Run.} The experiment runs.
-  \item \emph{Measurement.} At the end we look and obtain one of the possible
-    outcomes.
+  \item \emph{Preparation.} Something is set up: the die, in the laboratory for instance a
+    beam of light.
+  \item \emph{Run.} The experiment runs; we do something with what was prepared.
+  \item \emph{Measurement.} At the end we look and obtain one of the possible outcomes.
 \end{enumerate}
-Figure~\ref{c00.fig.experiment} shows the scheme. An experimental physicist would not
-accept this simplification; seen abstractly, though, every experiment looks like this.
+Figure~\ref{c00.fig.experiment} shows the scheme. An experimental physicist would not accept
+this simplification; abstractly, though, every experiment looks like this: prepare, run,
+measure.
 
 \begin{tpcfigure}{c00.fig.experiment}
-  \caption{The three stages of an experiment. The bracket combines the first two into a
-    single preparation. The preparation is drawn solid, the run with a heavier line, the
+  \caption{The three stages of an experiment. The brace combines the first two into a single
+    preparation. The preparation is drawn solid, the run with a heavier stroke, the
     measurement dashed.}
 \end{tpcfigure}
 
 The first two steps can be combined into \emph{one} more complicated preparation. A loaded
-die is nothing but a normal die to which something has been done beforehand. That is why
-two notions often suffice: preparation and measurement. The chapter author places these
-stages alongside the ingredients of sentence~\eqref{c00.eq.liefert}: preparation,
-dynamics, measurement. This correspondence awaits the author's decision (G-0023).
-% GAP-TJO: that the "run" of the lecture notes (lec01.tex:122) is the "dynamics" of the
-% brief (BRIEF.md:44) is said explicitly in neither source; the juxtaposition is the
-% chapter author's (G-0023).
+die is nothing but an ordinary die to which something was done beforehand. Where one draws
+the line is a matter of taste; that is why one can often make do with two notions,
+preparation and measurement. These two also occur in sentence~\eqref{c00.eq.liefert}.
+% GAP-TJO: that the script's "run" is the brief's "dynamics" is stated in neither source
+% (G-0023 a).
 
-The following definition is adapted from Plávala; the course author's deviations from
-Ludwig-Werner have yet to be formulated (G-0023).
+What a preparation is, precisely, we fix provisionally with a definition adapted from
+Plávala's presentation:
 
 \tpcdef{D1}
 
-The following explanation is the chapter author's reading and awaits the author's decision
-(G-0023). A preparation is first of all something one \emph{does}: a list of instructions.
-For the predictions, what counts is which probabilities the subsequent yes-no measurements
-give. Two procedures that give the same probabilities for all yes-no questions are
-described by the theory through the same state. The yes-no questions of
-which the definition speaks are the simplest measurements: those with only two possible
-outcomes. In Chapter~1 they are the indicator functions, and Chapter~2 defines them in
-general.
+The yes-no questions of the definition are the simplest measurements: those with only two
+possible outcomes, such as a detector that says click or no click. In Chapter~1 they are the
+indicator functions, and Chapter~2 defines them in general.
+% GAP-TJO: D1 is adapted from Plávala; TJO's deviations from Ludwig-Werner are unwritten
+% (G-0023 e).
 
 \section{From small to large}\label{c00.s3}
 
-The order of the material is stipulated as well:
-% BRIEF.md:38 and 90 verbatim; the labels of figure c00.fig.leiter are BRIEF.md:40.
-% GAP-TJO: the German versions are the chapter author's translation (G-0022).  In the
-% brief the word "effective" is emphasised.
+The order of the material is fixed too:
 \begin{equation}\label{c00.eq.leiter}\claim{c00.cl.leiter}{author-stipulated}
   \begin{aligned}
     &\text{\tpcifenglish{Our entire presentation works like this:}{Unsere ganze Darstellung geht so vor:}} \\
     &\text{\tpcifenglish{we go from microscopic to macroscopic.}{Wir gehen vom Mikroskopischen zum Makroskopischen.}}
   \end{aligned}
 \end{equation}
-Figure~\ref{c00.fig.leiter} shows the rungs with selected excerpts from the author's
-stipulation; the German labels are the chapter author's translations and await the
-author's wording (G-0022). From rung to rung one
-“zooms out”; at one place information is explicitly lost in doing so.
-% GAP-TJO: which operation stands behind each arrow of the ladder (PLAN.md 13.1, A11:
-% model selection, extension, coarse-graining with a limit) is not spelt out here: the
-% brief does not name it, and the chapters that take the steps are not yet written
-% (G-0023).
+Figure~\ref{c00.fig.leiter} shows the stages. From stage to stage one “zooms out”; at one
+point information is lost explicitly.
 
 \begin{tpcfigure}{c00.fig.leiter}
-  \caption{The ladder of the theories of this course, from the bottom (microscopic) to the
-    top (macroscopic). The labels of the six rungs and of the five arrows are selected
-    excerpts from the author's stipulation to which sentence~\eqref{c00.eq.leiter} refers.
-    The brief names the final rung in full: “thermodynamics as the ultimate effective
-    theory of all physics at the macroscale”; its German translation also awaits the
-    author's wording (G-0022). GPT stands for
-    “general probabilistic theory”, QM for quantum mechanics. The course begins at the
-    bottom: Chapters~1 and~2 treat rung~1.}
+  \caption{The ladder of theories of this course, from the bottom (microscopic) to the top
+    (macroscopic). The labels of the six stages and the five arrows are selected excerpts
+    from the stipulation to which sentence~\eqref{c00.eq.leiter} refers. There the last stage
+    reads in full “thermodynamics as the ultimate effective theory of all physics at the
+    macroscale”. GPT stands for “general probabilistic theory”, QM for quantum mechanics.
+    The course begins at the bottom: Chapters~1 and~2 treat stage~1.}
 \end{tpcfigure}
 
-The same thought belongs to every rung:
+Every stage comes with the same thought:
 \begin{equation}\label{c00.eq.effektiv}\claim{c00.cl.effektiv}{author-stipulated}
   \begin{aligned}
     &\text{\tpcifenglish{At each stage the student learns that}{Auf jeder Stufe lernt man, dass}} \\
@@ -141,317 +489,9 @@ The same thought belongs to every rung:
     &\text{\tpcifenglish{an approximation to the fundamental underlying physics.}{eine Näherung an die grundlegende Physik darunter.}}
   \end{aligned}
 \end{equation}
-What “zooming out” means at a particular step is the subject of the chapter that takes
-that step. Here only the order is stated.
+What “zooming out” means at a particular step is the subject of the chapter that takes that
+step. Here only the order is given.
 
-\section{Why a new theory was needed}\label{c00.s4}
-
-The lectures begin with a statement: we find ourselves in a quantum universe. Until 1900
-its quantum aspects went unnoticed, because classical physics supplies a very good
-approximation to the physics of everyday life. What needs explaining is therefore not
-quantum mechanics but the quality of the classical approximation. The keyword for this is
-\emph{decoherence}; it belongs to advanced quantum mechanics and is not treated here
-\srcref{tpc-script-v0.2}{lec01, section 1}. The course works with the assumption
-\begin{equation}\label{c00.eq.annahme}\claim{c00.cl.annahme}{source-quoted}
-  \begin{aligned}
-    &\text{\tpcifenglish{Our assumption is that quantum mechanics}{Unsere Annahme ist, dass die Quantenmechanik}} \\
-    &\text{\tpcifenglish{is the correct description of the universe.}{die korrekte Beschreibung des Universums ist.}}
-  \end{aligned}
-\end{equation}
-
-On method: one can teach quantum mechanics by first working through the wrong, classical
-or semiclassical models and then showing that they do not work. The course does not take
-that route. The Bohr model of the atom is worked through nowhere. The findings on which
-classical physics failed are named nonetheless: two of them with their formula, the others
-as a list. None is derived in this chapter. All statements of this section about
-experiments come from the lecture notes and have not been checked here against a further
-source.
-
-\subsection{Black-body radiation}\label{c00.s4.1}
-
-The lecture notes describe a black body as a body that reflects no incident radiation
-and nevertheless radiates at a temperature $\Temp$ because of the thermally excited atoms.
-As the usual realisation they name a box with a small hole from which black-body radiation
-emerges (Figure~\ref{c00.fig.hohlraum}). This description is a statement of the lectures;
-the physical justification of the cavity idealisation awaits a source or wording from
-the author (G-0024).
-
-\begin{tpcfigure}{c00.fig.hohlraum}
-  \caption{The realisation of a black body named in the lecture notes: a box with a small
-    hole. The drawn reflections do not hit the hole; the first six reflections of a ray
-    according to the law of reflection are shown. The lecture notes call the radiation
-    emerging from the hole black-body radiation. The drawing shows the ray path; the
-    physical justification of the idealisation remains open (G-0024).}
-\end{tpcfigure}
-
-The spectrum of this radiation cannot be explained with classical physics. The right
-spectrum follows from the assumption that light of frequency $\nu$ consists of light
-quanta of energy
-\begin{equation}\label{c00.eq.lichtquant}\claim{c00.cl.lichtquant}{source-backed}
-  E = \hPlanck \nu
-\end{equation}
-each. The constant $\hPlanck$ is called the Planck constant. The radiation law itself
-states how much energy per volume falls on the frequencies between $\nu$ and
-$\nu + \dd\nu$:
-\begin{equation}\label{c00.eq.planck}\claim{c00.cl.planck}{source-backed}
-  u(\nu, \Temp)\,\dd\nu
-  = \frac{8\pi \hPlanck \nu^3}{\clight^3}\,\frac{\dd\nu}{e^{\hPlanck\nu/(\kB \Temp)} - 1} .
-\end{equation}
-Here $\clight$ is the speed of light and $\kB$ the Boltzmann constant. The course derives
-this law itself in the part on statistical physics, from the assumption that light is
-quantised. Here it is only used.
-
-In theoretical physics one mostly uses, instead of $\hPlanck$, the \emph{reduced Planck
-constant}
-\begin{equation}\label{c00.eq.hbar}\claim{c00.cl.hbar}{source-backed}
-  \hbar = \frac{\hPlanck}{2\pi} .
-\end{equation}
-The numerical values are
-$\hPlanck = \num[c00.cl.h-wert]{6.62607015 \cdot 10^{-34}}{J\,s}$ and
-$\hbar = \num[c00.cl.hbar-wert]{1.054571817 \cdot 10^{-34}}{J\,s}$; the second is
-truncated to ten digits.
-
-For $\nu > 0$ and $\Temp > 0$ we consider the exponent
-$x = \hPlanck\nu/(\kB \Temp)$. For small $x$,
-$e^x - 1$ is nearly equal to $x$. Inserting this into \eqref{c00.eq.planck}, $\hPlanck$
-cancels, and what remains is the function
-\begin{equation}\label{c00.eq.grenzform}\claim{c00.cl.grenzform}{derived}
-  u_{\mathrm{kl}}(\nu, \Temp) = \frac{8\pi \nu^2 \kB \Temp}{\clight^3},
-  \qquad
-  \frac{u(\nu, \Temp)}{u_{\mathrm{kl}}(\nu, \Temp)} = \frac{x}{e^{x} - 1}
-  \quad \text{\tpcifenglish{with}{mit}}\ x = \frac{\hPlanck\nu}{\kB \Temp} .
-\end{equation}
-The second equation holds exactly for $\nu > 0$ and $\Temp > 0$; one obtains it by dividing
-\eqref{c00.eq.planck} by $u_{\mathrm{kl}}$. The ratio $x/(e^x - 1)$ is close to $1$ for
-small $x$ and falls to $0$ for large $x$\zoomref{c00.v1}. The function $u_{\mathrm{kl}}$ no longer contains $\hPlanck$ and is here the algebraically
-obtained limiting form of the radiation law given in the lecture notes
-\srcref{tpc-script-v0.2}{lec01, prehistory, item 1}.
-
-\begin{tpcfigure}{c00.fig.planck}
-  \caption{The radiation law~\eqref{c00.eq.planck} and its limiting form
-    \eqref{c00.eq.grenzform}. (a) The energy density $u$ for three temperatures $T_0$,
-    $\tfrac56 T_0$ and $\tfrac23 T_0$ (solid, dashed, dash-dotted), plotted against
-    $\hPlanck\nu/(\kB T_0)$ in units of
-    $u_0 = 8\pi(\kB T_0)^3/(\hPlanck^2\clight^3)$. The thin dashed parabola is
-    the algebraic limiting form $u_{\mathrm{kl}}$ for the highest temperature $T_0$.
-    At small positive frequencies its ratio to the solid theoretical curve is close to
-    $1$; the parabola then runs upwards out of the picture.
-    (b) The ratio $u/u_{\mathrm{kl}} = x/(e^x-1)$ for $\nu > 0$ and $\Temp > 0$.
-    It depends only on
-    $x = \hPlanck\nu/(\kB\Temp)$. The hatched area is the distance from the limiting
-    form. It becomes noticeable as soon as $\hPlanck\nu$ reaches the size of $\kB\Temp$.}
-\end{tpcfigure}
-
-Figure~\ref{c00.fig.planck} shows both. The limiting form grows like $\nu^2$ without end,
-whereas the curves of the radiation law have a maximum and fall off after it. The
-difference becomes visible as soon as the energy $\hPlanck\nu$ of a light quantum is no
-longer small compared with $\kB\Temp$.
-
-\begin{vertiefung}[id=c00.v1,
-    titel={The limiting form, taken precisely},
-    wozu={The Core says that the ratio $x/(e^x-1)$ is close to $1$ for small $x$ and falls
-      to $0$ for large $x$. Here are two bounds that prove it, and a consequence: the
-      limiting form predicts an infinite energy density, the radiation law a finite one.},
-    voraussetzung={Core up to equation~\eqref{c00.eq.grenzform}; the exponential series
-      and integrals of powers. The rest of the chapter does not need this block.},
-    zurueck={For $\hPlanck\nu$ small compared with $\kB\Temp$ the radiation law and the
-      limiting form agree; for large frequencies the limiting form is wrong, and
-      arbitrarily wrong.}]
-  For $x > 0$, $e^x = 1 + x + \tfrac12 x^2 + \tfrac16 x^3 + \dots$ is a sum of positive
-  terms. Two estimates for $e^x - 1$ follow. Dropping all terms from the third on makes
-  the sum smaller: $e^x - 1 \geq x + \tfrac12 x^2$. Factoring out $x$ instead leaves
-  $1 + \tfrac12 x + \tfrac16 x^2 + \dots$ in the bracket, and each of its terms is at most
-  as large as the corresponding term $1 + x + \tfrac12 x^2 + \dots$ of the series for
-  $e^x$: hence $e^x - 1 \leq x\,e^x$. Together this gives, for all $x > 0$,
-  \begin{equation}\label{c00.eq.schranken}\claim{c00.cl.schranken}{derived}
-    e^{-x} \;\leq\; \frac{x}{e^{x} - 1} \;\leq\; \frac{1}{1 + \tfrac12 x} .
-  \end{equation}
-  For $x \to 0$ both bounds tend to $1$, for $x \to \infty$ both tend to $0$. At
-  $x = 1$, that is $\hPlanck\nu = \kB\Temp$, the ratio lies between $1/e$ and
-  $\tfrac23$.
-
-  Now to the total energy density, the integral over all frequencies. For the limiting
-  form,
-  \begin{equation}\label{c00.eq.divergenz}\claim{c00.cl.divergenz}{derived}
-    \int_0^{\nu_1} u_{\mathrm{kl}}(\nu, \Temp)\,\dd\nu
-    = \frac{8\pi \kB \Temp}{3\,\clight^3}\,\nu_1^3 ,
-  \end{equation}
-  and this grows beyond every bound with the upper limit $\nu_1$. The limiting form
-  predicts an infinite energy density for every temperature $\Temp > 0$.
-
-  For the radiation law the substitution $\nu = x\,\kB\Temp/\hPlanck$ leads to
-  \begin{equation}\label{c00.eq.gesamt}\claim{c00.cl.gesamt}{derived}
-    \begin{aligned}
-      \int_0^{\infty} u(\nu, \Temp)\,\dd\nu
-      &= \frac{8\pi (\kB\Temp)^4}{\hPlanck^3 \clight^3} \int_0^\infty \frac{x^3}{e^x - 1}\,\dd x , \\
-      \int_0^\infty \frac{x^3}{e^x - 1}\,\dd x &\leq \frac13 + 120 .
-    \end{aligned}
-  \end{equation}
-  The bound for the integral is obtained in two pieces. For $0 < x \leq 1$,
-  \eqref{c00.eq.schranken} gives $x^3/(e^x-1) \leq x^2$, and
-  $\int_0^1 x^2\,\dd x = \tfrac13$. For $x \geq 1$ one uses the term $x^5/120$ of the
-  exponential series: $e^x - 1 \geq x^5/120$, hence $x^3/(e^x-1) \leq 120/x^2$, and
-  $\int_1^\infty 120\,x^{-2}\,\dd x = 120$. The integral is a pure number. The total
-  energy density of the radiation law is therefore finite and proportional to $\Temp^4$.
-  The course needs the value of the number only in the part on statistical physics.
-\end{vertiefung}
-
-\subsection{Photoelectric effect}\label{c00.s4.2}
-
-According to the lecture notes, light can release electrons. For the energy of these
-photoelectrons the lectures give the relation:
-\begin{equation}\label{c00.eq.photoeffekt}\claim{c00.cl.photoeffekt}{source-backed}
-  E_{\mathrm{el}} = \tfrac12 \massE v^2 = \hPlanck\nu - W .
-\end{equation}
-Here $\massE$ is the mass and $v$ the speed of the electron, and $W$ is its binding
-energy in the lecture notes. The regime of this relation awaits a source or wording
-from the author (G-0024). The lectures interpret the observation as an indication of
-light quanta of energy~\eqref{c00.eq.lichtquant}
-\srcref{tpc-script-v0.2}{lec01, prehistory, item 2}.
-
-A kinetic energy is never negative. Equation~\eqref{c00.eq.photoeffekt} can therefore
-hold only if
-\begin{equation}\label{c00.eq.schwelle}\claim{c00.cl.schwelle}{derived}
-  \hPlanck\nu \geq W,
-  \qquad \text{\tpcifenglish{that is}{das heißt}} \qquad
-  \nu \geq \frac{W}{\hPlanck} .
-\end{equation}
-For fixed $W$ the given relation describes $E_{\mathrm{el}}$ as a straight line of
-slope $\hPlanck$
-that begins at $\nu = W/\hPlanck$ (Figure~\ref{c00.fig.photoeffekt}). The slope is the
-same for every value of $W$.
-
-\begin{tpcfigure}{c00.fig.photoeffekt}
-  \caption{The relation~\eqref{c00.eq.photoeffekt} given in the lecture notes, plotted
-    algebraically for two fixed values of the binding energy, $W_1$
-    (solid) and $W_2 = \tfrac85 W_1$ (dashed; the ratio is chosen for the picture). Both
-    lines have the same slope $\hPlanck$: to a difference $\nu' - \nu$ in frequency belongs
-    the difference $\hPlanck(\nu' - \nu)$ in energy. Each line begins at its threshold
-    $\nu = W/\hPlanck$ of equation~\eqref{c00.eq.schwelle}. The dotted continuations meet
-    the axis at $-W$; the energy is negative there. The physical regime of the relation
-    remains open (G-0024).}
-\end{tpcfigure}
-
-\subsection{Further findings}\label{c00.s4.3}
-
-The lectures name four further findings \srcref{tpc-script-v0.2}{lec01, prehistory, items 3 to 6}.
-\begin{enumerate}
-  \item \emph{Stability of atoms, line spectra, Franck-Hertz experiment.} According to the
-    lecture notes, electron orbits in classical physics would be unstable: by the Liénard-Wiechert
-    potentials of electrodynamics every accelerated point charge radiates. An electron on
-    an orbit around the nucleus would lose energy all the time and would have to fall into
-    the nucleus, which it does not. The lecture notes interpret line spectra and
-    Franck-Hertz experiments as an indication of certain discrete energy levels in atoms.
-  \item \emph{Compton effect.} The lectures treat the scattering of light off electrons
-    with light quanta of energy~\eqref{c00.eq.lichtquant} and momentum $p$ of
-    equation~\eqref{c00.eq.impuls}, using conservation of energy and momentum. Which part
-    of the scattering prediction this covers awaits a source or wording from the author
-    (G-0024).
-  \item \emph{Stern-Gerlach experiment.} The lecture notes describe the experiment in terms
-    of finitely many orientations of angular momentum relative to an applied magnetic
-    field. The scope of this description awaits a source or wording from the author
-    (G-0024).
-  \item \emph{Interference of electrons.} The diffraction of electrons from crystals
-    (Davisson-Germer experiment) is an indication of wave properties of the electron.
-\end{enumerate}
-The momentum of a light quantum of wavelength $\lambda$ is
-\begin{equation}\label{c00.eq.impuls}\claim{c00.cl.impuls}{source-backed}
-  p = \frac{\hPlanck}{\lambda} .
-\end{equation}
-The course will treat the line spectrum of hydrogen at length in Chapter~11. Years and
-names belonging to these findings are not part of the Core\zoomref{c00.v2}.
-
-\begin{vertiefung}[id=c00.v2,
-    titel={Names and years, as the lectures give them},
-    wozu={The Core names the findings without their history. Here are the years and names
-      from the lecture notes, for everyone who wants to tell the story.},
-    voraussetzung={Section~\ref{c00.s4}. The rest of the course does not need this
-      block.},
-    zurueck={According to the lecture notes, the mathematical form of quantum mechanics and
-      its statistical interpretation date from the years 1925 to 1927.}]
-  The statements of this block are taken from the lecture notes and have not been checked
-  against a historical source \srcref{tpc-script-v0.2}{lec01, prehistory}. Its starting
-  point:
-  \begin{equation}\label{c00.eq.geburtsjahr}\claim{c00.cl.geschichte}{source-backed}
-    \text{\tpcifenglish{The year of birth of quantum mechanics is 1926.}{Das Geburtsjahr der Quantenmechanik ist 1926.}}
-  \end{equation}
-
-  \begin{tpctable}{c00.tab.jahre}
-    \caption{Years and names belonging to the findings of Section~\ref{c00.s4}, as the
-      lecture notes give them.}
-    \begin{tabular}{ll}
-      \toprule
-      Finding & As given in the lecture notes \\
-      \midrule
-      Radiation law, constant $\hPlanck$ & Planck, 1899 \\
-      Photoelectric effect & Lenard, 1899; Einstein, 1905 \\
-      Franck-Hertz experiment & about 1911 \\
-      Stern-Gerlach experiment & 1922 \\
-      Wave properties of the electron & de Broglie, 1924 (postulate) \\
-      Davisson-Germer experiment & 1929 \\
-      \bottomrule
-    \end{tabular}
-  \end{tpctable}
-
-  According to the lecture notes Planck originally introduced the constant $\hPlanck$ as an
-  “auxiliary quantity”. In 1926 Schrödinger published a series of papers on wave
-  mechanics. A parallel approach began in 1925 with reflections of Heisenberg; from it came
-  the matrix mechanics of Born, Jordan and Heisenberg and a version by Dirac. Still in 1926
-  Schrödinger showed the equivalence of the two approaches, and Born supplied the
-  statistical interpretation of the theory. The author of the lectures regards Born's
-  contribution as the most important aspect of the whole theory.
-
-  Almost at the same time the theory took on the mathematical form it has today. Born took
-  advice from Norbert Wiener on how to turn matrices into operators. Hilbert gave a
-  lecture course on quantum mechanics in Göttingen in the winter semester 1926/27, and his
-  assistant John von Neumann introduced Hilbert space, density matrices and the entropy of
-  quantum states. The role of group theory was clarified by Wigner and Weyl. The
-  interpretation of the theory remained disputed and still is; according to the lecture
-  notes there is to this day no contradiction with quantum mechanics.
-
-  \begin{historical}
-    Whoever reads German is in luck: the original papers of Planck, Schrödinger, Heisenberg
-    and Born are written in German.
-  \end{historical}
-\end{vertiefung}
-
-\subsection{Two sentences of the lectures}\label{c00.s4.4}
-
-The lectures sum up the findings in two sentences
-\srcref{tpc-script-v0.2}{lec01, the two yellow boxes}. The first:
-\begin{equation}\label{c00.eq.welle-teilchen}\claim{c00.cl.welle-teilchen}{source-quoted}
-  \begin{aligned}
-    &\text{\tpcifenglish{Matter and radiation possess}{Materie und Strahlung besitzen}} \\
-    &\text{\tpcifenglish{both wave and particle properties.}{sowohl Wellen- als auch Teilcheneigenschaften.}}
-  \end{aligned}
-\end{equation}
-The second:
-\begin{equation}\label{c00.eq.kernsatz}\claim{c00.cl.kernsatz}{source-quoted}
-  \begin{aligned}
-    &\text{\tpcifenglish{Quantum mechanics is a probabilistic theory.}{Die Quantenmechanik ist eine probabilistische Theorie.}} \\
-    &\text{\tpcifenglish{It therefore gives us predictions}{Sie liefert uns somit nur Vorhersagen}} \\
-    &\text{\tpcifenglish{only in the form of probabilities.}{in Form von Wahrscheinlichkeiten.}}
-  \end{aligned}
-\end{equation}
-The second sentence stands above the first. “Wave and particle properties” remains a
-little vague; the probabilistic statement is precise and underlies every quantum
-phenomenon. The lectures add: in every oral examination the question is asked what the
-most important statement about quantum mechanics is.
-
-\begin{merksatz}[Key statement]
-  Quantum mechanics is a probabilistic theory: it predicts probabilities. That is
-  sentence~\eqref{c00.eq.kernsatz} of the lectures. The chapter author proposes to connect
-  it with P0 in sentence~\eqref{c00.eq.p0} for quantum mechanics; this reading awaits
-  the author's decision (G-0023).
-\end{merksatz}
-
-The lecture notes set classical physics against this: there the predictions are definite,
-the particle is at this place at this time. As a finite example for
-sentence~\eqref{c00.eq.probabilistisch}, the chapter author proposes the point weights of
-Chapter~1: such a preparation puts its whole weight on a single outcome. This reading
-awaits the author's decision (G-0023); the statement about preparations specifies no
-dynamics for deterministic theories.
-
-The numbers that quantum mechanics delivers are probabilities. Before its mathematical
-foundations can be built, it must therefore be clear how one calculates with
-probabilities. The next chapter does that.
+Our next goal is to build the mathematical foundations of quantum mechanics. The numbers it
+delivers as results are probabilities. To reach the goal we must therefore first treat
+probability mathematically. That is what the next chapter does.

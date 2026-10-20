@@ -1,0 +1,46 @@
+{
+ "schema_version": 1,
+ "id": "M-0016",
+ "status": "recorded",
+ "title": "vl02: three small slips (the space 'maps R to C', 'Einträge', unbold v in the dagger line)",
+ "legacy": [
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl02.tex",
+   "line": 114,
+   "file_sha256": "0acb89f372aca2f40a5c43affa8bf833418ff40bfb407f34d22125fb62415c44",
+   "old_text": "welcher $\\mathbb{R}$ auf $\\mathbb{C}$ abbildet",
+   "new_text": "Eine Funktion $f\\colon \\mathbb{R} \\to \\mathbb{C}$ ordnet jeder Stelle $x$ eine komplexe Zahl zu."
+  },
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl02.tex",
+   "line": 85,
+   "file_sha256": "0acb89f372aca2f40a5c43affa8bf833418ff40bfb407f34d22125fb62415c44",
+   "old_text": "unendlich vielen Einträge vorstellen",
+   "new_text": "Man kann sich unendlichdimensionale Vektoren als Spalten mit unendlich vielen Einträgen vorstellen"
+  },
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl02.tex",
+   "line": 37,
+   "file_sha256": "0acb89f372aca2f40a5c43affa8bf833418ff40bfb407f34d22125fb62415c44",
+   "old_text": "v^\\dag = \\begin{pmatrix}",
+   "new_text": "$\\vb{v}\\adj = \\begin{pmatrix} v_1^* & \\cdots & v_n^* \\end{pmatrix}$ (D76)"
+  },
+  {
+   "version": "v0.2-en",
+   "file": "latex/lectures/en/lec02.tex",
+   "line": 37,
+   "file_sha256": "0686c02503139e489b6e5ca96764bd7f10e178ae2a19571dbbc7263a5e93a082",
+   "old_text": "v^\\dag = \\begin{pmatrix}",
+   "new_text": "$\\vb{v}\\adj = \\begin{pmatrix} v_1^* & \\cdots & v_n^* \\end{pmatrix}$ (D76)"
+  }
+ ],
+ "reason": "Wording and notation only. (1) vl02.tex:114 says the space of square-integrable functions 'maps R to C'; the functions do, the space does not (the English edition already says 'functions mapping R into C'). (2) vl02.tex:85 'mit unendlich vielen Einträge' is a grammatical slip (Einträgen). (3) vl02.tex:37 writes v^dagger without the bold face used for v everywhere else. All three are fixed in the new chapter.",
+ "evidence": {
+  "independent_check": "read in the script source at the stated lines",
+  "provenance_ids": []
+ },
+ "destination": "c03"
+}

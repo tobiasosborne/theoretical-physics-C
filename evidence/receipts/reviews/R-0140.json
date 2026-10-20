@@ -1,0 +1,78 @@
+{
+  "id": "R-0140",
+  "reviewer": "codex gpt-6.1-sol, independent review c03",
+  "date": "2026-10-20",
+  "covers": [
+    "P-0140",
+    "P-0141",
+    "P-0142",
+    "P-0143",
+    "P-0144",
+    "P-0145",
+    "P-0146",
+    "P-0147",
+    "P-0148",
+    "P-0149",
+    "P-0150"
+  ],
+  "verdict": "pass",
+  "method": "Independently ran sha256sum on sources/reed-simon-1/reed-simon-1.djvu and rendered every cited DjVu page with ddjvu -format=pnm -page=N -scale=150 into its own scratch directory; read the page images (not the text layer), checked the printed page number, the transcription of each quote, and that each quote supports the claim it is filed under within the claim's scope. Report: evidence/derivations/c03/REVIEW.md, section A; prompt: evidence/derivations/c03/PROMPT-review.md.",
+  "notes": "10 of 11 rows passed as submitted. P-0149 failed only on the printed page number (the image of DjVu page 20 prints 6, not 8); hash, page index and quote were confirmed. The chapter author corrected printed_page to 6 as the reviewer prescribed; the binding below is to the corrected row, whose quote is unchanged.",
+  "bindings": [
+    {
+      "provenance_id": "P-0140",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "ee2133fea6b8320286f932190a74b137852dbd0cd28c679b58f85785465fe1d1"
+    },
+    {
+      "provenance_id": "P-0141",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "f88dfc8763ef225ecd42818985f07f77b41311de9edca256544079a1a701d85b"
+    },
+    {
+      "provenance_id": "P-0142",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "8d228fd1e7ce07c4edde1e72f34d6dd8e90b4da76d0fc750bc67080a053361df"
+    },
+    {
+      "provenance_id": "P-0143",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "19be57419af7d8d941e5e7423366f77fed8d44d2b5bd5aed7a9580c553e2c076"
+    },
+    {
+      "provenance_id": "P-0144",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "0d70faf6e282dfa0187e3cc103205b962d1e9b74451741d1f3e7d076e5db8ef7"
+    },
+    {
+      "provenance_id": "P-0145",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "1ecdb68e910dc3b68fbe37eefe078f738b02c069eebcd9e19fa2fdbf5a2c367a"
+    },
+    {
+      "provenance_id": "P-0146",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "c12107dc0a24bee0fb27451e0e03f98fe5da3c1d000580cfd43e0a9795a483fa"
+    },
+    {
+      "provenance_id": "P-0147",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "571b130068729af1fb23b811e8f8fd761bb3d859b4135a756be479db99cf1b72"
+    },
+    {
+      "provenance_id": "P-0148",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "6e5abb5fa077a8c6e7fcfab809e5b7a7f606e73ec93eb3a0d1009727f1a438e5"
+    },
+    {
+      "provenance_id": "P-0149",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "0ae89fd519352678d105e9953d65a7359d642c5c2d4c7dbc32121f84540e929b"
+    },
+    {
+      "provenance_id": "P-0150",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "7823a67e662993ce02c6ea4a61d7d41bbf48e3f1bd0210f68384b9f4fa07c2aa"
+    }
+  ]
+}

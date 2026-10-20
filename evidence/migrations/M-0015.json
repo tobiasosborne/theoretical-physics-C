@@ -1,0 +1,33 @@
+{
+ "schema_version": 1,
+ "id": "M-0015",
+ "status": "recorded",
+ "title": "vl02: <f, g> on square-integrable functions is called an inner product, but <f, f> = 0 does not force f = 0",
+ "legacy": [
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl02.tex",
+   "line": 118,
+   "file_sha256": "0acb89f372aca2f40a5c43affa8bf833418ff40bfb407f34d22125fb62415c44",
+   "old_text": "Auch hier gibt es ein Skalarprodukt; an die Stelle der Summe tritt ein Integral:",
+   "new_text": "Regel~4 von Proposition~\\ref{c03.prop.skalarprodukt} fehlt mit Absicht in dieser Liste. Dass $\\braket{f}{f} = 0$ nur für $f = 0$ gilt, ist für Funktionen nicht ganz richtig, und die Reparatur steht im Fundament."
+  },
+  {
+   "version": "v0.2-en",
+   "file": "latex/lectures/en/lec02.tex",
+   "line": 118,
+   "file_sha256": "0686c02503139e489b6e5ca96764bd7f10e178ae2a19571dbbc7263a5e93a082",
+   "old_text": "Here too there is an inner product; an integral takes the place of the sum:",
+   "new_text": "Rule~4 of Proposition~\\ref{c03.prop.skalarprodukt} is missing from this list on purpose. That $\\braket{f}{f} = 0$ holds only for $f = 0$ is not quite right for functions, and the repair is in the Foundations."
+  }
+ ],
+ "reason": "The function equal to 1 at x = 0 and 0 elsewhere is square-integrable, nonzero, and has <f, f> = 0, so <., .> is not positive definite on functions. The precise space consists of classes of functions equal almost everywhere (Reed-Simon I p. 17, p. 68). A scope omission rather than a false formula; the script also does not show that f^* g is integrable. The new chapter proves integrability (c03.prop.ltwo), withholds rule 4 in Vertiefung c03.v2 and repairs it in Fundament c03.f2 (D80, c03.eq.klassen).",
+ "evidence": {
+  "independent_check": "evidence/derivations/c03/DERIVATION.md (c03.cl.punkt, c03.cl.klassen)",
+  "provenance_ids": [
+   "P-0146"
+  ],
+  "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.punkt"
+ },
+ "destination": "c03.f2"
+}

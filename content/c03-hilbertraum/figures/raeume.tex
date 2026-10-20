@@ -1,0 +1,52 @@
+% c03.fig.raeume — three spaces, three systems: squared moduli of one vector in each.
+%
+% (a) C^2: the vector v/2 with v = (1+i, 1-i) (c03.eq.c2-vektoren); |(1 +- i)/2|^2 = 2/4 = 1/2,
+%     two bars of height 1/2.
+% (b) l^2: |v_j|^2 = 1/j^2 for v_j = 1/j, j = 1..12 (bars), followed by dots.
+% (c) L^2(R): |f(x)|^2 = exp(-x^2) for f(x) = exp(-x^2/2), x in [-2.6, 2.6], area tinted.
+% Common vertical scale: 1 = 2.2 cm.  Greyscale: all three in the state role.
+\begin{tikzpicture}[x=1cm, y=2.2cm]
+  % (a) C^2
+  \begin{scope}
+    \draw[tpc axis, -{Stealth[length=5pt]}] (0,0) -- (2.2,0);
+    \draw[tpc axis, -{Stealth[length=5pt]}] (0,0) -- (0,1.2);
+    \draw[tpc grid] (0,0.5) -- (2.0,0.5);
+    \draw[tpc grid] (0,1) -- (2.0,1);
+    \node[tpc label, anchor=east] at (-0.05,0.5) {$\tfrac12$};
+    \node[tpc label, anchor=east] at (-0.05,1) {$1$};
+    \foreach \j in {1,2} {
+      \draw[tpc state, tpc tint state] (\j*0.7-0.2,0) rectangle (\j*0.7+0.2,0.5);
+      \node[tpc label, anchor=north] at (\j*0.7,-0.02) {$\j$};
+    }
+    \node[tpc label, anchor=west] at (2.22,0) {$j$};
+    \node[tpc label, anchor=south] at (0,1.22) {$\lvert v_j\rvert^2$};
+    \node[tpc label] at (1.1,-0.42) {(a) $\mathbb{C}^2$: \tpcifenglish{qubit}{Qubit}};
+  \end{scope}
+  % (b) l^2
+  \begin{scope}[shift={(3.4,0)}]
+    \draw[tpc axis, -{Stealth[length=5pt]}] (0,0) -- (4.3,0);
+    \draw[tpc axis, -{Stealth[length=5pt]}] (0,0) -- (0,1.2);
+    \draw[tpc grid] (0,0.5) -- (4.1,0.5);
+    \draw[tpc grid] (0,1) -- (4.1,1);
+    \foreach \j in {1,...,12} {
+      \draw[tpc state, tpc tint state] (\j*0.3-0.09,0) rectangle (\j*0.3+0.09,{1/(\j*\j)});
+    }
+    \foreach \j in {1,5,10} {\node[tpc label, anchor=north] at (\j*0.3,-0.02) {$\j$};}
+    \node[tpc label] at (3.95,0.08) {$\cdots$};
+    \node[tpc label, anchor=west] at (4.32,0) {$j$};
+    \node[tpc label, anchor=south] at (0,1.22) {$\lvert v_j\rvert^2$};
+    \node[tpc label] at (2.1,-0.42) {(b) $\ell^{2}$: \tpcifenglish{oscillator}{Oszillator}};
+  \end{scope}
+  % (c) L^2(R)
+  \begin{scope}[shift={(10.6,0)}]
+    \fill[tpc tint state] plot[domain=-2.6:2.6, samples=101] (\x,{exp(-\x*\x)}) -- (2.6,0) -- (-2.6,0) -- cycle;
+    \draw[tpc axis, -{Stealth[length=5pt]}] (-2.8,0) -- (2.9,0);
+    \draw[tpc axis, -{Stealth[length=5pt]}] (0,0) -- (0,1.2);
+    \draw[tpc grid] (-2.7,1) -- (2.7,1);
+    \draw[tpc state] plot[domain=-2.6:2.6, samples=101] (\x,{exp(-\x*\x)});
+    \foreach \t in {-2,2} {\draw[tpc leader] (\t,-0.03) -- (\t,0.03); \node[tpc label, anchor=north] at (\t,-0.02) {$\t$};}
+    \node[tpc label, anchor=west] at (2.92,0) {$x$};
+    \node[tpc label, anchor=south] at (0,1.22) {$\lvert f(x)\rvert^2$};
+    \node[tpc label] at (0,-0.42) {(c) $L^{2}(\mathbb{R})$: \tpcifenglish{particle on a line}{Teilchen auf der Geraden}};
+  \end{scope}
+\end{tikzpicture}

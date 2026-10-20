@@ -1,0 +1,723 @@
+% content/c03-hilbertraum/de.tex — Kapitel 3: Werkzeugkasten Hilbertraum
+% (deutsche Leitfassung)
+%
+% Stand: der Stoff der zweiten Vorlesung (latex/lectures/de/vl02.tex, „Vorlesung: Hilbertraum“).
+% Das Kapitel wächst später um vl03 (Dirac-Notation, Axiome des Skalarprodukts, Definition des
+% Hilbertraums D14, Basen), vl04 (Operatoren) und vl05 (Spur, Diagonalisierung).  Neue
+% Abschnitte kommen als \section c03.s4, c03.s5, ... zwischen den Kern-Abschnitt c03.s3 und die
+% Fundament-Blöcke am Dateiende; die Fundament-Blöcke bleiben am Ende.
+%
+% Wohin jede Zeile von vl02 gegangen ist: evidence/migrations/maps/vl02-map.json
+%   (geprüft mit evidence/migrations/check_vl02_map.py).
+% Fehler in vl02: evidence/migrations/M-0013.json bis M-0016.json.
+% Definitionen: Registry D75 bis D80.  Herleitungen: evidence/derivations/c03/DERIVATION.md,
+%   Anker = Claim-ID.  Seitenbild-Zitate aus Reed-Simon I: evidence/provenance.json P-0140 bis
+%   P-0150, Prüfquittung evidence/receipts/reviews/R-0140.json.
+% Stimme: Sätze aus vl02.tex sind beibehalten, wo sie stimmen; Bemerkungen aus den Videos
+%   (transcripts/clean/v02.md ab 76:43, v03.md bis 43:00) sind mit Zeitmarke kommentiert.
+%
+% D4-Brücke (PLAN.md 1.3 und 14.7): Der Kern ist endlichdimensional.  C^n und das Skalarprodukt
+% auf C^n sind Kern; l^2 und L^2(R) stehen in den Vertiefungen c03.v1 und c03.v2, Vollständigkeit,
+% Äquivalenzklassen und Cauchy-Schwarz im Fundament.
+% GAP-TJO: Der Wortlaut der Brücke in Abschnitt c03.s3 ist ein Vorschlag des Kapitelautors
+% (G-0033 (b); die Brücke in C5 ist G-0004).
+
+\chapter{Werkzeugkasten Hilbertraum}\label{c03}
+
+% Stimme: vl02.tex:4 und v03 [00:24] („das ist der mathematische Teil der Quantenmechanik“).
+Um die Zustände der Quantenmechanik zu beschreiben, wird der \emph{Hilbertraum} eine große
+Rolle spielen. Er ist der mathematische Kern der Quantenmechanik: Ohne ihn können wir über
+ihre Objekte nicht einmal reden. Um diesen Raum zu definieren, benötigen wir erst
+\emph{komplexe Vektorräume}. Solche Räume werden ganz analog zum reellen Fall definiert, den
+Sie aus der Theoretischen Physik~A kennen \srcref{tpc-script-v0.2}{vl02, Einleitung}.
+
+% Stimme: vl02.tex:6, v02 [77:16]-[77:49].
+Warum hier \emph{komplexe} und nicht reelle Vektoren auftreten, wissen wir nicht: Die Natur
+ist nun einmal so gebaut, wir müssen damit leben, und eine bessere Alternative wurde bisher
+nicht gefunden. Diese Tatsache hat sehr wichtige physikalische Folgen, die Sie im Lauf des
+Kurses sehen werden.
+
+In Kapitel~\ref{c02} ist das Qubit schon vorgekommen, mit seiner Zustandskugel. Wie die
+Zustände der Quantenmechanik genau aus einem Hilbertraum gebaut werden, sagt Kapitel~4. Dieses
+Kapitel stellt das Werkzeug bereit, und zwar so, dass man es in die Hand nehmen kann: mit
+Spalten aus komplexen Zahlen.
+
+\section{Komplexe Vektoren}\label{c03.s1}
+
+% Stimme: v02 [79:05]-[83:31].
+Glücklicherweise ist die Definition einfach. Komplexe Zahlen kennen Sie, Spaltenvektoren
+auch; jetzt werden beide zusammengebracht.
+
+\tpcdef{D75}
+
+Ein komplexer Vektor ist also nichts anderes als eine Liste komplexer Zahlen. An der Tafel
+schreibe ich ihn fett und mit einem Strich darunter; gedruckt ist er nur fett, $\vb{v}$.
+Multipliziert man einen komplexen Vektor mit einem Skalar oder addiert man zwei, so kommt
+wieder ein komplexer Vektor heraus.
+
+% Stimme: vl02.tex:55, v02 [85:05].
+Für den Vektorraum selbst genügen diese beiden Rechenregeln. Ein Skalarprodukt braucht man
+dafür nicht: Kreuz-Operation und Skalarprodukt aus dem nächsten Abschnitt sind
+Zusatzstruktur, und erst mit ihnen wird aus $\mathbb{C}^n$ ein Hilbertraum.
+
+% Stimme: v03 [08:52]-[10:31].
+Der einfachste Fall, $\mathbb{C}^1$, ist langweilig: Das sind einfach die komplexen Zahlen. Das
+erste interessante Beispiel ist $\mathbb{C}^2$. Dieser Raum ist rechnerisch ganz einfach und
+physikalisch trotzdem zentral: Zweidimensionale komplexe Vektoren beschreiben die Zustände
+eines Qubits, des Grundbausteins eines Quantencomputers, und man braucht sie, um den Spin
+eines Elektrons zu beschreiben \srcref{tpc-script-v0.2}{vl17, Abschnitt Spin}. Genauer
+beschreibt ein Vektor einen \emph{reinen} Zustand; gemischte Zustände, wie die Punkte im
+Inneren der Zustandskugel aus Kapitel~\ref{c02}, brauchen Dichtematrizen, und die kommen in
+Kapitel~4 \srcref{tpc-script-v0.2}{vl06, Postulat 2}.
+
+\begin{example}[Rechnen in $\mathbb{C}^2$]\label{c03.ex.c2}\claim{c03.cl.c2}{derived}
+  Der Vektorraum $\mathbb{C}^2$ besteht aus allen Vektoren mit zwei komplexen Einträgen. Seien
+  \begin{equation}\label{c03.eq.c2-vektoren}
+    \vb{v} = \begin{pmatrix} 1+i \\ 1-i \end{pmatrix},
+    \qquad
+    \vb{w} = \begin{pmatrix} 1 \\ -1 \end{pmatrix}
+  \end{equation}
+  zwei Vektoren; der erste hat ausdrücklich komplexe Einträge, um zu betonen, dass das
+  erlaubt ist. Eintragsweise gerechnet ist
+  \begin{equation}\label{c03.eq.c2-rechnung}
+    \vb{v} + \vb{w} = \begin{pmatrix} 2+i \\ -i \end{pmatrix},
+    \qquad
+    i\,\vb{v} = \begin{pmatrix} i + i^2 \\ i - i^2 \end{pmatrix}
+              = \begin{pmatrix} -1+i \\ 1+i \end{pmatrix} .
+  \end{equation}
+\end{example}
+
+\section{Kreuz-Operation und Skalarprodukt}\label{c03.s2}
+
+% Stimme: v03 [02:34]-[07:47].
+Ein komplexer Vektorraum allein trägt noch keine weitere Struktur. Um zum Hilbertraum zu
+kommen, brauchen wir zusätzliche Operationen. Die erste ist die \emph{Kreuz-Operation}: Aus
+einem Spaltenvektor wird ein Zeilenvektor, und dabei werden die Einträge komplex
+konjugiert. Mit ihr lässt sich sofort das Skalarprodukt einführen: Man wendet die
+Kreuz-Operation auf den ersten Vektor an und multipliziert die Zeile mit der Spalte des
+zweiten. Heraus kommt immer eine komplexe Zahl.
+
+\tpcdef{D76}
+
+\begin{tpcfigure}{c03.fig.kreuz}
+  \caption{Die Kreuz-Operation und das Skalarprodukt. (a) Die Einträge eines Vektors in
+    $\mathbb{C}^2$ als Punkte der komplexen Ebene, hier $v_1 = 2+i$ und $v_2 = -1+2i$
+    (gefüllt). Die Kreuz-Operation spiegelt jeden Eintrag an der reellen Achse (offene
+    Kreise, $v_1^* = 2-i$ und $v_2^* = -1-2i$) und legt die Spalte als Zeile hin. (b) Das
+    Skalarprodukt aus Beispiel~\ref{c03.ex.skalarprodukt}: Die Zeile $\vb{v}\adj$ wird
+    Eintrag für Eintrag mit der Spalte $\vb{w}$ multipliziert, und die Produkte werden
+    addiert.}
+\end{tpcfigure}
+
+% Stimme: v03 [04:40] („das muss man nicht, aber es ist hilfreich später“).
+Die komplexe Konjugation in der Kreuz-Operation muss man nicht machen; man könnte eine Spalte
+auch einfach umlegen. Sie zahlt sich aber aus, sobald man einen Vektor mit sich selbst
+multipliziert. Weil $v_j^* v_j = \abs{v_j}^2 = (\operatorname{Re} v_j)^2 + (\operatorname{Im} v_j)^2$
+ist, gilt
+\begin{equation}\label{c03.eq.selbst}\claim{c03.cl.selbst}{derived}
+  \vb{v}\adj\vb{v} = \sum_{j=1}^{n} v_j^* v_j = \sum_{j=1}^{n} \abs{v_j}^2 \;\geq\; 0 .
+\end{equation}
+Das Skalarprodukt eines Vektors mit sich selbst ist also eine reelle Zahl und nie negativ.
+
+\begin{example}[Ohne Konjugation]\label{c03.ex.ohne-stern}\claim{c03.cl.ohne-stern}{derived}
+  Sei $\vb{v} = \begin{pmatrix} 1 \\ i \end{pmatrix}$. Ohne Konjugation ergäbe Zeile mal
+  Spalte $1 \cdot 1 + i \cdot i = 1 + i^2 = 0$, obwohl $\vb{v}$ nicht der Nullvektor ist. Mit
+  der Kreuz-Operation ist
+  \begin{equation}\label{c03.eq.ohne-stern}
+    \vb{v}\adj\vb{v} = 1 \cdot 1 + (-i) \cdot i = 1 + 1 = 2 .
+  \end{equation}
+  Ohne den Stern hätte ein Vektor, der nicht null ist, die „Länge“ null.
+\end{example}
+
+% Stimme: v03 [07:16]-[07:47]; vl03.tex:132.
+Das Skalarprodukt ist die Zusatzstruktur, mit der wir später in der Quantenmechanik
+\emph{Wahrscheinlichkeiten} berechnen. Die Quantenmechanik ist eine probabilistische Theorie
+(Kapitel~\ref{c01}) und braucht deshalb eine Methode, Wahrscheinlichkeiten auszurechnen; das
+Skalarprodukt wird diese Methode sein \srcref{tpc-script-v0.2}{vl03, Abschnitt Skalarprodukte}.
+
+\begin{example}[Ein Skalarprodukt in $\mathbb{C}^2$]\label{c03.ex.skalarprodukt}\claim{c03.cl.vw}{derived}
+  Für die Vektoren aus Gleichung~\eqref{c03.eq.c2-vektoren} rechnet man in zwei Schritten,
+  erst die Kreuz-Operation, dann Zeile mal Spalte:
+  \begin{equation}\label{c03.eq.vw}
+    \vb{v}\adj\vb{w}
+    = \begin{pmatrix} 1-i & 1+i \end{pmatrix} \begin{pmatrix} 1 \\ -1 \end{pmatrix}
+    = (1-i) - (1+i) = -2i .
+  \end{equation}
+  Ist es egal, auf welchen der beiden Vektoren man das Kreuz anwendet? Nein: Der
+  \emph{erste} Vektor bekommt immer das Kreuz. In der anderen Reihenfolge ist die
+  Konjugation hier trivial, weil $\vb{w}$ reell ist, und es kommt etwas anderes heraus:
+  \begin{equation}\label{c03.eq.wv}
+    \vb{w}\adj\vb{v}
+    = \begin{pmatrix} 1 & -1 \end{pmatrix} \begin{pmatrix} 1+i \\ 1-i \end{pmatrix}
+    = (1+i) - (1-i) = 2i .
+  \end{equation}
+  Die beiden Ergebnisse sind zueinander komplex konjugiert. Die Reihenfolge ist also wichtig,
+  aber der Unterschied ist kontrolliert.
+\end{example}
+
+Dass das kein Zufall ist, liest man an der Summe ab. Die folgenden Regeln gelten für jedes
+$n$.
+
+\begin{proposition}[Rechenregeln des Skalarprodukts in $\mathbb{C}^n$]\label{c03.prop.skalarprodukt}\claim[proof-included]{c03.cl.skalarprodukt}{derived}
+  Seien $\vb{v}, \vb{w}, \vb{u} \in \mathbb{C}^n$ und $\alpha, \beta \in \mathbb{C}$. Dann gilt:
+  \begin{enumerate}
+    \item Vertauschen konjugiert: $\vb{w}\adj\vb{v} = (\vb{v}\adj\vb{w})^*$.
+    \item Linear im zweiten Faktor:
+      $\vb{v}\adj(\alpha\vb{w} + \beta\vb{u}) = \alpha\, \vb{v}\adj\vb{w} + \beta\, \vb{v}\adj\vb{u}$.
+    \item Antilinear im ersten Faktor:
+      $(\alpha\vb{v} + \beta\vb{u})\adj\vb{w} = \alpha^*\, \vb{v}\adj\vb{w} + \beta^*\, \vb{u}\adj\vb{w}$.
+    \item Positivität: $\vb{v}\adj\vb{v} \geq 0$, und $\vb{v}\adj\vb{v} = 0$ gilt nur für
+      $\vb{v} = 0$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  Zu~1: Die Konjugierte einer Summe ist die Summe der Konjugierten, und $(z^*)^* = z$, also
+  \begin{equation}\label{c03.eq.vertauschen}
+    (\vb{v}\adj\vb{w})^* = \sum_{j=1}^{n} (v_j^* w_j)^* = \sum_{j=1}^{n} v_j\, w_j^*
+    = \sum_{j=1}^{n} w_j^* v_j = \vb{w}\adj\vb{v} .
+  \end{equation}
+  Zu~2: $\sum_j v_j^* (\alpha w_j + \beta u_j) = \alpha \sum_j v_j^* w_j + \beta \sum_j v_j^* u_j$.
+  Zu~3: Der $j$-te Eintrag von $(\alpha\vb{v} + \beta\vb{u})\adj$ ist
+  $(\alpha v_j + \beta u_j)^* = \alpha^* v_j^* + \beta^* u_j^*$; weiter wie bei~2. Zu~4:
+  Gleichung~\eqref{c03.eq.selbst}. Eine Summe von Zahlen $\abs{v_j}^2 \geq 0$ ist nur dann
+  null, wenn jeder Summand null ist, also jedes $v_j = 0$.
+\end{proof}
+
+Beim Herausziehen eines Faktors aus dem ersten Vektor kommt also ein Stern dazu. Das ist die
+Konvention dieses Kurses; manche Bücher machen es umgekehrt und nennen das Skalarprodukt
+linear im ersten Vektor \srcref{reed-simon-1}{S.~37}.
+
+\begin{exercise}[Rechnen mit dem Kreuz]\label{c03.exc.rechnen}\claim{c03.cl.rechnen}{derived}
+  Seien $\vb{v} = \begin{pmatrix} i \\ 2 \end{pmatrix}$ und
+  $\vb{w} = \begin{pmatrix} 1 \\ i \end{pmatrix}$. Berechnen Sie $3\vb{v}$,
+  $\vb{v} + \vb{w}$, $\vb{v}\adj\vb{w}$, $\vb{w}\adj\vb{v}$ und $\vb{v}\adj\vb{v}$, und prüfen
+  Sie Regel~1 aus Proposition~\ref{c03.prop.skalarprodukt}.
+\end{exercise}
+\begin{solution}
+  Es ist $3\vb{v} = \begin{pmatrix} 3i \\ 6 \end{pmatrix}$ und
+  $\vb{v} + \vb{w} = \begin{pmatrix} 1+i \\ 2+i \end{pmatrix}$. Mit
+  $\vb{v}\adj = \begin{pmatrix} -i & 2 \end{pmatrix}$ und
+  $\vb{w}\adj = \begin{pmatrix} 1 & -i \end{pmatrix}$ ist
+  \begin{equation}\label{c03.eq.rechnen}
+    \vb{v}\adj\vb{w} = -i + 2i = i,
+    \qquad
+    \vb{w}\adj\vb{v} = i - 2i = -i,
+    \qquad
+    \vb{v}\adj\vb{v} = (-i)\,i + 4 = 5 .
+  \end{equation}
+  Also ist $\vb{w}\adj\vb{v} = -i = (\vb{v}\adj\vb{w})^*$, wie Regel~1 sagt.
+\end{solution}
+
+\section{Unendlich viele Einträge}\label{c03.s3}
+
+% Stimme: v03 [16:54]-[18:28]; vl02.tex:85.
+% GAP-TJO: In der Vorlesung (v03 [17:26]-[18:28]) folgt hier der Satz, es sei offen und
+% umstritten, ob man das Universum mit endlich vielen Freiheitsgraden modellieren könne.  Er
+% hat keine Quelle auf der Platte und steht deshalb nicht im Text (G-0033 (a)).
+An dieser Stelle könnte man endlichdimensionale Hilberträume schon definieren. Ich verschiebe
+das aber bewusst, weil unendlichdimensionale Vektorräume in der Physik eine sehr wichtige
+Rolle spielen. Der Grund ist physikalisch: Unsere besten Modelle sind Felder, und Felder
+haben unendlich viele Freiheitsgrade, wie Sie aus der Theoretischen Physik~B wissen
+\srcref{tpc-script-v0.2}{vl02, Absatz über unendlich dimensionale Vektorräume}.
+
+% GAP-TJO: Brückenabsatz des Kapitelautors (G-0033 (b)).
+Der Kern dieses Kurses bleibt trotzdem bis einschließlich Kapitel~4 endlichdimensional:
+Alles, was dort über Zustände und Messungen gesagt wird, spielt in $\mathbb{C}^n$. Die
+unendlichdimensionalen Räume betreten den Kern erst in Kapitel~5, beim Teilchen auf der
+Geraden. Wer schon jetzt sehen will, was schiefgeht, wenn man in den Formeln einfach
+$n = \infty$ setzt, und wie man es repariert, findet das in zwei Vertiefungen. Die erste
+handelt von Spalten mit unendlich vielen Einträgen\zoomref{c03.v1}.
+
+\begin{vertiefung}[id=c03.v1,
+    titel={Spalten mit unendlich vielen Einträgen},
+    wozu={Setzt man in den Formeln von Abschnitt~\ref{c03.s2} einfach $n = \infty$, so kann
+      das Skalarprodukt divergieren. Hier wird gezeigt, wie man das repariert: Man lässt
+      nur Vektoren zu, deren Skalarprodukt mit sich selbst endlich ist. Diese Vektoren
+      bilden den Raum $\elltwo$.},
+    voraussetzung={Abschnitt~\ref{c03.s2}; konvergente Reihen. Der Kern bis Kapitel~4
+      braucht den Block nicht.},
+    zurueck={Ein Vektor mit unendlich vielen Einträgen ist zugelassen, wenn die Summe der
+      Betragsquadrate seiner Einträge endlich ist. Für solche Vektoren ist das
+      Skalarprodukt als unendliche Summe erklärt und hat dieselben Rechenregeln wie in
+      $\mathbb{C}^n$.}]
+  % Stimme: vl02.tex:85-96; v03 [18:59]-[21:50].
+  Man kann sich unendlichdimensionale Vektoren als Spalten mit unendlich vielen Einträgen
+  vorstellen, also als unendliche Listen komplexer Zahlen:
+  \begin{equation*}
+    \vb{v} = \begin{pmatrix} v_1 \\ v_2 \\ v_3 \\ \vdots \end{pmatrix} .
+  \end{equation*}
+  Addition und Multiplikation mit Skalaren gehen Eintrag für Eintrag wie in $\mathbb{C}^n$.
+  Für das Skalarprodukt ist die naheliegende Verallgemeinerung die Reihe
+  $\vb{v}\adj\vb{w} = \sum_{j=1}^{\infty} v_j^* w_j$: In der Regel setzt man in allen
+  Gleichungen $n = \infty$. Hier können aber Probleme auftreten, Konvergenzprobleme. Eines
+  zeigt sich sofort.
+
+  \begin{example}[Der Vektor mit lauter Einsen]\label{c03.ex.einsen}\claim{c03.cl.einsen}{derived}
+    Der Vektor mit lauter Einsen, $v_j = 1$ für alle $j$, ist als unendliche Liste
+    komplexer Zahlen völlig legal. Sein Skalarprodukt mit sich selbst divergiert aber: Die
+    Teilsummen sind
+    \begin{equation}\label{c03.eq.einsen}
+      \sum_{j=1}^{N} \abs{v_j}^2 = \sum_{j=1}^{N} 1 = N \;\longrightarrow\; \infty
+      \qquad (N \to \infty) .
+    \end{equation}
+  \end{example}
+
+  % Stimme: v03 [22:54]-[24:28] („in der mathematischen Literatur sehr kompliziert
+  % beschrieben, aber physikalisch gesehen ist es einfach“).
+  Wenn wir die Zustände physikalischer Systeme mit solchen Vektoren beschreiben wollen, ist
+  das ein Problem, spätestens bei den Wahrscheinlichkeiten. Die Antwort ist denkbar
+  einfach: Wir lassen solche Vektoren nicht zu. In der mathematischen Literatur wird das
+  sehr kompliziert beschrieben; physikalisch gesehen ist es einfach.
+
+  \tpcdef{D77}
+
+  % Stimme: v03 [26:41]-[27:47].
+  Die Bezeichnung $\elltwo$ werden wir später kaum brauchen, Sie sollen sie aber einmal
+  gesehen haben: Die $2$ kommt vom Quadrat in der Summe, und summiert wird über alle
+  natürlichen Zahlen. Reed und Simon schreiben den Raum mit einer tiefgestellten $2$
+  \srcref{reed-simon-1}{S.~40}. Dass die zugelassenen Vektoren wieder einen Vektorraum
+  bilden, ist nicht offensichtlich, aber wahr:
+
+  \begin{proposition}[$\elltwo$ ist ein Vektorraum mit Skalarprodukt]\label{c03.prop.elltwo}\claim[proof-included]{c03.cl.elltwo}{derived}
+    Seien $\vb{v}, \vb{w} \in \elltwo$ und $a \in \mathbb{C}$. Dann gilt:
+    \begin{enumerate}
+      \item $a\vb{v} \in \elltwo$ und $\vb{v} + \vb{w} \in \elltwo$.
+      \item Die Reihe $\vb{v}\adj\vb{w} = \sum_{j=1}^{\infty} v_j^* w_j$ konvergiert absolut,
+        und $\sum_{j=1}^{\infty} \abs{v_j^* w_j} \leq \tfrac12\, \vb{v}\adj\vb{v} + \tfrac12\, \vb{w}\adj\vb{w}$.
+      \item Die vier Regeln von Proposition~\ref{c03.prop.skalarprodukt} gelten in $\elltwo$.
+    \end{enumerate}
+  \end{proposition}
+  \begin{proof}
+    Für komplexe Zahlen $a, b$ ist $0 \leq (\abs{a} - \abs{b})^2$ und
+    $\abs{a + b}^2 = \abs{a}^2 + \abs{b}^2 + 2 \operatorname{Re}(a^* b)$ mit
+    $\operatorname{Re}(a^* b) \leq \abs{a}\,\abs{b}$. Daraus folgen
+    \begin{equation}\label{c03.eq.ab}
+      \abs{a^* b} = \abs{a}\,\abs{b} \leq \tfrac12 \abs{a}^2 + \tfrac12 \abs{b}^2,
+      \qquad
+      \abs{a + b}^2 \leq 2\abs{a}^2 + 2\abs{b}^2 .
+    \end{equation}
+    Zu~1: $\sum_{j} \abs{a v_j}^2 = \abs{a}^2 \sum_j \abs{v_j}^2$. Nach der zweiten
+    Ungleichung ist jede Teilsumme $\sum_{j \leq N} \abs{v_j + w_j}^2$ höchstens
+    $2\, \vb{v}\adj\vb{v} + 2\, \vb{w}\adj\vb{w}$. Die Teilsummen wachsen mit $N$ und sind
+    beschränkt, also konvergieren sie. Zu~2: genauso mit der ersten Ungleichung; eine absolut
+    konvergente Reihe komplexer Zahlen konvergiert. Zu~3: Die Regeln gelten für jede
+    Teilsumme bis $N$, denn das ist eine Rechnung in $\mathbb{C}^N$. Grenzwerte vertragen
+    sich mit Summen, Vielfachen und Konjugation. Ist $\vb{v}\adj\vb{v} = 0$, so ist jede
+    Teilsumme $\sum_{j \leq N} \abs{v_j}^2$ null, also jedes $v_j = 0$.
+  \end{proof}
+
+  % Stimme: vl02.tex:112; v03 [26:41].
+  Mit dieser Bedingung kann bei der Berechnung von Wahrscheinlichkeiten nichts mehr
+  unendlich groß werden. Eine schärfere Schranke als die in Teil~2, die
+  Cauchy-Schwarz-Ungleichung, steht im Fundament\zoomref{c03.f1}.
+
+  Dass die Einträge gegen null gehen, reicht übrigens nicht. Es kommt darauf an, wie schnell.
+
+  \begin{example}[Es kommt auf die Rate an]\label{c03.ex.rate}\claim{c03.cl.rate}{derived}
+    Der Vektor mit $v_j = 1/j$ liegt in $\elltwo$, der Vektor mit $u_j = 1/\sqrt{j}$ nicht,
+    obwohl auch seine Einträge gegen null gehen. Für jedes $N \geq 2$ ist nämlich
+    \begin{equation}\label{c03.eq.rate}
+      \begin{aligned}
+        \sum_{j=1}^{N} \frac{1}{j^2}
+          &\leq 1 + \sum_{j=2}^{N} \Bigl( \frac{1}{j-1} - \frac{1}{j} \Bigr)
+           = 2 - \frac{1}{N} < 2, \\
+        \sum_{j=1}^{N} \abs{u_j}^2 = \sum_{j=1}^{N} \frac{1}{j}
+          &\geq \int_{1}^{N+1} \frac{\dd x}{x} = \ln(N+1) \;\longrightarrow\; \infty .
+      \end{aligned}
+    \end{equation}
+    In der ersten Zeile ist $1/j^2 \leq 1/((j-1)j) = 1/(j-1) - 1/j$, und die Summe rechts
+    schiebt sich zusammen. In der zweiten liegt der Summand $1/j$ über der Fläche unter
+    $1/x$ zwischen $j$ und $j+1$, weil $1/x$ fällt. Die Teilsummen der Betragsquadrate von
+    $\vb{u}$ wachsen also über alle Grenzen, mindestens wie ein Logarithmus.
+  \end{example}
+
+  \begin{tpcfigure}{c03.fig.partialsummen}
+    \caption{Die Zulassungsprüfung für $\elltwo$: die Teilsummen
+      $\sum_{j=1}^{N} \abs{v_j}^2$ für $N = 1, \dots, 25$, auf vier Stellen gerundet; die
+      Kurve für lauter Einsen ist nur bis $N = 5$ gezeichnet. Für
+      $v_j = 1/j$ (Punkte, durchgezogen) bleiben sie unter der Schranke $2$ aus
+      Gleichung~\eqref{c03.eq.rate} (dünne Linie): Der Vektor ist zugelassen. Für
+      $v_j = 1/\sqrt{j}$ (Punkte, gestrichelt) wachsen sie über alle Grenzen, mindestens wie
+      $\ln(N+1)$, für den
+      Vektor mit lauter Einsen (Punkte, strichpunktiert) wie $N$: Beide sind nicht
+      zugelassen, obwohl beim mittleren die Einträge gegen null gehen. In $\mathbb{C}^n$ hat
+      die Summe nur $n$ Glieder, und es gibt nichts zu prüfen.}
+  \end{tpcfigure}
+
+  % Stimme: v03 [28:28]-[29:29]; vl02.tex:139.
+  % GAP-TJO: In der Vorlesung (v03 [29:58]) und im Skript (vl02.tex:139) folgt das Beispiel
+  % „ein Photon in einer Glasfaser“; was damit gemeint ist, entscheidet TJO (G-0033 (e)).
+  Dieser Raum ist nicht nur Mathematik. $\elltwo$ ist der Zustandsraum des harmonischen
+  Oszillators, den wir in Kapitel~7 genau ansehen. Als Quantenmechaniker arbeite ich
+  praktisch jeden Tag mit diesen beiden Vektorräumen, mit $\mathbb{C}^2$ und mit $\elltwo$.
+\end{vertiefung}
+
+% Stimme: v03 [30:23]-[36:22].
+Der dritte Raum, den wir brauchen, besteht nicht aus Spalten, sondern aus Funktionen: Jeder
+Stelle $x$ der reellen Achse wird eine komplexe Zahl $f(x)$ zugeordnet. Solche Funktionen
+sind den Feldern der Theoretischen Physik~B sehr ähnlich, dem elektrischen Feld oder dem
+Potential, nur sind die Werte jetzt komplex. Sie beschreiben die reinen Zustände eines
+Teilchens ohne Spin in einer Dimension\zoomref{c03.v2}.
+
+\begin{vertiefung}[id=c03.v2,
+    titel={Funktionen als Vektoren},
+    wozu={Funktionen lassen sich addieren und mit Zahlen multiplizieren wie Vektoren. Hier
+      bekommen sie ein Skalarprodukt, mit einem Integral an der Stelle der Summe (mit einem
+      Vorbehalt, der im Fundament aufgelöst wird), und dieselbe Zulassungsbedingung wie die
+      Spalten in $\elltwo$.},
+    voraussetzung={Abschnitt~\ref{c03.s2}; uneigentliche Integrale. Vertiefung~\ref{c03.v1}
+      hilft, ist aber nicht nötig. Der Kern bis Kapitel~4 braucht den Block nicht;
+      Kapitel~5 führt den Raum im Kern noch einmal ein.},
+    zurueck={Quadratintegrierbare Funktionen bilden einen Vektorraum, auf dem das Integral
+      $\braket{f}{g} = \int f^*(x)\, g(x)\, \dd x$ erklärt ist; ein echtes Skalarprodukt wird
+      es erst, wenn man Funktionen identifiziert, die fast überall übereinstimmen. Die konstante
+      Funktion $1$ gehört nicht dazu.}]
+  % Stimme: v03 [31:35]-[32:36].
+  Eine Funktion $f\colon \mathbb{R} \to \mathbb{C}$ ordnet jeder Stelle $x$ eine komplexe
+  Zahl zu. Das ist grafisch etwas schwierig darzustellen: Für eine komplexe Zahl braucht man
+  zwei Achsen, für die Funktion also eine dritte Dimension
+  (Abbildung~\ref{c03.fig.komplex}). Funktionen addiert man Stelle für Stelle,
+  $(f + g)(x) = f(x) + g(x)$, und ebenso ist $(af)(x) = a f(x)$ für einen Skalar $a$. In
+  diesem Sinn ist eine Funktion ein Vektor mit einem Eintrag $f(x)$ für jede Stelle $x$. An
+  die Stelle der Summe über $j$ tritt das Integral über $x$.
+
+  \begin{tpcfigure}{c03.fig.komplex}
+    \caption{Eine komplexwertige Funktion braucht drei Dimensionen. Gezeichnet ist
+      $f(x) = e^{-x^2/2}\, e^{2ix}$ für $-3 \leq x \leq 3$: Zu jedem $x$ gehört der Punkt
+      $(\operatorname{Re} f(x), \operatorname{Im} f(x))$ einer komplexen Ebene, die senkrecht
+      auf der $x$-Achse steht. Die Kurve windet sich um die $x$-Achse; ihr Abstand von der
+      Achse ist $\abs{f(x)} = e^{-x^2/2}$ (dünne Kreise bei $x = -1, 0, 1$; dünne Speichen verbinden die Achse mit der Kurve). Gestrichelt ist der Realteil
+      allein, in der Ebene $\operatorname{Im} f = 0$: die gewohnte Zeichnung, der die
+      Hälfte der Information fehlt.}
+  \end{tpcfigure}
+
+  In dieser Vertiefung sind alle Funktionen stückweise stetig, so dass jedes Integral ein
+  gewöhnliches uneigentliches Integral ist. Was sich ändert, wenn man das fallen lässt,
+  steht im Fundament zu diesem Kapitel.
+
+  \tpcdef{D78}
+
+  Das Zeichen $\braket{f}{g}$ steht hier für eine Zahl, so wie $\vb{v}\adj\vb{w}$ in
+  $\mathbb{C}^n$. Dieser Kurs schreibt jedes Skalarprodukt so; was der senkrechte Strich
+  bedeutet, wird mit der Notation von Dirac klar.
+
+  \begin{proposition}[Quadratintegrierbare Funktionen bilden einen Vektorraum]\label{c03.prop.ltwo}\claim[proof-included]{c03.cl.ltwo}{derived}
+    Seien $f$ und $g$ quadratintegrierbar und $a \in \mathbb{C}$. Dann sind $af$ und
+    $f + g$ quadratintegrierbar, und das Integral
+    $\braket{f}{g} = \int_{-\infty}^{\infty} f^*(x)\, g(x)\, \dd x$ konvergiert absolut, mit
+    \begin{equation}\label{c03.eq.ltwo}
+      \int_{-\infty}^{\infty} \abs{f^*(x)\, g(x)}\, \dd x
+      \leq \tfrac12 \braket{f}{f} + \tfrac12 \braket{g}{g} .
+    \end{equation}
+    Die Regeln~1 bis~3 von Proposition~\ref{c03.prop.skalarprodukt} gelten sinngemäß, und
+    $\braket{f}{f} \geq 0$.
+  \end{proposition}
+  \begin{proof}
+    Für komplexe Zahlen $a, b$ ist $\abs{a^* b} \leq \tfrac12 \abs{a}^2 + \tfrac12 \abs{b}^2$,
+    weil $0 \leq (\abs{a} - \abs{b})^2$, und $\abs{a + b}^2 \leq 2\abs{a}^2 + 2\abs{b}^2$, weil
+    $\abs{a + b}^2 = \abs{a}^2 + \abs{b}^2 + 2 \operatorname{Re}(a^* b)$ und
+    $\operatorname{Re}(a^* b) \leq \abs{a}\,\abs{b}$ ist. Man setzt $a = f(x)$ und $b = g(x)$
+    ein; die Ungleichungen gelten dann an jeder Stelle $x$. Integriert über $[-X, X]$ ergeben sie Schranken, die
+    nicht von $X$ abhängen. Die Integrale nichtnegativer Funktionen über $[-X, X]$ wachsen
+    mit $X$ und sind beschränkt, also konvergieren sie für $X \to \infty$. Ein absolut
+    konvergentes uneigentliches Integral konvergiert. Die Regeln~1 bis~3 gelten für den
+    Integranden an jeder Stelle, und das Integral ist linear. Schließlich ist
+    $\abs{f(x)}^2 \geq 0$ an jeder Stelle.
+  \end{proof}
+
+  Regel~4 von Proposition~\ref{c03.prop.skalarprodukt} fehlt mit Absicht in dieser Liste.
+  Dass $\braket{f}{f} = 0$ nur für $f = 0$ gilt, ist für Funktionen nicht ganz richtig, und
+  die Reparatur steht im Fundament\zoomref{c03.f2}.
+
+  \begin{example}[Ein Nicht-Beispiel]\label{c03.ex.eins}\claim{c03.cl.eins}{derived}
+    Die konstante Funktion $f(x) = 1$ ist nicht quadratintegrierbar:
+    \begin{equation}\label{c03.eq.eins}
+      \int_{-X}^{X} \abs{f(x)}^2\, \dd x = \int_{-X}^{X} 1\, \dd x = 2X
+      \;\longrightarrow\; \infty
+      \qquad (X \to \infty) .
+    \end{equation}
+    Die Fläche unter der Kurve ist unendlich groß. Das ist genau das Gegenstück zum Vektor
+    mit lauter Einsen aus Beispiel~\ref{c03.ex.einsen}.
+  \end{example}
+
+  \begin{example}[Gegen null gehen reicht nicht]\label{c03.ex.gauss}\claim{c03.cl.gauss}{derived}
+    Die Funktion $g(x) = e^{-x^2/2}$ ist quadratintegrierbar, und ebenso die Funktion
+    $f(x) = e^{-x^2/2}\, e^{2ix}$ aus Abbildung~\ref{c03.fig.komplex}, denn
+    $\abs{e^{2ix}} = 1$ und damit $\abs{f(x)}^2 = \abs{g(x)}^2 = e^{-x^2}$. Mit der
+    Substitution $x = y/\sqrt{2}$ und dem Gauß-Integral aus Kapitel~\ref{c01},
+    $\int_{-\infty}^{\infty} e^{-y^2/2}\, \dd y = \sqrt{2\pi}$, ist
+    \begin{equation}\label{c03.eq.gauss}
+      \braket{g}{g} = \int_{-\infty}^{\infty} e^{-x^2}\, \dd x
+      = \frac{1}{\sqrt{2}} \int_{-\infty}^{\infty} e^{-y^2/2}\, \dd y
+      = \sqrt{\pi} .
+    \end{equation}
+    Die Funktion $h(x) = 1/\sqrt{1 + \abs{x}}$ geht dagegen für $\abs{x} \to \infty$ gegen
+    null und ist trotzdem nicht quadratintegrierbar:
+    \begin{equation}\label{c03.eq.log}
+      \int_{-X}^{X} \frac{\dd x}{1 + \abs{x}} = 2 \int_{0}^{X} \frac{\dd x}{1 + x}
+      = 2 \ln(1 + X) \;\longrightarrow\; \infty .
+    \end{equation}
+    Diese Beispiele zeigen: Dass eine Funktion gegen null geht, reicht nicht. Entscheidend
+    ist allein, ob das Integral ihres Betragsquadrats endlich ist.
+  \end{example}
+
+  \begin{tpcfigure}{c03.fig.partialintegrale}
+    \caption{Dieselbe Prüfung für Funktionen: das Integral $\int_{-X}^{X} \abs{f(x)}^2\, \dd x$
+      als Funktion von $X$. Für $f(x) = e^{-x^2/2}$ (durchgezogen) nähert es sich
+      $\sqrt{\pi}$ (dünne Linie, Gleichung~\eqref{c03.eq.gauss}); für
+      $f(x) = 1/\sqrt{1 + \abs{x}}$ (gestrichelt) wächst es wie $2\ln(1 + X)$, für $f = 1$
+      (strichpunktiert) wie $2X$ (Gleichungen~\eqref{c03.eq.log} und~\eqref{c03.eq.eins}).
+      Die Linien zeigen kontinuierlich, was Abbildung~\ref{c03.fig.partialsummen} für den
+      diskreten Index $j$ zeigt.}
+  \end{tpcfigure}
+\end{vertiefung}
+
+Bis einschließlich Kapitel~4 arbeitet der Kern mit endlichdimensionalen Räumen
+$\mathbb{C}^n$; für das Qubit ist das $\mathbb{C}^2$. In der Vorlesung stelle ich an dieser
+Stelle drei Räume und drei physikalische Systeme nebeneinander, darunter die beiden
+unendlichdimensionalen Räume der Vertiefungen\zoomref{c03.v3}.
+
+% Stimme: v03 [37:39]-[39:46]; vl02.tex:138-140.
+\begin{vertiefung}[id=c03.v3,
+    titel={Drei Räume, drei Systeme},
+    wozu={Die drei Räume dieses Kapitels nebeneinander, jeder mit dem physikalischen System,
+      zu dem er gehört. Damit sind praktisch alle Hilberträume des Kurses beisammen.},
+    voraussetzung={Vertiefungen~\ref{c03.v1} und~\ref{c03.v2}. Der Kern bis Kapitel~4
+      braucht den Block nicht.},
+    zurueck={Der Kern arbeitet bis einschließlich Kapitel~4 mit $\mathbb{C}^n$; für das
+      Qubit ist das $\mathbb{C}^2$.}]
+  \begin{greybox}[Drei Räume, drei Systeme]
+  Mit $\mathbb{C}^2$ und zwei unendlichdimensionalen Räumen haben wir praktisch alle
+  Hilberträume beisammen, die wir in diesem Kurs brauchen werden: $\elltwo$, die Spalten
+  mit unendlich vielen Einträgen, deren Betragsquadrate eine endliche Summe haben, und
+  $\Ltwo{\mathbb{R}}$, gebildet aus den Funktionen auf der Geraden, deren Betragsquadrat ein
+  endliches Integral hat, wobei Funktionen, die fast überall übereinstimmen, als derselbe
+  Vektor gelten (Fundament zu diesem Kapitel). Jeder Raum gehört zu einem physikalischen
+  System:
+  \begin{equation}\label{c03.eq.drei-raeume}\claim{c03.cl.drei-raeume}{source-backed}
+    \begin{aligned}
+      &\mathbb{C}^2 && \text{\tpcifenglish{qubit}{Qubit}} \\
+      &\elltwo && \text{\tpcifenglish{harmonic oscillator}{harmonischer Oszillator}} \\
+      &\Ltwo{\mathbb{R}} && \text{\tpcifenglish{spinless particle in one dimension}{Teilchen ohne Spin in einer Dimension}}
+    \end{aligned}
+  \end{equation}
+  Der erste Raum ist endlichdimensional. Die beiden anderen kommen im Kern ab Kapitel~5
+  vor.
+  \end{greybox}
+
+\begin{tpcfigure}{c03.fig.raeume}
+  \caption{Die drei Räume nebeneinander, jeweils mit den Betragsquadraten eines Vektors.
+    (a) $\mathbb{C}^2$: der Vektor $\tfrac12\vb{v}$ mit $\vb{v}$ aus
+    Gleichung~\eqref{c03.eq.c2-vektoren}; seine beiden Betragsquadrate sind je $\tfrac12$.
+    (b) $\elltwo$: die Betragsquadrate $\abs{v_j}^2 = 1/j^2$ der ersten zwölf Einträge des
+    Vektors mit $v_j = 1/j$; es folgen unendlich viele weitere. (c) $\Ltwo{\mathbb{R}}$: das
+    Betragsquadrat $\abs{f(x)}^2 = e^{-x^2}$ der Funktion $f(x) = e^{-x^2/2}$. Das
+    Skalarprodukt des Vektors mit sich selbst ist links eine Summe von zwei Balken, in der
+    Mitte eine Summe von unendlich vielen, rechts die Fläche unter der Kurve.}
+  \end{tpcfigure}
+\end{vertiefung}
+
+% Stimme: v03 [37:39] („sofern wir noch eine Bedingung ...“), [39:46]-[42:02]; v03 [87:13].
+Ein komplexer Vektorraum mit Skalarprodukt ist fast schon ein Hilbertraum. Es fehlt noch eine
+Bedingung, die \emph{Vollständigkeit}. Sie ist mathematisch wichtig, aber subtil, und in
+diesem Kurs spielt sie keine wesentliche Rolle: In $\mathbb{C}^n$ ist sie immer
+erfüllt\zoomref{c03.f3}. Bevor wir den Hilbertraum definieren, brauchen wir noch eine
+Schreibweise, die die Rechnungen mit Skalarprodukten sehr viel leichter macht, die Notation
+von Dirac. Die eigentliche Hürde am Anfang der Quantenmechanik ist die Notation; da muss man
+sich durchkämpfen. Am Anfang ist sie ungewohnt, am Ende macht sie alles leichter, und sie ist
+eine Einbahnstraße: Wer sie einmal beherrscht, geht nicht mehr zurück.
+
+% ── Fundament ─────────────────────────────────────────────────────────────────────────
+% Neue Abschnitte des Kapitels (vl03 bis vl05) kommen VOR diese Zeile.
+
+\begin{fundament}[id=c03.f1,
+    titel={Die Cauchy-Schwarz-Ungleichung},
+    wozu={Vertiefung~\ref{c03.v1} zeigt mit einer groben Abschätzung, dass das
+      Skalarprodukt auf $\elltwo$ endlich ist. Hier steht die scharfe Schranke: Der Betrag
+      des Skalarprodukts ist höchstens das Produkt der Längen.},
+    voraussetzung={Proposition~\ref{c03.prop.skalarprodukt} und
+      Vertiefung~\ref{c03.v1}. Kern und Vertiefungen brauchen den Block nicht.},
+    zurueck={Für zwei Vektoren ist $\abs{\vb{v}\adj\vb{w}}^2$ nie größer als
+      $(\vb{v}\adj\vb{v})(\vb{w}\adj\vb{w})$, in $\mathbb{C}^n$ wie in $\elltwo$.}]
+  \begin{lemma}[Cauchy-Schwarz in $\mathbb{C}^n$]\label{c03.lem.cs}\claim[proof-included]{c03.cl.cs}{derived}
+    Für alle $\vb{v}, \vb{w} \in \mathbb{C}^n$ gilt
+    \begin{equation}\label{c03.eq.cs}
+      \abs{\vb{v}\adj\vb{w}}^2 \leq (\vb{v}\adj\vb{v})\,(\vb{w}\adj\vb{w}) .
+    \end{equation}
+  \end{lemma}
+  \begin{proof}
+    Für $\vb{w} = 0$ sind beide Seiten null. Sonst ist $\vb{w}\adj\vb{w} > 0$; wir setzen
+    $c = (\vb{w}\adj\vb{v}) / (\vb{w}\adj\vb{w})$ und $\vb{u} = \vb{v} - c\,\vb{w}$. Nach
+    Regel~1 ist $c^* = (\vb{v}\adj\vb{w}) / (\vb{w}\adj\vb{w})$. Mit den Regeln~2 und~3 von
+    Proposition~\ref{c03.prop.skalarprodukt} und Regel~4 für $\vb{u}$ ist
+    \begin{equation}\label{c03.eq.cs-beweis}
+      0 \leq \vb{u}\adj\vb{u}
+        = \vb{v}\adj\vb{v} - c\, \vb{v}\adj\vb{w} - c^*\, \vb{w}\adj\vb{v} + c^* c\, \vb{w}\adj\vb{w}
+        = \vb{v}\adj\vb{v} - \frac{\abs{\vb{v}\adj\vb{w}}^2}{\vb{w}\adj\vb{w}} ,
+    \end{equation}
+    denn jeder der drei letzten Summanden ist $\abs{\vb{v}\adj\vb{w}}^2 / (\vb{w}\adj\vb{w})$
+    bis auf das Vorzeichen. Multiplikation mit $\vb{w}\adj\vb{w} > 0$ gibt die Behauptung.
+  \end{proof}
+
+  Reed und Simon beweisen dieselbe Ungleichung für jeden Vektorraum mit Skalarprodukt, auf
+  anderem Weg \srcref{reed-simon-1}{S.~38}. Für $\elltwo$ folgt sie hier direkt aus dem
+  Lemma.
+
+  \begin{proposition}[Cauchy-Schwarz in $\elltwo$]\label{c03.prop.cs-elltwo}\claim[proof-included]{c03.cl.cs-elltwo}{derived}
+    Für alle $\vb{v}, \vb{w} \in \elltwo$ gilt
+    $\abs{\vb{v}\adj\vb{w}}^2 \leq (\vb{v}\adj\vb{v})\,(\vb{w}\adj\vb{w})$.
+  \end{proposition}
+  \begin{proof}
+    Für jedes $N$ ist Lemma~\ref{c03.lem.cs}, angewandt auf die ersten $N$ Einträge, die
+    Ungleichung
+    $\abs{\sum_{j \leq N} v_j^* w_j}^2 \leq \sum_{j \leq N} \abs{v_j}^2 \sum_{j \leq N} \abs{w_j}^2$.
+    Die rechte Seite ist höchstens $(\vb{v}\adj\vb{v})(\vb{w}\adj\vb{w})$. Die linke Seite
+    strebt für $N \to \infty$ gegen $\abs{\vb{v}\adj\vb{w}}^2$, weil die Reihe nach
+    Proposition~\ref{c03.prop.elltwo} konvergiert.
+  \end{proof}
+\end{fundament}
+
+\begin{fundament}[id=c03.f2,
+    titel={Funktionen, die sich nur auf einer Nullmenge unterscheiden},
+    wozu={Vertiefung~\ref{c03.v2} lässt offen, ob $\braket{f}{f} = 0$ nur für $f = 0$ gilt.
+      Für Funktionen stimmt das nicht. Hier steht die Reparatur und was sie für den Wert
+      einer Funktion an einer einzelnen Stelle bedeutet.},
+    voraussetzung={Vertiefung~\ref{c03.v2}. Lebesgue-Maß und Lebesgue-Integral werden nur
+      dem Namen nach benutzt.},
+    zurueck={Zwei Funktionen, die sich nur an einzelnen Stellen unterscheiden, sind
+      derselbe Vektor in $\Ltwo{\mathbb{R}}$. Der Wert an einer einzelnen Stelle hat keine
+      Bedeutung, wohl aber Integrale über Intervalle.}]
+  \begin{example}[Eine Funktion mit Länge null]\label{c03.ex.punkt}\claim{c03.cl.punkt}{derived}
+    Sei $f(0) = 1$ und $f(x) = 0$ für $x \neq 0$. Diese Funktion ist stückweise stetig und
+    nicht die Nullfunktion, aber
+    \begin{equation}\label{c03.eq.punkt}
+      \braket{f}{f} = \int_{-\infty}^{\infty} \abs{f(x)}^2\, \dd x = 0 ,
+    \end{equation}
+    denn ein Integrand, der nur an einer Stelle von null verschieden ist, hat das Integral
+    null. Regel~4 von Proposition~\ref{c03.prop.skalarprodukt} gilt für Funktionen also
+    nicht.
+  \end{example}
+
+  Die Reparatur besteht darin, solche Funktionen mit der Nullfunktion zu identifizieren. In
+  der genauen Fassung ist $\Ltwo{\mathbb{R}}$ deshalb ein Raum von Klassen von Funktionen.
+
+  \tpcdef{D80}
+
+  Für quadratintegrierbare $f$ und $g$ gilt
+  \begin{equation}\label{c03.eq.klassen}\claim{c03.cl.klassen}{derived}
+    f \sim g
+    \quad \Leftrightarrow \quad
+    \int_{-\infty}^{\infty} \abs{f(x) - g(x)}^2\, \dd x = 0 .
+  \end{equation}
+  Reed und Simon sagen für integrierbare Funktionen, dass $f(x) = g(x)$ fast überall dasselbe
+  ist wie $\int \abs{f - g}\, \dd x = 0$ \srcref{reed-simon-1}{S.~17}. Angewandt auf die
+  integrierbare Funktion $\abs{f - g}^2$ und die Nullfunktion gibt das
+  Gleichung~\eqref{c03.eq.klassen}, denn $\abs{f - g}^2$ ist genau dort null, wo $f = g$ ist.
+  Daraus folgt auch, dass das Skalarprodukt nicht davon abhängt, welche Funktion man aus
+  einer Klasse nimmt: Ist $n \sim 0$, so ist $\abs{n^* g}$ fast überall null, nach derselben
+  Aussage also $\int \abs{n^* g}\, \dd x = 0$ und damit $\braket{n}{g} = 0$. In $\Ltwo{\mathbb{R}}$ gilt nun auch Regel~4: Aus
+  $\braket{f}{f} = 0$ folgt $f \sim 0$, und das ist der Nullvektor.
+
+  Der Preis ist, dass ein Element von $\Ltwo{\mathbb{R}}$ keinen Wert an einer einzelnen
+  Stelle hat: Ändert man eine Funktion an einer Stelle, so bleibt sie in ihrer Klasse.
+  Reed und Simon schreiben das für die integrierbaren Funktionen so: Für ein Element $f$ hat
+  das Symbol $f(x)$ an einer bestimmten Stelle $x$ keinen Sinn \srcref{reed-simon-1}{S.~17}.
+  Für Funktionen, die einen stetigen Vertreter haben, hilft die folgende Aussage:
+
+  \begin{proposition}[Stetige Vertreter]\label{c03.prop.stetig}\claim[proof-omitted]{c03.cl.stetig}{source-quoted}
+    Enthält eine Klasse eine stetige Funktion, so enthält sie keine andere stetige
+    Funktion. Man darf dann $f(x)$ für den Wert dieser stetigen Funktion schreiben.
+  \end{proposition}
+
+  Reed und Simon sagen das für die Klassen integrierbarer Funktionen
+  \srcref{reed-simon-1}{S.~18}; es hängt nur an der Relation „fast überall gleich“, die für
+  $\Ltwo{\mathbb{R}}$ dieselbe ist.
+\end{fundament}
+
+\begin{fundament}[id=c03.f3,
+    titel={Vollständigkeit},
+    wozu={Der Kern sagt, dass einem Vektorraum mit Skalarprodukt zum Hilbertraum noch eine
+      Bedingung fehlt und dass sie in $\mathbb{C}^n$ immer gilt. Hier steht, was die
+      Bedingung verlangt, warum $\mathbb{C}^n$, $\elltwo$ und $\Ltwo{\mathbb{R}}$ sie
+      erfüllen, und ein Raum, der sie verletzt.},
+    voraussetzung={Vertiefungen~\ref{c03.v1} und~\ref{c03.v2}, Fundament~\ref{c03.f2};
+      Folgen und Grenzwerte.},
+    zurueck={$\mathbb{C}^n$, $\elltwo$ und $\Ltwo{\mathbb{R}}$ sind vollständig. Wer mit
+      ihnen rechnet, braucht über die Bedingung nicht nachzudenken.}]
+  \tpcdef{D79}
+
+  Das Vorbild ist der Unterschied zwischen den rationalen und den reellen Zahlen: Eine Folge
+  rationaler Zahlen, die sich einer irrationalen Zahl nähert, ist eine Cauchy-Folge, hat in
+  den rationalen Zahlen aber keinen Grenzwert. $\mathbb{R}$ ist vollständig, $\mathbb{Q}$
+  nicht \srcref{reed-simon-1}{S.~6}.
+
+  \begin{proposition}[$\mathbb{C}^n$ ist vollständig]\label{c03.prop.cn-vollstaendig}\claim[proof-included]{c03.cl.cn-vollstaendig}{derived}
+    Jede Cauchy-Folge in $\mathbb{C}^n$ konvergiert gegen einen Vektor in $\mathbb{C}^n$.
+  \end{proposition}
+  \begin{proof}
+    Sei $\vb{v}^{(1)}, \vb{v}^{(2)}, \dots$ eine Cauchy-Folge. Für jeden Index $j$ ist
+    \begin{equation}\label{c03.eq.komponente}
+      \abs{v_j^{(m)} - v_j^{(k)}}^2
+      \leq \sum_{l=1}^{n} \abs{v_l^{(m)} - v_l^{(k)}}^2
+      = d\bigl(\vb{v}^{(m)}, \vb{v}^{(k)}\bigr)^2 .
+    \end{equation}
+    Also sind die Real- und die Imaginärteile der $j$-ten Einträge Cauchy-Folgen reeller
+    Zahlen; weil $\mathbb{R}$ vollständig ist, haben sie Grenzwerte. Sei $v_j$ der
+    zusammengesetzte Grenzwert und $\vb{v}$ der Vektor mit diesen Einträgen. Dann ist
+    $d(\vb{v}^{(m)}, \vb{v})^2 = \sum_{j=1}^{n} \abs{v_j^{(m)} - v_j}^2$ eine Summe von
+    $n$ Gliedern, von denen jedes gegen null geht.
+  \end{proof}
+
+  Dass die Bedingung nicht leer ist, zeigt ein Raum, der zwischen $\mathbb{C}^n$ und
+  $\elltwo$ liegt.
+
+  \begin{example}[Abbrechende Folgen sind nicht vollständig]\label{c03.ex.endlich}\claim{c03.cl.endlich}{derived}
+    Sei $F$ die Menge der Vektoren mit unendlich vielen Einträgen, von denen nur endlich
+    viele von null verschieden sind, mit dem Skalarprodukt von $\elltwo$. Mit $F$ liegen
+    auch Summen und Vielfache in $F$. Sei $\vb{v}^{(N)}$ der Vektor mit den Einträgen
+    $1, \tfrac12, \dots, \tfrac1N$ und danach lauter Nullen. Für $M > N$ ist nach
+    Gleichung~\eqref{c03.eq.rate}
+    \begin{equation}\label{c03.eq.endlich}
+      d\bigl(\vb{v}^{(M)}, \vb{v}^{(N)}\bigr)^2
+      = \sum_{j=N+1}^{M} \frac{1}{j^2}
+      \leq \sum_{j=N+1}^{M} \Bigl( \frac{1}{j-1} - \frac{1}{j} \Bigr)
+      = \frac{1}{N} - \frac{1}{M} < \frac{1}{N} ,
+    \end{equation}
+    die Folge ist also eine Cauchy-Folge. Hätte sie einen Grenzwert $\vb{u}$ in $F$, so wäre
+    nach dem Argument von Gleichung~\eqref{c03.eq.komponente} für jedes $j$
+    $u_j = \lim_{N} v_j^{(N)} = 1/j$, und $\vb{u}$ hätte unendlich viele Einträge ungleich
+    null. Also konvergiert die Folge in $F$ nicht. In $\elltwo$ dagegen konvergiert sie,
+    gegen den Vektor mit $v_j = 1/j$ aus Beispiel~\ref{c03.ex.rate}: Dieselbe Rechnung
+    mit $M \to \infty$ gibt den Abstand höchstens $1/\sqrt{N}$.
+  \end{example}
+
+  Der Raum $\elltwo$ füllt die Lücken von $F$ also gerade auf; Reed und Simon sagen
+  allgemeiner, dass die abbrechenden Folgen in diesen Räumen dicht liegen
+  \srcref{reed-simon-1}{S.~69}.
+
+  \begin{theorem}[Vollständigkeit von $\elltwo$ und $\Ltwo{\mathbb{R}}$]\label{c03.thm.vollstaendig}\claim[proof-omitted]{c03.cl.vollstaendig}{source-quoted}
+    Der Raum $\elltwo$ ist vollständig. Der Raum $\Ltwo{\mathbb{R}}$ in der Fassung von
+    \defref{D80} ist vollständig (Satz von Riesz und Fischer).
+  \end{theorem}
+
+  Die Quelle ist Reed und Simon: für $\elltwo$ als der Fall $p = 2$ der Folgenräume, die
+  sie für jedes $p \geq 1$ betrachten, für $\Ltwo{\mathbb{R}}$ als der Fall $p = 2$ des
+  Satzes von Riesz und Fischer für die Räume $L^p$ \srcref{reed-simon-1}{S.~68--69}. Im Fall von $\Ltwo{\mathbb{R}}$ gilt der
+  Satz für die Fassung aus Fundament~\ref{c03.f2}, mit messbaren Funktionen und dem
+  Lebesgue-Integral.
+
+  % Stimme: v03 [87:13]-[89:12].
+  Der Versuchung, Grenzfälle zu betrachten, werden wir widerstehen. Ich werde in dieser
+  Vorlesung nur legale Rechnungen durchführen, zumindest hoffe ich das. Physiker gehen mit
+  diesen Regeln ohnehin ein bisschen lockerer um als Mathematiker: Sobald etwas unendlich
+  wird, sagen wir, wir haben einen Fehler gemacht. Unendlich darf keine Vorhersage sein,
+  deshalb lassen wir diese Rechnung weg. Wenn Sie aber ein bisschen in die mathematische
+  Richtung gehen möchten, dann sind diese Bedingungen wirklich sehr wichtig.
+
+  Mathematisch ist das keine Regel. Ein Vektor kann nämlich in
+  $\elltwo$ liegen und trotzdem eine unendliche Summe liefern: Für $v_j = 1/j$ ist
+  $\sum_j \abs{v_j}^2$ endlich, aber $\sum_j j\, \abs{v_j}^2 = \sum_j 1/j$ divergiert
+  (Beispiel~\ref{c03.ex.rate}). Summen dieser Art treten später bei Erwartungswerten auf.
+  Ob eine solche Rechnung erlaubt ist, muss man dann prüfen; das Werkzeug dafür sind die
+  Definitionsbereiche von Operatoren.
+\end{fundament}

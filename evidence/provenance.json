@@ -1718,9 +1718,8 @@
   },
   {
    "id": "P-0101",
-   "claim_ids": [
-    "c00.cl.geschichte"
-   ],
+   "claim_ids": [],
+   "supports": "M-0050",
    "source_key": "tpc-script-v0.2",
    "member": "../latex/lectures/de/vl01.tex",
    "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
@@ -1735,9 +1734,8 @@
   },
   {
    "id": "P-0102",
-   "claim_ids": [
-    "c00.cl.geschichte"
-   ],
+   "claim_ids": [],
+   "supports": "M-0050",
    "source_key": "tpc-script-v0.2",
    "member": "../latex/lectures/de/vl01.tex",
    "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
@@ -1752,9 +1750,8 @@
   },
   {
    "id": "P-0103",
-   "claim_ids": [
-    "c00.cl.geschichte"
-   ],
+   "claim_ids": [],
+   "supports": "M-0050",
    "source_key": "tpc-script-v0.2",
    "member": "../latex/lectures/de/vl01.tex",
    "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
@@ -1786,9 +1783,8 @@
   },
   {
    "id": "P-0105",
-   "claim_ids": [
-    "c00.cl.geschichte"
-   ],
+   "claim_ids": [],
+   "supports": "M-0050",
    "source_key": "tpc-script-v0.2",
    "member": "../latex/lectures/de/vl01.tex",
    "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
@@ -2375,6 +2371,530 @@
     "line_end": 216
    },
    "quote": "In der Quantenmechanik spielt die Varianz eine größere Rolle als das zweite Moment; sie wird uns bei der Unschärferelation wieder begegnen.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0300",
+   "claim_ids": [
+    "c00.cl.impuls"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 62,
+    "line_end": 62
+   },
+   "quote": "Gerade weil der Drehimpuls quantisiert ist, können wir heute Qubits bauen.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0301",
+   "claim_ids": [
+    "c00.cl.annahme"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 28,
+    "line_end": 28
+   },
+   "quote": "Die ersten Quantencomputer sind entwickelt worden. Jetzt haben wir die Möglichkeit, zum ersten Mal, direkt mit Quantensystemen zu experimentieren (mit Hilfe von Cloud Services, z.B. IBM Q experience). Quantenaspekte werden langsam sichtbar werden.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0302",
+   "claim_ids": [
+    "c00.cl.lichtquant"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 37,
+    "line_end": 37
+   },
+   "quote": "Die konstante ,,h`` (ursprünglich ,,Hilfsgröße``) wurde von Planck zur Herleitung des Strahlungsgesetzes:",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0303",
+   "claim_ids": [
+    "c00.cl.kernsatz"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 72,
+    "line_end": 72
+   },
+   "quote": "Die statistische Interpretation der Theorie wird von Born (ebenfalls 1926) geliefert.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0304",
+   "claim_ids": [
+    "c00.cl.kernsatz"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 72,
+    "line_end": 72
+   },
+   "quote": "Borns Beitrag ist meiner Ansicht nach der wichtigste Aspekt der ganzen Theorie.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0305",
+   "claim_ids": [
+    "c00.cl.kernsatz"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 87,
+    "line_end": 87
+   },
+   "quote": "Trotz vielen Ideen und deren Entwicklungen, ist die Interpretation der QM immer noch kontrovers. Dennoch ist die QM heute allgemein akzeptiert und liefert uns das beste physikalische Modell, das wir in der Physik haben; es gibt bis heute keinen Widerspruch zur QM.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0306",
+   "claim_ids": [
+    "c00.cl.p0"
+   ],
+   "source_key": "brief",
+   "member": "../docs/plan/BRIEF.md",
+   "member_sha256": "9b70b3a120262898efc41db8f3c9fd8f1678edce473cc594747159924725ac9e",
+   "locus": {
+    "line_start": 48,
+    "line_end": 48
+   },
+   "quote": "We hence present the \"postulates\" of quantum mechanics incrementally, in order of increasing specialisation:",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0307",
+   "claim_ids": [
+    "c01.cl.drehimpuls",
+    "c00.cl.impuls"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl14.tex",
+   "member_sha256": "2912c7ad93a503355e63efaf3ad9da02fdb2de2a58c08fd9cbf7150752defd45",
+   "locus": {
+    "line_start": 92,
+    "line_end": 92
+   },
+   "quote": "\\widehat{L}_3|\\ell,m\\rangle &= \\hbar m|\\ell,m\\rangle,",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0308",
+   "claim_ids": [
+    "c01.cl.drehimpuls",
+    "c00.cl.impuls"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl14.tex",
+   "member_sha256": "2912c7ad93a503355e63efaf3ad9da02fdb2de2a58c08fd9cbf7150752defd45",
+   "locus": {
+    "line_start": 96,
+    "line_end": 96
+   },
+   "quote": "$m = -\\ell, -\\ell + 1, \\ldots, \\ell$",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0309",
+   "claim_ids": [
+    "c00.cl.lichtquant"
+   ],
+   "source_key": "nobelprize-history-2026",
+   "member": "nobelprize-history-2026/planck-facts.html",
+   "member_sha256": "1979cfa0ff489e290450d597292d7697a53fb897b662335d1b494d20b68448cc",
+   "locus": {
+    "line_start": 494,
+    "line_end": 494
+   },
+   "quote": "When a black body is heated, electromagnetic radiation is emitted with a spectrum corresponding to the temperature of the body, and not to its composition.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0310",
+   "claim_ids": [
+    "c00.cl.geschichte"
+   ],
+   "source_key": "nobelprize-history-2026",
+   "member": "nobelprize-history-2026/planck-facts.html",
+   "member_sha256": "1979cfa0ff489e290450d597292d7697a53fb897b662335d1b494d20b68448cc",
+   "locus": {
+    "line_start": 494,
+    "line_end": 494
+   },
+   "quote": "Max Planck solved this problem in 1900 by introducing the theory of “quanta”",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0311",
+   "claim_ids": [
+    "c00.cl.geschichte"
+   ],
+   "source_key": "nobelprize-history-2026",
+   "member": "nobelprize-history-2026/franck-facts.html",
+   "member_sha256": "44105236f124979215522e1b1ceb7374e4485928fcf6577d8a3d56b76fb21415",
+   "locus": {
+    "line_start": 477,
+    "line_end": 477
+   },
+   "quote": "In 1914, Gustav Hertz and James Franck conducted an experiment",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0312",
+   "claim_ids": [
+    "c00.cl.impuls",
+    "c00.cl.geschichte"
+   ],
+   "source_key": "nobelprize-history-2026",
+   "member": "nobelprize-history-2026/stern-facts.html",
+   "member_sha256": "b177a6ac4b2b6f35bde5b9d2e27be10214a9f7016562681cc23ca0ac2a06155e",
+   "locus": {
+    "line_start": 456,
+    "line_end": 456
+   },
+   "quote": "In a 1922 experiment, Otto Stern and Walter Gerlach passed a beam of silver atoms through an inhomogeneous magnetic field. According to classical physics, the beam should have spread out to a distribution, but instead, two distinct beams were observed.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0313",
+   "claim_ids": [
+    "c00.cl.geschichte"
+   ],
+   "source_key": "nobelprize-history-2026",
+   "member": "nobelprize-history-2026/broglie-facts.html",
+   "member_sha256": "97706685e4a782eb62e0a7369776790d16a9b354652ca5d8a0cd5a8328c2cd01",
+   "locus": {
+    "line_start": 487,
+    "line_end": 487
+   },
+   "quote": "In 1924 Louis de Broglie introduced the idea that particles, such as electrons, could be described not only as particles but also as waves.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0314",
+   "claim_ids": [
+    "c00.cl.geschichte"
+   ],
+   "source_key": "nobelprize-history-2026",
+   "member": "nobelprize-history-2026/davisson-facts.html",
+   "member_sha256": "617491b5bb45815f80fa50d6a5dd0a57008cc1e015ee39606c1665f10f18c5a9",
+   "locus": {
+    "line_start": 466,
+    "line_end": 466
+   },
+   "quote": "In 1927 Clinton Davisson and G.P. Thomson demonstrated, independently of one another, that electrons could be described as waves.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0315",
+   "claim_ids": [
+    "c00.cl.geschichte"
+   ],
+   "source_key": "nobelprize-history-2026",
+   "member": "nobelprize-history-2026/einstein-facts.html",
+   "member_sha256": "3038ff9b54aff34ac93fbd9ae954e2e35eeae9ecc2926a7ac66a0d6a90425906",
+   "locus": {
+    "line_start": 501,
+    "line_end": 501
+   },
+   "quote": "In one of several epoch-making studies beginning in 1905, Albert Einstein explained that light consists of quanta",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0316",
+   "claim_ids": [
+    "c00.cl.geschichte"
+   ],
+   "source_key": "nobelprize-history-2026",
+   "member": "nobelprize-history-2026/crossref-physrev-30-705.json",
+   "member_sha256": "7d4f7879e8c1212a936dd99cee98e3d99482bafe878eb18f80b86f1036e885d4",
+   "locus": {
+    "line_start": 1,
+    "line_end": 1
+   },
+   "quote": "\"issued\":{\"date-parts\":[[1927,12,1]]}",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0317",
+   "claim_ids": [
+    "c01.cl.momente"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl01.tex",
+   "member_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+   "locus": {
+    "line_start": 204,
+    "line_end": 204
+   },
+   "quote": "Für Maße auf $\\mathbb{R}$ ist es oft besonders einfach, die Erwartungswerte der Koordinatenfunktion und ihrer Potenzen zu berechnen.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0140",
+   "claim_ids": [
+    "c03.cl.elltwo"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 51,
+    "printed_page": "40"
+   },
+   "quote": "Define \\ell_2 to be the set of sequences \\{x_n\\}_{n=1}^\\infty of complex numbers which satisfy \\sum_{n=1}^\\infty |x_n|^2 < \\infty with the inner product (\\{x_n\\}_{n=1}^\\infty, \\{y_n\\}_{n=1}^\\infty) = \\sum_{n=1}^\\infty \\bar x_n y_n",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03",
+   "review_receipt": "R-0140",
+   "notes": "Section II.1, Example 3. Read from the page image by the author of chapter C3 (agent, 2026-10-20): ddjvu -format=pnm -page=51 -scale=150; not from the text layer."
+  },
+  {
+   "id": "P-0141",
+   "claim_ids": [
+    "c03.cl.vollstaendig"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 81,
+    "printed_page": "69"
+   },
+   "quote": "\\ell_p is a Banach space with the \\|\\cdot\\|_p norm",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03",
+   "review_receipt": "R-0140",
+   "notes": "Section III.1, Example 3. Read from the page image by the author of chapter C3 (agent, 2026-10-20): ddjvu -format=pnm -page=81 -scale=150; not from the text layer."
+  },
+  {
+   "id": "P-0142",
+   "claim_ids": [
+    "c03.cl.vollstaendig"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 80,
+    "printed_page": "68"
+   },
+   "quote": "(b) (Riesz-Fisher) L^p(X, d\\mu) is complete.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03",
+   "review_receipt": "R-0140",
+   "notes": "Section III.1, Theorem III.1. Read from the page image by the author of chapter C3 (agent, 2026-10-20): ddjvu -format=pnm -page=80 -scale=150; not from the text layer."
+  },
+  {
+   "id": "P-0143",
+   "claim_ids": [
+    "c03.cl.vollstaendig"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 51,
+    "printed_page": "40"
+   },
+   "quote": "L^2(R^n, d\\mu) is a Hilbert space under the inner product (f, g) = \\int_{R^n} \\overline{f(x)} g(x) d\\mu",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03",
+   "review_receipt": "R-0140",
+   "notes": "Section II.1, Example 4. Read from the page image by the author of chapter C3 (agent, 2026-10-20): ddjvu -format=pnm -page=51 -scale=150; not from the text layer."
+  },
+  {
+   "id": "P-0144",
+   "claim_ids": [
+    "c03.cl.cs"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 50,
+    "printed_page": "38"
+   },
+   "quote": "If x and y are vectors in an inner product space V, then |(x, y)| \\le \\|x\\| \\|y\\|",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03",
+   "review_receipt": "R-0140",
+   "notes": "Section II.1, Corollary (the Schwarz inequality). Read from the page image by the author of chapter C3 (agent, 2026-10-20): ddjvu -format=pnm -page=50 -scale=150; not from the text layer."
+  },
+  {
+   "id": "P-0145",
+   "claim_ids": [
+    "c03.cl.skalarprodukt"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 49,
+    "printed_page": "37"
+   },
+   "quote": "The reader should be aware that some texts use a convention different from the one introduced in (iii); they take the inner product to be linear in the first vector and conjugate-linear in the second.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03",
+   "review_receipt": "R-0140",
+   "notes": "Section II.1. Read from the page image by the author of chapter C3 (agent, 2026-10-20): ddjvu -format=pnm -page=49 -scale=150; not from the text layer."
+  },
+  {
+   "id": "P-0146",
+   "claim_ids": [
+    "c03.cl.klassen"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 29,
+    "printed_page": "17"
+   },
+   "quote": "We say two functions f, g \\in \\mathcal{L}^1 are equivalent if f(x) = g(x) a.e. (this is the same as saying \\int |f - g| dx = 0).",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03",
+   "review_receipt": "R-0140",
+   "notes": "Section I.3. Read from the page image by the author of chapter C3 (agent, 2026-10-20): ddjvu -format=pnm -page=29 -scale=150; not from the text layer."
+  },
+  {
+   "id": "P-0147",
+   "claim_ids": [
+    "c03.cl.stetig"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 29,
+    "printed_page": "17"
+   },
+   "quote": "In particular when f \\in L^1, the symbol f(x) for a particular x does not make sense.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03",
+   "review_receipt": "R-0140",
+   "notes": "Section I.3. Read from the page image by the author of chapter C3 (agent, 2026-10-20): ddjvu -format=pnm -page=29 -scale=150; not from the text layer."
+  },
+  {
+   "id": "P-0148",
+   "claim_ids": [
+    "c03.cl.stetig"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 30,
+    "printed_page": "18"
+   },
+   "quote": "has a representative \\tilde f (that is, \\tilde f is a function; f an equivalence class of functions) which is continuous. Then no other representative of f is continuous, so it is natural to write f(x) for \\tilde f(x).",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03",
+   "review_receipt": "R-0140",
+   "notes": "Section I.3. Read from the page image by the author of chapter C3 (agent, 2026-10-20): ddjvu -format=pnm -page=30 -scale=150; not from the text layer."
+  },
+  {
+   "id": "P-0149",
+   "claim_ids": [
+    "c03.cl.cn-vollstaendig"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 20,
+    "printed_page": "6"
+   },
+   "quote": "For example, \\mathbb{R} is complete, but \\mathbb{Q} is not.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03",
+   "review_receipt": "R-0140",
+   "notes": "Printed page corrected from 8 to 6 after the independent review (R-0140, row P-0149). Section I.2. Read from the page image by the author of chapter C3 (agent, 2026-10-20): ddjvu -format=pnm -page=20 -scale=150; not from the text layer."
+  },
+  {
+   "id": "P-0150",
+   "claim_ids": [
+    "c03.cl.endlich"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 81,
+    "printed_page": "69"
+   },
+   "quote": "One of the reasons that these spaces are easy to handle is that f is dense in \\ell_p (in \\|\\cdot\\|_p; p < \\infty)",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03",
+   "review_receipt": "R-0140",
+   "notes": "Section III.1, Example 3. Read from the page image by the author of chapter C3 (agent, 2026-10-20): ddjvu -format=pnm -page=81 -scale=150; not from the text layer."
+  },
+  {
+   "id": "P-0151",
+   "claim_ids": [
+    "c03.cl.drei-raeume"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "../latex/lectures/de/vl02.tex",
+   "member_sha256": "0acb89f372aca2f40a5c43affa8bf833418ff40bfb407f34d22125fb62415c44",
+   "locus": {
+    "line_start": 139,
+    "line_end": 139
+   },
+   "quote": "$\\mathbb{C}^2$ gehört zum \\emph{Qubit}, $\\ell^2$ zum \\emph{harmonischen Oszillator} (etwa einem Photon in einer Glasfaser) und $L^2(\\mathbb{R})$ zu einem \\emph{Teilchen in einer Dimension}.",
    "read_from": "text",
    "reviewer": null,
    "review_receipt": null

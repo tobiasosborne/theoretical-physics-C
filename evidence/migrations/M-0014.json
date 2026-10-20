@@ -1,0 +1,58 @@
+{
+ "schema_version": 1,
+ "id": "M-0014",
+ "status": "recorded",
+ "title": "vl02: the inner-product series is stated for all infinite columns before the admission condition",
+ "legacy": [
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl02.tex",
+   "line": 91,
+   "file_sha256": "0acb89f372aca2f40a5c43affa8bf833418ff40bfb407f34d22125fb62415c44",
+   "old_text": "Das Skalarprodukt $\\mbf{v}^\\dag \\mbf{w}$ wird wie folgt berechnet",
+   "new_text": "Für das Skalarprodukt ist die naheliegende Verallgemeinerung die Reihe $\\vb{v}\\adj\\vb{w} = \\sum_{j=1}^{\\infty} v_j^* w_j$: In der Regel setzt man in allen Gleichungen $n = \\infty$. Hier können aber Probleme auftreten, Konvergenzprobleme."
+  },
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl02.tex",
+   "line": 96,
+   "file_sha256": "0acb89f372aca2f40a5c43affa8bf833418ff40bfb407f34d22125fb62415c44",
+   "old_text": "dass man in allen Gleichungen $n=\\infty$ setzt.",
+   "new_text": "In der Regel setzt man in allen Gleichungen $n = \\infty$. Hier können aber Probleme auftreten, Konvergenzprobleme. Eines zeigt sich sofort."
+  },
+  {
+   "version": "v0.2-en",
+   "file": "latex/lectures/en/lec02.tex",
+   "line": 91,
+   "file_sha256": "0686c02503139e489b6e5ca96764bd7f10e178ae2a19571dbbc7263a5e93a082",
+   "old_text": "The inner product $\\mbf{v}^\\dag \\mbf{w}$ is computed as follows",
+   "new_text": "For the inner product the obvious generalisation is the series $\\vb{v}\\adj\\vb{w} = \\sum_{j=1}^{\\infty} v_j^* w_j$: as a rule, one sets $n = \\infty$ in all equations. But here problems can arise, convergence problems."
+  },
+  {
+   "version": "v0.2-en",
+   "file": "latex/lectures/en/lec02.tex",
+   "line": 96,
+   "file_sha256": "0686c02503139e489b6e5ca96764bd7f10e178ae2a19571dbbc7263a5e93a082",
+   "old_text": "one sets $n=\\infty$ in all equations.",
+   "new_text": "as a rule, one sets $n = \\infty$ in all equations. But here problems can arise, convergence problems. One shows up straight away."
+  },
+  {
+   "version": "v0.1",
+   "file": "archive/skript-2022/Vorlesungen2.tex",
+   "line": 87,
+   "file_sha256": "c261c7baba74b0ee6367f2d9caa0855be066e2347ea24575afd6e82a400888d3",
+   "old_text": "Das Skalarprodukt $\\mbf{v}^\\dag \\mbf{w}$ wird wie folgt berechnet",
+   "new_text": null
+  }
+ ],
+ "reason": "The componentwise vector-space rules of vl02.tex:91 ('Alle Rechenregeln für Vektorräume gelten auch in den unendlichen dimensionalen Fällen') are correct for all infinite columns and are kept. The defect is the inner product: vl02.tex:91-95 give the series sum_j v_j^* w_j as 'the' inner product of infinite columns, and vl02.tex:96 says that one sets n = infinity 'in allen Gleichungen'. On arbitrary infinite columns this series need not converge (the vector of all ones, vl02.tex:98-107, is the script's own counterexample). v0.2 repairs this a few lines later by introducing l^2; v0.1 does not. The new chapter presents the series as the naive generalisation, shows the counterexample at once (c03.ex.einsen), defines l^2 (D77) and proves that the series converges and the rules hold there (c03.prop.elltwo).",
+ "evidence": {
+  "independent_check": "evidence/derivations/c03/DERIVATION.md (c03.cl.einsen, c03.cl.elltwo)",
+  "provenance_ids": [
+   "P-0140"
+  ],
+  "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.elltwo",
+  "notes": "Diagnosis narrowed to the inner-product series after the second review (docs/review/lectures/REVIEW-lec2.md, row M-0014). Reed-Simon I p. 40 (P-0140) define l_2 with the condition before the inner product."
+ },
+ "destination": "c03.v1"
+}

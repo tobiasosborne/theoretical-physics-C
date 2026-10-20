@@ -1,0 +1,661 @@
+% content/c03-hilbertraum/en.tex — Chapter 3: The Hilbert-space toolkit
+% (English edition; the German de.tex leads, same constructs, IDs and displays)
+%
+% Scope: the material of the second lecture (latex/lectures/de/vl02.tex). The chapter will grow
+% with vl03 to vl05; new sections go between section c03.s3 and the Fundament blocks at the end.
+% Map of vl02: evidence/migrations/maps/vl02-map.json. Defects of vl02: M-0013 to M-0016.
+% Definitions D75 to D80; derivations evidence/derivations/c03/DERIVATION.md.
+
+\chapter{The Hilbert-space toolkit}\label{c03}
+
+To describe the states of quantum mechanics, the \emph{Hilbert space} will play a major role.
+It is the mathematical core of quantum mechanics: without it we cannot even talk about the
+objects of the theory. To define this space we first need \emph{complex vector spaces}. Such
+spaces are defined in complete analogy with the real case, which you know from Theoretical
+Physics~A \srcref{tpc-script-v0.2}{vl02, introduction}.
+
+Why \emph{complex} and not real vectors appear here, we do not know: nature is simply built
+that way, we have to live with it, and no better alternative has been found so far. This fact
+has very important physical consequences, which you will see in the course of these lectures.
+
+The qubit has already appeared in Chapter~\ref{c02}, with its ball of states. How exactly the
+states of quantum mechanics are built from a Hilbert space is the subject of Chapter~4. This
+chapter provides the tools, in a form you can hold in your hand: columns of complex numbers.
+
+\section{Complex vectors}\label{c03.s1}
+
+Fortunately the definition is simple. You know complex numbers, and you know column vectors;
+now the two are brought together.
+
+\tpcdef{D75}
+
+A complex vector is therefore nothing but a list of complex numbers. On the blackboard I write
+it in bold and underlined; in print it is just bold, $\vb{v}$. If you multiply a complex
+vector by a scalar or add two of them, you get a complex vector again.
+
+For the vector space itself these two rules suffice. You do not need an inner product for it:
+the dagger operation and the inner product of the next section are extra structure, and only
+with them does $\mathbb{C}^n$ become a Hilbert space.
+
+The simplest case, $\mathbb{C}^1$, is boring: these are just the complex numbers. The first
+interesting example is $\mathbb{C}^2$. Computationally this space is very simple, and
+physically it is nevertheless central: two-dimensional complex vectors describe the states of
+a qubit, the basic building block of a quantum computer, and one needs them to describe the
+spin of an electron \srcref{tpc-script-v0.2}{vl17, section on spin}. More precisely, a
+vector describes a \emph{pure} state; mixed states, such as the points inside the ball of
+states of Chapter~\ref{c02}, need density matrices, and these come in Chapter~4
+\srcref{tpc-script-v0.2}{vl06, Postulate 2}.
+
+\begin{example}[Computing in $\mathbb{C}^2$]\label{c03.ex.c2}\claim{c03.cl.c2}{derived}
+  The vector space $\mathbb{C}^2$ consists of all vectors with two complex entries. Let
+  \begin{equation}\label{c03.eq.c2-vektoren}
+    \vb{v} = \begin{pmatrix} 1+i \\ 1-i \end{pmatrix},
+    \qquad
+    \vb{w} = \begin{pmatrix} 1 \\ -1 \end{pmatrix}
+  \end{equation}
+  be two vectors; the first one deliberately has complex entries, to stress that this is
+  allowed. Computing entry by entry,
+  \begin{equation}\label{c03.eq.c2-rechnung}
+    \vb{v} + \vb{w} = \begin{pmatrix} 2+i \\ -i \end{pmatrix},
+    \qquad
+    i\,\vb{v} = \begin{pmatrix} i + i^2 \\ i - i^2 \end{pmatrix}
+              = \begin{pmatrix} -1+i \\ 1+i \end{pmatrix} .
+  \end{equation}
+\end{example}
+
+\section{The dagger operation and the inner product}\label{c03.s2}
+
+A complex vector space on its own carries no further structure. To get to the Hilbert space we
+need additional operations. The first is the \emph{dagger operation}: a column vector becomes
+a row vector, and the entries are complex conjugated on the way. With it the inner product can
+be introduced at once: apply the dagger operation to the first vector and multiply the row by
+the column of the second. The result is always a complex number.
+
+\tpcdef{D76}
+
+\begin{tpcfigure}{c03.fig.kreuz}
+  \caption{The dagger operation and the inner product. (a) The entries of a vector in
+    $\mathbb{C}^2$ as points of the complex plane, here $v_1 = 2+i$ and $v_2 = -1+2i$ (filled).
+    The dagger operation reflects every entry in the real axis (open circles,
+    $v_1^* = 2-i$ and $v_2^* = -1-2i$) and lays the column down as a row. (b) The inner
+    product of Example~\ref{c03.ex.skalarprodukt}: the row $\vb{v}\adj$ is multiplied entry by
+    entry with the column $\vb{w}$, and the products are added.}
+\end{tpcfigure}
+
+You do not have to do the complex conjugation in the dagger operation; you could simply lay
+a column down. It pays off, however, as soon as you multiply a vector with itself. Since
+$v_j^* v_j = \abs{v_j}^2 = (\operatorname{Re} v_j)^2 + (\operatorname{Im} v_j)^2$, we have
+\begin{equation}\label{c03.eq.selbst}\claim{c03.cl.selbst}{derived}
+  \vb{v}\adj\vb{v} = \sum_{j=1}^{n} v_j^* v_j = \sum_{j=1}^{n} \abs{v_j}^2 \;\geq\; 0 .
+\end{equation}
+The inner product of a vector with itself is therefore a real number and never negative.
+
+\begin{example}[Without conjugation]\label{c03.ex.ohne-stern}\claim{c03.cl.ohne-stern}{derived}
+  Let $\vb{v} = \begin{pmatrix} 1 \\ i \end{pmatrix}$. Without conjugation, row times column
+  would give $1 \cdot 1 + i \cdot i = 1 + i^2 = 0$, although $\vb{v}$ is not the zero vector.
+  With the dagger operation,
+  \begin{equation}\label{c03.eq.ohne-stern}
+    \vb{v}\adj\vb{v} = 1 \cdot 1 + (-i) \cdot i = 1 + 1 = 2 .
+  \end{equation}
+  Without the star, a vector that is not zero would have “length” zero.
+\end{example}
+
+The inner product is the extra structure with which we shall later compute
+\emph{probabilities} in quantum mechanics. Quantum mechanics is a probabilistic theory
+(Chapter~\ref{c01}) and therefore needs a method to compute probabilities; the inner product
+will be that method \srcref{tpc-script-v0.2}{vl03, section on inner products}.
+
+\begin{example}[An inner product in $\mathbb{C}^2$]\label{c03.ex.skalarprodukt}\claim{c03.cl.vw}{derived}
+  For the vectors of Equation~\eqref{c03.eq.c2-vektoren} one computes in two steps, first the
+  dagger operation, then row times column:
+  \begin{equation}\label{c03.eq.vw}
+    \vb{v}\adj\vb{w}
+    = \begin{pmatrix} 1-i & 1+i \end{pmatrix} \begin{pmatrix} 1 \\ -1 \end{pmatrix}
+    = (1-i) - (1+i) = -2i .
+  \end{equation}
+  Does it matter which of the two vectors gets the dagger? Yes: the \emph{first} vector
+  always gets the dagger. In the other order the conjugation is trivial here, because
+  $\vb{w}$ is real, and the result is different:
+  \begin{equation}\label{c03.eq.wv}
+    \vb{w}\adj\vb{v}
+    = \begin{pmatrix} 1 & -1 \end{pmatrix} \begin{pmatrix} 1+i \\ 1-i \end{pmatrix}
+    = (1+i) - (1-i) = 2i .
+  \end{equation}
+  The two results are complex conjugates of each other. So the order matters, but the
+  difference is under control.
+\end{example}
+
+That this is no accident can be read off from the sum. The following rules hold for every
+$n$.
+
+\begin{proposition}[Rules for the inner product in $\mathbb{C}^n$]\label{c03.prop.skalarprodukt}\claim[proof-included]{c03.cl.skalarprodukt}{derived}
+  Let $\vb{v}, \vb{w}, \vb{u} \in \mathbb{C}^n$ and $\alpha, \beta \in \mathbb{C}$. Then:
+  \begin{enumerate}
+    \item Swapping conjugates: $\vb{w}\adj\vb{v} = (\vb{v}\adj\vb{w})^*$.
+    \item Linear in the second factor:
+      $\vb{v}\adj(\alpha\vb{w} + \beta\vb{u}) = \alpha\, \vb{v}\adj\vb{w} + \beta\, \vb{v}\adj\vb{u}$.
+    \item Antilinear in the first factor:
+      $(\alpha\vb{v} + \beta\vb{u})\adj\vb{w} = \alpha^*\, \vb{v}\adj\vb{w} + \beta^*\, \vb{u}\adj\vb{w}$.
+    \item Positivity: $\vb{v}\adj\vb{v} \geq 0$, and $\vb{v}\adj\vb{v} = 0$ holds only for
+      $\vb{v} = 0$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  On~1: the conjugate of a sum is the sum of the conjugates, and $(z^*)^* = z$, so
+  \begin{equation}\label{c03.eq.vertauschen}
+    (\vb{v}\adj\vb{w})^* = \sum_{j=1}^{n} (v_j^* w_j)^* = \sum_{j=1}^{n} v_j\, w_j^*
+    = \sum_{j=1}^{n} w_j^* v_j = \vb{w}\adj\vb{v} .
+  \end{equation}
+  On~2: $\sum_j v_j^* (\alpha w_j + \beta u_j) = \alpha \sum_j v_j^* w_j + \beta \sum_j v_j^* u_j$.
+  On~3: the $j$-th entry of $(\alpha\vb{v} + \beta\vb{u})\adj$ is
+  $(\alpha v_j + \beta u_j)^* = \alpha^* v_j^* + \beta^* u_j^*$; then as in~2. On~4:
+  Equation~\eqref{c03.eq.selbst}. A sum of numbers $\abs{v_j}^2 \geq 0$ is zero only if every
+  term is zero, that is, if every $v_j = 0$.
+\end{proof}
+
+When a factor is pulled out of the first vector, a star appears. That is the convention of
+this course; some books do it the other way round and call the inner product linear in the
+first vector \srcref{reed-simon-1}{p.~37}.
+
+\begin{exercise}[Computing with the dagger]\label{c03.exc.rechnen}\claim{c03.cl.rechnen}{derived}
+  Let $\vb{v} = \begin{pmatrix} i \\ 2 \end{pmatrix}$ and
+  $\vb{w} = \begin{pmatrix} 1 \\ i \end{pmatrix}$. Compute $3\vb{v}$, $\vb{v} + \vb{w}$,
+  $\vb{v}\adj\vb{w}$, $\vb{w}\adj\vb{v}$ and $\vb{v}\adj\vb{v}$, and check rule~1 of
+  Proposition~\ref{c03.prop.skalarprodukt}.
+\end{exercise}
+\begin{solution}
+  We have $3\vb{v} = \begin{pmatrix} 3i \\ 6 \end{pmatrix}$ and
+  $\vb{v} + \vb{w} = \begin{pmatrix} 1+i \\ 2+i \end{pmatrix}$. With
+  $\vb{v}\adj = \begin{pmatrix} -i & 2 \end{pmatrix}$ and
+  $\vb{w}\adj = \begin{pmatrix} 1 & -i \end{pmatrix}$,
+  \begin{equation}\label{c03.eq.rechnen}
+    \vb{v}\adj\vb{w} = -i + 2i = i,
+    \qquad
+    \vb{w}\adj\vb{v} = i - 2i = -i,
+    \qquad
+    \vb{v}\adj\vb{v} = (-i)\,i + 4 = 5 .
+  \end{equation}
+  So $\vb{w}\adj\vb{v} = -i = (\vb{v}\adj\vb{w})^*$, as rule~1 says.
+\end{solution}
+
+\section{Infinitely many entries}\label{c03.s3}
+
+At this point one could already define finite-dimensional Hilbert spaces. I deliberately
+postpone that, however, because infinite-dimensional vector spaces play a very important role
+in physics. The reason is a physical one: our best models are fields, and fields have
+infinitely many degrees of freedom, as you know from Theoretical Physics~B
+\srcref{tpc-script-v0.2}{vl02, paragraph on infinite-dimensional vector spaces}.
+
+The core of this course nevertheless stays finite-dimensional up to and including Chapter~4:
+everything said there about states and measurements takes place in $\mathbb{C}^n$. The
+infinite-dimensional spaces enter the core only in Chapter~5, with the particle on a line.
+If you want to see now what goes wrong when one simply sets $n = \infty$ in the formulas,
+and how to repair it, you will find it in two deeper blocks. The first is about columns
+with infinitely many entries\zoomref{c03.v1}.
+
+\begin{vertiefung}[id=c03.v1,
+    titel={Columns with infinitely many entries},
+    wozu={If one simply sets $n = \infty$ in the formulas of Section~\ref{c03.s2}, the inner
+      product can diverge. This block shows how to repair it: one admits only vectors whose
+      inner product with themselves is finite. These vectors form the space $\elltwo$.},
+    voraussetzung={Section~\ref{c03.s2}; convergent series. The core up to Chapter~4 does not
+      need this block.},
+    zurueck={A vector with infinitely many entries is admitted if the sum of the squared
+      moduli of its entries is finite. For such vectors the inner product is defined as an
+      infinite sum and obeys the same rules as in $\mathbb{C}^n$.}]
+  One can picture infinite-dimensional vectors as columns with infinitely many entries, that
+  is, as infinite lists of complex numbers:
+  \begin{equation*}
+    \vb{v} = \begin{pmatrix} v_1 \\ v_2 \\ v_3 \\ \vdots \end{pmatrix} .
+  \end{equation*}
+  Addition and multiplication by scalars go entry by entry, as in $\mathbb{C}^n$. For the
+  inner product the obvious generalisation is the series
+  $\vb{v}\adj\vb{w} = \sum_{j=1}^{\infty} v_j^* w_j$: as a rule, one sets $n = \infty$ in all
+  equations. But here problems can arise, convergence problems. One shows up straight away.
+
+  \begin{example}[The vector made up entirely of ones]\label{c03.ex.einsen}\claim{c03.cl.einsen}{derived}
+    The vector made up entirely of ones, $v_j = 1$ for all $j$, is a perfectly legal
+    infinite list of complex numbers. But its inner product with itself diverges: the
+    partial sums are
+    \begin{equation}\label{c03.eq.einsen}
+      \sum_{j=1}^{N} \abs{v_j}^2 = \sum_{j=1}^{N} 1 = N \;\longrightarrow\; \infty
+      \qquad (N \to \infty) .
+    \end{equation}
+  \end{example}
+
+  If we want to describe the states of physical systems by such vectors, that is a problem,
+  at the latest when it comes to probabilities. The answer is as simple as can be: we do not
+  admit such vectors. In the mathematical literature this is described in a very complicated
+  way; physically it is simple.
+
+  \tpcdef{D77}
+
+  We shall hardly need the name $\elltwo$ later, but you should have seen it once: the $2$
+  comes from the square in the sum, and the sum runs over all natural numbers. Reed and Simon
+  write the space with a subscript $2$ \srcref{reed-simon-1}{p.~40}. That the admitted
+  vectors again form a vector space is not obvious, but true:
+
+  \begin{proposition}[$\elltwo$ is a vector space with an inner product]\label{c03.prop.elltwo}\claim[proof-included]{c03.cl.elltwo}{derived}
+    Let $\vb{v}, \vb{w} \in \elltwo$ and $a \in \mathbb{C}$. Then:
+    \begin{enumerate}
+      \item $a\vb{v} \in \elltwo$ and $\vb{v} + \vb{w} \in \elltwo$.
+      \item The series $\vb{v}\adj\vb{w} = \sum_{j=1}^{\infty} v_j^* w_j$ converges absolutely,
+        and $\sum_{j=1}^{\infty} \abs{v_j^* w_j} \leq \tfrac12\, \vb{v}\adj\vb{v} + \tfrac12\, \vb{w}\adj\vb{w}$.
+      \item The four rules of Proposition~\ref{c03.prop.skalarprodukt} hold in $\elltwo$.
+    \end{enumerate}
+  \end{proposition}
+  \begin{proof}
+    For complex numbers $a, b$ we have $0 \leq (\abs{a} - \abs{b})^2$ and
+    $\abs{a + b}^2 = \abs{a}^2 + \abs{b}^2 + 2 \operatorname{Re}(a^* b)$ with
+    $\operatorname{Re}(a^* b) \leq \abs{a}\,\abs{b}$. From these follow
+    \begin{equation}\label{c03.eq.ab}
+      \abs{a^* b} = \abs{a}\,\abs{b} \leq \tfrac12 \abs{a}^2 + \tfrac12 \abs{b}^2,
+      \qquad
+      \abs{a + b}^2 \leq 2\abs{a}^2 + 2\abs{b}^2 .
+    \end{equation}
+    On~1: $\sum_{j} \abs{a v_j}^2 = \abs{a}^2 \sum_j \abs{v_j}^2$. By the second inequality
+    every partial sum $\sum_{j \leq N} \abs{v_j + w_j}^2$ is at most
+    $2\, \vb{v}\adj\vb{v} + 2\, \vb{w}\adj\vb{w}$. The partial sums increase with $N$ and are
+    bounded, so they converge. On~2: in the same way with the first inequality; an absolutely
+    convergent series of complex numbers converges. On~3: the rules hold for every partial
+    sum up to $N$, since that is a computation in $\mathbb{C}^N$. Limits are compatible with
+    sums, multiples and conjugation. If $\vb{v}\adj\vb{v} = 0$, every partial sum
+    $\sum_{j \leq N} \abs{v_j}^2$ is zero, hence every $v_j = 0$.
+  \end{proof}
+
+  With this condition nothing can become infinitely large any more when probabilities are
+  computed. A sharper bound than the one in part~2, the Cauchy-Schwarz inequality, is in the
+  Foundations\zoomref{c03.f1}.
+
+  By the way, it is not enough for the entries to go to zero. What matters is how fast.
+
+  \begin{example}[The rate is what matters]\label{c03.ex.rate}\claim{c03.cl.rate}{derived}
+    The vector with $v_j = 1/j$ lies in $\elltwo$, the vector with $u_j = 1/\sqrt{j}$ does
+    not, although its entries go to zero as well. Indeed, for every $N \geq 2$,
+    \begin{equation}\label{c03.eq.rate}
+      \begin{aligned}
+        \sum_{j=1}^{N} \frac{1}{j^2}
+          &\leq 1 + \sum_{j=2}^{N} \Bigl( \frac{1}{j-1} - \frac{1}{j} \Bigr)
+           = 2 - \frac{1}{N} < 2, \\
+        \sum_{j=1}^{N} \abs{u_j}^2 = \sum_{j=1}^{N} \frac{1}{j}
+          &\geq \int_{1}^{N+1} \frac{\dd x}{x} = \ln(N+1) \;\longrightarrow\; \infty .
+      \end{aligned}
+    \end{equation}
+    In the first line $1/j^2 \leq 1/((j-1)j) = 1/(j-1) - 1/j$, and the sum on the right
+    telescopes. In the second, the term $1/j$ lies above the area under $1/x$ between $j$ and
+    $j+1$, because $1/x$ decreases. The partial sums of the squared moduli of $\vb{u}$ thus
+    grow beyond all bounds, at least like a logarithm.
+  \end{example}
+
+  \begin{tpcfigure}{c03.fig.partialsummen}
+    \caption{The admission test for $\elltwo$: the partial sums
+      $\sum_{j=1}^{N} \abs{v_j}^2$ for $N = 1, \dots, 25$, rounded to four places; the curve
+      for the vector of all ones is drawn only up to $N = 5$. For $v_j = 1/j$
+      (dots, solid) they stay below the bound $2$ of Equation~\eqref{c03.eq.rate} (thin
+      line): the vector is admitted. For $v_j = 1/\sqrt{j}$ (dots, dashed) they grow beyond
+      all bounds, at least like $\ln(N+1)$, for the vector made up entirely of ones (dots, dash-dotted) like $N$: neither
+      is admitted, although in the middle case the entries go to zero. In $\mathbb{C}^n$ the
+      sum has only $n$ terms, and there is nothing to test.}
+  \end{tpcfigure}
+
+  This space is not just mathematics. $\elltwo$ is the state space of the harmonic
+  oscillator, which we look at closely in Chapter~7. As a quantum physicist I work
+  practically every day with these two vector spaces, with $\mathbb{C}^2$ and with
+  $\elltwo$.
+\end{vertiefung}
+
+The third space we need consists not of columns but of functions: to every point $x$ of the
+real axis a complex number $f(x)$ is assigned. Such functions are very similar to the fields
+of Theoretical Physics~B, the electric field or the potential, except that the values are now
+complex. They describe the pure states of a spinless particle in one
+dimension\zoomref{c03.v2}.
+
+\begin{vertiefung}[id=c03.v2,
+    titel={Functions as vectors},
+    wozu={Functions can be added and multiplied by numbers like vectors. Here they get an
+      inner product, with an integral in place of the sum (with one reservation, which the
+      Foundations resolve), and the same admission condition as the columns in
+      $\elltwo$.},
+    voraussetzung={Section~\ref{c03.s2}; improper integrals. Block~\ref{c03.v1} helps but is
+      not needed. The core up to Chapter~4 does not need this block; Chapter~5 introduces the
+      space in the core once more.},
+    zurueck={Square-integrable functions form a vector space on which the integral
+      $\braket{f}{g} = \int f^*(x)\, g(x)\, \dd x$ is defined; it becomes a true inner
+      product only once functions that agree almost everywhere are identified. The constant function
+      $1$ does not belong to it.}]
+  A function $f\colon \mathbb{R} \to \mathbb{C}$ assigns a complex number to every point
+  $x$. That is somewhat hard to draw: a complex number needs two axes, so the function needs
+  a third dimension (Figure~\ref{c03.fig.komplex}). Functions are added point by point,
+  $(f + g)(x) = f(x) + g(x)$, and likewise $(af)(x) = a f(x)$ for a scalar $a$. In this sense
+  a function is a vector with one entry $f(x)$ for every point $x$. The integral over $x$
+  takes the place of the sum over $j$.
+
+  \begin{tpcfigure}{c03.fig.komplex}
+    \caption{A complex-valued function needs three dimensions. Drawn is
+      $f(x) = e^{-x^2/2}\, e^{2ix}$ for $-3 \leq x \leq 3$: to every $x$ belongs the point
+      $(\operatorname{Re} f(x), \operatorname{Im} f(x))$ of a complex plane standing
+      perpendicular to the $x$-axis. The curve winds around the $x$-axis; its distance from
+      the axis is $\abs{f(x)} = e^{-x^2/2}$ (thin circles at $x = -1, 0, 1$; thin spokes join the axis to the curve). Dashed is the real part alone,
+      in the plane $\operatorname{Im} f = 0$: the usual drawing, which lacks half of the
+      information.}
+  \end{tpcfigure}
+
+  In this block all functions are piecewise continuous, so that every integral is an ordinary
+  improper integral. What changes when this is dropped is in the Foundations of this
+  chapter.
+
+  \tpcdef{D78}
+
+  The sign $\braket{f}{g}$ stands for a number here, just as $\vb{v}\adj\vb{w}$ does in
+  $\mathbb{C}^n$. This course writes every inner product this way; what the vertical bar
+  means becomes clear with Dirac's notation.
+
+  \begin{proposition}[Square-integrable functions form a vector space]\label{c03.prop.ltwo}\claim[proof-included]{c03.cl.ltwo}{derived}
+    Let $f$ and $g$ be square-integrable and $a \in \mathbb{C}$. Then $af$ and $f + g$ are
+    square-integrable, and the integral
+    $\braket{f}{g} = \int_{-\infty}^{\infty} f^*(x)\, g(x)\, \dd x$ converges absolutely, with
+    \begin{equation}\label{c03.eq.ltwo}
+      \int_{-\infty}^{\infty} \abs{f^*(x)\, g(x)}\, \dd x
+      \leq \tfrac12 \braket{f}{f} + \tfrac12 \braket{g}{g} .
+    \end{equation}
+    Rules~1 to~3 of Proposition~\ref{c03.prop.skalarprodukt} hold correspondingly, and
+    $\braket{f}{f} \geq 0$.
+  \end{proposition}
+  \begin{proof}
+    For complex numbers $a, b$ we have $\abs{a^* b} \leq \tfrac12 \abs{a}^2 + \tfrac12 \abs{b}^2$,
+    because $0 \leq (\abs{a} - \abs{b})^2$, and $\abs{a + b}^2 \leq 2\abs{a}^2 + 2\abs{b}^2$,
+    because $\abs{a + b}^2 = \abs{a}^2 + \abs{b}^2 + 2 \operatorname{Re}(a^* b)$ and
+    $\operatorname{Re}(a^* b) \leq \abs{a}\,\abs{b}$. Insert $a = f(x)$ and $b = g(x)$; the
+    inequalities then hold at every point $x$. Integrated over $[-X, X]$ they give bounds that do not depend on $X$.
+    Integrals of non-negative functions over $[-X, X]$ increase with $X$ and are bounded, so
+    they converge as $X \to \infty$. An absolutely convergent improper integral converges.
+    Rules~1 to~3 hold for the integrand at every point, and the integral is linear. Finally,
+    $\abs{f(x)}^2 \geq 0$ at every point.
+  \end{proof}
+
+  Rule~4 of Proposition~\ref{c03.prop.skalarprodukt} is missing from this list on purpose.
+  That $\braket{f}{f} = 0$ holds only for $f = 0$ is not quite right for functions, and the
+  repair is in the Foundations\zoomref{c03.f2}.
+
+  \begin{example}[A non-example]\label{c03.ex.eins}\claim{c03.cl.eins}{derived}
+    The constant function $f(x) = 1$ is not square-integrable:
+    \begin{equation}\label{c03.eq.eins}
+      \int_{-X}^{X} \abs{f(x)}^2\, \dd x = \int_{-X}^{X} 1\, \dd x = 2X
+      \;\longrightarrow\; \infty
+      \qquad (X \to \infty) .
+    \end{equation}
+    The area under the curve is infinite. This is exactly the counterpart of the vector made
+    up entirely of ones in Example~\ref{c03.ex.einsen}.
+  \end{example}
+
+  \begin{example}[Going to zero is not enough]\label{c03.ex.gauss}\claim{c03.cl.gauss}{derived}
+    The function $g(x) = e^{-x^2/2}$ is square-integrable, and so is the function
+    $f(x) = e^{-x^2/2}\, e^{2ix}$ of Figure~\ref{c03.fig.komplex}, because
+    $\abs{e^{2ix}} = 1$ and hence $\abs{f(x)}^2 = \abs{g(x)}^2 = e^{-x^2}$. With the
+    substitution $x = y/\sqrt{2}$ and the Gaussian integral of Chapter~\ref{c01},
+    $\int_{-\infty}^{\infty} e^{-y^2/2}\, \dd y = \sqrt{2\pi}$,
+    \begin{equation}\label{c03.eq.gauss}
+      \braket{g}{g} = \int_{-\infty}^{\infty} e^{-x^2}\, \dd x
+      = \frac{1}{\sqrt{2}} \int_{-\infty}^{\infty} e^{-y^2/2}\, \dd y
+      = \sqrt{\pi} .
+    \end{equation}
+    The function $h(x) = 1/\sqrt{1 + \abs{x}}$, by contrast, goes to zero as
+    $\abs{x} \to \infty$ and is nevertheless not square-integrable:
+    \begin{equation}\label{c03.eq.log}
+      \int_{-X}^{X} \frac{\dd x}{1 + \abs{x}} = 2 \int_{0}^{X} \frac{\dd x}{1 + x}
+      = 2 \ln(1 + X) \;\longrightarrow\; \infty .
+    \end{equation}
+    These examples show: that a function goes to zero is not enough. What decides is only
+    whether the integral of its squared modulus is finite.
+  \end{example}
+
+  \begin{tpcfigure}{c03.fig.partialintegrale}
+    \caption{The same test for functions: the integral $\int_{-X}^{X} \abs{f(x)}^2\, \dd x$
+      as a function of $X$. For $f(x) = e^{-x^2/2}$ (solid) it approaches $\sqrt{\pi}$ (thin
+      line, Equation~\eqref{c03.eq.gauss}); for $f(x) = 1/\sqrt{1 + \abs{x}}$ (dashed) it
+      grows like $2\ln(1 + X)$, for $f = 1$ (dash-dotted) like $2X$
+      (Equations~\eqref{c03.eq.log} and~\eqref{c03.eq.eins}). The lines show continuously
+      what Figure~\ref{c03.fig.partialsummen} shows for the discrete index $j$.}
+  \end{tpcfigure}
+\end{vertiefung}
+
+Up to and including Chapter~4 the core works with finite-dimensional spaces $\mathbb{C}^n$;
+for the qubit this is $\mathbb{C}^2$. In the lecture I put three spaces and three physical
+systems side by side at this point, among them the two infinite-dimensional spaces of the
+deeper blocks\zoomref{c03.v3}.
+
+\begin{vertiefung}[id=c03.v3,
+    titel={Three spaces, three systems},
+    wozu={The three spaces of this chapter side by side, each with the physical system it
+      belongs to. With them we have practically all the Hilbert spaces of the course.},
+    voraussetzung={Blocks~\ref{c03.v1} and~\ref{c03.v2}. The core up to Chapter~4 does not
+      need this block.},
+    zurueck={Up to and including Chapter~4 the core works with $\mathbb{C}^n$; for the qubit
+      this is $\mathbb{C}^2$.}]
+  \begin{greybox}[Three spaces, three systems]
+  With $\mathbb{C}^2$ and two infinite-dimensional spaces we have practically all the Hilbert
+  spaces we shall need in this course: $\elltwo$, the columns with infinitely many entries
+  whose squared moduli have a finite sum, and $\Ltwo{\mathbb{R}}$, formed from the functions
+  on the line whose squared modulus has a finite integral, where functions that agree almost
+  everywhere count as the same vector (Foundations of this chapter). Each space belongs to a
+  physical system:
+  \begin{equation}\label{c03.eq.drei-raeume}\claim{c03.cl.drei-raeume}{source-backed}
+    \begin{aligned}
+      &\mathbb{C}^2 && \text{\tpcifenglish{qubit}{Qubit}} \\
+      &\elltwo && \text{\tpcifenglish{harmonic oscillator}{harmonischer Oszillator}} \\
+      &\Ltwo{\mathbb{R}} && \text{\tpcifenglish{spinless particle in one dimension}{Teilchen ohne Spin in einer Dimension}}
+    \end{aligned}
+  \end{equation}
+  The first space is finite-dimensional. The other two enter the core from Chapter~5 on.
+  \end{greybox}
+
+\begin{tpcfigure}{c03.fig.raeume}
+  \caption{The three spaces side by side, each with the squared moduli of one vector.
+    (a) $\mathbb{C}^2$: the vector $\tfrac12\vb{v}$ with $\vb{v}$ from
+    Equation~\eqref{c03.eq.c2-vektoren}; its two squared moduli are $\tfrac12$ each.
+    (b) $\elltwo$: the squared moduli $\abs{v_j}^2 = 1/j^2$ of the first twelve entries of the
+    vector with $v_j = 1/j$; infinitely many more follow. (c) $\Ltwo{\mathbb{R}}$: the squared
+    modulus $\abs{f(x)}^2 = e^{-x^2}$ of the function $f(x) = e^{-x^2/2}$. The inner product
+    of the vector with itself is a sum of two bars on the left, a sum of infinitely many in the
+    middle, and the area under the curve on the right.}
+  \end{tpcfigure}
+\end{vertiefung}
+
+A complex vector space with an inner product is almost a Hilbert space already. One condition
+is still missing, \emph{completeness}. It is mathematically important but subtle, and in this
+course it plays no essential role: in $\mathbb{C}^n$ it always holds\zoomref{c03.f3}. Before we
+define the Hilbert space we need one more piece of notation, which makes computations with
+inner products very much easier: Dirac's notation. The real hurdle at the start of quantum
+mechanics is the notation; you have to fight your way through it. At first it is unfamiliar,
+in the end it makes everything easier, and it is a one-way street: once you have mastered it,
+you do not go back.
+
+% ── Fundament ─────────────────────────────────────────────────────────────────────────
+% New sections of the chapter (vl03 to vl05) go BEFORE this line.
+
+\begin{fundament}[id=c03.f1,
+    titel={The Cauchy-Schwarz inequality},
+    wozu={Block~\ref{c03.v1} shows with a rough estimate that the inner product on $\elltwo$
+      is finite. Here is the sharp bound: the modulus of the inner product is at most the
+      product of the lengths.},
+    voraussetzung={Proposition~\ref{c03.prop.skalarprodukt} and block~\ref{c03.v1}. Neither
+      the core nor the deeper blocks need this block.},
+    zurueck={For two vectors, $\abs{\vb{v}\adj\vb{w}}^2$ is never larger than
+      $(\vb{v}\adj\vb{v})(\vb{w}\adj\vb{w})$, in $\mathbb{C}^n$ as in $\elltwo$.}]
+  \begin{lemma}[Cauchy-Schwarz in $\mathbb{C}^n$]\label{c03.lem.cs}\claim[proof-included]{c03.cl.cs}{derived}
+    For all $\vb{v}, \vb{w} \in \mathbb{C}^n$,
+    \begin{equation}\label{c03.eq.cs}
+      \abs{\vb{v}\adj\vb{w}}^2 \leq (\vb{v}\adj\vb{v})\,(\vb{w}\adj\vb{w}) .
+    \end{equation}
+  \end{lemma}
+  \begin{proof}
+    For $\vb{w} = 0$ both sides are zero. Otherwise $\vb{w}\adj\vb{w} > 0$; we set
+    $c = (\vb{w}\adj\vb{v}) / (\vb{w}\adj\vb{w})$ and $\vb{u} = \vb{v} - c\,\vb{w}$. By rule~1,
+    $c^* = (\vb{v}\adj\vb{w}) / (\vb{w}\adj\vb{w})$. With rules~2 and~3 of
+    Proposition~\ref{c03.prop.skalarprodukt} and rule~4 for $\vb{u}$,
+    \begin{equation}\label{c03.eq.cs-beweis}
+      0 \leq \vb{u}\adj\vb{u}
+        = \vb{v}\adj\vb{v} - c\, \vb{v}\adj\vb{w} - c^*\, \vb{w}\adj\vb{v} + c^* c\, \vb{w}\adj\vb{w}
+        = \vb{v}\adj\vb{v} - \frac{\abs{\vb{v}\adj\vb{w}}^2}{\vb{w}\adj\vb{w}} ,
+    \end{equation}
+    because each of the last three terms is $\abs{\vb{v}\adj\vb{w}}^2 / (\vb{w}\adj\vb{w})$
+    up to its sign. Multiplying by $\vb{w}\adj\vb{w} > 0$ gives the claim.
+  \end{proof}
+
+  Reed and Simon prove the same inequality for every vector space with an inner product, by a
+  different route \srcref{reed-simon-1}{p.~38}. For $\elltwo$ it follows here directly from
+  the lemma.
+
+  \begin{proposition}[Cauchy-Schwarz in $\elltwo$]\label{c03.prop.cs-elltwo}\claim[proof-included]{c03.cl.cs-elltwo}{derived}
+    For all $\vb{v}, \vb{w} \in \elltwo$,
+    $\abs{\vb{v}\adj\vb{w}}^2 \leq (\vb{v}\adj\vb{v})\,(\vb{w}\adj\vb{w})$.
+  \end{proposition}
+  \begin{proof}
+    For every $N$, Lemma~\ref{c03.lem.cs} applied to the first $N$ entries is the inequality
+    $\abs{\sum_{j \leq N} v_j^* w_j}^2 \leq \sum_{j \leq N} \abs{v_j}^2 \sum_{j \leq N} \abs{w_j}^2$.
+    The right-hand side is at most $(\vb{v}\adj\vb{v})(\vb{w}\adj\vb{w})$. The left-hand side
+    tends to $\abs{\vb{v}\adj\vb{w}}^2$ as $N \to \infty$, because the series converges by
+    Proposition~\ref{c03.prop.elltwo}.
+  \end{proof}
+\end{fundament}
+
+\begin{fundament}[id=c03.f2,
+    titel={Functions that differ only on a null set},
+    wozu={Block~\ref{c03.v2} leaves open whether $\braket{f}{f} = 0$ holds only for $f = 0$.
+      For functions it does not. Here is the repair and what it means for the value of a
+      function at a single point.},
+    voraussetzung={Block~\ref{c03.v2}. Lebesgue measure and the Lebesgue integral are used by
+      name only.},
+    zurueck={Two functions that differ only at single points are the same vector in
+      $\Ltwo{\mathbb{R}}$. The value at a single point has no meaning, but integrals over
+      intervals do.}]
+  \begin{example}[A function of length zero]\label{c03.ex.punkt}\claim{c03.cl.punkt}{derived}
+    Let $f(0) = 1$ and $f(x) = 0$ for $x \neq 0$. This function is piecewise continuous and
+    not the zero function, but
+    \begin{equation}\label{c03.eq.punkt}
+      \braket{f}{f} = \int_{-\infty}^{\infty} \abs{f(x)}^2\, \dd x = 0 ,
+    \end{equation}
+    because an integrand that is nonzero at a single point only has integral zero. Rule~4 of
+    Proposition~\ref{c03.prop.skalarprodukt} therefore fails for functions.
+  \end{example}
+
+  The repair is to identify such functions with the zero function. In the precise version,
+  $\Ltwo{\mathbb{R}}$ is therefore a space of classes of functions.
+
+  \tpcdef{D80}
+
+  For square-integrable $f$ and $g$,
+  \begin{equation}\label{c03.eq.klassen}\claim{c03.cl.klassen}{derived}
+    f \sim g
+    \quad \Leftrightarrow \quad
+    \int_{-\infty}^{\infty} \abs{f(x) - g(x)}^2\, \dd x = 0 .
+  \end{equation}
+  Reed and Simon say for integrable functions that $f(x) = g(x)$ almost everywhere is the same
+  as $\int \abs{f - g}\, \dd x = 0$ \srcref{reed-simon-1}{p.~17}. Applied to the integrable
+  function $\abs{f - g}^2$ and the zero function, this gives
+  Equation~\eqref{c03.eq.klassen}, since $\abs{f - g}^2$ is zero exactly where $f = g$. It
+  also follows that the inner product does not depend on which function one takes from a
+  class: if $n \sim 0$, then $\abs{n^* g}$ is zero almost everywhere, so by the same statement
+  $\int \abs{n^* g}\, \dd x = 0$ and hence $\braket{n}{g} = 0$. In $\Ltwo{\mathbb{R}}$ rule~4
+  now holds as well: $\braket{f}{f} = 0$ implies $f \sim 0$, and that is the zero vector.
+
+  The price is that an element of $\Ltwo{\mathbb{R}}$ has no value at a single point: if one
+  changes a function at one point, it stays in its class. Reed and Simon put it like this for
+  integrable functions: for an element $f$, the symbol $f(x)$ at a particular point $x$ does
+  not make sense \srcref{reed-simon-1}{p.~17}. For functions that have a continuous
+  representative, the following statement helps:
+
+  \begin{proposition}[Continuous representatives]\label{c03.prop.stetig}\claim[proof-omitted]{c03.cl.stetig}{source-quoted}
+    If a class contains a continuous function, it contains no other continuous function. One
+    may then write $f(x)$ for the value of this continuous function.
+  \end{proposition}
+
+  Reed and Simon state this for the classes of integrable functions
+  \srcref{reed-simon-1}{p.~18}; it depends only on the relation “equal almost everywhere”,
+  which is the same for $\Ltwo{\mathbb{R}}$.
+\end{fundament}
+
+\begin{fundament}[id=c03.f3,
+    titel={Completeness},
+    wozu={The core says that a vector space with an inner product lacks one more condition to
+      be a Hilbert space and that it always holds in $\mathbb{C}^n$. Here is what the
+      condition demands, why $\mathbb{C}^n$, $\elltwo$ and $\Ltwo{\mathbb{R}}$ satisfy it, and
+      a space that violates it.},
+    voraussetzung={Blocks~\ref{c03.v1} and~\ref{c03.v2}, Foundations~\ref{c03.f2}; sequences
+      and limits.},
+    zurueck={$\mathbb{C}^n$, $\elltwo$ and $\Ltwo{\mathbb{R}}$ are complete. Whoever computes
+      with them need not think about the condition.}]
+  \tpcdef{D79}
+
+  The model is the difference between the rational and the real numbers: a sequence of
+  rational numbers approaching an irrational number is a Cauchy sequence but has no limit
+  among the rational numbers. $\mathbb{R}$ is complete, $\mathbb{Q}$ is not
+  \srcref{reed-simon-1}{p.~6}.
+
+  \begin{proposition}[$\mathbb{C}^n$ is complete]\label{c03.prop.cn-vollstaendig}\claim[proof-included]{c03.cl.cn-vollstaendig}{derived}
+    Every Cauchy sequence in $\mathbb{C}^n$ converges to a vector in $\mathbb{C}^n$.
+  \end{proposition}
+  \begin{proof}
+    Let $\vb{v}^{(1)}, \vb{v}^{(2)}, \dots$ be a Cauchy sequence. For every index $j$,
+    \begin{equation}\label{c03.eq.komponente}
+      \abs{v_j^{(m)} - v_j^{(k)}}^2
+      \leq \sum_{l=1}^{n} \abs{v_l^{(m)} - v_l^{(k)}}^2
+      = d\bigl(\vb{v}^{(m)}, \vb{v}^{(k)}\bigr)^2 .
+    \end{equation}
+    So the real and the imaginary parts of the $j$-th entries are Cauchy sequences of real
+    numbers; since $\mathbb{R}$ is complete, they have limits. Let $v_j$ be the combined limit
+    and $\vb{v}$ the vector with these entries. Then
+    $d(\vb{v}^{(m)}, \vb{v})^2 = \sum_{j=1}^{n} \abs{v_j^{(m)} - v_j}^2$ is a sum of $n$ terms,
+    each of which goes to zero.
+  \end{proof}
+
+  That the condition is not empty is shown by a space that lies between $\mathbb{C}^n$ and
+  $\elltwo$.
+
+  \begin{example}[Terminating sequences are not complete]\label{c03.ex.endlich}\claim{c03.cl.endlich}{derived}
+    Let $F$ be the set of vectors with infinitely many entries of which only finitely many
+    are nonzero, with the inner product of $\elltwo$. Sums and multiples of elements of $F$
+    lie in $F$ again. Let $\vb{v}^{(N)}$ be the vector with entries
+    $1, \tfrac12, \dots, \tfrac1N$ and only zeros after them. For $M > N$, by
+    Equation~\eqref{c03.eq.rate},
+    \begin{equation}\label{c03.eq.endlich}
+      d\bigl(\vb{v}^{(M)}, \vb{v}^{(N)}\bigr)^2
+      = \sum_{j=N+1}^{M} \frac{1}{j^2}
+      \leq \sum_{j=N+1}^{M} \Bigl( \frac{1}{j-1} - \frac{1}{j} \Bigr)
+      = \frac{1}{N} - \frac{1}{M} < \frac{1}{N} ,
+    \end{equation}
+    so the sequence is a Cauchy sequence. If it had a limit $\vb{u}$ in $F$, then by the
+    argument of Equation~\eqref{c03.eq.komponente}, for every $j$,
+    $u_j = \lim_{N} v_j^{(N)} = 1/j$, and $\vb{u}$ would have infinitely many nonzero
+    entries. So the sequence does not converge in $F$. In $\elltwo$, by contrast, it
+    converges, to the vector with $v_j = 1/j$ of Example~\ref{c03.ex.rate}: the same
+    computation with $M \to \infty$ gives a distance of at most $1/\sqrt{N}$.
+  \end{example}
+
+  The space $\elltwo$ thus fills exactly the gaps of $F$; Reed and Simon say more generally
+  that the terminating sequences are dense in these spaces \srcref{reed-simon-1}{p.~69}.
+
+  \begin{theorem}[Completeness of $\elltwo$ and $\Ltwo{\mathbb{R}}$]\label{c03.thm.vollstaendig}\claim[proof-omitted]{c03.cl.vollstaendig}{source-quoted}
+    The space $\elltwo$ is complete. The space $\Ltwo{\mathbb{R}}$ in the version of
+    \defref{D80} is complete (theorem of Riesz and Fischer).
+  \end{theorem}
+
+  The source is Reed and Simon: for $\elltwo$ as the case $p = 2$ of the sequence spaces they
+  consider for every $p \geq 1$, for $\Ltwo{\mathbb{R}}$ as the case $p = 2$ of the theorem of
+  Riesz and Fischer for the spaces $L^p$ \srcref{reed-simon-1}{pp.~68--69}. For
+  $\Ltwo{\mathbb{R}}$ the theorem holds for the version of Foundations~\ref{c03.f2}, with
+  measurable functions and the Lebesgue integral.
+
+  We shall resist the temptation to look at limiting cases. I shall carry out only legal
+  computations in this lecture, at least I hope so. Physicists handle these rules a little
+  more loosely than mathematicians anyway: as soon as something becomes infinite, we say we
+  have made a mistake. A prediction must not be infinite, so we drop that computation. But
+  if you want to go a little in the mathematical direction, these conditions are really very
+  important.
+
+  Mathematically this is not a rule. A vector can lie in $\elltwo$ and still produce an
+  infinite sum: for $v_j = 1/j$ the sum $\sum_j \abs{v_j}^2$ is finite, but
+  $\sum_j j\, \abs{v_j}^2 = \sum_j 1/j$ diverges (Example~\ref{c03.ex.rate}). Sums of this
+  kind appear later in expectation values. Whether such a computation is allowed must then be
+  checked; the tool for that is the domains of operators.
+\end{fundament}

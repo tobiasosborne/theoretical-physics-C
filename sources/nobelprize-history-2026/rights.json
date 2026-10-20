@@ -1,0 +1,16 @@
+{
+ "schema_version": 1,
+ "key": "nobelprize-history-2026",
+ "holder": "Nobel Prize Outreach AB (NobelPrize.org pages); Crossref (metadata, CC0 per Crossref's terms, not read here)",
+ "status": "copyright",
+ "licence": "unchecked: NobelPrize.org terms of use were not read",
+ "redistribution": "unchecked",
+ "quotation": "single sentences may be quoted with attribution in the provenance ledger",
+ "storage_policy": "kept in the gitignored sources/nobelprize-history-2026/; only source.json and rights.json are tracked",
+ "public_artifacts": "the years, cited as NobelPrize.org laureate facts pages",
+ "basis": "publicly served pages without access control, fetched 2026-10-20",
+ "unchecked": [
+  "NobelPrize.org terms of use",
+  "Crossref metadata licence"
+ ]
+}

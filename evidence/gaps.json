@@ -335,8 +335,8 @@
     "latex/lectures/de/vl01.tex:85"
    ],
    "owner": "TJO",
-   "status": "open",
-   "notes": "Raised by the author of Smoke A (chapters C0 and C1), 2026-10-11. The dates are printed as 'given in the lecture notes', claim c00.cl.geschichte (depth vertiefung, source-backed to the script)."
+   "status": "closed",
+   "notes": "Raised by the author of Smoke A (chapters C0 and C1), 2026-10-11. Closed 2026-10-20 after REVIEW-lec1: the three dates are corrected to 1900, 1914 and 1927 from the registered source nobelprize-history-2026 (P-0310, P-0311, P-0314, P-0316; migration M-0050). Lenard's year (script: 1899) is not established by that source and is no longer printed. 'Göttinger Mathematische Nachrichten' stays omitted."
   },
   {
    "id": "G-0026",
@@ -375,8 +375,8 @@
     "docs/plan/phase0/review/REVIEW-smoke-A.md"
    ],
    "owner": "TJO",
-   "status": "open",
-   "notes": "Recorded during the Smoke A repair; the objection is not admitted as physics provenance. "
+   "status": "closed",
+   "notes": "Recorded during the Smoke A repair; the objection is not admitted as physics provenance. Closed 2026-10-20 after REVIEW-lec1 (migration M-0051): the chapter prints E_kin,max = hν − W for a fixed material in the one-photon model, derived in c00.cl.schwelle for an actually released electron, and states the nonrelativistic premise. No external photoelectric source is on disk; the formula itself remains source-backed to the script."
   },
   {
    "id": "G-0029",
@@ -401,8 +401,8 @@
     "docs/plan/phase0/review/REVIEW-smoke-A.md"
    ],
    "owner": "TJO",
-   "status": "open",
-   "notes": "Recorded during the Smoke A repair; the objection is not admitted as physics provenance. "
+   "status": "closed",
+   "notes": "Recorded during the Smoke A repair; the objection is not admitted as physics provenance. Closed 2026-10-20 after REVIEW-lec1 (migration M-0051): the chapter states that at fixed angular-momentum quantum number ℓ the component along the field takes finitely many values (vl14.tex:92, 96; P-0307, P-0308) and quotes the silver-atom finding from NobelPrize.org (P-0312). The qubit sentence keeps its narrowed form."
   },
   {
    "id": "G-0031",
@@ -427,8 +427,61 @@
     "docs/plan/phase0/review/REVIEW-smoke-A.md"
    ],
    "owner": "TJO",
+   "status": "closed",
+   "notes": "Recorded during the Smoke A repair; the objection is not admitted as physics provenance. Lecture 1 revision (2026-10-20): the absorption part is now carried by the derived claim c00.cl.reflexion under the stated premise of a reflectance r < 1 per reflection. Closed after REVIEW-lec1 (2026-10-20): the chapter states thermal equilibrium at a uniform wall temperature as a premise, presents the box with a small hole as an approximation, sources the temperature-only emission spectrum of a heated black body to NobelPrize.org (P-0309), and says that the reflection calculation says nothing about emission."
+  },
+  {
+   "id": "G-0070",
+   "what": "Ob die Übungen auf echten Quantenrechnern (vl01.tex:28: 'Gegen Ende des Semesters möchte ich Ihnen ein paar Übungen auf echten Quantenrechnern anbieten'; Video v01 [06:37]) in den neuen Kurs gehören, und mit welchem Anbieter. Kapitel 0 nennt nur, dass man über Cloud-Dienste mit Quantenrechnern experimentieren kann (source-backed, vl01.tex:28), ohne Anbieter und ohne Versprechen. / Whether exercises on real quantum computers belong to the new course, and with which provider.",
+   "needed_source": "TJO's decision.",
+   "where": "c00, opening paragraphs",
+   "raised_in": [
+    "latex/lectures/de/vl01.tex:28",
+    "transcripts/clean/v01.md:[06:37]"
+   ],
+   "owner": "TJO",
    "status": "open",
-   "notes": "Recorded during the Smoke A repair; the objection is not admitted as physics provenance. "
+   "notes": "Raised in the Lecture 1 revision of chapters C0 and C1, 2026-10-20."
+  },
+  {
+   "id": "G-0071",
+   "what": "TJOs aufgezeichnete Vorlesungen (transcripts/clean/v01.md, v02.md; Rohtranskripte transcripts/raw/) sind keine registrierte Quelle. In der Überarbeitung von Kapitel 0 und 1 kommen aus ihnen nur Wortlaut, Beispiele und didaktische Bemerkungen (Zeitmarken als TeX-Kommentar), keine physikalische Aussage. Deshalb nicht übernommen, obwohl TJO es in der Vorlesung sagt: die klassische Erwartung beim Stern-Gerlach-Versuch (kontinuierliche Verteilung der Ablenkungen, v01 [37:40]); das Tafelbild des Metalls mit frei beweglichen Elektronen beim Photoeffekt (v01 [26:00]); das Wort 'Ultraviolettkatastrophe' für die Grenzform (v01 [12:31]); die Bemerkung, Dichtematrizen seien erst in jüngerer Zeit viel genutzt worden (v01 [57:32]); 'es gibt Physiker, die meinen, die Quantenmechanik sei gar keine probabilistische Theorie' (v01 [58:17]); der Grund, warum die Gauß-Verteilung überall auftaucht (v02 [57:22]). / TJO's recorded lectures are not a registered source; the C0/C1 revision takes wording, examples and didactic remarks from them, no physics. The listed spoken statements are therefore left out.",
+   "needed_source": "TJO's decision whether a transcript of his own lecture may back a statement (as his script does, with the scope note 'as stated in the author's lecture'), or a source on disk for each listed item.",
+   "where": "c00 sections c00.s4.1 to c00.s4.4; c01 section c01.s4",
+   "raised_in": [
+    "transcripts/clean/v01.md",
+    "transcripts/clean/v02.md"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Raised in the Lecture 1 revision of chapters C0 and C1, 2026-10-20. Transcript quality is 'mittel' (ASR); the clean transcripts are reconstructions, not verbatim. Update after REVIEW-lec1 (2026-10-20): the classical Stern-Gerlach expectation is now in the chapter, sourced to NobelPrize.org (P-0312); the other listed items stay out."
+  },
+  {
+   "id": "G-0033",
+   "what": "Wording and framing in chapter c03 (Lecture 2) that TJO should confirm or supply: (a) the spoken remark that it is open and disputed whether the universe can be modelled with finitely many degrees of freedom (v03 [17:26]-[18:28]) has no source on disk and is left out of section c03.s3; (b) the D4 bridge paragraph of c03.s3 (Kern finite-dimensional up to Chapter 4, infinite-dimensional spaces in Kern from Chapter 5) is the chapter author's wording (the C5 bridge itself is G-0004); (c) the sentence 'Warum komplexe und nicht reelle Vektoren auftreten, wissen wir nicht' is kept on the basis of the script (vl02.tex:6) and the lecture (v02 [77:16]) as the author's framing, with no physics source; (d) the chapter writes the L^2 inner product as <f|g> in Vertiefung c03.v2, before Dirac notation, where the script writes <f, g> (vl02.tex:120, TR-TPCC3-01); (e) TJO's example for l^2, 'ein Photon in einer Glasfaser' (script vl02.tex:139: 'l^2 zum harmonischen Oszillator (etwa einem Photon in einer Glasfaser)'; lecture v03 [29:58]: 'diese Vektoren beschreiben z.B. [den] Zustand eines Photons in [einer] Glasfaser'), is left out of the chapter: a single quantised mode of the field has the oscillator's space l^2 (number states 0, 1, 2, ... photons), while the one-photon sector of one mode is one-dimensional, so the example needs TJO's reading (one mode with any photon number? the spatial/temporal mode of one photon?) and a source; the chapter keeps only the sourced association 'l^2 belongs to the harmonic oscillator'; the chapter also writes 'Teilchen ohne Spin' for L^2(R); (f) TJO's remark 'sobald etwas unendlich wird, haben wir einen Fehler gemacht' (v03 [87:51]-[89:12]) is kept in his words in Fundament c03.f3, followed by a separate editorial explanation with a derived counterexample (a vector in l^2 with divergent sum of j |v_j|^2).",
+   "needed_source": "TJO's wording or decision for each item; for (a) a source on disk or TJO's permission to state it as his own view.",
+   "where": "c03 opening, section c03.s3, Vertiefung c03.v2",
+   "raised_in": [
+    "transcripts/clean/v03.md",
+    "latex/lectures/de/vl02.tex:6",
+    "latex/lectures/de/vl02.tex:120"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Raised in the Lecture 2 draft of chapter C3, 2026-10-20."
+  },
+  {
+   "id": "G-0034",
+   "what": "Physics left out of chapter c03: (a) that l^2 and L^2(R) are isomorphic as Hilbert spaces (every separable infinite-dimensional Hilbert space is isomorphic to l_2, Reed-Simon I Theorem II.7, p. 47; separability of L^2(R) is only an exercise there, Problem 11 of Chapter II), so the three-spaces box assigns spaces by the natural description of each system, and the oscillator can equally be described on L^2(R) (vl12); (b) the claim in the box that l^2 is 'the state space of the harmonic oscillator' (vl02.tex:139) rests on the script only; the identification through the number basis is vl12 material and not checked against an external source.",
+   "needed_source": "TJO's decision whether the box should say this; for (a) a source on disk for the separability of L^2(R) (or a reviewed derivation).",
+   "where": "c03, greybox 'Drei Räume, drei Systeme' (c03.eq.drei-raeume)",
+   "raised_in": [
+    "latex/lectures/de/vl02.tex:139",
+    "transcripts/clean/v03.md"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Raised in the Lecture 2 draft of chapter C3, 2026-10-20."
   }
  ]
 }

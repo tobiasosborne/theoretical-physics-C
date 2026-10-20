@@ -1,0 +1,44 @@
+{
+  "id": "c03",
+  "slug": "hilbertraum",
+  "title": {
+    "de": "Werkzeugkasten Hilbertraum",
+    "en": "The Hilbert-space toolkit"
+  },
+  "effective_theory": {
+    "de": "Komplexe Vektoren mit Skalarprodukt sind das Rechenwerkzeug, mit dem die Quantenmechanik ihre Zustände beschreibt; der Kern dieses Kapitels arbeitet in ℂⁿ, die Vertiefungen lassen Spalten mit unendlich vielen Einträgen und Funktionen zu, wenn die Summe beziehungsweise das Integral ihrer Betragsquadrate endlich ist.",
+    "en": "Complex vectors with an inner product are the computational tool with which quantum mechanics describes its states; the core of this chapter works in ℂⁿ, the deeper blocks admit columns with infinitely many entries and functions, provided the sum or the integral of their squared moduli is finite."
+  },
+  "zoom_scale": "single-system",
+  "prerequisites": [
+    "c01",
+    "c02"
+  ],
+  "assets": [
+    {
+      "id": "c03.fig.kreuz",
+      "kind": "figure",
+      "file": "figures/kreuz.tex"
+    },
+    {
+      "id": "c03.fig.partialsummen",
+      "kind": "figure",
+      "file": "figures/partialsummen.tex"
+    },
+    {
+      "id": "c03.fig.komplex",
+      "kind": "figure",
+      "file": "figures/komplex.tex"
+    },
+    {
+      "id": "c03.fig.partialintegrale",
+      "kind": "figure",
+      "file": "figures/partialintegrale.tex"
+    },
+    {
+      "id": "c03.fig.raeume",
+      "kind": "figure",
+      "file": "figures/raeume.tex"
+    }
+  ]
+}
