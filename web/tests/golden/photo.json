@@ -1,0 +1,19 @@
+{
+  "kernel": "photo",
+  "reference": {"implementation": "Julia 1.12.5, BigFloat at 256 bits and Rational{BigInt}, standard library only", "script": "numerics/generate/c00_golden.jl", "module": "numerics/src/c00_reference.jl", "constants": "sources/codata-2022/allascii.txt"},
+  "conventions": {"relation": "E_kin,max = (1/2) m_e v_max^2 = h nu - W for nu >= W/h (c00.eq.photoeffekt, c00.eq.schwelle); nonrelativistic kinetic energy", "units": "nu in Hz, energies in eV (1 eV = e J), speeds in m/s"},
+  "tolerance": {"abs": 1e-300, "rel": 1e-13, "note": "default class 'eval'; unvalidated choice, see 'tolerances'"},
+  "tolerances": {
+    "eval": {"abs": 1e-13, "rel": 1e-13, "note": "products, quotients and a square root in double precision; the abs part covers h nu/e - W near the threshold, where the difference cancels; unvalidated choice above the measured maximum deviation"},
+    "constants": {"rel": 0, "abs": 0, "note": "the kernel's constants are the CODATA values as written in allascii.txt; the nearest double must match exactly"}
+  },
+  "cases": [
+    {"fn": "constants", "tol": "constants", "names": ["h_J_s", "e_C", "m_e_kg", "c_m_per_s"], "codata_lines": [271, 132, 107, 330], "expected": [6.62607015e-34, 1.602176634e-19, 9.1093837139e-31, 2.99792458e8]},
+    {"fn": "thresholdFrequency", "tol": "eval", "W_eV": [1.0, 2.0, 3.2, 4.5, 5.0], "expected": [2.417989242084918e14, 4.835978484169836e14, 7.737565574671739e14, 1.0880951589382131e15, 1.208994621042459e15]},
+    {"fn": "kineticMax", "tol": "eval", "W_eV": 2.0, "nu": [1.0e14, 4.0e14, 4.835978e14, 5.0e14, 7.737e14, 1.0e15, 2.0e15, 4.0e15], "expected": [-1.586433230307614, -0.34573292123045657, -2.0023655519120498e-7, 0.06783384846192932, 1.1997660971099895, 2.135667696923859, 6.271335393847718, 14.542670787695435]},
+    {"fn": "maxSpeed", "tol": "eval", "W_eV": 2.0, "nu": [5.0e14, 7.737e14, 1.0e15, 2.0e15, 4.0e15], "expected": [154471.69962172516, 649641.8423978909, 866747.3768747433, 1.4852710304822135e6, 2.261766581973169e6]},
+    {"fn": "kineticMax", "tol": "eval", "W_eV": 3.2, "nu": [1.0e14, 4.0e14, 4.835978e14, 5.0e14, 7.737e14, 1.0e15, 2.0e15, 4.0e15], "expected": [-2.7864332303076145, -1.5457329212304567, -1.2000002002365553, -1.1321661515380708, -0.0002339028900107431, 0.9356676969238584, 5.0713353938477175, 13.342670787695434]},
+    {"fn": "maxSpeed", "tol": "eval", "W_eV": 3.2, "nu": [1.0e15, 2.0e15, 4.0e15], "expected": [573702.1991491131, 1.335632146954758e6, 2.1664420761515577e6]},
+    {"fn": "speedOfEnergy", "tol": "eval", "E_eV": [0, 0.001, 0.5, 1.0, 2.5, 13.6], "expected": [0, 18755.372608284797, 419382.8809546234, 593096.9580731296, 937768.6304142398, 2.1872335089761578e6]}
+  ]
+}

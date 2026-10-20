@@ -297,6 +297,9 @@ check_contracts() {
             run_gate "Julia golden reproduced"     julia --project=numerics numerics/generate/hydrogen_golden.jl --check || bad=$((bad+1))
             run_gate "Julia reference: GPT"        julia --project=numerics/gpt numerics/gpt/test/runtests.jl || bad=$((bad+1))
             run_gate "Julia GPT golden reproduced" julia --project=numerics/gpt numerics/gpt/generate.jl --check || bad=$((bad+1))
+            run_gate "Julia c00 golden reproduced" julia --project=numerics numerics/generate/c00_golden.jl --check || bad=$((bad+1))
+            run_gate "Julia c03 golden reproduced" julia --project=numerics numerics/generate/hilbert_golden.jl --check || bad=$((bad+1))
+            run_gate "Julia c01 golden reproduced" julia --startup-file=no web/tests/golden/reference/prob.jl --check || bad=$((bad+1))
         else
             printf "  %-34s ${RED}FAIL${NC}  julia not found\n" "Julia reference"; bad=$((bad+1))
         fi

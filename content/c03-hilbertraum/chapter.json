@@ -39,6 +39,51 @@
       "id": "c03.fig.raeume",
       "kind": "figure",
       "file": "figures/raeume.tex"
+    },
+    {
+      "id": "c03.demo.kreuz",
+      "kind": "demo",
+      "still": "c03.fig.kreuz",
+      "title": {
+        "de": "Kreuz-Operation und Skalarprodukt in ℂ²",
+        "en": "The dagger operation and the scalar product in ℂ²"
+      }
+    },
+    {
+      "id": "c03.demo.partialsummen",
+      "kind": "demo",
+      "still": "c03.fig.partialsummen",
+      "title": {
+        "de": "Teilsummen: welche Spalten zugelassen sind",
+        "en": "Partial sums: which columns are admitted"
+      }
+    },
+    {
+      "id": "c03.demo.partialintegrale",
+      "kind": "demo",
+      "still": "c03.fig.partialintegrale",
+      "title": {
+        "de": "Teilintegrale: welche Funktionen zugelassen sind",
+        "en": "Partial integrals: which functions are admitted"
+      }
+    },
+    {
+      "id": "c03.demo.komplex",
+      "kind": "demo",
+      "still": "c03.fig.komplex",
+      "title": {
+        "de": "Eine komplexwertige Funktion im Raum ℝ × ℂ",
+        "en": "A complex-valued function in the space ℝ × ℂ"
+      }
+    },
+    {
+      "id": "c03.demo.raeume",
+      "kind": "demo",
+      "still": "c03.fig.raeume",
+      "title": {
+        "de": "Drei Räume, drei Skalarprodukte",
+        "en": "Three spaces, three scalar products"
+      }
     }
   ]
 }

@@ -40,6 +40,51 @@
     {
       "id": "c00.tab.jahre",
       "kind": "table"
+    },
+    {
+      "id": "c00.demo.hohlraum",
+      "kind": "demo",
+      "still": "c00.fig.hohlraum",
+      "title": {
+        "de": "Ein Strahl im Hohlraum",
+        "en": "A ray in the cavity"
+      }
+    },
+    {
+      "id": "c00.demo.planck",
+      "kind": "demo",
+      "still": "c00.fig.planck",
+      "title": {
+        "de": "Strahlungsgesetz und Grenzform",
+        "en": "Radiation law and limiting form"
+      }
+    },
+    {
+      "id": "c00.demo.photoeffekt",
+      "kind": "demo",
+      "still": "c00.fig.photoeffekt",
+      "title": {
+        "de": "Photoeffekt: Frequenz, Material, Intensität",
+        "en": "Photoelectric effect: frequency, material, intensity"
+      }
+    },
+    {
+      "id": "c00.demo.experiment",
+      "kind": "demo",
+      "still": "c00.fig.experiment",
+      "title": {
+        "de": "Drei Schritte eines Experiments",
+        "en": "Three stages of an experiment"
+      }
+    },
+    {
+      "id": "c00.demo.leiter",
+      "kind": "demo",
+      "still": "c00.fig.leiter",
+      "title": {
+        "de": "Die Leiter der Theorien",
+        "en": "The ladder of theories"
+      }
     }
   ]
 }

@@ -80,6 +80,87 @@
         "de": "Relative Häufigkeiten und Gewichte",
         "en": "Relative frequencies and weights"
       }
+    },
+    {
+      "id": "c01.demo.gewichte",
+      "kind": "demo",
+      "still": "c01.fig.gewichte",
+      "title": {
+        "de": "Ein Gewicht bleibt normiert",
+        "en": "A weight stays normalised"
+      }
+    },
+    {
+      "id": "c01.demo.ereignis",
+      "kind": "demo",
+      "still": "c01.fig.ereignis",
+      "title": {
+        "de": "Ereignisse sind Teilmengen",
+        "en": "Events are subsets"
+      }
+    },
+    {
+      "id": "c01.demo.erwartung",
+      "kind": "demo",
+      "still": "c01.fig.erwartung",
+      "title": {
+        "de": "Der Erwartungswert als Schwerpunkt",
+        "en": "The expectation value as a balance point"
+      }
+    },
+    {
+      "id": "c01.demo.indikator",
+      "kind": "demo",
+      "still": "c01.fig.indikator",
+      "title": {
+        "de": "Ja-Nein-Messungen und ihre Erwartungswerte",
+        "en": "Yes-no measurements and their expectation values"
+      }
+    },
+    {
+      "id": "c01.demo.varianz",
+      "kind": "demo",
+      "still": "c01.fig.varianz",
+      "title": {
+        "de": "Varianz als gewichtete Abweichungsquadrate",
+        "en": "Variance as weighted squared deviations"
+      }
+    },
+    {
+      "id": "c01.demo.mischung",
+      "kind": "demo",
+      "still": "c01.fig.mischung",
+      "title": {
+        "de": "Ein Gewicht als echte Mischung",
+        "en": "A weight as a proper mixture"
+      }
+    },
+    {
+      "id": "c01.demo.simplex",
+      "kind": "demo",
+      "still": "c01.fig.simplex",
+      "title": {
+        "de": "Das Simplex der Gewichte",
+        "en": "The simplex of weights"
+      }
+    },
+    {
+      "id": "c01.demo.konzentration",
+      "kind": "demo",
+      "still": "c01.fig.konzentration",
+      "title": {
+        "de": "Wie nah liegt die relative Häufigkeit?",
+        "en": "How close is the relative frequency?"
+      }
+    },
+    {
+      "id": "c01.demo.dichte",
+      "kind": "demo",
+      "still": "c01.fig.dichte",
+      "title": {
+        "de": "Dichten: Flächen sind Wahrscheinlichkeiten",
+        "en": "Densities: areas are probabilities"
+      }
     }
   ]
 }
