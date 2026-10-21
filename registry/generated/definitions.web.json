@@ -2,8 +2,8 @@
  "_generated": {
   "by": "scripts/registry/gen_registry.py",
   "inputs_sha256": {
-   "notation.json": "f69ab547ee170b454644e4c14fbe06b6e5a4c6aa91debc8788c6ebcc348f13e4",
-   "definitions.json": "20f74487af8adf8ad5bf1034192d57906b864e641c47bb3d530d112681601783",
+   "notation.json": "06843364ea121ef31ae5d6a1f56b5224538a3fa5d59faf3c41d34ce7b6cd6e67",
+   "definitions.json": "585448c941817761a26d7cd34b68e3fc005ec975e37b166a56b3ae4f16bcb2e4",
    "conventions.json": "a376a57b23b3a84aa2eb310817d70bacf219028f2e639533d9f68856071ebf23",
    "translation.json": "b6c82517800df4b56f6a23748542a780295112a32d409cb13b1a71e7c7268cf9"
   }
@@ -279,12 +279,14 @@
     "en": "Hilbert space"
    },
    "body": {
-    "de": "Ein \\emph{Hilbertraum} $\\Hil$ ist ein komplexer Vektorraum mit Skalarprodukt $\\braket{\\cdot}{\\cdot}$, der bezüglich der Norm $\\norm{\\psi}^2 = \\braket{\\psi}{\\psi}$ vollständig ist. Das Skalarprodukt ist linear im zweiten und antilinear im ersten Argument (CONV-INNER).",
-    "en": "A \\emph{Hilbert space} $\\Hil$ is a complex vector space with inner product $\\braket{\\cdot}{\\cdot}$ that is complete with respect to the norm $\\norm{\\psi}^2 = \\braket{\\psi}{\\psi}$. The inner product is linear in the second and antilinear in the first argument (CONV-INNER)."
+    "de": "Ein \\emph{Hilbertraum} $\\Hil$ ist ein komplexer Vektorraum mit Skalarprodukt $\\braket{\\cdot}{\\cdot}$, der bezüglich der Norm $\\norm{\\psi}^2 = \\braket{\\psi}{\\psi}$ vollständig ist. Das Skalarprodukt ist linear im zweiten und antilinear im ersten Argument (CONV-INNER). \\emph{Vollständig} heißt: Kommen die Glieder einer Folge $\\ket{\\psi_1}, \\ket{\\psi_2}, \\dots$ in $\\Hil$ einander beliebig nahe, $\\norm{\\psi_m - \\psi_k} \\to 0$ für $m, k \\to \\infty$, so hat die Folge einen Grenzwert $\\ket{\\psi} \\in \\Hil$, also $\\norm{\\psi_m - \\psi} \\to 0$ für $m \\to \\infty$.",
+    "en": "A \\emph{Hilbert space} $\\Hil$ is a complex vector space with inner product $\\braket{\\cdot}{\\cdot}$ that is complete with respect to the norm $\\norm{\\psi}^2 = \\braket{\\psi}{\\psi}$. The inner product is linear in the second and antilinear in the first argument (CONV-INNER). \\emph{Complete} means: if the members of a sequence $\\ket{\\psi_1}, \\ket{\\psi_2}, \\dots$ in $\\Hil$ come arbitrarily close to one another, $\\norm{\\psi_m - \\psi_k} \\to 0$ as $m, k \\to \\infty$, then the sequence has a limit $\\ket{\\psi} \\in \\Hil$, that is $\\norm{\\psi_m - \\psi} \\to 0$ as $m \\to \\infty$."
    },
    "symbol_ids": [
     "sym.hilbert-space",
-    "sym.inner-product"
+    "sym.inner-product",
+    "sym.norm",
+    "sym.ket"
    ],
    "depth": "kern",
    "origin": "source-adapted",
@@ -1684,6 +1686,143 @@
     "sym.inner-product"
    ],
    "depth": "fundament",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "needs_check": false
+  },
+  {
+   "id": "D81",
+   "name": {
+    "de": "Ket, Bra, Bra-Ket",
+    "en": "ket, bra, bra-ket"
+   },
+   "body": {
+    "de": "Ab jetzt schreiben wir einen Vektor $\\vb{v}$ eines komplexen Vektorraums als \\emph{Ket} $\\ket{v}$. Für $\\vb{v} \\in \\mathbb{C}^n$ steht $\\ket{v}$ für die Spalte $\\vb{v}$. Mit dem Skalarprodukt $\\vb{v}\\adj\\vb{w}$ von $\\mathbb{C}^n$ steht der \\emph{Bra} $\\bra{v} = (\\ket{v})\\adj$ für die Zeile $\\vb{v}\\adj = \\begin{pmatrix} v_1^* & \\cdots & v_n^* \\end{pmatrix}$. Das Produkt des Bras $\\bra{v}$ mit dem Ket $\\ket{w}$ heißt \\emph{Bra-Ket}; es ist das Skalarprodukt, $\\braket{v}{w} = (\\ket{v})\\adj \\ket{w} = \\vb{v}\\adj\\vb{w}$. Für ein anderes Skalarprodukt ist der Bra $\\bra{v}$ die Zuordnung $\\ket{w} \\mapsto \\braket{v}{w}$, die jedem Ket eine Zahl zuordnet, und im Allgemeinen nicht die Zeile $\\vb{v}\\adj$.",
+    "en": "From now on we write a vector $\\vb{v}$ of a complex vector space as a \\emph{ket} $\\ket{v}$. For $\\vb{v} \\in \\mathbb{C}^n$, $\\ket{v}$ stands for the column $\\vb{v}$. With the inner product $\\vb{v}\\adj\\vb{w}$ of $\\mathbb{C}^n$, the \\emph{bra} $\\bra{v} = (\\ket{v})\\adj$ stands for the row $\\vb{v}\\adj = \\begin{pmatrix} v_1^* & \\cdots & v_n^* \\end{pmatrix}$. The product of the bra $\\bra{v}$ with the ket $\\ket{w}$ is called a \\emph{bra-ket}; it is the inner product, $\\braket{v}{w} = (\\ket{v})\\adj \\ket{w} = \\vb{v}\\adj\\vb{w}$. For another inner product the bra $\\bra{v}$ is the assignment $\\ket{w} \\mapsto \\braket{v}{w}$, which gives every ket a number, and in general not the row $\\vb{v}\\adj$."
+   },
+   "symbol_ids": [
+    "sym.ket",
+    "sym.bra",
+    "sym.inner-product",
+    "sym.adjoint"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [
+    "CONV-INNER"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "needs_check": false
+  },
+  {
+   "id": "D82",
+   "name": {
+    "de": "Skalarprodukt auf einem komplexen Vektorraum",
+    "en": "inner product on a complex vector space"
+   },
+   "body": {
+    "de": "Ein \\emph{Skalarprodukt} auf einem komplexen Vektorraum $V$ ordnet je zwei Vektoren $\\ket{\\phi}, \\ket{\\psi} \\in V$ eine komplexe Zahl $\\braket{\\phi}{\\psi}$ zu, so dass für alle Vektoren und alle $z \\in \\mathbb{C}$ gilt: (i) \\emph{Additivität} in jedem Argument, $\\braket{\\phi_1 + \\phi_2}{\\psi} = \\braket{\\phi_1}{\\psi} + \\braket{\\phi_2}{\\psi}$ und $\\braket{\\phi}{\\psi_1 + \\psi_2} = \\braket{\\phi}{\\psi_1} + \\braket{\\phi}{\\psi_2}$; (ii) \\emph{Herausziehen von Zahlen}, $\\braket{\\phi}{z\\psi} = z\\, \\braket{\\phi}{\\psi}$ und $\\braket{z\\phi}{\\psi} = z^*\\, \\braket{\\phi}{\\psi}$; (iii) \\emph{Positivität}, $\\braket{\\psi}{\\psi} \\geq 0$, und $\\braket{\\psi}{\\psi} = 0$ nur für $\\ket{\\psi} = 0$. Dabei steht $\\phi_1 + \\phi_2$ für den Vektor $\\ket{\\phi_1} + \\ket{\\phi_2}$ und $z\\phi$ für den Vektor $z\\ket{\\phi}$.",
+    "en": "An \\emph{inner product} on a complex vector space $V$ assigns to any two vectors $\\ket{\\phi}, \\ket{\\psi} \\in V$ a complex number $\\braket{\\phi}{\\psi}$ such that for all vectors and all $z \\in \\mathbb{C}$: (i) \\emph{additivity} in each argument, $\\braket{\\phi_1 + \\phi_2}{\\psi} = \\braket{\\phi_1}{\\psi} + \\braket{\\phi_2}{\\psi}$ and $\\braket{\\phi}{\\psi_1 + \\psi_2} = \\braket{\\phi}{\\psi_1} + \\braket{\\phi}{\\psi_2}$; (ii) \\emph{pulling out numbers}, $\\braket{\\phi}{z\\psi} = z\\, \\braket{\\phi}{\\psi}$ and $\\braket{z\\phi}{\\psi} = z^*\\, \\braket{\\phi}{\\psi}$; (iii) \\emph{positivity}, $\\braket{\\psi}{\\psi} \\geq 0$, and $\\braket{\\psi}{\\psi} = 0$ only for $\\ket{\\psi} = 0$. Here $\\phi_1 + \\phi_2$ stands for the vector $\\ket{\\phi_1} + \\ket{\\phi_2}$ and $z\\phi$ for the vector $z\\ket{\\phi}$."
+   },
+   "symbol_ids": [
+    "sym.inner-product",
+    "sym.ket"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [
+    "CONV-INNER"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "needs_check": false
+  },
+  {
+   "id": "D83",
+   "name": {
+    "de": "Norm",
+    "en": "norm"
+   },
+   "body": {
+    "de": "Die \\emph{Norm} eines Vektors $\\ket{\\psi}$ in einem Vektorraum mit Skalarprodukt ist die reelle Zahl $\\norm{\\psi} = \\sqrt{\\braket{\\psi}{\\psi}} \\geq 0$; man schreibt auch $\\norm{\\ket{\\psi}}$. Ein Vektor mit $\\norm{\\psi} = 1$ heißt \\emph{normiert}.",
+    "en": "The \\emph{norm} of a vector $\\ket{\\psi}$ in a vector space with inner product is the real number $\\norm{\\psi} = \\sqrt{\\braket{\\psi}{\\psi}} \\geq 0$; one also writes $\\norm{\\ket{\\psi}}$. A vector with $\\norm{\\psi} = 1$ is called \\emph{normalised}."
+   },
+   "symbol_ids": [
+    "sym.norm",
+    "sym.inner-product",
+    "sym.ket"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "needs_check": false
+  },
+  {
+   "id": "D84",
+   "name": {
+    "de": "orthogonal, orthonormal",
+    "en": "orthogonal, orthonormal"
+   },
+   "body": {
+    "de": "Zwei Vektoren $\\ket{\\phi}, \\ket{\\psi}$ heißen \\emph{orthogonal}, in Zeichen $\\ket{\\phi} \\perp \\ket{\\psi}$, wenn $\\braket{\\phi}{\\psi} = 0$ ist. Ein System von Vektoren $\\ket{\\phi_j}$, wobei $j$ eine Indexmenge $X$ durchläuft, heißt \\emph{orthonormal}, wenn $\\braket{\\phi_j}{\\phi_k} = \\kron{j}{k}$ für alle $j, k \\in X$ gilt. Dabei ist $\\kron{j}{k}$ das \\emph{Kronecker-Delta}: $\\kron{j}{k} = 1$ für $j = k$ und $\\kron{j}{k} = 0$ für $j \\neq k$.",
+    "en": "Two vectors $\\ket{\\phi}, \\ket{\\psi}$ are called \\emph{orthogonal}, in symbols $\\ket{\\phi} \\perp \\ket{\\psi}$, if $\\braket{\\phi}{\\psi} = 0$. A system of vectors $\\ket{\\phi_j}$, where $j$ runs through an index set $X$, is called \\emph{orthonormal} if $\\braket{\\phi_j}{\\phi_k} = \\kron{j}{k}$ for all $j, k \\in X$. Here $\\kron{j}{k}$ is the \\emph{Kronecker delta}: $\\kron{j}{k} = 1$ for $j = k$ and $\\kron{j}{k} = 0$ for $j \\neq k$."
+   },
+   "symbol_ids": [
+    "sym.inner-product",
+    "sym.ket",
+    "sym.kronecker-delta"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "needs_check": false
+  },
+  {
+   "id": "D85",
+   "name": {
+    "de": "Basis (Orthonormalbasis), endliche Indexmenge",
+    "en": "basis (orthonormal basis), finite index set"
+   },
+   "body": {
+    "de": "Sei $\\Hil$ ein Hilbertraum und $X$ eine endliche Indexmenge. Ein orthonormales System $\\{\\ket{\\phi_j}\\}_{j \\in X}$ in $\\Hil$ heißt \\emph{Basis}, genauer \\emph{Orthonormalbasis}, von $\\Hil$, wenn es \\emph{vollständig} ist: $\\norm{\\psi}^2 = \\sum_{j \\in X} \\abs{\\braket{\\phi_j}{\\psi}}^2$ für alle $\\ket{\\psi} \\in \\Hil$.",
+    "en": "Let $\\Hil$ be a Hilbert space and $X$ a finite index set. An orthonormal system $\\{\\ket{\\phi_j}\\}_{j \\in X}$ in $\\Hil$ is called a \\emph{basis}, more precisely an \\emph{orthonormal basis}, of $\\Hil$ if it is \\emph{complete}: $\\norm{\\psi}^2 = \\sum_{j \\in X} \\abs{\\braket{\\phi_j}{\\psi}}^2$ for all $\\ket{\\psi} \\in \\Hil$."
+   },
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.norm",
+    "sym.inner-product",
+    "sym.ket"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "needs_check": false
+  },
+  {
+   "id": "D86",
+   "name": {
+    "de": "Orthonormalbasis, beliebige Indexmenge",
+    "en": "orthonormal basis, arbitrary index set"
+   },
+   "body": {
+    "de": "Sei $\\Hil$ ein Hilbertraum und $X$ eine beliebige, auch unendliche Indexmenge. Ein orthonormales System $\\{\\ket{\\phi_j}\\}_{j \\in X}$ heißt \\emph{Orthonormalbasis}, auch \\emph{vollständiges Orthonormalsystem}, von $\\Hil$, wenn kein anderes orthonormales System alle $\\ket{\\phi_j}$ und noch weitere Vektoren enthält. Für nichtnegative Zahlen $a_j$ ist $\\sum_{j \\in X} a_j$ das Supremum der Summen über endliche Teilmengen von $X$; der Wert $\\infty$ ist zugelassen. Ist $X$ abzählbar, etwa $X = \\{1, 2, 3, \\dots\\}$, so ist eine Summe $\\sum_{j \\in X} \\ket{\\psi_j}$ von Vektoren eine Reihe; sie konvergiert gegen $\\ket{\\psi}$, wenn $\\norm{\\psi - (\\psi_1 + \\dots + \\psi_N)} \\to 0$ für $N \\to \\infty$.",
+    "en": "Let $\\Hil$ be a Hilbert space and $X$ an arbitrary, possibly infinite index set. An orthonormal system $\\{\\ket{\\phi_j}\\}_{j \\in X}$ is called an \\emph{orthonormal basis}, also a \\emph{complete orthonormal system}, of $\\Hil$ if no other orthonormal system contains all the $\\ket{\\phi_j}$ and further vectors besides. For nonnegative numbers $a_j$, $\\sum_{j \\in X} a_j$ is the supremum of the sums over finite subsets of $X$; the value $\\infty$ is admitted. If $X$ is countable, say $X = \\{1, 2, 3, \\dots\\}$, a sum $\\sum_{j \\in X} \\ket{\\psi_j}$ of vectors is a series; it converges to $\\ket{\\psi}$ if $\\norm{\\psi - (\\psi_1 + \\dots + \\psi_N)} \\to 0$ as $N \\to \\infty$."
+   },
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.ket",
+    "sym.norm"
+   ],
+   "depth": "vertiefung",
    "origin": "source-adapted",
    "choices": [],
    "status": "blessed-provisional",

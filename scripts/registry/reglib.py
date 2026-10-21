@@ -246,7 +246,7 @@ GREEK = {"alpha": "α", "beta": "β", "gamma": "γ", "delta": "δ", "epsilon": "
          "hbar": "ℏ", "ell": "ℓ", "infty": "∞"}
 UPRIGHT_GREEK = set("ΓΔΘΛΞΠΣΦΨΩ∞")
 OPS = {"langle": "⟨", "rangle": "⟩", "mid": "|", "dagger": "†", "otimes": "⊗", "oplus": "⊕",
-       "pm": "±", "leq": "≤", "geq": "≥", "cdot": "⋅", "lvert": "|", "rvert": "|", "lbrace": "{",
+       "pm": "±", "leq": "≤", "geq": "≥", "cdot": "⋅", "lvert": "|", "rvert": "|", "lVert": "‖", "rVert": "‖", "lbrace": "{",
        "rbrace": "}", "{": "{", "}": "}", "dot": "˙", "tilde": "~", "in": "∈"}
 ACCENTS = {"hat": "^", "widehat": "^", "tilde": "~", "bar": "¯", "dot": "˙"}
 SCRIPT_EXC = {"B": "ℬ", "E": "ℰ", "F": "ℱ", "H": "ℋ", "I": "ℐ", "L": "ℒ", "M": "ℳ", "R": "ℛ"}

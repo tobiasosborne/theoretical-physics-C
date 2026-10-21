@@ -1,0 +1,83 @@
+% c03.fig.vollst — the completeness relation: one vector, resolved in two orthonormal bases.
+%
+% Geometry from the expansion |Psi> = sum_j <phi_j|Psi> |phi_j> (c03.eq.vollstaendigkeit),
+% evaluated for the two bases of C^2 of example c03.ex.basis,
+%     {|e_0>, |e_1>}   and   |e_+-> = (|e_0> +- |e_1>)/sqrt 2,
+% on the unit vector of example c03.ex.zwei-basen
+%     |Psi> = (2|e_0> + |e_1>)/sqrt 5   (real coefficients, so everything lies in the real plane
+%     spanned by |e_0> and |e_1>, drawn as the paper plane; |e_+-> bisect the axes).
+%     c_0 = 2/sqrt5 = 0.894427,  c_1 = 1/sqrt5 = 0.447214      -> |c|^2 = 4/5, 1/5
+%     c_+ = 3/sqrt10, c_- = 1/sqrt10                           -> |c|^2 = 9/10, 1/10
+%     c_+ |e_+> = (3/sqrt20)(1, 1)  = (0.670820, 0.670820)
+%     c_- |e_-> = (1/sqrt20)(1, -1) = (0.223607, -0.223607)
+% Both component rectangles have |Psi> = (0.894427, 0.447214) as their diagonal, because
+% sum_j c_j |phi_j> = |Psi> in both bases (check_c03.py recomputes all of these numbers).
+% (a) scale 1 = 2.5 cm in both directions, so the bisecting rays are at equal angles on paper.
+% (b) the weights |c_j|^2 as bar segments; the dashed line is the common total
+%     ||Psi||^2 = 1.  Horizontal scale 1 = 3.0 cm.  The whole picture fits the 114 mm measure; |Psi> and
+%     c_j = <phi_j|Psi> are stated in the caption.  The vertical direction lists the two bases and measures nothing.
+% Greyscale: the state |Psi> in the state role (state stroke, the thickest; components regular); basis {e_0, e_1} in data role q1,
+% rectangle closed with dashes; basis {e_+, e_-} in data role q3, rectangle closed with dots;
+% every arrow and every bar segment carries its own label, so nothing depends on hue.
+\begin{tikzpicture}
+  % ---------------------------------------------------------------- (a)
+  \begin{scope}[x=2.5cm, y=2.5cm]
+    \draw[tpc grid, -{Stealth[length=4pt]}] (-0.15,0) -- (1.22,0);
+    \draw[tpc grid, -{Stealth[length=4pt]}] (0,-0.15) -- (0,0.98);
+    \draw[tpc grid, -{Stealth[length=4pt]}] (-0.11,-0.11) -- (0.74,0.74);
+    \draw[tpc grid, -{Stealth[length=4pt]}] (-0.11,0.11) -- (0.44,-0.44);
+    \node[tpc label, anchor=west] at (1.23,0) {$\ket{e_0}$};
+    \node[tpc label, anchor=south] at (0,0.99) {$\ket{e_1}$};
+    \node[tpc label, anchor=south west] at (0.74,0.74) {$\ket{e_+}$};
+    \node[tpc label, anchor=north west] at (0.44,-0.44) {$\ket{e_-}$};
+    % rectangle of the basis {e_0, e_1}: dashed
+    \draw[tpc q1, line width=\tpcstrokethin, dashed] (0.894427,0) -- (0.894427,0.447214) -- (0,0.447214);
+    % rectangle of the basis {e_+, e_-}: dotted
+    \draw[tpc q3, line width=\tpcstrokethin, densely dotted] (0.670820,0.670820) -- (0.894427,0.447214) -- (0.223607,-0.223607);
+    % components c_j |phi_j>
+    \draw[tpc q1, line width=\tpcstrokeregular, -{Stealth[length=5pt]}] (0,0) -- (0.894427,0);
+    \draw[tpc q1, line width=\tpcstrokeregular, -{Stealth[length=5pt]}] (0,0) -- (0,0.447214);
+    \draw[tpc q3, line width=\tpcstrokeregular, -{Stealth[length=5pt]}] (0,0) -- (0.670820,0.670820);
+    \draw[tpc q3, line width=\tpcstrokeregular, -{Stealth[length=5pt]}] (0,0) -- (0.223607,-0.223607);
+    % the state itself
+    \draw[tpc state, -{Stealth[length=6pt]}] (0,0) -- (0.894427,0.447214);
+    \node[tpc label, anchor=south west] at (0.90,0.455) {$\ket{\Psi}$};
+    % component labels
+    \node[tpc label, anchor=north] at (0.62,-0.03) {$c_0\ket{e_0}$};
+    \node[tpc label, anchor=east] at (-0.03,0.25) {$c_1\ket{e_1}$};
+    \node[tpc label, anchor=south east] at (0.56,0.60) {$c_+\ket{e_+}$};
+    \node[tpc label, anchor=north east] at (0.15,-0.19) {$c_-\ket{e_-}$};
+    \node[tpc label] at (0.5,-0.66) {(a) \tpcifenglish{One vector, two bases}{Ein Vektor, zwei Basen}};
+  \end{scope}
+  % ---------------------------------------------------------------- (b)
+  \begin{scope}[shift={(5.3,0.0)}, x=3.0cm, y=0.8cm]
+    \draw[tpc axis] (0,0) -- (1.18,0);
+    \draw[tpc axis] (0,0) -- (0,2.95);
+    \foreach \t/\l in {0/$0$, 0.5/$\tfrac12$, 1/$1$} {
+      \draw[tpc leader] (\t,0) -- (\t,-0.08);
+      \node[tpc label, anchor=north] at (\t,-0.1) {\l};
+    }
+    \node[tpc label, anchor=west] at (1.19,0) {$\abs{c_j}^2$};
+    % basis {e_0, e_1}: 4/5 and 1/5
+    \fill[tpc-q1!55!tpc-plate] (0,1.85) rectangle (0.8,2.4);
+    \fill[tpc-q1!18!tpc-plate] (0.8,1.85) rectangle (1.0,2.4);
+    \draw[tpc leader] (0,1.85) rectangle (1.0,2.4);
+    \draw[tpc leader] (0.8,1.85) -- (0.8,2.4);
+    % basis {e_+, e_-}: 9/10 and 1/10
+    \fill[tpc-q3!55!tpc-plate] (0,0.45) rectangle (0.9,1.0);
+    \fill[tpc-q3!18!tpc-plate] (0.9,0.45) rectangle (1.0,1.0);
+    \draw[tpc leader] (0,0.45) rectangle (1.0,1.0);
+    \draw[tpc leader] (0.9,0.45) -- (0.9,1.0);
+    % the common total
+    \draw[tpc leader, dashed] (1,0) -- (1,2.95);
+    \node[tpc label, anchor=south] at (1,2.95) {$\norm{\Psi}^2 = 1$};
+    % labels: basis names left, weights above the bars
+    \node[tpc label, anchor=east] at (-0.03,2.125) {$\ket{e_0}, \ket{e_1}$};
+    \node[tpc label, anchor=east] at (-0.03,0.725) {$\ket{e_+}, \ket{e_-}$};
+    \node[tpc label, anchor=south] at (0.4,2.4) {$\abs{c_0}^2 = \tfrac45$};
+    \node[tpc label, anchor=west] at (1.03,2.125) {$\abs{c_1}^2 = \tfrac15$};
+    \node[tpc label, anchor=south] at (0.45,1.0) {$\abs{c_+}^2 = \tfrac{9}{10}$};
+    \node[tpc label, anchor=west] at (1.03,0.725) {$\abs{c_-}^2 = \tfrac{1}{10}$};
+    \node[tpc label] at (0.5,-2.06) {(b) \tpcifenglish{Weights}{Gewichte}};
+  \end{scope}
+\end{tikzpicture}

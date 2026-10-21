@@ -20,6 +20,11 @@
 //   (c03.eq.gauss), and the family f_s(x) = (1+|x|)^(-s): s = 1/2 is h(x) = 1/sqrt(1+|x|)
 //   (c03.eq.log), s = 0 the constant 1 (c03.eq.eins); int_{-X}^{X} |f_s|^2 = 2 int_0^X (1+x)^(-2s) dx,
 //   with limit 2/(2s-1) for s > 1/2 and none for s <= 1/2.
+// - c03.fig.vollst (completeness relation, c03.eq.vollstaendigkeit): a basis is a list of columns
+//   phi_j (vectors of Complex entries); the coefficients are c_j = <phi_j|psi> = phi_j^dagger psi,
+//   the weights |c_j|^2, the components c_j phi_j. The demo works in the real plane inside C^2:
+//   unitVector(alpha) = (cos alpha, sin alpha) and the turned basis phi_0 = (cos theta, sin theta),
+//   phi_1 = (sin theta, -cos theta), which at theta = 45 degrees is e_+, e_- = (1, +-1)/sqrt 2.
 // - c03.fig.komplex: f(x) = m(x) exp(i k x) with a modulus m from the list above; the chapter's
 //   function is m = g, k = 2.
 
@@ -195,3 +200,26 @@ export function phasedPartial(kind: Modulus, X: number): number {
   if (kind === 'power') return X === Infinity ? Infinity : powerPartial(0.5, X);
   return X === Infinity ? Infinity : 2 * X;
 }
+
+// ── completeness: one vector in an orthonormal basis (c03.s7, c03.fig.vollst) ───────────────
+export type Vec = readonly Complex[];
+/** the unit vector (cos alpha, sin alpha) of the real plane in C^2 */
+export function unitVector(alpha: number): Vec { return [[Math.cos(alpha), 0], [Math.sin(alpha), 0]]; }
+/** the orthonormal basis phi_0 = (cos theta, sin theta), phi_1 = (sin theta, -cos theta); theta = pi/4 gives e_+, e_- */
+export function rotatedBasis(theta: number): Vec[] {
+  const c = Math.cos(theta), s = Math.sin(theta);
+  return [[[c, 0], [s, 0]], [[s, 0], [-c, 0]]];
+}
+/** the coefficients c_j = <phi_j|psi> = phi_j^dagger psi (c03.prop.entwicklung) */
+export function expansion(basis: readonly Vec[], psi: Vec): Complex[] { return basis.map((phi) => inner(phi, psi)); }
+/** the weights |c_j|^2 */
+export function weights(c: readonly Complex[]): number[] { return c.map(abs2); }
+/** the components c_j phi_j */
+export function components(basis: readonly Vec[], c: readonly Complex[]): Vec[] { return basis.map((phi, j) => scaleVec(c[j], phi)); }
+/** the sum of the components sum_j c_j phi_j: psi again, in every orthonormal basis */
+export function reassemble(basis: readonly Vec[], c: readonly Complex[]): Complex[] {
+  const parts = components(basis, c);
+  return parts[0].map((_, k) => parts.reduce<Complex>((s, p) => cadd(s, p[k]), [0, 0]));
+}
+/** the sum of the weights: ||psi||^2, the same in every orthonormal basis (c03.eq.kanonisch) */
+export function totalWeight(w: readonly number[]): number { return w.reduce((s, x) => s + x, 0); }

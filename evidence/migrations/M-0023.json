@@ -1,0 +1,39 @@
+{
+ "schema_version": 1,
+ "id": "M-0023",
+ "status": "recorded",
+ "title": "vl03: 'so ist diese Liste auch eine Basis' can be read as the original list, which is in general not orthonormal",
+ "legacy": [
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl03.tex",
+   "line": 221,
+   "file_sha256": "5ade0d2df8358f22497f3e207710b2c0efb7c74ea9da31ae420bcb23d469837e",
+   "old_text": "so ist diese Liste auch eine Basis.",
+   "new_text": "Steht nur der Nullvektor auf allen $\\ket{\\Phi_n}$ senkrecht, so ist dieses System eine Basis von $\\Hil$ (c03.prop.gram-schmidt, Teil 4)."
+  },
+  {
+   "version": "v0.2-en",
+   "file": "latex/lectures/en/lec03.tex",
+   "line": 221,
+   "file_sha256": "597cbb8943fb5926076c2741f225868619087a348ab7b8bbe5da0e225ab2ab89",
+   "old_text": "then this list is a basis as well.",
+   "new_text": "If only the zero vector is orthogonal to all the $\\ket{\\Phi_n}$, this system is a basis of $\\Hil$ (c03.prop.gram-schmidt, part 4)."
+  },
+  {
+   "version": "v0.1",
+   "file": "archive/skript-2022/Vorlesungen3.tex",
+   "line": 189,
+   "file_sha256": "389a16293491295d301d6749de11bedbb17c8c712e1f66ca9da9dd4684b45533",
+   "old_text": "so ist diese Liste auch eine Basis.",
+   "new_text": "Steht nur der Nullvektor auf allen $\\ket{\\Phi_n}$ senkrecht, so ist dieses System eine Basis von $\\Hil$ (c03.prop.gram-schmidt, Teil 4)."
+  }
+ ],
+ "reason": "The sentence follows 'das den gleichen Teilraum aufspannt wie die ursprüngliche Liste', so 'diese Liste' reads most naturally as the original list |Phi_n>. That list is a basis in the script's sense (orthonormal and complete) only if it is already orthonormal; what becomes a basis is the orthonormal system of normalised nonzero |Psi_n>. Example: Phi_1 = (1, 0), Phi_2 = (1, 1) satisfy the condition, are not orthogonal, and give the basis e_0, e_1 (c03.ex.gram-schmidt). The script's condition is also incomplete: 'Wenn es keinen Vektor gibt, der auf allen |Phi_n> senkrecht steht' must say no nonzero vector ('keinen Vektor außer dem Nullvektor'), since the zero vector is orthogonal to every vector, so 'no vector' can never hold. The new chapter states the condition as 'nur der Nullvektor steht auf allen |Phi_n> senkrecht' and says which system is the basis. ('no nonzero vector' made explicit after evidence/derivations/c03/REVIEW-lec3.md, section C (M-0023).)",
+ "evidence": {
+  "independent_check": "derived: evidence/derivations/c03/DERIVATION.md#c03.cl.gram-schmidt (part 4) and #c03.cl.gs-beispiel",
+  "provenance_ids": [],
+  "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.gram-schmidt"
+ },
+ "destination": "c03.prop.gram-schmidt"
+}

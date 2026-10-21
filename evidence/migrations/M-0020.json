@@ -1,0 +1,38 @@
+{
+ "schema_version": 1,
+ "id": "M-0020",
+ "status": "recorded",
+ "title": "vl03: the additivity example of the inner product lacks a \\langle",
+ "legacy": [
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl03.tex",
+   "line": 134,
+   "file_sha256": "5ade0d2df8358f22497f3e207710b2c0efb7c74ea9da31ae420bcb23d469837e",
+   "old_text": "\\langle \\phi_1|\\psi\\rangle + \\phi_2|\\psi\\rangle$",
+   "new_text": "\\braket{\\phi_1 + \\phi_2}{\\psi} = \\braket{\\phi_1}{\\psi} + \\braket{\\phi_2}{\\psi} (D82)"
+  },
+  {
+   "version": "v0.2-en",
+   "file": "latex/lectures/en/lec03.tex",
+   "line": 134,
+   "file_sha256": "597cbb8943fb5926076c2741f225868619087a348ab7b8bbe5da0e225ab2ab89",
+   "old_text": "\\langle \\phi_1|\\psi\\rangle + \\phi_2|\\psi\\rangle$",
+   "new_text": "\\braket{\\phi_1 + \\phi_2}{\\psi} = \\braket{\\phi_1}{\\psi} + \\braket{\\phi_2}{\\psi} (D82)"
+  },
+  {
+   "version": "v0.1",
+   "file": "archive/skript-2022/Vorlesungen3.tex",
+   "line": 123,
+   "file_sha256": "389a16293491295d301d6749de11bedbb17c8c712e1f66ca9da9dd4684b45533",
+   "old_text": "\\langle \\phi_1|\\psi\\rangle + \\phi_2|\\psi\\rangle$",
+   "new_text": "\\braket{\\phi_1 + \\phi_2}{\\psi} = \\braket{\\phi_1}{\\psi} + \\braket{\\phi_2}{\\psi} (D82)"
+  }
+ ],
+ "reason": "The right-hand side reads '<phi_1|psi> + phi_2|psi>': the second bracket has lost its \\langle, so it typesets as a product of phi_2 with a ket-like symbol. Only the first argument is shown, while the text says 'additiv in jedem Argument'. The new definition D82 states additivity in both arguments in full.",
+ "evidence": {
+  "independent_check": "read in the script sources at the stated lines",
+  "provenance_ids": []
+ },
+ "destination": "c03.s5"
+}

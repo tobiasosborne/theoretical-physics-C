@@ -1,10 +1,16 @@
 % content/c03-hilbertraum/en.tex — Chapter 3: The Hilbert-space toolkit
 % (English edition; the German de.tex leads, same constructs, IDs and displays)
 %
-% Scope: the material of the second lecture (latex/lectures/de/vl02.tex). The chapter will grow
-% with vl03 to vl05; new sections go between section c03.s3 and the Fundament blocks at the end.
-% Map of vl02: evidence/migrations/maps/vl02-map.json. Defects of vl02: M-0013 to M-0016.
-% Definitions D75 to D80; derivations evidence/derivations/c03/DERIVATION.md.
+% Scope: the material of the second and third lectures (latex/lectures/de/vl02.tex and vl03.tex,
+% without the vl03 subsection on operators, which goes with vl04). New sections go between the
+% last core section and the Fundament blocks at the end.
+% Maps: evidence/migrations/maps/vl02-map.json, vl03-map.json. Defects: M-0013 to M-0016 (vl02),
+% M-0017 to M-0024 (vl03). Definitions D75 to D80, D81 to D86 and D14; derivations
+% evidence/derivations/c03/DERIVATION.md; Reed-Simon page-image rows P-0140 to P-0150 (review
+% receipt R-0140), P-0152 to P-0164 (review receipt R-0152). Reviews of Lecture 3:
+% docs/review/lectures/REVIEW-lec3.md and evidence/derivations/c03/REVIEW-lec3.md; every finding
+% of both is closed by the repair wave of 2026-10-21 (the German file comments each place).
+% Open points of Lecture 3 for TJO: G-0072.
 
 \chapter{The Hilbert-space toolkit}\label{c03}
 
@@ -475,41 +481,663 @@ mechanics is the notation; you have to fight your way through it. At first it is
 in the end it makes everything easier, and it is a one-way street: once you have mastered it,
 you do not go back.
 
+% ── Lecture 3 (vl03): Dirac notation, inner products, Hilbert space, bases ────────────────
+\section{Dirac notation}\label{c03.s4}
+
+Let $V$ be a complex vector space. In quantum mechanics the following notation is used
+universally; that is how it is, and we have to live with it. Mathematicians do not like this
+notation, physicists love it: that is the difference between mathematicians and physicists.
+From now on we write every vector $\vb{v} \in V$ in the so-called ket notation,
+\begin{equation*}
+  \vb{v} \mapsto \ket{v} .
+\end{equation*}
+Inside the ket we drop the bold face: the vertical bar and the angle bracket already say that a
+vector is meant.
+
+At this point the notation means nothing more than: ``$\ket{v}$ stands for a vector in the
+vector space $V$''. That the two extra symbols bring us an advantage is not obvious. Why we have
+introduced this unusual notation will become clear soon.
+
+We work through a few examples so that you become familiar with the notation. There are some
+rules of calculation that are only implicit in the notation; you have to have seen them once.
+
+\begin{example}[Kets in $\mathbb{C}^2$]\label{c03.ex.kets}\claim{c03.cl.kets}{derived}
+  Let $V = \mathbb{C}^2$, the space with which we shall describe the states of a qubit. Two
+  example vectors are
+  \begin{equation}\label{c03.eq.e0e1}
+    \ket{e_0} = \begin{pmatrix} 1 \\ 0 \end{pmatrix},
+    \qquad
+    \ket{e_1} = \begin{pmatrix} 0 \\ 1 \end{pmatrix} .
+  \end{equation}
+  This is how the equation is to be read: $\ket{e_0}$ stands for this column, nothing more. In
+  a vector space we may add vectors and multiply them by numbers, and so we form two new
+  vectors,
+  \begin{equation}\label{c03.eq.epm}
+    \ket{e_\pm} = \tfrac{1}{\sqrt{2}}\, \ket{e_0} \pm \tfrac{1}{\sqrt{2}}\, \ket{e_1}
+    = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ 0 \end{pmatrix} \pm \frac{1}{\sqrt{2}} \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+    = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ \pm 1 \end{pmatrix} .
+  \end{equation}
+  Which vector is represented, one sees by inserting the columns of
+  Equation~\eqref{c03.eq.e0e1}.
+\end{example}
+
+% GAP-TJO: the spoken remark that |e_±> keep turning up in angular momentum, hydrogen and spin
+% systems (v03 [49:20]-[49:46]) has no written source and is left out (G-0072 (a)).
+In the coming chapters we shall mostly leave the columns out and prefer to calculate directly
+with the notation. At the beginning, however, you should always insert the original columns to
+see what is represented; in the exercises you will carry out many such calculations.
+
+By the way, it makes no difference whether we write $\ket{v + w}$ or $\ket{v} + \ket{w}$, and
+likewise $\ket{z v}$ stands for $z \ket{v}$ when $z$ is a number:
+\begin{equation*}
+  \ket{v + w} = \ket{v} + \ket{w} ,
+  \qquad
+  \ket{z v} = z \ket{v} .
+\end{equation*}
+
+The ket notation is complemented by the so-called \emph{bra} vectors. If $\ket{v}$ stands for a
+column of $n$ complex numbers, the dagger operation of Section~\ref{c03.s2} turns it into a row,
+and for this row we introduce a symbol of its own, $\bra{v}$. When you see this odd symbol, you
+have to understand it as a row vector. Bra and ket together write the inner product.
+
+\tpcdef{D81}
+
+\begin{historical}[Bra-ket]
+  The notation is due to Paul Dirac, and today it is used universally
+  \srcref{tpc-script-v0.2}{vl03, box on the bra-ket notation}. In English a \emph{bracket}: on
+  the left stands the ``bra'', on the right the ``ket'', and the ``c'' got lost somewhere.
+\end{historical}
+
+This is not a new definition but a new notation for the same objects and the same equations.
+For the same number we now have three ways of writing, the sum $\sum_{j} v_j^* w_j$, the product
+$\vb{v}\adj\vb{w}$ and the bra-ket $\braket{v}{w}$, and a bra-ket is computed by the old rule.
+Between $\braket{v}{w}$ and $(\ket{v})\adj \ket{w}$ we make no distinction at all any more. This
+holds for the inner product of Section~\ref{c03.s2}, and we keep using it whenever we insert
+columns. In the next section other inner products appear as well. For them the bra $\bra{v}$ is
+the assignment that gives every ket $\ket{w}$ the number $\braket{v}{w}$, and in general no
+longer the conjugate row (Example~\ref{c03.ex.gewichtet}).
+
+\begin{example}[A bra-ket in $\mathbb{C}^2$]\label{c03.ex.braket}\claim{c03.cl.braket}{derived}
+  With the vectors of Example~\ref{c03.ex.kets},
+  \begin{equation}\label{c03.eq.e0eplus}
+    \braket{e_0}{e_+} = (\ket{e_0})\adj \ket{e_+}
+    = \begin{pmatrix} 1 & 0 \end{pmatrix}
+      \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix}
+    = \frac{1}{\sqrt{2}} .
+  \end{equation}
+\end{example}
+
+For the notation to show its advantage, one needs a rule for how the dagger operation acts on
+linear combinations. For complex numbers $\alpha, \beta$ and kets $\ket{v}, \ket{w}$,
+\begin{equation}\label{c03.eq.bra-regel}\claim{c03.cl.bra-regel}{derived}
+  (\alpha \ket{v} + \beta \ket{w})\adj = \alpha^* \bra{v} + \beta^* \bra{w} ,
+\end{equation}
+because the dagger operation conjugates every entry, and
+$(\alpha v_j + \beta w_j)^* = \alpha^* v_j^* + \beta^* w_j^*$. It is exactly this rule that
+makes the notation useful: with it we compute inner products without ever writing the vectors
+down as columns. In $\mathbb{C}^2$ writing them down is no great burden. In
+infinite-dimensional spaces, however, one generally cannot write a vector down completely at
+all, and then calculating with kets and this rule is the way to calculate efficiently.
+
+\begin{example}[An inner product with kets only]\label{c03.ex.dirac}\claim{c03.cl.dirac}{derived}
+  We want the inner product $\braket{v}{w}$ of
+  \begin{equation}\label{c03.eq.dirac-vw}
+    \ket{v} = \begin{pmatrix} 1 \\ i \end{pmatrix},
+    \qquad
+    \ket{w} = \begin{pmatrix} 1 \\ 1 \end{pmatrix},
+  \end{equation}
+  this time without inserting the columns. First we express both vectors by the kets of
+  Example~\ref{c03.ex.kets}: $\ket{v} = \ket{e_0} + i \ket{e_1}$ and
+  $\ket{w} = \ket{e_0} + \ket{e_1}$. By Equation~\eqref{c03.eq.bra-regel},
+  $\bra{v} = \bra{e_0} - i \bra{e_1}$; note the minus sign. Multiplying out gives four inner
+  products:
+  \begin{equation}\label{c03.eq.dirac}
+    \begin{aligned}
+      \braket{v}{w} &= (\bra{e_0} - i \bra{e_1}) (\ket{e_0} + \ket{e_1}) \\
+      &= \braket{e_0}{e_0} + \braket{e_0}{e_1} - i \braket{e_1}{e_0} - i \braket{e_1}{e_1} \\
+      &= 1 + 0 - 0 - i = 1 - i ,
+    \end{aligned}
+  \end{equation}
+  because $\braket{e_0}{e_0} = \braket{e_1}{e_1} = 1$ and $\braket{e_0}{e_1} = \braket{e_1}{e_0} = 0$.
+  We would have obtained the same result by simply inserting the columns:
+  $\braket{v}{w} = \begin{pmatrix} 1 & -i \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} = 1 - i$.
+\end{example}
+
+Let us be honest: in two dimensions the first route is the more laborious one. In higher
+dimensions, though, you will very quickly discover a love for the ket notation. I use it in two
+dimensions all the same, because it plays together very nicely with operators and matrices; we
+shall see that with the operators.
+
+Once you have mastered the ket notation, you can read the equations of quantum mechanics. The
+translation is always the same: a ket stands for a vector.
+
+\section{Inner products}\label{c03.s5}
+
+Before we can define the Hilbert space, we must capture the concept of an inner product more
+cleanly and mathematically better. In $\mathbb{C}^n$ we have so far always used the inner
+product $\vb{v}\adj\vb{w}$. But even on this vector space there are other inner products, in fact
+infinitely many (Example~\ref{c03.ex.gewichtet}). In physics one normally chooses one and then works with this
+inner product for ever and ever; mathematically there are several possibilities, and sometimes
+it helps to be a little flexible. A complex vector space can also exist without any inner
+product at all: the inner product is an additional choice, not a structure the vector space
+brings along by itself. We need one because quantum mechanics is probabilistic; it is our tool
+for probabilities.
+
+An inner product assigns a complex number to any two vectors, and we write it in Dirac's
+notation. Not every such assignment counts as an inner product; it has to satisfy a few
+conditions. These conditions describe the other inner products as well. For calculations with
+columns we keep using the inner product of Section~\ref{c03.s2}.
+
+\tpcdef{D82}
+
+When a number is pulled out of the first argument, a star appears. These rules hold in the
+finite-dimensional as in the infinite-dimensional case; that is why the notation and the concept
+are so important. The inner product $\vb{v}\adj\vb{w}$ of $\mathbb{C}^n$ satisfies all three
+conditions: they are rules~2 to~4 of Proposition~\ref{c03.prop.skalarprodukt}. The complex
+conjugation in the second rule for numbers is important so that $\braket{\psi}{\psi}$ can be
+positive. If the inner product were linear in the first argument as well, then for every vector
+\begin{equation}\label{c03.eq.warum-stern}\claim{c03.cl.warum-stern}{derived}
+  \braket{i\psi}{i\psi} = i \cdot i\, \braket{\psi}{\psi} = -\braket{\psi}{\psi} ,
+\end{equation}
+and both sides could be $\geq 0$ only if $\braket{\psi}{\psi} = 0$, also for
+$\ket{\psi} \neq 0$. Example~\ref{c03.ex.ohne-stern} shows the same for a single vector.
+
+\begin{example}[Infinitely many inner products on $\mathbb{C}^2$]\label{c03.ex.gewichtet}\claim{c03.cl.gewichtet}{derived}
+  Let $c > 0$ be a real number. For $\vb{v}, \vb{w} \in \mathbb{C}^2$ we set
+  \begin{equation}\label{c03.eq.gewichtet}
+    \braket{v}{w}_c = v_1^* w_1 + c\, v_2^* w_2 .
+  \end{equation}
+  For every $c > 0$ this is an inner product: additivity and the two rules for numbers hold
+  term by term, exactly as in Proposition~\ref{c03.prop.skalarprodukt}, and
+  $\braket{v}{v}_c = \abs{v_1}^2 + c \abs{v_2}^2$ is $\geq 0$ and zero only if
+  $v_1 = v_2 = 0$. For $c = 1$ it is the inner product of $\mathbb{C}^2$. Different $c$ give
+  different inner products, because $\braket{e_1}{e_1}_c = c$. So there are infinitely many.
+  Each comes with its own bra: since
+  $\braket{v}{w}_c = \begin{pmatrix} v_1^* & c\, v_2^* \end{pmatrix} \vb{w}$, here $\bra{v}$
+  stands for the row $\begin{pmatrix} v_1^* & c\, v_2^* \end{pmatrix}$, and for $c \neq 1$ and
+  $v_2 \neq 0$ that is not the row $\vb{v}\adj$.
+\end{example}
+
+Positivity allows us to define the length of a vector.
+
+\tpcdef{D83}
+
+In $\mathbb{C}^n$ with the inner product of Section~\ref{c03.s2},
+$\norm{v}^2 = \vb{v}\adj\vb{v} = \sum_j \abs{v_j}^2$ (Equation~\eqref{c03.eq.selbst}). Instead of $\norm{\psi}$ one often simply says ``the modulus
+of $\psi$''.
+
+Positivity is a very strong condition, and it has two very nice consequences. The first is
+conjugate symmetry. For the inner products we have seen so far it is nothing new; here it
+follows from the three conditions alone.
+
+\begin{proposition}[Conjugate symmetry]\label{c03.prop.symmetrie}\claim[proof-included]{c03.cl.symmetrie}{derived}
+  For every inner product and all vectors $\ket{\phi}, \ket{\psi}$,
+  \begin{equation}\label{c03.eq.symmetrie}
+    \braket{\phi}{\psi} = \braket{\psi}{\phi}^* .
+  \end{equation}
+\end{proposition}
+\begin{proof}
+  By positivity, $\braket{\xi}{\xi}$ is a real number for every vector $\ket{\xi}$. Let
+  $a = \braket{\phi}{\psi}$ and $b = \braket{\psi}{\phi}$. By additivity,
+  \begin{equation}\label{c03.eq.symmetrie-beweis}
+    \braket{\phi + \psi}{\phi + \psi} = \braket{\phi}{\phi} + \braket{\psi}{\psi} + a + b ,
+  \end{equation}
+  so $a + b$ is real. The same calculation with $i\ket{\psi}$ instead of $\ket{\psi}$: by the
+  rules for numbers, $\braket{\phi}{i\psi} = i a$, $\braket{i\psi}{\phi} = -i b$ and
+  $\braket{i\psi}{i\psi} = (-i)\, i\, \braket{\psi}{\psi} = \braket{\psi}{\psi}$, so
+  $i a - i b = i (a - b)$ is real. From $\operatorname{Im}(a + b) = 0$ it follows that
+  $\operatorname{Im} b = -\operatorname{Im} a$, and since $a - b$ is purely imaginary,
+  $\operatorname{Re} b = \operatorname{Re} a$. Hence $b = a^*$.
+\end{proof}
+
+Reed and Simon include conjugate symmetry as a fourth condition in the definition of the inner
+product \srcref{reed-simon-1}{p.~36}; by the proposition this is the same definition.
+
+The second consequence is new, the \emph{Schwarz inequality}. It is particularly beautiful and
+particularly useful in quantum mechanics.
+
+\begin{proposition}[Schwarz inequality]\label{c03.prop.schwarz}\claim[proof-included]{c03.cl.schwarz}{derived}
+  For every inner product and all vectors $\ket{\phi}, \ket{\psi}$,
+  \begin{equation}\label{c03.eq.schwarz}
+    \abs{\braket{\phi}{\psi}} \leq \norm{\phi}\, \norm{\psi} .
+  \end{equation}
+\end{proposition}
+\begin{proof}
+  For $\ket{\psi} = 0$ both sides are zero. Otherwise $\norm{\psi}^2 > 0$. We set
+  $c = \braket{\psi}{\phi} / \norm{\psi}^2$ and $\ket{\xi} = \ket{\phi} - c \ket{\psi}$. By
+  Proposition~\ref{c03.prop.symmetrie}, $c^* = \braket{\phi}{\psi} / \norm{\psi}^2$. With
+  additivity, the rules for numbers and positivity for $\ket{\xi}$,
+  \begin{equation}\label{c03.eq.schwarz-beweis}
+    0 \leq \braket{\xi}{\xi}
+      = \norm{\phi}^2 - c\, \braket{\phi}{\psi} - c^*\, \braket{\psi}{\phi} + c^* c\, \norm{\psi}^2
+      = \norm{\phi}^2 - \frac{\abs{\braket{\phi}{\psi}}^2}{\norm{\psi}^2} ,
+  \end{equation}
+  because up to its sign each of the last three terms equals the fraction on the right.
+  Multiplying by $\norm{\psi}^2$ and taking the square root gives the claim.
+\end{proof}
+
+With the Schwarz inequality one can prove another, equally useful inequality, the triangle
+inequality: the norm of a sum of vectors is never larger than the sum of the norms.
+
+\begin{proposition}[Triangle inequality]\label{c03.prop.dreieck}\claim[proof-included]{c03.cl.dreieck}{derived}
+  For every inner product and finitely many vectors $\ket{\psi_1}, \dots, \ket{\psi_N}$,
+  \begin{equation}\label{c03.eq.dreieck}
+    \norm{\sum_{j=1}^{N} \ket{\psi_j}} \leq \sum_{j=1}^{N} \norm{\psi_j} .
+  \end{equation}
+\end{proposition}
+\begin{proof}
+  For two vectors, by additivity and Proposition~\ref{c03.prop.symmetrie},
+  \begin{equation}\label{c03.eq.dreieck-beweis}
+    \norm{\phi + \psi}^2
+      = \norm{\phi}^2 + \norm{\psi}^2 + 2 \operatorname{Re} \braket{\phi}{\psi}
+      \leq \norm{\phi}^2 + \norm{\psi}^2 + 2 \norm{\phi}\, \norm{\psi}
+      = \bigl( \norm{\phi} + \norm{\psi} \bigr)^2 ,
+  \end{equation}
+  because $\braket{\psi}{\phi} = \braket{\phi}{\psi}^*$, $\operatorname{Re} z \leq \abs{z}$ for
+  every complex number $z$, and then the Schwarz inequality. The square root gives
+  $\norm{\phi + \psi} \leq \norm{\phi} + \norm{\psi}$. For $N$ vectors one applies this
+  repeatedly: $\norm{\psi_1 + \dots + \psi_N} \leq \norm{\psi_1 + \dots + \psi_{N-1}} + \norm{\psi_N}$,
+  and so on down to a single vector.
+\end{proof}
+
+Reed and Simon show in the same way that the norm of a vector space with inner product is a norm
+in the sense of normed spaces \srcref{reed-simon-1}{p.~38}.
+
+Both inequalities are working tools that we use practically all the time. The most important
+one is the Schwarz inequality: it lies behind Heisenberg's uncertainty relation
+\srcref{tpc-script-v0.2}{vl03, section on inner products}, which comes in Chapter~6. With the
+triangle inequality we bound quantities.
+
+One last definition before we leave inner products.
+
+\tpcdef{D84}
+
+This is exactly analogous to ordinary vectors in three-dimensional space. Careful: a vanishing
+inner product does \emph{not} mean that one of the vectors is zero. Positivity forces that only
+in the case $\ket{\phi} = \ket{\psi}$.
+
+\begin{example}[Orthonormal vectors in $\mathbb{C}^2$]\label{c03.ex.orthogonal}\claim{c03.cl.orthogonal}{derived}
+  The vectors $\ket{e_\pm}$ of Example~\ref{c03.ex.kets} are not zero, and yet
+  \begin{equation}\label{c03.eq.orthogonal}
+    \braket{e_+}{e_-} = \frac{1}{2} \begin{pmatrix} 1 & 1 \end{pmatrix} \begin{pmatrix} 1 \\ -1 \end{pmatrix} = 0 ,
+    \qquad
+    \norm{e_\pm}^2 = \frac{1}{2} \bigl( 1 + (\pm 1)^2 \bigr) = 1 .
+  \end{equation}
+  Likewise $\braket{e_0}{e_1} = 0$ and $\norm{e_0} = \norm{e_1} = 1$. Both pairs are
+  orthonormal.
+\end{example}
+
+One may also read the norm as the length of a vector. The vectors of quantum mechanics live in
+an abstract space that has nothing at all to do with our three dimensions; still it is sometimes
+helpful to read their norms as lengths and orthogonal vectors as perpendicular to each other.
+
+\section{Hilbert space}\label{c03.s6}
+
+Now we have enough together to define Hilbert spaces.
+
+\tpcdef{D14}
+
+Completeness is a very important but subtle mathematical condition. It has to do with
+convergence in infinite-dimensional spaces, and in our lectures it plays no essential role. For
+our calculations in $\mathbb{C}^n$ with the inner product of Section~\ref{c03.s2} it holds
+automatically\zoomref{c03.f3}. There we can simplify all calculations by ignoring it, and for
+these calculations a Hilbert space is simply a complex vector space with an inner product. So
+$\mathbb{C}^n$ is a Hilbert space, and for the qubit it is $\mathbb{C}^2$. In infinitely many
+dimensions the shortcut does not hold: there completeness is used, for example for the
+expansion in a basis with infinitely many vectors.
+
+\section{Bases}\label{c03.s7}
+
+The next concept in the theory of Hilbert spaces is the \emph{basis}. A basis is a set of
+vectors with very nice properties: all other vectors of the Hilbert space can be decomposed
+along it. We need bases for a practical reason: most calculations in quantum mechanics only
+become explicit once a basis has been chosen. Normally one chooses a basis and does all
+calculations with respect to this basis.
+
+In the core, the index set $X$ of a basis is finite.
+
+\tpcdef{D85}
+
+Two warnings. Confusingly, the second property is called \emph{completeness}; this is a
+different notion of completeness from that of the Hilbert space of Section~\ref{c03.s6}. And $\kron{j}{k}$
+is the Kronecker delta, not the Dirac delta function, which comes later.
+
+\begin{example}[Two bases of $\mathbb{C}^2$]\label{c03.ex.basis}\claim{c03.cl.basis}{derived}
+  The vectors $\ket{e_0}, \ket{e_1}$ form a basis of $\mathbb{C}^2$, with index set
+  $X = \{0, 1\}$. They are orthonormal by Example~\ref{c03.ex.orthogonal}; four inner products
+  had to be checked here. Completeness is a little more demanding. Every vector of
+  $\mathbb{C}^2$ can be written as $\ket{\psi} = \alpha \ket{e_0} + \beta \ket{e_1}$, with the
+  entries $\alpha, \beta \in \mathbb{C}$, and we compute the two sides of the completeness
+  condition separately. On the left,
+  \begin{equation}\label{c03.eq.basis-links}
+    \norm{\psi}^2 = (\alpha^* \bra{e_0} + \beta^* \bra{e_1}) (\alpha \ket{e_0} + \beta \ket{e_1})
+    = \abs{\alpha}^2 + \abs{\beta}^2 ,
+  \end{equation}
+  on the right, with $\braket{e_0}{\psi} = \alpha$ and $\braket{e_1}{\psi} = \beta$,
+  \begin{equation}\label{c03.eq.basis-rechts}
+    \abs{\braket{e_0}{\psi}}^2 + \abs{\braket{e_1}{\psi}}^2 = \abs{\alpha}^2 + \abs{\beta}^2 .
+  \end{equation}
+  The two sides agree. In the same way $\ket{e_+}, \ket{e_-}$ form a basis: they are
+  orthonormal (Example~\ref{c03.ex.orthogonal}), and with
+  $\braket{e_\pm}{\psi} = (\alpha \pm \beta) / \sqrt{2}$,
+  \begin{equation}\label{c03.eq.basis-pm}
+    \abs{\braket{e_+}{\psi}}^2 + \abs{\braket{e_-}{\psi}}^2
+    = \tfrac12 \bigl( \abs{\alpha + \beta}^2 + \abs{\alpha - \beta}^2 \bigr)
+    = \abs{\alpha}^2 + \abs{\beta}^2 .
+  \end{equation}
+\end{example}
+
+With $n$ basis vectors, orthonormality means checking $n^2$ equations; by conjugate symmetry
+those with $j \leq k$ suffice, and that is still quite a lot. If you are a little bored, write
+down a few vectors and check whether they form a basis. Vectors chosen at random do not in
+general form a basis: already $\ket{e_0}$ and $\ket{e_+}$ are not orthogonal, by
+Example~\ref{c03.ex.braket}.
+
+The most important property of a basis is that every vector can be expanded in it.
+
+\begin{proposition}[Expansion in a basis]\label{c03.prop.entwicklung}\claim[proof-included]{c03.cl.entwicklung}{derived}
+  Let $\{\ket{\phi_j}\}_{j \in X}$ be a basis of $\Hil$ with finite index set $X$. Then for
+  every vector $\ket{\Psi} \in \Hil$
+  \begin{equation}\label{c03.eq.vollstaendigkeit}
+    \ket{\Psi} = \sum_{j \in X} \braket{\phi_j}{\Psi}\, \ket{\phi_j} .
+  \end{equation}
+  Conversely, an orthonormal system with finite index set in which every vector can be expanded
+  in this way is complete, hence a basis.
+\end{proposition}
+\begin{proof}
+  Let $c_j = \braket{\phi_j}{\Psi}$ and $\ket{\xi} = \ket{\Psi} - \sum_j c_j \ket{\phi_j}$. By
+  orthonormality, $\braket{\phi_k}{\xi} = c_k - \sum_j c_j \kron{k}{j} = 0$ for every $k$. With
+  the rules for numbers in the first argument,
+  $\braket{\xi}{\xi} = \braket{\Psi}{\xi} - \sum_j c_j^* \braket{\phi_j}{\xi} = \braket{\Psi}{\xi}$,
+  and by Proposition~\ref{c03.prop.symmetrie}, $\braket{\Psi}{\phi_j} = c_j^*$, so
+  \begin{equation}\label{c03.eq.entwicklung-beweis}
+    \braket{\xi}{\xi} = \braket{\Psi}{\Psi} - \sum_{j} c_j\, \braket{\Psi}{\phi_j}
+    = \norm{\Psi}^2 - \sum_{j} \abs{c_j}^2 = 0
+  \end{equation}
+  by completeness. By positivity $\ket{\xi} = 0$, and that is
+  Equation~\eqref{c03.eq.vollstaendigkeit}. Conversely, if the expansion holds, then
+  $\norm{\Psi}^2 = \sum_{j,k} c_j^* c_k \braket{\phi_j}{\phi_k} = \sum_j \abs{c_j}^2$.
+\end{proof}
+
+\begin{merksatz}[Completeness relation]
+  The equation
+  $\ket{\Psi} = \sum_{j \in X} \braket{\phi_j}{\Psi}\, \ket{\phi_j}$ is one form of the
+  so-called \emph{completeness relation}: every vector is the sum of its components along the
+  basis vectors, and the coefficients are inner products. It looks harmless, but it is used all
+  the time in quantum mechanics.
+\end{merksatz}
+
+\begin{example}[One vector, two bases]\label{c03.ex.zwei-basen}\claim{c03.cl.zwei-basen}{derived}
+  Let $\ket{\Psi} = \tfrac{1}{\sqrt{5}} \bigl( 2 \ket{e_0} + \ket{e_1} \bigr)$. In the basis
+  $\ket{e_0}, \ket{e_1}$ the coefficients are $c_0 = \braket{e_0}{\Psi} = 2/\sqrt{5}$ and
+  $c_1 = \braket{e_1}{\Psi} = 1/\sqrt{5}$, in the basis $\ket{e_+}, \ket{e_-}$ they are
+  $c_\pm = \braket{e_\pm}{\Psi} = (2 \pm 1)/\sqrt{10}$. The weights
+  \begin{equation}\label{c03.eq.gewichte}
+    \abs{c_0}^2 = \tfrac45 , \quad \abs{c_1}^2 = \tfrac15 ,
+    \qquad
+    \abs{c_+}^2 = \tfrac{9}{10} , \quad \abs{c_-}^2 = \tfrac{1}{10}
+  \end{equation}
+  differ between the two bases; their sum is $1 = \norm{\Psi}^2$ in both.
+\end{example}
+
+Figure~\ref{c03.fig.vollst} works this out for the two bases of $\mathbb{C}^2$. In (a) each of
+the two decompositions of the same $\ket{\Psi}$ closes up into a rectangle of its own: different
+sides, the same diagonal. Panel (b) shows what stays independent of the basis: not the
+individual weights, but their sum.
+
+\begin{tpcfigure}{c03.fig.vollst}
+  \demo{c03.demo.vollst}
+  \caption{The completeness relation for one vector in two bases. (a) The vector
+    $\ket{\Psi} = (2\ket{e_0} + \ket{e_1})/\sqrt{5}$ of Example~\ref{c03.ex.zwei-basen} (thick
+    arrow) as the sum of its components $c_j \ket{\phi_j}$ with $c_j = \braket{\phi_j}{\Psi}$,
+    once in the basis $\ket{e_0}, \ket{e_1}$ (rectangle closed with dashes), once in the basis
+    $\ket{e_+}, \ket{e_-}$ (rectangle closed with dots). Since all coefficients are real,
+    everything lies in the real plane spanned by $\ket{e_0}$ and $\ket{e_1}$; the rays of
+    $\ket{e_\pm}$ bisect the angles between the axes. The two rectangles have different sides
+    and the same diagonal. (b) The weights $\abs{c_j}^2$ as bar segments: $\tfrac45$ and
+    $\tfrac15$ against $\tfrac{9}{10}$ and $\tfrac{1}{10}$. The split depends on the basis, the
+    sum $\norm{\Psi}^2 = 1$ (dashed line) does not.}
+\end{tpcfigure}
+
+In finitely many dimensions it is relatively easy to find a basis. In $\mathbb{C}^n$ with the
+inner product of Section~\ref{c03.s2} one simply takes the columns $\ket{u_1}, \dots, \ket{u_n}$, where $\ket{u_j}$ has a $1$ in the $j$-th entry
+and zeros everywhere else; for $n = 2$ these are $\ket{e_0}$ and $\ket{e_1}$. For a vector
+$\ket{\psi}$ with entries $\psi_1, \dots, \psi_n$,
+\begin{equation}\label{c03.eq.kanonisch}\claim{c03.cl.kanonisch}{derived}
+  \braket{u_j}{u_k} = \kron{j}{k} ,
+  \qquad
+  \sum_{j=1}^{n} \abs{\braket{u_j}{\psi}}^2 = \sum_{j=1}^{n} \abs{\psi_j}^2 = \norm{\psi}^2 .
+\end{equation}
+In the infinite-dimensional case everything is harder: that a basis exists is not clear, it has
+to be proved, and the proof is hard\zoomref{c03.v4}.
+
+\begin{vertiefung}[id=c03.v4,
+    titel={Bases with infinitely many vectors},
+    wozu={The bases of $\elltwo$ and $\Ltwo{\mathbb{R}}$ in this block have infinitely many
+      vectors, and the sums of the completeness relation become series. Here is how a basis is
+      defined then, that there always is one and that the expansion in a basis with a countable
+      index set holds, with a basis of $\elltwo$ and one of $\Ltwo{\mathbb{R}}$.},
+    voraussetzung={Section~\ref{c03.s7} up to Proposition~\ref{c03.prop.entwicklung}; blocks~\ref{c03.v1}
+      and~\ref{c03.v2}; the completeness of $\elltwo$ and
+      $\Ltwo{\mathbb{R}}$ from Foundations~\ref{c03.f3}. The core up to
+      Chapter~4 does not need this block.},
+    zurueck={In infinite dimension, too, every Hilbert space has a basis. If its index set is
+      countable, every vector is the sum of its components, as a series that converges in
+      norm. In the core the finite sum suffices.}]
+  From now on we assume that we always have a basis, otherwise it gets too hard. For Hilbert
+  spaces this is more than an assumption, namely a theorem. First, however, one has to say
+  what a basis with infinitely many vectors is. For a countable index set, such as
+  $X = \{1, 2, 3, \dots\}$, the sums become series, and the completeness of \defref{D85} then
+  requires series to converge. But an index set may also be uncountable. Reed and Simon
+  therefore define the basis without a sum:
+
+  \tpcdef{D86}
+
+  \begin{theorem}[Existence of a basis]\label{c03.thm.existenz}\claim[proof-omitted]{c03.cl.existenz}{source-quoted}
+    Every Hilbert space has an orthonormal basis.
+  \end{theorem}
+
+  Reed and Simon prove this with Zorn's lemma \srcref{reed-simon-1}{pp.~44--45}. The next
+  theorem says that the expansion in a basis also holds when it has infinitely many vectors,
+  countably many.
+
+  \begin{theorem}[Expansion in an orthonormal basis]\label{c03.thm.parseval}\claim[proof-omitted]{c03.cl.parseval}{source-quoted}
+    Let $\{\ket{\phi_j}\}_{j \in X}$ be an orthonormal basis of a Hilbert space $\Hil$ with a
+    countable index set $X$. Then for every vector $\ket{\Psi} \in \Hil$
+    \begin{equation}\label{c03.eq.parseval}
+      \ket{\Psi} = \sum_{j \in X} \braket{\phi_j}{\Psi}\, \ket{\phi_j} ,
+      \qquad
+      \norm{\Psi}^2 = \sum_{j \in X} \abs{\braket{\phi_j}{\Psi}}^2 .
+    \end{equation}
+    The first sum is a series of vectors; it converges in norm, independent of the order of the
+    terms, to $\ket{\Psi}$. Conversely, for complex numbers $c_j$ with
+    $\sum_{j \in X} \abs{c_j}^2 < \infty$ the sum $\sum_{j \in X} c_j \ket{\phi_j}$ converges in
+    norm to a vector in $\Hil$.
+  \end{theorem}
+
+  This is Theorem~II.6 of Reed and Simon, in the case of a countable index set; there the
+  second equation is called Parseval's relation \srcref{reed-simon-1}{pp.~45--46}. Reed and
+  Simon state the theorem for every index set. We need only countable ones: the bases of
+  $\elltwo$ and $\Ltwo{\mathbb{R}}$ below are enumerated by $k = 1, 2, 3, \dots$ and
+  $n = 0, 1, 2, \dots$. So the definition of the core fits the one of Reed and Simon:
+
+  \begin{proposition}[Two definitions, one basis]\label{c03.prop.maximal}\claim[proof-included]{c03.cl.maximal}{derived}
+    An orthonormal system $\{\ket{\phi_j}\}_{j \in X}$ of a Hilbert space $\Hil$ with a
+    countable index set $X$ is an orthonormal basis in the sense of \defref{D86} if and only if
+    $\norm{\psi}^2 = \sum_{j \in X} \abs{\braket{\phi_j}{\psi}}^2$ for every vector
+    $\ket{\psi} \in \Hil$. For finite $X$ this is the basis of \defref{D85}.
+  \end{proposition}
+  \begin{proof}
+    If the system is an orthonormal basis, the equation holds by
+    Theorem~\ref{c03.thm.parseval}. If it is not, there is an orthonormal system that contains
+    all the $\ket{\phi_j}$ and one further vector $\ket{\xi}$. Then $\norm{\xi} = 1$ and
+    $\braket{\phi_j}{\xi} = 0$ for every $j$; every finite partial sum of
+    $\sum_j \abs{\braket{\phi_j}{\xi}}^2$ is zero, and the equation for $\ket{\psi} = \ket{\xi}$
+    would say $1 = 0$.
+  \end{proof}
+
+  \begin{example}[A basis of $\elltwo$]\label{c03.ex.elltwo-basis}\claim{c03.cl.elltwo-basis}{derived}
+    Let $\vb{u}_k \in \elltwo$ be the vector with a $1$ in the $k$-th entry and zeros everywhere
+    else, $k = 1, 2, 3, \dots$ Then $\vb{u}_j\adj\vb{u}_k = \kron{j}{k}$, and for every
+    $\vb{v} \in \elltwo$, $\vb{u}_k\adj\vb{v} = v_k$, so
+    \begin{equation}\label{c03.eq.elltwo-basis}
+      \sum_{k=1}^{\infty} \abs{\vb{u}_k\adj\vb{v}}^2 = \sum_{k=1}^{\infty} \abs{v_k}^2 = \vb{v}\adj\vb{v} .
+    \end{equation}
+    Since $\elltwo$ is a Hilbert space by Theorem~\ref{c03.thm.vollstaendig}, the $\vb{u}_k$
+    form an orthonormal basis of $\elltwo$ by Proposition~\ref{c03.prop.maximal}. The
+    completeness relation says here: the partial sums $\sum_{k \leq N} v_k \vb{u}_k$, that is
+    the first $N$ entries of $\vb{v}$ followed by zeros, converge to $\vb{v}$. One also sees this
+    directly: the squared distance is $\sum_{k > N} \abs{v_k}^2$, the remainder of a convergent
+    series.
+  \end{example}
+
+  For $\Ltwo{\mathbb{R}}$, Theorem~\ref{c03.thm.existenz} gives a basis, because the space in
+  the version of Foundations~\ref{c03.f2} is a Hilbert space by
+  Theorem~\ref{c03.thm.vollstaendig}. Reed and Simon also name a concrete one.
+
+  \begin{theorem}[Hermite functions]\label{c03.thm.hermite}\claim[proof-omitted]{c03.cl.hermite}{source-quoted}
+    The Hermite functions $\phi_n$, $n = 0, 1, 2, \dots$, form an orthonormal basis of
+    $\Ltwo{\mathbb{R}}$. The first one is $\phi_0(x) = \pi^{-1/4}\, e^{-x^2/2}$.
+  \end{theorem}
+
+  Reed and Simon also call them the wave functions of the harmonic oscillator and refer to
+  exercises for the proof \srcref{reed-simon-1}{p.~142}; they come back in Chapter~7. That
+  $\phi_0$ is normalised follows from Equation~\eqref{c03.eq.gauss}:
+  \begin{equation}\label{c03.eq.phinull}\claim{c03.cl.phinull}{derived}
+    \braket{\phi_0}{\phi_0} = \pi^{-1/2} \int_{-\infty}^{\infty} e^{-x^2}\, \dd x
+    = \pi^{-1/2} \sqrt{\pi} = 1 .
+  \end{equation}
+\end{vertiefung}
+
+\subsection{The Gram-Schmidt procedure}\label{c03.s7.1}
+
+How does one build bases in practice? With the so-called orthonormalisation procedure of Gram
+and Schmidt. One starts with some list of vectors $\ket{\Phi_1}, \ket{\Phi_2}, \dots$; these
+vectors are completely arbitrary and need not satisfy any property. From them one determines,
+one after the other, pairwise orthogonal vectors $\ket{\Psi_n}$, with a single formula.
+
+\begin{proposition}[Gram-Schmidt procedure]\label{c03.prop.gram-schmidt}\claim[proof-included]{c03.cl.gram-schmidt}{derived}
+  Let $\ket{\Phi_1}, \dots, \ket{\Phi_N}$ be vectors of a Hilbert space $\Hil$, and let
+  $\ket{\Psi_1}, \dots, \ket{\Psi_N}$ be determined one after the other by
+  \begin{equation}\label{c03.eq.gram-schmidt}
+    \ket{\Psi_n} = \ket{\Phi_n} - \sum_{k=1}^{n-1} \ket{\Psi_k}\, \frac{\braket{\Psi_k}{\Phi_n}}{\norm{\Psi_k}^2}
+  \end{equation}
+  where terms with $\ket{\Psi_k} = 0$ are left out. Then:
+  \begin{enumerate}
+    \item $\braket{\Psi_k}{\Psi_n} = 0$ for $k < n$.
+    \item For every $m \leq N$, every $\ket{\Phi_n}$ with $n \leq m$ is a linear combination of
+      the $\ket{\Psi_k}$ with $k \leq m$, and conversely.
+    \item The vectors $\ket{\Psi_n} / \norm{\Psi_n}$ with $\ket{\Psi_n} \neq 0$ form an
+      orthonormal system.
+    \item If only the zero vector is orthogonal to all the $\ket{\Phi_n}$, this system is a
+      basis of $\Hil$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  Parts~1 and~2 by induction over $n$; for $n = 1$, $\ket{\Psi_1} = \ket{\Phi_1}$. Let
+  $\ket{\Psi_1}, \dots, \ket{\Psi_{n-1}}$ be pairwise orthogonal. For $j < n$ with
+  $\ket{\Psi_j} \neq 0$, in
+  \begin{equation}\label{c03.eq.gs-beweis}
+    \braket{\Psi_j}{\Psi_n}
+    = \braket{\Psi_j}{\Phi_n} - \sum_{k} \braket{\Psi_j}{\Psi_k}\, \frac{\braket{\Psi_k}{\Phi_n}}{\norm{\Psi_k}^2}
+    = \braket{\Psi_j}{\Phi_n} - \braket{\Psi_j}{\Phi_n} = 0
+  \end{equation}
+  only the term $k = j$ of the sum survives; for $\ket{\Psi_j} = 0$ the inner product is zero
+  anyway. By Equation~\eqref{c03.eq.gram-schmidt}, $\ket{\Phi_n}$ equals $\ket{\Psi_n}$ plus a
+  linear combination of the $\ket{\Psi_k}$ with $k < n$, and $\ket{\Psi_n}$ is $\ket{\Phi_n}$
+  minus a linear combination of the $\ket{\Psi_k}$ with $k < n$, which by the induction
+  hypothesis are linear combinations of the $\ket{\Phi_k}$ with $k < n$. Part~3: by the rules for
+  numbers, $\norm{z\psi} = \abs{z}\, \norm{\psi}$, so the divided vectors have norm $1$, and
+  they are orthogonal by part~1. Part~4: let $\ket{\xi_1}, \dots, \ket{\xi_M}$ be the vectors of
+  part~3, let $\ket{\psi} \in \Hil$ and
+  $\ket{r} = \ket{\psi} - \sum_m \braket{\xi_m}{\psi}\, \ket{\xi_m}$. As in the proof of
+  Proposition~\ref{c03.prop.entwicklung}, $\braket{\xi_m}{r} = 0$ for every $m$, hence also
+  $\braket{\Psi_k}{r} = 0$ for every $k$ and, by part~2, $\braket{\Phi_n}{r} = 0$ for every
+  $n$. By the hypothesis, $\ket{r} = 0$. So every vector can be expanded in the $\ket{\xi_m}$,
+  and by Proposition~\ref{c03.prop.entwicklung} the system is complete.
+\end{proof}
+
+All quantities in the formula can be computed: the inner product is a complex number, the norm
+a nonnegative real number, the $\ket{\Psi_k}$ are vectors, and the sum is a sum of vectors. Here the number stands to
+the right of the vector; in the definition it always stood on the left. I do that very often,
+and you have to live with it: what is meant is $\ket{\Psi_k}\, z = z \ket{\Psi_k}$. The index $n$
+has nothing at all to do with the dimension of the space; it only counts off the list. The terms
+with $\ket{\Psi_k} = 0$ have to be left out, because otherwise $\norm{\Psi_k}^2 = 0$ would stand
+in the denominator and we would be dividing by zero. It may well happen that some $\ket{\Psi_n}$
+are zero (Exercise~\ref{c03.exc.gram-schmidt}).
+
+Because the procedure consists of several parts and can be confusing, we work through it once
+completely.
+
+\begin{example}[Gram-Schmidt in $\mathbb{C}^2$]\label{c03.ex.gram-schmidt}\claim{c03.cl.gs-beispiel}{derived}
+  We work in my favourite Hilbert space $\mathbb{C}^2$ and start with two vectors that I have
+  just made up:
+  \begin{equation}\label{c03.eq.gs-start}
+    \ket{\Phi_1} = \begin{pmatrix} 1 \\ 0 \end{pmatrix},
+    \qquad
+    \ket{\Phi_2} = \begin{pmatrix} 1 \\ 1 \end{pmatrix} .
+  \end{equation}
+  In the first step the sum runs from $1$ to $0$; so nothing is summed at all, and
+  $\ket{\Psi_1} = \ket{\Phi_1}$. In the second step only the term $k = 1$ remains. With
+  $\braket{\Psi_1}{\Phi_2} = 1$ and $\norm{\Psi_1}^2 = 1$,
+  \begin{equation}\label{c03.eq.gs-beispiel}
+    \ket{\Psi_2} = \ket{\Phi_2} - \ket{\Psi_1}\, \frac{\braket{\Psi_1}{\Phi_2}}{\norm{\Psi_1}^2}
+    = \begin{pmatrix} 1 \\ 1 \end{pmatrix} - \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+    = \begin{pmatrix} 0 \\ 1 \end{pmatrix} .
+  \end{equation}
+  Both vectors already have norm one: the made-up list has turned into the basis
+  $\ket{e_0}, \ket{e_1}$. The condition of part~4 of the proposition holds: from
+  $\braket{\Phi_1}{\psi} = \psi_1 = 0$ and $\braket{\Phi_2}{\psi} = \psi_1 + \psi_2 = 0$ it
+  follows that $\ket{\psi} = 0$.
+\end{example}
+
+In higher dimensions the calculation goes the same way, it only gets more and more laborious.
+The procedure always works, in the sense that it always yields an orthonormal system; that
+system is a basis when the condition of part~4 holds.
+
+\begin{exercise}[A vector drops out]\label{c03.exc.gram-schmidt}\claim{c03.cl.gs-null}{derived}
+  Add the third vector $\ket{\Phi_3} = \begin{pmatrix} 1 \\ -1 \end{pmatrix}$ to the two vectors
+  of Example~\ref{c03.ex.gram-schmidt} and compute $\ket{\Psi_3}$.
+\end{exercise}
+\begin{solution}
+  With $\ket{\Psi_1} = \ket{e_0}$, $\ket{\Psi_2} = \ket{e_1}$, $\braket{\Psi_1}{\Phi_3} = 1$ and
+  $\braket{\Psi_2}{\Phi_3} = -1$,
+  \begin{equation}\label{c03.eq.gs-null}
+    \ket{\Psi_3} = \begin{pmatrix} 1 \\ -1 \end{pmatrix} - \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+    - (-1) \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} .
+  \end{equation}
+  The third vector is already a linear combination of the first two,
+  $\ket{\Phi_3} = 2 \ket{\Phi_1} - \ket{\Phi_2}$, and drops out; the orthonormal system remains
+  $\ket{e_0}, \ket{e_1}$.
+\end{solution}
+
 % ── Fundament ─────────────────────────────────────────────────────────────────────────
-% New sections of the chapter (vl03 to vl05) go BEFORE this line.
+% New sections of the chapter (vl04, vl05) go BEFORE this line.
 
 \begin{fundament}[id=c03.f1,
     titel={The Cauchy-Schwarz inequality},
     wozu={Block~\ref{c03.v1} shows with a rough estimate that the inner product on $\elltwo$
       is finite. Here is the sharp bound: the modulus of the inner product is at most the
       product of the lengths.},
-    voraussetzung={Proposition~\ref{c03.prop.skalarprodukt} and block~\ref{c03.v1}. Neither
-      the core nor the deeper blocks need this block.},
+    voraussetzung={Proposition~\ref{c03.prop.skalarprodukt}, the Schwarz inequality
+      (Proposition~\ref{c03.prop.schwarz}) and block~\ref{c03.v1}. Neither the core nor the
+      deeper blocks need this block.},
     zurueck={For two vectors, $\abs{\vb{v}\adj\vb{w}}^2$ is never larger than
       $(\vb{v}\adj\vb{v})(\vb{w}\adj\vb{w})$, in $\mathbb{C}^n$ as in $\elltwo$.}]
-  \begin{lemma}[Cauchy-Schwarz in $\mathbb{C}^n$]\label{c03.lem.cs}\claim[proof-included]{c03.cl.cs}{derived}
+  \begin{lemma}[Cauchy-Schwarz in $\mathbb{C}^n$]\label{c03.lem.cs}\claim[proof-linked]{c03.cl.cs}{derived}
     For all $\vb{v}, \vb{w} \in \mathbb{C}^n$,
     \begin{equation}\label{c03.eq.cs}
       \abs{\vb{v}\adj\vb{w}}^2 \leq (\vb{v}\adj\vb{v})\,(\vb{w}\adj\vb{w}) .
     \end{equation}
   \end{lemma}
-  \begin{proof}
-    For $\vb{w} = 0$ both sides are zero. Otherwise $\vb{w}\adj\vb{w} > 0$; we set
-    $c = (\vb{w}\adj\vb{v}) / (\vb{w}\adj\vb{w})$ and $\vb{u} = \vb{v} - c\,\vb{w}$. By rule~1,
-    $c^* = (\vb{v}\adj\vb{w}) / (\vb{w}\adj\vb{w})$. With rules~2 and~3 of
-    Proposition~\ref{c03.prop.skalarprodukt} and rule~4 for $\vb{u}$,
-    \begin{equation}\label{c03.eq.cs-beweis}
-      0 \leq \vb{u}\adj\vb{u}
-        = \vb{v}\adj\vb{v} - c\, \vb{v}\adj\vb{w} - c^*\, \vb{w}\adj\vb{v} + c^* c\, \vb{w}\adj\vb{w}
-        = \vb{v}\adj\vb{v} - \frac{\abs{\vb{v}\adj\vb{w}}^2}{\vb{w}\adj\vb{w}} ,
-    \end{equation}
-    because each of the last three terms is $\abs{\vb{v}\adj\vb{w}}^2 / (\vb{w}\adj\vb{w})$
-    up to its sign. Multiplying by $\vb{w}\adj\vb{w} > 0$ gives the claim.
-  \end{proof}
 
-  Reed and Simon prove the same inequality for every vector space with an inner product, by a
-  different route \srcref{reed-simon-1}{p.~38}. For $\elltwo$ it follows here directly from
-  the lemma.
+  The lemma is the Schwarz inequality of Proposition~\ref{c03.prop.schwarz} for the inner
+  product $\vb{v}\adj\vb{w}$ of $\mathbb{C}^n$. This inner product satisfies the conditions of
+  \defref{D82}, since these are rules~2 to~4 of Proposition~\ref{c03.prop.skalarprodukt}; with
+  $\norm{v}^2 = \vb{v}\adj\vb{v}$, Equation~\eqref{c03.eq.cs} is the square of
+  Equation~\eqref{c03.eq.schwarz}. Reed and Simon prove the same inequality for every vector
+  space with an inner product, by a different route \srcref{reed-simon-1}{p.~38}. For
+  $\elltwo$ it follows here from the lemma by a limit.
 
   \begin{proposition}[Cauchy-Schwarz in $\elltwo$]\label{c03.prop.cs-elltwo}\claim[proof-included]{c03.cl.cs-elltwo}{derived}
     For all $\vb{v}, \vb{w} \in \elltwo$,

@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { afterAll, describe, expect, it } from 'vitest';
 import {
-  dagger, erf, phaseFactor, scaleVec, gaussCumulative, gaussLimit, gaussPartial, inner, innerTerms, partialSum, phased, phasedAbs2, plainTerms, powerAbs2, powerLimit, powerPartial,
+  components, dagger, erf, expansion, reassemble, rotatedBasis, totalWeight, unitVector, weights, phaseFactor, scaleVec, gaussCumulative, gaussLimit, gaussPartial, inner, innerTerms, partialSum, phased, phasedAbs2, plainTerms, powerAbs2, powerLimit, powerPartial,
   runningSums, sumLimit, sumLowerBound, sumUpperBound, sumUpperBoundLimit, type Complex, type Modulus,
 } from '../../src/kernels/hilbert';
 import { expectGolden, loadGolden } from '../golden';
@@ -14,7 +14,7 @@ import { expectGolden, loadGolden } from '../golden';
 type Num = number | 'Infinity';
 interface Case {
   fn: string; tol: string; name?: string;
-  v?: number[][]; w?: number[][]; s?: number; theta?: number; N?: number[]; X?: number[]; x?: number[]; k?: number; kind?: Modulus;
+  v?: number[][]; w?: number[][]; alpha?: number; basis?: number[][][]; psi?: number[][]; s?: number; theta?: number; N?: number[]; X?: number[]; x?: number[]; k?: number; kind?: Modulus;
   expected: Num | Num[] | number[][];
 }
 interface G { tolerances: Record<string, { abs?: number; rel?: number }> }
@@ -65,6 +65,13 @@ describe(`kernel hilbert against ${golden.reference.implementation}`, () => {
         case 'powerAbs2': got = c.x!.map((x) => powerAbs2(c.s!, x)); break;
         case 'phased': got = c.x!.map((x) => phased(c.kind!, c.k!, x)); break;
         case 'phasedAbs2': got = c.x!.map((x) => phasedAbs2(c.kind!, x)); break;
+        case 'expansion': got = expansion(rotatedBasis(c.theta!), unitVector(c.alpha!)); break;
+        case 'weights': got = weights(expansion(rotatedBasis(c.theta!), unitVector(c.alpha!))); break;
+        case 'components': got = components(rotatedBasis(c.theta!), expansion(rotatedBasis(c.theta!), unitVector(c.alpha!))); break;
+        case 'reassemble': got = reassemble(rotatedBasis(c.theta!), expansion(rotatedBasis(c.theta!), unitVector(c.alpha!))); break;
+        case 'totalWeight': got = totalWeight(weights(expansion(rotatedBasis(c.theta!), unitVector(c.alpha!)))); break;
+        case 'expansionExplicit': got = expansion(c.basis!.map(cx), cx(c.psi!)); break;
+        case 'weightsExplicit': got = weights(expansion(c.basis!.map(cx), cx(c.psi!))); break;
         default: throw new Error(`unknown case ${c.fn}`);
       }
       if (c.expected === 'Infinity') { expect(got).toBe(Infinity); return; }
@@ -139,6 +146,29 @@ describe('kernel hilbert reproduces the data of the still figures', () => {
     expect(inner(v, v)).toEqual([1, 0]);
     expect(innerTerms(v, v)).toEqual([[0.5, 0], [0.5, 0]]);
     expect(Math.abs(gaussCumulative(2.6) - gaussCumulative(-2.6) - gaussPartial(2.6))).toBeLessThan(1e-15);
+  });
+});
+
+describe('kernel hilbert: c03.fig.vollst', () => {
+  const alpha = Math.atan2(1, 2), theta = Math.PI / 4;
+  const psi = unitVector(alpha);
+  it('the default state of the demo is the figure: weights 4/5, 1/5 and 9/10, 1/10, sums 1', () => {
+    const tex = fs.readFileSync(path.join(FIG, 'vollst.tex'), 'utf8');
+    const w0 = weights(expansion(rotatedBasis(0), psi)), w1 = weights(expansion(rotatedBasis(theta), psi));
+    expect(Math.abs(w0[0] - 4 / 5)).toBeLessThan(1e-15); expect(Math.abs(w0[1] - 1 / 5)).toBeLessThan(1e-15);
+    expect(Math.abs(w1[0] - 9 / 10)).toBeLessThan(1e-15); expect(Math.abs(w1[1] - 1 / 10)).toBeLessThan(1e-15);
+    for (const s of ['\\tfrac45', '\\tfrac15', '\\tfrac{9}{10}', '\\tfrac{1}{10}', '(0,1.85) rectangle (0.8,2.4)', '(0,0.45) rectangle (0.9,1.0)']) expect(tex, s).toContain(s);
+    expect(Math.abs(totalWeight(w0) - 1)).toBeLessThan(1e-15); expect(Math.abs(totalWeight(w1) - 1)).toBeLessThan(1e-15);
+  });
+  it('the component vectors of the figure: (0.894427, 0), (0, 0.447214), (0.670820, 0.670820), (0.223607, -0.223607), diagonal (0.894427, 0.447214)', () => {
+    const tex = fs.readFileSync(path.join(FIG, 'vollst.tex'), 'utf8');
+    const close = (a: readonly Complex[], b: number[]) => a.forEach((z, k) => expect(Math.abs(z[0] - b[k]), String(b)).toBeLessThan(0.5e-6));
+    const p0 = components(rotatedBasis(0), expansion(rotatedBasis(0), psi)), p1 = components(rotatedBasis(theta), expansion(rotatedBasis(theta), psi));
+    close(p0[0], [0.894427, 0]); close(p0[1], [0, 0.447214]);
+    close(p1[0], [0.670820, 0.670820]); close(p1[1], [0.223607, -0.223607]);
+    close(psi, [0.894427, 0.447214]);
+    for (const s of ['0.894427,0', '0,0.447214', '0.670820,0.670820', '0.223607,-0.223607', '0.894427,0.447214']) expect(tex, s).toContain(s);
+    for (const th of [0, theta, 1.234]) { const b = rotatedBasis(th); const r = reassemble(b, expansion(b, psi)); expect(Math.abs(r[0][0] - psi[0][0]) + Math.abs(r[1][0] - psi[1][0])).toBeLessThan(1e-15); }
   });
 });
 

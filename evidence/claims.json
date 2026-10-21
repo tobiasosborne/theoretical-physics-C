@@ -4870,11 +4870,11 @@
   {
    "id": "c03.cl.cs",
    "kind": "lemma",
-   "statement_de": "Cauchy-Schwarz in ℂⁿ: |v†w|² ≤ (v†v)(w†w).",
-   "statement_en": "Cauchy-Schwarz in ℂⁿ: |v†w|² ≤ (v†v)(w†w).",
+   "statement_de": "Cauchy-Schwarz in ℂⁿ: |v†w|² ≤ (v†v)(w†w); der Fall ℂⁿ der Schwarz'schen Ungleichung c03.prop.schwarz.",
+   "statement_en": "Cauchy-Schwarz in ℂⁿ: |v†w|² ≤ (v†v)(w†w); the case ℂⁿ of the Schwarz inequality c03.prop.schwarz.",
    "depth": "fundament",
    "evidence": "derived",
-   "presentation": "proof-included",
+   "presentation": "proof-linked",
    "scope": null,
    "hypotheses": [],
    "provenance_ids": [
@@ -4882,10 +4882,12 @@
    ],
    "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.cs",
    "definition_ids": [
-    "D76"
+    "D76",
+    "D82",
+    "D83"
    ],
    "review_receipt": null,
-   "notes": "Reed-Simon I p. 38 state it for every inner product space (P-0144); the chapter's proof is the direct one."
+   "notes": "Reed-Simon I p. 38 state it for every inner product space (P-0144). After the review of Lecture 3 (docs/review/lectures/REVIEW-lec3.md, row MINOR at de.tex:1255) the repeated proof in columns is replaced by the specialisation of proposition c03.prop.schwarz (claim c03.cl.schwarz) to the inner product of ℂⁿ, which satisfies D82 by proposition c03.prop.skalarprodukt; presentation proof-linked (the proof is the Kern proposition's)."
   },
   {
    "id": "c03.cl.cs-elltwo",
@@ -5022,6 +5024,435 @@
    "definition_ids": [
     "D77",
     "D79",
+    "D80"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.kets",
+   "kind": "statement",
+   "statement_de": "In ℂ² ist |e_±⟩ = (|e_0⟩ ± |e_1⟩)/√2 = (1, ±1)/√2 für |e_0⟩ = (1, 0), |e_1⟩ = (0, 1).",
+   "statement_en": "In ℂ², |e_±⟩ = (|e_0⟩ ± |e_1⟩)/√2 = (1, ±1)/√2 for |e_0⟩ = (1, 0), |e_1⟩ = (0, 1).",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: Vektoren in ℂⁿ (D75, D76), Dirac-Notation (D81). / Finite-dimensional: vectors in ℂⁿ (D75, D76), Dirac notation (D81).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.kets",
+   "definition_ids": [
+    "D75",
+    "D81"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.braket",
+   "kind": "statement",
+   "statement_de": "⟨e_0|e_+⟩ = 1/√2.",
+   "statement_en": "⟨e_0|e_+⟩ = 1/√2.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: Vektoren in ℂⁿ (D75, D76), Dirac-Notation (D81). / Finite-dimensional: vectors in ℂⁿ (D75, D76), Dirac notation (D81).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.braket",
+   "definition_ids": [
+    "D81"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.bra-regel",
+   "kind": "equation",
+   "statement_de": "(α|v⟩ + β|w⟩)† = α*⟨v| + β*⟨w| für Kets in ℂⁿ und α, β ∈ ℂ.",
+   "statement_en": "(α|v⟩ + β|w⟩)† = α*⟨v| + β*⟨w| for kets in ℂⁿ and α, β ∈ ℂ.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: Vektoren in ℂⁿ (D75, D76), Dirac-Notation (D81). / Finite-dimensional: vectors in ℂⁿ (D75, D76), Dirac notation (D81).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.bra-regel",
+   "definition_ids": [
+    "D76",
+    "D81"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.dirac",
+   "kind": "statement",
+   "statement_de": "Für |v⟩ = (1, i), |w⟩ = (1, 1) ist ⟨v|w⟩ = 1 − i, in Dirac-Notation über |e_0⟩, |e_1⟩ und direkt mit Spalten.",
+   "statement_en": "For |v⟩ = (1, i), |w⟩ = (1, 1), ⟨v|w⟩ = 1 − i, in Dirac notation via |e_0⟩, |e_1⟩ and directly with columns.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: Vektoren in ℂⁿ (D75, D76), Dirac-Notation (D81). / Finite-dimensional: vectors in ℂⁿ (D75, D76), Dirac notation (D81).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.dirac",
+   "definition_ids": [
+    "D81"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.warum-stern",
+   "kind": "equation",
+   "statement_de": "Wäre eine Zuordnung in beiden Argumenten linear, so wäre ⟨iψ|iψ⟩ = −⟨ψ|ψ⟩, und Positivität erzwänge ⟨ψ|ψ⟩ = 0 für alle ψ, im Widerspruch zu ⟨ψ|ψ⟩ > 0 für ψ ≠ 0.",
+   "statement_en": "If an assignment were linear in both arguments, then ⟨iψ|iψ⟩ = −⟨ψ|ψ⟩, and positivity would force ⟨ψ|ψ⟩ = 0 for all ψ, contradicting ⟨ψ|ψ⟩ > 0 for ψ ≠ 0.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Jeder komplexe Vektorraum mit Skalarprodukt nach D82; im Kern sind alle Beispiele in ℂⁿ. / Every complex vector space with an inner product as in D82; in the core all examples are in ℂⁿ.",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.warum-stern",
+   "definition_ids": [
+    "D82"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.gewichtet",
+   "kind": "statement",
+   "statement_de": "Für jedes reelle c > 0 ist ⟨v|w⟩_c = v_1* w_1 + c v_2* w_2 ein Skalarprodukt auf ℂ²; verschiedene c geben verschiedene Skalarprodukte (⟨e_1|e_1⟩_c = c), es gibt also unendlich viele. Der Bra ⟨v| zu ⟨·|·⟩_c ist die Zeile (v_1*, c v_2*), für c ≠ 1 und v_2 ≠ 0 nicht v†.",
+   "statement_en": "For every real c > 0, ⟨v|w⟩_c = v_1* w_1 + c v_2* w_2 is an inner product on ℂ²; different c give different inner products (⟨e_1|e_1⟩_c = c), so there are infinitely many. The bra ⟨v| for ⟨·|·⟩_c is the row (v_1*, c v_2*), for c ≠ 1 and v_2 ≠ 0 not v†.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Skalarprodukte auf ℂ² (D82). / Inner products on ℂ² (D82).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.gewichtet",
+   "definition_ids": [
+    "D82",
+    "D81"
+   ],
+   "review_receipt": null,
+   "notes": "Supports vl03.tex:132 'Skalarprodukte gibt es unendlich viele'. The sentence on the bra was added after both reviews of Lecture 3 (docs/review/lectures/REVIEW-lec3.md, row SCOPE at de.tex:630; evidence/derivations/c03/REVIEW-lec3.md, section B, row SCOPE at de.tex:627)."
+  },
+  {
+   "id": "c03.cl.symmetrie",
+   "kind": "proposition",
+   "statement_de": "Aus Additivität, den Regeln für Zahlen und Positivität (D82) folgt ⟨φ|ψ⟩ = ⟨ψ|φ⟩*.",
+   "statement_en": "Additivity, the rules for numbers and positivity (D82) imply ⟨φ|ψ⟩ = ⟨ψ|φ⟩*.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": "Jeder komplexe Vektorraum mit Skalarprodukt nach D82; im Kern sind alle Beispiele in ℂⁿ. / Every complex vector space with an inner product as in D82; in the core all examples are in ℂⁿ.",
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0152"
+   ],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.symmetrie",
+   "definition_ids": [
+    "D82"
+   ],
+   "review_receipt": null,
+   "notes": "P-0152 supports only the remark that Reed-Simon take conjugate symmetry as an axiom."
+  },
+  {
+   "id": "c03.cl.schwarz",
+   "kind": "proposition",
+   "statement_de": "Schwarz'sche Ungleichung: |⟨φ|ψ⟩| ≤ ‖φ‖ ‖ψ‖ für jedes Skalarprodukt.",
+   "statement_en": "Schwarz inequality: |⟨φ|ψ⟩| ≤ ‖φ‖ ‖ψ‖ for every inner product.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": "Jeder komplexe Vektorraum mit Skalarprodukt nach D82; im Kern sind alle Beispiele in ℂⁿ. / Every complex vector space with an inner product as in D82; in the core all examples are in ℂⁿ.",
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0153"
+   ],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.schwarz",
+   "definition_ids": [
+    "D82",
+    "D83"
+   ],
+   "review_receipt": null,
+   "notes": "Reed-Simon I p. 38 state it for every inner product space (P-0153) and prove it from Bessel's inequality; the chapter gives the direct proof. Lemma c03.lem.cs in Fundament c03.f1 is the special case ℂⁿ."
+  },
+  {
+   "id": "c03.cl.dreieck",
+   "kind": "proposition",
+   "statement_de": "Dreiecksungleichung: ‖Σ_{j=1}^N |ψ_j⟩‖ ≤ Σ_{j=1}^N ‖ψ_j‖ für endlich viele Vektoren und jedes Skalarprodukt.",
+   "statement_en": "Triangle inequality: ‖Σ_{j=1}^N |ψ_j⟩‖ ≤ Σ_{j=1}^N ‖ψ_j‖ for finitely many vectors and every inner product.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": "Jeder komplexe Vektorraum mit Skalarprodukt nach D82; im Kern sind alle Beispiele in ℂⁿ. / Every complex vector space with an inner product as in D82; in the core all examples are in ℂⁿ.",
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0154"
+   ],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.dreieck",
+   "definition_ids": [
+    "D82",
+    "D83"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.orthogonal",
+   "kind": "statement",
+   "statement_de": "⟨e_+|e_-⟩ = 0, ‖e_±‖ = 1, ⟨e_0|e_1⟩ = 0, ‖e_0‖ = ‖e_1‖ = 1: beide Paare sind orthonormal.",
+   "statement_en": "⟨e_+|e_-⟩ = 0, ‖e_±‖ = 1, ⟨e_0|e_1⟩ = 0, ‖e_0‖ = ‖e_1‖ = 1: both pairs are orthonormal.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: Vektoren in ℂⁿ (D75, D76), Dirac-Notation (D81). / Finite-dimensional: vectors in ℂⁿ (D75, D76), Dirac notation (D81).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.orthogonal",
+   "definition_ids": [
+    "D83",
+    "D84"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.basis",
+   "kind": "statement",
+   "statement_de": "{|e_0⟩, |e_1⟩} und {|e_+⟩, |e_-⟩} sind Basen von ℂ²: Für |ψ⟩ = α|e_0⟩ + β|e_1⟩ ist ‖ψ‖² = |α|² + |β|² = Σ_j |⟨e_j|ψ⟩|² = |⟨e_+|ψ⟩|² + |⟨e_-|ψ⟩|², mit ⟨e_±|ψ⟩ = (α ± β)/√2.",
+   "statement_en": "{|e_0⟩, |e_1⟩} and {|e_+⟩, |e_-⟩} are bases of ℂ²: for |ψ⟩ = α|e_0⟩ + β|e_1⟩, ‖ψ‖² = |α|² + |β|² = Σ_j |⟨e_j|ψ⟩|² = |⟨e_+|ψ⟩|² + |⟨e_-|ψ⟩|², with ⟨e_±|ψ⟩ = (α ± β)/√2.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: Vektoren in ℂⁿ (D75, D76), Dirac-Notation (D81). / Finite-dimensional: vectors in ℂⁿ (D75, D76), Dirac notation (D81).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.basis",
+   "definition_ids": [
+    "D85"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.entwicklung",
+   "kind": "proposition",
+   "statement_de": "Für eine Basis mit endlicher Indexmenge gilt |Ψ⟩ = Σ_j ⟨φ_j|Ψ⟩|φ_j⟩ für jeden Vektor; umgekehrt ist ein orthonormales System mit endlicher Indexmenge, nach dem jeder Vektor so entwickelt werden kann, vollständig.",
+   "statement_en": "For a basis with finite index set, |Ψ⟩ = Σ_j ⟨φ_j|Ψ⟩|φ_j⟩ for every vector; conversely, an orthonormal system with finite index set in which every vector can be so expanded is complete.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": "Basis mit endlicher Indexmenge (D85) in einem Hilbertraum; Beispiele in ℂⁿ. / Basis with finite index set (D85) in a Hilbert space; examples in ℂⁿ.",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.entwicklung",
+   "definition_ids": [
+    "D84",
+    "D85"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.zwei-basen",
+   "kind": "statement",
+   "statement_de": "Für |Ψ⟩ = (2|e_0⟩ + |e_1⟩)/√5: c_0 = 2/√5, c_1 = 1/√5, c_± = (2 ± 1)/√10; Gewichte 4/5, 1/5 und 9/10, 1/10, Summe jeweils 1 = ‖Ψ‖². Auch die Koordinaten der Abbildung c03.fig.vollst.",
+   "statement_en": "For |Ψ⟩ = (2|e_0⟩ + |e_1⟩)/√5: c_0 = 2/√5, c_1 = 1/√5, c_± = (2 ± 1)/√10; weights 4/5, 1/5 and 9/10, 1/10, each summing to 1 = ‖Ψ‖². Also the coordinates of figure c03.fig.vollst.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: Vektoren in ℂⁿ (D75, D76), Dirac-Notation (D81). / Finite-dimensional: vectors in ℂⁿ (D75, D76), Dirac notation (D81).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.zwei-basen",
+   "definition_ids": [
+    "D85"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.kanonisch",
+   "kind": "equation",
+   "statement_de": "Die kanonischen Spalten |u_j⟩ von ℂⁿ erfüllen ⟨u_j|u_k⟩ = δ_jk und Σ_j |⟨u_j|ψ⟩|² = Σ_j |ψ_j|² = ‖ψ‖²; sie bilden eine Basis.",
+   "statement_en": "The canonical columns |u_j⟩ of ℂⁿ satisfy ⟨u_j|u_k⟩ = δ_jk and Σ_j |⟨u_j|ψ⟩|² = Σ_j |ψ_j|² = ‖ψ‖²; they form a basis.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: Vektoren in ℂⁿ mit dem Skalarprodukt v†w (D75, D76), Dirac-Notation (D81). / Finite-dimensional: vectors in ℂⁿ with the inner product v†w (D75, D76), Dirac notation (D81).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.kanonisch",
+   "definition_ids": [
+    "D84",
+    "D85"
+   ],
+   "review_receipt": null,
+   "notes": "Scope 'mit dem Skalarprodukt aus Abschnitt c03.s2' made explicit in the text after the review of Lecture 3 (docs/review/lectures/REVIEW-lec3.md, row SCOPE at de.tex:1019)."
+  },
+  {
+   "id": "c03.cl.gram-schmidt",
+   "kind": "proposition",
+   "statement_de": "Gram-Schmidt für eine endliche Liste |Φ_1⟩, …, |Φ_N⟩: die |Ψ_n⟩ sind paarweise orthogonal; für jedes m sind die |Φ_n⟩, n ≤ m, Linearkombinationen der |Ψ_k⟩, k ≤ m, und umgekehrt; die normierten |Ψ_n⟩ ≠ 0 sind orthonormal; steht nur der Nullvektor auf allen |Φ_n⟩ senkrecht, so bilden sie eine Basis.",
+   "statement_en": "Gram-Schmidt for a finite list |Φ_1⟩, …, |Φ_N⟩: the |Ψ_n⟩ are pairwise orthogonal; for every m the |Φ_n⟩, n ≤ m, are linear combinations of the |Ψ_k⟩, k ≤ m, and conversely; the normalised |Ψ_n⟩ ≠ 0 are orthonormal; if only the zero vector is orthogonal to all |Φ_n⟩, they form a basis.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": "Basis mit endlicher Indexmenge (D85) in einem Hilbertraum; Beispiele in ℂⁿ. / Basis with finite index set (D85) in a Hilbert space; examples in ℂⁿ.",
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0155",
+    "P-0156"
+   ],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.gram-schmidt",
+   "definition_ids": [
+    "D84",
+    "D85"
+   ],
+   "review_receipt": null,
+   "notes": "Reed-Simon I p. 46 state the procedure for a sequence of independent vectors with immediate normalisation (P-0155, P-0156); the script's form (vl03.tex:212-221) divides by ||Psi_k||^2 and skips zero vectors, which also admits dependent lists. Equivalence of the two forms: DERIVATION.md#c03.cl.gram-schmidt."
+  },
+  {
+   "id": "c03.cl.gs-beispiel",
+   "kind": "statement",
+   "statement_de": "Gram-Schmidt für |Φ_1⟩ = (1, 0), |Φ_2⟩ = (1, 1) gibt |Ψ_1⟩ = (1, 0), |Ψ_2⟩ = (0, 1); nur der Nullvektor ist zu beiden Startvektoren orthogonal.",
+   "statement_en": "Gram-Schmidt for |Φ_1⟩ = (1, 0), |Φ_2⟩ = (1, 1) gives |Ψ_1⟩ = (1, 0), |Ψ_2⟩ = (0, 1); only the zero vector is orthogonal to both starting vectors.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: Vektoren in ℂⁿ (D75, D76), Dirac-Notation (D81). / Finite-dimensional: vectors in ℂⁿ (D75, D76), Dirac notation (D81).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.gs-beispiel",
+   "definition_ids": [
+    "D85"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.gs-null",
+   "kind": "statement",
+   "statement_de": "Mit |Φ_3⟩ = (1, −1) dazu ist |Ψ_3⟩ = 0, denn |Φ_3⟩ = 2|Φ_1⟩ − |Φ_2⟩.",
+   "statement_en": "Adding |Φ_3⟩ = (1, −1) gives |Ψ_3⟩ = 0, since |Φ_3⟩ = 2|Φ_1⟩ − |Φ_2⟩.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: Vektoren in ℂⁿ (D75, D76), Dirac-Notation (D81). / Finite-dimensional: vectors in ℂⁿ (D75, D76), Dirac notation (D81).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.gs-null",
+   "definition_ids": [
+    "D84"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.existenz",
+   "kind": "theorem",
+   "statement_de": "Jeder Hilbertraum hat eine Orthonormalbasis.",
+   "statement_en": "Every Hilbert space has an orthonormal basis.",
+   "depth": "vertiefung",
+   "evidence": "source-quoted",
+   "presentation": "proof-omitted",
+   "scope": "Reed-Simon I, Theorem II.5 (Beweis mit dem Zornschen Lemma); Orthonormalbasis im Sinne von D86. / Reed-Simon I, Theorem II.5 (proof by Zorn's lemma); orthonormal basis in the sense of D86.",
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0157"
+   ],
+   "definition_ids": [
+    "D14",
+    "D86"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.parseval",
+   "kind": "theorem",
+   "statement_de": "Für eine Orthonormalbasis {|φ_j⟩}_{j∈X} mit abzählbarer Indexmenge X gilt |Ψ⟩ = Σ_j ⟨φ_j|Ψ⟩|φ_j⟩ (Reihe, konvergent in der Norm, unabhängig von der Reihenfolge) und ‖Ψ‖² = Σ_j |⟨φ_j|Ψ⟩|²; umgekehrt konvergiert Σ_j c_j|φ_j⟩ für Σ_j |c_j|² < ∞ in der Norm gegen einen Vektor in ℋ.",
+   "statement_en": "For an orthonormal basis {|φ_j⟩}_{j∈X} with a countable index set X, |Ψ⟩ = Σ_j ⟨φ_j|Ψ⟩|φ_j⟩ (a series, convergent in norm, independent of order) and ‖Ψ‖² = Σ_j |⟨φ_j|Ψ⟩|²; conversely Σ_j c_j|φ_j⟩ converges in norm to a vector in ℋ for Σ_j |c_j|² < ∞.",
+   "depth": "vertiefung",
+   "evidence": "source-quoted",
+   "presentation": "proof-omitted",
+   "scope": "Reed-Simon I, Theorem II.6, dort für jede Indexmenge, hier der Fall einer abzählbaren; Konvergenz in ℋ heißt Konvergenz in der Norm (ℋ ist ein normierter Raum, Theorem II.2, P-0154); Reed-Simon schreiben (x, y) linear im zweiten Argument wie der Kurs. / Reed-Simon I, Theorem II.6, there for every index set, here the case of a countable one; convergence in ℋ means convergence in norm (ℋ is a normed space, Theorem II.2, P-0154); Reed-Simon write (x, y), linear in the second argument like the course.",
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0158",
+    "P-0159",
+    "P-0160"
+   ],
+   "definition_ids": [
+    "D86"
+   ],
+   "review_receipt": null,
+   "notes": "Restricted to countable index sets after both reviews of Lecture 3 (docs/review/lectures/REVIEW-lec3.md, row WRONG at de.tex:1048; evidence/derivations/c03/REVIEW-lec3.md, section B, row WRONG): for an uncountable index set the vector sum needs an interpretation the chapter does not give. The countable case is a special case of the quoted theorem, so the quotes P-0158 to P-0160 still support it; no new source is used."
+  },
+  {
+   "id": "c03.cl.maximal",
+   "kind": "proposition",
+   "statement_de": "Ein orthonormales System mit abzählbarer Indexmenge ist genau dann eine Orthonormalbasis im Sinne von D86 (maximal), wenn ‖ψ‖² = Σ_j |⟨φ_j|ψ⟩|² für alle ψ gilt; für endliches X ist das D85.",
+   "statement_en": "An orthonormal system with a countable index set is an orthonormal basis in the sense of D86 (maximal) if and only if ‖ψ‖² = Σ_j |⟨φ_j|ψ⟩|² for all ψ; for finite X this is D85.",
+   "depth": "vertiefung",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": "Hilbertraum, abzählbare Indexmenge; die Richtung 'maximal ⇒ Parseval' stützt sich auf Satz c03.thm.parseval (Reed-Simon Theorem II.6). / Hilbert space, countable index set; the direction 'maximal ⇒ Parseval' rests on theorem c03.thm.parseval (Reed-Simon Theorem II.6).",
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0161"
+   ],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.maximal",
+   "definition_ids": [
+    "D85",
+    "D86"
+   ],
+   "review_receipt": null,
+   "notes": "Restricted to countable index sets together with c03.cl.parseval after both reviews of Lecture 3 (docs/review/lectures/REVIEW-lec3.md, row WRONG at de.tex:1048; evidence/derivations/c03/REVIEW-lec3.md, section B, row WRONG)."
+  },
+  {
+   "id": "c03.cl.elltwo-basis",
+   "kind": "statement",
+   "statement_de": "Die Einheitsvektoren u_k von ℓ² erfüllen u_j†u_k = δ_jk und Σ_k |u_k†v|² = v†v; sie bilden eine Orthonormalbasis, und die Teilsummen Σ_{k≤N} v_k u_k konvergieren gegen v (Abstand zum Quadrat Σ_{k>N} |v_k|²).",
+   "statement_en": "The unit vectors u_k of ℓ² satisfy u_j†u_k = δ_jk and Σ_k |u_k†v|² = v†v; they form an orthonormal basis, and the partial sums Σ_{k≤N} v_k u_k converge to v (squared distance Σ_{k>N} |v_k|²).",
+   "depth": "vertiefung",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "ℓ² (D77) als Hilbertraum (c03.thm.vollstaendig). / ℓ² (D77) as a Hilbert space (c03.thm.vollstaendig).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.elltwo-basis",
+   "definition_ids": [
+    "D77",
+    "D86"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.hermite",
+   "kind": "theorem",
+   "statement_de": "Die Hermite-Funktionen φ_0, φ_1, … bilden eine Orthonormalbasis von L²(ℝ); φ_0(x) = π^{−1/4} e^{−x²/2}; Reed und Simon nennen sie die Wellenfunktionen des harmonischen Oszillators.",
+   "statement_en": "The Hermite functions φ_0, φ_1, … form an orthonormal basis of L²(ℝ); φ_0(x) = π^{−1/4} e^{−x²/2}; Reed and Simon call them the harmonic oscillator wave functions.",
+   "depth": "vertiefung",
+   "evidence": "source-quoted",
+   "presentation": "proof-omitted",
+   "scope": "Reed-Simon I, Abschnitt V.3, Lemma 3; der Beweis ist dort auf Übungsaufgaben verschoben. L²(ℝ) im Sinne von D80. / Reed-Simon I, section V.3, Lemma 3; the proof is deferred to problems there. L²(ℝ) in the sense of D80.",
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0162",
+    "P-0163",
+    "P-0164"
+   ],
+   "definition_ids": [
+    "D80",
+    "D86"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.phinull",
+   "kind": "equation",
+   "statement_de": "⟨φ_0|φ_0⟩ = π^{−1/2} ∫ e^{−x²} dx = π^{−1/2} √π = 1.",
+   "statement_en": "⟨φ_0|φ_0⟩ = π^{−1/2} ∫ e^{−x²} dx = π^{−1/2} √π = 1.",
+   "depth": "vertiefung",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Uses c03.cl.gauss. / Uses c03.cl.gauss.",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.phinull",
+   "definition_ids": [
     "D80"
    ],
    "review_receipt": null

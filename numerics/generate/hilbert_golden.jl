@@ -1,6 +1,6 @@
 # Writes the golden values of the kernel web/src/kernels/hilbert.ts (chapter c03, demos
 # c03.demo.kreuz, c03.demo.partialsummen, c03.demo.komplex, c03.demo.partialintegrale,
-# c03.demo.raeume):
+# c03.demo.raeume, c03.demo.vollst):
 #
 #   julia --project=numerics numerics/generate/hilbert_golden.jl            # write web/tests/golden/hilbert.json
 #   julia --project=numerics numerics/generate/hilbert_golden.jl --check    # exit 1 unless that file is reproduced
@@ -19,7 +19,10 @@
 # - erf by its alternating Taylor series in BigFloat at 512 bits (the kernel: a series of positive
 #   terms below 3 and a continued fraction for erfc above);
 # - the closed forms of the bounds and of int (1+|x|)^(-2s) in BigFloat (the kernel: expm1/log1p);
-# - cos, sin and exp in BigFloat.
+# - cos, sin and exp in BigFloat;
+# - the completeness cases (c03.demo.vollst): for the real plane the coefficients by the ANGLE
+#   DIFFERENCE formulas c_0 = cos(alpha - theta), c_1 = sin(theta - alpha) in BigFloat (the kernel
+#   forms the inner products of the columns), and exact Rational arithmetic for a complex basis.
 # Values are written as the nearest double in shortest round-trip form.
 #
 # TOLERANCES (stated in the file, per class): each is an UNVALIDATED CHOICE placed above the
@@ -144,6 +147,28 @@ phased(kind, k, x) = setprecision(BigFloat, 256) do
 end
 const PHASE_X = [-3.0, -2.25, -1.0, -0.1, 0.0, 0.7, 1.0, 2.0, 3.0]
 
+# ── completeness: one unit vector in a rotated basis ──────────────────────────────────────
+const VOLL_ALPHA_THETA = [
+    (atan(0.5), pi / 4),                # the figure: Psi = (2, 1)/sqrt 5 in e_0, e_1 and e_+-
+    (atan(0.5), 0.0), (0.0, 0.0), (0.0, 1.0), (1.0, atan(0.5)), (2.5, -0.7),
+    (4.0, 3.0), (-1.2, 0.3), (6.0, 6.0), (pi / 2, pi / 4),
+]
+function vollst_ref(alpha, theta)
+    setprecision(BigFloat, 256) do
+        a = BigFloat(alpha); t = BigFloat(theta)
+        psi = [Complex(cos(a), big(0.0)), Complex(sin(a), big(0.0))]
+        basis = [[Complex(cos(t), big(0.0)), Complex(sin(t), big(0.0))],
+                 [Complex(sin(t), big(0.0)), Complex(-cos(t), big(0.0))]]
+        c = [Complex(cos(a - t), big(0.0)), Complex(sin(t - a), big(0.0))]
+        parts = [[c[j] * basis[j][k] for k in 1:2] for j in 1:2]
+        (psi = psi, basis = basis, c = c, w = [abs2(x) for x in c], parts = parts)
+    end
+end
+# complex orthonormal basis with rational entries: phi_0 = (3/5, 4i/5), phi_1 = (4i/5, 3/5)
+const CBASIS = [[[0.6, 0.0], [0.0, 0.8]], [[0.0, 0.8], [0.6, 0.0]]]
+const CPSIS = [[[1.0, 0.0], [0.0, 0.0]], [[0.5, 0.5], [0.5, -0.5]], [[0.0, 0.6], [-0.8, 0.0]], [[0.25, -0.5], [1.5, 2.0]]]
+exact_expansion(basis, psi) = [sum(conj(qc(phi[k])) * qc(psi[k]) for k in 1:length(psi)) for phi in basis]
+
 # ── self-checks of the reference (not written to the file) ───────────────────────────────────
 function selfcheck()
     setprecision(BigFloat, 512) do
@@ -199,6 +224,19 @@ function build()
         add("""{"fn": "scaleVec", "tol": "eval", "theta": $(num(theta)), "v": $(arr(v)), "expected": $(arr([ph * x for x in V]))}""")
         # rule 3 of c03.prop.skalarprodukt with alpha = e^(i theta): (alpha v)^dag w = alpha^* v^dag w
         add("""{"fn": "innerScaledFirst", "tol": "eval", "theta": $(num(theta)), "v": $(arr(v)), "w": $(arr(w)), "expected": $(cnum(conj(ph) * sum(conj(V[j]) * W[j] for j in eachindex(V))))}""")
+    end
+    for (alpha, theta) in VOLL_ALPHA_THETA
+        r = vollst_ref(alpha, theta)
+        add("""{"fn": "expansion", "tol": "eval", "name": "real plane", "alpha": $(num(alpha)), "theta": $(num(theta)), "expected": $(arr(r.c))}""")
+        add("""{"fn": "weights", "tol": "eval", "name": "real plane", "alpha": $(num(alpha)), "theta": $(num(theta)), "expected": $(arr(r.w))}""")
+        add("""{"fn": "components", "tol": "eval", "name": "real plane", "alpha": $(num(alpha)), "theta": $(num(theta)), "expected": $(arr(r.parts))}""")
+        add("""{"fn": "reassemble", "tol": "eval", "name": "real plane", "alpha": $(num(alpha)), "theta": $(num(theta)), "expected": $(arr(r.psi))}""")
+        add("""{"fn": "totalWeight", "tol": "eval", "name": "real plane", "alpha": $(num(alpha)), "theta": $(num(theta)), "expected": $(num(setprecision(() -> sum(r.w), BigFloat, 256)))}""")
+    end
+    for (i, psi) in enumerate(CPSIS)
+        c = exact_expansion(CBASIS, psi)
+        add("""{"fn": "expansionExplicit", "tol": "eval", "name": "complex basis $i", "basis": $(arr(CBASIS)), "psi": $(arr(psi)), "expected": $(arr(c))}""")
+        add("""{"fn": "weightsExplicit", "tol": "eval", "name": "complex basis $i", "basis": $(arr(CBASIS)), "psi": $(arr(psi)), "expected": $(arr([abs2(x) for x in c]))}""")
     end
     for s in S_VALUES
         add("""{"fn": "partialSum", "tol": "sum", "s": $(num(s)), "N": $(arr(N_VALUES)), "expected": $(arr(direct_partial_sums(s, N_VALUES)))}""")

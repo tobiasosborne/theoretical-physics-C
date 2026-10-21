@@ -1,0 +1,40 @@
+{
+ "schema_version": 1,
+ "id": "M-0018",
+ "status": "recorded",
+ "title": "vl03: Gram-Schmidt says terms with |Phi_k> = 0 are left out; it must be |Psi_k> = 0 (the script's own footnote)",
+ "legacy": [
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl03.tex",
+   "line": 216,
+   "file_sha256": "5ade0d2df8358f22497f3e207710b2c0efb7c74ea9da31ae420bcb23d469837e",
+   "old_text": "wobei Summanden mit $|\\Phi_k\\rangle= 0$ ausgelassen werden.",
+   "new_text": "wobei Summanden mit $\\ket{\\Psi_k} = 0$ ausgelassen werden (c03.prop.gram-schmidt)"
+  },
+  {
+   "version": "v0.2-en",
+   "file": "latex/lectures/en/lec03.tex",
+   "line": 216,
+   "file_sha256": "597cbb8943fb5926076c2741f225868619087a348ab7b8bbe5da0e225ab2ab89",
+   "old_text": "where summands with $|\\Phi_k\\rangle= 0$ are left out.",
+   "new_text": "where terms with $\\ket{\\Psi_k} = 0$ are left out (c03.prop.gram-schmidt)"
+  },
+  {
+   "version": "v0.1",
+   "file": "archive/skript-2022/Vorlesungen3.tex",
+   "line": 184,
+   "file_sha256": "389a16293491295d301d6749de11bedbb17c8c712e1f66ca9da9dd4684b45533",
+   "old_text": "wobei Summanden mit $|\\Phi_k\\rangle= 0$ ausgelassen werden.",
+   "new_text": "wobei Summanden mit $\\ket{\\Psi_k} = 0$ ausgelassen werden (c03.prop.gram-schmidt)"
+  }
+ ],
+ "reason": "In the sum of the Gram-Schmidt formula the denominator is ||Psi_k||^2, so the terms to omit are those with |Psi_k> = 0 (division by zero), not |Phi_k> = 0. The v0.2 footnote at vl03.tex:216 says so ('Gemeint ist |Psi_k> = 0'); the text was left unchanged. TJO says it correctly in lecture v04 [33:36]-[34:16]. The new chapter writes |Psi_k> = 0 in the proposition and gives the reason in the text; there is no footnote.",
+ "evidence": {
+  "independent_check": "read in the script sources at the stated lines; property 1 of the procedure with zero vectors skipped is checked by evidence/derivations/c03/check_c03.py (c03.cl.gram-schmidt, c03.cl.gs-null)",
+  "provenance_ids": [],
+  "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.gram-schmidt"
+ },
+ "destination": "c03.prop.gram-schmidt",
+ "notes": "Listed in HANDOFF.md, section 'Three v0.1 wording slips'."
+}

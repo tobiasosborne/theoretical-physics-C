@@ -9,6 +9,45 @@ two-language course.
 
 ## Status
 
+**2026-10-21: Lecture 3 (vl03) migrated into chapter C3.** `latex/lectures/de/vl03.tex` is
+migrated into `content/c03-hilbertraum/` as new Kern sections c03.s4 (Dirac-Notation),
+c03.s5 (Skalarprodukte), c03.s6 (Hilbertraum, transcluding registry D14), c03.s7 (Basen,
+with subsection c03.s7.1 Gram-Schmidt), the Vertiefung c03.v4 (bases with a countable
+infinite index set, after Reed-Simon I section II.3) and the figure c03.fig.vollst with the
+interactive demo c03.demo.vollst (kernel functions in `web/src/kernels/hilbert.ts`, golden
+values from `numerics/generate/hilbert_golden.jl`). The vl03 subsection "Operatoren" is
+deferred to Lecture 4 (vl04) in the map. New registry rows: definitions D81-D86, notation
+sym.ket, sym.bra, sym.norm, sym.kronecker-delta; the macros `\ket`, `\bra`, `\norm` were
+removed from `registry/allowed-tex.json` so the registry is their only owner. D14's body was
+extended with the meaning of "vollständig" (TJO should see this). Evidence: claims
+`c03.cl.*`, derivations under "Lecture 3" in `evidence/derivations/c03/DERIVATION.md` with
+`check_c03.py`, provenance P-0152..P-0164 (Reed-Simon I page images), and an independent
+page-image check by codex gpt-6.1 recorded in receipt
+`evidence/receipts/reviews/R-0152.json`. The migration map is
+`evidence/migrations/maps/vl03-map.json`, checked by `evidence/migrations/check_vl03_map.py`
+(wired into `ci.sh` as "vl03 migration map complete"). Migration records M-0017..M-0024
+cover the vl03 defects: psi_j for phi_j in the expansion, the Gram-Schmidt footnote, the
+completeness condition quantified over j,k, a missing `\langle`, typos, the `\emph` boundary
+at lines 188-189, the ambiguous "diese Liste", and typos in the deferred Operatoren part.
+All are `recorded`; none is applied to vl03.tex. Two codex gpt-6.1 reviews exist:
+`docs/review/lectures/REVIEW-lec3.md` (voice and correctness) and
+`evidence/derivations/c03/REVIEW-lec3.md` (page-image provenance, mathematics, migration
+records). One repair wave closed every finding, but the repaired prose itself has had no
+second review. The new gaps row G-0072 in `evidence/gaps.json` lists what was left out for
+TJO: the spoken |e_±> remark, the Schwarz-behind-uncertainty sentence, the dropped dimension
+count, Gram-Schmidt always giving a basis, and the Kern/Vertiefung split for bases. Sums
+over uncountable index sets are absent from the course by the repair's choice. Next: Lecture
+4 (vl04, operators) goes into C3 by the same recipe (author, two codex reviews, repair,
+demo); the vl03 Operatoren items are already in the vl03 map as deferred.
+
+**2026-10-20: Lectures 1 and 2 drafted, every figure of C0, C1, C3 an interactive demo.**
+Commits 2ca1f61 and eac21e6 cover this. Lecture 1 (C0, C1 from vl01) was revised in TJO's
+voice, with history dates corrected against NobelPrize.org. Lecture 2 is a new C3 from vl02:
+complex vectors, the Kreuz-Operation, and the scalar product in Kern; l^2 and L^2(R) in
+Vertiefung; Cauchy-Schwarz, equivalence classes and completeness in Fundament. The vl02
+migration map and M-0013..M-0016 are in place. There are 20 demos across c00, c01 and c03,
+with golden values from Julia references. The reviews are under `docs/review/lectures/`.
+
 **2026-10-20: public release audit.** The repo is published at
 https://github.com/tobiasosborne/theoretical-physics-C under AGPL-3.0-or-later (`LICENSE`).
 Six classification passes (Sonnet for docs, archive, evidence; Haiku for LaTeX, code, red

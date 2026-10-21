@@ -1,0 +1,40 @@
+{
+ "schema_version": 1,
+ "id": "M-0017",
+ "status": "recorded",
+ "title": "vl03: the expansion formula writes the basis vectors as psi_j instead of phi_j",
+ "legacy": [
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl03.tex",
+   "line": 195,
+   "file_sha256": "5ade0d2df8358f22497f3e207710b2c0efb7c74ea9da31ae420bcb23d469837e",
+   "old_text": "\\langle \\psi_j|\\Psi\\rangle |\\psi_j\\rangle",
+   "new_text": "\\ket{\\Psi} = \\sum_{j \\in X} \\braket{\\phi_j}{\\Psi}\\, \\ket{\\phi_j} (c03.eq.vollstaendigkeit)"
+  },
+  {
+   "version": "v0.2-en",
+   "file": "latex/lectures/en/lec03.tex",
+   "line": 195,
+   "file_sha256": "597cbb8943fb5926076c2741f225868619087a348ab7b8bbe5da0e225ab2ab89",
+   "old_text": "\\langle \\psi_j|\\Psi\\rangle |\\psi_j\\rangle",
+   "new_text": "\\ket{\\Psi} = \\sum_{j \\in X} \\braket{\\phi_j}{\\Psi}\\, \\ket{\\phi_j} (c03.eq.vollstaendigkeit)"
+  },
+  {
+   "version": "v0.1",
+   "file": "archive/skript-2022/Vorlesungen3.tex",
+   "line": 177,
+   "file_sha256": "389a16293491295d301d6749de11bedbb17c8c712e1f66ca9da9dd4684b45533",
+   "old_text": "\\langle \\psi_j|\\Psi\\rangle |\\psi_j\\rangle",
+   "new_text": "\\ket{\\Psi} = \\sum_{j \\in X} \\braket{\\phi_j}{\\Psi}\\, \\ket{\\phi_j} (c03.eq.vollstaendigkeit)"
+  }
+ ],
+ "reason": "vl03.tex:186 introduces the basis vectors as |phi_j>; the first display of the expansion (line 195) writes |psi_j> for them, and the sentence before it names the expanded vector |psi> while the display writes |Psi>. vl03.tex:197-199 repeats the formula correctly with |phi_j> (the v0.2 enrichment added that line; the archive v0.1 has only the wrong display, line 177). The new chapter states the expansion once, with |phi_j> and |Psi> (proposition c03.prop.entwicklung).",
+ "evidence": {
+  "independent_check": "read in the script sources at the stated lines; the corrected formula is derived in evidence/derivations/c03/DERIVATION.md#c03.cl.entwicklung",
+  "provenance_ids": [],
+  "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.entwicklung"
+ },
+ "destination": "c03.prop.entwicklung",
+ "notes": "Listed in HANDOFF.md, section 'Three v0.1 wording slips'."
+}

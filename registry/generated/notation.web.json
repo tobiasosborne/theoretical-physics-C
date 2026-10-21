@@ -2,8 +2,8 @@
  "_generated": {
   "by": "scripts/registry/gen_registry.py",
   "inputs_sha256": {
-   "notation.json": "f69ab547ee170b454644e4c14fbe06b6e5a4c6aa91debc8788c6ebcc348f13e4",
-   "definitions.json": "20f74487af8adf8ad5bf1034192d57906b864e641c47bb3d530d112681601783",
+   "notation.json": "06843364ea121ef31ae5d6a1f56b5224538a3fa5d59faf3c41d34ce7b6cd6e67",
+   "definitions.json": "585448c941817761a26d7cd34b68e3fc005ec975e37b166a56b3ae4f16bcb2e4",
    "conventions.json": "a376a57b23b3a84aa2eb310817d70bacf219028f2e639533d9f68856071ebf23",
    "translation.json": "b6c82517800df4b56f6a23748542a780295112a32d409cb13b1a71e7c7268cf9"
   }
@@ -3109,6 +3109,94 @@
    },
    "depth": "kern",
    "first_fixed_in": "D77",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.ket",
+   "macro": "ket",
+   "args": 1,
+   "expansion": "\\lvert #1 \\rangle",
+   "tex": "\\lvert {\\psi} \\rangle",
+   "usage": "\\ket{\\psi}",
+   "unicode": "|ψ⟩",
+   "mathml": "<math><mrow><mo>|</mo><mi>ψ</mi><mo>⟩</mo></mrow></math>",
+   "name": {
+    "de": "Ket",
+    "en": "ket"
+   },
+   "meaning": {
+    "de": "Vektor eines komplexen Vektorraums in der Dirac-Notation; in ℂⁿ die Spalte",
+    "en": "vector of a complex vector space in Dirac notation; in ℂⁿ the column"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D81",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.bra",
+   "macro": "bra",
+   "args": 1,
+   "expansion": "\\langle #1 \\rvert",
+   "tex": "\\langle {\\psi} \\rvert",
+   "usage": "\\bra{\\psi}",
+   "unicode": "⟨ψ|",
+   "mathml": "<math><mrow><mo>⟨</mo><mi>ψ</mi><mo>|</mo></mrow></math>",
+   "name": {
+    "de": "Bra",
+    "en": "bra"
+   },
+   "meaning": {
+    "de": "das Ergebnis der Kreuz-Operation auf einen Ket, ⟨v| = (|v⟩)†; in ℂⁿ die Zeile",
+    "en": "the result of the dagger operation on a ket, ⟨v| = (|v⟩)†; in ℂⁿ the row"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D81",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.norm",
+   "macro": "norm",
+   "args": 1,
+   "expansion": "\\left\\lVert #1 \\right\\rVert",
+   "tex": "\\left\\lVert {\\psi} \\right\\rVert",
+   "usage": "\\norm{\\psi}",
+   "unicode": "‖ψ‖",
+   "mathml": "<math><mrow><mo>‖</mo><mi>ψ</mi><mo>‖</mo></mrow></math>",
+   "name": {
+    "de": "Norm",
+    "en": "norm"
+   },
+   "meaning": {
+    "de": "Norm eines Vektors, ‖ψ‖ = √⟨ψ|ψ⟩",
+    "en": "norm of a vector, ‖ψ‖ = √⟨ψ|ψ⟩"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D83",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.kronecker-delta",
+   "macro": "kron",
+   "args": 2,
+   "expansion": "\\delta_{#1 #2}",
+   "tex": "\\delta_{{j} {k}}",
+   "usage": "\\kron{j}{k}",
+   "unicode": "δⱼₖ",
+   "mathml": "<math><msub><mi>δ</mi><mrow><mi>j</mi><mi>k</mi></mrow></msub></math>",
+   "name": {
+    "de": "Kronecker-Delta",
+    "en": "Kronecker delta"
+   },
+   "meaning": {
+    "de": "δⱼₖ = 1 für j = k, sonst 0",
+    "en": "δⱼₖ = 1 for j = k, 0 otherwise"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D84",
    "status": "blessed-provisional",
    "verified": true
   }

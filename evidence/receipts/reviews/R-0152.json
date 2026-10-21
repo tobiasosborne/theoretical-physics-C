@@ -1,0 +1,90 @@
+{
+  "id": "R-0152",
+  "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 3",
+  "date": "2026-10-21",
+  "covers": [
+    "P-0152",
+    "P-0153",
+    "P-0154",
+    "P-0155",
+    "P-0156",
+    "P-0157",
+    "P-0158",
+    "P-0159",
+    "P-0160",
+    "P-0161",
+    "P-0162",
+    "P-0163",
+    "P-0164"
+  ],
+  "verdict": "pass",
+  "method": "Independently ran sha256sum on sources/reed-simon-1/reed-simon-1.djvu for every row and rendered every cited DjVu page with ddjvu -format=pnm -page=N -scale=150 (in memory: the sandbox refused writing renders to the scratch directory); read the page images (not the djvutxt text layer), checked the printed page number, the transcription of each quote, and that each quote supports the claim it is filed under within the claim's scope. Report: evidence/derivations/c03/REVIEW-lec3.md, section A; prompt: evidence/derivations/c03/PROMPT-review-lec3.md.",
+  "notes": "All 13 rows passed as submitted; no row was changed after the review (quotes, loci and member hashes compared with the reviewed rows before binding). In the repair wave after the review, claim c03.cl.parseval (rows P-0158 to P-0160) was narrowed to the special case of a countable index set (docs/review/lectures/REVIEW-lec3.md, row WRONG); the quoted theorem covers every index set, so the reviewed support is unchanged.",
+  "bindings": [
+    {
+      "provenance_id": "P-0152",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "a981f239b1b9f286ce7371bcf19474fb9f7973723ac4fd4113c85040f8bc9f7f"
+    },
+    {
+      "provenance_id": "P-0153",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "0d70faf6e282dfa0187e3cc103205b962d1e9b74451741d1f3e7d076e5db8ef7"
+    },
+    {
+      "provenance_id": "P-0154",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "2f48e19b05bad33084b545a90e3c4e4f2dfba0a4eccdaeb7cd33b26034df86de"
+    },
+    {
+      "provenance_id": "P-0155",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "b037569aab7840fc395b81dea7caa13ebc6658c87bc2b74eac338dedc173ade9"
+    },
+    {
+      "provenance_id": "P-0156",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "7128a31456e8ed37dae60ddbbb3c3c5f10fa359212c8d2b24e982f4368324674"
+    },
+    {
+      "provenance_id": "P-0157",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "187a5cce5848cdba3f7908bf0cf84721dc05fd18b3dbab5288289fbc59509440"
+    },
+    {
+      "provenance_id": "P-0158",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "3df0a0ab7ccbf01b30f98c262b56bc7fb5ed302b0e44c53d605a4c34e751f7c5"
+    },
+    {
+      "provenance_id": "P-0159",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "7a154f6cae028019aa30586b82f77d1237cd045f631cf18f7595ba11152be509"
+    },
+    {
+      "provenance_id": "P-0160",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "4f98232e1c86f4b1b8e8999380bbaab91f0349bd63a9f8267f13a057b6e97e4c"
+    },
+    {
+      "provenance_id": "P-0161",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "cc4329aa0353426bcd6448482777d125bce1382fd8a5c992d3c7d938e5afac8c"
+    },
+    {
+      "provenance_id": "P-0162",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "332911f671d9b0cd6ec4d786d08063ebbd7eabf427107fa76d03429d65c9f4ad"
+    },
+    {
+      "provenance_id": "P-0163",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "635aacf7f0339a3b30fb6ded0578da39a6eef889a77ebc53ecb38163ffd4bbc9"
+    },
+    {
+      "provenance_id": "P-0164",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "78dad34ce57129bacfc061ab7330be9ab0405fd8be91c91e6523072f47c88053"
+    }
+  ]
+}

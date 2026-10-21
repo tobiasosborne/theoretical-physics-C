@@ -513,11 +513,13 @@
    "preinventory_row": 14,
    "name_de": "Hilbertraum",
    "name_en": "Hilbert space",
-   "body_de": "Ein \\emph{Hilbertraum} $\\Hil$ ist ein komplexer Vektorraum mit Skalarprodukt $\\braket{\\cdot}{\\cdot}$, der bezüglich der Norm $\\norm{\\psi}^2 = \\braket{\\psi}{\\psi}$ vollständig ist. Das Skalarprodukt ist linear im zweiten und antilinear im ersten Argument (CONV-INNER).",
-   "body_en": "A \\emph{Hilbert space} $\\Hil$ is a complex vector space with inner product $\\braket{\\cdot}{\\cdot}$ that is complete with respect to the norm $\\norm{\\psi}^2 = \\braket{\\psi}{\\psi}$. The inner product is linear in the second and antilinear in the first argument (CONV-INNER).",
+   "body_de": "Ein \\emph{Hilbertraum} $\\Hil$ ist ein komplexer Vektorraum mit Skalarprodukt $\\braket{\\cdot}{\\cdot}$, der bezüglich der Norm $\\norm{\\psi}^2 = \\braket{\\psi}{\\psi}$ vollständig ist. Das Skalarprodukt ist linear im zweiten und antilinear im ersten Argument (CONV-INNER). \\emph{Vollständig} heißt: Kommen die Glieder einer Folge $\\ket{\\psi_1}, \\ket{\\psi_2}, \\dots$ in $\\Hil$ einander beliebig nahe, $\\norm{\\psi_m - \\psi_k} \\to 0$ für $m, k \\to \\infty$, so hat die Folge einen Grenzwert $\\ket{\\psi} \\in \\Hil$, also $\\norm{\\psi_m - \\psi} \\to 0$ für $m \\to \\infty$.",
+   "body_en": "A \\emph{Hilbert space} $\\Hil$ is a complex vector space with inner product $\\braket{\\cdot}{\\cdot}$ that is complete with respect to the norm $\\norm{\\psi}^2 = \\braket{\\psi}{\\psi}$. The inner product is linear in the second and antilinear in the first argument (CONV-INNER). \\emph{Complete} means: if the members of a sequence $\\ket{\\psi_1}, \\ket{\\psi_2}, \\dots$ in $\\Hil$ come arbitrarily close to one another, $\\norm{\\psi_m - \\psi_k} \\to 0$ as $m, k \\to \\infty$, then the sequence has a limit $\\ket{\\psi} \\in \\Hil$, that is $\\norm{\\psi_m - \\psi} \\to 0$ as $m \\to \\infty$.",
    "symbol_ids": [
     "sym.hilbert-space",
-    "sym.inner-product"
+    "sym.inner-product",
+    "sym.norm",
+    "sym.ket"
    ],
    "depth": "kern",
    "origin": {
@@ -551,9 +553,23 @@
      "verified": true,
      "quote": "(iii) (x, \\alpha y) = \\alpha (x, y)",
      "how": "read from the page image (ddjvu -format=pnm -page=48 -scale=180), not from the text layer"
+    },
+    {
+     "source": "reed-simon-1",
+     "locus": "section I.2, p. 5 (DjVu page 17)",
+     "verified": true,
+     "how": "read from the page image (ddjvu -format=pnm -page=17 -scale=150), not from the text layer",
+     "quote": "A sequence of elements \\{x_n\\} of a metric space \\langle M, d\\rangle is called a Cauchy sequence if (\\forall \\varepsilon > 0)(\\exists N) n, m \\geq N implies d(x_n, x_m) < \\varepsilon."
+    },
+    {
+     "source": "reed-simon-1",
+     "locus": "section I.2, p. 6 (DjVu page 20)",
+     "verified": true,
+     "how": "read from the page image (ddjvu -format=pnm -page=20 -scale=150), not from the text layer",
+     "quote": "A metric space in which all Cauchy sequences converge is called complete."
     }
    ],
-   "notes": "Completeness is stated, as the pre-inventory requires. The axioms of the inner product itself (positivity, conjugate symmetry) are in vl03.tex:134-145 and Reed-Simon I p. 36 and are not repeated in the body."
+   "notes": "Completeness is stated, as the pre-inventory requires. The axioms of the inner product itself are vl03.tex:134-145 and Reed-Simon I p. 36; since Lecture 3 of chapter C3 (2026-10-21) they are definition D82 (norm D83), transcluded before D14 in section c03.s5; D14 is transcluded in section c03.s6. sym.norm added to symbol_ids because the body uses \\norm. After the review of Lecture 3 (docs/review/lectures/REVIEW-lec3.md, row SCOPE at de.tex:878 and definitions.json:516) the body says what 'vollständig' means, adapted from D79 (Reed-Simon I pp. 5, 6: Cauchy sequence, complete metric space) without the word 'Cauchy-Folge', so that the standalone Kern can read it; the technical treatment stays in Fundament c03.f3. sym.ket added to symbol_ids for the body's \\ket."
   },
   {
    "id": "D15",
@@ -2943,6 +2959,315 @@
     }
    ],
    "notes": "Added by the author of chapter C3 (2026-10-20). Depth fundament (Fundament block c03.f2). Reed-Simon state the equivalence for L^1 (p. 17) and use equivalence classes for every L^p (p. 68); the body specialises to p = 2, X = R with Lebesgue measure. That the inner product does not depend on the representatives is derived in the chapter (c03.cl.klassen)."
+  },
+  {
+   "id": "D81",
+   "preinventory_row": null,
+   "name_de": "Ket, Bra, Bra-Ket",
+   "name_en": "ket, bra, bra-ket",
+   "body_de": "Ab jetzt schreiben wir einen Vektor $\\vb{v}$ eines komplexen Vektorraums als \\emph{Ket} $\\ket{v}$. Für $\\vb{v} \\in \\mathbb{C}^n$ steht $\\ket{v}$ für die Spalte $\\vb{v}$. Mit dem Skalarprodukt $\\vb{v}\\adj\\vb{w}$ von $\\mathbb{C}^n$ steht der \\emph{Bra} $\\bra{v} = (\\ket{v})\\adj$ für die Zeile $\\vb{v}\\adj = \\begin{pmatrix} v_1^* & \\cdots & v_n^* \\end{pmatrix}$. Das Produkt des Bras $\\bra{v}$ mit dem Ket $\\ket{w}$ heißt \\emph{Bra-Ket}; es ist das Skalarprodukt, $\\braket{v}{w} = (\\ket{v})\\adj \\ket{w} = \\vb{v}\\adj\\vb{w}$. Für ein anderes Skalarprodukt ist der Bra $\\bra{v}$ die Zuordnung $\\ket{w} \\mapsto \\braket{v}{w}$, die jedem Ket eine Zahl zuordnet, und im Allgemeinen nicht die Zeile $\\vb{v}\\adj$.",
+   "body_en": "From now on we write a vector $\\vb{v}$ of a complex vector space as a \\emph{ket} $\\ket{v}$. For $\\vb{v} \\in \\mathbb{C}^n$, $\\ket{v}$ stands for the column $\\vb{v}$. With the inner product $\\vb{v}\\adj\\vb{w}$ of $\\mathbb{C}^n$, the \\emph{bra} $\\bra{v} = (\\ket{v})\\adj$ stands for the row $\\vb{v}\\adj = \\begin{pmatrix} v_1^* & \\cdots & v_n^* \\end{pmatrix}$. The product of the bra $\\bra{v}$ with the ket $\\ket{w}$ is called a \\emph{bra-ket}; it is the inner product, $\\braket{v}{w} = (\\ket{v})\\adj \\ket{w} = \\vb{v}\\adj\\vb{w}$. For another inner product the bra $\\bra{v}$ is the assignment $\\ket{w} \\mapsto \\braket{v}{w}$, which gives every ket a number, and in general not the row $\\vb{v}\\adj$.",
+   "symbol_ids": [
+    "sym.ket",
+    "sym.bra",
+    "sym.inner-product",
+    "sym.adjoint"
+   ],
+   "depth": "kern",
+   "origin": {
+    "type": "source-adapted",
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl03.tex:5-72"
+   },
+   "choices": [
+    "CONV-INNER"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:7",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "v \\mapsto |v\\rangle."
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:65",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "(|v\\rangle)^\\dagger \\equiv \\langle v|."
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:70",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\langle v|w\\rangle \\equiv (|v\\rangle)^\\dag |w\\rangle."
+    }
+   ],
+   "notes": "Added by the author of chapter C3, Lecture 3 (2026-10-21). The script writes kets without the bold face of the column vectors (vl02); the course keeps the bold face for columns and drops it inside the ket. After the reviews of Lecture 3 (docs/review/lectures/REVIEW-lec3.md, row SCOPE at de.tex:630; evidence/derivations/c03/REVIEW-lec3.md, section B, row SCOPE at de.tex:627) the row formula is stated for the inner product of C^n (D76, section c03.s2) only; for another inner product the bra is the map |w> -> <v|w> (example c03.ex.gewichtet gives the representing row (v_1^*, c v_2^*))."
+  },
+  {
+   "id": "D82",
+   "preinventory_row": null,
+   "name_de": "Skalarprodukt auf einem komplexen Vektorraum",
+   "name_en": "inner product on a complex vector space",
+   "body_de": "Ein \\emph{Skalarprodukt} auf einem komplexen Vektorraum $V$ ordnet je zwei Vektoren $\\ket{\\phi}, \\ket{\\psi} \\in V$ eine komplexe Zahl $\\braket{\\phi}{\\psi}$ zu, so dass für alle Vektoren und alle $z \\in \\mathbb{C}$ gilt: (i) \\emph{Additivität} in jedem Argument, $\\braket{\\phi_1 + \\phi_2}{\\psi} = \\braket{\\phi_1}{\\psi} + \\braket{\\phi_2}{\\psi}$ und $\\braket{\\phi}{\\psi_1 + \\psi_2} = \\braket{\\phi}{\\psi_1} + \\braket{\\phi}{\\psi_2}$; (ii) \\emph{Herausziehen von Zahlen}, $\\braket{\\phi}{z\\psi} = z\\, \\braket{\\phi}{\\psi}$ und $\\braket{z\\phi}{\\psi} = z^*\\, \\braket{\\phi}{\\psi}$; (iii) \\emph{Positivität}, $\\braket{\\psi}{\\psi} \\geq 0$, und $\\braket{\\psi}{\\psi} = 0$ nur für $\\ket{\\psi} = 0$. Dabei steht $\\phi_1 + \\phi_2$ für den Vektor $\\ket{\\phi_1} + \\ket{\\phi_2}$ und $z\\phi$ für den Vektor $z\\ket{\\phi}$.",
+   "body_en": "An \\emph{inner product} on a complex vector space $V$ assigns to any two vectors $\\ket{\\phi}, \\ket{\\psi} \\in V$ a complex number $\\braket{\\phi}{\\psi}$ such that for all vectors and all $z \\in \\mathbb{C}$: (i) \\emph{additivity} in each argument, $\\braket{\\phi_1 + \\phi_2}{\\psi} = \\braket{\\phi_1}{\\psi} + \\braket{\\phi_2}{\\psi}$ and $\\braket{\\phi}{\\psi_1 + \\psi_2} = \\braket{\\phi}{\\psi_1} + \\braket{\\phi}{\\psi_2}$; (ii) \\emph{pulling out numbers}, $\\braket{\\phi}{z\\psi} = z\\, \\braket{\\phi}{\\psi}$ and $\\braket{z\\phi}{\\psi} = z^*\\, \\braket{\\phi}{\\psi}$; (iii) \\emph{positivity}, $\\braket{\\psi}{\\psi} \\geq 0$, and $\\braket{\\psi}{\\psi} = 0$ only for $\\ket{\\psi} = 0$. Here $\\phi_1 + \\phi_2$ stands for the vector $\\ket{\\phi_1} + \\ket{\\phi_2}$ and $z\\phi$ for the vector $z\\ket{\\phi}$.",
+   "symbol_ids": [
+    "sym.inner-product",
+    "sym.ket"
+   ],
+   "depth": "kern",
+   "origin": {
+    "type": "source-adapted",
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl03.tex:134-147"
+   },
+   "choices": [
+    "CONV-INNER"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:134",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Es ist per Definition additiv in jedem Argument"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:136",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\langle \\phi|z\\psi\\rangle &= z \\langle \\phi|\\psi\\rangle"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:137",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\langle z\\phi|\\psi\\rangle &= z^* \\langle \\phi|\\psi\\rangle."
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:144",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\langle \\psi | \\psi\\rangle &\\ge 0"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:145",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\text{nur für $|\\psi\\rangle =0$}"
+    },
+    {
+     "source": "reed-simon-1",
+     "locus": "section II.1, p. 36 (DjVu page 48)",
+     "verified": true,
+     "how": "read from the page image (ddjvu -format=pnm -page=48 -scale=150), not from the text layer",
+     "quote": "(i) (x, x) \\ge 0 and (x, x) = 0 if and only if x = 0"
+    }
+   ],
+   "notes": "Added by the author of chapter C3, Lecture 3 (2026-10-21). Reed-Simon I p. 36 take conjugate symmetry (x, y) = conj (y, x) as a fourth axiom (iv); the script and the course derive it from (i)-(iii) (vl03.tex:152-154; proposition c03.prop.symmetrie, claim c03.cl.symmetrie). The script's additivity example lacks a \\langle (M-0020); the body states both additivity rules in full. The inner product of C^n (D76) is an example (proposition c03.prop.skalarprodukt)."
+  },
+  {
+   "id": "D83",
+   "preinventory_row": null,
+   "name_de": "Norm",
+   "name_en": "norm",
+   "body_de": "Die \\emph{Norm} eines Vektors $\\ket{\\psi}$ in einem Vektorraum mit Skalarprodukt ist die reelle Zahl $\\norm{\\psi} = \\sqrt{\\braket{\\psi}{\\psi}} \\geq 0$; man schreibt auch $\\norm{\\ket{\\psi}}$. Ein Vektor mit $\\norm{\\psi} = 1$ heißt \\emph{normiert}.",
+   "body_en": "The \\emph{norm} of a vector $\\ket{\\psi}$ in a vector space with inner product is the real number $\\norm{\\psi} = \\sqrt{\\braket{\\psi}{\\psi}} \\geq 0$; one also writes $\\norm{\\ket{\\psi}}$. A vector with $\\norm{\\psi} = 1$ is called \\emph{normalised}.",
+   "symbol_ids": [
+    "sym.norm",
+    "sym.inner-product",
+    "sym.ket"
+   ],
+   "depth": "kern",
+   "origin": {
+    "type": "source-adapted",
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl03.tex:148-151"
+   },
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:150",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\| |\\psi\\rangle \\| \\equiv \\sqrt{\\langle \\psi | \\psi\\rangle}."
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:250",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Beide Vektoren haben schon die Norm eins"
+    },
+    {
+     "source": "reed-simon-1",
+     "locus": "section II.1, p. 37 (DjVu page 49)",
+     "verified": true,
+     "how": "read from the page image (ddjvu -format=pnm -page=49 -scale=150), not from the text layer",
+     "quote": "We introduce the shorthand \\|x\\| = \\sqrt{(x, x)}."
+    }
+   ],
+   "notes": "Added by the author of chapter C3, Lecture 3 (2026-10-21). The word 'normiert' is the course's name for a vector of norm one (vl03.tex:250 says 'Norm eins'). That the norm is a norm in the sense of normed spaces (triangle inequality) is proposition c03.prop.dreieck."
+  },
+  {
+   "id": "D84",
+   "preinventory_row": null,
+   "name_de": "orthogonal, orthonormal",
+   "name_en": "orthogonal, orthonormal",
+   "body_de": "Zwei Vektoren $\\ket{\\phi}, \\ket{\\psi}$ heißen \\emph{orthogonal}, in Zeichen $\\ket{\\phi} \\perp \\ket{\\psi}$, wenn $\\braket{\\phi}{\\psi} = 0$ ist. Ein System von Vektoren $\\ket{\\phi_j}$, wobei $j$ eine Indexmenge $X$ durchläuft, heißt \\emph{orthonormal}, wenn $\\braket{\\phi_j}{\\phi_k} = \\kron{j}{k}$ für alle $j, k \\in X$ gilt. Dabei ist $\\kron{j}{k}$ das \\emph{Kronecker-Delta}: $\\kron{j}{k} = 1$ für $j = k$ und $\\kron{j}{k} = 0$ für $j \\neq k$.",
+   "body_en": "Two vectors $\\ket{\\phi}, \\ket{\\psi}$ are called \\emph{orthogonal}, in symbols $\\ket{\\phi} \\perp \\ket{\\psi}$, if $\\braket{\\phi}{\\psi} = 0$. A system of vectors $\\ket{\\phi_j}$, where $j$ runs through an index set $X$, is called \\emph{orthonormal} if $\\braket{\\phi_j}{\\phi_k} = \\kron{j}{k}$ for all $j, k \\in X$. Here $\\kron{j}{k}$ is the \\emph{Kronecker delta}: $\\kron{j}{k} = 1$ for $j = k$ and $\\kron{j}{k} = 0$ for $j \\neq k$.",
+   "symbol_ids": [
+    "sym.inner-product",
+    "sym.ket",
+    "sym.kronecker-delta"
+   ],
+   "depth": "kern",
+   "origin": {
+    "type": "source-adapted",
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl03.tex:166-168, 186-191"
+   },
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:166",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Man nennt zwei Vektoren \\emph{orthogonal} (in Symbolen $|\\phi\\rangle \\perp |\\psi\\rangle$), wenn"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:188",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\langle \\phi_j|\\phi_k\\rangle &=\\delta_{jk}"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:191",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "$\\delta_{jk}$ ist das Kronecker-Delta"
+    },
+    {
+     "source": "reed-simon-1",
+     "locus": "section II.1, p. 37 (DjVu page 49)",
+     "verified": true,
+     "how": "read from the page image (ddjvu -format=pnm -page=49 -scale=150), not from the text layer",
+     "quote": "Two vectors, x and y, in an inner product space V are said to be orthogonal if (x, y) = 0."
+    },
+    {
+     "source": "reed-simon-1",
+     "locus": "section II.1, p. 37 (DjVu page 49)",
+     "verified": true,
+     "how": "read from the page image (ddjvu -format=pnm -page=49 -scale=150), not from the text layer",
+     "quote": "A collection \\{x_i\\} of vectors in V is called an orthonormal set if (x_i, x_i) = 1 for all i, and (x_i, x_j) = 0 if i \\neq j."
+    }
+   ],
+   "notes": "Added by the author of chapter C3, Lecture 3 (2026-10-21). The script defines orthonormality inside the definition of a basis (vl03.tex:188); the course defines it with orthogonality, as Reed-Simon I p. 37 do."
+  },
+  {
+   "id": "D85",
+   "preinventory_row": null,
+   "name_de": "Basis (Orthonormalbasis), endliche Indexmenge",
+   "name_en": "basis (orthonormal basis), finite index set",
+   "body_de": "Sei $\\Hil$ ein Hilbertraum und $X$ eine endliche Indexmenge. Ein orthonormales System $\\{\\ket{\\phi_j}\\}_{j \\in X}$ in $\\Hil$ heißt \\emph{Basis}, genauer \\emph{Orthonormalbasis}, von $\\Hil$, wenn es \\emph{vollständig} ist: $\\norm{\\psi}^2 = \\sum_{j \\in X} \\abs{\\braket{\\phi_j}{\\psi}}^2$ für alle $\\ket{\\psi} \\in \\Hil$.",
+   "body_en": "Let $\\Hil$ be a Hilbert space and $X$ a finite index set. An orthonormal system $\\{\\ket{\\phi_j}\\}_{j \\in X}$ in $\\Hil$ is called a \\emph{basis}, more precisely an \\emph{orthonormal basis}, of $\\Hil$ if it is \\emph{complete}: $\\norm{\\psi}^2 = \\sum_{j \\in X} \\abs{\\braket{\\phi_j}{\\psi}}^2$ for all $\\ket{\\psi} \\in \\Hil$.",
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.norm",
+    "sym.inner-product",
+    "sym.ket"
+   ],
+   "depth": "kern",
+   "origin": {
+    "type": "source-adapted",
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl03.tex:186-190"
+   },
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:186",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Eine \\emph{Basis} eines Hilbertraums $\\mathcal{H}$ ist ein System von Vektoren"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:189",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\|\\psi\\|^2 &= \\sum_{j\\in X} |\\langle \\phi_j|\\psi\\rangle|^2"
+    },
+    {
+     "source": "reed-simon-1",
+     "locus": "section II.3, Theorem II.6, p. 45 (DjVu page 57)",
+     "verified": true,
+     "how": "read from the page image (ddjvu -format=pnm -page=57 -scale=150), not from the text layer",
+     "quote": "\\|y\\|^2 = \\sum_{\\alpha\\in A} |(x_\\alpha, y)|^2"
+    }
+   ],
+   "notes": "Added by the author of chapter C3, Lecture 3 (2026-10-21). Finite index set by decision D4 (PLAN.md 1.3, 14.7): the Kern of C0-C4 is finite-dimensional; any index set is D86 (Vertiefung c03.v4). The script quantifies the completeness condition over j, k instead of over psi (M-0019). 'Basis' in this course always means an orthonormal basis; that the condition is equivalent to Reed-Simon's maximality is proposition c03.prop.maximal."
+  },
+  {
+   "id": "D86",
+   "preinventory_row": null,
+   "name_de": "Orthonormalbasis, beliebige Indexmenge",
+   "name_en": "orthonormal basis, arbitrary index set",
+   "body_de": "Sei $\\Hil$ ein Hilbertraum und $X$ eine beliebige, auch unendliche Indexmenge. Ein orthonormales System $\\{\\ket{\\phi_j}\\}_{j \\in X}$ heißt \\emph{Orthonormalbasis}, auch \\emph{vollständiges Orthonormalsystem}, von $\\Hil$, wenn kein anderes orthonormales System alle $\\ket{\\phi_j}$ und noch weitere Vektoren enthält. Für nichtnegative Zahlen $a_j$ ist $\\sum_{j \\in X} a_j$ das Supremum der Summen über endliche Teilmengen von $X$; der Wert $\\infty$ ist zugelassen. Ist $X$ abzählbar, etwa $X = \\{1, 2, 3, \\dots\\}$, so ist eine Summe $\\sum_{j \\in X} \\ket{\\psi_j}$ von Vektoren eine Reihe; sie konvergiert gegen $\\ket{\\psi}$, wenn $\\norm{\\psi - (\\psi_1 + \\dots + \\psi_N)} \\to 0$ für $N \\to \\infty$.",
+   "body_en": "Let $\\Hil$ be a Hilbert space and $X$ an arbitrary, possibly infinite index set. An orthonormal system $\\{\\ket{\\phi_j}\\}_{j \\in X}$ is called an \\emph{orthonormal basis}, also a \\emph{complete orthonormal system}, of $\\Hil$ if no other orthonormal system contains all the $\\ket{\\phi_j}$ and further vectors besides. For nonnegative numbers $a_j$, $\\sum_{j \\in X} a_j$ is the supremum of the sums over finite subsets of $X$; the value $\\infty$ is admitted. If $X$ is countable, say $X = \\{1, 2, 3, \\dots\\}$, a sum $\\sum_{j \\in X} \\ket{\\psi_j}$ of vectors is a series; it converges to $\\ket{\\psi}$ if $\\norm{\\psi - (\\psi_1 + \\dots + \\psi_N)} \\to 0$ as $N \\to \\infty$.",
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.ket",
+    "sym.norm"
+   ],
+   "depth": "vertiefung",
+   "origin": {
+    "type": "source-adapted",
+    "source": "reed-simon-1",
+    "locus": "section II.3, p. 44 (DjVu page 56)"
+   },
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "sources": [
+    {
+     "source": "reed-simon-1",
+     "locus": "section II.3, p. 44 (DjVu page 56)",
+     "verified": true,
+     "how": "read from the page image (ddjvu -format=pnm -page=56 -scale=150), not from the text layer",
+     "quote": "If S is an orthonormal set in a Hilbert space \\mathcal{H} and no other orthonormal set contains S as a proper subset, then S is called an orthonormal basis (or a complete orthonormal system) for \\mathcal{H}."
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:186",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "wobei $j$ über irgendeine \\emph{Indexmenge} $X$ läuft"
+    }
+   ],
+   "notes": "Added by the author of chapter C3, Lecture 3 (2026-10-21). Depth vertiefung by D4. The convention for sums of nonnegative numbers over an arbitrary index set is the chapter author's (for X = {1, 2, 3, ...} it is the limit of the monotone partial sums); Reed-Simon I p. 45 say that the sums of Theorem II.6 converge independent of order. The script's definition (orthonormal and Parseval for all psi, vl03.tex:186-189) is equivalent: proposition c03.prop.maximal. After both reviews of Lecture 3 (docs/review/lectures/REVIEW-lec3.md, row WRONG at de.tex:1048; evidence/derivations/c03/REVIEW-lec3.md, section B, row WRONG) the body says what a sum of vectors over a countable index set means (a series, convergence in norm); the definition of the basis itself (maximality) keeps an arbitrary index set, so that theorem c03.thm.existenz holds as Reed-Simon state it. Theorem c03.thm.parseval and proposition c03.prop.maximal are stated for countable index sets; sums of vectors over uncountable index sets are not used in the course."
   }
  ]
 }

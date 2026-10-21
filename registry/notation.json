@@ -4671,6 +4671,189 @@
    "legacy_aliases": [],
    "notes": "Added by the author of chapter C3 (2026-10-20). Defined in Vertiefung c03.v1 (D77); the symbol is at depth kern because the Kern box c03.eq.drei-raeume names the space. Reed-Simon write the 2 as a subscript (TR-RS1-03). The glyph ℓ is also the orbital quantum number (sym.orbital-quantum-number, \\lqn); the canonical tokens differ (\\ell^2 against \\ell), and the space always carries its exponent.",
    "gap_tjo": "Is the shared glyph ℓ (sequence space ℓ² and orbital quantum number ℓ) acceptable, or should the space be written differently (for example l² upright)?"
+  },
+  {
+   "symbol_id": "sym.ket",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "ket",
+    "args": 1,
+    "expansion": "\\lvert #1 \\rangle",
+    "arg_examples": [
+     "\\psi"
+    ]
+   },
+   "canonical_token": "\\lvert\\psi\\rangle",
+   "unicode": "|ψ⟩",
+   "mathml": "<math><mrow><mo>|</mo><mi>ψ</mi><mo>⟩</mo></mrow></math>",
+   "name_de": "Ket",
+   "name_en": "ket",
+   "meaning_de": "Vektor eines komplexen Vektorraums in der Dirac-Notation; in ℂⁿ die Spalte",
+   "meaning_en": "vector of a complex vector space in Dirac notation; in ℂⁿ the column",
+   "depth": "kern",
+   "first_fixed_in": "D81",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:7",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "v \\mapsto |v\\rangle."
+    },
+    {
+     "source": "tpc-macros",
+     "locus": "tpc-macros.sty:48",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\newcommand{\\ket}[1]{\\lvert #1 \\rangle}"
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "ket",
+     "note": "same name and expansion"
+    }
+   ],
+   "notes": "Added by the author of chapter C3, Lecture 3 (2026-10-21). The macro was already a structural macro of tpc-macros.sty and in registry/allowed-tex.json; the registry row gives it a meaning and a source."
+  },
+  {
+   "symbol_id": "sym.bra",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "bra",
+    "args": 1,
+    "expansion": "\\langle #1 \\rvert",
+    "arg_examples": [
+     "\\psi"
+    ]
+   },
+   "canonical_token": "\\langle\\psi\\rvert",
+   "unicode": "⟨ψ|",
+   "mathml": "<math><mrow><mo>⟨</mo><mi>ψ</mi><mo>|</mo></mrow></math>",
+   "name_de": "Bra",
+   "name_en": "bra",
+   "meaning_de": "das Ergebnis der Kreuz-Operation auf einen Ket, ⟨v| = (|v⟩)†; in ℂⁿ die Zeile",
+   "meaning_en": "the result of the dagger operation on a ket, ⟨v| = (|v⟩)†; in ℂⁿ the row",
+   "depth": "kern",
+   "first_fixed_in": "D81",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:65",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "(|v\\rangle)^\\dagger \\equiv \\langle v|."
+    },
+    {
+     "source": "tpc-macros",
+     "locus": "tpc-macros.sty:49",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\newcommand{\\bra}[1]{\\langle #1 \\rvert}"
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "bra",
+     "note": "same name and expansion"
+    }
+   ],
+   "notes": "Added by the author of chapter C3, Lecture 3 (2026-10-21)."
+  },
+  {
+   "symbol_id": "sym.norm",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "norm",
+    "args": 1,
+    "expansion": "\\left\\lVert #1 \\right\\rVert",
+    "arg_examples": [
+     "\\psi"
+    ]
+   },
+   "canonical_token": "\\lVert\\psi\\rVert",
+   "unicode": "‖ψ‖",
+   "mathml": "<math><mrow><mo>‖</mo><mi>ψ</mi><mo>‖</mo></mrow></math>",
+   "name_de": "Norm",
+   "name_en": "norm",
+   "meaning_de": "Norm eines Vektors, ‖ψ‖ = √⟨ψ|ψ⟩",
+   "meaning_en": "norm of a vector, ‖ψ‖ = √⟨ψ|ψ⟩",
+   "depth": "kern",
+   "first_fixed_in": "D83",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:150",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\| |\\psi\\rangle \\| \\equiv \\sqrt{\\langle \\psi | \\psi\\rangle}."
+    },
+    {
+     "source": "tpc-macros",
+     "locus": "tpc-macros.sty:91",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\newcommand{\\norm}[1]{\\left\\lVert #1 \\right\\rVert}"
+    },
+    {
+     "source": "reed-simon-1",
+     "locus": "section II.1, p. 37 (DjVu page 49)",
+     "verified": true,
+     "how": "read from the page image (ddjvu -format=pnm -page=49 -scale=150), not from the text layer",
+     "quote": "We introduce the shorthand \\|x\\| = \\sqrt{(x, x)}."
+    }
+   ],
+   "legacy_aliases": [
+    {
+     "macro": "norm",
+     "note": "same name and expansion"
+    }
+   ],
+   "notes": "Added by the author of chapter C3, Lecture 3 (2026-10-21). D14 already used \\norm in its body; it now lists sym.norm in symbol_ids."
+  },
+  {
+   "symbol_id": "sym.kronecker-delta",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "kron",
+    "args": 2,
+    "expansion": "\\delta_{#1 #2}",
+    "arg_examples": [
+     "j",
+     "k"
+    ]
+   },
+   "canonical_token": "\\delta_jk",
+   "unicode": "δⱼₖ",
+   "mathml": "<math><msub><mi>δ</mi><mrow><mi>j</mi><mi>k</mi></mrow></msub></math>",
+   "name_de": "Kronecker-Delta",
+   "name_en": "Kronecker delta",
+   "meaning_de": "δⱼₖ = 1 für j = k, sonst 0",
+   "meaning_en": "δⱼₖ = 1 for j = k, 0 otherwise",
+   "depth": "kern",
+   "first_fixed_in": "D84",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:188",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\langle \\phi_j|\\phi_k\\rangle &=\\delta_{jk}"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:191",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "$\\delta_{jk}$ ist das Kronecker-Delta"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "Added by the author of chapter C3, Lecture 3 (2026-10-21). A semantic macro so that the Kronecker delta is not confused with the Dirac delta function (vl03.tex:191); chapter c01 names the Kronecker delta in words only (c01 de.tex, Indikatorfunktion)."
   }
  ],
  "collisions": [

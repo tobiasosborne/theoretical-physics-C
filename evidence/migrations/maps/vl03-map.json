@@ -1,0 +1,1471 @@
+{
+ "schema_version": 1,
+ "note": "Migration map of the third lecture into chapter c03 (Lecture 3 draft, 2026-10-21). One entry per item of latex/lectures/de/vl03.tex as parsed by evidence/migrations/check_vl03_map.py (the parser of check_vl01_map.py): sections, display equations, environments (including the pmatrix columns), figure inputs, list items and paragraphs of running text. 'item' is '<kind>@<line>'. status: kept (destination = IDs in content/c03-hilbertraum/de.tex, or registry definitions transcluded there); deferred (the subsection Operatoren, lines 253-277, goes with Lecture 4). The English edition latex/lectures/en/lec03.tex has the same structure line for line and goes to the same destinations in en.tex. Material not in vl03.tex is listed in two separate lists: 'added_spoken' (what TJO says in the recorded lectures, with the locus in the timestamped raw transcripts transcripts/raw/v03_jKsPIgMb6OU.txt and v04_YpK1CnrLtaM.txt) and 'added_author' (examples, proofs and repairs written by the chapter author, with the repository derivation or the source that supports them).",
+ "legacy_file": "latex/lectures/de/vl03.tex",
+ "legacy_sha256": "5ade0d2df8358f22497f3e207710b2c0efb7c74ea9da31ae420bcb23d469837e",
+ "partly_deferred": [],
+ "items": [
+  {
+   "item": "section@3",
+   "what": "\\section{Vorlesung: Hilbertraum, Basis, Operatoren}",
+   "status": "kept",
+   "destination": [
+    "c03.s4",
+    "c03.s5",
+    "c03.s6",
+    "c03.s7"
+   ]
+  },
+  {
+   "item": "text@5",
+   "what": "Sei $V$ ein komplexer Vektorraum. In der Quantemechanik wird",
+   "status": "kept",
+   "destination": [
+    "c03.s4"
+   ],
+   "migration": [
+    "M-0021"
+   ]
+  },
+  {
+   "item": "equation@6",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.s4"
+   ]
+  },
+  {
+   "item": "text@9",
+   "what": "Diese Notation bedeutet nicht mehr als: ,,$|v\\rangle$ steht ",
+   "status": "kept",
+   "destination": [
+    "c03.s4"
+   ],
+   "migration": [
+    "M-0021"
+   ]
+  },
+  {
+   "item": "text@11",
+   "what": "Der Aufwand lohnt sich: Die Zustände eines quantenmechanisch",
+   "status": "kept",
+   "destination": [
+    "c03.s3",
+    "c03.s4"
+   ],
+   "note": "The first sentence (states are modelled by vectors in a Hilbert space) is said more precisely in c03.s1 (a vector describes a pure state; mixed states need density matrices, Chapter 4); the second (the hurdle is the notation) is already the closing paragraph of c03.s3 (v03 [39:46]-[42:02])."
+  },
+  {
+   "item": "text@13",
+   "what": "Wir werden einige Berechnungen durchführen, um uns mit diese",
+   "status": "kept",
+   "destination": [
+    "c03.s4"
+   ]
+  },
+  {
+   "item": "environment@14",
+   "what": "beispiel",
+   "status": "kept",
+   "destination": [
+    "c03.ex.kets"
+   ]
+  },
+  {
+   "item": "text@15",
+   "what": "Angenommen, $V\\equiv \\mathbb{C}^2$. (In der QM werden wir sp",
+   "status": "kept",
+   "destination": [
+    "c03.ex.kets"
+   ]
+  },
+  {
+   "item": "equation@16",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.e0e1"
+   ]
+  },
+  {
+   "item": "environment@17",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.e0e1"
+   ]
+  },
+  {
+   "item": "environment@19",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.e0e1"
+   ]
+  },
+  {
+   "item": "text@23",
+   "what": "Diese beiden Vektoren können addiert, subtrahiert usw.\\ werd",
+   "status": "kept",
+   "destination": [
+    "c03.ex.kets"
+   ]
+  },
+  {
+   "item": "equation@24",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.epm"
+   ]
+  },
+  {
+   "item": "environment@25",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.epm"
+   ]
+  },
+  {
+   "item": "environment@27",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.epm"
+   ]
+  },
+  {
+   "item": "environment@29",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.epm"
+   ]
+  },
+  {
+   "item": "text@33",
+   "what": "und",
+   "status": "kept",
+   "destination": [
+    "c03.ex.kets"
+   ]
+  },
+  {
+   "item": "equation@34",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.epm"
+   ]
+  },
+  {
+   "item": "environment@35",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.epm"
+   ]
+  },
+  {
+   "item": "environment@37",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.epm"
+   ]
+  },
+  {
+   "item": "environment@39",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.epm"
+   ]
+  },
+  {
+   "item": "text@45",
+   "what": "Beachten Sie, dass es keinen Unterschied macht ob wir $|v+w\\",
+   "status": "kept",
+   "destination": [
+    "c03.s4"
+   ],
+   "migration": [
+    "M-0021"
+   ]
+  },
+  {
+   "item": "equation@46",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.s4"
+   ]
+  },
+  {
+   "item": "text@51",
+   "what": "Die Ket-Notation wird durch die Einführung sogenannter ,,Bra",
+   "status": "kept",
+   "destination": [
+    "c03.s4",
+    "D81"
+   ]
+  },
+  {
+   "item": "equation@52",
+   "what": "equation*",
+   "status": "kept",
+   "destination": [
+    "D81"
+   ]
+  },
+  {
+   "item": "environment@53",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "D81"
+   ]
+  },
+  {
+   "item": "text@57",
+   "what": "würde mit Ket-Notation $|v\\rangle$ geschrieben werden, dann ",
+   "status": "kept",
+   "destination": [
+    "D81"
+   ]
+  },
+  {
+   "item": "equation@58",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D81"
+   ]
+  },
+  {
+   "item": "environment@59",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "D81"
+   ]
+  },
+  {
+   "item": "text@63",
+   "what": "darstellen. Wir definieren das Ergebnis der auf einen Ket-Ve",
+   "status": "kept",
+   "destination": [
+    "D81"
+   ]
+  },
+  {
+   "item": "equation@64",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D81"
+   ]
+  },
+  {
+   "item": "text@68",
+   "what": "Mit dieser Notation lässt sich das Skalarprodukt zweier Vekt",
+   "status": "kept",
+   "destination": [
+    "D81"
+   ]
+  },
+  {
+   "item": "equation@69",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D81"
+   ]
+  },
+  {
+   "item": "text@72",
+   "what": "(Die Schreibweise ,,Bra-Ket`` geht auf diese Definition zurü",
+   "status": "kept",
+   "destination": [
+    "c03.s4"
+   ]
+  },
+  {
+   "item": "environment@74",
+   "what": "historical",
+   "status": "kept",
+   "destination": [
+    "c03.s4"
+   ]
+  },
+  {
+   "item": "text@75",
+   "what": "Die Notation stammt von Paul Dirac. Englisch \\emph{bracket} ",
+   "status": "kept",
+   "destination": [
+    "c03.s4"
+   ]
+  },
+  {
+   "item": "environment@78",
+   "what": "beispiel",
+   "status": "kept",
+   "destination": [
+    "c03.ex.braket"
+   ]
+  },
+  {
+   "item": "text@79",
+   "what": "Im Fall $V\\equiv \\mathbb{C}^2$ wird das Skalarprodukt von $|",
+   "status": "kept",
+   "destination": [
+    "c03.ex.braket"
+   ]
+  },
+  {
+   "item": "equation@80",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.e0eplus"
+   ]
+  },
+  {
+   "item": "environment@81",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.e0eplus"
+   ]
+  },
+  {
+   "item": "environment@83",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.e0eplus"
+   ]
+  },
+  {
+   "item": "text@89",
+   "what": "Es ist wichtig zu beachten, dass sich eine Linearkombination",
+   "status": "kept",
+   "destination": [
+    "c03.eq.bra-regel"
+   ]
+  },
+  {
+   "item": "equation@90",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.bra-regel",
+    "c03.cl.bra-regel"
+   ]
+  },
+  {
+   "item": "text@93",
+   "what": "Genau diese Regel macht die Notation nützlich: Wir rechnen S",
+   "status": "kept",
+   "destination": [
+    "c03.s4"
+   ]
+  },
+  {
+   "item": "environment@95",
+   "what": "beispiel",
+   "status": "kept",
+   "destination": [
+    "c03.ex.dirac"
+   ]
+  },
+  {
+   "item": "text@96",
+   "what": "Das Skalarprodukt $\\langle v|w\\rangle$ von",
+   "status": "kept",
+   "destination": [
+    "c03.ex.dirac"
+   ]
+  },
+  {
+   "item": "equation@97",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.dirac-vw"
+   ]
+  },
+  {
+   "item": "environment@98",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.dirac-vw"
+   ]
+  },
+  {
+   "item": "environment@100",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.dirac-vw"
+   ]
+  },
+  {
+   "item": "text@104",
+   "what": "kann wie folgt berechnet werden. Erstens: Beachten Sie, dass",
+   "status": "kept",
+   "destination": [
+    "c03.ex.dirac"
+   ]
+  },
+  {
+   "item": "equation@105",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.ex.dirac"
+   ]
+  },
+  {
+   "item": "text@108",
+   "what": "Setzen wir diese Darstellungen in das Skalarprodukt ein, erh",
+   "status": "kept",
+   "destination": [
+    "c03.ex.dirac"
+   ]
+  },
+  {
+   "item": "equation@109",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.dirac",
+    "c03.cl.dirac"
+   ]
+  },
+  {
+   "item": "text@117",
+   "what": "Wir hätten dieses Ergebnis auch erhalten können, indem wir e",
+   "status": "kept",
+   "destination": [
+    "c03.ex.dirac"
+   ]
+  },
+  {
+   "item": "equation@118",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.ex.dirac"
+   ]
+  },
+  {
+   "item": "environment@119",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.ex.dirac"
+   ]
+  },
+  {
+   "item": "environment@121",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.ex.dirac"
+   ]
+  },
+  {
+   "item": "text@127",
+   "what": "Seien wir ehrlich: In zwei Dimensionen ist der erste Weg auf",
+   "status": "kept",
+   "destination": [
+    "c03.s4"
+   ],
+   "note": "'Seien wir ehrlich' and the honest balance are kept (v03 [71:22]-[72:54]); the dimension count 'Ab fünf oder sechs Dimensionen kippt das Verhältnis' is an estimate without derivation and is left out under the numbers rule (COORDINATION.md rule 10); the chapter says 'in höheren Dimensionen' (G-0072 (c))."
+  },
+  {
+   "item": "section@129",
+   "what": "\\subsection{Skalarprodukte}",
+   "status": "kept",
+   "destination": [
+    "c03.s5"
+   ]
+  },
+  {
+   "item": "text@130",
+   "what": "Bevor wir die Definition eines Hilbertraums vorstellen, müss",
+   "status": "kept",
+   "destination": [
+    "c03.s5"
+   ]
+  },
+  {
+   "item": "text@132",
+   "what": "Skalarprodukte gibt es unendlich viele, und ein Vektorraum k",
+   "status": "kept",
+   "destination": [
+    "c03.s5",
+    "c03.ex.gewichtet"
+   ],
+   "note": "'Skalarprodukte gibt es unendlich viele' is supported by the derived example c03.ex.gewichtet (claim c03.cl.gewichtet)."
+  },
+  {
+   "item": "text@134",
+   "what": "Ein \\emph{Skalarprodukt} für einen komplexen Vektorraum $V$ ",
+   "status": "kept",
+   "destination": [
+    "D82"
+   ],
+   "migration": [
+    "M-0020"
+   ]
+  },
+  {
+   "item": "environment@135",
+   "what": "align",
+   "status": "kept",
+   "destination": [
+    "D82"
+   ]
+  },
+  {
+   "item": "text@136",
+   "what": "\\langle \\phi|z\\psi\\rangle &= z \\langle \\phi|\\psi\\rangle \\\\",
+   "status": "kept",
+   "destination": [
+    "D82"
+   ]
+  },
+  {
+   "item": "text@139",
+   "what": "Die Komplexkonjugation in der zweiten Formel ist wichtig, da",
+   "status": "kept",
+   "destination": [
+    "c03.eq.warum-stern",
+    "c03.cl.warum-stern"
+   ],
+   "note": "The reason for the star ('damit die Norm positiv sein kann') is made exact as c03.eq.warum-stern (derived)."
+  },
+  {
+   "item": "text@141",
+   "what": "Zur Definition des Skalarprodukts gehört noch die \\emph{Posi",
+   "status": "kept",
+   "destination": [
+    "D82"
+   ]
+  },
+  {
+   "item": "equation@142",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D82"
+   ]
+  },
+  {
+   "item": "text@148",
+   "what": "Diese Eigenschaft erlaubt uns die Definition der \\emph{Norm}",
+   "status": "kept",
+   "destination": [
+    "D83"
+   ]
+  },
+  {
+   "item": "equation@149",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D83"
+   ]
+  },
+  {
+   "item": "text@152",
+   "what": "Zwei wichtige Folgerungen aus der Positivität sind",
+   "status": "kept",
+   "destination": [
+    "c03.prop.symmetrie"
+   ],
+   "note": "'Folgerungen aus der Positivität' is kept and proved: conjugate symmetry follows from additivity, the scalar rules and positivity (c03.prop.symmetrie). Reed-Simon take it as an axiom (P-0152)."
+  },
+  {
+   "item": "equation@153",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.symmetrie",
+    "c03.cl.symmetrie"
+   ]
+  },
+  {
+   "item": "text@156",
+   "what": "und die \\emph{Schwarz'sche Ungleichung}",
+   "status": "kept",
+   "destination": [
+    "c03.prop.schwarz"
+   ]
+  },
+  {
+   "item": "equation@157",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.schwarz",
+    "c03.cl.schwarz"
+   ]
+  },
+  {
+   "item": "text@160",
+   "what": "Daraus folgt auch die Dreiecksungleichung",
+   "status": "kept",
+   "destination": [
+    "c03.prop.dreieck"
+   ]
+  },
+  {
+   "item": "equation@161",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.dreieck",
+    "c03.cl.dreieck"
+   ]
+  },
+  {
+   "item": "text@164",
+   "what": "Beide sind Arbeitsgeräte: Die Schwarz'sche Ungleichung steck",
+   "status": "kept",
+   "destination": [
+    "c03.s5"
+   ],
+   "note": "Kept with a srcref to the script; G-0072 (b) asks TJO whether 'steckt hinter der Unschärferelation' stays, since vl09 proves the uncertainty relation by a positivity argument, not by the Schwarz inequality by name. 'Vorlesung 9' becomes 'Kapitel 6' (PLAN.md section 5: C6 Uncertainty). 'mit der Dreiecksungleichung schätzen wir Größen ab' is kept as the script says it; the chapter's example 'zum Beispiel die Energie eines Systems' (spoken, v04) is removed after evidence/derivations/c03/REVIEW-lec3.md, B, row UNSUPPORTED: no source or derivation gives such a bound."
+  },
+  {
+   "item": "text@166",
+   "what": "Man nennt zwei Vektoren \\emph{orthogonal} (in Symbolen $|\\ph",
+   "status": "kept",
+   "destination": [
+    "D84"
+   ]
+  },
+  {
+   "item": "equation@167",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D84"
+   ]
+  },
+  {
+   "item": "text@170",
+   "what": "Achtung: Ein verschwindendes Skalarprodukt heißt \\emph{nicht",
+   "status": "kept",
+   "destination": [
+    "c03.s5",
+    "c03.ex.orthogonal"
+   ],
+   "note": "The warning is kept; the derived example c03.ex.orthogonal shows two nonzero orthogonal vectors."
+  },
+  {
+   "item": "section@173",
+   "what": "\\subsection{Hilbertraum}",
+   "status": "kept",
+   "destination": [
+    "c03.s6"
+   ]
+  },
+  {
+   "item": "environment@176",
+   "what": "definition",
+   "status": "kept",
+   "destination": [
+    "D14"
+   ]
+  },
+  {
+   "item": "text@177",
+   "what": "Hilbertraum $\\mathcal{H}$ ist als ein komplexer Vektorraum m",
+   "status": "kept",
+   "destination": [
+    "D14",
+    "c03.s6"
+   ]
+  },
+  {
+   "item": "text@180",
+   "what": "Für uns ist ein Hilbertraum also schlicht ein komplexer Vekt",
+   "status": "kept",
+   "destination": [
+    "c03.s6"
+   ],
+   "note": "Kept as TJO's stance ('für uns'), restricted after the review of Lecture 3 (docs/review/lectures/REVIEW-lec3.md, row SCOPE at de.tex:878; evidence/derivations/c03/REVIEW-lec3.md, B, row SCOPE at de.tex:883): the shortcut holds for the Kern calculations in C^n with the inner product of c03.s2, where completeness holds (zoom to c03.f3); in infinite dimension completeness is used. D14 now says what 'vollständig' means."
+  },
+  {
+   "item": "section@183",
+   "what": "\\subsection{Basis}",
+   "status": "kept",
+   "destination": [
+    "c03.s7"
+   ]
+  },
+  {
+   "item": "text@184",
+   "what": "Basen brauchen wir aus einem praktischen Grund: Die meisten ",
+   "status": "kept",
+   "destination": [
+    "c03.s7"
+   ]
+  },
+  {
+   "item": "text@186",
+   "what": "Eine \\emph{Basis} eines Hilbertraums $\\mathcal{H}$ ist ein S",
+   "status": "kept",
+   "destination": [
+    "D84",
+    "D85"
+   ],
+   "note": "The Kern restricts the index set to finite sets (D4, D85); arbitrary index sets are D86 in Vertiefung c03.v4."
+  },
+  {
+   "item": "environment@187",
+   "what": "align",
+   "status": "kept",
+   "destination": [
+    "D84",
+    "D85"
+   ],
+   "migration": [
+    "M-0019",
+    "M-0022"
+   ]
+  },
+  {
+   "item": "text@188",
+   "what": "\\langle \\phi_j|\\phi_k\\rangle &=\\delta_{jk}, \\quad &\\text{für",
+   "status": "kept",
+   "destination": [
+    "D84",
+    "D85"
+   ],
+   "migration": [
+    "M-0019",
+    "M-0022"
+   ]
+  },
+  {
+   "item": "text@191",
+   "what": "Achtung: Diese Vollständigkeit hat nichts mit der Vollständi",
+   "status": "kept",
+   "destination": [
+    "c03.s7"
+   ],
+   "note": "Both warnings kept; 'die später vorkommt' replaces the unsourced remark that the Dirac delta 'has already appeared'. 'hat nichts mit ... zu tun' becomes 'ein anderer Begriff von Vollständigkeit' (evidence/derivations/c03/REVIEW-lec3.md, B, row MINOR at de.tex:907)."
+  },
+  {
+   "item": "text@193",
+   "what": "Die wichtigste Eigenschaft einer solchen Basis ist, dass jed",
+   "status": "kept",
+   "destination": [
+    "c03.prop.entwicklung"
+   ],
+   "migration": [
+    "M-0017"
+   ]
+  },
+  {
+   "item": "equation@194",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.vollstaendigkeit"
+   ],
+   "migration": [
+    "M-0017"
+   ]
+  },
+  {
+   "item": "text@197",
+   "what": "Diese Gleichung ist eine Form der sogenannten \\emph{Vollstän",
+   "status": "kept",
+   "destination": [
+    "c03.prop.entwicklung",
+    "c03.s7"
+   ]
+  },
+  {
+   "item": "equation@198",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.vollstaendigkeit",
+    "c03.cl.entwicklung"
+   ]
+  },
+  {
+   "item": "text@201",
+   "what": "Sie sieht harmlos aus, wird aber ständig angewandt.",
+   "status": "kept",
+   "destination": [
+    "c03.s7"
+   ]
+  },
+  {
+   "item": "figure@203",
+   "what": "\\input{figures/fig_vl03_vollst}",
+   "status": "kept",
+   "destination": [
+    "c03.fig.vollst"
+   ],
+   "note": "Redrawn in the chapter's figure language (content/c03-hilbertraum/figures/vollst.tex): same geometry and weights, state in the state role, the two bases in data roles q1 and q3 with dashed and dotted rectangles; numbers recomputed by check_c03.py (c03.cl.zwei-basen). The numbers moved from the figure into example c03.ex.zwei-basen."
+  },
+  {
+   "item": "text@205",
+   "what": "Die Abbildung rechnet das an den beiden Basen des Eingangsbe",
+   "status": "kept",
+   "destination": [
+    "c03.s7",
+    "c03.ex.zwei-basen"
+   ]
+  },
+  {
+   "item": "text@212",
+   "what": "Für unendlich-dimensionale Vektorräume ist die Existenz von ",
+   "status": "kept",
+   "destination": [
+    "c03.s7",
+    "c03.v4",
+    "c03.s7.1"
+   ],
+   "note": "Existence in finite dimension: c03.eq.kanonisch (derived). Existence in infinite dimension: Vertiefung c03.v4 states the assumption 'Wir gehen ab sofort davon aus, dass wir immer eine Basis haben' directly (no retrospective frame, after docs/review/lectures/REVIEW-lec3.md, row VOICE at de.tex:1045) and follows it by Reed-Simon Theorem II.5 (c03.thm.existenz); the expansion theorem is stated for countable index sets (row WRONG at de.tex:1048). 'beliebig gewählte Vektoren bilden normalerweise keine Basis' becomes 'im Allgemeinen keine Basis' with the counterexample e_0, e_+. The Gram-Schmidt procedure is stated for finite lists (c03.prop.gram-schmidt)."
+  },
+  {
+   "item": "equation@213",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.gram-schmidt"
+   ]
+  },
+  {
+   "item": "text@216",
+   "what": "wobei Summanden mit $|\\Phi_k\\rangle= 0$ ausgelassen werden.\\",
+   "status": "kept",
+   "destination": [
+    "c03.prop.gram-schmidt",
+    "c03.s7.1"
+   ],
+   "migration": [
+    "M-0018"
+   ],
+   "note": "The footnote is folded into the text (footnotes are not in the authoring contract)."
+  },
+  {
+   "item": "equation@218",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.prop.gram-schmidt"
+   ]
+  },
+  {
+   "item": "text@221",
+   "what": "bilden dann ein Orthonormalsystem, das den gleichen Teilraum",
+   "status": "kept",
+   "destination": [
+    "c03.prop.gram-schmidt",
+    "c03.cl.gram-schmidt"
+   ],
+   "migration": [
+    "M-0023"
+   ]
+  },
+  {
+   "item": "text@223",
+   "what": "Rechnen wir das Verfahren einmal ganz durch.",
+   "status": "kept",
+   "destination": [
+    "c03.s7.1"
+   ]
+  },
+  {
+   "item": "environment@225",
+   "what": "beispiel",
+   "status": "kept",
+   "destination": [
+    "c03.ex.gram-schmidt"
+   ]
+  },
+  {
+   "item": "text@226",
+   "what": "Wir arbeiten in $\\mathbb{C}^2$ und starten mit zwei ausgedac",
+   "status": "kept",
+   "destination": [
+    "c03.ex.gram-schmidt"
+   ]
+  },
+  {
+   "item": "equation@227",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.gs-start"
+   ]
+  },
+  {
+   "item": "environment@228",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.gs-start"
+   ]
+  },
+  {
+   "item": "environment@230",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.gs-start"
+   ]
+  },
+  {
+   "item": "text@234",
+   "what": "Im ersten Schritt läuft die Summe von $1$ bis $0$, es wird a",
+   "status": "kept",
+   "destination": [
+    "c03.ex.gram-schmidt"
+   ]
+  },
+  {
+   "item": "equation@235",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.ex.gram-schmidt"
+   ]
+  },
+  {
+   "item": "environment@236",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.ex.gram-schmidt"
+   ]
+  },
+  {
+   "item": "text@240",
+   "what": "Im zweiten Schritt bleibt nur der Term $k=1$ übrig. Mit $\\la",
+   "status": "kept",
+   "destination": [
+    "c03.ex.gram-schmidt"
+   ]
+  },
+  {
+   "item": "equation@241",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.gs-beispiel"
+   ]
+  },
+  {
+   "item": "environment@242",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.gs-beispiel"
+   ]
+  },
+  {
+   "item": "environment@244",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.gs-beispiel"
+   ]
+  },
+  {
+   "item": "environment@246",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.gs-beispiel"
+   ]
+  },
+  {
+   "item": "text@250",
+   "what": "Beide Vektoren haben schon die Norm eins: Aus einer beliebig",
+   "status": "kept",
+   "destination": [
+    "c03.ex.gram-schmidt",
+    "c03.s7.1"
+   ],
+   "note": "'funktionieren tut sie immer' is made precise: the procedure always yields an orthonormal system, and a basis under the condition of part 4."
+  },
+  {
+   "item": "section@253",
+   "what": "\\subsection{Operatoren}",
+   "status": "deferred",
+   "deferred_to": "c03 (Lecture 4, vl04 migration)",
+   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3."
+  },
+  {
+   "item": "text@254",
+   "what": "Nun zum zweiten Standbein der Theorie. Die Vektoren beschrei",
+   "status": "deferred",
+   "deferred_to": "c03 (Lecture 4, vl04 migration)",
+   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3."
+  },
+  {
+   "item": "text@256",
+   "what": "Sei $\\mathcal{H}$ einen Hilbertraum. Ein \\emph{Operator} $A$",
+   "status": "deferred",
+   "deferred_to": "c03 (Lecture 4, vl04 migration)",
+   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3.",
+   "migration": [
+    "M-0024"
+   ]
+  },
+  {
+   "item": "equation@257",
+   "what": "equation",
+   "status": "deferred",
+   "deferred_to": "c03 (Lecture 4, vl04 migration)",
+   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3."
+  },
+  {
+   "item": "text@260",
+   "what": "Das heisst,",
+   "status": "deferred",
+   "deferred_to": "c03 (Lecture 4, vl04 migration)",
+   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3.",
+   "migration": [
+    "M-0024"
+   ]
+  },
+  {
+   "item": "equation@261",
+   "what": "equation",
+   "status": "deferred",
+   "deferred_to": "c03 (Lecture 4, vl04 migration)",
+   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3."
+  },
+  {
+   "item": "text@264",
+   "what": "und",
+   "status": "deferred",
+   "deferred_to": "c03 (Lecture 4, vl04 migration)",
+   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3."
+  },
+  {
+   "item": "equation@265",
+   "what": "equation",
+   "status": "deferred",
+   "deferred_to": "c03 (Lecture 4, vl04 migration)",
+   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3."
+  },
+  {
+   "item": "text@268",
+   "what": "für alle $\\alpha\\in \\mathbb{C}$ und $|\\phi\\rangle, |\\psi\\ran",
+   "status": "deferred",
+   "deferred_to": "c03 (Lecture 4, vl04 migration)",
+   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3."
+  },
+  {
+   "item": "environment@270",
+   "what": "beispiel",
+   "status": "deferred",
+   "deferred_to": "c03 (Lecture 4, vl04 migration)",
+   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3."
+  },
+  {
+   "item": "text@271",
+   "what": "Im Fall, dass $\\mathcal{H}$ endlich dimensional ist, kann ma",
+   "status": "deferred",
+   "deferred_to": "c03 (Lecture 4, vl04 migration)",
+   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3.",
+   "migration": [
+    "M-0024"
+   ]
+  },
+  {
+   "item": "equation@272",
+   "what": "equation",
+   "status": "deferred",
+   "deferred_to": "c03 (Lecture 4, vl04 migration)",
+   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3."
+  },
+  {
+   "item": "environment@273",
+   "what": "pmatrix",
+   "status": "deferred",
+   "deferred_to": "c03 (Lecture 4, vl04 migration)",
+   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3."
+  },
+  {
+   "item": "text@277",
+   "what": "wobei $a_{jk} \\in \\mathbb{C}$, $\\forall 1 \\le j,k\\le 2$. Die",
+   "status": "deferred",
+   "deferred_to": "c03 (Lecture 4, vl04 migration)",
+   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3."
+  }
+ ],
+ "added_spoken": [
+  {
+   "what": "'das ist so, wir müssen damit leben'; 'Mathematiker mögen diese Notation nicht, Physiker lieben diese Notation, das ist der Unterschied zwischen Mathematikern und Physikern'",
+   "locus": "v03 [43:57]-[44:17]",
+   "destination": [
+    "c03.s4"
+   ]
+  },
+  {
+   "what": "the two extra symbols bring an advantage that is not yet obvious; the explanation will come",
+   "locus": "v03 [45:47]-[46:10]",
+   "destination": [
+    "c03.s4"
+   ]
+  },
+  {
+   "what": "some calculation rules are implicit in the notation",
+   "locus": "v03 [46:15]-[46:34]",
+   "destination": [
+    "c03.s4"
+   ]
+  },
+  {
+   "what": "'|e_0> steht für diesen Vektor, so soll man diese Gleichung lesen'; insert the columns to see which vector is represented",
+   "locus": "v03 [47:21]-[48:41]",
+   "destination": [
+    "c03.ex.kets"
+   ]
+  },
+  {
+   "what": "|e_±> appear in angular momentum, hydrogen and spin systems (left out: no written source, G-0072 (a))",
+   "locus": "v03 [49:20]-[49:46]",
+   "destination": []
+  },
+  {
+   "what": "later lectures drop the columns; at the beginning always insert them; many such calculations in the exercises",
+   "locus": "v03 [50:02]-[51:04]",
+   "destination": [
+    "c03.s4"
+   ]
+  },
+  {
+   "what": "'wenn man diese komischen Symbole sieht, muss man dieses Objekt als einen Zeilenvektor verstehen'",
+   "locus": "v03 [53:32]-[53:41]",
+   "destination": [
+    "c03.s4"
+   ]
+  },
+  {
+   "what": "bracket, bra, ket, the lost c; Dirac introduced the notation, used universally",
+   "locus": "v03 [55:09]-[56:11]",
+   "destination": [
+    "c03.s4"
+   ]
+  },
+  {
+   "what": "no new definition, a new notation for the same objects and equations; three notations for one quantity; the two expressions are identified",
+   "locus": "v03 [56:45]-[59:27]",
+   "destination": [
+    "c03.s4"
+   ]
+  },
+  {
+   "what": "in infinite dimension one cannot write a vector down completely; ket notation and the rule are the way to calculate efficiently",
+   "locus": "v03 [64:02]-[65:06]",
+   "destination": [
+    "c03.s4"
+   ]
+  },
+  {
+   "what": "'trotzdem verwende ich diese Notation in zwei Dimensionen, weil sie sehr schön mit Operatoren und Matrizen zusammenspielt'; 'ab 5, 6, 7 Dimensionen' (number left out, G-0072 (c))",
+   "locus": "v03 [71:52]-[72:54]",
+   "destination": [
+    "c03.s4"
+   ]
+  },
+  {
+   "what": "once you master the ket notation you can read the equations; 'Ket steht für Vektor'",
+   "locus": "v03 [73:22]-[73:44]",
+   "destination": [
+    "c03.s4"
+   ]
+  },
+  {
+   "what": "'ich habe ein Beispiel von Skalarprodukt immer verwendet, aber es gibt unendlich viele'; 'für immer und ewig in der Physik'; flexibility; a vector space can exist without an inner product; 'nicht kanonisch'",
+   "locus": "v03 [74:13]-[75:47]",
+   "destination": [
+    "c03.s5"
+   ]
+  },
+  {
+   "what": "not every such assignment counts as an inner product",
+   "locus": "v03 [77:06]-[77:15]",
+   "destination": [
+    "c03.s5"
+   ]
+  },
+  {
+   "what": "the rules hold in finite and infinite dimension; therefore notation and concept are important",
+   "locus": "v03 [79:56]-[80:06]",
+   "destination": [
+    "c03.s5"
+   ]
+  },
+  {
+   "what": "the norm is often written simply as the modulus of psi",
+   "locus": "v03 [83:39]-[83:43]",
+   "destination": [
+    "c03.s5"
+   ]
+  },
+  {
+   "what": "completeness: very important but subtle, not relevant for the lecture, calculations simplify by ignoring it; 'ein Hilbertraum ist nichts anderes als ein komplexer Vektorraum mit Skalarprodukt'",
+   "locus": "v03 [87:13]-[87:38], [89:12]-[89:21]",
+   "destination": [
+    "c03.s6"
+   ]
+  },
+  {
+   "what": "'diese Positivitätsbedingungen sind sehr stark, die haben sehr schöne Folgen'; conjugate symmetry 'nichts Neues' for the examples",
+   "locus": "v04 [02:20]-[03:31]",
+   "destination": [
+    "c03.s5",
+    "c03.prop.symmetrie"
+   ]
+  },
+  {
+   "what": "Schwarz inequality 'extrem schön', allows to prove the Heisenberg relation, particularly useful in quantum mechanics, holds for all phi, psi",
+   "locus": "v04 [03:38]-[05:04]",
+   "destination": [
+    "c03.prop.schwarz",
+    "c03.s5"
+   ]
+  },
+  {
+   "what": "the triangle inequality is proved with the Schwarz inequality (the spoken example 'to bound the energy of a system' is not kept: no source or derivation gives the bound; evidence/derivations/c03/REVIEW-lec3.md, B, row UNSUPPORTED)",
+   "locus": "v04 [05:32]-[06:45]",
+   "destination": [
+    "c03.prop.dreieck",
+    "c03.s5"
+   ]
+  },
+  {
+   "what": "orthogonality as in three dimensions; a vanishing inner product does not mean a vector is zero",
+   "locus": "v04 [06:51]-[08:44]",
+   "destination": [
+    "c03.s5",
+    "c03.ex.orthogonal"
+   ]
+  },
+  {
+   "what": "the norm as a length; the vectors live in an abstract space, still helpful to read them as lengths",
+   "locus": "v04 [08:47]-[09:22]",
+   "destination": [
+    "c03.s5"
+   ]
+  },
+  {
+   "what": "'diese Eigenschaften werden wir quasi ständig verwenden'; the Schwarz inequality is the most important, coupled to Heisenberg's inequality (the exam remark is left out)",
+   "locus": "v04 [09:26]-[10:11]",
+   "destination": [
+    "c03.s5"
+   ]
+  },
+  {
+   "what": "a basis: vectors with nice properties along which all others decompose; one chooses a basis and calculates in it",
+   "locus": "v04 [10:27]-[11:24]",
+   "destination": [
+    "c03.s7"
+   ]
+  },
+  {
+   "what": "'verwirrenderweise sagen wir, dass diese Basis vollständig ist; das hat gar nichts zu tun mit der Vollständigkeit von gestern'; two deltas in quantum mechanics",
+   "locus": "v04 [14:22]-[15:16]",
+   "destination": [
+    "c03.s7"
+   ]
+  },
+  {
+   "what": "the qubit basis e_0, e_1 checked: four inner products, n^2 equations ('quasi n^2 durch zwei'; the chapter says j <= k suffice), completeness for psi = alpha e_0 + beta e_1",
+   "locus": "v04 [16:55]-[22:29]",
+   "destination": [
+    "c03.ex.basis",
+    "c03.s7"
+   ]
+  },
+  {
+   "what": "'wenn Sie ein bisschen Langeweile haben'; a system chosen arbitrarily normally is no basis",
+   "locus": "v04 [22:59]-[23:39]",
+   "destination": [
+    "c03.s7"
+   ]
+  },
+  {
+   "what": "the expansion 'sieht harmlos aus, aber wir wenden diese Gleichung ständig an'; a form of the completeness relation",
+   "locus": "v04 [24:37]-[25:48]",
+   "destination": [
+    "c03.prop.entwicklung",
+    "c03.s7"
+   ]
+  },
+  {
+   "what": "in finite dimension there is always a basis (1,0,...), (0,1,...); in infinite dimension existence must be proved, very hard; assumed from now on",
+   "locus": "v04 [25:56]-[27:16]",
+   "destination": [
+    "c03.eq.kanonisch",
+    "c03.v4"
+   ]
+  },
+  {
+   "what": "'dieses Orthonormierungsverfahren liefert uns immer eine Basis' (not adopted: needs the condition of vl03.tex:221; G-0072 (d)); the input vectors are completely arbitrary",
+   "locus": "v04 [27:58]-[29:22]",
+   "destination": [
+    "c03.s7.1"
+   ]
+  },
+  {
+   "what": "all quantities are computable; the scalar written to the right of the vector ('in der Definition stand immer an der linken Seite ... aber Sie müssen damit leben'); n has nothing to do with the dimension",
+   "locus": "v04 [31:20]-[33:27]",
+   "destination": [
+    "c03.s7.1"
+   ]
+  },
+  {
+   "what": "terms with Psi_k = 0 are left out because of division by zero; some Psi_n can be zero",
+   "locus": "v04 [33:36]-[34:16], [36:49]-[36:55]",
+   "destination": [
+    "c03.s7.1",
+    "c03.exc.gram-schmidt"
+   ]
+  },
+  {
+   "what": "the procedure is helpful but has several parts and can be confusing; 'mein Lieblings-Hilbertraum C^2'; vectors 'gerade ausgedacht'",
+   "locus": "v04 [38:11]-[40:46]",
+   "destination": [
+    "c03.ex.gram-schmidt"
+   ]
+  },
+  {
+   "what": "'es geht genauso, es wird nur aufwendiger'; it always works",
+   "locus": "v04 [46:17]-[46:45]",
+   "destination": [
+    "c03.s7.1"
+   ]
+  }
+ ],
+ "added_author": [
+  {
+   "what": "|z v> = z|v> stated next to |v+w> = |v> + |w> (needed to read D82)",
+   "support": "notation convention (D81, D82)",
+   "destination": [
+    "c03.s4"
+   ]
+  },
+  {
+   "what": "the bra rule derived from the entrywise conjugation",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.bra-regel",
+   "destination": [
+    "c03.eq.bra-regel"
+   ]
+  },
+  {
+   "what": "why the star: a bilinear positive assignment is impossible",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.warum-stern",
+   "destination": [
+    "c03.eq.warum-stern"
+   ]
+  },
+  {
+   "what": "example: infinitely many inner products v_1* w_1 + c v_2* w_2 on C^2",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.gewichtet",
+   "destination": [
+    "c03.ex.gewichtet"
+   ]
+  },
+  {
+   "what": "proofs of conjugate symmetry from the axioms, of the Schwarz inequality and of the triangle inequality",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.symmetrie, #c03.cl.schwarz, #c03.cl.dreieck; Reed-Simon I pp. 36, 38 (P-0152 to P-0154)",
+   "destination": [
+    "c03.prop.symmetrie",
+    "c03.prop.schwarz",
+    "c03.prop.dreieck"
+   ]
+  },
+  {
+   "what": "example: e_± orthonormal, e_0, e_1 orthonormal",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.orthogonal",
+   "destination": [
+    "c03.ex.orthogonal"
+   ]
+  },
+  {
+   "what": "the second basis e_± of C^2 checked (needed for the figure)",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.basis",
+   "destination": [
+    "c03.ex.basis"
+   ]
+  },
+  {
+   "what": "proof of the expansion from completeness and its converse (finite index set)",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.entwicklung",
+   "destination": [
+    "c03.prop.entwicklung"
+   ]
+  },
+  {
+   "what": "the merksatz box replacing the script's boxed key equation (\\eqbox is not in the authoring contract)",
+   "support": "c03.cl.entwicklung",
+   "destination": [
+    "c03.s7"
+   ]
+  },
+  {
+   "what": "example: one vector in two bases with the weights 4/5, 1/5, 9/10, 1/10 (the numbers of the figure)",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.zwei-basen; check_c03.py",
+   "destination": [
+    "c03.ex.zwei-basen",
+    "c03.fig.vollst"
+   ]
+  },
+  {
+   "what": "the canonical basis of C^n checked",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.kanonisch",
+   "destination": [
+    "c03.eq.kanonisch"
+   ]
+  },
+  {
+   "what": "Gram-Schmidt as a proposition with proof (orthogonality, span, normalisation, basis condition)",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.gram-schmidt; Reed-Simon I p. 46 (P-0155, P-0156)",
+   "destination": [
+    "c03.prop.gram-schmidt"
+   ]
+  },
+  {
+   "what": "exercise: a dependent third vector gives Psi_3 = 0",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.gs-null",
+   "destination": [
+    "c03.exc.gram-schmidt"
+   ]
+  },
+  {
+   "what": "Vertiefung c03.v4: definition D86 (Reed-Simon), existence (Theorem II.5), expansion and Parseval (Theorem II.6, stated for countable index sets), equivalence with the script's definition, the basis of l^2, the Hermite basis of L^2(R) and the normalisation of phi_0",
+   "support": "Reed-Simon I pp. 44-46, 142 (P-0157 to P-0164); evidence/derivations/c03/DERIVATION.md#c03.cl.maximal, #c03.cl.elltwo-basis, #c03.cl.phinull",
+   "destination": [
+    "c03.v4"
+   ]
+  },
+  {
+   "what": "Fundament c03.f1: lemma c03.lem.cs is the C^n case of proposition c03.prop.schwarz; the repeated proof in columns is replaced by this specialisation (docs/review/lectures/REVIEW-lec3.md, row MINOR at de.tex:1255)",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.cs, #c03.cl.schwarz",
+   "destination": [
+    "c03.f1"
+   ]
+  }
+ ]
+}

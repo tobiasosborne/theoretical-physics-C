@@ -2898,6 +2898,240 @@
    "read_from": "text",
    "reviewer": null,
    "review_receipt": null
+  },
+  {
+   "id": "P-0152",
+   "claim_ids": [
+    "c03.cl.symmetrie"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 48,
+    "printed_page": "36"
+   },
+   "quote": "(iv) (x, y) = \\overline{(y, x)}",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 3",
+   "review_receipt": "R-0152",
+   "notes": "Section II.1, definition of an inner product space, condition (iv). Read from the page image by the author of chapter C3, Lecture 3 (agent, 2026-10-21): ddjvu -format=pnm -page=48 -scale=150; not from the text layer. Independent page-image review passed (R-0152; evidence/derivations/c03/REVIEW-lec3.md, section A)."
+  },
+  {
+   "id": "P-0153",
+   "claim_ids": [
+    "c03.cl.schwarz"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 50,
+    "printed_page": "38"
+   },
+   "quote": "If x and y are vectors in an inner product space V, then |(x, y)| \\le \\|x\\| \\|y\\|",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 3",
+   "review_receipt": "R-0152",
+   "notes": "Section II.1, Corollary (the Schwarz inequality). Read from the page image by the author of chapter C3, Lecture 3 (agent, 2026-10-21): ddjvu -format=pnm -page=50 -scale=150; not from the text layer. Independent page-image review passed (R-0152; evidence/derivations/c03/REVIEW-lec3.md, section A)."
+  },
+  {
+   "id": "P-0154",
+   "claim_ids": [
+    "c03.cl.dreieck"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 50,
+    "printed_page": "38"
+   },
+   "quote": "Every inner product space V is a normed linear space with the norm \\|x\\| = (x, x)^{1/2}",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 3",
+   "review_receipt": "R-0152",
+   "notes": "Section II.1, Theorem II.2 (its proof checks the triangle inequality). Read from the page image by the author of chapter C3, Lecture 3 (agent, 2026-10-21): ddjvu -format=pnm -page=50 -scale=150; not from the text layer. Independent page-image review passed (R-0152; evidence/derivations/c03/REVIEW-lec3.md, section A)."
+  },
+  {
+   "id": "P-0155",
+   "claim_ids": [
+    "c03.cl.gram-schmidt"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 58,
+    "printed_page": "46"
+   },
+   "quote": "w_n = u_n - \\sum_{k=1}^{n-1} (v_k, u_n) v_k, \\quad v_n = w_n/\\|w_n\\|",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 3",
+   "review_receipt": "R-0152",
+   "notes": "Section II.3, Gram-Schmidt orthogonalization (general step; the printed second line w_2 = u_2 - (v_1, u_1)v_k is a misprint and is not quoted). Read from the page image by the author of chapter C3, Lecture 3 (agent, 2026-10-21): ddjvu -format=pnm -page=58 -scale=150; not from the text layer. Independent page-image review passed (R-0152; evidence/derivations/c03/REVIEW-lec3.md, section A)."
+  },
+  {
+   "id": "P-0156",
+   "claim_ids": [
+    "c03.cl.gram-schmidt"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 58,
+    "printed_page": "46"
+   },
+   "quote": "The family \\{v_j\\} is an orthonormal set and has the property that for each m, \\{u_j\\}_{j=1}^m and \\{v_j\\}_{j=1}^m span the same vector space.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 3",
+   "review_receipt": "R-0152",
+   "notes": "Section II.3, Gram-Schmidt orthogonalization. Read from the page image by the author of chapter C3, Lecture 3 (agent, 2026-10-21): ddjvu -format=pnm -page=58 -scale=150; not from the text layer. Independent page-image review passed (R-0152; evidence/derivations/c03/REVIEW-lec3.md, section A)."
+  },
+  {
+   "id": "P-0157",
+   "claim_ids": [
+    "c03.cl.existenz"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 56,
+    "printed_page": "44"
+   },
+   "quote": "Every Hilbert space \\mathcal{H} has an orthonormal basis.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 3",
+   "review_receipt": "R-0152",
+   "notes": "Section II.3, Theorem II.5. Read from the page image by the author of chapter C3, Lecture 3 (agent, 2026-10-21): ddjvu -format=pnm -page=56 -scale=150; not from the text layer. Independent page-image review passed (R-0152; evidence/derivations/c03/REVIEW-lec3.md, section A)."
+  },
+  {
+   "id": "P-0158",
+   "claim_ids": [
+    "c03.cl.parseval"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 57,
+    "printed_page": "45"
+   },
+   "quote": "y = \\sum_{\\alpha\\in A} (x_\\alpha, y) x_\\alpha \\quad (II.1) \\quad and \\quad \\|y\\|^2 = \\sum_{\\alpha\\in A} |(x_\\alpha, y)|^2 \\quad (II.2)",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 3",
+   "review_receipt": "R-0152",
+   "notes": "Section II.3, Theorem II.6, for an orthonormal basis S = \\{x_\\alpha\\}_{\\alpha\\in A} of a Hilbert space. Read from the page image by the author of chapter C3, Lecture 3 (agent, 2026-10-21): ddjvu -format=pnm -page=57 -scale=150; not from the text layer. Independent page-image review passed (R-0152; evidence/derivations/c03/REVIEW-lec3.md, section A)."
+  },
+  {
+   "id": "P-0159",
+   "claim_ids": [
+    "c03.cl.parseval"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 57,
+    "printed_page": "45"
+   },
+   "quote": "The equality in (II.1) means that the sum on the right-hand side converges (independent of order) to y in \\mathcal{H}.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 3",
+   "review_receipt": "R-0152",
+   "notes": "Section II.3, Theorem II.6. Read from the page image by the author of chapter C3, Lecture 3 (agent, 2026-10-21): ddjvu -format=pnm -page=57 -scale=150; not from the text layer. Independent page-image review passed (R-0152; evidence/derivations/c03/REVIEW-lec3.md, section A)."
+  },
+  {
+   "id": "P-0160",
+   "claim_ids": [
+    "c03.cl.parseval"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 57,
+    "printed_page": "45"
+   },
+   "quote": "Conversely, if \\sum_{\\alpha\\in A} |c_\\alpha|^2 < \\infty, c_\\alpha \\in \\mathbb{C}, then \\sum_{\\alpha\\in A} c_\\alpha x_\\alpha converges to an element of \\mathcal{H}.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 3",
+   "review_receipt": "R-0152",
+   "notes": "Section II.3, Theorem II.6 (the converse; Reed-Simon omit its proof, p. 46). Read from the page image by the author of chapter C3, Lecture 3 (agent, 2026-10-21): ddjvu -format=pnm -page=57 -scale=150; not from the text layer. Independent page-image review passed (R-0152; evidence/derivations/c03/REVIEW-lec3.md, section A)."
+  },
+  {
+   "id": "P-0161",
+   "claim_ids": [
+    "c03.cl.maximal"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 56,
+    "printed_page": "44"
+   },
+   "quote": "If S is an orthonormal set in a Hilbert space \\mathcal{H} and no other orthonormal set contains S as a proper subset, then S is called an orthonormal basis (or a complete orthonormal system) for \\mathcal{H}.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 3",
+   "review_receipt": "R-0152",
+   "notes": "Section II.3, definition before Theorem II.5 (also the source of D86). Read from the page image by the author of chapter C3, Lecture 3 (agent, 2026-10-21): ddjvu -format=pnm -page=56 -scale=150; not from the text layer. Independent page-image review passed (R-0152; evidence/derivations/c03/REVIEW-lec3.md, section A)."
+  },
+  {
+   "id": "P-0162",
+   "claim_ids": [
+    "c03.cl.hermite"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 154,
+    "printed_page": "142"
+   },
+   "quote": "The set \\{\\phi_n\\}_{n=0}^\\infty is an orthonormal basis for L^2(\\mathbb{R}).",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 3",
+   "review_receipt": "R-0152",
+   "notes": "Section V.3, Lemma 3 (proof: Problems 6 and 7 of Chapter IX or Problems 30 and 31 of Chapter X). Read from the page image by the author of chapter C3, Lecture 3 (agent, 2026-10-21): ddjvu -format=pnm -page=154 -scale=150; not from the text layer. Independent page-image review passed (R-0152; evidence/derivations/c03/REVIEW-lec3.md, section A)."
+  },
+  {
+   "id": "P-0163",
+   "claim_ids": [
+    "c03.cl.hermite"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 154,
+    "printed_page": "142"
+   },
+   "quote": "\\phi_0(x) = \\pi^{-\\frac14} e^{-\\frac12 x^2}",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 3",
+   "review_receipt": "R-0152",
+   "notes": "Section V.3, definition of the first Hermite function (A\\phi_0 = 0, normalised). Read from the page image by the author of chapter C3, Lecture 3 (agent, 2026-10-21): ddjvu -format=pnm -page=154 -scale=150; not from the text layer. Independent page-image review passed (R-0152; evidence/derivations/c03/REVIEW-lec3.md, section A)."
+  },
+  {
+   "id": "P-0164",
+   "claim_ids": [
+    "c03.cl.hermite"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 154,
+    "printed_page": "142"
+   },
+   "quote": "The \\{\\phi_n\\}_{n=0}^\\infty are called the Hermite functions or the harmonic oscillator wave functions",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 3",
+   "review_receipt": "R-0152",
+   "notes": "Section V.3. Read from the page image by the author of chapter C3, Lecture 3 (agent, 2026-10-21): ddjvu -format=pnm -page=154 -scale=150; not from the text layer. Independent page-image review passed (R-0152; evidence/derivations/c03/REVIEW-lec3.md, section A)."
   }
  ]
 }

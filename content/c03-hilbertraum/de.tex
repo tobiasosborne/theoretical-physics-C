@@ -1,26 +1,38 @@
 % content/c03-hilbertraum/de.tex — Kapitel 3: Werkzeugkasten Hilbertraum
 % (deutsche Leitfassung)
 %
-% Stand: der Stoff der zweiten Vorlesung (latex/lectures/de/vl02.tex, „Vorlesung: Hilbertraum“).
-% Das Kapitel wächst später um vl03 (Dirac-Notation, Axiome des Skalarprodukts, Definition des
-% Hilbertraums D14, Basen), vl04 (Operatoren) und vl05 (Spur, Diagonalisierung).  Neue
-% Abschnitte kommen als \section c03.s4, c03.s5, ... zwischen den Kern-Abschnitt c03.s3 und die
-% Fundament-Blöcke am Dateiende; die Fundament-Blöcke bleiben am Ende.
+% Stand: der Stoff der zweiten und dritten Vorlesung (latex/lectures/de/vl02.tex, „Vorlesung:
+% Hilbertraum“, und latex/lectures/de/vl03.tex, „Vorlesung: Hilbertraum, Basis, Operatoren“, ohne
+% deren Unterabschnitt Operatoren).  Das Kapitel wächst später um vl04 (Operatoren, mit dem
+% Unterabschnitt Operatoren von vl03) und vl05 (Spur, Diagonalisierung).  Neue Abschnitte kommen
+% als \section c03.s8, c03.s9, ... zwischen den letzten Kern-Abschnitt und die Fundament-Blöcke
+% am Dateiende; die Fundament-Blöcke bleiben am Ende.
 %
-% Wohin jede Zeile von vl02 gegangen ist: evidence/migrations/maps/vl02-map.json
-%   (geprüft mit evidence/migrations/check_vl02_map.py).
-% Fehler in vl02: evidence/migrations/M-0013.json bis M-0016.json.
-% Definitionen: Registry D75 bis D80.  Herleitungen: evidence/derivations/c03/DERIVATION.md,
-%   Anker = Claim-ID.  Seitenbild-Zitate aus Reed-Simon I: evidence/provenance.json P-0140 bis
-%   P-0150, Prüfquittung evidence/receipts/reviews/R-0140.json.
-% Stimme: Sätze aus vl02.tex sind beibehalten, wo sie stimmen; Bemerkungen aus den Videos
-%   (transcripts/clean/v02.md ab 76:43, v03.md bis 43:00) sind mit Zeitmarke kommentiert.
+% Wohin jede Zeile von vl02 und vl03 gegangen ist: evidence/migrations/maps/vl02-map.json und
+%   vl03-map.json (geprüft mit evidence/migrations/check_vl02_map.py und check_vl03_map.py).
+% Fehler in vl02: evidence/migrations/M-0013.json bis M-0016.json; in vl03: M-0017.json bis
+%   M-0024.json.
+% Definitionen: Registry D75 bis D80 (vl02), D81 bis D86 und D14 (vl03).  Herleitungen:
+%   evidence/derivations/c03/DERIVATION.md (Abschnitt „Lecture 3“ für vl03), Anker = Claim-ID;
+%   Zahlen nachgerechnet von evidence/derivations/c03/check_c03.py.  Seitenbild-Zitate aus
+%   Reed-Simon I: evidence/provenance.json P-0140 bis P-0150 (vl02, Prüfquittung
+%   evidence/receipts/reviews/R-0140.json) und P-0152 bis P-0164 (vl03, Prüfquittung
+%   evidence/receipts/reviews/R-0152.json).
+% Prüfungen der dritten Vorlesung: docs/review/lectures/REVIEW-lec3.md (Stimme und Richtigkeit)
+%   und evidence/derivations/c03/REVIEW-lec3.md (Seitenbilder, Mathematik, Migrationsakten);
+%   alle Befunde beider Tabellen sind in einer Reparaturrunde (2026-10-21) geschlossen, die
+%   Stellen sind im Text mit der Zeile der Prüfung kommentiert.
+% Stimme: Sätze aus vl02.tex und vl03.tex sind beibehalten, wo sie stimmen; Bemerkungen aus den
+%   Videos (transcripts/clean/v02.md ab 76:43, v03.md, v04.md bis 46:45; Zeitmarken geprüft an
+%   transcripts/raw/) sind mit Zeitmarke kommentiert.
 %
 % D4-Brücke (PLAN.md 1.3 und 14.7): Der Kern ist endlichdimensional.  C^n und das Skalarprodukt
-% auf C^n sind Kern; l^2 und L^2(R) stehen in den Vertiefungen c03.v1 und c03.v2, Vollständigkeit,
-% Äquivalenzklassen und Cauchy-Schwarz im Fundament.
+% auf C^n sind Kern, ebenso die allgemeinen Axiome des Skalarprodukts, Norm, Schwarz- und
+% Dreiecksungleichung, D14 und Basen mit endlicher Indexmenge; l^2 und L^2(R) stehen in den
+% Vertiefungen c03.v1 und c03.v2, Basen mit unendlicher Indexmenge in c03.v4, Vollständigkeit,
+% Äquivalenzklassen und Cauchy-Schwarz in C^n und l^2 im Fundament.
 % GAP-TJO: Der Wortlaut der Brücke in Abschnitt c03.s3 ist ein Vorschlag des Kapitelautors
-% (G-0033 (b); die Brücke in C5 ist G-0004).
+% (G-0033 (b); die Brücke in C5 ist G-0004).  Offene Punkte der dritten Vorlesung: G-0072.
 
 \chapter{Werkzeugkasten Hilbertraum}\label{c03}
 
@@ -532,41 +544,774 @@ von Dirac. Die eigentliche Hürde am Anfang der Quantenmechanik ist die Notation
 sich durchkämpfen. Am Anfang ist sie ungewohnt, am Ende macht sie alles leichter, und sie ist
 eine Einbahnstraße: Wer sie einmal beherrscht, geht nicht mehr zurück.
 
+% ── Vorlesung 3 (vl03): Dirac-Notation, Skalarprodukte, Hilbertraum, Basen ────────────────
+\section{Dirac-Notation}\label{c03.s4}
+
+% Stimme: vl03.tex:5; v03 [43:57]-[44:17] („das ist so, wir müssen damit leben“; „Mathematiker
+% mögen diese Notation nicht, Physiker lieben diese Notation“).
+Sei $V$ ein komplexer Vektorraum. In der Quantenmechanik wird die folgende Schreibweise
+universell verwendet; das ist so, wir müssen damit leben. Mathematiker mögen diese Notation
+nicht, Physiker lieben sie: Das ist der Unterschied zwischen Mathematikern und Physikern. Ab
+sofort schreiben wir jeden Vektor $\vb{v} \in V$ in der sogenannten Ket-Notation,
+\begin{equation*}
+  \vb{v} \mapsto \ket{v} .
+\end{equation*}
+Den Fettdruck lassen wir im Ket weg: Der senkrechte Strich und die spitze Klammer sagen schon,
+dass ein Vektor gemeint ist.
+
+% Stimme: vl03.tex:9; v03 [45:35]-[46:10].
+Diese Notation bedeutet zunächst nicht mehr als: „$\ket{v}$ steht für einen Vektor im
+Vektorraum $V$“. Dass uns die zwei zusätzlichen Symbole einen Vorteil bringen, ist nicht
+offensichtlich. Warum wir diese ungewöhnliche Notation eingeführt haben, wird bald klar.
+
+% Stimme: vl03.tex:13; v03 [46:15]-[46:34].
+Wir rechnen ein paar Beispiele durch, damit Sie mit der Notation vertraut werden. Es gibt
+dabei einige Rechenregeln, die nur implizit in der Notation stecken; man muss sie einmal
+gesehen haben.
+
+% Stimme: vl03.tex:15-42; v03 [46:41]-[48:59].
+\begin{example}[Kets in $\mathbb{C}^2$]\label{c03.ex.kets}\claim{c03.cl.kets}{derived}
+  Sei $V = \mathbb{C}^2$, der Raum, mit dem wir die Zustände eines Qubits beschreiben werden.
+  Zwei Beispielvektoren sind
+  \begin{equation}\label{c03.eq.e0e1}
+    \ket{e_0} = \begin{pmatrix} 1 \\ 0 \end{pmatrix},
+    \qquad
+    \ket{e_1} = \begin{pmatrix} 0 \\ 1 \end{pmatrix} .
+  \end{equation}
+  So soll man diese Gleichung lesen: $\ket{e_0}$ steht für diese Spalte, mehr nicht. In einem
+  Vektorraum darf man Vektoren addieren und mit Zahlen multiplizieren, und so bilden wir zwei
+  neue Vektoren,
+  \begin{equation}\label{c03.eq.epm}
+    \ket{e_\pm} = \tfrac{1}{\sqrt{2}}\, \ket{e_0} \pm \tfrac{1}{\sqrt{2}}\, \ket{e_1}
+    = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ 0 \end{pmatrix} \pm \frac{1}{\sqrt{2}} \begin{pmatrix} 0 \\ 1 \end{pmatrix}
+    = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ \pm 1 \end{pmatrix} .
+  \end{equation}
+  Welcher Vektor dargestellt ist, sieht man, indem man die Spalten aus
+  Gleichung~\eqref{c03.eq.e0e1} einsetzt.
+\end{example}
+
+% Stimme: v03 [50:02]-[51:04].
+% GAP-TJO: In der Vorlesung (v03 [49:20]-[49:46]) folgt der Satz, die Vektoren |e_±> tauchten
+% in der Theorie des Drehimpulses, beim Wasserstoffatom und besonders bei Spinsystemen immer
+% wieder auf.  Er hat keine schriftliche Quelle (vl03.tex sagt es nicht) und steht deshalb
+% nicht im Text (G-0072 (a)).
+In den kommenden Kapiteln lassen wir die Spalten meistens weg und rechnen lieber direkt mit
+der Notation. Am Anfang sollten Sie aber immer die ursprünglichen Spalten einsetzen, um zu
+sehen, was dargestellt wird; in den Übungen werden Sie viele solche Rechnungen durchführen.
+
+% Stimme: vl03.tex:45.  Die zweite Regel (Zahl im Ket) ist eine Ergänzung des Kapitelautors;
+% D82 braucht sie.
+Es macht übrigens keinen Unterschied, ob wir $\ket{v + w}$ oder $\ket{v} + \ket{w}$
+aufschreiben, und ebenso steht $\ket{z v}$ für $z \ket{v}$, wenn $z$ eine Zahl ist:
+\begin{equation*}
+  \ket{v + w} = \ket{v} + \ket{w} ,
+  \qquad
+  \ket{z v} = z \ket{v} .
+\end{equation*}
+
+% Stimme: vl03.tex:51-66; v03 [52:14]-[53:41] („wenn man diese komischen Symbole sieht, dann
+% muss man dieses Objekt als einen Zeilenvektor verstehen“).
+Ergänzt wird die Ket-Notation durch die sogenannten \emph{Bra}-Vektoren. Steht $\ket{v}$ für
+eine Spalte von $n$ komplexen Zahlen, so macht die Kreuz-Operation aus Abschnitt~\ref{c03.s2}
+daraus eine Zeile, und für diese Zeile führen wir ein eigenes Zeichen ein, $\bra{v}$. Wenn Sie
+dieses komische Symbol sehen, müssen Sie es als Zeilenvektor verstehen. Bra und Ket zusammen
+schreiben das Skalarprodukt.
+
+\tpcdef{D81}
+
+% Stimme: vl03.tex:72-76; v03 [55:09]-[56:11].
+\begin{historical}[Bra-Ket]
+  Die Notation stammt von Paul Dirac, und sie wird heute universell verwendet
+  \srcref{tpc-script-v0.2}{vl03, Kasten zur Schreibweise Bra-Ket}. Englisch \emph{bracket}
+  heißt Klammer: Links steht der „bra“, rechts der „ket“, und das „c“ ist irgendwo
+  verlorengegangen.
+\end{historical}
+
+% Stimme: v03 [56:45]-[59:27] („es gibt keine neue Definition, eine neue Notation für dieselben
+% Objekte“; „diese beiden Notationen werden identifiziert“).  Die Einschränkung auf das
+% Skalarprodukt aus c03.s2 und der Bra als Zuordnung für andere Skalarprodukte: Reparatur nach
+% docs/review/lectures/REVIEW-lec3.md, Zeile SCOPE (de.tex:630), und
+% evidence/derivations/c03/REVIEW-lec3.md, B, Zeile SCOPE (de.tex:627).
+Das ist keine neue Definition, sondern eine neue Notation für dieselben Objekte und dieselben
+Gleichungen. Für dieselbe Zahl haben wir jetzt drei Schreibweisen, die Summe
+$\sum_{j} v_j^* w_j$, das Produkt $\vb{v}\adj\vb{w}$ und das Bra-Ket $\braket{v}{w}$, und
+ausgerechnet wird ein Bra-Ket nach der alten Regel. Zwischen $\braket{v}{w}$ und
+$(\ket{v})\adj \ket{w}$ machen wir gar keinen Unterschied mehr. Das gilt für das Skalarprodukt
+aus Abschnitt~\ref{c03.s2}, und mit ihm rechnen wir weiterhin, wenn wir Spalten einsetzen. Im
+nächsten Abschnitt kommen auch andere Skalarprodukte vor. Für sie ist der Bra $\bra{v}$ die
+Zuordnung, die jedem Ket $\ket{w}$ die Zahl $\braket{v}{w}$ zuordnet, und im Allgemeinen nicht
+mehr die konjugierte Zeile (Beispiel~\ref{c03.ex.gewichtet}).
+
+% Stimme: vl03.tex:78-87; v03 [59:37]-[61:04].
+\begin{example}[Ein Bra-Ket in $\mathbb{C}^2$]\label{c03.ex.braket}\claim{c03.cl.braket}{derived}
+  Mit den Vektoren aus Beispiel~\ref{c03.ex.kets} ist
+  \begin{equation}\label{c03.eq.e0eplus}
+    \braket{e_0}{e_+} = (\ket{e_0})\adj \ket{e_+}
+    = \begin{pmatrix} 1 & 0 \end{pmatrix}
+      \begin{pmatrix} \frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}} \end{pmatrix}
+    = \frac{1}{\sqrt{2}} .
+  \end{equation}
+\end{example}
+
+% Stimme: vl03.tex:89-93; v03 [62:30]-[65:06].
+Damit die Notation ihren Vorteil ausspielen kann, braucht man eine Regel dafür, wie sich die
+Kreuz-Operation auf Linearkombinationen auswirkt. Für komplexe Zahlen $\alpha, \beta$ und
+Kets $\ket{v}, \ket{w}$ gilt
+\begin{equation}\label{c03.eq.bra-regel}\claim{c03.cl.bra-regel}{derived}
+  (\alpha \ket{v} + \beta \ket{w})\adj = \alpha^* \bra{v} + \beta^* \bra{w} ,
+\end{equation}
+denn die Kreuz-Operation konjugiert jeden Eintrag, und
+$(\alpha v_j + \beta w_j)^* = \alpha^* v_j^* + \beta^* w_j^*$. Genau diese Regel macht die
+Notation nützlich: Mit ihr rechnen wir Skalarprodukte aus, ohne die Vektoren je als Spalten
+hinzuschreiben. In $\mathbb{C}^2$ ist das Hinschreiben nicht schlimm. In unendlichdimensionalen
+Räumen kann man einen Vektor aber im Allgemeinen gar nicht vollständig hinschreiben, und dann
+ist die Rechnung mit Kets und dieser Regel der Weg, effizient zu rechnen.
+
+% Stimme: vl03.tex:95-125; v03 [65:32]-[71:18].
+\begin{example}[Ein Skalarprodukt nur mit Kets]\label{c03.ex.dirac}\claim{c03.cl.dirac}{derived}
+  Gesucht ist das Skalarprodukt $\braket{v}{w}$ von
+  \begin{equation}\label{c03.eq.dirac-vw}
+    \ket{v} = \begin{pmatrix} 1 \\ i \end{pmatrix},
+    \qquad
+    \ket{w} = \begin{pmatrix} 1 \\ 1 \end{pmatrix},
+  \end{equation}
+  diesmal ohne die Spalten einzusetzen. Zuerst drücken wir beide Vektoren durch die Kets aus
+  Beispiel~\ref{c03.ex.kets} aus: $\ket{v} = \ket{e_0} + i \ket{e_1}$ und
+  $\ket{w} = \ket{e_0} + \ket{e_1}$. Nach Gleichung~\eqref{c03.eq.bra-regel} ist
+  $\bra{v} = \bra{e_0} - i \bra{e_1}$; beachten Sie das Minuszeichen. Ausmultiplizieren gibt
+  vier Skalarprodukte:
+  \begin{equation}\label{c03.eq.dirac}
+    \begin{aligned}
+      \braket{v}{w} &= (\bra{e_0} - i \bra{e_1}) (\ket{e_0} + \ket{e_1}) \\
+      &= \braket{e_0}{e_0} + \braket{e_0}{e_1} - i \braket{e_1}{e_0} - i \braket{e_1}{e_1} \\
+      &= 1 + 0 - 0 - i = 1 - i ,
+    \end{aligned}
+  \end{equation}
+  denn $\braket{e_0}{e_0} = \braket{e_1}{e_1} = 1$ und $\braket{e_0}{e_1} = \braket{e_1}{e_0} = 0$.
+  Dasselbe Ergebnis hätten wir bekommen, wenn wir einfach die Spalten eingesetzt hätten:
+  $\braket{v}{w} = \begin{pmatrix} 1 & -i \end{pmatrix} \begin{pmatrix} 1 \\ 1 \end{pmatrix} = 1 - i$.
+\end{example}
+
+% Stimme: vl03.tex:127; v03 [71:22]-[72:54].  Die Dimensionszahl aus Skript und Vorlesung
+% („ab fünf oder sechs Dimensionen“, v03: „ab 5, 6, 7 Dimensionen“) ist weggelassen: Sie ist
+% eine Einschätzung ohne Herleitung (COORDINATION.md Regel 10); siehe vl03-map.json, text@127.
+Seien wir ehrlich: In zwei Dimensionen ist der erste Weg aufwendiger. In höheren Dimensionen
+werden Sie aber ganz schnell eine Liebe für die Ket-Notation entdecken. Ich verwende sie
+trotzdem auch in zwei Dimensionen, weil sie sehr schön mit Operatoren und Matrizen
+zusammenspielt; das sehen wir bei den Operatoren.
+
+% Stimme: v03 [73:22]-[73:44].
+Sobald Sie die Ket-Notation beherrschen, können Sie die Gleichungen der Quantenmechanik lesen.
+Die Übersetzung ist immer dieselbe: Ket steht für Vektor.
+
+\section{Skalarprodukte}\label{c03.s5}
+
+% Stimme: vl03.tex:130-132; v03 [73:51]-[75:47] („für immer und ewig“; „Skalarprodukt ist nicht
+% kanonisch“).  Der zweite und dritte Satz nach docs/review/lectures/REVIEW-lec3.md, Zeile
+% MISMATCH (de.tex:700): Die Vertiefungen c03.v1 und c03.v2 haben schon andere Skalarprodukte.
+Bevor wir den Hilbertraum definieren können, müssen wir das Konzept des Skalarprodukts
+sauberer und mathematisch besser fassen. In $\mathbb{C}^n$ haben wir bisher immer das
+Skalarprodukt $\vb{v}\adj\vb{w}$ verwendet. Aber selbst auf diesem Vektorraum gibt es andere
+Skalarprodukte, sogar unendlich viele (Beispiel~\ref{c03.ex.gewichtet}). In der Physik wählt man normalerweise eines
+aus und arbeitet dann mit diesem Skalarprodukt für immer und ewig; mathematisch gibt es
+mehrere Möglichkeiten, und manchmal ist es hilfreich, ein bisschen flexibel zu sein. Ein
+komplexer Vektorraum kann auch ganz ohne Skalarprodukt existieren: Das Skalarprodukt ist eine
+Zusatzwahl, keine Struktur, die der Vektorraum von selbst mitbringt. Wir brauchen eines, weil
+die Quantenmechanik probabilistisch ist; es ist unser Werkzeug für Wahrscheinlichkeiten.
+
+% Stimme: vl03.tex:134-147; v03 [76:10]-[82:34] („nicht jede solche Zuordnung zählt als
+% Skalarprodukt“).
+Ein Skalarprodukt ordnet je zwei Vektoren eine komplexe Zahl zu, die wir in der Notation von
+Dirac schreiben. Nicht jede solche Zuordnung zählt als Skalarprodukt; sie muss ein paar
+Bedingungen erfüllen. Diese Bedingungen beschreiben auch die anderen Skalarprodukte. Für die
+Rechnungen mit Spalten verwenden wir weiterhin das Skalarprodukt aus Abschnitt~\ref{c03.s2}.
+
+\tpcdef{D82}
+
+% Stimme: vl03.tex:139; v03 [79:26]-[80:06].
+Im ersten Argument kommt beim Herausziehen einer Zahl also ein Stern dazu. Diese Regeln
+gelten im endlichdimensionalen wie im unendlichdimensionalen Fall; deshalb sind Notation und
+Begriff so wichtig. Das Skalarprodukt $\vb{v}\adj\vb{w}$ von $\mathbb{C}^n$ erfüllt alle drei
+Bedingungen: Das sind die Regeln~2 bis~4 von Proposition~\ref{c03.prop.skalarprodukt}. Die
+Komplexkonjugation in der zweiten Regel für Zahlen ist wichtig, damit $\braket{\psi}{\psi}$
+positiv sein kann. Wäre das Skalarprodukt auch im ersten Argument linear, so wäre für jeden
+Vektor
+\begin{equation}\label{c03.eq.warum-stern}\claim{c03.cl.warum-stern}{derived}
+  \braket{i\psi}{i\psi} = i \cdot i\, \braket{\psi}{\psi} = -\braket{\psi}{\psi} ,
+\end{equation}
+und beide Seiten könnten nur dann $\geq 0$ sein, wenn $\braket{\psi}{\psi} = 0$ wäre, auch für
+$\ket{\psi} \neq 0$. Beispiel~\ref{c03.ex.ohne-stern} zeigt dasselbe an einem einzelnen
+Vektor.
+
+\begin{example}[Unendlich viele Skalarprodukte auf $\mathbb{C}^2$]\label{c03.ex.gewichtet}\claim{c03.cl.gewichtet}{derived}
+  Sei $c > 0$ eine reelle Zahl. Für $\vb{v}, \vb{w} \in \mathbb{C}^2$ setzen wir
+  \begin{equation}\label{c03.eq.gewichtet}
+    \braket{v}{w}_c = v_1^* w_1 + c\, v_2^* w_2 .
+  \end{equation}
+  Das ist für jedes $c > 0$ ein Skalarprodukt: Die Additivität und die beiden Regeln für Zahlen
+  gelten Summand für Summand, genau wie in Proposition~\ref{c03.prop.skalarprodukt}, und
+  $\braket{v}{v}_c = \abs{v_1}^2 + c \abs{v_2}^2$ ist $\geq 0$ und nur dann null, wenn
+  $v_1 = v_2 = 0$ ist. Für $c = 1$ ist es das Skalarprodukt von $\mathbb{C}^2$. Für verschiedene
+  $c$ sind es verschiedene Skalarprodukte, denn $\braket{e_1}{e_1}_c = c$. Es gibt also
+  unendlich viele. Zu jedem gehört ein eigener Bra: Wegen
+  $\braket{v}{w}_c = \begin{pmatrix} v_1^* & c\, v_2^* \end{pmatrix} \vb{w}$ steht $\bra{v}$
+  hier für die Zeile $\begin{pmatrix} v_1^* & c\, v_2^* \end{pmatrix}$, und das ist für
+  $c \neq 1$ und $v_2 \neq 0$ nicht die Zeile $\vb{v}\adj$.
+\end{example}
+
+% Stimme: vl03.tex:148-151; v03 [82:34]-[83:43] („wird oft auch einfach Betrag von psi
+% geschrieben“).
+Die Positivität erlaubt uns, die Länge eines Vektors zu definieren.
+
+\tpcdef{D83}
+
+In $\mathbb{C}^n$ mit dem Skalarprodukt aus Abschnitt~\ref{c03.s2} ist
+$\norm{v}^2 = \vb{v}\adj\vb{v} = \sum_j \abs{v_j}^2$ (Gleichung~\eqref{c03.eq.selbst}). Statt $\norm{\psi}$ schreibt man oft auch einfach „Betrag
+von $\psi$“.
+
+% Stimme: vl03.tex:152-155; v04 [02:20]-[03:31] („diese Positivitätsbedingungen sind sehr
+% stark, die haben sehr schöne Folgen“; „das ist nichts Neues“).
+Die Positivität ist eine sehr starke Bedingung, und sie hat zwei sehr schöne Folgen. Die erste
+ist die konjugierte Symmetrie. Für die Skalarprodukte, die wir bisher gesehen haben, ist sie
+nichts Neues; hier folgt sie aus den drei Bedingungen allein.
+
+\begin{proposition}[Konjugierte Symmetrie]\label{c03.prop.symmetrie}\claim[proof-included]{c03.cl.symmetrie}{derived}
+  Für jedes Skalarprodukt und alle Vektoren $\ket{\phi}, \ket{\psi}$ gilt
+  \begin{equation}\label{c03.eq.symmetrie}
+    \braket{\phi}{\psi} = \braket{\psi}{\phi}^* .
+  \end{equation}
+\end{proposition}
+\begin{proof}
+  Nach der Positivität ist $\braket{\xi}{\xi}$ für jeden Vektor $\ket{\xi}$ eine reelle
+  Zahl. Sei $a = \braket{\phi}{\psi}$ und $b = \braket{\psi}{\phi}$. Mit der Additivität ist
+  \begin{equation}\label{c03.eq.symmetrie-beweis}
+    \braket{\phi + \psi}{\phi + \psi} = \braket{\phi}{\phi} + \braket{\psi}{\psi} + a + b ,
+  \end{equation}
+  also ist $a + b$ reell. Dieselbe Rechnung mit $i\ket{\psi}$ statt $\ket{\psi}$: Nach den
+  Regeln für Zahlen ist $\braket{\phi}{i\psi} = i a$, $\braket{i\psi}{\phi} = -i b$ und
+  $\braket{i\psi}{i\psi} = (-i)\, i\, \braket{\psi}{\psi} = \braket{\psi}{\psi}$, also ist
+  $i a - i b = i (a - b)$ reell. Aus $\operatorname{Im}(a + b) = 0$ folgt
+  $\operatorname{Im} b = -\operatorname{Im} a$, und weil $a - b$ rein imaginär ist, ist
+  $\operatorname{Re} b = \operatorname{Re} a$. Also ist $b = a^*$.
+\end{proof}
+
+Reed und Simon nehmen die konjugierte Symmetrie als vierte Bedingung in die Definition des
+Skalarprodukts auf \srcref{reed-simon-1}{S.~36}; nach der Proposition ist das dieselbe
+Definition.
+
+% Stimme: vl03.tex:156-159; v04 [03:38]-[05:23] („besonders nützlich in der Quantenmechanik“;
+% „gilt für alle phi und psi im Hilbertraum“).
+Die zweite Folge ist neu, die \emph{Schwarz'sche Ungleichung}. Sie ist besonders schön und in
+der Quantenmechanik besonders nützlich.
+
+\begin{proposition}[Schwarz'sche Ungleichung]\label{c03.prop.schwarz}\claim[proof-included]{c03.cl.schwarz}{derived}
+  Für jedes Skalarprodukt und alle Vektoren $\ket{\phi}, \ket{\psi}$ gilt
+  \begin{equation}\label{c03.eq.schwarz}
+    \abs{\braket{\phi}{\psi}} \leq \norm{\phi}\, \norm{\psi} .
+  \end{equation}
+\end{proposition}
+\begin{proof}
+  Für $\ket{\psi} = 0$ sind beide Seiten null. Sonst ist $\norm{\psi}^2 > 0$. Wir setzen
+  $c = \braket{\psi}{\phi} / \norm{\psi}^2$ und $\ket{\xi} = \ket{\phi} - c \ket{\psi}$. Nach
+  Proposition~\ref{c03.prop.symmetrie} ist $c^* = \braket{\phi}{\psi} / \norm{\psi}^2$. Mit der
+  Additivität, den Regeln für Zahlen und der Positivität für $\ket{\xi}$ ist
+  \begin{equation}\label{c03.eq.schwarz-beweis}
+    0 \leq \braket{\xi}{\xi}
+      = \norm{\phi}^2 - c\, \braket{\phi}{\psi} - c^*\, \braket{\psi}{\phi} + c^* c\, \norm{\psi}^2
+      = \norm{\phi}^2 - \frac{\abs{\braket{\phi}{\psi}}^2}{\norm{\psi}^2} ,
+  \end{equation}
+  denn bis auf das Vorzeichen ist jeder der drei letzten Summanden gleich dem Bruch auf der
+  rechten Seite. Multiplikation mit $\norm{\psi}^2$ und die Wurzel geben die Behauptung.
+\end{proof}
+
+% Stimme: vl03.tex:160-163; v04 [05:32]-[06:20].
+Mit der Schwarz'schen Ungleichung kann man eine weitere, ebenfalls sehr nützliche Ungleichung
+beweisen, die Dreiecksungleichung: Die Norm einer Summe von Vektoren ist nie größer als die
+Summe der Normen.
+
+\begin{proposition}[Dreiecksungleichung]\label{c03.prop.dreieck}\claim[proof-included]{c03.cl.dreieck}{derived}
+  Für jedes Skalarprodukt und endlich viele Vektoren $\ket{\psi_1}, \dots, \ket{\psi_N}$ gilt
+  \begin{equation}\label{c03.eq.dreieck}
+    \norm{\sum_{j=1}^{N} \ket{\psi_j}} \leq \sum_{j=1}^{N} \norm{\psi_j} .
+  \end{equation}
+\end{proposition}
+\begin{proof}
+  Für zwei Vektoren ist nach der Additivität und Proposition~\ref{c03.prop.symmetrie}
+  \begin{equation}\label{c03.eq.dreieck-beweis}
+    \norm{\phi + \psi}^2
+      = \norm{\phi}^2 + \norm{\psi}^2 + 2 \operatorname{Re} \braket{\phi}{\psi}
+      \leq \norm{\phi}^2 + \norm{\psi}^2 + 2 \norm{\phi}\, \norm{\psi}
+      = \bigl( \norm{\phi} + \norm{\psi} \bigr)^2 ,
+  \end{equation}
+  denn $\braket{\psi}{\phi} = \braket{\phi}{\psi}^*$, $\operatorname{Re} z \leq \abs{z}$ für
+  jede komplexe Zahl $z$, und dann die Schwarz'sche Ungleichung. Die Wurzel gibt
+  $\norm{\phi + \psi} \leq \norm{\phi} + \norm{\psi}$. Für $N$ Vektoren wendet man das
+  wiederholt an: $\norm{\psi_1 + \dots + \psi_N} \leq \norm{\psi_1 + \dots + \psi_{N-1}} + \norm{\psi_N}$,
+  und so weiter bis zu einem einzigen Vektor.
+\end{proof}
+
+Reed und Simon zeigen auf demselben Weg, dass die Norm eines Vektorraums mit Skalarprodukt
+eine Norm im Sinne der normierten Räume ist \srcref{reed-simon-1}{S.~38}.
+
+% Stimme: vl03.tex:164; v04 [04:28]-[04:45], [06:37]-[06:45], [09:26]-[10:11] („diese
+% Eigenschaften werden wir quasi ständig verwenden“; „gekoppelt mit der Heisenbergschen
+% Ungleichung“).  Nicht übernommen: das Beispiel aus v04 („um die Energie eines Systems zu
+% beschränken“); weder vl03.tex:164 noch eine Herleitung gibt eine solche Schranke
+% (evidence/derivations/c03/REVIEW-lec3.md, B, Zeile UNSUPPORTED).
+Beide Ungleichungen sind Arbeitsgeräte, die wir quasi ständig verwenden. Die wichtigste ist
+die Schwarz'sche Ungleichung: Sie steckt hinter der Heisenbergschen Unschärferelation
+\srcref{tpc-script-v0.2}{vl03, Abschnitt Skalarprodukte}, die in Kapitel~6 kommt. Mit der
+Dreiecksungleichung schätzen wir Größen ab.
+
+% Stimme: vl03.tex:166-170; v04 [06:51]-[08:44].
+Eine letzte Definition, bevor wir die Skalarprodukte verlassen.
+
+\tpcdef{D84}
+
+Das ist genau analog zu den gewöhnlichen Vektoren im dreidimensionalen Raum. Achtung: Ein
+verschwindendes Skalarprodukt heißt \emph{nicht}, dass einer der Vektoren null ist. Das
+erzwingt die Positivität nur im Fall $\ket{\phi} = \ket{\psi}$.
+
+\begin{example}[Orthonormale Vektoren in $\mathbb{C}^2$]\label{c03.ex.orthogonal}\claim{c03.cl.orthogonal}{derived}
+  Die Vektoren $\ket{e_\pm}$ aus Beispiel~\ref{c03.ex.kets} sind nicht null, und doch ist
+  \begin{equation}\label{c03.eq.orthogonal}
+    \braket{e_+}{e_-} = \frac{1}{2} \begin{pmatrix} 1 & 1 \end{pmatrix} \begin{pmatrix} 1 \\ -1 \end{pmatrix} = 0 ,
+    \qquad
+    \norm{e_\pm}^2 = \frac{1}{2} \bigl( 1 + (\pm 1)^2 \bigr) = 1 .
+  \end{equation}
+  Ebenso ist $\braket{e_0}{e_1} = 0$ und $\norm{e_0} = \norm{e_1} = 1$. Beide Paare sind
+  orthonormal.
+\end{example}
+
+% Stimme: v04 [08:47]-[09:22].
+Man darf die Norm auch als Länge eines Vektors lesen. Die Vektoren der Quantenmechanik leben
+in einem abstrakten Raum, der mit unseren drei Dimensionen gar nichts zu tun hat; trotzdem ist
+es manchmal hilfreich, ihre Normen als Längen und orthogonale Vektoren als senkrecht
+aufeinander zu lesen.
+
+\section{Hilbertraum}\label{c03.s6}
+
+% Stimme: v03 [83:59]-[84:03], [86:43]-[87:09]; vl03.tex:176-178.
+Jetzt haben wir genug beisammen, um Hilberträume zu definieren.
+
+\tpcdef{D14}
+
+% Stimme: vl03.tex:177 (Fußnote), 180; v03 [87:13]-[88:24], [89:12]-[89:21] („ein sehr
+% wichtiger, aber subtile mathematische Bedingung“; „diese Bedingung hat mit Konvergenz in
+% unendlichdimensionalen Räumen zu tun“; „ein Hilbertraum ist nichts anderes als ein komplexer
+% Vektorraum mit Skalarprodukt“).  Was „vollständig“ heißt, steht seit der Reparatur in D14; die
+% Abkürzung gilt nur für die Rechnungen in C^n mit dem Skalarprodukt aus c03.s2
+% (docs/review/lectures/REVIEW-lec3.md, Zeile SCOPE (de.tex:878);
+% evidence/derivations/c03/REVIEW-lec3.md, B, Zeile SCOPE (de.tex:883)).  Dass die Entwicklung
+% nach einer unendlichen Basis die Vollständigkeit benutzt: Satz c03.thm.parseval setzt einen
+% Hilbertraum voraus, und der Beweis bei Reed-Simon I S. 45 benutzt sie für den Grenzwert.
+Die Vollständigkeit ist eine sehr wichtige, aber subtile mathematische Bedingung. Sie hat mit
+Konvergenz in unendlichdimensionalen Räumen zu tun, und in unserer Vorlesung spielt sie keine
+wesentliche Rolle. Für unsere Rechnungen in $\mathbb{C}^n$ mit dem Skalarprodukt aus
+Abschnitt~\ref{c03.s2} ist sie automatisch erfüllt\zoomref{c03.f3}. Dort können wir alle
+Rechnungen vereinfachen, indem wir sie ignorieren, und für diese Rechnungen ist ein
+Hilbertraum schlicht ein komplexer Vektorraum mit Skalarprodukt. Der Raum $\mathbb{C}^n$ ist
+also ein Hilbertraum, und für das Qubit ist das $\mathbb{C}^2$. In unendlich vielen
+Dimensionen gilt die Abkürzung nicht: Dort benutzt man die Vollständigkeit, etwa für die
+Entwicklung nach einer Basis mit unendlich vielen Vektoren.
+
+\section{Basen}\label{c03.s7}
+
+% Stimme: vl03.tex:184; v04 [10:27]-[11:24].
+Das nächste Konzept in der Theorie der Hilberträume ist die \emph{Basis}. Eine Basis ist eine
+Menge von Vektoren mit sehr schönen Eigenschaften: Nach ihr kann man alle anderen Vektoren des
+Hilbertraums zerlegen. Wir brauchen Basen aus einem praktischen Grund: Die meisten Rechnungen
+der Quantenmechanik werden erst dann explizit, wenn eine Basis gewählt ist. Normalerweise
+wählt man eine Basis aus und macht alle Rechnungen bezüglich dieser Basis.
+
+% Stimme: vl03.tex:186-190; v04 [11:32]-[16:26].  Endliche Indexmenge: Entscheidung D4.
+Im Kern ist die Indexmenge $X$ einer Basis endlich.
+
+\tpcdef{D85}
+
+% Stimme: vl03.tex:191; v04 [14:22]-[15:16] („und verwirrenderweise sagen wir, dass diese
+% Basis vollständig ist“).  „ein anderer Begriff“ statt „gar nichts zu tun“: Reed-Simon I S. 45
+% benutzt die Vollständigkeit des Raums im Beweis der Entwicklung nach einer Basis
+% (evidence/derivations/c03/REVIEW-lec3.md, B, Zeile MINOR (de.tex:907)).
+Zwei Warnungen. Verwirrenderweise heißt die zweite Eigenschaft \emph{Vollständigkeit}; das
+ist ein anderer Begriff von Vollständigkeit als die des Hilbertraums aus
+Abschnitt~\ref{c03.s6}. Und
+$\kron{j}{k}$ ist das Kronecker-Delta, nicht die Diracsche Delta-Funktion, die später
+vorkommt.
+
+% Stimme: v04 [16:55]-[22:29].
+\begin{example}[Zwei Basen von $\mathbb{C}^2$]\label{c03.ex.basis}\claim{c03.cl.basis}{derived}
+  Die Vektoren $\ket{e_0}, \ket{e_1}$ bilden eine Basis von $\mathbb{C}^2$, mit der Indexmenge
+  $X = \{0, 1\}$. Orthonormal sind sie nach Beispiel~\ref{c03.ex.orthogonal}; zu prüfen waren
+  hier vier Skalarprodukte. Die Vollständigkeit ist etwas anspruchsvoller. Jeder Vektor von
+  $\mathbb{C}^2$ lässt sich als $\ket{\psi} = \alpha \ket{e_0} + \beta \ket{e_1}$ schreiben, mit
+  den Einträgen $\alpha, \beta \in \mathbb{C}$, und wir rechnen beide Seiten der
+  Vollständigkeitsbedingung getrennt aus. Links steht
+  \begin{equation}\label{c03.eq.basis-links}
+    \norm{\psi}^2 = (\alpha^* \bra{e_0} + \beta^* \bra{e_1}) (\alpha \ket{e_0} + \beta \ket{e_1})
+    = \abs{\alpha}^2 + \abs{\beta}^2 ,
+  \end{equation}
+  rechts, mit $\braket{e_0}{\psi} = \alpha$ und $\braket{e_1}{\psi} = \beta$,
+  \begin{equation}\label{c03.eq.basis-rechts}
+    \abs{\braket{e_0}{\psi}}^2 + \abs{\braket{e_1}{\psi}}^2 = \abs{\alpha}^2 + \abs{\beta}^2 .
+  \end{equation}
+  Beide Seiten stimmen überein. Genauso bilden $\ket{e_+}, \ket{e_-}$ eine Basis: Sie sind
+  orthonormal (Beispiel~\ref{c03.ex.orthogonal}), und mit
+  $\braket{e_\pm}{\psi} = (\alpha \pm \beta) / \sqrt{2}$ ist
+  \begin{equation}\label{c03.eq.basis-pm}
+    \abs{\braket{e_+}{\psi}}^2 + \abs{\braket{e_-}{\psi}}^2
+    = \tfrac12 \bigl( \abs{\alpha + \beta}^2 + \abs{\alpha - \beta}^2 \bigr)
+    = \abs{\alpha}^2 + \abs{\beta}^2 .
+  \end{equation}
+\end{example}
+
+% Stimme: v04 [18:07]-[18:27], [22:59]-[23:39] („wenn Sie ein bisschen Langeweile haben“;
+% „normalerweise ... bildet dieses System gar keine Basis“).
+Bei $n$ Basisvektoren sind für die Orthonormalität $n^2$ Gleichungen zu prüfen; wegen der
+konjugierten Symmetrie genügen die mit $j \leq k$, und das sind immer noch eine ganze Menge.
+Wenn Sie ein bisschen Langeweile haben, schreiben Sie ein paar Vektoren auf und prüfen Sie, ob
+sie eine Basis bilden. Wählt man die Vektoren beliebig aus, so bilden sie im Allgemeinen
+keine Basis: Schon $\ket{e_0}$ und $\ket{e_+}$ sind nach Beispiel~\ref{c03.ex.braket} nicht
+orthogonal.
+
+% Stimme: vl03.tex:193-201; v04 [24:37]-[25:48] („sieht harmlos aus, aber wir wenden diese
+% Gleichung ständig an“).
+Die wichtigste Eigenschaft einer Basis ist, dass man jeden Vektor nach ihr entwickeln kann.
+
+\begin{proposition}[Entwicklung nach einer Basis]\label{c03.prop.entwicklung}\claim[proof-included]{c03.cl.entwicklung}{derived}
+  Sei $\{\ket{\phi_j}\}_{j \in X}$ eine Basis von $\Hil$ mit endlicher Indexmenge $X$. Dann
+  gilt für jeden Vektor $\ket{\Psi} \in \Hil$
+  \begin{equation}\label{c03.eq.vollstaendigkeit}
+    \ket{\Psi} = \sum_{j \in X} \braket{\phi_j}{\Psi}\, \ket{\phi_j} .
+  \end{equation}
+  Umgekehrt ist ein orthonormales System mit endlicher Indexmenge, nach dem sich jeder Vektor
+  so entwickeln lässt, vollständig, also eine Basis.
+\end{proposition}
+\begin{proof}
+  Sei $c_j = \braket{\phi_j}{\Psi}$ und $\ket{\xi} = \ket{\Psi} - \sum_j c_j \ket{\phi_j}$.
+  Wegen der Orthonormalität ist $\braket{\phi_k}{\xi} = c_k - \sum_j c_j \kron{k}{j} = 0$ für
+  jedes $k$. Mit den Regeln für Zahlen im ersten Argument folgt
+  $\braket{\xi}{\xi} = \braket{\Psi}{\xi} - \sum_j c_j^* \braket{\phi_j}{\xi} = \braket{\Psi}{\xi}$,
+  und nach Proposition~\ref{c03.prop.symmetrie} ist $\braket{\Psi}{\phi_j} = c_j^*$, also
+  \begin{equation}\label{c03.eq.entwicklung-beweis}
+    \braket{\xi}{\xi} = \braket{\Psi}{\Psi} - \sum_{j} c_j\, \braket{\Psi}{\phi_j}
+    = \norm{\Psi}^2 - \sum_{j} \abs{c_j}^2 = 0
+  \end{equation}
+  nach der Vollständigkeit. Nach der Positivität ist $\ket{\xi} = 0$, und das ist
+  Gleichung~\eqref{c03.eq.vollstaendigkeit}. Umgekehrt: Gilt die Entwicklung, so ist
+  $\norm{\Psi}^2 = \sum_{j,k} c_j^* c_k \braket{\phi_j}{\phi_k} = \sum_j \abs{c_j}^2$.
+\end{proof}
+
+\begin{merksatz}[Vollständigkeitsrelation]
+  Die Gleichung
+  $\ket{\Psi} = \sum_{j \in X} \braket{\phi_j}{\Psi}\, \ket{\phi_j}$ ist eine Form der
+  sogenannten \emph{Vollständigkeitsrelation}: Jeder Vektor ist die Summe seiner Komponenten
+  längs der Basisvektoren, und die Koeffizienten sind Skalarprodukte. Sie sieht harmlos aus,
+  wird aber in der Quantenmechanik ständig angewandt.
+\end{merksatz}
+
+% Stimme: vl03.tex:205-210 (Abbildungstext des Skripts).
+\begin{example}[Ein Vektor, zwei Basen]\label{c03.ex.zwei-basen}\claim{c03.cl.zwei-basen}{derived}
+  Sei $\ket{\Psi} = \tfrac{1}{\sqrt{5}} \bigl( 2 \ket{e_0} + \ket{e_1} \bigr)$. In der Basis
+  $\ket{e_0}, \ket{e_1}$ sind die Koeffizienten $c_0 = \braket{e_0}{\Psi} = 2/\sqrt{5}$ und
+  $c_1 = \braket{e_1}{\Psi} = 1/\sqrt{5}$, in der Basis $\ket{e_+}, \ket{e_-}$ sind es
+  $c_\pm = \braket{e_\pm}{\Psi} = (2 \pm 1)/\sqrt{10}$. Die Gewichte
+  \begin{equation}\label{c03.eq.gewichte}
+    \abs{c_0}^2 = \tfrac45 , \quad \abs{c_1}^2 = \tfrac15 ,
+    \qquad
+    \abs{c_+}^2 = \tfrac{9}{10} , \quad \abs{c_-}^2 = \tfrac{1}{10}
+  \end{equation}
+  sind in den beiden Basen verschieden; ihre Summe ist in beiden Fällen $1 = \norm{\Psi}^2$.
+\end{example}
+
+Abbildung~\ref{c03.fig.vollst} rechnet das an den beiden Basen von $\mathbb{C}^2$ vor. In (a)
+schließt sich jede der beiden Zerlegungen desselben $\ket{\Psi}$ zu einem eigenen Rechteck:
+verschiedene Seiten, dieselbe Diagonale. In (b) steht, was von der Basis unabhängig bleibt:
+nicht die einzelnen Gewichte, sondern ihre Summe.
+
+\begin{tpcfigure}{c03.fig.vollst}
+  \demo{c03.demo.vollst}
+  \caption{Die Vollständigkeitsrelation an einem Vektor in zwei Basen. (a) Der Vektor
+    $\ket{\Psi} = (2\ket{e_0} + \ket{e_1})/\sqrt{5}$ aus Beispiel~\ref{c03.ex.zwei-basen}
+    (dicker Pfeil) als Summe seiner Komponenten $c_j \ket{\phi_j}$ mit
+    $c_j = \braket{\phi_j}{\Psi}$, einmal in der Basis $\ket{e_0}, \ket{e_1}$ (Rechteck
+    gestrichelt geschlossen), einmal in der Basis $\ket{e_+}, \ket{e_-}$ (Rechteck gepunktet
+    geschlossen). Weil alle Koeffizienten reell sind, liegt alles in der reellen Ebene, die
+    $\ket{e_0}$ und $\ket{e_1}$ aufspannen; die Strahlen von $\ket{e_\pm}$ halbieren die Winkel
+    zwischen den Achsen. Die beiden Rechtecke haben verschiedene Seiten und dieselbe
+    Diagonale. (b) Die Gewichte $\abs{c_j}^2$ als Balkenstücke: $\tfrac45$ und $\tfrac15$
+    gegen $\tfrac{9}{10}$ und $\tfrac{1}{10}$. Die Aufteilung hängt von der Basis ab, die Summe
+    $\norm{\Psi}^2 = 1$ (gestrichelte Linie) nicht.}
+\end{tpcfigure}
+
+% Stimme: vl03.tex:212; v04 [25:56]-[27:16] („es gibt immer eine Basis in endlichen
+% Dimensionen“; „die Existenz von einer Basis ist noch nicht klar, man muss das beweisen, man
+% weiß, dass es sehr schwer zu beweisen ist“).
+In endlich vielen Dimensionen ist es relativ leicht, eine Basis zu finden. In $\mathbb{C}^n$
+mit dem Skalarprodukt aus Abschnitt~\ref{c03.s2} nimmt man einfach die Spalten $\ket{u_1}, \dots, \ket{u_n}$, wobei $\ket{u_j}$ im $j$-ten
+Eintrag eine $1$ hat und sonst lauter Nullen; für $n = 2$ sind das $\ket{e_0}$ und
+$\ket{e_1}$. Für einen Vektor $\ket{\psi}$ mit den Einträgen $\psi_1, \dots, \psi_n$ ist
+\begin{equation}\label{c03.eq.kanonisch}\claim{c03.cl.kanonisch}{derived}
+  \braket{u_j}{u_k} = \kron{j}{k} ,
+  \qquad
+  \sum_{j=1}^{n} \abs{\braket{u_j}{\psi}}^2 = \sum_{j=1}^{n} \abs{\psi_j}^2 = \norm{\psi}^2 .
+\end{equation}
+Im unendlichdimensionalen Fall ist alles schwieriger: Dass es eine Basis gibt, ist nicht klar,
+man muss es beweisen, und der Beweis ist schwer\zoomref{c03.v4}.
+
+\begin{vertiefung}[id=c03.v4,
+    titel={Basen mit unendlich vielen Vektoren},
+    wozu={Die Basen von $\elltwo$ und $\Ltwo{\mathbb{R}}$ in diesem Block haben unendlich
+      viele Vektoren, und die Summen der Vollständigkeitsrelation werden Reihen. Hier steht,
+      wie man eine Basis dann definiert, dass es immer eine gibt und dass die Entwicklung nach
+      einer Basis mit abzählbarer Indexmenge gilt, mit einer Basis von $\elltwo$ und einer
+      von $\Ltwo{\mathbb{R}}$.},
+    voraussetzung={Abschnitt~\ref{c03.s7} bis Proposition~\ref{c03.prop.entwicklung};
+      Vertiefungen~\ref{c03.v1} und~\ref{c03.v2}; die Vollständigkeit von $\elltwo$ und
+      $\Ltwo{\mathbb{R}}$ aus Fundament~\ref{c03.f3}. Der Kern bis Kapitel~4 braucht den Block nicht.},
+    zurueck={Auch in unendlicher Dimension hat jeder Hilbertraum eine Basis. Ist ihre
+      Indexmenge abzählbar, so ist jeder Vektor die Summe seiner Komponenten, als Reihe, die in
+      der Norm konvergiert. Im Kern genügt die endliche Summe.}]
+  % Stimme: vl03.tex:212; v04 [26:54]-[27:16] („wir gehen davon aus, dass wir immer eine Basis
+  % haben, das wird ab sofort angenommen in unserer Vorlesung, sonst ist das zu schwer“).  Ohne
+  % den nachträglichen Rahmen „In der Vorlesung sage ich“ (docs/review/lectures/REVIEW-lec3.md,
+  % Zeile VOICE (de.tex:1045)).  Abzählbare Indexmengen für die Summen: Reparatur nach
+  % REVIEW-lec3.md, Zeile WRONG (de.tex:1048), und evidence/derivations/c03/REVIEW-lec3.md, B,
+  % Zeile WRONG; Satz c03.thm.parseval und Proposition c03.prop.maximal sind auf abzählbare
+  % Indexmengen beschränkt, D86 sagt, was eine Summe von Vektoren dann heißt.
+  Wir gehen ab sofort davon aus, dass wir immer eine Basis haben, sonst wird es zu schwer. Für
+  Hilberträume ist das mehr als eine Annahme, nämlich ein Satz. Zuerst muss man aber sagen,
+  was eine Basis bei unendlich vielen Vektoren ist. Bei einer abzählbaren Indexmenge, etwa
+  $X = \{1, 2, 3, \dots\}$, werden die Summen zu Reihen, und die Vollständigkeit aus
+  \defref{D85} verlangt dann, dass Reihen konvergieren. Eine Indexmenge darf aber auch
+  überabzählbar sein. Reed und Simon definieren die Basis deshalb ohne Summe:
+
+  \tpcdef{D86}
+
+  \begin{theorem}[Existenz einer Basis]\label{c03.thm.existenz}\claim[proof-omitted]{c03.cl.existenz}{source-quoted}
+    Jeder Hilbertraum hat eine Orthonormalbasis.
+  \end{theorem}
+
+  Reed und Simon beweisen das mit dem Zornschen Lemma \srcref{reed-simon-1}{S.~44--45}. Der
+  nächste Satz sagt, dass die Entwicklung nach einer Basis auch dann gilt, wenn sie
+  unendlich viele Vektoren hat, und zwar abzählbar viele.
+
+  \begin{theorem}[Entwicklung nach einer Orthonormalbasis]\label{c03.thm.parseval}\claim[proof-omitted]{c03.cl.parseval}{source-quoted}
+    Sei $\{\ket{\phi_j}\}_{j \in X}$ eine Orthonormalbasis eines Hilbertraums $\Hil$ mit
+    abzählbarer Indexmenge $X$. Dann gilt für jeden Vektor $\ket{\Psi} \in \Hil$
+    \begin{equation}\label{c03.eq.parseval}
+      \ket{\Psi} = \sum_{j \in X} \braket{\phi_j}{\Psi}\, \ket{\phi_j} ,
+      \qquad
+      \norm{\Psi}^2 = \sum_{j \in X} \abs{\braket{\phi_j}{\Psi}}^2 .
+    \end{equation}
+    Die erste Summe ist eine Reihe von Vektoren; sie konvergiert in der Norm, unabhängig von
+    der Reihenfolge der Summanden, gegen $\ket{\Psi}$. Umgekehrt konvergiert
+    $\sum_{j \in X} c_j \ket{\phi_j}$ für komplexe Zahlen $c_j$ mit
+    $\sum_{j \in X} \abs{c_j}^2 < \infty$ in der Norm gegen einen Vektor in $\Hil$.
+  \end{theorem}
+
+  Das ist Satz~II.6 bei Reed und Simon, im Fall einer abzählbaren Indexmenge; die zweite
+  Gleichung heißt dort Parsevalsche Gleichung \srcref{reed-simon-1}{S.~45--46}. Reed und
+  Simon formulieren den Satz für jede Indexmenge. Wir brauchen nur abzählbare: Die Basen von
+  $\elltwo$ und $\Ltwo{\mathbb{R}}$ weiter unten sind mit $k = 1, 2, 3, \dots$ und
+  $n = 0, 1, 2, \dots$ abgezählt. Damit passt die Definition des Kerns zu der von Reed und
+  Simon:
+
+  \begin{proposition}[Zwei Definitionen, eine Basis]\label{c03.prop.maximal}\claim[proof-included]{c03.cl.maximal}{derived}
+    Ein orthonormales System $\{\ket{\phi_j}\}_{j \in X}$ eines Hilbertraums $\Hil$ mit
+    abzählbarer Indexmenge $X$ ist genau dann eine Orthonormalbasis im Sinne von
+    \defref{D86}, wenn
+    $\norm{\psi}^2 = \sum_{j \in X} \abs{\braket{\phi_j}{\psi}}^2$ für jeden Vektor
+    $\ket{\psi} \in \Hil$ gilt. Für endliches $X$ ist das die Basis aus \defref{D85}.
+  \end{proposition}
+  \begin{proof}
+    Ist das System eine Orthonormalbasis, so gilt die Gleichung nach
+    Satz~\ref{c03.thm.parseval}. Ist es keine, so gibt es ein orthonormales System, das alle
+    $\ket{\phi_j}$ und noch einen weiteren Vektor $\ket{\xi}$ enthält. Dann ist
+    $\norm{\xi} = 1$ und $\braket{\phi_j}{\xi} = 0$ für jedes $j$; jede endliche Teilsumme
+    von $\sum_j \abs{\braket{\phi_j}{\xi}}^2$ ist null, und die Gleichung für
+    $\ket{\psi} = \ket{\xi}$ hieße $1 = 0$.
+  \end{proof}
+
+  \begin{example}[Eine Basis von $\elltwo$]\label{c03.ex.elltwo-basis}\claim{c03.cl.elltwo-basis}{derived}
+    Sei $\vb{u}_k \in \elltwo$ der Vektor mit einer $1$ im $k$-ten Eintrag und sonst lauter
+    Nullen, $k = 1, 2, 3, \dots$ Dann ist $\vb{u}_j\adj\vb{u}_k = \kron{j}{k}$, und für jedes
+    $\vb{v} \in \elltwo$ ist $\vb{u}_k\adj\vb{v} = v_k$, also
+    \begin{equation}\label{c03.eq.elltwo-basis}
+      \sum_{k=1}^{\infty} \abs{\vb{u}_k\adj\vb{v}}^2 = \sum_{k=1}^{\infty} \abs{v_k}^2 = \vb{v}\adj\vb{v} .
+    \end{equation}
+    Weil $\elltwo$ nach Satz~\ref{c03.thm.vollstaendig} ein Hilbertraum ist, bilden die
+    $\vb{u}_k$ nach Proposition~\ref{c03.prop.maximal} eine Orthonormalbasis von $\elltwo$.
+    Die Vollständigkeitsrelation sagt hier: Die Teilsummen $\sum_{k \leq N} v_k \vb{u}_k$, also
+    die ersten $N$ Einträge von $\vb{v}$ und danach lauter Nullen, konvergieren gegen
+    $\vb{v}$. Das sieht man auch direkt: Der Abstand zum Quadrat ist
+    $\sum_{k > N} \abs{v_k}^2$, und das ist der Rest einer konvergenten Reihe.
+  \end{example}
+
+  Für $\Ltwo{\mathbb{R}}$ gibt Satz~\ref{c03.thm.existenz} eine Basis, weil der Raum in der
+  Fassung von Fundament~\ref{c03.f2} nach Satz~\ref{c03.thm.vollstaendig} ein Hilbertraum ist. Reed und
+  Simon nennen auch eine konkrete.
+
+  \begin{theorem}[Hermite-Funktionen]\label{c03.thm.hermite}\claim[proof-omitted]{c03.cl.hermite}{source-quoted}
+    Die Hermite-Funktionen $\phi_n$, $n = 0, 1, 2, \dots$, bilden eine Orthonormalbasis von
+    $\Ltwo{\mathbb{R}}$. Die erste ist $\phi_0(x) = \pi^{-1/4}\, e^{-x^2/2}$.
+  \end{theorem}
+
+  Reed und Simon nennen sie auch die Wellenfunktionen des harmonischen Oszillators und
+  verweisen für den Beweis auf Übungsaufgaben \srcref{reed-simon-1}{S.~142}; sie kommen in
+  Kapitel~7 wieder. Dass $\phi_0$ normiert ist, folgt aus Gleichung~\eqref{c03.eq.gauss}:
+  \begin{equation}\label{c03.eq.phinull}\claim{c03.cl.phinull}{derived}
+    \braket{\phi_0}{\phi_0} = \pi^{-1/2} \int_{-\infty}^{\infty} e^{-x^2}\, \dd x
+    = \pi^{-1/2} \sqrt{\pi} = 1 .
+  \end{equation}
+\end{vertiefung}
+
+\subsection{Das Gram-Schmidt-Verfahren}\label{c03.s7.1}
+
+% Stimme: vl03.tex:212; v04 [27:22]-[29:22] („diese Vektoren sind beliebig, völlig beliebig,
+% irgendeine Liste, die müssen keine Eigenschaften erfüllen“).
+% Nicht übernommen: v04 [27:58]-[28:01] „dieses Orthonormierungsverfahren liefert uns immer
+% eine Basis“.  Das stimmt nur unter einer Bedingung, die das Skript nennt (vl03.tex:221); der
+% Text nennt sie in Teil 4 der Proposition.
+Wie bildet man in der Praxis Basen? Mit dem sogenannten Orthonormierungsverfahren von Gram und
+Schmidt. Man startet mit irgendeiner Liste von Vektoren $\ket{\Phi_1}, \ket{\Phi_2}, \dots$;
+diese Vektoren sind völlig beliebig und müssen keine Eigenschaften erfüllen. Daraus bestimmt
+man nacheinander paarweise orthogonale Vektoren $\ket{\Psi_n}$, mit einer einzigen Formel.
+
+\begin{proposition}[Gram-Schmidt-Verfahren]\label{c03.prop.gram-schmidt}\claim[proof-included]{c03.cl.gram-schmidt}{derived}
+  Seien $\ket{\Phi_1}, \dots, \ket{\Phi_N}$ Vektoren eines Hilbertraums $\Hil$, und seien
+  $\ket{\Psi_1}, \dots, \ket{\Psi_N}$ nacheinander durch
+  \begin{equation}\label{c03.eq.gram-schmidt}
+    \ket{\Psi_n} = \ket{\Phi_n} - \sum_{k=1}^{n-1} \ket{\Psi_k}\, \frac{\braket{\Psi_k}{\Phi_n}}{\norm{\Psi_k}^2}
+  \end{equation}
+  bestimmt, wobei Summanden mit $\ket{\Psi_k} = 0$ ausgelassen werden. Dann gilt:
+  \begin{enumerate}
+    \item $\braket{\Psi_k}{\Psi_n} = 0$ für $k < n$.
+    \item Für jedes $m \leq N$ ist jedes $\ket{\Phi_n}$ mit $n \leq m$ eine Linearkombination
+      der $\ket{\Psi_k}$ mit $k \leq m$, und umgekehrt.
+    \item Die Vektoren $\ket{\Psi_n} / \norm{\Psi_n}$ mit $\ket{\Psi_n} \neq 0$ bilden ein
+      orthonormales System.
+    \item Steht nur der Nullvektor auf allen $\ket{\Phi_n}$ senkrecht, so ist dieses System
+      eine Basis von $\Hil$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  Zu~1 und~2 durch Induktion über $n$; für $n = 1$ ist $\ket{\Psi_1} = \ket{\Phi_1}$. Seien
+  $\ket{\Psi_1}, \dots, \ket{\Psi_{n-1}}$ paarweise orthogonal. Für $j < n$ mit
+  $\ket{\Psi_j} \neq 0$ bleibt in
+  \begin{equation}\label{c03.eq.gs-beweis}
+    \braket{\Psi_j}{\Psi_n}
+    = \braket{\Psi_j}{\Phi_n} - \sum_{k} \braket{\Psi_j}{\Psi_k}\, \frac{\braket{\Psi_k}{\Phi_n}}{\norm{\Psi_k}^2}
+    = \braket{\Psi_j}{\Phi_n} - \braket{\Psi_j}{\Phi_n} = 0
+  \end{equation}
+  von der Summe nur der Summand $k = j$ übrig; für $\ket{\Psi_j} = 0$ ist das Skalarprodukt
+  ohnehin null. Nach Gleichung~\eqref{c03.eq.gram-schmidt} ist $\ket{\Phi_n}$ gleich
+  $\ket{\Psi_n}$ plus einer Linearkombination der $\ket{\Psi_k}$ mit $k < n$, und
+  $\ket{\Psi_n}$ ist $\ket{\Phi_n}$ minus einer Linearkombination der $\ket{\Psi_k}$ mit
+  $k < n$, die nach Induktionsannahme Linearkombinationen der $\ket{\Phi_k}$ mit $k < n$ sind.
+  Zu~3: Nach den Regeln für Zahlen ist $\norm{z\psi} = \abs{z}\, \norm{\psi}$, also haben die
+  geteilten Vektoren die Norm $1$, und orthogonal sind sie nach~1. Zu~4: Seien
+  $\ket{\xi_1}, \dots, \ket{\xi_M}$ die Vektoren aus~3, sei $\ket{\psi} \in \Hil$ und
+  $\ket{r} = \ket{\psi} - \sum_m \braket{\xi_m}{\psi}\, \ket{\xi_m}$. Wie im Beweis von
+  Proposition~\ref{c03.prop.entwicklung} ist $\braket{\xi_m}{r} = 0$ für jedes $m$, also
+  auch $\braket{\Psi_k}{r} = 0$ für jedes $k$ und nach~2 $\braket{\Phi_n}{r} = 0$ für jedes
+  $n$. Nach der Voraussetzung ist $\ket{r} = 0$. Jeder Vektor lässt sich also nach den
+  $\ket{\xi_m}$ entwickeln, und nach Proposition~\ref{c03.prop.entwicklung} ist das System
+  vollständig.
+\end{proof}
+
+% Stimme: v04 [31:20]-[34:16] („ich werde das sehr oft machen, dass ich einen Vektor mal eine
+% skalare Größe habe“; „in der Definition stand immer an der linken Seite“; „aber Sie müssen
+% damit leben“; „n hat gar nichts mit der Dimension von H zu tun“; Division durch null);
+% vl03.tex:216 mit Fußnote.  „nichtnegative reelle Zahl“ statt „die Norm auch“ (komplex):
+% evidence/derivations/c03/REVIEW-lec3.md, B, Zeile MINOR (de.tex:1186); D83.
+Alle Größen in der Formel kann man ausrechnen: Das Skalarprodukt ist eine komplexe Zahl, die
+Norm eine nichtnegative reelle Zahl, die $\ket{\Psi_k}$ sind Vektoren, und die Summe ist eine Summe von Vektoren. Die Zahl
+steht hier rechts vom Vektor; in der Definition stand sie immer links. Das mache ich sehr oft,
+und Sie müssen damit leben: Gemeint ist $\ket{\Psi_k}\, z = z \ket{\Psi_k}$. Der Index $n$ hat
+gar nichts mit der Dimension des Raumes zu tun; er zählt nur die Liste ab. Die Summanden mit
+$\ket{\Psi_k} = 0$ müssen wir weglassen, weil sonst $\norm{\Psi_k}^2 = 0$ im Nenner stünde und
+wir durch null teilen würden. Es kann durchaus passieren, dass manche $\ket{\Psi_n}$ null sind
+(Übung~\ref{c03.exc.gram-schmidt}).
+
+% Stimme: vl03.tex:223-250; v04 [38:11]-[46:17] („mein Lieblings-Hilbertraum“; „diese beiden
+% Vektoren habe ich gerade ausgedacht“).
+Weil das Verfahren aus mehreren Teilen besteht und verwirrend sein kann, rechnen wir es einmal
+ganz durch.
+
+\begin{example}[Gram-Schmidt in $\mathbb{C}^2$]\label{c03.ex.gram-schmidt}\claim{c03.cl.gs-beispiel}{derived}
+  Wir arbeiten in meinem Lieblings-Hilbertraum $\mathbb{C}^2$ und starten mit zwei Vektoren, die
+  ich mir gerade ausgedacht habe:
+  \begin{equation}\label{c03.eq.gs-start}
+    \ket{\Phi_1} = \begin{pmatrix} 1 \\ 0 \end{pmatrix},
+    \qquad
+    \ket{\Phi_2} = \begin{pmatrix} 1 \\ 1 \end{pmatrix} .
+  \end{equation}
+  Im ersten Schritt läuft die Summe von $1$ bis $0$; es wird also gar nicht summiert, und
+  $\ket{\Psi_1} = \ket{\Phi_1}$. Im zweiten Schritt bleibt nur der Summand $k = 1$. Mit
+  $\braket{\Psi_1}{\Phi_2} = 1$ und $\norm{\Psi_1}^2 = 1$ ist
+  \begin{equation}\label{c03.eq.gs-beispiel}
+    \ket{\Psi_2} = \ket{\Phi_2} - \ket{\Psi_1}\, \frac{\braket{\Psi_1}{\Phi_2}}{\norm{\Psi_1}^2}
+    = \begin{pmatrix} 1 \\ 1 \end{pmatrix} - \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+    = \begin{pmatrix} 0 \\ 1 \end{pmatrix} .
+  \end{equation}
+  Beide Vektoren haben schon die Norm eins: Aus der ausgedachten Liste ist die Basis
+  $\ket{e_0}, \ket{e_1}$ geworden. Die Bedingung von Teil~4 der Proposition ist erfüllt: Aus
+  $\braket{\Phi_1}{\psi} = \psi_1 = 0$ und $\braket{\Phi_2}{\psi} = \psi_1 + \psi_2 = 0$ folgt
+  $\ket{\psi} = 0$.
+\end{example}
+
+% Stimme: vl03.tex:250; v04 [46:17]-[46:45] („im dreidimensionalen Fall geht es genauso, es wird
+% nur aufwendiger“).
+In höheren Dimensionen geht die Rechnung genauso, sie wird nur aufwendiger und aufwendiger.
+Das Verfahren funktioniert immer, in dem Sinn, dass es immer ein orthonormales System liefert;
+eine Basis ist es, wenn die Bedingung von Teil~4 erfüllt ist.
+
+\begin{exercise}[Ein Vektor fällt weg]\label{c03.exc.gram-schmidt}\claim{c03.cl.gs-null}{derived}
+  Nehmen Sie zu den beiden Vektoren aus Beispiel~\ref{c03.ex.gram-schmidt} den dritten Vektor
+  $\ket{\Phi_3} = \begin{pmatrix} 1 \\ -1 \end{pmatrix}$ hinzu und berechnen Sie $\ket{\Psi_3}$.
+\end{exercise}
+\begin{solution}
+  Mit $\ket{\Psi_1} = \ket{e_0}$, $\ket{\Psi_2} = \ket{e_1}$, $\braket{\Psi_1}{\Phi_3} = 1$
+  und $\braket{\Psi_2}{\Phi_3} = -1$ ist
+  \begin{equation}\label{c03.eq.gs-null}
+    \ket{\Psi_3} = \begin{pmatrix} 1 \\ -1 \end{pmatrix} - \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+    - (-1) \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} .
+  \end{equation}
+  Der dritte Vektor ist schon eine Linearkombination der ersten beiden,
+  $\ket{\Phi_3} = 2 \ket{\Phi_1} - \ket{\Phi_2}$, und fällt weg; das orthonormale System bleibt
+  $\ket{e_0}, \ket{e_1}$.
+\end{solution}
+
 % ── Fundament ─────────────────────────────────────────────────────────────────────────
-% Neue Abschnitte des Kapitels (vl03 bis vl05) kommen VOR diese Zeile.
+% Neue Abschnitte des Kapitels (vl04, vl05) kommen VOR diese Zeile.
 
 \begin{fundament}[id=c03.f1,
     titel={Die Cauchy-Schwarz-Ungleichung},
     wozu={Vertiefung~\ref{c03.v1} zeigt mit einer groben Abschätzung, dass das
       Skalarprodukt auf $\elltwo$ endlich ist. Hier steht die scharfe Schranke: Der Betrag
       des Skalarprodukts ist höchstens das Produkt der Längen.},
-    voraussetzung={Proposition~\ref{c03.prop.skalarprodukt} und
-      Vertiefung~\ref{c03.v1}. Kern und Vertiefungen brauchen den Block nicht.},
+    voraussetzung={Proposition~\ref{c03.prop.skalarprodukt}, die Schwarz'sche Ungleichung
+      (Proposition~\ref{c03.prop.schwarz}) und Vertiefung~\ref{c03.v1}. Kern und
+      Vertiefungen brauchen den Block nicht.},
     zurueck={Für zwei Vektoren ist $\abs{\vb{v}\adj\vb{w}}^2$ nie größer als
       $(\vb{v}\adj\vb{v})(\vb{w}\adj\vb{w})$, in $\mathbb{C}^n$ wie in $\elltwo$.}]
-  \begin{lemma}[Cauchy-Schwarz in $\mathbb{C}^n$]\label{c03.lem.cs}\claim[proof-included]{c03.cl.cs}{derived}
+  % Der Beweis in Spalten, der den von c03.prop.schwarz wiederholte, ist durch die
+  % Spezialisierung ersetzt (docs/review/lectures/REVIEW-lec3.md, Zeile MINOR (de.tex:1255)).
+  \begin{lemma}[Cauchy-Schwarz in $\mathbb{C}^n$]\label{c03.lem.cs}\claim[proof-linked]{c03.cl.cs}{derived}
     Für alle $\vb{v}, \vb{w} \in \mathbb{C}^n$ gilt
     \begin{equation}\label{c03.eq.cs}
       \abs{\vb{v}\adj\vb{w}}^2 \leq (\vb{v}\adj\vb{v})\,(\vb{w}\adj\vb{w}) .
     \end{equation}
   \end{lemma}
-  \begin{proof}
-    Für $\vb{w} = 0$ sind beide Seiten null. Sonst ist $\vb{w}\adj\vb{w} > 0$; wir setzen
-    $c = (\vb{w}\adj\vb{v}) / (\vb{w}\adj\vb{w})$ und $\vb{u} = \vb{v} - c\,\vb{w}$. Nach
-    Regel~1 ist $c^* = (\vb{v}\adj\vb{w}) / (\vb{w}\adj\vb{w})$. Mit den Regeln~2 und~3 von
-    Proposition~\ref{c03.prop.skalarprodukt} und Regel~4 für $\vb{u}$ ist
-    \begin{equation}\label{c03.eq.cs-beweis}
-      0 \leq \vb{u}\adj\vb{u}
-        = \vb{v}\adj\vb{v} - c\, \vb{v}\adj\vb{w} - c^*\, \vb{w}\adj\vb{v} + c^* c\, \vb{w}\adj\vb{w}
-        = \vb{v}\adj\vb{v} - \frac{\abs{\vb{v}\adj\vb{w}}^2}{\vb{w}\adj\vb{w}} ,
-    \end{equation}
-    denn jeder der drei letzten Summanden ist $\abs{\vb{v}\adj\vb{w}}^2 / (\vb{w}\adj\vb{w})$
-    bis auf das Vorzeichen. Multiplikation mit $\vb{w}\adj\vb{w} > 0$ gibt die Behauptung.
-  \end{proof}
 
-  Reed und Simon beweisen dieselbe Ungleichung für jeden Vektorraum mit Skalarprodukt, auf
-  anderem Weg \srcref{reed-simon-1}{S.~38}. Für $\elltwo$ folgt sie hier direkt aus dem
-  Lemma.
+  Das Lemma ist die Schwarz'sche Ungleichung aus Proposition~\ref{c03.prop.schwarz} für das
+  Skalarprodukt $\vb{v}\adj\vb{w}$ von $\mathbb{C}^n$. Dieses erfüllt die Bedingungen von
+  \defref{D82}, denn das sind die Regeln~2 bis~4 von Proposition~\ref{c03.prop.skalarprodukt};
+  mit $\norm{v}^2 = \vb{v}\adj\vb{v}$ ist Gleichung~\eqref{c03.eq.cs} das Quadrat von
+  Gleichung~\eqref{c03.eq.schwarz}. Reed und Simon beweisen dieselbe Ungleichung für jeden
+  Vektorraum mit Skalarprodukt, auf anderem Weg \srcref{reed-simon-1}{S.~38}. Für $\elltwo$
+  folgt sie hier aus dem Lemma durch einen Grenzübergang.
 
   \begin{proposition}[Cauchy-Schwarz in $\elltwo$]\label{c03.prop.cs-elltwo}\claim[proof-included]{c03.cl.cs-elltwo}{derived}
     Für alle $\vb{v}, \vb{w} \in \elltwo$ gilt

@@ -41,6 +41,11 @@
       "file": "figures/raeume.tex"
     },
     {
+      "id": "c03.fig.vollst",
+      "kind": "figure",
+      "file": "figures/vollst.tex"
+    },
+    {
       "id": "c03.demo.kreuz",
       "kind": "demo",
       "still": "c03.fig.kreuz",
@@ -83,6 +88,15 @@
       "title": {
         "de": "Drei Räume, drei Skalarprodukte",
         "en": "Three spaces, three scalar products"
+      }
+    },
+    {
+      "id": "c03.demo.vollst",
+      "kind": "demo",
+      "still": "c03.fig.vollst",
+      "title": {
+        "de": "Vollständigkeit: ein Vektor, zwei Basen",
+        "en": "Completeness: one vector, two bases"
       }
     }
   ]

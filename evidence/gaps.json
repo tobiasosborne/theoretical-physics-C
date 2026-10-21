@@ -482,6 +482,22 @@
    "owner": "TJO",
    "status": "open",
    "notes": "Raised in the Lecture 2 draft of chapter C3, 2026-10-20."
+  },
+  {
+   "id": "G-0072",
+   "what": "Wording and framing in chapter c03 (Lecture 3, vl03) that TJO should confirm or supply: (a) the spoken remark that the vectors |e_±> keep turning up in the theory of angular momentum, in the hydrogen atom and especially in spin systems (v03 [49:20]-[49:46]) has no written source on disk (vl03.tex does not say it) and is left out of section c03.s4; (b) the chapter keeps the script's sentence that the Schwarz inequality 'steckt hinter der Heisenbergschen Unschärferelation' (vl03.tex:164, also v04 [04:28]-[04:45]); the script's own proof of the uncertainty relation (vl09.tex:24-38) uses the positivity of (A + i lambda B)^dagger (A + i lambda B), not the Schwarz inequality by name, so TJO should say whether the sentence stays as written; (c) the dimension count 'ab fünf oder sechs Dimensionen kippt das Verhältnis' (vl03.tex:127; v03 [72:03]: 'ab 5, 6, 7 Dimensionen') is an estimate without derivation and is left out under the numbers rule; the chapter says only 'in höheren Dimensionen'; (d) the spoken sentence 'dieses Orthonormierungsverfahren liefert uns immer eine Basis' (v04 [27:58]-[28:01]) is not adopted; the chapter follows the script (vl03.tex:221) and states the condition (part 4 of proposition c03.prop.gram-schmidt); (e) the Kern restricts bases to finite index sets (decision D4) and moves infinite index sets, the existence theorem and the Hermite basis of L^2(R) into Vertiefung c03.v4; the wording of that split and of the replacement of the script's 'wir nehmen ab jetzt an, dass wir immer eine Basis haben' (vl03.tex:212) by Reed-Simon Theorem II.5 is the chapter author's.",
+   "needed_source": "TJO's wording or decision for each item; for (a) a source on disk or TJO's permission to state it as his own forward reference.",
+   "where": "c03 sections c03.s4, c03.s5, c03.s7, c03.s7.1 and Vertiefung c03.v4",
+   "raised_in": [
+    "latex/lectures/de/vl03.tex:127",
+    "latex/lectures/de/vl03.tex:164",
+    "latex/lectures/de/vl03.tex:212",
+    "transcripts/raw/v03_jKsPIgMb6OU.txt",
+    "transcripts/raw/v04_YpK1CnrLtaM.txt"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Raised in the Lecture 3 draft of chapter C3, 2026-10-21. Related: G-0034 (a) asks for a source that L^2(R) is separable; Reed-Simon I p. 142 (Lemma 3, P-0162: the Hermite functions are a countable orthonormal basis of L^2(R)) together with Theorem II.7 (p. 47) may supply it; not used for G-0034 in this draft."
   }
  ]
 }

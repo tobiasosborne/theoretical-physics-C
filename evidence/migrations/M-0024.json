@@ -1,0 +1,79 @@
+{
+ "schema_version": 1,
+ "id": "M-0024",
+ "status": "recorded",
+ "title": "vl03 subsection Operatoren (deferred to Lecture 4): 'einen Hilbertraum', 'Das heisst', 'operatoren', word order",
+ "legacy": [
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl03.tex",
+   "line": 256,
+   "file_sha256": "5ade0d2df8358f22497f3e207710b2c0efb7c74ea9da31ae420bcb23d469837e",
+   "old_text": "Sei $\\mathcal{H}$ einen Hilbertraum.",
+   "new_text": "Sei $\\Hil$ ein Hilbertraum."
+  },
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl03.tex",
+   "line": 260,
+   "file_sha256": "5ade0d2df8358f22497f3e207710b2c0efb7c74ea9da31ae420bcb23d469837e",
+   "old_text": "Das heisst,",
+   "new_text": "Das heißt,"
+  },
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl03.tex",
+   "line": 271,
+   "file_sha256": "5ade0d2df8358f22497f3e207710b2c0efb7c74ea9da31ae420bcb23d469837e",
+   "old_text": "kann man operatoren mit",
+   "new_text": "kann man Operatoren mit"
+  },
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl03.tex",
+   "line": 271,
+   "file_sha256": "5ade0d2df8358f22497f3e207710b2c0efb7c74ea9da31ae420bcb23d469837e",
+   "old_text": "dass die Dimension von $\\mathcal{H}$ beträgt $n=2$.",
+   "new_text": "dass die Dimension von $\\Hil$ $n = 2$ beträgt."
+  },
+  {
+   "version": "v0.1",
+   "file": "archive/skript-2022/Vorlesungen3.tex",
+   "line": 192,
+   "file_sha256": "389a16293491295d301d6749de11bedbb17c8c712e1f66ca9da9dd4684b45533",
+   "old_text": "Sei $\\mathcal{H}$ einen Hilbertraum.",
+   "new_text": "Sei $\\Hil$ ein Hilbertraum."
+  },
+  {
+   "version": "v0.1",
+   "file": "archive/skript-2022/Vorlesungen3.tex",
+   "line": 196,
+   "file_sha256": "389a16293491295d301d6749de11bedbb17c8c712e1f66ca9da9dd4684b45533",
+   "old_text": "Das heisst,",
+   "new_text": "Das heißt,"
+  },
+  {
+   "version": "v0.1",
+   "file": "archive/skript-2022/Vorlesungen3.tex",
+   "line": 207,
+   "file_sha256": "389a16293491295d301d6749de11bedbb17c8c712e1f66ca9da9dd4684b45533",
+   "old_text": "kann man operatoren mit",
+   "new_text": "kann man Operatoren mit"
+  },
+  {
+   "version": "v0.1",
+   "file": "archive/skript-2022/Vorlesungen3.tex",
+   "line": 207,
+   "file_sha256": "389a16293491295d301d6749de11bedbb17c8c712e1f66ca9da9dd4684b45533",
+   "old_text": "dass die Dimension von $\\mathcal{H}$ beträgt $n=2$.",
+   "new_text": "dass die Dimension von $\\Hil$ $n = 2$ beträgt."
+  }
+ ],
+ "reason": "Wording only, in the subsection Operatoren of vl03 (lines 253-277), which is not migrated with Lecture 3: it opens the material of vl04 and is migrated with Lecture 4 (vl03-map.json, status deferred). 'einen Hilbertraum' after 'Sei' needs the nominative 'ein'; 'heisst' is 'heißt'; the noun 'Operatoren' is capitalised; in the subordinate clause the verb goes last ('dass die Dimension ... n = 2 beträgt'). The English edition (lec03.tex:256, 260, 271) has none of these slips. The new_text is a proposal for the Lecture 4 migration. Corrected after evidence/derivations/c03/REVIEW-lec3.md, section C (M-0024): the earlier new_text 'betrage $n = 2$' still put the verb before its complement; old_text now includes 'dass' so that the new_text is the whole subordinate clause with the verb last.",
+ "evidence": {
+  "independent_check": "read in the script sources at the stated lines",
+  "provenance_ids": []
+ },
+ "destination": "c03",
+ "notes": "Recorded now so that the Lecture 4 migration finds it; the destination is chapter c03, where the vl04 operators go (header of content/c03-hilbertraum/de.tex)."
+}
