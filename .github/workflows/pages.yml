@@ -39,7 +39,7 @@ jobs:
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -q --no-install-recommends \
             texlive-xetex texlive-latex-recommended texlive-latex-extra texlive-pictures \
             texlive-science texlive-bibtex-extra texlive-fonts-extra texlive-fonts-extra-links \
-            texlive-plain-generic preview-latex-style poppler-utils fontconfig unzip
+            texlive-lang-german texlive-plain-generic preview-latex-style poppler-utils fontconfig unzip
           xelatex --version | head -1
 
       - name: Iosevka (the monospace face of every design package; OFL)
