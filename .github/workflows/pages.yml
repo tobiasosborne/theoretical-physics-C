@@ -1,0 +1,78 @@
+# Build the student-facing site on GitHub and deploy it to GitHub Pages.
+#
+# Everything is built with open fonts only (scripts/publish_pages.sh --no-push: the four
+# course editions, the two complete-script PDFs with Computer Modern, the chapter web
+# edition, the landing page); the commercial print fonts never leave TJO's machine. The
+# assembled build/pages/ tree is uploaded as the Pages artifact, so nothing large is ever
+# pushed from a slow connection. Runs on every push to master and on request.
+name: pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: TeX Live, poppler, open fonts from the TeX tree
+        run: |
+          sudo apt-get update -q
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -q --no-install-recommends \
+            texlive-xetex texlive-latex-recommended texlive-latex-extra texlive-pictures \
+            texlive-science texlive-bibtex-extra texlive-fonts-extra texlive-fonts-extra-links \
+            texlive-plain-generic preview-latex-style poppler-utils fontconfig unzip
+          xelatex --version | head -1
+
+      - name: Iosevka (the monospace face of every design package; OFL)
+        run: |
+          curl -sSL -o /tmp/iosevka.zip \
+            https://github.com/be5invis/Iosevka/releases/download/v34.9.0/PkgTTC-SGr-Iosevka-34.9.0.zip
+          sudo mkdir -p /usr/local/share/fonts/iosevka
+          sudo unzip -q -o /tmp/iosevka.zip -d /usr/local/share/fonts/iosevka
+          sudo fc-cache -f
+          fc-list | grep -c Iosevka
+
+      - name: npm ci (converter and bundler; no browser needed for the build)
+        run: cd web && npm ci --no-audit --no-fund
+
+      - name: Build and assemble (open fonts only; the font gate is in the script)
+        run: scripts/publish_pages.sh --no-push
+
+      - name: What was built
+        run: |
+          cat build/pages/VERSION
+          du -sh build/pages build/pages/pdf build/pages/web
+          for f in build/pages/pdf/*.pdf; do echo "$f: $(pdfinfo "$f" | awk '/^Pages/{print $2}') pages"; done
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: build/pages
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

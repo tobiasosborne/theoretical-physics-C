@@ -4,6 +4,35 @@ Lecture notes for the one-semester course *Theoretische Physik C* (quantum
 mechanics and statistical physics) at the Leibniz Universität Hannover,
 in **German** and **English**.
 
+## Für Studierende · For students
+
+Nichts muss installiert oder kompiliert werden. Alles unten funktioniert im
+Browser des Handys. **Startseite mit allen Links:**
+**<https://tobiasosborne.github.io/theoretical-physics-C/>**
+
+Nothing needs to be installed or compiled. Everything below works in a phone's
+browser. **One page with every link:**
+**<https://tobiasosborne.github.io/theoretical-physics-C/>**
+
+| | Deutsch | English |
+|---|---|---|
+| **Skript, alle 22 Vorlesungen (PDF)** · the complete notes | [TheoretischePhysikC.pdf](https://tobiasosborne.github.io/theoretical-physics-C/pdf/TheoretischePhysikC.pdf) | [TheoreticalPhysicsC.pdf](https://tobiasosborne.github.io/theoretical-physics-C/pdf/TheoreticalPhysicsC.pdf) |
+| **Neuer Kurs, Web-Ausgabe** · new course, web edition, interactive figures | [Kapitel lesen](https://tobiasosborne.github.io/theoretical-physics-C/web/de/index.html) | [read the chapters](https://tobiasosborne.github.io/theoretical-physics-C/web/en/index.html) |
+| **Neuer Kurs, Kern (PDF)** · new course, core: required material only | [tpc-de-kern.pdf](https://tobiasosborne.github.io/theoretical-physics-C/pdf/tpc-de-kern.pdf) | [tpc-en-kern.pdf](https://tobiasosborne.github.io/theoretical-physics-C/pdf/tpc-en-kern.pdf) |
+| **Neuer Kurs, vollständig (PDF)** · new course, full: with depth blocks and foundations | [tpc-de-full.pdf](https://tobiasosborne.github.io/theoretical-physics-C/pdf/tpc-de-full.pdf) | [tpc-en-full.pdf](https://tobiasosborne.github.io/theoretical-physics-C/pdf/tpc-en-full.pdf) |
+| **Vorlesungsvideos** · lecture videos | [YouTube-Playlist](https://youtube.com/playlist?list=PLDfPUNusx1Epw58nW3Acp7VI-PqXCkQXf) | (auf Deutsch · in German) |
+
+Das Skript ist vollständig. Der neue Kurs entsteht Kapitel für Kapitel und
+ersetzt das Skript nach und nach; die Startseite zeigt immer den aktuellen
+Stand. The notes are complete; the new course is written chapter by chapter
+and will replace them over time. The landing page always shows the current
+state.
+
+Everything below this line is for people who want to build or change the
+notes themselves.
+
+---
+
 22 lectures: from the birth of quantum mechanics and probability theory,
 through Hilbert space, operators, the postulates, the Schrödinger equation,
 the standard solvable potentials, angular momentum, spin, the hydrogen atom
@@ -75,6 +104,11 @@ scripts/
 
 build.sh                      build either or both editions
 ci.sh                         local CI: structure → parity → figures → build
+scripts/publish_pages.sh      open-fonts build of PDFs and web edition into
+                              build/pages/ (the student links above)
+scripts/pages/index.html      the landing page of that site
+.github/workflows/pages.yml   runs the script on GitHub after every push to
+                              master and deploys build/pages/ to GitHub Pages
 ```
 
 ## Building

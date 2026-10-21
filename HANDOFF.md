@@ -9,6 +9,24 @@ two-language course.
 
 ## Status
 
+**2026-10-21: student-facing site on GitHub Pages.** TJO is sharing the repo with the
+students, who will not compile anything and mostly read on phones. `README.md` now opens
+with a bilingual "Für Studierende · For students" table of direct links, and
+`scripts/publish_pages.sh` builds everything with open fonts only (the font gate in the
+script refuses any PDF that embeds MTPro2, Whitney, Times LT Std, Minion or Baskerville),
+assembles `build/pages/` (landing page `scripts/pages/index.html`, `pdf/` with the two
+complete-script PDFs built `--cmfonts` and the four course editions, `web/` with the chapter
+site minus c99, `VERSION`). The workflow `.github/workflows/pages.yml` runs that script with
+`--no-push` on every push to master on a GitHub runner (TeX Live 2023 from apt, Iosevka from
+its release zip, node) and deploys `build/pages/` to GitHub Pages at
+https://tobiasosborne.github.io/theoretical-physics-C/ (Pages build type `workflow`). So the
+students' links update themselves after every push. The script can also push the tree
+itself as the orphan branch `gh-pages` (its default without `--no-push`), but on
+2026-10-21 this machine's upstream measured about 16 kB/s (`curl` upload test) and GitHub
+answered every pack above a few hundred kB with HTTP 408, so that path is a fallback only.
+`\mbf` was added to the Computer Modern branch of `latex/tpc-style.sty`; `build.sh --cmfonts`
+had been broken by it.
+
 **2026-10-21: Lecture 3 (vl03) migrated into chapter C3.** `latex/lectures/de/vl03.tex` is
 migrated into `content/c03-hilbertraum/` as new Kern sections c03.s4 (Dirac-Notation),
 c03.s5 (Skalarprodukte), c03.s6 (Hilbertraum, transcluding registry D14), c03.s7 (Basen,
