@@ -1,0 +1,26 @@
+{
+ "schema_version": 1,
+ "key": "tpc-script-v0.2",
+ "kind": "script-snapshot",
+ "storage": "tracked",
+ "title": "fixture: tpc-script-v0.2 with its lecture-2 Git member moved to another commit",
+ "authors": [
+  "Tobias J. Osborne"
+ ],
+ "identifiers": {
+  "git_commit": "c5d953e3760c0086bcb9031d6dace4354df307cc"
+ },
+ "retrieval": {
+  "git_members": {
+   "tpc-script-v0.2/git/latex/lectures/de/vl02.tex": "latex/lectures/de/vl02.tex"
+  }
+ },
+ "files": [
+  {
+   "path": "tpc-script-v0.2/git/latex/lectures/de/vl02.tex",
+   "role": "text",
+   "sha256": "0acb89f372aca2f40a5c43affa8bf833418ff40bfb407f34d22125fb62415c44"
+  }
+ ],
+ "rights_ref": "rights.json"
+}

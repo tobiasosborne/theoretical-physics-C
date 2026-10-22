@@ -319,7 +319,7 @@
    ],
    "owner": "TJO",
    "status": "open",
-   "notes": "Raised by the author of Smoke A (chapters C0 and C1), 2026-10-11. Smoke A repair retains only the algebraic limiting form, explicitly attributes the lecture-only physics, removes the all-frequencies clause and qubit inference, and leaves physical regimes for author-supplied sources or wording; the separate repair gaps record each objection."
+   "notes": "Raised by the author of Smoke A (chapters C0 and C1), 2026-10-11. Smoke A repair retains only the algebraic limiting form, explicitly attributes the lecture-only physics, removes the all-frequencies clause and qubit inference, and leaves physical regimes for author-supplied sources or wording; the separate repair gaps record each objection. 2026-10-22: the latex/ loci in raised_in are script v0.2 (tpc-script-v0.2, commit 90fe735). Script v0.3 deleted latex/figures/fig_vl01_planck.tex and rewrote vl01.tex; read both at that commit (git show 90fe735:latex/figures/fig_vl01_planck.tex; vl01.tex is the snapshot's Git member). The figure file stays outside the registered snapshot, as stated in (a)."
   },
   {
    "id": "G-0025",

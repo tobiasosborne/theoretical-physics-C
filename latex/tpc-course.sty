@@ -22,6 +22,13 @@
 %              tags stand in).  Falls back to `fixed' without tpc-design.
 %            fixed: one grid for every package, 138 mm text and a 33 mm
 %              margin column at the class's 12 pt.
+%   layout   course | script
+%            course (default): content files of the course, chapters by
+%              \chapter (the four editions).
+%            script: the complete lecture script (latex/TheoretischePhysikC.tex,
+%              latex/TheoreticalPhysicsC.tex), written in v0.2 sectioning.
+%              Its \section is a lecture and is set like a course chapter;
+%              see section SCRIPT LAYOUT below.
 %
 % Palette.  tpc-style.sty is loaded unchanged, with its own colours
 % (cgblue, munsell, banana, isabelline, spacecadet, light-gray).  When
@@ -48,6 +55,7 @@
 \DeclareStringOption[stix]{math}
 \DeclareStringOption[open]{fonts}
 \DeclareStringOption[design]{page}
+\DeclareStringOption[course]{layout}
 \ProcessKeyvalOptions*
 
 \newcommand{\tpccourse@ifeq}[2]{% \tpccourse@ifeq{\macro}{string}{yes}{no}
@@ -66,6 +74,7 @@
 \tpccourse@checkvalue{math}{stix,mtpro2}
 \tpccourse@checkvalue{fonts}{open,local}
 \tpccourse@checkvalue{page}{design,fixed}
+\tpccourse@checkvalue{layout}{course,script}
 
 % ── The existing style, unchanged ─────────────────────────────
 % tpc-style has one font switch: without `cmfonts' it loads MTPro2 with
@@ -77,6 +86,13 @@
 \tpccourse@ifeq{\tpccourse@math}{stix}
   {\PassOptionsToPackage{cmfonts}{tpc-style}}{}
 \RequirePackage{tpc-style}
+% With math=mtpro2 tpc-style has loaded mathspec, which turns every later
+% \RequirePackage{amsmath} (tpc-levels has one) into an error.  amsmath is
+% loaded, so such a request is a no-op: give \RequirePackage its meaning
+% back, as tpc-design does when it loads mathspec itself.
+\ifdefined\original@RequirePackage
+  \let\RequirePackage\original@RequirePackage
+\fi
 \RequirePackage{tpc-macros}
 
 % ── Design tokens ─────────────────────────────────────────────
@@ -158,11 +174,15 @@
   \def\tpcmargintagfont{\normalfont\tpcfontlabel\itshape\color{tpc-ink-muted}}
   \def\tpccaptionfont{\normalfont\tpcfontsmall}
   \def\tpccaptionlabelfont{\tpcfontlabel\bfseries}
+  % The end-of-proof box: amssymb's comes from msam10 (Computer Modern
+  % weight); with an OpenType maths face take that face's white square.
+  \AtBeginDocument{\ifdefined\setmathfont
+    \renewcommand{\qedsymbol}{\ensuremath{\mdlgwhtsquare}}\fi}
   % boxes: text in ink (tcolorbox defaults to black), fills and rules
   % from tokens.  Element boxes are tinted; depth blocks never are.
   \tcbset{colupper=tpc-ink, collower=tpc-ink, coltitle=tpc-ink}
   \newcommand{\tpccourse@boxtitle}[1]{%
-    {\normalfont\tpcfonthiii\color{tpc-ink}#1}\par\vspace{\tpcspacexs}}
+    {\normalfont\tpcfonthiii\color{tpc-ink}#1}\par\nobreak\vspace{\tpcspacexs}}
   \tcbset{tpccourse@box/.style={enhanced, breakable, frame hidden,
       arc=0pt, outer arc=0pt, boxrule=0pt,
       left=\tpcspacem, right=\tpcspaces, top=\tpcspaces, bottom=\tpcspaces,
@@ -238,6 +258,149 @@
   \endgroup
   \vspace{1.4\baselineskip}%
   \@afterindentfalse\@afterheading}
+
+% ══════════════════════════════════════════════════════════════
+%  SCRIPT LAYOUT (layout=script)
+% ══════════════════════════════════════════════════════════════
+% The complete script keeps its v0.2 sources (one \section per lecture,
+% \subsection and \subsubsection inside, starred \section as an inner
+% heading) and takes the course's page, faces, colours and boxes.  The
+% levels map one down, so a lecture looks like a course chapter:
+%
+%   script source           set as                    numbered
+%   \section{Vorlesung: X}  lecture heading (chapter)  N       counter chapter
+%   \section*{X}            course \section*           -
+%   \subsection{X}          course \section            N.M
+%   \subsubsection{X}       course \subsection         N.M.K
+%
+% A leading "Vorlesung: " / "Lecture: " is dropped from the title; the
+% label line above it says "Vorlesung N".  Equations, figures and every
+% theorem-like unit number within the lecture (N.k), as in the course.
+% Lectures run on without a page break (the script is a compact text).
+%
+% Beyond the headings, for v0.2 material set on the narrower measure:
+%   * a \parbox wider than the line is set at the line width (the
+%     Postulat boxes of vl06, vl17, vl18, vl20, vl22 are 14 cm wide);
+%   * a lecture figure (\input{figures/fig_...}) is set at its natural
+%     width, centred on the text measure when it fits and otherwise
+%     flush with the text and running into the margin column, never
+%     beyond \tpcfigurewidth (text + gap + margin column);
+%   * the signal colours of the old figures and the plot colormaps take
+%     token colours (birrenred has no token and keeps its value).
+% Title page: \tpcscriptversion{v0.3} and \tpcscriptnotice{...} in the
+% preamble, \tpcscripttitle in place of \maketitle.
+\newif\iftpccourse@script
+\newif\iftpcscript@fig  % outside the branch: a skipped \if must be known
+\tpccourse@ifeq{\tpccourse@layout}{script}{\tpccourse@scripttrue}{}
+\iftpccourse@script
+  \renewcommand{\tpcchapterword}{\tpcifenglish{Lecture}{Vorlesung}}
+  % the course's own heading levels, before they are re-pointed
+  \let\tpcscript@section\section
+  \let\tpcscript@subsection\subsection
+  \providecommand{\tpcspacexl}{2\baselineskip}
+  \ExplSyntaxOn
+  \cs_new_protected:Npn \tpcscript@striptitle #1 #2
+    {
+      \tl_set:Nn #1 {#2}
+      \regex_replace_once:nnN { \A (Vorlesung|Lecture) \: \s* } { } #1
+    }
+  \ExplSyntaxOff
+  \newcommand{\tpcscript@lecture}[2][]{%
+    \par
+    % keep the heading with at least a few lines of its lecture
+    \vskip 0pt plus 10\baselineskip\penalty-200\vskip 0pt plus -10\baselineskip
+    \addvspace{\tpcspacexl}%
+    \tpclevelschapterstart
+    \refstepcounter{chapter}\nobreak
+    \tpcscript@striptitle\tpcscript@title{#2}%
+    \if\relax\detokenize{#1}\relax\let\tpcscript@tocentry\tpcscript@title
+    \else\tpcscript@striptitle\tpcscript@tocentry{#1}\fi
+    % no break between the mark, the contents line and the heading: a
+    % break there leaves the mark (and the running head) on the page before
+    \nobreak
+    \markboth{\tpcchapterword\ \thechapter}{\tpcscript@tocentry}\nobreak
+    \addcontentsline{toc}{chapter}%
+      {\protect\tocchapter{\tpcchapterword}{\thechapter}{\tpcscript@tocentry}}\nobreak
+    \begingroup
+      \raggedright\interlinepenalty\@M
+      {\tpcchapterlabelfont\tpcchapterword\ \thechapter\par}\nobreak
+      \vspace{0.4\baselineskip}\nobreak
+      {\tpcchaptertitlefont\tpcscript@title\par}\nobreak
+    \endgroup
+    \vspace{\baselineskip}\nobreak
+    \@afterindentfalse\@afterheading}
+  \def\section{\@ifstar{\tpcscript@section*}{\tpcscript@lecture}}
+  \let\subsection\tpcscript@section
+  \let\subsubsection\tpcscript@subsection
+  % Title page
+  \def\tpcscript@version{}\def\tpcscript@notice{}
+  \newcommand{\tpcscriptversion}[1]{\def\tpcscript@version{#1}}
+  \newcommand{\tpcscriptnotice}[1]{\def\tpcscript@notice{#1}}
+  \newcommand{\tpcscripttitle}{%
+    \maketitle
+    \begingroup\centering
+      \ifx\tpcscript@version\@empty\else
+        {\normalfont\sffamily\color{tpc-ink-muted}%
+         \tpcifenglish{Version}{Fassung}~\tpcscript@version
+         \ \textperiodcentered\ \today\par}%
+      \fi
+    \endgroup
+    \ifx\tpcscript@notice\@empty\else
+      \begin{greybox}\raggedright\tpcscript@notice\end{greybox}%
+    \fi}
+  % The v0.2 paragraphs were broken for a 160 mm measure; on the course
+  % measure a little emergency stretch keeps long German words and inline
+  % maths inside the line instead of overfull.
+  \setlength{\emergencystretch}{2em}
+  % Wide boxes of the v0.2 sources
+  \newdimen\tpcscript@wd
+  \AtBeginDocument{%
+    \NewCommandCopy\tpcscript@parbox\parbox
+    \RenewDocumentCommand\parbox{o o o m}{%
+      \setlength\tpcscript@wd{#4}%
+      \ifdim\tpcscript@wd>\linewidth \tpcscript@wd\linewidth \fi
+      \edef\tpcscript@pbcall{\noexpand\tpcscript@parbox
+        \IfNoValueF{#1}{[#1]\IfNoValueF{#2}{[#2]\IfNoValueF{#3}{[#3]}}}%
+        {\the\tpcscript@wd}}%
+      \tpcscript@pbcall}}
+  % Lecture figures at natural width
+  \RequirePackage{varwidth}
+  \newsavebox\tpcscript@figbox
+  \providecommand{\tpcfigurewidth}{\textwidth}
+  \newcommand{\tpcscript@isfigure}[1]{% #1 = argument of \input
+    \tpcscript@figfalse
+    \edef\tpcscript@a{\noexpand\in@{\detokenize{figures/fig_}}{\detokenize{#1}}}%
+    \tpcscript@a
+    \ifin@ \ifdim\linewidth=\textwidth \tpcscript@figtrue \fi \fi}
+  \newcommand{\tpcscript@placefigure}[1]{%
+    \par\addvspace{\bigskipamount}%
+    \setbox\tpcscript@figbox\hbox{\begin{varwidth}{\tpcfigurewidth}#1\end{varwidth}}%
+    \begin{trivlist}\item\relax
+      \ifdim\wd\tpcscript@figbox>\linewidth
+        \makebox[\linewidth][l]{\usebox\tpcscript@figbox}%
+      \else
+        \makebox[\linewidth][c]{\usebox\tpcscript@figbox}%
+      \fi
+    \end{trivlist}\addvspace{\bigskipamount}}
+  % \input{figures/fig_...} in the body: the brace form of \input is \@iinput
+  \AtBeginDocument{%
+    \let\tpcscript@iinput\@iinput
+    \def\@iinput#1{\tpcscript@isfigure{#1}%
+      \iftpcscript@fig \expandafter\tpcscript@placefigure
+      \else \expandafter\@firstofone \fi {\tpcscript@iinput{#1}}}}
+  % Colours of the v0.2 figures
+  \iftpccourse@design
+    \colorlet{birrenorange}{tpc-dynamics}
+    \colorlet{birrengreen}{tpc-effect}
+    \colorlet{birrengray}{tpc-grey-4}
+    \AtBeginDocument{\@ifpackageloaded{pgfplots}{\pgfplotsset{
+      colormap={tpcdensity}{color(0cm)=(tpc-plate) color(3cm)=(tpc-link)
+        color(5cm)=(tpc-state)},
+      colormap={tpcsigned}{color(0cm)=(birrenred) color(2.5cm)=(tpc-plate)
+        color(5cm)=(tpc-accent)},
+      colormap={tpcflat}{color(0cm)=(tpc-ground-alt) color(1cm)=(tpc-ground-alt)}}}{}}
+  \fi
+\fi
 
 % ══════════════════════════════════════════════════════════════
 %  REFERENCES ACROSS CHAPTERS

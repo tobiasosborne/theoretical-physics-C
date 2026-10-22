@@ -39,6 +39,9 @@ What it fails on (each class prints its own message prefix):
   quote not found        a verified quote is not at the stated lines of a text source
                          that is present on disk
   not verified in this run a verified quote member is absent (fails in private mode)
+  snapshot member        a verified quote cites a historical snapshot member served from Git
+                         (retrieval.git_members) whose payload is unavailable or does not
+                         hash to the sha256 its source.json records
   unverified blessing    a blessed-provisional entry without any verified source
   mathml drift           a symbol's mathml differs from the rendering of its expansion
   unregistered macro     a definition body or a content file uses a control word that is
@@ -145,19 +148,24 @@ def check_quote(rep, owner, key, locus, quote, info, root):
         rep.err("unregistered source", f"{owner}: locus '{locus}': '{m.group(1)}' is not a member file of "
                                        f"source '{key}' ({info.get('record', 'not_a_source')})")
         return
-    path, role = member
+    role = member[1]
     if role != "text":
         rep.err("verified without locus", f"{owner}: {key} {locus}: member has role '{role}'; a quote is "
                                           "checked against a text member only (books are read from the page image)")
         return
-    if not path.exists():
+    try:
+        text = reglib.member_text(member)
+    except reglib.MemberError as exc:
+        rep.err("snapshot member", f"{owner}: {key} {locus}: {exc}")
+        return
+    if text is None:
         message = f"{owner}: verified quote source member is absent: {key}/{m.group(1)} ({locus})"
         if rep.private:
             rep.err("not verified in this run", message)
         else:
             rep.notes.append(message)
         return
-    lines = path.read_text(encoding="utf-8", errors="replace").splitlines()
+    lines = text.splitlines()
     if m.group(2):
         a, b = int(m.group(2)), int(m.group(3) or m.group(2))
         if b > len(lines):

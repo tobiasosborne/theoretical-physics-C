@@ -9,6 +9,7 @@ import hashlib
 import json
 import pathlib
 import re
+import subprocess
 
 REPO = pathlib.Path(__file__).resolve().parent.parent.parent
 INPUTS = ["notation.json", "definitions.json", "conventions.json", "translation.json"]
@@ -83,10 +84,13 @@ def source_table(root, tran):
         except (OSError, ValueError, KeyError, TypeError) as exc:
             problems.append(f"sources/{key}/source.json is unusable ({exc})")
             continue
+        git = src.get("retrieval", {}).get("git_members", {})
         table[key] = {"registered": True, "title": title,
                       "kind": "text" if any(f.get("role") == "text" for f in files) else "page-image",
                       "record": f"sources/{key}/source.json",
-                      "files": {f["path"]: (sdir / f["path"], f.get("role")) for f in files}}
+                      "files": {f["path"]: (sdir / f["path"], f.get("role"),
+                                            _git_member(src, f) if f["path"] in git else None)
+                                for f in files}}
     for key, info in tran.get("not_a_source", {}).items():
         if key in table:
             problems.append(f"pseudo-key '{key}' in translation.json not_a_source is also a "
@@ -96,18 +100,66 @@ def source_table(root, tran):
     return table, problems
 
 
-def member_of(info, name):
-    """Resolve the file named in a locus to (path on disk, role) or None.
+def _git_member(src, f):
+    """(commit, repository path, sha256) of a historical snapshot member served from Git.
 
-    Registered source: the unique member whose recorded path is `name` or ends in
-    '/name' (loci are written relative to the source's own tree).  Pseudo-key with a
-    path: that directory joined with the name."""
+    Same rule as scripts/evidence/check_evidence.py (Registry.git_target): a tracked
+    script-snapshot lists the member in retrieval.git_members; its bytes are
+    `git show <identifiers.git_commit>:<repository path>`.  An invalid entry yields a
+    triple with commit None, which member_text() reports."""
+    target = src["retrieval"]["git_members"][f["path"]]
+    commit = src.get("identifiers", {}).get("git_commit", "")
+    ok = (src.get("kind") == "script-snapshot" and src.get("storage") == "tracked"
+          and isinstance(commit, str) and re.fullmatch(r"[0-9a-f]{40}", commit)
+          and isinstance(target, str) and not target.startswith("/")
+          and ".." not in pathlib.PurePosixPath(target).parts)
+    return (commit if ok else None, target, f.get("sha256"))
+
+
+def member_of(info, name):
+    """Resolve the file named in a locus to (path on disk, role, git) or None.
+
+    git is None for a file on disk, else (commit, repository path, sha256) of a historical
+    snapshot member (read it with member_text).  Registered source: the unique member whose
+    recorded path is `name` or ends in '/name' (loci are written relative to the source's
+    own tree).  Pseudo-key with a path: that directory joined with the name."""
     if info.get("registered"):
         hits = [v for k, v in info["files"].items() if k == name or k.endswith("/" + name)]
         return hits[0] if len(hits) == 1 else None
     if info.get("path"):
-        return (REPO / info["path"] / name, "text")
+        return (REPO / info["path"] / name, "text", None)
     return None
+
+
+class MemberError(Exception):
+    pass
+
+
+_GIT_CACHE = {}
+
+
+def member_text(member):
+    """Text of a resolved member, or None when a file member is absent from disk.
+
+    A Git member is read with `git show` and must hash to the sha256 its source.json
+    records; otherwise MemberError (a tampered or unavailable snapshot fails closed)."""
+    path, _role, git = member
+    if git is None:
+        return path.read_text(encoding="utf-8", errors="replace") if path.exists() else None
+    commit, target, digest = git
+    if commit is None:
+        raise MemberError(f"invalid Git snapshot member or commit for '{target}'")
+    if (commit, target) not in _GIT_CACHE:
+        proc = subprocess.run(["git", "-C", str(REPO), "show", f"{commit}:{target}"],
+                              capture_output=True)
+        _GIT_CACHE[(commit, target)] = None if proc.returncode else proc.stdout
+    data = _GIT_CACHE[(commit, target)]
+    if data is None:
+        raise MemberError(f"historical snapshot payload {commit[:12]}:{target} is unavailable from Git")
+    if hashlib.sha256(data).hexdigest() != digest:
+        raise MemberError(f"stale snapshot: {commit[:12]}:{target} does not hash to the sha256 "
+                          "its source.json records")
+    return data.decode("utf-8", errors="replace")
 
 
 def cited_keys(data):

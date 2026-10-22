@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "id": "M-0009",
- "status": "recorded",
+ "status": "applied",
  "title": "vl01: the count N p(x) in the motivation of the expectation value is stated as exact",
  "legacy": [
   {
@@ -10,7 +10,11 @@
    "line": 137,
    "file_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
    "old_text": "Wenn dieses Ereignis bei $N$ Messungen vorliegt ($Np(x)$), ergibt sich die Summe der Messwerte mit $\\sum_x N p(x) \\cdot f(x)$.",
-   "new_text": "Die statistische Lesart der Wahrscheinlichkeit lautet nun: Bei vielen Wiederholungen liegt die relative Häufigkeit $h_N(x)$ nahe bei $p(x)$. Das Ergebnis $x$ kommt in $N$ Durchläufen etwa $N p(x)$-mal vor, die Summe der Messwerte ist etwa $\\sum_x N p(x) f(x)$, und nach Division durch $N$ steht der Erwartungswert da. Diese Lesart ist eine Deutung und kein Satz dieses Kapitels: In einer einzelnen Messreihe kann $h_N$ von $p$ abweichen."
+   "new_text": "Die statistische Lesart der Wahrscheinlichkeit lautet nun: Bei vielen Wiederholungen liegt die relative Häufigkeit $h_N(x)$ nahe bei $p(x)$. Das Ergebnis $x$ kommt in $N$ Durchläufen etwa $N p(x)$-mal vor, die Summe der Messwerte ist etwa $\\sum_x N p(x) f(x)$, und nach Division durch $N$ steht der Erwartungswert da. Diese Lesart ist eine Deutung und kein Satz dieses Kapitels: In einer einzelnen Messreihe kann $h_N$ von $p$ abweichen.",
+   "applied_file_sha256": "5486e7394a2afab50917c4087186c4accfd19ab4fab1fc91e5916f183c3a1a36",
+   "applied_source_key": "tpc-script-v0.3",
+   "applied_line": 90,
+   "applied_text": "Bei vielen unabhängigen Wiederholungen liegt $h_N(x)$ mit hoher Wahrscheinlichkeit nahe bei $p(x)$"
   },
   {
    "version": "v0.2-en",
@@ -18,7 +22,11 @@
    "line": 137,
    "file_sha256": "b0ccc8af69cc09146698d13dcbf0667b5ee2295def8dc4133611ade213eab270",
    "old_text": "If this event occurs in $N$ measurements ($Np(x)$), the sum of the measured values comes out as $\\sum_x N p(x) \\cdot f(x)$.",
-   "new_text": "The statistical reading of probability now says: with many repetitions the relative frequency $h_N(x)$ lies close to $p(x)$. The outcome $x$ occurs about $N p(x)$ times in $N$ runs, the sum of the measured values is about $\\sum_x N p(x) f(x)$, and after division by $N$ the expectation value stands there. This reading is an interpretation and not a theorem of this chapter: in a single series $h_N$ may differ from $p$."
+   "new_text": "The statistical reading of probability now says: with many repetitions the relative frequency $h_N(x)$ lies close to $p(x)$. The outcome $x$ occurs about $N p(x)$ times in $N$ runs, the sum of the measured values is about $\\sum_x N p(x) f(x)$, and after division by $N$ the expectation value stands there. This reading is an interpretation and not a theorem of this chapter: in a single series $h_N$ may differ from $p$.",
+   "applied_file_sha256": "5d209bf55b0020533e461037b8be07c4817d35310f688eb850cf0b01f3f8d069",
+   "applied_source_key": "tpc-script-v0.3",
+   "applied_line": 90,
+   "applied_text": "With many independent repetitions $h_N(x)$ lies, with high probability, close to $p(x)$"
   },
   {
    "version": "v0.1",
@@ -34,7 +42,8 @@
   "independent_check": "evidence/derivations/c01/DERIVATION.md (c01.cl.haeufigkeit, c01.cl.stichprobenmittel, c01.cl.gesetz); a counterexample to the exact count: web/tests/golden/prob.json, case counts(loaded-die, seed 1, N = 12) = [1, 1, 3, 3, 2, 2] against N p = [1, 2, 2, 2, 2, 3]",
   "provenance_ids": [],
   "derivation": "evidence/derivations/c01/DERIVATION.md#c01.cl.stichprobenmittel",
-  "notes": "A change of meaning (exact count to interpretation), made by the chapter author; TJO to confirm."
+  "notes": "A change of meaning (exact count to interpretation), made by the chapter author; TJO to confirm. Script v0.3 (2026-10-22, lane ch1, docs/plan/script-v0.3/NOTES-ch1.md): applied: relative frequencies, the exact identity for the series mean, and 'h_N close to p' as a reading with high probability, not an exact count (vl01.tex/lec01.tex line 90). Destination: the uncommitted working tree registered as tpc-script-v0.3; the commit is still to be made by the coordinator. The v0.1 entries are not application targets."
  },
- "destination": "c01.s2.1"
+ "destination": "c01.s2.1",
+ "applied_date": "2026-10-22"
 }

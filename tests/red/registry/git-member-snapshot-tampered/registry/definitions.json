@@ -1,0 +1,63 @@
+{
+ "schema_version": 1,
+ "definitions": [
+  {
+   "id": "D1",
+   "preinventory_row": null,
+   "name_de": "Testdefinition",
+   "name_en": "test definition",
+   "body_de": "Ein Zustandsraum $\\StSp$.",
+   "body_en": "Ein Zustandsraum $\\StSp$.",
+   "symbol_ids": [
+    "sym.state-space"
+   ],
+   "depth": "kern",
+   "origin": {
+    "type": "source-adapted",
+    "source": "fixture-script",
+    "locus": "p. 1"
+   },
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C2",
+   "sources": [
+    {
+     "source": "fixture-script",
+     "locus": "lectures/de/vl02.tex:112",
+     "verified": true,
+     "how": "fixture",
+     "quote": "Diese Menge ist wieder ein komplexer Vektorraum"
+    }
+   ]
+  },
+  {
+   "id": "D2",
+   "preinventory_row": null,
+   "name_de": "Testdefinition",
+   "name_en": "test definition",
+   "body_de": "Eine Ordnungseinheit $\\OrdUnit$.",
+   "body_en": "Eine Ordnungseinheit $\\OrdUnit$.",
+   "symbol_ids": [
+    "sym.order-unit"
+   ],
+   "depth": "fundament",
+   "origin": {
+    "type": "source-adapted",
+    "source": "fixture-script",
+    "locus": "p. 1"
+   },
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C2",
+   "sources": [
+    {
+     "source": "fixture-script",
+     "locus": "lectures/de/vl02.tex:112",
+     "verified": true,
+     "how": "fixture",
+     "quote": "Diese Menge ist wieder ein komplexer Vektorraum"
+    }
+   ]
+  }
+ ]
+}

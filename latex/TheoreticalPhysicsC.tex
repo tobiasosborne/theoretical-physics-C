@@ -6,21 +6,43 @@
 % across.  scripts/check_parity.py checks the two stay structurally
 % aligned (same sectioning, same numbered equations, same environments);
 % ./ci.sh runs that check.
+%
+% Design: the course's token layer (tpc-course with layout=script on top of
+% tpc-style and tpc-macros; tpc-design pkg=1, light ground), so that script
+% and course read as one family.  Fonts are chosen by flags that build.sh
+% may define before this file is read:
+%   \tpcfonts  open (default: STIX Two, Inter, Iosevka) | local (the
+%              package's commercial faces where installed)
+%   \tpcmath   stix (default) | mtpro2 (needs \tpcfonts=local)
+% The published PDFs are built with the defaults (open fonts only).
+\providecommand{\tpcpkg}{1}
+\providecommand{\tpcground}{light}
+\providecommand{\tpcmath}{stix}
+\providecommand{\tpcfonts}{open}
 
-\documentclass[12pt,oneside]{amsart}
+\documentclass[12pt,oneside,reqno]{amsart}
 
-\usepackage[english]{tpc-style}
-\usepackage{tpc-macros}
+% Generated registry files (tpc-notation.sty, tpc-definitions.tex), found
+% also when this file is compiled by hand from latex/.
+\makeatletter
+\def\input@path{{../registry/generated/}}
+\makeatother
+\edef\tpcloadcourse{\noexpand\usepackage[lang=en,edition=full,layout=script,
+  pkg=\tpcpkg,ground=\tpcground,math=\tpcmath,fonts=\tpcfonts]{tpc-course}}
+\tpcloadcourse
 \usepackage{tpc-tikz-templates}
 
 \title[Theoretical Physics C]{Theoretical Physics C}
 \author{Tobias J.\ Osborne}
-\date{\today}
+\date{}
+\tpcscriptversion{v0.3}
+\tpcscriptnotice{This script is the compact core of the lecture course. The full course is the web course: \url{https://tobiasosborne.github.io/theoretical-physics-C/}}
 
 \begin{document}
 
-\maketitle
+\tpcscripttitle
 \tableofcontents
+\clearpage
 
 \input{lectures/en/lec01}
 \input{lectures/en/lec02}

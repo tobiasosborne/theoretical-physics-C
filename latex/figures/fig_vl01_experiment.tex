@@ -1,0 +1,46 @@
+% fig_vl01_experiment.tex — Jedes Experiment in drei Stadien: Präparation,
+% Durchführung, Messung; die Klammer fasst die ersten beiden zu einer
+% komplizierteren Präparation zusammen.
+%
+% Adaptiert aus content/c00-theorie/figures/experiment.tex (c00.fig.experiment),
+% das wiederum den grauen Kasten ,,Jedes Experiment in drei Schritten``
+% des Skripts v0.2 (vl01.tex:118-126) zeichnet.  Inhalt unverändert; nur die
+% Stile sind die des Skripts (tpc-style.sty, tpc-macros.sty) statt der
+% Design-Token des Kurses (tpc state, tpc dynamics, tpc effect), damit die
+% Abbildung mit scripts/check_lecture.sh allein baut.
+%
+% Geometrie: ein Schema, keine Kurve.  Drei gleich große Kästen der Breite
+% w = 2.9 und Höhe 1.3, getrennt durch Pfeile der Länge g = 0.9; der i-te
+% Kasten (i = 0, 1, 2) beginnt bei x_i = i (w + g), also bei 0, 3.8, 7.6.
+% Die Klammer reicht von x_0 = 0 bis x_1 + w = 6.7.
+% Rollen wie im Kurs: Präparation durchgezogen, Durchführung mit dickerem
+% Strich, Messung gestrichelt (graustufentauglich, Farbe nur zusätzlich).
+
+\begin{center}
+\begin{tikzpicture}[x=1cm, y=1cm]
+  \def\w{2.9}\def\g{0.9}\def\h{1.3}
+  % 1 Präparation: durchgezogen
+  \draw[cgblue, line width=0.9pt] (0,0) rectangle (\w,\h);
+  \node[lbl, align=center] at (0.5*\w,0.5*\h)
+    {1\\[1pt]\tpcifenglish{preparation}{Präparation}};
+  \draw[axisstyle] (\w,0.5*\h) -- (\w+\g,0.5*\h);
+  % 2 Durchführung: dickerer Strich
+  \draw[spacecadet, line width=1.6pt] (\w+\g,0) rectangle (2*\w+\g,\h);
+  \node[lbl, align=center] at (1.5*\w+\g,0.5*\h)
+    {2\\[1pt]\tpcifenglish{run}{Durchführung}};
+  \draw[axisstyle] (2*\w+\g,0.5*\h) -- (2*\w+2*\g,0.5*\h);
+  % 3 Messung: gestrichelt
+  \draw[birrenorange, line width=0.9pt, dashed]
+    (2*\w+2*\g,0) rectangle (3*\w+2*\g,\h);
+  \node[lbl, align=center] at (2.5*\w+2*\g,0.5*\h)
+    {3\\[1pt]\tpcifenglish{measurement}{Messung}};
+  \draw[axisstyle] (3*\w+2*\g,0.5*\h) -- (3*\w+3*\g,0.5*\h);
+  \node[lbl, anchor=west] at (3*\w+3*\g+0.05,0.5*\h)
+    {\tpcifenglish{outcome}{Ergebnis}};
+  % Klammer: Stadien 1 und 2 sind zusammen wieder eine Präparation
+  \draw[birrengray, line width=0.6pt]
+    (0,-0.25) -- (0,-0.45) -- (2*\w+\g,-0.45) -- (2*\w+\g,-0.25);
+  \node[lbl, anchor=north] at (\w+0.5*\g,-0.5)
+    {\tpcifenglish{together: one more complicated preparation}{zusammen: eine kompliziertere Präparation}};
+\end{tikzpicture}
+\end{center}

@@ -1,8 +1,10 @@
 {
  "schema_version": 1,
- "note": "Migration map of the first lecture into chapters c00 and c01 (Smoke A). One entry per item of latex/lectures/de/vl01.tex as parsed by evidence/migrations/check_vl01_map.py: sections, display equations, environments, figure inputs, list items and paragraphs of running text. 'item' is '<kind>@<line>'. status: kept (destination = IDs in content/c00-theorie or content/c01-wahrscheinlichkeit, or registry definitions transcluded there), deferred (to a later chapter, with reason) or dropped (with reason). The English edition latex/lectures/en/lec01.tex has the same structure line for line and goes to the same destinations in en.tex. Updated in the Lecture 1 revision of 2026-10-20 (voice restoration from the script and the recorded lectures v01, v02; see the notes of the changed entries).",
+ "note": "Migration map of the first lecture into chapters c00 and c01 (Smoke A). One entry per item of latex/lectures/de/vl01.tex as parsed by evidence/migrations/check_vl01_map.py: sections, display equations, environments, figure inputs, list items and paragraphs of running text. 'item' is '<kind>@<line>'. status: kept (destination = IDs in content/c00-theorie or content/c01-wahrscheinlichkeit, or registry definitions transcluded there), deferred (to a later chapter, with reason) or dropped (with reason). The English edition latex/lectures/en/lec01.tex has the same structure line for line and goes to the same destinations in en.tex. Updated in the Lecture 1 revision of 2026-10-20 (voice restoration from the script and the recorded lectures v01, v02; see the notes of the changed entries). Since 2026-10-22 (script v0.3) the legacy text is read from the v0.2 snapshot (legacy_source, legacy_member; a Git member at commit 90fe735), not from the live file; line numbers and quoted items are v0.2's. Files named in entries are v0.2 files: latex/figures/fig_vl01_planck.tex was deleted in v0.3 and is read at that commit.",
  "legacy_file": "latex/lectures/de/vl01.tex",
  "legacy_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
+ "legacy_source": "tpc-script-v0.2",
+ "legacy_member": "tpc-script-v0.2/git/latex/lectures/de/vl01.tex",
  "partly_deferred": [
   {
    "item": "text@51",

@@ -1,0 +1,15 @@
+{
+ "schema_version": 1,
+ "gaps": [
+  {
+   "id": "G-0001",
+   "what": "how many pebbles a real heap has",
+   "needed_source": "a survey of heaps (not on disk)",
+   "where": "c98",
+   "raised_in": [
+    "fixture"
+   ],
+   "status": "open"
+  }
+ ]
+}

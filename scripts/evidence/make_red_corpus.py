@@ -377,6 +377,59 @@ def _(f):
     edit(f, "evidence/migrations/M-0001.json", apply)
 
 
+@case("migration-applied-rewritten-line", "A rewritten destination (script v0.3) names the line "
+      "of its corrected wording (applied_line), but applied_text is not on that line.",
+      r"\[migration\] migrations/M-0001\.json:legacy/old\.tex:2: stale applied record: "
+      r"applied_text is not on the stated line")
+def _(f):
+    text = LEGACY.replace("line three", "every heap has a count n >= 0")
+    f["legacy/old.tex"] = text
+    key, member = "fake-script", "../legacy/old.tex"
+    f[f"sources/{key}/source.json"] = source(key, "script-snapshot", "tracked", [
+        {"path": member, "role": "text", "sha256": sha(text)}])
+    f[f"sources/{key}/rights.json"] = rights(key)
+    f["sources/MANIFEST.sha256"] += f"{sha(text)}  {member}\n"
+    def apply(d):
+        d.update(status="applied", applied_date="2026-10-22")
+        d["legacy"][0].update(file_sha256=sha(text), applied_file_sha256=sha(text),
+                              applied_source_key=key, applied_line=1,
+                              applied_text="every heap has a count n >= 0")
+    edit(f, "evidence/migrations/M-0001.json", apply)
+
+
+@case("migration-applied-removed-still-present", "A destination claims the defective passage "
+      "was removed (applied_removed), but the old text is still in it.",
+      r"\[migration\] migrations/M-0001\.json:legacy/old\.tex:2: stale applied record: "
+      r"applied_removed, but old_text is still in the destination")
+def _(f):
+    key, member = "fake-script", "../legacy/old.tex"
+    f[f"sources/{key}/source.json"] = source(key, "script-snapshot", "tracked", [
+        {"path": member, "role": "text", "sha256": sha(LEGACY)}])
+    f[f"sources/{key}/rights.json"] = rights(key)
+    f["sources/MANIFEST.sha256"] += f"{sha(LEGACY)}  {member}\n"
+    def apply(d):
+        d.update(status="applied", applied_date="2026-10-22")
+        d["legacy"][0].update(applied_file_sha256=sha(LEGACY), applied_source_key=key,
+                              applied_removed=True)
+    edit(f, "evidence/migrations/M-0001.json", apply)
+
+
+@case("git-member-tampered", "A historical snapshot member served from Git records a hash "
+      "that the commit's bytes do not have.",
+      r"\[manifest\] sources/fake-v02/git/latex/lectures/de/vl02\.tex: stale manifest hash")
+def _(f):
+    member, bad = "fake-v02/git/latex/lectures/de/vl02.tex", "1" * 64
+    f["sources/fake-v02/source.json"] = J({
+        "schema_version": 1, "key": "fake-v02", "kind": "script-snapshot", "storage": "tracked",
+        "title": "Fixture source fake-v02 (the author's script, lecture 2, at a fixed commit)",
+        "authors": ["nobody (fixture)"],
+        "identifiers": {"git_commit": "90fe735d7ca7bf14dfdf0d056ec874e9bc265490"},
+        "retrieval": {"git_members": {member: "latex/lectures/de/vl02.tex"}},
+        "files": [{"path": member, "role": "text", "sha256": bad}], "rights_ref": "rights.json"})
+    f["sources/fake-v02/rights.json"] = rights("fake-v02")
+    f["sources/MANIFEST.sha256"] += f"{bad}  {member}\n"
+
+
 @case("stale-receipt-public", "The claims ledger changed after the private run; public mode.",
       r"\[receipt\] .*stale receipt: evidence/claims\.json changed since the private check",
       "--public", receipt_before=True)

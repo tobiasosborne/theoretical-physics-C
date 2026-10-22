@@ -1,0 +1,26 @@
+{
+ "schema_version": 1,
+ "key": "fake-v02",
+ "kind": "script-snapshot",
+ "storage": "tracked",
+ "title": "Fixture source fake-v02 (the author's script, lecture 2, at a fixed commit)",
+ "authors": [
+  "nobody (fixture)"
+ ],
+ "identifiers": {
+  "git_commit": "90fe735d7ca7bf14dfdf0d056ec874e9bc265490"
+ },
+ "retrieval": {
+  "git_members": {
+   "fake-v02/git/latex/lectures/de/vl02.tex": "latex/lectures/de/vl02.tex"
+  }
+ },
+ "files": [
+  {
+   "path": "fake-v02/git/latex/lectures/de/vl02.tex",
+   "role": "text",
+   "sha256": "1111111111111111111111111111111111111111111111111111111111111111"
+  }
+ ],
+ "rights_ref": "rights.json"
+}

@@ -1,0 +1,14 @@
+{
+ "schema_version": 1,
+ "key": "tpc-script-v0.3",
+ "holder": "Tobias J. Osborne",
+ "status": "own-work",
+ "licence": "AGPL-3.0-or-later (LICENSE in the repository root)",
+ "redistribution": "allowed",
+ "quotation": "free",
+ "storage_policy": "tracked in this repository",
+ "basis": "the author's own script, already tracked in this repository",
+ "unchecked": [
+  "the licence statement in README"
+ ]
+}

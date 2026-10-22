@@ -1,0 +1,26 @@
+{
+ "schema_version": 1,
+ "key": "fixture-script",
+ "kind": "script-snapshot",
+ "storage": "tracked",
+ "title": "fixture: the author's script v0.2, lecture 2",
+ "authors": [
+  "nobody (fixture)"
+ ],
+ "identifiers": {
+  "git_commit": "90fe735d7ca7bf14dfdf0d056ec874e9bc265490"
+ },
+ "retrieval": {
+  "git_members": {
+   "fixture-script/git/latex/lectures/de/vl02.tex": "latex/lectures/de/vl02.tex"
+  }
+ },
+ "files": [
+  {
+   "path": "fixture-script/git/latex/lectures/de/vl02.tex",
+   "role": "text",
+   "sha256": "0acb89f372aca2f40a5c43affa8bf833418ff40bfb407f34d22125fb62415c44"
+  }
+ ],
+ "rights_ref": "rights.json"
+}

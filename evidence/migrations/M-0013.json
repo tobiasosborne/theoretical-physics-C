@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "id": "M-0013",
- "status": "recorded",
+ "status": "applied",
  "title": "vl02: the norm of (1/sqrt j) is said to grow logarithmically; it is the partial sums of the squared moduli",
  "legacy": [
   {
@@ -10,7 +10,10 @@
    "line": 134,
    "file_sha256": "0acb89f372aca2f40a5c43affa8bf833418ff40bfb407f34d22125fb62415c44",
    "old_text": "die Norm aber",
-   "new_text": "Die Teilsummen der Betragsquadrate von $\\vb{u}$ wachsen also wie ein Logarithmus über alle Grenzen."
+   "new_text": "Die Teilsummen der Betragsquadrate von $\\vb{u}$ wachsen also wie ein Logarithmus über alle Grenzen.",
+   "applied_file_sha256": "f4ccc5e16488112f3acfbc431d845f42b0d93a2f906d61faa8bff25e27da3545",
+   "applied_source_key": "tpc-script-v0.3",
+   "applied_removed": true
   },
   {
    "version": "v0.2-en",
@@ -18,7 +21,10 @@
    "line": 134,
    "file_sha256": "0686c02503139e489b6e5ca96764bd7f10e178ae2a19571dbbc7263a5e93a082",
    "old_text": "but the norm goes",
-   "new_text": "The partial sums of the squared moduli of $\\vb{u}$ thus grow beyond all bounds, like a logarithm."
+   "new_text": "The partial sums of the squared moduli of $\\vb{u}$ thus grow beyond all bounds, like a logarithm.",
+   "applied_file_sha256": "dda2ad964c9056670d0472750d6f6a0ac4204f365c2edebc9a9ce6bdb0ce2356",
+   "applied_source_key": "tpc-script-v0.3",
+   "applied_removed": true
   }
  ],
  "reason": "vl02.tex:133-136 say that for v_j = 1/sqrt(j) and f(x) = 1/sqrt(1+|x|) 'die Norm aber logarithmisch gegen unendlich' geht. What grows like a logarithm is the partial sum of the squared moduli, sum_{j<=N} 1/j >= ln(N+1) (and the partial integral 2 ln(1+X)); the truncated norm is its square root and grows like the square root of a logarithm. Moreover the norm is not yet defined in vl02 (it is vl03 material). The new chapter states the bound for the squared quantities (c03.eq.rate, c03.eq.log) and does not use the word norm.",
@@ -26,7 +32,8 @@
   "independent_check": "evidence/derivations/c03/check_c03.py verifies H_N >= ln(N+1) for N = 1..25 and int_0^X dx/(1+x) = ln(1+X) symbolically",
   "provenance_ids": [],
   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.rate",
-  "notes": "A wording error of v0.2 (the passage is not in v0.1); the figure fig_vl02_raeume labels the curves correctly with the partial sums."
+  "notes": "A wording error of v0.2 (the passage is not in v0.1); the figure fig_vl02_raeume labels the curves correctly with the partial sums. Script v0.3 (2026-10-22, lane ch2, docs/plan/script-v0.3/NOTES-ch2.md): applied by removal: the rate remark with 'die Norm aber logarithmisch' is not in script v0.3 chapter 2, and the word Norm does not occur there. Destination: the uncommitted working tree registered as tpc-script-v0.3; the commit is still to be made by the coordinator. The v0.1 entries are not application targets."
  },
- "destination": "c03.ex.rate"
+ "destination": "c03.ex.rate",
+ "applied_date": "2026-10-22"
 }

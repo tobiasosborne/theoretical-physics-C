@@ -1,142 +1,59 @@
 %!TEX root = TheoreticalPhysicsC.tex
+% Core of content/c03-hilbertraum, c03.s1 to c03.s3. Sources: docs/plan/script-v0.3/sync-ch2.md
 
 \section{Lecture: Hilbert Space}
-The \emph{Hilbert space} will play a major role in describing the states of quantum mechanics. To define this mathematical space we first need \emph{complex vector spaces}. Such spaces are defined in complete analogy with the real case.
+The \emph{Hilbert space} will play a major role in describing the states of quantum mechanics. To define this space we first need \emph{complex vector spaces}. They are defined in complete analogy with the real case.
 
 Why \emph{complex} and not real vectors appear here, we do not know: nature is simply built that way, and no better alternative has been found so far.
 
-A \emph{complex vector} $\mbf{v}\in \mathbb{C}^n$ is a column of $n$ complex numbers
+\subsection{Complex vectors}
+A \emph{complex vector} $\vb{v}\in\mathbb{C}^n$ is a column of $n$ complex numbers, its \emph{entries}:
 \begin{equation}
-	\mbf{v} = 
-	\begin{pmatrix}
-		v_1 \\ v_2 \\ \vdots \\ v_n
-	\end{pmatrix}.
+	\vb{v} = \begin{pmatrix} v_1 \\ \vdots \\ v_n \end{pmatrix}.
 \end{equation}
-The following operations are defined
-\begin{enumerate}
-	\item Multiplication by a scalar $a\in\mathbb{C}$
-	\begin{equation}
-		a\mbf{v} = 
-	\begin{pmatrix}
-		av_1 \\ av_2 \\ \vdots \\ av_n
-	\end{pmatrix}.
-	\end{equation}
-	\item Addition
-	\begin{equation}
-		\mbf{v}+\mbf{w} = \begin{pmatrix}
-		v_1 \\ v_2 \\ \vdots \\ v_n
-	\end{pmatrix} + \begin{pmatrix}
-		w_1 \\ w_2 \\ \vdots \\ w_n
-	\end{pmatrix} =
-	\begin{pmatrix}
-		v_1+w_1 \\ v_2+w_2 \\ \vdots \\ v_n+w_n
-	\end{pmatrix}.
-	\end{equation}
-	\item Dagger operation
-	\begin{equation}
-		v^\dag = \begin{pmatrix}
-		v_1 \\ v_2 \\ \vdots \\ v_n
-	\end{pmatrix}^\dag \equiv \begin{pmatrix}
-		v_1^* & v_2^* & \cdots & v_n^*
-	\end{pmatrix}
-	\end{equation}
-	\item Inner product
-	\begin{equation}
-		\mbf{v}^\dag\mbf{w} = \begin{pmatrix}
-		v_1^* & v_2^* & \cdots & v_n^*
-	\end{pmatrix} \begin{pmatrix}
-		w_1 \\ w_2 \\ \vdots \\ w_n
-	\end{pmatrix} =
-	\sum_{j=1}^n v_j^*w_j.
-	\end{equation}
-\end{enumerate}
-The space $V$ of all such vectors with fixed $n$ is called a \emph{complex vector space}.
+Multiplication by a scalar $a\in\mathbb{C}$ and addition work entry by entry: $a\vb{v}$ has the entries $a v_j$, and $\vb{v}+\vb{w}$ has the entries $v_j+w_j$. The space of all such vectors with fixed $n$, together with these two operations, is called the \emph{complex vector space} $\mathbb{C}^n$; the number $n$ is called its \emph{dimension}. For the vector space these two rules suffice. The dagger operation and the inner product of the next section are extra structure, and only with them does $\mathbb{C}^n$ become a Hilbert space.
 
-For the vector space itself the first two rules suffice; the dagger operation and the inner product are extra structure, and only with them does it become a Hilbert space.
-
-Here $n$ is defined as the \emph{dimension} of $V$. The notation $\mathbb{C}^n$ is often used for the vector space $V$ defined above.
+The simplest case, $\mathbb{C}^1$, is boring: it is just the complex numbers. The first interesting example is $\mathbb{C}^2$: two-dimensional complex vectors describe the pure states of a qubit.
 
 \begin{example}
-	The vector space $\mathbb{C}^2$ consists of all two-dimensional vectors
-	\begin{equation}
-		\mbf{v} = 
-		\begin{pmatrix}
-			v_1 \\ v_2
-		\end{pmatrix}.
-	\end{equation}
 	Let
 	\begin{equation}
-		\mbf{v} = \begin{pmatrix}
-			1+i \\ 1-i
-		\end{pmatrix} \quad \text{and} \quad \mbf{w} = \begin{pmatrix}
-			1 \\ -1
-		\end{pmatrix}
+		\vb{v} = \begin{pmatrix} 1+i \\ 1-i \end{pmatrix}, \qquad
+		\vb{w} = \begin{pmatrix} 1 \\ -1 \end{pmatrix}.
 	\end{equation}
-	be two vectors. Their inner product reads
+	Computing entry by entry,
 	\begin{equation}
-		\mbf{v}^\dag \mbf{w} = \begin{pmatrix}
-			1-i & 1+i
-		\end{pmatrix} \begin{pmatrix}
-			1 \\ -1
-		\end{pmatrix} = -2i.
+		\vb{v}+\vb{w} = \begin{pmatrix} 2+i \\ -i \end{pmatrix}, \qquad
+		i\,\vb{v} = \begin{pmatrix} -1+i \\ 1+i \end{pmatrix}.
 	\end{equation}
 \end{example}
 
-Infinite-dimensional vector spaces are possible as well and play a very important role in the description of quantum mechanical systems. The reason is a physical one: our best models are fields, and fields have infinitely many degrees of freedom. How are such vector spaces to be understood? One can picture infinite-dimensional vectors as columns with infinitely many entries, e.g.:
+\subsection{The dagger operation and the inner product}
+The \emph{dagger operation} turns a column vector into the row vector with the complex conjugate entries. The \emph{inner product} of two vectors $\vb{v},\vb{w}\in\mathbb{C}^n$ is the product of the row $\vb{v}\adj$ with the column $\vb{w}$, a complex number:
 \begin{equation}
-	\mbf{v} = \begin{pmatrix}
-		v_1 \\ v_2 \\ \vdots \\
-	\end{pmatrix}
+	\vb{v}\adj = \begin{pmatrix} v_1^* & \cdots & v_n^* \end{pmatrix}, \qquad
+	\vb{v}\adj\vb{w} = \sum_{j=1}^{n} v_j^* w_j.
 \end{equation}
-All the rules of calculation for vector spaces hold in the infinite-dimensional case too. The inner product $\mbf{v}^\dag \mbf{w}$ is computed as follows
-\begin{equation}
-	\mbf{v}^\dag\mbf{w} =
-	\sum_{j=1}^\infty v_j^*w_j.
-\end{equation}
-This means, as a rule, that one sets $n=\infty$ in all equations. There are several subtle points one would have to take into account in order to work rigorously with infinite-dimensional vector spaces. In this course, however, we shall only mention these points in passing.
+The dagger always sits on the first vector.
 
-One of them shows up straight away. The vector made up entirely of ones,
-\begin{equation}
-	\mbf{v} = \begin{pmatrix}
-		1 \\ 1 \\ 1 \\ \vdots
-	\end{pmatrix},
-\end{equation}
-is a perfectly legal infinite list, but its inner product with itself diverges:
-\begin{equation}
-	\mbf{v}^\dag\mbf{v} = \sum_{j=1}^\infty 1 = \infty.
-\end{equation}
-Physically the answer to this is simple --- we do not admit such vectors. A vector is allowed precisely when
-\begin{equation}
-	\eqbox{\mbf{v}^\dag\mbf{v} = \sum_{j=1}^\infty |v_j|^2 < \infty}
-\end{equation}
-holds. This set is again a complex vector space; it is denoted by $\ell^2$, where the two comes from the square in the sum. Nothing can then become infinitely large when we compute probabilities.
+\input{figures/fig_vl02_kreuz}
 
-For us the most important example of an infinite-dimensional vector space is the space of \emph{square-integrable functions} mapping $\mathbb{R}$ into $\mathbb{C}$ (which is denoted by $L^{2}(\mathbb{R})$). Here square-integrable means that
+The figure shows what conjugation does geometrically: it reflects every entry in the real axis, here for the entries $2+i$ and $-1+2i$. One would not have to conjugate; one could simply lay the column on its side. But conjugation pays off as soon as one multiplies a vector with itself. Since $v_j^* v_j = \abs{v_j}^2$, we have
 \begin{equation}
-	\int_{-\infty}^\infty |f(x)|^2 \, dx < \infty.
+	\vb{v}\adj\vb{v} = \sum_{j=1}^{n} \abs{v_j}^2 \geq 0.
 \end{equation}
-Square-integrable functions can be added, subtracted, and multiplied by scalars. Under these operations the results always stay square-integrable. The set of all square-integrable functions therefore forms an abstract vector space. One regards a square-integrable function $f(x)$ as a vector. Here too there is an inner product; an integral takes the place of the sum:
-\begin{equation}
-	\langle f, g\rangle \equiv \int_{-\infty}^\infty f^*(x)\, g(x)\, dx.
-\end{equation}
+The inner product of a vector with itself is therefore real and never negative. Without conjugation, row times column for the vector with the entries $1$ and $i$ would give the number $1+i^2=0$, although it is not the zero vector.
 
 \begin{example}
-	A \emph{non}-example of a square-integrable function is supplied by the constant function $f(x) = 1$:
+	For $\vb{v}$ and $\vb{w}$ from the last example,
 	\begin{equation}
-		\int_{-\infty}^\infty |f(x)|^2\, dx = \int_{-\infty}^\infty 1\, dx = \infty.
+		\vb{v}\adj\vb{w} = \begin{pmatrix} 1-i & 1+i \end{pmatrix} \begin{pmatrix} 1 \\ -1 \end{pmatrix} = -2i, \qquad
+		\vb{w}\adj\vb{v} = \begin{pmatrix} 1 & -1 \end{pmatrix} \begin{pmatrix} 1+i \\ 1-i \end{pmatrix} = 2i.
 	\end{equation}
-	This is the counterpart of the vector made up entirely of ones from before.
+	So the order matters; the two results are complex conjugates of each other.
 \end{example}
 
-\input{figures/fig_vl02_raeume}
+\subsection{Infinitely many entries}
+At this point one could already define finite-dimensional Hilbert spaces. But infinite-dimensional vector spaces play a very important role in physics. The reason is a physical one: our best models are fields, and fields have infinitely many degrees of freedom. One can picture such vectors as columns with infinitely many entries, or as functions that assign a complex number $f(x)$ to every point $x$ of the real line; functions describe, for instance, the pure states of a spinless particle in one dimension. If one simply sets $n=\infty$ in the formulas, the inner product can diverge; the web course (chapter ``The Hilbert-space toolkit'') shows how to repair this, by admitting only columns with a finite sum of squared moduli (the space $\ell^2$) and functions with a finite integral of the squared modulus.
 
-Look carefully at the middle curve in both panels: for $v_j = 1/\sqrt{j}$ and
-$f(x) = 1/\sqrt{1+|x|}$ the entries do go to zero, but the norm goes
-logarithmically to infinity. It is not the vanishing that decides, but the
-rate.
-
-\begin{greybox}[Three spaces, three systems]
-	With this we have essentially all the Hilbert spaces we shall need: $\mathbb{C}^2$ belongs to the \emph{qubit}, $\ell^2$ to the \emph{harmonic oscillator} (a photon in an optical fibre, say) and $L^2(\mathbb{R})$ to a \emph{particle in one dimension}.
-\end{greybox}
-
-
+A complex vector space with an inner product is almost a Hilbert space; one condition is still missing, completeness, and in $\mathbb{C}^n$ it always holds. Before we define the Hilbert space in the next lecture, we need a notation that makes calculations with inner products much easier: Dirac's notation.

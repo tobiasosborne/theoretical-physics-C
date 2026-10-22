@@ -4,21 +4,43 @@
 % Die englische Fassung TheoreticalPhysicsC.tex spiegelt dieses Dokument
 % Vorlesung für Vorlesung.  scripts/check_parity.py prüft, dass beide
 % strukturell übereinstimmen; ./ci.sh führt die Prüfung aus.
+%
+% Design: the course's token layer (tpc-course with layout=script on top of
+% tpc-style and tpc-macros; tpc-design pkg=1, light ground), so that script
+% and course read as one family.  Fonts are chosen by flags that build.sh
+% may define before this file is read:
+%   \tpcfonts  open (default: STIX Two, Inter, Iosevka) | local (the
+%              package's commercial faces where installed)
+%   \tpcmath   stix (default) | mtpro2 (needs \tpcfonts=local)
+% The published PDFs are built with the defaults (open fonts only).
+\providecommand{\tpcpkg}{1}
+\providecommand{\tpcground}{light}
+\providecommand{\tpcmath}{stix}
+\providecommand{\tpcfonts}{open}
 
-\documentclass[12pt,oneside]{amsart}
+\documentclass[12pt,oneside,reqno]{amsart}
 
-\usepackage[german]{tpc-style}
-\usepackage{tpc-macros}
+% Generated registry files (tpc-notation.sty, tpc-definitions.tex), found
+% also when this file is compiled by hand from latex/.
+\makeatletter
+\def\input@path{{../registry/generated/}}
+\makeatother
+\edef\tpcloadcourse{\noexpand\usepackage[lang=de,edition=full,layout=script,
+  pkg=\tpcpkg,ground=\tpcground,math=\tpcmath,fonts=\tpcfonts]{tpc-course}}
+\tpcloadcourse
 \usepackage{tpc-tikz-templates}
 
 \title[Theoretische Physik C]{Theoretische Physik C}
 \author{Tobias J.\ Osborne}
-\date{\today}
+\date{}
+\tpcscriptversion{v0.3}
+\tpcscriptnotice{Dieses Skript ist der kompakte Kern der Vorlesung. Der vollständige Kurs ist der Webkurs: \url{https://tobiasosborne.github.io/theoretical-physics-C/}}
 
 \begin{document}
 
-\maketitle
+\tpcscripttitle
 \tableofcontents
+\clearpage
 
 \input{lectures/de/vl01}
 \input{lectures/de/vl02}

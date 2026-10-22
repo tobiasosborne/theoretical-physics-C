@@ -1,216 +1,154 @@
 %!TEX root = TheoreticalPhysicsC.tex
-
-
-Information about the organisation of the course, the \emph{coursework} and the \emph{examination}: be sure to look at Stud.ip.
-
-We have a whole spectrum of topics to cover, namely
-\begin{itemize}
-\item Experimental findings
-\item Postulates of quantum mechanics
-\item Uncertainty
-\item Schrödinger equation
-\item simple potential problems
-\item harmonic oscillator
-\item hydrogen atom
-\item identical particles
-\item entanglement
-\item Laws of thermodynamics
-\item Carnot processes
-\item Statistical description of equilibrium
-\item Ideal (quantum) gases
-\end{itemize}
-
-I am not recommending a textbook to you: in my opinion the best book on quantum mechanics does not exist yet. There is no bad one, but equally no perfect one --- the authoritative one is this script. Since it is being written as the semester goes along, it contains mistakes; reports of any you find, sent by e-mail, will be rewarded at the end of the semester.
+% Script v0.3, chapter 1: kernel of C0 and C1; sources in docs/plan/script-v0.3/sync-ch1.md.
 
 \section{Lecture: The Birth of Quantum Mechanics}
-We find ourselves in a quantum universe. Until 1900, however, we did not notice the quantum aspects of the universe, because classical physics supplied us with a very good approximation to the physics of everyday life. Quantum mechanics would be far easier to understand if we could observe quantum aspects every day! (One of the greatest challenges in learning quantum mechanics is to understand why the approximation by classical physics works so well.) The keyword for that is \emph{decoherence}; it belongs to advanced quantum mechanics, which we shall not treat here. What stands in need of explanation is therefore not quantum mechanics, but the quality of the classical approximation.
+We find ourselves in a quantum universe. Until 1900 we did not notice the quantum aspects of the universe, because classical physics supplied us with a very good approximation to the physics of everyday life. What stands in need of explanation is therefore not quantum mechanics, but the quality of the classical approximation. The keyword for that is \emph{decoherence}; it belongs to advanced quantum mechanics.
 
-Recently we have been able to watch a sensational development in physics: the first quantum computers have been built. For the first time we now have the chance to experiment directly with quantum systems (with the help of cloud services, e.g.\ the IBM Q experience). Quantum aspects will slowly become visible. Towards the end of the semester I would like to offer you a few exercises on real quantum computers.
+A remark on method, one that holds for the whole course: one can first work through the wrong, classical or semiclassical, models, in order to show afterwards that they do not work. That is not my style. From the very beginning we look at everything correctly; nowhere do we work through the Bohr model of the atom. This script contains only the core; derivations, deeper sections and interactive figures are in the web course.
 
-Before we can turn to the latest results and their applications, let us first consider the development of QM and its formal structure.
-
-\subsection{Prehistory}
-First a remark on method, one that holds for the whole course. One can teach quantum mechanics by working through the wrong --- classical or semiclassical --- models first, in order to show afterwards that they do not work. I am no friend of that route: from the very beginning we look at everything correctly; nowhere do we work through the Bohr model of the atom. The historical experiments I shall name nonetheless, but only as a list.
-
-The prehistory of quantum mechanics comprises a series of observations which gradually called into question the thesis that our universe is described by classical mechanics. Some of the most important of these contributions are
+\subsection{Why a new theory was needed}
+The prehistory of quantum mechanics is a series of observations which gradually called into question the thesis that our universe is described by classical physics.
 \begin{enumerate}
-	\item \emph{Black-body radiation}. The spectrum of the emitted radiation cannot be explained with classical physics. The assumption of light quanta with energy $E=h\nu$ yields the right spectrum. Planck postulated the constant ``h'' (originally an ``auxiliary quantity'') in deriving the radiation law:
+	\item \emph{Black-body radiation} (Planck, 1900). A black body reflects no incident radiation, yet at a temperature $T$ it radiates all the same. The spectrum of this radiation cannot be explained with classical physics. The right one follows from the assumption that light of frequency $\nu$ consists of \emph{light quanta} of energy $E = h\nu$. Planck originally postulated the constant $h$ as an ``auxiliary quantity'' in deriving the radiation law:
 	\begin{equation*}
-		\text{energy density of the radiation in the interval $d\nu$} = U(\nu)d\nu = \frac{8\pi h \nu^3}{c^3}\frac{d\nu}{e^{\frac{h\nu}{kT}}-1}
+		u(\nu, T)\,\dd\nu = \frac{8\pi h \nu^3}{c^3}\,\frac{\dd\nu}{e^{h\nu/(\kB T)} - 1}
 	\end{equation*}
-	(1899). Today theoretical physics predominantly uses the \emph{reduced Planck constant}
+	is the energy per volume in the frequency interval $\dd\nu$, with the speed of light $c$ and Boltzmann's constant $\kB$. We shall derive this law ourselves in the statistical part. Theoretical physics predominantly uses the \emph{reduced Planck constant}
 	\begin{equation*}
 		\eqbox{\hbar = \frac{h}{2\pi}}
 	\end{equation*}
-	instead.
-
-	A black body reflects no incident radiation, yet at a temperature $T$ it radiates all the same, on account of its thermally excited atoms. The usual realisation is a box with a small hole: incident radiation vanishes inside through multiple reflection, and black-body radiation emerges from the hole. We shall derive this law ourselves in the statistical part of the course --- from the assumption that light is quantised.
-
-	\input{figures/fig_vl01_planck}
-
-	Notice in~(a) how the grey classical curve at small $\nu$ still lies exactly on
-	the $6000\,$K curve to which it belongs, and only then parts company with it;
-	(b)~tells you where: as soon as $h\nu$ reaches the energy $kT$, the mode freezes out.
-
-	\item \emph{Photoelectric effect}. The energy of the electrons released by light (photoelectrons) is determined by the frequency of the light alone (Lenard, 1899; Einstein 1905):
+	\item \emph{Photoelectric effect} (Lenard; Einstein from 1905). Light can release electrons. For a fixed material their \emph{maximum} kinetic energy depends on the frequency of the light, not on its intensity. Classically that is strange: everywhere else more intensity means more energy. If a light quantum gives its energy to a single electron, the balance reads
 	\begin{equation*}
-		\eqbox{E_{\text{el}} = \frac12 m v^2 = h\nu -W}
+		E_{\mathrm{kin,max}} = \tfrac12 m_{\mathrm{e}} v_{\max}^2 = h\nu - W
 	\end{equation*}
-	with binding energy $W$. This observation pointed to \emph{light quanta} with energy $E=h\nu$. Classically that is strange: everywhere else more intensity means more energy; here the energy depends on the frequency alone.
-	\item \emph{Stability of atoms}, \emph{line spectra}, \emph{Franck-Hertz experiment} ($\sim$1911). In classical physics electron orbits in an atom would be unstable because of radiation losses. The radiation would be spread continuously over all frequencies. Line spectra and Franck-Hertz experiments indicate that only certain discrete energy levels are allowed in atoms. The reason for the instability is a result of electrodynamics that you have seen already: by the Liénard-Wiechert potentials, every accelerated point charge radiates. An electron on an orbit around the proton therefore loses energy all the time and ought to crash into the nucleus --- which it does not do. Only quantum mechanics can explain this; we shall discuss the line spectrum of hydrogen in detail later.
-	\item \emph{Compton effect}. The scattering of light off electrons is described correctly by assuming light quanta with $E=h\nu$ and momentum $p=h/\lambda$, together with conservation of energy and momentum.
-	\item \emph{Stern-Gerlach experiment} (1922). Angular momentum has only finitely many possible orientations relative to an applied magnetic field (space quantisation). This experiment matters particularly to us: precisely because angular momentum is quantised, we can build qubits today.
-	\item \emph{Interference of electrons} (Davisson-Germer experiment, 1929; diffraction from crystals). This experiment gave an indication of the wave properties of the electron (postulated in 1924 by de Broglie).
+	with the binding energy $W$ of the material (written non-relativistically). Below the frequency $W/h$ a single light quantum releases no electron in this model.
+	\item \emph{Stability of atoms, line spectra, Franck-Hertz experiment}. By the Liénard-Wiechert potentials, every accelerated point charge radiates. An electron on an orbit around the nucleus would therefore lose energy all the time and fall into the nucleus, which it does not do. Line spectra and the Franck-Hertz experiment (1914) indicate that only certain, discrete energy levels are allowed in atoms.
+	\item \emph{Compton effect}. How energy and momentum are shared out when light scatters off electrons is described correctly with light quanta of energy $h\nu$ and momentum $p = h/\lambda$, together with conservation of energy and momentum.
+	\item \emph{Stern-Gerlach experiment} (1922). A beam of silver atoms passes through an inhomogeneous magnetic field. Classically it should fan out continuously; two separate beams are observed. For a fixed angular-momentum quantum number, the component of the angular momentum along the field takes only finitely many values. From such quantised angular momenta one can build qubits today.
+	\item \emph{Interference of electrons}. The diffraction of electrons by crystals (Davisson and Germer, 1927) was an indication of wave properties of the electron, which de Broglie had postulated in 1924.
 \end{enumerate}
+I sum up the findings in two sentences.
 
-\begin{center}
-\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]Matter and radiation possess both wave and particle properties.\end{tcolorbox}}
-\end{center}
+\begin{merksatz}
+Matter and radiation possess both wave and particle properties.
+\end{merksatz}
 
+\begin{merksatz}[The most important statement about quantum mechanics]
+Quantum mechanics is a \emph{probabilistic theory}. It therefore gives us predictions only in the form of \emph{probabilities}.
+\end{merksatz}
 
+This second statement stands above the first: ``wave and particle properties'' remains a little vague, whereas the probabilistic statement is precise and underlies every quantum phenomenon. Classically the predictions are definite: the particle is at this place at this time. Probabilities enter there purely through missing information; there are no fundamental probabilities in classical physics. The statistical interpretation was supplied by Born in 1926, and for me it is the most important aspect of the theory. Please take this sentence away with you: in every oral examination I ask for the most important statement about quantum mechanics.
 
-The year of birth of quantum mechanics is 1926. In that year Schrödinger published an exciting series of papers on wave mechanics and quantisation. A parallel approach began in 1925 with Heisenberg's reflections on the measurability of phase relations of particles in the Bohr model of the atom. That work inspired two teams to set up versions of quantum mechanics: on the one hand Born and Jordan with Heisenberg, leading to so-called matrix mechanics, and on the other hand Dirac. Later that same year Schrödinger shows the equivalence of the two approaches. The statistical interpretation of the theory is supplied by Born (likewise in 1926). With that the foundation of the theory is complete, and notions such as ``wave-particle duality'' have come into being. In my view Born's contribution is the most important aspect of the whole theory.
+The interpretation of quantum mechanics is, despite many ideas, still disputed today; to this day there is no contradiction with it. Our assumption is that quantum mechanics is the correct description of the universe.
 
-\begin{historical}
-You are, by the way, in luck if you read German: the original papers of Planck, Schrödinger, Heisenberg and Born are written in German. I did not have that opportunity when I learnt quantum mechanics.
-\end{historical}
-
-
-\begin{center}
-\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]Quantum mechanics is a \emph{probabilistic theory}. It therefore gives us predictions only in the form of \emph{probabilities}.\end{tcolorbox}}
-\end{center}
-
-This second statement stands above the first: ``wave and particle properties'' remains a little vague, whereas the probabilistic statement is precise and underlies every quantum phenomenon. Classically the predictions are definite --- the particle is at this place at this time --- and probabilities enter there purely through missing information. Please take this sentence away with you: in every oral examination I ask what the most important statement about quantum mechanics is.
-
-Almost at the same time the theory took on the mathematical form it has today. Born, for one, took advice from Norbert Wiener on turning matrices into operators, so that ``aperiodic problems'' without a prescribed basis (e.g.\ a free particle) could be treated too. Hilbert gave a lecture course on quantum mechanics in Göttingen in the winter semester 1926/27. Alongside it his young assistant John von Neumann introduced the Hilbert space, density matrices and the entropy of quantum states, in a publication in the Göttinger Mathematische Nachrichten. Physicists did not read it at first. Wigner and Weyl clarified the role of group theory.
-
-It is remarkable that, in spite of the theory's fantastic successes, its interpretation remained disputed. Despite many ideas and their development, the interpretation of QM is still controversial. Nevertheless QM is generally accepted today and gives us the best physical model we have in physics; to this day there is no contradiction with QM.
-
-We now leave the exciting history of quantum mechanics behind. Our assumption is that quantum mechanics is the correct description of the universe.
-
-Our next goal is to summarise the mathematical foundations of quantum mechanics. To reach that goal we must first treat \emph{probability} mathematically.
-
-\subsection{Probability}
-The numbers that quantum mechanics delivers as its results are \emph{probabilities}. How are such quantities to be understood, and how do we work with them? \emph{Probability theory} is the right framework for understanding random events and their interpretation. We shall build up that theory shortly. Do not expect anything conceptually new: I take an intuitive understanding for granted; what matters here is the \emph{notation} in which we shall later formulate quantum mechanics.
-
-
-\subsubsection{Sample spaces, measures, moments}
-In probability theory every system is assigned a set $X$, called the \emph{space of elementary events} or the \emph{sample space}.
-
-\begin{example}
-	Let us take the simplest case, in which $X$ is a finite set. For a die, for instance, the space of elementary events consists of the possible numbers of spots. Hence $X = \{1, 2, 3, 4, 5, 6\}$.
-\end{example}
-
-\begin{exercise}
-	Describe the set $X$ to be assigned as the space of elementary events of \emph{two} dice.
-\end{exercise}
-
-A \emph{preparation} is characterised by giving a probability $p(x)$ for every $x\in X$.
-
-\begin{example}
-	For a fair die $p(x) = 1/6$ for all $x$. But there are other probabilities too, which then describe the preparations of \emph{loaded dice}.
-\end{example}
-
-The only restrictions on the probability distribution $p(x)$ are
-\begin{equation}
-	p(x) \ge 0 \quad \text{and}\quad \sum_{x\in X} p(x)  = 1.
-\end{equation}
+\subsection{What a physical theory supplies}
+From the second statement I make a principle for every physical theory: physical theories are probabilistic theories, their predictions take the form of probabilities. I think of deterministic theories as a subset of probabilistic ones. A physical theory supplies data for preparations, dynamics and measurement.
 
 \begin{greybox}[Every experiment in three steps]
-To the theorist \emph{all} experiments in physics look the same; they consist of three stages:
-\begin{enumerate}
-\item \emph{Preparation}: something is set up --- the die, or in the laboratory a beam of light, say. Preparations are probability functions $p$.
-\item \emph{Execution}: the experiment runs. It maps probability functions onto probability functions.
-\item \emph{Measurement}: at the end we look, and obtain one of the possible events. Measurements are functions $f$.
-\end{enumerate}
-An experimental physicist would not accept this simplification; in the abstract, though, every experiment looks like this. The first two steps can be gathered into \emph{one} more complicated preparation --- a loaded die is, after all, nothing but an ordinary die that somebody has done something to beforehand.
+To the theorist all experiments in physics look the same: something is \emph{prepared}, say a die or, in the laboratory, a beam of light; the experiment is \emph{run}; at the end we \emph{measure} and obtain one of the possible outcomes.
+\input{figures/fig_vl01_experiment}
+The first two steps can be combined into \emph{one} more complicated preparation: a loaded die is nothing other than an ordinary die to which something was done beforehand. Where one draws the line is a matter of taste; often preparation and measurement suffice.
 \end{greybox}
 
-A \emph{measurement} (observable) is described by a function
+The order of the material is fixed too: we go from the microscopic to the macroscopic, from the quantum mechanics of single systems via many particles to statistical mechanics and thermodynamics. At each stage one learns that every theory is an effective theory of the one below it, an approximation to the fundamental physics underneath.
+
+\subsection{Probability for physicists}
+The numbers that quantum mechanics delivers as its results are probabilities. Do not expect anything conceptually new: I take an intuitive understanding for granted; what matters is the \emph{notation} in which we shall later formulate quantum mechanics. We speak the language of physics: what mathematics calls a probability distribution is here a \emph{preparation} (state), and a random variable is a \emph{measurement}.
+
+\subsubsection{Outcomes and preparations}
+To model an experiment we need three things: the set of possible outcomes, the preparation and the measurement. To every system a set $X$ is assigned, the \emph{outcome set} (sample space); one obtains it by listing all possible outcomes. Subsets $S \subset X$ are called \emph{events}. For now let $X$ be finite. A \emph{preparation} is characterised by a probability $p(x)$ for every outcome $x$, a \emph{weight} with
 \begin{equation}
-	f:X\rightarrow \mathbb{R}
+	p(x) \geq 0 \quad \text{and} \quad \sum_{x \in X} p(x) = 1.
 \end{equation}
-on the sample space. Notice how generous that is: we impose no condition at all on a measurement; practically any function may count as one --- on the preparation, by contrast, two.
+The \emph{probability} of an event is $\mathbb{P}[S] = \sum_{x \in S} p(x)$.
+
 \begin{example}
-	For a die the \emph{number of spots} $f(x) = x$ is a measurement.
+	For a die $X = \{1, 2, 3, 4, 5, 6\}$, and ``the number shown is even'' is the event $S = \{2, 4, 6\}$. For a fair die $p(x) = 1/6$ for all $x$, so $\mathbb{P}[S] = 1/2$.
 \end{example}
-``Is the number of spots even?'' is a measurement too. In probability theory such measurements are called \emph{random variables}. The value $f(x)$ is interpreted as the measured value obtained when one knows for certain that the elementary event $x$ has occurred. If this event occurs in $N$ measurements ($Np(x)$), the sum of the measured values comes out as $\sum_x N p(x) \cdot f(x)$. Divided by $N$ this gives us the formula for the expectation value:
-\begin{equation}
-	\text{expectation value} = \mathbb{E}[f] = \sum_{x\in X} p(x)f(x).
-\end{equation}
 
-An important role in quantum mechanics is played by the special case of random variables $f$ which can return only the results $0$ or $1$. Such measurements serve as a model for experiments, e.g.\ photon detectors, which measure the presence or absence of a particle. The detector says click or no click; quantum mechanics turns precisely on these two-valued measurements. These measurements are characterised by a set $S=\{x\in X\,|\, f(x) =1\}$. We often use the notation
-\begin{equation}
-	\chi_S(x) = \begin{cases}
-		1, \quad x\in S, \\
-		0, \quad \text{otherwise.}
-	\end{cases}
-\end{equation}
-Such functions are called \emph{indicator functions}. The subsets $S\subset X$
-are called events too (no longer elementary events). Note this: indicator functions \emph{are} measurements, not some separate object beside them. The set $S$ may be arbitrary; three limiting cases: $S = X$ gives the constant function $1$, $S = \emptyset$ the constant function $0$, and for a single elementary event $\chi_{\{j\}}(x) = \delta_{x,j}$ is the Kronecker delta.
-
-The expectation value
-\begin{equation}\label{eq:indicatorfunction}
-	\mathbb{E}[\chi_S] = \sum_{x\in X} p(x)\chi_S(x) = \sum_{x\in S} p(x) \equiv \mathbb{P}[S]
-\end{equation}
-represents the probability that the event $x\in S$ takes place.
-
-The function $\mathbb{P}$ has characteristic properties which follow at once from the definition. In the case where the subsets $S_j\subset X$ are disjoint, for instance,
-\begin{equation}
-	\mathbb{P}\left[\bigcup_j S_j \right] = \sum_{j} \mathbb{P}[S_j].
-\end{equation}
-Disjointness is essential: if the $S_j$ overlap, contributions get counted twice over and the equation becomes false. Mathematically speaking: $P$ is a measure, or a probability measure if one wants to emphasise the normalisation $\mathbb{P}[X] = 1$. We need no more measure theory than that; the notation is meant only to make the literature readable. Once the \emph{set function} $\mathbb{P}$ is known, the expectation-value functional $\mathbb{E}$ can be computed from it as well.
-
-In the case that $X$ is a finite set, we can compute the expectation-value functional as follows
-\begin{equation}
-	\mathbb{E}[f] = \sum_{x\in X} \mathbb{P}[\{x\}] f(x).
-\end{equation}
-That is, $p(x) = \mathbb{P}[\{x\}]$.
 \begin{exercise}
-	Let $X = \{1,2,3\}$ and $p(x) = 1/3$ $\forall x\in X$. Compute the probability $\mathbb{P}[S]$ in the case $S=\{1,2\}$. Let $f(x) = x^2$. What is the expectation value
-	\begin{equation}
-		\mathbb{E}[x^2] = ?
-	\end{equation}
+	Describe the outcome set for \emph{two} dice. How many elements does it have?
 \end{exercise}
 
-So far $X$ has been finite. For quantum mechanics, though, $X = \mathbb{R}$ is the decisive case: a particle in one dimension has a position, and the possible positions are the real numbers; over an uncountable set $\sum_{x\in X}$ no longer has any meaning.
-
-When $X = \mathbb{R}$, we use a different notation:
+For pairwise disjoint events $S_1, \dots, S_k$
 \begin{equation}
-	\mathbb{E}[f] = \int \mathbb{P}(dx)\, f(x).
+	\mathbb{P}[S_1 \cup \dots \cup S_k] = \mathbb{P}[S_1] + \dots + \mathbb{P}[S_k].
 \end{equation}
-(The sum is replaced by an integral.)
-This notation is often written as
-\begin{equation}\label{eq:ctsprob}
-	\mathbb{E}[f] = \int p(x) f(x) \, dx
+Disjointness is essential: if the events overlap, the right-hand side counts outcomes twice. In mathematics such a set function is called a \emph{measure}, and with $\mathbb{P}[X] = 1$ a \emph{probability measure}. We need no more measure theory than that.
+
+\subsubsection{Measurements and expectation value}
+A \emph{measurement} (observable, random variable) is a function $f\colon X \to \mathbb{R}$. The value $f(x)$ is the measured value when the outcome $x$ is certainly present. Note how generous this is: we impose no condition on a measurement, but two on a preparation. Preparation and measurement together give the \emph{expectation value}
+\begin{equation}
+	\eqbox{\mathbb{E}[f] = \sum_{x \in X} p(x) f(x)}
 \end{equation}
-as well, where $p(x)\,dx \equiv \mathbb{P}(dx)$ represents the probability distribution. I am not particularly fond of the first way of writing it and shall hardly use it; you should merely be able to recognise it.
+It is linear, $\mathbb{E}[\alpha f + \gamma g] = \alpha\,\mathbb{E}[f] + \gamma\,\mathbb{E}[g]$, and for a constant $\mathbb{E}[c] = c$.
+
+Where does the formula come from? One repeats the experiment $N$ times with the same preparation and obtains the outcomes $x_1, \dots, x_N$. If $x$ occurs $N(x)$ times among them, $h_N(x) = N(x)/N$ is the \emph{relative frequency}; it is itself a weight, and the mean of the series satisfies the exact identity
+\begin{equation}
+	\frac{1}{N} \sum_{i=1}^{N} f(x_i) = \sum_{x \in X} h_N(x)\, f(x).
+\end{equation}
+With many independent repetitions $h_N(x)$ lies, with high probability, close to $p(x)$, and the mean of the series close to the expectation value. This reading is an interpretation: in a single series $h_N$ can deviate from $p$.
+
+\subsubsection{Yes-no measurements}
+The most important measurements take only the values $0$ and $1$. They are the model for detectors, such as a photon detector: click or no click. Quantum mechanics hinges on these two-valued measurements. Such a measurement is determined by the set $S = \{x \in X \colon f(x) = 1\}$; one writes
+\begin{equation}
+	\chi_S(x) = \begin{cases} 1, & x \in S, \\ 0, & \text{otherwise,} \end{cases}
+\end{equation}
+and calls $\chi_S$ the \emph{indicator function} of $S$. Hold on to this: indicator functions \emph{are} measurements, not a separate object alongside them. Their expectation value is the probability of their event:
+\begin{equation}\label{eq:indicatorfunction}
+	\mathbb{E}[\chi_S] = \sum_{x \in X} p(x)\, \chi_S(x) = \sum_{x \in S} p(x) = \mathbb{P}[S].
+\end{equation}
+Probabilities are therefore special expectation values. Conversely $\mathbb{P}$ fixes all expectation values, since $p(x) = \mathbb{P}[\{x\}]$.
+
+\begin{exercise}
+	Let $X = \{1, 2, 3\}$ and $p(x) = 1/3$ for all $x$. Compute $\mathbb{P}[S]$ for $S = \{1, 2\}$ and the expectation value of the measurement $f(x) = x^2$.
+\end{exercise}
+
+\subsubsection{Variance and determinism}
+The expectation value says where the measured values lie on average; the \emph{variance} says how widely they scatter:
+\begin{equation}
+	\operatorname{Var}[f] = \mathbb{E}\bigl[(f - \mathbb{E}[f])^2\bigr] = \mathbb{E}[f^2] - \mathbb{E}[f]^2 .
+\end{equation}
+The second form follows from linearity. Written out, $\operatorname{Var}[f] = \sum_x p(x)\,(f(x) - \mathbb{E}[f])^2$ is a sum of numbers $\geq 0$. Hence $\operatorname{Var}[f] \geq 0$, and $\operatorname{Var}[f] = 0$ holds exactly when $f(x) = \mathbb{E}[f]$ for all $x$ with $p(x) > 0$. In quantum mechanics the variance plays a large role; we shall meet it again in the uncertainty relation.
 
 \begin{example}
-	The probability distribution
-	\begin{equation}
-		p(x) \equiv \frac{1}{\sqrt{2\pi}}e^{-\frac{1}{2}x^2}
-	\end{equation}
-	represents a \emph{normal} or \emph{Gaussian distribution}. The probability that $x\in S$, where $S= \{x\,|\, x\ge 0\}$, is computed by the following integral (by Eq.~\ref{eq:indicatorfunction} and Eq.~\ref{eq:ctsprob}):
-	\begin{equation}
-		\begin{split}
-			\mathbb{P}[S] = \mathbb{E}[\chi_S] &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty \chi_S(x) e^{-\frac{1}{2}x^2}\, dx \\ &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^0 \chi_S(x) e^{-\frac{1}{2}x^2}\, dx + \frac{1}{\sqrt{2\pi}}\int_{0}^\infty \chi_S(x) e^{-\frac{1}{2}x^2}\, dx = \frac{1}{2}.
-		\end{split}
-	\end{equation}
+	For the fair die and the number shown, $f(x) = x$, we have $\mathbb{E}[f] = 21/6 = 7/2$; the expectation value need not be a possible measured value. With $\mathbb{E}[f^2] = 91/6$, $\operatorname{Var}[f] = 91/6 - 49/4 = 35/12$.
 \end{example}
 
-Intuitively the result was clear in advance: one half, because the Gaussian distribution is symmetric. Be careful with that argument, though --- it works \emph{only} for symmetric densities. Put physically: is the particle to the left or to the right of the origin?
-
-For measures on $\mathbb{R}$ it is often particularly easy to compute the expectation values of the coordinate function and its powers. These are called \emph{moments}. For a probability measure $\mathbb{P}(dx) = p(x)dx$ on $\mathbb{R}$ one calls
+For a yes-no measurement $\chi_S^2 = \chi_S$, so
 \begin{equation}
-	M_n = \int x^n p(x)\, dx
+	\operatorname{Var}[\chi_S] = \mathbb{P}[S]\,\bigl(1 - \mathbb{P}[S]\bigr).
 \end{equation}
-the \emph{$n$-th moment} of $\mathbb{P}$. One always has $M_0 = 1$, because of the normalisation to total probability 1. (Warning: none of the other moments need exist, and some may give divergent integrals.) Geometrically $M_0$ is the area under the curve.
+It vanishes exactly when the answer is certain. If $p(a) = 1$ for an outcome $a$, then $\mathbb{E}[f] = f(a)$ for every measurement.
 
-The moments that matter most are $M_1$ (the \emph{mean}) and $M_2$. In practice the second moment is often replaced by the \emph{variance}:
+\begin{merksatz}[Determinism is a special case]
+For a weight $p$ on a finite outcome set the following are equivalent: $p(a) = 1$ for an outcome $a$; every event has probability $0$ or $1$; every measurement has variance $0$. We call such preparations deterministic: the outcome of every measurement is fixed. This is how the definite predictions of classical physics fit into a probabilistic theory.
+\end{merksatz}
+
+\subsubsection{Continuous outcomes}
+For quantum mechanics $X = \mathbb{R}$ is decisive: a particle in one dimension has a position, and the possible positions are the real numbers. We consider only preparations with a \emph{probability density}, a function $p$ on $\mathbb{R}$ with
+\begin{equation}\label{eq:ctsprob}
+	\begin{aligned}
+		p(x) &\geq 0, & \int_{-\infty}^{\infty} p(x)\,\dd x &= 1, \\
+		\mathbb{P}[[a,b]] &= \int_a^b p(x)\,\dd x, & \mathbb{E}[f] &= \int_{-\infty}^{\infty} p(x) f(x)\,\dd x .
+	\end{aligned}
+\end{equation}
+Here $a \leq b$, and we use the expectation value only if $\int p(x) \abs{f(x)}\,\dd x < \infty$. Compared with the finite case, then, only the sum is replaced by an integral. In the literature one also finds $\int \mathbb{P}(\dd x)\, f(x)$; I do not much like this notation, you should only recognise it. Important: the value $p(x)$ of a density is not a probability. Probabilities are areas under the curve; a single point has probability $0$, and $p(x)$ may be larger than $1$.
+
+\begin{example}
+	The density
+	\begin{equation}
+		p(x) = \frac{1}{\sqrt{2\pi}}\, e^{-\frac12 x^2}
+	\end{equation}
+	is called the \emph{normal} or \emph{Gaussian distribution}; it is normalised. Is the particle to the left or to the right of the origin? Because $p(-x) = p(x)$, the areas to the left and to the right of the origin are equal, together $1$; so $\int_0^\infty p(x)\,\dd x = 1/2$. Be careful: the argument works \emph{only} for symmetric densities.
+\end{example}
+
+The expectation values of the coordinate function and its powers are called \emph{moments}, provided the integrals $\int \abs{x}^n p(x)\,\dd x$ are finite:
 \begin{equation}
-	\text{Var}[\mathbb{P}] \equiv \mathbb{E}[(x-M_1)^2] \equiv \int (x^2-2M_1 x +M_1^2) p(x)\, dx \underset{\text{Exercise!}}{=} M_2-M_1^2.
+	M_n = \int_{-\infty}^{\infty} x^n\, p(x)\,\dd x .
 \end{equation}
-From the definition it is clear that variances are always $\ge 0$ and vanish only when $\mathbb{P}$ is concentrated on a single point.
-
-In quantum mechanics the variance plays a larger role than the second moment; we shall meet it again with the uncertainty relation. Mean and variance carry the same information as $M_1$ and $M_2$.
+Only $M_0 = 1$, the normalisation, always exists; $M_1$, if it exists, is called the \emph{mean}. If $M_1$ and $M_2$ exist, the variance of the coordinate is, as in the finite case,
+\begin{equation}
+	\operatorname{Var}[\mathbb{P}] = \int_{-\infty}^{\infty} (x - M_1)^2\, p(x)\,\dd x = M_2 - M_1^2 .
+\end{equation}
+Mean and variance then carry the same information as $M_1$ and $M_2$. For the models considered here the language is now ready: preparations are weights or densities, measurements are functions, and the two together give expectation values when the integrals are finite.

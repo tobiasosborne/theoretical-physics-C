@@ -1,0 +1,7 @@
+{
+ "gate": "enrichment",
+ "what": "Lecture 2 is migrated (script v0.3), so the v0.1 enrichment rule is replaced by its migration map; one v0.2 item has no map entry, and the lecture must fail.",
+ "cmd": "python3 scripts/check_enrichment.py --only 2 --migration-map 2=tests/red/enrichment/migrated-map-incomplete/vl02-map.json",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "migration-map: lecture 2 is migrated \\(v0\\.3\\) but its migration map is not complete: .*no entry: equation@9"
+}

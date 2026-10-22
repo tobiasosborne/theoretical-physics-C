@@ -1,0 +1,7 @@
+{
+ "gate": "registry",
+ "what": "The snapshot record points its Git member at another commit, whose bytes do not hash to the recorded sha256 (a tampered snapshot).",
+ "cmd": "python3 scripts/registry/check_registry.py --root tests/red/registry/git-member-snapshot-tampered --no-generated --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "snapshot member: D1: fixture-script lectures/de/vl02\\.tex:112: stale snapshot: c5d953e3760c:latex/lectures/de/vl02\\.tex does not hash"
+}

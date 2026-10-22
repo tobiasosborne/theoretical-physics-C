@@ -6,7 +6,10 @@
 #   ./build.sh --de           Build the German edition only
 #   ./build.sh --en           Build the English edition only
 #   ./build.sh --draft        Fast single-pass build (no cross-refs)
-#   ./build.sh --cmfonts      Computer Modern (no Times LT / Whitney / mtpro2)
+#   ./build.sh --local-fonts  The design package's commercial faces where
+#                             installed (Times LT Std, Whitney, MathTime Pro 2);
+#                             for local print only, never published
+#   ./build.sh --cmfonts      Accepted for old callers: the default build
 #   ./build.sh --figures      Regenerate figure data via the Julia scripts
 #   ./build.sh --preview F    Compile one TikZ figure to PNG
 #   ./build.sh --clean        Remove generated files
@@ -14,6 +17,12 @@
 #   ./build.sh --help         Show this help
 #
 # The PDFs are copied to the repo root when the build succeeds.
+#
+# Design: both masters load the course's token layer (tpc-course with
+# layout=script, tpc-design pkg=1 on the light ground).  The default build
+# uses open fonts only (STIX Two Text and Math, Inter, Iosevka); that is
+# the build scripts/publish_pages.sh publishes.  A build fails on any
+# LaTeX error and on any undefined reference or citation.
 
 set -euo pipefail
 
@@ -24,7 +33,7 @@ SCRIPTS_DIR="$PROJ_ROOT/scripts"
 DE_JOB="TheoretischePhysikC"
 EN_JOB="TheoreticalPhysicsC"
 
-CMFONTS=0
+LOCALFONTS=0
 DRAFT=0
 VERBOSE=0
 ACTION="build"
@@ -41,7 +50,8 @@ while [[ $# -gt 0 ]]; do
     case "$1" in
         --de)       TARGETS="de"; shift ;;
         --en)       TARGETS="en"; shift ;;
-        --cmfonts)  CMFONTS=1; shift ;;
+        --local-fonts) LOCALFONTS=1; shift ;;
+        --cmfonts)  shift ;;   # the open-font build is the default now
         --draft)    DRAFT=1; shift ;;
         --verbose)  VERBOSE=1; shift ;;
         --figures)  ACTION="figures"; shift ;;
@@ -91,9 +101,10 @@ build_one() {
     local redirect=""
     [[ $VERBOSE -eq 0 ]] && redirect="> /dev/null 2>&1"
 
+    # Font flags read by the master (\providecommand there gives the default)
     local inject=""
-    if [[ $CMFONTS -eq 1 ]]; then
-        inject="\\PassOptionsToPackage{cmfonts}{tpc-style}"
+    if [[ $LOCALFONTS -eq 1 ]]; then
+        inject="\\def\\tpcfonts{local}\\def\\tpcmath{mtpro2}"
     fi
 
     local xelatex_cmd="xelatex -interaction=nonstopmode"
@@ -121,8 +132,17 @@ build_one() {
         return 1
     fi
 
+    local undef=0
+    undef=$(grep -cE "(Reference|Citation) .* undefined" "$job.log" 2>/dev/null) || undef=0
+    if [[ $DRAFT -eq 0 && $undef -gt 0 ]]; then
+        err "$label: $undef undefined reference(s) — see latex/$job.log"
+        grep -E "(Reference|Citation) .* undefined" "$job.log" | sort | uniq -c | head -10
+        cd "$PROJ_ROOT"
+        return 1
+    fi
+
     cp "$job.pdf" "$PROJ_ROOT/$job.pdf" 2>/dev/null || true
-    ok "Built ${BOLD}$job.pdf${NC} ($pages pages, 0 errors)"
+    ok "Built ${BOLD}$job.pdf${NC} ($pages pages, 0 errors, 0 undefined references)"
     cd "$PROJ_ROOT"
 }
 

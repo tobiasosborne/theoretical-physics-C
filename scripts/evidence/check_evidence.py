@@ -81,7 +81,12 @@ Rules (failure class in brackets; each has a planted case in tests/red/evidence)
                       expected value within the tolerance
   [definition]        definition_ids exist in the definitions registry
   [migration]         the legacy file's hash and the old text at the stated line
-                      still match (a record goes stale loudly)
+                      still match (a record goes stale loudly; a changed live file
+                      is read from its historical snapshot member in Git); an
+                      applied destination is a hashed member of its source with
+                      new_text on the legacy line (in place), applied_text on
+                      applied_line (a rewritten file, script v0.3), or, with
+                      applied_removed, old_text nowhere in it (passage removed)
   [registry]          source.json / rights.json present and valid; source.json
                       and manifest agree; no manifest entry without a source
   [manifest]          the file's current sha256 equals the manifest's
@@ -1004,7 +1009,11 @@ def check_migrations(root, prov_ids, reg):
             lines = payload.decode("utf-8").split("\n")
             if loc["line"] > len(lines) or norm_ws(loc["old_text"]) not in norm_ws(lines[loc["line"] - 1]):
                 fail("migration", lw, "stale migration record: old_text is not on the stated line")
-            if "applied_file_sha256" not in loc and "applied_source_key" not in loc:
+            if not ({"applied_file_sha256", "applied_source_key"} & loc.keys()):
+                if {"applied_line", "applied_text", "applied_removed"} & loc.keys():
+                    fail("migration", lw, "applied_line, applied_text or applied_removed "
+                         "without an applied destination (applied_file_sha256, "
+                         "applied_source_key)")
                 continue
             if not applied:
                 fail("migration", lw, "recorded migration cannot have an applied destination")
@@ -1020,10 +1029,24 @@ def check_migrations(root, prov_ids, reg):
                        and reg.manifest.get(member) == digest
                        for member, owner in reg.owner.items()):
                 fail("migration", lw, "applied destination is not a hashed member of its source")
-            lines = p.read_text(encoding="utf-8").split("\n")
-            if (not loc["new_text"] or loc["line"] > len(lines)
-                    or norm_ws(loc["new_text"]) not in norm_ws(lines[loc["line"] - 1])):
-                fail("migration", lw, "stale applied record: new_text is not on the stated line")
+            # In place (v0.2.1): new_text on the legacy line.  Rewritten destination
+            # (script v0.3): applied_text, the corrected wording as written, on applied_line;
+            # or applied_removed: the defective passage is gone, old_text occurs nowhere.
+            text = p.read_text(encoding="utf-8")
+            if loc.get("applied_removed"):
+                if {"applied_line", "applied_text"} & loc.keys():
+                    fail("migration", lw, "applied_removed excludes applied_line and applied_text")
+                elif norm_ws(loc["old_text"]) in norm_ws(text):
+                    fail("migration", lw, "stale applied record: applied_removed, but old_text "
+                         "is still in the destination")
+                continue
+            lines = text.split("\n")
+            want = loc.get("applied_text", loc["new_text"])
+            at = loc.get("applied_line", loc["line"])
+            what = "applied_text" if "applied_text" in loc else "new_text"
+            if (not want or at > len(lines)
+                    or norm_ws(want) not in norm_ws(lines[at - 1])):
+                fail("migration", lw, f"stale applied record: {what} is not on the stated line")
     return n
 
 

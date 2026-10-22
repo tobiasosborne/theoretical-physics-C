@@ -1,0 +1,7 @@
+{
+ "gate": "migration-maps",
+ "what": "The v0.2 snapshot record serves vl02.tex from another commit; the map checker reads the snapshot, not the live file, and refuses bytes that do not hash to the record.",
+ "cmd": "python3 evidence/migrations/check_vl02_map.py --root tests/red/migration-maps/snapshot-tampered",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "vl02-map: legacy text unavailable: stale snapshot: the payload of 'tpc-script-v0\\.2/git/latex/lectures/de/vl02\\.tex'"
+}

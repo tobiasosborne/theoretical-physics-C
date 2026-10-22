@@ -1,142 +1,59 @@
 %!TEX root = TheoretischePhysikC.tex
+% Kern von content/c03-hilbertraum, c03.s1 bis c03.s3. Quellen: docs/plan/script-v0.3/sync-ch2.md
 
 \section{Vorlesung: Hilbertraum}
-Um die Zustände der Quantenmechanik zu beschreiben wird der \emph{Hilbertraum} eine größere Rolle spielen. Um diesen mathematischen Raum zu definieren, benötigen wir erst \emph{komplexe Vektorräume}. Solche Räume werden analog mit dem reellen Fall definiert. 
+Um die Zustände der Quantenmechanik zu beschreiben, wird der \emph{Hilbertraum} eine große Rolle spielen. Um diesen Raum zu definieren, benötigen wir erst \emph{komplexe Vektorräume}. Sie werden ganz analog zum reellen Fall definiert.
 
-Warum hier \emph{komplexe} und nicht reelle Vektoren auftreten, wissen wir nicht: die Natur ist nun einmal so gebaut, und eine bessere Alternative wurde bisher nicht gefunden.
+Warum hier \emph{komplexe} und nicht reelle Vektoren auftreten, wissen wir nicht: Die Natur ist nun einmal so gebaut, und eine bessere Alternative wurde bisher nicht gefunden.
 
-Ein \emph{komplexer Vektor} $\mbf{v}\in \mathbb{C}^n$ ist eine Spalte von $n$ komplexen Zahlen
+\subsection{Komplexe Vektoren}
+Ein \emph{komplexer Vektor} $\vb{v}\in\mathbb{C}^n$ ist eine Spalte von $n$ komplexen Zahlen, seinen \emph{Einträgen}:
 \begin{equation}
-	\mbf{v} = 
-	\begin{pmatrix}
-		v_1 \\ v_2 \\ \vdots \\ v_n
-	\end{pmatrix}.
+	\vb{v} = \begin{pmatrix} v_1 \\ \vdots \\ v_n \end{pmatrix}.
 \end{equation}
-Es gelten die folgenden Rechenoperationen
-\begin{enumerate}
-	\item Multiplikation mit Skalar $a\in\mathbb{C}$
-	\begin{equation}
-		a\mbf{v} = 
-	\begin{pmatrix}
-		av_1 \\ av_2 \\ \vdots \\ av_n
-	\end{pmatrix}.
-	\end{equation}
-	\item Addition
-	\begin{equation}
-		\mbf{v}+\mbf{w} = \begin{pmatrix}
-		v_1 \\ v_2 \\ \vdots \\ v_n
-	\end{pmatrix} + \begin{pmatrix}
-		w_1 \\ w_2 \\ \vdots \\ w_n
-	\end{pmatrix} =
-	\begin{pmatrix}
-		v_1+w_1 \\ v_2+w_2 \\ \vdots \\ v_n+w_n
-	\end{pmatrix}.
-	\end{equation}
-	\item Kreuz-Operation
-	\begin{equation}
-		v^\dag = \begin{pmatrix}
-		v_1 \\ v_2 \\ \vdots \\ v_n
-	\end{pmatrix}^\dag \equiv \begin{pmatrix}
-		v_1^* & v_2^* & \cdots & v_n^*
-	\end{pmatrix}
-	\end{equation}
-	\item Skalarprodukt
-	\begin{equation}
-		\mbf{v}^\dag\mbf{w} = \begin{pmatrix}
-		v_1^* & v_2^* & \cdots & v_n^*
-	\end{pmatrix} \begin{pmatrix}
-		w_1 \\ w_2 \\ \vdots \\ w_n
-	\end{pmatrix} =
-	\sum_{j=1}^n v_j^*w_j.
-	\end{equation}
-\end{enumerate}
-Der Raum $V$ aller solcher Vektoren mit festem $n$ wird als \emph{komplexer Vektorraum} bezeichnet. 
+Multiplikation mit einem Skalar $a\in\mathbb{C}$ und Addition gehen Eintrag für Eintrag: $a\vb{v}$ hat die Einträge $a v_j$, und $\vb{v}+\vb{w}$ hat die Einträge $v_j+w_j$. Der Raum aller solcher Vektoren mit festem $n$, zusammen mit diesen beiden Rechenoperationen, heißt \emph{komplexer Vektorraum} $\mathbb{C}^n$; die Zahl $n$ heißt seine \emph{Dimension}. Für den Vektorraum genügen diese beiden Regeln. Kreuz-Operation und Skalarprodukt aus dem nächsten Abschnitt sind Zusatzstruktur, und erst mit ihnen wird aus $\mathbb{C}^n$ ein Hilbertraum.
 
-Für den Vektorraum selbst genügen die ersten beiden Regeln; Kreuz-Operation und Skalarprodukt sind Zusatzstruktur, die ihn erst zum Hilbertraum macht.
-
-Hierbei wird $n$ als \emph{Dimension} von $V$ definiert. Oft verwendet wird die Notation $\mathbb{C}^n$ für den oben definierten Vektorraum $V$.
+Der einfachste Fall, $\mathbb{C}^1$, ist langweilig: Das sind einfach die komplexen Zahlen. Das erste interessante Beispiel ist $\mathbb{C}^2$: Zweidimensionale komplexe Vektoren beschreiben die reinen Zustände eines Qubits.
 
 \begin{beispiel}
-	Der Vektorraum $\mathbb{C}^2$ besteht aus allen zweidimensionalen Vektoren
-	\begin{equation}
-		\mbf{v} = 
-		\begin{pmatrix}
-			v_1 \\ v_2
-		\end{pmatrix}.
-	\end{equation}
 	Seien
 	\begin{equation}
-		\mbf{v} = \begin{pmatrix}
-			1+i \\ 1-i
-		\end{pmatrix} \quad \text{und} \quad \mbf{w} = \begin{pmatrix}
-			1 \\ -1
-		\end{pmatrix}
+		\vb{v} = \begin{pmatrix} 1+i \\ 1-i \end{pmatrix}, \qquad
+		\vb{w} = \begin{pmatrix} 1 \\ -1 \end{pmatrix}.
 	\end{equation}
-	zwei Vektoren. Deren Skalarprodukt lautet
+	Eintragsweise gerechnet ist
 	\begin{equation}
-		\mbf{v}^\dag \mbf{w} = \begin{pmatrix}
-			1-i & 1+i
-		\end{pmatrix} \begin{pmatrix}
-			1 \\ -1
-		\end{pmatrix} = -2i.
+		\vb{v}+\vb{w} = \begin{pmatrix} 2+i \\ -i \end{pmatrix}, \qquad
+		i\,\vb{v} = \begin{pmatrix} -1+i \\ 1+i \end{pmatrix}.
 	\end{equation}
 \end{beispiel}
 
-Unendlich dimensionale Vektorräume sind ebenfalls möglich und spielen eine sehr wichtige Rolle in der Beschreibung quantenmechanischer Systeme. Der Grund ist physikalisch: unsere besten Modelle sind Felder, und Felder haben unendlich viele Freiheitsgrade. Wie sind solche Vektorräume zu verstehen? Man kann sich unendlich dimensionale Vektoren als Spalten mit unendlich vielen Einträge vorstellen, z.B.:
+\subsection{Kreuz-Operation und Skalarprodukt}
+Die \emph{Kreuz-Operation} macht aus einem Spaltenvektor den Zeilenvektor mit den komplex konjugierten Einträgen. Das \emph{Skalarprodukt} zweier Vektoren $\vb{v},\vb{w}\in\mathbb{C}^n$ ist das Produkt der Zeile $\vb{v}\adj$ mit der Spalte $\vb{w}$, eine komplexe Zahl:
 \begin{equation}
-	\mbf{v} = \begin{pmatrix}
-		v_1 \\ v_2 \\ \vdots \\
-	\end{pmatrix}
+	\vb{v}\adj = \begin{pmatrix} v_1^* & \cdots & v_n^* \end{pmatrix}, \qquad
+	\vb{v}\adj\vb{w} = \sum_{j=1}^{n} v_j^* w_j.
 \end{equation}
-Alle Rechenregeln für Vektorräume gelten auch in den unendlichen dimensionalen Fällen. Das Skalarprodukt $\mbf{v}^\dag \mbf{w}$ wird wie folgt berechnet
-\begin{equation}
-	\mbf{v}^\dag\mbf{w} =
-	\sum_{j=1}^\infty v_j^*w_j.
-\end{equation}
-Das heißt, in der Regel, dass man in allen Gleichungen $n=\infty$ setzt. Es gibt mehrere subtile Aspekte, die man in Betracht ziehen müsste, um rigorös mit unendlich dimensionalen Vektorräumen zu arbeiten. Allerdings werden wir in dieser Vorlesung diese Aspekte nur nebenbei erwähnen.
+Das Kreuz steht immer auf dem ersten Vektor.
 
-Einer davon tritt sofort auf. Der Vektor mit lauter Einsen,
-\begin{equation}
-	\mbf{v} = \begin{pmatrix}
-		1 \\ 1 \\ 1 \\ \vdots
-	\end{pmatrix},
-\end{equation}
-ist eine legale unendliche Liste, aber sein Skalarprodukt mit sich selbst divergiert:
-\begin{equation}
-	\mbf{v}^\dag\mbf{v} = \sum_{j=1}^\infty 1 = \infty.
-\end{equation}
-Physikalisch ist die Antwort darauf einfach --- wir lassen solche Vektoren nicht zu. Erlaubt ist ein Vektor genau dann, wenn
-\begin{equation}
-	\eqbox{\mbf{v}^\dag\mbf{v} = \sum_{j=1}^\infty |v_j|^2 < \infty}
-\end{equation}
-gilt. Diese Menge ist wieder ein komplexer Vektorraum; man bezeichnet ihn mit $\ell^2$, wobei die Zwei vom Quadrat in der Summe kommt. Damit kann bei der Berechnung von Wahrscheinlichkeiten nichts unendlich groß werden.
+\input{figures/fig_vl02_kreuz}
 
-Für uns ist das wichtigste Beispiel einen unendlich dimensionalen Vektorraumes der Raum der \emph{quadratintegrierbaren Funktionen} (der als $L^{2}(\mathbb{R})$ bezeichnet wird) welcher $\mathbb{R}$ auf $\mathbb{C}$ abbildet. Hierbei bedeutet quadratintegrierbar, dass
+Die Abbildung zeigt, was die Konjugation geometrisch tut: Sie spiegelt jeden Eintrag an der reellen Achse, hier für die Einträge $2+i$ und $-1+2i$. Man müsste nicht konjugieren, man könnte die Spalte auch einfach umlegen. Die Konjugation zahlt sich aber aus, sobald man einen Vektor mit sich selbst multipliziert. Weil $v_j^* v_j = \abs{v_j}^2$ ist, gilt
 \begin{equation}
-	\int_{-\infty}^\infty |f(x)|^2 \, dx < \infty.
+	\vb{v}\adj\vb{v} = \sum_{j=1}^{n} \abs{v_j}^2 \geq 0.
 \end{equation}
-Quadratintegrierbare Funktionen können addiert, subtrahiert, und mit Skalargrößen multipliziert werden. Bezüglich dieser Operationen bleiben die Ergebnisse immer quadratintegrierbar. Daher bildet die Menge aller quadratintegrierbaren Funktionen einen abstrakten Vektorraum. Man betrachtet eine quadratintegrierbare Funktion $f(x)$ als einen Vektor. Auch hier gibt es ein Skalarprodukt; an die Stelle der Summe tritt ein Integral:
-\begin{equation}
-	\langle f, g\rangle \equiv \int_{-\infty}^\infty f^*(x)\, g(x)\, dx.
-\end{equation}
+Das Skalarprodukt eines Vektors mit sich selbst ist also reell und nie negativ. Ohne Konjugation ergäbe Zeile mal Spalte für den Vektor mit den Einträgen $1$ und $i$ die Zahl $1+i^2=0$, obwohl er nicht der Nullvektor ist.
 
 \begin{beispiel}
-	Ein \emph{Nicht}-Beispiel von einer quadratintegrierbaren Funktion wird von der konstanten Funktion $f(x) = 1$ geliefert:
+	Für $\vb{v}$ und $\vb{w}$ aus dem letzten Beispiel ist
 	\begin{equation}
-		\int_{-\infty}^\infty |f(x)|^2\, dx = \int_{-\infty}^\infty 1\, dx = \infty.
+		\vb{v}\adj\vb{w} = \begin{pmatrix} 1-i & 1+i \end{pmatrix} \begin{pmatrix} 1 \\ -1 \end{pmatrix} = -2i, \qquad
+		\vb{w}\adj\vb{v} = \begin{pmatrix} 1 & -1 \end{pmatrix} \begin{pmatrix} 1+i \\ 1-i \end{pmatrix} = 2i.
 	\end{equation}
-	Das ist das Gegenstück zum Vektor mit lauter Einsen von vorhin.
+	Die Reihenfolge ist also wichtig; die beiden Ergebnisse sind zueinander komplex konjugiert.
 \end{beispiel}
 
-\input{figures/fig_vl02_raeume}
+\subsection{Unendlich viele Einträge}
+An dieser Stelle könnte man endlichdimensionale Hilberträume schon definieren. Unendlichdimensionale Vektorräume spielen aber in der Physik eine sehr wichtige Rolle. Der Grund ist physikalisch: Unsere besten Modelle sind Felder, und Felder haben unendlich viele Freiheitsgrade. Man kann sich solche Vektoren als Spalten mit unendlich vielen Einträgen vorstellen oder als Funktionen, die jeder Stelle $x$ der reellen Achse eine komplexe Zahl $f(x)$ zuordnen; mit Funktionen beschreibt man etwa die reinen Zustände eines Teilchens ohne Spin in einer Dimension. Setzt man in den Formeln einfach $n=\infty$, so kann das Skalarprodukt divergieren; der Webkurs (Kapitel „Werkzeugkasten Hilbertraum“) zeigt, wie man das repariert, indem man nur Spalten mit endlicher Summe der Betragsquadrate (den Raum $\ell^2$) und Funktionen mit endlichem Integral des Betragsquadrats zulässt.
 
-Achten Sie auf die mittlere Kurve in beiden Bildern: bei $v_j = 1/\sqrt{j}$ und
-$f(x) = 1/\sqrt{1+|x|}$ gehen die Einträge sehr wohl gegen null, die Norm aber
-logarithmisch gegen unendlich. Nicht das Verschwinden entscheidet, sondern die
-Rate.
-
-\begin{greybox}[Drei Räume, drei Systeme]
-	Damit haben wir praktisch alle Hilberträume beisammen, die wir brauchen werden: $\mathbb{C}^2$ gehört zum \emph{Qubit}, $\ell^2$ zum \emph{harmonischen Oszillator} (etwa einem Photon in einer Glasfaser) und $L^2(\mathbb{R})$ zu einem \emph{Teilchen in einer Dimension}.
-\end{greybox}
-
-
+Ein komplexer Vektorraum mit Skalarprodukt ist fast schon ein Hilbertraum; es fehlt noch eine Bedingung, die Vollständigkeit, und die ist in $\mathbb{C}^n$ immer erfüllt. Bevor wir den Hilbertraum in der nächsten Vorlesung definieren, brauchen wir eine Schreibweise, die Rechnungen mit Skalarprodukten sehr viel leichter macht: die Notation von Dirac.

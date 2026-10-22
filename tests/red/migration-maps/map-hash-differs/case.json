@@ -1,0 +1,7 @@
+{
+ "gate": "migration-maps",
+ "what": "The map records a legacy sha256 that is not the v0.2 snapshot's (stale or edited map).",
+ "cmd": "python3 evidence/migrations/check_vl02_map.py --map tests/red/migration-maps/map-hash-differs/vl02-map.json",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "vl02-map: stale map: vl02\\.tex \\(tpc-script-v0\\.2:tpc-script-v0\\.2/git/latex/lectures/de/vl02\\.tex\\) has sha256 0acb89f3"
+}

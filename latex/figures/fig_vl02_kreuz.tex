@@ -1,0 +1,47 @@
+% fig_vl02_kreuz.tex — Die Kreuz-Operation in der komplexen Ebene.
+%
+% Adaptation of panel (a) of the course figure c03.fig.kreuz
+% (content/c03-hilbertraum/figures/kreuz.tex), redrawn with the script's
+% TikZ styles (tpc-macros.sty) so that it builds in both masters.
+%
+% Geometry from the formulas, not freehand: the entries of
+%     v = (2+i, -1+2i)  in C^2
+% are drawn as the points (Re v_j, Im v_j), their conjugates
+%     v_1^* = 2-i,  v_2^* = -1-2i
+% as the points (Re v_j, -Im v_j).  Conjugation is the reflection in the
+% real axis; the dashed arrows join each entry to its conjugate.
+% One unit = 0.62 cm, as in the course figure.
+%
+% Filled discs: entries of v.  Open circles: entries of v^dagger.  The
+% distinction is carried by fill, not by colour, so it survives greyscale.
+% Panel (b) of the course figure (the row-times-column product) is left
+% out: the script computes the same product as a display equation.
+
+\begin{center}
+\begin{tikzpicture}[x=0.62cm, y=0.62cm]
+  \draw[axisstyle] (-2.6,0) -- (3.4,0);
+  \draw[axisstyle] (0,-2.7) -- (0,2.8);
+  \node[lbl, anchor=west] at (3.45,0) {$\operatorname{Re}$};
+  \node[lbl, anchor=south] at (0,2.85) {$\operatorname{Im}$};
+  \foreach \t in {-2,-1,1,2} {
+    \draw[spacecadet, line width=0.4pt] (\t,-0.08) -- (\t,0.08);
+    \draw[spacecadet, line width=0.4pt] (-0.08,\t) -- (0.08,\t);
+  }
+  \node[lbl, anchor=north] at (1,-0.1) {$1$};
+  \node[lbl, anchor=east] at (-0.1,1) {$1$};
+  % conjugation = reflection in the real axis
+  \draw[birrengray, line width=0.5pt, dashed, -{Stealth[length=4pt]}]
+    (2,0.78) -- (2,-0.78);
+  \draw[birrengray, line width=0.5pt, dashed, -{Stealth[length=4pt]}]
+    (-1,1.78) -- (-1,-1.78);
+  % entries of v (filled) and of v^dagger (open)
+  \fill[cgblue] (2,1) circle (2.6pt);
+  \fill[cgblue] (-1,2) circle (2.6pt);
+  \draw[cgblue, line width=0.7pt, fill=white] (2,-1) circle (2.6pt);
+  \draw[cgblue, line width=0.7pt, fill=white] (-1,-2) circle (2.6pt);
+  \node[lbl, anchor=west] at (2.18,1) {$v_1 = 2+i$};
+  \node[lbl, anchor=west] at (2.18,-1) {$v_1^* = 2-i$};
+  \node[lbl, anchor=east] at (-1.2,2) {$v_2 = -1+2i$};
+  \node[lbl, anchor=east] at (-1.2,-2) {$v_2^* = -1-2i$};
+\end{tikzpicture}
+\end{center}

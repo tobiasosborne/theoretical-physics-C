@@ -8,7 +8,9 @@
 #      (scripts/check_parity.py: sections, display maths, environments,
 #       labels, references, figures, key-equation boxes, stray German)
 #   3. enrichment   the v0.2 German lectures still contain every equation,
-#      label, heading and environment the archived v0.1 had
+#      label, heading and environment the archived v0.1 had; lectures 1-2
+#      are script v0.3: their v0.2 text (Git snapshot) is compared instead,
+#      and their migration maps must be complete (PLAN.md S11)
 #   4. figures      every TikZ figure compiles on its own, is included
 #      by its lecture, and has all its prose behind \tpcifenglish
 #   5. build        both editions compile with zero LaTeX errors
@@ -147,7 +149,7 @@ check_parity() {
 #  2b. Enrichment — v0.2 still contains everything v0.1 had
 # ══════════════════════════════════════════════════════════════
 check_enrichment() {
-    stage "Enrichment (v0.2 vs archived v0.1)"
+    stage "Enrichment (v0.2 vs archived v0.1; migrated lectures via their maps)"
     if [[ ! -d archive/skript-2022 ]]; then
         echo -e "  ${YELLOW}skipped${NC}: no archived v0.1 to compare against"
         return 0
@@ -286,7 +288,7 @@ check_contracts() {
     if [[ $FAST -eq 1 ]]; then
         run_gate "course lint (depth, IDs, parity)" python3 scripts/course/check_levels.py --with-test-chapter --lint-only || bad=$((bad+1))
         run_gate "web: build + static gates"       bash web/check.sh --fast || bad=$((bad+1))
-        for g in tokens registry evidence; do
+        for g in tokens registry evidence enrichment migration-maps; do
             run_gate "red corpus: $g" python3 scripts/check_red.py --gate "$g" || bad=$((bad+1))
         done
     else
@@ -306,7 +308,7 @@ check_contracts() {
         fi
         run_gate "game: levels played to optimum" web/node_modules/.bin/tsx web/tests/kernels/gpt-play.browser.ts --standalone build/web/standalone || bad=$((bad+1))
         run_gate "hydrogen views mount, repeat"   web/node_modules/.bin/tsx web/video/c11-views-check.ts --standalone build/web/standalone || bad=$((bad+1))
-        run_gate "red corpus: all gates"       python3 scripts/check_red.py --require tokens registry evidence levels web c11-formulas c11-render c02-game red-runner || bad=$((bad+1))
+        run_gate "red corpus: all gates"       python3 scripts/check_red.py --require tokens registry evidence enrichment migration-maps levels web c11-formulas c11-render c02-game red-runner || bad=$((bad+1))
     fi
     if [[ $bad -gt 0 ]]; then
         fail_stage "$bad contract gate(s) failed"

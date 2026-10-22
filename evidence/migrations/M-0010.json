@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "id": "M-0010",
- "status": "recorded",
+ "status": "applied",
  "title": "vl01: 'classically the predictions are definite' reframed as the point-weight special case (hazard H1.1)",
  "legacy": [
   {
@@ -11,7 +11,11 @@
    "file_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
    "old_text": "Klassisch lauten die Vorhersagen definitiv --- das Teilchen ist zu dieser Zeit an dieser Stelle, und Wahrscheinlichkeiten treten dort allein wegen fehlender Information auf.",
    "new_text": "Das Skript stellt dem die klassische Physik gegenüber: Dort lauten die Vorhersagen definitiv, das Teilchen ist zu dieser Zeit an dieser Stelle. In der Rahmung dieses Kurses ist das kein Gegensatz zu Satz (0.2), sondern ein Sonderfall davon. Kapitel 1 macht ihn genau: Eine definitive Vorhersage ist eine Wahrscheinlichkeitsverteilung, die ihr ganzes Gewicht auf ein einziges Ergebnis legt. [Kapitel 1, nach Proposition c01.prop.punktgewicht:] Jede klassische Präparation lässt sich so lesen, dass mit Wahrscheinlichkeit $p(a)$ das Ergebnis $a$ sicher präpariert wurde. In diesem Sinn kommen Wahrscheinlichkeiten in der klassischen Physik allein von fehlender Information.",
-   "gap_tjo": "The reading of 'deterministic as a subset of probabilistic' (BRIEF.md:45) through point weights is the chapter author's; TJO has not written it (G-0023)."
+   "gap_tjo": "The reading of 'deterministic as a subset of probabilistic' (BRIEF.md:45) through point weights is the chapter author's; TJO has not written it (G-0023).",
+   "applied_file_sha256": "5486e7394a2afab50917c4087186c4accfd19ab4fab1fc91e5916f183c3a1a36",
+   "applied_source_key": "tpc-script-v0.3",
+   "applied_line": 125,
+   "applied_text": "So passen die definitiven Vorhersagen der klassischen Physik in eine probabilistische Theorie."
   },
   {
    "version": "v0.2-en",
@@ -20,7 +24,11 @@
    "file_sha256": "b0ccc8af69cc09146698d13dcbf0667b5ee2295def8dc4133611ade213eab270",
    "old_text": "Classically the predictions are definite --- the particle is at this place at this time --- and probabilities enter there purely through missing information.",
    "new_text": "The lecture notes set classical physics against this: there the predictions are definite, the particle is at this place at this time. In the framing of this course that is no contrast to sentence (0.2) but a special case of it. Chapter 1 makes it precise: a definite prediction is a probability distribution that puts its whole weight on a single outcome. [Chapter 1, after proposition c01.prop.punktgewicht:] Every classical preparation can be read as the outcome $a$ having been prepared with certainty, with probability $p(a)$. In this sense probabilities in classical physics come from missing information alone.",
-   "gap_tjo": "The reading of 'deterministic as a subset of probabilistic' (BRIEF.md:45) through point weights is the chapter author's; TJO has not written it (G-0023)."
+   "gap_tjo": "The reading of 'deterministic as a subset of probabilistic' (BRIEF.md:45) through point weights is the chapter author's; TJO has not written it (G-0023).",
+   "applied_file_sha256": "5d209bf55b0020533e461037b8be07c4817d35310f688eb850cf0b01f3f8d069",
+   "applied_source_key": "tpc-script-v0.3",
+   "applied_line": 125,
+   "applied_text": "This is how the definite predictions of classical physics fit into a probabilistic theory."
   }
  ],
  "reason": "The script contrasts quantum mechanics (probabilistic) with classical physics (definite predictions; probabilities only from missing information). TJO's framing for the new course (BRIEF.md:45) treats deterministic theories as a subset of probabilistic ones, and the curriculum report's hazard H1.1 asks that determinism be presented as the vertex case of the simplex, not as the absence of probability. The new text keeps the script's sentence as a quotation of the lecture and states the special case: a deterministic preparation is a point weight (c01.prop.punktgewicht: equivalent to all probabilities 0 or 1, to zero variance of every measurement, and to not being a proper mixture), and every weight is uniquely a mixture of point weights (c01.eq.zerlegung). The sentence is not in v0.1; it was added in v0.2 from the lecture recording.",
@@ -28,7 +36,8 @@
   "independent_check": "docs/plan/research/curriculum/REPORT.md:250 (H1.1); docs/plan/BRIEF.md:45; evidence/derivations/c01/DERIVATION.md (c01.cl.punktgewicht, c01.cl.zerlegung); content/c02-gpt/de.tex:344 (pure states of the classical bit give certain answers to its extremal effects)",
   "provenance_ids": [],
   "derivation": "evidence/derivations/c01/DERIVATION.md#c01.cl.punktgewicht",
-  "notes": "A change of framing, not a correction of an error in the script."
+  "notes": "A change of framing, not a correction of an error in the script. Script v0.3 (2026-10-22, lane ch1, docs/plan/script-v0.3/NOTES-ch1.md): applied as the course realised it, not with the record's literal new_text: the classical sentence is kept (as in c00) and the point-weight special case is the determinism Merksatz, which ends with the classical definite predictions (line 125); the record's last sentence on missing information is not printed (REVIEW-lec1, G-0023 d). Destination: the uncommitted working tree registered as tpc-script-v0.3; the commit is still to be made by the coordinator. The v0.1 entries are not application targets."
  },
- "destination": "c00.s4.4"
+ "destination": "c00.s4.4",
+ "applied_date": "2026-10-22"
 }

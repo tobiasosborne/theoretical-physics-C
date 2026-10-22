@@ -1,0 +1,63 @@
+{
+ "schema_version": 1,
+ "key": "tpc-script-v0.3",
+ "kind": "script-snapshot",
+ "storage": "tracked",
+ "title": "Theoretische Physik C, script v0.3: lectures 1 and 2 rewritten as the kernel of the new course (German and English)",
+ "authors": [
+  "Tobias J. Osborne"
+ ],
+ "version": "v0.3",
+ "language": "de, en",
+ "identifiers": {
+  "parent_git_commit": "0aadd54"
+ },
+ "retrieval": {
+  "route": "working-tree lecture files of script v0.3 (docs/plan/script-v0.3/), not yet committed; re-hash with scripts/evidence/pin_snapshot.py after the last edit, then record the commit here as identifiers.git_commit once it exists",
+  "date": "2026-10-22"
+ },
+ "identity_check": "author as in the masters' \\author lines; the lecture files are the v0.3 rewrites of the ch1 and ch2 lanes (docs/plan/script-v0.3/NOTES-ch1.md, NOTES-ch2.md)",
+ "files": [
+  {
+   "path": "../latex/lectures/de/vl02.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "f4ccc5e16488112f3acfbc431d845f42b0d93a2f906d61faa8bff25e27da3545"
+  },
+  {
+   "path": "../latex/lectures/en/lec02.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "dda2ad964c9056670d0472750d6f6a0ac4204f365c2edebc9a9ce6bdb0ce2356"
+  },
+  {
+   "path": "../latex/lectures/de/vl01.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "5486e7394a2afab50917c4087186c4accfd19ab4fab1fc91e5916f183c3a1a36"
+  },
+  {
+   "path": "../latex/lectures/en/lec01.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "5d209bf55b0020533e461037b8be07c4817d35310f688eb850cf0b01f3f8d069"
+  }
+ ],
+ "authority_for": "the text of script v0.3, chapters 1 and 2; destinations of the migration records applied there",
+ "limitations": "Partial successor: only the rewritten lecture files are registered here (lectures 1 and 2, final state of the ch1 and ch2 lanes on 2026-10-22). The v0.2 text of these lectures stays in tpc-script-v0.2 as Git members. Every statement of the new text is mapped to the new course in docs/plan/script-v0.3/sync-ch1.md and sync-ch2.md; mathematical statements need their own evidence there.",
+ "rights_ref": "rights.json",
+ "supersedes": "tpc-script-v0.2",
+ "errata": [
+  "evidence/migrations/M-0009.json",
+  "evidence/migrations/M-0010.json",
+  "evidence/migrations/M-0011.json",
+  "evidence/migrations/M-0012.json",
+  "evidence/migrations/M-0013.json",
+  "evidence/migrations/M-0014.json",
+  "evidence/migrations/M-0015.json",
+  "evidence/migrations/M-0016.json",
+  "evidence/migrations/M-0050.json",
+  "evidence/migrations/M-0051.json"
+ ],
+ "notes": "Not yet committed: the commit that introduces script v0.3 is still to be made by the coordinator. Until then the hashes are those of the working tree and go stale with any edit (re-pin with scripts/evidence/pin_snapshot.py tpc-script-v0.3)."
+}

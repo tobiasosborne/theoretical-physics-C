@@ -13,8 +13,8 @@
 # Layout of the published tree (all links relative, so it works at any base URL):
 #   index.html                    landing page for students (scripts/pages/index.html)
 #   VERSION                       master commit and date the site was built from
-#   pdf/TheoretischePhysikC.pdf   the complete script, German  (build.sh --cmfonts)
-#   pdf/TheoreticalPhysicsC.pdf   the complete script, English (build.sh --cmfonts)
+#   pdf/TheoretischePhysikC.pdf   the complete script, German  (build.sh: course design,
+#   pdf/TheoreticalPhysicsC.pdf   the complete script, English  open fonts, the default)
 #   pdf/tpc-{de,en}-{full,kern}.pdf   the new course, four editions (build_course.sh)
 #   web/                          the chapter web edition (web/run.sh build)
 #
@@ -56,14 +56,14 @@ if [[ $SKIP_BUILD -eq 0 ]]; then
     # site build leaves out; name the real chapters
     chapters="$(ls -d content/c[0-9][0-9]-*/ | sed 's#content/\(c[0-9][0-9]\)-.*#\1#' | grep -v '^c99$' | paste -sd,)"
     bash web/run.sh static --site "$WEB/site" --standalone "$WEB/standalone" --chapters "$chapters"
-    info "script: both editions with Computer Modern -> $SCRIPT"
+    info "script: both editions in the course design, open fonts -> $SCRIPT"
     # build.sh copies its PDFs to the repo root; keep whatever is there (it may be
     # the local print with commercial fonts) and take ours from latex/.
     mkdir -p "$SCRIPT" build/root-pdf-backup
     for j in TheoretischePhysikC TheoreticalPhysicsC; do
         [[ -f "$j.pdf" ]] && cp -p "$j.pdf" "build/root-pdf-backup/$j.pdf"
     done
-    ./build.sh --cmfonts
+    ./build.sh            # the default build: open fonts only (never --local-fonts here)
     for j in TheoretischePhysikC TheoreticalPhysicsC; do
         cp -p "latex/$j.pdf" "$SCRIPT/$j.pdf"
         [[ -f "build/root-pdf-backup/$j.pdf" ]] && cp -p "build/root-pdf-backup/$j.pdf" "$j.pdf"

@@ -1,0 +1,7 @@
+{
+ "gate": "registry",
+ "what": "A verified quote cites a historical snapshot member served from Git (retrieval.git_members) and one word of it is changed; the quote is checked against the Git payload, not skipped as absent.",
+ "cmd": "python3 scripts/registry/check_registry.py --root tests/red/registry/git-member-quote-altered --no-generated --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "quote not found: D1: quote is not at fixture-script lectures/de/vl02\\.tex:112"
+}

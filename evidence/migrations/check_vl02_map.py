@@ -7,6 +7,9 @@ The second lecture (latex/lectures/de/vl02.tex) migrates into chapter C3
 (content/c03-hilbertraum).  Items are parsed exactly as in check_vl01_map.py (whose parser this
 script imports): sections, display equations, environments (including the pmatrix columns of
 vl02), figure inputs, list items and paragraphs of running text, each as "<kind>@<line>".
+The legacy text is the v0.2 snapshot member named by the map's legacy_source and
+legacy_member (served from Git, see check_vl01_map.py and scripts/evidence/snapshot.py),
+not the live file, which script v0.3 rewrites.
 
 Fails when an item has no entry, an entry names no item (stale map), the sha256 of vl02.tex
 differs from the map's, an entry has no valid status, a kept entry names no destination or a
@@ -26,6 +29,8 @@ sys.path.insert(0, str(HERE))
 from check_vl01_map import parse  # noqa: E402
 
 ROOT = HERE.parents[1]
+sys.path.insert(0, str(ROOT / "scripts" / "evidence"))
+import snapshot  # noqa: E402  (scripts/evidence/snapshot.py)
 
 
 def content_ids():
@@ -46,19 +51,32 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--list", action="store_true")
     ap.add_argument("--map", default=str(HERE / "maps/vl02-map.json"))
-    ap.add_argument("--tex", default=str(ROOT / "latex/lectures/de/vl02.tex"))
+    ap.add_argument("--tex", help="parse this file instead of the map's legacy text "
+                    "(testing only; the sha256 check against the map still applies)")
+    ap.add_argument("--root", default=str(ROOT),
+                    help="root whose sources/ serve the legacy snapshot (red-corpus fixtures)")
     a = ap.parse_args()
-    texp = pathlib.Path(a.tex)
-    items = parse(texp.read_text(encoding="utf-8"))
+    fails = []
+    mp = json.loads(pathlib.Path(a.map).read_text(encoding="utf-8"))
+    # The legacy text is the immutable v0.2 payload: the snapshot member named in the map
+    # (served from Git once the live file is rewritten), else the live legacy_file.
+    try:
+        if a.tex:
+            payload, origin = pathlib.Path(a.tex).read_bytes(), a.tex
+        else:
+            payload, origin = snapshot.legacy_payload(pathlib.Path(a.root), mp)
+    except (snapshot.SnapshotError, OSError) as exc:
+        print(f"vl02-map: legacy text unavailable: {exc}")
+        print("check_vl02_map: 1 failure(s)")
+        return 1
+    items = parse(payload.decode("utf-8"))
     if a.list:
         for kind, n, what in items:
             print(f"{kind}@{n}\t{what}")
         return 0
-    fails = []
-    mp = json.loads(pathlib.Path(a.map).read_text(encoding="utf-8"))
-    sha = hashlib.sha256(texp.read_bytes()).hexdigest()
+    sha = hashlib.sha256(payload).hexdigest()
     if mp.get("legacy_sha256") != sha:
-        fails.append(f"stale map: vl02.tex has sha256 {sha}, the map records {mp.get('legacy_sha256')}")
+        fails.append(f"stale map: vl02.tex ({origin}) has sha256 {sha}, the map records {mp.get('legacy_sha256')}")
     entries = {}
     for e in mp["items"]:
         if e["item"] in entries:

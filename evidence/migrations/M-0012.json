@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "id": "M-0012",
- "status": "recorded",
+ "status": "applied",
  "title": "vl01: three further wording slips found during the migration (v0.1 and v0.2)",
  "legacy": [
   {
@@ -10,7 +10,11 @@
    "line": 25,
    "file_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
    "old_text": "\\section{Vorlesung: Der Geburt der Quantenmechanik}",
-   "new_text": "\\section{Vorlesung: Die Geburt der Quantenmechanik}"
+   "new_text": "\\section{Vorlesung: Die Geburt der Quantenmechanik}",
+   "applied_file_sha256": "5486e7394a2afab50917c4087186c4accfd19ab4fab1fc91e5916f183c3a1a36",
+   "applied_source_key": "tpc-script-v0.3",
+   "applied_line": 4,
+   "applied_text": "\\section{Vorlesung: Die Geburt der Quantenmechanik}"
   },
   {
    "version": "v0.1",
@@ -26,7 +30,11 @@
    "line": 37,
    "file_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
    "old_text": "liefert das richtiges Spektrum. Die konstante ,,h``",
-   "new_text": "liefert das richtige Spektrum. Die Konstante ,,h``"
+   "new_text": "liefert das richtige Spektrum. Die Konstante ,,h``",
+   "applied_file_sha256": "5486e7394a2afab50917c4087186c4accfd19ab4fab1fc91e5916f183c3a1a36",
+   "applied_source_key": "tpc-script-v0.3",
+   "applied_line": 12,
+   "applied_text": "Planck hat die Konstante $h$ ursprünglich"
   },
   {
    "version": "v0.1",
@@ -42,7 +50,10 @@
    "line": 59,
    "file_sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e",
    "old_text": "Diese Beobachung war ein Hinweis",
-   "new_text": "Diese Beobachtung war ein Hinweis"
+   "new_text": "Diese Beobachtung war ein Hinweis",
+   "applied_file_sha256": "5486e7394a2afab50917c4087186c4accfd19ab4fab1fc91e5916f183c3a1a36",
+   "applied_source_key": "tpc-script-v0.3",
+   "applied_removed": true
   },
   {
    "version": "v0.1",
@@ -56,7 +67,9 @@
  "reason": "Grammar and spelling slips of the script that are not in HANDOFF.md: 'Der Geburt' for 'Die Geburt' in the section title, 'das richtiges Spektrum' and lower-case 'konstante', 'Beobachung' for 'Beobachtung'. No change of meaning. The English edition (lec01.tex) does not carry them. The new chapters do not reuse the section title; the two sentences are reworded in c00.s4.1 and c00.s4.2.",
  "evidence": {
   "independent_check": "read in latex/lectures/de/vl01.tex and archive/skript-2022/Vorlesungen1.tex at the stated lines on 2026-10-11; the transcript's title is 'Die Geburt der QM' (transcripts/clean/v01.md, front matter)",
-  "provenance_ids": []
+  "provenance_ids": [],
+  "notes": "Script v0.3 (2026-10-22, lane ch1, docs/plan/script-v0.3/NOTES-ch1.md): applied: section title 'Die Geburt der Quantenmechanik' (line 4); the 'richtiges ... konstante' passage is rewritten ('Das richtige liefert ...', 'Planck hat die Konstante h', line 12); the 'Beobachung' sentence is not in v0.3 (applied by removal). Destination: the uncommitted working tree registered as tpc-script-v0.3; the commit is still to be made by the coordinator. The v0.1 entries are not application targets."
  },
- "destination": "c00.s4"
+ "destination": "c00.s4",
+ "applied_date": "2026-10-22"
 }

@@ -9,6 +9,25 @@ two-language course.
 
 ## Status
 
+**2026-10-22: script v0.3, chapters 1 and 2 as the kernel of the new course, new design.**
+TJO's request and the rules: `docs/plan/script-v0.3/BRIEF.md`. The main script
+(`latex/Theor*.tex`) is now typeset in the course design (`tpc-course` option
+`layout=script`, pkg 1, STIX Two, open fonts; `./build.sh` default, `--local-fonts` for the
+commercial faces) with a "compact kernel, full course on the web" notice on the title page.
+`vl01`/`lec01` and `vl02`/`lec02` were rewritten as the Kern of C0, C1 and c03.s1-s3 within
+the v0.2 budgets (words, displays, definitions; chapters 1+2 now 8 pages, were 9); every
+item maps to the course in `sync-ch1.md`/`sync-ch2.md`. One codex gpt-6.1 review
+(`REVIEW.md`) and one repair wave (in the NOTES files). The v0.2 text of the four files is
+kept as Git members of `sources/tpc-script-v0.2`; maps, registry and enrichment read it from
+there (`scripts/evidence/snapshot.py`); the live files are `sources/tpc-script-v0.3` (no
+commit hash recorded yet: write it into its source.json and the ten applied records' notes,
+then `pin_snapshot.py` + `check_evidence.py --private`). Committed on TJO's instruction
+before the full `./ci.sh` had finished; all non-build gates passed (evidence, parity,
+enrichment, figures, maps, registry, red corpus). Open: overfull displays in vl08 (table),
+vl12, vl14, vl15, vl20 and two lines of lec01 under the narrower measure;
+`scripts/check_lecture.sh` still uses the old style; open questions for TJO in the NOTES
+files (titles, ℓ² named but not defined, M-0010 and "applied by removal").
+
 **2026-10-21: student-facing site on GitHub Pages.** TJO is sharing the repo with the
 students, who will not compile anything and mostly read on phones. `README.md` now opens
 with a bilingual "Für Studierende · For students" table of direct links, and

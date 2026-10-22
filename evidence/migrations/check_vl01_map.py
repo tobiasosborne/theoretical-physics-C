@@ -6,8 +6,13 @@
 
 Usage:  python3 evidence/migrations/check_vl01_map.py [--list] [--map FILE] [--tex FILE]
 
-Smoke A (chapters C0 and C1) is a migration of latex/lectures/de/vl01.tex.  This script parses
-that file and fails unless the map accounts for every item it finds.  Items, each identified
+Smoke A (chapters C0 and C1) is a migration of latex/lectures/de/vl01.tex as of script v0.2.  This
+script parses that text and fails unless the map accounts for every item it finds.  The text is
+the immutable v0.2 payload, not the live file (which script v0.3 rewrites): when the map names
+legacy_source and legacy_member, the member of that registered snapshot is read (from Git, via
+retrieval.git_members of sources/<legacy_source>/source.json; scripts/evidence/snapshot.py) and
+must hash to source.json, the manifest and the map alike; without them the live legacy_file is
+read.  Items, each identified
 by "<kind>@<line>" (line = the 1-based line of vl01.tex where the item starts):
 
   section      \\section, \\subsection, \\subsubsection
@@ -22,7 +27,8 @@ by "<kind>@<line>" (line = the 1-based line of vl01.tex where the item starts):
 
 It also fails when
   - the map has an entry for an item that the parse does not find (a stale map),
-  - the sha256 of vl01.tex differs from the one recorded in the map,
+  - the snapshot member is unavailable or its sha256 differs from source.json, the manifest
+    or the map (a tampered snapshot),
   - an entry has no status (kept | deferred | dropped), a kept entry names no destination,
     a deferred or dropped entry gives no reason,
   - a destination ID is not a label, figure, table, depth block or claim ID present in
@@ -34,6 +40,8 @@ Exit status 1 on any failure, 0 otherwise.  --list prints the parsed items and e
 import argparse, hashlib, json, pathlib, re, sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "scripts" / "evidence"))
+import snapshot  # noqa: E402  (scripts/evidence/snapshot.py)
 SKIP_ENV = {"center", "split", "cases"}
 EQ_ENV = {"equation", "equation*"}
 
@@ -105,20 +113,32 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--list", action="store_true")
     ap.add_argument("--map", default=str(ROOT / "evidence/migrations/maps/vl01-map.json"))
-    ap.add_argument("--tex", default=str(ROOT / "latex/lectures/de/vl01.tex"))
+    ap.add_argument("--tex", help="parse this file instead of the map's legacy text "
+                    "(testing only; the sha256 check against the map still applies)")
+    ap.add_argument("--root", default=str(ROOT),
+                    help="root whose sources/ serve the legacy snapshot (red-corpus fixtures)")
     a = ap.parse_args()
-    texp = pathlib.Path(a.tex)
-    tex = texp.read_text(encoding="utf-8")
-    items = parse(tex)
+    fails = []
+    mp = json.loads(pathlib.Path(a.map).read_text(encoding="utf-8"))
+    # The legacy text is the immutable v0.2 payload: the snapshot member named in the map
+    # (served from Git once the live file is rewritten), else the live legacy_file.
+    try:
+        if a.tex:
+            payload, origin = pathlib.Path(a.tex).read_bytes(), a.tex
+        else:
+            payload, origin = snapshot.legacy_payload(pathlib.Path(a.root), mp)
+    except (snapshot.SnapshotError, OSError) as exc:
+        print(f"vl01-map: legacy text unavailable: {exc}")
+        print("check_vl01_map: 1 failure(s)")
+        return 1
+    items = parse(payload.decode("utf-8"))
     if a.list:
         for kind, n, what in items:
             print(f"{kind}@{n}\t{what}")
         return 0
-    fails = []
-    mp = json.loads(pathlib.Path(a.map).read_text(encoding="utf-8"))
-    sha = hashlib.sha256(texp.read_bytes()).hexdigest()
+    sha = hashlib.sha256(payload).hexdigest()
     if mp.get("legacy_sha256") != sha:
-        fails.append(f"stale map: vl01.tex has sha256 {sha}, the map records {mp.get('legacy_sha256')}")
+        fails.append(f"stale map: vl01.tex ({origin}) has sha256 {sha}, the map records {mp.get('legacy_sha256')}")
     entries = {}
     for e in mp["items"]:
         if e["item"] in entries:

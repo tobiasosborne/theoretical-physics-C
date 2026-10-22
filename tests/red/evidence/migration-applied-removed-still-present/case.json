@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A destination claims the defective passage was removed (applied_removed), but the old text is still in it.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/migration-applied-removed-still-present --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[migration\\] migrations/M-0001\\.json:legacy/old\\.tex:2: stale applied record: applied_removed, but old_text is still in the destination"
+}

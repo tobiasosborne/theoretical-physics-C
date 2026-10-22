@@ -17,20 +17,24 @@
   "route": "tracked files under latex/lectures in this repository; `git diff --quiet HEAD -- latex/lectures` was clean when the hashes were taken",
   "date": "2026-10-11",
   "git_members": {
+   "tpc-script-v0.2/git/latex/lectures/de/vl01.tex": "latex/lectures/de/vl01.tex",
+   "tpc-script-v0.2/git/latex/lectures/de/vl02.tex": "latex/lectures/de/vl02.tex",
    "tpc-script-v0.2/git/latex/lectures/de/vl16.tex": "latex/lectures/de/vl16.tex",
+   "tpc-script-v0.2/git/latex/lectures/en/lec01.tex": "latex/lectures/en/lec01.tex",
+   "tpc-script-v0.2/git/latex/lectures/en/lec02.tex": "latex/lectures/en/lec02.tex",
    "tpc-script-v0.2/git/latex/lectures/en/lec16.tex": "latex/lectures/en/lec16.tex"
   }
  },
  "identity_check": "title and author read from the master file's \\title and \\author lines on 2026-10-11",
  "files": [
   {
-   "path": "../latex/lectures/de/vl01.tex",
+   "path": "tpc-script-v0.2/git/latex/lectures/de/vl01.tex",
    "role": "text",
    "media_type": "text/x-tex",
    "sha256": "8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e"
   },
   {
-   "path": "../latex/lectures/de/vl02.tex",
+   "path": "tpc-script-v0.2/git/latex/lectures/de/vl02.tex",
    "role": "text",
    "media_type": "text/x-tex",
    "sha256": "0acb89f372aca2f40a5c43affa8bf833418ff40bfb407f34d22125fb62415c44"
@@ -156,13 +160,13 @@
    "sha256": "63acef9837f90b6f86697cab4e5753f035c571ab77e8b49786931630744059cc"
   },
   {
-   "path": "../latex/lectures/en/lec01.tex",
+   "path": "tpc-script-v0.2/git/latex/lectures/en/lec01.tex",
    "role": "text",
    "media_type": "text/x-tex",
    "sha256": "b0ccc8af69cc09146698d13dcbf0667b5ee2295def8dc4133611ade213eab270"
   },
   {
-   "path": "../latex/lectures/en/lec02.tex",
+   "path": "tpc-script-v0.2/git/latex/lectures/en/lec02.tex",
    "role": "text",
    "media_type": "text/x-tex",
    "sha256": "0686c02503139e489b6e5ca96764bd7f10e178ae2a19571dbbc7263a5e93a082"
@@ -302,5 +306,5 @@
  "registry_aliases": [
   "tpc-script"
  ],
- "notes": "An immutable snapshot: when a migration is applied to these files the manifest goes stale on purpose; register the changed files under a new key. The two superseded lecture-16 members retain their original hashes under distinct manifest names; retrieval.git_members maps them to git show at identifiers.git_commit. All other members still use the working tree."
+ "notes": "An immutable snapshot: when a migration is applied to these files the manifest goes stale on purpose; register the changed files under a new key. Members whose live file has changed or is about to change have distinct manifest names under tpc-script-v0.2/git/ and keep their original hashes; retrieval.git_members maps them to `git show <identifiers.git_commit>:<repository path>`. These are lecture 16 (superseded by tpc-script-v0.2.1 on 2026-10-12) and lectures 1 and 2 (vl01, vl02, lec01, lec02; moved to Git members on 2026-10-22 before script v0.3 rewrites them, docs/plan/script-v0.3/NOTES-evidence.md). The four lecture 1 and 2 payloads are byte-identical at identifiers.git_commit, at 0aadd54 and in the working tree of 2026-10-22 (sha256 compared). All other members still use the working tree."
 }

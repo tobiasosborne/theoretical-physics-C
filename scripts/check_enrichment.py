@@ -24,6 +24,22 @@ original ``archive/skript-2022/VorlesungenN.tex`` and checks:
 Deliberate departures are recorded in ENRICHMENT_EXCEPTIONS below, each
 with the reason, so a fix made on purpose does not read as a regression.
 
+Migrated lectures (MIGRATED_LECTURES below; PLAN.md S11: explicit migration
+records replace the enrichment rule) are no longer enrichments of v0.1: their
+live file is script v0.3, rewritten from the new course.  For these, and only
+these, the check is replaced by two others:
+
+  snapshot the comparison above runs against the immutable v0.2 text of the
+           lecture (a Git member of the registered snapshot tpc-script-v0.2,
+           read through scripts/evidence/snapshot.py and checked against its
+           recorded sha256), so "v0.2 kept everything v0.1 had" stays checked
+  map      the lecture's migration map is complete: its checker
+           (evidence/migrations/check_vlNN_map.py) passes, i.e. every item of
+           the v0.2 text has a status and a destination or a reason
+
+The live v0.3 file is then not compared with v0.1.  Every other lecture is
+checked exactly as before.
+
 Exit status is 0 when every lecture passes, 1 otherwise.
 
 Usage:
@@ -31,17 +47,38 @@ Usage:
     scripts/check_enrichment.py --only 12
     scripts/check_enrichment.py --max-growth 2.2
     scripts/check_enrichment.py --json
+    scripts/check_enrichment.py --only 2 --migration-map 2=FILE   (red corpus)
 """
 
 import argparse
 import json
 import re
+import subprocess
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 V02_DIR = ROOT / "latex" / "lectures" / "de"
 V01_DIR = ROOT / "archive" / "skript-2022"
+sys.path.insert(0, str(ROOT / "scripts" / "evidence"))
+import snapshot  # noqa: E402  (scripts/evidence/snapshot.py)
+
+# Lectures whose live file is script v0.3 (docs/plan/script-v0.3/BRIEF.md): rewritten
+# from the new course and governed by migration records and maps, not by the v0.1
+# enrichment rule (PLAN.md S11).  Keyed by lecture number.  "snapshot" is the v0.2 text
+# (source key, member) that the v0.1 comparison now reads; "map_check" and "map" are the
+# migration-map checker and map that must pass for the live file.  Add a lecture here
+# only when its v0.2 text is a Git member of tpc-script-v0.2 and its map is complete.
+MIGRATED_LECTURES = {
+    1: {"snapshot": ("tpc-script-v0.2", "tpc-script-v0.2/git/latex/lectures/de/vl01.tex"),
+        "map_check": "evidence/migrations/check_vl01_map.py",
+        "map": "evidence/migrations/maps/vl01-map.json",
+        "since": "script v0.3, 2026-10-22 (docs/plan/script-v0.3/NOTES-evidence.md)"},
+    2: {"snapshot": ("tpc-script-v0.2", "tpc-script-v0.2/git/latex/lectures/de/vl02.tex"),
+        "map_check": "evidence/migrations/check_vl02_map.py",
+        "map": "evidence/migrations/maps/vl02-map.json",
+        "since": "script v0.3, 2026-10-22 (docs/plan/script-v0.3/NOTES-evidence.md)"},
+}
 
 # Departures from v0.1 that are intentional.  Keyed by lecture number;
 # each entry lists label renames and dropped/edited maths with a reason.
@@ -208,9 +245,23 @@ def prose_words(text):
     return len(text.split())
 
 
-def check_one(n, max_growth):
+def check_migration_map(n, mig, map_override, fail):
+    """Run the lecture's migration-map checker; a failure of the map fails the lecture."""
+    cmd = [sys.executable, str(ROOT / mig["map_check"]),
+           "--map", str(map_override or ROOT / mig["map"])]
+    proc = subprocess.run(cmd, cwd=ROOT, capture_output=True, text=True)
+    lines = (proc.stdout + proc.stderr).strip().splitlines()
+    if proc.returncode != 0:
+        detail = "; ".join(lines[-4:]) if lines else "no output"
+        fail("migration-map", f"lecture {n} is migrated (v0.3) but its migration map "
+                              f"is not complete: {detail}")
+    return lines[-1] if lines else ""
+
+
+def check_one(n, max_growth, map_override=None):
     v01_path = V01_DIR / f"Vorlesungen{n}.tex"
     v02_path = V02_DIR / f"vl{n:02d}.tex"
+    mig = MIGRATED_LECTURES.get(n)
     res = {"lecture": n, "failures": [], "warnings": [], "stats": {}}
 
     def fail(check, detail):
@@ -227,7 +278,18 @@ def check_one(n, max_growth):
         return res
 
     old = strip_comments(v01_path.read_text(encoding="utf-8"))
-    new = strip_comments(v02_path.read_text(encoding="utf-8"))
+    if mig:
+        # v0.3: compare v0.1 with the immutable v0.2 text, and require the map.
+        res["migrated"] = mig["since"]
+        try:
+            v02 = snapshot.member_bytes(ROOT, *mig["snapshot"]).decode("utf-8")
+        except snapshot.SnapshotError as exc:
+            fail("snapshot", f"v0.2 text of lecture {n} unavailable: {exc}")
+            return res
+        res["stats"]["map"] = check_migration_map(n, mig, map_override, fail)
+        new = strip_comments(v02)
+    else:
+        new = strip_comments(v02_path.read_text(encoding="utf-8"))
     exc = ENRICHMENT_EXCEPTIONS.get(n, {})
 
     # ── maths preserved ───────────────────────────────────────
@@ -304,7 +366,17 @@ def main():
     ap.add_argument("--max-growth", type=float, default=2.2,
                     help="largest allowed v0.2/v0.1 prose ratio (default 2.2)")
     ap.add_argument("--json", action="store_true")
+    ap.add_argument("--migration-map", action="append", default=[], metavar="N=FILE",
+                    help="check migrated lecture N against FILE instead of its map "
+                         "(red corpus only)")
     args = ap.parse_args()
+    overrides = {}
+    for spec in args.migration_map:
+        num, _, path = spec.partition("=")
+        if not num.isdigit() or int(num) not in MIGRATED_LECTURES or not path:
+            sys.exit(f"error: --migration-map {spec!r}: N must be a migrated lecture "
+                     f"({sorted(MIGRATED_LECTURES)}) and FILE nonempty")
+        overrides[int(num)] = Path(path).resolve()
 
     numbers = sorted(int(p.stem[2:]) for p in V02_DIR.glob("vl[0-9][0-9].tex"))
     if args.only:
@@ -312,7 +384,7 @@ def main():
     if not numbers:
         sys.exit(f"error: no lectures found in {V02_DIR}")
 
-    results = [check_one(n, args.max_growth) for n in numbers]
+    results = [check_one(n, args.max_growth, overrides.get(n)) for n in numbers]
     n_fail = sum(1 for r in results if r["failures"])
     n_warn = sum(1 for r in results if r["warnings"])
 
@@ -322,7 +394,9 @@ def main():
                          ensure_ascii=False, indent=2))
         return 1 if n_fail else 0
 
-    print(f"{BOLD}Enrichment: v0.2 against archived v0.1{NC}")
+    print(f"{BOLD}Enrichment: v0.2 against archived v0.1{NC}"
+          f" (lectures {', '.join(map(str, sorted(MIGRATED_LECTURES)))}: v0.2 snapshot"
+          f" against v0.1, live v0.3 file governed by its migration map)")
     print(f"{'vl':>3}  {'maths':>11} {'labels':>9} {'sections':>10} "
           f"{'envs':>9} {'words':>13} {'growth':>7}   status")
     print("─" * 82)
@@ -333,6 +407,8 @@ def main():
         print(f"{r['lecture']:>3}  {s.get('math', '-'):>11} {s.get('labels', '-'):>9} "
               f"{s.get('sections', '-'):>10} {s.get('envs', '-'):>9} "
               f"{s.get('words', '-'):>13} {s.get('growth', '-'):>7}   {status}")
+        if r.get("migrated"):
+            print(f"      migrated: v0.2 snapshot compared; {s.get('map', '')}")
         for f in r["failures"]:
             print(f"      {RED}✗{NC} {f['check']}: {f['detail']}")
         for w in r["warnings"]:
@@ -340,7 +416,8 @@ def main():
 
     print("─" * 82)
     if n_fail:
-        print(f"{RED}{BOLD}{n_fail} lecture(s) lost content{NC}")
+        print(f"{RED}{BOLD}{n_fail} lecture(s) lost content or have an incomplete "
+              f"migration map{NC}")
         return 1
     print(f"{GREEN}{BOLD}All {len(results)} lecture(s) preserved v0.1{NC}"
           f"{f' ({n_warn} with warnings)' if n_warn else ''}")

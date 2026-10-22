@@ -1,0 +1,7 @@
+{
+ "gate": "evidence",
+ "what": "A historical snapshot member served from Git records a hash that the commit's bytes do not have.",
+ "cmd": "python3 scripts/evidence/check_evidence.py --root tests/red/evidence/git-member-tampered --private",
+ "expect_exit_nonzero": true,
+ "expect_output_regex": "\\[manifest\\] sources/fake-v02/git/latex/lectures/de/vl02\\.tex: stale manifest hash"
+}
