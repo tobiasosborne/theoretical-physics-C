@@ -1,6 +1,6 @@
 {
   "kernel": "gpt",
-  "reference": {"implementation": "Julia 1.12.5, Rational{BigInt} and x + y*sqrt(m); effect vertices by hand-written exact enumeration", "script": "numerics/gpt/generate.jl", "authority": "evidence/derivations/c02/golden.json", "authority_sha256": "76cb86f4244198c49844996623b83af5d243a22a607e95b98788d04e9ea17fb4"},
+  "reference": {"implementation": "Julia 1.13.3, Rational{BigInt} and x + y*sqrt(m); effect vertices by hand-written exact enumeration", "script": "numerics/gpt/generate.jl", "authority": "evidence/derivations/c02/golden.json", "authority_sha256": "76cb86f4244198c49844996623b83af5d243a22a607e95b98788d04e9ea17fb4"},
   "tolerance": {"abs": 1e-15, "note": "derived: the kernel evaluates x + y*sqrt(m) in doubles with two divisions, a square root, a product and a sum, each correctly rounded (relative error at most 2^-53); with |x| <= 1, |y*sqrt(m)| <= 1 and a result of modulus at most 1 (asserted by the generator for every value written) its error is at most 5 * 2^-53 = 5.6e-16; 'expected' is the nearest double of the exact value (error at most 2^-54); 1e-15 exceeds the sum. Exact values are compared as strings, without tolerance."},
   "encoding": "rational: \"n\" or \"n/d\"; number: {x, y, m} = x + y*sqrt(m); polytope effect: {f}; ball effect: {b, w, m} = (b, sqrt(m)*w)",
   "cases": [

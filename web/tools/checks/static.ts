@@ -162,6 +162,9 @@ if (only.includes('demos')) {
   try {
     const paths = defaultPaths({ content: opt('--content') });
     const metas = findChapters(paths, chaptersArg ? chaptersArg.split(',') : null);
+    // registration is checked for every chapter, bundles only for the chapters the site
+    // contains: without --chapters the build leaves out test chapters (tools/build/main.ts)
+    const built = new Set(chapterIds());
     let n = 0;
     for (const m of metas) {
       for (const a of m.assets) {
@@ -171,7 +174,7 @@ if (only.includes('demos')) {
         if (!fs.existsSync(src)) { fail('demos', `${m.dir}/chapter.json declares ${a.kind} ${a.id}, which is not registered: ${rel(src)} does not exist`); continue; }
         const text = fs.readFileSync(src, 'utf8');
         if (!text.includes('export function mount(') && !text.includes('export const mount')) fail('demos', `${rel(src)} does not export mount(stage, ctx)`);
-        if (!opt('--content')) {
+        if (!opt('--content') && built.has(m.id)) {
           const bundle = path.join(site, 'assets/demos', `${a.id}.js`);
           if (!fs.existsSync(bundle)) fail('demos', `${a.id}: bundle ${rel(bundle)} was not built`);
         }

@@ -1,6 +1,6 @@
 {
   "kernel": "c00cavity",
-  "reference": {"implementation": "Julia 1.12.5, BigFloat at 256 bits and Rational{BigInt}, standard library only", "script": "numerics/generate/c00_golden.jl", "module": "numerics/src/c00_reference.jl"},
+  "reference": {"implementation": "Julia 1.13.3, BigFloat at 256 bits and Rational{BigInt}, standard library only", "script": "numerics/generate/c00_golden.jl", "module": "numerics/src/c00_reference.jl"},
   "conventions": {"geometry": "box [0, width] x [0, height] in cm, hole in the left wall with holeLo < y < holeHi; the ray enters at (0, entryY) with direction (1, slope); figure c00.fig.hohlraum", "reflection": "specular; a corner (both walls at once) counts as two contacts and reverses both components", "exit": "a left-wall impact strictly inside the hole ends the path; it has 0 contacts", "lengths": "path length from the entry point, cm", "remaining": "r^n (c00.eq.reflexion)"},
   "tolerance": {"abs": 1e-10, "rel": 1e-13, "note": "positions and lengths in cm; contacts, reflections and the exit flag must agree exactly; unvalidated choice above the measured maximum deviation"},
   "tolerances": {

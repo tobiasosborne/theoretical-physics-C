@@ -1,6 +1,6 @@
 {
   "kernel": "hydrogen",
-  "reference": {"implementation": "Julia 1.12.5, Rational{BigInt} and BigFloat at 256 bits", "script": "numerics/generate/hydrogen_golden.jl", "module": "numerics/src/Hydrogen.jl", "constants": "sources/codata-2022/allascii.txt"},
+  "reference": {"implementation": "Julia 1.13.3, Rational{BigInt} and BigFloat at 256 bits", "script": "numerics/generate/hydrogen_golden.jl", "module": "numerics/src/Hydrogen.jl", "constants": "sources/codata-2022/allascii.txt"},
   "conventions": {"Z": 1, "length": "a_mu = a_0 (1 + m_e/m_p)", "R": "a_mu^(-3/2)", "psi": "a_mu^(-3/2)", "density": "a_mu^(-3)", "phase": "Condon-Shortley, DERIVATION.md Result 4.1", "energy": "reduced mass mu"},
   "tolerance": {"abs": 1e-13, "rel": 1e-12, "note": "default class 'eval'; unvalidated choice, see 'tolerances'"},
   "tolerances": {

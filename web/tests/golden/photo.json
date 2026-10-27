@@ -1,6 +1,6 @@
 {
   "kernel": "photo",
-  "reference": {"implementation": "Julia 1.12.5, BigFloat at 256 bits and Rational{BigInt}, standard library only", "script": "numerics/generate/c00_golden.jl", "module": "numerics/src/c00_reference.jl", "constants": "sources/codata-2022/allascii.txt"},
+  "reference": {"implementation": "Julia 1.13.3, BigFloat at 256 bits and Rational{BigInt}, standard library only", "script": "numerics/generate/c00_golden.jl", "module": "numerics/src/c00_reference.jl", "constants": "sources/codata-2022/allascii.txt"},
   "conventions": {"relation": "E_kin,max = (1/2) m_e v_max^2 = h nu - W for nu >= W/h (c00.eq.photoeffekt, c00.eq.schwelle); nonrelativistic kinetic energy", "units": "nu in Hz, energies in eV (1 eV = e J), speeds in m/s"},
   "tolerance": {"abs": 1e-300, "rel": 1e-13, "note": "default class 'eval'; unvalidated choice, see 'tolerances'"},
   "tolerances": {

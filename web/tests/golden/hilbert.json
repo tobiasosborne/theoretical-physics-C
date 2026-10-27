@@ -1,6 +1,6 @@
 {
   "kernel": "hilbert",
-  "reference": {"implementation": "Julia 1.12.5, Complex{Rational{BigInt}} and BigFloat (128 to 512 bits), standard library only", "script": "numerics/generate/hilbert_golden.jl"},
+  "reference": {"implementation": "Julia 1.13.3, Complex{Rational{BigInt}} and BigFloat (128 to 512 bits), standard library only", "script": "numerics/generate/hilbert_golden.jl"},
   "conventions": {"complex": "[re, im]", "inner product": "v^dagger w = sum_j conj(v_j) w_j, antilinear in the first factor (c03.prop.skalarprodukt)", "l2 family": "v_j = j^(-s), |v_j|^2 = j^(-2s)", "L2 family": "f_s(x) = (1+|x|)^(-s)", "Infinity": "the string \"Infinity\": no finite limit"},
   "tolerance": {"abs": 1e-13, "rel": 1e-13, "note": "default; the class of each case is its 'tol', see 'tolerances'"},
   "tolerances": {

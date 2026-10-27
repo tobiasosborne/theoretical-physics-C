@@ -9,6 +9,26 @@ two-language course.
 
 ## Status
 
+**2026-10-26: new machine; everything builds and the full `./ci.sh` passes (6 stages, 29
+contract gates).** Fresh Linux Mint 22.3: TeX Live 2023 from apt (`texlive-full`, the same
+release as the Pages runner), node 24.11.1 through nvm, Playwright's Chromium, Julia through
+juliaup, `python3-sympy`, `python3-mpmath`, `python3-scipy`. The commercial print faces are local
+again: MathTime Pro 2 and Lucida in TEXMFLOCAL with their maps in
+`/usr/local/share/texmf/web2c/updmap.cfg`, the OpenType faces (Times LT Std, Whitney, ...) in
+`~/.local/share/fonts`. Debian's `OSFONTDIR` is only `/usr/share/fonts`, and `tpc-style` asks for
+Whitney by file name, so that directory is linked into `~/texmf/fonts/opentype/`. Two fixes
+that a clean machine exposed: (1) `tpc-course.sty` chose the end-of-proof box by
+`\ifdefined\setmathfont`, but mathspec (the mtpro2 path) defines `\setmathfont` as well, so
+`./build.sh --local-fonts` failed on the missing `\mdlgwhtsquare`; it now tests the symbol
+itself. (2) The static demos gate (`web/tools/checks/static.ts`) required bundles for the test
+chapter c99, which the site build leaves out; the old machine passed only on stale c99
+bundles in `build/web/` from 2026-10-11. It now requires bundles only for the chapters the
+site contains and still checks the registration of every chapter. The golden files carry
+the generating Julia version and are compared byte for byte; all nine were regenerated under
+Julia 1.13.3, and only that stamp line changed. Open: `vl05.tex`/`lec05.tex` type the minus
+sign as U+2212 in maths (12 places); under mtpro2 it falls back to a Latin Modern glyph
+(print edition, German pp. 21 and 24). Replacing it with `-` needs a migration record.
+
 **2026-10-22: script v0.3, chapters 1 and 2 as the kernel of the new course, new design.**
 TJO's request and the rules: `docs/plan/script-v0.3/BRIEF.md`. The main script
 (`latex/Theor*.tex`) is now typeset in the course design (`tpc-course` option

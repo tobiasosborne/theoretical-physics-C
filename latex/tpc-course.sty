@@ -176,7 +176,9 @@
   \def\tpccaptionlabelfont{\tpcfontlabel\bfseries}
   % The end-of-proof box: amssymb's comes from msam10 (Computer Modern
   % weight); with an OpenType maths face take that face's white square.
-  \AtBeginDocument{\ifdefined\setmathfont
+  % Test the symbol, not \setmathfont: mathspec (the mtpro2 path) defines
+  % \setmathfont too, without unicode-math's \mdlgwhtsquare.
+  \AtBeginDocument{\ifdefined\mdlgwhtsquare
     \renewcommand{\qedsymbol}{\ensuremath{\mdlgwhtsquare}}\fi}
   % boxes: text in ink (tcolorbox defaults to black), fills and rules
   % from tokens.  Element boxes are tinted; depth blocks never are.

@@ -1,6 +1,6 @@
 {
   "kernel": "prob",
-  "reference": {"implementation": "Julia 1.12.5, Romberg integration in 256-bit BigFloat, standard library only", "script": "web/tests/golden/reference/prob.jl"},
+  "reference": {"implementation": "Julia 1.13.3, Romberg integration in 256-bit BigFloat, standard library only", "script": "web/tests/golden/reference/prob.jl"},
   "tolerance": {"abs": 1e-14, "note": "the kernel evaluates in double precision (series, continued fraction, Math.log); the reference integrates in 256-bit arithmetic to 1e-40 and rounds once to double. 1e-14 bounds the kernel's error for values of size at most 14 (ln 10^6); it is a stated accuracy, not a derived bound"},
   "cases": [
     {"fn": "gaussDensity", "x": 0.0, "expected": 0.3989422804014327},

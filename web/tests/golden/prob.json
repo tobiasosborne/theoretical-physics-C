@@ -1,6 +1,6 @@
 {
   "kernel": "prob",
-  "reference": {"implementation": "Julia 1.12.5, Rational{BigInt} and wrapping UInt32, standard library only", "script": "web/tests/golden/reference/prob.jl"},
+  "reference": {"implementation": "Julia 1.13.3, Rational{BigInt} and wrapping UInt32, standard library only", "script": "web/tests/golden/reference/prob.jl"},
   "tolerance": {"abs": 0, "note": "every compared quantity is an integer (numerator, denominator, count, outcome index, 32-bit word) below 2^53, or an exact fraction compared as the string num/den, so the comparison is exact equality"},
   "cases": [
     {"fn": "expectation", "name": "fair-die", "a": [1, 1, 1, 1, 1, 1], "f": [1, 2, 3, 4, 5, 6], "expected": [7, 2]},

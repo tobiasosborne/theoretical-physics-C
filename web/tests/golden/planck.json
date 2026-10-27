@@ -1,6 +1,6 @@
 {
   "kernel": "planck",
-  "reference": {"implementation": "Julia 1.12.5, BigFloat at 256 bits and Rational{BigInt}, standard library only", "script": "numerics/generate/c00_golden.jl", "module": "numerics/src/c00_reference.jl", "constants": "sources/codata-2022/allascii.txt"},
+  "reference": {"implementation": "Julia 1.13.3, BigFloat at 256 bits and Rational{BigInt}, standard library only", "script": "numerics/generate/c00_golden.jl", "module": "numerics/src/c00_reference.jl", "constants": "sources/codata-2022/allascii.txt"},
   "conventions": {"u": "spectral energy density per frequency, J s m^-3 (c00.eq.planck)", "u_kl": "limiting form, J s m^-3 (c00.eq.grenzform)", "x": "h nu / (k_B T)", "reduced": "s = h nu/(k_B T_0), tau = T/T_0, u/u_0 and u_kl/u_0 with u_0 = 8 pi (k_B T_0)^3/(h^2 c^3) (figure c00.fig.planck)"},
   "tolerance": {"abs": 1e-300, "rel": 1e-13, "note": "default class 'eval'; unvalidated choice, see 'tolerances'"},
   "tolerances": {
