@@ -1,278 +1,137 @@
 %!TEX root = TheoreticalPhysicsC.tex
+% Core of content/c03-hilbertraum, c03.s4 to c03.s7.1. Sources: docs/plan/script-v0.3/sync-ch3.md
 
-\section{Lecture: Hilbert Space, Bases, Operators}
+\section{Lecture: Dirac Notation, Hilbert Space, Bases}
 
-Let $V$ be a complex vector space. In quantum mechanics the following notation and conventions are used universally. From now on we shall write every vector $v\in V$ in the so-called ``ket'' notation:
-\begin{equation}
-	v \mapsto |v\rangle.  
-\end{equation} 
-This notation means nothing more than: ``$|v\rangle$ stands for a vector in a vector space $V$''. Why we have introduced this unusual notation will become clear shortly.
+\subsection{Dirac notation}
+Let $V$ be a complex vector space; for now, think of $\mathbb{C}^n$ from the last lecture. In quantum mechanics the following notation is used universally: from now on we write every vector $\vb{v}\in V$ as a \emph{ket} $\ket{v}$. We drop the bold face inside the ket; the bar and the angle bracket already say that a vector is meant. For now the notation means nothing more, and why we introduce it will become clear soon. The real hurdle at the beginning is not the physics, but the notation.
 
-The effort pays off: the states of a quantum mechanical system are modelled by vectors in a Hilbert space. The real hurdle at the beginning is not the physics, but the notation.
-
-We shall carry out a few calculations to make ourselves familiar with this notation.
 \begin{example}
-	Suppose $V\equiv \mathbb{C}^2$. (In QM we shall later interpret this Hilbert space as the \emph{state space} of a qubit.) The dimension of $V$ is $2$. Two example vectors are
+	Let $V = \mathbb{C}^2$, the space with which we shall describe the states of a qubit. From the two vectors
 	\begin{equation}
-		|e_0\rangle \equiv \begin{pmatrix}
-			1 \\ 0
-		\end{pmatrix} \quad\text{and}\quad |e_1\rangle \equiv \begin{pmatrix}
-			0 \\ 1
-		\end{pmatrix}.
+		\ket{e_0} = \begin{pmatrix} 1 \\ 0 \end{pmatrix}, \qquad
+		\ket{e_1} = \begin{pmatrix} 0 \\ 1 \end{pmatrix}
 	\end{equation}
-	These two vectors can be added, subtracted, and so on. For example, we can form the following vectors
+	we form two new ones by adding and multiplying by numbers,
 	\begin{equation}
-		|e_+\rangle \equiv \frac{1}{\sqrt{2}}|e_0\rangle  + \frac{1}{\sqrt{2}}|e_1\rangle \equiv \frac{1}{\sqrt{2}}\begin{pmatrix}
-			1 \\ 0
-		\end{pmatrix} + \frac{1}{\sqrt{2}}\begin{pmatrix}
-			0 \\ 1
-		\end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix}
-			1 \\ 1
-		\end{pmatrix}
+		\ket{e_\pm} = \tfrac{1}{\sqrt{2}}\ket{e_0} \pm \tfrac{1}{\sqrt{2}}\ket{e_1}
+		= \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ \pm 1 \end{pmatrix}.
 	\end{equation}
-	and
-	\begin{equation}
-		|e_-\rangle \equiv \frac{1}{\sqrt{2}}|e_0\rangle  - \frac{1}{\sqrt{2}}|e_1\rangle \equiv \frac{1}{\sqrt{2}}\begin{pmatrix}
-			1 \\ 0
-		\end{pmatrix} + \frac{1}{\sqrt{2}}\begin{pmatrix}
-			0 \\ -1
-		\end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix}
-			1 \\ -1
-		\end{pmatrix}.
-	\end{equation}
+	The vectors $\ket{e_\pm}$ keep turning up, in angular momentum, in the hydrogen atom and especially in spin systems.
 \end{example}
 
-Note that it makes no difference whether we write $|v+w\rangle$ or $|v\rangle+|w\rangle$, that is to say 
-\begin{equation}
-	|v+w\rangle \equiv |v\rangle + |w\rangle.
-\end{equation}
+Here $\ket{v + w}$ stands for $\ket{v} + \ket{w}$, and $\ket{zv}$ for $z\ket{v}$ when $z$ is a number.
 
-
-The ket notation is generalised by introducing so-called ``bra'' vectors, which in the finite-dimensional case stand for the row vectors that result from the dagger operation: suppose 
-\begin{equation*}
-|v\rangle \equiv \begin{pmatrix}
-	v_1 \\ v_2 \\ \vdots\\ v_n
-\end{pmatrix}
-\end{equation*}
-were written in ket notation as $|v\rangle$, then $\langle v|$ would stand for the row vector
+The ket notation is complemented by the \emph{bra} vectors. With the inner product $\vb{v}\adj\vb{w}$ the bra $\bra{v}$ is the conjugated row that the dagger operation makes from the column $\ket{v}$. The product of bra and ket is called a \emph{bra-ket}; it is the inner product of the last lecture:
 \begin{equation}
-	\begin{pmatrix}
-		v_1^* & v_2^* & \cdots & v_n^* 
-	\end{pmatrix}
+	\bra{v} = (\ket{v})\adj = \begin{pmatrix} v_1^* & \cdots & v_n^* \end{pmatrix}, \qquad
+	\braket{v}{w} = (\ket{v})\adj\ket{w} = \vb{v}\adj\vb{w}.
 \end{equation}
-instead. We define the result of the dagger operation applied to a ket vector as follows:
-\begin{equation}
-	(|v\rangle)^\dagger \equiv \langle v|.
-\end{equation}
-
-With this notation the inner product of two vectors $|v\rangle$ and $|w\rangle$ can be expressed very efficiently as follows:
-\begin{equation}
-	\langle v|w\rangle \equiv (|v\rangle)^\dag |w\rangle.
-\end{equation}
-(The name ``bra-ket'' goes back to this definition.)
+This is not a new definition but a new notation for the same objects.
 
 \begin{historical}
-	The notation is due to Paul Dirac. The word \emph{bracket} is split in two: on the left stands the ``bra'', on the right the ``ket'', and the ``c'' has gone missing.
+	The notation is due to Paul Dirac. The word \emph{bracket} is split in two: on the left stands the ``bra'', on the right the ``ket'', and the ``c'' has gone missing somewhere.
 \end{historical}
 
-\begin{example}
-	In the case $V\equiv \mathbb{C}^2$ the inner product of $|e_0\rangle$ and $|e_+\rangle$ is calculated as follows:
-	\begin{equation}
-		\langle e_0|e_+\rangle \equiv (|e_0\rangle)^\dag|e_+\rangle \equiv \begin{pmatrix}
-		1 & 0
-		\end{pmatrix} \begin{pmatrix}
-			\frac{1}{\sqrt{2}} \\ \frac{1}{\sqrt{2}}
-		\end{pmatrix} = \frac{1}{\sqrt{2}}.
-	\end{equation}
-\end{example}
-
-It is important to note that a linear combination of two ket vectors behaves as follows under the dagger operation:
+The notation shows its advantage with a rule for linear combinations. For complex numbers $\alpha,\beta$,
 \begin{equation}
-	(\alpha |v\rangle +\beta |w\rangle)^\dag = \alpha^* \langle v| + \beta^*\langle w|.
+	(\alpha\ket{v} + \beta\ket{w})\adj = \alpha^*\bra{v} + \beta^*\bra{w},
 \end{equation}
-It is exactly this rule that makes the notation useful: we work out inner products without ever writing the vectors down as columns -- in infinite-dimensional spaces the only way to calculate at all.
+because the dagger operation conjugates every entry. With it we compute inner products without writing the vectors as columns. In infinitely many dimensions a vector does not fit into a finite column, and there we compute exactly like this.
 
 \begin{example}
-	The inner product $\langle v|w\rangle$ of
-	\begin{equation}
-		|v\rangle \equiv \begin{pmatrix}
-			1 \\ i
-		\end{pmatrix} \quad \text{and} \quad |w\rangle \equiv \begin{pmatrix}
-			1 \\ 1
-		\end{pmatrix}
-	\end{equation}
-	can be calculated as follows. First, note that 
-	\begin{equation}
-		|v\rangle = |e_0\rangle + i|e_1\rangle \quad \text{and} \quad |w\rangle = |e_0\rangle + |e_1\rangle.
-	\end{equation}
-	Substituting these representations into the inner product, we obtain
+	Let $\ket{v} = \ket{e_0} + i\ket{e_1}$ and $\ket{w} = \ket{e_0} + \ket{e_1}$. By the rule, $\bra{v} = \bra{e_0} - i\bra{e_1}$; note the minus sign. With $\braket{e_0}{e_0} = \braket{e_1}{e_1} = 1$ and $\braket{e_0}{e_1} = \braket{e_1}{e_0} = 0$,
 	\begin{equation}
 		\begin{split}
-			\langle v|w\rangle &= (|e_0\rangle + i|e_1\rangle)^\dag (|e_0\rangle + |e_1\rangle) \\
-			&= (\langle e_0| - i\langle e_1|)(|e_0\rangle + |e_1\rangle)  \\
-			&= \langle e_0|e_0\rangle + \langle e_0|e_1\rangle -i \langle e_1|e_0\rangle -i\langle e_1|e_1\rangle \\
-			&= 1-i.
+			\braket{v}{w} &= (\bra{e_0} - i\bra{e_1})(\ket{e_0} + \ket{e_1}) \\
+			&= \braket{e_0}{e_0} + \braket{e_0}{e_1} - i\braket{e_1}{e_0} - i\braket{e_1}{e_1} = 1 - i.
 		\end{split}
 	\end{equation}
-	We could equally well have obtained this result by simply substituting the definitions of $|v\rangle$ and $|w\rangle$ as column vectors into the inner product
-	\begin{equation}
-		\langle v|w\rangle \equiv \begin{pmatrix}
-			1 & -i	
-		\end{pmatrix} \begin{pmatrix}
-			1 \\ 1
-		\end{pmatrix} = 1-i.
-	\end{equation}
+	Computed with columns, the same: $1\cdot 1 + (-i)\cdot 1 = 1 - i$.
 \end{example}
 
-Let us be honest: in two dimensions the first route is the more laborious one. From five or six dimensions onwards the balance tips.
+Let us be honest: in two dimensions the first route is more work. In higher dimensions, however, you will very quickly discover a love for the ket notation.
 
-\subsection{Inner Products}
-Before we present the definition of a Hilbert space, we must explain the formal definition and a few properties of general inner products.
-
-There are infinitely many inner products, and a vector space can perfectly well exist without one. We need one because quantum mechanics is probabilistic: it is our tool for probabilities.
-
-An \emph{inner product} for a complex vector space $V$ assigns to any two vectors $|\phi\rangle, |\psi\rangle \in V$ a complex number $\langle \phi|\psi\rangle \in \mathbb{C}$. By definition it is additive in each argument (e.g., $\langle \phi_1 + \phi_2|\psi\rangle = \langle \phi_1|\psi\rangle + \phi_2|\psi\rangle$). For pulling out scalar factors $z\in \mathbb{C}$ the rules are
-\begin{align}
-	\langle \phi|z\psi\rangle &= z \langle \phi|\psi\rangle \\
-	\langle z\phi|\psi\rangle &= z^* \langle \phi|\psi\rangle.
-\end{align}
-The complex conjugation in the second formula is important if the norm is to come out positive (see below).  
-
-Part of the definition of the inner product is \emph{positivity}, in the sense that
-\begin{equation}
-	\begin{split}
-		\langle \psi | \psi\rangle &\ge 0, \quad \forall \psi \in V.\\
-		\langle \psi | \psi\rangle &= 0, \quad \text{only for $|\psi\rangle =0$}.\\
-	\end{split}
-\end{equation}
-This property allows us to define the \emph{norm} of a vector $|\psi\rangle \in V$, often written $\|\psi\|$ or $\| |\psi\rangle \|$, as
-\begin{equation}
-	\| |\psi\rangle \| \equiv \sqrt{\langle \psi | \psi\rangle}.
-\end{equation}
-Two important consequences of positivity are
-\begin{equation}
-	\langle \phi | \psi\rangle = \langle \psi | \phi\rangle^*
-\end{equation}
-and the \emph{Schwarz inequality}
-\begin{equation}
-	|\langle \phi | \psi\rangle| \le \| \phi \|\|\psi \|.
-\end{equation} 
-The triangle inequality follows from this as well
-\begin{equation}
-	\left\|\sum_{j} |\psi_j\rangle \right\| \le \sum_{j} \|\psi_j\|.
-\end{equation}
-Both are working tools: the Schwarz inequality lies behind Heisenberg's uncertainty relation (Lecture 9), and we use the triangle inequality to bound quantities.
-
-Two vectors are called \emph{orthogonal} (in symbols $|\phi\rangle \perp |\psi\rangle$) if
-\begin{equation}
-	\langle\phi|\psi\rangle = 0.
-\end{equation}
-Careful: a vanishing inner product does \emph{not} mean that one of the vectors is zero -- only the case $|\phi\rangle = |\psi\rangle$ forces that.
-
-
-\subsection{Hilbert Space}
-
+\subsection{Inner products}
+On $\mathbb{C}^n$ there are other inner products besides $\vb{v}\adj\vb{w}$, infinitely many in fact; the following definition covers them all. In calculations with columns we keep using $\vb{v}\adj\vb{w}$. We need an inner product because quantum mechanics is probabilistic: it is our tool for probabilities.
 
 \begin{definition}
-	A Hilbert space $\mathcal{H}$ is defined as a complex vector space with an inner product $\langle \cdot | \cdot  \rangle$ which is complete\footnote{The subtle aspect of completeness will play no great role in our lectures.} with respect to the norm $\|\psi\|^2 \equiv \langle \psi|\psi\rangle$.   
+	An \emph{inner product} on a complex vector space $V$ assigns to any two vectors $\ket{\phi},\ket{\psi}\in V$ a complex number $\braket{\phi}{\psi}$. It is additive in each argument, $\braket{\phi_1 + \phi_2}{\psi} = \braket{\phi_1}{\psi} + \braket{\phi_2}{\psi}$ and likewise in the second, and for all $z\in\mathbb{C}$
+	\begin{equation}
+		\braket{\phi}{z\psi} = z\braket{\phi}{\psi}, \qquad \braket{z\phi}{\psi} = z^*\braket{\phi}{\psi}.
+	\end{equation}
+	In addition there is \emph{positivity}: $\braket{\psi}{\psi}$ is real and $\geq 0$, and zero only for $\ket{\psi} = 0$.
 \end{definition}
 
-For us, then, a Hilbert space is simply a complex vector space with an inner product.
+The inner product $\vb{v}\adj\vb{w}$ satisfies all three conditions. The star in the first argument matters: if the inner product were linear there, then $\braket{i\psi}{i\psi} = -\braket{\psi}{\psi}$, and both sides could be nonnegative only for $\braket{\psi}{\psi} = 0$, even when $\ket{\psi} \neq 0$.
 
+Positivity allows us to define the length of a vector, the \emph{norm}
+\begin{equation}
+	\norm{\psi} = \sqrt{\braket{\psi}{\psi}} \geq 0.
+\end{equation}
+With the inner product $\vb{v}\adj\vb{w}$, $\norm{v}^2 = \vb{v}\adj\vb{v} = \sum_j\abs{v_j}^2$.
+
+From the three conditions follow conjugate symmetry and the \emph{Schwarz inequality}, and from the latter the triangle inequality for finitely many vectors:
+\begin{equation}
+	\begin{gathered}
+		\braket{\phi}{\psi} = \braket{\psi}{\phi}^*, \qquad
+		\abs{\braket{\phi}{\psi}} \leq \norm{\phi}\,\norm{\psi}, \\
+		\norm{\sum_{j=1}^{N}\ket{\psi_j}} \leq \sum_{j=1}^{N}\norm{\psi_j}.
+	\end{gathered}
+\end{equation}
+Both inequalities are working tools. The Schwarz inequality lies behind Heisenberg's uncertainty relation (Lecture~9); both are proved with the same step: the inner product of a cleverly chosen vector with itself is never negative. With the triangle inequality we bound quantities.
+
+Two vectors are called \emph{orthogonal}, $\ket{\phi} \perp \ket{\psi}$, if $\braket{\phi}{\psi} = 0$. Caution: this does \emph{not} mean that one of the vectors is zero; positivity forces that only for $\ket{\phi} = \ket{\psi}$. A system of vectors $\ket{\phi_j}$ with $j$ from an index set $X$ is called \emph{orthonormal} if
+\begin{equation}
+	\braket{\phi_j}{\phi_k} = \delta_{jk} \quad \text{for all } j,k\in X.
+\end{equation}
+Here $\delta_{jk}$ is the Kronecker delta, $1$ for $j = k$ and $0$ otherwise; it is not the Dirac delta function, which comes later.
+
+\subsection{Hilbert space}
+Now we have enough together to define Hilbert spaces.
+
+\begin{definition}
+	A \emph{Hilbert space} $\Hil$ is a complex vector space with inner product that is complete with respect to the norm $\norm{\psi}^2 = \braket{\psi}{\psi}$. \emph{Complete} means: if the members of a sequence $\ket{\psi_1},\ket{\psi_2},\dots$ in $\Hil$ come arbitrarily close to one another, $\norm{\psi_m - \psi_k} \to 0$ as $m,k \to \infty$, then the sequence has a limit $\ket{\psi}\in\Hil$, that is $\norm{\psi_m - \psi} \to 0$.
+\end{definition}
+
+Completeness is important but subtle; it has to do with convergence in infinite-dimensional spaces. In $\mathbb{C}^n$ with $\vb{v}\adj\vb{w}$ it holds automatically, and for calculations there a Hilbert space is simply a complex vector space with inner product; for the qubit this is $\mathbb{C}^2$. In infinitely many dimensions this shortcut does not hold: there one needs completeness, for instance for the expansion in a basis with infinitely many vectors.
 
 \subsection{Bases}
-We need bases for a practical reason: most calculations in quantum mechanics only become explicit once a basis has been fixed.
-
-A \emph{basis} of a Hilbert space $\mathcal{H}$ is a system of vectors $|\phi_j\rangle \in \mathcal{H}$, where $j$ runs over some \emph{index set} $X$, with the properties
-\begin{align}
-	\langle \phi_j|\phi_k\rangle &=\delta_{jk}, \quad &\text{for all $j,k\in X$ (``$\{|\phi_j\rangle\}$ is \emph{orthonormal}'') and} \\
-	\|\psi\|^2 &= \sum_{j\in X} |\langle \phi_j|\psi\rangle|^2, \quad &\text{for all $j,k\in X$ (``$\{|\phi_j\rangle\}$ is \emph{complete}'').}
-\end{align}
-Careful: this completeness has nothing to do with the completeness of the Hilbert space, and $\delta_{jk}$ is the Kronecker delta, not the Dirac delta function.
-
-The most important property of such a basis is that every vector $|\psi\rangle \in \mathcal{H}$ can be expanded in it: we have
+We need bases for a practical reason: most calculations in quantum mechanics only become explicit once a basis has been chosen. Here we consider only finite index sets $X$. An orthonormal system $\{\ket{\phi_j}\}_{j\in X}$ in $\Hil$ is called a \emph{basis} (more precisely an \emph{orthonormal basis}) of $\Hil$ if it is \emph{complete}:
 \begin{equation}
-	|\Psi\rangle = \sum_{j\in X} \langle \psi_j|\Psi\rangle |\psi_j\rangle.
+	\norm{\psi}^2 = \sum_{j\in X}\abs{\braket{\phi_j}{\psi}}^2 \quad \text{for all } \ket{\psi}\in\Hil.
 \end{equation}
-This equation is one form of the so-called \emph{completeness relation}; written out with the basis vectors $|\phi_j\rangle$ it reads
+Confusingly, one says complete here as well, but means something different from the completeness of the Hilbert space.
+
+The pairs $\ket{e_0},\ket{e_1}$ and $\ket{e_+},\ket{e_-}$ are bases of $\mathbb{C}^2$. The second pair is orthonormal too: $\braket{e_+}{e_-} = \tfrac12(1 - 1) = 0$ and $\norm{e_\pm}^2 = \tfrac12(1 + 1) = 1$. For $\ket{\psi} = \alpha\ket{e_0} + \beta\ket{e_1}$ we have $\norm{\psi}^2 = \abs{\alpha}^2 + \abs{\beta}^2$; the right-hand side gives the same, with $\braket{e_0}{\psi} = \alpha$ and $\braket{e_1}{\psi} = \beta$ as well as with $\braket{e_\pm}{\psi} = (\alpha \pm \beta)/\sqrt{2}$, because $\abs{\alpha + \beta}^2 + \abs{\alpha - \beta}^2 = 2(\abs{\alpha}^2 + \abs{\beta}^2)$. In $\mathbb{C}^n$ with $\vb{v}\adj\vb{w}$ there is always a basis, the columns with a $1$ in the $j$-th entry and zeros everywhere else. In the infinite-dimensional case everything is harder: that a basis exists has to be proved, and the proof is hard. Bases with infinitely many vectors are treated in the web course.
+
+The most important property of a basis is that every vector $\ket{\Psi}\in\Hil$ can be expanded in it, with the coefficients $c_j = \braket{\phi_j}{\Psi}$:
 \begin{equation}
-	\eqbox{|\Psi\rangle = \sum_{j\in X} \langle \phi_j|\Psi\rangle\, |\phi_j\rangle.}
+	\eqbox{\ket{\Psi} = \sum_{j\in X}\braket{\phi_j}{\Psi}\,\ket{\phi_j}.}
 \end{equation}
-It looks harmless, but it gets used all the time.
+For with $\ket{\xi} = \ket{\Psi} - \sum_j c_j\ket{\phi_j}$, orthonormality gives $\braket{\xi}{\xi} = \norm{\Psi}^2 - \sum_j\abs{c_j}^2$, which is zero by completeness, and by positivity $\ket{\xi} = 0$. This equation is one form of the so-called \emph{completeness relation}: every vector is the sum of its components along the basis vectors, and the coefficients are inner products. It looks harmless but is used all the time.
 
 \input{figures/fig_vl03_vollst}
 
-The figure works this out for the two bases of the opening example,
-$\{|e_0\rangle,|e_1\rangle\}$ and $\{|e_+\rangle,|e_-\rangle\}$.
-In (a) each of the two decompositions of the same $|\Psi\rangle$ closes up into
-a rectangle of its own -- different sides, the same diagonal. Panel (b) shows
-what stays independent of the basis: not the individual weights, but their
-sum.
+The figure works this out for $\ket{\Psi} = (2\ket{e_0} + \ket{e_1})/\sqrt{5}$ in both bases. The coefficients are real here; only for that reason does (a) fit into a plane. Each decomposition closes into its own rectangle: different sides, the same diagonal. Panel (b) shows the weights $\abs{c_j}^2$. How they are split depends on the basis, their sum does not: it is $\norm{\Psi}^2$, so one for a vector of norm one.
 
-For infinite-dimensional vector spaces the existence of bases is hard to prove. From now on we shall assume that we always have a basis; arbitrarily chosen vectors, after all, normally do \emph{not} form one. In practice bases are often obtained by the so-called orthonormalisation procedure: you start with some list of vectors $|\Phi_1\rangle$, $|\Phi_2\rangle$, $|\Phi_3\rangle$, $\ldots$. From these you determine, step by step, a system of pairwise orthogonal vectors $|\Psi_n\rangle$ according to the formula
+How does one build bases in practice? With the orthonormalisation procedure of Gram and Schmidt. From an arbitrary list $\ket{\Phi_1},\dots,\ket{\Phi_N}$ one determines one after another
 \begin{equation}
-	|\Psi_n\rangle \equiv |\Phi_n\rangle - \sum_{k=1}^{n-1} |\Psi_k\rangle \frac{\langle \Psi_k|\Phi_n\rangle}{\|\Psi_k\|^2},
+	\ket{\Psi_n} = \ket{\Phi_n} - \sum_{k=1}^{n-1}\frac{\braket{\Psi_k}{\Phi_n}}{\norm{\Psi_k}^2}\,\ket{\Psi_k},
 \end{equation}
-where summands with $|\Phi_k\rangle= 0$ are left out.\footnote{What is meant is $|\Psi_k\rangle = 0$: otherwise $\|\Psi_k\|^2 = 0$ would stand in the denominator and we would be dividing by zero.} This vector is orthogonal to the $|\Psi_k
-\rangle$ with $k < n$. The vectors
-\begin{equation}
-	\left\{\frac{|\Psi_n\rangle}{\|\Psi_n\|}\middle| |\Psi_n\rangle\not=0\right\}
-\end{equation}
-then form an orthonormal system spanning the same subspace as the original list. If there is no vector perpendicular to all of the $|\Phi_n\rangle$, then this list is a basis as well.
-
-Let us work the procedure through once in full.
+where terms with $\ket{\Psi_k} = 0$ are left out, because otherwise we would divide by zero. Then $\braket{\Psi_k}{\Psi_n} = 0$ for $k<n$, and the vectors $\ket{\Psi_n}/\norm{\Psi_n}$ with $\ket{\Psi_n} \neq 0$ always form an orthonormal system. If no vector other than the zero vector is orthogonal to all the $\ket{\Phi_n}$, this system is a basis of $\Hil$.
 
 \begin{example}
-	We work in $\mathbb{C}^2$ and start with two made-up vectors
+	In $\mathbb{C}^2$ we start with two made-up vectors,
 	\begin{equation}
-		|\Phi_1\rangle \equiv \begin{pmatrix}
-			1 \\ 0
-		\end{pmatrix} \quad\text{and}\quad |\Phi_2\rangle \equiv \begin{pmatrix}
-			1 \\ 1
-		\end{pmatrix}.
+		\ket{\Phi_1} = \begin{pmatrix} 2 \\ 0 \end{pmatrix}, \qquad
+		\ket{\Phi_2} = \begin{pmatrix} 1 \\ 1 \end{pmatrix}.
 	\end{equation}
-	In the first step the sum runs from $1$ to $0$, so nothing is summed at all:
+	In the first step the sum runs from $1$ to $0$; nothing is summed, and $\ket{\Psi_1} = \ket{\Phi_1}$. In the second step, with $\braket{\Psi_1}{\Phi_2} = 2$ and $\norm{\Psi_1}^2 = 4$,
 	\begin{equation}
-		|\Psi_1\rangle = |\Phi_1\rangle = \begin{pmatrix}
-			1 \\ 0
-		\end{pmatrix}.
+		\ket{\Psi_2} = \ket{\Phi_2} - \frac{\braket{\Psi_1}{\Phi_2}}{\norm{\Psi_1}^2}\,\ket{\Psi_1}
+		= \begin{pmatrix} 1 \\ 1 \end{pmatrix} - \frac{1}{2}\begin{pmatrix} 2 \\ 0 \end{pmatrix}
+		= \begin{pmatrix} 0 \\ 1 \end{pmatrix}.
 	\end{equation}
-	In the second step only the term $k=1$ survives. With $\langle \Psi_1|\Phi_2\rangle = 1$ and $\|\Psi_1\|^2 = 1$ we obtain
-	\begin{equation}
-		|\Psi_2\rangle = |\Phi_2\rangle - |\Psi_1\rangle \frac{\langle \Psi_1|\Phi_2\rangle}{\|\Psi_1\|^2} = \begin{pmatrix}
-			1 \\ 1
-		\end{pmatrix} - \begin{pmatrix}
-			1 \\ 0
-		\end{pmatrix} = \begin{pmatrix}
-			0 \\ 1
-		\end{pmatrix}.
-	\end{equation}
-	Both vectors already have norm one: an arbitrary list has turned into the canonical basis $\{|e_0\rangle, |e_1\rangle\}$. In higher dimensions the calculation merely gets more laborious -- but work it does, every time.
-\end{example}
-
-\subsection{Operators}
-Now to the second pillar of the theory. The vectors describe the \emph{states}, the operators the \emph{observables} -- and as soon as you have states and observables, you have a physical theory.
-
-Let $\mathcal{H}$ be a Hilbert space. An \emph{operator} $A$ on $\mathcal{H}$ is a \emph{linear map}
-\begin{equation}
-	A:\mathcal{H}\rightarrow \mathcal{H}.
-\end{equation}
-That is to say,
-\begin{equation}
-	A(|\phi\rangle + |\psi\rangle) = A|\phi\rangle + A|\psi\rangle
-\end{equation}
-and
-\begin{equation}
-	A(\alpha|\phi\rangle) = \alpha A|\phi\rangle
-\end{equation}
-for all $\alpha\in \mathbb{C}$ and $|\phi\rangle, |\psi\rangle\in \mathcal{H}$.
-
-\begin{example}
-	In the case that $\mathcal{H}$ is finite-dimensional, operators can be represented by \emph{matrices}. For example, let us suppose that the dimension of $\mathcal{H}$ is $n=2$. All operators on $\mathcal{H}\equiv\mathbb{C}^2$ have the form of $2\times 2$ matrices:
-	\begin{equation}
-		A \equiv \begin{pmatrix}
-			a_{11} & a_{12} \\ a_{21} & a_{22}
-		\end{pmatrix},
-	\end{equation} 
-	where $a_{jk} \in \mathbb{C}$, $\forall 1 \le j,k\le 2$. The rules for multiplying matrices and vectors correspond exactly to the definition of linear operators.
+	Divided by the norms $\norm{\Psi_1} = 2$ and $\norm{\Psi_2} = 1$, the made-up list becomes the basis $\ket{e_0},\ket{e_1}$. The condition holds, because $\braket{\Phi_1}{\psi} = 2\psi_1 = 0$ and $\braket{\Phi_2}{\psi} = \psi_1 + \psi_2 = 0$ imply $\ket{\psi} = 0$.
 \end{example}

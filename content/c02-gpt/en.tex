@@ -544,11 +544,11 @@ extreme effect of the ball looks like.
         \norm{\vb{a}} \leq \min(b,\, 1-b) .
       \end{equation}
     \item With the Hermitian matrix
-      $\EffOp = b\, \Id + a_x \pauli{x} + a_y \pauli{y} + a_z \pauli{z}$,
+      $\op{\EffOp} = b\, \Id + a_x \pauli{x} + a_y \pauli{y} + a_z \pauli{z}$,
       \begin{equation}\label{c02.eq.spurformel}
-        f(\vb{r}) = b + \vb{a}\cdot\vb{r} = \tr\bigl(\rho(\vb{r})\, \EffOp\bigr) .
+        f(\vb{r}) = b + \vb{a}\cdot\vb{r} = \tr\bigl(\rho(\vb{r})\, \op{\EffOp}\bigr) .
       \end{equation}
-      The eigenvalues of $\EffOp$ are $b + \norm{\vb{a}}$ and $b - \norm{\vb{a}}$;
+      The eigenvalues of $\op{\EffOp}$ are $b + \norm{\vb{a}}$ and $b - \norm{\vb{a}}$;
       condition~\eqref{c02.eq.qubit-effekt} says that both lie in $[0,1]$.
     \item The extreme effects are $0$, $\UnitEff{\StSp}$ and, for every unit vector
       $\vb{n}$, the effect
@@ -566,10 +566,10 @@ extreme effect of the ball looks like.
   (2) Multiplying out the matrices in \eqref{c02.eq.pauli} one finds: every Pauli matrix
   has trace $0$, its square is $\Id$, and the product of two different Pauli matrices has
   trace $0$. So $\tr(\Id) = 2$, the trace of the square of a Pauli matrix is $2$, and in
-  the product $\rho(\vb{r})\,\EffOp$ only the terms with $\Id\cdot\Id$ and with two equal
+  the product $\rho(\vb{r})\,\op{\EffOp}$ only the terms with $\Id\cdot\Id$ and with two equal
   Pauli matrices contribute to the trace:
-  $\tr(\rho(\vb{r})\,\EffOp) = \tfrac12\bigl(2b + 2 a_x r_x + 2 a_y r_y + 2 a_z r_z\bigr)$.
-  The eigenvalues of $\EffOp$ are obtained as in Proposition~\ref{c02.prop.bloch}(2).
+  $\tr(\rho(\vb{r})\,\op{\EffOp}) = \tfrac12\bigl(2b + 2 a_x r_x + 2 a_y r_y + 2 a_z r_z\bigr)$.
+  The eigenvalues of $\op{\EffOp}$ are obtained as in Proposition~\ref{c02.prop.bloch}(2).
 
   (3) Let $q = \norm{\vb{a}}$. For $q = 0$,
   $(b, 0) = b\, \UnitEff{\StSp} + (1 - b)\cdot 0$, a mixture of $\UnitEff{\StSp}$ and the
@@ -998,8 +998,8 @@ only in how the length of $\vb{v}$ is measured (Figure~\ref{c02.fig.laengen})\zo
     zurueck={The length $\max(\abs{\delta}, \norm{\vb{v}})$ in
       equation~\eqref{c02.eq.opt-qubit} is a property of the matrix
       $\lambda_1\rho_1 - \lambda_2\rho_2$ alone.}]
-  For a Hermitian $2\times 2$ matrix $D$ with the eigenvalues $\kappa_1$ and $\kappa_2$ we
-  call $\norm{D}_1 = \abs{\kappa_1} + \abs{\kappa_2}$ its \emph{trace norm}.
+  For a Hermitian $2\times 2$ matrix $\op{D}$ with the eigenvalues $\kappa_1$ and $\kappa_2$ we
+  call $\norm{\op{D}}_1 = \abs{\kappa_1} + \abs{\kappa_2}$ its \emph{trace norm}.
 
   \begin{proposition}[Trace-norm formula]\label{c02.prop.spurnorm}\claim[proof-included]{c02.cl.spurnorm}{derived}
     Let $\rho_1 = \rho(\vb{r}_1)$ and $\rho_2 = \rho(\vb{r}_2)$ be two states of the qubit
@@ -1010,12 +1010,12 @@ only in how the length of $\vb{v}$ is measured (Figure~\ref{c02.fig.laengen})\zo
   \end{proposition}
   \begin{proof}
     By equation~\eqref{c02.eq.bloch},
-    $D = \lambda_1\rho_1 - \lambda_2\rho_2
+    $\op{D} = \lambda_1\rho_1 - \lambda_2\rho_2
        = \tfrac12\bigl(\delta\, \Id + v_x \pauli{x} + v_y \pauli{y} + v_z \pauli{z}\bigr)$.
-    The calculation of Proposition~\ref{c02.prop.bloch}(2) gives for $D$ the eigenvalues
+    The calculation of Proposition~\ref{c02.prop.bloch}(2) gives for $\op{D}$ the eigenvalues
     $\tfrac12(\delta + \norm{\vb{v}})$ and $\tfrac12(\delta - \norm{\vb{v}})$. With
     $L = \norm{\vb{v}}$ we therefore have
-    $\norm{D}_1 = \tfrac12\bigl(\abs{\delta + L} + \abs{\delta - L}\bigr)$. For
+    $\norm{\op{D}}_1 = \tfrac12\bigl(\abs{\delta + L} + \abs{\delta - L}\bigr)$. For
     $\delta \geq L$ this is $\delta$, for $\delta \leq -L$ it is $-\delta$, and for
     $-L \leq \delta \leq L$ it is $L$; in every case $\max(\abs{\delta}, L)$.
     Inserting into \eqref{c02.eq.opt-qubit} gives the claim.

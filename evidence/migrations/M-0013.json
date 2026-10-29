@@ -32,7 +32,7 @@
   "independent_check": "evidence/derivations/c03/check_c03.py verifies H_N >= ln(N+1) for N = 1..25 and int_0^X dx/(1+x) = ln(1+X) symbolically",
   "provenance_ids": [],
   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.rate",
-  "notes": "A wording error of v0.2 (the passage is not in v0.1); the figure fig_vl02_raeume labels the curves correctly with the partial sums. Script v0.3 (2026-10-22, lane ch2, docs/plan/script-v0.3/NOTES-ch2.md): applied by removal: the rate remark with 'die Norm aber logarithmisch' is not in script v0.3 chapter 2, and the word Norm does not occur there. Destination: the uncommitted working tree registered as tpc-script-v0.3; the commit is still to be made by the coordinator. The v0.1 entries are not application targets."
+  "notes": "A wording error of v0.2 (the passage is not in v0.1); the figure fig_vl02_raeume labels the curves correctly with the partial sums. Script v0.3 (2026-10-22, lane ch2, docs/plan/script-v0.3/NOTES-ch2.md): applied by removal: the rate remark with 'die Norm aber logarithmisch' is not in script v0.3 chapter 2, and the word Norm does not occur there. Destination: script v0.3, committed in b1fd537 and registered as tpc-script-v0.3 (identifiers.git_commit). The v0.1 entries are not application targets."
  },
  "destination": "c03.ex.rate",
  "applied_date": "2026-10-22"

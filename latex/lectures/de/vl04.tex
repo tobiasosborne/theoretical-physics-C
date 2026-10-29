@@ -1,207 +1,131 @@
 %!TEX root = TheoretischePhysikC.tex
+% Kern von content/c03-hilbertraum, c03.s8 bis c03.s12. Quellen: docs/plan/script-v0.3/sync-ch4.md
 
 \section{Vorlesung: Operatoren}
 
-Die Vektoren des Hilbertraums beschreiben die Zustände eines Systems, die Operatoren seine Observablen; und wer Zustände und Observablen hat, hat eine physikalische Theorie. Darauf läuft dieses Kapitel hinaus, und es beginnt mit zwei Operatoren, die trivial, als Bausteine aber unentbehrlich sind.
-
+\subsection{Operatoren und der Hut}
+Das zweite Standbein der Theorie sind die Operatoren: Mit ihnen beschreibt die Quantenmechanik Zustände, Messungen und Dynamik.
 \begin{definition}
-	Sei $\mathcal{H}$ einen Hilbertraum.
-	Der \emph{Einsoperator} $\mathbb{I}$ wird durch
-	\begin{equation}
-		\mathbb{I} |\psi\rangle = |\psi\rangle, \quad \forall |\psi\rangle\in\mathcal{H},
-	\end{equation}
-	gegeben. Im Fall, dass $\mathcal{H}$ endlich dimensional ist, wird $\mathbb{I}$ mit der Einheitsmatrix
-	\begin{equation}
-		\mathbb{I} \equiv \begin{pmatrix}
-			1 & 0 & 0 & \cdots & 0 \\
-			0 & 1 & 0 & \cdots & 0 \\
-			\vdots & \vdots &  & \ddots & \vdots \\
-			0 & 0 & 0 & \cdots & 1 
-		\end{pmatrix}
-	\end{equation}
-	dargestellt.
+	Sei $\Hil$ ein Hilbertraum. Ein \emph{Operator} $\op{A}$ auf $\Hil$ ist eine lineare Abbildung $\op{A}\colon\Hil \to \Hil$, das heißt
+\begin{equation}
+	\op{A}(\ket{\phi} + \ket{\psi}) = \op{A}\ket{\phi} + \op{A}\ket{\psi}, \qquad
+	\op{A}(\alpha\ket{\phi}) = \alpha\,\op{A}\ket{\phi}
+\end{equation}
+für alle $\alpha\in\mathbb{C}$ und alle $\ket{\phi},\ket{\psi}\in\Hil$.
 \end{definition}
 
-Ebenso nützlich ist der \emph{Nulloperator} $\widehat{0}$,
-\begin{equation}
-	\widehat{0}\,|\psi\rangle = 0, \quad \forall |\psi\rangle\in\mathcal{H},
-\end{equation}
-im endlich-dimensionalen Fall die Matrix mit lauter Nulleinträgen. Hier entsteht allerdings ein Notationsproblem: einer hingeschriebenen Null sieht man nicht an, ob ein Operator, eine Zahl oder ein Vektor gemeint ist. Wir vereinbaren deshalb:
+In dieser Vorlesung ist $\Hil$ endlichdimensional: Es hat eine Basis mit endlicher Indexmenge, wie $\mathbb{C}^n$ mit $\vb{v}\adj\vb{w}$. Mit einer Basis ist ein Operator nichts anderes als eine $n\times n$-Matrix; die Regeln für Matrix mal Spalte sind genau die beiden Bedingungen. Wenn Sie das Wort ,,Operator`` hören, denken Sie an eine Tabelle. Ein Produkt wird von rechts nach links ausgeführt: $\op{A}\op{B}$ heißt erst $\op{B}$, dann $\op{A}$.
+
+Trivial, aber sehr nützlich sind der \emph{Einsoperator} $\mathbb{I}$ mit $\mathbb{I}\ket{\psi} = \ket{\psi}$ und der \emph{Nulloperator} $\widehat{0}$ mit $\widehat{0}\,\ket{\psi} = 0$ für alle $\ket{\psi}\in\Hil$; im endlichdimensionalen Fall sind das die Einheitsmatrix und die Matrix mit lauter Nullen. Einer hingeschriebenen Null sieht man nicht an, was gemeint ist. Wir vereinbaren deshalb:
 
 \begin{merksatz}[Notation]
-	Ein \emph{Hut} bedeutet immer einen Operator, $\widehat{A}$; der \emph{Strich} der Ket-Notation einen Vektor, $|\psi\rangle$; ein Symbol ohne Verzierung eine Zahl.
+	Ein \emph{Hut} bedeutet immer einen Operator, $\op{A}$; der \emph{Strich} der Ket-Notation einen Vektor, $\ket{\psi}$; ein Symbol ohne Verzierung eine Zahl. Ohne Hut bleiben der Einsoperator $\mathbb{I}$, die Ket-Bras weiter unten und zwei Sorten von Operatoren, die erst später vorkommen: die Zustände und die Pauli-Matrizen.
 \end{merksatz}
+Die Vorlesungen ab Vorlesung~5 sind noch in der alten Fassung und schreiben Operatoren oft ohne Hut.
 
-Der zu $A$ \emph{adjungierte Operator} $A^\dag$ ist durch die Gleichung
+\subsection{Der adjungierte Operator}
+Die Kreuz-Operation übertragen wir jetzt auf Operatoren. Der \emph{adjungierte Operator} $\op{A}\adj$ ist durch die folgende Gleichung festgelegt:
 \begin{equation}
-	\langle A^\dag\Phi|\Psi\rangle = \langle \Phi|A\Psi\rangle, \quad \Phi,\Psi\in \mathcal{H},
+	\braket{\op{A}\adj\phi}{\psi} = \braket{\phi}{\op{A}\psi} \quad \text{für alle } \ket{\phi},\ket{\psi}\in\Hil.
 \end{equation}
-definiert. Diese Gleichung ist tatsächlich eine Definition: sie legt $A^\dag$ nicht durch eine Rechenvorschrift fest, sondern durch sein Verhalten unter dem Skalarprodukt. In der Matrizenrechnung mit reellen Einträgen entspricht die Bildung des adjungierten Operators dem Transponieren, bei komplexen Einträgen dem (komplex) Konjugieren und Transponieren der Ausgangsmatrix. Daher, im dem endlich-dimensionalen Fall wird die adjungierte Matrix wie folgt dargestellt:
+Er ist also nicht durch eine Rechenvorschrift bestimmt, sondern durch sein Verhalten unter dem Skalarprodukt. In endlicher Dimension gibt es genau einen solchen Operator. In $\mathbb{C}^n$ mit $\vb{v}\adj\vb{w}$ heißt das Kreuz: erst transponieren, dann alle Einträge komplex konjugieren. Wie der Bra hängt $\op{A}\adj$ aber vom Skalarprodukt ab: Mit einem anderen Skalarprodukt gilt diese Regel für die Einträge in $\mathbb{C}^n$ im Allgemeinen nicht mehr. Die Rechenregeln, die wir ständig verwenden, sind
 \begin{equation}
-	A^\dag = \begin{pmatrix}
-		a_{11} & a_{12} & \cdots & a_{1n} \\
-		a_{21} & a_{22} & \cdots & a_{2n} \\
-		\vdots & \vdots & \ddots & \vdots \\
-		a_{n1} & a_{n2} & \cdots & a_{nn} 
-	\end{pmatrix}^\dag \equiv \begin{pmatrix}
-		a_{11}^* & a_{21}^* & \cdots & a_{n1}^* \\
-		a_{12}^* & a_{22}^* & \cdots & a_{n2}^* \\
-		\vdots & \vdots & \ddots & \vdots \\
-		a_{1n}^* & a_{2n}^* & \cdots & a_{nn}^* 
-	\end{pmatrix}.
+	\begin{gathered}
+		(\op{A} + \op{B})\adj = \op{A}\adj + \op{B}\adj, \qquad (z\op{A})\adj = z^*\op{A}\adj, \\
+		(\op{A}\op{B})\adj = \op{B}\adj\op{A}\adj, \qquad (\op{A}\adj)\adj = \op{A}.
+	\end{gathered}
 \end{equation}
 
-Die Rechenregeln für adjungierte Operatoren sind
-\begin{align}
-	(A+B)^\dag &= A^\dag + B^\dag,  & \quad & (zA)^\dag = z^* A^\dag \\
-	(AB)^\dag &= B^\dag A^\dag,  & \quad & (A^\dag)^\dag = A.
-\end{align}
-
-Mit Hilfe adjungierter Operatoren und Identitätsoperatoren können wir mehrere wichtige Klassen von Operatoren definieren. Ein Operator $A$ heißt
+\subsection{Klassen von Operatoren}
+Mit $\mathbb{I}$ und $\op{A}\adj$ allein definieren wir sechs wichtige Klassen. Ein Operator $\op{A}$ heißt
 \begin{enumerate}
-	\item \emph{hermitesch}, wenn $A^\dag = A$,
-	\item \emph{positiv}, wenn $\langle \psi|A\psi\rangle \ge 0$ für alle $\psi \in \mathcal{H}$,
-	\item \emph{Projektor}, wenn $A^2 = A^\dag = A$,
-	\item \emph{isometrisch}, wenn $A^\dag A = \mathbb{I}$,
-	\item \emph{unitär}, wenn $A^\dag A = AA^\dag = \mathbb{I}$ und
-	\item \emph{normal}, wenn $A^\dag A = AA^\dag$.
+	\item \emph{hermitesch}, wenn $\op{A}\adj = \op{A}$,
+	\item \emph{positiv}, wenn $\braket{\psi}{\op{A}\psi} \geq 0$ für alle $\ket{\psi}\in\Hil$,
+	\item \emph{Projektor}, wenn $\op{A}^2 = \op{A}\adj = \op{A}$,
+	\item \emph{isometrisch}, wenn $\op{A}\adj\op{A} = \mathbb{I}$,
+	\item \emph{unitär}, wenn $\op{A}\adj\op{A} = \op{A}\op{A}\adj = \mathbb{I}$, und
+	\item \emph{normal}, wenn $\op{A}\adj\op{A} = \op{A}\op{A}\adj$.
 \end{enumerate}
-Jede dieser Klassen hat eine sehr spezifische physikalische Rolle: die hermiteschen Operatoren beschreiben die Observablen, die positiven die Zustände, die Projektoren die Messungen mit den beiden Ausgängen null und eins (Ereignis oder kein Ereignis), die isometrischen und unitären die Dynamik; die normalen Operatoren bilden die Oberklasse, die hermitesche und positive Operatoren, Projektoren und unitäre Operatoren umfasst --- isometrische sind erst im endlich-dimensionalen Fall automatisch normal.
-Die hermiteschen Operatoren (Synonym: selbstadjugierte Operatoren) entsprechen den \emph{Observablen} der QM, da 
-\begin{equation}
-	\langle \psi|A\psi\rangle \in \mathbb{R}
-\end{equation}
-immer eine reelle Zahl ist. Positive Operatoren sind automatisch hermitesch. Operatoren der Form $A = B^\dag B$ sind automatisch positiv:
-\begin{equation}
-	\langle \psi|A\psi\rangle = \langle \psi|B^\dag B\psi\rangle = \langle B\psi| B\psi\rangle \ge 0.
-\end{equation}
-Genau genommen ist unsere Sprechweise nachlässig: die Bedingung lässt den Wert null zu, ein solcher Operator müsste \emph{nicht negativ} heißen; \emph{positiv} wäre die strikte Ungleichung.
-Da $P = P^\dag P$, sind Projektoren positiv. Isometrische Operatoren sind gerade die, die das Skalarprodukt und damit die Norm invariant lassen.
+Jede Klasse hat in der Quantenmechanik ihre eigene Rolle: Die hermiteschen Operatoren beschreiben die Observablen, die positiven, mit einer Normierung, die Zustände, die Projektoren Ja-Nein-Messungen (Ereignis oder kein Ereignis), und die isometrischen und unitären die Dynamik.
 
-Wenn man eine Basis $\{|\phi_x\}_{x\in X}$ fixiert hat, kann man jeden Operator $A$ durch seine \emph{Matrixelemente}
-\begin{equation}
-	[A]_{xy} \equiv \langle \phi_x|A\phi_y\rangle
-\end{equation}
-charakterisieren. Wegen der Linearität von A ist dann
-\begin{equation}\label{eq:completenessA}
-	A|\Psi\rangle = \sum_{x,y\in X} |\phi_x\rangle \langle \phi_x|A\phi_y\rangle \langle\phi_y|\Psi\rangle.
-\end{equation}
-Diese Formel entsteht, indem man die Entwicklungsformel zweimal einsetzt; über $x$ und $y$ wird deshalb unabhängig summiert. Beachten Sie, dass darin nirgends eine Matrix vorkommt, sondern nur Basisvektoren und Zahlen: genau deshalb trägt sie auch im unendlich-dimensionalen Fall.
-Die Bildung des Adjungierten entspricht also der Abbildung
-\begin{equation}
-	[A]_{xy} \mapsto [A]_{yx}^*,
-\end{equation}
-also Transposition mit Komplexkonjugation.
+Hermitesche Operatoren heißen oft auch selbstadjungiert; in endlicher Dimension ist das dasselbe. Für Operatoren, die nur auf einem Teil des Raumes definiert sind, muss man symmetrisch und selbstadjungiert unterscheiden; das behandelt der Webkurs, ebenso die Isometrien in unendlich vielen Dimensionen, die nicht unitär sind.
 
-Die Entwicklungsformel (\ref{eq:completenessA}) für A und viele ähnliche Ausdrücke lässt sich durch die Bra-Ket Notation etwas übersichtlicher schreiben. In vielen Büchern (und bisher) wird ein Hilbertraumvektor von vorne herein als Ket $|\Psi\rangle$ anstatt einfach $\Psi$ geschrieben. Es ist aber praktisch, hier einen subtilen Unterschied zu machen: Ab sofort ist 
+$\op{A}$ ist genau dann hermitesch, wenn $\braket{\psi}{\op{A}\psi}$ für jedes $\ket{\psi}$ reell ist; deshalb ist jeder positive Operator hermitesch. Operatoren der Form $\op{B}\adj\op{B}$ sind positiv, weil das Skalarprodukt eines Vektors mit sich selbst nie negativ ist:
 \begin{equation}
-	|\Psi\rangle: \mathbb{C}\rightarrow \mathcal{H}
+	\braket{\psi}{\op{B}\adj\op{B}\psi} = \braket{\op{B}\psi}{\op{B}\psi} \geq 0.
 \end{equation}
-der lineare Operator $z\mapsto z\Psi$ zu interpretieren, wobei $\Psi\in \mathcal{H}$. Man rechnet nach, dass der adjungierte Operator dazu der ,,Bra``-Operator 
-\begin{equation}
-\langle\Psi| = (|\Psi\rangle)^\dag: \mathcal{H}\rightarrow \mathbb{C}
-\end{equation}
-mit 
-\begin{equation}
-\langle \Psi|\Phi \equiv \langle \Psi|\Phi\rangle, \quad \forall \Phi\in \mathcal{H}
-\end{equation}
-ist. Wenn wir ein Bra und ein Ket als solchen Operatoren multiplizieren, erhalten wir einen Operator von $\mathbb{C}$ nach $\mathbb{C}$, nämlich 
-\begin{equation}
-	z\mapsto \langle \Phi| |\Psi\rangle z = \langle \Phi|\Psi\rangle z. 
-\end{equation}
-Wenn wir in der Notation nun keinen Unterschied machen zwischen einem linearen Operator $\mathbb{C}\rightarrow \mathbb{C}$ und der Zahl, mit der er multipliziert, werden die Ausdrücke $\langle \Phi| |\Psi\rangle$ und $\langle \Phi|\Psi\rangle$ gleichbedeutend. 
+Wegen $\op{P} = \op{P}\adj\op{P}$ ist damit auch jeder Projektor $\op{P}$ positiv. Mit demselben Schritt beginnt der Beweis der Unschärferelation in Vorlesung~9. Ein isometrischer Operator $\op{V}$ lässt das Skalarprodukt invariant, $\braket{\op{V}\phi}{\op{V}\psi} = \braket{\phi}{\psi}$. In endlicher Dimension ist jede Isometrie unitär, und hermitesche, positive und unitäre Operatoren, Projektoren und Isometrien sind normal.
 
-Häufig brauchen wir auch die Kombination \emph{Ket-Bra}, also
-den Operator
+\subsection{Matrixelemente und Ket-Bras}
+Sei $\{\ket{\phi_x}\}_{x\in X}$ eine Basis von $\Hil$ mit endlicher Indexmenge. Die \emph{Matrixelemente} von $\op{A}$ in dieser Basis sind die Zahlen $[\op{A}]_{xy}$ in
 \begin{equation}
-	|\Psi\rangle\langle \Phi|:\mathcal{H}\rightarrow \mathcal{H}
+	[\op{A}]_{xy} = \braket{\phi_x}{\op{A}\phi_y}, \qquad
+	\op{A}\ket{\Psi} = \sum_{x,y\in X}\ket{\phi_x}\,[\op{A}]_{xy}\,\braket{\phi_y}{\Psi};
 \end{equation}
-mit 
-\begin{equation}
-	|\Psi\rangle\langle \Phi|\chi\rangle = \langle\Phi|\chi\rangle |\Psi\rangle, \quad \forall \Psi\in \mathcal{H}.
-\end{equation}
+dabei sagt $y$, welcher Basisvektor hineingeht (die Spalte), und $x$, welche Komponente herauskommt (die Zeile). Die zweite Gleichung folgt, wenn man die Entwicklung nach der Basis zweimal einsetzt; über $x$ und $y$ wird unabhängig summiert. Darin kommt keine Matrix vor, nur Basisvektoren und Zahlen: Ein Operator ist bekannt, sobald man seine Matrixelemente kennt. Auch der adjungierte Operator lässt sich ablesen, $[\op{A}\adj]_{xy} = [\op{A}]_{yx}^*$: Für Matrixelemente in einer Orthonormalbasis gilt ,,transponieren und konjugieren`` bei jedem Skalarprodukt.
 
-Wir gehen in der Vereinfachung noch einen Schritt weiter: Sobald wir eine Basis $\{|\phi_x\rangle\,|\, x\in X\}$ fixiert haben, sie also aus dem Kontext klar ist, trägt das Symbol ,,$\phi$`` in den häufig vorkommenden $\langle 
-\phi_x|$ und $|\phi_x\rangle$ keine Information mehr. Wir lassen diesen Buchstaben also einfach weg, und schreiben dafür $\langle x|$ und $|x\rangle$. Damit werden die Entwicklungsformeln für Vektoren und für Operatoren in der Operatorgleichung
+Kets und Bras kann man selbst als lineare Abbildungen lesen. Ab sofort ist das Ket $\ket{\Psi}$ die Abbildung, die eine Zahl frisst und ein Vielfaches des Vektors $\vb{\Psi}$ produziert, für den es bisher stand. Die Definition des Adjungierten gilt ebenso für lineare Abbildungen zwischen zwei Hilberträumen, hier $\mathbb{C}$ mit dem Skalarprodukt $a^*b$ und $\Hil$. Der adjungierte Operator zum Ket ist der Bra; er frisst einen Vektor und produziert eine Zahl:
 \begin{equation}
-	\mathbb{I} = \sum_{x\in X} |x\rangle\langle x|
+	\ket{\Psi}\colon \mathbb{C} \to \Hil,\ z \mapsto z\,\vb{\Psi}, \qquad
+	\bra{\Psi} = (\ket{\Psi})\adj\colon \Hil \to \mathbb{C},\ \vb{\Phi} \mapsto \braket{\Psi}{\Phi}.
 \end{equation}
-zusammengefasst. Diese Operatorgleichung ist eine der nützlichsten der Quantenmechanik: physikalisch sagt sie nur, dass Eins gleich Eins ist, aber man darf diese komplizierte Eins an jeder Stelle einer Rechnung einschieben. Matrixelemente schreiben sich einfach als
+Bra mal Ket ist dann die Abbildung $z \mapsto \braket{\Phi}{\Psi}\,z$. Wir unterscheiden sie nicht von der Zahl $\braket{\Phi}{\Psi}$; für das Rechnen ändert sich also nichts. In der anderen Reihenfolge, Ket mal Bra, entsteht ein Operator auf $\Hil$, das \emph{Ket-Bra}
 \begin{equation}
-	[A]_{xy} \equiv \langle x|A|y\rangle.
+	\ketbra{\Psi}{\Phi}\,\ket{\chi} = \braket{\Phi}{\chi}\,\ket{\Psi} \quad \text{für alle } \ket{\chi}\in\Hil.
 \end{equation}
+Ist die Basis aus dem Kontext klar, so trägt der Buchstabe $\phi$ keine Information mehr, und wir schreiben $\ket{x}$ und $\bra{x}$. Damit werden die Entwicklungsformeln zu Operatorgleichungen:
+\begin{equation}
+	(\ketbra{\Psi}{\Phi})\adj = \ketbra{\Phi}{\Psi}, \qquad
+	\mathbb{I} = \sum_{x\in X}\ketbra{x}{x}, \qquad
+	\op{A} = \sum_{x,y\in X}\melem{x}{\op{A}}{y}\,\ketbra{x}{y}.
+\end{equation}
+Prüfen Sie sie, indem Sie beide Seiten auf einen beliebigen Vektor anwenden. Die Gleichung für $\mathbb{I}$ ist eine der hilfreichsten der Quantenmechanik. Physikalisch sagt sie nur, dass Eins gleich Eins ist, aber man darf diese komplizierte Eins an jeder Stelle einer Rechnung einschieben.
 
+\subsection{Drei Operatoren auf \texorpdfstring{$\mathbb{C}^3$}{C3}}
 \begin{beispiel}
-	Angenommen, $\mathcal{H}\equiv \mathbb{C}^3$. Seien $A$, $B$ und $C$ die folgenden Operatoren
+	Sei $\Hil = \mathbb{C}^3$ mit $\vb{v}\adj\vb{w}$, und seien
 	\begin{equation}
-		A \equiv \begin{pmatrix}
-			0 & 1 & 0 \\
-			1 & 0 & 1 \\
-			0 & 1 & 0
-		\end{pmatrix}, \quad B = \frac13\begin{pmatrix}
-			1 & 1 & 1 \\
-			1 & 1 & 1 \\
-			1 & 1 & 1
-		\end{pmatrix}\quad\text{und}\quad 
-		C = \begin{pmatrix}
-			0 & 1 & 0 \\
-			0 & 0 & i \\
-			-1 & 0 & 0
-		\end{pmatrix}.
+		\op{A} = \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix}, \qquad
+		\op{B} = \frac13\begin{pmatrix} 1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{pmatrix}, \qquad
+		\op{C} = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & i \\ -1 & 0 & 0 \end{pmatrix}.
 	\end{equation}
-	Die Matrizen $A$ und $B$ sind hermitesch, weil
+	Transponieren und Konjugieren gibt bei $\op{A}$ und $\op{B}$ dieselbe Matrix; beide sind hermitesch. Jeder Eintrag von $\op{B}^2$ ist $\tfrac19(1 + 1 + 1) = \tfrac13$, also ist $\op{B}$ ein Projektor und damit positiv. $\op{A}$ ist dagegen \emph{nicht} positiv: Für $\ket{\psi}$ mit den Einträgen $\tfrac12$, $-\tfrac{1}{\sqrt{2}}$, $\tfrac12$ hat $\op{A}\ket{\psi}$ die Einträge $-\tfrac{1}{\sqrt{2}}$, $1$, $-\tfrac{1}{\sqrt{2}}$, also ist
 	\begin{equation}
-		A^\dag = A\quad \text{und}\quad B^\dag = B.
+		\melem{\psi}{\op{A}}{\psi}
+		= \begin{pmatrix} \frac12 & -\frac{1}{\sqrt{2}} & \frac12 \end{pmatrix}
+		  \begin{pmatrix} - \frac{1}{\sqrt{2}} \\ 1 \\ -\frac{1}{\sqrt{2}} \end{pmatrix}
+		= -\sqrt{2}.
 	\end{equation}
-	Die Matrix $B$ is auch positiv, und bildet einen Projektor. Projektoren beschreiben Messungen; dieser hier dient als Modell für Messungen der Photonenzahl in Glasfasernetzwerken. Die Matrix $A$ ist \emph{nicht} positiv, weil
+	$\op{C}$ ist unitär, denn
 	\begin{equation}
-		\langle \psi|A|\psi\rangle = 
-		\begin{pmatrix}
-			\frac12 & -\frac1{\sqrt2} & \frac12
-		\end{pmatrix}
-		\begin{pmatrix}
-			0 & 1 & 0 \\
-			1 & 0 & 1 \\
-			0 & 1 & 0
-		\end{pmatrix}
-		\begin{pmatrix}
-			\frac12 \\ -\frac1{\sqrt2} \\ \frac12
-		\end{pmatrix} = -\sqrt{2},
+		\op{C}\adj\op{C}
+		= \begin{pmatrix} 0 & 0 & -1 \\ 1 & 0 & 0 \\ 0 & -i & 0 \end{pmatrix}
+		  \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & i \\ -1 & 0 & 0 \end{pmatrix}
+		= \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix},
 	\end{equation}
-	wobei $|\psi\rangle$ den Vektor $\left(\begin{smallmatrix}
-			\frac12 \\ -\frac1{\sqrt2} \\ \frac12
-		\end{smallmatrix}\right)$ darstellt.
-	Die Matrix $C$ stellt einen Unitärmatrix dar, da
+	und ebenso ist $\op{C}\op{C}\adj = \mathbb{I}$. Mit der kanonischen Basis $\ket{0},\ket{1},\ket{2}$ (die Spalten mit der $1$ im ersten, zweiten, dritten Eintrag) ist
 	\begin{equation}
-		C^\dag C = \begin{pmatrix}
-			0 & 0 & -1 \\
-			1 & 0 & 0 \\
-			0 & -i & 0
-		\end{pmatrix}\begin{pmatrix}
-			0 & 1 & 0 \\
-			0 & 0 & i \\
-			-1 & 0 & 0
-		\end{pmatrix}
-		= 
-		\begin{pmatrix}
-			1 & 0 & 0 \\
-			0 & 1 & 0 \\
-			0 & 0 & 1
-		\end{pmatrix}.
+		\op{C} = \ketbra{0}{1} + i\,\ketbra{1}{2} - \ketbra{2}{0}.
 	\end{equation}
-	(Es gilt auch, dass $CC^\dag = \mathbb{I}$.)
-	Fixieren wir die Basis $|\phi_0\rangle \mapsto \left(\begin{smallmatrix}
-			1 \\ 0 \\ 0
-		\end{smallmatrix}\right)$, $|\phi_1\rangle \mapsto \left(\begin{smallmatrix}
-			0 \\ 1 \\ 0
-		\end{smallmatrix}\right)$ und $|\phi_2\rangle \mapsto \left(\begin{smallmatrix}
-			0 \\ 0 \\ 1
-		\end{smallmatrix}\right)$, können wir $A$ wie folgt darstellen:
-		\begin{equation}
-			C = |0\rangle\langle 1| + i|1\rangle\langle 2| - |2\rangle\langle 0|,
-		\end{equation}
-		wobei wir $|0\rangle$ für $|\phi_0\rangle$ schreiben, usw.
 \end{beispiel}
+
+Was die drei Rechnungen gemeinsam haben, sieht man an den Eigenwerten. Ein Eigenwert von $\op{A}$ ist, informell gesagt, eine Zahl $\lambda$, für die $\op{A}$ einen Vektor $\ket{v} \neq 0$ einfach mit $\lambda$ multipliziert, $\op{A}\ket{v} = \lambda\ket{v}$; die genaue Definition kommt in der nächsten Vorlesung. Für jeden Eigenwert, den ein Operator hat, überträgt sich die definierende Gleichung seiner Klasse auf die Zahl $\lambda$:
+\begin{equation}
+	\begin{aligned}
+		&\op{A}\adj = \op{A} &&\Rightarrow\quad \lambda^* = \lambda, \\
+		&\braket{\psi}{\op{A}\psi} \geq 0 \text{ für alle } \ket{\psi} &&\Rightarrow\quad \lambda \geq 0, \\
+		&\op{A}^2 = \op{A}\adj = \op{A} &&\Rightarrow\quad \lambda^2 = \lambda, \\
+		&\op{A}\adj\op{A} = \mathbb{I} &&\Rightarrow\quad \abs{\lambda} = 1.
+	\end{aligned}
+\end{equation}
+Das sind Einschränkungen für die Eigenwerte, die es gibt; die Umkehrung behaupten wir nicht. Die Normalität allein schränkt die Eigenwerte nicht ein. Die Eigenwerte der drei Beispieloperatoren sind
+\begin{equation}
+	\op{A}\colon\ 0,\ \pm \sqrt{2}, \qquad
+	\op{B}\colon\ 1,\ 0,\ 0, \qquad
+	\op{C}\colon\ e^{-i\pi/6},\ i,\ e^{7i\pi/6} \quad (\lambda^3 = -i),
+\end{equation}
+und weitere gibt es nicht.
+
 \input{figures/fig_vl04_spektren}
 
-Was die drei Rechnungen gemeinsam haben, sieht man erst, wenn man die Eigenwerte aufträgt: für normale Operatoren überträgt sich die definierende Gleichung wörtlich auf jeden Eigenwert --- aus $A^\dag = A$ wird $\lambda^* = \lambda$, aus $A^\dag A = \mathbb{I}$ wird $|\lambda| = 1$. Teil (a) hält die so entstehenden Orte in der komplexen Ebene fest, Teil (b) trägt die Spektren von $A$, $B$ und $C$ darin ein. In (b) liegt $-\sqrt{2}$ links der Null --- genau daran scheitert die Positivität von $A$.
+Teil (a) der Abbildung zeigt, wo die Eigenwerte einer Klasse liegen dürfen, Teil (b) die Eigenwerte von $\op{A}$, $\op{B}$ und $\op{C}$. Dort liegt $-\sqrt{2}$ links der Null; genau daran scheitert die Positivität von $\op{A}$, denn $\ket{\psi}$ von oben ist ein Eigenvektor der Norm eins zu diesem Eigenwert.

@@ -183,9 +183,7 @@
    "check"
   ],
   "legacy structural macros of tpc-macros.sty": [
-   "ketbra",
    "expval",
-   "melem",
    "abs",
    "set",
    "vb",

@@ -1,16 +1,18 @@
 % content/c03-hilbertraum/en.tex — Chapter 3: The Hilbert-space toolkit
 % (English edition; the German de.tex leads, same constructs, IDs and displays)
 %
-% Scope: the material of the second and third lectures (latex/lectures/de/vl02.tex and vl03.tex,
-% without the vl03 subsection on operators, which goes with vl04). New sections go between the
+% Scope: the material of the second, third and fourth lectures (latex/lectures/de/vl02.tex,
+% vl03.tex and vl04.tex, with the vl03 subsection on operators). New sections go between the
 % last core section and the Fundament blocks at the end.
-% Maps: evidence/migrations/maps/vl02-map.json, vl03-map.json. Defects: M-0013 to M-0016 (vl02),
-% M-0017 to M-0024 (vl03). Definitions D75 to D80, D81 to D86 and D14; derivations
-% evidence/derivations/c03/DERIVATION.md; Reed-Simon page-image rows P-0140 to P-0150 (review
-% receipt R-0140), P-0152 to P-0164 (review receipt R-0152). Reviews of Lecture 3:
-% docs/review/lectures/REVIEW-lec3.md and evidence/derivations/c03/REVIEW-lec3.md; every finding
-% of both is closed by the repair wave of 2026-10-21 (the German file comments each place).
-% Open points of Lecture 3 for TJO: G-0072.
+% Maps: evidence/migrations/maps/vl02-map.json, vl03-map.json, vl04-map.json (lane E). Defects:
+% M-0013 to M-0016 (vl02), M-0017 to M-0024 (vl03), M-0005 and docs/plan/lec34/NOTES-author.md
+% (vl04). Definitions D75 to D80, D81 to D86 and D14, D87 to D94, D17, D18, D20, convention
+% CONV-HAT; derivations evidence/derivations/c03/DERIVATION.md; Reed-Simon page-image rows P-0140
+% to P-0150 (review receipt R-0140), P-0152 to P-0164 (review receipt R-0152), from P-0318 (vl04,
+% review receipt pending). Reviews of Lecture 3: docs/review/lectures/REVIEW-lec3.md,
+% evidence/derivations/c03/REVIEW-lec3.md and REVIEW-lec3-second.md. G-0072 (a) and (b) applied
+% after TJO's answer of 2026-10-29. Hats on every operator (D-HAT), except the identity, states and
+% the Pauli matrices (CONV-HAT; none of the latter two occurs in c03).
 
 \chapter{The Hilbert-space toolkit}\label{c03}
 
@@ -521,9 +523,10 @@ rules of calculation that are only implicit in the notation; you have to have se
   Equation~\eqref{c03.eq.e0e1}.
 \end{example}
 
-% GAP-TJO: the spoken remark that |e_±> keep turning up in angular momentum, hydrogen and spin
-% systems (v03 [49:20]-[49:46]) has no written source and is left out (G-0072 (a)).
-In the coming chapters we shall mostly leave the columns out and prefer to calculate directly
+% TJO's own forward pointer, v03 [49:20]-[49:46], restored after his answer to G-0072 (a).
+The vectors $\ket{e_\pm}$ play an important role in the theory of angular momentum and in the
+hydrogen atom; they keep turning up in quantum mechanics, especially in spin systems. In the
+coming chapters we shall mostly leave the columns out and prefer to calculate directly
 with the notation. At the beginning, however, you should always insert the original columns to
 see what is represented; in the exercises you will carry out many such calculations.
 
@@ -745,8 +748,11 @@ in the sense of normed spaces \srcref{reed-simon-1}{p.~38}.
 
 Both inequalities are working tools that we use practically all the time. The most important
 one is the Schwarz inequality: it lies behind Heisenberg's uncertainty relation
-\srcref{tpc-script-v0.2}{vl03, section on inner products}, which comes in Chapter~6. With the
-triangle inequality we bound quantities.
+\srcref{tpc-script-v0.2}{vl03, section on inner products}, which comes in Chapter~6, through
+the idea of its proof. In equation~\eqref{c03.eq.schwarz-beweis} the inner product of a
+cleverly chosen vector with itself is never negative; exactly this step also carries the proof
+of the uncertainty relation, as Section~\ref{c03.s10} shows. With the triangle inequality we
+bound quantities.
 
 One last definition before we leave inner products.
 
@@ -1073,21 +1079,21 @@ completely.
   We work in my favourite Hilbert space $\mathbb{C}^2$ and start with two vectors that I have
   just made up:
   \begin{equation}\label{c03.eq.gs-start}
-    \ket{\Phi_1} = \begin{pmatrix} 1 \\ 0 \end{pmatrix},
+    \ket{\Phi_1} = \begin{pmatrix} 2 \\ 0 \end{pmatrix},
     \qquad
     \ket{\Phi_2} = \begin{pmatrix} 1 \\ 1 \end{pmatrix} .
   \end{equation}
   In the first step the sum runs from $1$ to $0$; so nothing is summed at all, and
   $\ket{\Psi_1} = \ket{\Phi_1}$. In the second step only the term $k = 1$ remains. With
-  $\braket{\Psi_1}{\Phi_2} = 1$ and $\norm{\Psi_1}^2 = 1$,
+  $\braket{\Psi_1}{\Phi_2} = 2$ and $\norm{\Psi_1}^2 = 4$,
   \begin{equation}\label{c03.eq.gs-beispiel}
     \ket{\Psi_2} = \ket{\Phi_2} - \ket{\Psi_1}\, \frac{\braket{\Psi_1}{\Phi_2}}{\norm{\Psi_1}^2}
-    = \begin{pmatrix} 1 \\ 1 \end{pmatrix} - \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+    = \begin{pmatrix} 1 \\ 1 \end{pmatrix} - \begin{pmatrix} 2 \\ 0 \end{pmatrix} \frac{2}{4}
     = \begin{pmatrix} 0 \\ 1 \end{pmatrix} .
   \end{equation}
-  Both vectors already have norm one: the made-up list has turned into the basis
-  $\ket{e_0}, \ket{e_1}$. The condition of part~4 of the proposition holds: from
-  $\braket{\Phi_1}{\psi} = \psi_1 = 0$ and $\braket{\Phi_2}{\psi} = \psi_1 + \psi_2 = 0$ it
+  Divided by the norms $\norm{\Psi_1} = 2$ and $\norm{\Psi_2} = 1$, the made-up list turns into
+  the basis $\ket{e_0}, \ket{e_1}$. The condition of part~4 of the proposition holds: from
+  $\braket{\Phi_1}{\psi} = 2\psi_1 = 0$ and $\braket{\Phi_2}{\psi} = \psi_1 + \psi_2 = 0$ it
   follows that $\ket{\psi} = 0$.
 \end{example}
 
@@ -1100,19 +1106,680 @@ system is a basis when the condition of part~4 holds.
   of Example~\ref{c03.ex.gram-schmidt} and compute $\ket{\Psi_3}$.
 \end{exercise}
 \begin{solution}
-  With $\ket{\Psi_1} = \ket{e_0}$, $\ket{\Psi_2} = \ket{e_1}$, $\braket{\Psi_1}{\Phi_3} = 1$ and
-  $\braket{\Psi_2}{\Phi_3} = -1$,
+  With $\ket{\Psi_1} = 2\ket{e_0}$, $\ket{\Psi_2} = \ket{e_1}$, $\braket{\Psi_1}{\Phi_3} = 2$,
+  $\norm{\Psi_1}^2 = 4$, $\braket{\Psi_2}{\Phi_3} = -1$ and $\norm{\Psi_2}^2 = 1$,
   \begin{equation}\label{c03.eq.gs-null}
-    \ket{\Psi_3} = \begin{pmatrix} 1 \\ -1 \end{pmatrix} - \begin{pmatrix} 1 \\ 0 \end{pmatrix}
-    - (-1) \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} .
+    \ket{\Psi_3} = \begin{pmatrix} 1 \\ -1 \end{pmatrix} - \begin{pmatrix} 2 \\ 0 \end{pmatrix} \frac{2}{4}
+    - \begin{pmatrix} 0 \\ 1 \end{pmatrix} \frac{-1}{1} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} .
   \end{equation}
   The third vector is already a linear combination of the first two,
-  $\ket{\Phi_3} = 2 \ket{\Phi_1} - \ket{\Phi_2}$, and drops out; the orthonormal system remains
+  $\ket{\Phi_3} = \ket{\Phi_1} - \ket{\Phi_2}$, and drops out; the orthonormal system remains
   $\ket{e_0}, \ket{e_1}$.
 \end{solution}
 
+% ── Lecture 4 (vl04, with the vl03 subsection on operators, vl03.tex:253-277): operators ──
+% Voice loci and the reasons for what is left out are commented in de.tex.
+\section{Operators}\label{c03.s8}
+
+We have discussed the important properties of the Hilbert space; now we start with operators,
+the second pillar of the theory. Quantum mechanics does not get by with vectors alone: its
+states, its measurements and its dynamics are described by operators, as
+Section~\ref{c03.s10} shows in overview. The word ``operator'' sounds complicated, but in the
+finite-dimensional case an operator is nothing but a matrix. Because we shall also have
+infinite-dimensional Hilbert spaces, we nevertheless use the more general word: there, there
+is no finite matrix any more; one would have infinitely many rows and columns.
+
+\tpcdef{D87}
+
+As soon as a map has these two properties, we call it an operator. In the core, $\Hil$ is
+finite-dimensional, that is: $\Hil$ has a basis with a finite index set (\defref{D85}), for
+example $\mathbb{C}^n$ with the inner product of Section~\ref{c03.s2}.
+
+\begin{example}[Operators on $\mathbb{C}^n$ are matrices]\label{c03.ex.matrix}\claim{c03.cl.matrix}{derived}
+  Let $\Hil = \mathbb{C}^2$, so the dimension is $n = 2$. Every $2 \times 2$ matrix with
+  complex entries $a_{jk}$ is an operator on $\mathbb{C}^2$:
+  \begin{equation}\label{c03.eq.matrix}
+    \op{A} = \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} ,
+    \qquad
+    \op{A}\ket{\psi} = \begin{pmatrix} a_{11}\psi_1 + a_{12}\psi_2 \\ a_{21}\psi_1 + a_{22}\psi_2 \end{pmatrix} .
+  \end{equation}
+  The rules for multiplying matrices and vectors correspond exactly to the two conditions of
+  the definition, because every entry of $\op{A}\ket{\psi}$ is a sum of multiples of the
+  entries $\psi_k$. Conversely, every operator on $\mathbb{C}^2$ is such a matrix: with the
+  canonical columns $\ket{u_1}, \ket{u_2}$ of Section~\ref{c03.s7} we have
+  $\ket{\psi} = \psi_1 \ket{u_1} + \psi_2 \ket{u_2}$, hence
+  $\op{A}\ket{\psi} = \psi_1\, \op{A}\ket{u_1} + \psi_2\, \op{A}\ket{u_2}$, and the columns of
+  the matrix are the vectors $\op{A}\ket{u_1}$ and $\op{A}\ket{u_2}$. For every $n$ it works
+  the same way, with $n \times n$ matrices.
+\end{example}
+
+So it does no harm to think of all operators as matrices: when you hear the word ``operator'',
+think of a table. In the infinite-dimensional case this table runs on without end in both
+directions, like an Excel sheet that never stops. Then one must be careful, though: the table
+belongs to a chosen basis, its sums become series whose convergence must be checked, and some
+operators are defined only on part of the space (Section~\ref{c03.s11} and Chapter~5).
+
+\subsection{Identity operator, null operator and the hat}\label{c03.s8.1}
+
+There are a few operators that are trivial but very useful as building blocks.
+
+\tpcdef{D88}
+
+With the null operator we have introduced the notation that we use from now on throughout the
+course. With it we avoid most of the confusion.
+
+\begin{merksatz}[Notation]
+  A \emph{hat} always means an operator, $\op{A}$; the \emph{bar} of the ket notation a vector,
+  $\ket{\psi}$; a symbol without decoration a number. The exceptions are the identity operator
+  $\Id$ and two kinds of operators that appear only later: the states (Chapter~4) and the Pauli
+  matrices. They carry no hat.
+\end{merksatz}
+
+\section{The adjoint operator}\label{c03.s9}
+
+The dagger operation of Section~\ref{c03.s2} turns a column into a row. We can also apply it to
+operators, by defining the so-called adjoint operator.
+
+\tpcdef{D17}
+
+That this equation really gives a definition is not self-evident: there must be exactly one
+operator that satisfies it.
+
+\begin{proposition}[Existence and uniqueness]\label{c03.prop.adjungiert}\claim[proof-included]{c03.cl.adjungiert}{derived}
+  Let $\{\ket{\phi_x}\}_{x \in X}$ be a basis of $\Hil$ with a finite index set $X$, and let
+  $\op{A}$ be an operator on $\Hil$. Then there is exactly one operator $\op{A}\adj$ with
+  $\braket{\op{A}\adj\phi}{\psi} = \braket{\phi}{\op{A}\psi}$ for all
+  $\ket{\phi}, \ket{\psi} \in \Hil$, namely
+  \begin{equation}\label{c03.eq.adjungiert}
+    \op{A}\adj\ket{\phi} = \sum_{x \in X} \braket{\op{A}\phi_x}{\phi}\, \ket{\phi_x} .
+  \end{equation}
+\end{proposition}
+\begin{proof}
+  Uniqueness: if $\op{B}$ and $\op{B}'$ both satisfy the equation, then by additivity
+  $\braket{\op{B}\phi - \op{B}'\phi}{\psi} = 0$ for all $\ket{\psi}$. For
+  $\ket{\psi} = \op{B}\ket{\phi} - \op{B}'\ket{\phi}$ this is the squared norm of that vector;
+  by positivity, therefore, $\op{B}\ket{\phi} = \op{B}'\ket{\phi}$. Existence: the right-hand
+  side of Equation~\eqref{c03.eq.adjungiert} depends linearly on $\ket{\phi}$, because the inner
+  product is linear in the second argument; so it defines an operator $\op{B}$. By the rules for
+  numbers in the first argument and Proposition~\ref{c03.prop.symmetrie},
+  \begin{equation}\label{c03.eq.adjungiert-beweis}
+    \braket{\op{B}\phi}{\psi}
+    = \sum_{x \in X} \braket{\op{A}\phi_x}{\phi}^*\, \braket{\phi_x}{\psi}
+    = \sum_{x \in X} \braket{\phi}{\op{A}\phi_x}\, \braket{\phi_x}{\psi}
+    = \braket{\phi}{\op{A}\psi} .
+  \end{equation}
+  In the last step the numbers $\braket{\phi_x}{\psi}$ have moved, by the linearity of $\op{A}$
+  and of the inner product, into the second argument, where
+  $\sum_x \braket{\phi_x}{\psi}\, \ket{\phi_x} = \ket{\psi}$ stands
+  (Proposition~\ref{c03.prop.entwicklung}).
+\end{proof}
+
+In the finite-dimensional case the operation can be described explicitly. In $\mathbb{C}^n$
+with the inner product of Section~\ref{c03.s2} the dagger means: first transpose, then complex
+conjugate all entries,
+\begin{equation}\label{c03.eq.adj-matrix}\claim{c03.cl.adj-matrix}{derived}
+  \begin{pmatrix}
+    a_{11} & a_{12} & \cdots & a_{1n} \\
+    a_{21} & a_{22} & \cdots & a_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{n1} & a_{n2} & \cdots & a_{nn}
+  \end{pmatrix}\adj
+  =
+  \begin{pmatrix}
+    a_{11}^* & a_{21}^* & \cdots & a_{n1}^* \\
+    a_{12}^* & a_{22}^* & \cdots & a_{n2}^* \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{1n}^* & a_{2n}^* & \cdots & a_{nn}^*
+  \end{pmatrix} .
+\end{equation}
+For
+$\braket{\phi}{\op{A}\psi} = \sum_{j,k} \phi_j^*\, a_{jk}\, \psi_k = \sum_k \bigl( \sum_j a_{jk}^* \phi_j \bigr)^* \psi_k$,
+and $\sum_j a_{jk}^* \phi_j$ is the $k$-th entry of the matrix on the right applied to
+$\ket{\phi}$. The diagonal entries stay where they are under transposition and are only
+conjugated. Like the bra, the adjoint operator depends on the inner product. For the inner
+product $\braket{v}{w}_c$ of Example~\ref{c03.ex.gewichtet} and
+$\op{A} = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}$ it is
+$\begin{pmatrix} 0 & 0 \\ 1/c & 0 \end{pmatrix}$, as one checks by inserting into the
+definition, and for $c \neq 1$ that is not the conjugate transposed matrix.
+
+The product of two operators occurs in the rules of computation. The product $\op{A}\op{B}$ is
+the composition: first $\op{B}$, then $\op{A}$, that is
+$(\op{A}\op{B})\ket{\psi} = \op{A}(\op{B}\ket{\psi})$; for matrices it is the matrix product.
+In general $\op{A}\op{B} \neq \op{B}\op{A}$, for example
+\begin{equation}\label{c03.eq.produkt}\claim{c03.cl.produkt}{derived}
+  \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}
+  = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} ,
+  \qquad
+  \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}
+  = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} .
+\end{equation}
+
+We shall use the rules of computation in \defref{D17} all the time. You can prove them yourself,
+and all of them in the same way.
+
+\begin{proposition}[Rules of computation]\label{c03.prop.adj-regeln}\claim[proof-included]{c03.cl.adj-regeln}{derived}
+  On a finite-dimensional Hilbert space the four rules of \defref{D17} hold for all operators
+  $\op{A}, \op{B}$ and all $z \in \mathbb{C}$.
+\end{proposition}
+\begin{proof}
+  By Proposition~\ref{c03.prop.adjungiert} it suffices to check the defining equation for each
+  right-hand side. For all $\ket{\phi}, \ket{\psi}$, by additivity and the rules for numbers,
+  \begin{equation}\label{c03.eq.adj-regeln}
+    \begin{aligned}
+      \braket{(\op{A}\adj + \op{B}\adj)\phi}{\psi}
+        &= \braket{\phi}{\op{A}\psi} + \braket{\phi}{\op{B}\psi}
+         = \braket{\phi}{(\op{A} + \op{B})\psi} , \\
+      \braket{z^* \op{A}\adj\phi}{\psi}
+        &= z\, \braket{\op{A}\adj\phi}{\psi}
+         = \braket{\phi}{z\op{A}\psi} , \\
+      \braket{\op{B}\adj\op{A}\adj\phi}{\psi}
+        &= \braket{\op{A}\adj\phi}{\op{B}\psi}
+         = \braket{\phi}{\op{A}\op{B}\psi} .
+    \end{aligned}
+  \end{equation}
+  For the fourth rule we show that $\op{A}$ satisfies the equation for the adjoint of
+  $\op{A}\adj$. By Proposition~\ref{c03.prop.symmetrie},
+  $\braket{\op{A}\phi}{\psi} = \braket{\psi}{\op{A}\phi}^* = \braket{\op{A}\adj\psi}{\phi}^* = \braket{\phi}{\op{A}\adj\psi}$.
+\end{proof}
+
+\section{Classes of operators}\label{c03.s10}
+
+With the identity operator and the adjoint operator alone we can define enormously important
+classes of operators. There are six.
+
+\tpcdef{D18}
+
+\tpcdef{D20}
+
+\tpcdef{D89}
+
+\tpcdef{D90}
+
+\tpcdef{D91}
+
+\tpcdef{D92}
+
+All six classes play a very specific role in quantum mechanics, which we shall get to know in
+the following chapters \srcref{tpc-script-v0.2}{vl04, paragraph after the list of classes}:
+\begin{equation}\label{c03.eq.rollen}\claim{c03.cl.rollen}{source-backed}
+  \begin{aligned}
+    &\text{\tpcifenglish{Hermitian}{hermitesch}} && \text{\tpcifenglish{observables}{Observablen}} \\
+    &\text{\tpcifenglish{positive}{positiv}} && \text{\tpcifenglish{states (with a normalisation, Chapter 4)}{Zustände (mit einer Normierung, Kapitel 4)}} \\
+    &\text{\tpcifenglish{projector}{Projektor}} && \text{\tpcifenglish{yes-no measurements (event or no event)}{Ja-Nein-Messungen (Ereignis oder kein Ereignis)}} \\
+    &\text{\tpcifenglish{isometric, unitary}{isometrisch, unitär}} && \text{\tpcifenglish{dynamics}{Dynamik}}
+  \end{aligned}
+\end{equation}
+The normal operators are a
+wider class in which the others lie (Proposition~\ref{c03.prop.isometrie}).
+
+Hermitian operators on a finite-dimensional space are also called \emph{self-adjoint}; there the
+two words mean the same. For operators that are defined only on part of the space one has to
+look more closely\zoomref{c03.v5}.
+
+\begin{vertiefung}[id=c03.v5,
+    titel={Bounded and unbounded operators},
+    wozu={In the core every operator is defined on the whole space, and Hermitian means the same
+      as self-adjoint. Here is why this is no longer so for operators with a restricted domain:
+      important operators are unbounded in infinitely many dimensions, and an unbounded
+      symmetric operator cannot be defined on the whole space.},
+    voraussetzung={Sections~\ref{c03.s8} to~\ref{c03.s10}; Deeper blocks~\ref{c03.v1} and~\ref{c03.v4}
+      (the example of a basis of $\elltwo$). The core up to Chapter~4 does not need this block;
+      Chapter~5 takes the subject up again with domains.},
+    zurueck={In finite dimension every operator is bounded and defined on the whole space, and
+      Hermitian and self-adjoint are the same. In infinitely many dimensions an operator comes
+      with its domain, and only with it can one say whether a symmetric operator is
+      self-adjoint.}]
+  An operator $\op{T}$ is called \emph{bounded} if there is a number $C \geq 0$ with
+  $\norm{\op{T}\psi} \leq C\, \norm{\psi}$ for all vectors $\ket{\psi}$; Reed and Simon define it
+  this way for linear maps between normed spaces \srcref{reed-simon-1}{p.~8}. On
+  $\mathbb{C}^n$ every operator is bounded. If $\op{A}$ is the matrix with entries $a_{jk}$,
+  then by the Schwarz inequality in $\mathbb{C}^n$ we have for every entry
+  $\abs{\sum_k a_{jk} \psi_k}^2 \leq \sum_k \abs{a_{jk}}^2\, \norm{\psi}^2$, and the sum over $j$
+  gives
+  \begin{equation}\label{c03.eq.beschraenkt}\claim{c03.cl.beschraenkt}{derived}
+    \norm{\op{A}\psi}^2 \leq \Bigl( \sum_{j,k=1}^{n} \abs{a_{jk}}^2 \Bigr) \norm{\psi}^2 .
+  \end{equation}
+  In $\elltwo$ this is different.
+
+  \begin{example}[An unbounded operator]\label{c03.ex.unbeschraenkt}\claim{c03.cl.unbeschraenkt}{derived}
+    Let $\op{M}$ be the map that multiplies the $j$-th entry of a vector by $j$,
+    $(\op{M}\vb{v})_j = j\, v_j$. For the basis vectors $\vb{u}_k$ of
+    Example~\ref{c03.ex.elltwo-basis}, $\op{M}\vb{u}_k = k\, \vb{u}_k$, so
+    $\norm{\op{M}\vb{u}_k} = k\, \norm{\vb{u}_k}$, and no number $C$ is larger than every $k$.
+    Worse: the vector with $v_j = 1/j$ lies in $\elltwo$ (Example~\ref{c03.ex.rate}), but
+    $(\op{M}\vb{v})_j = 1$ for every $j$, and the vector of all ones does not lie in $\elltwo$
+    (Example~\ref{c03.ex.einsen}). So $\op{M}$ cannot be applied to every vector of $\elltwo$,
+    only to those with $\sum_j j^2 \abs{v_j}^2 < \infty$. For these,
+    $\braket{v}{\op{M}v} = \sum_j j\, \abs{v_j}^2$ is finite; for the vector with $v_j = 1/j$
+    exactly this sum diverges, as at the end of Foundation~\ref{c03.f3}.
+  \end{example}
+
+  For an unbounded operator the matrix elements are no longer enough either. For a bounded
+  operator $\op{T}$ defined on all of $\elltwo$, the numbers
+  $\entry{\op{T}}{j}{k} = \vb{u}_j\adj (\op{T}\vb{u}_k)$ determine the operator. With the partial
+  sums $\vb{v}_N = \sum_{k \leq N} v_k \vb{u}_k$ we have
+  $\norm{\op{T}\vb{v} - \op{T}\vb{v}_N} \leq C\, \norm{\vb{v} - \vb{v}_N}$, and this goes to
+  zero (Example~\ref{c03.ex.elltwo-basis}); by the Schwarz inequality the entries then converge
+  too, and
+  \begin{equation}\label{c03.eq.elemente-unendlich}\claim{c03.cl.elemente-unendlich}{derived}
+    (\op{T}\vb{v})_j = \sum_{k=1}^{\infty} \entry{\op{T}}{j}{k}\, v_k .
+  \end{equation}
+  For $\op{M}$, by contrast, $\entry{\op{M}}{j}{k} = j\, \kron{j}{k}$, whether one applies
+  $\op{M}$ only to the vectors with finitely many nonzero entries or to all those with
+  $\sum_j j^2 \abs{v_j}^2 < \infty$. These are two different operators with the same matrix
+  elements; only the domain distinguishes them.
+
+  Such operators are no curiosity. Reed and Simon begin their chapter on unbounded operators
+  with the observation that many of the most important operators of mathematical physics are
+  not bounded \srcref{reed-simon-1}{p.~249}. That unbounded symmetric operators cannot be
+  defined on the whole space is no accident:
+
+  \begin{theorem}[Hellinger and Toeplitz]\label{c03.thm.hellinger-toeplitz}\claim[proof-omitted]{c03.cl.hellinger-toeplitz}{source-quoted}
+    Let $\op{T}$ be an operator defined on a whole Hilbert space $\Hil$, with
+    $\braket{\phi}{\op{T}\psi} = \braket{\op{T}\phi}{\psi}$ for all
+    $\ket{\phi}, \ket{\psi} \in \Hil$. Then $\op{T}$ is bounded.
+  \end{theorem}
+
+  Reed and Simon prove the theorem with the closed graph theorem. They add that in quantum
+  mechanics there are unbounded operators, such as the energy, that we want to satisfy this
+  equation in some sense; by the theorem they cannot be defined on the whole space
+  \srcref{reed-simon-1}{p.~84}. Such an operator is defined only on a subspace, its
+  \emph{domain} $\dom{\op{T}}$, and then one must also watch the domains for the adjoint
+  operator (\defref{D19}). Reed and Simon call a densely defined operator \emph{symmetric} (or
+  Hermitian) and \emph{self-adjoint} if
+  \begin{equation}\label{c03.eq.symmetrisch}\claim{c03.cl.symmetrisch}{source-quoted}
+    \op{T} \subset \op{T}\adj \quad \text{\tpcifenglish{(symmetric)}{(symmetrisch)}} ,
+    \qquad
+    \op{T} = \op{T}\adj \quad \text{\tpcifenglish{(self-adjoint)}{(selbstadjungiert)}} .
+  \end{equation}
+  Here $\op{T} \subset \op{T}\adj$ means: $\dom{\op{T}} \subset \dom{\op{T}\adj}$, and on
+  $\dom{\op{T}}$ the two act alike; equivalently,
+  $\braket{\op{T}\phi}{\psi} = \braket{\phi}{\op{T}\psi}$ for all $\ket{\phi}, \ket{\psi}$ in
+  $\dom{\op{T}}$. Self-adjoint additionally demands $\dom{\op{T}} = \dom{\op{T}\adj}$
+  \srcref{reed-simon-1}{p.~255}. In this usage, Hermitian thus means the same as symmetric, and
+  that is weaker than self-adjoint. The difference arises only through the restricted domain:
+  for an operator defined on the whole space the notions coincide
+  (Proposition~\ref{c03.prop.symmetrisch}). The difference is very important. Among the
+  symmetric operators the spectral theorem holds only for the self-adjoint ones, and only
+  self-adjoint operators generate the one-parameter unitary groups that give the dynamics of
+  quantum mechanics \srcref{reed-simon-1}{p.~256}.
+
+  \begin{proposition}[On the whole space, symmetric is self-adjoint]\label{c03.prop.symmetrisch}\claim[proof-included]{c03.cl.ganz}{derived}
+    If $\op{T}$ is defined on all of $\Hil$ and symmetric, then $\op{T}$ is self-adjoint. In
+    particular, every Hermitian operator on a finite-dimensional Hilbert space is self-adjoint.
+  \end{proposition}
+  \begin{proof}
+    From $\dom{\op{T}} = \Hil$ and $\dom{\op{T}} \subset \dom{\op{T}\adj} \subset \Hil$ it
+    follows that $\dom{\op{T}\adj} = \dom{\op{T}}$. On a finite-dimensional space every
+    operator is defined on all of $\Hil$, and a Hermitian operator satisfies
+    $\braket{\op{A}\phi}{\psi} = \braket{\phi}{\op{A}\psi}$ for all vectors (\defref{D18}), so it
+    is symmetric.
+  \end{proof}
+\end{vertiefung}
+
+Some classes are subclasses of others. The definitions claim some of this; here are the proofs.
+They use only the definition of the adjoint operator and the positivity of the inner product.
+
+\begin{proposition}[Hermitian and positive operators]\label{c03.prop.positiv}\claim[proof-included]{c03.cl.positiv}{derived}
+  Let $\op{A}$ and $\op{B}$ be operators on a finite-dimensional Hilbert space $\Hil$.
+  \begin{enumerate}
+    \item $\op{A}$ is Hermitian if and only if $\braket{\psi}{\op{A}\psi}$ is a real number for
+      every $\ket{\psi}$.
+    \item Every positive operator is Hermitian.
+    \item $\op{B}\adj\op{B}$ is positive.
+    \item Every projector is positive.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  Conjugating the defining equation of \defref{D17} gives, with
+  Proposition~\ref{c03.prop.symmetrie}, $\braket{\psi}{\op{A}\adj\phi} = \braket{\op{A}\psi}{\phi}$.
+  On~1: if $\op{A}$ is Hermitian, then
+  $\braket{\psi}{\op{A}\psi} = \braket{\op{A}\psi}{\psi} = \braket{\psi}{\op{A}\psi}^*$, so it
+  is real. Conversely, let $\braket{\psi}{\op{A}\psi}$ be real for every $\ket{\psi}$, and let
+  $\op{D} = \op{A} - \op{A}\adj$. Then
+  $\braket{\psi}{\op{D}\psi} = \braket{\psi}{\op{A}\psi} - \braket{\op{A}\psi}{\psi} = \braket{\psi}{\op{A}\psi} - \braket{\psi}{\op{A}\psi}^* = 0$
+  for every $\ket{\psi}$. Inserting $\ket{\phi} + \ket{\xi}$ and $\ket{\phi} + i\ket{\xi}$,
+  the terms with $\ket{\phi}$ alone and $\ket{\xi}$ alone drop out, and what remains is
+  \begin{equation}\label{c03.eq.polarisation}
+    \braket{\phi}{\op{D}\xi} + \braket{\xi}{\op{D}\phi} = 0 ,
+    \qquad
+    i\, \braket{\phi}{\op{D}\xi} - i\, \braket{\xi}{\op{D}\phi} = 0 .
+  \end{equation}
+  Dividing the second equation by $i$ and adding it to the first gives
+  $\braket{\phi}{\op{D}\xi} = 0$ for all $\ket{\phi}, \ket{\xi}$. With
+  $\ket{\phi} = \op{D}\ket{\xi}$ and positivity, $\op{D}\ket{\xi} = 0$, so
+  $\op{A}\adj = \op{A}$. On~2: for positive $\op{A}$, $\braket{\psi}{\op{A}\psi} \geq 0$, in
+  particular real; continue with~1. On~3:
+  $\braket{\psi}{\op{B}\adj\op{B}\psi} = \braket{\op{B}\psi}{\op{B}\psi} \geq 0$ by the
+  positivity of the inner product. On~4: for a projector,
+  $\op{P} = \op{P}^2 = \op{P}\adj\op{P}$; continue with~3.
+\end{proof}
+
+Part~3 is very helpful. Its proof is the same step as in the proof of the Schwarz inequality,
+Equation~\eqref{c03.eq.schwarz-beweis}: the inner product of a vector with itself is never
+negative. With this step the proof of Heisenberg's uncertainty relation begins in Chapter~6.
+There $\op{A}$ and $\op{B}$ are Hermitian and $\lambda$ is real, and the operator
+$(\op{A} + i\lambda\op{B})\adj(\op{A} + i\lambda\op{B})$ is positive because it has the form
+$\op{D}\adj\op{D}$ \srcref{tpc-script-v0.2}{vl09, proof of the uncertainty relation}.
+
+\begin{proposition}[Isometries and normal operators]\label{c03.prop.isometrie}\claim[proof-included]{c03.cl.isometrie}{derived}
+  Let $\Hil$ be finite-dimensional.
+  \begin{enumerate}
+    \item An operator $\op{V}$ is isometric if and only if
+      $\braket{\op{V}\phi}{\op{V}\psi} = \braket{\phi}{\psi}$ for all
+      $\ket{\phi}, \ket{\psi} \in \Hil$.
+    \item Every isometry is unitary.
+    \item Hermitian and unitary operators are normal, and so are positive operators, projectors
+      and isometries.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  On~1: $\braket{\op{V}\phi}{\op{V}\psi} = \braket{\phi}{\op{V}\adj\op{V}\psi}$. If
+  $\op{V}\adj\op{V} = \Id$, this is $\braket{\phi}{\psi}$. If conversely
+  $\braket{\phi}{(\op{V}\adj\op{V} - \Id)\psi} = 0$ for all $\ket{\phi}$, then with
+  $\ket{\phi} = (\op{V}\adj\op{V} - \Id)\ket{\psi}$ and positivity
+  $\op{V}\adj\op{V}\ket{\psi} = \ket{\psi}$. On~2: from $\op{V}\ket{\psi} = 0$ it follows by~1
+  that $\norm{\psi} = \norm{\op{V}\psi} = 0$; so $\op{V}$ maps only the zero vector to zero. By
+  the rank-nullity theorem of linear algebra such a linear map of a finite-dimensional space
+  into itself is also surjective: every vector is of the form $\op{V}\ket{\psi}$. For it,
+  $\op{V}\op{V}\adj(\op{V}\ket{\psi}) = \op{V}(\op{V}\adj\op{V})\ket{\psi} = \op{V}\ket{\psi}$,
+  so $\op{V}\op{V}\adj = \Id$. On~3: for Hermitian $\op{A}$,
+  $\op{A}\adj\op{A} = \op{A}\op{A} = \op{A}\op{A}\adj$; for unitary, both sides are $\Id$.
+  Positive operators and projectors are Hermitian by Proposition~\ref{c03.prop.positiv},
+  isometries are unitary by~2.
+\end{proof}
+
+Part~2 really needs finite dimension: in infinitely many dimensions there are isometries that
+are not unitary\zoomref{c03.v6}.
+
+\begin{vertiefung}[id=c03.v6,
+    titel={Isometric but not unitary},
+    wozu={In finite dimension every isometry is unitary
+      (Proposition~\ref{c03.prop.isometrie}). Here is an isometry of $\elltwo$ that is not, and
+      one sees at which step of the proof it fails.},
+    voraussetzung={Proposition~\ref{c03.prop.isometrie}; Deeper blocks~\ref{c03.v1} and~\ref{c03.v4}
+      (the example of a basis of $\elltwo$). The core up to Chapter~4 does not need this block.},
+    zurueck={In infinitely many dimensions an operator can preserve the inner product without
+      being unitary. Part~2 of Proposition~\ref{c03.prop.isometrie} holds only in finite
+      dimension.}]
+  \begin{example}[The right shift]\label{c03.ex.shift}\claim{c03.cl.shift}{derived}
+    The right shift $\op{S}$ moves every entry of a vector in $\elltwo$ one place to the right
+    and puts a zero in front:
+    \begin{equation}\label{c03.eq.shift}
+      \op{S} \begin{pmatrix} v_1 \\ v_2 \\ v_3 \\ \vdots \end{pmatrix}
+      = \begin{pmatrix} 0 \\ v_1 \\ v_2 \\ \vdots \end{pmatrix} ,
+      \qquad
+      \op{S}\adj \begin{pmatrix} w_1 \\ w_2 \\ w_3 \\ \vdots \end{pmatrix}
+      = \begin{pmatrix} w_2 \\ w_3 \\ w_4 \\ \vdots \end{pmatrix} .
+    \end{equation}
+    The series $(\op{S}\vb{v})\adj(\op{S}\vb{w})$ has the same terms as $\vb{v}\adj\vb{w}$, only
+    one place later; so $\op{S}\vb{v} \in \elltwo$, and $\op{S}$ preserves the inner product.
+    The adjoint operator is read off from
+    $\vb{w}\adj(\op{S}\vb{v}) = \sum_{k \geq 1} w_{k+1}^*\, v_k$: it shifts to the left and
+    drops the first entry. Hence $\op{S}\adj\op{S} = \Id$, but
+    $\op{S}\op{S}\adj \vb{u}_1 = 0$ for the first basis vector $\vb{u}_1$, so
+    $\op{S}\op{S}\adj \neq \Id$. $\op{S}$ is isometric, but neither unitary nor normal.
+  \end{example}
+
+  It fails at the second step of the proof of Proposition~\ref{c03.prop.isometrie}: $\op{S}$
+  maps only the zero vector to zero, but it is not surjective, because every vector
+  $\op{S}\vb{v}$ has a zero as its first entry. Reed and Simon use the same example: the right
+  shift on $\elltwo$ is not unitary, because the vector $(1, 0, 0, \dots)$ is not in its range
+  \srcref{reed-simon-1}{p.~197}.
+\end{vertiefung}
+
+\section{Matrix elements and ket-bras}\label{c03.s11}
+
+With the help of a basis one can describe operators by numbers. Let
+$\{\ket{\phi_x}\}_{x \in X}$ be a basis of $\Hil$ with a finite index set $X$.
+
+\tpcdef{D93}
+
+Where the formula for $\op{A}\ket{\Psi}$ in \defref{D93} comes from, we work out once; this is
+the exercise we do every day in quantum mechanics. We first expand $\ket{\Psi}$ in the basis,
+move the numbers $\braket{\phi_y}{\Psi}$ past $\op{A}$, since numbers always commute with
+operators, and then expand each vector $\op{A}\ket{\phi_y}$ once more:
+\begin{equation}\label{c03.eq.wirkung}\claim{c03.cl.wirkung}{derived}
+  \begin{aligned}
+    \op{A}\ket{\Psi}
+    &= \op{A} \sum_{y \in X} \braket{\phi_y}{\Psi}\, \ket{\phi_y}
+     = \sum_{y \in X} \braket{\phi_y}{\Psi}\, \op{A}\ket{\phi_y} \\
+    &= \sum_{y \in X} \braket{\phi_y}{\Psi} \sum_{x \in X} \braket{\phi_x}{\op{A}\phi_y}\, \ket{\phi_x}
+     = \sum_{x, y \in X} \ket{\phi_x}\, \entry{\op{A}}{x}{y}\, \braket{\phi_y}{\Psi} .
+  \end{aligned}
+\end{equation}
+The sums over $x$ and $y$ run independently of each other.
+
+Note that nowhere in this equation does a matrix occur, only basis vectors and numbers. If one
+knows all matrix elements, one can apply $\op{A}$ to every vector: an operator is known as soon
+as one knows its matrix elements. In the finite-dimensional case one simply writes them into a
+matrix. In infinitely many dimensions there is no finite matrix any more, but there are the
+numbers $\entry{\op{A}}{x}{y}$, a table with infinitely many rows and columns. There the sums
+become series, and that the matrix elements determine the operator holds only under
+hypotheses: for bounded operators defined on the whole space, but not without more for
+unbounded ones\zoomref{c03.v5}.
+
+The adjoint operator, too, can be read off from the matrix elements. With the conjugated
+equation from the proof of Proposition~\ref{c03.prop.positiv},
+\begin{equation}\label{c03.eq.adj-elemente}\claim{c03.cl.adj-elemente}{derived}
+  \entry{\op{A}\adj}{x}{y}
+  = \braket{\phi_x}{\op{A}\adj\phi_y}
+  = \braket{\op{A}\phi_x}{\phi_y}
+  = \braket{\phi_y}{\op{A}\phi_x}^*
+  = \entry{\op{A}}{y}{x}^* .
+\end{equation}
+Forming the adjoint is thus, in every orthonormal basis, transposition with complex
+conjugation, for every inner product. Reed and Simon remind the reader that a linear
+transformation on $\mathbb{C}^n$ is self-adjoint if and only if its matrix in an orthonormal
+basis is unchanged by reflection across the diagonal followed by conjugation
+\srcref{reed-simon-1}{p.~187}.
+
+\subsection{Kets and bras as operators}\label{c03.s11.1}
+
+So far the ket $\ket{\Psi}$ simply stood for a vector $\vb{\Psi} \in \Hil$. It pays to make a
+very subtle distinction here, because it simplifies what follows. From now on the ket is the
+linear map
+\begin{equation}\label{c03.eq.ket-op}
+  \ket{\Psi}\colon \mathbb{C} \to \Hil ,
+  \qquad
+  z \mapsto z\, \vb{\Psi} .
+\end{equation}
+So a ket eats a complex number and produces a vector. I have always left the number out so far;
+what was meant was $z = 1$.
+
+The equation of \defref{D17} defines the adjoint operator word for word also for a linear map
+from one Hilbert space into another, here from $\mathbb{C}$ to $\Hil$; here
+$\mathbb{C} = \mathbb{C}^1$ is a Hilbert space with the inner product $a^* b$. One checks that
+the adjoint of the ket is the bra:
+\begin{equation}\label{c03.eq.bra-op}\claim{c03.cl.bra-op}{derived}
+  \bra{\Psi} = (\ket{\Psi})\adj \colon \Hil \to \mathbb{C} ,
+  \qquad
+  \vb{\Phi} \mapsto \braket{\Psi}{\Phi} .
+\end{equation}
+For every number $z$ and every vector $\vb{\Phi}$ we have
+$\braket{\Phi}{z\Psi} = z\, \braket{\Phi}{\Psi} = \braket{\Psi}{\Phi}^* z$, and on the right
+stands the inner product of the number $\braket{\Psi}{\Phi}$ with the number $z$ in
+$\mathbb{C}$. So a bra eats a vector and produces a complex number, exactly the other way round
+from a ket. This fits Section~\ref{c03.s4}, where the bra was the assignment that gives every
+ket a number.
+
+If one multiplies a bra by a ket, one composes two maps: the ket turns a number into a vector,
+the bra turns it back into a number. The result is the map from $\mathbb{C}$ to $\mathbb{C}$
+\begin{equation*}
+  z \mapsto \bra{\Phi}\, \ket{\Psi}\, z = \braket{\Phi}{\Psi}\, z .
+\end{equation*}
+If we make no distinction in the notation between a linear map from $\mathbb{C}$ to
+$\mathbb{C}$ and the number it multiplies by, then $\bra{\Phi}\, \ket{\Psi}$ and
+$\braket{\Phi}{\Psi}$ mean the same. That is the main message of this section. The
+justification was tedious; you can now forget it and use this identification from now on. For
+calculating nothing changes; the distinction matters only for the interpretation.
+
+In the other order, ket times bra, an operator on $\Hil$ arises: the bra eats a vector and
+returns a number, the ket eats this number and returns a vector. Such operators are extremely
+useful in quantum mechanics.
+
+\tpcdef{D94}
+
+We go one step further in simplifying. As soon as a basis $\{\ket{\phi_x}\}_{x \in X}$ is fixed
+and clear from the context, the letter $\phi$ carries no information any more; all the
+information is in the index. We drop it and write $\ket{x}$ and $\bra{x}$. With this the
+expansion formulas for vectors and for operators become operator equations.
+
+\begin{proposition}[Calculating with ket-bras]\label{c03.prop.ketbra}\claim[proof-included]{c03.cl.ketbra}{derived}
+  For vectors $\ket{\Psi}, \ket{\Phi}$, a basis $\{\ket{x}\}_{x \in X}$ with a finite index set
+  and every operator $\op{A}$,
+  \begin{equation}\label{c03.eq.ketbra}
+    (\ketbra{\Psi}{\Phi})\adj = \ketbra{\Phi}{\Psi} ,
+    \qquad
+    \Id = \sum_{x \in X} \ketbra{x}{x} ,
+    \qquad
+    \op{A} = \sum_{x, y \in X} \melem{x}{\op{A}}{y}\, \ketbra{x}{y} .
+  \end{equation}
+\end{proposition}
+\begin{proof}
+  We apply both sides to an arbitrary vector; that is the general pattern for operator
+  equations. First equation: for all $\ket{\zeta}, \ket{\xi}$,
+  $\braket{\zeta}{(\ketbra{\Psi}{\Phi})\xi} = \braket{\Phi}{\xi}\, \braket{\zeta}{\Psi}$, and
+  $\braket{(\ketbra{\Phi}{\Psi})\zeta}{\xi} = \braket{\Psi}{\zeta}^*\, \braket{\Phi}{\xi}$ is the
+  same; by Proposition~\ref{c03.prop.adjungiert}, $\ketbra{\Phi}{\Psi}$ is the adjoint
+  operator. Second equation: on the left stands $\Id\ket{\Psi} = \ket{\Psi}$, on the right by
+  \defref{D94} $\sum_x \braket{x}{\Psi}\, \ket{x}$, and that is $\ket{\Psi}$ by
+  Proposition~\ref{c03.prop.entwicklung}. Third equation: on the right stands
+  $\sum_{x,y} \melem{x}{\op{A}}{y}\, \braket{y}{\Psi}\, \ket{x}$, and that is
+  $\op{A}\ket{\Psi}$ by Equation~\eqref{c03.eq.wirkung}.
+\end{proof}
+
+The equation $\Id = \sum_x \ketbra{x}{x}$ is one of the most helpful equations of quantum
+mechanics; I still use it regularly today. Physically it contains no information: it only says
+that one equals one. Mathematically, however, it makes life enormously easier, because one may
+insert this complicated one at any point of a calculation. Matrix elements are now simply
+written $\melem{x}{\op{A}}{y}$.
+
+\section{Three operators on $\mathbb{C}^3$}\label{c03.s12}
+
+Finally, an example in which everything comes together.
+
+\begin{example}[Three operators on $\mathbb{C}^3$]\label{c03.ex.drei}\claim{c03.cl.drei}{derived}
+  Let $\Hil = \mathbb{C}^3$ with the inner product of Section~\ref{c03.s2}, and let
+  \begin{equation}\label{c03.eq.abc}
+    \op{A} = \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix} ,
+    \qquad
+    \op{B} = \frac13 \begin{pmatrix} 1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{pmatrix} ,
+    \qquad
+    \op{C} = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & i \\ -1 & 0 & 0 \end{pmatrix} .
+  \end{equation}
+  Transposing and conjugating gives the same matrix for $\op{A}$ and $\op{B}$; both are
+  Hermitian, $\op{A}\adj = \op{A}$ and $\op{B}\adj = \op{B}$. $\op{B}$ is also a projector; that
+  takes a little more work, but not much. Every entry of $\op{B}^2$ is
+  $\tfrac13 \cdot \tfrac13 \, (1 \cdot 1 + 1 \cdot 1 + 1 \cdot 1) = \tfrac13$, so
+  $\op{B}^2 = \op{B}$, and by Proposition~\ref{c03.prop.positiv} $\op{B}$ is positive.
+  $\op{A}$, on the other hand, is \emph{not} positive: for the vector $\ket{\psi}$ with the
+  entries $\tfrac12$, $-\tfrac{1}{\sqrt{2}}$, $\tfrac12$,
+  \begin{equation}\label{c03.eq.nicht-positiv}
+    \melem{\psi}{\op{A}}{\psi}
+    = \begin{pmatrix} \frac12 & -\frac{1}{\sqrt{2}} & \frac12 \end{pmatrix}
+      \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix}
+      \begin{pmatrix} \frac12 \\ -\frac{1}{\sqrt{2}} \\ \frac12 \end{pmatrix}
+    = \begin{pmatrix} \frac12 & -\frac{1}{\sqrt{2}} & \frac12 \end{pmatrix}
+      \begin{pmatrix} -\frac{1}{\sqrt{2}} \\ 1 \\ -\frac{1}{\sqrt{2}} \end{pmatrix}
+    = -\sqrt{2} .
+  \end{equation}
+  $\op{C}$ is unitary, because
+  \begin{equation}\label{c03.eq.c-unitaer}
+    \op{C}\adj\op{C}
+    = \begin{pmatrix} 0 & 0 & -1 \\ 1 & 0 & 0 \\ 0 & -i & 0 \end{pmatrix}
+      \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & i \\ -1 & 0 & 0 \end{pmatrix}
+    = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} ,
+  \end{equation}
+  and likewise $\op{C}\op{C}\adj = \Id$. With the canonical basis $\ket{0}, \ket{1}, \ket{2}$
+  of $\mathbb{C}^3$ (the columns with the $1$ in the first, second, third entry) all nine
+  matrix elements of $\op{B}$ are equal, $\melem{x}{\op{B}}{y} = \tfrac13$, and
+  \begin{equation}\label{c03.eq.c-ketbra}
+    \op{C} = \ketbra{0}{1} + i\, \ketbra{1}{2} - \ketbra{2}{0} .
+  \end{equation}
+  One checks this by applying both sides to the basis vectors. The matrix maps $\ket{1}$ to
+  $\ket{0}$; on the right, of the three terms only $\braket{1}{1}\, \ket{0} = \ket{0}$ remains,
+  because $\braket{2}{1} = \braket{0}{1} = 0$. Likewise $\ket{0}$ is mapped to $-\ket{2}$ and
+  $\ket{2}$ to $i\ket{1}$. The order within each term matters.
+\end{example}
+
+So one can do everything with matrices or everything with ket-bras. In the following chapters I
+mix both representations; in the end you should master both. Which one is best suited usually
+depends on the dimension: for finite-dimensional systems one likes to calculate with matrices,
+for infinite-dimensional ones almost only with the ket notation.
+
+\begin{exercise}[Unitary, with ket-bras]\label{c03.exc.ketbra}\claim{c03.cl.c-ketbra}{derived}
+  Compute $\op{C}\adj$ from Equation~\eqref{c03.eq.c-ketbra} with
+  Proposition~\ref{c03.prop.ketbra}, and show $\op{C}\adj\op{C} = \Id$ without writing down a
+  matrix.
+\end{exercise}
+\begin{solution}
+  By the rules of \defref{D17} and Proposition~\ref{c03.prop.ketbra},
+  $\op{C}\adj = \ketbra{1}{0} - i\, \ketbra{2}{1} - \ketbra{0}{2}$. In the product
+  $\op{C}\adj\op{C}$, $\ketbra{a}{b}\, \ketbra{c}{d} = \braket{b}{c}\, \ketbra{a}{d}$, and this is
+  zero for $b \neq c$. Of the nine products, three remain:
+  \begin{equation}\label{c03.eq.c-ketbra-unitaer}
+    \op{C}\adj\op{C}
+    = \ketbra{1}{1} + (-i)\, i\, \ketbra{2}{2} + (-1)(-1)\, \ketbra{0}{0}
+    = \ketbra{0}{0} + \ketbra{1}{1} + \ketbra{2}{2}
+    = \Id .
+  \end{equation}
+  The last equation is the completeness relation of Proposition~\ref{c03.prop.ketbra}.
+\end{solution}
+
+What the three calculations have in common becomes visible when one plots the eigenvalues. An
+eigenvalue is, informally, a number $\lambda$ by which $\op{A}$ simply multiplies a vector
+$\ket{v} \neq 0$, $\op{A}\ket{v} = \lambda\ket{v}$; the precise definition, and how one finds
+all eigenvalues, comes later in this chapter. For every eigenvalue the defining equation of the
+class carries over to the number $\lambda$:
+\begin{equation}\label{c03.eq.orte}\claim{c03.cl.orte}{derived}
+  \begin{aligned}
+    &\op{A}\adj = \op{A} &&\Rightarrow\quad \lambda^* = \lambda , \\
+    &\text{\tpcifenglish{for all}{für alle} } \ket{\psi}\colon \braket{\psi}{\op{A}\psi} \geq 0 &&\Rightarrow\quad \lambda \geq 0 , \\
+    &\op{A}^2 = \op{A}\adj = \op{A} &&\Rightarrow\quad \lambda^2 = \lambda , \\
+    &\op{A}\adj\op{A} = \Id &&\Rightarrow\quad \abs{\lambda} = 1 .
+  \end{aligned}
+\end{equation}
+One may assume $\norm{v} = 1$. Then $\melem{v}{\op{A}}{v} = \lambda$; this is real for
+Hermitian $\op{A}$ (Proposition~\ref{c03.prop.positiv}) and non-negative for positive $\op{A}$.
+For a projector, $\lambda^2\ket{v} = \op{A}^2\ket{v} = \op{A}\ket{v} = \lambda\ket{v}$, and for
+an isometry $\abs{\lambda} = \norm{\op{A}v} = \norm{v} = 1$. So the Hermitian operators have
+their eigenvalues on the real axis, the positive ones on the half-axis $\lambda \geq 0$, the
+projectors in the two points $0$ and $1$, the unitary ones on the unit circle. Normality alone
+does not constrain the eigenvalues: for every complex number $\lambda$, $\lambda\Id$ is normal
+and has the eigenvalue $\lambda$. For the three operators of the example one finds eigenvectors
+by inserting; for $\op{A}$, for instance, the vectors with entries $1, \sqrt{2}, 1$ and
+$1, 0, -1$ and $1, -\sqrt{2}, 1$, for $\op{B}$ the vectors $1, 1, 1$ and $1, -1, 0$, for
+$\op{C}$ the vectors $1, \lambda, -i\lambda^2$. The eigenvalues are
+\begin{equation}\label{c03.eq.spektren}\claim{c03.cl.spektren}{derived}
+  \begin{aligned}
+    &\op{A}\colon && 0 ,\ \sqrt{2} ,\ -\sqrt{2} , \\
+    &\op{B}\colon && 1 ,\ 0 , \\
+    &\op{C}\colon && e^{-i\pi/6} ,\ i ,\ e^{7i\pi/6} , \qquad \text{\tpcifenglish{the three solutions of}{die drei Lösungen von}}\ \lambda^3 = -i ,
+  \end{aligned}
+\end{equation}
+and there are no others. Figure~\ref{c03.fig.spektren} records in part (a) the places where the
+eigenvalues of a class may lie, and in part (b) enters the eigenvalues of the three example
+operators. In (b), $-\sqrt{2}$ lies to the left of zero; precisely there the positivity of
+$\op{A}$ fails. The vector $\ket{\psi}$ of Equation~\eqref{c03.eq.nicht-positiv} is the
+normalised eigenvector for this eigenvalue, and that is why
+$\melem{\psi}{\op{A}}{\psi} = -\sqrt{2}$.
+
+\begin{tpcfigure}{c03.fig.spektren}
+  \caption{Operator classes recognised by their eigenvalues. (a) Where in the complex plane the
+    eigenvalues of a class may lie (Equation~\eqref{c03.eq.orte}): Hermitian on the real axis
+    (solid line), positive on the half-axis $\lambda \geq 0$ (broad strip), projector in the two
+    points $0$ and $1$ (filled dots), unitary on the unit circle (dashed). Normality alone admits
+    every complex number. The nesting projector, positive, Hermitian is visible: two points on a
+    half-axis on a line. (b) The eigenvalues of the operators of Example~\ref{c03.ex.drei}
+    (Equation~\eqref{c03.eq.spektren}): $\op{A}$ (filled discs) at $0$ and $\pm\sqrt{2}$,
+    $\op{B}$ (rings) at $0$ and $1$, $\op{C}$ (diamonds) at three points on the unit circle that
+    divide it into three equal arcs. The eigenvalue $-\sqrt{2}$ of $\op{A}$ lies to the left of
+    zero: $\op{A}$ is Hermitian but not positive.}
+\end{tpcfigure}
+
 % ── Fundament ─────────────────────────────────────────────────────────────────────────
-% New sections of the chapter (vl04, vl05) go BEFORE this line.
+% New sections of the chapter (vl05) go BEFORE this line.
 
 \begin{fundament}[id=c03.f1,
     titel={The Cauchy-Schwarz inequality},

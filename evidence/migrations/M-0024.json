@@ -1,7 +1,7 @@
 {
  "schema_version": 1,
  "id": "M-0024",
- "status": "recorded",
+ "status": "applied",
  "title": "vl03 subsection Operatoren (deferred to Lecture 4): 'einen Hilbertraum', 'Das heisst', 'operatoren', word order",
  "legacy": [
   {
@@ -10,7 +10,10 @@
    "line": 256,
    "file_sha256": "5ade0d2df8358f22497f3e207710b2c0efb7c74ea9da31ae420bcb23d469837e",
    "old_text": "Sei $\\mathcal{H}$ einen Hilbertraum.",
-   "new_text": "Sei $\\Hil$ ein Hilbertraum."
+   "new_text": "Sei $\\Hil$ ein Hilbertraum.",
+   "applied_file_sha256": "943dd6deb47f3ddcc90821aea7697aa75400cfadc7cbb967fd55259e16630c34",
+   "applied_source_key": "tpc-script-v0.3.1",
+   "applied_removed": true
   },
   {
    "version": "v0.2-de",
@@ -18,7 +21,10 @@
    "line": 260,
    "file_sha256": "5ade0d2df8358f22497f3e207710b2c0efb7c74ea9da31ae420bcb23d469837e",
    "old_text": "Das heisst,",
-   "new_text": "Das heißt,"
+   "new_text": "Das heißt,",
+   "applied_file_sha256": "943dd6deb47f3ddcc90821aea7697aa75400cfadc7cbb967fd55259e16630c34",
+   "applied_source_key": "tpc-script-v0.3.1",
+   "applied_removed": true
   },
   {
    "version": "v0.2-de",
@@ -26,7 +32,10 @@
    "line": 271,
    "file_sha256": "5ade0d2df8358f22497f3e207710b2c0efb7c74ea9da31ae420bcb23d469837e",
    "old_text": "kann man operatoren mit",
-   "new_text": "kann man Operatoren mit"
+   "new_text": "kann man Operatoren mit",
+   "applied_file_sha256": "943dd6deb47f3ddcc90821aea7697aa75400cfadc7cbb967fd55259e16630c34",
+   "applied_source_key": "tpc-script-v0.3.1",
+   "applied_removed": true
   },
   {
    "version": "v0.2-de",
@@ -34,7 +43,22 @@
    "line": 271,
    "file_sha256": "5ade0d2df8358f22497f3e207710b2c0efb7c74ea9da31ae420bcb23d469837e",
    "old_text": "dass die Dimension von $\\mathcal{H}$ beträgt $n=2$.",
-   "new_text": "dass die Dimension von $\\Hil$ $n = 2$ beträgt."
+   "new_text": "dass die Dimension von $\\Hil$ $n = 2$ beträgt.",
+   "applied_file_sha256": "943dd6deb47f3ddcc90821aea7697aa75400cfadc7cbb967fd55259e16630c34",
+   "applied_source_key": "tpc-script-v0.3.1",
+   "applied_removed": true
+  },
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl04.tex",
+   "line": 8,
+   "file_sha256": "e10cd13b0287b5114f3a30a7bfa9bdbb16a53aab755f8573bca795ae4a03aae9",
+   "old_text": "Sei $\\mathcal{H}$ einen Hilbertraum.",
+   "new_text": "Sei $\\Hil$ ein Hilbertraum.",
+   "applied_file_sha256": "f39e245d5da4da73fa9d394e81fc3530bd52ecbc097e65f6776f188e4a3df6e8",
+   "applied_source_key": "tpc-script-v0.3.1",
+   "applied_line": 9,
+   "applied_text": "Sei $\\Hil$ ein Hilbertraum"
   },
   {
    "version": "v0.1",
@@ -75,5 +99,6 @@
   "provenance_ids": []
  },
  "destination": "c03",
- "notes": "Recorded now so that the Lecture 4 migration finds it; the destination is chapter c03, where the vl04 operators go (header of content/c03-hilbertraum/de.tex)."
+ "notes": "Recorded now so that the Lecture 4 migration finds it; the destination is chapter c03, where the vl04 operators go (header of content/c03-hilbertraum/de.tex). Script v0.3 (2026-10-29): the subsection moved to vl04 (lane S, NOTES-ch4.md): 'Sei $\\Hil$ ein Hilbertraum' (vl04:9) and 'das heißt' (vl04:9) applied; the operator example became one sentence (vl04:17). The same slip stands in vl04.tex:8 (v0.2), added as a locus here and applied at vl04:9. The vl03 loci are applied by removal: the passages left vl03.tex with the move and stand corrected in vl04.",
+ "applied_date": "2026-10-29"
 }

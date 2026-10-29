@@ -171,6 +171,8 @@ scripts/fetch_transcripts.py --force    # re-download everything
 - **v0.1** — the script as it was taught, preserved in `archive/skript-2022/`.
 - **v0.2** — v0.1 with the lecture commentary lightly folded in, plus one
   new figure per lecture and an English edition alongside.
+- **v0.3** — lectures 1 to 4 rewritten as the compact kernel of the new course, in the
+  course design; lectures 5 to 22 as in v0.2, in the new design.
 
 ## Licence
 

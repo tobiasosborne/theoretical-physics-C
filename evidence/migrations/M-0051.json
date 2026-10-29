@@ -106,7 +106,7 @@
    "P-0312"
   ],
   "derivation": "evidence/derivations/c01/DERIVATION.md#c00.cl.schwelle",
-  "notes": "Script v0.3 (2026-10-22, lane ch1, docs/plan/script-v0.3/NOTES-ch1.md): applied in the parts that survive: photoelectric effect as maximum kinetic energy at fixed material in the one-photon model (line 20), Stern-Gerlach at fixed angular-momentum quantum number (line 27); the 'zum ersten Mal' passage (v0.2:28) and the Schrödinger-equivalence sentence (v0.2:72) are cut (applied by removal). Destination: the uncommitted working tree registered as tpc-script-v0.3; the commit is still to be made by the coordinator. The v0.1 entries are not application targets."
+  "notes": "Script v0.3 (2026-10-22, lane ch1, docs/plan/script-v0.3/NOTES-ch1.md): applied in the parts that survive: photoelectric effect as maximum kinetic energy at fixed material in the one-photon model (line 20), Stern-Gerlach at fixed angular-momentum quantum number (line 27); the 'zum ersten Mal' passage (v0.2:28) and the Schrödinger-equivalence sentence (v0.2:72) are cut (applied by removal). Destination: script v0.3, committed in b1fd537 and registered as tpc-script-v0.3 (identifiers.git_commit). The v0.1 entries are not application targets."
  },
  "destination": "c00.s4",
  "applied_date": "2026-10-22"

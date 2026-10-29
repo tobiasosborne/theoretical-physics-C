@@ -1,0 +1,40 @@
+{
+ "schema_version": 1,
+ "id": "M-0055",
+ "status": "applied",
+ "title": "vl04: basis written {|phi_x} with a missing right angle bracket",
+ "legacy": [
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl04.tex",
+   "line": 81,
+   "file_sha256": "e10cd13b0287b5114f3a30a7bfa9bdbb16a53aab755f8573bca795ae4a03aae9",
+   "old_text": "\\{|\\phi_x\\}_{x\\in X}",
+   "new_text": "\\{|\\phi_x\\rangle\\}_{x\\in X}",
+   "applied_file_sha256": "f39e245d5da4da73fa9d394e81fc3530bd52ecbc097e65f6776f188e4a3df6e8",
+   "applied_source_key": "tpc-script-v0.3.1",
+   "applied_line": 60,
+   "applied_text": "\\{\\ket{\\phi_x}\\}_{x\\in X}"
+  },
+  {
+   "version": "v0.2-en",
+   "file": "latex/lectures/en/lec04.tex",
+   "line": 81,
+   "file_sha256": "9fd7efeb7a25a44f532e5a9be2d1278b3f669d04231772763fe0109c0f97ca8b",
+   "old_text": "\\{|\\phi_x\\}_{x\\in X}",
+   "new_text": "\\{|\\phi_x\\rangle\\}_{x\\in X}",
+   "applied_file_sha256": "1139a7442e1a981761156107a6cdb975bd117f2ed175974e1fa63559b48eb60b",
+   "applied_source_key": "tpc-script-v0.3.1",
+   "applied_line": 60,
+   "applied_text": "\\{\\ket{\\phi_x}\\}_{x\\in X}"
+  }
+ ],
+ "reason": "The ket |phi_x> lacks its closing \\rangle, so the set braces and the bar are unbalanced. Typesetting slip; the mathematics is the basis {|phi_x>}.",
+ "evidence": {
+  "independent_check": "read in the script sources at the stated lines",
+  "provenance_ids": []
+ },
+ "destination": "c03.s11",
+ "notes": "Script v0.3, chapter 4 (docs/plan/script-v0.3/NOTES-ch4.md, 2026-10-29): applied in vl04.tex/lec04.tex line 59.",
+ "applied_date": "2026-10-29"
+}

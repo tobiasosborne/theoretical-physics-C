@@ -42,7 +42,7 @@
   "independent_check": "evidence/derivations/c01/DERIVATION.md (c01.cl.haeufigkeit, c01.cl.stichprobenmittel, c01.cl.gesetz); a counterexample to the exact count: web/tests/golden/prob.json, case counts(loaded-die, seed 1, N = 12) = [1, 1, 3, 3, 2, 2] against N p = [1, 2, 2, 2, 2, 3]",
   "provenance_ids": [],
   "derivation": "evidence/derivations/c01/DERIVATION.md#c01.cl.stichprobenmittel",
-  "notes": "A change of meaning (exact count to interpretation), made by the chapter author; TJO to confirm. Script v0.3 (2026-10-22, lane ch1, docs/plan/script-v0.3/NOTES-ch1.md): applied: relative frequencies, the exact identity for the series mean, and 'h_N close to p' as a reading with high probability, not an exact count (vl01.tex/lec01.tex line 90). Destination: the uncommitted working tree registered as tpc-script-v0.3; the commit is still to be made by the coordinator. The v0.1 entries are not application targets."
+  "notes": "A change of meaning (exact count to interpretation), made by the chapter author; TJO to confirm. Script v0.3 (2026-10-22, lane ch1, docs/plan/script-v0.3/NOTES-ch1.md): applied: relative frequencies, the exact identity for the series mean, and 'h_N close to p' as a reading with high probability, not an exact count (vl01.tex/lec01.tex line 90). Destination: script v0.3, committed in b1fd537 and registered as tpc-script-v0.3 (identifiers.git_commit). The v0.1 entries are not application targets."
  },
  "destination": "c01.s2.1",
  "applied_date": "2026-10-22"

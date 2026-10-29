@@ -3132,6 +3132,239 @@
    "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 3",
    "review_receipt": "R-0152",
    "notes": "Section V.3. Read from the page image by the author of chapter C3, Lecture 3 (agent, 2026-10-21): ddjvu -format=pnm -page=154 -scale=150; not from the text layer. Independent page-image review passed (R-0152; evidence/derivations/c03/REVIEW-lec3.md, section A)."
+  },
+  {
+   "id": "P-0318",
+   "claim_ids": [
+    "c03.cl.beschraenkt"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 18,
+    "printed_page": "8"
+   },
+   "quote": "For some $C \\geq 0$, $\\|Tv\\|_2 \\leq C\\|v\\|_1$",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 4",
+   "review_receipt": "R-0153",
+   "notes": "Section I.2, definition of a bounded linear transformation (or bounded operator), condition (ii); the book prints 'bonnded' in the definition's heading. Read from the page image by the author of chapter C3, Lecture 4 (lane A, 2026-10-29): ddjvu -format=pnm -page=18 -scale=150; not from the text layer. Independent page-image review passed (R-0153; evidence/derivations/c03/REVIEW-lec4.md, section A)."
+  },
+  {
+   "id": "P-0319",
+   "claim_ids": [
+    "c03.cl.hellinger-toeplitz"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 98,
+    "printed_page": "84"
+   },
+   "quote": "Let $A$ be an everywhere-defined linear operator on a Hilbert space $\\mathcal{H}$ with $(x, Ay) = (Ax, y)$ for all $x$ and $y$ in $\\mathcal{H}$. Then $A$ is bounded.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 4",
+   "review_receipt": "R-0153",
+   "notes": "Section III.5, Corollary (the Hellinger-Toeplitz theorem). Read from the page image by the author of chapter C3, Lecture 4 (lane A, 2026-10-29): ddjvu -format=pnm -page=98 -scale=150; not from the text layer. Independent page-image review passed (R-0153; evidence/derivations/c03/REVIEW-lec4.md, section A)."
+  },
+  {
+   "id": "P-0320",
+   "claim_ids": [
+    "c03.cl.hellinger-toeplitz"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 98,
+    "printed_page": "84"
+   },
+   "quote": "in quantum mechanics there are operators (like the energy) which are unbounded but which we want to obey $(x, Ay) = (Ax, y)$ in some sense. The Hellinger-Toeplitz theorem tells us that such operators cannot be everywhere defined.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 4",
+   "review_receipt": "R-0153",
+   "notes": "Section III.5, after the proof of the Hellinger-Toeplitz theorem. Read from the page image by the author of chapter C3, Lecture 4 (lane A, 2026-10-29): ddjvu -format=pnm -page=98 -scale=150; not from the text layer. Independent page-image review passed (R-0153; evidence/derivations/c03/REVIEW-lec4.md, section A)."
+  },
+  {
+   "id": "P-0321",
+   "claim_ids": [
+    "c03.cl.hellinger-toeplitz"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 261,
+    "printed_page": "249"
+   },
+   "quote": "It is a fact of life that many of the most important operators which occur in mathematical physics are not bounded.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 4",
+   "review_receipt": "R-0153",
+   "notes": "Section VIII.1, first sentence; the next sentence restates the Hellinger-Toeplitz theorem. Read from the page image by the author of chapter C3, Lecture 4 (lane A, 2026-10-29): ddjvu -format=pnm -page=261 -scale=150; not from the text layer. Independent page-image review passed (R-0153; evidence/derivations/c03/REVIEW-lec4.md, section A)."
+  },
+  {
+   "id": "P-0322",
+   "claim_ids": [
+    "c03.cl.symmetrisch"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 267,
+    "printed_page": "255"
+   },
+   "quote": "A densely defined operator $T$ on a Hilbert space is called symmetric (or Hermitian) if $T \\subset T^*$, that is, if $D(T) \\subset D(T^*)$ and $T\\varphi = T^*\\varphi$ for all $\\varphi \\in D(T)$.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 4",
+   "review_receipt": "R-0153",
+   "notes": "Section VIII.2, definition of symmetric. Read from the page image by the author of chapter C3, Lecture 4 (lane A, 2026-10-29): ddjvu -format=pnm -page=267 -scale=150; not from the text layer. Independent page-image review passed (R-0153; evidence/derivations/c03/REVIEW-lec4.md, section A)."
+  },
+  {
+   "id": "P-0323",
+   "claim_ids": [
+    "c03.cl.symmetrisch"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 267,
+    "printed_page": "255"
+   },
+   "quote": "Equivalently, $T$ is symmetric if and only if $(T\\varphi, \\psi) = (\\varphi, T\\psi)$ for all $\\varphi, \\psi \\in D(T)$",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 4",
+   "review_receipt": "R-0153",
+   "notes": "Section VIII.2, after the definition of symmetric. Read from the page image by the author of chapter C3, Lecture 4 (lane A, 2026-10-29): ddjvu -format=pnm -page=267 -scale=150; not from the text layer. Independent page-image review passed (R-0153; evidence/derivations/c03/REVIEW-lec4.md, section A)."
+  },
+  {
+   "id": "P-0324",
+   "claim_ids": [
+    "c03.cl.symmetrisch"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 267,
+    "printed_page": "255"
+   },
+   "quote": "$T$ is called self-adjoint if $T = T^*$, that is, if and only if $T$ is symmetric and $D(T) = D(T^*)$.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 4",
+   "review_receipt": "R-0153",
+   "notes": "Section VIII.2, definition of self-adjoint (the same sentence is a source of registry D19). Read from the page image by the author of chapter C3, Lecture 4 (lane A, 2026-10-29): ddjvu -format=pnm -page=267 -scale=150; not from the text layer. Independent page-image review passed (R-0153; evidence/derivations/c03/REVIEW-lec4.md, section A)."
+  },
+  {
+   "id": "P-0325",
+   "claim_ids": [
+    "c03.cl.symmetrisch"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 268,
+    "printed_page": "256"
+   },
+   "quote": "It is only for self-adjoint operators that the spectral theorem holds (see Section VIII.3) and it is only self-adjoint operators that may be exponentiated to give the one-parameter unitary groups (see Section VIII.4) which give the dynamics in quantum mechanics.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 4",
+   "review_receipt": "R-0153",
+   "notes": "Section VIII.2, after 'The distinction between closed symmetric operators and self-adjoint operators is very important.' Read from the page image by the author of chapter C3, Lecture 4 (lane A, 2026-10-29): ddjvu -format=pnm -page=268 -scale=150; not from the text layer. Independent page-image review passed (R-0153; evidence/derivations/c03/REVIEW-lec4.md, section A)."
+  },
+  {
+   "id": "P-0326",
+   "claim_ids": [
+    "c03.cl.adj-elemente"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 199,
+    "printed_page": "187"
+   },
+   "quote": "We remind the reader that on $\\mathbb{C}^n$, a linear transformation is self-adjoint if and only if its matrix in any orthonormal basis is invariant under the operation of reflection across the diagonal followed by complex conjugation.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 4",
+   "review_receipt": "R-0153",
+   "notes": "Section VI.2, after the definition of a self-adjoint bounded operator. Read from the page image by the author of chapter C3, Lecture 4 (lane A, 2026-10-29): ddjvu -format=pnm -page=199 -scale=150; not from the text layer. Independent page-image review passed (R-0153; evidence/derivations/c03/REVIEW-lec4.md, section A)."
+  },
+  {
+   "id": "P-0327",
+   "claim_ids": [
+    "c03.cl.shift"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 209,
+    "printed_page": "197"
+   },
+   "quote": "Let $A$ be the right shift operator on $\\ell_2$. Then $|A| = \\sqrt{A^*A} = I$ so if we write $A = U|A|$ we must have $U = A$. However, $A$ is not unitary since $(1, 0, 0, \\ldots)$ is not in its range.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 4",
+   "review_receipt": "R-0153",
+   "notes": "Section VI.4, Example before the definition of an isometry; |A| = sqrt(A*A) = I says A*A = I. Read from the page image by the author of chapter C3, Lecture 4 (lane A, 2026-10-29): ddjvu -format=pnm -page=209 -scale=150; not from the text layer. Independent page-image review passed (R-0153; evidence/derivations/c03/REVIEW-lec4.md, section A)."
+  },
+  {
+   "id": "P-0328",
+   "claim_ids": [
+    "c03.cl.shift"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 209,
+    "printed_page": "197"
+   },
+   "quote": "An operator $U \\in \\mathcal{L}(\\mathcal{H})$ is called an isometry if $\\|Ux\\| = \\|x\\|$ for all $x \\in \\mathcal{H}$.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 4",
+   "review_receipt": "R-0153",
+   "notes": "Section VI.4, definition of an isometry (equivalent to U*U = I, c03.cl.isometrie part 1). Read from the page image by the author of chapter C3, Lecture 4 (lane A, 2026-10-29): ddjvu -format=pnm -page=209 -scale=150; not from the text layer. Independent page-image review passed (R-0153; evidence/derivations/c03/REVIEW-lec4.md, section A)."
+  },
+  {
+   "id": "P-0329",
+   "claim_ids": [
+    "c03.cl.rollen"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "tpc-script-v0.2/git/latex/lectures/de/vl04.tex",
+   "member_sha256": "e10cd13b0287b5114f3a30a7bfa9bdbb16a53aab755f8573bca795ae4a03aae9",
+   "locus": {
+    "line_start": 69,
+    "line_end": 69
+   },
+   "quote": "die hermiteschen Operatoren beschreiben die Observablen, die positiven die Zustände, die Projektoren die Messungen mit den beiden Ausgängen null und eins (Ereignis oder kein Ereignis), die isometrischen und unitären die Dynamik",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0330",
+   "claim_ids": [
+    "c03.cl.positiv"
+   ],
+   "source_key": "tpc-script-v0.1",
+   "member": "../archive/skript-2022/Vorlesungen9.tex",
+   "member_sha256": "1be8c98623b8529aa48f6a545be19762405911135f6d6a66e7beda98ba4d2a47",
+   "locus": {
+    "line_start": 21,
+    "line_end": 21
+   },
+   "quote": "der Operator $M = (A+i\\lambda B)^\\dag (A+i\\lambda B)$ (per definition) positiv,",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null,
+   "notes": "The same sentence stands in latex/lectures/de/vl09.tex:25 (script v0.2, not a registered member). Backs the forward pointer after proposition c03.prop.positiv (G-0072 (b))."
   }
  ]
 }

@@ -1,0 +1,52 @@
+{
+ "schema_version": 1,
+ "id": "M-0053",
+ "status": "applied",
+ "title": "vl04: spelling and grammar slips ('endlich dimensional', 'is auch', 'stellt einen Unitaermatrix dar')",
+ "legacy": [
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl04.tex",
+   "line": 13,
+   "file_sha256": "e10cd13b0287b5114f3a30a7bfa9bdbb16a53aab755f8573bca795ae4a03aae9",
+   "old_text": "endlich dimensional",
+   "new_text": "endlichdimensional",
+   "applied_file_sha256": "f39e245d5da4da73fa9d394e81fc3530bd52ecbc097e65f6776f188e4a3df6e8",
+   "applied_source_key": "tpc-script-v0.3.1",
+   "applied_line": 17,
+   "applied_text": "endlichdimensional"
+  },
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl04.tex",
+   "line": 156,
+   "file_sha256": "e10cd13b0287b5114f3a30a7bfa9bdbb16a53aab755f8573bca795ae4a03aae9",
+   "old_text": "Die Matrix $B$ is auch positiv, und bildet einen Projektor.",
+   "new_text": "Die Matrix $B$ ist auch positiv und ein Projektor.",
+   "applied_file_sha256": "f39e245d5da4da73fa9d394e81fc3530bd52ecbc097e65f6776f188e4a3df6e8",
+   "applied_source_key": "tpc-script-v0.3.1",
+   "applied_line": 92,
+   "applied_text": "also ist $\\op{B}$ ein Projektor und damit positiv"
+  },
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl04.tex",
+   "line": 174,
+   "file_sha256": "e10cd13b0287b5114f3a30a7bfa9bdbb16a53aab755f8573bca795ae4a03aae9",
+   "old_text": "Die Matrix $C$ stellt einen Unitärmatrix dar",
+   "new_text": "Die Matrix $C$ ist unitär",
+   "applied_file_sha256": "f39e245d5da4da73fa9d394e81fc3530bd52ecbc097e65f6776f188e4a3df6e8",
+   "applied_source_key": "tpc-script-v0.3.1",
+   "applied_line": 99,
+   "applied_text": "ist unitär, denn"
+  }
+ ],
+ "reason": "Wording only (German edition; the English has none of these): 'endlich dimensional' is one word; 'is' for 'ist' and the comma before 'und' in line 156; 'einen Unitaermatrix' has the wrong article and is replaced by 'ist unitaer'. Line 13 and line 156 are rewritten in the condensed script (the lecture's finite-dimension hypothesis, line 17; B a projector and hence positive, line 91).",
+ "evidence": {
+  "independent_check": "read in the script sources at the stated lines",
+  "provenance_ids": []
+ },
+ "destination": "c03.ex.drei",
+ "notes": "Script v0.3, chapter 4 (docs/plan/script-v0.3/NOTES-ch4.md, 2026-10-29): applied in vl04.tex/lec04.tex lines 17, 91, 98.",
+ "applied_date": "2026-10-29"
+}

@@ -68,7 +68,7 @@
  "evidence": {
   "independent_check": "read in latex/lectures/de/vl01.tex and archive/skript-2022/Vorlesungen1.tex at the stated lines on 2026-10-11; the transcript's title is 'Die Geburt der QM' (transcripts/clean/v01.md, front matter)",
   "provenance_ids": [],
-  "notes": "Script v0.3 (2026-10-22, lane ch1, docs/plan/script-v0.3/NOTES-ch1.md): applied: section title 'Die Geburt der Quantenmechanik' (line 4); the 'richtiges ... konstante' passage is rewritten ('Das richtige liefert ...', 'Planck hat die Konstante h', line 12); the 'Beobachung' sentence is not in v0.3 (applied by removal). Destination: the uncommitted working tree registered as tpc-script-v0.3; the commit is still to be made by the coordinator. The v0.1 entries are not application targets."
+  "notes": "Script v0.3 (2026-10-22, lane ch1, docs/plan/script-v0.3/NOTES-ch1.md): applied: section title 'Die Geburt der Quantenmechanik' (line 4); the 'richtiges ... konstante' passage is rewritten ('Das richtige liefert ...', 'Planck hat die Konstante h', line 12); the 'Beobachung' sentence is not in v0.3 (applied by removal). Destination: script v0.3, committed in b1fd537 and registered as tpc-script-v0.3 (identifiers.git_commit). The v0.1 entries are not application targets."
  },
  "destination": "c00.s4",
  "applied_date": "2026-10-22"

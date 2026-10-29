@@ -496,8 +496,71 @@
     "transcripts/raw/v04_YpK1CnrLtaM.txt"
    ],
    "owner": "TJO",
+   "status": "closed",
+   "notes": "Raised in the Lecture 3 draft of chapter C3, 2026-10-21. Related: G-0034 (a) asks for a source that L^2(R) is separable; Reed-Simon I p. 142 (Lemma 3, P-0162: the Hermite functions are a countable orthonormal basis of L^2(R)) together with Theorem II.7 (p. 47) may supply it; not used for G-0034 in this draft. TJO answered 2026-10-29 (docs/plan/lec34/BRIEF.md; he took the coordinator's recommendations). (a) Put the |e_+-> remark (v03 [49:20]-[49:46]) back into c03.s4 as TJO's own forward pointer, the transcript as evidence. (b) Keep 'Cauchy-Schwarz steckt hinter der Unschärferelation', phrased so that the later uncertainty proof (positivity of (A + i lambda B)^dagger (A + i lambda B)) visibly picks it up. (c) The dimension count stays dropped. (d) 'Gram-Schmidt liefert immer eine Basis' stays not adopted. (e) The Kern/Vertiefung split for bases stands. Decision D14 (body with the explanation of 'vollständig') is accepted. Status stays 'open' (the schema allows only open and closed): items (a) and (b) are applied by lane A in content/c03-hilbertraum in the lecture 3/4 round and need review of the text; (c), (d), (e) need no change. Close this gap when the second review of the repaired c03 text confirms (a) and (b). Closed 2026-10-29: TJO took the recommendations (a)-(e) and D14; (a) is applied in c03.s4 (forward pointer, transcript evidence) and in the script (vl03:20), (b) in c03.s5 and c03.s10 (the positivity step of the uncertainty proof), and the second review (docs/review/lectures/REVIEW-lec3-second.md) confirms both."
+  },
+  {
+   "id": "G-0073",
+   "what": "Lecture 4 (vl04.tex:156, v04 [85:02]) says the projector B of the example is 'a model for measurements of the photon number in optical-fibre networks'. No source on disk or in the transcripts explains this; the sentence is left out of c03.ex.drei and of the script (M-0059).",
+   "needed_source": "A source or TJO's explanation of what the model is (which observable, which system), or his decision that the remark stays out.",
+   "where": "c03 example c03.ex.drei; script vl04/lec04 (example 4.1)",
+   "raised_in": [
+    "latex/lectures/de/vl04.tex:156",
+    "transcripts/raw/v04_YpK1CnrLtaM.txt"
+   ],
+   "owner": "TJO",
    "status": "open",
-   "notes": "Raised in the Lecture 3 draft of chapter C3, 2026-10-21. Related: G-0034 (a) asks for a source that L^2(R) is separable; Reed-Simon I p. 142 (Lemma 3, P-0162: the Hermite functions are a countable orthonormal basis of L^2(R)) together with Theorem II.7 (p. 47) may supply it; not used for G-0034 in this draft."
+   "notes": "Raised by lane A (docs/plan/lec34/NOTES-author.md section 4, G-new-1). Compare G-0033 (e), the photon in a fibre."
+  },
+  {
+   "id": "G-0074",
+   "what": "Roles of the operator classes (c03.eq.rollen, vl04.tex:69): the display keeps the script's 'hermitesch -> Observablen' and 'positiv -> Zustaende (mit einer Normierung)'. Chapter 4 of the course works with effects/POVMs and sharp observables (D24, D25); TJO should say whether the sentence says 'Observablen' or 'scharfe Observablen' here.",
+   "needed_source": "TJO's wording or decision.",
+   "where": "c03.eq.rollen; script vl04.tex line 48 (Klassen von Operatoren)",
+   "raised_in": [
+    "latex/lectures/de/vl04.tex:69",
+    "docs/plan/lec34/NOTES-author.md section 4"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Raised by lane A (G-new-2)."
+  },
+  {
+   "id": "G-0075",
+   "what": "Wording of the hat exceptions (merksatz Notation in c03.s8.1 and vl04.tex:22): identity without a hat; states and Pauli matrices 'die erst spaeter vorkommen'. The wording is the authors' after TJO's revised D-HAT (2026-10-29), not his own text.",
+   "needed_source": "TJO confirms or rewrites the merksatz.",
+   "where": "c03.s8.1; script vl04.tex:22, lec04.tex:22",
+   "raised_in": [
+    "docs/plan/lec34/BRIEF.md (D-HAT)",
+    "docs/plan/lec34/NOTES-author.md section 4"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Raised by lane A (G-new-3)."
+  },
+  {
+   "id": "G-0076",
+   "what": "c03.prop.isometrie part 2 (an isometry on a finite-dimensional space is unitary) and the closing 'weitere gibt es nicht' in c03.s12 (no other eigenvalues than the listed ones) use two facts of linear algebra as prerequisites that are not derived in the repository and have no source on disk: the rank-nullity theorem and 'eigenvalue implies det(A - lambda I) = 0'.",
+   "needed_source": "TJO's decision that these are acceptable as stated prerequisites from linear algebra, or a source on disk (a linear algebra text) for each.",
+   "where": "c03.prop.isometrie, c03.s12 (c03.cl.isometrie, c03.cl.spektren)",
+   "raised_in": [
+    "docs/plan/lec34/NOTES-author.md section 4"
+   ],
+   "owner": "TJO",
+   "status": "closed",
+   "notes": "Raised by lane A (G-new-4). Closed 2026-10-29: TJO accepts standard linear algebra (the rank-nullity theorem; eigenvalues as the roots of the characteristic polynomial) as a declared prerequisite of the course."
+  },
+  {
+   "id": "G-0077",
+   "what": "Script chapter 4 (vl04/lec04), to stay within the definition cap while the informal eigenvalue comes in (D-SPEKTREN): (1) the naming remark 'positiv / nicht negativ' (v0.2 vl04.tex:78, in D20's body) is cut; (2) operators as matrices (c03.ex.matrix) is one sentence, not an example; (3) the paragraph on kets and bras as maps (c03.s11.1, about 90 words) stays in the kernel. TJO should say whether any of the three goes back or out.",
+   "needed_source": "TJO's decision.",
+   "where": "script vl04.tex lines 17, 42, 66-74; lec04.tex",
+   "raised_in": [
+    "docs/plan/script-v0.3/NOTES-ch4.md (Open questions 1-3)"
+   ],
+   "owner": "TJO",
+   "status": "open",
+   "notes": "Raised by lane S."
   }
  ]
 }

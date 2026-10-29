@@ -1,8 +1,10 @@
 {
  "schema_version": 1,
- "note": "Migration map of the third lecture into chapter c03 (Lecture 3 draft, 2026-10-21). One entry per item of latex/lectures/de/vl03.tex as parsed by evidence/migrations/check_vl03_map.py (the parser of check_vl01_map.py): sections, display equations, environments (including the pmatrix columns), figure inputs, list items and paragraphs of running text. 'item' is '<kind>@<line>'. status: kept (destination = IDs in content/c03-hilbertraum/de.tex, or registry definitions transcluded there); deferred (the subsection Operatoren, lines 253-277, goes with Lecture 4). The English edition latex/lectures/en/lec03.tex has the same structure line for line and goes to the same destinations in en.tex. Material not in vl03.tex is listed in two separate lists: 'added_spoken' (what TJO says in the recorded lectures, with the locus in the timestamped raw transcripts transcripts/raw/v03_jKsPIgMb6OU.txt and v04_YpK1CnrLtaM.txt) and 'added_author' (examples, proofs and repairs written by the chapter author, with the repository derivation or the source that supports them).",
+ "note": "Migration map of the third lecture into chapter c03 (Lecture 3 draft, 2026-10-21). One entry per item of latex/lectures/de/vl03.tex as parsed by evidence/migrations/check_vl03_map.py (the parser of check_vl01_map.py): sections, display equations, environments (including the pmatrix columns), figure inputs, list items and paragraphs of running text. 'item' is '<kind>@<line>'. status: kept (destination = IDs in content/c03-hilbertraum/de.tex, or registry definitions transcluded there); kept (items 253-277, the subsection Operatoren, were deferred to Lecture 4 and are kept since 2026-10-29 with destinations c03.s8 to c03.s8.1 and D87). The English edition latex/lectures/en/lec03.tex has the same structure line for line and goes to the same destinations in en.tex. Material not in vl03.tex is listed in two separate lists: 'added_spoken' (what TJO says in the recorded lectures, with the locus in the timestamped raw transcripts transcripts/raw/v03_jKsPIgMb6OU.txt and v04_YpK1CnrLtaM.txt) and 'added_author' (examples, proofs and repairs written by the chapter author, with the repository derivation or the source that supports them). Since 2026-10-29 (script v0.3, chapters 3 and 4) the legacy text is read from the v0.2 snapshot (legacy_source, legacy_member; a Git member at commit 90fe735), not from the live file; line numbers and quoted items are v0.2's.",
  "legacy_file": "latex/lectures/de/vl03.tex",
  "legacy_sha256": "5ade0d2df8358f22497f3e207710b2c0efb7c74ea9da31ae420bcb23d469837e",
+ "legacy_source": "tpc-script-v0.2",
+ "legacy_member": "tpc-script-v0.2/git/latex/lectures/de/vl03.tex",
  "partly_deferred": [],
  "items": [
   {
@@ -1007,109 +1009,137 @@
   {
    "item": "section@253",
    "what": "\\subsection{Operatoren}",
-   "status": "deferred",
-   "deferred_to": "c03 (Lecture 4, vl04 migration)",
-   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3."
+   "status": "kept",
+   "destination": [
+    "c03.s8"
+   ],
+   "note": "Moved with the subsection Operatoren to Lecture 4 (vl04 migration, 2026-10-29); see vl04-map.json and M-0024."
   },
   {
    "item": "text@254",
    "what": "Nun zum zweiten Standbein der Theorie. Die Vektoren beschrei",
-   "status": "deferred",
-   "deferred_to": "c03 (Lecture 4, vl04 migration)",
-   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3."
+   "status": "kept",
+   "destination": [
+    "c03.s8"
+   ],
+   "note": "Moved with the subsection Operatoren to Lecture 4 (vl04 migration, 2026-10-29); see vl04-map.json and M-0024. The first clause 'Die Vektoren beschreiben die Zustände' is dropped (H3.2, M-0052)."
   },
   {
    "item": "text@256",
    "what": "Sei $\\mathcal{H}$ einen Hilbertraum. Ein \\emph{Operator} $A$",
-   "status": "deferred",
-   "deferred_to": "c03 (Lecture 4, vl04 migration)",
-   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3.",
+   "status": "kept",
    "migration": [
     "M-0024"
-   ]
+   ],
+   "destination": [
+    "D87"
+   ],
+   "note": "Moved with the subsection Operatoren to Lecture 4 (vl04 migration, 2026-10-29); see vl04-map.json and M-0024."
   },
   {
    "item": "equation@257",
    "what": "equation",
-   "status": "deferred",
-   "deferred_to": "c03 (Lecture 4, vl04 migration)",
-   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3."
+   "status": "kept",
+   "destination": [
+    "D87"
+   ],
+   "note": "Moved with the subsection Operatoren to Lecture 4 (vl04 migration, 2026-10-29); see vl04-map.json and M-0024."
   },
   {
    "item": "text@260",
    "what": "Das heisst,",
-   "status": "deferred",
-   "deferred_to": "c03 (Lecture 4, vl04 migration)",
-   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3.",
+   "status": "kept",
    "migration": [
     "M-0024"
-   ]
+   ],
+   "destination": [
+    "D87"
+   ],
+   "note": "Moved with the subsection Operatoren to Lecture 4 (vl04 migration, 2026-10-29); see vl04-map.json and M-0024."
   },
   {
    "item": "equation@261",
    "what": "equation",
-   "status": "deferred",
-   "deferred_to": "c03 (Lecture 4, vl04 migration)",
-   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3."
+   "status": "kept",
+   "destination": [
+    "D87"
+   ],
+   "note": "Moved with the subsection Operatoren to Lecture 4 (vl04 migration, 2026-10-29); see vl04-map.json and M-0024."
   },
   {
    "item": "text@264",
    "what": "und",
-   "status": "deferred",
-   "deferred_to": "c03 (Lecture 4, vl04 migration)",
-   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3."
+   "status": "kept",
+   "destination": [
+    "D87"
+   ],
+   "note": "Moved with the subsection Operatoren to Lecture 4 (vl04 migration, 2026-10-29); see vl04-map.json and M-0024."
   },
   {
    "item": "equation@265",
    "what": "equation",
-   "status": "deferred",
-   "deferred_to": "c03 (Lecture 4, vl04 migration)",
-   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3."
+   "status": "kept",
+   "destination": [
+    "D87"
+   ],
+   "note": "Moved with the subsection Operatoren to Lecture 4 (vl04 migration, 2026-10-29); see vl04-map.json and M-0024."
   },
   {
    "item": "text@268",
    "what": "für alle $\\alpha\\in \\mathbb{C}$ und $|\\phi\\rangle, |\\psi\\ran",
-   "status": "deferred",
-   "deferred_to": "c03 (Lecture 4, vl04 migration)",
-   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3."
+   "status": "kept",
+   "destination": [
+    "D87"
+   ],
+   "note": "Moved with the subsection Operatoren to Lecture 4 (vl04 migration, 2026-10-29); see vl04-map.json and M-0024."
   },
   {
    "item": "environment@270",
    "what": "beispiel",
-   "status": "deferred",
-   "deferred_to": "c03 (Lecture 4, vl04 migration)",
-   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3."
+   "status": "kept",
+   "destination": [
+    "c03.ex.matrix"
+   ],
+   "note": "Moved with the subsection Operatoren to Lecture 4 (vl04 migration, 2026-10-29); see vl04-map.json and M-0024."
   },
   {
    "item": "text@271",
    "what": "Im Fall, dass $\\mathcal{H}$ endlich dimensional ist, kann ma",
-   "status": "deferred",
-   "deferred_to": "c03 (Lecture 4, vl04 migration)",
-   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3.",
+   "status": "kept",
    "migration": [
     "M-0024"
-   ]
+   ],
+   "destination": [
+    "c03.ex.matrix"
+   ],
+   "note": "Moved with the subsection Operatoren to Lecture 4 (vl04 migration, 2026-10-29); see vl04-map.json and M-0024."
   },
   {
    "item": "equation@272",
    "what": "equation",
-   "status": "deferred",
-   "deferred_to": "c03 (Lecture 4, vl04 migration)",
-   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3."
+   "status": "kept",
+   "destination": [
+    "c03.eq.matrix"
+   ],
+   "note": "Moved with the subsection Operatoren to Lecture 4 (vl04 migration, 2026-10-29); see vl04-map.json and M-0024."
   },
   {
    "item": "environment@273",
    "what": "pmatrix",
-   "status": "deferred",
-   "deferred_to": "c03 (Lecture 4, vl04 migration)",
-   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3."
+   "status": "kept",
+   "destination": [
+    "c03.eq.matrix"
+   ],
+   "note": "Moved with the subsection Operatoren to Lecture 4 (vl04 migration, 2026-10-29); see vl04-map.json and M-0024."
   },
   {
    "item": "text@277",
    "what": "wobei $a_{jk} \\in \\mathbb{C}$, $\\forall 1 \\le j,k\\le 2$. Die",
-   "status": "deferred",
-   "deferred_to": "c03 (Lecture 4, vl04 migration)",
-   "reason": "The vl03 subsection Operatoren opens the material of vl04 (lecture video v04 starts operators at [46:45]) and is migrated with Lecture 4 into chapter c03; not part of Lecture 3."
+   "status": "kept",
+   "destination": [
+    "c03.ex.matrix"
+   ],
+   "note": "Moved with the subsection Operatoren to Lecture 4 (vl04 migration, 2026-10-29); see vl04-map.json and M-0024."
   }
  ],
  "added_spoken": [

@@ -320,15 +320,18 @@ $v_k=\Psi_k/\|\Psi_k\|$ one has $\Psi_k\langle\Psi_k|\Phi_n\rangle/\|\Psi_k\|^2=
 so $\Psi_n=w_n$ of Reed-Simon and $v_n=w_n/\|w_n\|$.
 
 <a id="c03.cl.gs-beispiel"></a>
-**c03.cl.gs-beispiel** (Kern, example c03.ex.gram-schmidt). $\Phi_1=(1,0)$, $\Phi_2=(1,1)$.
-$\Psi_1=\Phi_1$ (empty sum). $\langle\Psi_1|\Phi_2\rangle=1$, $\|\Psi_1\|^2=1$,
-$\Psi_2=(1,1)-(1,0)=(0,1)$; norms $1$. $\langle\Phi_1|\psi\rangle=\psi_1$,
+**c03.cl.gs-beispiel** (Kern, example c03.ex.gram-schmidt). $\Phi_1=(2,0)$, $\Phi_2=(1,1)$
+(script v0.3, vl03.tex:120-136; the lecture used $(1,0)$). $\Psi_1=\Phi_1$ (empty sum).
+$\langle\Psi_1|\Phi_2\rangle=2\cdot1+0\cdot1=2$, $\|\Psi_1\|^2=4$,
+$\Psi_2=(1,1)-(2,0)\cdot\tfrac24=(0,1)$. Norms $\|\Psi_1\|=2$, $\|\Psi_2\|=1$;
+$\Psi_1/2=(1,0)=e_0$, $\Psi_2=e_1$. $\langle\Phi_1|\psi\rangle=2\psi_1$,
 $\langle\Phi_2|\psi\rangle=\psi_1+\psi_2$; both zero gives $\psi=0$.
 
 <a id="c03.cl.gs-null"></a>
 **c03.cl.gs-null** (Kern, exercise c03.exc.gram-schmidt). $\Phi_3=(1,-1)$,
-$\langle\Psi_1|\Phi_3\rangle=1$, $\langle\Psi_2|\Phi_3\rangle=-1$, norms $1$:
-$\Psi_3=(1,-1)-1\cdot(1,0)-(-1)\cdot(0,1)=(0,0)$. $2\Phi_1-\Phi_2=(2-1,0-1)=(1,-1)=\Phi_3$.
+$\langle\Psi_1|\Phi_3\rangle=2$, $\|\Psi_1\|^2=4$, $\langle\Psi_2|\Phi_3\rangle=-1$,
+$\|\Psi_2\|^2=1$: $\Psi_3=(1,-1)-(2,0)\cdot\tfrac24-(0,1)\cdot\tfrac{-1}{1}=(0,0)$.
+$\Phi_1-\Phi_2=(2-1,0-1)=(1,-1)=\Phi_3$.
 
 <a id="c03.cl.maximal"></a>
 **c03.cl.maximal** (Vertiefung, proposition c03.prop.maximal). $X$ countable (finite or
@@ -371,3 +374,221 @@ $|\phi_0|^2=\pi^{-1/2}e^{-x^2}$; $\int e^{-x^2}dx=\sqrt\pi$ (c03.cl.gauss); prod
 - c03.cl.hermite (source-quoted, P-0162, P-0163, P-0164): Reed-Simon I section V.3, p. 142,
   Lemma 3 and the definition of $\phi_0$; the proof is deferred there to problems of
   Chapters IX and X. The chapter adds only the derived normalisation c03.cl.phinull.
+
+## Lecture 4: operators (vl04 material, with the vl03 subsection on operators)
+
+Added by the chapter author (lane A, 2026-10-29). Conventions as above. In addition: an operator
+is a linear map $A:\mathcal H\to\mathcal H$ (D87); "finite-dimensional" means that
+$\mathcal H$ has a basis $\{\phi_x\}_{x\in X}$ with finite $X$ (D85), so the expansion
+$\psi=\sum_x\langle\phi_x|\psi\rangle\phi_x$ holds (c03.cl.entwicklung); the adjoint is the
+operator with $\langle A^\dagger\phi|\psi\rangle=\langle\phi|A\psi\rangle$ (D17). Conjugating
+this with conjugate symmetry (c03.cl.symmetrie) gives (C): $\langle\psi|A^\dagger\phi\rangle=\langle A\psi|\phi\rangle$.
+check_c03.py recomputes every explicit matrix, number and eigenvalue below with exact
+arithmetic (sympy), and checks the general identities symbolically for generic $3\times3$
+(and $2\times2$) complex matrices.
+
+<a id="c03.cl.matrix"></a>
+**c03.cl.matrix** (Kern, example c03.ex.matrix). $(A\psi)_j=\sum_k a_{jk}\psi_k$, so
+$(A(\psi+\chi))_j=\sum_ka_{jk}(\psi_k+\chi_k)=(A\psi)_j+(A\chi)_j$ and
+$(A(\alpha\psi))_j=\alpha(A\psi)_j$: D87. Conversely, for a linear $A$ on $\mathbb C^n$ and the
+canonical columns $u_k$: $\psi=\sum_k\psi_ku_k$, so $A\psi=\sum_k\psi_kAu_k$, i.e. $A\psi$ is the
+matrix with columns $Au_k$ applied to $\psi$.
+
+<a id="c03.cl.adjungiert"></a>
+**c03.cl.adjungiert** (Kern, proposition c03.prop.adjungiert). Uniqueness: if $B,B'$ both
+satisfy the defining equation, $\langle B\phi-B'\phi|\psi\rangle=0$ for all $\psi$ by additivity
+(D82 (i)); with $\psi=B\phi-B'\phi$ this is $\|B\phi-B'\phi\|^2=0$, so $B\phi=B'\phi$ by
+positivity. Existence: $B\phi:=\sum_x\langle A\phi_x|\phi\rangle\phi_x$ is linear in $\phi$
+(D82 (i), (ii) in the second argument). Then, by (ii) in the first argument and conjugate
+symmetry, $\langle B\phi|\psi\rangle=\sum_x\langle A\phi_x|\phi\rangle^*\langle\phi_x|\psi\rangle=\sum_x\langle\phi|A\phi_x\rangle\langle\phi_x|\psi\rangle=\langle\phi|A\sum_x\langle\phi_x|\psi\rangle\phi_x\rangle=\langle\phi|A\psi\rangle$
+(linearity of $A$ and of the inner product in the second argument; expansion formula).
+
+<a id="c03.cl.adj-matrix"></a>
+**c03.cl.adj-matrix** (Kern, c03.eq.adj-matrix). In $\mathbb C^n$ with
+$\langle v|w\rangle=\sum_jv_j^*w_j$:
+$\langle\phi|A\psi\rangle=\sum_{j,k}\phi_j^*a_{jk}\psi_k=\sum_k(\sum_ja_{jk}^*\phi_j)^*\psi_k=\langle\tilde A\phi|\psi\rangle$
+with $\tilde A_{kj}=a_{jk}^*$; by uniqueness (c03.cl.adjungiert) $A^\dagger=\tilde A$, the
+conjugate transpose. Weighted product $\langle v|w\rangle_c=v_1^*w_1+c\,v_2^*w_2$ ($c>0$ real),
+$A=\begin{pmatrix}0&1\\0&0\end{pmatrix}$, $B=\begin{pmatrix}0&0\\1/c&0\end{pmatrix}$: $Bv=(0,v_1/c)$,
+$\langle Bv|w\rangle_c=c\,(v_1/c)^*w_2=v_1^*w_2$; $Aw=(w_2,0)$,
+$\langle v|Aw\rangle_c=v_1^*w_2$. Equal for all $v,w$, so $B$ is the adjoint for
+$\langle\cdot|\cdot\rangle_c$; $B\neq A^T{}^*=\begin{pmatrix}0&0\\1&0\end{pmatrix}$ for $c\neq1$
+(check_c03.py checks this symbolically in $c$).
+
+<a id="c03.cl.produkt"></a>
+**c03.cl.produkt** (Kern, c03.eq.produkt). $(AB)\psi:=A(B\psi)$ is linear (composition of linear
+maps), so an operator. For matrices, $(A(B\psi))_j=\sum_ka_{jk}\sum_lb_{kl}\psi_l=\sum_l(\sum_ka_{jk}b_{kl})\psi_l$:
+the matrix product (prerequisite: linear algebra; TJO 2026-10-29: standard linear algebra
+accepted as prerequisite). With $E=\begin{pmatrix}0&1\\0&0\end{pmatrix}$,
+$F=\begin{pmatrix}0&0\\1&0\end{pmatrix}$: $EF=\begin{pmatrix}1&0\\0&0\end{pmatrix}$,
+$FE=\begin{pmatrix}0&0\\0&1\end{pmatrix}\neq EF$ (check_c03.py).
+
+<a id="c03.cl.adj-regeln"></a>
+**c03.cl.adj-regeln** (Kern, proposition c03.prop.adj-regeln). By uniqueness it suffices to show
+that the right-hand side satisfies the defining equation. Sum: additivity in the first argument.
+$(zA)^\dagger$: $\langle z^*A^\dagger\phi|\psi\rangle=(z^*)^*\langle A^\dagger\phi|\psi\rangle=z\langle\phi|A\psi\rangle=\langle\phi|zA\psi\rangle$.
+Product: $\langle B^\dagger A^\dagger\phi|\psi\rangle=\langle A^\dagger\phi|B\psi\rangle=\langle\phi|AB\psi\rangle$.
+Double adjoint: $\langle A\phi|\psi\rangle=\langle\psi|A\phi\rangle^*=\langle A^\dagger\psi|\phi\rangle^*=\langle\phi|A^\dagger\psi\rangle$,
+so $A$ satisfies the defining equation of $(A^\dagger)^\dagger$.
+
+<a id="c03.cl.positiv"></a>
+**c03.cl.positiv** (Kern, proposition c03.prop.positiv). (1) $\Rightarrow$: $\langle\psi|A\psi\rangle=\langle A\psi|\psi\rangle=\langle\psi|A\psi\rangle^*$
+for $A=A^\dagger$ (defining equation with $\phi=\psi$; conjugate symmetry). $\Leftarrow$: let
+$D=A-A^\dagger$; by (C) $\langle\psi|A^\dagger\psi\rangle=\langle A\psi|\psi\rangle=\langle\psi|A\psi\rangle^*$,
+so $\langle\psi|D\psi\rangle=r-r^*=0$ for real $r=\langle\psi|A\psi\rangle$. Sesquilinearity:
+$\langle\phi+\xi|D(\phi+\xi)\rangle=\langle\phi|D\phi\rangle+\langle\phi|D\xi\rangle+\langle\xi|D\phi\rangle+\langle\xi|D\xi\rangle$,
+so $\langle\phi|D\xi\rangle+\langle\xi|D\phi\rangle=0$; and
+$\langle\phi+i\xi|D(\phi+i\xi)\rangle=\langle\phi|D\phi\rangle+i\langle\phi|D\xi\rangle-i\langle\xi|D\phi\rangle+\langle\xi|D\xi\rangle$
+($(-i)(i)=1$), so $i\langle\phi|D\xi\rangle-i\langle\xi|D\phi\rangle=0$. Dividing by $i$ and
+adding: $2\langle\phi|D\xi\rangle=0$; with $\phi=D\xi$ positivity gives $D\xi=0$. The step uses
+complex scalars ($i$). (2) $\langle\psi|A\psi\rangle\ge0$ is real; apply (1). (3)
+$\langle\psi|B^\dagger B\psi\rangle=\langle B\psi|B\psi\rangle\ge0$ by (C) with $A\to B$,
+$\phi\to B\psi$. (4) $P=P^2=P^\dagger P$ since $P=P^\dagger$; apply (3). Context row P-0330:
+the author's proof of the uncertainty relation (archive v0.1 Vorlesungen9.tex:21, unchanged in
+vl09.tex:25) uses exactly (3) for $A+i\lambda B$ in place of $B$ (written $C^\dagger C$ there, $\widehat D^\dagger\widehat D$ in the chapter).
+
+<a id="c03.cl.isometrie"></a>
+**c03.cl.isometrie** (Kern, proposition c03.prop.isometrie). (1) By (C) with $A\to V$,
+$\langle V\phi|\chi\rangle=\langle\phi|V^\dagger\chi\rangle$; with $\chi=V\psi$,
+$\langle V\phi|V\psi\rangle=\langle\phi|V^\dagger V\psi\rangle$. If equal to
+$\langle\phi|\psi\rangle$ for all $\phi$: $\langle\phi|(V^\dagger V-\mathbb I)\psi\rangle=0$, take
+$\phi=(V^\dagger V-\mathbb I)\psi$, positivity. (2) $V\psi=0\Rightarrow\|\psi\|^2=\langle V\psi|V\psi\rangle=0$
+by (1): $\ker V=\{0\}$. Prerequisite (linear algebra, rank-nullity theorem; TJO 2026-10-29:
+standard linear algebra accepted as prerequisite): a linear map of a finite-dimensional vector
+space into itself with trivial kernel is surjective. So every vector is
+$V\psi$, and $VV^\dagger(V\psi)=V(V^\dagger V)\psi=V\psi$: $VV^\dagger=\mathbb I$. (3)
+$A^\dagger A=AA=AA^\dagger$ for $A=A^\dagger$; $U^\dagger U=\mathbb I=UU^\dagger$. Positive
+operators and projectors are Hermitian (c03.cl.positiv), isometries unitary by (2).
+
+<a id="c03.cl.wirkung"></a>
+**c03.cl.wirkung** (Kern, c03.eq.wirkung). Expansion of $\Psi$, linearity of $A$ (numbers
+commute with $A$), expansion of each $A\phi_y=\sum_x\langle\phi_x|A\phi_y\rangle\phi_x$, and
+reordering of the finite double sum. Both sums run independently over $X$.
+
+<a id="c03.cl.adj-elemente"></a>
+**c03.cl.adj-elemente** (Kern, c03.eq.adj-elemente). $[A^\dagger]_{xy}=\langle\phi_x|A^\dagger\phi_y\rangle=\langle A\phi_x|\phi_y\rangle$
+by (C), $=\langle\phi_y|A\phi_x\rangle^*=[A]_{yx}^*$ by conjugate symmetry. Valid for any inner
+product and any orthonormal basis with finite index set. P-0326 (Reed-Simon I p. 187) quotes the
+self-adjoint special case for $\mathbb C^n$.
+
+<a id="c03.cl.bra-op"></a>
+**c03.cl.bra-op** (Kern, c03.eq.bra-op). $\mathbb C$ with $\langle a|b\rangle=a^*b$ satisfies
+D82 ($\mathbb C^1$). $K:\mathbb C\to\mathcal H$, $Kz=z\Psi$, linear. Candidate
+$L:\mathcal H\to\mathbb C$, $L\Phi=\langle\Psi|\Phi\rangle$ (linear in $\Phi$). For all
+$\Phi,z$: $\langle L\Phi|z\rangle_{\mathbb C}=\langle\Psi|\Phi\rangle^*z=\langle\Phi|\Psi\rangle z=\langle\Phi|z\Psi\rangle=\langle\Phi|Kz\rangle$,
+the defining equation of $K^\dagger$ (the D17 equation applied to a map between two Hilbert
+spaces). Uniqueness as in c03.cl.adjungiert (the argument uses only positivity in $\mathbb C$).
+Composition: $\langle\Phi|(|\Psi\rangle z)=z\langle\Phi|\Psi\rangle$.
+
+<a id="c03.cl.ketbra"></a>
+**c03.cl.ketbra** (Kern, proposition c03.prop.ketbra). $(|\Psi\rangle\langle\Phi|)\xi=\langle\Phi|\xi\rangle\Psi$
+(D94). Adjoint: $\langle\zeta|(|\Psi\rangle\langle\Phi|)\xi\rangle=\langle\Phi|\xi\rangle\langle\zeta|\Psi\rangle$;
+$\langle(|\Phi\rangle\langle\Psi|)\zeta|\xi\rangle=\langle\langle\Psi|\zeta\rangle\Phi|\xi\rangle=\langle\Psi|\zeta\rangle^*\langle\Phi|\xi\rangle=\langle\zeta|\Psi\rangle\langle\Phi|\xi\rangle$;
+equal, so by uniqueness $(|\Psi\rangle\langle\Phi|)^\dagger=|\Phi\rangle\langle\Psi|$.
+$\sum_x|x\rangle\langle x|\Psi=\sum_x\langle x|\Psi\rangle x=\Psi$ (expansion) $=\mathbb I\Psi$.
+$\sum_{x,y}\langle x|A|y\rangle|x\rangle\langle y|\Psi=\sum_{x,y}x\,[A]_{xy}\langle y|\Psi\rangle=A\Psi$ (c03.cl.wirkung).
+
+<a id="c03.cl.drei"></a>
+**c03.cl.drei** (Kern, example c03.ex.drei). $A^T=A$ real, $B^T=B$ real, so $A^\dagger=A$,
+$B^\dagger=B$ (c03.cl.adj-matrix). $(B^2)_{jk}=\sum_l\tfrac13\cdot\tfrac13=\tfrac13$, so
+$B^2=B$; positive by c03.cl.positiv (4). $A\psi$ for $\psi=(\tfrac12,-\tfrac1{\sqrt2},\tfrac12)$:
+$(-\tfrac1{\sqrt2},\tfrac12+\tfrac12,-\tfrac1{\sqrt2})=(-\tfrac1{\sqrt2},1,-\tfrac1{\sqrt2})$;
+$\langle\psi|A\psi\rangle=-\tfrac1{2\sqrt2}-\tfrac1{\sqrt2}-\tfrac1{2\sqrt2}=-\tfrac2{\sqrt2}=-\sqrt2<0$.
+$C^\dagger$ = conjugate transpose $=\begin{pmatrix}0&0&-1\\1&0&0\\0&-i&0\end{pmatrix}$;
+$C^\dagger C=\mathbb I$ and $CC^\dagger=\mathbb I$ entrywise. $\langle x|B|y\rangle=B_{xy}=\tfrac13$.
+Ket-bra form: $C|0\rangle$ = first column $=(0,0,-1)=-|2\rangle$, $C|1\rangle=(1,0,0)=|0\rangle$,
+$C|2\rangle=(0,i,0)=i|1\rangle$; the ket-bra sum gives the same on each basis vector by
+$\langle x|y\rangle=\delta_{xy}$, hence on every vector by linearity.
+
+<a id="c03.cl.c-ketbra"></a>
+**c03.cl.c-ketbra** (Kern, exercise c03.exc.ketbra). $C^\dagger=(|0\rangle\langle1|)^\dagger+(i|1\rangle\langle2|)^\dagger-(|2\rangle\langle0|)^\dagger=|1\rangle\langle0|-i|2\rangle\langle1|-|0\rangle\langle2|$
+(c03.cl.adj-regeln, c03.cl.ketbra). $|a\rangle\langle b|\,|c\rangle\langle d|=\langle b|c\rangle|a\rangle\langle d|$.
+Of the nine products only those with $b=c$ survive: $|1\rangle\langle0|0\rangle\langle1|=|1\rangle\langle1|$,
+$(-i)(i)|2\rangle\langle1|1\rangle\langle2|=|2\rangle\langle2|$,
+$(-1)(-1)|0\rangle\langle2|2\rangle\langle0|=|0\rangle\langle0|$. Sum $=\mathbb I$ (c03.cl.ketbra).
+
+<a id="c03.cl.orte"></a>
+**c03.cl.orte** (Kern, c03.eq.orte). $Av=\lambda v$, $v\neq0$, normalise $\|v\|=1$
+($A(v/\|v\|)=\lambda v/\|v\|$). Then $\langle v|Av\rangle=\lambda\langle v|v\rangle=\lambda$.
+Hermitian: real by c03.cl.positiv (1). Positive: $\lambda\ge0$ by definition. Projector:
+$\lambda^2v=A^2v=Av=\lambda v$, $v\neq0$, so $\lambda^2=\lambda$. Isometry ($A^\dagger A=\mathbb I$,
+includes unitary): $|\lambda|=\|\lambda v\|=\|Av\|=\|v\|=1$ by c03.cl.isometrie (1). No
+normality is used. Normal without constraint: $(\lambda\mathbb I)^\dagger(\lambda\mathbb I)=|\lambda|^2\mathbb I=(\lambda\mathbb I)(\lambda\mathbb I)^\dagger$
+and $(\lambda\mathbb I)v=\lambda v$.
+
+<a id="c03.cl.spektren"></a>
+**c03.cl.spektren** (Kern, c03.eq.spektren). $A(1,\pm\sqrt2,1)=(\pm\sqrt2,2,\pm\sqrt2)=\pm\sqrt2(1,\pm\sqrt2,1)$,
+$A(1,0,-1)=(0,0,0)$. $B(1,1,1)=(1,1,1)$, $B(1,-1,0)=0$. $C(1,\lambda,-i\lambda^2)=(\lambda,i(-i\lambda^2),-1)=(\lambda,\lambda^2,-1)$
+and $\lambda(1,\lambda,-i\lambda^2)=(\lambda,\lambda^2,-i\lambda^3)$; equal iff $-i\lambda^3=-1$, i.e.
+$\lambda^3=-i$ (multiply by $i$). Solutions: $\lambda=e^{i\theta}$ with $3\theta\equiv-\pi/2$
+(mod $2\pi$): $\theta=-\pi/6,\ \pi/2,\ 7\pi/6$, i.e. $e^{-i\pi/6}$, $i$, $e^{7i\pi/6}$.
+No others: characteristic polynomials $\det(A-\lambda)=-\lambda(\lambda^2-2)$,
+$\det(B-\lambda)=-\lambda^2(\lambda-1)$, $\det(C-\lambda)=-(\lambda^3+i)$ (check_c03.py); an
+eigenvalue $\lambda$ makes $A-\lambda$ non-injective, hence $\det(A-\lambda)=0$. Prerequisite
+(linear algebra: the eigenvalues are the roots of $\det(A-\lambda\mathbb I)$; TJO 2026-10-29:
+standard linear algebra accepted as prerequisite).
+$\psi=(\tfrac12,-\tfrac1{\sqrt2},\tfrac12)=\tfrac12(1,-\sqrt2,1)$, $\|\psi\|^2=\tfrac14+\tfrac12+\tfrac14=1$:
+the normalised eigenvector for $-\sqrt2$, so $\langle\psi|A\psi\rangle=-\sqrt2$ (c03.cl.drei).
+
+<a id="c03.cl.beschraenkt"></a>
+**c03.cl.beschraenkt** (Vertiefung c03.v5, c03.eq.beschraenkt). $(A\psi)_j=\sum_ka_{jk}\psi_k=\langle r_j|\psi\rangle$
+with $r_j=(a_{j1}^*,\dots,a_{jn}^*)$. Schwarz (c03.cl.schwarz) for the inner product of
+$\mathbb C^n$: $|(A\psi)_j|^2\le\|r_j\|^2\|\psi\|^2=\sum_k|a_{jk}|^2\|\psi\|^2$. Sum over $j$:
+$\|A\psi\|^2\le(\sum_{j,k}|a_{jk}|^2)\|\psi\|^2$; $C=(\sum_{j,k}|a_{jk}|^2)^{1/2}$ in the sense of
+P-0318.
+
+<a id="c03.cl.unbeschraenkt"></a>
+**c03.cl.unbeschraenkt** (Vertiefung c03.v5, example c03.ex.unbeschraenkt). $(Mu_k)_j=j\delta_{jk}=k\delta_{jk}$,
+so $Mu_k=ku_k$, $\|Mu_k\|=k=k\|u_k\|$; a bound $C$ would need $C\ge k$ for every $k$. $v_j=1/j$
+is in $\ell^2$ (c03.cl.rate); $(Mv)_j=1$ for all $j$, the all-ones vector, not in $\ell^2$
+(c03.cl.einsen). For $\sum_jj^2|v_j|^2<\infty$, $Mv\in\ell^2$ and
+$\sum_j|v_j^*\,jv_j|=\sum_jj|v_j|^2\le\sum_jj^2|v_j|^2<\infty$ (termwise, $j\le j^2$), so
+$\langle v|Mv\rangle=\sum_jj|v_j|^2$ is finite. For $v_j=1/j$, $\sum_jj|v_j|^2=\sum_j1/j$
+diverges (c03.cl.rate).
+
+<a id="c03.cl.elemente-unendlich"></a>
+**c03.cl.elemente-unendlich** (Vertiefung c03.v5, c03.eq.elemente-unendlich). $T$ linear on all
+of $\ell^2$ with $\|Tw\|\le C\|w\|$. $v_N=\sum_{k\le N}v_ku_k$; $\|v-v_N\|^2=\sum_{k>N}|v_k|^2\to0$
+(tail of a convergent series; c03.cl.elltwo-basis). Linearity: $Tv_N=\sum_{k\le N}v_kTu_k$, whose
+$j$-th entry is $u_j^\dagger(Tv_N)=\sum_{k\le N}[T]_{jk}v_k$. Boundedness:
+$\|Tv-Tv_N\|=\|T(v-v_N)\|\le C\|v-v_N\|\to0$. Schwarz with $\|u_j\|=1$:
+$|u_j^\dagger(Tv)-u_j^\dagger(Tv_N)|\le\|Tv-Tv_N\|\to0$. So the series
+$\sum_k[T]_{jk}v_k$ converges to $(Tv)_j$ for every $j$, and $Tv$ (a vector of $\ell^2$, hence
+fixed by its entries) is determined by the numbers $[T]_{jk}$ and $v$. Counterexample without
+boundedness: $M$ on $F$ (finitely supported sequences) and on
+$D_{\max}=\{v:\sum_jj^2|v_j|^2<\infty\}$; both contain every $u_k$, $Mu_k=ku_k$, so
+$[M]_{jk}=u_j^\dagger(ku_k)=k\delta_{jk}=j\delta_{jk}$ on both; $F\neq D_{\max}$ (e.g. $v_j=1/j^2$:
+$\sum_jj^2|v_j|^2=\sum_j1/j^2<\infty$, infinitely many nonzero entries), so the two operators
+differ (different domains).
+
+<a id="c03.cl.ganz"></a>
+**c03.cl.ganz** (Vertiefung c03.v5, proposition c03.prop.symmetrisch). Symmetric:
+$D(T)\subset D(T^*)$ and $T=T^*$ on $D(T)$ (P-0322). With $D(T)=\mathcal H$:
+$\mathcal H=D(T)\subset D(T^*)\subset\mathcal H$, so $D(T^*)=D(T)$ and $T=T^*$, self-adjoint
+(P-0324). In finite dimension every operator is defined on all of $\mathcal H$ (D87) and a
+Hermitian operator satisfies $\langle A\phi|\psi\rangle=\langle\phi|A\psi\rangle$ for all
+$\phi,\psi$, which is the equivalent form of symmetric (P-0323).
+
+<a id="c03.cl.shift"></a>
+**c03.cl.shift** (Vertiefung c03.v6, example c03.ex.shift). $(Sv)_1=0$, $(Sv)_{j+1}=v_j$.
+$\sum_j(Sv)_j^*(Sw)_j=\sum_{j\ge1}v_j^*w_j$ (same terms, shifted), so $\|Sv\|=\|v\|$, $Sv\in\ell^2$,
+and $\langle Sv|Sw\rangle=\langle v|w\rangle$. $L w=(w_2,w_3,\dots)$ is in $\ell^2$ (a tail of a
+convergent series) and $\langle Lw|v\rangle=\sum_kw_{k+1}^*v_k=\sum_{j\ge2}w_j^*(Sv)_j=\langle w|Sv\rangle$
+(absolutely convergent by c03.cl.elltwo), so $L=S^\dagger$ (uniqueness as in c03.cl.adjungiert).
+$LSv=v$: $S^\dagger S=\mathbb I$. $SLu_1=S0=0\neq u_1$: $SS^\dagger\neq\mathbb I$, so $S$ is
+not unitary and, since $S^\dagger S=\mathbb I\neq SS^\dagger$, not normal. $\ker S=\{0\}$ and $u_1$
+is not in the range (first entry of $Sv$ is $0$). P-0327, P-0328: Reed-Simon I p. 197.
+
+### Lecture 4: what is quoted, not derived
+
+- c03.cl.rollen (source-backed, P-0329): the roles of the classes, vl04.tex:69 of the author's
+  script (also v04 [72:57]-[73:45]); "with a normalisation" from D22.
+- c03.cl.hellinger-toeplitz (source-quoted, P-0319, P-0320, P-0321): Reed-Simon I, section III.5,
+  Corollary, p. 84 (proof via the closed graph theorem), and the remarks on p. 84 and p. 249.
+  Reed-Simon's inner product is linear in the second argument, as in the course; the condition
+  $(x,Ay)=(Ax,y)$ for all $x,y$ reads $\langle\phi|T\psi\rangle=\langle T\phi|\psi\rangle$.
+- c03.cl.symmetrisch (source-quoted, P-0322 to P-0325): Reed-Simon I, section VIII.2,
+  pp. 255-256, definitions of symmetric (or Hermitian) and self-adjoint, and the remark on the
+  spectral theorem and the unitary groups.
+- Page-image rows P-0318 to P-0328 were read from the rendered pages by the chapter author;
+  an independent page-image review receipt is still to be made.

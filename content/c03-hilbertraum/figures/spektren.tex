@@ -1,0 +1,85 @@
+% c03.fig.spektren — operator classes recognised by their eigenvalues.
+% Adapted from latex/figures/fig_vl04_spektren.tex (script v0.2) to the course conventions:
+% plate tokens and data roles only, geometry from the formulas, shape and dash carry the
+% class so that nothing depends on hue.
+%
+% (a) The loci of c03.eq.orte.  For an eigenvector |v> with ||v|| = 1 and A|v> = lambda|v>:
+%       A^dag = A          =>  lambda^* = lambda   the real axis        (solid line, role q1)
+%       <psi|A psi> >= 0   =>  lambda >= 0         the half-axis        (broad strip, role q2)
+%       A^2 = A^dag = A    =>  lambda^2 = lambda   the points 0 and 1   (filled dots, role q3)
+%       A^dag A = I        =>  |lambda| = 1        the unit circle      (dashed, role q4)
+%     Normality alone constrains nothing (lambda I is normal for every lambda): a note.
+% (b) The eigenvalues of the three operators of example c03.ex.drei (c03.eq.spektren;
+%     check_c03.py recomputes them from the characteristic polynomials):
+%       A: det(A - lambda) = -lambda (lambda^2 - 2)   =>  0, +sqrt 2, -sqrt 2  (filled discs)
+%       B: rank one, B = |u><u| with u = (1,1,1)/sqrt 3 =>  1, 0               (rings)
+%       C: det(C - lambda) = -(lambda^3 + i)           =>  lambda^3 = -i, i.e.
+%          arg lambda = (-pi/2 + 2 pi k)/3 = -30, 90, 210 degrees on |lambda| = 1 (diamonds)
+%     The shared eigenvalue 0 of A and B is drawn where it belongs: a disc inside a ring.
+%     The unit circle and the axes are reference lines in (b), drawn hairline.
+% Scale: 1 = 1.05 cm in both directions in both panels; each panel spans x in [-2, 2.1],
+% so the picture fits the measure.
+\begin{tikzpicture}[x=1.05cm, y=1.05cm]
+  % ---------------------------------------------------------------- (a)
+  \begin{scope}
+    % positive: lambda >= 0, a broad strip under the real axis
+    \fill[tpc-q2!40!tpc-plate] (0,-0.09) rectangle (1.85,0.09);
+    \draw[tpc axis, -{Stealth[length=4pt]}] (-2.0,0) -- (2.1,0);
+    \draw[tpc axis, -{Stealth[length=4pt]}] (0,-1.45) -- (0,1.65);
+    \node[tpc label, anchor=south east] at (2.1,0.08) {$\operatorname{Re}\lambda$};
+    \node[tpc label, anchor=west] at (0.08,1.6) {$\operatorname{Im}\lambda$};
+    % Hermitian: lambda^* = lambda, the real axis (solid)
+    \draw[tpc q1] (-1.85,0) -- (1.85,0);
+    % unitary: |lambda| = 1 (dashed)
+    \draw[tpc q4, dashed] (0,0) circle (1);
+    % projector: lambda^2 = lambda, the points 0 and 1 (filled dots)
+    \fill[tpc-q3] (0,0) circle (2.6pt);
+    \fill[tpc-q3] (1,0) circle (2.6pt);
+    % class labels, outside the unit circle
+    \node[tpc label, anchor=south west] at (0.62,0.82)
+      {\tpcifenglish{unitary}{unitär}: $\abs{\lambda} = 1$};
+    \node[tpc label, anchor=south east, align=right] at (-1.0,0.12)
+      {\tpcifenglish{projector}{Projektor}:\\$\lambda \in \{0, 1\}$};
+    \node[tpc label, anchor=north east, align=right] at (-1.0,-0.12)
+      {\tpcifenglish{Hermitian}{hermitesch}:\\$\lambda^* = \lambda$};
+    \node[tpc label, anchor=north west, align=left] at (1.02,-0.14)
+      {\tpcifenglish{positive}{positiv}:\\$\lambda \geq 0$};
+    \node[tpc label, anchor=north] at (0,-1.5)
+      {\tpcifenglish{normal: all of}{normal: ganz} $\mathbb{C}$};
+    \node[tpc label] at (0,-2.05) {(a)};
+  \end{scope}
+  % ---------------------------------------------------------------- (b)
+  \begin{scope}[shift={(4.55,0)}]
+    \draw[tpc grid] (0,0) circle (1);
+    \draw[tpc axis, -{Stealth[length=4pt]}] (-2.0,0) -- (2.1,0);
+    \draw[tpc axis, -{Stealth[length=4pt]}] (0,-1.45) -- (0,1.65);
+    \node[tpc label, anchor=west] at (2.12,0) {$\operatorname{Re}\lambda$};
+    \node[tpc label, anchor=west] at (0.08,1.6) {$\operatorname{Im}\lambda$};
+    % C: lambda^3 = -i, three diamonds on the unit circle
+    \foreach \a in {-30,90,210} {
+      \fill[tpc-q4] (\a:1) ++(0,3.4pt) -- ++(3.4pt,-3.4pt) -- ++(-3.4pt,-3.4pt)
+        -- ++(-3.4pt,3.4pt) -- cycle;
+    }
+    % A: 0, +sqrt 2, -sqrt 2, filled discs
+    \fill[tpc-q1] ({-sqrt(2)},0) circle (2.4pt);
+    \fill[tpc-q1] (0,0) circle (2.4pt);
+    \fill[tpc-q1] ({sqrt(2)},0) circle (2.4pt);
+    % B: 1 and 0, rings (the ring at 0 encircles the disc of A)
+    \draw[tpc q3] (0,0) circle (4.4pt);
+    \draw[tpc q3] (1,0) circle (4.4pt);
+    % readings
+    \node[tpc label, anchor=north] at ({-sqrt(2)},-0.12) {$-\sqrt{2}$};
+    \node[tpc label, anchor=south] at ({sqrt(2)},0.1) {$\sqrt{2}$};
+    \node[tpc label, anchor=north west] at (1.04,-0.1) {$1$};
+    \node[tpc label, anchor=north east] at (-0.06,-0.14) {$0$};
+    % operator names with leaders
+    \node[tpc label, anchor=south] at ({-sqrt(2)},0.42) {$\op{A}$};
+    \draw[tpc leader] ({-sqrt(2)},0.42) -- ({-sqrt(2)},0.1);
+    \node[tpc label, anchor=south east] at (0.72,0.3) {$\op{B}$};
+    \draw[tpc leader] (0.70,0.32) -- (0.93,0.11);
+    \node[tpc label, anchor=south east] at (-0.14,1.04) {$\op{C}$};
+    \node[tpc label, anchor=north, align=center] at ({-sqrt(2)},-0.48)
+      {\tpcifenglish{not}{nicht}\\\tpcifenglish{positive}{positiv}};
+    \node[tpc label] at (0,-2.05) {(b)};
+  \end{scope}
+\end{tikzpicture}

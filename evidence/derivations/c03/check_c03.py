@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exact re-computation of the explicit numbers of chapter C3 (vl02 and vl03 material).
+"""Exact re-computation of the explicit numbers of chapter C3 (vl02, vl03 and vl04 material).
 
 Usage: python3 evidence/derivations/c03/check_c03.py
 Prints one line per check and 'ALL OK' last; exit status 1 on any failure.
@@ -159,13 +159,19 @@ def gram_schmidt(Phis):
     return Psis
 
 
-G = gram_schmidt([[1, 0], [1, 1]])
-check("c03.cl.gs-beispiel  Psi_1 = (1,0), Psi_2 = (0,1)", G == [[1, 0], [0, 1]])
-check("c03.cl.gs-beispiel  <Psi_1|Phi_2> = 1, ||Psi_1||^2 = 1", ip([1, 0], [1, 1]) == 1 and ip([1, 0], [1, 0]) == 1)
-G3 = gram_schmidt([[1, 0], [1, 1], [1, -1]])
+G = gram_schmidt([[2, 0], [1, 1]])
+check("c03.cl.gs-beispiel  Psi_1 = (2,0), Psi_2 = (0,1)", G == [[2, 0], [0, 1]])
+check("c03.cl.gs-beispiel  <Psi_1|Phi_2> = 2, ||Psi_1||^2 = 4", ip([2, 0], [1, 1]) == 2 and ip([2, 0], [2, 0]) == 4)
+check("c03.cl.gs-beispiel  (1,1) - (2,0)*2/4 = (0,1)", [1 - 2 * sp.Rational(2, 4), 1 - 0] == [0, 1])
+check("c03.cl.gs-beispiel  norms 2 and 1; Psi_1/2 = e_0, Psi_2 = e_1",
+      sp.sqrt(ip(G[0], G[0])) == 2 and sp.sqrt(ip(G[1], G[1])) == 1 and [a / 2 for a in G[0]] == [1, 0] and G[1] == [0, 1])
+check("c03.cl.gs-beispiel  <Phi_1|psi> = 2 psi_1, <Phi_2|psi> = psi_1 + psi_2 = 0 only for psi = 0",
+      sp.solve([2 * sp.Symbol("p1"), sp.Symbol("p1") + sp.Symbol("p2")], [sp.Symbol("p1"), sp.Symbol("p2")]) == {sp.Symbol("p1"): 0, sp.Symbol("p2"): 0})
+G3 = gram_schmidt([[2, 0], [1, 1], [1, -1]])
 check("c03.cl.gs-null  Psi_3 = 0", G3[2] == [0, 0])
-check("c03.cl.gs-null  <Psi_1|Phi_3> = 1, <Psi_2|Phi_3> = -1", ip([1, 0], [1, -1]) == 1 and ip([0, 1], [1, -1]) == -1)
-check("c03.cl.gs-null  Phi_3 = 2 Phi_1 - Phi_2", [2 * 1 - 1, 2 * 0 - 1] == [1, -1])
+check("c03.cl.gs-null  <Psi_1|Phi_3> = 2, ||Psi_1||^2 = 4, <Psi_2|Phi_3> = -1, ||Psi_2||^2 = 1",
+      ip([2, 0], [1, -1]) == 2 and ip([2, 0], [2, 0]) == 4 and ip([0, 1], [1, -1]) == -1 and ip([0, 1], [0, 1]) == 1)
+check("c03.cl.gs-null  Phi_3 = Phi_1 - Phi_2", [2 - 1, 0 - 1] == [1, -1])
 # Gram-Schmidt property 1 on a complex example in C^3 with a dependent vector
 Gc = gram_schmidt([[1, I, 0], [0, 1, 1], [1, 1 + I, 1], [2, 0, I]])
 check("c03.cl.gram-schmidt  pairwise orthogonal (C^3, complex, dependent vector -> 0)",
@@ -173,5 +179,181 @@ check("c03.cl.gram-schmidt  pairwise orthogonal (C^3, complex, dependent vector 
       and Gc[2] == [0, 0, 0])
 check("c03.cl.phinull  int pi^{-1/2} e^{-x^2} = 1",
       sp.simplify(sp.integrate(sp.pi ** sp.Rational(-1, 2) * sp.exp(-x ** 2), (x, -sp.oo, sp.oo))) == 1)
+# ---------------------------------------------------------------- Lecture 4 (vl04)
+M = sp.Matrix
+Id3 = sp.eye(3)
+
+
+def is_zero(m):
+    return sp.simplify(m) == sp.zeros(*m.shape)
+
+
+A = M([[0, 1, 0], [1, 0, 1], [0, 1, 0]])
+B = sp.Rational(1, 3) * sp.ones(3, 3)
+Cm = M([[0, 1, 0], [0, 0, I], [-1, 0, 0]])
+check("c03.cl.drei  A^dag = A", A.H == A)
+check("c03.cl.drei  B^dag = B", B.H == B)
+check("c03.cl.drei  B^2 = B (projector)", B * B == B)
+check("c03.cl.drei  every entry of B^2 is 1/3*1/3*(1+1+1) = 1/3",
+      all(e == sp.Rational(1, 3) for e in (B * B)) and sp.Rational(1, 3) * sp.Rational(1, 3) * 3 == sp.Rational(1, 3))
+psi = M([sp.Rational(1, 2), -1 / sp.sqrt(2), sp.Rational(1, 2)])
+check("c03.cl.drei  A psi = (-1/sqrt2, 1, -1/sqrt2)", is_zero(A * psi - M([-1 / sp.sqrt(2), 1, -1 / sp.sqrt(2)])))
+check("c03.cl.drei  <psi|A|psi> = -sqrt2", sp.simplify((psi.H * A * psi)[0] + sp.sqrt(2)) == 0)
+check("c03.cl.drei  C^dag = ((0,0,-1),(1,0,0),(0,-i,0))", Cm.H == M([[0, 0, -1], [1, 0, 0], [0, -I, 0]]))
+check("c03.cl.drei  C^dag C = 1", Cm.H * Cm == Id3)
+check("c03.cl.drei  C C^dag = 1", Cm * Cm.H == Id3)
+kets = [Id3[:, k] for k in range(3)]
+
+
+def kb(a, b):
+    return a * b.H
+
+
+check("c03.cl.drei  <x|B|y> = 1/3 for all x, y",
+      all((kets[x].H * B * kets[y])[0] == sp.Rational(1, 3) for x in range(3) for y in range(3)))
+Ckb = kb(kets[0], kets[1]) + I * kb(kets[1], kets[2]) - kb(kets[2], kets[0])
+check("c03.cl.drei  C = |0><1| + i|1><2| - |2><0|", Ckb == Cm)
+check("c03.cl.drei  C|0> = -|2>, C|1> = |0>, C|2> = i|1>",
+      Cm * kets[0] == -kets[2] and Cm * kets[1] == kets[0] and Cm * kets[2] == I * kets[1])
+Cdag_kb = kb(kets[1], kets[0]) - I * kb(kets[2], kets[1]) - kb(kets[0], kets[2])
+check("c03.cl.c-ketbra  C^dag = |1><0| - i|2><1| - |0><2|", Cdag_kb == Cm.H)
+check("c03.cl.c-ketbra  C^dag C = |0><0| + |1><1| + |2><2| = 1",
+      Cdag_kb * Ckb == kb(kets[0], kets[0]) + kb(kets[1], kets[1]) + kb(kets[2], kets[2]) == Id3)
+lam = sp.symbols("lambda")
+check("c03.cl.spektren  det(A - lambda) = -lambda (lambda^2 - 2)",
+      sp.expand((A - lam * Id3).det() + lam * (lam ** 2 - 2)) == 0)
+check("c03.cl.spektren  det(B - lambda) = -lambda^2 (lambda - 1)",
+      sp.expand((B - lam * Id3).det() + lam ** 2 * (lam - 1)) == 0)
+check("c03.cl.spektren  det(C - lambda) = -(lambda^3 + i)", sp.expand((Cm - lam * Id3).det() + (lam ** 3 + I)) == 0)
+check("c03.cl.spektren  roots of A: {0, sqrt2, -sqrt2}",
+      set(sp.solve((A - lam * Id3).det(), lam)) == {0, sp.sqrt(2), -sp.sqrt(2)})
+check("c03.cl.spektren  roots of B: {0, 1}", set(sp.solve((B - lam * Id3).det(), lam)) == {0, 1})
+roots_C = [sp.exp(-I * sp.pi / 6), I, sp.exp(7 * I * sp.pi / 6)]
+check("c03.cl.spektren  e^{-i pi/6}, i, e^{7 i pi/6} solve lambda^3 = -i and are distinct",
+      all(sp.simplify(sp.expand_complex(r ** 3) + I) == 0 for r in roots_C)
+      and len({sp.nsimplify(sp.expand_complex(r)) for r in roots_C}) == 3)
+check("c03.cl.spektren  eigenvectors of A",
+      is_zero(A * M([1, sp.sqrt(2), 1]) - sp.sqrt(2) * M([1, sp.sqrt(2), 1]))
+      and is_zero(A * M([1, 0, -1]))
+      and is_zero(A * M([1, -sp.sqrt(2), 1]) + sp.sqrt(2) * M([1, -sp.sqrt(2), 1])))
+check("c03.cl.spektren  eigenvectors of B", B * M([1, 1, 1]) == M([1, 1, 1]) and is_zero(B * M([1, -1, 0])))
+check("c03.cl.spektren  C (1, l, -i l^2) = l (1, l, -i l^2) for each root",
+      all(is_zero(sp.expand_complex(Cm * M([1, r, -I * r ** 2]) - r * M([1, r, -I * r ** 2]))) for r in roots_C))
+check("c03.cl.spektren  psi = (1,-sqrt2,1)/2, ||psi|| = 1, A psi = -sqrt2 psi",
+      is_zero(psi - M([1, -sp.sqrt(2), 1]) / 2) and sp.simplify((psi.H * psi)[0]) == 1
+      and is_zero(A * psi + sp.sqrt(2) * psi))
+# generic symbolic checks (3x3 complex matrices, standard inner product)
+ar = sp.symbols("ar0:9", real=True)
+ai = sp.symbols("ai0:9", real=True)
+br = sp.symbols("br0:9", real=True)
+bi = sp.symbols("bi0:9", real=True)
+GA = M(3, 3, [ar[k] + I * ai[k] for k in range(9)])
+GB = M(3, 3, [br[k] + I * bi[k] for k in range(9)])
+pr, pi_, qr, qi = (sp.symbols(n + "0:3", real=True) for n in ("pr", "pi", "qr", "qi"))
+ph = M([pr[k] + I * pi_[k] for k in range(3)])
+ps = M([qr[k] + I * qi[k] for k in range(3)])
+zr, zi = sp.symbols("zr zi", real=True)
+z = zr + I * zi
+
+
+def ipm(u, v):
+    return sp.expand((u.H * v)[0])
+
+
+check("c03.cl.adj-matrix  <A^dag phi|psi> = <phi|A psi> with A^dag = conjugate transpose (generic 3x3)",
+      sp.expand(ipm(GA.H * ph, ps) - ipm(ph, GA * ps)) == 0)
+check("c03.cl.adjungiert  A^dag phi = sum_x <A phi_x|phi> phi_x equals the conjugate transpose (generic 3x3)",
+      is_zero(sum((ipm(GA * kets[x], ph) * kets[x] for x in range(3)), sp.zeros(3, 1)) - GA.H * ph))
+check("c03.cl.adj-regeln  (A+B)^dag, (zA)^dag, (AB)^dag, (A^dag)^dag (generic 3x3)",
+      is_zero((GA + GB).H - GA.H - GB.H) and is_zero((z * GA).H - sp.conjugate(z) * GA.H)
+      and is_zero((GA * GB).H - GB.H * GA.H) and (GA.H).H == GA)
+check("c03.cl.adj-elemente  [A^dag]_xy = [A]_yx^* (generic 3x3, canonical basis)",
+      all(sp.expand((kets[x].H * GA.H * kets[y])[0] - sp.conjugate((kets[y].H * GA * kets[x])[0])) == 0
+          for x in range(3) for y in range(3)))
+cc = sp.symbols("c", positive=True)
+v1, v2, w1, w2 = sp.symbols("v1 v2 w1 w2")
+
+
+def ipc(v, w):
+    return sp.conjugate(v[0]) * w[0] + cc * sp.conjugate(v[1]) * w[1]
+
+
+Aw = M([[0, 1], [0, 0]])
+Bw = M([[0, 0], [1 / cc, 0]])
+vv2, ww2 = M([v1, v2]), M([w1, w2])
+check("c03.cl.adj-matrix  weighted product: adjoint of ((0,1),(0,0)) is ((0,0),(1/c,0))",
+      sp.simplify(ipc(Bw * vv2, ww2) - ipc(vv2, Aw * ww2)) == 0)
+check("c03.cl.adj-matrix  ... which differs from the conjugate transpose for c = 2", Bw.subs(cc, 2) != Aw.H)
+# c03.cl.positiv: polarisation identity used in part 1, with C = A - A^dag (generic 3x3)
+Cg = GA - GA.H
+lhs1 = ipm(ph + ps, Cg * (ph + ps)) - ipm(ph, Cg * ph) - ipm(ps, Cg * ps)
+lhs2 = ipm(ph + I * ps, Cg * (ph + I * ps)) - ipm(ph, Cg * ph) - ipm(ps, Cg * ps)
+check("c03.cl.positiv  <phi+xi|C(phi+xi)> - diag = <phi|C xi> + <xi|C phi>",
+      sp.expand(lhs1 - ipm(ph, Cg * ps) - ipm(ps, Cg * ph)) == 0)
+check("c03.cl.positiv  <phi+i xi|C(phi+i xi)> - diag = i<phi|C xi> - i<xi|C phi>",
+      sp.expand(lhs2 - I * ipm(ph, Cg * ps) + I * ipm(ps, Cg * ph)) == 0)
+check("c03.cl.positiv  <psi|B^dag B psi> = ||B psi||^2 >= 0 (generic 3x3)",
+      sp.expand(ipm(ps, GB.H * GB * ps) - ipm(GB * ps, GB * ps)) == 0
+      and sp.im(sp.expand(ipm(GB * ps, GB * ps))) == 0)
+check("c03.cl.positiv  B = B^dag B for the projector of c03.ex.drei", B.H * B == B)
+check("c03.cl.isometrie  C preserves inner products (<C phi|C psi> = <phi|psi>, generic vectors)",
+      sp.expand(ipm(Cm * ph, Cm * ps) - ipm(ph, ps)) == 0)
+check("c03.cl.isometrie  A, B normal (Hermitian), C normal (unitary)",
+      A.H * A == A * A.H and B.H * B == B * B.H and Cm.H * Cm == Cm * Cm.H)
+check("c03.cl.wirkung  A|Psi> = sum_{x,y} |x>[A]_xy<y|Psi> (generic 3x3)",
+      is_zero(sum((kets[x] * (kets[x].H * GA * kets[y])[0] * (kets[y].H * ps)[0]
+                   for x in range(3) for y in range(3)), sp.zeros(3, 1)) - GA * ps))
+check("c03.cl.ketbra  sum_x |x><x| = 1, A = sum <x|A|y> |x><y| (generic 3x3)",
+      sum((kb(kets[x], kets[x]) for x in range(3)), sp.zeros(3, 3)) == Id3
+      and is_zero(sum(((kets[x].H * GA * kets[y])[0] * kb(kets[x], kets[y])
+                       for x in range(3) for y in range(3)), sp.zeros(3, 3)) - GA))
+check("c03.cl.ketbra  (|Psi><Phi|)^dag = |Phi><Psi| (generic vectors)", is_zero(kb(ps, ph).H - kb(ph, ps)))
+check("c03.cl.bra-op  <Phi|z Psi> = <Psi|Phi>^* z (generic vectors, generic z)",
+      sp.expand(ipm(ph, z * ps) - sp.conjugate(ipm(ps, ph)) * z) == 0)
+check("c03.cl.orte  lambda*1 is normal for generic complex lambda",
+      is_zero((z * Id3).H * (z * Id3) - (z * Id3) * (z * Id3).H))
+check("c03.cl.matrix  matrix times column is linear, columns are the images of u_k (generic 3x3)",
+      is_zero(GA * (ph + z * ps) - GA * ph - z * GA * ps)
+      and all(GA * kets[k] == GA[:, k] for k in range(3)))
+check("c03.cl.beschraenkt  ||A psi||^2 <= (sum |a_jk|^2) ||psi||^2 for A, B, C of c03.ex.drei and one sample complex matrix, three sample vectors",
+      all(sp.N((Mx * vec).norm() ** 2) <= sp.N(sum(abs(e) ** 2 for e in Mx) * vec.norm() ** 2) + 1e-12
+          for Mx in (A, B, Cm, GA.subs({**{s: k + 1 for k, s in enumerate(ar)}, **{s: 2 - k for k, s in enumerate(ai)}}))
+          for vec in (M([1, -2, 3]), M([I, 1, 1 - I]), psi)))
+# shift on l^2, truncated to the first N entries of finitely supported vectors
+N = 6
+vs = [sp.Rational(k + 1, 3) + I * k for k in range(N)]
+ws = [k - I * sp.Rational(1, k + 2) for k in range(N)]
+
+
+def S(v):
+    return [0] + list(v)
+
+
+def Sd(w):
+    return list(w[1:])
+
+
+def ipl(v, w):
+    n = max(len(v), len(w))
+    v = list(v) + [0] * (n - len(v))
+    w = list(w) + [0] * (n - len(w))
+    return sp.expand(sum(sp.conjugate(a) * b for a, b in zip(v, w)))
+
+
+check("c03.cl.shift  <Sv|Sw> = <v|w> (finitely supported v, w)", ipl(S(vs), S(ws)) == ipl(vs, ws))
+check("c03.cl.shift  <S^dag w|v> = <w|Sv>", ipl(Sd(ws), vs) == ipl(ws, S(vs)))
+check("c03.cl.shift  S^dag S v = v, S S^dag u_1 = 0", Sd(S(vs)) == vs and S(Sd([1, 0, 0])) == [0, 0, 0])
+check("c03.cl.unbeschraenkt  M u_k = k u_k, (M v)_j = 1 for v_j = 1/j (j = 1..20)",
+      all(j * sp.Rational(1, j) == 1 for j in range(1, 21)))
+# c03.cl.elemente-unendlich: partial sums of the series for a bounded example (C acting on the
+# first three entries, identity beyond) and the M counterexample data
+check("c03.cl.elemente-unendlich  [M]_jk = k delta_jk = j delta_jk (j, k <= 6)",
+      all((k if j == k else 0) == (j if j == k else 0) for j in range(1, 7) for k in range(1, 7)))
+check("c03.cl.elemente-unendlich  v_j = 1/j^2: sum j^2 |v_j|^2 = sum 1/j^2 < 2 (N = 30), infinitely many nonzero entries",
+      sum(sp.Rational(j * j, j ** 4) for j in range(1, 31)) < 2)
+E2, F2 = M([[0, 1], [0, 0]]), M([[0, 0], [1, 0]])
+check("c03.cl.produkt  EF = ((1,0),(0,0)), FE = ((0,0),(0,1)), EF != FE",
+      E2 * F2 == M([[1, 0], [0, 0]]) and F2 * E2 == M([[0, 0], [0, 1]]) and E2 * F2 != F2 * E2)
+check("c03.cl.produkt  (AB) psi = A (B psi) (generic 3x3)", is_zero((GA * GB) * ps - GA * (GB * ps)))
 print("ALL OK" if not fails else f"{len(fails)} FAILED")
 sys.exit(1 if fails else 0)

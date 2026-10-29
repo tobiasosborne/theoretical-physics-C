@@ -2,9 +2,9 @@
  "_generated": {
   "by": "scripts/registry/gen_registry.py",
   "inputs_sha256": {
-   "notation.json": "06843364ea121ef31ae5d6a1f56b5224538a3fa5d59faf3c41d34ce7b6cd6e67",
-   "definitions.json": "585448c941817761a26d7cd34b68e3fc005ec975e37b166a56b3ae4f16bcb2e4",
-   "conventions.json": "a376a57b23b3a84aa2eb310817d70bacf219028f2e639533d9f68856071ebf23",
+   "notation.json": "5d09cc1ffda6d55946fbf84c2b793db4c8689df05e2f284e475d94652453af20",
+   "definitions.json": "95b38a80e9b9213ad3d831d8dd71c41f80ee8cc05b17362708bf651b8c4b290d",
+   "conventions.json": "4228c2a96f76fc654fc16ddba336dcebda035fe36d86efa866807ff52a10b5e7",
    "translation.json": "b6c82517800df4b56f6a23748542a780295112a32d409cb13b1a71e7c7268cf9"
   }
  },
@@ -794,13 +794,13 @@
     "en": "operator hat"
    },
    "meaning": {
-    "de": "Kennzeichnung eines Operators durch ein Dach",
-    "en": "marking of an operator by a hat"
+    "de": "Kennzeichnung eines Operators durch ein Dach; \\op{A} ist der Operator zum Buchstaben A",
+    "en": "marking of an operator by a hat; \\op{A} is the operator belonging to the letter A"
    },
    "depth": "kern",
-   "first_fixed_in": "C3",
-   "status": "proposed",
-   "verified": false
+   "first_fixed_in": "D87",
+   "status": "blessed-provisional",
+   "verified": true
   },
   {
    "symbol_id": "sym.hbar",
@@ -3197,6 +3197,94 @@
    },
    "depth": "kern",
    "first_fixed_in": "D84",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.null-operator",
+   "macro": "Nul",
+   "args": 0,
+   "expansion": "\\widehat{0}",
+   "tex": "\\widehat{0}",
+   "usage": "\\Nul",
+   "unicode": "0̂",
+   "mathml": "<math><mover accent=\"true\"><mn>0</mn><mo>^</mo></mover></math>",
+   "name": {
+    "de": "Nulloperator",
+    "en": "null operator"
+   },
+   "meaning": {
+    "de": "Operator, der jeden Vektor auf den Nullvektor abbildet",
+    "en": "operator that maps every vector to the zero vector"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D88",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.matrix-element",
+   "macro": "melem",
+   "args": 3,
+   "expansion": "\\langle #1 \\rvert #2 \\lvert #3 \\rangle",
+   "tex": "\\langle {\\phi_x} \\rvert {\\widehat{A}} \\lvert {\\phi_y} \\rangle",
+   "usage": "\\melem{\\phi_x}{\\widehat{A}}{\\phi_y}",
+   "unicode": "⟨φ_x|Â|φ_y⟩",
+   "mathml": "<math><mrow><mo>⟨</mo><msub><mi>ϕ</mi><mi>x</mi></msub><mo>|</mo><mover accent=\"true\"><mi>A</mi><mo>^</mo></mover><mo>|</mo><msub><mi>ϕ</mi><mi>y</mi></msub><mo>⟩</mo></mrow></math>",
+   "name": {
+    "de": "Matrixelement",
+    "en": "matrix element"
+   },
+   "meaning": {
+    "de": "Matrixelement ⟨φ_x|Âφ_y⟩ eines Operators zwischen zwei Vektoren (meist Basisvektoren)",
+    "en": "matrix element ⟨φ_x|Âφ_y⟩ of an operator between two vectors (usually basis vectors)"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D93",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.matrix-entry",
+   "macro": "entry",
+   "args": 3,
+   "expansion": "[#1]_{#2#3}",
+   "tex": "[{\\widehat{A}}]_{{x}{y}}",
+   "usage": "\\entry{\\widehat{A}}{x}{y}",
+   "unicode": "[Â]_xy",
+   "mathml": "<math><mrow><mo>[</mo><mover accent=\"true\"><mi>A</mi><mo>^</mo></mover><msub><mo>]</mo><mrow><mi>x</mi><mi>y</mi></mrow></msub></mrow></math>",
+   "name": {
+    "de": "Matrixeintrag",
+    "en": "matrix entry"
+   },
+   "meaning": {
+    "de": "Eintrag [Â]_{xy} in Zeile x, Spalte y der Matrix von Â bezüglich einer fixierten Orthonormalbasis",
+    "en": "entry [Â]_{xy} in row x, column y of the matrix of Â with respect to a fixed orthonormal basis"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D93",
+   "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.ketbra",
+   "macro": "ketbra",
+   "args": 2,
+   "expansion": "\\lvert #1 \\rangle\\!\\langle #2 \\rvert",
+   "tex": "\\lvert {\\Psi} \\rangle\\!\\langle {\\Phi} \\rvert",
+   "usage": "\\ketbra{\\Psi}{\\Phi}",
+   "unicode": "|Ψ⟩⟨Φ|",
+   "mathml": "<math><mrow><mo>|</mo><mi mathvariant=\"normal\">Ψ</mi><mo>⟩</mo><mspace/><mo>⟨</mo><mi mathvariant=\"normal\">Φ</mi><mo>|</mo></mrow></math>",
+   "name": {
+    "de": "Ket-Bra",
+    "en": "ket-bra (outer product)"
+   },
+   "meaning": {
+    "de": "Ket-Bra |Ψ⟩⟨Φ|: der Operator |χ⟩ ↦ ⟨Φ|χ⟩ |Ψ⟩",
+    "en": "ket-bra |Ψ⟩⟨Φ|: the operator |χ⟩ ↦ ⟨Φ|χ⟩ |Ψ⟩"
+   },
+   "depth": "kern",
+   "first_fixed_in": "D94",
    "status": "blessed-provisional",
    "verified": true
   }

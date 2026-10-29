@@ -2,9 +2,9 @@
  "_generated": {
   "by": "scripts/registry/gen_registry.py",
   "inputs_sha256": {
-   "notation.json": "06843364ea121ef31ae5d6a1f56b5224538a3fa5d59faf3c41d34ce7b6cd6e67",
-   "definitions.json": "585448c941817761a26d7cd34b68e3fc005ec975e37b166a56b3ae4f16bcb2e4",
-   "conventions.json": "a376a57b23b3a84aa2eb310817d70bacf219028f2e639533d9f68856071ebf23",
+   "notation.json": "5d09cc1ffda6d55946fbf84c2b793db4c8689df05e2f284e475d94652453af20",
+   "definitions.json": "95b38a80e9b9213ad3d831d8dd71c41f80ee8cc05b17362708bf651b8c4b290d",
+   "conventions.json": "4228c2a96f76fc654fc16ddba336dcebda035fe36d86efa866807ff52a10b5e7",
    "translation.json": "b6c82517800df4b56f6a23748542a780295112a32d409cb13b1a71e7c7268cf9"
   }
  },
@@ -339,38 +339,51 @@
   {
    "id": "D17",
    "name": {
-    "de": "adjungierter Operator (beschränkt und unbeschränkt)",
-    "en": "adjoint (bounded and unbounded)"
+    "de": "adjungierter Operator",
+    "en": "adjoint operator"
    },
    "body": {
-    "de": "Platzhalter. Dieser Eintrag legt fest: adjungierter Operator (beschränkt und unbeschränkt). Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
-    "en": "Placeholder. This entry will fix: adjoint (bounded and unbounded). The wording is entered only after it has been checked against the source."
+    "de": "Sei $\\Hil$ ein endlichdimensionaler Hilbertraum und $\\op{A}$ ein Operator auf $\\Hil$ (D87). Der \\emph{adjungierte Operator} $\\op{A}\\adj$ ist durch $\\braket{\\op{A}\\adj\\phi}{\\psi} = \\braket{\\phi}{\\op{A}\\psi}$ für alle $\\ket{\\phi}, \\ket{\\psi} \\in \\Hil$ festgelegt, nicht durch eine Rechenvorschrift, sondern durch sein Verhalten unter dem Skalarprodukt. Es gibt genau einen solchen Operator, und bezüglich einer Orthonormalbasis ist seine Matrix die konjugiert transponierte, $\\entry{\\op{A}\\adj}{x}{y} = \\entry{\\op{A}}{y}{x}^*$. Es gilt $(\\op{A} + \\op{B})\\adj = \\op{A}\\adj + \\op{B}\\adj$, $(z\\op{A})\\adj = z^* \\op{A}\\adj$, $(\\op{A}\\op{B})\\adj = \\op{B}\\adj\\op{A}\\adj$ und $(\\op{A}\\adj)\\adj = \\op{A}$. Auf unendlichdimensionalen Räumen benutzt man dieselbe Gleichung; dann muss man aber sagen, auf welchen Vektoren $\\op{A}$ und $\\op{A}\\adj$ definiert sind. Für dicht definierte Operatoren steht das in D19.",
+    "en": "Let $\\Hil$ be a finite-dimensional Hilbert space and $\\op{A}$ an operator on $\\Hil$ (D87). The \\emph{adjoint operator} $\\op{A}\\adj$ is fixed by $\\braket{\\op{A}\\adj\\phi}{\\psi} = \\braket{\\phi}{\\op{A}\\psi}$ for all $\\ket{\\phi}, \\ket{\\psi} \\in \\Hil$, not by a computing rule but by its behaviour under the inner product. There is exactly one such operator, and with respect to an orthonormal basis its matrix is the conjugate transpose, $\\entry{\\op{A}\\adj}{x}{y} = \\entry{\\op{A}}{y}{x}^*$. One has $(\\op{A} + \\op{B})\\adj = \\op{A}\\adj + \\op{B}\\adj$, $(z\\op{A})\\adj = z^* \\op{A}\\adj$, $(\\op{A}\\op{B})\\adj = \\op{B}\\adj\\op{A}\\adj$ and $(\\op{A}\\adj)\\adj = \\op{A}$. On infinite-dimensional spaces the same equation is used; then one must, however, say on which vectors $\\op{A}$ and $\\op{A}\\adj$ are defined. For densely defined operators this is in D19."
    },
-   "symbol_ids": [],
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.ket",
+    "sym.inner-product",
+    "sym.adjoint",
+    "sym.operator-hat",
+    "sym.matrix-entry"
+   ],
    "depth": "kern",
    "origin": "source-adapted",
    "choices": [],
-   "status": "proposed",
+   "status": "blessed-provisional",
    "first_fixed_in": "C3",
-   "needs_check": true
+   "needs_check": false
   },
   {
    "id": "D18",
    "name": {
-    "de": "symmetrischer (hermitescher) Operator",
-    "en": "symmetric (Hermitian) operator"
+    "de": "hermitescher Operator",
+    "en": "Hermitian operator"
    },
    "body": {
-    "de": "Platzhalter. Dieser Eintrag legt fest: symmetrischer (hermitescher) Operator. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
-    "en": "Placeholder. This entry will fix: symmetric (Hermitian) operator. The wording is entered only after it has been checked against the source."
+    "de": "Ein Operator $\\op{A}$ auf einem endlichdimensionalen Hilbertraum $\\Hil$ (D87) heißt \\emph{hermitesch}, wenn $\\op{A}\\adj = \\op{A}$ ist (D17), gleichwertig $\\braket{\\op{A}\\phi}{\\psi} = \\braket{\\phi}{\\op{A}\\psi}$ für alle $\\ket{\\phi}, \\ket{\\psi} \\in \\Hil$. Auf einem endlichdimensionalen Raum heißt ein hermitescher Operator auch \\emph{selbstadjungiert}; die beiden Wörter sind dort gleichbedeutend. Für hermitesches $\\op{A}$ ist $\\braket{\\psi}{\\op{A}\\psi}$ für jedes $\\ket{\\psi}$ eine reelle Zahl.",
+    "en": "An operator $\\op{A}$ on a finite-dimensional Hilbert space $\\Hil$ (D87) is called \\emph{Hermitian} if $\\op{A}\\adj = \\op{A}$ (D17), equivalently $\\braket{\\op{A}\\phi}{\\psi} = \\braket{\\phi}{\\op{A}\\psi}$ for all $\\ket{\\phi}, \\ket{\\psi} \\in \\Hil$. On a finite-dimensional space a Hermitian operator is also called \\emph{self-adjoint}; there the two words mean the same. For Hermitian $\\op{A}$ the number $\\braket{\\psi}{\\op{A}\\psi}$ is real for every $\\ket{\\psi}$."
    },
-   "symbol_ids": [],
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.ket",
+    "sym.inner-product",
+    "sym.adjoint",
+    "sym.operator-hat"
+   ],
    "depth": "kern",
    "origin": "source-adapted",
    "choices": [],
-   "status": "proposed",
+   "status": "blessed-provisional",
    "first_fixed_in": "C3",
-   "needs_check": true
+   "needs_check": false
   },
   {
    "id": "D19",
@@ -398,20 +411,26 @@
   {
    "id": "D20",
    "name": {
-    "de": "positiver Operator, Operatorordnung",
-    "en": "positive operator, operator order"
+    "de": "positiver Operator",
+    "en": "positive operator"
    },
    "body": {
-    "de": "Platzhalter. Dieser Eintrag legt fest: positiver Operator, Operatorordnung. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
-    "en": "Placeholder. This entry will fix: positive operator, operator order. The wording is entered only after it has been checked against the source."
+    "de": "Ein Operator $\\op{A}$ auf $\\Hil$ (D87) heißt \\emph{positiv}, wenn $\\braket{\\psi}{\\op{A}\\psi} \\ge 0$ für alle $\\ket{\\psi} \\in \\Hil$ gilt. Im komplexen Hilbertraum ist ein positiver Operator hermitesch (D18). Jeder Operator der Form $\\op{B}\\adj\\op{B}$ ist positiv, denn $\\braket{\\psi}{\\op{B}\\adj\\op{B}\\psi} = \\braket{\\op{B}\\psi}{\\op{B}\\psi} \\ge 0$. Die Sprechweise ist nachlässig: die Bedingung lässt den Wert null zu, \\emph{nicht negativ} wäre genauer; die strikte Ungleichung für alle $\\ket{\\psi} \\neq 0$ heißt \\emph{positiv definit}.",
+    "en": "An operator $\\op{A}$ on $\\Hil$ (D87) is called \\emph{positive} if $\\braket{\\psi}{\\op{A}\\psi} \\ge 0$ for all $\\ket{\\psi} \\in \\Hil$. In a complex Hilbert space a positive operator is Hermitian (D18). Every operator of the form $\\op{B}\\adj\\op{B}$ is positive, because $\\braket{\\psi}{\\op{B}\\adj\\op{B}\\psi} = \\braket{\\op{B}\\psi}{\\op{B}\\psi} \\ge 0$. The wording is loose: the condition admits the value zero, \\emph{nonnegative} would be more exact; the strict inequality for all $\\ket{\\psi} \\neq 0$ is called \\emph{positive definite}."
    },
-   "symbol_ids": [],
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.ket",
+    "sym.inner-product",
+    "sym.adjoint",
+    "sym.operator-hat"
+   ],
    "depth": "kern",
    "origin": "source-adapted",
    "choices": [],
-   "status": "proposed",
+   "status": "blessed-provisional",
    "first_fixed_in": "C3",
-   "needs_check": true
+   "needs_check": false
   },
   {
    "id": "D21",
@@ -1823,6 +1842,200 @@
     "sym.norm"
    ],
    "depth": "vertiefung",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "needs_check": false
+  },
+  {
+   "id": "D87",
+   "name": {
+    "de": "linearer Operator",
+    "en": "linear operator"
+   },
+   "body": {
+    "de": "Sei $\\Hil$ ein Hilbertraum. Ein \\emph{Operator} $\\op{A}$ auf $\\Hil$ ist eine lineare Abbildung $\\op{A}: \\Hil \\to \\Hil$, das heißt $\\op{A}(\\ket{\\phi} + \\ket{\\psi}) = \\op{A}\\ket{\\phi} + \\op{A}\\ket{\\psi}$ und $\\op{A}(\\alpha\\ket{\\phi}) = \\alpha\\,\\op{A}\\ket{\\phi}$ für alle $\\alpha \\in \\mathbb{C}$ und alle $\\ket{\\phi}, \\ket{\\psi} \\in \\Hil$. Ist $\\Hil$ endlichdimensional, so wird $\\op{A}$ nach Wahl einer Basis durch eine quadratische Matrix dargestellt, und das Anwenden des Operators ist die Multiplikation der Matrix mit der Spalte. Hier sind alle Operatoren auf ganz $\\Hil$ definiert; Operatoren mit eingeschränktem Definitionsbereich stehen in D16. Ein Hut kennzeichnet immer einen Operator (CONV-HAT).",
+    "en": "Let $\\Hil$ be a Hilbert space. An \\emph{operator} $\\op{A}$ on $\\Hil$ is a linear map $\\op{A}: \\Hil \\to \\Hil$, that is, $\\op{A}(\\ket{\\phi} + \\ket{\\psi}) = \\op{A}\\ket{\\phi} + \\op{A}\\ket{\\psi}$ and $\\op{A}(\\alpha\\ket{\\phi}) = \\alpha\\,\\op{A}\\ket{\\phi}$ for all $\\alpha \\in \\mathbb{C}$ and all $\\ket{\\phi}, \\ket{\\psi} \\in \\Hil$. If $\\Hil$ is finite-dimensional, $\\op{A}$ is represented, after a basis is chosen, by a square matrix, and applying the operator is multiplying the matrix with the column. Here all operators are defined on all of $\\Hil$; operators with a restricted domain are in D16. A hat always marks an operator (CONV-HAT)."
+   },
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.ket",
+    "sym.operator-hat"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [
+    "CONV-HAT"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "needs_check": false
+  },
+  {
+   "id": "D88",
+   "name": {
+    "de": "Einsoperator, Nulloperator",
+    "en": "identity operator, null operator"
+   },
+   "body": {
+    "de": "Der \\emph{Einsoperator} $\\Id$ auf einem Hilbertraum $\\Hil$ ist der Operator mit $\\Id\\ket{\\psi} = \\ket{\\psi}$ für alle $\\ket{\\psi} \\in \\Hil$; im endlichdimensionalen Fall ist er die Einheitsmatrix. Der \\emph{Nulloperator} $\\Nul$ ist der Operator mit $\\Nul\\ket{\\psi} = 0$ für alle $\\ket{\\psi} \\in \\Hil$; im endlichdimensionalen Fall ist er die Matrix mit lauter Nulleinträgen. Der Nulloperator trägt den Hut, weil eine hingeschriebene Null nicht zeigt, ob ein Operator, eine Zahl oder ein Vektor gemeint ist; der Einsoperator ist die Ausnahme und trägt keinen Hut (CONV-HAT).",
+    "en": "The \\emph{identity operator} $\\Id$ on a Hilbert space $\\Hil$ is the operator with $\\Id\\ket{\\psi} = \\ket{\\psi}$ for all $\\ket{\\psi} \\in \\Hil$; in the finite-dimensional case it is the unit matrix. The \\emph{null operator} $\\Nul$ is the operator with $\\Nul\\ket{\\psi} = 0$ for all $\\ket{\\psi} \\in \\Hil$; in the finite-dimensional case it is the matrix with all entries zero. The null operator carries the hat because a bare zero does not show whether an operator, a number or a vector is meant; the identity is the exception and carries no hat (CONV-HAT)."
+   },
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.ket",
+    "sym.identity",
+    "sym.null-operator"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [
+    "CONV-HAT"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "needs_check": false
+  },
+  {
+   "id": "D89",
+   "name": {
+    "de": "Projektor",
+    "en": "projector"
+   },
+   "body": {
+    "de": "Ein Operator $\\op{P}$ auf $\\Hil$ (D87) heißt \\emph{Projektor}, wenn $\\op{P}^2 = \\op{P}\\adj = \\op{P}$ gilt. Ein Projektor ist hermitesch (D18) und positiv (D20), denn $\\op{P} = \\op{P}\\adj\\op{P}$. Gemeint ist immer der Orthogonalprojektor; andere Projektoren kommen nicht vor.",
+    "en": "An operator $\\op{P}$ on $\\Hil$ (D87) is called a \\emph{projector} if $\\op{P}^2 = \\op{P}\\adj = \\op{P}$. A projector is Hermitian (D18) and positive (D20), because $\\op{P} = \\op{P}\\adj\\op{P}$. What is meant is always the orthogonal projector; other projectors do not occur."
+   },
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.adjoint",
+    "sym.operator-hat"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "needs_check": false
+  },
+  {
+   "id": "D90",
+   "name": {
+    "de": "Isometrie",
+    "en": "isometry"
+   },
+   "body": {
+    "de": "Ein Operator $\\op{V}$ auf $\\Hil$ (D87) heißt \\emph{isometrisch}, oder \\emph{Isometrie}, wenn $\\op{V}\\adj\\op{V} = \\Id$ gilt. Dann ist $\\braket{\\op{V}\\phi}{\\op{V}\\psi} = \\braket{\\phi}{\\psi}$ für alle $\\ket{\\phi}, \\ket{\\psi} \\in \\Hil$; ein isometrischer Operator lässt also das Skalarprodukt und damit die Norm invariant. Auf einem endlichdimensionalen Hilbertraum ist jede Isometrie unitär (D91).",
+    "en": "An operator $\\op{V}$ on $\\Hil$ (D87) is called \\emph{isometric}, or an \\emph{isometry}, if $\\op{V}\\adj\\op{V} = \\Id$. Then $\\braket{\\op{V}\\phi}{\\op{V}\\psi} = \\braket{\\phi}{\\psi}$ for all $\\ket{\\phi}, \\ket{\\psi} \\in \\Hil$; an isometric operator therefore leaves the inner product, and with it the norm, invariant. On a finite-dimensional Hilbert space every isometry is unitary (D91)."
+   },
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.ket",
+    "sym.inner-product",
+    "sym.adjoint",
+    "sym.identity",
+    "sym.operator-hat"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "needs_check": false
+  },
+  {
+   "id": "D91",
+   "name": {
+    "de": "unitärer Operator",
+    "en": "unitary operator"
+   },
+   "body": {
+    "de": "Ein Operator $\\op{U}$ auf $\\Hil$ (D87) heißt \\emph{unitär}, wenn $\\op{U}\\adj\\op{U} = \\op{U}\\op{U}\\adj = \\Id$ gilt, wenn also $\\op{U}$ isometrisch (D90) ist und $\\op{U}\\adj$ ebenfalls. Ein unitärer Operator ist invertierbar mit $\\op{U}^{-1} = \\op{U}\\adj$ und normal (D92), und er erhält das Skalarprodukt. Wie jeder Operator trägt er den Hut: $\\op{\\Uni}$ (CONV-HAT).",
+    "en": "An operator $\\op{U}$ on $\\Hil$ (D87) is called \\emph{unitary} if $\\op{U}\\adj\\op{U} = \\op{U}\\op{U}\\adj = \\Id$, that is, if $\\op{U}$ is isometric (D90) and so is $\\op{U}\\adj$. A unitary operator is invertible with $\\op{U}^{-1} = \\op{U}\\adj$ and normal (D92), and it preserves the inner product. Like every operator it carries the hat: $\\op{\\Uni}$ (CONV-HAT)."
+   },
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.adjoint",
+    "sym.identity",
+    "sym.operator-hat",
+    "sym.unitary"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "needs_check": false
+  },
+  {
+   "id": "D92",
+   "name": {
+    "de": "normaler Operator",
+    "en": "normal operator"
+   },
+   "body": {
+    "de": "Ein Operator $\\op{N}$ auf $\\Hil$ (D87) heißt \\emph{normal}, wenn $\\op{N}\\adj\\op{N} = \\op{N}\\op{N}\\adj$ gilt. Hermitesche (D18) und positive (D20) Operatoren, Projektoren (D89) und unitäre Operatoren (D91) sind normal; ebenso jede Isometrie (D90) auf einem endlichdimensionalen Hilbertraum.",
+    "en": "An operator $\\op{N}$ on $\\Hil$ (D87) is called \\emph{normal} if $\\op{N}\\adj\\op{N} = \\op{N}\\op{N}\\adj$. Hermitian (D18) and positive (D20) operators, projectors (D89) and unitary operators (D91) are normal; so is every isometry (D90) on a finite-dimensional Hilbert space."
+   },
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.adjoint",
+    "sym.operator-hat"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "needs_check": false
+  },
+  {
+   "id": "D93",
+   "name": {
+    "de": "Matrixelement, Matrixdarstellung",
+    "en": "matrix element, matrix representation"
+   },
+   "body": {
+    "de": "Sei $\\{\\ket{\\phi_x}\\}_{x \\in X}$ eine Orthonormalbasis von $\\Hil$ (D85) mit endlicher Indexmenge $X$ und $\\op{A}$ ein Operator auf $\\Hil$ (D87). Die Zahlen $\\entry{\\op{A}}{x}{y} = \\melem{\\phi_x}{\\op{A}}{\\phi_y} = \\braket{\\phi_x}{\\op{A}\\phi_y}$ heißen die \\emph{Matrixelemente} von $\\op{A}$ in dieser Basis, die Matrix mit diesen Einträgen die \\emph{Matrixdarstellung} von $\\op{A}$. Sie legt $\\op{A}$ fest: $\\op{A}\\ket{\\Psi} = \\sum_{x,y \\in X} \\ket{\\phi_x}\\,\\entry{\\op{A}}{x}{y}\\,\\braket{\\phi_y}{\\Psi}$, denn man setzt die Entwicklungsformel für Vektoren zweimal ein. Bei bekannter Basis schreibt man $\\ket{x}$ für $\\ket{\\phi_x}$ und $\\melem{x}{\\op{A}}{y}$ für $\\entry{\\op{A}}{x}{y}$.",
+    "en": "Let $\\{\\ket{\\phi_x}\\}_{x \\in X}$ be an orthonormal basis of $\\Hil$ (D85) with a finite index set $X$ and $\\op{A}$ an operator on $\\Hil$ (D87). The numbers $\\entry{\\op{A}}{x}{y} = \\melem{\\phi_x}{\\op{A}}{\\phi_y} = \\braket{\\phi_x}{\\op{A}\\phi_y}$ are called the \\emph{matrix elements} of $\\op{A}$ in this basis, the matrix with these entries the \\emph{matrix representation} of $\\op{A}$. It fixes $\\op{A}$: $\\op{A}\\ket{\\Psi} = \\sum_{x,y \\in X} \\ket{\\phi_x}\\,\\entry{\\op{A}}{x}{y}\\,\\braket{\\phi_y}{\\Psi}$, because one inserts the expansion formula for vectors twice. When the basis is known, one writes $\\ket{x}$ for $\\ket{\\phi_x}$ and $\\melem{x}{\\op{A}}{y}$ for $\\entry{\\op{A}}{x}{y}$."
+   },
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.ket",
+    "sym.inner-product",
+    "sym.operator-hat",
+    "sym.matrix-element",
+    "sym.matrix-entry"
+   ],
+   "depth": "kern",
+   "origin": "source-adapted",
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "needs_check": false
+  },
+  {
+   "id": "D94",
+   "name": {
+    "de": "Ket-Bra, äußeres Produkt",
+    "en": "ket-bra, outer product"
+   },
+   "body": {
+    "de": "Für Vektoren $\\ket{\\Psi}, \\ket{\\Phi} \\in \\Hil$ ist das \\emph{Ket-Bra} $\\ketbra{\\Psi}{\\Phi}$ der Operator (D87) mit $\\ketbra{\\Psi}{\\Phi}\\ket{\\xi} = \\braket{\\Phi}{\\xi}\\,\\ket{\\Psi}$ für alle $\\ket{\\xi} \\in \\Hil$. Er heißt auch \\emph{äußeres Produkt}. Es gilt $(\\ketbra{\\Psi}{\\Phi})\\adj = \\ketbra{\\Phi}{\\Psi}$. Ist $\\{\\ket{x}\\}_{x \\in X}$ eine Orthonormalbasis mit endlicher Indexmenge (D85), so folgt $\\Id = \\sum_{x \\in X} \\ketbra{x}{x}$ und $\\op{A} = \\sum_{x,y \\in X} \\entry{\\op{A}}{x}{y}\\,\\ketbra{x}{y}$ (D93).",
+    "en": "For vectors $\\ket{\\Psi}, \\ket{\\Phi} \\in \\Hil$ the \\emph{ket-bra} $\\ketbra{\\Psi}{\\Phi}$ is the operator (D87) with $\\ketbra{\\Psi}{\\Phi}\\ket{\\xi} = \\braket{\\Phi}{\\xi}\\,\\ket{\\Psi}$ for all $\\ket{\\xi} \\in \\Hil$. It is also called the \\emph{outer product}. One has $(\\ketbra{\\Psi}{\\Phi})\\adj = \\ketbra{\\Phi}{\\Psi}$. If $\\{\\ket{x}\\}_{x \\in X}$ is an orthonormal basis with a finite index set (D85), then $\\Id = \\sum_{x \\in X} \\ketbra{x}{x}$ and $\\op{A} = \\sum_{x,y \\in X} \\entry{\\op{A}}{x}{y}\\,\\ketbra{x}{y}$ (D93)."
+   },
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.ket",
+    "sym.inner-product",
+    "sym.adjoint",
+    "sym.identity",
+    "sym.operator-hat",
+    "sym.ketbra",
+    "sym.matrix-entry"
+   ],
+   "depth": "kern",
    "origin": "source-adapted",
    "choices": [],
    "status": "blessed-provisional",

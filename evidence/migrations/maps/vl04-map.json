@@ -1,0 +1,1047 @@
+{
+ "schema_version": 1,
+ "note": "Migration map of the fourth lecture into chapter c03 (Lecture 4, 2026-10-29), modelled on vl03-map.json. One entry per item of the v0.2 text of latex/lectures/de/vl04.tex as parsed by evidence/migrations/check_vl04_map.py (the parser of check_vl01_map.py); 'item' is '<kind>@<line>'. All items are kept (dropped passages are named in 'note' and in the migration records). The English edition lec04.tex has the same structure line for line and goes to the same destinations in en.tex. The legacy text is the v0.2 snapshot member (legacy_source, legacy_member), not the live file, which is the rewritten script v0.3 chapter 4. Items of the v0.2 vl03 subsection Operatoren (vl03-map.json items 116-129) also go to c03.s8. 'added_spoken': what TJO says in the recorded lectures (transcripts/raw/v04_YpK1CnrLtaM.txt from [46:45], v05_8eR3oW8u5GA.txt to [51:57]); 'added_author': proofs and repairs of the chapter author.",
+ "legacy_file": "latex/lectures/de/vl04.tex",
+ "legacy_sha256": "e10cd13b0287b5114f3a30a7bfa9bdbb16a53aab755f8573bca795ae4a03aae9",
+ "legacy_source": "tpc-script-v0.2",
+ "legacy_member": "tpc-script-v0.2/git/latex/lectures/de/vl04.tex",
+ "partly_deferred": [],
+ "items": [
+  {
+   "item": "section@3",
+   "what": "\\section{Vorlesung: Operatoren}",
+   "status": "kept",
+   "destination": [
+    "c03.s8",
+    "c03.s9",
+    "c03.s10",
+    "c03.s11",
+    "c03.s12"
+   ],
+   "note": "Vorlesung: Operatoren becomes the sections c03.s8 to c03.s12."
+  },
+  {
+   "item": "text@5",
+   "what": "Die Vektoren des Hilbertraums beschreiben die Zustände eines",
+   "status": "kept",
+   "destination": [
+    "c03.s8",
+    "c03.eq.rollen",
+    "c03.s8.1"
+   ],
+   "migration": [
+    "M-0052"
+   ],
+   "note": "Kept in part: 'Die Vektoren ... beschreiben die Zustände' is dropped (H3.2, M-0052); 'die Operatoren seine Observablen' is c03.eq.rollen; 'zwei Operatoren, die trivial ... unentbehrlich' is c03.s8.1."
+  },
+  {
+   "item": "environment@7",
+   "what": "definition",
+   "status": "kept",
+   "destination": [
+    "D88"
+   ],
+   "note": "Definition environment: the identity operator (D88)."
+  },
+  {
+   "item": "text@8",
+   "what": "Sei $\\mathcal{H}$ einen Hilbertraum.",
+   "status": "kept",
+   "destination": [
+    "D88"
+   ],
+   "migration": [
+    "M-0024"
+   ],
+   "note": "'Sei H einen Hilbertraum' (the M-0024 slip, again in vl04)."
+  },
+  {
+   "item": "equation@10",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D88"
+   ]
+  },
+  {
+   "item": "text@13",
+   "what": "gegeben. Im Fall, dass $\\mathcal{H}$ endlich dimensional ist",
+   "status": "kept",
+   "destination": [
+    "D88"
+   ],
+   "migration": [
+    "M-0053"
+   ]
+  },
+  {
+   "item": "equation@14",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D88"
+   ]
+  },
+  {
+   "item": "environment@15",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "D88"
+   ]
+  },
+  {
+   "item": "text@22",
+   "what": "dargestellt.",
+   "status": "kept",
+   "destination": [
+    "D88"
+   ]
+  },
+  {
+   "item": "text@25",
+   "what": "Ebenso nützlich ist der \\emph{Nulloperator} $\\widehat{0}$,",
+   "status": "kept",
+   "destination": [
+    "D88"
+   ],
+   "note": "Null operator."
+  },
+  {
+   "item": "equation@26",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D88"
+   ]
+  },
+  {
+   "item": "text@29",
+   "what": "im endlich-dimensionalen Fall die Matrix mit lauter Nulleint",
+   "status": "kept",
+   "destination": [
+    "D88",
+    "c03.s8.1"
+   ],
+   "note": "Second half (the notation problem) is c03.s8.1."
+  },
+  {
+   "item": "environment@31",
+   "what": "merksatz",
+   "status": "kept",
+   "destination": [
+    "c03.s8.1"
+   ],
+   "note": "Merksatz Notation; exceptions per D-HAT (identity, states, Pauli matrices)."
+  },
+  {
+   "item": "text@32",
+   "what": "Ein \\emph{Hut} bedeutet immer einen Operator, $\\widehat{A}$;",
+   "status": "kept",
+   "destination": [
+    "c03.s8.1"
+   ],
+   "note": "CONV-HAT."
+  },
+  {
+   "item": "text@35",
+   "what": "Der zu $A$ \\emph{adjungierte Operator} $A^\\dag$ ist durch di",
+   "status": "kept",
+   "destination": [
+    "D17"
+   ]
+  },
+  {
+   "item": "equation@36",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D17"
+   ]
+  },
+  {
+   "item": "text@39",
+   "what": "definiert. Diese Gleichung ist tatsächlich eine Definition: ",
+   "status": "kept",
+   "destination": [
+    "c03.prop.adjungiert",
+    "c03.eq.adj-matrix"
+   ],
+   "migration": [
+    "M-0054"
+   ],
+   "note": "'tatsächlich eine Definition' becomes the existence and uniqueness proposition; the matrix form is scoped to the inner product of c03.s2."
+  },
+  {
+   "item": "equation@40",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.adj-matrix"
+   ]
+  },
+  {
+   "item": "environment@41",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.adj-matrix"
+   ]
+  },
+  {
+   "item": "environment@46",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.adj-matrix"
+   ]
+  },
+  {
+   "item": "text@54",
+   "what": "Die Rechenregeln für adjungierte Operatoren sind",
+   "status": "kept",
+   "destination": [
+    "D17",
+    "c03.prop.adj-regeln"
+   ]
+  },
+  {
+   "item": "environment@55",
+   "what": "align",
+   "status": "kept",
+   "destination": [
+    "c03.prop.adj-regeln",
+    "c03.eq.adj-regeln"
+   ]
+  },
+  {
+   "item": "text@56",
+   "what": "(A+B)^\\dag &= A^\\dag + B^\\dag,  & \\quad & (zA)^\\dag = z^* A^",
+   "status": "kept",
+   "destination": [
+    "c03.prop.adj-regeln",
+    "c03.eq.adj-regeln"
+   ]
+  },
+  {
+   "item": "text@60",
+   "what": "Mit Hilfe adjungierter Operatoren und Identitätsoperatoren k",
+   "status": "kept",
+   "destination": [
+    "D18",
+    "D20",
+    "D89",
+    "D90",
+    "D91",
+    "D92"
+   ]
+  },
+  {
+   "item": "environment@61",
+   "what": "enumerate",
+   "status": "kept",
+   "destination": [
+    "D18",
+    "D20",
+    "D89",
+    "D90",
+    "D91",
+    "D92"
+   ]
+  },
+  {
+   "item": "item@62",
+   "what": "\\item \\emph{hermitesch}, wenn $A^\\dag = A$,",
+   "status": "kept",
+   "destination": [
+    "D18"
+   ]
+  },
+  {
+   "item": "item@63",
+   "what": "\\item \\emph{positiv}, wenn $\\langle \\psi|A\\psi\\rangle \\ge 0$",
+   "status": "kept",
+   "destination": [
+    "D20"
+   ]
+  },
+  {
+   "item": "item@64",
+   "what": "\\item \\emph{Projektor}, wenn $A^2 = A^\\dag = A$,",
+   "status": "kept",
+   "destination": [
+    "D89"
+   ]
+  },
+  {
+   "item": "item@65",
+   "what": "\\item \\emph{isometrisch}, wenn $A^\\dag A = \\mathbb{I}$,",
+   "status": "kept",
+   "destination": [
+    "D90"
+   ]
+  },
+  {
+   "item": "item@66",
+   "what": "\\item \\emph{unitär}, wenn $A^\\dag A = AA^\\dag = \\mathbb{I}$ ",
+   "status": "kept",
+   "destination": [
+    "D91"
+   ]
+  },
+  {
+   "item": "item@67",
+   "what": "\\item \\emph{normal}, wenn $A^\\dag A = AA^\\dag$.",
+   "status": "kept",
+   "destination": [
+    "D92"
+   ]
+  },
+  {
+   "item": "text@69",
+   "what": "Jede dieser Klassen hat eine sehr spezifische physikalische ",
+   "status": "kept",
+   "destination": [
+    "c03.eq.rollen",
+    "c03.prop.isometrie",
+    "c03.v6",
+    "c03.s10",
+    "D18",
+    "c03.v5",
+    "c03.prop.symmetrisch",
+    "c03.cl.ganz"
+   ],
+   "migration": [
+    "M-0063",
+    "M-0005"
+   ],
+   "note": "Lines 69-70. Roles of the classes; normal as superclass (quoted by provenance P-0329). Line 70 kept with a correction: hermitesch = selbstadjungiert only for everywhere-defined (in particular finite-dimensional) operators (H3.1, M-0005)."
+  },
+  {
+   "item": "equation@71",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D18",
+    "c03.prop.positiv"
+   ]
+  },
+  {
+   "item": "text@74",
+   "what": "immer eine reelle Zahl ist. Positive Operatoren sind automat",
+   "status": "kept",
+   "destination": [
+    "D20",
+    "c03.prop.positiv"
+   ]
+  },
+  {
+   "item": "equation@75",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D20",
+    "c03.prop.positiv"
+   ]
+  },
+  {
+   "item": "text@78",
+   "what": "Genau genommen ist unsere Sprechweise nachlässig: die Beding",
+   "status": "kept",
+   "destination": [
+    "D20"
+   ],
+   "note": "The remark 'positiv / nicht negativ' is D20's body; cut in the script (NOTES-ch4 question 1)."
+  },
+  {
+   "item": "text@81",
+   "what": "Wenn man eine Basis $\\{|\\phi_x\\}_{x\\in X}$ fixiert hat, kann",
+   "status": "kept",
+   "destination": [
+    "D93"
+   ],
+   "migration": [
+    "M-0055"
+   ]
+  },
+  {
+   "item": "equation@82",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D93"
+   ]
+  },
+  {
+   "item": "text@85",
+   "what": "charakterisieren. Wegen der Linearität von A ist dann",
+   "status": "kept",
+   "destination": [
+    "D93",
+    "c03.eq.wirkung"
+   ],
+   "migration": [
+    "M-0056"
+   ],
+   "note": "Derivation from v05 [02:45]-[09:36]."
+  },
+  {
+   "item": "equation@86",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.wirkung"
+   ]
+  },
+  {
+   "item": "text@89",
+   "what": "Diese Formel entsteht, indem man die Entwicklungsformel zwei",
+   "status": "kept",
+   "destination": [
+    "c03.eq.wirkung",
+    "c03.s11"
+   ],
+   "migration": [
+    "M-0057"
+   ],
+   "note": "Softened: the claim for infinite dimension becomes a remark that the sums are series whose convergence must be checked."
+  },
+  {
+   "item": "equation@91",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.adj-elemente"
+   ]
+  },
+  {
+   "item": "text@94",
+   "what": "also Transposition mit Komplexkonjugation.",
+   "status": "kept",
+   "destination": [
+    "c03.eq.adj-elemente",
+    "D17"
+   ]
+  },
+  {
+   "item": "text@96",
+   "what": "Die Entwicklungsformel (\\ref{eq:completenessA}) für A und vi",
+   "status": "kept",
+   "destination": [
+    "c03.s11.1",
+    "c03.eq.ket-op"
+   ],
+   "migration": [
+    "M-0062"
+   ],
+   "note": "The vector is written bold (vb) in the map z -> z Psi."
+  },
+  {
+   "item": "equation@97",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.ket-op"
+   ]
+  },
+  {
+   "item": "text@100",
+   "what": "der lineare Operator $z\\mapsto z\\Psi$ zu interpretieren, wob",
+   "status": "kept",
+   "destination": [
+    "c03.s11.1",
+    "c03.eq.ket-op"
+   ],
+   "migration": [
+    "M-0062"
+   ]
+  },
+  {
+   "item": "equation@101",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.bra-op"
+   ]
+  },
+  {
+   "item": "text@104",
+   "what": "mit",
+   "status": "kept",
+   "destination": [
+    "c03.eq.bra-op"
+   ]
+  },
+  {
+   "item": "equation@105",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.bra-op"
+   ]
+  },
+  {
+   "item": "text@108",
+   "what": "ist. Wenn wir ein Bra und ein Ket als solchen Operatoren mul",
+   "status": "kept",
+   "destination": [
+    "c03.s11.1"
+   ]
+  },
+  {
+   "item": "equation@109",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.s11.1"
+   ],
+   "note": "Unlabelled display of c03.s11.1."
+  },
+  {
+   "item": "text@112",
+   "what": "Wenn wir in der Notation nun keinen Unterschied machen zwisc",
+   "status": "kept",
+   "destination": [
+    "c03.s11.1"
+   ]
+  },
+  {
+   "item": "text@114",
+   "what": "Häufig brauchen wir auch die Kombination \\emph{Ket-Bra}, als",
+   "status": "kept",
+   "destination": [
+    "D94"
+   ]
+  },
+  {
+   "item": "equation@116",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D94"
+   ]
+  },
+  {
+   "item": "text@119",
+   "what": "mit",
+   "status": "kept",
+   "destination": [
+    "D94"
+   ]
+  },
+  {
+   "item": "equation@120",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D94"
+   ],
+   "migration": [
+    "M-0058"
+   ],
+   "note": "Quantifier over chi, not Psi (M-0058)."
+  },
+  {
+   "item": "text@124",
+   "what": "Wir gehen in der Vereinfachung noch einen Schritt weiter: So",
+   "status": "kept",
+   "destination": [
+    "c03.prop.ketbra",
+    "c03.s11.1"
+   ],
+   "note": "Basis labels dropped: |x>, <x|."
+  },
+  {
+   "item": "equation@126",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.ketbra"
+   ]
+  },
+  {
+   "item": "text@129",
+   "what": "zusammengefasst. Diese Operatorgleichung ist eine der nützli",
+   "status": "kept",
+   "destination": [
+    "c03.prop.ketbra"
+   ]
+  },
+  {
+   "item": "equation@130",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D93",
+    "c03.s11.1"
+   ]
+  },
+  {
+   "item": "environment@134",
+   "what": "beispiel",
+   "status": "kept",
+   "destination": [
+    "c03.ex.drei"
+   ],
+   "note": "Example: three operators on C^3."
+  },
+  {
+   "item": "text@135",
+   "what": "Angenommen, $\\mathcal{H}\\equiv \\mathbb{C}^3$. Seien $A$, $B$",
+   "status": "kept",
+   "destination": [
+    "c03.ex.drei"
+   ]
+  },
+  {
+   "item": "equation@136",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.ex.drei"
+   ]
+  },
+  {
+   "item": "environment@137",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.ex.drei"
+   ]
+  },
+  {
+   "item": "environment@141",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.ex.drei"
+   ]
+  },
+  {
+   "item": "environment@146",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.ex.drei"
+   ]
+  },
+  {
+   "item": "text@152",
+   "what": "Die Matrizen $A$ und $B$ sind hermitesch, weil",
+   "status": "kept",
+   "destination": [
+    "c03.ex.drei"
+   ]
+  },
+  {
+   "item": "equation@153",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.abc"
+   ]
+  },
+  {
+   "item": "text@156",
+   "what": "Die Matrix $B$ is auch positiv, und bildet einen Projektor. ",
+   "status": "kept",
+   "destination": [
+    "c03.ex.drei"
+   ],
+   "migration": [
+    "M-0053",
+    "M-0059"
+   ],
+   "note": "Kept in part: B positive and a projector; the photon-number model in optical-fibre networks is dropped (no source, M-0059, gap)."
+  },
+  {
+   "item": "equation@157",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.nicht-positiv"
+   ]
+  },
+  {
+   "item": "environment@159",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.nicht-positiv"
+   ]
+  },
+  {
+   "item": "environment@162",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.nicht-positiv"
+   ]
+  },
+  {
+   "item": "environment@167",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.nicht-positiv"
+   ]
+  },
+  {
+   "item": "environment@171",
+   "what": "smallmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.nicht-positiv"
+   ]
+  },
+  {
+   "item": "text@171",
+   "what": "wobei $|\\psi\\rangle$ den Vektor $\\left(\\begin{smallmatrix}",
+   "status": "kept",
+   "destination": [
+    "c03.eq.nicht-positiv"
+   ]
+  },
+  {
+   "item": "text@174",
+   "what": "Die Matrix $C$ stellt einen Unitärmatrix dar, da",
+   "status": "kept",
+   "destination": [
+    "c03.eq.c-unitaer"
+   ],
+   "migration": [
+    "M-0053"
+   ]
+  },
+  {
+   "item": "equation@175",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.c-unitaer"
+   ]
+  },
+  {
+   "item": "environment@176",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.c-unitaer"
+   ]
+  },
+  {
+   "item": "environment@180",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.c-unitaer"
+   ]
+  },
+  {
+   "item": "environment@186",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.c-unitaer"
+   ]
+  },
+  {
+   "item": "text@192",
+   "what": "(Es gilt auch, dass $CC^\\dag = \\mathbb{I}$.)",
+   "status": "kept",
+   "destination": [
+    "c03.eq.c-unitaer"
+   ]
+  },
+  {
+   "item": "environment@193",
+   "what": "smallmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.c-ketbra"
+   ]
+  },
+  {
+   "item": "environment@195",
+   "what": "smallmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.c-ketbra"
+   ]
+  },
+  {
+   "item": "text@196",
+   "what": "0 \\\\ 1 \\\\ 0",
+   "status": "kept",
+   "destination": [
+    "c03.eq.c-ketbra"
+   ]
+  },
+  {
+   "item": "environment@197",
+   "what": "smallmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.eq.c-ketbra"
+   ]
+  },
+  {
+   "item": "text@198",
+   "what": "0 \\\\ 0 \\\\ 1",
+   "status": "kept",
+   "destination": [
+    "c03.eq.c-ketbra"
+   ],
+   "migration": [
+    "M-0060"
+   ],
+   "note": "Line 199: A for C (M-0060)."
+  },
+  {
+   "item": "equation@200",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.c-ketbra"
+   ]
+  },
+  {
+   "item": "text@203",
+   "what": "wobei wir $|0\\rangle$ für $|\\phi_0\\rangle$ schreiben, usw.",
+   "status": "kept",
+   "destination": [
+    "c03.eq.c-ketbra"
+   ]
+  },
+  {
+   "item": "figure@205",
+   "what": "\\input{figures/fig_vl04_spektren}",
+   "status": "kept",
+   "destination": [
+    "c03.fig.spektren"
+   ],
+   "note": "Adapted to the course conventions (hats)."
+  },
+  {
+   "item": "text@207",
+   "what": "Was die drei Rechnungen gemeinsam haben, sieht man erst, wen",
+   "status": "kept",
+   "destination": [
+    "c03.s12",
+    "c03.eq.orte",
+    "c03.eq.spektren"
+   ],
+   "migration": [
+    "M-0061"
+   ],
+   "note": "Eigenvalues informal (D-SPEKTREN); 'für normale Operatoren' made precise: the implication holds for every operator of the class (M-0061)."
+  }
+ ],
+ "added_spoken": [
+  {
+   "what": "why the word 'Operator'; operators are maps with these properties",
+   "locus": "v04 [46:54]-[48:01], [50:08]",
+   "destination": [
+    "c03.s8"
+   ]
+  },
+  {
+   "what": "table of numbers, Excel",
+   "locus": "v04 [54:21]-[54:57]",
+   "destination": [
+    "c03.s8",
+    "c03.ex.matrix"
+   ]
+  },
+  {
+   "what": "the hat",
+   "locus": "v04 [58:08]-[59:14]",
+   "destination": [
+    "c03.s8.1"
+   ]
+  },
+  {
+   "what": "the cross = transpose + conjugate",
+   "locus": "v04 [61:13]-[64:33]",
+   "destination": [
+    "c03.s9"
+   ]
+  },
+  {
+   "what": "adjoint depends on the inner product; the four rules",
+   "locus": "v04 [64:36]-[66:31]",
+   "destination": [
+    "c03.s9",
+    "c03.prop.adj-regeln"
+   ]
+  },
+  {
+   "what": "hermitian operators: 'sehr hilfreich'; roles of the classes",
+   "locus": "v04 [69:11]-[76:31]",
+   "destination": [
+    "c03.eq.rollen",
+    "c03.s10"
+   ]
+  },
+  {
+   "what": "'nirgends eine Matrix': an operator is known by its matrix elements",
+   "locus": "v04 [77:45]-[81:55]",
+   "destination": [
+    "c03.s11",
+    "c03.eq.wirkung"
+   ]
+  },
+  {
+   "what": "the two sums are independent",
+   "locus": "v04 [88:51]",
+   "destination": [
+    "c03.eq.wirkung"
+   ]
+  },
+  {
+   "what": "two routes to the action formula; numbers commute with operators",
+   "locus": "v05 [02:45]-[09:36]",
+   "destination": [
+    "c03.eq.wirkung"
+   ]
+  },
+  {
+   "what": "operator known from its matrix elements",
+   "locus": "v05 [10:15]-[11:30]",
+   "destination": [
+    "c03.s11"
+   ]
+  },
+  {
+   "what": "'Ket frisst Zahl, Bra frisst Vektor' (main message)",
+   "locus": "v05 [11:35]-[25:40]",
+   "destination": [
+    "c03.s11.1",
+    "c03.eq.ket-op",
+    "c03.eq.bra-op"
+   ]
+  },
+  {
+   "what": "ket-bra and the basis shorthand",
+   "locus": "v05 [26:42]-[31:00]",
+   "destination": [
+    "D94",
+    "c03.prop.ketbra"
+   ]
+  },
+  {
+   "what": "the most helpful equation: inserting the identity; 'Eins gleich Eins'",
+   "locus": "v05 [31:30]-[39:07]",
+   "destination": [
+    "c03.eq.ketbra",
+    "c03.prop.ketbra"
+   ]
+  },
+  {
+   "what": "C in ket-bra form; matrices or ket-bras",
+   "locus": "v05 [39:54]-[49:13]",
+   "destination": [
+    "c03.eq.c-ketbra"
+   ]
+  },
+  {
+   "what": "exercise hint",
+   "locus": "v05 [49:40]-[51:07]",
+   "destination": [
+    "c03.exc.ketbra"
+   ]
+  },
+  {
+   "what": "hats may be dropped later (left out: contradicts D-HAT)",
+   "locus": "v04 [59:45]-[60:00]",
+   "destination": []
+  },
+  {
+   "what": "2x2 example (entries not recoverable from the ASR; left out)",
+   "locus": "v04 [67:15]-[68:39]",
+   "destination": []
+  },
+  {
+   "what": "handwriting remark (left out)",
+   "locus": "v05 [28:33]",
+   "destination": []
+  },
+  {
+   "what": "photon-number remark for the projector B (left out: no source, M-0059, gap)",
+   "locus": "v04 [85:02]",
+   "destination": []
+  }
+ ],
+ "added_author": [
+  {
+   "what": "existence and uniqueness of the adjoint in finite dimension; the weighted-product case",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.adjungiert, #c03.cl.adj-matrix",
+   "destination": [
+    "c03.prop.adjungiert"
+   ]
+  },
+  {
+   "what": "positive part 1 converse: A hermitian iff <psi|A psi> real; B*B positive; projector positive",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.positiv",
+   "destination": [
+    "c03.prop.positiv"
+   ]
+  },
+  {
+   "what": "G-0072 (b): the step (A + i lambda B)^dagger (A + i lambda B) >= 0 behind the uncertainty relation",
+   "support": "P-0330 (v0.1 Vorlesungen9.tex:21 = vl09.tex:25)",
+   "destination": [
+    "c03.s10"
+   ]
+  },
+  {
+   "what": "isometries: inner product invariant; isometry = unitary in finite dimension (proof)",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.isometrie",
+   "destination": [
+    "c03.prop.isometrie"
+   ]
+  },
+  {
+   "what": "Vertiefung c03.v5: bounded and unbounded operators, Hellinger-Toeplitz, symmetric versus self-adjoint (H3.1)",
+   "support": "Reed-Simon I pp. 84, 187, 249, 255, 256 (P-0319 to P-0326); evidence/derivations/c03/DERIVATION.md#c03.cl.symmetrisch",
+   "destination": [
+    "c03.v5"
+   ]
+  },
+  {
+   "what": "Vertiefung c03.v6: right shift on l^2, isometric but not unitary",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.shift",
+   "destination": [
+    "c03.v6"
+   ]
+  },
+  {
+   "what": "the eigenvector of A for -sqrt(2); eigenvalues of A, B, C",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.spektren",
+   "destination": [
+    "c03.eq.spektren"
+   ]
+  },
+  {
+   "what": "c03.eq.orte: the implications hold for every operator of the class, proof without normality",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.orte",
+   "destination": [
+    "c03.eq.orte"
+   ]
+  },
+  {
+   "what": "c03.eq.rollen: roles of the classes (source-backed)",
+   "support": "docs/plan/research/curriculum/REPORT.md; vl04.tex:69 (P-0329)",
+   "destination": [
+    "c03.eq.rollen"
+   ]
+  },
+  {
+   "what": "exercise c03.exc.ketbra",
+   "support": "evidence/derivations/c03/DERIVATION.md#c03.cl.c-ketbra",
+   "destination": [
+    "c03.exc.ketbra"
+   ]
+  }
+ ]
+}

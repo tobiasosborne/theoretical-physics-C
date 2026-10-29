@@ -569,7 +569,7 @@
      "quote": "A metric space in which all Cauchy sequences converge is called complete."
     }
    ],
-   "notes": "Completeness is stated, as the pre-inventory requires. The axioms of the inner product itself are vl03.tex:134-145 and Reed-Simon I p. 36; since Lecture 3 of chapter C3 (2026-10-21) they are definition D82 (norm D83), transcluded before D14 in section c03.s5; D14 is transcluded in section c03.s6. sym.norm added to symbol_ids because the body uses \\norm. After the review of Lecture 3 (docs/review/lectures/REVIEW-lec3.md, row SCOPE at de.tex:878 and definitions.json:516) the body says what 'vollständig' means, adapted from D79 (Reed-Simon I pp. 5, 6: Cauchy sequence, complete metric space) without the word 'Cauchy-Folge', so that the standalone Kern can read it; the technical treatment stays in Fundament c03.f3. sym.ket added to symbol_ids for the body's \\ket."
+   "notes": "Completeness is stated, as the pre-inventory requires. The axioms of the inner product itself are vl03.tex:134-145 and Reed-Simon I p. 36; since Lecture 3 of chapter C3 (2026-10-21) they are definition D82 (norm D83), transcluded before D14 in section c03.s5; D14 is transcluded in section c03.s6. sym.norm added to symbol_ids because the body uses \\norm. After the review of Lecture 3 (docs/review/lectures/REVIEW-lec3.md, row SCOPE at de.tex:878 and definitions.json:516) the body says what 'vollständig' means, adapted from D79 (Reed-Simon I pp. 5, 6: Cauchy sequence, complete metric space) without the word 'Cauchy-Folge', so that the standalone Kern can read it; the technical treatment stays in Fundament c03.f3. sym.ket added to symbol_ids for the body's \\ket. TJO accepted this extended body (the explanation of 'vollständig') on 2026-10-29 (decision G-0072, docs/plan/lec34/BRIEF.md)."
   },
   {
    "id": "D15",
@@ -640,58 +640,99 @@
   {
    "id": "D17",
    "preinventory_row": 17,
-   "name_de": "adjungierter Operator (beschränkt und unbeschränkt)",
-   "name_en": "adjoint (bounded and unbounded)",
-   "body_de": "Platzhalter. Dieser Eintrag legt fest: adjungierter Operator (beschränkt und unbeschränkt). Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
-   "body_en": "Placeholder. This entry will fix: adjoint (bounded and unbounded). The wording is entered only after it has been checked against the source.",
-   "symbol_ids": [],
+   "name_de": "adjungierter Operator",
+   "name_en": "adjoint operator",
+   "body_de": "Sei $\\Hil$ ein endlichdimensionaler Hilbertraum und $\\op{A}$ ein Operator auf $\\Hil$ (D87). Der \\emph{adjungierte Operator} $\\op{A}\\adj$ ist durch $\\braket{\\op{A}\\adj\\phi}{\\psi} = \\braket{\\phi}{\\op{A}\\psi}$ für alle $\\ket{\\phi}, \\ket{\\psi} \\in \\Hil$ festgelegt, nicht durch eine Rechenvorschrift, sondern durch sein Verhalten unter dem Skalarprodukt. Es gibt genau einen solchen Operator, und bezüglich einer Orthonormalbasis ist seine Matrix die konjugiert transponierte, $\\entry{\\op{A}\\adj}{x}{y} = \\entry{\\op{A}}{y}{x}^*$. Es gilt $(\\op{A} + \\op{B})\\adj = \\op{A}\\adj + \\op{B}\\adj$, $(z\\op{A})\\adj = z^* \\op{A}\\adj$, $(\\op{A}\\op{B})\\adj = \\op{B}\\adj\\op{A}\\adj$ und $(\\op{A}\\adj)\\adj = \\op{A}$. Auf unendlichdimensionalen Räumen benutzt man dieselbe Gleichung; dann muss man aber sagen, auf welchen Vektoren $\\op{A}$ und $\\op{A}\\adj$ definiert sind. Für dicht definierte Operatoren steht das in D19.",
+   "body_en": "Let $\\Hil$ be a finite-dimensional Hilbert space and $\\op{A}$ an operator on $\\Hil$ (D87). The \\emph{adjoint operator} $\\op{A}\\adj$ is fixed by $\\braket{\\op{A}\\adj\\phi}{\\psi} = \\braket{\\phi}{\\op{A}\\psi}$ for all $\\ket{\\phi}, \\ket{\\psi} \\in \\Hil$, not by a computing rule but by its behaviour under the inner product. There is exactly one such operator, and with respect to an orthonormal basis its matrix is the conjugate transpose, $\\entry{\\op{A}\\adj}{x}{y} = \\entry{\\op{A}}{y}{x}^*$. One has $(\\op{A} + \\op{B})\\adj = \\op{A}\\adj + \\op{B}\\adj$, $(z\\op{A})\\adj = z^* \\op{A}\\adj$, $(\\op{A}\\op{B})\\adj = \\op{B}\\adj\\op{A}\\adj$ and $(\\op{A}\\adj)\\adj = \\op{A}$. On infinite-dimensional spaces the same equation is used; then one must, however, say on which vectors $\\op{A}$ and $\\op{A}\\adj$ are defined. For densely defined operators this is in D19.",
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.ket",
+    "sym.inner-product",
+    "sym.adjoint",
+    "sym.operator-hat",
+    "sym.matrix-entry"
+   ],
    "depth": "kern",
    "origin": {
     "type": "source-adapted",
-    "source": "preinventory",
-    "locus": "definition row 17; authority named there: Teschl, Reed-Simon"
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl04.tex:35-59"
    },
    "choices": [],
-   "status": "proposed",
+   "status": "blessed-provisional",
    "first_fixed_in": "C3",
    "sources": [
     {
-     "source": "preinventory",
-     "locus": "notation-preinventory.md:112 (definition row 17)",
-     "verified": false,
-     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:35",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Der zu $A$ \\emph{adjungierte Operator} $A^\\dag$ ist durch die Gleichung"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:37",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\langle A^\\dag\\Phi|\\Psi\\rangle = \\langle \\Phi|A\\Psi\\rangle, \\quad \\Phi,\\Psi\\in \\mathcal{H},"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:56",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "(A+B)^\\dag &= A^\\dag + B^\\dag,  & \\quad & (zA)^\\dag = z^* A^\\dag \\\\"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:57",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "(AB)^\\dag &= B^\\dag A^\\dag,  & \\quad & (A^\\dag)^\\dag = A."
     }
    ],
-   "needs_check": true,
-   "check": "body not written; authority per pre-inventory: Teschl, Reed-Simon"
+   "notes": "Body written by the lane-G registry for Lecture 4 (2026-10-29). Scope as the script's: the equation is stated for operators defined on all of H; the pre-inventory's 'bounded and unbounded' is split, the unbounded case (domain of the adjoint) is D19 (Vertiefung, first fixed in C5). The name no longer says 'bounded and unbounded' for that reason. Existence of the adjoint in finite dimension is the standard fact (for example by the matrix formula); the infinite-dimensional existence for bounded operators (Riesz) is not claimed here and no Reed-Simon page for it has been read. The overlap with the adjoint in D19 (densely defined operators) is intended: D19 says it for the domain case. Repair 2026-10-29 by lane A after evidence/derivations/c03/REVIEW-lec4.md, section B, row SCOPE (D17): the finite-dimensional hypothesis now opens the body; existence, uniqueness, matrix form and rules are proved in c03 (c03.cl.adjungiert, c03.cl.adj-elemente, c03.cl.adj-regeln); the infinite-dimensional case is described separately and points to D19."
   },
   {
    "id": "D18",
    "preinventory_row": 18,
-   "name_de": "symmetrischer (hermitescher) Operator",
-   "name_en": "symmetric (Hermitian) operator",
-   "body_de": "Platzhalter. Dieser Eintrag legt fest: symmetrischer (hermitescher) Operator. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
-   "body_en": "Placeholder. This entry will fix: symmetric (Hermitian) operator. The wording is entered only after it has been checked against the source.",
-   "symbol_ids": [],
+   "name_de": "hermitescher Operator",
+   "name_en": "Hermitian operator",
+   "body_de": "Ein Operator $\\op{A}$ auf einem endlichdimensionalen Hilbertraum $\\Hil$ (D87) heißt \\emph{hermitesch}, wenn $\\op{A}\\adj = \\op{A}$ ist (D17), gleichwertig $\\braket{\\op{A}\\phi}{\\psi} = \\braket{\\phi}{\\op{A}\\psi}$ für alle $\\ket{\\phi}, \\ket{\\psi} \\in \\Hil$. Auf einem endlichdimensionalen Raum heißt ein hermitescher Operator auch \\emph{selbstadjungiert}; die beiden Wörter sind dort gleichbedeutend. Für hermitesches $\\op{A}$ ist $\\braket{\\psi}{\\op{A}\\psi}$ für jedes $\\ket{\\psi}$ eine reelle Zahl.",
+   "body_en": "An operator $\\op{A}$ on a finite-dimensional Hilbert space $\\Hil$ (D87) is called \\emph{Hermitian} if $\\op{A}\\adj = \\op{A}$ (D17), equivalently $\\braket{\\op{A}\\phi}{\\psi} = \\braket{\\phi}{\\op{A}\\psi}$ for all $\\ket{\\phi}, \\ket{\\psi} \\in \\Hil$. On a finite-dimensional space a Hermitian operator is also called \\emph{self-adjoint}; there the two words mean the same. For Hermitian $\\op{A}$ the number $\\braket{\\psi}{\\op{A}\\psi}$ is real for every $\\ket{\\psi}$.",
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.ket",
+    "sym.inner-product",
+    "sym.adjoint",
+    "sym.operator-hat"
+   ],
    "depth": "kern",
    "origin": {
     "type": "source-adapted",
-    "source": "preinventory",
-    "locus": "definition row 18; authority named there: Teschl, Hall ch. 9"
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl04.tex:61-62,70-74"
    },
    "choices": [],
-   "status": "proposed",
+   "status": "blessed-provisional",
    "first_fixed_in": "C3",
    "sources": [
     {
-     "source": "preinventory",
-     "locus": "notation-preinventory.md:113 (definition row 18)",
-     "verified": false,
-     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:62",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\item \\emph{hermitesch}, wenn $A^\\dag = A$,"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:70",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Die hermiteschen Operatoren (Synonym: selbstadjugierte Operatoren)"
     }
    ],
-   "needs_check": true,
-   "check": "body not written; authority per pre-inventory: Teschl, Hall ch. 9; review erratum (REVIEW.md section G): the defect of vl04.tex:70 is the omitted domain and scope, not its explicit equation for the adjoint; symmetric and self-adjoint differ for unbounded operators"
+   "notes": "Body written by the lane-G registry for Lecture 4 (2026-10-29), hazard H3.1 (REPORT.md; M-0005). The script's 'Synonym: selbstadjungiert' (vl04.tex:70) is true for operators defined on all of H and false in general; the body says where it holds. The step from D19 is elementary: D19 defines symmetric as dom T inside dom T-dagger with equal values and self-adjoint as T = T-dagger, i.e. symmetric with dom T = dom T-dagger (the Reed-Simon VIII.2 p. 255 definition recorded and read in D19); if dom T = H then dom T inside dom T-dagger inside H forces equality. No new Reed-Simon page has been read for D18 and none is claimed. The realness of <psi|A psi> is vl04.tex:70-72 and follows from the definition: <psi|A psi> = <A psi|psi> = <psi|A psi>*. D19 stays at its existing scope (Vertiefung, first fixed in C5). The enumeration form of the script (hermitesch as item 1 of six classes) is the author's. Repair 2026-10-29 by lane A after evidence/derivations/c03/REVIEW-lec4.md, section B, row SCOPE (de.tex:1533; D18): infinite dimension alone does not separate Hermitian from self-adjoint (bounded everywhere-defined operators keep the equivalence), and the Kern body no longer imports the domain terminology of D16/D19. The finite-dimensional synonym stays here; the restricted-domain usage 'Hermitian = symmetric' (Reed-Simon I p. 255) and the comparison with self-adjoint are in Vertiefung c03.v5 (c03.cl.symmetrisch, c03.cl.ganz). Consistent with the repaired script chapter 4."
   },
   {
    "id": "D19",
@@ -758,30 +799,50 @@
   {
    "id": "D20",
    "preinventory_row": 20,
-   "name_de": "positiver Operator, Operatorordnung",
-   "name_en": "positive operator, operator order",
-   "body_de": "Platzhalter. Dieser Eintrag legt fest: positiver Operator, Operatorordnung. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
-   "body_en": "Placeholder. This entry will fix: positive operator, operator order. The wording is entered only after it has been checked against the source.",
-   "symbol_ids": [],
+   "name_de": "positiver Operator",
+   "name_en": "positive operator",
+   "body_de": "Ein Operator $\\op{A}$ auf $\\Hil$ (D87) heißt \\emph{positiv}, wenn $\\braket{\\psi}{\\op{A}\\psi} \\ge 0$ für alle $\\ket{\\psi} \\in \\Hil$ gilt. Im komplexen Hilbertraum ist ein positiver Operator hermitesch (D18). Jeder Operator der Form $\\op{B}\\adj\\op{B}$ ist positiv, denn $\\braket{\\psi}{\\op{B}\\adj\\op{B}\\psi} = \\braket{\\op{B}\\psi}{\\op{B}\\psi} \\ge 0$. Die Sprechweise ist nachlässig: die Bedingung lässt den Wert null zu, \\emph{nicht negativ} wäre genauer; die strikte Ungleichung für alle $\\ket{\\psi} \\neq 0$ heißt \\emph{positiv definit}.",
+   "body_en": "An operator $\\op{A}$ on $\\Hil$ (D87) is called \\emph{positive} if $\\braket{\\psi}{\\op{A}\\psi} \\ge 0$ for all $\\ket{\\psi} \\in \\Hil$. In a complex Hilbert space a positive operator is Hermitian (D18). Every operator of the form $\\op{B}\\adj\\op{B}$ is positive, because $\\braket{\\psi}{\\op{B}\\adj\\op{B}\\psi} = \\braket{\\op{B}\\psi}{\\op{B}\\psi} \\ge 0$. The wording is loose: the condition admits the value zero, \\emph{nonnegative} would be more exact; the strict inequality for all $\\ket{\\psi} \\neq 0$ is called \\emph{positive definite}.",
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.ket",
+    "sym.inner-product",
+    "sym.adjoint",
+    "sym.operator-hat"
+   ],
    "depth": "kern",
    "origin": {
     "type": "source-adapted",
-    "source": "preinventory",
-    "locus": "definition row 20; authority named there: TPC vl06.tex, Plavala QT_v3.tex:6"
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl04.tex:63,74-78"
    },
    "choices": [],
-   "status": "proposed",
+   "status": "blessed-provisional",
    "first_fixed_in": "C3",
    "sources": [
     {
-     "source": "preinventory",
-     "locus": "notation-preinventory.md:115 (definition row 20)",
-     "verified": false,
-     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:63",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\item \\emph{positiv}, wenn $\\langle \\psi|A\\psi\\rangle \\ge 0$ für alle $\\psi \\in \\mathcal{H}$,"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:74",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Positive Operatoren sind automatisch hermitesch."
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:78",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "ein solcher Operator müsste \\emph{nicht negativ} heißen"
     }
    ],
-   "needs_check": true,
-   "check": "body not written; authority per pre-inventory: TPC vl06.tex, Plavala QT_v3.tex:6"
+   "notes": "Body written by the lane-G registry for Lecture 4 (2026-10-29). 'Positive implies Hermitian' holds in a complex Hilbert space (polarisation: a real <psi|A psi> for all psi gives A = A-dagger); it fails in a real one, which the course does not use. The operator order (A >= B if A - B is positive), named in the pre-inventory row, is not in Lecture 4 and is not fixed here; it is fixed where it is first used (C4 or C6). 'Positive definit' is the usual name for the strict inequality; the script says only 'positiv waere die strikte Ungleichung' (vl04.tex:78), the new word is the registry's."
   },
   {
    "id": "D21",
@@ -3268,6 +3329,336 @@
     }
    ],
    "notes": "Added by the author of chapter C3, Lecture 3 (2026-10-21). Depth vertiefung by D4. The convention for sums of nonnegative numbers over an arbitrary index set is the chapter author's (for X = {1, 2, 3, ...} it is the limit of the monotone partial sums); Reed-Simon I p. 45 say that the sums of Theorem II.6 converge independent of order. The script's definition (orthonormal and Parseval for all psi, vl03.tex:186-189) is equivalent: proposition c03.prop.maximal. After both reviews of Lecture 3 (docs/review/lectures/REVIEW-lec3.md, row WRONG at de.tex:1048; evidence/derivations/c03/REVIEW-lec3.md, section B, row WRONG) the body says what a sum of vectors over a countable index set means (a series, convergence in norm); the definition of the basis itself (maximality) keeps an arbitrary index set, so that theorem c03.thm.existenz holds as Reed-Simon state it. Theorem c03.thm.parseval and proposition c03.prop.maximal are stated for countable index sets; sums of vectors over uncountable index sets are not used in the course."
+  },
+  {
+   "id": "D87",
+   "preinventory_row": null,
+   "name_de": "linearer Operator",
+   "name_en": "linear operator",
+   "body_de": "Sei $\\Hil$ ein Hilbertraum. Ein \\emph{Operator} $\\op{A}$ auf $\\Hil$ ist eine lineare Abbildung $\\op{A}: \\Hil \\to \\Hil$, das heißt $\\op{A}(\\ket{\\phi} + \\ket{\\psi}) = \\op{A}\\ket{\\phi} + \\op{A}\\ket{\\psi}$ und $\\op{A}(\\alpha\\ket{\\phi}) = \\alpha\\,\\op{A}\\ket{\\phi}$ für alle $\\alpha \\in \\mathbb{C}$ und alle $\\ket{\\phi}, \\ket{\\psi} \\in \\Hil$. Ist $\\Hil$ endlichdimensional, so wird $\\op{A}$ nach Wahl einer Basis durch eine quadratische Matrix dargestellt, und das Anwenden des Operators ist die Multiplikation der Matrix mit der Spalte. Hier sind alle Operatoren auf ganz $\\Hil$ definiert; Operatoren mit eingeschränktem Definitionsbereich stehen in D16. Ein Hut kennzeichnet immer einen Operator (CONV-HAT).",
+   "body_en": "Let $\\Hil$ be a Hilbert space. An \\emph{operator} $\\op{A}$ on $\\Hil$ is a linear map $\\op{A}: \\Hil \\to \\Hil$, that is, $\\op{A}(\\ket{\\phi} + \\ket{\\psi}) = \\op{A}\\ket{\\phi} + \\op{A}\\ket{\\psi}$ and $\\op{A}(\\alpha\\ket{\\phi}) = \\alpha\\,\\op{A}\\ket{\\phi}$ for all $\\alpha \\in \\mathbb{C}$ and all $\\ket{\\phi}, \\ket{\\psi} \\in \\Hil$. If $\\Hil$ is finite-dimensional, $\\op{A}$ is represented, after a basis is chosen, by a square matrix, and applying the operator is multiplying the matrix with the column. Here all operators are defined on all of $\\Hil$; operators with a restricted domain are in D16. A hat always marks an operator (CONV-HAT).",
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.ket",
+    "sym.operator-hat"
+   ],
+   "depth": "kern",
+   "origin": {
+    "type": "source-adapted",
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl03.tex:253-277"
+   },
+   "choices": [
+    "CONV-HAT"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl03.tex:256",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Ein \\emph{Operator} $A$ auf $\\mathcal{H}$ ist eine \\emph{lineare Abbildung}"
+    }
+   ],
+   "notes": "Added by the lane-G registry for Lecture 4 (2026-10-29). Kern is finite-dimensional (PLAN 1.3 decision D4); the script defines the operator as a linear map on all of H and does not mention domains, so the body says so and points to D16 for the rest. vl03.tex:253-277 are the 'Operatoren' subsection deferred to Lecture 4 (M-0024). The script's example (n=2 matrices) is the author's to reuse."
+  },
+  {
+   "id": "D88",
+   "preinventory_row": null,
+   "name_de": "Einsoperator, Nulloperator",
+   "name_en": "identity operator, null operator",
+   "body_de": "Der \\emph{Einsoperator} $\\Id$ auf einem Hilbertraum $\\Hil$ ist der Operator mit $\\Id\\ket{\\psi} = \\ket{\\psi}$ für alle $\\ket{\\psi} \\in \\Hil$; im endlichdimensionalen Fall ist er die Einheitsmatrix. Der \\emph{Nulloperator} $\\Nul$ ist der Operator mit $\\Nul\\ket{\\psi} = 0$ für alle $\\ket{\\psi} \\in \\Hil$; im endlichdimensionalen Fall ist er die Matrix mit lauter Nulleinträgen. Der Nulloperator trägt den Hut, weil eine hingeschriebene Null nicht zeigt, ob ein Operator, eine Zahl oder ein Vektor gemeint ist; der Einsoperator ist die Ausnahme und trägt keinen Hut (CONV-HAT).",
+   "body_en": "The \\emph{identity operator} $\\Id$ on a Hilbert space $\\Hil$ is the operator with $\\Id\\ket{\\psi} = \\ket{\\psi}$ for all $\\ket{\\psi} \\in \\Hil$; in the finite-dimensional case it is the unit matrix. The \\emph{null operator} $\\Nul$ is the operator with $\\Nul\\ket{\\psi} = 0$ for all $\\ket{\\psi} \\in \\Hil$; in the finite-dimensional case it is the matrix with all entries zero. The null operator carries the hat because a bare zero does not show whether an operator, a number or a vector is meant; the identity is the exception and carries no hat (CONV-HAT).",
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.ket",
+    "sym.identity",
+    "sym.null-operator"
+   ],
+   "depth": "kern",
+   "origin": {
+    "type": "source-adapted",
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl04.tex:8-27"
+   },
+   "choices": [
+    "CONV-HAT"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:9",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Der \\emph{Einsoperator} $\\mathbb{I}$ wird durch"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:25",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Ebenso nützlich ist der \\emph{Nulloperator} $\\widehat{0}$,"
+    }
+   ],
+   "notes": "Added by the lane-G registry for Lecture 4 (2026-10-29). The script gives the identity as a Definition environment and the null operator in running text; the registry fixes both in one row. The script's remark that the identity is represented by the unit matrix only for finite dimension is kept."
+  },
+  {
+   "id": "D89",
+   "preinventory_row": null,
+   "name_de": "Projektor",
+   "name_en": "projector",
+   "body_de": "Ein Operator $\\op{P}$ auf $\\Hil$ (D87) heißt \\emph{Projektor}, wenn $\\op{P}^2 = \\op{P}\\adj = \\op{P}$ gilt. Ein Projektor ist hermitesch (D18) und positiv (D20), denn $\\op{P} = \\op{P}\\adj\\op{P}$. Gemeint ist immer der Orthogonalprojektor; andere Projektoren kommen nicht vor.",
+   "body_en": "An operator $\\op{P}$ on $\\Hil$ (D87) is called a \\emph{projector} if $\\op{P}^2 = \\op{P}\\adj = \\op{P}$. A projector is Hermitian (D18) and positive (D20), because $\\op{P} = \\op{P}\\adj\\op{P}$. What is meant is always the orthogonal projector; other projectors do not occur.",
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.adjoint",
+    "sym.operator-hat"
+   ],
+   "depth": "kern",
+   "origin": {
+    "type": "source-adapted",
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl04.tex:64,79"
+   },
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:64",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\item \\emph{Projektor}, wenn $A^2 = A^\\dag = A$,"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:79",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Da $P = P^\\dag P$, sind Projektoren positiv."
+    }
+   ],
+   "notes": "Added by the lane-G registry for Lecture 4 (2026-10-29). Physical role per the script (vl04.tex:69): measurements with the two outcomes zero and one. Whether the course fixes the measurement reading in C4 (yes-no question, D2; effect, D2) is the author's; the registry row fixes only the algebraic definition. 'Orthogonal' is the registry's word for what A^2 = A-dagger = A means; a projector in the sense of A^2 = A alone is not meant."
+  },
+  {
+   "id": "D90",
+   "preinventory_row": null,
+   "name_de": "Isometrie",
+   "name_en": "isometry",
+   "body_de": "Ein Operator $\\op{V}$ auf $\\Hil$ (D87) heißt \\emph{isometrisch}, oder \\emph{Isometrie}, wenn $\\op{V}\\adj\\op{V} = \\Id$ gilt. Dann ist $\\braket{\\op{V}\\phi}{\\op{V}\\psi} = \\braket{\\phi}{\\psi}$ für alle $\\ket{\\phi}, \\ket{\\psi} \\in \\Hil$; ein isometrischer Operator lässt also das Skalarprodukt und damit die Norm invariant. Auf einem endlichdimensionalen Hilbertraum ist jede Isometrie unitär (D91).",
+   "body_en": "An operator $\\op{V}$ on $\\Hil$ (D87) is called \\emph{isometric}, or an \\emph{isometry}, if $\\op{V}\\adj\\op{V} = \\Id$. Then $\\braket{\\op{V}\\phi}{\\op{V}\\psi} = \\braket{\\phi}{\\psi}$ for all $\\ket{\\phi}, \\ket{\\psi} \\in \\Hil$; an isometric operator therefore leaves the inner product, and with it the norm, invariant. On a finite-dimensional Hilbert space every isometry is unitary (D91).",
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.ket",
+    "sym.inner-product",
+    "sym.adjoint",
+    "sym.identity",
+    "sym.operator-hat"
+   ],
+   "depth": "kern",
+   "origin": {
+    "type": "source-adapted",
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl04.tex:65,79"
+   },
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:65",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\item \\emph{isometrisch}, wenn $A^\\dag A = \\mathbb{I}$,"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:79",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Isometrische Operatoren sind gerade die, die das Skalarprodukt und damit die Norm invariant lassen."
+    }
+   ],
+   "notes": "Added by the lane-G registry for Lecture 4 (2026-10-29). The last sentence is the standard finite-dimensional fact (V-dagger V = Id gives injectivity, injective on finite dimension gives surjective, so V-dagger is the inverse); the script says the weaker 'isometrische sind erst im endlich-dimensionalen Fall automatisch normal' (vl04.tex:69), which is the same fact seen from D92. Kern is finite-dimensional, so the case where an isometry is not unitary (shift on l2) is not shown."
+  },
+  {
+   "id": "D91",
+   "preinventory_row": null,
+   "name_de": "unitärer Operator",
+   "name_en": "unitary operator",
+   "body_de": "Ein Operator $\\op{U}$ auf $\\Hil$ (D87) heißt \\emph{unitär}, wenn $\\op{U}\\adj\\op{U} = \\op{U}\\op{U}\\adj = \\Id$ gilt, wenn also $\\op{U}$ isometrisch (D90) ist und $\\op{U}\\adj$ ebenfalls. Ein unitärer Operator ist invertierbar mit $\\op{U}^{-1} = \\op{U}\\adj$ und normal (D92), und er erhält das Skalarprodukt. Wie jeder Operator trägt er den Hut: $\\op{\\Uni}$ (CONV-HAT).",
+   "body_en": "An operator $\\op{U}$ on $\\Hil$ (D87) is called \\emph{unitary} if $\\op{U}\\adj\\op{U} = \\op{U}\\op{U}\\adj = \\Id$, that is, if $\\op{U}$ is isometric (D90) and so is $\\op{U}\\adj$. A unitary operator is invertible with $\\op{U}^{-1} = \\op{U}\\adj$ and normal (D92), and it preserves the inner product. Like every operator it carries the hat: $\\op{\\Uni}$ (CONV-HAT).",
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.adjoint",
+    "sym.identity",
+    "sym.operator-hat",
+    "sym.unitary"
+   ],
+   "depth": "kern",
+   "origin": {
+    "type": "source-adapted",
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl04.tex:66,69"
+   },
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:66",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\item \\emph{unitär}, wenn $A^\\dag A = AA^\\dag = \\mathbb{I}$ und"
+    }
+   ],
+   "notes": "Added by the lane-G registry for Lecture 4 (2026-10-29). sym.unitary (macro \\Uni, rendering U, blessed in C11) is the generic letter; the hat is applied at the point of use, \\op{\\Uni}, as c11 already writes it. In the definition body the letter U is used directly with \\op{U}, like the other generic operator letters. The script says unitary operators describe the dynamics (vl04.tex:69). 'U' as a letter also means internal energy in Parts IV-V (COL-U); not in this chapter."
+  },
+  {
+   "id": "D92",
+   "preinventory_row": null,
+   "name_de": "normaler Operator",
+   "name_en": "normal operator",
+   "body_de": "Ein Operator $\\op{N}$ auf $\\Hil$ (D87) heißt \\emph{normal}, wenn $\\op{N}\\adj\\op{N} = \\op{N}\\op{N}\\adj$ gilt. Hermitesche (D18) und positive (D20) Operatoren, Projektoren (D89) und unitäre Operatoren (D91) sind normal; ebenso jede Isometrie (D90) auf einem endlichdimensionalen Hilbertraum.",
+   "body_en": "An operator $\\op{N}$ on $\\Hil$ (D87) is called \\emph{normal} if $\\op{N}\\adj\\op{N} = \\op{N}\\op{N}\\adj$. Hermitian (D18) and positive (D20) operators, projectors (D89) and unitary operators (D91) are normal; so is every isometry (D90) on a finite-dimensional Hilbert space.",
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.adjoint",
+    "sym.operator-hat"
+   ],
+   "depth": "kern",
+   "origin": {
+    "type": "source-adapted",
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl04.tex:67,69"
+   },
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:67",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\item \\emph{normal}, wenn $A^\\dag A = AA^\\dag$."
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:69",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "die normalen Operatoren bilden die Oberklasse"
+    }
+   ],
+   "notes": "Added by the lane-G registry for Lecture 4 (2026-10-29). The script's class diagram (vl04.tex:69) is the second sentence. Its spectral statement (eigenvalues of a normal operator, vl04.tex:207) belongs to the figure and to Lecture 5, where eigenvalues are defined."
+  },
+  {
+   "id": "D93",
+   "preinventory_row": null,
+   "name_de": "Matrixelement, Matrixdarstellung",
+   "name_en": "matrix element, matrix representation",
+   "body_de": "Sei $\\{\\ket{\\phi_x}\\}_{x \\in X}$ eine Orthonormalbasis von $\\Hil$ (D85) mit endlicher Indexmenge $X$ und $\\op{A}$ ein Operator auf $\\Hil$ (D87). Die Zahlen $\\entry{\\op{A}}{x}{y} = \\melem{\\phi_x}{\\op{A}}{\\phi_y} = \\braket{\\phi_x}{\\op{A}\\phi_y}$ heißen die \\emph{Matrixelemente} von $\\op{A}$ in dieser Basis, die Matrix mit diesen Einträgen die \\emph{Matrixdarstellung} von $\\op{A}$. Sie legt $\\op{A}$ fest: $\\op{A}\\ket{\\Psi} = \\sum_{x,y \\in X} \\ket{\\phi_x}\\,\\entry{\\op{A}}{x}{y}\\,\\braket{\\phi_y}{\\Psi}$, denn man setzt die Entwicklungsformel für Vektoren zweimal ein. Bei bekannter Basis schreibt man $\\ket{x}$ für $\\ket{\\phi_x}$ und $\\melem{x}{\\op{A}}{y}$ für $\\entry{\\op{A}}{x}{y}$.",
+   "body_en": "Let $\\{\\ket{\\phi_x}\\}_{x \\in X}$ be an orthonormal basis of $\\Hil$ (D85) with a finite index set $X$ and $\\op{A}$ an operator on $\\Hil$ (D87). The numbers $\\entry{\\op{A}}{x}{y} = \\melem{\\phi_x}{\\op{A}}{\\phi_y} = \\braket{\\phi_x}{\\op{A}\\phi_y}$ are called the \\emph{matrix elements} of $\\op{A}$ in this basis, the matrix with these entries the \\emph{matrix representation} of $\\op{A}$. It fixes $\\op{A}$: $\\op{A}\\ket{\\Psi} = \\sum_{x,y \\in X} \\ket{\\phi_x}\\,\\entry{\\op{A}}{x}{y}\\,\\braket{\\phi_y}{\\Psi}$, because one inserts the expansion formula for vectors twice. When the basis is known, one writes $\\ket{x}$ for $\\ket{\\phi_x}$ and $\\melem{x}{\\op{A}}{y}$ for $\\entry{\\op{A}}{x}{y}$.",
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.ket",
+    "sym.inner-product",
+    "sym.operator-hat",
+    "sym.matrix-element",
+    "sym.matrix-entry"
+   ],
+   "depth": "kern",
+   "origin": {
+    "type": "source-adapted",
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl04.tex:81-131"
+   },
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:81",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Wenn man eine Basis"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:83",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "[A]_{xy} \\equiv \\langle \\phi_x|A\\phi_y\\rangle"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:131",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "[A]_{xy} \\equiv \\langle x|A|y\\rangle."
+    }
+   ],
+   "notes": "Added by the lane-G registry for Lecture 4 (2026-10-29). Finite index set for Kern (PLAN 1.3 D4). The script says that the formula 'traegt auch im unendlich-dimensionalen Fall' because no matrix occurs in it (vl04.tex:90); that statement needs convergence of the double sum and is not claimed here. Depends on D85 (basis, finite index set) for the expansion formula. The adjoint rule [A-dagger]_{xy} = [A]_{yx}^* is stated in D17."
+  },
+  {
+   "id": "D94",
+   "preinventory_row": null,
+   "name_de": "Ket-Bra, äußeres Produkt",
+   "name_en": "ket-bra, outer product",
+   "body_de": "Für Vektoren $\\ket{\\Psi}, \\ket{\\Phi} \\in \\Hil$ ist das \\emph{Ket-Bra} $\\ketbra{\\Psi}{\\Phi}$ der Operator (D87) mit $\\ketbra{\\Psi}{\\Phi}\\ket{\\xi} = \\braket{\\Phi}{\\xi}\\,\\ket{\\Psi}$ für alle $\\ket{\\xi} \\in \\Hil$. Er heißt auch \\emph{äußeres Produkt}. Es gilt $(\\ketbra{\\Psi}{\\Phi})\\adj = \\ketbra{\\Phi}{\\Psi}$. Ist $\\{\\ket{x}\\}_{x \\in X}$ eine Orthonormalbasis mit endlicher Indexmenge (D85), so folgt $\\Id = \\sum_{x \\in X} \\ketbra{x}{x}$ und $\\op{A} = \\sum_{x,y \\in X} \\entry{\\op{A}}{x}{y}\\,\\ketbra{x}{y}$ (D93).",
+   "body_en": "For vectors $\\ket{\\Psi}, \\ket{\\Phi} \\in \\Hil$ the \\emph{ket-bra} $\\ketbra{\\Psi}{\\Phi}$ is the operator (D87) with $\\ketbra{\\Psi}{\\Phi}\\ket{\\xi} = \\braket{\\Phi}{\\xi}\\,\\ket{\\Psi}$ for all $\\ket{\\xi} \\in \\Hil$. It is also called the \\emph{outer product}. One has $(\\ketbra{\\Psi}{\\Phi})\\adj = \\ketbra{\\Phi}{\\Psi}$. If $\\{\\ket{x}\\}_{x \\in X}$ is an orthonormal basis with a finite index set (D85), then $\\Id = \\sum_{x \\in X} \\ketbra{x}{x}$ and $\\op{A} = \\sum_{x,y \\in X} \\entry{\\op{A}}{x}{y}\\,\\ketbra{x}{y}$ (D93).",
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.ket",
+    "sym.inner-product",
+    "sym.adjoint",
+    "sym.identity",
+    "sym.operator-hat",
+    "sym.ketbra",
+    "sym.matrix-entry"
+   ],
+   "depth": "kern",
+   "origin": {
+    "type": "source-adapted",
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl04.tex:114-127"
+   },
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:114",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\emph{Ket-Bra}"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:121",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "|\\Psi\\rangle\\langle \\Phi|\\chi\\rangle = \\langle\\Phi|\\chi\\rangle |\\Psi\\rangle"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:127",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\mathbb{I} = \\sum_{x\\in X} |x\\rangle\\langle x|"
+    }
+   ],
+   "notes": "Added by the lane-G registry for Lecture 4 (2026-10-29). Script defect noted for the author: vl04.tex:120 ends in 'forall Psi in H' although the quantifier belongs to chi (the registry body writes xi, because chi is the indicator function) (and the left side lacks the closing bra-ket bracket); the body quantifies chi. The script's reading of ket and bra as the operators C -> H and H -> C (vl04.tex:96-112) is not part of this definition and is the author's to keep or drop; D81 stays as it is (kets are vectors). The script's remark that the sum formula is 'eins gleich eins' (vl04.tex:129) is the author's. Finite index set for Kern. No hat on the ket-bra (TJO 2026-10-29, CONV-HAT): \\ketbra{\\Psi}{\\Phi} is written bare, never \\op{\\ketbra{\\Psi}{\\Phi}}; only the matrix \\op{A} in the sum formula carries a hat."
   }
  ]
 }

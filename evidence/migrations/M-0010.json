@@ -36,7 +36,7 @@
   "independent_check": "docs/plan/research/curriculum/REPORT.md:250 (H1.1); docs/plan/BRIEF.md:45; evidence/derivations/c01/DERIVATION.md (c01.cl.punktgewicht, c01.cl.zerlegung); content/c02-gpt/de.tex:344 (pure states of the classical bit give certain answers to its extremal effects)",
   "provenance_ids": [],
   "derivation": "evidence/derivations/c01/DERIVATION.md#c01.cl.punktgewicht",
-  "notes": "A change of framing, not a correction of an error in the script. Script v0.3 (2026-10-22, lane ch1, docs/plan/script-v0.3/NOTES-ch1.md): applied as the course realised it, not with the record's literal new_text: the classical sentence is kept (as in c00) and the point-weight special case is the determinism Merksatz, which ends with the classical definite predictions (line 125); the record's last sentence on missing information is not printed (REVIEW-lec1, G-0023 d). Destination: the uncommitted working tree registered as tpc-script-v0.3; the commit is still to be made by the coordinator. The v0.1 entries are not application targets."
+  "notes": "A change of framing, not a correction of an error in the script. Script v0.3 (2026-10-22, lane ch1, docs/plan/script-v0.3/NOTES-ch1.md): applied as the course realised it, not with the record's literal new_text: the classical sentence is kept (as in c00) and the point-weight special case is the determinism Merksatz, which ends with the classical definite predictions (line 125); the record's last sentence on missing information is not printed (REVIEW-lec1, G-0023 d). Destination: script v0.3, committed in b1fd537 and registered as tpc-script-v0.3 (identifiers.git_commit). The v0.1 entries are not application targets."
  },
  "destination": "c00.s4.4",
  "applied_date": "2026-10-22"

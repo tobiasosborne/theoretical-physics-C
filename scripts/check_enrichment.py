@@ -78,6 +78,14 @@ MIGRATED_LECTURES = {
         "map_check": "evidence/migrations/check_vl02_map.py",
         "map": "evidence/migrations/maps/vl02-map.json",
         "since": "script v0.3, 2026-10-22 (docs/plan/script-v0.3/NOTES-evidence.md)"},
+    3: {"snapshot": ("tpc-script-v0.2", "tpc-script-v0.2/git/latex/lectures/de/vl03.tex"),
+        "map_check": "evidence/migrations/check_vl03_map.py",
+        "map": "evidence/migrations/maps/vl03-map.json",
+        "since": "script v0.3, 2026-10-29 (docs/plan/lec34/NOTES-evidence.md)"},
+    4: {"snapshot": ("tpc-script-v0.2", "tpc-script-v0.2/git/latex/lectures/de/vl04.tex"),
+        "map_check": "evidence/migrations/check_vl04_map.py",
+        "map": "evidence/migrations/maps/vl04-map.json",
+        "since": "script v0.3, 2026-10-29 (docs/plan/lec34/NOTES-evidence.md)"},
 }
 
 # Departures from v0.1 that are intentional.  Keyed by lecture number;

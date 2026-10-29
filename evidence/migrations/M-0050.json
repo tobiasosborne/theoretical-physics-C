@@ -115,7 +115,7 @@
    "P-0315",
    "P-0316"
   ],
-  "notes": "P-0101, P-0102, P-0103, P-0105 quote the old dates and now only support this record; P-0310 to P-0316 quote the registered pages. Script v0.3 (2026-10-22, lane ch1, docs/plan/script-v0.3/NOTES-ch1.md): applied: Planck 1900, Lenard without year and Einstein from 1905, Franck-Hertz 1914, Davisson-Germer 1927, printed in parentheses in the list of findings (lines 12, 20, 25, 28), not as table c00.tab.jahre. Destination: the uncommitted working tree registered as tpc-script-v0.3; the commit is still to be made by the coordinator. The v0.1 entries are not application targets."
+  "notes": "P-0101, P-0102, P-0103, P-0105 quote the old dates and now only support this record; P-0310 to P-0316 quote the registered pages. Script v0.3 (2026-10-22, lane ch1, docs/plan/script-v0.3/NOTES-ch1.md): applied: Planck 1900, Lenard without year and Einstein from 1905, Franck-Hertz 1914, Davisson-Germer 1927, printed in parentheses in the list of findings (lines 12, 20, 25, 28), not as table c00.tab.jahre. Destination: script v0.3, committed in b1fd537 and registered as tpc-script-v0.3 (identifiers.git_commit). The v0.1 entries are not application targets."
  },
  "destination": "c00.v2",
  "applied_date": "2026-10-22"

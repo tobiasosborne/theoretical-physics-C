@@ -5309,8 +5309,8 @@
   {
    "id": "c03.cl.gs-beispiel",
    "kind": "statement",
-   "statement_de": "Gram-Schmidt für |Φ_1⟩ = (1, 0), |Φ_2⟩ = (1, 1) gibt |Ψ_1⟩ = (1, 0), |Ψ_2⟩ = (0, 1); nur der Nullvektor ist zu beiden Startvektoren orthogonal.",
-   "statement_en": "Gram-Schmidt for |Φ_1⟩ = (1, 0), |Φ_2⟩ = (1, 1) gives |Ψ_1⟩ = (1, 0), |Ψ_2⟩ = (0, 1); only the zero vector is orthogonal to both starting vectors.",
+   "statement_de": "Gram-Schmidt für |Φ_1⟩ = (2, 0), |Φ_2⟩ = (1, 1) gibt |Ψ_1⟩ = (2, 0) mit ⟨Ψ_1|Φ_2⟩ = 2, ‖Ψ_1‖² = 4 und |Ψ_2⟩ = (0, 1); geteilt durch die Normen 2 und 1 entsteht die Basis |e_0⟩, |e_1⟩; nur der Nullvektor ist zu beiden Startvektoren orthogonal.",
+   "statement_en": "Gram-Schmidt for |Φ_1⟩ = (2, 0), |Φ_2⟩ = (1, 1) gives |Ψ_1⟩ = (2, 0) with ⟨Ψ_1|Φ_2⟩ = 2, ‖Ψ_1‖² = 4 and |Ψ_2⟩ = (0, 1); divided by the norms 2 and 1 this gives the basis |e_0⟩, |e_1⟩; only the zero vector is orthogonal to both starting vectors.",
    "depth": "kern",
    "evidence": "derived",
    "presentation": null,
@@ -5321,13 +5321,14 @@
    "definition_ids": [
     "D85"
    ],
-   "review_receipt": null
+   "review_receipt": null,
+   "notes": "Starting vector Φ_1 = (2, 0) instead of the lecture's (1, 0), so that the normalisation step occurs; follows script v0.3 (latex/lectures/de/vl03.tex:120-136; muse review, approved by TJO, 2026-10-29)."
   },
   {
    "id": "c03.cl.gs-null",
    "kind": "statement",
-   "statement_de": "Mit |Φ_3⟩ = (1, −1) dazu ist |Ψ_3⟩ = 0, denn |Φ_3⟩ = 2|Φ_1⟩ − |Φ_2⟩.",
-   "statement_en": "Adding |Φ_3⟩ = (1, −1) gives |Ψ_3⟩ = 0, since |Φ_3⟩ = 2|Φ_1⟩ − |Φ_2⟩.",
+   "statement_de": "Mit |Φ_3⟩ = (1, −1) dazu ist |Ψ_3⟩ = 0, denn |Φ_3⟩ = |Φ_1⟩ − |Φ_2⟩ (mit |Φ_1⟩ = (2, 0), |Φ_2⟩ = (1, 1)).",
+   "statement_en": "Adding |Φ_3⟩ = (1, −1) gives |Ψ_3⟩ = 0, since |Φ_3⟩ = |Φ_1⟩ − |Φ_2⟩ (with |Φ_1⟩ = (2, 0), |Φ_2⟩ = (1, 1)).",
    "depth": "kern",
    "evidence": "derived",
    "presentation": null,
@@ -5456,6 +5457,465 @@
     "D80"
    ],
    "review_receipt": null
+  },
+  {
+   "id": "c03.cl.matrix",
+   "kind": "statement",
+   "statement_de": "Jede komplexe n×n-Matrix ist ein Operator auf ℂⁿ (Matrix mal Spalte ist linear), und jeder Operator auf ℂⁿ ist eine solche Matrix: ihre Spalten sind die Bilder Â|u_k⟩ der kanonischen Spalten.",
+   "statement_en": "Every complex n×n matrix is an operator on ℂⁿ (matrix times column is linear), and every operator on ℂⁿ is such a matrix: its columns are the images Â|u_k⟩ of the canonical columns.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85), etwa ℂⁿ mit dem Skalarprodukt aus c03.s2; Operatoren auf ganz H definiert (D87). / Finite-dimensional: H with a basis with a finite index set (D85), e.g. ℂⁿ with the inner product of c03.s2; operators defined on all of H (D87).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.matrix",
+   "definition_ids": [
+    "D87"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.adjungiert",
+   "kind": "proposition",
+   "statement_de": "Auf einem Hilbertraum mit einer Basis {|φ_x⟩} mit endlicher Indexmenge gibt es zu jedem Operator Â genau einen Operator Â† mit ⟨Â†φ|ψ⟩ = ⟨φ|Âψ⟩ für alle φ, ψ, nämlich Â†|φ⟩ = Σ_x ⟨Âφ_x|φ⟩|φ_x⟩.",
+   "statement_en": "On a Hilbert space with a basis {|φ_x⟩} with a finite index set, every operator Â has exactly one operator Â† with ⟨Â†φ|ψ⟩ = ⟨φ|Âψ⟩ for all φ, ψ, namely Â†|φ⟩ = Σ_x ⟨Âφ_x|φ⟩|φ_x⟩.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85), etwa ℂⁿ mit dem Skalarprodukt aus c03.s2; Operatoren auf ganz H definiert (D87). / Finite-dimensional: H with a basis with a finite index set (D85), e.g. ℂⁿ with the inner product of c03.s2; operators defined on all of H (D87).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.adjungiert",
+   "definition_ids": [
+    "D17",
+    "D85",
+    "D87"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.adj-matrix",
+   "kind": "equation",
+   "statement_de": "In ℂⁿ mit dem Skalarprodukt v†w ist die Matrix des adjungierten Operators die konjugiert transponierte, (Â†)_{kj} = a_{jk}^*; für das gewichtete Skalarprodukt ⟨v|w⟩_c (Beispiel c03.ex.gewichtet) und Â = ((0,1),(0,0)) ist der adjungierte Operator ((0,0),(1/c,0)), für c ≠ 1 nicht die konjugiert transponierte Matrix.",
+   "statement_en": "In ℂⁿ with the inner product v†w the matrix of the adjoint operator is the conjugate transpose, (Â†)_{kj} = a_{jk}^*; for the weighted inner product ⟨v|w⟩_c (example c03.ex.gewichtet) and Â = ((0,1),(0,0)) the adjoint operator is ((0,0),(1/c,0)), for c ≠ 1 not the conjugate transposed matrix.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85), etwa ℂⁿ mit dem Skalarprodukt aus c03.s2; Operatoren auf ganz H definiert (D87). / Finite-dimensional: H with a basis with a finite index set (D85), e.g. ℂⁿ with the inner product of c03.s2; operators defined on all of H (D87).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.adj-matrix",
+   "definition_ids": [
+    "D17",
+    "D82"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.adj-regeln",
+   "kind": "proposition",
+   "statement_de": "Auf einem endlichdimensionalen Hilbertraum gilt (Â + B̂)† = Â† + B̂†, (zÂ)† = z*Â†, (ÂB̂)† = B̂†Â† und (Â†)† = Â.",
+   "statement_en": "On a finite-dimensional Hilbert space (Â + B̂)† = Â† + B̂†, (zÂ)† = z*Â†, (ÂB̂)† = B̂†Â† and (Â†)† = Â.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85), etwa ℂⁿ mit dem Skalarprodukt aus c03.s2; Operatoren auf ganz H definiert (D87). / Finite-dimensional: H with a basis with a finite index set (D85), e.g. ℂⁿ with the inner product of c03.s2; operators defined on all of H (D87).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.adj-regeln",
+   "definition_ids": [
+    "D17"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.rollen",
+   "kind": "equation",
+   "statement_de": "Rollen der Operatorklassen in der Quantenmechanik: hermitesche Operatoren beschreiben die Observablen, positive (mit einer Normierung) die Zustände, Projektoren Ja-Nein-Messungen (Ereignis oder kein Ereignis), isometrische und unitäre die Dynamik.",
+   "statement_en": "Roles of the operator classes in quantum mechanics: Hermitian operators describe observables, positive ones (with a normalisation) states, projectors yes-no measurements (event or no event), isometric and unitary ones the dynamics.",
+   "depth": "kern",
+   "evidence": "source-backed",
+   "presentation": null,
+   "scope": "Wie im Vorlesungsskript des Autors angegeben; keine externe Quelle geprüft. Vorverweis auf die folgenden Kapitel; „mit einer Normierung“ nach D22 (Dichteoperator: positiv mit Spur 1). / As stated in the author's lecture notes; no external source checked. Forward pointer to the following chapters; 'with a normalisation' after D22 (density operator: positive with trace 1).",
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0329"
+   ],
+   "definition_ids": [
+    "D18",
+    "D20",
+    "D89",
+    "D90",
+    "D91",
+    "D92"
+   ],
+   "review_receipt": null,
+   "notes": "Also said in lecture video v04 [72:57]-[73:45]. The script's 'die positiven [beschreiben] die Zustände' is kept with the normalisation of D22; H3.2 (vectors are not the states) is respected: no vector is called a state."
+  },
+  {
+   "id": "c03.cl.positiv",
+   "kind": "proposition",
+   "statement_de": "Auf einem endlichdimensionalen Hilbertraum: Â ist genau dann hermitesch, wenn ⟨ψ|Âψ⟩ für jedes ψ reell ist; jeder positive Operator ist hermitesch; B̂†B̂ ist positiv; jeder Projektor ist positiv.",
+   "statement_en": "On a finite-dimensional Hilbert space: Â is Hermitian if and only if ⟨ψ|Âψ⟩ is real for every ψ; every positive operator is Hermitian; B̂†B̂ is positive; every projector is positive.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85), etwa ℂⁿ mit dem Skalarprodukt aus c03.s2; Operatoren auf ganz H definiert (D87). / Finite-dimensional: H with a basis with a finite index set (D85), e.g. ℂⁿ with the inner product of c03.s2; operators defined on all of H (D87).",
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0330"
+   ],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.positiv",
+   "definition_ids": [
+    "D17",
+    "D18",
+    "D20",
+    "D89"
+   ],
+   "review_receipt": null,
+   "notes": "P-0330 backs the forward pointer after the proposition (G-0072 (b)): the uncertainty proof of the author's script starts from the positivity of (A + iλB)†(A + iλB), i.e. part 3."
+  },
+  {
+   "id": "c03.cl.isometrie",
+   "kind": "proposition",
+   "statement_de": "Auf einem endlichdimensionalen Hilbertraum: V̂ ist genau dann isometrisch, wenn ⟨V̂φ|V̂ψ⟩ = ⟨φ|ψ⟩ für alle φ, ψ; jede Isometrie ist unitär; hermitesche und unitäre Operatoren sind normal, also auch positive, Projektoren und Isometrien.",
+   "statement_en": "On a finite-dimensional Hilbert space: V̂ is isometric if and only if ⟨V̂φ|V̂ψ⟩ = ⟨φ|ψ⟩ for all φ, ψ; every isometry is unitary; Hermitian and unitary operators are normal, hence also positive ones, projectors and isometries.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85), etwa ℂⁿ mit dem Skalarprodukt aus c03.s2; Operatoren auf ganz H definiert (D87). / Finite-dimensional: H with a basis with a finite index set (D85), e.g. ℂⁿ with the inner product of c03.s2; operators defined on all of H (D87).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.isometrie",
+   "definition_ids": [
+    "D90",
+    "D91",
+    "D92",
+    "D18",
+    "D20",
+    "D89"
+   ],
+   "review_receipt": null,
+   "notes": "Part 2 uses the rank-nullity theorem of linear algebra (an injective linear map of a finite-dimensional space into itself is surjective); Vertiefung c03.v6 shows that part 2 fails in ℓ². Prerequisite: rank-nullity theorem (part 2); TJO 2026-10-29: standard linear algebra accepted as prerequisite (DERIVATION.md, same anchor)."
+  },
+  {
+   "id": "c03.cl.wirkung",
+   "kind": "equation",
+   "statement_de": "Für eine Basis {|φ_x⟩} mit endlicher Indexmenge gilt Â|Ψ⟩ = Σ_{x,y} |φ_x⟩[Â]_{xy}⟨φ_y|Ψ⟩ mit [Â]_{xy} = ⟨φ_x|Âφ_y⟩: die Entwicklungsformel zweimal eingesetzt.",
+   "statement_en": "For a basis {|φ_x⟩} with a finite index set, Â|Ψ⟩ = Σ_{x,y} |φ_x⟩[Â]_{xy}⟨φ_y|Ψ⟩ with [Â]_{xy} = ⟨φ_x|Âφ_y⟩: the expansion formula inserted twice.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85), etwa ℂⁿ mit dem Skalarprodukt aus c03.s2; Operatoren auf ganz H definiert (D87). / Finite-dimensional: H with a basis with a finite index set (D85), e.g. ℂⁿ with the inner product of c03.s2; operators defined on all of H (D87).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.wirkung",
+   "definition_ids": [
+    "D93",
+    "D85"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.adj-elemente",
+   "kind": "equation",
+   "statement_de": "In jeder Orthonormalbasis mit endlicher Indexmenge und für jedes Skalarprodukt ist [Â†]_{xy} = [Â]_{yx}^*.",
+   "statement_en": "In every orthonormal basis with a finite index set and for every inner product, [Â†]_{xy} = [Â]_{yx}^*.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85), etwa ℂⁿ mit dem Skalarprodukt aus c03.s2; Operatoren auf ganz H definiert (D87). / Finite-dimensional: H with a basis with a finite index set (D85), e.g. ℂⁿ with the inner product of c03.s2; operators defined on all of H (D87).",
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0326"
+   ],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.adj-elemente",
+   "definition_ids": [
+    "D17",
+    "D93"
+   ],
+   "review_receipt": null,
+   "notes": "P-0326 (Reed-Simon I p. 187) is the special case quoted in the text: a matrix on ℂⁿ is self-adjoint iff it is invariant under reflection across the diagonal followed by complex conjugation."
+  },
+  {
+   "id": "c03.cl.bra-op",
+   "kind": "equation",
+   "statement_de": "Fasst man das Ket |Ψ⟩ als lineare Abbildung ℂ → H, z ↦ zΨ, auf, so ist der adjungierte Operator (mit dem Skalarprodukt a*b auf ℂ) der Bra ⟨Ψ|: H → ℂ, Φ ↦ ⟨Ψ|Φ⟩.",
+   "statement_en": "Reading the ket |Ψ⟩ as the linear map ℂ → H, z ↦ zΨ, its adjoint (with the inner product a*b on ℂ) is the bra ⟨Ψ|: H → ℂ, Φ ↦ ⟨Ψ|Φ⟩.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85), etwa ℂⁿ mit dem Skalarprodukt aus c03.s2; Operatoren auf ganz H definiert (D87). / Finite-dimensional: H with a basis with a finite index set (D85), e.g. ℂⁿ with the inner product of c03.s2; operators defined on all of H (D87).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.bra-op",
+   "definition_ids": [
+    "D17",
+    "D81"
+   ],
+   "review_receipt": null,
+   "notes": "The adjoint is taken for a linear map between two Hilbert spaces with the defining equation of D17 (the script's step, vl04.tex:100)."
+  },
+  {
+   "id": "c03.cl.ketbra",
+   "kind": "proposition",
+   "statement_de": "Für Vektoren Ψ, Φ, eine Basis {|x⟩} mit endlicher Indexmenge und jeden Operator Â: (|Ψ⟩⟨Φ|)† = |Φ⟩⟨Ψ|, 𝕀 = Σ_x |x⟩⟨x| und Â = Σ_{x,y} ⟨x|Â|y⟩ |x⟩⟨y|.",
+   "statement_en": "For vectors Ψ, Φ, a basis {|x⟩} with a finite index set and every operator Â: (|Ψ⟩⟨Φ|)† = |Φ⟩⟨Ψ|, 𝕀 = Σ_x |x⟩⟨x| and Â = Σ_{x,y} ⟨x|Â|y⟩ |x⟩⟨y|.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85), etwa ℂⁿ mit dem Skalarprodukt aus c03.s2; Operatoren auf ganz H definiert (D87). / Finite-dimensional: H with a basis with a finite index set (D85), e.g. ℂⁿ with the inner product of c03.s2; operators defined on all of H (D87).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.ketbra",
+   "definition_ids": [
+    "D94",
+    "D93",
+    "D88",
+    "D85"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.drei",
+   "kind": "statement",
+   "statement_de": "Für Â = ((0,1,0),(1,0,1),(0,1,0)), B̂ = (1/3)(alle Einträge 1) und Ĉ = ((0,1,0),(0,0,i),(−1,0,0)) auf ℂ³: Â und B̂ sind hermitesch, B̂ ist ein Projektor und positiv, ⟨ψ|Â|ψ⟩ = −√2 für ψ = (1/2, −1/√2, 1/2), also ist Â nicht positiv; Ĉ†Ĉ = ĈĈ† = 𝕀; ⟨x|B̂|y⟩ = 1/3 für alle x, y; Ĉ = |0⟩⟨1| + i|1⟩⟨2| − |2⟩⟨0|.",
+   "statement_en": "For Â = ((0,1,0),(1,0,1),(0,1,0)), B̂ = (1/3)(all entries 1) and Ĉ = ((0,1,0),(0,0,i),(−1,0,0)) on ℂ³: Â and B̂ are Hermitian, B̂ is a projector and positive, ⟨ψ|Â|ψ⟩ = −√2 for ψ = (1/2, −1/√2, 1/2), so Â is not positive; Ĉ†Ĉ = ĈĈ† = 𝕀; ⟨x|B̂|y⟩ = 1/3 for all x, y; Ĉ = |0⟩⟨1| + i|1⟩⟨2| − |2⟩⟨0|.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85), etwa ℂⁿ mit dem Skalarprodukt aus c03.s2; Operatoren auf ganz H definiert (D87). / Finite-dimensional: H with a basis with a finite index set (D85), e.g. ℂⁿ with the inner product of c03.s2; operators defined on all of H (D87).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.drei",
+   "definition_ids": [
+    "D18",
+    "D20",
+    "D89",
+    "D91",
+    "D93",
+    "D94"
+   ],
+   "review_receipt": null,
+   "notes": "vl04.tex:134-204. Dropped: vl04.tex:156 'Modell für Messungen der Photonenzahl in Glasfasernetzwerken' (no source on disk; new gap for TJO)."
+  },
+  {
+   "id": "c03.cl.c-ketbra",
+   "kind": "statement",
+   "statement_de": "Ĉ† = |1⟩⟨0| − i|2⟩⟨1| − |0⟩⟨2| und Ĉ†Ĉ = |0⟩⟨0| + |1⟩⟨1| + |2⟩⟨2| = 𝕀, nur mit Ket-Bras gerechnet.",
+   "statement_en": "Ĉ† = |1⟩⟨0| − i|2⟩⟨1| − |0⟩⟨2| and Ĉ†Ĉ = |0⟩⟨0| + |1⟩⟨1| + |2⟩⟨2| = 𝕀, computed with ket-bras only.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85), etwa ℂⁿ mit dem Skalarprodukt aus c03.s2; Operatoren auf ganz H definiert (D87). / Finite-dimensional: H with a basis with a finite index set (D85), e.g. ℂⁿ with the inner product of c03.s2; operators defined on all of H (D87).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.c-ketbra",
+   "definition_ids": [
+    "D94",
+    "D17",
+    "D91"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.orte",
+   "kind": "equation",
+   "statement_de": "Ist Â|v⟩ = λ|v⟩ mit |v⟩ ≠ 0, so gilt: Â hermitesch ⇒ λ reell; Â positiv ⇒ λ ≥ 0; Â Projektor ⇒ λ² = λ; Â isometrisch ⇒ |λ| = 1. Normalität allein schränkt λ nicht ein (λ𝕀 ist normal).",
+   "statement_en": "If Â|v⟩ = λ|v⟩ with |v⟩ ≠ 0: Â Hermitian ⇒ λ real; Â positive ⇒ λ ≥ 0; Â a projector ⇒ λ² = λ; Â isometric ⇒ |λ| = 1. Normality alone does not constrain λ (λ𝕀 is normal).",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85), etwa ℂⁿ mit dem Skalarprodukt aus c03.s2; Operatoren auf ganz H definiert (D87). / Finite-dimensional: H with a basis with a finite index set (D85), e.g. ℂⁿ with the inner product of c03.s2; operators defined on all of H (D87).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.orte",
+   "definition_ids": [
+    "D18",
+    "D20",
+    "D89",
+    "D90",
+    "D92"
+   ],
+   "review_receipt": null,
+   "notes": "vl04.tex:207 states this 'für normale Operatoren'; the derivation needs no normality. Eigenvalue only informally (D-SPEKTREN); the formal definition comes with vl05."
+  },
+  {
+   "id": "c03.cl.spektren",
+   "kind": "equation",
+   "statement_de": "Die Eigenwerte der Beispieloperatoren: Â: 0, √2, −√2; B̂: 1, 0; Ĉ: die drei Lösungen von λ³ = −i, e^{−iπ/6}, i, e^{7iπ/6}; weitere gibt es nicht. Eigenvektoren: Â: (1,√2,1), (1,0,−1), (1,−√2,1); B̂: (1,1,1), (1,−1,0); Ĉ: (1, λ, −iλ²). ψ = (1/2, −1/√2, 1/2) ist der normierte Eigenvektor von Â zu −√2.",
+   "statement_en": "The eigenvalues of the example operators: Â: 0, √2, −√2; B̂: 1, 0; Ĉ: the three solutions of λ³ = −i, e^{−iπ/6}, i, e^{7iπ/6}; there are no others. Eigenvectors: Â: (1,√2,1), (1,0,−1), (1,−√2,1); B̂: (1,1,1), (1,−1,0); Ĉ: (1, λ, −iλ²). ψ = (1/2, −1/√2, 1/2) is the normalised eigenvector of Â for −√2.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85), etwa ℂⁿ mit dem Skalarprodukt aus c03.s2; Operatoren auf ganz H definiert (D87). / Finite-dimensional: H with a basis with a finite index set (D85), e.g. ℂⁿ with the inner product of c03.s2; operators defined on all of H (D87).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.spektren",
+   "definition_ids": [],
+   "review_receipt": null,
+   "notes": "'no others' from the characteristic polynomials (DERIVATION.md, check_c03.py); the text defers the method to the vl05 part of the chapter. Prerequisite: eigenvalues are the roots of det(Â − λ𝕀) ('weitere gibt es nicht'); TJO 2026-10-29: standard linear algebra accepted as prerequisite (DERIVATION.md, same anchor)."
+  },
+  {
+   "id": "c03.cl.beschraenkt",
+   "kind": "equation",
+   "statement_de": "Für jede komplexe n×n-Matrix Â mit Einträgen a_{jk} und jedes ψ ∈ ℂⁿ ist ‖Âψ‖² ≤ (Σ_{j,k}|a_{jk}|²)‖ψ‖²; jeder Operator auf ℂⁿ ist beschränkt.",
+   "statement_en": "For every complex n×n matrix Â with entries a_{jk} and every ψ ∈ ℂⁿ, ‖Âψ‖² ≤ (Σ_{j,k}|a_{jk}|²)‖ψ‖²; every operator on ℂⁿ is bounded.",
+   "depth": "vertiefung",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "ℂⁿ mit dem Skalarprodukt v†w; beschränkt im Sinn von Reed-Simon I S. 8 (P-0318). / ℂⁿ with the inner product v†w; bounded in the sense of Reed-Simon I p. 8 (P-0318).",
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0318"
+   ],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.beschraenkt",
+   "definition_ids": [
+    "D87"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.unbeschraenkt",
+   "kind": "statement",
+   "statement_de": "Der Operator (M̂v)_j = j v_j auf ℓ² ist unbeschränkt (M̂u_k = k u_k) und nicht auf ganz ℓ² anwendbar: für v_j = 1/j ∈ ℓ² ist M̂v der Vektor mit lauter Einsen, der nicht in ℓ² liegt; anwendbar ist er auf die v mit Σ j²|v_j|² < ∞, und für diese ist ⟨v|M̂v⟩ = Σ j|v_j|² endlich.",
+   "statement_en": "The operator (M̂v)_j = j v_j on ℓ² is unbounded (M̂u_k = k u_k) and not applicable to all of ℓ²: for v_j = 1/j ∈ ℓ², M̂v is the vector of all ones, which is not in ℓ²; it applies to the v with Σ j²|v_j|² < ∞, and for these ⟨v|M̂v⟩ = Σ j|v_j|² is finite.",
+   "depth": "vertiefung",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "ℓ² (D77) mit den Basisvektoren u_k aus c03.ex.elltwo-basis. / ℓ² (D77) with the basis vectors u_k of c03.ex.elltwo-basis.",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.unbeschraenkt",
+   "definition_ids": [
+    "D77"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.hellinger-toeplitz",
+   "kind": "theorem",
+   "statement_de": "Ist T̂ auf einem ganzen Hilbertraum H definiert und gilt ⟨φ|T̂ψ⟩ = ⟨T̂φ|ψ⟩ für alle φ, ψ ∈ H, so ist T̂ beschränkt.",
+   "statement_en": "If T̂ is defined on a whole Hilbert space H and ⟨φ|T̂ψ⟩ = ⟨T̂φ|ψ⟩ for all φ, ψ ∈ H, then T̂ is bounded.",
+   "depth": "vertiefung",
+   "evidence": "source-quoted",
+   "presentation": "proof-omitted",
+   "scope": "Reed-Simon I, Abschnitt III.5, Korollar (Satz von Hellinger und Toeplitz), S. 84. Die Bedingung ist von der Konvention des Skalarprodukts unabhängig (sie gilt für alle φ, ψ und ist unter Konjugation symmetrisch). / Reed-Simon I, section III.5, corollary (Hellinger-Toeplitz theorem), p. 84. The condition does not depend on the convention of the inner product (it holds for all φ, ψ and is symmetric under conjugation).",
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0319",
+    "P-0320",
+    "P-0321"
+   ],
+   "definition_ids": [
+    "D16"
+   ],
+   "review_receipt": null,
+   "notes": "P-0320 backs the sentence after the theorem (energy unbounded, hence not everywhere defined); P-0321 backs the sentence before it (Reed-Simon I p. 249: many of the most important operators are not bounded)."
+  },
+  {
+   "id": "c03.cl.symmetrisch",
+   "kind": "equation",
+   "statement_de": "Nach Reed und Simon heißt ein dicht definierter Operator T̂ symmetrisch (oder hermitesch), wenn T̂ ⊂ T̂† (D(T̂) ⊂ D(T̂†) und T̂ = T̂† auf D(T̂)), gleichwertig ⟨T̂φ|ψ⟩ = ⟨φ|T̂ψ⟩ für φ, ψ ∈ D(T̂), und selbstadjungiert, wenn T̂ = T̂†, also symmetrisch mit D(T̂) = D(T̂†); unter den symmetrischen Operatoren gilt der Spektralsatz nur für die selbstadjungierten, und nur selbstadjungierte Operatoren erzeugen die einparametrigen unitären Gruppen der Dynamik.",
+   "statement_en": "According to Reed and Simon a densely defined operator T̂ is symmetric (or Hermitian) if T̂ ⊂ T̂† (D(T̂) ⊂ D(T̂†) and T̂ = T̂† on D(T̂)), equivalently ⟨T̂φ|ψ⟩ = ⟨φ|T̂ψ⟩ for φ, ψ ∈ D(T̂), and self-adjoint if T̂ = T̂†, i.e. symmetric with D(T̂) = D(T̂†); among the symmetric operators the spectral theorem holds only for the self-adjoint ones, and only self-adjoint operators generate the one-parameter unitary groups of the dynamics.",
+   "depth": "vertiefung",
+   "evidence": "source-quoted",
+   "presentation": null,
+   "scope": "Reed-Simon I, Abschnitt VIII.2, S. 255-256; Adjungierte mit Definitionsbereich wie in D19. / Reed-Simon I, section VIII.2, pp. 255-256; adjoint with domain as in D19.",
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0322",
+    "P-0323",
+    "P-0324",
+    "P-0325"
+   ],
+   "definition_ids": [
+    "D16",
+    "D19",
+    "D18"
+   ],
+   "review_receipt": null,
+   "notes": "H3.1 / M-0005: vl04.tex:70 'hermitesch (Synonym: selbstadjungiert)' holds for everywhere-defined operators (c03.cl.ganz); Reed-Simon use 'Hermitian' for 'symmetric', which in infinite dimension is weaker than self-adjoint. Repair 2026-10-29 after REVIEW-lec4.md, B, row SCOPE (de.tex:1603): the spectral-theorem sentence is a comparison among symmetric operators, as in the context of P-0325 (normal operators also have a spectral theorem)."
+  },
+  {
+   "id": "c03.cl.ganz",
+   "kind": "proposition",
+   "statement_de": "Ist T̂ auf ganz H definiert und symmetrisch, so ist T̂ selbstadjungiert; insbesondere ist jeder hermitesche Operator auf einem endlichdimensionalen Hilbertraum selbstadjungiert.",
+   "statement_en": "If T̂ is defined on all of H and symmetric, then T̂ is self-adjoint; in particular every Hermitian operator on a finite-dimensional Hilbert space is self-adjoint.",
+   "depth": "vertiefung",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": "Symmetrisch und selbstadjungiert im Sinn von Reed-Simon I S. 255 (c03.cl.symmetrisch, D19). / Symmetric and self-adjoint in the sense of Reed-Simon I p. 255 (c03.cl.symmetrisch, D19).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.ganz",
+   "definition_ids": [
+    "D18",
+    "D19",
+    "D87"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.shift",
+   "kind": "statement",
+   "statement_de": "Der Rechtsshift Ŝ(v_1, v_2, …) = (0, v_1, v_2, …) auf ℓ² erhält das Skalarprodukt, Ŝ†(w_1, w_2, …) = (w_2, w_3, …), Ŝ†Ŝ = 𝕀, aber ŜŜ†u_1 = 0; Ŝ ist isometrisch, aber weder unitär noch normal, und nicht surjektiv.",
+   "statement_en": "The right shift Ŝ(v_1, v_2, …) = (0, v_1, v_2, …) on ℓ² preserves the inner product, Ŝ†(w_1, w_2, …) = (w_2, w_3, …), Ŝ†Ŝ = 𝕀, but ŜŜ†u_1 = 0; Ŝ is isometric but neither unitary nor normal, and not surjective.",
+   "depth": "vertiefung",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "ℓ² (D77), Basisvektor u_1 aus c03.ex.elltwo-basis; Isometrie im Sinn von D90 (Ŝ†Ŝ = 𝕀). / ℓ² (D77), basis vector u_1 of c03.ex.elltwo-basis; isometry in the sense of D90 (Ŝ†Ŝ = 𝕀).",
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0327",
+    "P-0328"
+   ],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.shift",
+   "definition_ids": [
+    "D77",
+    "D90",
+    "D91",
+    "D92"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.elemente-unendlich",
+   "kind": "equation",
+   "statement_de": "Für einen beschränkten Operator T̂ auf ganz ℓ² (‖T̂v‖ ≤ C‖v‖) und die Basis u_k gilt (T̂v)_j = Σ_k [T̂]_{jk} v_k mit [T̂]_{jk} = u_j†(T̂u_k), als konvergente Reihe; die Matrixelemente legen T̂ fest. Der Operator M̂ (Multiplikation mit j) hat auf den abbrechenden Folgen und auf {v : Σ j²|v_j|² < ∞} dieselben Matrixelemente j δ_{jk}, ist aber nicht derselbe Operator.",
+   "statement_en": "For a bounded operator T̂ on all of ℓ² (‖T̂v‖ ≤ C‖v‖) and the basis u_k, (T̂v)_j = Σ_k [T̂]_{jk} v_k with [T̂]_{jk} = u_j†(T̂u_k), as a convergent series; the matrix elements determine T̂. The operator M̂ (multiplication by j) has the same matrix elements j δ_{jk} on the finitely supported sequences and on {v : Σ j²|v_j|² < ∞}, but is not the same operator.",
+   "depth": "vertiefung",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "ℓ² (D77) mit den Basisvektoren u_k aus c03.ex.elltwo-basis; beschränkt im Sinn von Reed-Simon I S. 8 (P-0318). / ℓ² (D77) with the basis vectors u_k of c03.ex.elltwo-basis; bounded in the sense of Reed-Simon I p. 8 (P-0318).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.elemente-unendlich",
+   "definition_ids": [
+    "D77",
+    "D93"
+   ],
+   "review_receipt": null,
+   "notes": "Added in the repair after evidence/derivations/c03/REVIEW-lec4.md, section B, row SCOPE (de.tex:1776, 1779)."
+  },
+  {
+   "id": "c03.cl.produkt",
+   "kind": "equation",
+   "statement_de": "Das Produkt ÂB̂ ist die Hintereinanderausführung (ÂB̂)|ψ⟩ = Â(B̂|ψ⟩), für Matrizen das Matrixprodukt; im Allgemeinen ist ÂB̂ ≠ B̂Â, etwa ((0,1),(0,0))((0,0),(1,0)) = ((1,0),(0,0)), aber ((0,0),(1,0))((0,1),(0,0)) = ((0,0),(0,1)).",
+   "statement_en": "The product ÂB̂ is the composition (ÂB̂)|ψ⟩ = Â(B̂|ψ⟩), for matrices the matrix product; in general ÂB̂ ≠ B̂Â, e.g. ((0,1),(0,0))((0,0),(1,0)) = ((1,0),(0,0)), but ((0,0),(1,0))((0,1),(0,0)) = ((0,0),(0,1)).",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: Operatoren auf ℂ² als Matrizen (D87). / Finite-dimensional: operators on ℂ² as matrices (D87).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.produkt",
+   "definition_ids": [
+    "D87"
+   ],
+   "review_receipt": null,
+   "notes": "Requested by lane S for script chapter 4 (2026-10-29). 'Composition is the matrix product' is linear algebra, accepted by TJO as a prerequisite (2026-10-29)."
   }
  ]
 }

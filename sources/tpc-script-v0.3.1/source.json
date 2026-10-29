@@ -1,0 +1,74 @@
+{
+ "schema_version": 1,
+ "key": "tpc-script-v0.3.1",
+ "kind": "script-snapshot",
+ "storage": "tracked",
+ "title": "Theoretische Physik C, script v0.3.1: lectures 3 and 4 rewritten as the kernel of the new course (German and English)",
+ "authors": [
+  "Tobias J. Osborne"
+ ],
+ "version": "v0.3.1",
+ "language": "de, en",
+ "identifiers": {
+  "parent_git_commit": "53b318f"
+ },
+ "retrieval": {
+  "route": "working-tree lecture files of script v0.3 chapters 3 and 4 (docs/plan/script-v0.3/NOTES-ch3.md, NOTES-ch4.md), not yet committed; pinned with scripts/evidence/pin_snapshot.py",
+  "date": "2026-10-29"
+ },
+ "identity_check": "author as in the masters' \\author lines; the lecture files are the v0.3 rewrites of the ch3 and ch4 lanes",
+ "files": [
+  {
+   "path": "../latex/lectures/de/vl04.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "f39e245d5da4da73fa9d394e81fc3530bd52ecbc097e65f6776f188e4a3df6e8"
+  },
+  {
+   "path": "../latex/lectures/en/lec04.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "1139a7442e1a981761156107a6cdb975bd117f2ed175974e1fa63559b48eb60b"
+  },
+  {
+   "path": "../latex/lectures/de/vl03.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "943dd6deb47f3ddcc90821aea7697aa75400cfadc7cbb967fd55259e16630c34"
+  },
+  {
+   "path": "../latex/lectures/en/lec03.tex",
+   "role": "text",
+   "media_type": "text/x-tex",
+   "sha256": "e6bc8a0924394f096df0e4125bd9891252af6aa5f062fbd83753d138eec7020c"
+  }
+ ],
+ "authority_for": "the text of script v0.3, chapters 3 and 4; destinations of the migration records applied there",
+ "limitations": "Partial successor of tpc-script-v0.3: only the rewritten lecture files of chapters 3 and 4 are registered here. The v0.2 text of these lectures stays in tpc-script-v0.2 as Git members. Every statement of the new text is mapped to the new course in docs/plan/script-v0.3/sync-ch3.md and sync-ch4.md.",
+ "rights_ref": "rights.json",
+ "supersedes": "tpc-script-v0.3",
+ "errata": [
+  "evidence/migrations/M-0005.json",
+  "evidence/migrations/M-0017.json",
+  "evidence/migrations/M-0018.json",
+  "evidence/migrations/M-0019.json",
+  "evidence/migrations/M-0020.json",
+  "evidence/migrations/M-0021.json",
+  "evidence/migrations/M-0022.json",
+  "evidence/migrations/M-0023.json",
+  "evidence/migrations/M-0024.json",
+  "evidence/migrations/M-0052.json",
+  "evidence/migrations/M-0053.json",
+  "evidence/migrations/M-0054.json",
+  "evidence/migrations/M-0055.json",
+  "evidence/migrations/M-0056.json",
+  "evidence/migrations/M-0057.json",
+  "evidence/migrations/M-0058.json",
+  "evidence/migrations/M-0059.json",
+  "evidence/migrations/M-0060.json",
+  "evidence/migrations/M-0061.json",
+  "evidence/migrations/M-0062.json",
+  "evidence/migrations/M-0063.json"
+ ],
+ "notes": "Working-tree snapshot until the commit that introduces it: pin_snapshot.py re-hashes the members (and applied_file_sha256 of the migration records that name this key) after the last edit; once committed, set identifiers.git_commit and treat it as immutable."
+}

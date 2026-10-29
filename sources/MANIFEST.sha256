@@ -46,8 +46,8 @@ cd425c235a2f20f3cef68e7f7dd0ffaac155cd85f99003f43c8ed14410fcfe5b  ../docs/plan/r
 a0ed7741d8087e4c79e29e268be88815c91adcfe7bb17fdd6baea7bb2032d151  ../docs/plan/research/curriculum/plavala-src/what_v4.tex
 8f4516ebeca9d6e2343d3515e002993d288157814902b1b77ea800e94868068e  tpc-script-v0.2/git/latex/lectures/de/vl01.tex
 0acb89f372aca2f40a5c43affa8bf833418ff40bfb407f34d22125fb62415c44  tpc-script-v0.2/git/latex/lectures/de/vl02.tex
-5ade0d2df8358f22497f3e207710b2c0efb7c74ea9da31ae420bcb23d469837e  ../latex/lectures/de/vl03.tex
-e10cd13b0287b5114f3a30a7bfa9bdbb16a53aab755f8573bca795ae4a03aae9  ../latex/lectures/de/vl04.tex
+5ade0d2df8358f22497f3e207710b2c0efb7c74ea9da31ae420bcb23d469837e  tpc-script-v0.2/git/latex/lectures/de/vl03.tex
+e10cd13b0287b5114f3a30a7bfa9bdbb16a53aab755f8573bca795ae4a03aae9  tpc-script-v0.2/git/latex/lectures/de/vl04.tex
 b7a2e83281fbde3fbefd01abe7c45123f126aeea880177b0911b54304c7684d3  ../latex/lectures/de/vl05.tex
 6abda03fd00b488fcf2968aff1295fcfcb89b4e93db086d969c6d96dcb034f6d  ../latex/lectures/de/vl06.tex
 8482c8aece9bd52e08a95dea90013119c806250b7d38c085eda6df5de483259c  ../latex/lectures/de/vl07.tex
@@ -69,8 +69,8 @@ fbba8ef428572aebe2c9f5212baa1d93e6aefabffff87c26a9fb0279241a5758  ../latex/lectu
 63acef9837f90b6f86697cab4e5753f035c571ab77e8b49786931630744059cc  ../latex/lectures/de/vl22.tex
 b0ccc8af69cc09146698d13dcbf0667b5ee2295def8dc4133611ade213eab270  tpc-script-v0.2/git/latex/lectures/en/lec01.tex
 0686c02503139e489b6e5ca96764bd7f10e178ae2a19571dbbc7263a5e93a082  tpc-script-v0.2/git/latex/lectures/en/lec02.tex
-597cbb8943fb5926076c2741f225868619087a348ab7b8bbe5da0e225ab2ab89  ../latex/lectures/en/lec03.tex
-9fd7efeb7a25a44f532e5a9be2d1278b3f669d04231772763fe0109c0f97ca8b  ../latex/lectures/en/lec04.tex
+597cbb8943fb5926076c2741f225868619087a348ab7b8bbe5da0e225ab2ab89  tpc-script-v0.2/git/latex/lectures/en/lec03.tex
+9fd7efeb7a25a44f532e5a9be2d1278b3f669d04231772763fe0109c0f97ca8b  tpc-script-v0.2/git/latex/lectures/en/lec04.tex
 3337b4a8578161288e4f004c635fd42f072da56b920b198ed1bd064641bd8e44  ../latex/lectures/en/lec05.tex
 7398af746d8746f00ab6b00583e98216af4338a650e8e14093525f30f5ad7d02  ../latex/lectures/en/lec06.tex
 f6339a2e8756b02a6d346c8484701fe3c3ce4a4c8b7c72c11e29251dc39f8ff6  ../latex/lectures/en/lec07.tex
@@ -149,3 +149,7 @@ f4ccc5e16488112f3acfbc431d845f42b0d93a2f906d61faa8bff25e27da3545  ../latex/lectu
 dda2ad964c9056670d0472750d6f6a0ac4204f365c2edebc9a9ce6bdb0ce2356  ../latex/lectures/en/lec02.tex
 5486e7394a2afab50917c4087186c4accfd19ab4fab1fc91e5916f183c3a1a36  ../latex/lectures/de/vl01.tex
 5d209bf55b0020533e461037b8be07c4817d35310f688eb850cf0b01f3f8d069  ../latex/lectures/en/lec01.tex
+f39e245d5da4da73fa9d394e81fc3530bd52ecbc097e65f6776f188e4a3df6e8  ../latex/lectures/de/vl04.tex
+1139a7442e1a981761156107a6cdb975bd117f2ed175974e1fa63559b48eb60b  ../latex/lectures/en/lec04.tex
+943dd6deb47f3ddcc90821aea7697aa75400cfadc7cbb967fd55259e16630c34  ../latex/lectures/de/vl03.tex
+e6bc8a0924394f096df0e4125bd9891252af6aa5f062fbd83753d138eec7020c  ../latex/lectures/en/lec03.tex

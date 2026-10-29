@@ -552,11 +552,11 @@ wie ein Extremaleffekt der Kugel aussieht.
         \norm{\vb{a}} \leq \min(b,\, 1-b) .
       \end{equation}
     \item Mit der hermiteschen Matrix
-      $\EffOp = b\, \Id + a_x \pauli{x} + a_y \pauli{y} + a_z \pauli{z}$ ist
+      $\op{\EffOp} = b\, \Id + a_x \pauli{x} + a_y \pauli{y} + a_z \pauli{z}$ ist
       \begin{equation}\label{c02.eq.spurformel}
-        f(\vb{r}) = b + \vb{a}\cdot\vb{r} = \tr\bigl(\rho(\vb{r})\, \EffOp\bigr) .
+        f(\vb{r}) = b + \vb{a}\cdot\vb{r} = \tr\bigl(\rho(\vb{r})\, \op{\EffOp}\bigr) .
       \end{equation}
-      Die Eigenwerte von $\EffOp$ sind $b + \norm{\vb{a}}$ und $b - \norm{\vb{a}}$;
+      Die Eigenwerte von $\op{\EffOp}$ sind $b + \norm{\vb{a}}$ und $b - \norm{\vb{a}}$;
       Bedingung~\eqref{c02.eq.qubit-effekt} sagt, dass beide in $[0,1]$ liegen.
     \item Die Extremaleffekte sind $0$, $\UnitEff{\StSp}$ und, für jeden Einheitsvektor
       $\vb{n}$, der Effekt
@@ -574,10 +574,10 @@ wie ein Extremaleffekt der Kugel aussieht.
   (2) Durch Ausmultiplizieren der Matrizen in \eqref{c02.eq.pauli} findet man: Jede
   Pauli-Matrix hat Spur $0$, ihr Quadrat ist $\Id$, und das Produkt zweier verschiedener
   Pauli-Matrizen hat Spur $0$. Also ist $\tr(\Id) = 2$, die Spur des Quadrats einer
-  Pauli-Matrix ist $2$, und im Produkt $\rho(\vb{r})\,\EffOp$ tragen nur die Glieder mit
+  Pauli-Matrix ist $2$, und im Produkt $\rho(\vb{r})\,\op{\EffOp}$ tragen nur die Glieder mit
   $\Id\cdot\Id$ und mit zwei gleichen Pauli-Matrizen zur Spur bei:
-  $\tr(\rho(\vb{r})\,\EffOp) = \tfrac12\bigl(2b + 2 a_x r_x + 2 a_y r_y + 2 a_z r_z\bigr)$.
-  Die Eigenwerte von $\EffOp$ erhält man wie in Proposition~\ref{c02.prop.bloch}(2).
+  $\tr(\rho(\vb{r})\,\op{\EffOp}) = \tfrac12\bigl(2b + 2 a_x r_x + 2 a_y r_y + 2 a_z r_z\bigr)$.
+  Die Eigenwerte von $\op{\EffOp}$ erhält man wie in Proposition~\ref{c02.prop.bloch}(2).
 
   (3) Sei $q = \norm{\vb{a}}$. Für $q = 0$ ist
   $(b, 0) = b\, \UnitEff{\StSp} + (1 - b)\cdot 0$, eine Mischung von $\UnitEff{\StSp}$ und
@@ -1009,8 +1009,8 @@ nur darin, wie die Länge von $\vb{v}$ gemessen wird (Abbildung~\ref{c02.fig.lae
     zurueck={Die Länge $\max(\abs{\delta}, \norm{\vb{v}})$ in
       Gleichung~\eqref{c02.eq.opt-qubit} ist eine Eigenschaft der Matrix
       $\lambda_1\rho_1 - \lambda_2\rho_2$ allein.}]
-  Für eine hermitesche $2\times 2$-Matrix $D$ mit den Eigenwerten $\kappa_1$ und $\kappa_2$
-  nennen wir $\norm{D}_1 = \abs{\kappa_1} + \abs{\kappa_2}$ ihre \emph{Spurnorm}.
+  Für eine hermitesche $2\times 2$-Matrix $\op{D}$ mit den Eigenwerten $\kappa_1$ und $\kappa_2$
+  nennen wir $\norm{\op{D}}_1 = \abs{\kappa_1} + \abs{\kappa_2}$ ihre \emph{Spurnorm}.
 
   \begin{proposition}[Spurnormformel]\label{c02.prop.spurnorm}\claim[proof-included]{c02.cl.spurnorm}{derived}
     Seien $\rho_1 = \rho(\vb{r}_1)$ und $\rho_2 = \rho(\vb{r}_2)$ zwei Zustände des Qubits
@@ -1021,12 +1021,12 @@ nur darin, wie die Länge von $\vb{v}$ gemessen wird (Abbildung~\ref{c02.fig.lae
   \end{proposition}
   \begin{proof}
     Nach Gleichung~\eqref{c02.eq.bloch} ist
-    $D = \lambda_1\rho_1 - \lambda_2\rho_2
+    $\op{D} = \lambda_1\rho_1 - \lambda_2\rho_2
        = \tfrac12\bigl(\delta\, \Id + v_x \pauli{x} + v_y \pauli{y} + v_z \pauli{z}\bigr)$.
-    Die Rechnung aus Proposition~\ref{c02.prop.bloch}(2) gibt für $D$ die Eigenwerte
+    Die Rechnung aus Proposition~\ref{c02.prop.bloch}(2) gibt für $\op{D}$ die Eigenwerte
     $\tfrac12(\delta + \norm{\vb{v}})$ und $\tfrac12(\delta - \norm{\vb{v}})$. Mit
     $L = \norm{\vb{v}}$ ist also
-    $\norm{D}_1 = \tfrac12\bigl(\abs{\delta + L} + \abs{\delta - L}\bigr)$. Für
+    $\norm{\op{D}}_1 = \tfrac12\bigl(\abs{\delta + L} + \abs{\delta - L}\bigr)$. Für
     $\delta \geq L$ ist das $\delta$, für $\delta \leq -L$ ist es $-\delta$, und für
     $-L \leq \delta \leq L$ ist es $L$; in jedem Fall also $\max(\abs{\delta}, L)$.
     Einsetzen in \eqref{c02.eq.opt-qubit} ergibt die Behauptung.

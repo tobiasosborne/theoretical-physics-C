@@ -326,6 +326,25 @@
    ],
    "needs_check": true,
    "check": "not checked against the script"
+  },
+  {
+   "id": "CONV-HAT",
+   "name_de": "Operatorhut",
+   "name_en": "operator hat",
+   "statement_de": "Ein Hut bedeutet immer einen Operator, Â; der Strich der Ket-Notation einen Vektor, |ψ⟩; ein Symbol ohne Verzierung eine Zahl. Ausnahmen (TJO, 2026-10-29): der Einsoperator 𝕀, Zustände (Dichteoperatoren ρ, auch ein reiner Zustand als Operator geschrieben), die Pauli-Matrizen σ_j und Ket-Bras |a⟩⟨b| tragen keinen Hut.",
+   "statement_en": "A hat always means an operator, Â; the bar of the ket notation a vector, |ψ⟩; a symbol without decoration a number. Exceptions (TJO, 2026-10-29): the identity operator 𝕀, states (density operators ρ, also a pure state written as an operator), the Pauli matrices σ_j and ket-bras |a⟩⟨b| carry no hat.",
+   "fixed_in": "D87",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:32",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Ein \\emph{Hut} bedeutet immer einen Operator, $\\widehat{A}$;"
+    }
+   ],
+   "notes": "Decision D-HAT, TJO 2026-10-29: hats on operators throughout course and script, revised the same day: four exceptions, namely the identity 𝕀, states (density operators ρ and pure states written as operators), the Pauli matrices σ_j and ket-bras |a⟩⟨b| (TJO: \"definitely no hats for bra kets\"), all without a hat. Effects, Hamiltonians, unitaries, projectors and other operators keep the hat. The macro is \\op{A} (sym.operator-hat). A bare 0 would not show whether an operator, a number or a vector is meant, hence \\Nul (sym.null-operator)."
   }
  ]
 }

@@ -75,12 +75,12 @@ rechte Seite wichtig: Wir rechnen mit Funktionen von sechs Variablen.
 Unser Modell lässt vieles weg, und das sagen wir gleich dazu. Elektron und Proton sind
 Punktladungen ohne Spin; die Bewegung ist nichtrelativistisch; die einzige
 Wechselwirkung ist die Coulombanziehung; ein Lichtfeld, das das Atom aussenden oder
-aufnehmen könnte, kommt in $\HamTot$ nicht vor. Alle Ergebnisse dieses Kapitels sind
+aufnehmen könnte, kommt in $\op{\HamTot}$ nicht vor. Alle Ergebnisse dieses Kapitels sind
 Aussagen über dieses Modell.
 
 \section{Schwerpunkt und Relativbewegung}\label{c11.s2}
 
-Das Potential in $\HamTot$ hängt nur vom Abstandsvektor $\posE - \posP$ ab. Das legt
+Das Potential in $\op{\HamTot}$ hängt nur vom Abstandsvektor $\posE - \posP$ ab. Das legt
 nahe, diesen Vektor als eine der neuen Koordinaten zu nehmen. Als zweite nehmen wir den
 Schwerpunkt.
 
@@ -112,9 +112,9 @@ $\widetilde{\Psi}$:
   = \Psi\Bigl(\posCM + \frac{\massP}{\massTot}\,\posRel,\;
               \posCM - \frac{\massE}{\massTot}\,\posRel\Bigr),
   \qquad
-  \widetilde{\Psi} = \Uni\Psi.
+  \widetilde{\Psi} = \op{\Uni}\Psi.
 \end{equation}
-Der Buchstabe $\Uni$ steht für die Abbildung, die aus $\Psi$ die Funktion
+Der Buchstabe $\op{\Uni}$ steht für die Abbildung, die aus $\Psi$ die Funktion
 $\widetilde{\Psi}$ macht. Sie ändert nichts an der Physik, nur an der Beschriftung.
 
 Ändert sie die Normierung? Bei einem Wechsel der Integrationsvariablen kommt es auf den
@@ -210,7 +210,7 @@ Gradienten:
      + \Lap_{\posRel}.
   \end{aligned}
 \end{equation}
-In $\HamTot$ steht $\Lap_{\mathrm{e}}$ geteilt durch $\massE$ und $\Lap_{\mathrm{p}}$
+In $\op{\HamTot}$ steht $\Lap_{\mathrm{e}}$ geteilt durch $\massE$ und $\Lap_{\mathrm{p}}$
 geteilt durch $\massP$. Genau diese Gewichte lassen die gemischten Terme verschwinden:
 \begin{equation}\label{c11.eq.koeff}\claim{c11.cl.koeff}{derived}
   \begin{aligned}
@@ -228,21 +228,21 @@ Potential dazu, das nur von $\posRel$ abhängt, so steht das Ergebnis da.
 
 \begin{theorem}[Abspaltung der Schwerpunktsbewegung]\label{c11.thm.separation}\claim[proof-included]{c11.cl.separation}{derived}
   Die Funktion $\Psi$ der beiden Orte sei zweimal stetig differenzierbar, wo immer
-  $\posE \neq \posP$ ist, und $\widetilde{\Psi} = \Uni\Psi$ sei dieselbe Funktion in den
+  $\posE \neq \posP$ ist, und $\widetilde{\Psi} = \op{\Uni}\Psi$ sei dieselbe Funktion in den
   neuen Koordinaten wie in \eqref{c11.eq.tilde}. Dann gilt an allen diesen Stellen
   \begin{equation}\label{c11.eq.separation}
     \begin{aligned}
-      \Uni\,\HamTot\Psi &= \HamCM\widetilde{\Psi} + \HamRel\widetilde{\Psi}, \\
-      \HamCM &= -\frac{\hbar^2}{2\massTot}\,\Lap_{\posCM},
+      \op{\Uni}\,\op{\HamTot}\Psi &= \op{\HamCM}\widetilde{\Psi} + \op{\HamRel}\widetilde{\Psi}, \\
+      \op{\HamCM} &= -\frac{\hbar^2}{2\massTot}\,\Lap_{\posCM},
       \qquad
-      \HamRel = -\frac{\hbar^2}{2\massRed}\,\Lap_{\posRel} + \Vpot(\posRel).
+      \op{\HamRel} = -\frac{\hbar^2}{2\massRed}\,\Lap_{\posRel} + \Vpot(\posRel).
     \end{aligned}
   \end{equation}
-  Dabei wirkt $\HamCM$ nur auf die Schwerpunktskoordinate und $\HamRel$ nur auf die
+  Dabei wirkt $\op{\HamCM}$ nur auf die Schwerpunktskoordinate und $\op{\HamRel}$ nur auf die
   Relativkoordinate.
 \end{theorem}
 \begin{proof}
-  Die kinetische Energie in $\HamTot$ ist $-\hbar^2/2$ mal der linken Seite von
+  Die kinetische Energie in $\op{\HamTot}$ ist $-\hbar^2/2$ mal der linken Seite von
   \eqref{c11.eq.koeff}; die rechte Seite von \eqref{c11.eq.koeff} liefert die beiden
   Laplace-Operatoren in \eqref{c11.eq.separation}. Das Potential
   $\Vpot(\posE - \posP)$ ist in den neuen Koordinaten $\Vpot(\posRel)$. Die Punkte mit
@@ -256,20 +256,20 @@ Potential dazu, das nur von $\posRel$ abhängt, so steht das Ergebnis da.
 
 Der Satz ist eine Aussage über Differentialausdrücke. Mit dem Tensorprodukt aus
 \eqref{c11.eq.hilbertraum}, jetzt für die Variablen $\posCM$ und $\posRel$, schreibt man
-dasselbe kurz als $\Uni\,\HamTot\,\Uni^{-1} = \HamCM \otimes \Id + \Id \otimes \HamRel$
+dasselbe kurz als $\op{\Uni}\,\op{\HamTot}\,\op{\Uni}^{-1} = \op{\HamCM} \otimes \Id + \Id \otimes \op{\HamRel}$
 \srcref{reed-simon-3}{§\,XI.4, S. 55}.
 
 Der Hamiltonoperator zerfällt also in zwei Teile, die nichts voneinander wissen. Das
 nutzen wir mit einem Produktansatz aus. Ist $\widetilde{\Psi}(\posCM, \posRel) =
-\Phi(\posCM)\,\psi(\posRel)$, so wirkt $\HamCM$ nur auf $\Phi$ und $\HamRel$ nur auf
+\Phi(\posCM)\,\psi(\posRel)$, so wirkt $\op{\HamCM}$ nur auf $\Phi$ und $\op{\HamRel}$ nur auf
 $\psi$:
 \begin{equation}\label{c11.eq.produkt}\claim{c11.cl.produkt}{derived}
-  (\HamCM + \HamRel)\,\Phi\,\psi
-  = (\HamCM\Phi)\,\psi + \Phi\,(\HamRel\psi).
+  (\op{\HamCM} + \op{\HamRel})\,\Phi\,\psi
+  = (\op{\HamCM}\Phi)\,\psi + \Phi\,(\op{\HamRel}\psi).
 \end{equation}
 Der erste Summand gehört zu einem freien Teilchen der Masse $\massTot$. Der Schwerpunkt
 des Atoms bewegt sich also, als gäbe es das Innenleben nicht. Der zweite Summand gehört
-zu \emph{einem} Teilchen der Masse $\massRed$ im Potential $\Vpot$. In $\HamRel$ steckt
+zu \emph{einem} Teilchen der Masse $\massRed$ im Potential $\Vpot$. In $\op{\HamRel}$ steckt
 die ganze Atomphysik dieses Kapitels.
 
 \begin{merksatz}[Exakt, nicht genähert]
@@ -396,7 +396,7 @@ Schwerpunkt.
 \end{merksatz}
 
 Auch bei der Energie muss man die beiden Hälften auseinanderhalten. Ist $\psi$ eine
-Lösung von $\HamRel\psi = E\psi$, so ist der Erwartungswert der Gesamtenergie im
+Lösung von $\op{\HamRel}\psi = E\psi$, so ist der Erwartungswert der Gesamtenergie im
 Produktzustand
 \begin{equation}\label{c11.eq.energie}\claim{c11.cl.energie}{derived}
   \Etot = \frac{\hbar^2}{2\massTot} \int \abs{\nabla\Phi(\posCM)}^2 \,\dd^3\posCM + E ,
@@ -517,7 +517,7 @@ Zeiten; anfangs kann es schmaler werden\zoomref{c11.v1}.
 \section{Die Relativbewegung: Radialgleichung und Energien}\label{c11.s4}
 
 Wir suchen jetzt die Lösungen von
-$\HamRel\psi = E\psi$ mit negativer Energie $E$, die gebundenen Zustände. Das ist das
+$\op{\HamRel}\psi = E\psi$ mit negativer Energie $E$, die gebundenen Zustände. Das ist das
 Problem eines einzelnen Teilchens der Masse $\massRed$ in einem Potential, das nur vom
 Abstand $\rad = \abs{\posRel}$ abhängt. Für solche Potentiale haben wir in
 Kapitel~\ref{c10} Kugelkoordinaten $(\rad, \theta, \phi)$ benutzt und den Winkelanteil
@@ -544,7 +544,7 @@ Den Rest fassen wir zu einem Potential zusammen.
 
 \tpcdef{D71}
 
-Setzt man $\psi = (u/\rad)\,\Ylm{\lqn}{\mqn}$ in $\HamRel\psi = E\psi$ ein, benutzt
+Setzt man $\psi = (u/\rad)\,\Ylm{\lqn}{\mqn}$ in $\op{\HamRel}\psi = E\psi$ ein, benutzt
 \eqref{c11.eq.winkel} und multipliziert mit $\rad$, so erhält man die
 \emph{Radialgleichung}
 \begin{equation}\label{c11.eq.radial}\claim{c11.cl.radial}{derived}
@@ -891,7 +891,7 @@ Eigenfunktionsgleichung gilt für $\posRel \neq 0$ und als $L^2$-Identität fast
   \begin{aligned}
     \int \overline{\psinlm{\nqn}{\lqn}{\mqn}}\;\psinlm{\nqn'}{\lqn'}{\mqn'}\,\dd^3\posRel
     &= \delta_{\nqn\nqn'}\,\delta_{\lqn\lqn'}\,\delta_{\mqn\mqn'}, \\
-    \HamRel\,\psinlm{\nqn}{\lqn}{\mqn} &= \En{\nqn}\,\psinlm{\nqn}{\lqn}{\mqn}.
+    \op{\HamRel}\,\psinlm{\nqn}{\lqn}{\mqn} &= \En{\nqn}\,\psinlm{\nqn}{\lqn}{\mqn}.
   \end{aligned}
 \end{equation}
 Das Symbol $\delta_{jk}$ ist eins für $j = k$ und sonst null. Beide Aussagen sind für
@@ -1391,7 +1391,7 @@ im Labor von einem Atom sieht, verlangt beide Hälften (Abbildung~\ref{c11.fig.u
 
 \begin{fundament}[id=c11.f1,
     titel={Selbstadjungiertheit der Hamiltonoperatoren des Wasserstoffatoms},
-    wozu={Im Kern sind $\HamTot$ und $\HamRel$ Rechenvorschriften für differenzierbare
+    wozu={Im Kern sind $\op{\HamTot}$ und $\op{\HamRel}$ Rechenvorschriften für differenzierbare
       Funktionen. Hier steht, auf welchen Definitionsbereichen sie selbstadjungierte
       Operatoren festlegen, und auf welchen Satz sich das stützt.},
     voraussetzung={Kern~\ref{c11.s1} und \ref{c11.s2}; die Begriffe Definitionsbereich
@@ -1408,7 +1408,7 @@ im Labor von einem Atom sieht, verlangt beide Hälften (Abbildung~\ref{c11.fig.u
   davon handelt dieser Block, ist ihr Abschluss selbstadjungiert.
 
   \begin{tpcfigure}{c11.fig.bereiche}
-    \caption{Die drei Funktionenmengen dieses Blocks als Schema: die glatten Funktionen mit kompaktem Träger, der Definitionsbereich $\dom{-\Lap}$ des Laplace-Operators und der ganze Raum $\Ltwo{\mathbb{R}^3}$. Eingetragen ist, was Korollar~\ref{c11.cor.relativ} über $\HamRel$ sagt.}
+    \caption{Die drei Funktionenmengen dieses Blocks als Schema: die glatten Funktionen mit kompaktem Träger, der Definitionsbereich $\dom{-\Lap}$ des Laplace-Operators und der ganze Raum $\Ltwo{\mathbb{R}^3}$. Eingetragen ist, was Korollar~\ref{c11.cor.relativ} über $\op{\HamRel}$ sagt.}
   \end{tpcfigure}
 
   Die Antwort hängt an einer Eigenschaft des Potentials. Man schreibt
@@ -1466,12 +1466,12 @@ im Labor von einem Atom sieht, verlangt beide Hälften (Abbildung~\ref{c11.fig.u
   \end{tpcfigure}
 
   \begin{corollary}[Relativbewegung]\label{c11.cor.relativ}\claim[proof-included]{c11.cl.sa-relativ}{source-backed}
-    Der Operator $\HamRel = -\frac{\hbar^2}{2\massRed}\Lap + \Vpot$ mit dem
+    Der Operator $\op{\HamRel} = -\frac{\hbar^2}{2\massRed}\Lap + \Vpot$ mit dem
     Coulombpotential aus \defref{D60} ist wesentlich selbstadjungiert auf
     $\Ccinf{\mathbb{R}^3}$ und selbstadjungiert auf $\dom{-\Lap}$.
   \end{corollary}
   \begin{proof}
-    Es ist $\HamRel = \frac{\hbar^2}{2\massRed}\,(-\Lap + W)$ mit
+    Es ist $\op{\HamRel} = \frac{\hbar^2}{2\massRed}\,(-\Lap + W)$ mit
     $W = \frac{2\massRed}{\hbar^2}\,\Vpot$, und $W(\posRel) = -c/\abs{\posRel}$ mit
     $c = 2\Znuc/\aRed > 0$. Nach Lemma~\ref{c11.lem.coulomb} erfüllt $W$ die
     Voraussetzung von Theorem~\ref{c11.thm.kato15}. Ein reeller Faktor $c \neq 0$
@@ -1479,14 +1479,14 @@ im Labor von einem Atom sieht, verlangt beide Hälften (Abbildung~\ref{c11.fig.u
     $(cA)^* = cA^*$ und $\overline{cA} = c\overline{A}$. Die erste Identität folgt aus
     der Definitionsgleichung des Adjungierten, die zweite aus der umkehrbaren
     Graphenabbildung $(f,g) \mapsto (f,cg)$. Der positive Faktor überträgt also beide
-    Aussagen von $-\Lap + W$ auf $\HamRel$.
+    Aussagen von $-\Lap + W$ auf $\op{\HamRel}$.
   \end{proof}
 
   Für das Coulombpotential steht die erste Aussage des Korollars bei Reed und Simon als
   Beispiel~1 direkt hinter dem Beweis von Theorem X.15.
 
   \begin{proposition}[Das ganze Atom]\label{c11.prop.zweikoerper}\claim[proof-included]{c11.cl.sa-zweikoerper}{source-backed}
-    Der Zweikörper-Hamiltonoperator $\HamTot$ aus \defref{D60} mit dem Coulombpotential
+    Der Zweikörper-Hamiltonoperator $\op{\HamTot}$ aus \defref{D60} mit dem Coulombpotential
     ist wesentlich selbstadjungiert auf $\Ccinf{\mathbb{R}^6}$.
   \end{proposition}
   \begin{proof}
@@ -1538,6 +1538,6 @@ im Labor von einem Atom sieht, verlangt beide Hälften (Abbildung~\ref{c11.fig.u
   reduzierte Masse heißt $m$); es ist $\hbar = 1$; die glatten Funktionen mit kompaktem
   Träger heißen $C_0^{\infty}$; und die dort $U$ genannte Abbildung macht aus einer
   Funktion der neuen Koordinaten eine Funktion der alten, sie ist also die Umkehrung
-  unserer Abbildung $\Uni$ aus \eqref{c11.eq.tilde}. Die Rechnung, die zu
+  unserer Abbildung $\op{\Uni}$ aus \eqref{c11.eq.tilde}. Die Rechnung, die zu
   Theorem~\ref{c11.thm.separation} führt, ist dort eine Übungsaufgabe.
 \end{fundament}

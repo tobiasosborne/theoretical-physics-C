@@ -9,6 +9,37 @@ two-language course.
 
 ## Status
 
+**2026-10-29: lectures 3 and 4 at the new level (course C3 and script v0.3 chapters 3-4).**
+Brief and TJO's decisions: `docs/plan/lec34/BRIEF.md` (hats on operators, none on the identity,
+states, Pauli matrices or ket-bras; budgets are guides, exceptions stated with reasons, no
+counting hacks; standard linear algebra accepted as a prerequisite; G-0072 answered and closed).
+Course: vl04 migrated into C3 as c03.s8-s12 (Kern) plus Vertiefungen c03.v5 (bounded vs
+unbounded, symmetric vs self-adjoint) and c03.v6 (right shift), figure `c03.fig.spektren`;
+registry D87-D94, CONV-HAT, D17/D18 rewritten; provenance P-0318..P-0330, receipt R-0153;
+vl04 map (90 items) and `check_vl04_map.py` in ci.sh; M-0052..M-0063 for the vl04 defects;
+hats swept through c02 and c11. Script: `vl03`/`lec03` and `vl04`/`lec04` rewritten as the
+kernel of c03.s4-s12 (sync tables `docs/plan/script-v0.3/sync-ch3.md`, `sync-ch4.md`; budget
+exceptions with reasons in `NOTES-ch3.md`, `NOTES-ch4.md`); M-0005, M-0017..M-0024 and
+M-0052..M-0063 applied; snapshot `sources/tpc-script-v0.3.1` (record its commit hash in
+`identifiers.git_commit` next); chapters 3+4 take 8 pages instead of 9. The running-head bug
+(page before a lecture start showed the next lecture's title) is fixed in `tpc-course.sty`.
+Reviews (codex gpt-6.1-sol xhigh; muse for a student's second opinion): REVIEW-lec3-second,
+REVIEW-ch3, MUSE-ch3, REVIEW-ch4, MUSE-ch4, evidence/derivations/c03/REVIEW-lec4, and a
+re-review of both repair waves `docs/plan/lec34/REREVIEW-repairs.md` (all closed). Gates run
+individually and in parallel, all green: parity, figures (22 standalone + inclusion),
+enrichment, registry, special functions, tokens, content lint, levels lint and the four-edition
+course build with K1-K6, the full web check with browser gates, evidence private and public,
+the four map checks, every red-corpus group, c03/c11 maths, both masters (DE 88, EN 84 pages,
+0 errors, 0 undefined references). Julia gates not run: no kernel or numerics file changed.
+Open: the demo `c03.demo.spektren` (not built; the figure is static); gaps G-0073 (photon-number
+remark), G-0074 ("Observablen" vs "scharfe Observablen"), G-0075 (hat-exception wording),
+G-0077 (chapter-4 cuts) for TJO; script chapters 5-22 still write operators without hats (the
+seam is printed in chapter 4); the CI redesign (measured: course editions ~8-9 min, Julia ~6,
+Python ~4, masters ~3, all serial and uncached; plan in the 2026-10-29 session: remove
+duplicates, fix the `ci.sh` build gate that can pass without a PDF, parallelise, then
+content-hash caching and affected-only runs; codex input/output audit kept in the session
+scratchpad, not in the repo).
+
 **2026-10-26: new machine; everything builds and the full `./ci.sh` passes (6 stages, 29
 contract gates).** Fresh Linux Mint 22.3: TeX Live 2023 from apt (`texlive-full`, the same
 release as the Pages runner), node 24.11.1 through nvm, Playwright's Chromium, Julia through

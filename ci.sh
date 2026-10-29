@@ -285,6 +285,7 @@ check_contracts() {
     run_gate "vl01 migration map complete"       python3 evidence/migrations/check_vl01_map.py || bad=$((bad+1))
     run_gate "vl02 migration map complete"       python3 evidence/migrations/check_vl02_map.py || bad=$((bad+1))
     run_gate "vl03 migration map complete"       python3 evidence/migrations/check_vl03_map.py || bad=$((bad+1))
+    run_gate "vl04 migration map complete"       python3 evidence/migrations/check_vl04_map.py || bad=$((bad+1))
     if [[ $FAST -eq 1 ]]; then
         run_gate "course lint (depth, IDs, parity)" python3 scripts/course/check_levels.py --with-test-chapter --lint-only || bad=$((bad+1))
         run_gate "web: build + static gates"       bash web/check.sh --fast || bad=$((bad+1))

@@ -1,38 +1,47 @@
 % content/c03-hilbertraum/de.tex — Kapitel 3: Werkzeugkasten Hilbertraum
 % (deutsche Leitfassung)
 %
-% Stand: der Stoff der zweiten und dritten Vorlesung (latex/lectures/de/vl02.tex, „Vorlesung:
-% Hilbertraum“, und latex/lectures/de/vl03.tex, „Vorlesung: Hilbertraum, Basis, Operatoren“, ohne
-% deren Unterabschnitt Operatoren).  Das Kapitel wächst später um vl04 (Operatoren, mit dem
-% Unterabschnitt Operatoren von vl03) und vl05 (Spur, Diagonalisierung).  Neue Abschnitte kommen
-% als \section c03.s8, c03.s9, ... zwischen den letzten Kern-Abschnitt und die Fundament-Blöcke
-% am Dateiende; die Fundament-Blöcke bleiben am Ende.
+% Stand: der Stoff der zweiten, dritten und vierten Vorlesung (latex/lectures/de/vl02.tex,
+% „Vorlesung: Hilbertraum“, vl03.tex, „Vorlesung: Hilbertraum, Basis, Operatoren“, und vl04.tex,
+% „Vorlesung: Operatoren“, mit dem Unterabschnitt Operatoren von vl03.tex:253-277).  Das Kapitel
+% wächst später um vl05 (Spur, Diagonalisierung).  Neue Abschnitte kommen als \section c03.s13,
+% ... zwischen den letzten Kern-Abschnitt und die Fundament-Blöcke am Dateiende; die
+% Fundament-Blöcke bleiben am Ende.
 %
-% Wohin jede Zeile von vl02 und vl03 gegangen ist: evidence/migrations/maps/vl02-map.json und
-%   vl03-map.json (geprüft mit evidence/migrations/check_vl02_map.py und check_vl03_map.py).
+% Wohin jede Zeile von vl02, vl03 und vl04 gegangen ist: evidence/migrations/maps/vl02-map.json,
+%   vl03-map.json und (von Lane E aus docs/plan/lec34/NOTES-author.md gebaut) vl04-map.json.
 % Fehler in vl02: evidence/migrations/M-0013.json bis M-0016.json; in vl03: M-0017.json bis
-%   M-0024.json.
-% Definitionen: Registry D75 bis D80 (vl02), D81 bis D86 und D14 (vl03).  Herleitungen:
-%   evidence/derivations/c03/DERIVATION.md (Abschnitt „Lecture 3“ für vl03), Anker = Claim-ID;
-%   Zahlen nachgerechnet von evidence/derivations/c03/check_c03.py.  Seitenbild-Zitate aus
-%   Reed-Simon I: evidence/provenance.json P-0140 bis P-0150 (vl02, Prüfquittung
-%   evidence/receipts/reviews/R-0140.json) und P-0152 bis P-0164 (vl03, Prüfquittung
-%   evidence/receipts/reviews/R-0152.json).
+%   M-0024.json; in vl04: M-0005 (hermitesch/selbstadjungiert, H3.1) und die Liste in
+%   docs/plan/lec34/NOTES-author.md.
+% Definitionen: Registry D75 bis D80 (vl02), D81 bis D86 und D14 (vl03), D87 bis D94, D17, D18,
+%   D20 und die Konvention CONV-HAT (vl04).  Herleitungen: evidence/derivations/c03/DERIVATION.md
+%   (Abschnitte „Lecture 3“ und „Lecture 4“), Anker = Claim-ID; Zahlen nachgerechnet von
+%   evidence/derivations/c03/check_c03.py.  Seitenbild-Zitate aus Reed-Simon I:
+%   evidence/provenance.json P-0140 bis P-0150 (vl02, Prüfquittung R-0140), P-0152 bis P-0164
+%   (vl03, Prüfquittung R-0152), ab P-0318 (vl04, Prüfquittung steht aus).
 % Prüfungen der dritten Vorlesung: docs/review/lectures/REVIEW-lec3.md (Stimme und Richtigkeit)
 %   und evidence/derivations/c03/REVIEW-lec3.md (Seitenbilder, Mathematik, Migrationsakten);
 %   alle Befunde beider Tabellen sind in einer Reparaturrunde (2026-10-21) geschlossen, die
-%   Stellen sind im Text mit der Zeile der Prüfung kommentiert.
-% Stimme: Sätze aus vl02.tex und vl03.tex sind beibehalten, wo sie stimmen; Bemerkungen aus den
-%   Videos (transcripts/clean/v02.md ab 76:43, v03.md, v04.md bis 46:45; Zeitmarken geprüft an
-%   transcripts/raw/) sind mit Zeitmarke kommentiert.
+%   Stellen sind im Text mit der Zeile der Prüfung kommentiert; zweite Prüfung
+%   docs/review/lectures/REVIEW-lec3-second.md.
+% Stimme: Sätze aus vl02.tex, vl03.tex und vl04.tex sind beibehalten, wo sie stimmen; Bemerkungen
+%   aus den Videos (transcripts/clean/v02.md ab 76:43, v03.md, v04.md, v05.md bis 51:57;
+%   Zeitmarken geprüft an transcripts/raw/) sind mit Zeitmarke kommentiert.
+% Hüte: jeder Operator trägt den Hut \op{..} (Entscheidung D-HAT, 2026-10-29), nicht aber der
+%   Einsoperator \Id, Zustände (rho, auch |psi><psi| als Zustand) und Pauli-Matrizen (CONV-HAT).
+%   In c03 kommen weder Zustände als Operatoren noch Pauli-Matrizen vor.
 %
 % D4-Brücke (PLAN.md 1.3 und 14.7): Der Kern ist endlichdimensional.  C^n und das Skalarprodukt
-% auf C^n sind Kern, ebenso die allgemeinen Axiome des Skalarprodukts, Norm, Schwarz- und
+% auf C^n sind Kern, ebenso alle Operatoren der Abschnitte c03.s8 bis c03.s12 (auf ganz H
+% definiert, H mit endlicher Basis); beschränkt/unbeschränkt und symmetrisch/selbstadjungiert
+% stehen in c03.v5, die nicht unitäre Isometrie in c03.v6; ebenso die allgemeinen Axiome des Skalarprodukts, Norm, Schwarz- und
 % Dreiecksungleichung, D14 und Basen mit endlicher Indexmenge; l^2 und L^2(R) stehen in den
 % Vertiefungen c03.v1 und c03.v2, Basen mit unendlicher Indexmenge in c03.v4, Vollständigkeit,
 % Äquivalenzklassen und Cauchy-Schwarz in C^n und l^2 im Fundament.
 % GAP-TJO: Der Wortlaut der Brücke in Abschnitt c03.s3 ist ein Vorschlag des Kapitelautors
-% (G-0033 (b); die Brücke in C5 ist G-0004).  Offene Punkte der dritten Vorlesung: G-0072.
+% (G-0033 (b); die Brücke in C5 ist G-0004).  Offene Punkte der dritten Vorlesung: G-0072
+% ((a) und (b) nach TJOs Antwort vom 2026-10-29 umgesetzt).  Offene Punkte der vierten
+% Vorlesung: docs/plan/lec34/NOTES-author.md, Abschnitt „Neue Lücken“.
 
 \chapter{Werkzeugkasten Hilbertraum}\label{c03}
 
@@ -590,12 +599,14 @@ gesehen haben.
   Gleichung~\eqref{c03.eq.e0e1} einsetzt.
 \end{example}
 
-% Stimme: v03 [50:02]-[51:04].
-% GAP-TJO: In der Vorlesung (v03 [49:20]-[49:46]) folgt der Satz, die Vektoren |e_±> tauchten
-% in der Theorie des Drehimpulses, beim Wasserstoffatom und besonders bei Spinsystemen immer
-% wieder auf.  Er hat keine schriftliche Quelle (vl03.tex sagt es nicht) und steht deshalb
-% nicht im Text (G-0072 (a)).
-In den kommenden Kapiteln lassen wir die Spalten meistens weg und rechnen lieber direkt mit
+% Stimme: v03 [49:20]-[49:46] („diese Vektoren spielen eine wichtige Rolle in der Theorie des
+% Drehimpulses ... oder in Wasserstoffatomen ... diese Vektoren tauchen immer auf in der
+% Quantenmechanik, insbesondere Systeme mit Spins“; Rohtext transcripts/raw/v03_jKsPIgMb6OU.txt),
+% TJOs eigener Vorverweis, wieder aufgenommen nach seiner Antwort auf G-0072 (a)
+% (docs/plan/lec34/BRIEF.md, 2026-10-29); Beleg ist das Transkript.  Dann v03 [50:02]-[51:04].
+Die Vektoren $\ket{e_\pm}$ spielen eine wichtige Rolle in der Theorie des Drehimpulses und beim
+Wasserstoffatom; sie tauchen in der Quantenmechanik immer wieder auf, besonders bei
+Spinsystemen. In den kommenden Kapiteln lassen wir die Spalten meistens weg und rechnen lieber direkt mit
 der Notation. Am Anfang sollten Sie aber immer die ursprünglichen Spalten einsetzen, um zu
 sehen, was dargestellt wird; in den Übungen werden Sie viele solche Rechnungen durchführen.
 
@@ -855,12 +866,18 @@ eine Norm im Sinne der normierten Räume ist \srcref{reed-simon-1}{S.~38}.
 
 % Stimme: vl03.tex:164; v04 [04:28]-[04:45], [06:37]-[06:45], [09:26]-[10:11] („diese
 % Eigenschaften werden wir quasi ständig verwenden“; „gekoppelt mit der Heisenbergschen
-% Ungleichung“).  Nicht übernommen: das Beispiel aus v04 („um die Energie eines Systems zu
+% Ungleichung“).  Der Satz über den Gedanken des Beweises nach TJOs Antwort auf G-0072 (b): Der
+% Beweis der Unschärferelation (vl09.tex:24-28) benutzt die Positivität von
+% (A + i lambda B)^dagger (A + i lambda B); c03.s10 (nach c03.prop.positiv) nimmt das auf.
+% Nicht übernommen: das Beispiel aus v04 („um die Energie eines Systems zu
 % beschränken“); weder vl03.tex:164 noch eine Herleitung gibt eine solche Schranke
 % (evidence/derivations/c03/REVIEW-lec3.md, B, Zeile UNSUPPORTED).
 Beide Ungleichungen sind Arbeitsgeräte, die wir quasi ständig verwenden. Die wichtigste ist
 die Schwarz'sche Ungleichung: Sie steckt hinter der Heisenbergschen Unschärferelation
-\srcref{tpc-script-v0.2}{vl03, Abschnitt Skalarprodukte}, die in Kapitel~6 kommt. Mit der
+\srcref{tpc-script-v0.2}{vl03, Abschnitt Skalarprodukte}, die in Kapitel~6 kommt, und zwar
+mit dem Gedanken ihres Beweises. In Gleichung~\eqref{c03.eq.schwarz-beweis} ist das
+Skalarprodukt eines geschickt gewählten Vektors mit sich selbst nie negativ; genau dieser
+Schritt trägt auch den Beweis der Unschärferelation, wie Abschnitt~\ref{c03.s10} zeigt. Mit der
 Dreiecksungleichung schätzen wir Größen ab.
 
 % Stimme: vl03.tex:166-170; v04 [06:51]-[08:44].
@@ -932,9 +949,10 @@ Im Kern ist die Indexmenge $X$ einer Basis endlich.
 % Stimme: vl03.tex:191; v04 [14:22]-[15:16] („und verwirrenderweise sagen wir, dass diese
 % Basis vollständig ist“).  „ein anderer Begriff“ statt „gar nichts zu tun“: Reed-Simon I S. 45
 % benutzt die Vollständigkeit des Raums im Beweis der Entwicklung nach einer Basis
-% (evidence/derivations/c03/REVIEW-lec3.md, B, Zeile MINOR (de.tex:907)).
-Zwei Warnungen. Verwirrenderweise heißt die zweite Eigenschaft \emph{Vollständigkeit}; das
-ist ein anderer Begriff von Vollständigkeit als die des Hilbertraums aus
+% (evidence/derivations/c03/REVIEW-lec3.md, B, Zeile MINOR (de.tex:907)).  Satzbau nach
+% docs/review/lectures/REVIEW-lec3-second.md, Zeile GERMAN (Begriff gegen Vollständigkeit).
+Zwei Warnungen. Verwirrenderweise heißt auch die zweite Eigenschaft \emph{Vollständigkeit}.
+Damit ist etwas anderes gemeint als mit der Vollständigkeit des Hilbertraums aus
 Abschnitt~\ref{c03.s6}. Und
 $\kron{j}{k}$ ist das Kronecker-Delta, nicht die Diracsche Delta-Funktion, die später
 vorkommt.
@@ -1235,7 +1253,9 @@ wir durch null teilen würden. Es kann durchaus passieren, dass manche $\ket{\Ps
 (Übung~\ref{c03.exc.gram-schmidt}).
 
 % Stimme: vl03.tex:223-250; v04 [38:11]-[46:17] („mein Lieblings-Hilbertraum“; „diese beiden
-% Vektoren habe ich gerade ausgedacht“).
+% Vektoren habe ich gerade ausgedacht“).  Startvektor Phi_1 = (2, 0) statt (1, 0), damit der
+% Normierungsschritt wirklich vorkommt: wie im Skript v0.3, latex/lectures/de/vl03.tex:120-136
+% (Review muse, von TJO gebilligt, 2026-10-29); die Vorlesung rechnet mit (1, 0).
 Weil das Verfahren aus mehreren Teilen besteht und verwirrend sein kann, rechnen wir es einmal
 ganz durch.
 
@@ -1243,21 +1263,21 @@ ganz durch.
   Wir arbeiten in meinem Lieblings-Hilbertraum $\mathbb{C}^2$ und starten mit zwei Vektoren, die
   ich mir gerade ausgedacht habe:
   \begin{equation}\label{c03.eq.gs-start}
-    \ket{\Phi_1} = \begin{pmatrix} 1 \\ 0 \end{pmatrix},
+    \ket{\Phi_1} = \begin{pmatrix} 2 \\ 0 \end{pmatrix},
     \qquad
     \ket{\Phi_2} = \begin{pmatrix} 1 \\ 1 \end{pmatrix} .
   \end{equation}
   Im ersten Schritt läuft die Summe von $1$ bis $0$; es wird also gar nicht summiert, und
   $\ket{\Psi_1} = \ket{\Phi_1}$. Im zweiten Schritt bleibt nur der Summand $k = 1$. Mit
-  $\braket{\Psi_1}{\Phi_2} = 1$ und $\norm{\Psi_1}^2 = 1$ ist
+  $\braket{\Psi_1}{\Phi_2} = 2$ und $\norm{\Psi_1}^2 = 4$ ist
   \begin{equation}\label{c03.eq.gs-beispiel}
     \ket{\Psi_2} = \ket{\Phi_2} - \ket{\Psi_1}\, \frac{\braket{\Psi_1}{\Phi_2}}{\norm{\Psi_1}^2}
-    = \begin{pmatrix} 1 \\ 1 \end{pmatrix} - \begin{pmatrix} 1 \\ 0 \end{pmatrix}
+    = \begin{pmatrix} 1 \\ 1 \end{pmatrix} - \begin{pmatrix} 2 \\ 0 \end{pmatrix} \frac{2}{4}
     = \begin{pmatrix} 0 \\ 1 \end{pmatrix} .
   \end{equation}
-  Beide Vektoren haben schon die Norm eins: Aus der ausgedachten Liste ist die Basis
-  $\ket{e_0}, \ket{e_1}$ geworden. Die Bedingung von Teil~4 der Proposition ist erfüllt: Aus
-  $\braket{\Phi_1}{\psi} = \psi_1 = 0$ und $\braket{\Phi_2}{\psi} = \psi_1 + \psi_2 = 0$ folgt
+  Geteilt durch die Normen $\norm{\Psi_1} = 2$ und $\norm{\Psi_2} = 1$ wird aus der
+  ausgedachten Liste die Basis $\ket{e_0}, \ket{e_1}$. Die Bedingung von Teil~4 der
+  Proposition ist erfüllt: Aus $\braket{\Phi_1}{\psi} = 2\psi_1 = 0$ und $\braket{\Phi_2}{\psi} = \psi_1 + \psi_2 = 0$ folgt
   $\ket{\psi} = 0$.
 \end{example}
 
@@ -1272,19 +1292,800 @@ eine Basis ist es, wenn die Bedingung von Teil~4 erfüllt ist.
   $\ket{\Phi_3} = \begin{pmatrix} 1 \\ -1 \end{pmatrix}$ hinzu und berechnen Sie $\ket{\Psi_3}$.
 \end{exercise}
 \begin{solution}
-  Mit $\ket{\Psi_1} = \ket{e_0}$, $\ket{\Psi_2} = \ket{e_1}$, $\braket{\Psi_1}{\Phi_3} = 1$
-  und $\braket{\Psi_2}{\Phi_3} = -1$ ist
+  Mit $\ket{\Psi_1} = 2\ket{e_0}$, $\ket{\Psi_2} = \ket{e_1}$, $\braket{\Psi_1}{\Phi_3} = 2$,
+  $\norm{\Psi_1}^2 = 4$, $\braket{\Psi_2}{\Phi_3} = -1$ und $\norm{\Psi_2}^2 = 1$ ist
   \begin{equation}\label{c03.eq.gs-null}
-    \ket{\Psi_3} = \begin{pmatrix} 1 \\ -1 \end{pmatrix} - \begin{pmatrix} 1 \\ 0 \end{pmatrix}
-    - (-1) \begin{pmatrix} 0 \\ 1 \end{pmatrix} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} .
+    \ket{\Psi_3} = \begin{pmatrix} 1 \\ -1 \end{pmatrix} - \begin{pmatrix} 2 \\ 0 \end{pmatrix} \frac{2}{4}
+    - \begin{pmatrix} 0 \\ 1 \end{pmatrix} \frac{-1}{1} = \begin{pmatrix} 0 \\ 0 \end{pmatrix} .
   \end{equation}
   Der dritte Vektor ist schon eine Linearkombination der ersten beiden,
-  $\ket{\Phi_3} = 2 \ket{\Phi_1} - \ket{\Phi_2}$, und fällt weg; das orthonormale System bleibt
+  $\ket{\Phi_3} = \ket{\Phi_1} - \ket{\Phi_2}$, und fällt weg; das orthonormale System bleibt
   $\ket{e_0}, \ket{e_1}$.
 \end{solution}
 
+% ── Vorlesung 4 (vl04, mit dem Unterabschnitt Operatoren von vl03.tex:253-277): Operatoren ──
+\section{Operatoren}\label{c03.s8}
+
+% Stimme: vl03.tex:254; v04 [46:54]-[48:01] („jetzt fangen wir mit Operatoren an“; „es gibt in
+% dem unendlichdimensionalen Fall gar keine Matrizen im Sinne von einer Tabelle von Zahlen“).
+% Nicht übernommen (H3.2, docs/plan/lec34/BRIEF.md): „Die Vektoren beschreiben die Zustände,
+% die Operatoren die Observablen“ (vl03.tex:254, vl04.tex:5, v04 [00:14]).  Zustände sind im
+% Kurs Dichteoperatoren (Kapitel 4); der Text sagt nur, was vl04.tex:69 und v04 [73:03] über die
+% Rollen der Operatorklassen sagen (c03.eq.rollen).
+Wir haben die wichtigen Eigenschaften des Hilbertraums besprochen; jetzt fangen wir mit den
+Operatoren an, dem zweiten Standbein der Theorie. Mit Vektoren allein kommt die Quantenmechanik
+nicht aus: Ihre Zustände, ihre Messungen und ihre Dynamik werden durch Operatoren beschrieben,
+wie Abschnitt~\ref{c03.s10} im Überblick zeigt. Das Wort „Operator“ klingt kompliziert, aber im
+endlichdimensionalen Fall ist ein Operator nichts anderes als eine Matrix. Weil wir auch
+unendlichdimensionale Hilberträume haben werden, benutzen wir trotzdem das allgemeinere Wort:
+Dort gibt es keine endliche Matrix mehr, man hätte unendlich viele Zeilen und Spalten.
+
+% Stimme: vl03.tex:256-268 mit den Korrekturen aus M-0024 („ein Hilbertraum“, „Das heißt“);
+% v04 [48:17]-[50:28].
+\tpcdef{D87}
+
+% Stimme: v04 [50:08]-[50:28] („sobald man eine Abbildung mit diesen Eigenschaften hat, dann
+% nennt man diese Abbildung Operator“).  Endliche Dimension im Kern: Entscheidung D4.
+Sobald eine Abbildung diese beiden Eigenschaften hat, nennen wir sie einen Operator. Im Kern ist
+$\Hil$ endlichdimensional, das heißt: $\Hil$ hat eine Basis mit endlicher Indexmenge
+(\defref{D85}), etwa $\mathbb{C}^n$ mit dem Skalarprodukt aus Abschnitt~\ref{c03.s2}.
+
+% Stimme: vl03.tex:270-277 mit den Korrekturen aus M-0024 („Operatoren“, „dass die Dimension von
+% H n = 2 beträgt“); v04 [51:46]-[54:21] („das können Sie ruhig selber beweisen“).
+\begin{example}[Operatoren auf $\mathbb{C}^n$ sind Matrizen]\label{c03.ex.matrix}\claim{c03.cl.matrix}{derived}
+  Sei $\Hil = \mathbb{C}^2$, die Dimension also $n = 2$. Jede $2 \times 2$-Matrix mit komplexen
+  Einträgen $a_{jk}$ ist ein Operator auf $\mathbb{C}^2$:
+  \begin{equation}\label{c03.eq.matrix}
+    \op{A} = \begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} ,
+    \qquad
+    \op{A}\ket{\psi} = \begin{pmatrix} a_{11}\psi_1 + a_{12}\psi_2 \\ a_{21}\psi_1 + a_{22}\psi_2 \end{pmatrix} .
+  \end{equation}
+  Die Regeln für die Multiplikation von Matrizen und Vektoren entsprechen genau den beiden
+  Bedingungen der Definition, denn jeder Eintrag von $\op{A}\ket{\psi}$ ist eine Summe von
+  Vielfachen der Einträge $\psi_k$. Umgekehrt ist jeder Operator auf $\mathbb{C}^2$ eine solche
+  Matrix: Mit den kanonischen Spalten $\ket{u_1}, \ket{u_2}$ aus Abschnitt~\ref{c03.s7} ist
+  $\ket{\psi} = \psi_1 \ket{u_1} + \psi_2 \ket{u_2}$, also
+  $\op{A}\ket{\psi} = \psi_1\, \op{A}\ket{u_1} + \psi_2\, \op{A}\ket{u_2}$, und die Spalten der
+  Matrix sind die Vektoren $\op{A}\ket{u_1}$ und $\op{A}\ket{u_2}$. Für jedes $n$ geht das
+  genauso, mit $n \times n$-Matrizen.
+\end{example}
+
+% Stimme: v04 [54:21]-[54:57] („wenn man das Wort Operator hört, dann soll man eigentlich an
+% irgendeine Tabelle denken“; „genau wie eine Microsoft-Excel-Tabelle, und es geht weiter“).
+% „keine endliche Matrix“ und die Einschränkungen der unendlichen Tabelle nach
+% evidence/derivations/c03/REVIEW-lec4.md, B, Zeile WRONG (de.tex:1319, 1354).
+Es schadet daher nichts, sich alle Operatoren als Matrizen vorzustellen: Wenn Sie das Wort
+„Operator“ hören, denken Sie an eine Tabelle. Im unendlichdimensionalen Fall läuft diese Tabelle
+in beide Richtungen ohne Ende weiter, wie eine Excel-Tabelle, die nie aufhört. Dann muss man
+aber vorsichtig sein: Die Tabelle gehört zu einer gewählten Basis, ihre Summen werden Reihen,
+deren Konvergenz man prüfen muss, und mancher Operator ist nur auf einem Teil des Raumes
+definiert (Abschnitt~\ref{c03.s11} und Kapitel~5).
+
+\subsection{Einsoperator, Nulloperator und der Hut}\label{c03.s8.1}
+
+% Stimme: vl04.tex:5 (zweiter Satz), 7-29; v04 [56:03]-[58:08] („trivial, aber sehr nützlich“).
+Es gibt ein paar Operatoren, die trivial, als Bausteine aber sehr nützlich sind.
+
+\tpcdef{D88}
+
+% Stimme: vl04.tex:29-33; v04 [58:08]-[59:14] („Hütchen bedeutet Operator, Strich bedeutet
+% Vektor, und nichts bedeutet normalerweise Zahlen“; „mit dieser Notation können wir die meiste
+% Verwirrung vermeiden“).  Ausnahmen ohne Hut: der Einsoperator (Koordinator), Zustände und
+% Pauli-Matrizen (TJO, 2026-10-29); D-HAT in docs/plan/lec34/BRIEF.md, Registry CONV-HAT.  Nicht übernommen: v04 [59:45]-[60:00], man
+% werde Teile der Notation später vielleicht weglassen; der Kurs behält die Hüte (D-HAT).
+Mit dem Nulloperator ist die Notation eingeführt, die wir von jetzt an im ganzen Kurs verwenden.
+Mit ihr vermeiden wir die meiste Verwirrung.
+
+\begin{merksatz}[Notation]
+  Ein \emph{Hut} bedeutet immer einen Operator, $\op{A}$; der \emph{Strich} der Ket-Notation
+  einen Vektor, $\ket{\psi}$; ein Symbol ohne Verzierung eine Zahl. Ausnahmen sind der
+  Einsoperator $\Id$ und zwei Sorten von Operatoren, die erst später vorkommen: die Zustände
+  (Kapitel~4) und die Pauli-Matrizen. Sie tragen keinen Hut.
+\end{merksatz}
+
+\section{Der adjungierte Operator}\label{c03.s9}
+
+% Stimme: vl04.tex:35-39; v04 [61:13]-[62:13] („wir können diese Operation allgemein auf
+% Operatoren anwenden“; „Sie werden sehen, dass diese Gleichung tatsächlich eine Definition
+% liefert“).
+Die Kreuz-Operation aus Abschnitt~\ref{c03.s2} macht aus einer Spalte eine Zeile. Wir können sie
+auch auf Operatoren anwenden, indem wir den sogenannten adjungierten Operator definieren.
+
+\tpcdef{D17}
+
+Dass diese Gleichung tatsächlich eine Definition liefert, ist nicht selbstverständlich: Es muss
+genau einen Operator geben, der sie erfüllt.
+
+\begin{proposition}[Existenz und Eindeutigkeit]\label{c03.prop.adjungiert}\claim[proof-included]{c03.cl.adjungiert}{derived}
+  Sei $\{\ket{\phi_x}\}_{x \in X}$ eine Basis von $\Hil$ mit endlicher Indexmenge $X$ und
+  $\op{A}$ ein Operator auf $\Hil$. Dann gibt es genau einen Operator $\op{A}\adj$ mit
+  $\braket{\op{A}\adj\phi}{\psi} = \braket{\phi}{\op{A}\psi}$ für alle
+  $\ket{\phi}, \ket{\psi} \in \Hil$, nämlich
+  \begin{equation}\label{c03.eq.adjungiert}
+    \op{A}\adj\ket{\phi} = \sum_{x \in X} \braket{\op{A}\phi_x}{\phi}\, \ket{\phi_x} .
+  \end{equation}
+\end{proposition}
+\begin{proof}
+  Eindeutigkeit: Erfüllen $\op{B}$ und $\op{B}'$ beide die Gleichung, so ist nach der
+  Additivität $\braket{\op{B}\phi - \op{B}'\phi}{\psi} = 0$ für alle $\ket{\psi}$. Für
+  $\ket{\psi} = \op{B}\ket{\phi} - \op{B}'\ket{\phi}$ ist das die Norm dieses Vektors zum
+  Quadrat; nach der Positivität ist also $\op{B}\ket{\phi} = \op{B}'\ket{\phi}$. Existenz: Die
+  rechte Seite von Gleichung~\eqref{c03.eq.adjungiert} hängt linear von $\ket{\phi}$ ab, weil
+  das Skalarprodukt im zweiten Argument linear ist; sie definiert also einen Operator $\op{B}$.
+  Nach den Regeln für Zahlen im ersten Argument und Proposition~\ref{c03.prop.symmetrie} ist
+  \begin{equation}\label{c03.eq.adjungiert-beweis}
+    \braket{\op{B}\phi}{\psi}
+    = \sum_{x \in X} \braket{\op{A}\phi_x}{\phi}^*\, \braket{\phi_x}{\psi}
+    = \sum_{x \in X} \braket{\phi}{\op{A}\phi_x}\, \braket{\phi_x}{\psi}
+    = \braket{\phi}{\op{A}\psi} .
+  \end{equation}
+  Im letzten Schritt sind die Zahlen $\braket{\phi_x}{\psi}$ mit der Linearität von $\op{A}$ und
+  des Skalarprodukts in das zweite Argument gewandert, wo
+  $\sum_x \braket{\phi_x}{\psi}\, \ket{\phi_x} = \ket{\psi}$ steht
+  (Proposition~\ref{c03.prop.entwicklung}).
+\end{proof}
+
+% Stimme: vl04.tex:39-52; v04 [62:21]-[64:33] („Kreuz bedeutet erst einmal transponieren und dann
+% alle Einträge komplex konjugieren“; „alle Einträge werden getauscht außer den
+% Diagonaleinträgen“).  Die Einschränkung auf das Skalarprodukt aus c03.s2 nach dem Muster der
+% Bras (docs/review/lectures/REVIEW-lec3.md, Zeile SCOPE (de.tex:630)).
+Im endlichdimensionalen Fall lässt sich die Operation explizit beschreiben. In $\mathbb{C}^n$
+mit dem Skalarprodukt aus Abschnitt~\ref{c03.s2} heißt das Kreuz: erst transponieren, dann alle
+Einträge komplex konjugieren,
+\begin{equation}\label{c03.eq.adj-matrix}\claim{c03.cl.adj-matrix}{derived}
+  \begin{pmatrix}
+    a_{11} & a_{12} & \cdots & a_{1n} \\
+    a_{21} & a_{22} & \cdots & a_{2n} \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{n1} & a_{n2} & \cdots & a_{nn}
+  \end{pmatrix}\adj
+  =
+  \begin{pmatrix}
+    a_{11}^* & a_{21}^* & \cdots & a_{n1}^* \\
+    a_{12}^* & a_{22}^* & \cdots & a_{n2}^* \\
+    \vdots & \vdots & \ddots & \vdots \\
+    a_{1n}^* & a_{2n}^* & \cdots & a_{nn}^*
+  \end{pmatrix} .
+\end{equation}
+Denn es ist
+$\braket{\phi}{\op{A}\psi} = \sum_{j,k} \phi_j^*\, a_{jk}\, \psi_k = \sum_k \bigl( \sum_j a_{jk}^* \phi_j \bigr)^* \psi_k$,
+und $\sum_j a_{jk}^* \phi_j$ ist der $k$-te Eintrag der rechten Matrix, angewandt auf
+$\ket{\phi}$. Die Diagonaleinträge bleiben beim Transponieren, wo sie sind, und werden nur
+konjugiert. Wie der Bra hängt der adjungierte Operator vom Skalarprodukt ab. Für das
+Skalarprodukt $\braket{v}{w}_c$ aus Beispiel~\ref{c03.ex.gewichtet} und
+$\op{A} = \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}$ ist er
+$\begin{pmatrix} 0 & 0 \\ 1/c & 0 \end{pmatrix}$, wie man durch Einsetzen in die Definition
+prüft, und das ist für $c \neq 1$ nicht die konjugiert transponierte Matrix.
+
+% Stimme: vl04.tex:54-58; v04 [64:36]-[66:31] („Sie können diese Rechenregeln selber beweisen
+% oder prüfen“; „diese Regeln werden wir ständig verwenden“).  Nicht übernommen: das
+% 2x2-Beispiel v04 [67:15]-[68:39]; die Einträge sind im Transkript nicht erhalten
+% (transcripts/clean/v04.md, Unsichere Stellen [67:15]-[68:30]).
+% Produkt als Hintereinanderausführung: Wunsch von Lane S für Skriptkapitel 4 (2026-10-29);
+% lineare Algebra, von TJO als Voraussetzung akzeptiert.
+In den Rechenregeln kommt das Produkt zweier Operatoren vor. Das Produkt $\op{A}\op{B}$ ist die
+Hintereinanderausführung: erst $\op{B}$, dann $\op{A}$, also
+$(\op{A}\op{B})\ket{\psi} = \op{A}(\op{B}\ket{\psi})$; für Matrizen ist das das Matrixprodukt.
+Im Allgemeinen ist $\op{A}\op{B} \neq \op{B}\op{A}$, zum Beispiel
+\begin{equation}\label{c03.eq.produkt}\claim{c03.cl.produkt}{derived}
+  \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix} \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix}
+  = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} ,
+  \qquad
+  \begin{pmatrix} 0 & 0 \\ 1 & 0 \end{pmatrix} \begin{pmatrix} 0 & 1 \\ 0 & 0 \end{pmatrix}
+  = \begin{pmatrix} 0 & 0 \\ 0 & 1 \end{pmatrix} .
+\end{equation}
+
+Die Rechenregeln in \defref{D17} werden wir ständig verwenden. Sie können sie selbst beweisen,
+und zwar alle auf dieselbe Weise.
+
+\begin{proposition}[Rechenregeln]\label{c03.prop.adj-regeln}\claim[proof-included]{c03.cl.adj-regeln}{derived}
+  Auf einem endlichdimensionalen Hilbertraum gelten die vier Rechenregeln aus \defref{D17} für
+  alle Operatoren $\op{A}, \op{B}$ und alle $z \in \mathbb{C}$.
+\end{proposition}
+\begin{proof}
+  Nach Proposition~\ref{c03.prop.adjungiert} genügt es, für jede rechte Seite die definierende
+  Gleichung zu prüfen. Für alle $\ket{\phi}, \ket{\psi}$ ist, mit der Additivität und den
+  Regeln für Zahlen,
+  \begin{equation}\label{c03.eq.adj-regeln}
+    \begin{aligned}
+      \braket{(\op{A}\adj + \op{B}\adj)\phi}{\psi}
+        &= \braket{\phi}{\op{A}\psi} + \braket{\phi}{\op{B}\psi}
+         = \braket{\phi}{(\op{A} + \op{B})\psi} , \\
+      \braket{z^* \op{A}\adj\phi}{\psi}
+        &= z\, \braket{\op{A}\adj\phi}{\psi}
+         = \braket{\phi}{z\op{A}\psi} , \\
+      \braket{\op{B}\adj\op{A}\adj\phi}{\psi}
+        &= \braket{\op{A}\adj\phi}{\op{B}\psi}
+         = \braket{\phi}{\op{A}\op{B}\psi} .
+    \end{aligned}
+  \end{equation}
+  Für die vierte Regel zeigen wir, dass $\op{A}$ die Gleichung für den adjungierten Operator von
+  $\op{A}\adj$ erfüllt. Nach Proposition~\ref{c03.prop.symmetrie} ist
+  $\braket{\op{A}\phi}{\psi} = \braket{\psi}{\op{A}\phi}^* = \braket{\op{A}\adj\psi}{\phi}^* = \braket{\phi}{\op{A}\adj\psi}$.
+\end{proof}
+
+\section{Klassen von Operatoren}\label{c03.s10}
+
+% Stimme: vl04.tex:60-68; v04 [69:11]-[72:05] („mit Hilfe nur dieser zwei Dinge können wir
+% enorm wichtige Klassen von Operatoren definieren“).  vl04 schreibt alle sechs Klassen mit A;
+% die Registry benutzt P, V, U, N für Projektor, Isometrie, unitär, normal.
+Mit dem Einsoperator und dem adjungierten Operator allein können wir enorm wichtige Klassen von
+Operatoren definieren. Es sind sechs.
+
+\tpcdef{D18}
+
+\tpcdef{D20}
+
+\tpcdef{D89}
+
+\tpcdef{D90}
+
+\tpcdef{D91}
+
+\tpcdef{D92}
+
+% Stimme: vl04.tex:69; v04 [72:57]-[73:45] („hermitesche Operatoren beschreiben die Observablen
+% der Quantenmechanik; positive Operatoren beschreiben eigentlich die Zustände, werden wir
+% sehen; Projektoren beschreiben Messungen ... mit Ergebnissen null oder eins, oder Ereignis,
+% nicht Ereignis; isometrische und unitäre stellen die Dynamik der Quantenmechanik dar; ...
+% eigentlich sind alle diese Operatoren normal“).  „mit einer Normierung“: D22 (Kapitel 4).
+Alle sechs Klassen spielen in der Quantenmechanik eine sehr spezifische Rolle, die wir in den
+folgenden Kapiteln kennenlernen \srcref{tpc-script-v0.2}{vl04, Absatz nach der Liste der
+Klassen}:
+\begin{equation}\label{c03.eq.rollen}\claim{c03.cl.rollen}{source-backed}
+  \begin{aligned}
+    &\text{\tpcifenglish{Hermitian}{hermitesch}} && \text{\tpcifenglish{observables}{Observablen}} \\
+    &\text{\tpcifenglish{positive}{positiv}} && \text{\tpcifenglish{states (with a normalisation, Chapter 4)}{Zustände (mit einer Normierung, Kapitel 4)}} \\
+    &\text{\tpcifenglish{projector}{Projektor}} && \text{\tpcifenglish{yes-no measurements (event or no event)}{Ja-Nein-Messungen (Ereignis oder kein Ereignis)}} \\
+    &\text{\tpcifenglish{isometric, unitary}{isometrisch, unitär}} && \text{\tpcifenglish{dynamics}{Dynamik}}
+  \end{aligned}
+\end{equation}
+Die normalen
+Operatoren sind eine erweiterte Klasse, in der die anderen liegen
+(Proposition~\ref{c03.prop.isometrie}).
+
+% H3.1 (docs/plan/lec34/BRIEF.md; M-0005): vl04.tex:70 „(Synonym: selbstadjungierte
+% Operatoren)“ gilt für Operatoren, die auf ganz H definiert sind, insbesondere in endlicher
+% Dimension; in unendlicher Dimension sind symmetrisch und selbstadjungiert verschiedene
+% Begriffe (Reed-Simon I S. 255-256, Vertiefung c03.v5).  Nach REVIEW-lec4.md, B, Zeile SCOPE
+% (de.tex:1533): nicht die unendliche Dimension trennt die Begriffe, sondern der eingeschränkte
+% Definitionsbereich; das Synonym bleibt im Kern auf endliche Dimension beschränkt.
+Hermitesche Operatoren auf einem endlichdimensionalen Raum heißen auch
+\emph{selbstadjungiert}; dort sind die beiden Wörter gleichbedeutend. Bei Operatoren, die nur
+auf einem Teil des Raumes definiert sind, muss man genauer hinsehen\zoomref{c03.v5}.
+
+\begin{vertiefung}[id=c03.v5,
+    titel={Beschränkte und unbeschränkte Operatoren},
+    wozu={Im Kern ist jeder Operator auf dem ganzen Raum definiert, und hermitesch heißt dasselbe
+      wie selbstadjungiert. Hier steht, warum das bei Operatoren mit eingeschränktem
+      Definitionsbereich nicht mehr so ist: Wichtige Operatoren sind in unendlich vielen
+      Dimensionen unbeschränkt, und ein unbeschränkter symmetrischer Operator lässt sich nicht
+      auf dem ganzen Raum definieren.},
+    voraussetzung={Abschnitte~\ref{c03.s8} bis~\ref{c03.s10}; Vertiefungen~\ref{c03.v1} und~\ref{c03.v4}
+      (Beispiel einer Basis von $\elltwo$). Der Kern bis Kapitel~4 braucht den Block nicht;
+      Kapitel~5 nimmt das Thema mit den Definitionsbereichen wieder auf.},
+    zurueck={In endlicher Dimension ist jeder Operator beschränkt und auf dem ganzen Raum
+      definiert, und hermitesch und selbstadjungiert sind dasselbe. In unendlich vielen
+      Dimensionen gehört zu einem Operator sein Definitionsbereich, und erst mit ihm lässt sich
+      sagen, ob ein symmetrischer Operator selbstadjungiert ist.}]
+  Ein Operator $\op{T}$ heißt \emph{beschränkt}, wenn es eine Zahl $C \geq 0$ gibt mit
+  $\norm{\op{T}\psi} \leq C\, \norm{\psi}$ für alle Vektoren $\ket{\psi}$; Reed und Simon
+  definieren das so für lineare Abbildungen zwischen normierten Räumen
+  \srcref{reed-simon-1}{S.~8}. Auf $\mathbb{C}^n$ ist jeder Operator beschränkt. Ist $\op{A}$
+  die Matrix mit den Einträgen $a_{jk}$, so ist nach der Schwarz'schen Ungleichung in
+  $\mathbb{C}^n$ für jeden Eintrag
+  $\abs{\sum_k a_{jk} \psi_k}^2 \leq \sum_k \abs{a_{jk}}^2\, \norm{\psi}^2$, und die Summe über
+  $j$ gibt
+  \begin{equation}\label{c03.eq.beschraenkt}\claim{c03.cl.beschraenkt}{derived}
+    \norm{\op{A}\psi}^2 \leq \Bigl( \sum_{j,k=1}^{n} \abs{a_{jk}}^2 \Bigr) \norm{\psi}^2 .
+  \end{equation}
+  In $\elltwo$ ist das anders.
+
+  \begin{example}[Ein unbeschränkter Operator]\label{c03.ex.unbeschraenkt}\claim{c03.cl.unbeschraenkt}{derived}
+    Sei $\op{M}$ die Abbildung, die den $j$-ten Eintrag eines Vektors mit $j$ multipliziert,
+    $(\op{M}\vb{v})_j = j\, v_j$. Für die Basisvektoren $\vb{u}_k$ aus
+    Beispiel~\ref{c03.ex.elltwo-basis} ist $\op{M}\vb{u}_k = k\, \vb{u}_k$, also
+    $\norm{\op{M}\vb{u}_k} = k\, \norm{\vb{u}_k}$, und keine Zahl $C$ ist größer als alle $k$.
+    Schlimmer: Der Vektor mit $v_j = 1/j$ liegt in $\elltwo$ (Beispiel~\ref{c03.ex.rate}), aber
+    $(\op{M}\vb{v})_j = 1$ für jedes $j$, und der Vektor mit lauter Einsen liegt nicht in
+    $\elltwo$ (Beispiel~\ref{c03.ex.einsen}). $\op{M}$ lässt sich also nicht auf jeden Vektor
+    von $\elltwo$ anwenden, sondern nur auf die mit $\sum_j j^2 \abs{v_j}^2 < \infty$. Für diese
+    ist $\braket{v}{\op{M}v} = \sum_j j\, \abs{v_j}^2$ endlich; für den Vektor mit $v_j = 1/j$
+    divergiert genau diese Summe, wie am Ende von Fundament~\ref{c03.f3}.
+  \end{example}
+
+  % Nach evidence/derivations/c03/REVIEW-lec4.md, B, Zeile SCOPE (de.tex:1776, 1779).
+  Bei einem unbeschränkten Operator reichen auch die Matrixelemente nicht mehr. Für einen
+  beschränkten Operator $\op{T}$, der auf ganz $\elltwo$ definiert ist, legen die Zahlen
+  $\entry{\op{T}}{j}{k} = \vb{u}_j\adj (\op{T}\vb{u}_k)$ den Operator fest. Mit den Teilsummen
+  $\vb{v}_N = \sum_{k \leq N} v_k \vb{u}_k$ ist nämlich
+  $\norm{\op{T}\vb{v} - \op{T}\vb{v}_N} \leq C\, \norm{\vb{v} - \vb{v}_N}$, und das geht gegen
+  null (Beispiel~\ref{c03.ex.elltwo-basis}); nach der Schwarz'schen Ungleichung konvergieren
+  dann auch die Einträge, und es ist
+  \begin{equation}\label{c03.eq.elemente-unendlich}\claim{c03.cl.elemente-unendlich}{derived}
+    (\op{T}\vb{v})_j = \sum_{k=1}^{\infty} \entry{\op{T}}{j}{k}\, v_k .
+  \end{equation}
+  Für $\op{M}$ dagegen ist $\entry{\op{M}}{j}{k} = j\, \kron{j}{k}$, gleich ob man $\op{M}$ nur
+  auf die Vektoren mit endlich vielen Einträgen ungleich null anwendet oder auf alle mit
+  $\sum_j j^2 \abs{v_j}^2 < \infty$. Das sind zwei verschiedene Operatoren mit denselben
+  Matrixelementen; erst der Definitionsbereich unterscheidet sie.
+
+  Solche Operatoren sind keine Kuriosität. Reed und Simon beginnen ihr Kapitel über
+  unbeschränkte Operatoren mit der Feststellung, dass viele der wichtigsten Operatoren der
+  mathematischen Physik nicht beschränkt sind \srcref{reed-simon-1}{S.~249}. Dass unbeschränkte
+  symmetrische Operatoren nicht auf dem ganzen Raum definiert sein können, ist kein Zufall:
+
+  \begin{theorem}[Hellinger und Toeplitz]\label{c03.thm.hellinger-toeplitz}\claim[proof-omitted]{c03.cl.hellinger-toeplitz}{source-quoted}
+    Sei $\op{T}$ ein Operator, der auf einem ganzen Hilbertraum $\Hil$ definiert ist, mit
+    $\braket{\phi}{\op{T}\psi} = \braket{\op{T}\phi}{\psi}$ für alle
+    $\ket{\phi}, \ket{\psi} \in \Hil$. Dann ist $\op{T}$ beschränkt.
+  \end{theorem}
+
+  Reed und Simon beweisen den Satz mit dem Satz vom abgeschlossenen Graphen. Sie fügen hinzu,
+  dass es in der Quantenmechanik unbeschränkte Operatoren gibt, etwa die Energie, die diese
+  Gleichung in einem gewissen Sinn erfüllen sollen; nach dem Satz können sie nicht auf dem
+  ganzen Raum definiert sein \srcref{reed-simon-1}{S.~84}. Ein solcher Operator ist nur auf
+  einem Teilraum definiert, seinem \emph{Definitionsbereich} $\dom{\op{T}}$, und dann muss man
+  auch beim adjungierten Operator auf die Definitionsbereiche achten (\defref{D19}). Reed und
+  Simon nennen einen dicht definierten Operator \emph{symmetrisch} (oder hermitesch) und
+  \emph{selbstadjungiert}, wenn
+  \begin{equation}\label{c03.eq.symmetrisch}\claim{c03.cl.symmetrisch}{source-quoted}
+    \op{T} \subset \op{T}\adj \quad \text{\tpcifenglish{(symmetric)}{(symmetrisch)}} ,
+    \qquad
+    \op{T} = \op{T}\adj \quad \text{\tpcifenglish{(self-adjoint)}{(selbstadjungiert)}} .
+  \end{equation}
+  Dabei heißt $\op{T} \subset \op{T}\adj$: Es ist $\dom{\op{T}} \subset \dom{\op{T}\adj}$, und
+  auf $\dom{\op{T}}$ wirken beide gleich; gleichwertig ist
+  $\braket{\op{T}\phi}{\psi} = \braket{\phi}{\op{T}\psi}$ für alle $\ket{\phi}, \ket{\psi}$ in
+  $\dom{\op{T}}$. Selbstadjungiert verlangt zusätzlich $\dom{\op{T}} = \dom{\op{T}\adj}$
+  \srcref{reed-simon-1}{S.~255}. In diesem Sprachgebrauch heißt hermitesch also dasselbe wie
+  symmetrisch, und das ist schwächer als selbstadjungiert. Der Unterschied entsteht erst durch
+  den eingeschränkten Definitionsbereich: Für einen Operator, der auf dem ganzen Raum definiert
+  ist, fallen die Begriffe zusammen (Proposition~\ref{c03.prop.symmetrisch}). Der Unterschied
+  ist sehr wichtig. Unter den symmetrischen Operatoren gilt der Spektralsatz nur für die
+  selbstadjungierten, und nur selbstadjungierte Operatoren erzeugen die einparametrigen
+  unitären Gruppen, die die Dynamik der Quantenmechanik geben \srcref{reed-simon-1}{S.~256}.
+
+  \begin{proposition}[Auf dem ganzen Raum ist symmetrisch selbstadjungiert]\label{c03.prop.symmetrisch}\claim[proof-included]{c03.cl.ganz}{derived}
+    Ist $\op{T}$ auf ganz $\Hil$ definiert und symmetrisch, so ist $\op{T}$ selbstadjungiert.
+    Insbesondere ist jeder hermitesche Operator auf einem endlichdimensionalen Hilbertraum
+    selbstadjungiert.
+  \end{proposition}
+  \begin{proof}
+    Aus $\dom{\op{T}} = \Hil$ und $\dom{\op{T}} \subset \dom{\op{T}\adj} \subset \Hil$ folgt
+    $\dom{\op{T}\adj} = \dom{\op{T}}$. Auf einem endlichdimensionalen Raum ist jeder Operator
+    auf ganz $\Hil$ definiert, und ein hermitescher Operator erfüllt
+    $\braket{\op{A}\phi}{\psi} = \braket{\phi}{\op{A}\psi}$ für alle Vektoren (\defref{D18}),
+    ist also symmetrisch.
+  \end{proof}
+\end{vertiefung}
+
+% Stimme: vl04.tex:70-79; v04 [74:27]-[76:31] („manche Klassen sind Unterklassen voneinander,
+% zum Beispiel positive Operatoren sind automatisch hermitesch“; „Operatoren der Form A = B^dagger
+% B sind automatisch positiv, das ist sehr hilfreich“).  Die Bemerkung „positiv“ gegen „nicht
+% negativ“ (vl04.tex:78; v04 [76:41]-[77:15]) steht in D20.
+Manche Klassen sind Unterklassen von anderen. Die Definitionen behaupten einiges davon; hier sind
+die Beweise. Sie benutzen nur die Definition des adjungierten Operators und die Positivität des
+Skalarprodukts.
+
+\begin{proposition}[Hermitesche und positive Operatoren]\label{c03.prop.positiv}\claim[proof-included]{c03.cl.positiv}{derived}
+  Seien $\op{A}$ und $\op{B}$ Operatoren auf einem endlichdimensionalen Hilbertraum $\Hil$.
+  \begin{enumerate}
+    \item $\op{A}$ ist genau dann hermitesch, wenn $\braket{\psi}{\op{A}\psi}$ für jedes
+      $\ket{\psi}$ eine reelle Zahl ist.
+    \item Jeder positive Operator ist hermitesch.
+    \item $\op{B}\adj\op{B}$ ist positiv.
+    \item Jeder Projektor ist positiv.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  Konjugiert man die definierende Gleichung aus \defref{D17}, so erhält man mit
+  Proposition~\ref{c03.prop.symmetrie} $\braket{\psi}{\op{A}\adj\phi} = \braket{\op{A}\psi}{\phi}$.
+  Zu~1: Ist $\op{A}$ hermitesch, so ist
+  $\braket{\psi}{\op{A}\psi} = \braket{\op{A}\psi}{\psi} = \braket{\psi}{\op{A}\psi}^*$, also
+  reell. Umgekehrt sei $\braket{\psi}{\op{A}\psi}$ für jedes $\ket{\psi}$ reell, und sei
+  $\op{D} = \op{A} - \op{A}\adj$. Dann ist
+  $\braket{\psi}{\op{D}\psi} = \braket{\psi}{\op{A}\psi} - \braket{\op{A}\psi}{\psi} = \braket{\psi}{\op{A}\psi} - \braket{\psi}{\op{A}\psi}^* = 0$
+  für jedes $\ket{\psi}$. Setzt man $\ket{\phi} + \ket{\xi}$ und $\ket{\phi} + i\ket{\xi}$
+  ein, so fallen die Summanden mit $\ket{\phi}$ allein und $\ket{\xi}$ allein weg, und es
+  bleibt
+  \begin{equation}\label{c03.eq.polarisation}
+    \braket{\phi}{\op{D}\xi} + \braket{\xi}{\op{D}\phi} = 0 ,
+    \qquad
+    i\, \braket{\phi}{\op{D}\xi} - i\, \braket{\xi}{\op{D}\phi} = 0 .
+  \end{equation}
+  Teilt man die zweite Gleichung durch $i$ und addiert sie zur ersten, so folgt
+  $\braket{\phi}{\op{D}\xi} = 0$ für alle $\ket{\phi}, \ket{\xi}$. Mit
+  $\ket{\phi} = \op{D}\ket{\xi}$ und der Positivität ist $\op{D}\ket{\xi} = 0$, also
+  $\op{A}\adj = \op{A}$. Zu~2: Für positives $\op{A}$ ist $\braket{\psi}{\op{A}\psi} \geq 0$,
+  insbesondere reell; weiter mit~1. Zu~3:
+  $\braket{\psi}{\op{B}\adj\op{B}\psi} = \braket{\op{B}\psi}{\op{B}\psi} \geq 0$ nach der
+  Positivität des Skalarprodukts. Zu~4: Für einen Projektor ist
+  $\op{P} = \op{P}^2 = \op{P}\adj\op{P}$; weiter mit~3.
+\end{proof}
+
+% Stimme: v04 [75:09]-[75:20] („sehr hilfreich“).  G-0072 (b), TJOs Antwort 2026-10-29: Der
+% Satz in c03.s5 über die Schwarz'sche Ungleichung wird hier aufgenommen.  Beleg für den Beweis
+% der Unschärferelation: vl09.tex:24-28 (M = (A + i lambda B)^dagger (A + i lambda B), „diese
+% Form garantiert Positivität“).
+Teil~3 ist sehr hilfreich. Sein Beweis ist derselbe Schritt wie im Beweis der Schwarz'schen
+Ungleichung, Gleichung~\eqref{c03.eq.schwarz-beweis}: Das Skalarprodukt eines Vektors mit sich
+selbst ist nie negativ. Mit diesem Schritt beginnt in Kapitel~6 der Beweis der Heisenbergschen
+Unschärferelation. Dort sind $\op{A}$ und $\op{B}$ hermitesch und $\lambda$ reell, und der
+Operator $(\op{A} + i\lambda\op{B})\adj(\op{A} + i\lambda\op{B})$ ist positiv, weil er die Form
+$\op{D}\adj\op{D}$ hat \srcref{tpc-script-v0.2}{vl09, Beweis der Unschärferelation}.
+
+% Stimme: vl04.tex:69 (zweiter Teil), 79; v04 [73:34]-[73:45].  Teil 2 und die Vertiefung c03.v6:
+% vl04.tex:69 „isometrische sind erst im endlich-dimensionalen Fall automatisch normal“.
+\begin{proposition}[Isometrien und normale Operatoren]\label{c03.prop.isometrie}\claim[proof-included]{c03.cl.isometrie}{derived}
+  Sei $\Hil$ endlichdimensional.
+  \begin{enumerate}
+    \item Ein Operator $\op{V}$ ist genau dann isometrisch, wenn
+      $\braket{\op{V}\phi}{\op{V}\psi} = \braket{\phi}{\psi}$ für alle
+      $\ket{\phi}, \ket{\psi} \in \Hil$ gilt.
+    \item Jede Isometrie ist unitär.
+    \item Hermitesche und unitäre Operatoren sind normal, also auch positive Operatoren,
+      Projektoren und Isometrien.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  Zu~1: Es ist $\braket{\op{V}\phi}{\op{V}\psi} = \braket{\phi}{\op{V}\adj\op{V}\psi}$. Ist
+  $\op{V}\adj\op{V} = \Id$, so ist das $\braket{\phi}{\psi}$. Gilt umgekehrt
+  $\braket{\phi}{(\op{V}\adj\op{V} - \Id)\psi} = 0$ für alle $\ket{\phi}$, so folgt mit
+  $\ket{\phi} = (\op{V}\adj\op{V} - \Id)\ket{\psi}$ und der Positivität
+  $\op{V}\adj\op{V}\ket{\psi} = \ket{\psi}$. Zu~2: Aus $\op{V}\ket{\psi} = 0$ folgt nach~1
+  $\norm{\psi} = \norm{\op{V}\psi} = 0$; $\op{V}$ bildet also nur den Nullvektor auf null ab.
+  Nach der Dimensionsformel der linearen Algebra ist eine solche lineare Abbildung eines
+  endlichdimensionalen Raums in sich auch surjektiv: Jeder Vektor ist von der Form
+  $\op{V}\ket{\psi}$. Für ihn ist
+  $\op{V}\op{V}\adj(\op{V}\ket{\psi}) = \op{V}(\op{V}\adj\op{V})\ket{\psi} = \op{V}\ket{\psi}$,
+  also $\op{V}\op{V}\adj = \Id$. Zu~3: Für hermitesches $\op{A}$ ist
+  $\op{A}\adj\op{A} = \op{A}\op{A} = \op{A}\op{A}\adj$, für unitäres sind beide Seiten $\Id$.
+  Positive Operatoren und Projektoren sind nach Proposition~\ref{c03.prop.positiv} hermitesch,
+  Isometrien nach~2 unitär.
+\end{proof}
+
+Teil~2 braucht die endliche Dimension wirklich: In unendlich vielen Dimensionen gibt es
+Isometrien, die nicht unitär sind\zoomref{c03.v6}.
+
+\begin{vertiefung}[id=c03.v6,
+    titel={Isometrisch, aber nicht unitär},
+    wozu={In endlicher Dimension ist jede Isometrie unitär
+      (Proposition~\ref{c03.prop.isometrie}). Hier ist eine Isometrie von $\elltwo$, die es nicht
+      ist, und man sieht, an welchem Schritt des Beweises es liegt.},
+    voraussetzung={Proposition~\ref{c03.prop.isometrie}; Vertiefungen~\ref{c03.v1} und~\ref{c03.v4}
+      (Beispiel einer Basis von $\elltwo$). Der Kern bis Kapitel~4 braucht den Block nicht.},
+    zurueck={In unendlich vielen Dimensionen kann ein Operator das Skalarprodukt erhalten, ohne
+      unitär zu sein. Teil~2 von Proposition~\ref{c03.prop.isometrie} gilt nur in endlicher
+      Dimension.}]
+  \begin{example}[Der Rechtsshift]\label{c03.ex.shift}\claim{c03.cl.shift}{derived}
+    Der Rechtsshift $\op{S}$ schiebt jeden Eintrag eines Vektors in $\elltwo$ um eine Stelle
+    nach rechts und setzt vorn eine Null:
+    \begin{equation}\label{c03.eq.shift}
+      \op{S} \begin{pmatrix} v_1 \\ v_2 \\ v_3 \\ \vdots \end{pmatrix}
+      = \begin{pmatrix} 0 \\ v_1 \\ v_2 \\ \vdots \end{pmatrix} ,
+      \qquad
+      \op{S}\adj \begin{pmatrix} w_1 \\ w_2 \\ w_3 \\ \vdots \end{pmatrix}
+      = \begin{pmatrix} w_2 \\ w_3 \\ w_4 \\ \vdots \end{pmatrix} .
+    \end{equation}
+    Die Reihe $(\op{S}\vb{v})\adj(\op{S}\vb{w})$ hat dieselben Glieder wie $\vb{v}\adj\vb{w}$,
+    nur eine Stelle später; also ist $\op{S}\vb{v} \in \elltwo$, und $\op{S}$ erhält das
+    Skalarprodukt. Den adjungierten Operator liest man an
+    $\vb{w}\adj(\op{S}\vb{v}) = \sum_{k \geq 1} w_{k+1}^*\, v_k$ ab: Er schiebt nach links und
+    lässt den ersten Eintrag fallen. Damit ist $\op{S}\adj\op{S} = \Id$, aber
+    $\op{S}\op{S}\adj \vb{u}_1 = 0$ für den ersten Basisvektor $\vb{u}_1$, also
+    $\op{S}\op{S}\adj \neq \Id$. $\op{S}$ ist isometrisch, aber weder unitär noch normal.
+  \end{example}
+
+  Es liegt am zweiten Schritt des Beweises von Proposition~\ref{c03.prop.isometrie}: $\op{S}$
+  bildet nur den Nullvektor auf null ab, ist aber nicht surjektiv, denn jeder Vektor
+  $\op{S}\vb{v}$ hat als ersten Eintrag eine Null. Reed und Simon benutzen dasselbe Beispiel:
+  Der Rechtsshift auf $\elltwo$ ist nicht unitär, weil der Vektor $(1, 0, 0, \dots)$ nicht in
+  seinem Bild liegt \srcref{reed-simon-1}{S.~197}.
+\end{vertiefung}
+
+\section{Matrixelemente und Ket-Bras}\label{c03.s11}
+
+% Stimme: vl04.tex:81-89; v04 [77:45]-[81:55] („wir können mit Hilfe einer Basis Operatoren
+% beschreiben“; „wir haben diese sogenannte Vollständigkeitsrelation zweimal angewandt“).
+Mit Hilfe einer Basis kann man Operatoren durch Zahlen beschreiben. Sei dafür
+$\{\ket{\phi_x}\}_{x \in X}$ eine Basis von $\Hil$ mit endlicher Indexmenge $X$.
+
+\tpcdef{D93}
+
+% Stimme: v05 [02:45]-[09:36] (die Tafelrechnung; „Zahlen können mit Operatoren tauschen, das
+% gilt immer“; „diese Berechnungen sind Beispiele für die Übung, die wir jeden Tag in der
+% Quantenmechanik machen“); v04 [88:51]-[89:18] (Publikumsfrage: über x und y getrennt summiert).
+Woher die Formel für $\op{A}\ket{\Psi}$ in \defref{D93} kommt, rechnen wir einmal aus; das ist
+die Übung, die wir in der Quantenmechanik jeden Tag machen. Wir entwickeln erst $\ket{\Psi}$ nach
+der Basis, ziehen die Zahlen $\braket{\phi_y}{\Psi}$ an $\op{A}$ vorbei, denn Zahlen vertauschen
+immer mit Operatoren, und entwickeln dann jeden Vektor $\op{A}\ket{\phi_y}$ noch einmal:
+\begin{equation}\label{c03.eq.wirkung}\claim{c03.cl.wirkung}{derived}
+  \begin{aligned}
+    \op{A}\ket{\Psi}
+    &= \op{A} \sum_{y \in X} \braket{\phi_y}{\Psi}\, \ket{\phi_y}
+     = \sum_{y \in X} \braket{\phi_y}{\Psi}\, \op{A}\ket{\phi_y} \\
+    &= \sum_{y \in X} \braket{\phi_y}{\Psi} \sum_{x \in X} \braket{\phi_x}{\op{A}\phi_y}\, \ket{\phi_x}
+     = \sum_{x, y \in X} \ket{\phi_x}\, \entry{\op{A}}{x}{y}\, \braket{\phi_y}{\Psi} .
+  \end{aligned}
+\end{equation}
+Über $x$ und $y$ wird unabhängig voneinander summiert.
+
+% Stimme: v04 [80:39]-[81:55] („wir haben nie in diese Gleichung eine Matrix dargestellt, das
+% ist sehr wichtig“); v05 [10:15]-[11:30] („ein Operator ist bekannt, sobald man die
+% Matrixelemente kennt“).  vl04.tex:89 „genau deshalb trägt sie auch im unendlich-dimensionalen
+% Fall“ ist abgeschwächt: Dort werden die Summen Reihen, deren Konvergenz zu prüfen ist, und
+% die Matrixelemente legen nur beschränkte, überall definierte Operatoren fest
+% (evidence/derivations/c03/REVIEW-lec4.md, B, Zeile SCOPE (de.tex:1776, 1779); c03.eq.elemente-unendlich).
+Beachten Sie, dass in dieser Gleichung nirgends eine Matrix vorkommt, sondern nur Basisvektoren
+und Zahlen. Kennt man alle Matrixelemente, so kann man $\op{A}$ auf jeden Vektor anwenden: Ein
+Operator ist bekannt, sobald man seine Matrixelemente kennt. Im endlichdimensionalen Fall
+schreibt man sie einfach in eine Matrix. In unendlich vielen Dimensionen gibt es keine endliche
+Matrix mehr, wohl aber die Zahlen $\entry{\op{A}}{x}{y}$, eine Tabelle mit unendlich vielen
+Zeilen und Spalten. Dort werden die Summen zu Reihen, und dass die Matrixelemente den Operator
+festlegen, gilt nur unter Voraussetzungen: für beschränkte Operatoren, die auf dem ganzen Raum
+definiert sind, nicht aber ohne Weiteres für unbeschränkte\zoomref{c03.v5}.
+
+% Stimme: vl04.tex:90-94.  Reed-Simon I S. 187 sagt dasselbe für selbstadjungierte Matrizen.
+Auch der adjungierte Operator lässt sich an den Matrixelementen ablesen. Mit der konjugierten
+Gleichung aus dem Beweis von Proposition~\ref{c03.prop.positiv} ist
+\begin{equation}\label{c03.eq.adj-elemente}\claim{c03.cl.adj-elemente}{derived}
+  \entry{\op{A}\adj}{x}{y}
+  = \braket{\phi_x}{\op{A}\adj\phi_y}
+  = \braket{\op{A}\phi_x}{\phi_y}
+  = \braket{\phi_y}{\op{A}\phi_x}^*
+  = \entry{\op{A}}{y}{x}^* .
+\end{equation}
+Die Bildung des Adjungierten ist also in jeder Orthonormalbasis Transposition mit
+Komplexkonjugation, für jedes Skalarprodukt. Reed und Simon erinnern daran, dass eine Matrix
+auf $\mathbb{C}^n$ genau dann selbstadjungiert ist, wenn ihre Matrix in einer
+Orthonormalbasis unter Spiegelung an der Diagonale und anschließender Konjugation gleich bleibt
+\srcref{reed-simon-1}{S.~187}.
+
+\subsection{Kets und Bras als Operatoren}\label{c03.s11.1}
+
+% Stimme: vl04.tex:96-100; v05 [11:35]-[16:40] („es gibt einen sehr subtilen Unterschied“;
+% „ab sofort ist |psi> als ein Operator zu verstehen“; „dieser Operator nimmt eine komplexe Zahl
+% und erzeugt einen Vektor“; „ich habe es bisher immer weggelassen“).  Der Vektor ist hier fett
+% geschrieben wie in c03.s1 (vl04 schreibt ihn ohne Verzierung, was nach dem Merksatz eine Zahl
+% wäre).
+Bisher stand das Ket $\ket{\Psi}$ einfach für einen Vektor $\vb{\Psi} \in \Hil$. Es lohnt sich,
+hier einen sehr subtilen Unterschied zu machen, weil er das Folgende vereinfacht. Ab sofort ist
+das Ket die lineare Abbildung
+\begin{equation}\label{c03.eq.ket-op}
+  \ket{\Psi}\colon \mathbb{C} \to \Hil ,
+  \qquad
+  z \mapsto z\, \vb{\Psi} .
+\end{equation}
+Ein Ket frisst also eine komplexe Zahl und produziert einen Vektor. Die Zahl habe ich bisher
+immer weggelassen; gemeint war $z = 1$.
+
+% Stimme: vl04.tex:100-107; v05 [16:40]-[19:22] („Bras fressen Vektoren und produzieren
+% komplexe Zahlen“; „für die Berechnung ... nur für die Interpretation wichtig“).
+Die Gleichung aus \defref{D17} definiert den adjungierten Operator wörtlich auch für eine
+lineare Abbildung von einem Hilbertraum in einen anderen, hier von $\mathbb{C}$ nach $\Hil$; dabei
+ist $\mathbb{C} = \mathbb{C}^1$ ein Hilbertraum mit dem Skalarprodukt $a^* b$. Man rechnet nach,
+dass der adjungierte Operator zum Ket der Bra ist:
+\begin{equation}\label{c03.eq.bra-op}\claim{c03.cl.bra-op}{derived}
+  \bra{\Psi} = (\ket{\Psi})\adj \colon \Hil \to \mathbb{C} ,
+  \qquad
+  \vb{\Phi} \mapsto \braket{\Psi}{\Phi} .
+\end{equation}
+Denn für jede Zahl $z$ und jeden Vektor $\vb{\Phi}$ ist
+$\braket{\Phi}{z\Psi} = z\, \braket{\Phi}{\Psi} = \braket{\Psi}{\Phi}^* z$, und rechts steht das
+Skalarprodukt der Zahl $\braket{\Psi}{\Phi}$ mit der Zahl $z$ in $\mathbb{C}$. Ein Bra frisst
+also einen Vektor und produziert eine komplexe Zahl, genau umgekehrt wie ein Ket. Das passt zu
+Abschnitt~\ref{c03.s4}, wo der Bra die Zuordnung war, die jedem Ket eine Zahl zuordnet.
+
+% Stimme: vl04.tex:108-112; v05 [20:23]-[25:40] („ein bisschen mühsam, das alles aufzuschreiben“;
+% „die Hauptnachricht heute ... das war sehr mühsam alles zu begründen, aber es ist so, Sie
+% können das jetzt vergessen und ab sofort diese Identifikation verwenden“).
+Multipliziert man einen Bra mit einem Ket, so verkettet man zwei Abbildungen: Das Ket macht aus
+einer Zahl einen Vektor, der Bra macht daraus wieder eine Zahl. Heraus kommt die Abbildung von
+$\mathbb{C}$ nach $\mathbb{C}$
+\begin{equation*}
+  z \mapsto \bra{\Phi}\, \ket{\Psi}\, z = \braket{\Phi}{\Psi}\, z .
+\end{equation*}
+Machen wir in der Notation keinen Unterschied zwischen einer linearen Abbildung von
+$\mathbb{C}$ nach $\mathbb{C}$ und der Zahl, mit der sie multipliziert, so werden
+$\bra{\Phi}\, \ket{\Psi}$ und $\braket{\Phi}{\Psi}$ gleichbedeutend. Das ist die Hauptnachricht
+dieses Abschnitts. Die Begründung war mühsam; Sie können sie jetzt vergessen und ab sofort diese
+Identifikation verwenden. Für das Rechnen ändert sich nichts, der Unterschied ist nur für die
+Interpretation wichtig.
+
+% Stimme: vl04.tex:114-122 (Zeile 121 quantifiziert „für alle Psi“ statt „für alle chi“, siehe
+% NOTES-author.md); v05 [26:42]-[31:00] („Ket-Bra-Operatoren sind extrem nützlich in der
+% Quantenmechanik“).
+In der anderen Reihenfolge, Ket mal Bra, entsteht ein Operator auf $\Hil$: Der Bra frisst einen
+Vektor und gibt eine Zahl zurück, das Ket frisst diese Zahl und gibt einen Vektor zurück. Solche
+Operatoren sind in der Quantenmechanik extrem nützlich.
+
+\tpcdef{D94}
+
+% Stimme: vl04.tex:124-132; v05 [31:30]-[39:07] („sobald wir eine Basis haben ... alles, was
+% wichtig ist, sind diese Indizes“; „diese Gleichung ist eine der hilfreichsten Gleichungen der
+% Quantenmechanik“; „ich verwende diese Identifikation tatsächlich regelmäßig bis heute“; „im
+% Sinne eines mathematischen Beweises nur begründen“, also beide Seiten auf einen Vektor
+% anwenden; „diese Gleichung hat keine physikalische Information, wir sagen einfach eins ist
+% gleich eins, aber mathematisch macht sie unser Leben so viel einfacher“).
+Wir gehen in der Vereinfachung noch einen Schritt weiter. Sobald eine Basis
+$\{\ket{\phi_x}\}_{x \in X}$ fixiert und aus dem Kontext klar ist, trägt der Buchstabe $\phi$
+keine Information mehr; die ganze Information steckt im Index. Wir lassen ihn weg und schreiben
+$\ket{x}$ und $\bra{x}$. Damit werden die Entwicklungsformeln für Vektoren und für Operatoren zu
+Operatorgleichungen.
+
+\begin{proposition}[Rechnen mit Ket-Bras]\label{c03.prop.ketbra}\claim[proof-included]{c03.cl.ketbra}{derived}
+  Für Vektoren $\ket{\Psi}, \ket{\Phi}$, eine Basis $\{\ket{x}\}_{x \in X}$ mit endlicher
+  Indexmenge und jeden Operator $\op{A}$ gilt
+  \begin{equation}\label{c03.eq.ketbra}
+    (\ketbra{\Psi}{\Phi})\adj = \ketbra{\Phi}{\Psi} ,
+    \qquad
+    \Id = \sum_{x \in X} \ketbra{x}{x} ,
+    \qquad
+    \op{A} = \sum_{x, y \in X} \melem{x}{\op{A}}{y}\, \ketbra{x}{y} .
+  \end{equation}
+\end{proposition}
+\begin{proof}
+  Wir wenden beide Seiten auf einen beliebigen Vektor an; das ist das allgemeine Muster für
+  Operatorgleichungen. Erste Gleichung: Für alle $\ket{\zeta}, \ket{\xi}$ ist
+  $\braket{\zeta}{(\ketbra{\Psi}{\Phi})\xi} = \braket{\Phi}{\xi}\, \braket{\zeta}{\Psi}$, und
+  $\braket{(\ketbra{\Phi}{\Psi})\zeta}{\xi} = \braket{\Psi}{\zeta}^*\, \braket{\Phi}{\xi}$ ist
+  dasselbe; nach Proposition~\ref{c03.prop.adjungiert} ist $\ketbra{\Phi}{\Psi}$ der adjungierte
+  Operator. Zweite Gleichung: Links steht $\Id\ket{\Psi} = \ket{\Psi}$, rechts nach
+  \defref{D94} $\sum_x \braket{x}{\Psi}\, \ket{x}$, und das ist $\ket{\Psi}$ nach
+  Proposition~\ref{c03.prop.entwicklung}. Dritte Gleichung: Rechts steht
+  $\sum_{x,y} \melem{x}{\op{A}}{y}\, \braket{y}{\Psi}\, \ket{x}$, und das ist $\op{A}\ket{\Psi}$
+  nach Gleichung~\eqref{c03.eq.wirkung}.
+\end{proof}
+
+Die Gleichung $\Id = \sum_x \ketbra{x}{x}$ ist eine der hilfreichsten Gleichungen der
+Quantenmechanik; ich verwende sie bis heute regelmäßig. Physikalisch enthält sie keine
+Information: Sie sagt nur, dass Eins gleich Eins ist. Mathematisch macht sie das Leben aber
+enorm viel einfacher, denn man darf diese komplizierte Eins an jeder Stelle einer Rechnung
+einschieben. Matrixelemente schreiben sich jetzt einfach als $\melem{x}{\op{A}}{y}$.
+
+\section{Drei Operatoren auf $\mathbb{C}^3$}\label{c03.s12}
+
+% Stimme: vl04.tex:134-204; v04 [82:48]-[88:39]; v05 [39:54]-[51:07].  Die Basis heißt hier
+% |0>, |1>, |2> wie in vl04.tex:193-203 (in v05 [41:07] heißt sie |1>, |2>, |3>).  Korrigiert:
+% vl04.tex:199 „können wir A wie folgt darstellen“, gemeint ist C (siehe NOTES-author.md).
+% Nicht übernommen (GAP-TJO, neue Lücke, NOTES-author.md): vl04.tex:156 und v04 [85:02], dieser
+% Projektor diene als Modell für Messungen der Photonenzahl in Glasfasernetzwerken; dafür gibt
+% es keine Quelle auf der Platte (vergleiche G-0033 (e)).
+Zum Schluss ein Beispiel, an dem alles zusammenkommt.
+
+\begin{example}[Drei Operatoren auf $\mathbb{C}^3$]\label{c03.ex.drei}\claim{c03.cl.drei}{derived}
+  Sei $\Hil = \mathbb{C}^3$ mit dem Skalarprodukt aus Abschnitt~\ref{c03.s2}, und seien
+  \begin{equation}\label{c03.eq.abc}
+    \op{A} = \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix} ,
+    \qquad
+    \op{B} = \frac13 \begin{pmatrix} 1 & 1 & 1 \\ 1 & 1 & 1 \\ 1 & 1 & 1 \end{pmatrix} ,
+    \qquad
+    \op{C} = \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & i \\ -1 & 0 & 0 \end{pmatrix} .
+  \end{equation}
+  Transponieren und Konjugieren gibt bei $\op{A}$ und $\op{B}$ dieselbe Matrix; beide sind
+  hermitesch, $\op{A}\adj = \op{A}$ und $\op{B}\adj = \op{B}$. $\op{B}$ ist auch ein Projektor;
+  das ist etwas aufwendiger, aber nicht schlimm. Jeder Eintrag von $\op{B}^2$ ist
+  $\tfrac13 \cdot \tfrac13 \, (1 \cdot 1 + 1 \cdot 1 + 1 \cdot 1) = \tfrac13$, also
+  $\op{B}^2 = \op{B}$, und nach Proposition~\ref{c03.prop.positiv} ist $\op{B}$ positiv.
+  $\op{A}$ ist dagegen \emph{nicht} positiv: Für den Vektor $\ket{\psi}$ mit den Einträgen
+  $\tfrac12$, $-\tfrac{1}{\sqrt{2}}$, $\tfrac12$ ist
+  \begin{equation}\label{c03.eq.nicht-positiv}
+    \melem{\psi}{\op{A}}{\psi}
+    = \begin{pmatrix} \frac12 & -\frac{1}{\sqrt{2}} & \frac12 \end{pmatrix}
+      \begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix}
+      \begin{pmatrix} \frac12 \\ -\frac{1}{\sqrt{2}} \\ \frac12 \end{pmatrix}
+    = \begin{pmatrix} \frac12 & -\frac{1}{\sqrt{2}} & \frac12 \end{pmatrix}
+      \begin{pmatrix} -\frac{1}{\sqrt{2}} \\ 1 \\ -\frac{1}{\sqrt{2}} \end{pmatrix}
+    = -\sqrt{2} .
+  \end{equation}
+  $\op{C}$ ist unitär, denn
+  \begin{equation}\label{c03.eq.c-unitaer}
+    \op{C}\adj\op{C}
+    = \begin{pmatrix} 0 & 0 & -1 \\ 1 & 0 & 0 \\ 0 & -i & 0 \end{pmatrix}
+      \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & i \\ -1 & 0 & 0 \end{pmatrix}
+    = \begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1 \end{pmatrix} ,
+  \end{equation}
+  und ebenso ist $\op{C}\op{C}\adj = \Id$. Mit der kanonischen Basis $\ket{0}, \ket{1}, \ket{2}$
+  von $\mathbb{C}^3$ (die Spalten mit der $1$ im ersten, zweiten, dritten Eintrag) sind alle
+  neun Matrixelemente von $\op{B}$ gleich, $\melem{x}{\op{B}}{y} = \tfrac13$, und
+  \begin{equation}\label{c03.eq.c-ketbra}
+    \op{C} = \ketbra{0}{1} + i\, \ketbra{1}{2} - \ketbra{2}{0} .
+  \end{equation}
+  Das prüft man, indem man beide Seiten auf die Basisvektoren anwendet. Die Matrix bildet
+  $\ket{1}$ auf $\ket{0}$ ab; rechts bleibt von den drei Summanden nur
+  $\braket{1}{1}\, \ket{0} = \ket{0}$, weil $\braket{2}{1} = \braket{0}{1} = 0$. Ebenso werden
+  $\ket{0}$ auf $-\ket{2}$ und $\ket{2}$ auf $i\ket{1}$ abgebildet. Auf die Reihenfolge in jedem
+  Summanden kommt es an.
+\end{example}
+
+% Stimme: v05 [48:04]-[49:13] („wir könnten alles mit Matrizen machen oder alles mit Ket-Bras“;
+% „es hängt normalerweise von der Dimension ab, welche Darstellung am besten geeignet ist“);
+% v05 [49:40]-[51:07] (Hinweis auf die Übungen).
+Man kann also alles mit Matrizen machen oder alles mit Ket-Bras. In den folgenden Kapiteln
+mische ich beide Darstellungen; am Ende sollen Sie beide beherrschen. Welche am besten geeignet
+ist, hängt normalerweise von der Dimension ab: Für endlichdimensionale Systeme rechnet man gern
+mit Matrizen, für unendlichdimensionale fast nur mit der Ket-Notation.
+
+\begin{exercise}[Unitär, mit Ket-Bras]\label{c03.exc.ketbra}\claim{c03.cl.c-ketbra}{derived}
+  Berechnen Sie $\op{C}\adj$ aus Gleichung~\eqref{c03.eq.c-ketbra} mit
+  Proposition~\ref{c03.prop.ketbra}, und zeigen Sie $\op{C}\adj\op{C} = \Id$, ohne eine Matrix
+  hinzuschreiben.
+\end{exercise}
+\begin{solution}
+  Nach den Rechenregeln aus \defref{D17} und Proposition~\ref{c03.prop.ketbra} ist
+  $\op{C}\adj = \ketbra{1}{0} - i\, \ketbra{2}{1} - \ketbra{0}{2}$. Im Produkt
+  $\op{C}\adj\op{C}$ ist $\ketbra{a}{b}\, \ketbra{c}{d} = \braket{b}{c}\, \ketbra{a}{d}$, und
+  das ist null für $b \neq c$. Von den neun Produkten bleiben drei:
+  \begin{equation}\label{c03.eq.c-ketbra-unitaer}
+    \op{C}\adj\op{C}
+    = \ketbra{1}{1} + (-i)\, i\, \ketbra{2}{2} + (-1)(-1)\, \ketbra{0}{0}
+    = \ketbra{0}{0} + \ketbra{1}{1} + \ketbra{2}{2}
+    = \Id .
+  \end{equation}
+  Die letzte Gleichung ist die Vollständigkeitsrelation aus Proposition~\ref{c03.prop.ketbra}.
+\end{solution}
+
+% Stimme: vl04.tex:205-207; Entscheidung D-SPEKTREN (docs/plan/lec34/BRIEF.md): Abbildung und
+% Absatz kommen mit vl04, die Eigenwerte nur informell; die Definition folgt mit vl05.  vl04.tex:207
+% sagt „für normale Operatoren“; die Gleichungen c03.eq.orte gelten für jeden Operator der
+% jeweiligen Klasse (Herleitung in DERIVATION.md).
+Was die drei Rechnungen gemeinsam haben, sieht man, wenn man die Eigenwerte aufträgt. Ein
+Eigenwert ist, informell gesagt, eine Zahl $\lambda$, mit der $\op{A}$ einen Vektor
+$\ket{v} \neq 0$ einfach multipliziert, $\op{A}\ket{v} = \lambda\ket{v}$; die genaue Definition,
+und wie man alle Eigenwerte findet, kommt später in diesem Kapitel. Für jeden Eigenwert
+überträgt sich die definierende Gleichung der Klasse auf die Zahl $\lambda$:
+\begin{equation}\label{c03.eq.orte}\claim{c03.cl.orte}{derived}
+  \begin{aligned}
+    &\op{A}\adj = \op{A} &&\Rightarrow\quad \lambda^* = \lambda , \\
+    &\text{\tpcifenglish{for all}{für alle} } \ket{\psi}\colon \braket{\psi}{\op{A}\psi} \geq 0 &&\Rightarrow\quad \lambda \geq 0 , \\
+    &\op{A}^2 = \op{A}\adj = \op{A} &&\Rightarrow\quad \lambda^2 = \lambda , \\
+    &\op{A}\adj\op{A} = \Id &&\Rightarrow\quad \abs{\lambda} = 1 .
+  \end{aligned}
+\end{equation}
+Man darf $\norm{v} = 1$ annehmen. Dann ist $\melem{v}{\op{A}}{v} = \lambda$; das ist für
+hermitesches $\op{A}$ reell (Proposition~\ref{c03.prop.positiv}) und für positives nicht
+negativ. Für einen Projektor ist $\lambda^2\ket{v} = \op{A}^2\ket{v} = \op{A}\ket{v} = \lambda\ket{v}$,
+und für eine Isometrie ist $\abs{\lambda} = \norm{\op{A}v} = \norm{v} = 1$. Die hermiteschen
+Operatoren haben ihre Eigenwerte also auf der reellen Achse, die positiven auf der Halbachse
+$\lambda \geq 0$, die Projektoren in den beiden Punkten $0$ und $1$, die unitären auf dem
+Einheitskreis. Die Normalität allein schränkt die Eigenwerte nicht ein: Für jede komplexe Zahl
+$\lambda$ ist $\lambda\Id$ normal und hat den Eigenwert $\lambda$. Für die drei Operatoren des
+Beispiels findet man Eigenvektoren durch Einsetzen; für $\op{A}$ etwa die Vektoren mit den
+Einträgen $1, \sqrt{2}, 1$ und $1, 0, -1$ und $1, -\sqrt{2}, 1$, für $\op{B}$ die Vektoren
+$1, 1, 1$ und $1, -1, 0$, für $\op{C}$ die Vektoren $1, \lambda, -i\lambda^2$. Die Eigenwerte
+sind
+\begin{equation}\label{c03.eq.spektren}\claim{c03.cl.spektren}{derived}
+  \begin{aligned}
+    &\op{A}\colon && 0 ,\ \sqrt{2} ,\ -\sqrt{2} , \\
+    &\op{B}\colon && 1 ,\ 0 , \\
+    &\op{C}\colon && e^{-i\pi/6} ,\ i ,\ e^{7i\pi/6} , \qquad \text{\tpcifenglish{the three solutions of}{die drei Lösungen von}}\ \lambda^3 = -i ,
+  \end{aligned}
+\end{equation}
+und weitere gibt es nicht. Abbildung~\ref{c03.fig.spektren} hält in Teil (a) die Orte fest, an
+denen die Eigenwerte einer Klasse liegen dürfen, und trägt in Teil (b) die Eigenwerte der drei
+Beispieloperatoren ein. In (b) liegt $-\sqrt{2}$ links der Null; genau daran scheitert die
+Positivität von $\op{A}$. Der Vektor $\ket{\psi}$ aus Gleichung~\eqref{c03.eq.nicht-positiv} ist
+der normierte Eigenvektor zu diesem Eigenwert, und deshalb ist
+$\melem{\psi}{\op{A}}{\psi} = -\sqrt{2}$.
+
+\begin{tpcfigure}{c03.fig.spektren}
+  \caption{Operatorklassen an ihren Eigenwerten erkannt. (a) Wo in der komplexen Ebene die
+    Eigenwerte einer Klasse liegen dürfen (Gleichung~\eqref{c03.eq.orte}): hermitesch auf der
+    reellen Achse (durchgezogene Linie), positiv auf der Halbachse $\lambda \geq 0$ (breiter
+    Streifen), Projektor in den beiden Punkten $0$ und $1$ (gefüllte Punkte), unitär auf dem
+    Einheitskreis (gestrichelt). Die Normalität allein lässt jede komplexe Zahl zu. Die
+    Verschachtelung Projektor, positiv, hermitesch ist zu sehen: zwei Punkte auf einer
+    Halbachse auf einer Geraden. (b) Die Eigenwerte der Operatoren aus
+    Beispiel~\ref{c03.ex.drei} (Gleichung~\eqref{c03.eq.spektren}): $\op{A}$ (gefüllte Kreise)
+    bei $0$ und $\pm\sqrt{2}$, $\op{B}$ (Ringe) bei $0$ und $1$, $\op{C}$ (Rauten) in drei
+    Punkten auf dem Einheitskreis, die ihn in drei gleiche Bögen teilen. Der Eigenwert
+    $-\sqrt{2}$ von $\op{A}$ liegt links der Null: $\op{A}$ ist hermitesch, aber nicht
+    positiv.}
+\end{tpcfigure}
+
 % ── Fundament ─────────────────────────────────────────────────────────────────────────
-% Neue Abschnitte des Kapitels (vl04, vl05) kommen VOR diese Zeile.
+% Neue Abschnitte des Kapitels (vl05) kommen VOR diese Zeile.
 
 \begin{fundament}[id=c03.f1,
     titel={Die Cauchy-Schwarz-Ungleichung},

@@ -1071,7 +1071,7 @@
    "legacy_aliases": [
     {
      "macro": "rhoop",
-     "note": "legacy \\rhoop is \\widehat{\\rho}; the hat question is open (sym.operator-hat)"
+     "note": "legacy \\rhoop is \\widehat{\\rho}; obsolete: by TJO 2026-10-29 (D-HAT, revised) states carry NO hat, so the density operator is written bare, \\rho (sym.operator-hat)"
     }
    ]
   },
@@ -1254,17 +1254,24 @@
    "mathml": "<math><mover accent=\"true\"><mi>A</mi><mo>^</mo></mover></math>",
    "name_de": "Operatorhut",
    "name_en": "operator hat",
-   "meaning_de": "Kennzeichnung eines Operators durch ein Dach",
-   "meaning_en": "marking of an operator by a hat",
+   "meaning_de": "Kennzeichnung eines Operators durch ein Dach; \\op{A} ist der Operator zum Buchstaben A",
+   "meaning_en": "marking of an operator by a hat; \\op{A} is the operator belonging to the letter A",
    "depth": "kern",
-   "first_fixed_in": "C3",
-   "status": "proposed",
+   "first_fixed_in": "D87",
+   "status": "blessed-provisional",
    "sources": [
     {
      "source": "preinventory",
      "locus": "notation-preinventory.md:42 (symbol row 22)",
      "verified": false,
      "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:32",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Ein \\emph{Hut} bedeutet immer einen Operator, $\\widehat{A}$;"
     }
    ],
    "legacy_aliases": [
@@ -1273,7 +1280,7 @@
      "note": "same name and expansion"
     }
    ],
-   "gap_tjo": "Do operator hats survive into the new course (the script uses them, Reed-Simon, Plavala and Bratteli-Robinson do not)?"
+   "notes": "Blessed by TJO 2026-10-29 (decision D-HAT, docs/plan/lec34/BRIEF.md): hats on operators throughout course and script (projectors, unitaries, Hamiltonians, effects, observables). Revised by TJO the same day, 2026-10-29: four exceptions without a hat, namely the identity \\Id = \\mathbb{I} (sym.identity), states (density operators \\rho, also a pure state written as an operator), the Pauli matrices \\sigma_j (sym.pauli-matrix) and ket-bras |a><b| (sym.ketbra; TJO 2026-10-29: \"definitely no hats for bra kets\"). Rule for the registry: a macro that names an operator letter (\\Uni, \\Ham, \\rhoDens, ...) stays bare; the hat is put at the point of use, \\op{\\Uni}; macros that are operators by definition carry the hat in their expansion (\\xop, \\pop, \\Nul). The script has no operator hats outside vl04 before chapter 5: chapters 5-22 are not swept now (known seam at chapter 4/5). The same convention in the script's words: 'Hut = Operator, Strich der Ket-Notation = Vektor, Symbol ohne Verzierung = Zahl' (vl04.tex:32). Convention row CONV-HAT. The earlier open question (gap_tjo: do hats survive; Reed-Simon, Plavala and Bratteli-Robinson do not use them) is answered: they do. Resolves the open hat notes in sym.density-operator, sym.hamiltonian and COL-P/COL-S (see their rows)."
   },
   {
    "symbol_id": "sym.hbar",
@@ -2556,13 +2563,13 @@
    "legacy_aliases": [
     {
      "macro": "Hop",
-     "note": "legacy \\Hop is \\widehat{H}; the hat question is open (sym.operator-hat)"
+     "note": "legacy \\Hop is \\widehat{H}; the hat question is settled by TJO 2026-10-29: hats on operators, applied at the point of use as \\op{...} (sym.operator-hat)"
     }
    ],
    "collisions": [
     "COL-H"
    ],
-   "notes": "Written without a hat provisionally, as in Reed-Simon (the registered authority for C11) and Plavala; the script writes \\widehat{H}."
+   "notes": "Written bare in the macro, as in Reed-Simon (the registered authority for C11) and Plavala; since TJO's decision D-HAT (2026-10-29) the operator carries the hat at the point of use, \\op{\\Ham}, as the script writes \\widehat{H}."
   },
   {
    "symbol_id": "sym.hamiltonian-two-body",
@@ -4129,7 +4136,8 @@
      "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
     }
    ],
-   "legacy_aliases": []
+   "legacy_aliases": [],
+   "notes": "No hat (TJO 2026-10-29, D-HAT revised, CONV-HAT): the Pauli matrices are exceptions to the operator hat, like the identity and states."
   },
   {
    "symbol_id": "sym.spectrum",
@@ -4854,6 +4862,154 @@
    ],
    "legacy_aliases": [],
    "notes": "Added by the author of chapter C3, Lecture 3 (2026-10-21). A semantic macro so that the Kronecker delta is not confused with the Dirac delta function (vl03.tex:191); chapter c01 names the Kronecker delta in words only (c01 de.tex, Indikatorfunktion)."
+  },
+  {
+   "symbol_id": "sym.null-operator",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "Nul",
+    "args": 0,
+    "expansion": "\\widehat{0}"
+   },
+   "canonical_token": "\\widehat0",
+   "unicode": "0̂",
+   "mathml": "<math><mover accent=\"true\"><mn>0</mn><mo>^</mo></mover></math>",
+   "name_de": "Nulloperator",
+   "name_en": "null operator",
+   "meaning_de": "Operator, der jeden Vektor auf den Nullvektor abbildet",
+   "meaning_en": "operator that maps every vector to the zero vector",
+   "depth": "kern",
+   "first_fixed_in": "D88",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:25",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Ebenso nützlich ist der \\emph{Nulloperator} $\\widehat{0}$,"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "Added by the lane-G registry for Lecture 4 (2026-10-29). The hat is part of the glyph, because a bare 0 does not show whether an operator, a number or a vector is meant (vl04.tex:26-27); this is the reason the script gives for the hat convention."
+  },
+  {
+   "symbol_id": "sym.matrix-element",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "melem",
+    "args": 3,
+    "expansion": "\\langle #1 \\rvert #2 \\lvert #3 \\rangle",
+    "arg_examples": [
+     "\\phi_x",
+     "\\widehat{A}",
+     "\\phi_y"
+    ]
+   },
+   "canonical_token": "\\langle\\phi_x\\rvert\\widehatA\\lvert\\phi_y\\rangle",
+   "unicode": "⟨φ_x|Â|φ_y⟩",
+   "mathml": "<math><mrow><mo>⟨</mo><msub><mi>ϕ</mi><mi>x</mi></msub><mo>|</mo><mover accent=\"true\"><mi>A</mi><mo>^</mo></mover><mo>|</mo><msub><mi>ϕ</mi><mi>y</mi></msub><mo>⟩</mo></mrow></math>",
+   "name_de": "Matrixelement",
+   "name_en": "matrix element",
+   "meaning_de": "Matrixelement ⟨φ_x|Âφ_y⟩ eines Operators zwischen zwei Vektoren (meist Basisvektoren)",
+   "meaning_en": "matrix element ⟨φ_x|Âφ_y⟩ of an operator between two vectors (usually basis vectors)",
+   "depth": "kern",
+   "first_fixed_in": "D93",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:131",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "[A]_{xy} \\equiv \\langle x|A|y\\rangle."
+    },
+    {
+     "source": "tpc-macros",
+     "locus": "tpc-macros.sty:53",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\newcommand{\\melem}[3]{\\langle #1 \\rvert #2 \\lvert #3 \\rangle}"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "Added by the lane-G registry for Lecture 4 (2026-10-29). The macro already existed in latex/tpc-macros.sty and in registry/allowed-tex.json; it now belongs to the registry (removed from allowed-tex.json). Same expansion."
+  },
+  {
+   "symbol_id": "sym.matrix-entry",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "entry",
+    "args": 3,
+    "expansion": "[#1]_{#2#3}",
+    "arg_examples": [
+     "\\widehat{A}",
+     "x",
+     "y"
+    ]
+   },
+   "canonical_token": "[\\widehatA]_{xy}",
+   "unicode": "[Â]_xy",
+   "mathml": "<math><mrow><mo>[</mo><mover accent=\"true\"><mi>A</mi><mo>^</mo></mover><msub><mo>]</mo><mrow><mi>x</mi><mi>y</mi></mrow></msub></mrow></math>",
+   "name_de": "Matrixeintrag",
+   "name_en": "matrix entry",
+   "meaning_de": "Eintrag [Â]_{xy} in Zeile x, Spalte y der Matrix von Â bezüglich einer fixierten Orthonormalbasis",
+   "meaning_en": "entry [Â]_{xy} in row x, column y of the matrix of Â with respect to a fixed orthonormal basis",
+   "depth": "kern",
+   "first_fixed_in": "D93",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:81",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\emph{Matrixelemente}"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "Added by the lane-G registry for Lecture 4 (2026-10-29). The script writes [A]_{xy} for <phi_x|A phi_y> (vl04.tex:83). Indices are placed without a separating comma."
+  },
+  {
+   "symbol_id": "sym.ketbra",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "ketbra",
+    "args": 2,
+    "expansion": "\\lvert #1 \\rangle\\!\\langle #2 \\rvert",
+    "arg_examples": [
+     "\\Psi",
+     "\\Phi"
+    ]
+   },
+   "canonical_token": "\\lvert\\Psi\\rangle\\!\\langle\\Phi\\rvert",
+   "unicode": "|Ψ⟩⟨Φ|",
+   "mathml": "<math><mrow><mo>|</mo><mi mathvariant=\"normal\">Ψ</mi><mo>⟩</mo><mspace/><mo>⟨</mo><mi mathvariant=\"normal\">Φ</mi><mo>|</mo></mrow></math>",
+   "name_de": "Ket-Bra",
+   "name_en": "ket-bra (outer product)",
+   "meaning_de": "Ket-Bra |Ψ⟩⟨Φ|: der Operator |χ⟩ ↦ ⟨Φ|χ⟩ |Ψ⟩",
+   "meaning_en": "ket-bra |Ψ⟩⟨Φ|: the operator |χ⟩ ↦ ⟨Φ|χ⟩ |Ψ⟩",
+   "depth": "kern",
+   "first_fixed_in": "D94",
+   "status": "blessed-provisional",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl04.tex:114",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\emph{Ket-Bra}"
+    },
+    {
+     "source": "tpc-macros",
+     "locus": "tpc-macros.sty:51",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\newcommand{\\ketbra}[2]{\\lvert #1 \\rangle\\!\\langle #2 \\rvert}"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "Added by the lane-G registry for Lecture 4 (2026-10-29). The macro already existed in latex/tpc-macros.sty and in registry/allowed-tex.json; it now belongs to the registry (removed from allowed-tex.json). Same expansion. The arguments are the labels of the ket and of the bra, not the delimiters. No hat (TJO 2026-10-29, CONV-HAT): a ket-bra is written bare, never wrapped in \\op{}."
   }
  ],
  "collisions": [
@@ -4905,7 +5061,7 @@
     "sym.simplex"
    ],
    "conflict": "S is the entropy, the spin operator, the symmetric group S_N and Plavala's simplex S_n (and his S(E)).",
-   "proposal": "S is reserved for entropy (S_vN dimensionless, S thermodynamic); the simplex is Δ_n; spin carries a hat and an index (Ŝ_j) if hats survive, otherwise spin becomes s for the quantum number and the operators need a decision; the symmetric group is written Sym(N).",
+   "proposal": "S is reserved for entropy (S_vN dimensionless, S thermodynamic); the simplex is Δ_n; spin carries a hat and an index (Ŝ_j; hats survive, decision D-HAT, TJO 2026-10-29); the symmetric group is written Sym(N).",
    "reason": "Entropy is the meaning that cannot be renamed in a thermodynamics course.",
    "provisional": "sym.simplex is blessed-provisional as Δ_n (needed in C2)."
   },
@@ -4955,7 +5111,7 @@
     "sym.pressure"
    ],
    "conflict": "p is a probability weight (vl01.tex:108), the momentum and the pressure. Probability weights and pressure meet in Parts IV-V.",
-   "proposal": "p is the probability weight; the momentum operator always carries its hat (p̂), or is P if hats are dropped; pressure is capital P in Parts IV-V.",
+   "proposal": "p is the probability weight; the momentum operator always carries its hat (p̂, decision D-HAT, TJO 2026-10-29); pressure is capital P in Parts IV-V.",
    "reason": "Probabilities run through the whole course, so they keep the bare letter; pressure and Boltzmann weights share chapters and cannot share a letter.",
    "provisional": "sym.probability-weight is blessed-provisional (needed in C1)."
   },

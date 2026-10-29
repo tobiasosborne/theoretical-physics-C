@@ -1,0 +1,40 @@
+{
+ "schema_version": 1,
+ "id": "M-0062",
+ "status": "applied",
+ "title": "vl04: the vector in the definition of the ket is written without decoration (a number by the lecture's own notation convention)",
+ "legacy": [
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl04.tex",
+   "line": 100,
+   "file_sha256": "e10cd13b0287b5114f3a30a7bfa9bdbb16a53aab755f8573bca795ae4a03aae9",
+   "old_text": "der lineare Operator $z\\mapsto z\\Psi$ zu interpretieren, wobei $\\Psi\\in \\mathcal{H}$",
+   "new_text": "der lineare Operator $z\\mapsto z\\,\\vb{\\Psi}$",
+   "applied_file_sha256": "f39e245d5da4da73fa9d394e81fc3530bd52ecbc097e65f6776f188e4a3df6e8",
+   "applied_source_key": "tpc-script-v0.3.1",
+   "applied_line": 69,
+   "applied_text": "z \\mapsto z\\,\\vb{\\Psi}"
+  },
+  {
+   "version": "v0.2-en",
+   "file": "latex/lectures/en/lec04.tex",
+   "line": 100,
+   "file_sha256": "9fd7efeb7a25a44f532e5a9be2d1278b3f669d04231772763fe0109c0f97ca8b",
+   "old_text": "is to be interpreted as the linear operator $z\\mapsto z\\Psi$",
+   "new_text": "the linear operator $z\\mapsto z\\,\\vb{\\Psi}$",
+   "applied_file_sha256": "1139a7442e1a981761156107a6cdb975bd117f2ed175974e1fa63559b48eb60b",
+   "applied_source_key": "tpc-script-v0.3.1",
+   "applied_line": 69,
+   "applied_text": "z \\mapsto z\\,\\vb{\\Psi}"
+  }
+ ],
+ "reason": "The Merksatz of the same lecture (vl04.tex:32) says that a symbol without decoration is a number. Psi in z -> z Psi is a vector, so it needs a mark; the course writes it with the bold vector macro to tell it from the ket-as-map (c03.eq.ket-op). Notation consistency, not a mathematical error.",
+ "evidence": {
+  "independent_check": "content/c03-hilbertraum/de.tex c03.eq.ket-op; registry CONV-HAT",
+  "provenance_ids": []
+ },
+ "destination": "c03.eq.ket-op",
+ "notes": "Script v0.3, chapter 4 (docs/plan/script-v0.3/NOTES-ch4.md, 2026-10-29): applied in vl04.tex/lec04.tex line 68.",
+ "applied_date": "2026-10-29"
+}

@@ -57,7 +57,7 @@
  "evidence": {
   "independent_check": "read in the script source at the stated lines",
   "provenance_ids": [],
-  "notes": "Script v0.3 (2026-10-22, lane ch2, docs/plan/script-v0.3/NOTES-ch2.md): applied: (1) functions, not the space, assign a complex number to each x; (2) 'Einträgen'; (3) bold v under the dagger, \\vb{v}\\adj (sync-ch2.md rows 29, 28, 15). Destination: the uncommitted working tree registered as tpc-script-v0.3; the commit is still to be made by the coordinator. The v0.1 entries are not application targets."
+  "notes": "Script v0.3 (2026-10-22, lane ch2, docs/plan/script-v0.3/NOTES-ch2.md): applied: (1) functions, not the space, assign a complex number to each x; (2) 'Einträgen'; (3) bold v under the dagger, \\vb{v}\\adj (sync-ch2.md rows 29, 28, 15). Destination: script v0.3, committed in b1fd537 and registered as tpc-script-v0.3 (identifiers.git_commit). The v0.1 entries are not application targets."
  },
  "destination": "c03",
  "applied_date": "2026-10-22"

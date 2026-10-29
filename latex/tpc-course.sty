@@ -318,9 +318,15 @@
     \if\relax\detokenize{#1}\relax\let\tpcscript@tocentry\tpcscript@title
     \else\tpcscript@striptitle\tpcscript@tocentry{#1}\fi
     % no break between the mark, the contents line and the heading: a
-    % break there leaves the mark (and the running head) on the page before
+    % break there leaves the mark (and the running head) on the page before.
+    % The title goes into the mark by value: amsart's \markboth stores its
+    % arguments unexpanded, and the running head is expanded at shipout,
+    % when \tpcscript@tocentry may already hold the next lecture's title
+    % (a page that ends just before a lecture heading showed that title).
     \nobreak
-    \markboth{\tpcchapterword\ \thechapter}{\tpcscript@tocentry}\nobreak
+    \begingroup\edef\tpcscript@x{\endgroup\noexpand\markboth
+      {\noexpand\tpcchapterword\ \thechapter}%
+      {\unexpanded\expandafter{\tpcscript@tocentry}}}\tpcscript@x\nobreak
     \addcontentsline{toc}{chapter}%
       {\protect\tocchapter{\tpcchapterword}{\thechapter}{\tpcscript@tocentry}}\nobreak
     \begingroup

@@ -73,12 +73,12 @@ side matters to us: we compute with functions of six variables.
 
 Our model leaves out a great deal, and we say so at once. Electron and proton are point
 charges without spin; the motion is non-relativistic; the only interaction is the Coulomb
-attraction; a light field that the atom could emit or absorb does not occur in $\HamTot$.
+attraction; a light field that the atom could emit or absorb does not occur in $\op{\HamTot}$.
 All results of this chapter are statements about this model.
 
 \section{Centre of mass and relative motion}\label{c11.s2}
 
-The potential in $\HamTot$ depends only on the separation vector $\posE - \posP$. This
+The potential in $\op{\HamTot}$ depends only on the separation vector $\posE - \posP$. This
 suggests taking that vector as one of the new coordinates. As the second we take the
 centre of mass.
 
@@ -110,9 +110,9 @@ $\widetilde{\Psi}$:
   = \Psi\Bigl(\posCM + \frac{\massP}{\massTot}\,\posRel,\;
               \posCM - \frac{\massE}{\massTot}\,\posRel\Bigr),
   \qquad
-  \widetilde{\Psi} = \Uni\Psi.
+  \widetilde{\Psi} = \op{\Uni}\Psi.
 \end{equation}
-The letter $\Uni$ stands for the map that turns $\Psi$ into the function
+The letter $\op{\Uni}$ stands for the map that turns $\Psi$ into the function
 $\widetilde{\Psi}$. It changes nothing about the physics, only the labelling.
 
 Does it change the normalisation? In a change of integration variables what matters is
@@ -205,7 +205,7 @@ $\nabla_{\posCM} \cdot \nabla_{\posRel}$, the scalar product of the two gradient
      + \Lap_{\posRel}.
   \end{aligned}
 \end{equation}
-In $\HamTot$, $\Lap_{\mathrm{e}}$ is divided by $\massE$ and $\Lap_{\mathrm{p}}$ by
+In $\op{\HamTot}$, $\Lap_{\mathrm{e}}$ is divided by $\massE$ and $\Lap_{\mathrm{p}}$ by
 $\massP$. Exactly these weights make the mixed terms vanish:
 \begin{equation}\label{c11.eq.koeff}\claim{c11.cl.koeff}{derived}
   \begin{aligned}
@@ -223,21 +223,21 @@ $-\hbar^2/2$ and adding the potential, which depends only on $\posRel$, gives th
 
 \begin{theorem}[Splitting off the centre-of-mass motion]\label{c11.thm.separation}\claim[proof-included]{c11.cl.separation}{derived}
   Let the function $\Psi$ of the two positions be twice continuously differentiable
-  wherever $\posE \neq \posP$, and let $\widetilde{\Psi} = \Uni\Psi$ be the same function
+  wherever $\posE \neq \posP$, and let $\widetilde{\Psi} = \op{\Uni}\Psi$ be the same function
   in the new coordinates as in \eqref{c11.eq.tilde}. Then at all these points
   \begin{equation}\label{c11.eq.separation}
     \begin{aligned}
-      \Uni\,\HamTot\Psi &= \HamCM\widetilde{\Psi} + \HamRel\widetilde{\Psi}, \\
-      \HamCM &= -\frac{\hbar^2}{2\massTot}\,\Lap_{\posCM},
+      \op{\Uni}\,\op{\HamTot}\Psi &= \op{\HamCM}\widetilde{\Psi} + \op{\HamRel}\widetilde{\Psi}, \\
+      \op{\HamCM} &= -\frac{\hbar^2}{2\massTot}\,\Lap_{\posCM},
       \qquad
-      \HamRel = -\frac{\hbar^2}{2\massRed}\,\Lap_{\posRel} + \Vpot(\posRel).
+      \op{\HamRel} = -\frac{\hbar^2}{2\massRed}\,\Lap_{\posRel} + \Vpot(\posRel).
     \end{aligned}
   \end{equation}
-  Here $\HamCM$ acts only on the centre-of-mass coordinate and $\HamRel$ only on the
+  Here $\op{\HamCM}$ acts only on the centre-of-mass coordinate and $\op{\HamRel}$ only on the
   relative coordinate.
 \end{theorem}
 \begin{proof}
-  The kinetic energy in $\HamTot$ is the left-hand side of \eqref{c11.eq.koeff},
+  The kinetic energy in $\op{\HamTot}$ is the left-hand side of \eqref{c11.eq.koeff},
   multiplied by $-\hbar^2/2$. The right-hand side of \eqref{c11.eq.koeff} then supplies
   the two Laplacians in \eqref{c11.eq.separation}. The potential $\Vpot(\posE - \posP)$ is
   $\Vpot(\posRel)$ in the new coordinates. The points with $\posE = \posP$, that is
@@ -250,21 +250,21 @@ $-\hbar^2/2$ and adding the potential, which depends only on $\posRel$, gives th
 
 The theorem is a statement about differential expressions. With the tensor product of
 \eqref{c11.eq.hilbertraum}, now for the variables $\posCM$ and $\posRel$, the same is
-written briefly as $\Uni\,\HamTot\,\Uni^{-1} = \HamCM \otimes \Id + \Id \otimes \HamRel$
+written briefly as $\op{\Uni}\,\op{\HamTot}\,\op{\Uni}^{-1} = \op{\HamCM} \otimes \Id + \Id \otimes \op{\HamRel}$
 \srcref{reed-simon-3}{§\,XI.4, p. 55}.
 
 So the Hamiltonian falls into two parts that know nothing of each other. We exploit this
 with a product ansatz. If $\widetilde{\Psi}(\posCM, \posRel) =
-\Phi(\posCM)\,\psi(\posRel)$, then $\HamCM$ acts only on $\Phi$ and $\HamRel$ only on
+\Phi(\posCM)\,\psi(\posRel)$, then $\op{\HamCM}$ acts only on $\Phi$ and $\op{\HamRel}$ only on
 $\psi$:
 \begin{equation}\label{c11.eq.produkt}\claim{c11.cl.produkt}{derived}
-  (\HamCM + \HamRel)\,\Phi\,\psi
-  = (\HamCM\Phi)\,\psi + \Phi\,(\HamRel\psi).
+  (\op{\HamCM} + \op{\HamRel})\,\Phi\,\psi
+  = (\op{\HamCM}\Phi)\,\psi + \Phi\,(\op{\HamRel}\psi).
 \end{equation}
 The first term describes a free particle of mass $\massTot$: the centre of mass of the
 atom moves as if the inner life did not exist. The second term describes \emph{one}
 particle of mass $\massRed$ in the potential $\Vpot$. All the atomic physics of this
-chapter is contained in $\HamRel$.
+chapter is contained in $\op{\HamRel}$.
 
 \begin{merksatz}[Exact, not approximate]
   The reduction of the two-particle problem to a one-particle problem with the reduced
@@ -389,7 +389,7 @@ and the proton for its part has a small cloud around the centre of mass.
 \end{merksatz}
 
 For the energy, too, the two halves have to be kept apart. If $\psi$ is a solution of
-$\HamRel\psi = E\psi$, the expectation value of the total energy in the product state is
+$\op{\HamRel}\psi = E\psi$, the expectation value of the total energy in the product state is
 \begin{equation}\label{c11.eq.energie}\claim{c11.cl.energie}{derived}
   \Etot = \frac{\hbar^2}{2\massTot} \int \abs{\nabla\Phi(\posCM)}^2 \,\dd^3\posCM + E ,
 \end{equation}
@@ -504,7 +504,7 @@ exist, its width grows at large times; it can initially narrow\zoomref{c11.v1}.
 
 \section{The relative motion: radial equation and energies}\label{c11.s4}
 
-We now look for the solutions of $\HamRel\psi = E\psi$ with negative energy $E$, the
+We now look for the solutions of $\op{\HamRel}\psi = E\psi$ with negative energy $E$, the
 bound states. This is the problem of a single particle of mass $\massRed$ in a potential
 that depends only on the distance $\rad = \abs{\posRel}$. For such potentials we used
 spherical coordinates $(\rad, \theta, \phi)$ in Chapter~\ref{c10} and solved the angular
@@ -530,7 +530,7 @@ The rest we collect into a potential.
 
 \tpcdef{D71}
 
-Inserting $\psi = (u/\rad)\,\Ylm{\lqn}{\mqn}$ into $\HamRel\psi = E\psi$, using
+Inserting $\psi = (u/\rad)\,\Ylm{\lqn}{\mqn}$ into $\op{\HamRel}\psi = E\psi$, using
 \eqref{c11.eq.winkel} and multiplying by $\rad$, one obtains the \emph{radial equation}
 \begin{equation}\label{c11.eq.radial}\claim{c11.cl.radial}{derived}
   \begin{aligned}
@@ -874,7 +874,7 @@ for $\posRel \neq 0$ and as an $L^2$ identity almost everywhere:
   \begin{aligned}
     \int \overline{\psinlm{\nqn}{\lqn}{\mqn}}\;\psinlm{\nqn'}{\lqn'}{\mqn'}\,\dd^3\posRel
     &= \delta_{\nqn\nqn'}\,\delta_{\lqn\lqn'}\,\delta_{\mqn\mqn'}, \\
-    \HamRel\,\psinlm{\nqn}{\lqn}{\mqn} &= \En{\nqn}\,\psinlm{\nqn}{\lqn}{\mqn}.
+    \op{\HamRel}\,\psinlm{\nqn}{\lqn}{\mqn} &= \En{\nqn}\,\psinlm{\nqn}{\lqn}{\mqn}.
   \end{aligned}
 \end{equation}
 The symbol $\delta_{jk}$ is one for $j = k$ and zero otherwise. Both statements have been
@@ -1365,7 +1365,7 @@ sees of an atom in the laboratory requires both halves (Figure~\ref{c11.fig.uebe
 
 \begin{fundament}[id=c11.f1,
     titel={Self-adjointness of the Hamiltonians of the hydrogen atom},
-    wozu={In the Core text $\HamTot$ and $\HamRel$ are rules for differentiable
+    wozu={In the Core text $\op{\HamTot}$ and $\op{\HamRel}$ are rules for differentiable
       functions. Here it is stated on which domains they fix self-adjoint operators, and
       on which theorem this rests.},
     voraussetzung={Core~\ref{c11.s1} and \ref{c11.s2}; the notions of domain and of
@@ -1381,7 +1381,7 @@ sees of an atom in the laboratory requires both halves (Figure~\ref{c11.fig.uebe
   else, their closure is self-adjoint.
 
   \begin{tpcfigure}{c11.fig.bereiche}
-    \caption{The three sets of functions of this block as a diagram: the smooth functions with compact support, the domain $\dom{-\Lap}$ of the Laplacian and the whole space $\Ltwo{\mathbb{R}^3}$. Entered is what Corollary~\ref{c11.cor.relativ} says about $\HamRel$.}
+    \caption{The three sets of functions of this block as a diagram: the smooth functions with compact support, the domain $\dom{-\Lap}$ of the Laplacian and the whole space $\Ltwo{\mathbb{R}^3}$. Entered is what Corollary~\ref{c11.cor.relativ} says about $\op{\HamRel}$.}
   \end{tpcfigure}
 
   The answer hinges on a property of the potential. One writes
@@ -1436,12 +1436,12 @@ sees of an atom in the laboratory requires both halves (Figure~\ref{c11.fig.uebe
   \end{tpcfigure}
 
   \begin{corollary}[Relative motion]\label{c11.cor.relativ}\claim[proof-included]{c11.cl.sa-relativ}{source-backed}
-    The operator $\HamRel = -\frac{\hbar^2}{2\massRed}\Lap + \Vpot$ with the Coulomb
+    The operator $\op{\HamRel} = -\frac{\hbar^2}{2\massRed}\Lap + \Vpot$ with the Coulomb
     potential of \defref{D60} is essentially self-adjoint on $\Ccinf{\mathbb{R}^3}$ and
     self-adjoint on $\dom{-\Lap}$.
   \end{corollary}
   \begin{proof}
-    We have $\HamRel = \frac{\hbar^2}{2\massRed}\,(-\Lap + W)$ with
+    We have $\op{\HamRel} = \frac{\hbar^2}{2\massRed}\,(-\Lap + W)$ with
     $W = \frac{2\massRed}{\hbar^2}\,\Vpot$, and $W(\posRel) = -c/\abs{\posRel}$ with
     $c = 2\Znuc/\aRed > 0$. By Lemma~\ref{c11.lem.coulomb}, $W$ satisfies the hypothesis
     of Theorem~\ref{c11.thm.kato15}. A real scalar $c \neq 0$ preserves the domains
@@ -1449,14 +1449,14 @@ sees of an atom in the laboratory requires both halves (Figure~\ref{c11.fig.uebe
     $\overline{cA} = c\overline{A}$. The first identity follows from the defining
     equation for the adjoint, the second from the invertible graph map
     $(f,g) \mapsto (f,cg)$. The positive scalar therefore carries both statements
-    over from $-\Lap + W$ to $\HamRel$.
+    over from $-\Lap + W$ to $\op{\HamRel}$.
   \end{proof}
 
   For the Coulomb potential the first statement of the corollary is given by Reed and
   Simon as Example~1 directly after the proof of Theorem X.15.
 
   \begin{proposition}[The whole atom]\label{c11.prop.zweikoerper}\claim[proof-included]{c11.cl.sa-zweikoerper}{source-backed}
-    With the Coulomb potential, the two-body Hamiltonian $\HamTot$ of \defref{D60} is
+    With the Coulomb potential, the two-body Hamiltonian $\op{\HamTot}$ of \defref{D60} is
     essentially self-adjoint on the domain $\Ccinf{\mathbb{R}^6}$.
   \end{proposition}
   \begin{proof}
@@ -1507,7 +1507,7 @@ sees of an atom in the laboratory requires both halves (Figure~\ref{c11.fig.uebe
   two masses and the reduced mass carry other letters there (the reduced mass is called
   $m$); $\hbar = 1$; the smooth functions with compact support are called
   $C_0^{\infty}$; and the map called $U$ there turns a function of the new coordinates
-  into a function of the old ones, so it is the inverse of our map $\Uni$ of
+  into a function of the old ones, so it is the inverse of our map $\op{\Uni}$ of
   \eqref{c11.eq.tilde}. The calculation that leads to
   Theorem~\ref{c11.thm.separation} is an exercise there.
 \end{fundament}

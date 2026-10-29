@@ -1,0 +1,78 @@
+{
+  "id": "R-0153",
+  "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 4",
+  "date": "2026-10-29",
+  "covers": [
+    "P-0318",
+    "P-0319",
+    "P-0320",
+    "P-0321",
+    "P-0322",
+    "P-0323",
+    "P-0324",
+    "P-0325",
+    "P-0326",
+    "P-0327",
+    "P-0328"
+  ],
+  "verdict": "pass",
+  "method": "Independently ran sha256sum on sources/reed-simon-1/reed-simon-1.djvu and rendered every cited DjVu page with ddjvu -format=pnm -scale=150 (in memory); read the page images (no text layer), checked the printed page number, the transcription of each quote and that each quote supports the claim it is filed under within the claim's scope. Report: evidence/derivations/c03/REVIEW-lec4.md, section A; prompt: evidence/derivations/c03/PROMPT-review-lec4.md.",
+  "notes": "All 11 rows passed as submitted. Before binding, the loci (page_index, printed_page) and member hash of each row were compared with the reviewed table and found unchanged; the quote hashes are those of the rows as bound. The review's section B asks that P-0325 keep its context (spectral theorem in the comparison of symmetric and self-adjoint operators).",
+  "bindings": [
+    {
+      "provenance_id": "P-0318",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "f6f62455e99aa11ba152f7da143a4adad2f005453d310616bb9428aeb4c53fd6"
+    },
+    {
+      "provenance_id": "P-0319",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "c7058380623788542d24711068edf992e549119a7d4894c7ce3efd5a8466a4e0"
+    },
+    {
+      "provenance_id": "P-0320",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "7558b35e9ae7e2c4fc039c0abe1f850cd08025f5e09766af8ba9c7e20c618a3d"
+    },
+    {
+      "provenance_id": "P-0321",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "8d8623ee0b3321484ec71654fcedde87daa299917652d968c215186c16d56528"
+    },
+    {
+      "provenance_id": "P-0322",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "10b732a5af0debc3cdd1342d2bf90a4f76c011215ccc127be81456c5d988b01b"
+    },
+    {
+      "provenance_id": "P-0323",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "4be0ac417e2df01a8dc7c9035b47f3e500cc0b44c47b1b5e0d00215581d30857"
+    },
+    {
+      "provenance_id": "P-0324",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "2bded4be4c4abe7b839e4433662c9a5e27ad03f7aa92a79ebe28e99801483d47"
+    },
+    {
+      "provenance_id": "P-0325",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "a80022cc0ab6a25fda20b7e69855996ae4be1100614f2d41b0faae260f527fb4"
+    },
+    {
+      "provenance_id": "P-0326",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "0576f02737c92a17317421276373986b2ac6b4d2c420640bd2271bb149bf886a"
+    },
+    {
+      "provenance_id": "P-0327",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "df5d9496be767d7e4c1b9e3723564182a073561f628b6aa28a6854faf0ca27e3"
+    },
+    {
+      "provenance_id": "P-0328",
+      "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+      "quote_sha256": "26dd1671132a4010d87fbbfdb700814251f84b3495ad8eba7226ef5e1864db98"
+    }
+  ]
+}

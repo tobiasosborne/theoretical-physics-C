@@ -15,16 +15,16 @@
   \node[tpc label, anchor=north] at (0.8,0.72) {$m_{\mathrm{p}}$, $\boldsymbol{r}_{\mathrm{p}}$};
   \node[tpc label, anchor=south] at (2.7,2.38) {$m_{\mathrm{e}}$, $\boldsymbol{r}_{\mathrm{e}}$};
   \node[tpc label, anchor=north west] at (1.75,1.5) {$V(\boldsymbol{r}_{\mathrm{e}} - \boldsymbol{r}_{\mathrm{p}})$};
-  \node[tpc label, anchor=south] at (1.75,3.25) {$H_{\mathrm{tot}}$};
+  \node[tpc label, anchor=south] at (1.75,3.25) {$\op{H_{\mathrm{tot}}}$};
   % the change of coordinates
-  \draw[tpc axis, ->] (3.75,1.6) -- (4.85,1.6) node[midway, above, tpc label] {$U$};
+  \draw[tpc axis, ->] (3.75,1.6) -- (4.85,1.6) node[midway, above, tpc label] {$\op{U}$};
   % right: centre of mass
   \draw[tpc leader, rounded corners=3pt] (5.1,1.75) rectangle (10.1,3.2);
   \draw[tpc-plate-ink, line width=\tpcstrokeregular] (5.75,2.45) ++(-3pt,-3pt) -- ++(6pt,6pt)
     (5.75,2.45) ++(-3pt,3pt) -- ++(6pt,-6pt);
   \draw[tpc axis, ->] (5.95,2.45) -- (6.75,2.45);
   \node[tpc label, anchor=west, align=left] at (6.95,2.45)
-    {$H_{\mathrm{cm}}$: \tpcifenglish{free particle,}{freies Teilchen,}\\
+    {$\op{H_{\mathrm{cm}}}$: \tpcifenglish{free particle,}{freies Teilchen,}\\
      \tpcifenglish{mass}{Masse} $M$, \tpcifenglish{coordinate}{Koordinate} $\boldsymbol{R}$};
   % right: relative motion
   \draw[tpc leader, rounded corners=3pt] (5.1,0) rectangle (10.1,1.45);
@@ -32,7 +32,7 @@
   \draw[tpc-plate-ink, fill=tpc-plate-muted, line width=\tpcstrokeregular] (6.6,1.0) circle (2.4pt);
   \draw[tpc dynamics, dash pattern=on 3pt off 2pt] (5.8,0.74) -- (6.52,0.97);
   \node[tpc label, anchor=west, align=left] at (6.95,0.72)
-    {$H_{\mathrm{rel}}$: \tpcifenglish{one particle,}{ein Teilchen,}\\
+    {$\op{H_{\mathrm{rel}}}$: \tpcifenglish{one particle,}{ein Teilchen,}\\
      \tpcifenglish{mass}{Masse} $\mu$, \tpcifenglish{potential}{Potential} $V(\boldsymbol{r})$};
   \node[tpc label] at (7.6,1.6) {$+$};
 \end{tikzpicture}
