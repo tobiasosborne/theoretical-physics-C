@@ -10,10 +10,11 @@
  "version": "v0.3.1",
  "language": "de, en",
  "identifiers": {
-  "parent_git_commit": "53b318f"
+  "parent_git_commit": "53b318f",
+  "git_commit": "9d125d9b1b735b089eecdbbe0a129872ab9f63da"
  },
  "retrieval": {
-  "route": "working-tree lecture files of script v0.3 chapters 3 and 4 (docs/plan/script-v0.3/NOTES-ch3.md, NOTES-ch4.md), not yet committed; pinned with scripts/evidence/pin_snapshot.py",
+  "route": "working-tree lecture files of script v0.3 chapters 3 and 4 (docs/plan/script-v0.3/NOTES-ch3.md, NOTES-ch4.md), committed in 9d125d9; pinned with scripts/evidence/pin_snapshot.py",
   "date": "2026-10-29"
  },
  "identity_check": "author as in the masters' \\author lines; the lecture files are the v0.3 rewrites of the ch3 and ch4 lanes",
@@ -70,5 +71,5 @@
   "evidence/migrations/M-0062.json",
   "evidence/migrations/M-0063.json"
  ],
- "notes": "Working-tree snapshot until the commit that introduces it: pin_snapshot.py re-hashes the members (and applied_file_sha256 of the migration records that name this key) after the last edit; once committed, set identifiers.git_commit and treat it as immutable."
+ "notes": "Committed: the commit that introduces script v0.3.1 (chapters 3 and 4) is 9d125d9 (identifiers.git_commit). pin_snapshot.py now refuses this source by design. Later edits of these lecture files follow the vl16 rule: move the changed members to Git members and register the new files under a new key."
 }
