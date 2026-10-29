@@ -31,7 +31,13 @@ enrichment, registry, special functions, tokens, content lint, levels lint and t
 course build with K1-K6, the full web check with browser gates, evidence private and public,
 the four map checks, every red-corpus group, c03/c11 maths, both masters (DE 88, EN 84 pages,
 0 errors, 0 undefined references). Julia gates not run: no kernel or numerics file changed.
-Open: the demo `c03.demo.spektren` (not built; the figure is static); gaps G-0073 (photon-number
+Later the same day: the demo `c03.demo.spektren` (`web/src/demos/c03.demo.spektren.ts`, kernel
+functions and shifted-QR eigenvalues in `web/src/kernels/hilbert.ts`, golden from
+`numerics/generate/hilbert_golden.jl`), reviewed by codex (six findings, all repaired; notes in
+`docs/plan/lec34/NOTES-demo.md`); gates: golden --check, hilbert vitest, c03 course build and
+levels, the full c03 web check with browser gates, registry, parity. Open for TJO: whether r = 0
+(the zero operator) stays selectable in rĈ, the parameter ranges, the small plane in the 620 px
+column. Open: gaps G-0073 (photon-number
 remark), G-0074 ("Observablen" vs "scharfe Observablen"), G-0075 (hat-exception wording),
 G-0077 (chapter-4 cuts) for TJO; script chapters 5-22 still write operators without hats (the
 seam is printed in chapter 4); the CI redesign (measured: course editions ~8-9 min, Julia ~6,

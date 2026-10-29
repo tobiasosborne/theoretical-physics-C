@@ -103,6 +103,15 @@
         "de": "Vollständigkeit: ein Vektor, zwei Basen",
         "en": "Completeness: one vector, two bases"
       }
+    },
+    {
+      "id": "c03.demo.spektren",
+      "kind": "demo",
+      "still": "c03.fig.spektren",
+      "title": {
+        "de": "Operatorklassen an ihren Eigenwerten",
+        "en": "Operator classes and their eigenvalues"
+      }
     }
   ]
 }

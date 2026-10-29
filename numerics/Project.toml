@@ -1,6 +1,7 @@
 # Reference implementations for the course kernels (owner of numerics/: per smoke).
-# An environment without dependencies: only Julia's standard library (Printf, Test) is
-# used, nothing is installed, no Manifest is needed, and it runs offline:
+# An environment without dependencies: only Julia's standard library (Printf, Test;
+# LinearAlgebra in the self-check of generate/hilbert_golden.jl) is used, nothing is
+# installed, no Manifest is needed, and it runs offline:
 #
 #   julia --project=numerics numerics/test/runtests.jl
 #   julia --project=numerics numerics/generate/hydrogen_golden.jl          # writes web/tests/golden/hydrogen.json
