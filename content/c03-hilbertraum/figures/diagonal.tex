@@ -1,0 +1,74 @@
+% c03.fig.diagonal — the same operator in two bases.
+% Adapted from latex/figures/fig_vl05_diagonal.tex (script v0.2) to the course conventions:
+% plate tokens and data roles only, geometry from the formulas, labels carry which basis vector
+% is meant so that nothing depends on hue.
+%
+% Example c03.ex.hadamard diagonalises the Pauli matrix sigma_x with the Hadamard matrix
+%   U = (1/sqrt2) [[1,1],[1,-1]].
+% sigma_x is a reflection and maps the unit circle onto itself, so the figure draws
+%   A = sigma_x + 2 Id = [[2,1],[1,2]],
+% same eigenvectors, same U, eigenvalues raised by 2:
+%   |phi_0> = (1,1)/sqrt2, a_0 = 3;   |phi_1> = (1,-1)/sqrt2, a_1 = 1;   U A U^dag = diag(3,1).
+% Every curve is that matrix applied to the unit circle, plotted parametrically:
+%   panel (a)  t |-> (2 cos t + sin t, cos t + 2 sin t)
+%   panel (b)  t |-> (3 cos t, sin t)
+% U carries (a) into (b): U|phi_0> = |0>, U|phi_1> = |1> (U is a reflection, det U = -1).
+% Arrow tips are the images of the basis vectors, the columns of the matrix:
+%   (a) A|0> = (2,1), A|1> = (1,2);   (b) A|phi_0> = 3|phi_0>, A|phi_1> = |phi_1>.
+% Input vectors: broad pale arrows; images: narrow arrows, role q1 for the first basis vector,
+% q3 for the second; every arrow is labelled.  Unit circle dashed, principal axes dash-dotted,
+% both reference lines.  Both panels on the same scale: 1 = 0.62 cm.
+\begin{tikzpicture}[x=0.62cm, y=0.62cm,
+    invec/.style={-{Stealth[length=5pt,width=5pt]}, line width=2.2pt},
+    outvec/.style={-{Stealth[length=5pt,width=4pt]}, line width=1.1pt},
+    refcurve/.style={tpc grid, densely dashed},
+    princ/.style={tpc grid, dash pattern=on 3.5pt off 1.5pt on 0.8pt off 1.5pt},
+    image/.style={tpc-plate-ink, line width=1.1pt}]
+  % ---------------------------------------------------------------- (a) canonical basis
+  \begin{scope}
+    \draw[tpc axis, -{Stealth[length=4pt]}] (-2.6,0) -- (3.2,0);
+    \draw[tpc axis, -{Stealth[length=4pt]}] (0,-2.6) -- (0,3.2);
+    \draw[refcurve] (0,0) circle (1);
+    \draw[princ] (-2.1213,-2.1213) -- (2.1213,2.1213);
+    \draw[princ] (-0.7071,0.7071) -- (0.7071,-0.7071);
+    \draw[image, domain=0:360, samples=181, smooth, variable=\t]
+      plot ({2*cos(\t)+sin(\t)}, {cos(\t)+2*sin(\t)});
+    \draw[invec, tpc-q1!30!tpc-plate] (0,0) -- (1,0);
+    \draw[invec, tpc-q3!30!tpc-plate] (0,0) -- (0,1);
+    \draw[outvec, tpc-q1] (0,0) -- (2,1);
+    \draw[outvec, tpc-q3] (0,0) -- (1,2);
+    \node[tpc label, anchor=north west] at (1.25,-0.05) {$\ket{0}$};
+    \node[tpc label, anchor=east] at (-0.1,0.75) {$\ket{1}$};
+    \node[tpc label, anchor=west] at (2.08,0.95) {$\op{A}\ket{0}$};
+    \node[tpc label, anchor=south] at (1.0,2.1) {$\op{A}\ket{1}$};
+    \node[tpc label, anchor=north east] at (-2.15,-2.15) {$\ket{\phi_0}$};
+    \node[tpc label, anchor=north west] at (0.72,-0.75) {$\ket{\phi_1}$};
+    \node[tpc label, anchor=north west] at (-3.3,3.4)
+      {$\op{A} = \begin{pmatrix} 2 & 1 \\ 1 & 2 \end{pmatrix}$};
+    \node[tpc label, anchor=north, align=center] at (0.3,-2.75)
+      {(a) \tpcifenglish{canonical basis}{kanonische Basis}};
+  \end{scope}
+  % ---------------------------------------------------------------- (b) eigenbasis
+  \begin{scope}[shift={(8.6,0)}]
+    \draw[tpc axis, -{Stealth[length=4pt]}] (-3.3,0) -- (3.6,0);
+    \draw[tpc axis, -{Stealth[length=4pt]}] (0,-2.6) -- (0,3.2);
+    \draw[refcurve] (0,0) circle (1);
+    \draw[image, domain=0:360, samples=181, smooth, variable=\t]
+      plot ({3*cos(\t)}, {sin(\t)});
+    \draw[invec, tpc-q1!30!tpc-plate] (0,0) -- (1,0);
+    \draw[invec, tpc-q3!30!tpc-plate] (0,0) -- (0,1);
+    \draw[outvec, tpc-q1] (0,0) -- (3,0);
+    \draw[outvec, tpc-q3] (0,0) -- (0,1);
+    \node[tpc label, anchor=north] at (0.5,-0.12) {$\ket{\phi_0}$};
+    \node[tpc label, anchor=east] at (-0.1,0.6) {$\ket{\phi_1}$};
+    \node[tpc label, anchor=north] at (2.1,-1.05) {$\op{A}\ket{\phi_0} = 3\ket{\phi_0}$};
+    \node[tpc label, anchor=south west] at (0.12,1.08) {$\op{A}\ket{\phi_1} = \ket{\phi_1}$};
+    \node[tpc label, anchor=north west] at (-3.3,3.4)
+      {$\op{U}\op{A}\op{U}\adj = \begin{pmatrix} 3 & 0 \\ 0 & 1 \end{pmatrix}$};
+    \node[tpc label, anchor=north, align=center] at (0.3,-2.75)
+      {(b) \tpcifenglish{eigenbasis}{Eigenbasis}};
+  \end{scope}
+  % ---------------------------------------------------------------- the change of basis
+  \draw[tpc-plate-ink, line width=0.8pt, -{Stealth[length=5pt]}] (4.0,2.2) -- (5.0,2.2);
+  \node[tpc label, anchor=south] at (4.5,2.25) {$\op{U}$};
+\end{tikzpicture}

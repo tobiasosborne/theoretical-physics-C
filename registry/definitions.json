@@ -953,30 +953,43 @@
   {
    "id": "D24",
    "preinventory_row": 24,
-   "name_de": "POVM, projektorwertiges Maß",
-   "name_en": "POVM, projection-valued measure",
-   "body_de": "Platzhalter. Dieser Eintrag legt fest: POVM, projektorwertiges Maß. Der Wortlaut wird erst eingetragen, wenn er an der Quelle geprüft ist.",
-   "body_en": "Placeholder. This entry will fix: POVM, projection-valued measure. The wording is entered only after it has been checked against the source.",
-   "symbol_ids": [],
+   "name_de": "Effektoperator, Messung (POVM), projektorwertige Messung",
+   "name_en": "effect operator, measurement (POVM), projection-valued measurement",
+   "body_de": "Für Operatoren bedeutet $\\op{A} \\leq \\op{B}$, dass $\\op{B} - \\op{A}$ positiv ist (D20). Ein \\emph{Effektoperator} ist ein Operator $\\op{\\EffOp}$ auf $\\Hil$ mit $0 \\leq \\op{\\EffOp} \\leq \\Id$. Eine \\emph{Messung} (POVM) mit der endlichen Ergebnismenge $\\Outcomes$ ist eine Familie $\\{\\op{\\EffOp}_x\\}_{x \\in \\Outcomes}$ von Effektoperatoren mit $\\sum_{x \\in \\Outcomes} \\op{\\EffOp}_x = \\Id$. Sie heißt \\emph{projektorwertig}, wenn jedes $\\op{\\EffOp}_x$ ein Projektor ist (D89).",
+   "body_en": "For operators, $\\op{A} \\leq \\op{B}$ means that $\\op{B} - \\op{A}$ is positive (D20). An \\emph{effect operator} is an operator $\\op{\\EffOp}$ on $\\Hil$ with $0 \\leq \\op{\\EffOp} \\leq \\Id$. A \\emph{measurement} (POVM) with the finite outcome set $\\Outcomes$ is a family $\\{\\op{\\EffOp}_x\\}_{x \\in \\Outcomes}$ of effect operators with $\\sum_{x \\in \\Outcomes} \\op{\\EffOp}_x = \\Id$. It is \\emph{projection-valued} if every $\\op{\\EffOp}_x$ is a projector (D89).",
+   "symbol_ids": [
+    "sym.operator-hat",
+    "sym.effect-operator",
+    "sym.hilbert-space",
+    "sym.identity",
+    "sym.outcome-set"
+   ],
    "depth": "kern",
    "origin": {
     "type": "source-adapted",
-    "source": "preinventory",
-    "locus": "definition row 24; authority named there: TPC vl06.tex; Heinosaari-Ziman (not on disk)"
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl06.tex:63-122"
    },
    "choices": [],
-   "status": "proposed",
+   "status": "blessed-provisional",
    "first_fixed_in": "C4",
    "sources": [
     {
-     "source": "preinventory",
-     "locus": "notation-preinventory.md:119 (definition row 24)",
-     "verified": false,
-     "how": "seeded from the pre-inventory; not checked against any source in Phase 0"
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl06.tex:64",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "ist gegeben durch einen Operator $F$ mit $0 \\le F \\le \\mathbb{I}$."
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl06.tex:107",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "F_x \\ge 0, \\quad \\text{und}\\quad \\sum_{x\\in X} F_x = \\mathbb{I}."
     }
    ],
-   "needs_check": true,
-   "check": "body not written; authority per pre-inventory: TPC vl06.tex; Heinosaari-Ziman (not on disk)"
+   "notes": "Written for Lecture 6 (2026-11-04, docs/plan/lec56/BRIEF.md). Finite outcome set for Kern (vl06.tex:106-112 treats F(S) on subsets and reduces to F_x for finite X). The word 'Observable' for the family (vl06.tex:107) is not used: open gap G-0074. Letter of the effect operator: collision COL-F (BRIEF writes E, vl06 F); \\EffOp renders F. Matches D9 (Chapter 2) for the state space of density operators (c04.prop.effekte)."
   },
   {
    "id": "D25",
@@ -1011,12 +1024,13 @@
    "preinventory_row": 26,
    "name_de": "Bornsche Regel",
    "name_en": "Born rule",
-   "body_de": "Die Wahrscheinlichkeit, dass der Detektor $\\EffOp$ anspricht, wenn der Zustand als Dichteoperator $\\rho$ präpariert wurde, ist $\\tr(\\rho \\EffOp)$.",
-   "body_en": "The probability of detection by the detector $\\EffOp$ for a state prepared as the density operator $\\rho$ is $\\tr(\\rho \\EffOp)$.",
+   "body_de": "Die Wahrscheinlichkeit, dass der Detektor $\\op{\\EffOp}$ anspricht, wenn der Zustand als Dichteoperator $\\rho$ präpariert wurde, ist $\\tr(\\rho\\, \\op{\\EffOp})$.",
+   "body_en": "The probability of detection by the detector $\\op{\\EffOp}$ for a state prepared as the density operator $\\rho$ is $\\tr(\\rho\\, \\op{\\EffOp})$.",
    "symbol_ids": [
     "sym.effect-operator",
     "sym.density-operator",
-    "sym.trace"
+    "sym.trace",
+    "sym.operator-hat"
    ],
    "depth": "kern",
    "origin": {
@@ -1026,7 +1040,7 @@
    "choices": [
     "CONV-TRACE"
    ],
-   "status": "proposed",
+   "status": "blessed-provisional",
    "first_fixed_in": "C4",
    "sources": [
     {
@@ -1044,7 +1058,8 @@
      "quote": "$\\tr(\\rho F)$. In einem reinen Zustand $|\\Psi\\rangle$ spezialisiert sich dieser Ausdruck zu $\\langle \\Psi|F|\\Psi\\rangle$."
     }
    ],
-   "gap_tjo": "The letter of the detector operator (E in BRIEF.md, F in the script) is collision COL-F and is open; the macro \\EffOp renders F for now."
+   "gap_tjo": "The letter of the detector operator (E in BRIEF.md, F in the script) is collision COL-F and is open; the macro \\EffOp renders F for now.",
+   "notes": "Blessed provisionally for Lecture 6 (2026-11-04): transcluded in c04.s1.3. Hat added (CONV-HAT: effect operators carry the hat)."
   },
   {
    "id": "D27",
@@ -3659,6 +3674,150 @@
     }
    ],
    "notes": "Added by the lane-G registry for Lecture 4 (2026-10-29). Script defect noted for the author: vl04.tex:120 ends in 'forall Psi in H' although the quantifier belongs to chi (the registry body writes xi, because chi is the indicator function) (and the left side lacks the closing bra-ket bracket); the body quantifies chi. The script's reading of ket and bra as the operators C -> H and H -> C (vl04.tex:96-112) is not part of this definition and is the author's to keep or drop; D81 stays as it is (kets are vectors). The script's remark that the sum formula is 'eins gleich eins' (vl04.tex:129) is the author's. Finite index set for Kern. No hat on the ket-bra (TJO 2026-10-29, CONV-HAT): \\ketbra{\\Psi}{\\Phi} is written bare, never \\op{\\ketbra{\\Psi}{\\Phi}}; only the matrix \\op{A} in the sum formula carries a hat."
+  },
+  {
+   "id": "D95",
+   "preinventory_row": null,
+   "name_de": "Spur",
+   "name_en": "trace",
+   "body_de": "Sei $\\Hil$ ein Hilbertraum mit einer Orthonormalbasis $\\{\\ket{x}\\}_{x \\in X}$ mit endlicher Indexmenge (D85). Die \\emph{Spur} eines Operators $\\op{A}$ auf $\\Hil$ ist die Zahl $\\tr(\\op{A}) = \\sum_{x \\in X} \\melem{x}{\\op{A}}{x}$, die Summe der Diagonaleinträge seiner Matrix (D93). Sie hängt nicht von der gewählten Orthonormalbasis ab.",
+   "body_en": "Let $\\Hil$ be a Hilbert space with an orthonormal basis $\\{\\ket{x}\\}_{x \\in X}$ with a finite index set (D85). The \\emph{trace} of an operator $\\op{A}$ on $\\Hil$ is the number $\\tr(\\op{A}) = \\sum_{x \\in X} \\melem{x}{\\op{A}}{x}$, the sum of the diagonal entries of its matrix (D93). It does not depend on the orthonormal basis chosen.",
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.ket",
+    "sym.trace",
+    "sym.operator-hat",
+    "sym.matrix-element"
+   ],
+   "depth": "kern",
+   "origin": {
+    "type": "source-adapted",
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl05.tex:58-63"
+   },
+   "choices": [
+    "CONV-TRACE"
+   ],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl05.tex:60",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "\\tr(A) \\equiv \\sum_{x\\in X} \\langle x|A|x\\rangle,"
+    }
+   ],
+   "notes": "Added for Lecture 5 (2026-11-04, docs/plan/lec56/BRIEF.md). Finite index set for Kern; the trace in infinite dimension (trace class) stays D21 (Vertiefung, C4). Basis independence is proved in c03.prop.spur (claim c03.cl.spur); the sentence in the body states that result. vl05's trace in the position basis is deferred with the position basis (D-POS)."
+  },
+  {
+   "id": "D96",
+   "preinventory_row": null,
+   "name_de": "Eigenwert, Eigenvektor, Eigenraum",
+   "name_en": "eigenvalue, eigenvector, eigenspace",
+   "body_de": "Sei $\\op{A}$ ein Operator auf $\\Hil$ (D87), allgemeiner eine lineare Abbildung eines komplexen Vektorraums in sich. Ein Vektor $\\ket{v} \\neq 0$ heißt \\emph{Eigenvektor} von $\\op{A}$ zum \\emph{Eigenwert} $\\lambda \\in \\mathbb{C}$, wenn $\\op{A}\\ket{v} = \\lambda\\ket{v}$. Die Eigenvektoren zum Eigenwert $\\lambda$ bilden zusammen mit dem Nullvektor den \\emph{Eigenraum} von $\\op{A}$ zu $\\lambda$.",
+   "body_en": "Let $\\op{A}$ be an operator on $\\Hil$ (D87), more generally a linear map of a complex vector space into itself. A vector $\\ket{v} \\neq 0$ is an \\emph{eigenvector} of $\\op{A}$ with \\emph{eigenvalue} $\\lambda \\in \\mathbb{C}$ if $\\op{A}\\ket{v} = \\lambda\\ket{v}$. The eigenvectors with eigenvalue $\\lambda$, together with the zero vector, form the \\emph{eigenspace} of $\\op{A}$ for $\\lambda$.",
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.ket",
+    "sym.operator-hat"
+   ],
+   "depth": "kern",
+   "origin": {
+    "type": "source-adapted",
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl05.tex:91-95"
+   },
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl05.tex:91",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "so bezeichnet man als \\emph{Eigenvektor} einen Vektor $\\mathbf{v}\\not=\\mathbf{0}$, der durch $A$ auf ein Vielfaches"
+    }
+   ],
+   "notes": "Added for Lecture 5 (2026-11-04). vl05.tex:91 writes 'A: V -> A' for 'A: V -> V' (defect, recorded in the vl05 migration records). The eigenspace is the author's addition: the proof of the finite-dimensional spectral theorem (c03.thm.spektral) and the degenerate case need it. No inner product is needed (v06 [26:52])."
+  },
+  {
+   "id": "D97",
+   "preinventory_row": null,
+   "name_de": "diagonaler Operator, unitär diagonalisierbar",
+   "name_en": "diagonal operator, unitarily diagonalisable",
+   "body_de": "Sei $\\{\\ket{x}\\}_{x \\in X}$ eine Orthonormalbasis von $\\Hil$ mit endlicher Indexmenge. Ein Operator $\\op{A}$ heißt \\emph{diagonal} in dieser Basis, wenn seine Matrixelemente die Form $\\melem{x}{\\op{A}}{y} = \\kron{x}{y}\\, a_x$ mit Zahlen $a_x$ haben, das heißt $\\op{A} = \\sum_{x \\in X} a_x \\ketbra{x}{x}$. $\\op{A}$ heißt \\emph{unitär diagonalisierbar}, wenn es eine Orthonormalbasis von $\\Hil$ gibt, in der $\\op{A}$ diagonal ist. \\emph{Diagonalisieren} heißt, eine solche Basis zu finden oder, gleichwertig, einen unitären Operator $\\op{U}$, für den $\\op{U}\\op{A}\\op{U}\\adj$ in der Basis $\\{\\ket{x}\\}$ diagonal ist. In der linearen Algebra heißt ein Operator schon diagonalisierbar, wenn er irgendeine Basis aus Eigenvektoren hat; in diesem Kurs meinen wir mit diagonalisieren stets die unitäre Form.",
+   "body_en": "Let $\\{\\ket{x}\\}_{x \\in X}$ be an orthonormal basis of $\\Hil$ with a finite index set. An operator $\\op{A}$ is \\emph{diagonal} in this basis if its matrix elements have the form $\\melem{x}{\\op{A}}{y} = \\kron{x}{y}\\, a_x$ with numbers $a_x$, that is $\\op{A} = \\sum_{x \\in X} a_x \\ketbra{x}{x}$. $\\op{A}$ is \\emph{unitarily diagonalisable} if $\\Hil$ has an orthonormal basis in which $\\op{A}$ is diagonal. To \\emph{diagonalise} means to find such a basis or, equivalently, a unitary operator $\\op{U}$ for which $\\op{U}\\op{A}\\op{U}\\adj$ is diagonal in the basis $\\{\\ket{x}\\}$. In linear algebra an operator is already called diagonalisable if it has some basis of eigenvectors; in this course, diagonalising always means the unitary form.",
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.ket",
+    "sym.operator-hat",
+    "sym.matrix-element",
+    "sym.kronecker-delta",
+    "sym.ketbra",
+    "sym.adjoint"
+   ],
+   "depth": "kern",
+   "origin": {
+    "type": "source-adapted",
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl05.tex:73-87"
+   },
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl05.tex:75",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "[A]_{nm} = \\langle\\phi_n|A|\\phi_m\\rangle = \\delta_{nm} a_m,"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl05.tex:83",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "Wir werden uns (fast) ausschließlich für den Fall interessieren, in dem diese Transformation sogar durch einen unitären Operator $S$ geschieht"
+    }
+   ],
+   "notes": "Added for Lecture 5 (2026-11-04). In linear algebra 'diagonalisable' allows any invertible S (vl05.tex:83); the course means unitarily diagonalisable throughout, as vl05.tex:83-84 says it will. vl05.tex:84-86 writes the diagonalisation with U: H -> L^2(R) and multiplication by a(x); that is the general (multiplication-operator) form, deferred with the position basis (D-POS) and mentioned in Vertiefung c03.v7. The equivalence of the two formulations is c03.prop.diagonal."
+  },
+  {
+   "id": "D98",
+   "preinventory_row": null,
+   "name_de": "Funktion eines Operators (Funktionalkalkül)",
+   "name_en": "function of an operator (functional calculus)",
+   "body_de": "Sei $\\Hil$ endlichdimensional, $\\op{A} = \\sum_{x} a_x \\ketbra{\\phi_x}{\\phi_x}$ mit einer Orthonormalbasis $\\{\\ket{\\phi_x}\\}$ aus Eigenvektoren von $\\op{A}$, $\\op{A}\\ket{\\phi_x} = a_x\\ket{\\phi_x}$, und sei $f$ eine komplexe Funktion, die auf den Eigenwerten von $\\op{A}$ definiert ist. Dann ist $f(\\op{A}) = \\sum_{x} f(a_x)\\, \\ketbra{\\phi_x}{\\phi_x}$.",
+   "body_en": "Let $\\Hil$ be finite-dimensional, $\\op{A} = \\sum_{x} a_x \\ketbra{\\phi_x}{\\phi_x}$ with an orthonormal basis $\\{\\ket{\\phi_x}\\}$ of eigenvectors of $\\op{A}$, $\\op{A}\\ket{\\phi_x} = a_x\\ket{\\phi_x}$, and let $f$ be a complex function defined on the eigenvalues of $\\op{A}$. Then $f(\\op{A}) = \\sum_{x} f(a_x)\\, \\ketbra{\\phi_x}{\\phi_x}$.",
+   "symbol_ids": [
+    "sym.hilbert-space",
+    "sym.ket",
+    "sym.operator-hat",
+    "sym.ketbra"
+   ],
+   "depth": "kern",
+   "origin": {
+    "type": "source-adapted",
+    "source": "tpc-script-v0.2",
+    "locus": "lectures/de/vl05.tex:181-199"
+   },
+   "choices": [],
+   "status": "blessed-provisional",
+   "first_fixed_in": "C3",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl05.tex:195",
+     "verified": true,
+     "how": "read in the script source at this line",
+     "quote": "U_t |\\phi_x\\rangle \\equiv e^{\\frac{−it}{\\hbar}a_x} |\\phi_x\\rangle, \\quad \\forall x\\in X,"
+    }
+   ],
+   "notes": "Added for Lecture 5 (2026-11-04). vl05 defines only the exponential e^{-itH/hbar}; the general f is the author's (curriculum C3: 'functional calculus for matrices'). That f(A) does not depend on the chosen eigenbasis is c03.prop.funktion (2). vl05.tex:195 types the minus as U+2212 (seam known from vl05, HANDOFF 2026-10-26)."
   }
  ]
 }

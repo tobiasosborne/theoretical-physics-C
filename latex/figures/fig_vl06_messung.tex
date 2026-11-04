@@ -18,8 +18,10 @@
 %     the centre is I/2, everything outside is a Hermitian trace-one
 %     matrix that is NOT a state: hatched, not filled, so it survives
 %     greyscale printing (and hatching is the right mark for "excluded").
-%   * Postulat 5 with the lecture's H = ( 0,1 ; 1,0 ) and
-%         U_t = cos(t/hbar) I - i sin(t/hbar) H
+%   * Postulat 5 with H = epsilon sigma_x (script v0.3, 2026-11-04: the v0.2
+%     lecture had H = sigma_x without an energy; time is now in units of
+%     hbar/epsilon, so every t/hbar below reads epsilon t/hbar) and
+%         U_t = cos(t/hbar) I - i sin(t/hbar) sigma_x
 %     gives, for rho_t = U_t rho U_t^dag,
 %         p_t  - 1/2 = r cos(2t/hbar + phi),   Im x_t = r sin(2t/hbar + phi),
 %     with (p-1/2, Im x) = r(cos phi, sin phi).  So U_t is a rotation about
@@ -106,7 +108,7 @@
     (axis cs:0.6026,0.2819) -- (axis cs:0.6026,-0.66);
   \node[lbl, font=\scriptsize, text=birrengray, anchor=north west,
         fill=white, fill opacity=0.9, text opacity=1, inner sep=1pt]
-    at (axis cs:0.635,-0.52) {$\tr(\rho F)$};
+    at (axis cs:0.635,-0.52) {$\tr(\rho\op{F})$};
 
   % Radius r = Abstand vom maximal gemischten Zustand.
   \draw[-{Stealth[length=5pt]}, birrengray, line width=0.7pt]
@@ -134,7 +136,7 @@
   \node[lbl, font=\scriptsize, text=birrengray, anchor=north east]
     at (axis cs:1.36,0.72) {$\real x=0$};
   \node[lbl, font=\scriptsize, text=birrengray, anchor=north west]
-    at (axis cs:0.125,0.315) {$U_t$};
+    at (axis cs:0.125,0.315) {$\op{U}_t$};
 \end{axis}
 
 % ─────────────────────────────────────────────────────────────
@@ -150,11 +152,11 @@
     xtick={0,1.5708,3.1416,4.7124,6.2832},
     xticklabels={$0$,$\tfrac{\pi}{2}$,$\pi$,$\tfrac{3\pi}{2}$,$2\pi$},
     ytick={0,0.5,1}, yticklabels={$0$,$\tfrac12$,$1$},
-    xlabel={$t/\hbar$},
-    ylabel={$\tr(\rho_t F)$},
+    xlabel={$\varepsilon t/\hbar$},
+    ylabel={$\tr(\rho_t\op{F})$},
     every axis y label/.style={at={(axis description cs:-0.17,0.5)},
                                rotate=90, anchor=south, font=\small},
-    title={(b) $Z$-\tpcifenglish{measurement}{Messung}, $F=\ketbra{0}{0}$},
+    title={(b) $Z$-\tpcifenglish{measurement}{Messung}, $\op{F}=\ketbra{0}{0}$},
 ]
   % tr(rho_t F) = 1/2 + r cos(2t/hbar + phi), Amplitude r = Radius aus (a)
   \addplot[birrenorange, line width=1.1pt, domain=0:6.2832, samples=241]

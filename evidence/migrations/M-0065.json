@@ -1,0 +1,25 @@
+{
+ "schema_version": 1,
+ "id": "M-0065",
+ "status": "recorded",
+ "title": "vl05: diagonalisation defined via U: H -> L^2(R) and multiplication by a(x)",
+ "legacy": [
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl05.tex",
+   "line": 84,
+   "file_sha256": "b7a2e83281fbde3fbefd01abe7c45123f126aeea880177b0911b54304c7684d3",
+   "old_text": "$U : \\mathcal{H} \\rightarrow L^2(\\mathbb{R})$",
+   "new_text": null,
+   "gap_tjo": "The finite-dimensional definition (an orthonormal basis in which A is diagonal, equivalently a unitary U with UAU^dagger diagonal) replaces it in the Kern (D97); the multiplication-operator form is the general spectral theorem (c03.thm.spektral-allgemein, Vertiefung c03.v7)."
+  }
+ ],
+ "reason": "For H = C^N a unitary onto L^2(R) does not exist, and the general statement (every self-adjoint operator is unitarily equivalent to a multiplication operator) needs a measure space, not L^2(R), and self-adjointness. The sentence mixes the finite-dimensional notion with the general spectral theorem.",
+ "evidence": {
+  "independent_check": "evidence/derivations/c03/DERIVATION.md#c03.cl.diagonal",
+  "provenance_ids": [],
+  "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.diagonal"
+ },
+ "destination": "c03.s14",
+ "notes": "Lecture 5/6 round (docs/plan/lec56/BRIEF.md, 2026-11-04): applied in the German script v0.3 rewrite of chapters 5 and 6 and in the course; status stays 'recorded' until the English edition follows and the rewritten chapters are pinned in a script snapshot (then 'applied' with the applied_* fields)."
+}

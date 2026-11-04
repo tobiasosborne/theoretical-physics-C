@@ -1090,8 +1090,8 @@
    "name_en": "algebraic state",
    "meaning_de": "positives normiertes lineares Funktional auf einer Operatoralgebra",
    "meaning_en": "positive normalised linear functional on an operator algebra",
-   "depth": "fundament",
-   "first_fixed_in": "D23",
+   "depth": "kern",
+   "first_fixed_in": "C4",
    "status": "proposed",
    "sources": [
     {

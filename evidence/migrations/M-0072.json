@@ -1,0 +1,25 @@
+{
+ "schema_version": 1,
+ "id": "M-0072",
+ "status": "recorded",
+ "title": "vl06: Postulat 2 'positiver Operator rho mit tr(rho) = 1' without the trace-class condition in infinite dimension",
+ "legacy": [
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl06.tex",
+   "line": 36,
+   "file_sha256": "6abda03fd00b488fcf2968aff1295fcfcb89b4e93db086d969c6d96dcb034f6d",
+   "old_text": "Das ist ein positiver Operator $\\rho$ auf $\\mathcal{H}$, mit $\\tr(\\rho) = 1$.",
+   "new_text": null,
+   "gap_tjo": "Kern stays finite-dimensional (D22 as written); Vertiefung c04.v1 states that density operators are the positive trace-class operators with trace 1, that they are exactly the normal states, and that non-normal states exist (gap G-0003)."
+  }
+ ],
+ "reason": "Hazard H4.1: in infinite dimension 'trace 1' needs the trace class, and the positive normalised functionals on B(H) strictly contain the density operators (normal states); BR I Theorem 2.4.21 (c04.thm.normal) and c04.ex.singulaer.",
+ "evidence": {
+  "independent_check": "evidence/derivations/c04/DERIVATION.md#c04.cl.singulaer",
+  "provenance_ids": [],
+  "derivation": "evidence/derivations/c04/DERIVATION.md#c04.cl.singulaer"
+ },
+ "destination": "c04.v1",
+ "notes": "Lecture 5/6 round (docs/plan/lec56/BRIEF.md, 2026-11-04): applied in the German script v0.3 rewrite of chapters 5 and 6 and in the course; status stays 'recorded' until the English edition follows and the rewritten chapters are pinned in a script snapshot (then 'applied' with the applied_* fields)."
+}

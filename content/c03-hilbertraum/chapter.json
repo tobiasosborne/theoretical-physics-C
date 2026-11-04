@@ -51,6 +51,11 @@
       "file": "figures/spektren.tex"
     },
     {
+      "id": "c03.fig.diagonal",
+      "kind": "figure",
+      "file": "figures/diagonal.tex"
+    },
+    {
       "id": "c03.demo.kreuz",
       "kind": "demo",
       "still": "c03.fig.kreuz",

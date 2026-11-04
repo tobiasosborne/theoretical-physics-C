@@ -1,0 +1,610 @@
+% content/c04-quantentheorie/de.tex — Kapitel 4: Quantentheorie als probabilistische Theorie
+% (deutsche Leitfassung)
+%
+% Stand: der Stoff der sechsten Vorlesung (latex/lectures/de/vl06.tex, „Postulate der
+% Quantenmechanik“), 2026-11-04, Entscheidung D-C4 in docs/plan/lec56/BRIEF.md: Kern in endlicher
+% Dimension mit den Qubit-Beispielen, Vertiefungen nur für die Gefahren H4.1 (normale und
+% singuläre Zustände) und H4.3 (selbstadjungierter Hamiltonoperator).  Gleason und Busch,
+% Naimark, Instrumente und vollständige Positivität kommen später.
+% Wohin jede Zeile von vl06 gegangen ist: evidence/migrations/maps/vl06-map.json.
+% Die Postulate P0 bis P5 sind TJOs Wortlaut aus docs/plan/BRIEF.md:50-55 (Ledger c04.cl.p0 bis
+% c04.cl.p5, author-stipulated); die englische Fassung steht wörtlich in der englischen Ausgabe.
+% Die deutsche Fassung ist eine Übersetzung des Kapitelautors, nicht TJOs Wortlaut (GAP-TJO an
+% jeder Stelle).  Herleitungen: evidence/derivations/c04/DERIVATION.md, Zahlen nachgerechnet von
+% evidence/derivations/c04/check_c04.py.
+% Stimme: Sätze aus vl06.tex sind beibehalten, wo sie stimmen; Bemerkungen aus den Videos
+% (transcripts/clean/v07.md, v08.md bis 44:00) sind mit Zeitmarke kommentiert.
+% Hüte (CONV-HAT): Effektoperatoren, Projektoren, Hamiltonoperator, unitäre Operatoren und
+% Observablen tragen den Hut; Zustände rho, der Einsoperator \Id, Ket-Bras und die
+% Pauli-Matrizen nicht.  Der Buchstabe des Effektoperators ist offen (Kollision COL-F, BRIEF.md
+% schreibt E, vl06 F); \EffOp setzt vorerst F.
+
+\chapter{Quantentheorie als probabilistische Theorie}\label{c04}
+
+% Stimme: vl06.tex:3-5; v07 [03:49]-[05:36] („klassisch ist Wahrscheinlichkeit immer Ausdruck
+% fehlender Information“).
+Die Zahlen, die die Quantenmechanik als Ergebnis liefert, sind Wahrscheinlichkeiten oder,
+etwas allgemeiner, Erwartungswerte. Dass die Theorie überhaupt nur Wahrscheinlichkeiten liefert,
+ist der eigentliche Bruch mit der klassischen Physik. Klassisch ist eine Wahrscheinlichkeit stets
+Ausdruck fehlender Information; im Prinzip kann dort alles beliebig präzise sein.
+Quantenmechanisch ist sie fundamental, und es gibt Messungen, die sich nicht gemeinsam mit voller
+Präzision durchführen lassen.
+
+% Stimme: vl06.tex:7-13; v07 [05:36]-[10:00].  Gekürzt: Konfidenzintervalle, Nachbarlabor.
+Eine Wahrscheinlichkeit vergleicht man mit dem Experiment, indem man es genügend oft wiederholt
+und die relative Häufigkeit der Treffer bildet; einen Erwartungswert, indem man die Messwerte
+mittelt (Kapitel~\ref{c01}). Als Wiederholung „desselben“ Experiments gilt jede Durchführung nach
+demselben Verfahren, innerhalb gegebener Toleranzen; es muss nicht dieselbe Apparatur sein. In
+jedem Experiment unterscheidet man zwei Teile, die \emph{Präparation} und die \emph{Messung}
+(Kapitel~\ref{c00}, \defref{D1}). Die Theorie muss also mindestens dreierlei enthalten: Größen zur
+Beschreibung der Präparationen, Größen zur Beschreibung der Messungen und eine Formel, die jeder
+Kombination eine Wahrscheinlichkeit zuordnet.
+
+Genau diese drei Zutaten hat Kapitel~\ref{c02} für eine beliebige probabilistische Theorie
+eingeführt: einen Zustandsraum, die Effekte als affine Funktionen darauf und den Wert eines
+Effekts in einem Zustand als Wahrscheinlichkeit. Die Quantentheorie ist eine solche Theorie. Dieses
+Kapitel sagt, welche: Ihre Zustände und Effekte werden aus einem Hilbertraum gebaut, mit dem
+Werkzeug aus Kapitel~\ref{c03}.
+
+\section{Die Postulate}\label{c04.s1}
+
+% Stimme: v07 [10:00]-[11:56] („die Aussage, wir verstehen die Quantenmechanik nicht, ist
+% falsch“; „jedes Buch wählt eine andere Sammlung“).  vl06.tex:17-19 (greybox).
+\begin{greybox}[Zum Status der Postulate]
+  Man hört oft, wir verstünden die Quantenmechanik nicht. Das trifft es nicht: Wir beherrschen den
+  Formalismus, und wir haben seit über fünfzig Jahren Postulate, die uns die besten Modelle des
+  Universums liefern. Was wir nicht können, ist, sie weiter zu \emph{begründen}; sie sind uns von
+  der Natur gegeben. Jedes Lehrbuch wählt eine etwas andere Sammlung von Postulaten. Im Grunde sind
+  sie alle gleichwertig, aber die Gleichwertigkeit zu zeigen, kostet Arbeit.
+\end{greybox}
+
+Wir stellen die Postulate Schritt für Schritt auf, jedes spezieller als das vorige. Das erste
+kennen Sie aus Kapitel~\ref{c00}:
+% GAP-TJO: Die deutschen Fassungen von P0 bis P5 sind Übersetzungen des Kapitelautors aus
+% docs/plan/BRIEF.md:50-55, nicht TJOs Wortlaut (Ledger c04.cl.p0 bis c04.cl.p5, gap_tjo).
+% P0 wiederholt c00.eq.p0 wörtlich.
+\begin{equation}\label{c04.eq.p0}\claim{c04.cl.p0}{author-stipulated}
+  \begin{aligned}
+    &\text{P0.\ \tpcifenglish{Physical theories are probabilistic theories:}{Physikalische Theorien sind probabilistische Theorien:}} \\
+    &\text{\tpcifenglish{predictions in the form of probabilities.}{Vorhersagen in Form von Wahrscheinlichkeiten.}}
+  \end{aligned}
+\end{equation}
+Das nächste Postulat legt fest, woraus die Theorie gebaut wird.
+\begin{equation}\label{c04.eq.p1}\claim{c04.cl.p1}{author-stipulated}
+  \begin{aligned}
+    &\text{P1.\ \tpcifenglish{To every quantum mechanical system we assign a Hilbert space}{Jedem quantenmechanischen System ordnen wir einen Hilbertraum zu}} \\
+    &\text{\tpcifenglish{(this is morally part of the definition of the state space for a GPT).}{(das gehört dem Sinn nach zur Definition des Zustandsraums einer GPT).}}
+  \end{aligned}
+\end{equation}
+
+% Stimme: vl06.tex:24-34; v07 [15:58] („ein Postulat fehlt noch“: mehrere Teilchen), [19:49]
+% (Vollständigkeit), [23:01] (Wellenfunktion).  BRIEF.md:57 ((*): „Many-body QM is an extension of
+% this axiom, and introduces the tensor operation, direct sum.“).  Das Beispiel L^2(R^3) steht
+% als Hinweis; der Kern bleibt endlichdimensional (Entscheidung D4).
+Für ein \emph{Qubit} ist $\Hil = \mathbb{C}^2$, für ein \emph{Qudit} $\Hil = \mathbb{C}^d$. Für ein
+Teilchen im Raum ist es der Raum $\Ltwo{\mathbb{R}^3}$ der quadratintegrierbaren Funktionen; welcher
+Hilbertraum zu einem System gehört, sagt nicht die Theorie, sondern das Experiment, und
+Kapitel~5 geht diese Frage für ein Teilchen auf einer Geraden an. P1 spricht von \emph{einem}
+System. Den Hilbertraum mehrerer Systeme baut man aus denen der Teile, mit einem weiteren Rezept,
+dem Tensorprodukt; das kommt in Kapitel~12. Im Kern dieses Kapitels ist $\Hil$ wie in
+Kapitel~\ref{c03} endlichdimensional.
+
+\subsection{Zustände}\label{c04.s1.1}
+
+\begin{equation}\label{c04.eq.p2}\claim{c04.cl.p2}{author-stipulated}
+  \begin{aligned}
+    &\text{P2.\ \tpcifenglish{State space = positive linear functionals on}{Zustandsraum = positive lineare Funktionale auf}}\ \BdOp{\Hil}\ \text{\tpcifenglish{with norm 1.}{mit Norm 1.}} \\
+    &\text{\tpcifenglish{In the trace-class case these are density operators.}{Im Spurklassenfall sind das Dichteoperatoren.}} \\
+    &\text{\tpcifenglish{Extreme points}{Extremalpunkte}}\ \Rightarrow\ \text{\tpcifenglish{pure states.}{reine Zustände.}}
+  \end{aligned}
+\end{equation}
+Hier ist $\BdOp{\Hil}$ die Menge der Operatoren auf $\Hil$; in endlicher Dimension sind das alle
+Operatoren. Ein \emph{lineares Funktional} $\AlgSt$ ordnet jedem Operator $\op{A}$ linear eine Zahl
+$\AlgSt(\op{A})$ zu. Es heißt \emph{positiv}, wenn $\AlgSt(\op{A}) \geq 0$ für jeden positiven
+Operator $\op{A}$ ist. Für ein positives Funktional ist „Norm~1“ dasselbe wie $\AlgSt(\Id) = 1$;
+das ist die Normierung, die wir benutzen. Der Zustand ist also eine Vorschrift, die
+jeder Größe ihren Erwartungswert zuordnet. In endlicher Dimension ist jede solche Vorschrift durch
+einen Operator gegeben, den man mit der Spur auswertet.
+
+% Stimme: vl06.tex:36-41 (Postulat 2, „Zustand, bzw. Dichtematrix“).
+\tpcdef{D22}
+
+% Nicht in vl06: die Gleichwertigkeit mit P2 in TJOs Fassung (BRIEF.md:52).  Herleitung des
+% Kapitelautors (DERIVATION.md, c04.cl.funktionale).
+\begin{proposition}[Zustände sind Dichteoperatoren]\label{c04.prop.funktionale}\claim[proof-included]{c04.cl.funktionale}{derived}
+  Sei $\Hil$ endlichdimensional. Zu jedem positiven linearen Funktional $\AlgSt$ auf den Operatoren
+  mit $\AlgSt(\Id) = 1$ gibt es genau einen Dichteoperator $\rho$ mit
+  \begin{equation}\label{c04.eq.funktional}
+    \AlgSt(\op{A}) = \tr(\rho\, \op{A}) \qquad \text{\tpcifenglish{for every operator}{für jeden Operator}}\ \op{A} .
+  \end{equation}
+  Umgekehrt ist für jeden Dichteoperator $\rho$ die Vorschrift $\op{A} \mapsto \tr(\rho\,\op{A})$ ein
+  solches Funktional.
+\end{proposition}
+\begin{proof}
+  Sei $\{\ket{x}\}$ eine Orthonormalbasis. Wir setzen $\melem{y}{\rho}{x} = \AlgSt(\ketbra{x}{y})$;
+  das legt einen Operator $\rho$ fest. Nach Proposition~\ref{c03.prop.ketbra} ist
+  $\op{A} = \sum_{x,y} \melem{x}{\op{A}}{y} \ketbra{x}{y}$, also wegen der Linearität
+  $\AlgSt(\op{A}) = \sum_{x,y} \melem{x}{\op{A}}{y}\melem{y}{\rho}{x} = \tr(\rho\,\op{A})$. Für jeden
+  Vektor ist $\ketbra{\psi}{\psi}$ positiv, also mit Proposition~\ref{c03.prop.spur}
+  $\melem{\psi}{\rho}{\psi} = \tr(\rho\,\ketbra{\psi}{\psi}) = \AlgSt(\ketbra{\psi}{\psi}) \geq 0$: $\rho$ ist
+  positiv. Weiter ist $\tr(\rho) = \AlgSt(\Id) = 1$. Zwei Operatoren mit derselben Spur gegen jedes
+  $\ketbra{x}{y}$ haben dieselben Matrixelemente; also ist $\rho$ eindeutig. Umgekehrt ist
+  $\op{A} \mapsto \tr(\rho\,\op{A})$ linear, $\tr(\rho\,\Id) = 1$, und für positives $\op{A}$ mit
+  Spektralzerlegung $\op{A} = \sum_x a_x \ketbra{\phi_x}{\phi_x}$, $a_x \geq 0$, ist
+  $\tr(\rho\,\op{A}) = \sum_x a_x \melem{\phi_x}{\rho}{\phi_x} \geq 0$.
+\end{proof}
+
+P2 spricht vom „Spurklassenfall“. In endlicher Dimension ist das keine Einschränkung; in unendlich
+vielen Dimensionen gibt es positive normierte Funktionale, die von keinem Dichteoperator
+kommen\zoomref{c04.v1}.
+
+\begin{vertiefung}[id=c04.v1,
+    titel={Zustände in unendlich vielen Dimensionen},
+    wozu={Im Kern sind die positiven normierten Funktionale genau die Dichteoperatoren
+      (Proposition~\ref{c04.prop.funktionale}). P2 sagt „im Spurklassenfall“, und das ist eine
+      Einschränkung: In unendlich vielen Dimensionen gibt es Zustände, die von keinem
+      Dichteoperator kommen. Hier steht, welche Zustände die Dichteoperatoren sind, und ein
+      Zustand, der keiner ist.},
+    voraussetzung={Abschnitt~\ref{c04.s1.1}; Vertiefungen~\ref{c03.v1} und~\ref{c03.v5}
+      (beschränkte Operatoren). Der Kern braucht den Block nicht.},
+    zurueck={Die Dichteoperatoren sind die normalen Zustände. In endlicher Dimension sind das alle
+      Zustände; in unendlich vielen Dimensionen gibt es weitere, und der Kurs benutzt sie nicht.}]
+  % Gefahr H4.1 (docs/plan/research/curriculum/REPORT.md); GAP-TJO G-0003: ob der Kurs die
+  % Zustände als alle positiven normierten Funktionale auf B(H), als die normalen oder als beide
+  % einführt, ist TJOs Entscheidung.  Dieser Block stellt beides nebeneinander.
+  In unendlich vielen Dimensionen ist $\BdOp{\Hil}$ die Menge der beschränkten Operatoren
+  (Vertiefung~\ref{c03.v5}), und die \emph{Norm} $\norm{\op{T}}$ eines solchen Operators ist die
+  kleinste Zahl $C$ mit $\norm{\op{T}\psi} \leq C\norm{\psi}$ für alle $\ket{\psi}$. Ein lineares
+  Funktional $\AlgSt$ hat die Norm $\norm{\AlgSt} = \sup\{\abs{\AlgSt(\op{T})} : \norm{\op{T}} \leq 1\}$.
+  Für ein positives Funktional ist $\norm{\AlgSt} = \AlgSt(\Id)$ \srcref{bratteli-robinson-1}{S.~49};
+  „positiv mit Norm~1“ heißt also wie im Kern $\AlgSt(\Id) = 1$. Ein \emph{Dichteoperator} ist jetzt
+  ein positiver Operator $\rho$, für den die Reihe $\sum_x \melem{\phi_x}{\rho}{\phi_x}$ über eine
+  Orthonormalbasis konvergiert und den Wert $1$ hat; das sind die positiven Operatoren der
+  Spurklasse mit Spur $1$. Jeder Dichteoperator gibt wie in endlicher Dimension einen Zustand
+  $\op{A} \mapsto \tr(\rho\,\op{A})$. Welche Zustände so entstehen, sagt der folgende Satz von
+  Bratteli und Robinson; dabei heißt ein Zustand \emph{normal}, wenn er mit monoton wachsenden,
+  nach oben beschränkten Familien positiver Operatoren verträglich ist,
+  $\AlgSt(\sup_\alpha \op{A}_\alpha) = \sup_\alpha \AlgSt(\op{A}_\alpha)$, wobei $\sup_\alpha \op{A}_\alpha$ die
+  kleinste obere Schranke ist.
+
+  \begin{theorem}[Normale Zustände]\label{c04.thm.normal}\claim[proof-omitted]{c04.cl.normal}{source-quoted}
+    Ein Zustand $\AlgSt$ auf $\BdOp{\Hil}$ ist genau dann normal, wenn es einen Dichteoperator
+    $\rho$ gibt mit $\AlgSt(\op{A}) = \tr(\rho\,\op{A})$ für alle $\op{A}$.
+  \end{theorem}
+
+  Bratteli und Robinson beweisen den Satz für jede von-Neumann-Algebra, insbesondere für
+  $\BdOp{\Hil}$ \srcref{bratteli-robinson-1}{S.~76}. Dass es in unendlich vielen Dimensionen
+  Zustände gibt, die nicht normal sind, zeigt die folgende Konstruktion.
+
+  \begin{example}[Ein Zustand ohne Dichteoperator]\label{c04.ex.singulaer}\claim{c04.cl.singulaer}{derived}
+    Sei $\Hil = \elltwo$. Auf den Operatoren der Form $c\Id + \op{F}$, wobei $\op{F}$ nur endlich
+    viele linear unabhängige Bildvektoren hat, setzen wir $\AlgSt_0(c\Id + \op{F}) = c$. Das ist
+    wohldefiniert, denn $\Id$ hat unendlich viele linear unabhängige Bildvektoren. Für einen
+    Vektor $\ket{v}$ der Norm $1$ mit $\op{F}\ket{v} = 0$, den es gibt, weil $\op{F}$ einen unendlich
+    dimensionalen Kern hat, ist $\norm{(c\Id + \op{F})v} = \abs{c}$; also ist
+    $\abs{\AlgSt_0(c\Id + \op{F})} \leq \norm{c\Id + \op{F}}$, und $\AlgSt_0$ hat die Norm $1$. Nach
+    dem Satz von Hahn und Banach lässt sich $\AlgSt_0$ zu einem linearen Funktional $\AlgSt$ auf
+    ganz $\BdOp{\Hil}$ mit derselben Norm fortsetzen \srcref{reed-simon-1}{S.~77}. Wegen
+    $\AlgSt(\Id) = 1 = \norm{\AlgSt}$ ist $\AlgSt$ positiv, also ein Zustand. Er gibt jedem
+    eindimensionalen Projektor den Wert $\AlgSt(\ketbra{\psi}{\psi}) = 0$. Hätte er einen
+    Dichteoperator $\rho$, so wäre $\melem{\phi_x}{\rho}{\phi_x} = 0$ für jeden Vektor einer
+    Orthonormalbasis, also $\tr(\rho) = 0$, ein Widerspruch.
+  \end{example}
+
+  Ein solcher Zustand gibt jedem Detektor, der nur endlich viele Dimensionen „sieht“, die
+  Wahrscheinlichkeit null. Er ist kein Vektorzustand auf diesem Hilbertraum und keine endliche oder
+  abzählbare Mischung von solchen. Seine Existenzbegründung ist nicht konstruktiv: Die Fortsetzung
+  nach Hahn und Banach wird nicht explizit angegeben. Für Systeme mit
+  endlich vielen Teilchen benutzt der Kurs nur die normalen Zustände, also die Dichteoperatoren;
+  das ist der „Spurklassenfall“ in P2.
+\end{vertiefung}
+
+% Stimme: vl06.tex:43-45; v07 [24:47]-[32:10] („Wellenfunktionen sind nicht die Zustände“;
+% „geschlossene Systeme gibt es in der Physik nicht“).  Gefahr H3.2.
+Hier ist eine Warnung angebracht: Der Hilbertraum beschreibt \emph{nicht} unmittelbar die
+Zustände. Viele Bücher sagen, die Zustände seien die Wellenfunktionen; das stimmt so nicht. Der
+Hilbertraum ist der Raum, \emph{in dem} wir Zustände definieren; die Zustände selbst sind
+Operatoren. Die Wellenfunktionen beschreiben nur die reinen Zustände. Ein System, das mit seiner
+Umgebung wechselwirkt, ist im Allgemeinen nicht in einem reinen Zustand, und völlig isolierte
+Systeme gibt es in der Physik nicht: Das elektromagnetische Feld koppelt immer an. Gemischte
+Zustände sind deshalb der Normalfall, nicht ein Zugeständnis an die mathematische Allgemeinheit.
+
+% BRIEF.md:52 „Extreme points => pure states“; D4 (Kapitel 2): rein = Extremalpunkt.
+% vl06.tex:47-52 (eindimensionaler Projektor, Normierung über die Spur); v07 [32:10] (Rang).
+Die Dichteoperatoren bilden einen Zustandsraum im Sinn von \defref{D3}: Mischungen
+$\lambda\rho_1 + (1-\lambda)\rho_2$ mit $0 \leq \lambda \leq 1$ sind wieder Dichteoperatoren. Welche
+davon rein sind, also nach \defref{D4} keine echten Mischungen, sagt die folgende Proposition.
+
+\begin{proposition}[Reine Zustände]\label{c04.prop.rein}\claim[proof-included]{c04.cl.rein}{derived}
+  Sei $\Hil$ endlichdimensional. Ein Dichteoperator ist genau dann rein, wenn er die Form
+  $\rho = \ketbra{\psi}{\psi}$ mit $\norm{\psi} = 1$ hat. Jeder Dichteoperator ist eine Mischung
+  reiner Zustände: Mit seiner Spektralzerlegung ist
+  \begin{equation}\label{c04.eq.mischung}
+    \rho = \sum_x p_x \ketbra{\phi_x}{\phi_x} ,
+    \qquad p_x \geq 0 , \quad \sum_x p_x = 1 .
+  \end{equation}
+\end{proposition}
+\begin{proof}
+  Nach Satz~\ref{c03.thm.spektral} hat $\rho$ eine Spektralzerlegung; die Eigenwerte sind nach
+  Gleichung~\eqref{c03.eq.orte} nicht negativ, und ihre Summe ist $\tr(\rho) = 1$. Das ist
+  Gleichung~\eqref{c04.eq.mischung}. Hat $\rho$ zwei Eigenwerte $p_x > 0$, so ist
+  Gleichung~\eqref{c04.eq.mischung} eine echte Mischung verschiedener Zustände, und $\rho$ ist nicht
+  rein. Also ist ein reiner Zustand von der Form $\ketbra{\phi}{\phi}$. Umgekehrt sei
+  $\ketbra{\psi}{\psi} = \lambda\rho_1 + (1-\lambda)\rho_2$ mit $0 < \lambda < 1$. Für jedes
+  $\ket{\phi}$ mit $\braket{\psi}{\phi} = 0$ ist dann
+  $0 = \lambda\melem{\phi}{\rho_1}{\phi} + (1-\lambda)\melem{\phi}{\rho_2}{\phi}$, und beide Summanden
+  sind nicht negativ, also null. Schreibt man $\rho_1 = \sum_x q_x \ketbra{\xi_x}{\xi_x}$, so heißt
+  das $\sum_x q_x \abs{\braket{\xi_x}{\phi}}^2 = 0$: Jeder Eigenvektor $\ket{\xi_x}$ mit $q_x > 0$
+  steht senkrecht auf allen Vektoren, die senkrecht auf $\ket{\psi}$ stehen, ist also ein Vielfaches
+  von $\ket{\psi}$. Damit ist $\rho_1 = c\ketbra{\psi}{\psi}$, und $\tr(\rho_1) = 1$ gibt $c = 1$;
+  ebenso $\rho_2$. Die Normierung: Nach Gleichung~\eqref{c03.eq.spur-ketbra} ist
+  $\tr(\ketbra{\psi}{\psi}) = \braket{\psi}{\psi}$, und das ist $1$ genau dann, wenn
+  $\norm{\psi} = 1$.
+\end{proof}
+
+Ein reiner Zustand ist also durch einen normierten Vektor $\ket{\psi}$ gegeben, seine
+\emph{Wellenfunktion}; $\ket{\psi}$ und $e^{i\alpha}\ket{\psi}$ geben denselben Zustand. Man nennt
+$\ketbra{\psi}{\psi}$ auch einen eindimensionalen Projektor. Das Wort „eindimensional“ meint dabei
+keine Raumdimension, sondern die Dimension des Bildes: Der Eigenraum zum Eigenwert $1$ ist eindimensional.
+Die übliche Redeweise „das System ist im Zustand $\ket{0}$“ ist bequem, aber ungenau: Ein Zustand
+charakterisiert ein Präparationsverfahren, kein einzelnes System.
+
+% Stimme: vl06.tex:54-61; v07 [33:00]-[39:03] („drei reelle Zahlen“).  Die Verbindung zur Kugel
+% aus Kapitel 2 ist eine Rechnung des Kapitelautors (DERIVATION.md, c04.cl.qubit-zustaende).
+\begin{example}[Zustände eines Qubits]\label{c04.ex.qubit-zustaende}\claim{c04.cl.qubit-zustaende}{derived}
+  Für $\Hil = \mathbb{C}^2$ ist $\rho$ eine positive $2\times 2$-Matrix mit Spur eins. Positivität
+  verlangt $\rho_{00} = p \geq 0$, die Spurbedingung erzwingt $\rho_{11} = 1-p$, und weil auch
+  $\rho_{11}\geq 0$ sein muss, liegt $p$ zwischen null und eins. Weil $\rho$ hermitesch ist, sind die
+  Nebendiagonaleinträge zueinander komplex konjugiert:
+  \begin{equation}\label{c04.eq.qubit}
+    \rho = \begin{pmatrix} p & x \\ x^* & 1-p \end{pmatrix} .
+  \end{equation}
+  Ausgeschöpft ist die Positivität damit nicht: Sie verlangt, dass beide Eigenwerte nicht negativ
+  sind, und das heißt hier
+  \begin{equation}\label{c04.eq.det}
+    \det\rho = p(1-p) - \abs{x}^2 \geq 0 ,
+    \qquad \text{\tpcifenglish{that is}{das heißt}} \qquad
+    \bigl(p - \tfrac12\bigr)^2 + \abs{x}^2 \leq \tfrac14 .
+  \end{equation}
+  Ein Qubit-Zustand hängt also von drei reellen Zahlen ab, $p$, $\real x$ und $\imag x$, und sie
+  liegen in einer Kugel vom Radius $\tfrac12$. Mit $r_z = 2p - 1$ und $x = \tfrac12(r_x - i r_y)$ ist
+  das die Zustandskugel $\norm{\vb{r}} \leq 1$ aus Proposition~\ref{c02.prop.bloch}. Die reinen
+  Zustände liegen auf dem Rand, $\det\rho = 0$.
+\end{example}
+
+\begin{exercise}[Die Eigenwerte]\label{c04.exc.eigenwerte}\claim{c04.cl.eigenwerte}{derived}
+  Berechnen Sie die beiden Eigenwerte der Matrix~\eqref{c04.eq.qubit} und leiten Sie daraus die
+  Bedingung~\eqref{c04.eq.det} her.
+\end{exercise}
+\begin{solution}
+  Die Eigenwerte sind die Nullstellen von
+  $\det(\rho - \lambda\Id) = \lambda^2 - \lambda + p(1-p) - \abs{x}^2$, also
+  $\lambda_\pm = \tfrac12 \pm \sqrt{\tfrac14 - p(1-p) + \abs{x}^2}$. Ihr Produkt ist $\det\rho$ und
+  ihre Summe $1$. Beide sind genau dann nicht negativ, wenn ihr Produkt nicht negativ ist, also
+  $p(1-p) - \abs{x}^2 \geq 0$. Wegen $p(1-p) = \tfrac14 - (p - \tfrac12)^2$ ist das die zweite Form.
+\end{solution}
+
+\subsection{Messungen}\label{c04.s1.2}
+
+\begin{equation}\label{c04.eq.p3}\claim{c04.cl.p3}{author-stipulated}
+  \begin{aligned}
+    &\text{P3.\ \tpcifenglish{Detectors = dual of state space = operators}{Detektoren = Dual des Zustandsraums = Operatoren}}\ \op{\EffOp}\ \text{\tpcifenglish{with}{mit}}\ 0 \leq \op{\EffOp} \leq \Id .
+  \end{aligned}
+\end{equation}
+Ein Detektor ist ein Messapparat mit den beiden Ansprechmöglichkeiten „ja“ (Treffer) und „nein“,
+also eine Ja-Nein-Frage im Sinn von Kapitel~\ref{c02}.
+% Stimme: vl06.tex:66; v07 [52:53]-[57:08] („Operator-Ungleichungen sind eine
+% Verallgemeinerung“; „die Eins ist der Einsoperator“).
+Die Schreibweise $0 \leq \op{\EffOp} \leq \Id$ ist erklärungsbedürftig. Für Operatoren bedeutet
+$\op{A} \leq \op{B}$, dass $\op{B} - \op{A}$ positiv ist. P3 verlangt also \emph{zwei} Bedingungen,
+$\op{\EffOp} \geq 0$ \emph{und} $\Id - \op{\EffOp} \geq 0$, und rechts steht der Einsoperator, nicht
+die Zahl eins.
+
+\tpcdef{D24}
+
+Das erste Gleichheitszeichen in P3 sagt, wo diese Operatoren herkommen. In Kapitel~\ref{c02} ist ein
+Effekt eine affine Funktion auf dem Zustandsraum mit Werten zwischen $0$ und $1$ (\defref{D2}). Die
+Effekte des Zustandsraums der Dichteoperatoren sind genau die Effektoperatoren:
+
+% Nicht in vl06; Herleitung des Kapitelautors (DERIVATION.md, c04.cl.effekte).  GAP-TJO G-0011:
+% ob die Hypothese der Nichteinschränkung (D12) Teil von P3 ist; die Proposition zeigt nur, dass
+% die Effekte des Zustandsraums die Effektoperatoren sind.
+\begin{proposition}[Effekte sind Effektoperatoren]\label{c04.prop.effekte}\claim[proof-included]{c04.cl.effekte}{derived}
+  Sei $\Hil$ endlichdimensional.
+  \begin{enumerate}
+    \item Für einen hermiteschen Operator $\op{\EffOp}$ liegt $\tr(\rho\,\op{\EffOp})$ genau dann für
+      jeden Dichteoperator $\rho$ zwischen $0$ und $1$, wenn $0 \leq \op{\EffOp} \leq \Id$.
+    \item Jede affine Funktion $f$ auf den Dichteoperatoren mit Werten zwischen $0$ und $1$ hat die
+      Form $f(\rho) = \tr(\rho\,\op{\EffOp})$ mit genau einem Effektoperator $\op{\EffOp}$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  Zu~1: Mit $\rho = \ketbra{\psi}{\psi}$ ist $\tr(\rho\,\op{\EffOp}) = \melem{\psi}{\op{\EffOp}}{\psi}$
+  (Gleichung~\eqref{c03.eq.zyklisch}); liegt das für jeden normierten Vektor in $[0, 1]$, so sind
+  $\op{\EffOp}$ und $\Id - \op{\EffOp}$ positiv. Umgekehrt ist mit Gleichung~\eqref{c04.eq.mischung}
+  $\tr(\rho\,\op{\EffOp}) = \sum_x p_x \melem{\phi_x}{\op{\EffOp}}{\phi_x}$ eine Mischung von Zahlen
+  aus $[0, 1]$. Zu~2: Wir setzen $f$ auf die positiven Operatoren fort, durch $g(0) = 0$ und
+  $g(\op{P}) = \tr(\op{P})\, f\bigl(\op{P}/\tr(\op{P})\bigr)$ für $\op{P} \neq 0$. Weil $f$ affin ist,
+  ist $g(\op{P} + \op{Q}) = g(\op{P}) + g(\op{Q})$ und $g(c\op{P}) = c\, g(\op{P})$ für $c \geq 0$.
+  Jeder hermitesche Operator ist nach seiner Spektralzerlegung eine Differenz zweier positiver,
+  $\op{A} = \op{P} - \op{Q}$, und $g(\op{A}) = g(\op{P}) - g(\op{Q})$ hängt nicht von der Wahl ab: Aus
+  $\op{P} - \op{Q} = \op{P}' - \op{Q}'$ folgt $\op{P} + \op{Q}' = \op{P}' + \op{Q}$. Jeder Operator ist
+  $\op{A} = \op{A}_1 + i\op{A}_2$ mit hermiteschen $\op{A}_1 = \tfrac12(\op{A} + \op{A}\adj)$ und
+  $\op{A}_2 = \tfrac{1}{2i}(\op{A} - \op{A}\adj)$, und $\AlgSt(\op{A}) = g(\op{A}_1) + i\,g(\op{A}_2)$
+  ist linear. Wie im Beweis von Proposition~\ref{c04.prop.funktionale} gibt es genau einen Operator
+  $\op{\EffOp}$ mit $\AlgSt(\op{A}) = \tr(\op{\EffOp}\,\op{A})$; er ist hermitesch, weil $\AlgSt$ auf
+  hermiteschen Operatoren reell ist. Auf den Dichteoperatoren ist $\AlgSt = f$, und nach~1 ist
+  $0 \leq \op{\EffOp} \leq \Id$.
+\end{proof}
+
+% Stimme: vl06.tex:69-80; v07 [57:08]-[67:09] („die Z-Messung ist real durchführbar“; „Qubits
+% modellieren Systeme mit Drehimpuls“).
+\begin{example}[Die Z-Messung am Qubit]\label{c04.ex.z-messung}\claim{c04.cl.z-messung}{derived}
+  Die Standardmessung auf heutigen Quantenrechnern ist die Z-Messung, der Detektor
+  \begin{equation}\label{c04.eq.z}
+    \op{\EffOp} = \ketbra{0}{0} = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix} .
+  \end{equation}
+  Beide Bedingungen sind zu prüfen. $\op{\EffOp}$ ist ein Projektor und damit positiv
+  (Proposition~\ref{c03.prop.positiv}). Getrennt davon ist
+  $\Id - \op{\EffOp} = \ketbra{1}{1}$ ebenfalls ein Projektor, also positiv. Erst jetzt dürfen wir
+  $\op{\EffOp}$ einen Detektor nennen. Physikalisch beschreiben Qubits oft einen Drehimpuls, etwa
+  einen Spin~$\tfrac12$; ist $\ket{0}$ der Zustand mit der $z$-Komponente $+\hbar/2$, so fragt dieser
+  Detektor, ob die Messung der $z$-Komponente diesen Wert liefert.
+\end{example}
+
+\subsection{Die Bornsche Regel}\label{c04.s1.3}
+
+\begin{equation}\label{c04.eq.p4}\claim{c04.cl.p4}{author-stipulated}
+  \begin{aligned}
+    &\text{P4.\ \tpcifenglish{Born rule = probability of detection for a state prepared}{Bornsche Regel = Wahrscheinlichkeit des Ansprechens für einen Zustand, präpariert}} \\
+    &\text{\tpcifenglish{as density operator}{als Dichteoperator}}\ \rho\ \text{\tpcifenglish{is}{, ist}}\ \tr(\rho\, \op{\EffOp}) .
+  \end{aligned}
+\end{equation}
+
+\tpcdef{D26}
+
+% vl06.tex:83 (Zusatz über reine Zustände) und 99-104 (Rechnung mit der Zyklizität).
+Für einen reinen Zustand $\rho = \ketbra{\psi}{\psi}$ ist das keine weitere Annahme, sondern eine
+Rechnung mit der Zyklizität der Spur, Gleichung~\eqref{c03.eq.zyklisch}:
+\begin{equation}\label{c04.eq.born-rein}\claim{c04.cl.born-rein}{derived}
+  \tr\bigl(\ketbra{\psi}{\psi}\op{\EffOp}\bigr) = \tr\bigl(\bra{\psi}\op{\EffOp}\ket{\psi}\bigr) = \melem{\psi}{\op{\EffOp}}{\psi} .
+\end{equation}
+Ist $\op{\EffOp} = \ketbra{\phi}{\phi}$ ein eindimensionaler Projektor, so ist das
+$\abs{\braket{\phi}{\psi}}^2$; in dieser Form steht die Bornsche Regel in den meisten Lehrbüchern.
+% Stimme: v07 [67:09] („hier Postulat 2, hier Postulat 3, hier Postulat 4“).
+Machen Sie es sich am Anfang zur Gewohnheit, bei jeder Rechnung ausdrücklich zu sagen, welches
+Postulat Sie gerade benutzen.
+
+\begin{example}[Ansprechhäufigkeit der Z-Messung]\label{c04.ex.born}\claim{c04.cl.born}{derived}
+  Mit dem Zustand~\eqref{c04.eq.qubit} und dem Detektor~\eqref{c04.eq.z} ist
+  \begin{equation}\label{c04.eq.born-z}
+    \rho\,\op{\EffOp} = \begin{pmatrix} p & 0 \\ x^* & 0 \end{pmatrix} ,
+    \qquad
+    \tr(\rho\,\op{\EffOp}) = p .
+  \end{equation}
+  Nach P4 erhalten wir mit Wahrscheinlichkeit $p$ einen Treffer. Das rechtfertigt, die
+  Diagonaleinträge einer Dichtematrix als Wahrscheinlichkeiten zu lesen, und zwar für die Messung
+  in der Basis, in der man die Matrix hinschreibt.
+\end{example}
+
+% Stimme: vl06.tex:106-118; v08 [00:00]-[20:00] (Observable als Familie F(S)).  vl06 nennt die
+% Familie „Observable“; der Kern sagt „Messung“ wie D9 in Kapitel 2 (G-0074 offen).
+Ein Messapparat liefert oft mehr als ein Ja oder Nein, nämlich eines von mehreren Ergebnissen $x$
+aus einer Ergebnismenge $\Outcomes$. Auf Ja-Nein-Fragen lässt sich das zurückführen: Für jedes
+Ergebnis fragt man, ob es eingetreten ist. Die zugehörigen Effektoperatoren $\op{\EffOp}_x$ bilden
+eine Messung im Sinn von \defref{D24}, und die Bornsche Regel liefert eine
+Wahrscheinlichkeitsverteilung auf $\Outcomes$:
+\begin{equation}\label{c04.eq.verteilung}\claim{c04.cl.verteilung}{derived}
+  \tr(\rho\,\op{\EffOp}_x) \geq 0 ,
+  \qquad
+  \sum_{x \in \Outcomes} \tr(\rho\,\op{\EffOp}_x) = \tr\Bigl(\rho \sum_{x} \op{\EffOp}_x\Bigr) = \tr(\rho) = 1 .
+\end{equation}
+Das ist Gleichung~\eqref{c02.eq.messung} aus Kapitel~\ref{c02}. Die Frage „liegt das Ergebnis in der
+Teilmenge $S$?“ hat den Effektoperator $\sum_{x \in S} \op{\EffOp}_x$. Für $S = \Outcomes$ ist das $\Id$:
+Irgendein Ergebnis tritt sicher ein; deshalb nimmt man auch „kein Treffer“ als Ergebnis in
+$\Outcomes$ auf.
+
+\begin{example}[Ein Detektor mit Wirkungsgrad]\label{c04.ex.wirkungsgrad}\claim{c04.cl.wirkungsgrad}{derived}
+  Ein Detektor, der den Zustand $\ket{0}$ nur mit Wahrscheinlichkeit $q$ meldet, $0 < q < 1$, und
+  im Zustand $\ket{1}$ nie anspricht, hat den Effektoperator $\op{\EffOp} = q\ketbra{0}{0}$: Seine Eigenwerte $q$ und $0$ liegen
+  zwischen $0$ und $1$. Zusammen mit $\Id - \op{\EffOp}$ ist er eine Messung mit zwei Ergebnissen, und
+  im Zustand~\eqref{c04.eq.qubit} spricht er mit Wahrscheinlichkeit $q p$ an. Er ist kein
+  Projektor, denn $\op{\EffOp}^2 = q^2 \ketbra{0}{0} \neq \op{\EffOp}$.
+\end{example}
+
+% vl06.tex:118-124; Gefahr H4.4: „Observablen sind hermitesche Operatoren“ ist der projektorwertige
+% Spezialfall.  Die Umkehrung über die Spektralzerlegung ist eine Herleitung des Kapitelautors.
+Sind die Ergebnisse reelle Zahlen, so ist ihr Erwartungswert (\defref{D55})
+\begin{equation}\label{c04.eq.erwartung}\claim{c04.cl.erwartung}{derived}
+  \sum_{x \in \Outcomes} x\, \tr(\rho\,\op{\EffOp}_x) = \tr(\rho\, \op{A}) ,
+  \qquad
+  \op{A} = \sum_{x \in \Outcomes} x\, \op{\EffOp}_x ,
+\end{equation}
+und $\op{A}$ ist hermitesch. Im projektorwertigen Fall gilt auch die Umkehrung: Die Messung ist
+schon durch $\op{A}$ bestimmt.
+
+\begin{proposition}[Projektorwertige Messungen und hermitesche Operatoren]\label{c04.prop.pvm}\claim[proof-included]{c04.cl.pvm}{derived}
+  Sei $\Hil$ endlichdimensional.
+  \begin{enumerate}
+    \item Ist $\{\op{P}_x\}_{x \in \Outcomes}$ eine projektorwertige Messung mit verschiedenen reellen
+      Ergebnissen $x$, so ist $\op{P}_x\op{P}_y = 0$ für $x \neq y$, und $\op{A} = \sum_x x\,\op{P}_x$
+      ist hermitesch mit den Eigenwerten $x$, für die $\op{P}_x \neq 0$ ist; $\op{P}_x$ ist der
+      Projektor auf den Eigenraum zu $x$.
+    \item Umgekehrt ist für jeden hermiteschen Operator $\op{A}$ mit den verschiedenen Eigenwerten
+      $\lambda$ die Familie der Projektoren $\op{P}_\lambda$ auf die Eigenräume eine projektorwertige
+      Messung mit $\op{A} = \sum_\lambda \lambda\,\op{P}_\lambda$.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  Zu~1: Sei $\ket{v} = \op{P}_x\ket{v}$. Dann ist
+  $\braket{v}{v} = \sum_y \melem{v}{\op{P}_y}{v} = \braket{v}{v} + \sum_{y \neq x} \norm{\op{P}_y v}^2$,
+  denn $\melem{v}{\op{P}_y}{v} = \braket{\op{P}_y v}{\op{P}_y v}$ für einen Projektor. Also ist
+  $\op{P}_y\ket{v} = 0$ für $y \neq x$, und weil jedes $\op{P}_x\ket{w}$ ein solches $\ket{v}$ ist,
+  folgt $\op{P}_y\op{P}_x = 0$. Damit ist $\op{A}\op{P}_x = x\,\op{P}_x$: Jeder von null verschiedene
+  Vektor im Bild von $\op{P}_x$ ist Eigenvektor zum Eigenwert $x$. Jeder Vektor ist
+  $\ket{w} = \sum_x \op{P}_x\ket{w}$, eine Summe solcher Eigenvektoren; ist $\op{A}\ket{w} = \lambda\ket{w}$,
+  so gibt Anwenden von $\op{P}_x$ die Gleichung $x\op{P}_x\ket{w} = \lambda\op{P}_x\ket{w}$, und
+  $\ket{w}$ liegt im Bild von $\op{P}_\lambda$. Hermitesch ist $\op{A}$ als reelle Summe hermitescher
+  Operatoren. Zu~2: Nach Satz~\ref{c03.thm.spektral} ist
+  $\op{A} = \sum_x a_x\ketbra{\phi_x}{\phi_x}$; der Projektor auf den Eigenraum zu $\lambda$ ist
+  $\op{P}_\lambda = \sum_{x: a_x = \lambda} \ketbra{\phi_x}{\phi_x} = f_\lambda(\op{A})$ mit
+  $f_\lambda(a) = 1$ für $a = \lambda$ und $0$ sonst, hängt also nach
+  Proposition~\ref{c03.prop.funktion} nicht von der Eigenbasis ab. Die $\op{P}_\lambda$ sind
+  Projektoren mit Summe $\Id$, und $\sum_\lambda \lambda\op{P}_\lambda = \op{A}$.
+\end{proof}
+
+% vl06.tex:124 („Man liest deshalb häufig als Definition ...“).
+Deshalb liest man häufig als Definition, dass die Observablen genau die hermiteschen Operatoren
+sind. Das ist der projektorwertige Spezialfall: Messungen wie die aus
+Beispiel~\ref{c04.ex.wirkungsgrad} sind darin nicht enthalten.
+
+\section{Zeitentwicklung}\label{c04.s2}
+
+% Stimme: vl06.tex:126-128; v08 [20:00]-[30:00].
+Ein Zustand charakterisiert nicht ein einzelnes System mit irgendwie veränderlichen Eigenschaften,
+sondern ein Präparationsverfahren, das zu jeder beliebigen Zeit in Gang gesetzt werden kann. Wir
+betrachten hier ein abgeschlossenes System, dessen Bedingungen sich nicht mit der Zeit ändern.
+Dann ist es egal, ob Präparation und Messung beide etwas später durchgeführt werden; das
+Einzige, was zählt, ist der \emph{relative} Zeitversatz. Das ist eine Annahme über das System,
+keine Folge der Reproduzierbarkeit: Ein von außen zeitabhängig angetriebenes System erfüllt sie
+nicht.
+\begin{equation}\label{c04.eq.p5}\claim{c04.cl.p5}{author-stipulated}
+  \begin{aligned}
+    &\text{P5.\ \tpcifenglish{That is it; dynamics are symmetries. But let us add, as in the notes,}{Das ist alles; Dynamik sind Symmetrien. Fügen wir aber, wie im Skript,}} \\
+    &\text{\tpcifenglish{the specification of the Heisenberg/Schroedinger dynamics.}{die Angabe der Heisenberg-/Schrödinger-Dynamik hinzu.}}
+  \end{aligned}
+\end{equation}
+Mit P0 bis P4 wären wir im Prinzip fertig: Ein Experiment mit verzögerter Messung ist einfach ein
+Experiment mit einer anderen Messung. Weil Zeitverschiebungen aber ständig auftreten, geben wir
+die Vorschrift dafür explizit an, für die umkehrbare Dynamik eines abgeschlossenen Systems mit
+zeitunabhängigem Hamiltonoperator. Sie benutzt den Operator $\op{U}_t$ aus
+Gleichung~\eqref{c03.eq.zeitentwicklung}.
+
+% vl06.tex:130-136 (Postulat 5) und 138 (Hermitezität nachgetragen); Gefahr H4.3.
+Jede Systemsorte ist weiter charakterisiert durch einen hermiteschen Operator $\op{\Ham}$, ihren
+\emph{Hamiltonoperator}, der den \emph{Zeitentwicklungsoperator}
+$\op{U}_t = e^{-\frac{it}{\hbar}\op{\Ham}}$ bestimmt. Wendet man in einem Experiment die Messung mit
+einer Verzögerung $t$ an, so erhält man statt $\tr(\rho\,\op{\EffOp})$
+\begin{equation}\label{c04.eq.dynamik}\claim{c04.cl.dynamik}{derived}
+  \tr\bigl(\op{U}_t\, \rho\, \op{U}_t\adj\, \op{\EffOp}\bigr) = \tr\bigl(\rho\, \op{U}_t\adj \op{\EffOp}\, \op{U}_t\bigr) .
+\end{equation}
+Die Gleichung folgt aus der Zyklizität der Spur. Ihre beiden Seiten entsprechen zwei
+gleichwertigen Auffassungen der Zeitentwicklung. Links liegt es nahe,
+$\rho_t = \op{U}_t\, \rho\, \op{U}_t\adj$ als zeitabhängigen Zustand einzuführen und die Messungen
+als zeitunabhängig zu betrachten; das ist das \emph{Schrödingerbild}. Für reine Zustände heißt das
+$\ket{\psi_t} = \op{U}_t\ket{\psi}$. Rechts liegt es nahe, zeitabhängige Effektoperatoren und
+Observablen $\op{A}_t = \op{U}_t\adj \op{A}\, \op{U}_t$ bei festem Zustand einzuführen; das ist das
+\emph{Heisenbergbild}. Beide Bilder liefern dieselben Wahrscheinlichkeiten; welches man benutzt,
+ist eine Frage der Bequemlichkeit.
+
+Dass $\op{\Ham}$ hermitesch ist, ist wesentlich\zoomref{c04.v2}: Es gewährleistet, dass $\op{U}_t$ für
+alle $t$ unitär ist. Dann sind $\rho_t$ und $\op{U}_t\adj\op{\EffOp}\,\op{U}_t$ wieder ein Zustand
+und ein Detektor:
+
+\begin{proposition}[Zeitentwicklung erhält Zustände und Detektoren]\label{c04.prop.dynamik}\claim[proof-included]{c04.cl.dynamik-zulaessig}{derived}
+  Sei $\op{U}$ unitär. Ist $\rho$ ein Dichteoperator, so auch $\op{U}\rho\,\op{U}\adj$; ist
+  $0 \leq \op{\EffOp} \leq \Id$, so auch $0 \leq \op{U}\adj\op{\EffOp}\op{U} \leq \Id$. Die Abbildung
+  $\rho \mapsto \op{U}\rho\,\op{U}\adj$ bildet Mischungen auf Mischungen und reine Zustände auf reine
+  Zustände ab.
+\end{proposition}
+\begin{proof}
+  Für jeden Vektor ist
+  $\melem{\psi}{\op{U}\rho\,\op{U}\adj}{\psi} = \melem{\op{U}\adj\psi}{\rho}{\op{U}\adj\psi} \geq 0$,
+  und $\tr(\op{U}\rho\,\op{U}\adj) = \tr(\rho\,\op{U}\adj\op{U}) = \tr(\rho) = 1$. Ebenso ist
+  $\melem{\psi}{\op{U}\adj\op{\EffOp}\op{U}}{\psi} = \melem{\op{U}\psi}{\op{\EffOp}}{\op{U}\psi} \geq 0$,
+  und dasselbe für $\Id - \op{U}\adj\op{\EffOp}\op{U} = \op{U}\adj(\Id - \op{\EffOp})\op{U}$. Die
+  Abbildung ist linear, und $\op{U}\ketbra{\psi}{\psi}\op{U}\adj = \ketbra{\op{U}\psi}{\op{U}\psi}$
+  mit $\norm{\op{U}\psi} = \norm{\psi}$.
+\end{proof}
+
+\begin{vertiefung}[id=c04.v2,
+    titel={Unbeschränkte Hamiltonoperatoren},
+    wozu={Im Kern ist $\op{\Ham}$ eine hermitesche Matrix, und $e^{-it\op{\Ham}/\hbar}$ ist eine Summe
+      über die Eigenvektoren. Die wichtigsten Hamiltonoperatoren sind aber unbeschränkt. Hier steht,
+      warum dann „hermitesch“ nicht mehr reicht und was an seine Stelle tritt.},
+    voraussetzung={Abschnitt~\ref{c04.s2}; Vertiefungen~\ref{c03.v5} und~\ref{c03.v7} (symmetrisch
+      und selbstadjungiert, Spektralsatz). Der Kern braucht den Block nicht; Kapitel~5 und~9 nehmen
+      das Thema wieder auf.},
+    zurueck={Für einen unbeschränkten Hamiltonoperator muss es heißen: selbstadjungiert. Genau die
+      selbstadjungierten Operatoren erzeugen unitäre Zeitentwicklungen.}]
+  % Gefahr H4.3: vl06.tex:138 „Nur dann [hermitesch] ist U_t unitär“; für unbeschränkte H reicht
+  % symmetrisch nicht, selbstadjungiert ist nötig (Satz von Stone).
+  Für einen unbeschränkten Operator unterscheidet Vertiefung~\ref{c03.v5} symmetrisch und
+  selbstadjungiert, und nur für selbstadjungierte gilt der allgemeine Spektralsatz,
+  Satz~\ref{c03.thm.spektral-allgemein}. Mit ihm definiert man
+  $e^{-it\op{\Ham}/\hbar} = \op{V}\adj\, e^{-ita/\hbar}\, \op{V}$: erst mit dem unitären Operator $\op{V}$
+  des Satzes in den Raum $\Ltwo{M}$, dort mit der Funktion $e^{-ita(m)/\hbar}$ vom Betrag $1$
+  multiplizieren und zurück. Das ist ein unitärer Operator, und die Potenzreihe wird nicht
+  gebraucht; sie ergibt für unbeschränkte Operatoren nur unter sehr einschränkenden Bedingungen
+  einen Sinn. Dass es genau die selbstadjungierten Operatoren sind, sagt der Satz von Stone:
+
+  \begin{theorem}[Stone]\label{c04.thm.stone}\claim[proof-omitted]{c04.cl.stone}{source-quoted}
+    Ist $\op{A}$ selbstadjungiert, so ist $\op{U}(t) = e^{it\op{A}}$ eine stark stetige
+    einparametrige unitäre Gruppe: $\op{U}(t)$ ist unitär, $\op{U}(t+s) = \op{U}(t)\op{U}(s)$, und
+    $\op{U}(t)\ket{\psi} \to \op{U}(t_0)\ket{\psi}$ für $t \to t_0$ und jeden Vektor. Umgekehrt ist jede
+    solche Gruppe von dieser Form, mit einem selbstadjungierten $\op{A}$.
+  \end{theorem}
+
+  Reed und Simon beweisen die beiden Richtungen als Theorem VIII.7 und VIII.8; dass $\op{A}$ durch
+  die Gruppe festgelegt ist, folgt aus Teil~(c) und~(d) von VIII.7, nach denen $i\op{A}\ket{\psi}$ die
+  Ableitung von $\op{U}(t)\ket{\psi}$ bei $t = 0$ ist und $\op{A}$ genau dort definiert ist, wo diese
+  Ableitung existiert
+  \srcref{reed-simon-1}{S.~265 und S.~266}. Mit $\op{A} = -\op{\Ham}/\hbar$ ist $\op{U}(t) = \op{U}_t$. Ein
+  symmetrischer Operator, der nicht selbstadjungiert ist, erzeugt keine solche Gruppe; das ist der
+  Grund, warum es in Postulat P5 für unbeschränkte Hamiltonoperatoren „selbstadjungiert“ heißen
+  muss.
+\end{vertiefung}
+
+% Stimme: vl06.tex:138 („Beweisen lässt es sich aus ihnen trotzdem nicht ... zusätzliche
+% Information über die Systemsorte“); BRIEF.md:55 („dynamics are symmetries“).
+Beweisen lässt sich die Vorschrift aus P0 bis P4 trotzdem nicht, und wesentlich bleibt: $\op{\Ham}$
+ist eine \emph{zusätzliche} Information über die Systemsorte. Die Proposition zeigt, in welchem
+Sinn Dynamik eine Symmetrie ist: $\op{U}_t$ bildet den Zustandsraum umkehrbar auf sich ab und
+erhält Mischungen und reine Zustände. Kapitel~8 und~9 machen daraus den allgemeinen Begriff.
+
+% vl06.tex:140-160 (das Beispiel steht in C3 als c03.ex.qubit-zeit; hier die Messung dazu) und
+% 162-164 (Abbildung).  Mit einer Energie epsilon statt H = sigma_x (M-Akte zu vl06).
+\begin{example}[Ein Qubit unter der Z-Messung]\label{c04.ex.qubit-dynamik}\claim{c04.cl.qubit-dynamik}{derived}
+  Sei $\op{\Ham} = \varepsilon\,\pauli{x}$ mit einer Energie $\varepsilon > 0$; nach
+  Beispiel~\ref{c03.ex.qubit-zeit} ist
+  $\op{U}_t = \cos(\varepsilon t/\hbar)\Id - i\sin(\varepsilon t/\hbar)\pauli{x}$. Im Zustand
+  $\rho = \ketbra{0}{0}$ gibt die Z-Messung nach der Zeit $t$
+  \begin{equation}\label{c04.eq.rabi}
+    \tr\bigl(\rho_t\,\ketbra{0}{0}\bigr) = \abs{\melem{0}{\op{U}_t}{0}}^2 = \cos^2\Bigl(\frac{\varepsilon t}{\hbar}\Bigr) .
+  \end{equation}
+  Allgemein bleibt ein Zustand~\eqref{c04.eq.qubit} mit $\real x = 0$ in dieser Ebene und läuft dort
+  auf einem Kreis um den Mittelpunkt $\Id/2$: Mit
+  $p - \tfrac12 = r\cos\varphi$ und $\imag x = r\sin\varphi$ ist
+  \begin{equation}\label{c04.eq.kreis}
+    p_t - \tfrac12 = r\cos\Bigl(\varphi + \frac{2\varepsilon t}{\hbar}\Bigr) ,
+    \qquad
+    \imag x_t = r\sin\Bigl(\varphi + \frac{2\varepsilon t}{\hbar}\Bigr) ,
+  \end{equation}
+  und die Z-Messung liest davon die waagerechte Koordinate $p_t$ ab.
+\end{example}
+
+\begin{tpcfigure}{c04.fig.messung}
+  \caption{Was die Postulate P2, P4 und P5 zusammen festlegen, für ein Qubit mit
+    $\op{\Ham} = \varepsilon\,\pauli{x}$ und die Z-Messung $\op{\EffOp} = \ketbra{0}{0}$. (a) Die
+    Zustände~\eqref{c04.eq.qubit} mit $\real x = 0$: Positivität, Gleichung~\eqref{c04.eq.det},
+    schneidet eine Scheibe vom Radius $\tfrac12$ um $\Id/2$ aus; außerhalb (schraffiert) liegen
+    hermitesche Matrizen mit Spur eins, die keine Zustände sind. Der Rand sind die reinen Zustände.
+    $\op{U}_t$ dreht die Scheibe um ihren Mittelpunkt, Gleichung~\eqref{c04.eq.kreis}; die Kreise sind
+    die Bahnen des reinen Zustands $\ketbra{0}{0}$ (durchgezogen) und eines gemischten Zustands
+    $\rho$ mit $r = \tfrac{3}{10}$ (gepunktet). (b) Die Ansprechwahrscheinlichkeit
+    $\tr(\rho_t\op{\EffOp}) = p_t$ über der Zeit, in Einheiten von $\hbar/\varepsilon$: Der Abstand $r$
+    vom Mittelpunkt in (a) ist die Amplitude in (b). Der reine Zustand schwingt zwischen $0$ und
+    $1$, Gleichung~\eqref{c04.eq.rabi}; der maximal gemischte Zustand $\Id/2$ antwortet immer mit
+    $\tfrac12$ (waagerechte Linie).}
+\end{tpcfigure}
+
+% Stimme: vl06.tex:166 (Schlussabsatz); v08 [40:00]-[44:00].
+Eine bedeutende Lücke bleibt in diesen Postulaten: Nirgends ist gesagt, welche Operatoren $\rho$
+oder $\op{\EffOp}$ man einem gegebenen Experiment zuordnen soll. Das lässt sich nicht durch ein paar
+allgemeine Postulate klären. Der häufigste Zugang ist, einige Standardobservablen auszuzeichnen, in
+der Regel durch ihr Verhalten unter den Symmetrien von Raum und Zeit. Sie haben engen Bezug zu
+klassischen Größen und heißen auch so: Ort, Impuls, Energie, Drehimpuls. Wer eine genauere
+Zuordnung von Messgeräten und Operatoren wünscht, muss den Messprozess selbst analysieren, besonders
+die Wechselwirkung des Systems mit Teilen des Apparats. Auch was nach einer Messung mit dem System
+geschieht, sagen P0 bis P5 nicht; wiederholte Messungen am selben System kommen später. Für fast alle Fragen dieses Kurses kommen
+wir mit den Standardobservablen aus; Kapitel~5 beginnt mit dem Ort.

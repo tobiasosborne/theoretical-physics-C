@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exact re-computation of the explicit numbers of chapter C3 (vl02, vl03 and vl04 material).
+"""Exact re-computation of the explicit numbers of chapter C3 (vl02, vl03, vl04 and vl05 material).
 
 Usage: python3 evidence/derivations/c03/check_c03.py
 Prints one line per check and 'ALL OK' last; exit status 1 on any failure.
@@ -355,5 +355,127 @@ E2, F2 = M([[0, 1], [0, 0]]), M([[0, 0], [1, 0]])
 check("c03.cl.produkt  EF = ((1,0),(0,0)), FE = ((0,0),(0,1)), EF != FE",
       E2 * F2 == M([[1, 0], [0, 0]]) and F2 * E2 == M([[0, 0], [0, 1]]) and E2 * F2 != F2 * E2)
 check("c03.cl.produkt  (AB) psi = A (B psi) (generic 3x3)", is_zero((GA * GB) * ps - GA * (GB * ps)))
+
+# ---------------------------------------------------------------- Lecture 5 (vl05 material)
+def tr(X):
+    return sp.simplify(sum(X[k, k] for k in range(min(X.shape))))
+
+
+def herm(X):
+    return X.conjugate().T
+
+
+Ar = M([[1, 2 - I, 0], [I, 3, 1 + I]])          # 2x3: H_1 = C^3 -> H_2 = C^2
+Br = M([[2, 1], [I, -1], [1 - I, 4]])           # 3x2: C^2 -> C^3
+check("c03.cl.spur  tr_2(AB) = tr_1(BA) for A: C^3 -> C^2, B: C^2 -> C^3", sp.simplify(tr(Ar * Br) - tr(Br * Ar)) == 0)
+Uh = M([[1, 1], [1, -1]]) / sp.sqrt(2)
+G2 = M([[1 + I, 2], [-3, I]])
+basis2 = [Uh[:, 0], Uh[:, 1]]
+check("c03.cl.spur  basis independence: sum <phi|G|phi> over the Hadamard basis = tr G",
+      sp.simplify(sum((herm(b) * G2 * b)[0] for b in basis2) - tr(G2)) == 0)
+psi3, phi3 = M([1, I, 2]), M([1 - I, 3, -I])
+check("c03.cl.spur  tr(|Psi><Phi|) = <Phi|Psi>", sp.simplify(tr(psi3 * herm(phi3)) - (herm(phi3) * psi3)[0]) == 0)
+X1, X2, X3 = M([[0, 1], [0, 0]]), M([[0, 0], [1, 0]]), M([[1, 0], [0, 0]])
+check("c03.cl.spur  tr(ABC) = tr(CAB) but tr(BAC) differs for an example",
+      tr(X1 * X2 * X3) == tr(X3 * X1 * X2) and tr(X1 * X2 * X3) != tr(X2 * X1 * X3))
+check("c03.cl.spur-beispiel  tr A = 0, tr B = 1, B = |u><u|, <u|u> = 1",
+      tr(A) == 0 and tr(B) == 1 and is_zero(B - M([1, 1, 1]) * M([[1, 1, 1]]) / 3))
+# c03.cl.diagonal on A of c03.ex.drei (distinct eigenvalues)
+evA = [(sp.sqrt(2), M([1, sp.sqrt(2), 1])), (0, M([1, 0, -1])), (-sp.sqrt(2), M([1, -sp.sqrt(2), 1]))]
+phis = [v / sp.sqrt((herm(v) * v)[0]) for _, v in evA]
+can3 = [M([1, 0, 0]), M([0, 1, 0]), M([0, 0, 1])]
+U3 = sum((can3[k] * herm(phis[k]) for k in range(3)), sp.zeros(3, 3))
+check("c03.cl.diagonal  U = sum |x><phi_x| is unitary", is_zero(U3 * herm(U3) - sp.eye(3)) and is_zero(herm(U3) * U3 - sp.eye(3)))
+check("c03.cl.diagonal  U A U^dag = diag(sqrt2, 0, -sqrt2)", is_zero(U3 * A * herm(U3) - sp.diag(sp.sqrt(2), 0, -sp.sqrt(2))))
+check("c03.cl.diagonal  A = sum a_x |phi_x><phi_x|, tr A = sum a_x",
+      is_zero(A - sum((a * p * herm(p) for (a, _), p in zip(evA, phis)), sp.zeros(3, 3))) and tr(A) == sum(a for a, _ in evA))
+check("c03.cl.diagonal  (1): U^dag |x> are eigenvectors", all(is_zero(A * (herm(U3) * can3[k]) - evA[k][0] * (herm(U3) * can3[k])) for k in range(3)))
+check("c03.cl.eigen-hermitesch  eigenvectors of A pairwise orthogonal",
+      all(sp.simplify((herm(phis[j]) * phis[k])[0]) == 0 for j in range(3) for k in range(3) if j != k))
+# c03.cl.spektral: B is degenerate (eigenvalue 0 twice); Gram-Schmidt in the eigenspace
+e0a, e0b = M([1, -1, 0]), M([1, 0, -1])
+check("c03.cl.spektral  B: eigenspace of 0 spanned by (1,-1,0), (1,0,-1)", is_zero(B * e0a) and is_zero(B * e0b))
+g1 = e0a / sp.sqrt(2)
+g2 = e0b - (herm(g1) * e0b)[0] * g1
+g2 = g2 / sp.sqrt(sp.simplify((herm(g2) * g2)[0]))
+u1 = M([1, 1, 1]) / sp.sqrt(3)
+onb = [u1, g1, g2]
+check("c03.cl.spektral  B: {u, GS(e0a, e0b)} orthonormal eigenbasis, B = |u><u|",
+      all(sp.simplify((herm(onb[j]) * onb[k])[0] - (1 if j == k else 0)) == 0 for j in range(3) for k in range(3))
+      and is_zero(B * u1 - u1) and is_zero(B * g2))
+Nn = M([[0, 1], [0, 0]])
+lam = sp.symbols('lambda')
+check("c03.cl.spektral  N = ((0,1),(0,0)): det(N - lambda) = lambda^2, kernel spanned by (1,0)",
+      sp.expand((Nn - lam * sp.eye(2)).det()) == lam ** 2 and Nn.nullspace() == [M([1, 0])])
+check("c03.cl.spektral  C (unitary, normal): eigenvectors (1, l, -i l^2) for l^3 = -i orthogonal",
+      all(abs(complex(sp.N((herm(M([1, a, -I * a ** 2])) * M([1, b, -I * b ** 2]))[0], 30))) < 1e-25
+          for a in (sp.exp(-I * sp.pi / 6), I, sp.exp(7 * I * sp.pi / 6))
+          for b in (sp.exp(-I * sp.pi / 6), I, sp.exp(7 * I * sp.pi / 6)) if a != b))
+# c03.cl.hadamard
+sx = M([[0, 1], [1, 0]])
+p0, p1 = M([1, 1]) / sp.sqrt(2), M([1, -1]) / sp.sqrt(2)
+k0, k1 = M([1, 0]), M([0, 1])
+Uhad = k0 * herm(p0) + k1 * herm(p1)
+check("c03.cl.hadamard  det(sx - l) = l^2 - 1; sx p0 = p0, sx p1 = -p1",
+      sp.expand((sx - lam * sp.eye(2)).det()) == lam ** 2 - 1 and is_zero(sx * p0 - p0) and is_zero(sx * p1 + p1))
+check("c03.cl.hadamard  U = (1/sqrt2)((1,1),(1,-1)), U sx U^dag = diag(1,-1)",
+      is_zero(Uhad - Uh) and is_zero(Uhad * sx * herm(Uhad) - sp.diag(1, -1)))
+check("c03.cl.hadamard  sx = |p0><p0| - |p1><p1|", is_zero(sx - (p0 * herm(p0) - p1 * herm(p1))))
+Usw = k0 * herm(p1) + k1 * herm(p0)
+check("c03.cl.hadamard  swapped U' gives diag(-1,1)", is_zero(Usw * sx * herm(Usw) - sp.diag(-1, 1)))
+At = sx + 2 * sp.eye(2)
+check("c03.cl.hadamard  figure: A = sx + 2I = ((2,1),(1,2)), U A U^dag = diag(3,1), A p0 = 3 p0, A p1 = p1",
+      At == M([[2, 1], [1, 2]]) and is_zero(Uhad * At * herm(Uhad) - sp.diag(3, 1)) and is_zero(At * p0 - 3 * p0) and is_zero(At * p1 - p1))
+tt = sp.symbols('t', real=True)
+check("c03.cl.hadamard  figure: A applied to (cos t, sin t) = (2cos t + sin t, cos t + 2 sin t)",
+      is_zero(At * M([sp.cos(tt), sp.sin(tt)]) - M([2 * sp.cos(tt) + sp.sin(tt), sp.cos(tt) + 2 * sp.sin(tt)])))
+# c03.cl.ohne-eigen
+lr = sp.symbols('lambda', real=True)
+vj, vj1 = sp.symbols('v_j v_j1', real=True)
+vj2 = lr * vj1 - vj
+Qj = vj1 ** 2 - lr * vj1 * vj + vj ** 2
+Qj1 = vj2 ** 2 - lr * vj2 * vj1 + vj1 ** 2
+check("c03.cl.ohne-eigen  Q_{j+1} = Q_j under v_{j+2} = lambda v_{j+1} - v_j", sp.expand(Qj1 - Qj) == 0)
+th = sp.symbols('theta', real=True)
+jj = sp.symbols('j', integer=True, positive=True)
+check("c03.cl.ohne-eigen  v_j = sin(j theta) solves v_{j-1} + v_{j+1} = 2 cos(theta) v_j, v_0 = 0",
+      sp.simplify(sp.expand_trig(sp.sin((jj - 1) * th) + sp.sin((jj + 1) * th) - 2 * sp.cos(th) * sp.sin(jj * th))) == 0
+      and sp.sin(0 * th) == 0)
+vs_ = [sp.Rational(3, 7)]
+lamq = sp.Rational(5, 3)
+prev = 0
+for _ in range(12):
+    vs_.append(lamq * vs_[-1] - prev)
+    prev = vs_[-2]
+Qs = [(vs_[k + 1] ** 2 - lamq * vs_[k + 1] * vs_[k] + vs_[k] ** 2) for k in range(12)]
+check("c03.cl.ohne-eigen  numeric: Q_j constant = v_1^2 along the recursion (lambda = 5/3, v_1 = 3/7)",
+      all(q == vs_[0] ** 2 for q in Qs[1:]) and (vs_[1] ** 2 - lamq * vs_[1] * vs_[0] + vs_[0] ** 2) == vs_[0] ** 2)
+# c03.cl.funktion: Lagrange on B (eigenvalues 0, 1; 0 twice)
+fz = {0: sp.Rational(7, 2), 1: -3 + I}
+pL = lambda z: fz[0] * (z - 1) / (0 - 1) + fz[1] * (z - 0) / (1 - 0)
+fB = fz[1] * u1 * herm(u1) + fz[0] * (g1 * herm(g1) + g2 * herm(g2))
+h1, h2 = (g1 + g2) / sp.sqrt(2), (g1 - g2) / sp.sqrt(2)
+check("c03.cl.funktion  h1, h2 (rotated basis of the 0-eigenspace of B) orthonormal eigenvectors, different from g1, g2",
+      is_zero(B * h1) and is_zero(B * h2) and sp.simplify((herm(h1) * h1)[0]) == 1 and sp.simplify((herm(h2) * h2)[0]) == 1
+      and sp.simplify((herm(h1) * h2)[0]) == 0 and not is_zero(h1 - g1))
+fB_other = fz[1] * u1 * herm(u1) + fz[0] * (h1 * herm(h1) + h2 * herm(h2))
+check("c03.cl.funktion  f(B) the same in two eigenbases and = p(B) (Lagrange)",
+      is_zero(fB - fB_other) and is_zero(fB - (fz[0] * (B - sp.eye(3)) / (0 - 1) + fz[1] * B)))
+check("c03.cl.funktion  A^k = sum a_x^k |phi_x><phi_x| (k = 0..4)",
+      all(is_zero(A ** k - sum((a ** k * p * herm(p) for (a, _), p in zip(evA, phis)), sp.zeros(3, 3))) for k in range(5)))
+eps, hb = sp.symbols('epsilon hbar', positive=True)
+Ham = eps * sx
+Ut = sp.exp(-I * tt * eps / hb) * p0 * herm(p0) + sp.exp(I * tt * eps / hb) * p1 * herm(p1)
+check("c03.cl.qubit-zeit  U_t = cos(eps t/hbar) I - i sin(eps t/hbar) sx",
+      is_zero((Ut - (sp.cos(eps * tt / hb) * sp.eye(2) - I * sp.sin(eps * tt / hb) * sx)).applyfunc(lambda e: sp.simplify(e.rewrite(sp.exp)))))
+check("c03.cl.zeitentwicklung  U_t unitary (qubit example)", is_zero(sp.simplify(herm(Ut) * Ut - sp.eye(2))))
+check("c03.cl.exp-reihe  sympy exp(-i t H/hbar) = spectral U_t (qubit example)",
+      is_zero(sp.simplify(((-I * tt / hb) * Ham).exp() - Ut)))
+Nser = 30
+tval, eval_, hval = sp.Rational(7, 10), sp.Rational(3, 2), 1
+part = sum((((-I * tval / hval) * (eval_ * sx)) ** n / sp.factorial(n) for n in range(Nser)), sp.zeros(2, 2))
+exact = Ut.subs({tt: tval, eps: eval_, hb: hval})
+check("c03.cl.exp-reihe  partial sum N = 30 of the series within 1e-25 of U_t (t = 0.7, eps = 1.5, hbar = 1)",
+      max(abs(complex(sp.N(part[k] - exact[k], 40))) for k in range(4)) < 1e-25)
 print("ALL OK" if not fails else f"{len(fails)} FAILED")
 sys.exit(1 if fails else 0)

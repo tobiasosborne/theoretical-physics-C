@@ -1,167 +1,108 @@
 %!TEX root = TheoretischePhysikC.tex
+% Kern von content/c04-quantentheorie. Quellen: docs/plan/script-v0.3/sync-ch6.md
+% Die Postulate P0 bis P5 sind TJOs Wortlaut (docs/plan/BRIEF.md:50-55); die deutsche Fassung ist
+% eine Übersetzung (GAP-TJO, NOTES-ch6.md).
 \section{Vorlesung: Postulate der Quantenmechanik}
-Die Zahlen, die die Quantenmechanik als Ergebnis liefert, sind Wahrscheinlichkeiten oder, etwas allgemeiner Erwartungswerte. Da in den bisherigen Theorievorlesungen von solchen Größen wohl wenig die Rede war, müssen wir kurz darauf eingehen, wie solche Ergebnisse zu interpretieren, d.h., mit dem Experiment zu vergleichen sind. Die allgemeine Vorschrift für statistische Experimente ist, dass ein solches Experiment genügend häufig zu wiederholen
-ist.
+Die Zahlen, die die Quantenmechanik als Ergebnis liefert, sind Wahrscheinlichkeiten oder, etwas allgemeiner, Erwartungswerte. Dass die Theorie überhaupt nur Wahrscheinlichkeiten liefert, ist der eigentliche Bruch mit der klassischen Physik. Klassisch ist eine Wahrscheinlichkeit stets Ausdruck fehlender Information; quantenmechanisch ist sie fundamental, und es gibt Messungen, die sich nicht gemeinsam mit voller Präzision durchführen lassen.
 
-Dass die Theorie überhaupt nur Wahrscheinlichkeiten liefert, ist der eigentliche Bruch mit der klassischen Physik. Klassisch ist eine Wahrscheinlichkeit stets Ausdruck fehlender Information; im Prinzip kann dort alles beliebig präzise sein. Quantenmechanisch ist sie fundamental, und es gibt Messungen, die sich nicht gemeinsam mit voller Präzision durchführen lassen.
-
-Für ein Wahrscheinlichkeitsexperiment muss dabei im Voraus festgelegt sein, welche Ergebnisse als ,,Treffer`` zu werten sind. Die von der Theorie gelieferte \emph{Wahrscheinlichkeit} ist dann zu vergleichen mit der Anzahl der Treffer, dividiert durch die Gesamtzahl der Wiederholungen. Entsprechend werden Erwartungswerte von Experimenten gemessen, bei denen jedes einzelne Experiment einen Zahlenwert liefert: Der Erwartungswert ist zu vergleichen mit der Summe der Messwerte, dividiert durch die Gesamtzahl der Wiederholungen. Was dabei als ,,genügend häufige`` Wiederholung für eine angestrebte Genauigkeit gilt, wird in dem als Statistik bekannten Zweig der Wahrscheinlichkeitstheorie behandelt. Die Berechnung der statistischen Konfidenzintervalle entbindet aber den Experimentalphysiker nicht von der Pflicht, sich zu vergewissern, dass die Theorie überhaupt anwendbar ist, dass also die so gewonnenen Häufigkeiten tatsächlich reproduzierbar und frei von systematischen Fluktuationen
-sind, also zum Beispiel nicht abhängig von irgendwelchen Aktivitäten im Nachbarlabor schwanken. Das ist bei Wahrscheinlichkeitsmessungen nicht anders als bei allen anderen Messungen auch.
-
-Zu erläutern wäre noch, was denn nun eigentlich als Wiederholung ,,des gleichen`` Experiments gilt. Hier gelten die Kriterien der Experimentalphysik: zwei innerhalb gegebener Toleranzen nach den gleichen Plänen aufgebaute Experimente gelten als gleich. Es muss also nicht etwa dieselbe Apparatur verwendet werden. Entscheidend ist also das experimentelle \emph{Verfahren}. Dies muss natürlich genügend präzise spezifiziert sein, wenn Reproduzierbarkeit von Wahrscheinichkeiten gewährleistet werden soll.
-
-In den Experimenten der Quantenmechanik sind grundsätzlich zwei Teile zu unterscheiden: die \emph{Präparation} und die \emph{Messung}. Zum Beispiel für die Polarisationsexperimente bestand die Präparation in der Herstellung des Strahls, und die Messung in der Anwendung der Filter, zusammen mit dem Photonenzähler. Das Ziel der Theorie ist nun die Berechnung der Wahrscheinlichkeiten für praktisch beliebige Kombinationen von Präparation und Messung. Die Theorie muss also mindestens enthalten: (1) Größen zur Beschreibung der Präparierverfahren, (2) Größen zur Beschreibung der Messverfahren und (3) eine Formel zur Berechnung der Wahrscheinlichkeiten für jede Kombination.
+Mit dem Experiment vergleicht man eine Wahrscheinlichkeit, indem man das Experiment genügend oft wiederholt und die Häufigkeit der Treffer bildet; als Wiederholung gilt jede Durchführung nach demselben \emph{Verfahren}, nicht unbedingt mit derselben Apparatur. In jedem Experiment unterscheidet man die \emph{Präparation} und die \emph{Messung}. Die Theorie muss also mindestens enthalten: Größen für die Präparationen, Größen für die Messungen und eine Formel, die jeder Kombination eine Wahrscheinlichkeit zuordnet. Für eine beliebige probabilistische Theorie führt der Webkurs diese drei Zutaten in Kapitel~2 ein; die Quantentheorie ist eine solche Theorie, gebaut aus einem Hilbertraum.
 
 \subsection{Die Postulate}
 
 \begin{greybox}[Zum Status der Postulate]
-Man hört oft, wir verstünden die Quantenmechanik nicht. Das trifft es nicht: Wir beherrschen den Formalismus, und wir haben seit über fünfzig Jahren Postulate, die uns die besten Modelle des Universums liefern. Was wir nicht können, ist, sie weiter zu \emph{begründen} --- sie sind uns von der Natur gegeben.
+Man hört oft, wir verstünden die Quantenmechanik nicht. Das trifft es nicht: Wir beherrschen den Formalismus, und wir haben seit über fünfzig Jahren Postulate, die uns die besten Modelle des Universums liefern. Was wir nicht können, ist, sie weiter zu \emph{begründen}; sie sind uns von der Natur gegeben.
 \end{greybox}
 
-\begin{center}
-\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Postulat 1}. Jeder Sorte quantenmechanischer Systeme wird ein Hilbertraum $\mathcal{H}$ zugeordnet.}\end{tcolorbox}}
-\end{center}
-Dies ist der Raum der sogenannten \emph{Wellenfunktionen} $\Psi$. Für ein \emph{Qubit}, bzw.\ \emph{Qudit}, ist $\mathcal{H}\equiv \mathbb{C}^2$, bzw.\ $\mathcal{H}\equiv \mathbb{C}^d$. Für ein freies Teilchen in drei Dimensionen ist $\mathcal{H} \equiv L^2(\mathbb{R}^{3})$, der Raum der quadratintegriebare Funktionen $\Psi:\mathbb{R}^3\rightarrow \mathbb{C}$, mit
-\begin{equation}
-	\iiint |\Psi(x,y,z)|^2\, dxdydz  <\infty.
-\end{equation} 
-Das Skalarprodukt zweier Vektoren $|\Phi\rangle, |\Psi\rangle \in \mathcal{H}$ lautet
-\begin{equation}
-	\langle \Phi|\Psi\rangle \equiv \iiint \Phi^*(x,y,z)\Psi(x,y,z)\, dxdydz.
-\end{equation}
+Wir stellen die Postulate Schritt für Schritt auf, jedes spezieller als das vorige. Das erste, P0, kennen Sie aus Vorlesung~1: Physikalische Theorien sind probabilistische Theorien, Vorhersagen in Form von Wahrscheinlichkeiten.
 
-Zum Hilbertraum wird $L^2(\mathbb{R}^3)$ erst mit diesem Skalarprodukt, und mit der Vollständigkeit, die wir hier weglassen. Beachten Sie außerdem: Postulat 1 beschreibt \emph{ein} Teilchen --- den Hilbertraum mehrerer Teilchen zu bauen verlangt ein weiteres Rezept, das wir später nachreichen.
+\begin{merksatz}[P1]
+	Jedem quantenmechanischen System ordnen wir einen Hilbertraum $\Hil$ zu (das gehört dem Sinn nach zur Definition des Zustandsraums einer probabilistischen Theorie).
+\end{merksatz}
+Für ein \emph{Qubit} ist $\Hil = \mathbb{C}^2$, für ein \emph{Qudit} $\Hil = \mathbb{C}^d$, für ein Teilchen im Raum der Raum $L^2(\mathbb{R}^3)$ der quadratintegrierbaren Funktionen. Welcher Hilbertraum zu einem System gehört, sagt das Experiment, nicht die Theorie. P1 spricht von \emph{einem} System; den Hilbertraum mehrerer Systeme baut man später mit einem weiteren Rezept, dem Tensorprodukt. In dieser Vorlesung ist $\Hil$ endlichdimensional.
 
-\begin{center}
-\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Postulat 2}. Ein Präparierverfahren wird charakterisiert durch einen \emph{Zustand}, bzw. eine \emph{Dichtematrix}. Das ist ein positiver Operator $\rho$ auf $\mathcal{H}$, mit $\tr(\rho) = 1$. Speziell für reine Zustände ist $\rho$ ein eindimensionaler Projektor $\rho = |\Psi\rangle\langle \Psi|$, also gegeben durch einen Vektor $|\Psi\rangle \in \mathcal{H}$.}\end{tcolorbox}}
-\end{center}
+\begin{merksatz}[P2]
+	Zustandsraum = positive lineare Funktionale auf den Operatoren mit Norm 1. Im Spurklassenfall sind das Dichteoperatoren. Extremalpunkte $\Rightarrow$ reine Zustände.
+\end{merksatz}
+Ein Zustand ordnet also jedem Operator linear eine Zahl zu, jeder hermiteschen Größe ihren Erwartungswert, positiven Operatoren eine nicht negative Zahl und dem Einsoperator die Eins; „Norm~1“ heißt hier gerade: der Wert auf $\mathbb{I}$ ist $1$. In endlicher Dimension ist jede solche Zuordnung von der Form $\op{A}\mapsto\tr(\rho\,\op{A})$ mit genau einem Operator $\rho$; den „Spurklassenfall“ muss man erst in unendlich vielen Dimensionen beachten. Man setzt $\melem{y}{\rho}{x}$ gleich dem Wert auf $\ketbra{x}{y}$ (die Indizes so, dass $\tr(\rho\,\op{A})$ herauskommt) und benutzt $\op{A} = \sum_{x,y}\melem{x}{\op{A}}{y}\ketbra{x}{y}$; den Rest des Beweises gibt der Webkurs.
+\begin{definition}
+	Ein \emph{Dichteoperator} (Zustand, Dichtematrix) ist ein positiver Operator $\rho$ auf $\Hil$ mit $\tr(\rho) = 1$.
+\end{definition}
+Hier ist eine Warnung angebracht: Der Hilbertraum beschreibt \emph{nicht} unmittelbar die Zustände. Viele Bücher sagen, die Zustände seien die Wellenfunktionen; das stimmt so nicht. Der Hilbertraum ist der Raum, \emph{in dem} wir Zustände definieren; die Zustände selbst sind Operatoren. Ein System, das mit seiner Umgebung wechselwirkt, ist im Allgemeinen nicht in einem reinen Zustand, und völlig isolierte Systeme gibt es in der Physik nicht: Das elektromagnetische Feld koppelt immer an. Gemischte Zustände sind deshalb der Normalfall.
 
-Hier ist eine Warnung angebracht: Der Hilbertraum beschreibt \emph{nicht} unmittelbar die Zustände. Viele Bücher sagen, die Zustände seien die Wellenfunktionen; das stimmt so nicht. Er ist der Raum, \emph{in dem} wir Zustände definieren --- die Zustände selbst sind Operatoren. Reine Zustände beschreiben geschlossene Systeme, und die gibt es in der Physik nicht: Das elektromagnetische Feld koppelt immer an. Gemischte Zustände sind der Normalfall.
-
-Das Wort ,,eindimensional`` meint dabei keine Raumdimension, sondern den Rang: $\tr(P)$ zählt die Ket-Bra-Terme eines Projektors, und wegen $\tr(\rho)=1$ steht dort genau einer. Daraus folgt auch die Normierung der Wellenfunktionen, denn mit $\tr(AB) = \tr(BA)$ ist
-\begin{equation}
-	1 = \tr(\rho) = \tr(|\Psi\rangle\langle \Psi|) = \tr(\langle \Psi|\Psi\rangle) = \langle \Psi|\Psi\rangle.
-\end{equation}
-Nur normierte Vektoren stellen also reine Zustände dar.
+Mischungen $\lambda\rho_1 + (1-\lambda)\rho_2$ mit $0\leq\lambda\leq 1$ sind wieder Dichteoperatoren. Mit der Spektralzerlegung ist jeder Dichteoperator eine Mischung $\rho = \sum_x p_x\ketbra{\phi_x}{\phi_x}$ mit $p_x\geq 0$ und $\sum_x p_x = 1$. Die \emph{reinen} Zustände, die Extremalpunkte, sind die Zustände, die keine echten Mischungen sind; das sind genau die $\rho = \ketbra{\psi}{\psi}$, also durch einen Vektor $\ket{\psi}$, seine \emph{Wellenfunktion}, gegeben (die Rückrichtung beweist der Webkurs). $\ket{\psi}$ und $e^{i\alpha}\ket{\psi}$ geben denselben Zustand. Wegen $\tr(\ketbra{\psi}{\psi}) = \braket{\psi}{\psi}$ (Vorlesung~5) stellen nur normierte Vektoren reine Zustände dar. Man nennt $\ketbra{\psi}{\psi}$ auch einen eindimensionalen Projektor; „eindimensional“ meint dabei keine Raumdimension, sondern dass sein Bild eindimensional ist.
 
 \begin{beispiel}[Zustände eines Qubits]
-Für $\mathcal{H} = \mathbb{C}^2$ ist $\rho$ eine positive $2\times 2$-Matrix mit Spur eins. Positivität liefert $\rho_{00} \equiv p \ge 0$, die Spurbedingung erzwingt $\rho_{11} = 1-p$, und weil auch $\rho_{11}\ge 0$ sein muss, liegt $p$ zwischen null und eins. Hermitezität macht schließlich die Nebendiagonaleinträge zueinander komplex konjugiert:
+Für $\Hil = \mathbb{C}^2$ ist $\rho$ eine positive $2\times 2$-Matrix mit Spur eins. Positivität verlangt $\rho_{00} = p\geq 0$, die Spurbedingung erzwingt $\rho_{11} = 1-p$, und weil auch $\rho_{11}\geq 0$ ist, liegt $p$ zwischen null und eins. Hermitizität macht die Nebendiagonaleinträge zueinander komplex konjugiert:
 \begin{equation}\label{eq:qubitzustand}
-	\rho = \begin{pmatrix} p & x \\ x^* & 1-p\end{pmatrix}, \qquad 0 \le p \le 1, \quad x \in \mathbb{C}.
+	\rho = \begin{pmatrix} p & x \\ x^* & 1-p\end{pmatrix}.
 \end{equation}
-Ausgeschöpft ist die Positivität damit nicht; sie verlangt, dass \emph{alle} Eigenwerte nichtnegativ sind, hier also
+Ausgeschöpft ist die Positivität damit nicht; sie verlangt, dass \emph{beide} Eigenwerte nicht negativ sind; weil ihre Summe $1$ ist, heißt das: ihr Produkt ist nicht negativ, also
 \begin{equation}
-	\det \rho = p(1-p) - |x|^2 \ge 0.
+	\det\rho = p(1-p) - \abs{x}^2 \geq 0, \qquad \text{d.\,h.} \qquad \bigl(p-\tfrac12\bigr)^2 + \abs{x}^2 \leq \tfrac14.
 \end{equation}
-Ein Qubit-Zustand hängt somit von genau drei reellen Zahlen ab.
+Ein Qubit-Zustand hängt also von drei reellen Zahlen ab, und die Tripel $(p, \real x, \imag x)$ liegen in einer Kugel vom Radius $\tfrac12$ um $(\tfrac12, 0, 0)$, dem \emph{maximal gemischten} Zustand $\mathbb{I}/2$; die reinen Zustände liegen auf ihrem Rand.
 \end{beispiel}
 
 \begin{übung}
-Berechnen Sie die beiden Eigenwerte der Matrix in Gl.~(\ref{eq:qubitzustand}) und leiten Sie daraus die Bedingung $p(1-p) - |x|^2 \ge 0$ her.
+Berechnen Sie die beiden Eigenwerte der Matrix in Gl.~(\ref{eq:qubitzustand}) und leiten Sie daraus die Bedingung $p(1-p) - \abs{x}^2 \ge 0$ her.
 \end{übung}
 
-\begin{center}
-\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Postulat 3}. Ein Detektor, das heisst ein Messapparat mit den beiden Ansprechmöglichkeiten ,,ja`` (Treffer) und ,,nein``, ist gegeben durch einen Operator $F$ mit $0 \le F \le \mathbb{I}$.}\end{tcolorbox}}
-\end{center}
+\begin{merksatz}[P3]
+	Detektoren = Dual des Zustandsraums = Operatoren $\op{F}$ mit $0 \leq \op{F} \leq \mathbb{I}$.
+\end{merksatz}
+Ein Detektor ist ein Messapparat mit den Ansprechmöglichkeiten „ja“ (Treffer) und „nein“. Für Operatoren bedeutet $\op{A}\leq\op{B}$, dass $\op{B}-\op{A}$ positiv ist. P3 verlangt also \emph{zwei} Bedingungen, $\op{F}\geq 0$ \emph{und} $\mathbb{I}-\op{F}\geq 0$, und rechts steht der Einsoperator, nicht die Zahl eins. „Dual des Zustandsraums“ heißt: Die Funktionen $\rho\mapsto\tr(\rho\,\op{F})$ sind genau die Funktionen $f$ auf den Dichteoperatoren mit Werten zwischen $0$ und $1$, die Mischungen respektieren, $f(\lambda\rho_1 + (1-\lambda)\rho_2) = \lambda f(\rho_1) + (1-\lambda)f(\rho_2)$.
 
-Die Schreibweise $0 \le F \le \mathbb{I}$ ist erklärungsbedürftig: Für Operatoren bedeutet $A \le B$, dass $B-A$ positiv ist. Postulat 3 verlangt also \emph{zwei} Bedingungen, $F \ge 0$ \emph{und} $\mathbb{I} - F \ge 0$, und rechts steht der Einsoperator, nicht die Zahl eins.
-
-\begin{beispiel}[Die Z-Messung am Qubit]
-Die Standardmessung auf heutigen Quantenrechnern ist die Z-Messung,
+\begin{merksatz}[P4]
+	Bornsche Regel = Wahrscheinlichkeit des Ansprechens für einen Zustand, präpariert als Dichteoperator $\rho$, ist $\tr(\rho\,\op{F})$.
+\end{merksatz}
+Für einen reinen Zustand ist das keine weitere Annahme, sondern eine Rechnung mit der Zyklizität der Spur aus Vorlesung~5; für einen Projektor $\op{F} = \ketbra{\phi}{\phi}$ wird daraus die Form, die man in jedem Lehrbuch findet:
 \begin{equation}
-	F \equiv |0\rangle\langle 0| = \begin{pmatrix} 1 & 0 \\ 0 & 0 \end{pmatrix}.
-\end{equation}
-Beide Bedingungen sind zu prüfen. Erstens ist $F$ positiv, denn ein Operator ist genau dann positiv, wenn er sich als $A^\dag A$ schreiben lässt, und hier ist $F = F^\dag F$. Zweitens --- getrennt zu zeigen --- ist
-\begin{equation}
-	\mathbb{I} - F = \begin{pmatrix} 0 & 0 \\ 0 & 1\end{pmatrix} = |1\rangle\langle 1|
-\end{equation}
-von derselben Form, also ebenfalls positiv. Erst jetzt dürfen wir $F$ einen Detektor nennen; physikalisch fragt er, ob der Drehimpuls in die $z$-Richtung zeigt.
-\end{beispiel}
-
-\begin{center}
-\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Postulat 4}. Die Ansprechhäufigkeit eines Detektors $F$ an gemäß $\rho$ präparierten System ist
-$\tr(\rho F)$. In einem reinen Zustand $|\Psi\rangle$ spezialisiert sich dieser Ausdruck zu $\langle \Psi|F|\Psi\rangle$.}\end{tcolorbox}}
-\end{center}
-
-\begin{beispiel}[Ansprechhäufigkeit der Z-Messung]
-Mit dem Zustand aus Gl.~(\ref{eq:qubitzustand}) und $F = |0\rangle\langle 0|$ ist
-\begin{equation}
-	\rho F = \begin{pmatrix} p & x \\ x^* & 1-p\end{pmatrix}\begin{pmatrix} 1 & 0 \\ 0 & 0\end{pmatrix} = \begin{pmatrix} p & 0 \\ x^* & 0\end{pmatrix}, \qquad \mathbb{P}[\text{,,ja``}] = \tr(\rho F) = p.
-\end{equation}
-Wir erhalten also mit Wahrscheinlichkeit $p$ einen Treffer --- womit gerechtfertigt ist, die Diagonaleinträge einer Dichtematrix als Wahrscheinlichkeiten zu lesen.
-\end{beispiel}
-
-Der Zusatz über reine Zustände ist keine weitere Annahme, sondern eine Rechnung: mit $\rho = |\Psi\rangle\langle \Psi|$ und der Zyklizität der Spur ist
-\begin{equation}
-	\tr(\rho F) = \tr(|\Psi\rangle\langle \Psi|F) = \tr(\langle \Psi|F|\Psi\rangle) = \langle \Psi|F|\Psi\rangle.
+	\tr\bigl(\ketbra{\psi}{\psi}\op{F}\bigr) = \tr\bigl(\bra{\psi}\op{F}\ket{\psi}\bigr) = \melem{\psi}{\op{F}}{\psi}, \qquad \melem{\psi}{\op{F}}{\psi} = \abs{\braket{\phi}{\psi}}^2 \text{ für } \op{F} = \ketbra{\phi}{\phi}.
 \end{equation}
 Machen Sie es sich am Anfang zur Gewohnheit, bei jeder Rechnung ausdrücklich zu sagen, welches Postulat Sie gerade benutzen.
 
-Im Allgemeinen kann ein Messapparat in jedem Einzelexperiment ein komplexeres Ergebnis liefern als eine einzelne ja/nein-Entscheidung. Diesen Fall kann man aber auf ja/nein Entscheidungen zurückführen. Nennen wir die Menge der möglichen Ausgänge einer Messung $X$. Für jede Teilmenge $S \subset X$ können wir nun die Frage stellen: Liegt der Messwert $x$ in $S$? Dazu muss es also nach Postulat 3 einen Detektoroperator $F(S)$ geben. Die
-Menge der Operatoren $F(S)$ nennen wir dann eine \emph{Observable}. Es gilt für disjunkte Mengen $S_1, S_2 \subset X$ 
+\begin{beispiel}[Die Z-Messung am Qubit]
+Die Standardmessung auf heutigen Quantenrechnern ist die Z-Messung, benannt nach $\pauli{z} = \ketbra{0}{0} - \ketbra{1}{1}$, mit dem Detektor $\op{F} = \ketbra{0}{0} = \bigl(\begin{smallmatrix} 1 & 0 \\ 0 & 0\end{smallmatrix}\bigr)$. Beide Bedingungen sind zu prüfen: $\op{F}$ ist ein Projektor, also positiv, und getrennt davon ist $\mathbb{I}-\op{F} = \ketbra{1}{1}$ ebenfalls ein Projektor. Erst jetzt dürfen wir $\op{F}$ einen Detektor nennen. Mit dem Zustand~(\ref{eq:qubitzustand}) ist
 \begin{equation}
-	F(S_1 \cup S_2) = F(S_1) + F(S_2)
+	\rho\,\op{F} = \begin{pmatrix} p & 0 \\ x^* & 0\end{pmatrix}, \qquad \tr(\rho\,\op{F}) = p:
 \end{equation}
-das heißt, $F$ ist ein ,,Maß`` mit Werten in den positiven Operatoren. Wir setzen normalerweise $F(X) = \mathbb{I}$, das heißt, auch Misserfolg wird als ein mögliches Ergebnis betrachtet. Häufig reicht es, endliche Ausgangsmengen $X$ zu betrachten. Dann ist wegen der Maßeigenschaft alles durch die Operatoren $F_x = F(\{x\})$ bestimmt, die einfach die Relationen 
-\begin{equation}
-	F_x \ge 0, \quad \text{und}\quad \sum_{x\in X} F_x = \mathbb{I}.
-\end{equation}
-erfüllen müssen.
+Mit Wahrscheinlichkeit $p$ erhalten wir einen Treffer. Das rechtfertigt, die Diagonaleinträge einer Dichtematrix als Wahrscheinlichkeiten zu lesen, und zwar für die Messung in der Basis, in der man die Matrix hinschreibt.
+\end{beispiel}
 
-Wenn jedes $F(S)$ ein Projektor ist, also $F(S)^2 = F(S)$ erfüllt, nennen wir die Observable \emph{projektionswertig}. Ein weiterer wichtiger Spezialfall sind Observable, die als Ergebnisse reelle Zahlen liefern. Dann können wir den Erwartungswert $\langle A\rangle$ der Verteilung als
+Ein Messapparat liefert oft eines von mehreren Ergebnissen $x$ aus einer Menge $X$; $x$ ist jetzt ein Messergebnis, kein Basisindex. Für jedes Ergebnis fragt man, ob es eingetreten ist; das gibt Detektoren $\op{F}_x$ mit
 \begin{equation}
-	\langle A \rangle = \tr(\rho A)
+	\op{F}_x \geq 0, \qquad \sum_{x\in X}\op{F}_x = \mathbb{I},
 \end{equation}
-schreiben, wobei 
-\begin{equation}\label{eq:observableA}
-	A = \sum_{x\in X} x F_x
+eine \emph{Messung} (englisch POVM, \emph{positive operator-valued measure}). Nach P4 ist $x\mapsto\tr(\rho\,\op{F}_x)$ eine Wahrscheinlichkeitsverteilung. Ein Detektor, der den Zustand $\ket{0}$ nur mit Wahrscheinlichkeit $q$ meldet, $0 < q < 1$, und bei $\ket{1}$ nie anspricht, hat zum Beispiel $\op{F} = q\ketbra{0}{0}$; das ist kein Projektor. Ist dagegen jedes $\op{F}_x$ ein Projektor, so heißt die Messung \emph{projektorwertig}. Sind die Ergebnisse reelle Zahlen, so ist ihr Erwartungswert
+\begin{equation}
+	\sum_x x\,\tr(\rho\,\op{F}_x) = \tr(\rho\,\op{A}), \qquad \op{A} = \sum_x x\,\op{F}_x,
 \end{equation}
-ein hermitescher Operator ist. Im projektionswertigen Fall ist nach dem sogenannten Spektralsatz die ganze Observable schon aus $A$ bestimmt. Man liest deshalb häufig als Definition, dass die Observablen genau die hermiteschen Operatoren sind. 
+und $\op{A}$ ist hermitesch. Im projektorwertigen Fall ist die Messung umgekehrt schon durch $\op{A}$ bestimmt: Die $\op{F}_x$ sind die Projektoren auf die Eigenräume von $\op{A}$, und nach dem Spektralsatz gehört so zu jedem hermiteschen Operator eine projektorwertige Messung. Man liest deshalb häufig als Definition, dass die Observablen genau die hermiteschen Operatoren sind. Das ist der projektorwertige Spezialfall; der Detektor mit $\op{F} = q\ketbra{0}{0}$ ist darin nicht enthalten.
 
-Ein Zustand charakterisiert ja nicht ein einzelnes System mit irgendwie veränderlichen Eigenschaften, sondern ein Präparierverfahren, das (schon allein zur Wiederholung des statistischen Häufigkeitsexperiments) zu jeder beliebigen Zeit in Gang gesetzt werden können muss. Nach der Annahme der Reproduzierbarkeit muss es auch egal sein, ob sowohl Präparation als auch Messung etwas später durchgeführt werden. Das Einzige was zählt ist ein \emph{relativer} Zeitversatz.
+\subsection{Zeitentwicklung}
+Ein Zustand charakterisiert nicht ein einzelnes System, sondern ein Präparationsverfahren, das zu jeder Zeit in Gang gesetzt werden kann. Für ein abgeschlossenes System, dessen Bedingungen sich nicht mit der Zeit ändern, zählt nur der \emph{relative} Zeitversatz zwischen Präparation und Messung; das ist eine Annahme über das System, keine Folge der Reproduzierbarkeit.
 
-Mit den Postulaten 1 bis 4 wären wir im Prinzip fertig; weil aber ständig Zeitverschiebungen auftreten, wollen wir ein bequemes Hilfspostulat.
+\begin{merksatz}[P5]
+	Das ist alles; Dynamik sind Symmetrien. Fügen wir aber, wie im Skript, die Angabe der Heisenberg-/Schrödinger-Dynamik hinzu.
+\end{merksatz}
+„Dynamik sind Symmetrien“ heißt: Zeitentwicklungen sind Symmetrien des Zustandsraums, wie wir gleich sehen. Ein Experiment mit verzögerter Messung ist einfach ein Experiment mit einer anderen Messung. Die Vorschrift dafür ist selbst ein Postulat, aus P0 bis P4 nicht beweisbar; für die umkehrbare Dynamik eines abgeschlossenen Systems lautet sie: Jede Art von System ist weiter charakterisiert durch einen hermiteschen \emph{Hamiltonoperator} $\op{\Ham}$, der den \emph{Zeitentwicklungsoperator} $\op{U}_t = e^{-\frac{it}{\hbar}\op{\Ham}}$ aus Vorlesung~5 bestimmt. Wendet man die Messung mit einer Verzögerung $t$ an, so erhält man
+\begin{equation}
+	\tr\bigl(\op{U}_t\rho\,\op{U}_t\adj\op{F}\bigr) = \tr\bigl(\rho\,\op{U}_t\adj\op{F}\op{U}_t\bigr).
+\end{equation}
+Die Gleichung folgt aus der Zyklizität der Spur. Links liegt es nahe, $\rho_t = \op{U}_t\rho\,\op{U}_t\adj$ als zeitabhängigen Zustand einzuführen, bei festen Messungen; das ist das \emph{Schrödingerbild}, für reine Zustände $\ket{\psi_t} = \op{U}_t\ket{\psi}$. Rechts liegt es nahe, zeitabhängige Observablen $\op{A}_t = \op{U}_t\adj\op{A}\op{U}_t$ bei festem Zustand einzuführen; das ist das \emph{Heisenbergbild}. Beide Bilder liefern dieselben Wahrscheinlichkeiten.
 
-\begin{center}
-\parbox[c][5cm][c]{14cm}{\begin{tcolorbox}[colback=banana,arc=0cm,frame hidden,enhanced]{\textbf{Postulat 5}. Jede Systemsorte ist weiter charakterisiert durch einen \emph{Hamiltonoperator} $H$, der den \emph{Zeitentwicklungsoperator} $U_t = e^{-\frac{it}{\hbar} H}$ bestimmt. Wendet man in einem Experiment mit gegebenem Präparier- und Messverfahren die Messung mit einer Verzögerung von $t$ Sekunden an, so erhält man den Erwartungswert
-\begin{equation}
-	\langle A\rangle (t) \equiv \tr(U_t\rho U_t^\dag A) = \tr(\rho U_t^\dag A U_t).
-\end{equation}
-}\end{tcolorbox}}
-\end{center}
-Diese Gleichung folgt einfach aus der Eigenschaft $\tr(AB) = \tr(BA)$ der Spur. Sie ist hier aufgenommen, weil die beiden Seiten unterschiedlichen, aber offensichtlich äquivalenten Auffassungen der Zeitentwicklung entsprechen: auf
-der linken Seite liegt es nahe, $\rho_t \equiv U_t \rho U_t^\dag$ als zeitabhängige Dichtematrix einzuführen, und die Observablen als zeitunabhängig zu betrachten. Dies nennt sich das \emph{Schrödingerbild}. Für reine Zustände ergibt sich dann auch für Wellenfunktionen: $|\Psi_t\rangle = U_t |\Psi_0\rangle$. Die rechte Seite legt die Einführung zeitabhängiger Observablen $A_t\equiv U_t^\dag A U_t$, bei festgehaltenen Zuständen nahe. Dies nennt sich
-das \emph{Heisenbergbild}. Die mathematisch ohnehin evidente Äquivalenz dieser Bilder bedeutet physikalisch, dass nur die relative Zeit zwischen den Teilen des Experiments wichtig ist.
+Dass $\op{\Ham}$ hermitesch ist, ist wesentlich: Es gewährleistet, dass $\op{U}_t$ für alle $t$ unitär ist, und für unitäres $\op{U}$ ist $\op{U}\rho\,\op{U}\adj$ wieder ein Dichteoperator und $0\leq\op{U}\adj\op{F}\op{U}\leq\mathbb{I}$ wieder ein Detektor: $\melem{\psi}{\op{U}\rho\,\op{U}\adj}{\psi} = \melem{\op{U}\adj\psi}{\rho}{\op{U}\adj\psi}\geq 0$, $\tr(\op{U}\rho\,\op{U}\adj) = \tr(\rho\,\op{U}\adj\op{U}) = 1$, und dieselbe Rechnung mit $\op{F}$ und mit $\mathbb{I}-\op{F}$ gibt die beiden Ungleichungen. $\op{U}_t$ bildet den Zustandsraum umkehrbar auf sich ab und erhält Mischungen und reine Zustände; in diesem Sinn ist Dynamik eine Symmetrie. $\op{\Ham}$ ist eine \emph{zusätzliche} Information über die Art des Systems. Für unbeschränkte Hamiltonoperatoren, die in unendlich vielen Dimensionen auftreten, muss es „selbstadjungiert“ statt „hermitesch“ heißen; das behandelt der Webkurs.
 
-Im Postulat fehlt eine Voraussetzung, die wir hier nachtragen: Der Hamiltonoperator $H$ ist stets \emph{hermitesch}. Nur dann ist $U_t$ unitär, und nur dann ist $U_t^\dag F U_t$ wieder ein zulässiges Messverfahren mit $0 \le U_t^\dag F U_t \le \mathbb{I}$. Ein Experiment mit verzögerter Messung ist damit einfach ein Experiment mit einer anderen Messung; insofern ist Postulat 5 mit den übrigen verträglich. Beweisen lässt es sich aus ihnen trotzdem nicht, und wesentlich bleibt: $H$ ist eine \emph{zusätzliche} Information über die Systemsorte.
-
-\begin{beispiel}[Zeitentwicklung eines Qubits]
-Rechnen wir $U_t$ für ein Qubit mit
+\begin{beispiel}[Ein Qubit unter der Z-Messung]
+Mit $\op{\Ham} = \varepsilon\pauli{x}$ und $\op{U}_t = \cos(\varepsilon t/\hbar)\mathbb{I} - i\sin(\varepsilon t/\hbar)\pauli{x}$ aus Vorlesung~5 gibt die Z-Messung im Zustand $\ketbra{0}{0}$ nach der Zeit $t$
 \begin{equation}
-	H \equiv \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}
+	\tr\bigl(\rho_t\ketbra{0}{0}\bigr) = \abs{\melem{0}{\op{U}_t}{0}}^2 = \cos^2\Bigl(\frac{\varepsilon t}{\hbar}\Bigr).
 \end{equation}
-aus; dass $H$ hermitesch ist, sieht man sofort. Im Allgemeinen berechnet man Operatorfunktionen über Eigenwerte und Eigenvektoren, hier ist die Taylorreihe bequemer:
-\begin{equation}
-	U_t = e^{-\frac{it}{\hbar}H} = \sum_{n=0}^\infty \frac{1}{n!}\left(\frac{-it}{\hbar}\right)^n H^n, \qquad H^0 \equiv \mathbb{I}.
-\end{equation}
-Der Trick ist $H^2 = \mathbb{I}$, also $H^{2n} = \mathbb{I}$ und $H^{2n+1} = H$. Sortiert man die Reihe nach Termen mit $\mathbb{I}$ und mit $H$, erkennt man wegen $(-i)^{2n} = (-1)^n$ die Reihen aus dem ersten Semester wieder:
-\begin{equation}
-	U_t = \left[\sum_{n=0}^\infty \frac{(-1)^n}{(2n)!}\left(\frac{t}{\hbar}\right)^{2n}\right]\mathbb{I} - i\left[\sum_{n=0}^\infty \frac{(-1)^n}{(2n+1)!}\left(\frac{t}{\hbar}\right)^{2n+1}\right] H,
-\end{equation}
-also
-\begin{equation}
-	\eqbox{U_t = \cos\left(\frac{t}{\hbar}\right)\mathbb{I} - i\sin\left(\frac{t}{\hbar}\right) H}
-\end{equation}
-beziehungsweise
-\begin{equation}
-	U_t = \begin{pmatrix} \cos\left(\frac{t}{\hbar}\right) & -i\sin\left(\frac{t}{\hbar}\right) \\ -i\sin\left(\frac{t}{\hbar}\right) & \cos\left(\frac{t}{\hbar}\right)\end{pmatrix}.
-\end{equation}
-Eine Warnung: $H^2 = \mathbb{I}$ ist eine Besonderheit dieses Beispiels und gilt keineswegs allgemein.
+Ein Zustand~(\ref{eq:qubitzustand}) mit $\real x = 0$ bleibt in dieser Ebene: Mit $p-\tfrac12 = r\cos\varphi$ und $\imag x = r\sin\varphi$ ist $p_t - \tfrac12 = r\cos(\varphi + 2\varepsilon t/\hbar)$ und $\imag x_t = r\sin(\varphi + 2\varepsilon t/\hbar)$. Der Faktor $2$ ist derselbe wie in $\cos^2\theta = \tfrac12(1 + \cos 2\theta)$: Für $\ketbra{0}{0}$ ist $r = \tfrac12$, $\varphi = 0$.
 \end{beispiel}
 
 \input{figures/fig_vl06_messung}
 
-Die Abbildung fasst die Postulate 2, 4 und 5 zusammen: Positivität schneidet aus den Matrizen~(\ref{eq:qubitzustand}) eine Scheibe heraus --- Teil~(a) zeigt sie in der Ebene $\real x = 0$, die $U_t$ hier nicht verlässt ---, $U_t$ dreht darin um den maximal gemischten Zustand $\mathbb{I}/2$, und der Detektor liest davon nur die waagerechte Koordinate ab, Teil~(b). Der Abstand $r$ vom Zentrum ist deshalb die Amplitude des gemessenen Signals: ein reiner Zustand schwingt zwischen null und eins, $\mathbb{I}/2$ antwortet für immer mit $\tfrac12$.
+Die Abbildung fasst P2, P4 und P5 zusammen: Positivität schneidet aus den Matrizen~(\ref{eq:qubitzustand}) eine Scheibe heraus, Teil~(a) zeigt sie in der Ebene $\real x = 0$; $\op{U}_t$ dreht darin um den maximal gemischten Zustand $\mathbb{I}/2$, und der Detektor liest nur die waagerechte Koordinate ab, Teil~(b). Der Abstand $r$ vom Zentrum ist deshalb die Amplitude des gemessenen Signals: Ein reiner Zustand schwingt zwischen null und eins, $\mathbb{I}/2$ antwortet für immer mit $\tfrac12$.
 
-Eine bedeutende Lücke bleibt in diesen Postulaten: nirgends ist gesagt, welche Operatoren $\rho$ oder $F$ man einem gegebenem Experiment zuordnen soll. Dies ist eine Frage, die man tatsächlich nicht durch ein paar allgemeine Postulate klären kann. Der häufigste Zugang ist, ein paar ,,Standardobservablen`` auszuzeichnen, in der Regel durch ihr Transformationsverhalten unter raumzeitlichen Symmetrien. Dies sind dann Größen mit engem Bezug zu klassischen Größen, und heißen auch so: Ort, Impuls, Energie, Drehimpuls und so weiter. Wer eine genauere Zuordnung von Messgeräten und Operatoren wünscht, muss auch den konkreten Messprozess genauer analysieren, besonders die quantenmechanische Wechselwirkung zwischen dem gegebenen System und Teilen des Apparates, wie zum Beispiel ionisierbaren Testteilchen im Apparat. Für fast alle Fragen in dieser Vorlesung werden wir aber mit der Untersuchung der Standardobservablen auskommen.
-
+Eine bedeutende Lücke bleibt in diesen Postulaten: Nirgends ist gesagt, welche Operatoren $\rho$ oder $\op{F}$ man einem gegebenen Experiment zuordnen soll. Das lässt sich nicht durch ein paar allgemeine Postulate klären. Der häufigste Zugang ist, Standardobservablen auszuzeichnen, in der Regel durch ihr Verhalten unter den Symmetrien von Raum und Zeit: Ort, Impuls, Energie, Drehimpuls. Wer eine genauere Zuordnung wünscht, muss den Messprozess selbst analysieren. Auch was nach einer Messung mit dem System geschieht, sagen P0 bis P5 nicht; wiederholte Messungen am selben System behandeln wir hier nicht. Für fast alle Fragen dieser Vorlesung kommen wir mit den Standardobservablen aus.

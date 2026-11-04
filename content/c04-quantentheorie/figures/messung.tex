@@ -1,0 +1,86 @@
+% c04.fig.messung — what P2, P4 and P5 fix together for a qubit.
+% Adapted from latex/figures/fig_vl06_messung.tex (script v0.2) to the course conventions:
+% plate tokens and data roles only, geometry from the formulas, line style carries the state.
+% The v0.2 figure used H = sigma_x without an energy; here H = epsilon sigma_x (c04.ex.qubit-dynamik),
+% so the time axis is in units of hbar/epsilon.
+%
+% P2: rho = (p, x; x^*, 1-p) is a state iff (p - 1/2)^2 + |x|^2 <= 1/4 (c04.eq.det).  Panel (a)
+%     draws the slice Re x = 0 in coordinates (p, Im x): a disc of radius 1/2 about (1/2, 0).
+%     Outside: Hermitian trace-one matrices that are not states, hatched.
+% P5: U_t = cos(eps t/hbar) I - i sin(eps t/hbar) sigma_x keeps Re x = 0 and turns the slice about
+%     its centre (c04.eq.kreis, checked by check_c04.py):
+%       p_t - 1/2 = r cos(phi + 2 eps t/hbar),  Im x_t = r sin(phi + 2 eps t/hbar),
+%     counterclockwise in (p, Im x).  Orbits: r = 1/2 (pure, solid) and r = 3/10 (dotted).
+% P4: the Z detector F = |0><0| reads tr(rho_t F) = p_t, the horizontal coordinate.  Panel (b)
+%     plots p_t = 1/2 + r cos(phi + 2 s) over s = eps t / hbar in [0, 2 pi]:
+%       |0><0|:  r = 1/2,  phi = 0         -> p_t = cos^2(s)                (solid)
+%       rho:     r = 3/10, phi = 70 degrees -> (p, Im x) = (0.6026, 0.2819) (dotted)
+%       I/2:     r = 0                      -> p_t = 1/2                    (thin)
+% Scale (a): 1 = 3.2 cm on both axes, so the disc is round.  Scale (b): s: 1 = 0.82 cm, p: 1 = 3.2 cm.
+\begin{tikzpicture}
+  % ---------------------------------------------------------------- (a) the state disc
+  \begin{scope}[x=3.2cm, y=3.2cm]
+    \fill[pattern=north east lines, pattern color=tpc-plate-muted, even odd rule]
+      (-0.12,-0.62) rectangle (1.12,0.62) (0.5,0) circle (0.5);
+    \fill[tpc-plate] (0.5,0) circle (0.5);
+    \draw[tpc axis, -{Stealth[length=4pt]}] (-0.12,0) -- (1.2,0);
+    \draw[tpc axis, -{Stealth[length=4pt]}] (0,-0.62) -- (0,0.7);
+    \node[tpc label, anchor=north] at (1.17,-0.02) {$p$};
+    \node[tpc label, anchor=east] at (-0.01,0.66) {$\imag x$};
+    \foreach \v/\l in {0/0, 0.5/\tfrac12, 1/1}
+      \draw[tpc axis] (\v,0.015) -- (\v,-0.015) node[tpc label, anchor=north, yshift=-1pt] {$\l$};
+    \foreach \v/\l in {-0.5/-\tfrac12, 0.5/\tfrac12}
+      \draw[tpc axis] (0.015,\v) -- (-0.015,\v) node[tpc label, anchor=east] {$\l$};
+    % orbit of the mixed state (r = 3/10), dotted, with the direction of motion
+    \draw[tpc-q2, line width=0.9pt, densely dotted] (0.5,0) circle (0.3);
+    \draw[tpc-q2, line width=0.9pt, -{Stealth[length=5pt]}]
+      plot[domain=118:150, samples=12, variable=\a] ({0.5+0.3*cos(\a)}, {0.3*sin(\a)});
+    % boundary = pure states = orbit of |0><0|, solid, with the direction of motion
+    \draw[tpc-q1, line width=1.2pt] (0.5,0) circle (0.5);
+    \draw[tpc-q1, line width=1.2pt, -{Stealth[length=5pt]}]
+      plot[domain=172:205, samples=12, variable=\a] ({0.5+0.5*cos(\a)}, {0.5*sin(\a)});
+    % P4: the detector reads the horizontal coordinate of rho
+    \draw[tpc leader, densely dotted, -{Stealth[length=4pt]}] (0.6026,0.2819) -- (0.6026,-0.6);
+    \node[tpc label, anchor=north west] at (0.62,-0.47) {$\tr(\rho\op{\EffOp})$};
+    % the radius r of rho
+    \draw[tpc-plate-muted, line width=0.6pt, -{Stealth[length=4pt]}] (0.5,0) -- (0.6026,0.2819);
+    \node[tpc label, anchor=east] at (0.535,0.17) {$r$};
+    % the three states
+    \fill[tpc-q1] (1,0) circle (1.9pt);
+    \fill[tpc-q2] (0.6026,0.2819) circle (1.9pt);
+    \fill[tpc-plate-ink] (0.5,0) circle (1.9pt);
+    \node[tpc label, anchor=west, fill=tpc-plate, inner sep=1pt] at (1.03,0.04) {$\ketbra{0}{0}$};
+    \node[tpc label, anchor=south west] at (0.62,0.29) {$\rho$};
+    \node[tpc label, anchor=north east] at (0.49,-0.03) {$\Id/2$};
+    \node[tpc label, anchor=north west] at (0.08,0.38) {$\op{U}_t$};
+    \node[tpc label, anchor=south west, align=left] at (-0.11,-0.61)
+      {\tpcifenglish{no state}{kein Zustand}};
+    \node[tpc label, anchor=south, align=center] at (0.5,0.5)
+      {\tpcifenglish{pure}{rein}};
+    \node[tpc label, anchor=north] at (0.5,-0.72) {(a) $\real x = 0$};
+  \end{scope}
+  % ---------------------------------------------------------------- (b) the detection probability
+  \begin{scope}[shift={(5.0cm,-1.6cm)}, x=0.82cm, y=3.2cm]
+    \draw[tpc axis, -{Stealth[length=4pt]}] (0,0) -- (6.65,0);
+    \draw[tpc axis, -{Stealth[length=4pt]}] (0,0) -- (0,1.12);
+    \node[tpc label, anchor=north] at (6.5,-0.06) {$\varepsilon t/\hbar$};
+    \node[tpc label, anchor=south west] at (0.05,1.06) {$\tr(\rho_t\op{\EffOp})$};
+    \foreach \v/\l in {0/0, 1.5708/\tfrac{\pi}{2}, 3.1416/\pi, 4.7124/\tfrac{3\pi}{2}, 6.2832/2\pi}
+      \draw[tpc axis] (\v,0.012) -- (\v,-0.012) node[tpc label, anchor=north] {$\l$};
+    \foreach \v/\l in {0.5/\tfrac12, 1/1}
+      \draw[tpc axis] (0.06,\v) -- (-0.06,\v) node[tpc label, anchor=east] {$\l$};
+    \draw[tpc grid] (0,1) -- (6.2832,1);
+    % |0><0|: p_t = 1/2 + 1/2 cos(2 s) = cos^2 s
+    \draw[tpc-q1, line width=1.1pt] plot[domain=0:6.2832, samples=181, smooth, variable=\s]
+      ({\s}, {0.5+0.5*cos(deg(2*\s))});
+    % rho: p_t = 1/2 + 3/10 cos(70 deg + 2 s)
+    \draw[tpc-q2, line width=1.1pt, densely dotted] plot[domain=0:6.2832, samples=181, smooth, variable=\s]
+      ({\s}, {0.5+0.3*cos(70+deg(2*\s))});
+    % I/2: p_t = 1/2
+    \draw[tpc-plate-ink, line width=0.7pt] (0,0.5) -- (6.2832,0.5);
+    \node[tpc label, anchor=west] at (6.35,1.0) {$\ketbra{0}{0}$};
+    \node[tpc label, anchor=west] at (6.35,0.62) {$\rho$};
+    \node[tpc label, anchor=west] at (6.35,0.5) {$\Id/2$};
+    \node[tpc label, anchor=north] at (3.14,-0.2) {(b) Z-\tpcifenglish{measurement}{Messung}};
+  \end{scope}
+\end{tikzpicture}

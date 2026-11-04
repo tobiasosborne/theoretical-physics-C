@@ -592,3 +592,170 @@ is not in the range (first entry of $Sv$ is $0$). P-0327, P-0328: Reed-Simon I p
   spectral theorem and the unitary groups.
 - Page-image rows P-0318 to P-0328 were read from the rendered pages by the chapter author;
   an independent page-image review receipt is still to be made.
+
+## Lecture 5: trace, eigenvalues, diagonalisation, functions of operators (vl05 material)
+
+Source text: `latex/lectures/de/vl05.tex` of script v0.2 (snapshot `tpc-script-v0.2`), without
+the subsection "Position-Basis" (deferred to C5, decision D-POS, `docs/plan/lec56/BRIEF.md`).
+Spoken: `transcripts/clean/v05.md` from [82:29], `v06.md`. Numbers re-computed exactly by
+`check_c03.py` (section "Lecture 5"). All Hilbert spaces finite-dimensional unless a block says
+otherwise; standard linear algebra (determinant, characteristic polynomial, fundamental theorem
+of algebra, extension of an orthonormal set to an orthonormal basis, rank-nullity) is a
+prerequisite (TJO 2026-10-29).
+
+<a id="c03.cl.spur"></a>
+**c03.cl.spur** (Kern, c03.prop.spur). (3) ONBs $\{x\}$ of $H_1$, $\{y\}$ of $H_2$.
+$\operatorname{tr}_2(AB)=\sum_y\langle y|AB|y\rangle=\sum_y\langle y|A(\sum_x|x\rangle\langle x|)B|y\rangle
+=\sum_{x,y}\langle y|A|x\rangle\langle x|B|y\rangle$; the factors are numbers, so
+$=\sum_x\sum_y\langle x|B|y\rangle\langle y|A|x\rangle=\sum_x\langle x|B(\sum_y|y\rangle\langle y|)A|x\rangle
+=\operatorname{tr}_1(BA)$. Finite sums, order irrelevant. Completeness relation on $H_1$, $H_2$:
+c03.cl.ketbra (D94), valid for any finite-dimensional Hilbert space. (1) Same computation with
+$H_1=H_2$ and two ONBs: $\sum_x\langle x|A|x\rangle=\sum_x\langle x|(\sum_y|y\rangle\langle y|)A|x\rangle
+=\sum_y\langle y|A(\sum_x|x\rangle\langle x|)|y\rangle=\sum_y\langle y|A|y\rangle$ (the text's
+middle expression $\sum_{x,y}\langle x|y\rangle\langle y|A|x\rangle$ is the first step).
+(2) $\langle x|(A+B)|x\rangle=\langle x|A|x\rangle+\langle x|B|x\rangle$, $\langle x|zA|x\rangle=z\langle x|A|x\rangle$.
+(4) $|\Psi\rangle:\mathbb C\to H$, $\langle\Phi|:H\to\mathbb C$ (c03.cl.bra-op); in $\mathbb C$ with
+inner product $a^*b$ we choose the ONB $\{1\}$ (any $e^{i\alpha}$ would do, by (1)), so $\operatorname{tr}_{\mathbb C}(z)=1^*z1=z$.
+(3) gives $\operatorname{tr}_H(|\Psi\rangle\langle\Phi|)=\operatorname{tr}_{\mathbb C}(\langle\Phi|\,|\Psi\rangle)=\langle\Phi|\Psi\rangle$.
+Direct check: $\sum_x\langle x|\Psi\rangle\langle\Phi|x\rangle=\langle\Phi|(\sum_x|x\rangle\langle x|)|\Psi\rangle$.
+The remark "$\operatorname{tr}(ABC)=\operatorname{tr}(CAB)$, not in general $\operatorname{tr}(BAC)$"
+is (3) with $A\to AB$, $B\to C$; counterexample in check_c03.py.
+
+<a id="c03.cl.spur-beispiel"></a>
+**c03.cl.spur-beispiel** (Kern, c03.ex.spur). Diagonal of $A$ (c03.eq.abc) is $0,0,0$;
+diagonal of $B$ is $\frac13,\frac13,\frac13$. $u=(1,1,1)/\sqrt3$: $(|u\rangle\langle u|)_{jk}=u_ju_k^*=\frac13=B_{jk}$;
+$\langle u|u\rangle=3\cdot\frac13=1$.
+
+<a id="c03.cl.diagonal-wirkung"></a>
+**c03.cl.diagonal-wirkung** (Kern, c03.eq.diagonal-wirkung). Insert
+$\mathbb I=\sum_x|x\rangle\langle x|$ left and right of $A$ (c03.cl.ketbra):
+$A|\Psi\rangle=\sum_{x,y}|x\rangle\langle x|A|y\rangle\langle y|\Psi\rangle$; with
+$\langle x|A|y\rangle=\delta_{xy}a_x$ (D97) the double sum collapses to
+$\sum_xa_x\langle x|\Psi\rangle|x\rangle$. For $\Psi=|y\rangle$: $A|y\rangle=a_y|y\rangle$.
+
+<a id="c03.cl.diagonal"></a>
+**c03.cl.diagonal** (Kern, c03.prop.diagonal). (1) $\langle\phi_x|\phi_y\rangle=\langle U^\dagger x|U^\dagger y\rangle
+=\langle x|UU^\dagger y\rangle=\delta_{xy}$ (D17, $UU^\dagger=\mathbb I$). An orthonormal family is
+linearly independent ($0=\sum c_y\phi_y\Rightarrow c_x=\langle\phi_x|0\rangle=0$); $|X|=\dim H$ such
+vectors form a basis (linear algebra). $A\phi_x=U^\dagger UAU^\dagger x$ (using $U^\dagger U=\mathbb I$)
+$=U^\dagger(\sum_ya_y|y\rangle\langle y|)|x\rangle=a_xU^\dagger x=a_x\phi_x$.
+(2) $U=\sum_x|x\rangle\langle\phi_x|$, $U^\dagger=\sum_x|\phi_x\rangle\langle x|$ (c03.cl.ketbra, adjoint
+of a sum). $UU^\dagger=\sum_{x,y}|x\rangle\langle\phi_x|\phi_y\rangle\langle y|=\sum_x|x\rangle\langle x|=\mathbb I$;
+$U^\dagger U=\sum_{x,y}|\phi_x\rangle\langle x|y\rangle\langle\phi_y|=\sum_x|\phi_x\rangle\langle\phi_x|=\mathbb I$
+(completeness for the ONB $\{\phi_x\}$). $UAU^\dagger=\sum_{x,y}|x\rangle\langle\phi_x|A|\phi_y\rangle\langle y|$,
+$\langle\phi_x|A|\phi_y\rangle=a_y\delta_{xy}$. (3) $(\sum_xa_x|\phi_x\rangle\langle\phi_x|)|\phi_y\rangle=a_y|\phi_y\rangle=A|\phi_y\rangle$;
+linear maps agreeing on a basis are equal. Trace in the basis $\{\phi_x\}$ (c03.cl.spur (1)):
+$\sum_x\langle\phi_x|A|\phi_x\rangle=\sum_xa_x$. In case (1) the $\phi_x$ are eigenvectors, so (3)
+applies to both cases.
+
+<a id="c03.cl.eigen-hermitesch"></a>
+**c03.cl.eigen-hermitesch** (Kern, c03.prop.eigen-hermitesch). Real: c03.cl.orte. Orthogonal:
+$\langle\phi|A\psi\rangle=b\langle\phi|\psi\rangle$; $\langle\phi|A\psi\rangle=\langle A^\dagger\phi|\psi\rangle$
+(D17) $=\langle A\phi|\psi\rangle=\langle a\phi|\psi\rangle=a^*\langle\phi|\psi\rangle$ (antilinear in the
+first slot, c03.cl.symmetrie) $=a\langle\phi|\psi\rangle$. So $(a-b)\langle\phi|\psi\rangle=0$.
+This is the "trick" of v06 [48:26]; vl05.tex:131-147.
+
+<a id="c03.cl.spektral"></a>
+**c03.cl.spektral** (Kern, c03.thm.spektral). Induction on $n=\dim H$. $n=1$: any unit vector is
+an eigenvector ($A$ is multiplication by a number). $n>1$: $\det(A-\lambda\mathbb I)$ is a polynomial
+of degree $n\ge1$, has a root $\lambda\in\mathbb C$; $A-\lambda$ is then not injective, so the
+eigenspace $E=\ker(A-\lambda)$ is nonzero. Normal ($A^\dagger A=AA^\dagger$): for $v\in E$,
+$A(A^\dagger v)=A^\dagger Av=\lambda A^\dagger v$, so $A^\dagger E\subset E$. $E^\perp=\{w:\langle v|w\rangle=0\ \forall v\in E\}$.
+For $w\in E^\perp$, $v\in E$: $\langle v|Aw\rangle=\langle A^\dagger v|w\rangle=0$ since $A^\dagger v\in E$;
+$\langle v|A^\dagger w\rangle=\langle Av|w\rangle=\langle\lambda v|w\rangle=\lambda^*\langle v|w\rangle=0$.
+So $AE^\perp\subset E^\perp$, $A^\dagger E^\perp\subset E^\perp$; the restrictions $A',A'^\dagger$ satisfy
+$\langle w|A'w'\rangle=\langle A'^\dagger w|w'\rangle$ on $E^\perp$ (so $A'^\dagger$ is the adjoint of $A'$ in
+$E^\perp$ with the restricted inner product, unique by c03.cl.adjungiert) and commute. Gram-Schmidt
+(c03.cl.gram-schmidt) applied to a basis of $E$ gives an ONB $e_1..e_k$ of $E$ ($k\ge1$); extend to an ONB
+$e_1..e_n$ of $H$ (Gram-Schmidt on $e_1..e_k$ followed by any basis). Then $E^\perp=\operatorname{span}(e_{k+1}..e_n)$:
+$\supset$ clear; $\subset$ by expansion $w=\sum_j\langle e_j|w\rangle e_j$ (c03.cl.entwicklung) with
+$\langle e_j|w\rangle=0$ for $j\le k$. $\dim E^\perp=n-k<n$; by induction $E^\perp$ has an ONB of
+eigenvectors of $A'$, which are eigenvectors of $A$. Together with $e_1..e_k$ (eigenvectors with
+eigenvalue $\lambda$, orthogonal to $E^\perp$): an ONB of $H$. ($E^\perp=\{0\}$, $k=n$, ends the
+induction trivially.) Hermitian and unitary are normal: c03.cl.isometrie (3). Not diagonalisable:
+$N=\begin{pmatrix}0&1\\0&0\end{pmatrix}$, $\det(N-\lambda)=\lambda^2$, $Nv=0\iff v_2=0$; eigenvectors
+$\propto(1,0)$, one-dimensional, no basis. The source does not prove the theorem (vl05.tex:88 states
+it without proof); authority for finite-dimensional linear algebra: prerequisite.
+
+<a id="c03.cl.hadamard"></a>
+**c03.cl.hadamard** (Kern, c03.ex.hadamard). $\sigma_x=\begin{pmatrix}0&1\\1&0\end{pmatrix}$ (c02.eq.pauli).
+$\det(\sigma_x-\lambda)=\lambda^2-1$, roots $\pm1$. $\sigma_x(1,1)=(1,1)$, $\sigma_x(1,-1)=-(1,-1)$, norms
+$\sqrt2$. $|0\rangle\langle\phi_0|=\begin{pmatrix}1\\0\end{pmatrix}\frac1{\sqrt2}(1,1)$,
+$|1\rangle\langle\phi_1|=\begin{pmatrix}0\\1\end{pmatrix}\frac1{\sqrt2}(1,-1)$ (real vectors: the bra
+is the transposed column); sum $H=\frac1{\sqrt2}\begin{pmatrix}1&1\\1&-1\end{pmatrix}$, $H=H^\dagger$,
+$H\sigma_xH^\dagger=\operatorname{diag}(1,-1)$ (check_c03.py). Spectral decomposition:
+$|\phi_0\rangle\langle\phi_0|-|\phi_1\rangle\langle\phi_1|=\frac12\begin{pmatrix}1&1\\1&1\end{pmatrix}-\frac12\begin{pmatrix}1&-1\\-1&1\end{pmatrix}=\sigma_x$.
+Swapped: $U'=|0\rangle\langle\phi_1|+|1\rangle\langle\phi_0|=\frac1{\sqrt2}\begin{pmatrix}1&-1\\1&1\end{pmatrix}$,
+$U'\sigma_xU'^\dagger=\operatorname{diag}(-1,1)$. Figure c03.fig.diagonal: $A=\sigma_x+2\mathbb I$ has
+$A\phi_0=3\phi_0$, $A\phi_1=\phi_1$, $UAU^\dagger=\operatorname{diag}(3,1)$; image of the unit circle
+$(2\cos t+\sin t,\cos t+2\sin t)$; in the eigenbasis $(3\cos t,\sin t)$ (figure comments).
+
+<a id="c03.cl.ohne-eigen"></a>
+**c03.cl.ohne-eigen** (Vertiefung c03.v7, c03.ex.ohne-eigen). $T=S+S^\dagger$ with $S$ the right
+shift (c03.cl.shift): $(Sv)_1=0$, $(Sv)_j=v_{j-1}$; $(S^\dagger v)_j=v_{j+1}$. So $(Tv)_1=v_2$,
+$(Tv)_j=v_{j-1}+v_{j+1}$ ($j\ge2$). $\|Sv\|=\|v\|$, $\|S^\dagger v\|^2=\sum_{j\ge2}|v_j|^2\le\|v\|^2$,
+triangle inequality (c03.cl.dreieck, valid in $\ell^2$): $\|Tv\|\le2\|v\|$. $T^\dagger=S^\dagger+S^{\dagger\dagger}=T$
+(rules of D17, which hold for bounded everywhere-defined operators on $\ell^2$ with the same
+proof; $S^\dagger$ as computed in c03.ex.shift). Eigenvalue real: $\lambda\|v\|^2=\langle v|Tv\rangle
+=\langle Tv|v\rangle=\lambda^*\|v\|^2$. Real and imaginary parts: the equations have real
+coefficients when $\lambda$ is real, so $\operatorname{Re}v$, $\operatorname{Im}v$ solve them; both are
+in $\ell^2$ ($|\operatorname{Re}v_j|\le|v_j|$) and not both zero. Recursion with $v_0:=0$:
+$j=1$: $v_2=\lambda v_1=\lambda v_1-v_0$; $j\ge2$: $v_{j+1}=\lambda v_j-v_{j-1}$.
+$Q_j=v_{j+1}^2-\lambda v_{j+1}v_j+v_j^2$ ($j\ge0$). $Q_{j+1}=v_{j+2}^2-\lambda v_{j+2}v_{j+1}+v_{j+1}^2
+=v_{j+2}(v_{j+2}-\lambda v_{j+1})+v_{j+1}^2=-v_jv_{j+2}+v_{j+1}^2=-v_j(\lambda v_{j+1}-v_j)+v_{j+1}^2=Q_j$
+(sympy in check_c03.py). $Q_0=v_1^2$. $v\in\ell^2\Rightarrow v_j\to0\Rightarrow Q_j\to0$, so
+$v_1=0$, then $v_2=\lambda v_1=0$ and inductively all $v_j=0$. Contradiction with $v\neq0$; complex
+$\lambda$ already excluded. Closing paragraph: $\lambda=2\cos\theta$, $v_j=\sin(j\theta)$:
+$\sin((j-1)\theta)+\sin((j+1)\theta)=2\sin(j\theta)\cos\theta$, $v_0=0$; $\sum_j\sin^2(j\theta)$
+diverges for $0<\theta<\pi$: $\sin^2x+\sin^2(x+\theta)=1-\cos(2x+\theta)\cos\theta\ge1-|\cos\theta|>0$, so
+every pair of consecutive terms contributes at least $1-|\cos\theta|$. Multiplication form:
+$W:\ell^2\to L^2((0,\pi))$, $(Wv)(\theta)=\sqrt{2/\pi}\sum_jv_j\sin(j\theta)$ is unitary (the
+$\sqrt{2/\pi}\sin(j\theta)$, $j\ge1$, are an ONB of $L^2((0,\pi))$: Fourier sine series) and
+$WTW^{-1}$ is multiplication by $2\cos\theta$ by the identity above. The sine-series completeness is
+quoted as standard analysis and is not a Kern prerequisite; the block states the result in prose.
+
+<a id="c03.cl.funktion"></a>
+**c03.cl.funktion** (Kern, c03.prop.funktion). (1) Induction:
+$A^{k+1}=A\,A^k=\sum_{x,y}a_xa_y^k|\phi_x\rangle\langle\phi_x|\phi_y\rangle\langle\phi_y|=\sum_xa_x^{k+1}|\phi_x\rangle\langle\phi_x|$;
+$k=0$ is completeness. Linear combination gives $p(A)=\sum_xp(a_x)|\phi_x\rangle\langle\phi_x|$
+(D98 with $f=p$) $=\sum_kc_kA^k$. (2) Distinct eigenvalues $\lambda_1..\lambda_m$ (finite: at most
+$\dim H$). Lagrange: $p(\lambda_k)=f(\lambda_k)$ since the product vanishes at $\lambda_l$, $l\ne k$,
+and is $1$ at $\lambda_k$. Every $a_x$ is some $\lambda_k$, so $\sum_xf(a_x)|\phi_x\rangle\langle\phi_x|=\sum_xp(a_x)|\phi_x\rangle\langle\phi_x|=p(A)$
+by (1), for every ONB of eigenvectors; $\sum_kc_kA^k$ involves no basis. (3) Adjoint of
+$\sum_xf(a_x)|\phi_x\rangle\langle\phi_x|$: rules of D17 and $(|a\rangle\langle b|)^\dagger=|b\rangle\langle a|$
+(c03.cl.ketbra): $\sum_xf(a_x)^*|\phi_x\rangle\langle\phi_x|=f^*(A)$. Product as in (1):
+$f(A)^\dagger f(A)=\sum_x|f(a_x)|^2|\phi_x\rangle\langle\phi_x|$; $=\mathbb I$ if $|f(a_x)|=1$; the other order
+is the same sum.
+
+<a id="c03.cl.zeitentwicklung"></a>
+**c03.cl.zeitentwicklung** (Kern, c03.eq.zeitentwicklung). D98 with $f(E)=e^{-itE/\hbar}$, $t$ real,
+$E_x$ real (c03.cl.eigen-hermitesch, spectral decomposition from c03.cl.spektral and
+c03.cl.diagonal (3)). $|f(E_x)|=1$ for real $tE_x/\hbar$; c03.cl.funktion (3) gives unitarity;
+unitary preserves norms (c03.cl.isometrie (1)).
+
+<a id="c03.cl.exp-reihe"></a>
+**c03.cl.exp-reihe** (Kern, c03.eq.exp-reihe). Partial sum $p_N(z)=\sum_{n\le N}\frac1{n!}(-itz/\hbar)^n$
+is a polynomial; by c03.cl.funktion (1) $p_N(H)=\sum_xp_N(E_x)|\phi_x\rangle\langle\phi_x|$. For each of
+the finitely many $x$, $p_N(E_x)\to e^{-itE_x/\hbar}$ (exponential series of a complex number).
+Matrix entries of $p_N(H)$ in any basis are finite linear combinations of the $p_N(E_x)$, so they
+converge to those of $U_t$: the series converges entrywise to $U_t$.
+
+<a id="c03.cl.qubit-zeit"></a>
+**c03.cl.qubit-zeit** (Kern, c03.ex.qubit-zeit). $H=\varepsilon\sigma_x$, eigenvalues $\pm\varepsilon$,
+eigenvectors $\phi_0,\phi_1$ (c03.cl.hadamard). $U_t=e^{-i\varepsilon t/\hbar}P_0+e^{i\varepsilon t/\hbar}P_1$
+with $P_j=|\phi_j\rangle\langle\phi_j|$, $P_0+P_1=\mathbb I$, $P_0-P_1=\sigma_x$, so
+$P_0=\frac12(\mathbb I+\sigma_x)$, $P_1=\frac12(\mathbb I-\sigma_x)$ and
+$U_t=\cos(\varepsilon t/\hbar)\mathbb I-i\sin(\varepsilon t/\hbar)\sigma_x$. Series: $(\varepsilon\sigma_x)^{2n}=\varepsilon^{2n}\mathbb I$,
+$(\varepsilon\sigma_x)^{2n+1}=\varepsilon^{2n+1}\sigma_x$, $(-i)^{2n}=(-1)^n$, $(-i)^{2n+1}=-i(-1)^n$:
+$\sum_n\frac{(-1)^n}{(2n)!}(\varepsilon t/\hbar)^{2n}\mathbb I-i\sum_n\frac{(-1)^n}{(2n+1)!}(\varepsilon t/\hbar)^{2n+1}\sigma_x$.
+vl06.tex:140-157 has the same with $H=\sigma_x$ and $\cos(t/\hbar)$: dimensionally wrong unless $H$
+carries an energy unit (migration record of vl06).
+
+### Lecture 5: what is quoted, not derived
+
+- c03.cl.spektral-allgemein (source-quoted, provenance rows behind it): Reed-Simon I,
+  Theorem VII.3 (bounded self-adjoint, printed p. 227) and Theorem VIII.4 (self-adjoint, printed
+  p. 260-261), "spectral theorem — multiplication operator form". The course states the
+  unbounded form (VIII.4: measure space with a finite measure, unitary $U:H\to L^2(M,d\mu)$, real
+  function $f$ finite a.e., $(UAU^{-1}\varphi)(m)=f(m)\varphi(m)$ for $\varphi\in U[D(A)]$); "for all g
+  that U produces from the domain" is $g\in U[D(A)]$. Separable: both theorems assume it.

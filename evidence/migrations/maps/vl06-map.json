@@ -1,0 +1,837 @@
+{
+ "schema_version": 1,
+ "note": "Migration map of the sixth lecture into chapter c04 (Lecture 6, 2026-11-04, docs/plan/lec56/BRIEF.md). One entry per item of the v0.2 text of latex/lectures/de/vl06.tex as parsed by evidence/migrations/check_vl06_map.py. The postulates 1-5 of vl06 become TJO's P0-P5 (docs/plan/BRIEF.md:50-55). The English edition lec06.tex follows in the English round.",
+ "legacy_file": "latex/lectures/de/vl06.tex",
+ "legacy_sha256": "6abda03fd00b488fcf2968aff1295fcfcb89b4e93db086d969c6d96dcb034f6d",
+ "legacy_source": "tpc-script-v0.2",
+ "legacy_member": "tpc-script-v0.2/git/latex/lectures/de/vl06.tex",
+ "items": [
+  {
+   "item": "section@2",
+   "what": "\\section{Vorlesung: Postulate der Quantenmechanik}",
+   "status": "kept",
+   "destination": [
+    "c04",
+    "c04.s1",
+    "c04.s2"
+   ],
+   "note": "Chapter title 'Quantentheorie als probabilistische Theorie'."
+  },
+  {
+   "item": "text@3",
+   "what": "Die Zahlen, die die Quantenmechanik als Ergebnis liefert, si",
+   "status": "kept",
+   "destination": [
+    "c04"
+   ]
+  },
+  {
+   "item": "text@6",
+   "what": "Dass die Theorie überhaupt nur Wahrscheinlichkeiten liefert,",
+   "status": "kept",
+   "destination": [
+    "c04"
+   ]
+  },
+  {
+   "item": "text@8",
+   "what": "Für ein Wahrscheinlichkeitsexperiment muss dabei im Voraus f",
+   "status": "kept",
+   "destination": [
+    "c04"
+   ],
+   "note": "Condensed to one paragraph (repetition, procedure, preparation and measurement, three ingredients); confidence intervals and the neighbouring lab dropped.",
+   "migration": [
+    "M-0071"
+   ]
+  },
+  {
+   "item": "text@11",
+   "what": "Zu erläutern wäre noch, was denn nun eigentlich als Wiederho",
+   "status": "kept",
+   "destination": [
+    "c04"
+   ],
+   "note": "Condensed to one paragraph (repetition, procedure, preparation and measurement, three ingredients); confidence intervals and the neighbouring lab dropped.",
+   "migration": [
+    "M-0071"
+   ]
+  },
+  {
+   "item": "text@13",
+   "what": "In den Experimenten der Quantenmechanik sind grundsätzlich z",
+   "status": "kept",
+   "destination": [
+    "c04"
+   ],
+   "note": "Condensed to one paragraph (repetition, procedure, preparation and measurement, three ingredients); confidence intervals and the neighbouring lab dropped.",
+   "migration": [
+    "M-0071"
+   ]
+  },
+  {
+   "item": "section@15",
+   "what": "\\subsection{Die Postulate}",
+   "status": "kept",
+   "destination": [
+    "c04.s1"
+   ]
+  },
+  {
+   "item": "environment@17",
+   "what": "greybox",
+   "status": "kept",
+   "destination": [
+    "c04.s1"
+   ],
+   "note": "Greybox 'Zum Status der Postulate', with the remark on equivalent collections (v07 [11:56])."
+  },
+  {
+   "item": "text@18",
+   "what": "Man hört oft, wir verstünden die Quantenmechanik nicht. Das ",
+   "status": "kept",
+   "destination": [
+    "c04.s1"
+   ],
+   "note": "Greybox 'Zum Status der Postulate', with the remark on equivalent collections (v07 [11:56])."
+  },
+  {
+   "item": "environment@22",
+   "what": "tcolorbox",
+   "status": "kept",
+   "destination": [
+    "c04.eq.p1"
+   ],
+   "note": "Postulat 1 becomes P1 in TJO's wording (BRIEF.md:51)."
+  },
+  {
+   "item": "text@24",
+   "what": "Dies ist der Raum der sogenannten \\emph{Wellenfunktionen} $\\",
+   "status": "kept",
+   "destination": [
+    "c04.s1"
+   ],
+   "note": "Qubit, qudit, L^2(R^3) as examples; the L^2 inner product and completeness are in C3 (c03.v2, c03.f3) and not repeated.",
+   "migration": [
+    "M-0071"
+   ]
+  },
+  {
+   "item": "equation@25",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c04.s1"
+   ],
+   "note": "Qubit, qudit, L^2(R^3) as examples; the L^2 inner product and completeness are in C3 (c03.v2, c03.f3) and not repeated.",
+   "migration": [
+    "M-0071"
+   ]
+  },
+  {
+   "item": "text@28",
+   "what": "Das Skalarprodukt zweier Vektoren $|\\Phi\\rangle, |\\Psi\\rangl",
+   "status": "kept",
+   "destination": [
+    "c04.s1"
+   ],
+   "note": "Qubit, qudit, L^2(R^3) as examples; the L^2 inner product and completeness are in C3 (c03.v2, c03.f3) and not repeated.",
+   "migration": [
+    "M-0071"
+   ]
+  },
+  {
+   "item": "equation@29",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c04.s1"
+   ],
+   "note": "Qubit, qudit, L^2(R^3) as examples; the L^2 inner product and completeness are in C3 (c03.v2, c03.f3) and not repeated.",
+   "migration": [
+    "M-0071"
+   ]
+  },
+  {
+   "item": "text@33",
+   "what": "Zum Hilbertraum wird $L^2(\\mathbb{R}^3)$ erst mit diesem Ska",
+   "status": "kept",
+   "destination": [
+    "c04.s1"
+   ],
+   "note": "Qubit, qudit, L^2(R^3) as examples; the L^2 inner product and completeness are in C3 (c03.v2, c03.f3) and not repeated.",
+   "migration": [
+    "M-0071"
+   ]
+  },
+  {
+   "item": "environment@36",
+   "what": "tcolorbox",
+   "status": "kept",
+   "destination": [
+    "c04.eq.p2",
+    "D22"
+   ],
+   "note": "Postulat 2 becomes P2 in TJO's wording (BRIEF.md:52) plus D22; equivalence in finite dimension c04.prop.funktionale.",
+   "migration": [
+    "M-0072"
+   ]
+  },
+  {
+   "item": "text@39",
+   "what": "Hier ist eine Warnung angebracht: Der Hilbertraum beschreibt",
+   "status": "kept",
+   "destination": [
+    "c04.s1.1"
+   ],
+   "note": "Hazard H3.2 warning kept."
+  },
+  {
+   "item": "text@41",
+   "what": "Das Wort ,,eindimensional`` meint dabei keine Raumdimension,",
+   "status": "kept",
+   "destination": [
+    "c04.prop.rein"
+   ],
+   "note": "Rank remark and normalisation via the trace."
+  },
+  {
+   "item": "equation@42",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c04.prop.rein"
+   ],
+   "note": "Rank remark and normalisation via the trace."
+  },
+  {
+   "item": "text@45",
+   "what": "Nur normierte Vektoren stellen also reine Zustände dar.",
+   "status": "kept",
+   "destination": [
+    "c04.prop.rein"
+   ],
+   "note": "Rank remark and normalisation via the trace."
+  },
+  {
+   "item": "environment@47",
+   "what": "beispiel",
+   "status": "kept",
+   "destination": [
+    "c04.ex.qubit-zustaende"
+   ],
+   "note": "Link to the state ball of c02.prop.bloch added."
+  },
+  {
+   "item": "text@48",
+   "what": "Für $\\mathcal{H} = \\mathbb{C}^2$ ist $\\rho$ eine positive $2",
+   "status": "kept",
+   "destination": [
+    "c04.ex.qubit-zustaende"
+   ],
+   "note": "Link to the state ball of c02.prop.bloch added."
+  },
+  {
+   "item": "equation@49",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c04.ex.qubit-zustaende"
+   ],
+   "note": "Link to the state ball of c02.prop.bloch added."
+  },
+  {
+   "item": "environment@50",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c04.ex.qubit-zustaende"
+   ],
+   "note": "Link to the state ball of c02.prop.bloch added."
+  },
+  {
+   "item": "text@52",
+   "what": "Ausgeschöpft ist die Positivität damit nicht; sie verlangt, ",
+   "status": "kept",
+   "destination": [
+    "c04.ex.qubit-zustaende"
+   ],
+   "note": "Link to the state ball of c02.prop.bloch added."
+  },
+  {
+   "item": "equation@53",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c04.ex.qubit-zustaende"
+   ],
+   "note": "Link to the state ball of c02.prop.bloch added."
+  },
+  {
+   "item": "text@56",
+   "what": "Ein Qubit-Zustand hängt somit von genau drei reellen Zahlen ",
+   "status": "kept",
+   "destination": [
+    "c04.ex.qubit-zustaende"
+   ],
+   "note": "Link to the state ball of c02.prop.bloch added."
+  },
+  {
+   "item": "environment@59",
+   "what": "übung",
+   "status": "kept",
+   "destination": [
+    "c04.exc.eigenwerte"
+   ],
+   "note": "Exercise with solution."
+  },
+  {
+   "item": "text@60",
+   "what": "Berechnen Sie die beiden Eigenwerte der Matrix in Gl.~(\\ref{",
+   "status": "kept",
+   "destination": [
+    "c04.exc.eigenwerte"
+   ],
+   "note": "Exercise with solution."
+  },
+  {
+   "item": "environment@64",
+   "what": "tcolorbox",
+   "status": "kept",
+   "destination": [
+    "c04.eq.p3",
+    "D24"
+   ],
+   "note": "Postulat 3 becomes P3 in TJO's wording (BRIEF.md:53); 'dual of the state space' is c04.prop.effekte."
+  },
+  {
+   "item": "text@67",
+   "what": "Die Schreibweise $0 \\le F \\le \\mathbb{I}$ ist erklärungsbedü",
+   "status": "kept",
+   "destination": [
+    "c04.s1.2"
+   ]
+  },
+  {
+   "item": "environment@69",
+   "what": "beispiel",
+   "status": "kept",
+   "destination": [
+    "c04.ex.z-messung"
+   ]
+  },
+  {
+   "item": "text@70",
+   "what": "Die Standardmessung auf heutigen Quantenrechnern ist die Z-M",
+   "status": "kept",
+   "destination": [
+    "c04.ex.z-messung"
+   ]
+  },
+  {
+   "item": "equation@71",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c04.ex.z-messung"
+   ]
+  },
+  {
+   "item": "environment@72",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c04.ex.z-messung"
+   ]
+  },
+  {
+   "item": "text@74",
+   "what": "Beide Bedingungen sind zu prüfen. Erstens ist $F$ positiv, d",
+   "status": "kept",
+   "destination": [
+    "c04.ex.z-messung"
+   ]
+  },
+  {
+   "item": "equation@75",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c04.ex.z-messung"
+   ]
+  },
+  {
+   "item": "environment@76",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c04.ex.z-messung"
+   ]
+  },
+  {
+   "item": "text@78",
+   "what": "von derselben Form, also ebenfalls positiv. Erst jetzt dürfe",
+   "status": "kept",
+   "destination": [
+    "c04.ex.z-messung"
+   ]
+  },
+  {
+   "item": "environment@82",
+   "what": "tcolorbox",
+   "status": "kept",
+   "destination": [
+    "c04.eq.p4",
+    "D26"
+   ],
+   "note": "Postulat 4 becomes P4 in TJO's wording (BRIEF.md:54)."
+  },
+  {
+   "item": "text@83",
+   "what": "$\\tr(\\rho F)$. In einem reinen Zustand $|\\Psi\\rangle$ spezia",
+   "status": "kept",
+   "destination": [
+    "c04.eq.p4",
+    "D26"
+   ],
+   "note": "Postulat 4 becomes P4 in TJO's wording (BRIEF.md:54)."
+  },
+  {
+   "item": "environment@86",
+   "what": "beispiel",
+   "status": "kept",
+   "destination": [
+    "c04.ex.born"
+   ]
+  },
+  {
+   "item": "text@87",
+   "what": "Mit dem Zustand aus Gl.~(\\ref{eq:qubitzustand}) und $F = |0\\",
+   "status": "kept",
+   "destination": [
+    "c04.ex.born"
+   ]
+  },
+  {
+   "item": "equation@88",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c04.ex.born"
+   ]
+  },
+  {
+   "item": "environment@89",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c04.ex.born"
+   ]
+  },
+  {
+   "item": "text@91",
+   "what": "Wir erhalten also mit Wahrscheinlichkeit $p$ einen Treffer -",
+   "status": "kept",
+   "destination": [
+    "c04.ex.born"
+   ]
+  },
+  {
+   "item": "text@94",
+   "what": "Der Zusatz über reine Zustände ist keine weitere Annahme, so",
+   "status": "kept",
+   "destination": [
+    "c04.eq.born-rein"
+   ]
+  },
+  {
+   "item": "equation@95",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c04.eq.born-rein"
+   ]
+  },
+  {
+   "item": "text@98",
+   "what": "Machen Sie es sich am Anfang zur Gewohnheit, bei jeder Rechn",
+   "status": "kept",
+   "destination": [
+    "c04.s1.3"
+   ]
+  },
+  {
+   "item": "text@100",
+   "what": "Im Allgemeinen kann ein Messapparat in jedem Einzelexperimen",
+   "status": "kept",
+   "destination": [
+    "D24",
+    "c04.eq.verteilung"
+   ],
+   "note": "Finite outcome set; F(S) as the sum over S."
+  },
+  {
+   "item": "equation@102",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D24",
+    "c04.eq.verteilung"
+   ],
+   "note": "Finite outcome set; F(S) as the sum over S."
+  },
+  {
+   "item": "text@105",
+   "what": "das heißt, $F$ ist ein ,,Maß`` mit Werten in den positiven O",
+   "status": "kept",
+   "destination": [
+    "D24",
+    "c04.eq.verteilung"
+   ],
+   "note": "Finite outcome set; F(S) as the sum over S."
+  },
+  {
+   "item": "equation@106",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D24",
+    "c04.eq.verteilung"
+   ],
+   "note": "Finite outcome set; F(S) as the sum over S."
+  },
+  {
+   "item": "text@109",
+   "what": "erfüllen müssen.",
+   "status": "kept",
+   "destination": [
+    "D24",
+    "c04.eq.verteilung"
+   ],
+   "note": "Finite outcome set; F(S) as the sum over S."
+  },
+  {
+   "item": "text@111",
+   "what": "Wenn jedes $F(S)$ ein Projektor ist, also $F(S)^2 = F(S)$ er",
+   "status": "kept",
+   "destination": [
+    "c04.prop.pvm",
+    "c04.eq.erwartung"
+   ],
+   "note": "'Observables = Hermitian operators' as the PVM special case (hazard H4.4)."
+  },
+  {
+   "item": "equation@112",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c04.prop.pvm",
+    "c04.eq.erwartung"
+   ],
+   "note": "'Observables = Hermitian operators' as the PVM special case (hazard H4.4)."
+  },
+  {
+   "item": "text@115",
+   "what": "schreiben, wobei",
+   "status": "kept",
+   "destination": [
+    "c04.prop.pvm",
+    "c04.eq.erwartung"
+   ],
+   "note": "'Observables = Hermitian operators' as the PVM special case (hazard H4.4)."
+  },
+  {
+   "item": "equation@116",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c04.prop.pvm",
+    "c04.eq.erwartung"
+   ],
+   "note": "'Observables = Hermitian operators' as the PVM special case (hazard H4.4)."
+  },
+  {
+   "item": "text@119",
+   "what": "ein hermitescher Operator ist. Im projektionswertigen Fall i",
+   "status": "kept",
+   "destination": [
+    "c04.prop.pvm",
+    "c04.eq.erwartung"
+   ],
+   "note": "'Observables = Hermitian operators' as the PVM special case (hazard H4.4)."
+  },
+  {
+   "item": "text@121",
+   "what": "Ein Zustand charakterisiert ja nicht ein einzelnes System mi",
+   "status": "kept",
+   "destination": [
+    "c04.s2"
+   ]
+  },
+  {
+   "item": "text@123",
+   "what": "Mit den Postulaten 1 bis 4 wären wir im Prinzip fertig; weil",
+   "status": "kept",
+   "destination": [
+    "c04.s2"
+   ]
+  },
+  {
+   "item": "environment@126",
+   "what": "tcolorbox",
+   "status": "kept",
+   "destination": [
+    "c04.eq.p5",
+    "c04.eq.dynamik"
+   ],
+   "note": "Postulat 5 becomes P5 in TJO's wording (BRIEF.md:55) plus the rule with Hermitian H.",
+   "migration": [
+    "M-0069"
+   ]
+  },
+  {
+   "item": "equation@127",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c04.eq.p5",
+    "c04.eq.dynamik"
+   ],
+   "note": "Postulat 5 becomes P5 in TJO's wording (BRIEF.md:55) plus the rule with Hermitian H.",
+   "migration": [
+    "M-0069"
+   ]
+  },
+  {
+   "item": "text@130",
+   "what": "}\\end{tcolorbox}}",
+   "status": "kept",
+   "destination": [
+    "c04.eq.p5",
+    "c04.eq.dynamik"
+   ],
+   "note": "Postulat 5 becomes P5 in TJO's wording (BRIEF.md:55) plus the rule with Hermitian H.",
+   "migration": [
+    "M-0069"
+   ]
+  },
+  {
+   "item": "text@132",
+   "what": "Diese Gleichung folgt einfach aus der Eigenschaft $\\tr(AB) =",
+   "status": "kept",
+   "destination": [
+    "c04.eq.dynamik",
+    "c04.s2"
+   ],
+   "note": "Schrödinger and Heisenberg pictures."
+  },
+  {
+   "item": "text@136",
+   "what": "Im Postulat fehlt eine Voraussetzung, die wir hier nachtrage",
+   "status": "kept",
+   "destination": [
+    "c04.prop.dynamik",
+    "c04.v2"
+   ],
+   "migration": [
+    "M-0069"
+   ]
+  },
+  {
+   "item": "environment@138",
+   "what": "beispiel",
+   "status": "kept",
+   "destination": [
+    "c04.ex.qubit-dynamik"
+   ],
+   "note": "The computation of U_t moved to C3 as c03.ex.qubit-zeit (functional calculus); C4 keeps the measurement. Energy epsilon added.",
+   "migration": [
+    "M-0070"
+   ]
+  },
+  {
+   "item": "text@139",
+   "what": "Rechnen wir $U_t$ für ein Qubit mit",
+   "status": "kept",
+   "destination": [
+    "c04.ex.qubit-dynamik"
+   ],
+   "note": "The computation of U_t moved to C3 as c03.ex.qubit-zeit (functional calculus); C4 keeps the measurement. Energy epsilon added.",
+   "migration": [
+    "M-0070"
+   ]
+  },
+  {
+   "item": "equation@140",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c04.ex.qubit-dynamik"
+   ],
+   "note": "The computation of U_t moved to C3 as c03.ex.qubit-zeit (functional calculus); C4 keeps the measurement. Energy epsilon added.",
+   "migration": [
+    "M-0070"
+   ]
+  },
+  {
+   "item": "environment@141",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c04.ex.qubit-dynamik"
+   ],
+   "note": "The computation of U_t moved to C3 as c03.ex.qubit-zeit (functional calculus); C4 keeps the measurement. Energy epsilon added.",
+   "migration": [
+    "M-0070"
+   ]
+  },
+  {
+   "item": "text@143",
+   "what": "aus; dass $H$ hermitesch ist, sieht man sofort. Im Allgemein",
+   "status": "kept",
+   "destination": [
+    "c04.ex.qubit-dynamik"
+   ],
+   "note": "The computation of U_t moved to C3 as c03.ex.qubit-zeit (functional calculus); C4 keeps the measurement. Energy epsilon added.",
+   "migration": [
+    "M-0070"
+   ]
+  },
+  {
+   "item": "equation@144",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c04.ex.qubit-dynamik"
+   ],
+   "note": "The computation of U_t moved to C3 as c03.ex.qubit-zeit (functional calculus); C4 keeps the measurement. Energy epsilon added.",
+   "migration": [
+    "M-0070"
+   ]
+  },
+  {
+   "item": "text@147",
+   "what": "Der Trick ist $H^2 = \\mathbb{I}$, also $H^{2n} = \\mathbb{I}$",
+   "status": "kept",
+   "destination": [
+    "c04.ex.qubit-dynamik"
+   ],
+   "note": "The computation of U_t moved to C3 as c03.ex.qubit-zeit (functional calculus); C4 keeps the measurement. Energy epsilon added.",
+   "migration": [
+    "M-0070"
+   ]
+  },
+  {
+   "item": "equation@148",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c04.ex.qubit-dynamik"
+   ],
+   "note": "The computation of U_t moved to C3 as c03.ex.qubit-zeit (functional calculus); C4 keeps the measurement. Energy epsilon added.",
+   "migration": [
+    "M-0070"
+   ]
+  },
+  {
+   "item": "text@151",
+   "what": "also",
+   "status": "kept",
+   "destination": [
+    "c04.ex.qubit-dynamik"
+   ],
+   "note": "The computation of U_t moved to C3 as c03.ex.qubit-zeit (functional calculus); C4 keeps the measurement. Energy epsilon added.",
+   "migration": [
+    "M-0070"
+   ]
+  },
+  {
+   "item": "equation@152",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c04.ex.qubit-dynamik"
+   ],
+   "note": "The computation of U_t moved to C3 as c03.ex.qubit-zeit (functional calculus); C4 keeps the measurement. Energy epsilon added.",
+   "migration": [
+    "M-0070"
+   ]
+  },
+  {
+   "item": "text@155",
+   "what": "beziehungsweise",
+   "status": "kept",
+   "destination": [
+    "c04.ex.qubit-dynamik"
+   ],
+   "note": "The computation of U_t moved to C3 as c03.ex.qubit-zeit (functional calculus); C4 keeps the measurement. Energy epsilon added.",
+   "migration": [
+    "M-0070"
+   ]
+  },
+  {
+   "item": "equation@156",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c04.ex.qubit-dynamik"
+   ],
+   "note": "The computation of U_t moved to C3 as c03.ex.qubit-zeit (functional calculus); C4 keeps the measurement. Energy epsilon added.",
+   "migration": [
+    "M-0070"
+   ]
+  },
+  {
+   "item": "environment@157",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c04.ex.qubit-dynamik"
+   ],
+   "note": "The computation of U_t moved to C3 as c03.ex.qubit-zeit (functional calculus); C4 keeps the measurement. Energy epsilon added.",
+   "migration": [
+    "M-0070"
+   ]
+  },
+  {
+   "item": "text@159",
+   "what": "Eine Warnung: $H^2 = \\mathbb{I}$ ist eine Besonderheit diese",
+   "status": "kept",
+   "destination": [
+    "c04.ex.qubit-dynamik"
+   ],
+   "note": "The computation of U_t moved to C3 as c03.ex.qubit-zeit (functional calculus); C4 keeps the measurement. Energy epsilon added.",
+   "migration": [
+    "M-0070"
+   ]
+  },
+  {
+   "item": "figure@162",
+   "what": "\\input{figures/fig_vl06_messung}",
+   "status": "kept",
+   "destination": [
+    "c04.fig.messung"
+   ],
+   "migration": [
+    "M-0070"
+   ]
+  },
+  {
+   "item": "text@164",
+   "what": "Die Abbildung fasst die Postulate 2, 4 und 5 zusammen: Posit",
+   "status": "kept",
+   "destination": [
+    "c04.fig.messung",
+    "c04.ex.qubit-dynamik"
+   ]
+  },
+  {
+   "item": "text@166",
+   "what": "Eine bedeutende Lücke bleibt in diesen Postulaten: nirgends ",
+   "status": "kept",
+   "destination": [
+    "c04.s2"
+   ]
+  }
+ ]
+}

@@ -2,8 +2,8 @@
  "_generated": {
   "by": "scripts/registry/gen_registry.py",
   "inputs_sha256": {
-   "notation.json": "5d09cc1ffda6d55946fbf84c2b793db4c8689df05e2f284e475d94652453af20",
-   "definitions.json": "95b38a80e9b9213ad3d831d8dd71c41f80ee8cc05b17362708bf651b8c4b290d",
+   "notation.json": "2207328dc3cbd0e265889db47f690ff131a3d2c527273fbb97a9666527daac94",
+   "definitions.json": "8a784770d90e3e801edd0161e017c1262f8e266f4aee7e9239ba2e7b789751ee",
    "conventions.json": "4228c2a96f76fc654fc16ddba336dcebda035fe36d86efa866807ff52a10b5e7",
    "translation.json": "b6c82517800df4b56f6a23748542a780295112a32d409cb13b1a71e7c7268cf9"
   }
@@ -709,8 +709,8 @@
     "de": "positives normiertes lineares Funktional auf einer Operatoralgebra",
     "en": "positive normalised linear functional on an operator algebra"
    },
-   "depth": "fundament",
-   "first_fixed_in": "D23",
+   "depth": "kern",
+   "first_fixed_in": "C4",
    "status": "proposed",
    "verified": false
   },

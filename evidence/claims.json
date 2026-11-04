@@ -322,7 +322,7 @@
   {
    "id": "c04.cl.p0",
    "kind": "postulate",
-   "statement_de": null,
+   "statement_de": "Physikalische Theorien sind probabilistische Theorien: Vorhersagen in Form von Wahrscheinlichkeiten.",
    "statement_en": "Physical theories are probabilistic theories: predictions in the form of probabilities.",
    "depth": "kern",
    "evidence": "author-stipulated",
@@ -334,13 +334,13 @@
    ],
    "definition_ids": [],
    "review_receipt": null,
-   "gap_tjo": "German wording, and the precise mathematical scope of this postulate in the course, are TJO's and not yet written.",
-   "notes": "statement_en is the brief's sentence verbatim (without the label 'Pn.'). Chapter c04 is assigned provisionally (PLAN.md section 5: C4 'Quantum theory as a probabilistic theory'); the row waits for that chapter's content."
+   "gap_tjo": "statement_de is a translation by the chapter author (Lecture 6, 2026-11-04), not TJO's wording; the precise mathematical scope in the course is TJO's. c04.s1 states the Kern consequences in finite dimension.",
+   "notes": "statement_en is the brief's sentence verbatim (without the label 'Pn.'). Tagged in content/c04-quantentheorie (Lecture 6, 2026-11-04)."
   },
   {
    "id": "c04.cl.p1",
    "kind": "postulate",
-   "statement_de": null,
+   "statement_de": "Jedem quantenmechanischen System ordnen wir einen Hilbertraum zu (das gehört dem Sinn nach zur Definition des Zustandsraums einer GPT).",
    "statement_en": "To every quantum mechanical system we assign a Hilbert space (*) (this is morally part of the definition of the state space for a GPT).",
    "depth": "kern",
    "evidence": "author-stipulated",
@@ -352,13 +352,13 @@
    ],
    "definition_ids": [],
    "review_receipt": null,
-   "gap_tjo": "German wording, and the precise mathematical scope of this postulate in the course, are TJO's and not yet written; the footnote (*) is BRIEF.md:57.",
-   "notes": "statement_en is the brief's sentence verbatim (without the label 'Pn.'). Chapter c04 is assigned provisionally (PLAN.md section 5: C4 'Quantum theory as a probabilistic theory'); the row waits for that chapter's content."
+   "gap_tjo": "statement_de is a translation by the chapter author (Lecture 6, 2026-11-04), not TJO's wording; the precise mathematical scope in the course is TJO's. c04.s1 states the Kern consequences in finite dimension.",
+   "notes": "statement_en is the brief's sentence verbatim (without the label 'Pn.'). Tagged in content/c04-quantentheorie (Lecture 6, 2026-11-04)."
   },
   {
    "id": "c04.cl.p2",
    "kind": "postulate",
-   "statement_de": null,
+   "statement_de": "Zustandsraum = positive lineare Funktionale auf B(H) mit Norm 1. Im Spurklassenfall sind das Dichteoperatoren. Extremalpunkte ⇒ reine Zustände.",
    "statement_en": "State space = positive linear functionals on B(H) with norm 1. In the trace-class case these are density operators. Extreme points => pure states.",
    "depth": "kern",
    "evidence": "author-stipulated",
@@ -370,13 +370,13 @@
    ],
    "definition_ids": [],
    "review_receipt": null,
-   "gap_tjo": "German wording, and the precise mathematical scope of this postulate in the course, are TJO's and not yet written; the infinite-dimensional reading is gap G-0003.",
-   "notes": "statement_en is the brief's sentence verbatim (without the label 'Pn.'). Chapter c04 is assigned provisionally (PLAN.md section 5: C4 'Quantum theory as a probabilistic theory'); the row waits for that chapter's content."
+   "gap_tjo": "statement_de is a translation by the chapter author (Lecture 6, 2026-11-04), not TJO's wording; the precise mathematical scope in the course is TJO's. c04.s1 states the Kern consequences in finite dimension.",
+   "notes": "statement_en is the brief's sentence verbatim (without the label 'Pn.'). Tagged in content/c04-quantentheorie (Lecture 6, 2026-11-04)."
   },
   {
    "id": "c04.cl.p3",
    "kind": "postulate",
-   "statement_de": null,
+   "statement_de": "Detektoren = Dual des Zustandsraums = Operatoren E mit 0 ≤ E ≤ I.",
    "statement_en": "Detectors = dual of state space = operators E with 0 <= E <= I.",
    "depth": "kern",
    "evidence": "author-stipulated",
@@ -388,13 +388,13 @@
    ],
    "definition_ids": [],
    "review_receipt": null,
-   "gap_tjo": "German wording, and the precise mathematical scope of this postulate in the course, are TJO's and not yet written.",
-   "notes": "statement_en is the brief's sentence verbatim (without the label 'Pn.'). Chapter c04 is assigned provisionally (PLAN.md section 5: C4 'Quantum theory as a probabilistic theory'); the row waits for that chapter's content."
+   "gap_tjo": "statement_de is a translation by the chapter author (Lecture 6, 2026-11-04), not TJO's wording; the precise mathematical scope in the course is TJO's. c04.s1 states the Kern consequences in finite dimension.",
+   "notes": "statement_en is the brief's sentence verbatim (without the label 'Pn.'). Tagged in content/c04-quantentheorie (Lecture 6, 2026-11-04)."
   },
   {
    "id": "c04.cl.p4",
    "kind": "postulate",
-   "statement_de": null,
+   "statement_de": "Bornsche Regel = Wahrscheinlichkeit des Ansprechens für einen Zustand, präpariert als Dichteoperator ρ, ist tr(ρE).",
    "statement_en": "Born rule = probability of detection for a state prepared as density operator rho is tr(rho E).",
    "depth": "kern",
    "evidence": "author-stipulated",
@@ -406,13 +406,13 @@
    ],
    "definition_ids": [],
    "review_receipt": null,
-   "gap_tjo": "German wording, and the precise mathematical scope of this postulate in the course, are TJO's and not yet written.",
-   "notes": "statement_en is the brief's sentence verbatim (without the label 'Pn.'). Chapter c04 is assigned provisionally (PLAN.md section 5: C4 'Quantum theory as a probabilistic theory'); the row waits for that chapter's content."
+   "gap_tjo": "statement_de is a translation by the chapter author (Lecture 6, 2026-11-04), not TJO's wording; the precise mathematical scope in the course is TJO's. c04.s1 states the Kern consequences in finite dimension.",
+   "notes": "statement_en is the brief's sentence verbatim (without the label 'Pn.'). Tagged in content/c04-quantentheorie (Lecture 6, 2026-11-04)."
   },
   {
    "id": "c04.cl.p5",
    "kind": "postulate",
-   "statement_de": null,
+   "statement_de": "Das ist alles; Dynamik sind Symmetrien. Fügen wir aber, wie im Skript, die Angabe der Heisenberg-/Schrödinger-Dynamik hinzu.",
    "statement_en": "That is it; dynamics are symmetries. But let us add, as in the notes, the specification of the Heisenberg/Schroedinger dynamics.",
    "depth": "kern",
    "evidence": "author-stipulated",
@@ -424,8 +424,8 @@
    ],
    "definition_ids": [],
    "review_receipt": null,
-   "gap_tjo": "German wording, and the precise mathematical scope of this postulate in the course, are TJO's and not yet written.",
-   "notes": "statement_en is the brief's sentence verbatim (without the label 'Pn.'). Chapter c04 is assigned provisionally (PLAN.md section 5: C4 'Quantum theory as a probabilistic theory'); the row waits for that chapter's content."
+   "gap_tjo": "statement_de is a translation by the chapter author (Lecture 6, 2026-11-04), not TJO's wording; the precise mathematical scope in the course is TJO's. c04.s1 states the Kern consequences in finite dimension.",
+   "notes": "statement_en is the brief's sentence verbatim (without the label 'Pn.'). Tagged in content/c04-quantentheorie (Lecture 6, 2026-11-04)."
   },
   {
    "id": "c02.cl.rahmen-liefert",
@@ -5916,6 +5916,628 @@
    ],
    "review_receipt": null,
    "notes": "Requested by lane S for script chapter 4 (2026-10-29). 'Composition is the matrix product' is linear algebra, accepted by TJO as a prerequisite (2026-10-29)."
+  },
+  {
+   "id": "c03.cl.spur",
+   "kind": "proposition",
+   "statement_de": "Die Spur hängt nicht von der Orthonormalbasis ab und ist linear; für lineare Abbildungen Â: H₁ → H₂, B̂: H₂ → H₁ ist tr₂(ÂB̂) = tr₁(B̂Â); für Vektoren gilt tr(|Ψ⟩⟨Φ|) = ⟨Φ|Ψ⟩.",
+   "statement_en": "The trace does not depend on the orthonormal basis and is linear; for linear maps Â: H₁ → H₂, B̂: H₂ → H₁, tr₂(ÂB̂) = tr₁(B̂Â); for vectors, tr(|Ψ⟩⟨Φ|) = ⟨Φ|Ψ⟩.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": "Endlichdimensional: H, H₁, H₂ mit Basen mit endlicher Indexmenge (D85); ℂ = ℂ¹ mit dem Skalarprodukt a*b. / Finite-dimensional: H, H₁, H₂ with bases with a finite index set (D85); ℂ = ℂ¹ with the inner product a*b.",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.spur",
+   "definition_ids": [
+    "D95",
+    "D93",
+    "D94",
+    "D81"
+   ],
+   "review_receipt": null,
+   "notes": "vl05.tex:58-65 (cyclicity stated for maps between two Hilbert spaces, as in vl05 and v05 [86:30]). Part 4 is what Chapter 4 uses for pure states."
+  },
+  {
+   "id": "c03.cl.spur-beispiel",
+   "kind": "statement",
+   "statement_de": "Für Â und B̂ aus c03.ex.drei ist tr(Â) = 0 und tr(B̂) = 1; B̂ = |u⟩⟨u| mit u = (1,1,1)/√3 und ⟨u|u⟩ = 1.",
+   "statement_en": "For Â and B̂ of c03.ex.drei, tr(Â) = 0 and tr(B̂) = 1; B̂ = |u⟩⟨u| with u = (1,1,1)/√3 and ⟨u|u⟩ = 1.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85), etwa ℂⁿ mit dem Skalarprodukt aus c03.s2; Operatoren auf ganz H definiert (D87). / Finite-dimensional: H with a basis with a finite index set (D85), e.g. ℂⁿ with the inner product of c03.s2; operators defined on all of H (D87).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.spur-beispiel",
+   "definition_ids": [
+    "D95",
+    "D94"
+   ],
+   "review_receipt": null
+  },
+  {
+   "id": "c03.cl.diagonal-wirkung",
+   "kind": "equation",
+   "statement_de": "Ist Â diagonal in der Orthonormalbasis {|x⟩}, ⟨x|Â|y⟩ = δ_xy a_x, so ist Â|Ψ⟩ = Σ_x a_x ⟨x|Ψ⟩ |x⟩; jedes |x⟩ ist Eigenvektor zum Eigenwert a_x.",
+   "statement_en": "If Â is diagonal in the orthonormal basis {|x⟩}, ⟨x|Â|y⟩ = δ_xy a_x, then Â|Ψ⟩ = Σ_x a_x ⟨x|Ψ⟩ |x⟩; each |x⟩ is an eigenvector with eigenvalue a_x.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85), etwa ℂⁿ mit dem Skalarprodukt aus c03.s2; Operatoren auf ganz H definiert (D87). / Finite-dimensional: H with a basis with a finite index set (D85), e.g. ℂⁿ with the inner product of c03.s2; operators defined on all of H (D87).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.diagonal-wirkung",
+   "definition_ids": [
+    "D97",
+    "D96",
+    "D94"
+   ],
+   "review_receipt": null,
+   "notes": "vl05.tex:77-81."
+  },
+  {
+   "id": "c03.cl.diagonal",
+   "kind": "proposition",
+   "statement_de": "Ist Û unitär und ÛÂÛ† = Σ_x a_x|x⟩⟨x|, so sind die Û†|x⟩ eine Orthonormalbasis aus Eigenvektoren zu den a_x; ist umgekehrt {|φ_x⟩} eine Orthonormalbasis aus Eigenvektoren, so ist Û = Σ_x |x⟩⟨φ_x| unitär mit ÛÂÛ† = Σ_x a_x|x⟩⟨x|; in beiden Fällen Â = Σ_x a_x|φ_x⟩⟨φ_x| und tr(Â) = Σ_x a_x.",
+   "statement_en": "If Û is unitary and ÛÂÛ† = Σ_x a_x|x⟩⟨x|, the Û†|x⟩ form an orthonormal basis of eigenvectors with eigenvalues a_x; conversely, if {|φ_x⟩} is an orthonormal basis of eigenvectors, Û = Σ_x |x⟩⟨φ_x| is unitary with ÛÂÛ† = Σ_x a_x|x⟩⟨x|; in both cases Â = Σ_x a_x|φ_x⟩⟨φ_x| and tr(Â) = Σ_x a_x.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85), etwa ℂⁿ mit dem Skalarprodukt aus c03.s2; Operatoren auf ganz H definiert (D87). / Finite-dimensional: H with a basis with a finite index set (D85), e.g. ℂⁿ with the inner product of c03.s2; operators defined on all of H (D87).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.diagonal",
+   "definition_ids": [
+    "D97",
+    "D96",
+    "D91",
+    "D95",
+    "D94"
+   ],
+   "review_receipt": null,
+   "notes": "vl05.tex:96-155 (both directions; the converse is the material TJO says is not in the script, v06 [41:05])."
+  },
+  {
+   "id": "c03.cl.eigen-hermitesch",
+   "kind": "proposition",
+   "statement_de": "Die Eigenwerte eines hermiteschen Operators sind reell, und Eigenvektoren zu verschiedenen Eigenwerten sind orthogonal.",
+   "statement_en": "The eigenvalues of a Hermitian operator are real, and eigenvectors with different eigenvalues are orthogonal.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85), etwa ℂⁿ mit dem Skalarprodukt aus c03.s2; Operatoren auf ganz H definiert (D87). / Finite-dimensional: H with a basis with a finite index set (D85), e.g. ℂⁿ with the inner product of c03.s2; operators defined on all of H (D87).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.eigen-hermitesch",
+   "definition_ids": [
+    "D18",
+    "D96",
+    "D84"
+   ],
+   "review_receipt": null,
+   "notes": "vl05.tex:131-147; v06 [46:21]-[52:16]."
+  },
+  {
+   "id": "c03.cl.spektral",
+   "kind": "theorem",
+   "statement_de": "Auf einem endlichdimensionalen Hilbertraum hat jeder normale Operator, insbesondere jeder hermitesche und jeder unitäre, eine Orthonormalbasis aus Eigenvektoren. Nicht jeder Operator ist diagonalisierbar (Beispiel ((0,1),(0,0))).",
+   "statement_en": "On a finite-dimensional Hilbert space every normal operator, in particular every Hermitian and every unitary one, has an orthonormal basis of eigenvectors. Not every operator is diagonalisable (example ((0,1),(0,0))).",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85), etwa ℂⁿ mit dem Skalarprodukt aus c03.s2; Operatoren auf ganz H definiert (D87). / Finite-dimensional: H with a basis with a finite index set (D85), e.g. ℂⁿ with the inner product of c03.s2; operators defined on all of H (D87).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.spektral",
+   "definition_ids": [
+    "D92",
+    "D18",
+    "D91",
+    "D96",
+    "D97",
+    "D85"
+   ],
+   "review_receipt": null,
+   "notes": "vl05.tex:88 states 'Jeder hermitesche und jeder unitäre Operator ist diagonalisierbar' without proof and without the finite-dimensional scope (hazard H3.3; c03.v7 shows the failure in ℓ²). Proof by induction with the invariant orthogonal complement; uses Gram-Schmidt (c03.cl.gram-schmidt) and standard linear algebra (fundamental theorem of algebra, extension to an ONB; TJO 2026-10-29)."
+  },
+  {
+   "id": "c03.cl.hadamard",
+   "kind": "statement",
+   "statement_de": "σ_x hat die Eigenwerte ±1 mit den normierten Eigenvektoren (1,1)/√2 und (1,−1)/√2; Û = |0⟩⟨φ_0| + |1⟩⟨φ_1| = (1/√2)((1,1),(1,−1)) (Hadamard-Matrix) mit Ûσ_xÛ† = diag(1,−1); σ_x = |φ_0⟩⟨φ_0| − |φ_1⟩⟨φ_1|; vertauschte Eigenvektoren geben diag(−1,1). Für Â = σ_x + 2𝕀: ÛÂÛ† = diag(3,1).",
+   "statement_en": "σ_x has eigenvalues ±1 with normalised eigenvectors (1,1)/√2 and (1,−1)/√2; Û = |0⟩⟨φ_0| + |1⟩⟨φ_1| = (1/√2)((1,1),(1,−1)) (Hadamard matrix) with Ûσ_xÛ† = diag(1,−1); σ_x = |φ_0⟩⟨φ_0| − |φ_1⟩⟨φ_1|; swapped eigenvectors give diag(−1,1). For Â = σ_x + 2𝕀: ÛÂÛ† = diag(3,1).",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85), etwa ℂⁿ mit dem Skalarprodukt aus c03.s2; Operatoren auf ganz H definiert (D87). / Finite-dimensional: H with a basis with a finite index set (D85), e.g. ℂⁿ with the inner product of c03.s2; operators defined on all of H (D87).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.hadamard",
+   "definition_ids": [
+    "D96",
+    "D97",
+    "D91",
+    "D94"
+   ],
+   "review_receipt": null,
+   "notes": "vl05.tex:159-177 (vl05 names the matrix A and the basis |1⟩, |2⟩; here σ_x of c02.eq.pauli and |0⟩, |1⟩). The last sentence backs figure c03.fig.diagonal."
+  },
+  {
+   "id": "c03.cl.ohne-eigen",
+   "kind": "statement",
+   "statement_de": "T̂ = Ŝ + Ŝ† auf ℓ² (Ŝ der Rechtsshift) ist beschränkt (‖T̂v‖ ≤ 2‖v‖), hermitesch und hat keinen Eigenwert: Für reelles λ ist Q_j = v_{j+1}² − λv_{j+1}v_j + v_j² längs der Eigenwertgleichung konstant gleich v_1², und v ∈ ℓ² erzwingt Q_j → 0.",
+   "statement_en": "T̂ = Ŝ + Ŝ† on ℓ² (Ŝ the right shift) is bounded (‖T̂v‖ ≤ 2‖v‖), Hermitian and has no eigenvalue: for real λ, Q_j = v_{j+1}² − λv_{j+1}v_j + v_j² is constant, equal to v_1², along the eigenvalue equation, and v ∈ ℓ² forces Q_j → 0.",
+   "depth": "vertiefung",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "ℓ² (D77); Ŝ, Ŝ† aus c03.ex.shift. / ℓ² (D77); Ŝ, Ŝ† of c03.ex.shift.",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.ohne-eigen",
+   "definition_ids": [
+    "D77",
+    "D18",
+    "D96"
+   ],
+   "review_receipt": null,
+   "notes": "Hazard H3.3 (vl05.tex:88). The conserved quantity is the author's derivation. The closing prose (v_j = sin(jθ) for λ = 2cos θ; multiplication by 2cos θ on L²((0,π))) is covered by the same derivation anchor."
+  },
+  {
+   "id": "c03.cl.spektral-allgemein",
+   "kind": "theorem",
+   "statement_de": "Ist Â selbstadjungiert auf einem separablen Hilbertraum H, so gibt es eine Menge M mit einem endlichen Maß, einen unitären Operator Û: H → L²(M) und eine reelle Funktion a auf M mit (ÛÂÛ†g)(m) = a(m)g(m) für alle g ∈ Û[D(Â)].",
+   "statement_en": "If Â is self-adjoint on a separable Hilbert space H, there are a set M with a finite measure, a unitary operator Û: H → L²(M) and a real function a on M with (ÛÂÛ†g)(m) = a(m)g(m) for all g ∈ Û[D(Â)].",
+   "depth": "vertiefung",
+   "evidence": "source-quoted",
+   "presentation": "proof-omitted",
+   "scope": "Reed-Simon I, Theorem VIII.4 (spectral theorem, multiplication operator form), printed pp. 260-261; for bounded operators Theorem VII.3, printed p. 227. Reed-Simon: f finite a.e.; the course says 'reelle Funktion'. / Reed-Simon I, Theorem VIII.4, pp. 260-261; bounded case Theorem VII.3, p. 227.",
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0331",
+    "P-0332",
+    "P-0333"
+   ],
+   "definition_ids": [
+    "D19",
+    "D16"
+   ],
+   "review_receipt": null,
+   "notes": "Hazard H3.3: what replaces the eigenbasis in infinite dimension. Page-image rows P-0331 to P-0333; independent page-image review receipt R-0154 (codex, Lecture 5)."
+  },
+  {
+   "id": "c03.cl.funktion",
+   "kind": "proposition",
+   "statement_de": "Für eine Spektralzerlegung Â = Σ_x a_x|φ_x⟩⟨φ_x|: p(Â) = Σ_k c_k Âᵏ für Polynome; f(Â) hängt nicht von der Eigenbasis ab (Lagrange-Interpolation); f(Â)† = f*(Â), reelles f gibt hermitesches, |f| = 1 auf den Eigenwerten unitäres f(Â).",
+   "statement_en": "For a spectral decomposition Â = Σ_x a_x|φ_x⟩⟨φ_x|: p(Â) = Σ_k c_k Âᵏ for polynomials; f(Â) does not depend on the eigenbasis (Lagrange interpolation); f(Â)† = f*(Â), real f gives a Hermitian, |f| = 1 on the eigenvalues a unitary f(Â).",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85), etwa ℂⁿ mit dem Skalarprodukt aus c03.s2; Operatoren auf ganz H definiert (D87). / Finite-dimensional: H with a basis with a finite index set (D85), e.g. ℂⁿ with the inner product of c03.s2; operators defined on all of H (D87).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.funktion",
+   "definition_ids": [
+    "D98",
+    "D18",
+    "D91",
+    "D96"
+   ],
+   "review_receipt": null,
+   "notes": "vl05.tex:181-199 defines only the exponential; the general f and parts 1-3 are the author's (curriculum C3: functional calculus for matrices)."
+  },
+  {
+   "id": "c03.cl.zeitentwicklung",
+   "kind": "equation",
+   "statement_de": "Für hermitesches Ĥ = Σ_x E_x|φ_x⟩⟨φ_x| und reelles t ist Û_t = e^{−itĤ/ħ} = Σ_x e^{−itE_x/ħ}|φ_x⟩⟨φ_x| unitär.",
+   "statement_en": "For Hermitian Ĥ = Σ_x E_x|φ_x⟩⟨φ_x| and real t, Û_t = e^{−itĤ/ħ} = Σ_x e^{−itE_x/ħ}|φ_x⟩⟨φ_x| is unitary.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85), etwa ℂⁿ mit dem Skalarprodukt aus c03.s2; Operatoren auf ganz H definiert (D87). / Finite-dimensional: H with a basis with a finite index set (D85), e.g. ℂⁿ with the inner product of c03.s2; operators defined on all of H (D87).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.zeitentwicklung",
+   "definition_ids": [
+    "D98",
+    "D18",
+    "D91"
+   ],
+   "review_receipt": null,
+   "notes": "vl05.tex:189-199 (vl05 types the minus as U+2212 and calls the eigenvectors those of A, line 186)."
+  },
+  {
+   "id": "c03.cl.exp-reihe",
+   "kind": "equation",
+   "statement_de": "In endlicher Dimension ist e^{−itĤ/ħ} gleich der Summe der Exponentialreihe Σ_n (1/n!)(−it/ħ)ⁿĤⁿ.",
+   "statement_en": "In finite dimension e^{−itĤ/ħ} equals the sum of the exponential series Σ_n (1/n!)(−it/ħ)ⁿĤⁿ.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85), etwa ℂⁿ mit dem Skalarprodukt aus c03.s2; Operatoren auf ganz H definiert (D87). / Finite-dimensional: H with a basis with a finite index set (D85), e.g. ℂⁿ with the inner product of c03.s2; operators defined on all of H (D87).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.exp-reihe",
+   "definition_ids": [
+    "D98"
+   ],
+   "review_receipt": null,
+   "notes": "vl05.tex:201-204; the remark on unbounded operators (vl05.tex:205) goes to Chapter 4 (hazard H4.3)."
+  },
+  {
+   "id": "c03.cl.qubit-zeit",
+   "kind": "statement",
+   "statement_de": "Für Ĥ = εσ_x (ε > 0 eine Energie) ist Û_t = cos(εt/ħ)𝕀 − i sin(εt/ħ)σ_x, aus der Spektralzerlegung und aus der Reihe mit σ_x² = 𝕀.",
+   "statement_en": "For Ĥ = εσ_x (ε > 0 an energy), Û_t = cos(εt/ħ)𝕀 − i sin(εt/ħ)σ_x, from the spectral decomposition and from the series with σ_x² = 𝕀.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85), etwa ℂⁿ mit dem Skalarprodukt aus c03.s2; Operatoren auf ganz H definiert (D87). / Finite-dimensional: H with a basis with a finite index set (D85), e.g. ℂⁿ with the inner product of c03.s2; operators defined on all of H (D87).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c03/DERIVATION.md#c03.cl.qubit-zeit",
+   "definition_ids": [
+    "D98"
+   ],
+   "review_receipt": null,
+   "notes": "vl06.tex:138-160 (as the example of Postulat 5, with H = σ_x and cos(t/ħ): the energy unit is missing, migration record for vl06)."
+  },
+  {
+   "id": "c04.cl.funktionale",
+   "kind": "proposition",
+   "statement_de": "In endlicher Dimension gibt es zu jedem positiven linearen Funktional ω auf den Operatoren mit ω(𝕀) = 1 genau einen Dichteoperator ρ mit ω(Â) = tr(ρÂ); umgekehrt ist Â ↦ tr(ρÂ) für jeden Dichteoperator ein solches Funktional.",
+   "statement_en": "In finite dimension, for every positive linear functional ω on the operators with ω(𝕀) = 1 there is exactly one density operator ρ with ω(Â) = tr(ρÂ); conversely Â ↦ tr(ρÂ) is such a functional for every density operator.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85); Operatoren auf ganz H definiert (D87); Zustände nach D22. / Finite-dimensional: H with a basis with a finite index set (D85); operators defined on all of H (D87); states as in D22.",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c04/DERIVATION.md#c04.cl.funktionale",
+   "definition_ids": [
+    "D22",
+    "D20",
+    "D95",
+    "D94"
+   ],
+   "review_receipt": null,
+   "notes": "Connects P2 in TJO's wording (positive linear functionals on B(H) with norm 1) with D22 in finite dimension; 'norm 1' = ω(𝕀) = 1 for positive ω is BR I Prop. 2.3.11 (P-0334, cited in c04.v1). Not in vl06."
+  },
+  {
+   "id": "c04.cl.normal",
+   "kind": "theorem",
+   "statement_de": "Ein Zustand ω auf B(H) ist genau dann normal (ω(sup A_α) = sup ω(A_α) für monoton wachsende, nach oben beschränkte Familien positiver Operatoren), wenn es einen Dichteoperator ρ (positiv, Spurklasse, Spur 1) gibt mit ω(Â) = tr(ρÂ).",
+   "statement_en": "A state ω on B(H) is normal (ω(sup A_α) = sup ω(A_α) for increasing families of positive operators with an upper bound) if and only if there is a density operator ρ (positive, trace class, trace 1) with ω(Â) = tr(ρÂ).",
+   "depth": "vertiefung",
+   "evidence": "source-quoted",
+   "presentation": "proof-omitted",
+   "scope": "Bratteli-Robinson I, Definition 2.4.20 and Theorem 2.4.21 ((1) <=> (3)), p. 76; B(H) is a von Neumann algebra. / BR I, Def. 2.4.20, Thm. 2.4.21, p. 76.",
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0335",
+    "P-0336"
+   ],
+   "definition_ids": [
+    "D22"
+   ],
+   "review_receipt": null,
+   "notes": "Hazard H4.1 and gap G-0003."
+  },
+  {
+   "id": "c04.cl.singulaer",
+   "kind": "statement",
+   "statement_de": "Auf B(ℓ²) gibt es einen Zustand ω mit ω(|ψ⟩⟨ψ|) = 0 für jeden Vektor: ω₀(c𝕀 + F̂) = c auf 𝕀 plus Operatoren endlichen Rangs hat Norm 1, Hahn-Banach setzt normgleich fort, ω(𝕀) = ‖ω‖ = 1 gibt Positivität; kein Dichteoperator gibt ω.",
+   "statement_en": "On B(ℓ²) there is a state ω with ω(|ψ⟩⟨ψ|) = 0 for every vector: ω₀(c𝕀 + F̂) = c on 𝕀 plus finite-rank operators has norm 1, Hahn-Banach extends it with the same norm, ω(𝕀) = ‖ω‖ = 1 gives positivity; no density operator gives ω.",
+   "depth": "vertiefung",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "ℓ² (D77) mit beschränkten Operatoren (c03.v5); Operatornorm wie in c04.v1. / ℓ² (D77) with bounded operators (c03.v5); operator norm as in c04.v1.",
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0334",
+    "P-0337"
+   ],
+   "derivation": "evidence/derivations/c04/DERIVATION.md#c04.cl.singulaer",
+   "definition_ids": [
+    "D77",
+    "D22"
+   ],
+   "review_receipt": null,
+   "notes": "Hazard H4.1. Construction by the chapter author; the two quoted facts (norm-preserving Hahn-Banach extension, RS I p. 77; positive <=> ||ω|| = ω(1), BR I p. 49) are cited in the text."
+  },
+  {
+   "id": "c04.cl.rein",
+   "kind": "proposition",
+   "statement_de": "In endlicher Dimension ist ein Dichteoperator genau dann rein (Extremalpunkt), wenn er die Form |ψ⟩⟨ψ| mit ‖ψ‖ = 1 hat; jeder Dichteoperator ist ρ = Σ p_x|φ_x⟩⟨φ_x| mit p_x ≥ 0, Σ p_x = 1.",
+   "statement_en": "In finite dimension a density operator is pure (an extreme point) if and only if it has the form |ψ⟩⟨ψ| with ‖ψ‖ = 1; every density operator is ρ = Σ p_x|φ_x⟩⟨φ_x| with p_x ≥ 0, Σ p_x = 1.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85); Operatoren auf ganz H definiert (D87); Zustände nach D22. / Finite-dimensional: H with a basis with a finite index set (D85); operators defined on all of H (D87); states as in D22.",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c04/DERIVATION.md#c04.cl.rein",
+   "definition_ids": [
+    "D22",
+    "D4",
+    "D3",
+    "D96"
+   ],
+   "review_receipt": null,
+   "notes": "vl06.tex:36-52 (pure states as one-dimensional projectors, normalisation via the trace); BRIEF.md:52 'Extreme points => pure states'."
+  },
+  {
+   "id": "c04.cl.qubit-zustaende",
+   "kind": "statement",
+   "statement_de": "Die Qubit-Zustände sind ρ = ((p, x),(x*, 1−p)) mit p(1−p) − |x|² ≥ 0, gleichwertig (p − ½)² + |x|² ≤ ¼; mit r_z = 2p − 1, x = (r_x − i r_y)/2 ist das die Zustandskugel ‖r‖ ≤ 1 aus c02.prop.bloch; reine Zustände auf dem Rand.",
+   "statement_en": "The qubit states are ρ = ((p, x),(x*, 1−p)) with p(1−p) − |x|² ≥ 0, equivalently (p − ½)² + |x|² ≤ ¼; with r_z = 2p − 1, x = (r_x − i r_y)/2 this is the state ball ‖r‖ ≤ 1 of c02.prop.bloch; pure states on the boundary.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "ℂ² mit der kanonischen Basis |0⟩, |1⟩ (Qubit). / ℂ² with the canonical basis |0⟩, |1⟩ (qubit).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c04/DERIVATION.md#c04.cl.qubit-zustaende",
+   "definition_ids": [
+    "D22"
+   ],
+   "review_receipt": null,
+   "notes": "vl06.tex:47-58; the link to c02.prop.bloch is the author's."
+  },
+  {
+   "id": "c04.cl.eigenwerte",
+   "kind": "statement",
+   "statement_de": "Die Eigenwerte von ((p, x),(x*, 1−p)) sind ½ ± √(¼ − p(1−p) + |x|²); beide sind genau dann nicht negativ, wenn p(1−p) − |x|² ≥ 0.",
+   "statement_en": "The eigenvalues of ((p, x),(x*, 1−p)) are ½ ± √(¼ − p(1−p) + |x|²); both are non-negative if and only if p(1−p) − |x|² ≥ 0.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "ℂ² mit der kanonischen Basis |0⟩, |1⟩ (Qubit). / ℂ² with the canonical basis |0⟩, |1⟩ (qubit). 0 ≤ p ≤ 1.",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c04/DERIVATION.md#c04.cl.eigenwerte",
+   "definition_ids": [
+    "D96"
+   ],
+   "review_receipt": null,
+   "notes": "vl06.tex:59-61 (exercise); v07 [38:06]."
+  },
+  {
+   "id": "c04.cl.effekte",
+   "kind": "proposition",
+   "statement_de": "In endlicher Dimension: für hermitesches F̂ liegt tr(ρF̂) genau dann für jeden Dichteoperator in [0,1], wenn 0 ≤ F̂ ≤ 𝕀; jede affine Funktion f auf den Dichteoperatoren mit Werten in [0,1] ist f(ρ) = tr(ρF̂) mit genau einem Effektoperator F̂.",
+   "statement_en": "In finite dimension: for Hermitian F̂, tr(ρF̂) lies in [0,1] for every density operator if and only if 0 ≤ F̂ ≤ 𝕀; every affine function f on the density operators with values in [0,1] is f(ρ) = tr(ρF̂) with exactly one effect operator F̂.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85); Operatoren auf ganz H definiert (D87); Zustände nach D22. / Finite-dimensional: H with a basis with a finite index set (D85); operators defined on all of H (D87); states as in D22.",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c04/DERIVATION.md#c04.cl.effekte",
+   "definition_ids": [
+    "D24",
+    "D2",
+    "D22"
+   ],
+   "review_receipt": null,
+   "notes": "P3 'Detectors = dual of state space' made precise in finite dimension; whether the no-restriction hypothesis (D12) is part of P3 stays gap G-0011. Not in vl06."
+  },
+  {
+   "id": "c04.cl.z-messung",
+   "kind": "statement",
+   "statement_de": "F̂ = |0⟩⟨0| ist ein Effektoperator: F̂ und 𝕀 − F̂ = |1⟩⟨1| sind Projektoren, also positiv.",
+   "statement_en": "F̂ = |0⟩⟨0| is an effect operator: F̂ and 𝕀 − F̂ = |1⟩⟨1| are projectors, hence positive.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "ℂ² mit der kanonischen Basis |0⟩, |1⟩ (Qubit). / ℂ² with the canonical basis |0⟩, |1⟩ (qubit).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c04/DERIVATION.md#c04.cl.z-messung",
+   "definition_ids": [
+    "D24",
+    "D89",
+    "D20"
+   ],
+   "review_receipt": null,
+   "notes": "vl06.tex:69-80 (vl06 argues positivity via F = F†F; the course cites c03.prop.positiv)."
+  },
+  {
+   "id": "c04.cl.born-rein",
+   "kind": "equation",
+   "statement_de": "tr(|ψ⟩⟨ψ|F̂) = tr(⟨ψ|F̂|ψ⟩) = ⟨ψ|F̂|ψ⟩.",
+   "statement_en": "tr(|ψ⟩⟨ψ|F̂) = tr(⟨ψ|F̂|ψ⟩) = ⟨ψ|F̂|ψ⟩.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85); Operatoren auf ganz H definiert (D87); Zustände nach D22. / Finite-dimensional: H with a basis with a finite index set (D85); operators defined on all of H (D87); states as in D22.",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c04/DERIVATION.md#c04.cl.born-rein",
+   "definition_ids": [
+    "D95",
+    "D26"
+   ],
+   "review_receipt": null,
+   "notes": "vl06.tex:99-102; c03.prop.spur (3) with |ψ⟩: ℂ → H."
+  },
+  {
+   "id": "c04.cl.born",
+   "kind": "statement",
+   "statement_de": "Für ρ = ((p, x),(x*, 1−p)) und F̂ = |0⟩⟨0| ist ρF̂ = ((p, 0),(x*, 0)) und tr(ρF̂) = p.",
+   "statement_en": "For ρ = ((p, x),(x*, 1−p)) and F̂ = |0⟩⟨0|, ρF̂ = ((p, 0),(x*, 0)) and tr(ρF̂) = p.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "ℂ² mit der kanonischen Basis |0⟩, |1⟩ (Qubit). / ℂ² with the canonical basis |0⟩, |1⟩ (qubit).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c04/DERIVATION.md#c04.cl.born",
+   "definition_ids": [
+    "D26"
+   ],
+   "review_receipt": null,
+   "notes": "vl06.tex:86-91."
+  },
+  {
+   "id": "c04.cl.verteilung",
+   "kind": "equation",
+   "statement_de": "Für eine Messung {F̂_x} und einen Dichteoperator ρ ist tr(ρF̂_x) ≥ 0 und Σ_x tr(ρF̂_x) = tr(ρ) = 1.",
+   "statement_en": "For a measurement {F̂_x} and a density operator ρ, tr(ρF̂_x) ≥ 0 and Σ_x tr(ρF̂_x) = tr(ρ) = 1.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85); Operatoren auf ganz H definiert (D87); Zustände nach D22. / Finite-dimensional: H with a basis with a finite index set (D85); operators defined on all of H (D87); states as in D22.",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c04/DERIVATION.md#c04.cl.verteilung",
+   "definition_ids": [
+    "D24",
+    "D26",
+    "D22"
+   ],
+   "review_receipt": null,
+   "notes": "vl06.tex:106-112; matches c02.eq.messung."
+  },
+  {
+   "id": "c04.cl.wirkungsgrad",
+   "kind": "statement",
+   "statement_de": "Ein Detektor, der |0⟩ mit Wahrscheinlichkeit q (0 < q < 1) meldet und bei |1⟩ nie anspricht, hat F̂ = q|0⟩⟨0| (Eigenwerte q, 0); {q|0⟩⟨0|, 𝕀 − q|0⟩⟨0|} ist eine Messung, tr(ρ q|0⟩⟨0|) = qp, und q|0⟩⟨0| ist kein Projektor.",
+   "statement_en": "A detector that reports |0⟩ with probability q (0 < q < 1) and never fires on |1⟩ has F̂ = q|0⟩⟨0| (eigenvalues q, 0); {q|0⟩⟨0|, 𝕀 − q|0⟩⟨0|} is a measurement, tr(ρ q|0⟩⟨0|) = qp, and q|0⟩⟨0| is not a projector.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "ℂ² mit der kanonischen Basis |0⟩, |1⟩ (Qubit). / ℂ² with the canonical basis |0⟩, |1⟩ (qubit).",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c04/DERIVATION.md#c04.cl.wirkungsgrad",
+   "definition_ids": [
+    "D24",
+    "D89"
+   ],
+   "review_receipt": null,
+   "notes": "Author's example of a measurement that is not projection-valued (vl06 has no POVM example; MAPPING.md)."
+  },
+  {
+   "id": "c04.cl.erwartung",
+   "kind": "equation",
+   "statement_de": "Für eine Messung mit reellen Ergebnissen x ist Σ_x x tr(ρF̂_x) = tr(ρÂ) mit Â = Σ_x x F̂_x, und Â ist hermitesch.",
+   "statement_en": "For a measurement with real outcomes x, Σ_x x tr(ρF̂_x) = tr(ρÂ) with Â = Σ_x x F̂_x, and Â is Hermitian.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85); Operatoren auf ganz H definiert (D87); Zustände nach D22. / Finite-dimensional: H with a basis with a finite index set (D85); operators defined on all of H (D87); states as in D22.",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c04/DERIVATION.md#c04.cl.erwartung",
+   "definition_ids": [
+    "D24",
+    "D55",
+    "D18"
+   ],
+   "review_receipt": null,
+   "notes": "vl06.tex:114-122."
+  },
+  {
+   "id": "c04.cl.pvm",
+   "kind": "proposition",
+   "statement_de": "In endlicher Dimension: Ist {P̂_x} projektorwertig mit verschiedenen reellen x, so ist P̂_xP̂_y = 0 (x ≠ y), Â = Σ x P̂_x hermitesch mit den Eigenwerten x (P̂_x ≠ 0) und P̂_x der Projektor auf den Eigenraum; umgekehrt geben die Eigenraumprojektoren eines hermiteschen Â eine projektorwertige Messung mit Â = Σ λ P̂_λ.",
+   "statement_en": "In finite dimension: if {P̂_x} is projection-valued with distinct real x, then P̂_xP̂_y = 0 (x ≠ y), Â = Σ x P̂_x is Hermitian with eigenvalues x (P̂_x ≠ 0) and P̂_x the projector onto the eigenspace; conversely the eigenspace projectors of a Hermitian Â form a projection-valued measurement with Â = Σ λ P̂_λ.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85); Operatoren auf ganz H definiert (D87); Zustände nach D22. / Finite-dimensional: H with a basis with a finite index set (D85); operators defined on all of H (D87); states as in D22.",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c04/DERIVATION.md#c04.cl.pvm",
+   "definition_ids": [
+    "D24",
+    "D89",
+    "D18",
+    "D96",
+    "D98"
+   ],
+   "review_receipt": null,
+   "notes": "vl06.tex:122-124 ('nach dem sogenannten Spektralsatz'); hazard H4.4 (observables = Hermitian operators is the PVM special case)."
+  },
+  {
+   "id": "c04.cl.dynamik",
+   "kind": "equation",
+   "statement_de": "tr(Û_tρÛ_t†F̂) = tr(ρÛ_t†F̂Û_t), mit Û_t = e^{−itĤ/ħ} und hermiteschem Ĥ.",
+   "statement_en": "tr(Û_tρÛ_t†F̂) = tr(ρÛ_t†F̂Û_t), with Û_t = e^{−itĤ/ħ} and Hermitian Ĥ.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85); Operatoren auf ganz H definiert (D87); Zustände nach D22. / Finite-dimensional: H with a basis with a finite index set (D85); operators defined on all of H (D87); states as in D22.",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c04/DERIVATION.md#c04.cl.dynamik",
+   "definition_ids": [
+    "D95",
+    "D98",
+    "D22",
+    "D24"
+   ],
+   "review_receipt": null,
+   "notes": "vl06.tex:130-136 (Postulat 5) with the Hermiticity of H that vl06.tex:138 adds; the equality is cyclicity of the trace."
+  },
+  {
+   "id": "c04.cl.dynamik-zulaessig",
+   "kind": "proposition",
+   "statement_de": "Für unitäres Û: ÛρÛ† ist ein Dichteoperator, 0 ≤ Û†F̂Û ≤ 𝕀, und ρ ↦ ÛρÛ† erhält Mischungen und reine Zustände.",
+   "statement_en": "For unitary Û: ÛρÛ† is a density operator, 0 ≤ Û†F̂Û ≤ 𝕀, and ρ ↦ ÛρÛ† preserves mixtures and pure states.",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": "proof-included",
+   "scope": "Endlichdimensional: H mit einer Basis mit endlicher Indexmenge (D85); Operatoren auf ganz H definiert (D87); Zustände nach D22. / Finite-dimensional: H with a basis with a finite index set (D85); operators defined on all of H (D87); states as in D22.",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c04/DERIVATION.md#c04.cl.dynamik-zulaessig",
+   "definition_ids": [
+    "D91",
+    "D22",
+    "D24"
+   ],
+   "review_receipt": null,
+   "notes": "vl06.tex:138 ('nur dann ist U_t^† F U_t wieder ein zulässiges Messverfahren'); the statement on states and pure states is the author's (BRIEF.md:55 'dynamics are symmetries')."
+  },
+  {
+   "id": "c04.cl.stone",
+   "kind": "theorem",
+   "statement_de": "Ist Â selbstadjungiert, so ist Û(t) = e^{itÂ} eine stark stetige einparametrige unitäre Gruppe; umgekehrt ist jede solche Gruppe von dieser Form mit einem selbstadjungierten Â.",
+   "statement_en": "If Â is self-adjoint, Û(t) = e^{itÂ} is a strongly continuous one-parameter unitary group; conversely every such group has this form with a self-adjoint Â.",
+   "depth": "vertiefung",
+   "evidence": "source-quoted",
+   "presentation": "proof-omitted",
+   "scope": "Reed-Simon I, Theorem VIII.7 (a), (b), p. 265, and Theorem VIII.8 (Stone's theorem), p. 266. / RS I Thm VIII.7, p. 265; Thm VIII.8, p. 266.",
+   "hypotheses": [],
+   "provenance_ids": [
+    "P-0338",
+    "P-0339"
+   ],
+   "definition_ids": [
+    "D19"
+   ],
+   "review_receipt": null,
+   "notes": "Hazard H4.3 (vl06.tex:138: 'H hermitesch => U_t unitär' needs self-adjointness for unbounded H)."
+  },
+  {
+   "id": "c04.cl.qubit-dynamik",
+   "kind": "statement",
+   "statement_de": "Für Ĥ = εσ_x und ρ = |0⟩⟨0| ist tr(ρ_t|0⟩⟨0|) = cos²(εt/ħ); ein Zustand mit Re x = 0, p − ½ = r cos φ, Im x = r sin φ läuft auf p_t − ½ = r cos(φ + 2εt/ħ), Im x_t = r sin(φ + 2εt/ħ).",
+   "statement_en": "For Ĥ = εσ_x and ρ = |0⟩⟨0|, tr(ρ_t|0⟩⟨0|) = cos²(εt/ħ); a state with Re x = 0, p − ½ = r cos φ, Im x = r sin φ moves on p_t − ½ = r cos(φ + 2εt/ħ), Im x_t = r sin(φ + 2εt/ħ).",
+   "depth": "kern",
+   "evidence": "derived",
+   "presentation": null,
+   "scope": "ℂ² mit der kanonischen Basis |0⟩, |1⟩ (Qubit). / ℂ² with the canonical basis |0⟩, |1⟩ (qubit). ε > 0 eine Energie / ε > 0 an energy.",
+   "hypotheses": [],
+   "provenance_ids": [],
+   "derivation": "evidence/derivations/c04/DERIVATION.md#c04.cl.qubit-dynamik",
+   "definition_ids": [
+    "D98",
+    "D26"
+   ],
+   "review_receipt": null,
+   "notes": "vl06.tex:162-164 and fig_vl06_messung (there with H = σ_x, angular velocity 2/ħ); here with the energy ε. Backs figure c04.fig.messung."
   }
  ]
 }

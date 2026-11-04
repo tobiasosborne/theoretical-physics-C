@@ -1,207 +1,96 @@
 %!TEX root = TheoretischePhysikC.tex
+% Kern von content/c03-hilbertraum, c03.s13 bis c03.s15. Quellen: docs/plan/script-v0.3/sync-ch5.md
 
-\section{Vorlesung: Position-Basis, Spur, Diagonalisierung}
-\subsection{Position-Basis}
-Dirac und mit ihm viele Physiker gehen mit der Ket-Notation noch einen Schritt weiter. Wir betrachten zuerst den Fall, dass $\mathcal{H} \equiv \ell^2(\mathbb{N})$. Das heisst, die Vektoren $|\Psi\rangle \in \mathcal{H}$ sind lineare Kombinationen 
-\begin{equation}
-	|\Psi\rangle = \sum_{n=1}^{\infty} \Psi(n)|\phi_n\rangle \equiv \sum_{n=1}^{\infty} \Psi(n)|n\rangle,
-\end{equation}
-wobei $\Psi(n)\in \mathbb{C}$ und
-\begin{equation}
-	\sum_{n=1}^{\infty} |\Psi(n)|^2 < \infty.
-\end{equation}
-Die Ket-Notation wird dann erweitert, indem man den Wert $\Psi(n)$ einer ,,Wellenfunktion`` $\Psi\in \ell^2(\mathbb{N})$ an der Stelle $n\in\mathbb{N}$ als
-\begin{equation}
-	\langle n|\Psi\rangle \equiv \Psi(n)
-\end{equation}
-definiert. Achten Sie hier auf eine Feinheit: $\ell^2(\mathbb{N})$ verlangt nur Quadratsummierbarkeit; die \emph{normierten} Wellenfunktionen mit $\sum_{n} |\Psi(n)|^2 = 1$ bilden darin nur eine Teilmenge.
+\section{Vorlesung: Spur, Diagonalisierung, Funktionalkalkül}
 
-Nun folgt die wichtigste und zugleich unangenehmste Definition dieses Kapitels. Alles Bisherige war mathematisch völlig in Ordnung; ab hier verlassen wir diesen sicheren Boden bewusst.
-
-Sei jetzt $\mathcal{H}\equiv L^2(\mathbb{R})$. Dieser Hilbertraum besteht aus quadratintegrierbaren Funktionen $f:\mathbb{R}\rightarrow\mathbb{C}$, welche die Bedingung
-\begin{equation}
-	\int_{-\infty}^{\infty} |f(x)|^2\,dx < \infty
-\end{equation}
-erfüllen. Die Ket-Notation bedeutet in diesem Fall folgendes: $|\Psi\rangle$ steht für die quadratintegrierbare Funktion $\Psi$. Man führt jetzt das ,,uneigentliche`` Bra $\langle x|$ ein, indem man 
-\begin{equation}
-	\langle x|\Psi\rangle \equiv \Psi(x)
-\end{equation}
-definiert. Warnung: Das Bra $\langle x|$ ist nun beim besten Willen kein Vektor im Hilbertraum mehr. Trotzdem arbeiten wir mit solchen ,,Bra-Vektoren`` als ob sie tatsächlich Vektoren darstellen. Bei den Bra-Vektoren handelt es sich um eine Gratwanderung zwischen Stringenz und Unsinn. Um Kohärente Rechenregeln zu erstellen, führen wir die  sogenannten ,,Position-Basis`` ein: die Ket-Vektoren $|x\rangle$, $x\in \mathbb{R}$ werden mit Hilfe den Bra-Vektoren $\langle x|$ durch
-\begin{equation}
-	\langle x|y\rangle \equiv \delta(x-y)
-\end{equation}
-gegeben, wobei $\delta(z)$ die Dirac-Delta-Funktion darstellt.\footnote{An die Stelle des Kronecker-Deltas $\langle n|m\rangle = \delta_{nm}$ tritt hier eine Distribution, die im Sinne einer Funktion gar nicht existiert. Daher der typische Fehler: für $y=x$ steht rechts nicht Eins, sondern $\delta(0)=\infty$. Solche Ausdrücke muss man vermeiden.} Wir definieren auch $(|x\rangle)^\dag\equiv \langle x|$ und (kontinuierliche) lineare Kombinationen von $|x\rangle$-Vektoren sind explizit erlaubt. Daher kann man eine quadratintegrierbare Funktion $\Psi \in L^2(\mathbb{R})$ als eine (kontinuierliche) lineare Kombination von den $|x\rangle$ darstellen\footnote{Diese Schreibweise erinnert uns an die Darstellung, die in dem endlichen dimensionalen Fall gilt:
-\begin{equation}
-	|\Phi\rangle = \sum_{n\in X} \Phi(n)|n\rangle.
-\end{equation}}:
-\begin{equation}
-	|\Psi\rangle \equiv \int_{-\infty}^{\infty} \Psi(x)|x\rangle \, dx.
-\end{equation}
-\begin{intuition}
-	Was ist $|x\rangle$ physikalisch? Der Zustand eines Teilchens, das sich mit Sicherheit an der Stelle $x$ befindet. Bemerkenswert ist daran, dass eine Position in der Natur nie ganz scharf festliegt: es gibt immer eine Unschärfe.
-\end{intuition}
-
-Diese Notation erlaubt uns mehrere Rechnungen analog mit dem endlichen dimensionalen Fall durchzuführen. Zum Beispiel kann man die Norm von $|\Psi\rangle$ wie folgt erhalten:
-\begin{equation}
-	\begin{split}
-		\|\Psi\|^2 &= \langle \Psi|\Psi\rangle \\
-		&= \left(\int_{-\infty}^{\infty} \Psi(x)|x\rangle \, dx\right)^\dag \left(\int_{-\infty}^{\infty} \Psi(y)|y\rangle \, dy\right) \\
-		&= \left(\int_{-\infty}^{\infty} \Psi^*(x) \langle x| \, dx\right)\left(\int_{-\infty}^{\infty} \Psi(y)|y\rangle \, dy\right) \\
-		&= \int_{-\infty}^{\infty} \Psi^*(x)\Psi(y) \langle x|y\rangle\,dxdy \\
-		&= \int_{-\infty}^{\infty} \Psi^*(x)\Psi(y) \delta(x-y)\,dxdy\\
-		&= \int_{-\infty}^{\infty} \Psi^*(x)\Psi(x) \,dx \\
-		&= \int_{-\infty}^{\infty} |\Psi(x)|^2 \,dx.
-	\end{split}
-\end{equation} 
+Mit dieser Vorlesung ist das mathematische Werkzeug der Quantenmechanik vollständig. Die Positions-Basis $\ket{x}$, mit der diese Vorlesung früher begann, kommt mit dem Teilchen auf der Geraden in Vorlesung~7.
 
 \subsection{Spur}
-Die Spur eines Operators spielt in der Quantenmechanik eine wichtige Rolle. Die Spur eines Operators $A$ auf einem endlich dimensionalen Hilbertraum $\mathcal{H}$ definieren wir als 
+Aus der Matrizenrechnung kennen Sie die Summe der Diagonaleinträge. Sie kommt in der Quantenmechanik ständig vor.
+\begin{definition}
+	Sei $\{\ket{x}\}_{x\in X}$ eine Orthonormalbasis von $\Hil$ mit endlicher Indexmenge; $x$ ist hier nur ein Index. Die \emph{Spur} eines Operators $\op{A}$ ist
+	\begin{equation}
+		\tr(\op{A}) = \sum_{x\in X} \melem{x}{\op{A}}{x}.
+	\end{equation}
+\end{definition}
+Die Zahl hängt nicht von der Orthonormalbasis ab: Schiebt man die Vollständigkeitsrelation $\mathbb{I} = \sum_y \ketbra{y}{y}$ einer zweiten Basis ein, so wird $\sum_x \melem{x}{\op{A}}{x} = \sum_{x,y} \melem{y}{\op{A}}{x}\braket{x}{y} = \sum_y \melem{y}{\op{A}}{y}$; im letzten Schritt ist die Summe über $x$ die Vollständigkeitsrelation der ersten Basis. Dieselbe Rechnung zeigt die Regel, die wir ständig benutzen werden. Sind $\op{A}\colon \Hil_1 \to \Hil_2$ und $\op{B}\colon \Hil_2 \to \Hil_1$ linear, so ist
 \begin{equation}
-	\tr(A) \equiv \sum_{x\in X} \langle x|A|x\rangle,
+	\tr_2(\op{A}\op{B}) = \sum_{x,y} \melem{y}{\op{A}}{x}\melem{x}{\op{B}}{y} = \tr_1(\op{B}\op{A}),
 \end{equation}
-wobei $x$ über die Indizes einer Orthonormalbasis $\{|\phi_x\rangle\}_{x\in X}$ läuft. Gemeint ist eine gewöhnliche Orthonormalbasis, nicht die Positions-Basis des vorigen Abschnitts. Wenn $A : \mathcal{H}_1 \rightarrow \mathcal{H}_2$ und $B : \mathcal{H}_2 \rightarrow \mathcal{H}_1$ rechnet man nach, dass
+mit Orthonormalbasen $\{\ket{x}\}$ von $\Hil_1$ und $\{\ket{y}\}$ von $\Hil_2$; der Index an der Spur sagt, in welchem Raum sie genommen wird. Unter der Spur darf man also den letzten Faktor nach vorn holen; beliebiges Vertauschen ist nicht erlaubt. Den wichtigsten Fall liefern Ket und Bra als Abbildungen $\ket{\Psi}\colon\mathbb{C}\to\Hil$ und $\bra{\Phi}\colon\Hil\to\mathbb{C}$ aus Vorlesung~4. Mit der Basis $\{1\}$ von $\mathbb{C}$ ist die Spur der Multiplikation mit einer Zahl diese Zahl, also
 \begin{equation}
-	\tr_2(AB) = \tr_1(BA)
+	\tr\bigl(\ketbra{\Psi}{\Phi}\bigr) = \braket{\Phi}{\Psi}.
 \end{equation}
-wobei der Index an der Spur nur daran erinnert, auf welchem der beiden Hilberträume die Spur zu nehmen ist. Diese Zyklizität benutzen wir ständig. In der Positions-Basis schreibt man die Spur auch als
-\begin{equation}
-	\tr(A) = \int_{-\infty}^{\infty} \langle x|A|x\rangle \, dx;
-\end{equation}
-in der Literatur begegnet sie einem oft.
+Die Spur eines Ket-Bras ist ein Bra-Ket. Zum Beispiel ist der Projektor $\op{B}$ aus Vorlesung~4 gleich $\ketbra{u}{u}$ mit $\ket{u} = (1,1,1)/\sqrt{3}$, also $\tr(\op{B}) = \braket{u}{u} = 1$. In unendlich vielen Dimensionen ist die Summe eine Reihe, die nicht konvergieren muss; dort hat nicht jeder Operator eine Spur.
 
-\subsection{Diagonalisierung}
-Für viele Rechnungen in der Quantenmechanik müssen Operatoren \emph{diagonalisiert} werden. Wie allgemein in der linearen Algebra bedeutet dies die Transformation auf eine besonders einfache Gestalt. Der Grund für den Aufwand: allgemeine Matrizen kommutieren nicht und sind mühsam zu handhaben, diagonale Operatoren dagegen sind so gut wie Zahlen. Alle Operatoren gleichzeitig diagonal zu bekommen gelingt allerdings in der Regel nicht. Der einfachste Fall ist  wieder endliche Matrizen, also Operatoren in einem Raum $\mathcal{H}\equiv \mathbb{C}^N$ für endliches $N$. Ein \emph{diagonaler Operator} $A$ hat per Definition Matrixelemente der Form
-\begin{equation}
-	[A]_{nm} = \langle\phi_n|A|\phi_m\rangle = \delta_{nm} a_m,
-\end{equation}
-wobei $a_1, \ldots, a_N$ die diagonalen Matrixelemente sind. Der Operator $A$ wirkt auf Vektoren $|\Psi\rangle$ wie folgt:
-\begin{equation}
-	A|\Psi\rangle = \sum_{n,m} |n\rangle\langle n|A|m\rangle\langle m|\Psi\rangle = \sum_{m} a_{m}\Psi(m) |m\rangle,
-\end{equation}
-wobei $\Psi(m) = \langle m|\Psi\rangle$.  
+\subsection{Eigenwerte und Diagonalisierung}
+Allgemeine Matrizen sind mühsam und vertauschen nicht miteinander; diagonale Operatoren dagegen sind so gut wie Zahlen. Deshalb muss man Operatoren oft \emph{diagonalisieren}. Alle Operatoren auf einmal diagonal zu machen gelingt in der Regel nicht; man diagonalisiert immer einen bestimmten. Den Begriff aus Vorlesung~4 machen wir jetzt genau. Er braucht kein Skalarprodukt.
+\begin{definition}
+	Ein Vektor $\ket{v}\neq 0$ heißt \emph{Eigenvektor} von $\op{A}$ zum \emph{Eigenwert} $\lambda\in\mathbb{C}$, wenn $\op{A}\ket{v} = \lambda\ket{v}$. Die Eigenvektoren zu $\lambda$ bilden mit dem Nullvektor den \emph{Eigenraum} zu $\lambda$.
 
-\emph{Diagonalisierung} bedeutet nun das Auffinden einer invertierbaren Matrix $S$ so, dass $SAS^{-1}$ ein diagonaler Operator ist. Wir werden uns (fast) ausschließlich für den Fall interessieren, in dem diese Transformation sogar durch einen unitären Operator $S$ geschieht (dann ist $S^{−1} = S^\dag$). Allgemein bedeutet für uns also
-\emph{diagonalisieren} von $A$ das Auffinden eines unitären Operators $U : \mathcal{H} \rightarrow L^2(\mathbb{R})$, so dass 
+	$\op{A}$ heißt \emph{diagonal} in der Orthonormalbasis $\{\ket{x}\}$, wenn $\melem{x}{\op{A}}{y} = \delta_{xy}\,a_x$, also $\op{A} = \sum_x a_x\ketbra{x}{x}$, und \emph{unitär diagonalisierbar}, wenn es eine Orthonormalbasis gibt, in der $\op{A}$ diagonal ist. Wir schreiben $\diag(a_1,\dots,a_n)$ für die Diagonalmatrix.
+\end{definition}
+Ein Eigenvektor, den man aus einem Gleichungssystem gewinnt, hat fast nie die Norm $1$; man teilt durch seine Norm und hat wieder einen Eigenvektor. Ein diagonaler Operator multipliziert jede Komponente mit ihrer eigenen Zahl, $\op{A}\ket{\Psi} = \sum_x a_x\braket{x}{\Psi}\ket{x}$; jeder Basisvektor ist also ein Eigenvektor. Das gilt auch umgekehrt, und so sind Diagonalisieren und Eigenvektoren-Suchen dieselbe Aufgabe. Sei $\{\ket{x}\}$ eine feste Orthonormalbasis und $\{\ket{\phi_x}\}$ eine Orthonormalbasis aus Eigenvektoren mit denselben Indizes, $\op{A}\ket{\phi_x} = a_x\ket{\phi_x}$. Dann ist
 \begin{equation}
-	\langle x|(UAU^\dag )|\Psi\rangle = a(x)\Psi(x).
+	\op{U} = \sum_x \ketbra{x}{\phi_x}
 \end{equation}
-Jeder hermitesche und jeder unitäre Operator ist diagonalisierbar. Für beliebige Operatoren gilt das nicht; es gibt durchaus Matrizen, die sich nicht diagonalisieren lassen. In der Quantenmechanik haben wir insofern Glück.
+unitär, denn mit der Orthonormalität und der Vollständigkeitsrelation ist
+\begin{equation}
+	\op{U}\op{U}\adj = \sum_{x,y} \ket{x}\braket{\phi_x}{\phi_y}\bra{y} = \sum_x \ketbra{x}{x} = \mathbb{I},
+\end{equation}
+ebenso $\op{U}\adj\op{U} = \mathbb{I}$ mit $\op{U}\adj = \sum_x\ketbra{\phi_x}{x}$, und mit $\melem{\phi_x}{\op{A}}{\phi_y} = a_y\,\delta_{xy}$ in der Mitte wird
+\begin{equation}
+	\op{U}\op{A}\op{U}\adj = \sum_x a_x \ketbra{x}{x}, \qquad
+	\op{A} = \sum_x a_x \ketbra{\phi_x}{\phi_x}, \qquad
+	\tr(\op{A}) = \sum_x a_x.
+\end{equation}
+Die zweite Gleichung heißt \emph{Spektralzerlegung}. Ist umgekehrt $\op{U}$ unitär und $\op{U}\op{A}\op{U}\adj$ diagonal, so sind die Vektoren $\op{U}\adj\ket{x}$ eine Orthonormalbasis aus Eigenvektoren.
 
-\subsection{Eigenwert, Eigenvektor}
-Ist $V$ ein komplexer Vektorraum und $A:V\rightarrow A$ eine lineare Abbildung von $V$ in sich selbst, so bezeichnet man als \emph{Eigenvektor} einen Vektor $\mathbf{v}\not=\mathbf{0}$, der durch $A$ auf ein Vielfaches 
-$\alpha\mathbf{v}$ von sich selbst mit $\alpha\in\mathbb{C}$ abgebildet wird:
+In der linearen Algebra heißt ein Operator schon diagonalisierbar, wenn er irgendeine Basis aus Eigenvektoren hat; wir meinen hier stets die orthonormale, also unitäre Form. Nicht jeder Operator lässt sich diagonalisieren: Die Matrix mit den Zeilen $(0,1)$ und $(0,0)$ hat nur die Vielfachen von $(1,0)$ als Eigenvektoren. In der Quantenmechanik haben wir Glück: Die hermiteschen und die unitären Operatoren lassen sich in endlicher Dimension immer diagonalisieren. Der erste Schritt ist ein Trick, den man immer wieder braucht: denselben Ausdruck auf zwei Arten auswerten. Sei $\op{A}$ hermitesch mit $\op{A}\ket{\phi} = a\ket{\phi}$ und $\op{A}\ket{\psi} = b\ket{\psi}$. Lässt man $\op{A}$ nach rechts wirken, ist $\melem{\phi}{\op{A}}{\psi} = b\braket{\phi}{\psi}$; lässt man es nach links wirken, ist es $\braket{\op{A}\phi}{\psi} = a^*\braket{\phi}{\psi} = a\braket{\phi}{\psi}$, denn $a\braket{\phi}{\phi} = \melem{\phi}{\op{A}}{\phi}$ ist reell (Vorlesung~4). Also ist
 \begin{equation}
-	A\mathbf{v} = \alpha \mathbf{v}.
+	(a-b)\braket{\phi}{\psi} = 0:
 \end{equation}
-Den Faktor $\alpha$ nennt man dann den zugehörigen Eigenwert. 
-
-Eine Diagonalisierung von einem Operator (Matrix) $A$ liefert uns die Eigenwerte und Eigenvektoren. Sei zum Beispiel $\mathcal{H} \equiv \mathbb{C}^N$. Angenommen wir haben eine unitäre Matrix $U$ gefunden, so dass $UAU^\dag$ diagonal ist. Man bildet die Basis 
-\begin{equation}
-	\phi_1 \equiv U^\dag \begin{pmatrix}
-	1\\0\\ \vdots \\ 0
-	\end{pmatrix}, \quad  \phi_2 \equiv U^\dag \begin{pmatrix}
-	0\\1\\ \vdots \\ 0
-	\end{pmatrix}, \quad \ldots, \quad \phi_N \equiv U^\dag \begin{pmatrix}
-	0\\0\\ \vdots \\ 1
-	\end{pmatrix}.
-\end{equation}
-(Übung: Bildet diese Reihenfolge eine Basis?) Ein Hinweis: $\langle\phi_j|\phi_k\rangle = e_j^\dag UU^\dag e_k = \delta_{jk}$ mit dem kanonischen Basisvektor $e_j$, und genau hier geht die Unitarität ein. Der Operator $A$ wirkt auf diesen Vektoren wie folgt:
-\begin{equation}
-	A\phi_1 \equiv AU^\dag \begin{pmatrix}
-	1\\0\\ \vdots \\ 0
-	\end{pmatrix} = U^\dag U AU^\dag \begin{pmatrix}
-	1\\0\\ \vdots \\ 0
-	\end{pmatrix} = U^\dag \begin{pmatrix}
-		a_1 & 0 & 0 & \cdots & 0 \\
-		0 & a_2 & 0 & \cdots & 0 \\
-		\vdots & \vdots &  & \ddots & \vdots \\
-		0 & 0 & 0 & \cdots & a_N
-	\end{pmatrix} \begin{pmatrix}
-	1\\0\\ \vdots \\ 0
-	\end{pmatrix} = a_1 \phi_1.
-\end{equation}
-Genau analog wirkt $A$ auf $\phi_j$ als
-\begin{equation}
-	A\phi_j = a_j\phi_j.
-\end{equation}
-Nach dieser Art und Weise indentifiziert man $\phi_j$ als die Eigenvektoren von $A$ mit dazugehörigen Eigenwerten $a_j$. 
-
-Ebenso wichtig ist die Rückrichtung: aus einer Liste von Eigenvektoren gewinnt man die unitäre Matrix. Sei $A$ hermitesch auf $\mathcal{H}\equiv\mathbb{C}^N$ mit
-\begin{equation}
-	A|\phi_j\rangle = a_j |\phi_j\rangle, \qquad j = 1,\ldots,N.
-\end{equation}
-Zwei Vorbereitungen. Erstens die Normierung: ein aus einem Gleichungssystem gewonnener Eigenvektor hat fast nie die Norm Eins; man teilt dann durch sie und erhält wieder einen Eigenvektor zum selben Eigenwert. Zweitens die Orthogonalität, die keineswegs automatisch gilt. Sind alle Eigenwerte verschieden, so berechnen wir $\langle\phi_j|A|\phi_k\rangle$ auf zwei Arten: nach rechts wirkend ist
-\begin{equation}
-	\langle\phi_j|A|\phi_k\rangle = a_k \langle\phi_j|\phi_k\rangle.
-\end{equation}
-Der Trick ist, $A$ nach links wirken zu lassen. Dabei gehen $A^\dag = A$ und die Reellwertigkeit der Eigenwerte ein --- letztere, weil $a_j = \langle\phi_j|A|\phi_j\rangle$ für hermitesches $A$ nach Vorlesung 4 reell ist. Damit ist
-\begin{equation}
-	\langle\phi_j|A = \left(A^\dag|\phi_j\rangle\right)^\dag = \left(a_j|\phi_j\rangle\right)^\dag = a_j^*\langle\phi_j| = a_j \langle\phi_j|,
-\end{equation}
-also $\langle\phi_j|A|\phi_k\rangle = a_j\langle\phi_j|\phi_k\rangle$. Der Vergleich ergibt
-\begin{equation}
-	(a_j - a_k)\langle\phi_j|\phi_k\rangle = 0,
-\end{equation}
-und da die Eigenwerte verschieden sind, bleibt nur $\langle\phi_j|\phi_k\rangle = 0$ für $j\neq k$: die Eigenvektoren bilden eine Orthonormalbasis. Damit setzen wir
-\begin{equation}
-	U \equiv \sum_{j} |j\rangle\langle\phi_j|,
-\end{equation}
-mit dem kanonischen Basisvektor $|j\rangle$, der eine Eins in der $j$-ten Zeile trägt. Orthonormalität und Vollständigkeitsrelation liefern
-\begin{equation}
-	UU^\dag = \sum_{j,k} |j\rangle\langle\phi_j|\phi_k\rangle\langle k| = \sum_{j,k} \delta_{jk}|j\rangle\langle k| = \sum_{j} |j\rangle\langle j| = \mathbb{I},
-\end{equation}
-und dieselbe Rechnung mit $A$ in der Mitte ergibt
-\begin{equation}
-	UAU^\dag = \sum_{j,k} |j\rangle\langle\phi_j|A|\phi_k\rangle\langle k| = \sum_{j} a_j |j\rangle\langle j|,
-\end{equation}
-also einen diagonalen Operator mit den Eigenwerten auf der Diagonalen. (Übung: Zeigen Sie ebenso $U^\dag U = \mathbb{I}$.)
+Eigenvektoren zu verschiedenen Eigenwerten sind orthogonal. Dass es immer genug davon gibt, auch wenn Eigenwerte zusammenfallen, sagt der folgende Satz; sein Beweis steht im Webkurs.
+\begin{merksatz}[Spektralsatz]
+	Auf einem endlichdimensionalen Hilbertraum hat jeder hermitesche und jeder unitäre Operator eine Orthonormalbasis aus Eigenvektoren, ist also unitär diagonalisierbar.
+\end{merksatz}
+Die endliche Dimension ist wesentlich: In unendlich vielen Dimensionen gibt es hermitesche Operatoren ganz ohne Eigenvektoren; der Webkurs zeigt ein Beispiel.
 
 \begin{beispiel}
-	Sei $\mathcal{H}\equiv\mathbb{C}^2$, in der Quanteninformationstheorie ein \emph{Qubit}, und
+	Sei $\Hil = \mathbb{C}^2$, ein \emph{Qubit}, mit der Basis $\ket{0},\ket{1}$, und $\pauli{x} = \bigl(\begin{smallmatrix} 0 & 1 \\ 1 & 0\end{smallmatrix}\bigr)$. Aus $\det(\pauli{x} - \lambda\mathbb{I}) = \lambda^2 - 1$ folgen die Eigenwerte $\pm 1$ mit den normierten Eigenvektoren
 	\begin{equation}
-		A \equiv \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}.
+		\ket{\phi_0} = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ 1 \end{pmatrix}, \qquad \ket{\phi_1} = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ -1 \end{pmatrix}.
 	\end{equation}
-	Das charakteristische Polynom $\det(A - \lambda\mathbb{I}) = \lambda^2 - 1$ liefert $\lambda = \pm 1$ mit den normierten Eigenvektoren
+	Ein Ket ist eine Spalte, ein Bra eine Zeile, ein Ket-Bra also eine Matrix:
 	\begin{equation}
-		|\phi_1\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ 1 \end{pmatrix}, \qquad |\phi_2\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 \\ -1 \end{pmatrix}.
+		\op{U} = \ketbra{0}{\phi_0} + \ketbra{1}{\phi_1} = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix} + \frac{1}{\sqrt{2}}\begin{pmatrix} 0 & 0 \\ 1 & -1 \end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix},
 	\end{equation}
-	Ein Ket ist ein Spalten-, ein Bra ein Zeilenvektor, ihr Produkt also eine Matrix:
-	\begin{equation}
-		U = |1\rangle\langle\phi_1| + |2\rangle\langle\phi_2| = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix} + \frac{1}{\sqrt{2}}\begin{pmatrix} 0 & 0 \\ 1 & -1 \end{pmatrix} = \frac{1}{\sqrt{2}}\begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix},
-	\end{equation}
-	die \emph{Hadamard-Matrix}; man rechnet $UAU^\dag = \diag(1,-1)$ nach. Vertauscht man die beiden Eigenvektoren, so liefert dasselbe Rezept eine andere unitäre Matrix $U'$ mit $U'AU'^\dag = \diag(-1,1)$: die Diagonalisierung ist nicht eindeutig.
+	die \emph{Hadamard-Matrix}; man rechnet $\op{U}\pauli{x}\op{U}\adj = \diag(1,-1)$ nach. Vertauscht man die beiden Eigenvektoren, so liefert dasselbe Rezept eine andere unitäre Matrix, und die Diagonalform wird $\diag(-1,1)$: Die Diagonalisierung ist nicht eindeutig.
 \end{beispiel}
 
 \input{figures/fig_vl05_diagonal}
 
-Die Abbildung zeichnet dieses Beispiel, allerdings nicht $A$ selbst: als Spiegelung bildet $A$ den Einheitskreis auf sich ab, es gäbe also nichts zu sehen. Gezeichnet ist stattdessen $\tilde A = A + 2\mathbb{I}$ --- dieselben Eigenvektoren, dieselbe Matrix $U$, nur die Eigenwerte um $2$ angehoben zu $3$ und $1$. Derselbe Operator steht dort in beiden Basen nebeneinander: links liegt die Bildellipse schief im Rahmen, rechts fällt sie mit den Koordinatenachsen zusammen. Ihre Hauptachsen sind die Eigenvektoren, ihre Halbachsen die Eigenwerte.
-
-Dieses Verfahren funktioniert auch im unendlichen dimensionalen Fall, ist jedoch aufwendiger, allerdings werden wir immer nur von Fall zu Fall unendlich dimensionale Hilberträume behandeln.
+Die Abbildung zeigt dieses Beispiel, aber nicht $\pauli{x}$ selbst: Als Spiegelung bildet $\pauli{x}$ den Einheitskreis auf sich ab. Gezeichnet ist $\op{A} = \pauli{x} + 2\mathbb{I}$, mit denselben Eigenvektoren und derselben Matrix $\op{U}$ und den Eigenwerten $3$ und $1$. Gezeichnet ist das Bild des Einheitskreises von $\mathbb{R}^2$. Links liegt die Bildellipse schief, rechts, in der Eigenbasis, liegt sie auf den Achsen. Ihre Hauptachsen liegen auf den Eigenvektoren, ihre Halbachsen sind die hier positiven Eigenwerte.
 
 \subsection{Funktionalkalkül}
-Wenn $H$ ein hermitescher Operator ist, dann ist die diagonalisierung $SHS^{-1} = SHS^{\dag}$ von $H$ auch hermitesch, also die Multiplikation mit einer reellen Funktion $a_x$ (bezüglich der Eigenvektor-Basis $\{|\phi_x\rangle\}_{x\in X}$):
+Weil diagonale Operatoren so gut wie Zahlen sind, kann man Funktionen auf sie anwenden, indem man die Funktion auf die Zahlen anwendet.
+\begin{definition}
+	Sei $\op{A} = \sum_x a_x\ketbra{\phi_x}{\phi_x}$ eine Spektralzerlegung und $f$ eine komplexe Funktion auf den Eigenwerten. Dann ist $f(\op{A}) = \sum_x f(a_x)\ketbra{\phi_x}{\phi_x}$.
+\end{definition}
+Für ein Polynom stimmt das mit dem Einsetzen überein, denn $\op{A}^k = \sum_x a_x^k\ketbra{\phi_x}{\phi_x}$; und weil jede Funktion auf den endlich vielen Eigenwerten mit einem Polynom übereinstimmt (Lagrange-Interpolation, im Webkurs), hängt $f(\op{A})$ nicht von der gewählten Eigenbasis ab. Der wichtigste Fall: Sei $\op{\Ham} = \sum_x E_x\ketbra{\phi_x}{\phi_x}$ hermitesch, in Vorlesung~6 der Hamiltonoperator mit den Energien $E_x$, und $t$ reell. Dann ist
 \begin{equation}
-	SHS^\dag |\phi_x\rangle = a_x |\phi_x\rangle,
+	\op{U}_t = e^{-\frac{it}{\hbar}\op{\Ham}} = \sum_x e^{-\frac{it}{\hbar}E_x}\ketbra{\phi_x}{\phi_x}.
 \end{equation}
-wobei $|\phi_x\rangle$ die Eigenvektoren von $A$ mit dazugehörigen Eigenwerten $a_x$ bilden. 
-Dass die $a_x$ reell sind, sieht man sofort: für unitäres $S$ ist $(SHS^\dag)^\dag = SH^\dag S^\dag = SHS^\dag$, die Diagonalform ist also wieder hermitesch, und das heißt für eine Diagonalmatrix $a_x^* = a_x$.
+Auf jedem Eigenvektor wirkt $\op{U}_t$ als Multiplikation mit einer \emph{Phase}. Die Kette ist: Die $E_x$ sind reell, weil $\op{\Ham}$ hermitesch ist; deshalb haben die Phasen den Betrag $1$; deshalb ist $\op{U}_t\adj\op{U}_t = \sum_x \abs{e^{-itE_x/\hbar}}^2\ketbra{\phi_x}{\phi_x} = \mathbb{I}$, und $\op{U}_t$ ändert die Norm keines Vektors. In endlicher Dimension ist $\op{U}_t$ auch die Summe der Exponentialreihe $\sum_n \frac{1}{n!}\bigl(\frac{-it}{\hbar}\bigr)^n\op{\Ham}^n$, denn jede Teilsumme ist ein Polynom in $\op{\Ham}$, wirkt also auf $\ket{\phi_x}$ als die Teilsumme der Zahlenreihe für $e^{-itE_x/\hbar}$, und diese endlich vielen Reihen konvergieren.
 
-Wir definieren von diesem Operator die Funktion 
-\begin{equation}
-	U_t \equiv e^{\frac{−it}{\hbar}H}
-\end{equation}
-die durch
-\begin{equation}
-	U_t |\phi_x\rangle \equiv e^{\frac{−it}{\hbar}a_x} |\phi_x\rangle, \quad \forall x\in X,
-\end{equation}
-gegeben wird. (Wenn $A$ auf einen Eigenvektor angewandt wird, wird der Operator $H$ mit der reellen Zahl $a_x$ ersetzt.) Der Operator $U_t$ ist auch (bezüglich die Eigenvektor-Basis) ein Multiplikationsoperator, allerdings wird der Skalar $a_x$ durch eine (x-abhängige) \emph{Phase} $e^{\frac{−it}{\hbar}a_x}$ ersetzt. Weil die $a_x$ reell sind, hat jede Phase den Betrag Eins; genau deshalb ist $U_t$ unitär und lässt die Norm eines Zustands unverändert. 
-
-Im Fall, dass $\mathcal{H}$ endlich-dimensional ist, ist die Operator-Funktion $e^{\frac{−it}{\hbar}H}$ das gleiche wie eine Potenzreihe 
-\begin{equation}
-	e^{\frac{−it}{\hbar}H} \equiv \sum_{n=0}^\infty \frac{1}{n!} \left(\frac{−it}{\hbar}\right)^n H^n.
-\end{equation}
-Übrigens ist die Definition der Exponentialfunktion durch Diagonalisierung auch noch bei unbeschränkten selbst-adjungierten Operatoren $H$ vernünftig, während die Potenzen eines unendlich-dimensionalen Operators und erst recht die Potenzreihe nur unter sehr einschränkenden Bedingungen einen Sinn ergeben.
+\begin{beispiel}
+	Sei $\op{\Ham} = \varepsilon\pauli{x}$ mit einer Energie $\varepsilon>0$. Mit den Eigenwerten $\pm\varepsilon$ und den Eigenvektoren von oben ist
+	\begin{equation}
+		\eqbox{\op{U}_t = e^{-i\varepsilon t/\hbar}\ketbra{\phi_0}{\phi_0} + e^{i\varepsilon t/\hbar}\ketbra{\phi_1}{\phi_1} = \cos\Bigl(\frac{\varepsilon t}{\hbar}\Bigr)\mathbb{I} - i\sin\Bigl(\frac{\varepsilon t}{\hbar}\Bigr)\pauli{x}}
+	\end{equation}
+	wegen $\mathbb{I} = \ketbra{\phi_0}{\phi_0} + \ketbra{\phi_1}{\phi_1}$ und $\pauli{x} = \ketbra{\phi_0}{\phi_0} - \ketbra{\phi_1}{\phi_1}$. Dasselbe liefert die Reihe: Wegen $\pauli{x}^2 = \mathbb{I}$ zerfällt sie in die Reihen für Kosinus und Sinus. Dieser Trick nutzt $\pauli{x}^2 = \mathbb{I}$; im Allgemeinen rechnet man mit der Spektralzerlegung.
+\end{beispiel}
 
 \begin{merksatz}
-	Der Operator $U_t$ beschreibt die Zeitentwicklung eines Quantensystems. Damit steht die Lösung der Schrödingergleichung schon hier, bevor die Gleichung selbst aufgetaucht ist.
+	Der Operator $\op{U}_t$ beschreibt die Zeitentwicklung eines Quantensystems. Damit steht die Lösung der Schrödingergleichung schon hier, bevor die Gleichung selbst aufgetaucht ist. „Die Dynamik lösen“ heißt deshalb: den Hamiltonoperator diagonalisieren.
 \end{merksatz}

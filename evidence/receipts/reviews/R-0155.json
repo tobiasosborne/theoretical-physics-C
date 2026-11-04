@@ -1,0 +1,48 @@
+{
+ "id": "R-0155",
+ "reviewer": "codex gpt-6.1-sol, independent review c04 lecture 6",
+ "date": "2026-11-04",
+ "covers": [
+  "P-0334",
+  "P-0335",
+  "P-0336",
+  "P-0337",
+  "P-0338",
+  "P-0339"
+ ],
+ "verdict": "pass",
+ "method": "Independently checked the member sha256 and rendered every cited page (ddjvu -format=pnm -scale=150 for the djvu, pdftoppm -r 110 for the pdf); read the page images (no text layer), checked the printed page number, the transcription of each quote and that each quote supports the claim it is filed under within the claim's scope. Report: evidence/derivations/c04/REVIEW-lec6.md, section A.",
+ "notes": "All 6 rows passed as submitted.  The quote hashes are those of the rows as bound.",
+ "bindings": [
+  {
+   "provenance_id": "P-0334",
+   "member_sha256": "b81856071260df71a8ab80fe91edcbaabdf245d0e183ce19f3cb04027ef34ce7",
+   "quote_sha256": "1cf8819b5ee98217301a4e56e889ed86b75beea0d47526cc70b7ad2ae78225ff"
+  },
+  {
+   "provenance_id": "P-0335",
+   "member_sha256": "b81856071260df71a8ab80fe91edcbaabdf245d0e183ce19f3cb04027ef34ce7",
+   "quote_sha256": "afebac4004964700931fa8d8a4388403ac893bc672ebafa174ead8fe8f65c1a8"
+  },
+  {
+   "provenance_id": "P-0336",
+   "member_sha256": "b81856071260df71a8ab80fe91edcbaabdf245d0e183ce19f3cb04027ef34ce7",
+   "quote_sha256": "5b298db61772270bb39a8a9f5e4052f9aac0d39c42639e141d562684d0e1200c"
+  },
+  {
+   "provenance_id": "P-0337",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "quote_sha256": "7c2fe5dc6ee5861b2a775cb023f855077dcf21da598677e0109e96be54f51e89"
+  },
+  {
+   "provenance_id": "P-0338",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "quote_sha256": "e9c1a2f6eb7f2e4df0956abb41bee1c67ac5f32e3f7985a4a8594826e869df9a"
+  },
+  {
+   "provenance_id": "P-0339",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "quote_sha256": "2fefd1d3a26204d5f2de3ab368c483bb9a57df1aef5e82681725148e9fbebe69"
+  }
+ ]
+}

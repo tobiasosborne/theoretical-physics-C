@@ -3,10 +3,11 @@
 %
 % Stand: der Stoff der zweiten, dritten und vierten Vorlesung (latex/lectures/de/vl02.tex,
 % „Vorlesung: Hilbertraum“, vl03.tex, „Vorlesung: Hilbertraum, Basis, Operatoren“, und vl04.tex,
-% „Vorlesung: Operatoren“, mit dem Unterabschnitt Operatoren von vl03.tex:253-277).  Das Kapitel
-% wächst später um vl05 (Spur, Diagonalisierung).  Neue Abschnitte kommen als \section c03.s13,
-% ... zwischen den letzten Kern-Abschnitt und die Fundament-Blöcke am Dateiende; die
-% Fundament-Blöcke bleiben am Ende.
+% „Vorlesung: Operatoren“, mit dem Unterabschnitt Operatoren von vl03.tex:253-277) und der fünften
+% (vl05.tex, „Position-Basis, Spur, Diagonalisierung“, als c03.s13 bis c03.s15 und Vertiefung
+% c03.v7, 2026-11-04; die Positions-Basis ist nach C5 verschoben, Entscheidung D-POS in
+% docs/plan/lec56/BRIEF.md).  Neue Abschnitte kommen zwischen den letzten Kern-Abschnitt und die
+% Fundament-Blöcke am Dateiende; die Fundament-Blöcke bleiben am Ende.
 %
 % Wohin jede Zeile von vl02, vl03 und vl04 gegangen ist: evidence/migrations/maps/vl02-map.json,
 %   vl03-map.json und (von Lane E aus docs/plan/lec34/NOTES-author.md gebaut) vl04-map.json.
@@ -2087,8 +2088,454 @@ $\melem{\psi}{\op{A}}{\psi} = -\sqrt{2}$.
     Parameter zum Verschieben und den berechneten Klassentests daneben.}
 \end{tpcfigure}
 
+\section{Die Spur}\label{c03.s13}
+
+% Stimme: vl05.tex:57-70; v05 [82:29]-[88:15] („eine Definition, die aus der Matrizenrechnung
+% bereits bekannt sein dürfte“; „diese Eigenschaft wird ständig verwendet“).  Die Spur in der
+% Positions-Basis (vl05.tex:66-69, v05 [87:52]) ist mit der Positions-Basis nach C5 verschoben
+% (Entscheidung D-POS, docs/plan/lec56/BRIEF.md).  vl05 nimmt für die Zyklizität
+% Abbildungen zwischen zwei Hilberträumen; das braucht Kapitel 4 für Kets und Bras
+% (Abschnitt c03.s11.1), deshalb steht es hier so allgemein.
+Zum Werkzeug gehört noch eine Zahl, die man jedem Operator zuordnet und die in der
+Quantenmechanik ständig vorkommt. Aus der Matrizenrechnung kennen Sie sie bereits: die Summe der
+Diagonaleinträge.
+
+\tpcdef{D95}
+
+Die Definition benutzt eine Basis; die Zahl hängt von ihr aber nicht ab. Das und die Regel, die
+wir ständig verwenden werden, sagt die folgende Proposition. Für die dritte Aussage lassen wir
+wie in Abschnitt~\ref{c03.s11.1} lineare Abbildungen zwischen zwei Hilberträumen zu; der Index an
+der Spur sagt dann, in welchem Raum sie genommen wird.
+
+\begin{proposition}[Rechenregeln der Spur]\label{c03.prop.spur}\claim[proof-included]{c03.cl.spur}{derived}
+  Seien $\Hil$, $\Hil_1$ und $\Hil_2$ Hilberträume mit Basen mit endlicher Indexmenge.
+  \begin{enumerate}
+    \item Die Spur eines Operators $\op{A}$ auf $\Hil$ hängt nicht von der Orthonormalbasis
+      ab, mit der man sie berechnet.
+    \item Die Spur ist linear: $\tr(\op{A} + \op{B}) = \tr(\op{A}) + \tr(\op{B})$ und
+      $\tr(z\op{A}) = z \tr(\op{A})$ für jede Zahl $z$.
+    \item Ist $\op{A}\colon \Hil_1 \to \Hil_2$ und $\op{B}\colon \Hil_2 \to \Hil_1$ linear, so ist
+      \begin{equation}\label{c03.eq.zyklisch}
+        \tr_2(\op{A}\op{B}) = \tr_1(\op{B}\op{A}) .
+      \end{equation}
+    \item Für zwei Vektoren $\ket{\Psi}, \ket{\Phi} \in \Hil$ ist
+      \begin{equation}\label{c03.eq.spur-ketbra}
+        \tr\bigl(\ketbra{\Psi}{\Phi}\bigr) = \braket{\Phi}{\Psi} .
+      \end{equation}
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  Seien $\{\ket{x}\}$ und $\{\ket{y}\}$ Orthonormalbasen. Zu~3, mit $\ket{x}$ in $\Hil_1$ und
+  $\ket{y}$ in $\Hil_2$: Wir schieben die Vollständigkeitsrelation
+  $\Id = \sum_x \ketbra{x}{x}$ von $\Hil_1$ zwischen $\op{A}$ und $\op{B}$ ein und vertauschen
+  die beiden endlichen Summen,
+  \begin{equation*}
+    \tr_2(\op{A}\op{B})
+    = \sum_{y} \sum_{x} \melem{y}{\op{A}}{x}\, \melem{x}{\op{B}}{y}
+    = \sum_{x} \sum_{y} \melem{x}{\op{B}}{y}\, \melem{y}{\op{A}}{x}
+    = \tr_1(\op{B}\op{A}) ;
+  \end{equation*}
+  im letzten Schritt steht die Vollständigkeitsrelation von $\Hil_2$. Zu~1: Sind $\{\ket{x}\}$
+  und $\{\ket{y}\}$ zwei Orthonormalbasen desselben Raumes, so ist mit derselben Rechnung
+  $\sum_x \melem{x}{\op{A}}{x} = \sum_{x,y} \braket{x}{y}\, \melem{y}{\op{A}}{x} = \sum_y \melem{y}{\op{A}}{y}$.
+  Zu~2: Jeder Summand $\melem{x}{\op{A}}{x}$ ist linear in $\op{A}$. Zu~4: Das ist~3 mit
+  $\op{A} = \ket{\Psi}\colon \mathbb{C} \to \Hil$ und $\op{B} = \bra{\Phi}\colon \Hil \to \mathbb{C}$
+  (Gleichungen~\eqref{c03.eq.ket-op} und~\eqref{c03.eq.bra-op}). Auf $\mathbb{C}$ wählen wir die
+  Orthonormalbasis $\{1\}$; die Spur der Multiplikation mit einer Zahl ist also diese Zahl, und
+  $\bra{\Phi}\,\ket{\Psi} = \braket{\Phi}{\Psi}$.
+\end{proof}
+
+% Stimme: v05 [86:30] („diese Eigenschaft ... werden wir ständig verwenden“); Kapitel 4
+% (Normierung reiner Zustände, Bornsche Regel für reine Zustände) benutzt Teil 4.
+Teil~3 heißt Zyklizität der Spur: Unter der Spur darf man den letzten Faktor nach vorn holen.
+Vorsicht, Vertauschen beliebiger Faktoren ist nicht erlaubt; aus $\tr(\op{A}\op{B}\op{C})$ wird
+$\tr(\op{C}\op{A}\op{B})$, im Allgemeinen aber nicht $\tr(\op{B}\op{A}\op{C})$. Teil~4 ist der Fall,
+den Kapitel~4 am häufigsten braucht: Die Spur eines Ket-Bras ist ein Bra-Ket.
+
+\begin{example}[Zwei Spuren]\label{c03.ex.spur}\claim{c03.cl.spur-beispiel}{derived}
+  Für die Operatoren aus Beispiel~\ref{c03.ex.drei} liest man ab: $\tr(\op{A}) = 0$, denn alle
+  drei Diagonaleinträge sind null, und $\tr(\op{B}) = \tfrac13 + \tfrac13 + \tfrac13 = 1$. Mit
+  dem Vektor $\ket{u}$ mit den Einträgen $\tfrac{1}{\sqrt{3}}, \tfrac{1}{\sqrt{3}}, \tfrac{1}{\sqrt{3}}$
+  ist $\op{B} = \ketbra{u}{u}$, und Teil~4 gibt dasselbe ohne Matrix:
+  $\tr(\op{B}) = \braket{u}{u} = 1$.
+\end{example}
+
+% Die Spur in unendlicher Dimension (Spurklasse, D21) steht als Vertiefung in Kapitel 4, wo
+% sie für die Dichteoperatoren gebraucht wird (Gefahr H4.1).
+In einem Raum mit unendlich vielen Dimensionen ist die Summe der Diagonalelemente eine Reihe,
+und die muss nicht konvergieren. Dort hat nicht jeder Operator eine Spur; Kapitel~4 kommt darauf
+zurück.
+
+\section{Eigenwerte und Diagonalisierung}\label{c03.s14}
+
+% Stimme: vl05.tex:72-75; v06 [00:12]-[00:58] („danach haben Sie alle mathematischen
+% Grundlagen, die für die Quantenmechanik nötig sind“), [11:15]-[12:07] („diagonale Operatoren
+% sind so gut wie normale Zahlen“; „man kann nicht alles gleichzeitig diagonal machen“).
+Mit diesem Abschnitt und dem nächsten ist das mathematische Werkzeug der Quantenmechanik
+vollständig. Für viele Rechnungen muss man einen Operator \emph{diagonalisieren}. Der Grund:
+Allgemeine Matrizen sind mühsam, und sie vertauschen nicht miteinander. Diagonale Operatoren
+dagegen sind so gut wie Zahlen. Alle Operatoren auf einmal diagonal zu machen, gelingt in der
+Regel allerdings nicht; man diagonalisiert immer einen bestimmten Operator.
+
+% Stimme: vl05.tex:90-95; v06 [25:14]-[31:04], [26:52] („dafür brauchen wir keinen
+% Hilbertraum, nur einen Vektorraum“).
+Den Begriff, den Abschnitt~\ref{c03.s12} informell benutzt hat, machen wir jetzt genau. Er
+braucht kein Skalarprodukt, nur die Vektorraumstruktur.
+
+\tpcdef{D96}
+
+Ein Vielfaches $z\ket{v}$ mit $z \neq 0$ ist wieder ein Eigenvektor zum selben Eigenwert. Ein
+Eigenvektor, den man aus einem Gleichungssystem gewinnt, hat fast nie die Norm $1$; man teilt
+dann durch seine Norm. Der Eigenraum ist ein Teilraum: Mit $\ket{v}$ und $\ket{w}$ liegt auch
+$\ket{v} + \ket{w}$ darin.
+
+% Stimme: vl05.tex:72-82; v06 [00:58]-[12:07] (diagonale Operatoren über ihre
+% Matrixelemente; die Wirkung auf einen Zustandsvektor), [15:59]-[19:22] (unitär).
+\tpcdef{D97}
+
+Ist $\op{A}$ diagonal in der Basis $\{\ket{x}\}$, so wirkt er auf jeden Vektor wie eine Liste von
+Zahlen: Jede Komponente wird mit ihrer eigenen Zahl multipliziert,
+\begin{equation}\label{c03.eq.diagonal-wirkung}\claim{c03.cl.diagonal-wirkung}{derived}
+  \op{A}\ket{\Psi}
+  = \sum_{x,y} \ket{x}\melem{x}{\op{A}}{y}\braket{y}{\Psi}
+  = \sum_{x} a_x\, \braket{x}{\Psi}\, \ket{x} .
+\end{equation}
+Hier steht die Vollständigkeitsrelation zweimal, wie in Gleichung~\eqref{c03.eq.wirkung}. Jeder
+Basisvektor $\ket{x}$ ist also ein Eigenvektor zum Eigenwert $a_x$. Das gilt auch umgekehrt, und
+damit sind Diagonalisieren und Eigenvektoren-Suchen dieselbe Aufgabe.
+
+% Stimme: vl05.tex:84-87 und 96-155; v06 [12:07]-[60:00] (beide Richtungen; „die Rückrichtung
+% steht nicht im Skript“, [41:05]; „der Trick“, [48:26]).  vl05 schreibt die Diagonalisierung
+% mit S und S^{-1}; hier nur die unitäre (vl05.tex:84 „(fast) ausschließlich“).
+\begin{proposition}[Diagonalisieren heißt Eigenvektoren finden]\label{c03.prop.diagonal}\claim[proof-included]{c03.cl.diagonal}{derived}
+  Sei $\op{A}$ ein Operator auf $\Hil$, und sei $\{\ket{x}\}_{x \in X}$ eine Orthonormalbasis mit
+  endlicher Indexmenge.
+  \begin{enumerate}
+    \item Ist $\op{U}$ unitär und $\op{U}\op{A}\op{U}\adj = \sum_x a_x \ketbra{x}{x}$, so bilden
+      die Vektoren $\ket{\phi_x} = \op{U}\adj\ket{x}$ eine Orthonormalbasis, und
+      $\op{A}\ket{\phi_x} = a_x\ket{\phi_x}$.
+    \item Ist umgekehrt $\{\ket{\phi_x}\}_{x \in X}$ eine Orthonormalbasis aus Eigenvektoren,
+      $\op{A}\ket{\phi_x} = a_x\ket{\phi_x}$, so ist
+      \begin{equation}\label{c03.eq.u-konstruktion}
+        \op{U} = \sum_{x} \ketbra{x}{\phi_x}
+      \end{equation}
+      unitär, und $\op{U}\op{A}\op{U}\adj = \sum_x a_x \ketbra{x}{x}$.
+    \item In beiden Fällen ist
+      \begin{equation}\label{c03.eq.spektralzerlegung}
+        \op{A} = \sum_{x} a_x \ketbra{\phi_x}{\phi_x}
+        \qquad \text{\tpcifenglish{and}{und}} \qquad
+        \tr(\op{A}) = \sum_{x} a_x .
+      \end{equation}
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  Zu~1: Es ist $\braket{\phi_x}{\phi_y} = \melem{x}{\op{U}\op{U}\adj}{y} = \braket{x}{y} = \kron{x}{y}$;
+  hier geht die Unitarität ein. Orthonormale Vektoren, so viele wie die Basis hat, bilden eine
+  Basis. Weiter ist
+  $\op{A}\ket{\phi_x} = \op{U}\adj(\op{U}\op{A}\op{U}\adj)\ket{x} = \op{U}\adj a_x\ket{x} = a_x\ket{\phi_x}$.
+  Zu~2: Mit der Orthonormalität und der Vollständigkeitsrelation ist
+  \begin{equation*}
+    \op{U}\op{U}\adj
+    = \sum_{x,y} \ket{x}\braket{\phi_x}{\phi_y}\bra{y}
+    = \sum_{x} \ketbra{x}{x} = \Id ,
+    \qquad
+    \op{U}\adj\op{U}
+    = \sum_{x,y} \ket{\phi_x}\braket{x}{y}\bra{\phi_y}
+    = \sum_{x} \ketbra{\phi_x}{\phi_x} = \Id ,
+  \end{equation*}
+  und mit $\op{A}$ in der Mitte
+  $\op{U}\op{A}\op{U}\adj = \sum_{x,y} \ket{x}\melem{\phi_x}{\op{A}}{\phi_y}\bra{y} = \sum_x a_x \ketbra{x}{x}$,
+  denn $\melem{\phi_x}{\op{A}}{\phi_y} = a_y\braket{\phi_x}{\phi_y} = a_y\kron{x}{y}$. Zu~3: Beide
+  Seiten der ersten Gleichung bilden jedes $\ket{\phi_y}$ auf $a_y\ket{\phi_y}$ ab; zwei
+  Operatoren, die auf einer Basis übereinstimmen, sind gleich. Die Spur nehmen wir in der Basis
+  $\{\ket{\phi_x}\}$; nach Proposition~\ref{c03.prop.spur} darf man das.
+\end{proof}
+
+Gleichung~\eqref{c03.eq.spektralzerlegung} heißt \emph{Spektralzerlegung} von $\op{A}$. In ihr
+sieht man, was „so gut wie Zahlen“ heißt: Ist auch
+$\op{B} = \sum_x b_x \ketbra{\phi_x}{\phi_x}$ mit denselben $\ket{\phi_x}$, so ist
+$\op{A}\op{B} = \sum_x a_x b_x \ketbra{\phi_x}{\phi_x} = \op{B}\op{A}$.
+
+% Stimme: vl05.tex:88; v06 [14:36]-[15:59] („nein, nur für bestimmte Klassen“; „Glück“).
+Nicht jeder Operator lässt sich diagonalisieren. Die Matrix mit den Zeilen $(0, 1)$ und $(0, 0)$
+hat nur den Eigenwert $0$, und ihre Eigenvektoren sind die Vielfachen von $(1, 0)$; das ist keine
+Basis von $\mathbb{C}^2$. In der Quantenmechanik haben wir Glück: Die Operatoren, die man dort
+diagonalisieren muss, die hermiteschen und die unitären, lassen sich in endlicher Dimension immer
+diagonalisieren. Der erste Schritt dahin ist eine Rechnung, die man in der Quantenmechanik immer
+wieder macht: denselben Ausdruck auf zwei Arten auswerten.
+
+\begin{proposition}[Eigenvektoren hermitescher Operatoren]\label{c03.prop.eigen-hermitesch}\claim[proof-included]{c03.cl.eigen-hermitesch}{derived}
+  Sei $\op{A}$ hermitesch. Dann ist jeder Eigenwert von $\op{A}$ reell, und Eigenvektoren zu
+  verschiedenen Eigenwerten sind orthogonal.
+\end{proposition}
+\begin{proof}
+  Reell: Gleichung~\eqref{c03.eq.orte}. Seien $\op{A}\ket{\phi} = a\ket{\phi}$ und
+  $\op{A}\ket{\psi} = b\ket{\psi}$ mit $a \neq b$. Wir berechnen $\melem{\phi}{\op{A}}{\psi}$
+  zweimal. Nach rechts wirkend ist es $b\braket{\phi}{\psi}$. Nach links wirkend ist es
+  $\braket{\op{A}\adj\phi}{\psi} = \braket{\op{A}\phi}{\psi} = \braket{a\phi}{\psi} = a^*\braket{\phi}{\psi} = a\braket{\phi}{\psi}$;
+  hier gehen $\op{A}\adj = \op{A}$ und $a^* = a$ ein. Die Differenz ist
+  $(a - b)\braket{\phi}{\psi} = 0$, und wegen $a \neq b$ ist $\braket{\phi}{\psi} = 0$.
+\end{proof}
+
+Sind alle Eigenwerte eines hermiteschen Operators auf einem Raum der Dimension $n$ verschieden
+und hat man zu jedem einen Eigenvektor, so hat man nach dem Normieren also eine Orthonormalbasis
+aus Eigenvektoren, und Proposition~\ref{c03.prop.diagonal} baut daraus $\op{U}$. Dass das immer
+geht, auch wenn Eigenwerte zusammenfallen, sagt der Spektralsatz.
+
+% Nicht in vl05 (dort: „Jeder hermitesche und jeder unitäre Operator ist diagonalisierbar“, ohne
+% Beweis, vl05.tex:88).  Beweis mit Gram-Schmidt im Eigenraum (v06 [47:42]: der entartete Fall
+% braucht Gram-Schmidt, im Video nicht ausgeführt).  Gefahr H3.3: nur endliche Dimension.
+\begin{theorem}[Spektralsatz in endlicher Dimension]\label{c03.thm.spektral}\claim[proof-included]{c03.cl.spektral}{derived}
+  Sei $\Hil$ endlichdimensional und $\op{A}$ normal, insbesondere also hermitesch oder unitär.
+  Dann hat $\Hil$ eine Orthonormalbasis aus Eigenvektoren von $\op{A}$.
+\end{theorem}
+\begin{proof}
+  Wir benutzen aus der linearen Algebra: Die Eigenwerte sind die Nullstellen des Polynoms
+  $\det(\op{A} - \lambda\Id)$, und über $\mathbb{C}$ hat jedes nicht konstante Polynom eine
+  Nullstelle. Also hat $\op{A}$ einen Eigenwert $\lambda$. Sei $E$ sein Eigenraum. Für
+  $\ket{v} \in E$ ist $\op{A}(\op{A}\adj\ket{v}) = \op{A}\adj\op{A}\ket{v} = \lambda\,\op{A}\adj\ket{v}$,
+  also bildet auch $\op{A}\adj$ den Raum $E$ in sich ab. Sei $E^\perp$ die Menge der Vektoren,
+  die auf ganz $E$ senkrecht stehen. Für $\ket{w} \in E^\perp$ und $\ket{v} \in E$ ist
+  $\braket{v}{\op{A}w} = \braket{\op{A}\adj v}{w} = 0$ und
+  $\braket{v}{\op{A}\adj w} = \braket{\op{A}v}{w} = \lambda^*\braket{v}{w} = 0$; $\op{A}$ und
+  $\op{A}\adj$ bilden also auch $E^\perp$ in sich ab und sind dort wieder zueinander adjungiert
+  und vertauschbar. Nach dem Gram-Schmidt-Verfahren (Proposition~\ref{c03.prop.gram-schmidt}) hat
+  $E$ eine Orthonormalbasis; ergänzt man sie zu einer Orthonormalbasis von $\Hil$, so spannen die
+  ergänzten Vektoren $E^\perp$ auf, und $E^\perp$ hat kleinere Dimension als $\Hil$. Mit
+  vollständiger Induktion über die Dimension hat $E^\perp$ eine Orthonormalbasis aus
+  Eigenvektoren; zusammen mit der von $E$ ist das eine von $\Hil$. Besteht $E^\perp$ nur aus dem
+  Nullvektor, so ist die Basis von $E$ schon eine von $\Hil$. Für Dimension $1$ ist jeder Vektor
+  der Norm $1$ eine solche Basis.
+\end{proof}
+
+Hermitesche und unitäre Operatoren sind normal (Proposition~\ref{c03.prop.isometrie}). Beide lassen
+sich also diagonalisieren, und nach Proposition~\ref{c03.prop.diagonal} ist das dasselbe wie eine
+Spektralzerlegung~\eqref{c03.eq.spektralzerlegung}. Die Endlichkeit der Dimension ist dabei
+wesentlich\zoomref{c03.v7}.
+
+% Stimme: vl05.tex:159-175; v06 [61:21]-[79:06] („das Qubit“; „Hadamard-Matrix“; „Ergebnis erst
+% hinschreiben, dann herleiten“, [64:24]; „Ket-Bra ist Spalte mal Zeile“, [73:37]; „die
+% Reihenfolge zählt“, [77:18]).  vl05 nennt die Matrix A; sie ist die Pauli-Matrix aus
+% c02.eq.pauli und trägt deshalb keinen Hut (CONV-HAT).  Basis |0>, |1> wie in Kapitel 4
+% (vl06: Z-Messung |0><0|), nicht |1>, |2> wie vl05.
+\begin{example}[Ein Qubit diagonalisieren]\label{c03.ex.hadamard}\claim{c03.cl.hadamard}{derived}
+  Sei $\Hil = \mathbb{C}^2$ mit der kanonischen Basis $\ket{0}, \ket{1}$, in der
+  Quanteninformationstheorie ein \emph{Qubit}, und sei $\pauli{x}$ die Pauli-Matrix aus
+  Gleichung~\eqref{c02.eq.pauli}. Ihre Eigenwerte sind die Nullstellen von
+  $\det(\pauli{x} - \lambda\Id) = \lambda^2 - 1$, also $+1$ und $-1$. Einsetzen gibt die
+  Eigenvektoren, normiert:
+  \begin{equation}\label{c03.eq.hadamard-eigen}
+    \ket{\phi_0} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ 1 \end{pmatrix} ,
+    \qquad
+    \ket{\phi_1} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ -1 \end{pmatrix} .
+  \end{equation}
+  Ein Ket ist eine Spalte, ein Bra eine Zeile, ein Ket-Bra also Spalte mal Zeile, eine Matrix.
+  Gleichung~\eqref{c03.eq.u-konstruktion} gibt
+  \begin{equation}\label{c03.eq.hadamard}
+    \op{U}
+    = \ketbra{0}{\phi_0} + \ketbra{1}{\phi_1}
+    = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}
+    + \frac{1}{\sqrt{2}} \begin{pmatrix} 0 & 0 \\ 1 & -1 \end{pmatrix}
+    = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} ,
+  \end{equation}
+  die \emph{Hadamard-Matrix}. Man rechnet nach, dass $\op{U}\pauli{x}\op{U}\adj = \diag(1, -1)$
+  ist, und die Spektralzerlegung lautet
+  $\pauli{x} = \ketbra{\phi_0}{\phi_0} - \ketbra{\phi_1}{\phi_1}$. Vertauscht man die beiden
+  Eigenvektoren, so gibt dasselbe Rezept eine andere unitäre Matrix $\op{U}'$ mit
+  $\op{U}'\pauli{x}\op{U}'^{\dagger} = \diag(-1, 1)$: Die Diagonalisierung ist nicht eindeutig.
+\end{example}
+
+% Stimme: vl05.tex:175-177 (die Abbildung und ihr Absatz).  Gezeichnet ist A + 2I, weil A selbst
+% als Spiegelung den Einheitskreis auf sich abbildet.
+Abbildung~\ref{c03.fig.diagonal} zeichnet dieses Beispiel, allerdings nicht $\pauli{x}$ selbst:
+Als Spiegelung bildet $\pauli{x}$ den Einheitskreis auf sich ab, es gäbe also nichts zu sehen.
+Gezeichnet ist $\op{A} = \pauli{x} + 2\Id$, mit denselben Eigenvektoren und derselben Matrix
+$\op{U}$; nur die Eigenwerte sind um $2$ angehoben, zu $3$ und $1$.
+
+\begin{tpcfigure}{c03.fig.diagonal}
+  \caption{Derselbe Operator in zwei Basen. Gezeichnet ist das Bild des Einheitskreises unter
+    $\op{A} = \pauli{x} + 2\Id$, als Operator auf $\mathbb{R}^2 \subset \mathbb{C}^2$. Links,
+    in der kanonischen Basis $\ket{0}, \ket{1}$, ist die Matrix
+    $\bigl(\begin{smallmatrix} 2 & 1 \\ 1 & 2 \end{smallmatrix}\bigr)$, und die Bildellipse
+    liegt schief. Rechts, in der Basis $\ket{\phi_0}, \ket{\phi_1}$ aus
+    Gleichung~\eqref{c03.eq.hadamard-eigen}, ist die Matrix $\diag(3, 1)$, und die Ellipse liegt
+    auf den Achsen. Die Hauptachsen liegen auf den Eigenvektoren, die Halbachsen sind die Eigenwerte $3$ und
+    $1$. Der Wechsel von links nach rechts ist die Hadamard-Matrix $\op{U}$ aus
+    Gleichung~\eqref{c03.eq.hadamard}.}
+\end{tpcfigure}
+
+\begin{vertiefung}[id=c03.v7,
+    titel={Ein hermitescher Operator ohne Eigenvektoren},
+    wozu={Im Kern lässt sich jeder hermitesche Operator diagonalisieren
+      (Satz~\ref{c03.thm.spektral}). In unendlich vielen Dimensionen stimmt das nicht mehr: Hier
+      ist ein beschränkter hermitescher Operator auf $\elltwo$, der keinen einzigen Eigenvektor
+      hat, und das, was an die Stelle der Eigenbasis tritt.},
+    voraussetzung={Satz~\ref{c03.thm.spektral}; Vertiefungen~\ref{c03.v1}, \ref{c03.v5}
+      und~\ref{c03.v6} (der Rechtsshift). Der Kern bis Kapitel~4 braucht den Block nicht;
+      Kapitel~5 nimmt das Thema mit Ort und Impuls wieder auf.},
+    zurueck={In endlicher Dimension hat jeder hermitesche Operator eine Orthonormalbasis aus
+      Eigenvektoren. In unendlich vielen Dimensionen kann ein hermitescher Operator ganz ohne
+      Eigenvektoren sein; der allgemeine Spektralsatz ersetzt dann die Eigenbasis.}]
+  % Gefahr H3.3 (docs/plan/research/curriculum/REPORT.md): vl05.tex:88 „Jeder hermitesche ...
+  % Operator ist diagonalisierbar“ gilt nur in endlicher Dimension.  Das Beispiel benutzt den
+  % Rechtsshift aus c03.v6; die Erhaltungsgröße Q_j ist eine Herleitung des Autors
+  % (DERIVATION.md, c03.cl.ohne-eigen).
+  \begin{example}[Ohne Eigenvektoren]\label{c03.ex.ohne-eigen}\claim{c03.cl.ohne-eigen}{derived}
+    Sei $\op{S}$ der Rechtsshift aus Gleichung~\eqref{c03.eq.shift} und
+    $\op{T} = \op{S} + \op{S}\adj$, also
+    \begin{equation}\label{c03.eq.t-shift}
+      (\op{T}\vb{v})_1 = v_2 ,
+      \qquad
+      (\op{T}\vb{v})_j = v_{j-1} + v_{j+1} \quad (j \geq 2) .
+    \end{equation}
+    $\op{T}$ ist auf ganz $\elltwo$ definiert, beschränkt mit
+    $\norm{\op{T}v} \leq \norm{\op{S}v} + \norm{\op{S}\adj v} \leq 2\norm{v}$, und hermitesch,
+    denn $\op{T}\adj = \op{S}\adj + \op{S} = \op{T}$. Angenommen, $\op{T}\vb{v} = \lambda\vb{v}$
+    mit $\vb{v} \neq 0$ in $\elltwo$. Wie in Gleichung~\eqref{c03.eq.orte} ist $\lambda$ reell,
+    und weil die Gleichungen~\eqref{c03.eq.t-shift} reelle Koeffizienten haben, lösen auch der
+    Realteil und der Imaginärteil von $\vb{v}$ sie; einer davon ist nicht null. Wir dürfen also
+    alle $v_j$ reell annehmen. Mit $v_0 = 0$ ist dann $v_{j+1} = \lambda v_j - v_{j-1}$ für alle
+    $j \geq 1$, und die Zahl
+    \begin{equation}\label{c03.eq.erhaltung}
+      Q_j = v_{j+1}^2 - \lambda\, v_{j+1} v_j + v_j^2
+    \end{equation}
+    hängt nicht von $j$ ab: Setzt man $v_{j+2} = \lambda v_{j+1} - v_j$ in $Q_{j+1}$ ein, so
+    erhält man $Q_j$. Also ist $Q_j = Q_0 = v_1^2$ für alle $j$. Weil $\vb{v}$ in $\elltwo$ liegt,
+    gehen die Einträge gegen null, also auch $Q_j$; folglich ist $v_1 = 0$, und dann sind nach
+    der Rekursion alle Einträge null. Das ist ein Widerspruch: $\op{T}$ hat keinen Eigenwert.
+  \end{example}
+
+  Die Rekursion hat für jedes reelle $\lambda$ eine Lösung, nur liegt sie nicht in $\elltwo$.
+  Für $\lambda = 2\cos\theta$ mit $0 < \theta < \pi$ ist es $v_j = \sin(j\theta)$: Die Einträge
+  schwingen, ohne abzuklingen. Solche „uneigentlichen Eigenvektoren“, die nicht im Hilbertraum
+  liegen, begegnen uns in Kapitel~5 wieder, beim Ort und beim Impuls. Was an die Stelle der
+  Eigenbasis tritt, sagt der allgemeine Spektralsatz. Er gilt für selbstadjungierte Operatoren
+  (Vertiefung~\ref{c03.v5}) auf separablen Hilberträumen, das heißt auf Räumen mit einer
+  Orthonormalbasis mit abzählbarer Indexmenge wie $\elltwo$ und $\Ltwo{\mathbb{R}}$.
+
+  \begin{theorem}[Spektralsatz, allgemeine Form]\label{c03.thm.spektral-allgemein}\claim[proof-omitted]{c03.cl.spektral-allgemein}{source-quoted}
+    Sei $\op{A}$ ein selbstadjungierter Operator auf einem separablen Hilbertraum $\Hil$. Dann
+    gibt es eine Menge $M$ mit einem endlichen Maß, einen unitären Operator
+    $\op{U}\colon \Hil \to \Ltwo{M}$ und eine reelle Funktion $a$ auf $M$, so dass
+    $\op{U}\op{A}\op{U}\adj$ die Multiplikation mit $a$ ist: $(\op{U}\op{A}\op{U}\adj g)(m) = a(m)\, g(m)$
+    für alle $g$, die $\op{U}$ aus dem Definitionsbereich von $\op{A}$ erhält.
+  \end{theorem}
+
+  Reed und Simon beweisen den Satz erst für beschränkte und dann für unbeschränkte
+  selbstadjungierte Operatoren \srcref{reed-simon-1}{S.~227 und S.~260}. In endlicher Dimension
+  ist $M$ die Indexmenge einer Eigenbasis und $a$ die Liste der Eigenwerte; das ist
+  Satz~\ref{c03.thm.spektral}. Für $\op{T}$ kann man es ausrechnen: Die Abbildung
+  $\vb{v} \mapsto g(\theta) = \sqrt{2/\pi}\, \sum_j v_j \sin(j\theta)$ ist unitär von $\elltwo$ auf
+  die quadratintegrierbaren Funktionen auf $(0, \pi)$, weil die Funktionen
+  $\sqrt{2/\pi}\,\sin(j\theta)$ dort eine Orthonormalbasis bilden; das ist ein Satz der
+  Fourier-Analysis, den wir hier nur zitieren. Sie macht aus $\op{T}$ die Multiplikation mit
+  $2\cos\theta$, und die Folgen $v_j = \sin(j\theta)$ übernehmen die Rolle der fehlenden
+  Eigenvektoren.
+\end{vertiefung}
+
+\section{Funktionen von Operatoren}\label{c03.s15}
+
+% Stimme: vl05.tex:181-209; v06 [79:06]-[90:09] („wenn wir einen Operator in diagonaler Form
+% haben, können wir Funktionen definieren“; „reelle Eigenwerte, Phasen, unitär“, [85:00]; „das
+% ist eigentlich schon die Schrödingergleichung“, [88:44]).  vl05 schreibt die Eigenbasis mal
+% als Eigenvektoren von H, mal von A (vl05.tex:186): M-Akte, siehe NOTES-ch5.md.
+Diagonale Operatoren sind so gut wie Zahlen; also kann man Funktionen auf sie anwenden, indem man
+die Funktion auf die Zahlen anwendet. Das ist der \emph{Funktionalkalkül}. Er liefert das
+wichtigste Objekt der Quantendynamik.
+
+\tpcdef{D98}
+
+Die Definition benutzt eine Orthonormalbasis aus Eigenvektoren, und wenn Eigenwerte zusammenfallen,
+gibt es davon viele. Dass $f(\op{A})$ trotzdem nur von $\op{A}$ und $f$ abhängt, zeigt der zweite
+Teil der folgenden Proposition.
+
+\begin{proposition}[Funktionen eines Operators]\label{c03.prop.funktion}\claim[proof-included]{c03.cl.funktion}{derived}
+  Sei $\op{A} = \sum_x a_x \ketbra{\phi_x}{\phi_x}$ eine Spektralzerlegung, und sei $f$ eine
+  komplexe Funktion auf den Eigenwerten von $\op{A}$.
+  \begin{enumerate}
+    \item Für ein Polynom $p(z) = \sum_{k=0}^{m} c_k z^k$ ist
+      $p(\op{A}) = \sum_{k=0}^{m} c_k \op{A}^k$, mit $\op{A}^0 = \Id$.
+    \item $f(\op{A})$ hängt nicht von der gewählten Orthonormalbasis aus Eigenvektoren ab.
+    \item $f(\op{A})\adj = f^*(\op{A})$, wobei $f^*$ die konjugierte Funktion ist. Ist $f$ reell,
+      so ist $f(\op{A})$ hermitesch. Ist $\abs{f} = 1$ auf allen Eigenwerten, so ist
+      $f(\op{A})$ unitär.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  Zu~1: Mit $\braket{\phi_x}{\phi_y} = \kron{x}{y}$ ist
+  $\op{A}^2 = \sum_{x,y} a_x a_y \ket{\phi_x}\braket{\phi_x}{\phi_y}\bra{\phi_y} = \sum_x a_x^2 \ketbra{\phi_x}{\phi_x}$,
+  ebenso $\op{A}^k = \sum_x a_x^k \ketbra{\phi_x}{\phi_x}$ für jedes $k$, und
+  $\Id = \sum_x \ketbra{\phi_x}{\phi_x}$ ist der Fall $k = 0$. Summieren gibt die Behauptung.
+  Zu~2: $\op{A}$ hat nur endlich viele verschiedene Eigenwerte $\lambda_1, \dots, \lambda_m$. Das
+  Polynom
+  \begin{equation*}
+    p(z) = \sum_{k=1}^{m} f(\lambda_k) \prod_{l \neq k} \frac{z - \lambda_l}{\lambda_k - \lambda_l}
+  \end{equation*}
+  hat an jeder Stelle $\lambda_k$ den Wert $f(\lambda_k)$. Also ist $f(\op{A}) = p(\op{A})$ für
+  jede Wahl der Eigenbasis, und nach~1 ist $p(\op{A})$ aus $\op{A}$ allein berechnet. Zu~3:
+  Nach Proposition~\ref{c03.prop.ketbra} ist
+  $f(\op{A})\adj = \sum_x f(a_x)^* \ketbra{\phi_x}{\phi_x} = f^*(\op{A})$. Für reelles $f$ ist das
+  $f(\op{A})$. Für $\abs{f} = 1$ ist mit der Rechnung aus~1
+  $f(\op{A})\adj f(\op{A}) = \sum_x \abs{f(a_x)}^2 \ketbra{\phi_x}{\phi_x} = \Id$, ebenso in der
+  anderen Reihenfolge.
+\end{proof}
+
+% Stimme: vl05.tex:189-205; v06 [82:45]-[88:44].  vl05 schreibt H für einen hermiteschen
+% Operator, ohne Hamiltonoperator zu sagen; Kapitel 4 nennt ihn so (Postulat 5).  Die Rechnung
+% „reelle Eigenwerte -> Phasen -> unitär“ ist Teil 3 der Proposition mit f = exp(-i t a/hbar).
+Der wichtigste Fall ist die Exponentialfunktion. Sei $\op{\Ham}$ hermitesch mit der
+Spektralzerlegung $\op{\Ham} = \sum_x E_x \ketbra{\phi_x}{\phi_x}$, und sei $t$ eine reelle Zahl.
+Wir setzen
+\begin{equation}\label{c03.eq.zeitentwicklung}\claim{c03.cl.zeitentwicklung}{derived}
+  \op{U}_t = e^{-\frac{i t}{\hbar}\op{\Ham}}
+  = \sum_{x} e^{-\frac{i t}{\hbar} E_x}\, \ketbra{\phi_x}{\phi_x} .
+\end{equation}
+Auf jedem Eigenvektor wirkt $\op{U}_t$ als Multiplikation mit einer \emph{Phase}, einer
+komplexen Zahl vom Betrag $1$. Hier wird die Kette sichtbar: Die Eigenwerte $E_x$ sind reell,
+weil $\op{\Ham}$ hermitesch ist; deshalb haben die Phasen den Betrag $1$; deshalb ist
+$\op{U}_t$ nach Proposition~\ref{c03.prop.funktion} unitär und ändert die Norm keines Vektors.
+In endlicher Dimension ist $\op{U}_t$ auch die Summe der Exponentialreihe,
+\begin{equation}\label{c03.eq.exp-reihe}\claim{c03.cl.exp-reihe}{derived}
+  e^{-\frac{i t}{\hbar}\op{\Ham}} = \sum_{n=0}^{\infty} \frac{1}{n!}\Bigl(\frac{-i t}{\hbar}\Bigr)^{n} \op{\Ham}^n ,
+\end{equation}
+denn nach Teil~1 der Proposition ist jede Teilsumme der Reihe ein Polynom in $\op{\Ham}$, auf
+$\ket{\phi_x}$ also die Teilsumme der Zahlenreihe für $e^{-i t E_x/\hbar}$, und diese
+konvergiert.
+
+% Stimme: vl06.tex:138-160 (dort als Beispiel zu Postulat 5, hier als Beispiel zum
+% Funktionalkalkül; Kapitel 4 verweist darauf).  Korrigiert: vl06 schreibt H ohne Einheit und
+% erhält cos(t/hbar); mit einer Energie epsilon stimmt die Einheit (M-Akte, NOTES-ch6.md).
+\begin{example}[Zeitentwicklung eines Qubits]\label{c03.ex.qubit-zeit}\claim{c03.cl.qubit-zeit}{derived}
+  Sei $\op{\Ham} = \varepsilon\, \pauli{x}$ mit einer Energie $\varepsilon > 0$. Nach
+  Beispiel~\ref{c03.ex.hadamard} sind die Eigenwerte $\pm\varepsilon$ mit den Eigenvektoren
+  $\ket{\phi_0}$, $\ket{\phi_1}$, also
+  \begin{equation}\label{c03.eq.qubit-zeit}
+    \op{U}_t
+    = e^{-i\varepsilon t/\hbar}\ketbra{\phi_0}{\phi_0} + e^{i\varepsilon t/\hbar}\ketbra{\phi_1}{\phi_1}
+    = \cos\Bigl(\frac{\varepsilon t}{\hbar}\Bigr) \Id - i \sin\Bigl(\frac{\varepsilon t}{\hbar}\Bigr) \pauli{x} .
+  \end{equation}
+  Für die zweite Form setzt man $\Id = \ketbra{\phi_0}{\phi_0} + \ketbra{\phi_1}{\phi_1}$ und
+  $\pauli{x} = \ketbra{\phi_0}{\phi_0} - \ketbra{\phi_1}{\phi_1}$ ein und benutzt
+  $e^{\mp i\varepsilon t/\hbar} = \cos(\varepsilon t/\hbar) \mp i\sin(\varepsilon t/\hbar)$. Dasselbe Ergebnis liefert die
+  Reihe~\eqref{c03.eq.exp-reihe}: Wegen $\pauli{x}^2 = \Id$ ist $\pauli{x}^{2n} = \Id$ und
+  $\pauli{x}^{2n+1} = \pauli{x}$, und sortiert man nach diesen beiden Sorten von Termen, so stehen
+  vor $\Id$ und vor $-i\pauli{x}$ die Reihen für $\cos(\varepsilon t/\hbar)$ und $\sin(\varepsilon t/\hbar)$. Dieser
+  Trick nutzt $\pauli{x}^2 = \Id$; im Allgemeinen ist $\op{\Ham}^2$ kein Vielfaches von $\Id$, und
+  man rechnet mit der Spektralzerlegung.
+\end{example}
+
+% Stimme: vl05.tex:207-209 (Merksatz); v06 [88:44]-[90:09] („ich führe die Dynamik lieber über
+% U_t ein“; „die Schrödingergleichung ... ist im Grunde nichts anderes als diese Zeile“);
+% v06 [24:07] (die Beispiele des Kurses sind Diagonalisierungen).
+\begin{merksatz}[Zeitentwicklung]
+  Der Operator $\op{U}_t = e^{-\frac{i t}{\hbar}\op{\Ham}}$ beschreibt, wie sich ein
+  Quantensystem in der Zeit $t$ entwickelt; Kapitel~4 macht daraus ein Postulat. Damit steht die
+  Lösung der Schrödingergleichung schon hier, bevor die Gleichung selbst aufgetaucht ist. Für die
+  Systeme des Kurses heißt „die Dynamik lösen“ deshalb: den Hamiltonoperator diagonalisieren.
+\end{merksatz}
+
 % ── Fundament ─────────────────────────────────────────────────────────────────────────
-% Neue Abschnitte des Kapitels (vl05) kommen VOR diese Zeile.
+% Neue Abschnitte des Kapitels kommen VOR diese Zeile.
 
 \begin{fundament}[id=c03.f1,
     titel={Die Cauchy-Schwarz-Ungleichung},

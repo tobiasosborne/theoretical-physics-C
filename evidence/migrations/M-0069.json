@@ -1,0 +1,23 @@
+{
+ "schema_version": 1,
+ "id": "M-0069",
+ "status": "recorded",
+ "title": "vl06: Postulat 5 without the Hermiticity of H (added in the text) and without self-adjointness for unbounded H",
+ "legacy": [
+  {
+   "version": "v0.2-de",
+   "file": "latex/lectures/de/vl06.tex",
+   "line": 136,
+   "file_sha256": "6abda03fd00b488fcf2968aff1295fcfcb89b4e93db086d969c6d96dcb034f6d",
+   "old_text": "Im Postulat fehlt eine Voraussetzung, die wir hier nachtragen: Der Hamiltonoperator $H$ ist stets \\emph{hermitesch}.",
+   "new_text": "Jede Systemsorte ist weiter charakterisiert durch einen hermiteschen \\emph{Hamiltonoperator} $\\op{\\Ham}$"
+  }
+ ],
+ "reason": "Hazard H4.3: for unbounded H, symmetric (Hermitian) is not enough for U_t to be unitary; self-adjointness is required (Stone's theorem, c04.thm.stone). The Kern (finite dimension) keeps 'hermitesch' inside the rule; Vertiefung c04.v2 states the general condition.",
+ "evidence": {
+  "independent_check": "read in the script sources at the stated lines (git show 90fe735d:latex/lectures/de/vl05.tex, vl06.tex)",
+  "provenance_ids": []
+ },
+ "destination": "c04.thm.stone",
+ "notes": "Lecture 5/6 round (docs/plan/lec56/BRIEF.md, 2026-11-04): applied in the German script v0.3 rewrite of chapters 5 and 6 and in the course; status stays 'recorded' until the English edition follows and the rewritten chapters are pinned in a script snapshot (then 'applied' with the applied_* fields)."
+}

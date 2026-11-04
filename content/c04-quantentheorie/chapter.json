@@ -1,0 +1,26 @@
+{
+  "id": "c04",
+  "slug": "quantentheorie",
+  "title": {
+    "de": "Quantentheorie als probabilistische Theorie",
+    "en": "Quantum theory as a probabilistic theory"
+  },
+  "effective_theory": {
+    "de": "Die Quantentheorie ist die probabilistische Theorie, deren Zustände die Dichteoperatoren eines Hilbertraums sind und deren Effekte die Operatoren zwischen null und eins; P1 bis P4 legen Zustände, Effekte und Wahrscheinlichkeiten im Rahmen aus Kapitel 2 fest, P5 ergänzt die umkehrbare unitäre Zeitentwicklung.",
+    "en": "Quantum theory is the probabilistic theory whose states are the density operators of a Hilbert space and whose effects are the operators between zero and one; P1 to P4 fix states, effects and probabilities in the framework of Chapter 2, P5 adds the reversible unitary time evolution."
+  },
+  "zoom_scale": "single-system",
+  "prerequisites": [
+    "c00",
+    "c01",
+    "c02",
+    "c03"
+  ],
+  "assets": [
+    {
+      "id": "c04.fig.messung",
+      "kind": "figure",
+      "file": "figures/messung.tex"
+    }
+  ]
+}

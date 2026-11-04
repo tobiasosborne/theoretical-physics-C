@@ -1,0 +1,30 @@
+{
+ "id": "R-0154",
+ "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 5",
+ "date": "2026-11-04",
+ "covers": [
+  "P-0331",
+  "P-0332",
+  "P-0333"
+ ],
+ "verdict": "pass",
+ "method": "Independently checked the member sha256 and rendered every cited page (ddjvu -format=pnm -scale=150 for the djvu, pdftoppm -r 110 for the pdf); read the page images (no text layer), checked the printed page number, the transcription of each quote and that each quote supports the claim it is filed under within the claim's scope. Report: evidence/derivations/c03/REVIEW-lec5.md, section A.",
+ "notes": "All 3 rows passed as submitted. The review notes that P-0331 (Theorem VII.3) supports the bounded case only; the general statement rests on P-0332 and P-0333 together. The quote hashes are those of the rows as bound.",
+ "bindings": [
+  {
+   "provenance_id": "P-0331",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "quote_sha256": "b11fee9396ee175e1adba3f3b92de6b4e99522d55ffa770cdb0c37521d5f4fd2"
+  },
+  {
+   "provenance_id": "P-0332",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "quote_sha256": "e2fbe84b26dd2b1f82a510b24a4c726ad028bd4b16d28a6eda3fbe97663fc41d"
+  },
+  {
+   "provenance_id": "P-0333",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "quote_sha256": "18faf8ce2f0bea5a7507787068633088f625c16807f8aa2019d8d64a1643c0c5"
+  }
+ ]
+}

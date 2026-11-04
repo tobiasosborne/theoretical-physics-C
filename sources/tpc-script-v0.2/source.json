@@ -21,11 +21,15 @@
    "tpc-script-v0.2/git/latex/lectures/de/vl02.tex": "latex/lectures/de/vl02.tex",
    "tpc-script-v0.2/git/latex/lectures/de/vl03.tex": "latex/lectures/de/vl03.tex",
    "tpc-script-v0.2/git/latex/lectures/de/vl04.tex": "latex/lectures/de/vl04.tex",
+   "tpc-script-v0.2/git/latex/lectures/de/vl05.tex": "latex/lectures/de/vl05.tex",
+   "tpc-script-v0.2/git/latex/lectures/de/vl06.tex": "latex/lectures/de/vl06.tex",
    "tpc-script-v0.2/git/latex/lectures/de/vl16.tex": "latex/lectures/de/vl16.tex",
    "tpc-script-v0.2/git/latex/lectures/en/lec01.tex": "latex/lectures/en/lec01.tex",
    "tpc-script-v0.2/git/latex/lectures/en/lec02.tex": "latex/lectures/en/lec02.tex",
    "tpc-script-v0.2/git/latex/lectures/en/lec03.tex": "latex/lectures/en/lec03.tex",
    "tpc-script-v0.2/git/latex/lectures/en/lec04.tex": "latex/lectures/en/lec04.tex",
+   "tpc-script-v0.2/git/latex/lectures/en/lec05.tex": "latex/lectures/en/lec05.tex",
+   "tpc-script-v0.2/git/latex/lectures/en/lec06.tex": "latex/lectures/en/lec06.tex",
    "tpc-script-v0.2/git/latex/lectures/en/lec16.tex": "latex/lectures/en/lec16.tex"
   }
  },
@@ -56,13 +60,13 @@
    "sha256": "e10cd13b0287b5114f3a30a7bfa9bdbb16a53aab755f8573bca795ae4a03aae9"
   },
   {
-   "path": "../latex/lectures/de/vl05.tex",
+   "path": "tpc-script-v0.2/git/latex/lectures/de/vl05.tex",
    "role": "text",
    "media_type": "text/x-tex",
    "sha256": "b7a2e83281fbde3fbefd01abe7c45123f126aeea880177b0911b54304c7684d3"
   },
   {
-   "path": "../latex/lectures/de/vl06.tex",
+   "path": "tpc-script-v0.2/git/latex/lectures/de/vl06.tex",
    "role": "text",
    "media_type": "text/x-tex",
    "sha256": "6abda03fd00b488fcf2968aff1295fcfcb89b4e93db086d969c6d96dcb034f6d"
@@ -188,13 +192,13 @@
    "sha256": "9fd7efeb7a25a44f532e5a9be2d1278b3f669d04231772763fe0109c0f97ca8b"
   },
   {
-   "path": "../latex/lectures/en/lec05.tex",
+   "path": "tpc-script-v0.2/git/latex/lectures/en/lec05.tex",
    "role": "text",
    "media_type": "text/x-tex",
    "sha256": "3337b4a8578161288e4f004c635fd42f072da56b920b198ed1bd064641bd8e44"
   },
   {
-   "path": "../latex/lectures/en/lec06.tex",
+   "path": "tpc-script-v0.2/git/latex/lectures/en/lec06.tex",
    "role": "text",
    "media_type": "text/x-tex",
    "sha256": "7398af746d8746f00ab6b00583e98216af4338a650e8e14093525f30f5ad7d02"
@@ -310,5 +314,5 @@
  "registry_aliases": [
   "tpc-script"
  ],
- "notes": "An immutable snapshot: when a migration is applied to these files the manifest goes stale on purpose; register the changed files under a new key. Members whose live file has changed or is about to change have distinct manifest names under tpc-script-v0.2/git/ and keep their original hashes; retrieval.git_members maps them to `git show <identifiers.git_commit>:<repository path>`. These are lecture 16 (superseded by tpc-script-v0.2.1 on 2026-10-12) and lectures 1 and 2 (vl01, vl02, lec01, lec02; moved to Git members on 2026-10-22 before script v0.3 rewrites them, docs/plan/script-v0.3/NOTES-evidence.md) and lectures 3 and 4 (vl03, vl04, lec03, lec04; moved on 2026-10-29 before script v0.3 rewrites them, docs/plan/lec34/NOTES-evidence.md). The payloads of lectures 1 to 4 are byte-identical at identifiers.git_commit, at HEAD (53b318f for 3 and 4) and in the working tree at the time of the move (sha256 compared). All other members still use the working tree."
+ "notes": "An immutable snapshot: when a migration is applied to these files the manifest goes stale on purpose; register the changed files under a new key. Members whose live file has changed or is about to change have distinct manifest names under tpc-script-v0.2/git/ and keep their original hashes; retrieval.git_members maps them to `git show <identifiers.git_commit>:<repository path>`. These are lecture 16 (superseded by tpc-script-v0.2.1 on 2026-10-12) and lectures 1 and 2 (vl01, vl02, lec01, lec02; moved to Git members on 2026-10-22 before script v0.3 rewrites them, docs/plan/script-v0.3/NOTES-evidence.md) and lectures 3 and 4 (vl03, vl04, lec03, lec04; moved on 2026-10-29 before script v0.3 rewrites them, docs/plan/lec34/NOTES-evidence.md). The payloads of lectures 1 to 4 are byte-identical at identifiers.git_commit, at HEAD (53b318f for 3 and 4) and in the working tree at the time of the move (sha256 compared). All other members still use the working tree. Lectures 5 and 6 (vl05, vl06, lec05, lec06) moved to Git members on 2026-11-04 before script v0.3 rewrote chapters 5 and 6 (docs/plan/lec56/BRIEF.md)."
 }

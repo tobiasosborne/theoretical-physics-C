@@ -1,0 +1,988 @@
+{
+ "schema_version": 1,
+ "note": "Migration map of the fifth lecture into chapter c03 (Lecture 5, 2026-11-04, docs/plan/lec56/BRIEF.md), modelled on vl04-map.json. One entry per item of the v0.2 text of latex/lectures/de/vl05.tex as parsed by evidence/migrations/check_vl05_map.py. The subsection Position-Basis and the trace in the position basis are deferred (D-POS). The English edition lec05.tex follows the same destinations in the English round.",
+ "legacy_file": "latex/lectures/de/vl05.tex",
+ "legacy_sha256": "b7a2e83281fbde3fbefd01abe7c45123f126aeea880177b0911b54304c7684d3",
+ "legacy_source": "tpc-script-v0.2",
+ "legacy_member": "tpc-script-v0.2/git/latex/lectures/de/vl05.tex",
+ "items": [
+  {
+   "item": "section@3",
+   "what": "\\section{Vorlesung: Position-Basis, Spur, Diagonalisierung}",
+   "status": "kept",
+   "destination": [
+    "c03.s13",
+    "c03.s14",
+    "c03.s15"
+   ],
+   "note": "Section title of vl05; the position basis is deferred (D-POS)."
+  },
+  {
+   "item": "section@4",
+   "what": "\\subsection{Position-Basis}",
+   "status": "deferred",
+   "deferred_to": "C5 (Welcher Hilbertraum? Das Teilchen auf der Geraden) and script chapter 7 (vl07)",
+   "reason": "Decision D-POS (TJO, 2026-11-04, docs/plan/lec56/BRIEF.md): the position basis <x|, |x>, delta(x - y) on L^2(R) leaves C3 and script chapter 5; the Kern of C3 is finite-dimensional."
+  },
+  {
+   "item": "text@5",
+   "what": "Dirac und mit ihm viele Physiker gehen mit der Ket-Notation ",
+   "status": "deferred",
+   "deferred_to": "C5 (Welcher Hilbertraum? Das Teilchen auf der Geraden) and script chapter 7 (vl07)",
+   "reason": "Decision D-POS (TJO, 2026-11-04, docs/plan/lec56/BRIEF.md): the position basis <x|, |x>, delta(x - y) on L^2(R) leaves C3 and script chapter 5; the Kern of C3 is finite-dimensional."
+  },
+  {
+   "item": "equation@6",
+   "what": "equation",
+   "status": "deferred",
+   "deferred_to": "C5 (Welcher Hilbertraum? Das Teilchen auf der Geraden) and script chapter 7 (vl07)",
+   "reason": "Decision D-POS (TJO, 2026-11-04, docs/plan/lec56/BRIEF.md): the position basis <x|, |x>, delta(x - y) on L^2(R) leaves C3 and script chapter 5; the Kern of C3 is finite-dimensional."
+  },
+  {
+   "item": "text@9",
+   "what": "wobei $\\Psi(n)\\in \\mathbb{C}$ und",
+   "status": "deferred",
+   "deferred_to": "C5 (Welcher Hilbertraum? Das Teilchen auf der Geraden) and script chapter 7 (vl07)",
+   "reason": "Decision D-POS (TJO, 2026-11-04, docs/plan/lec56/BRIEF.md): the position basis <x|, |x>, delta(x - y) on L^2(R) leaves C3 and script chapter 5; the Kern of C3 is finite-dimensional."
+  },
+  {
+   "item": "equation@10",
+   "what": "equation",
+   "status": "deferred",
+   "deferred_to": "C5 (Welcher Hilbertraum? Das Teilchen auf der Geraden) and script chapter 7 (vl07)",
+   "reason": "Decision D-POS (TJO, 2026-11-04, docs/plan/lec56/BRIEF.md): the position basis <x|, |x>, delta(x - y) on L^2(R) leaves C3 and script chapter 5; the Kern of C3 is finite-dimensional."
+  },
+  {
+   "item": "text@13",
+   "what": "Die Ket-Notation wird dann erweitert, indem man den Wert $\\P",
+   "status": "deferred",
+   "deferred_to": "C5 (Welcher Hilbertraum? Das Teilchen auf der Geraden) and script chapter 7 (vl07)",
+   "reason": "Decision D-POS (TJO, 2026-11-04, docs/plan/lec56/BRIEF.md): the position basis <x|, |x>, delta(x - y) on L^2(R) leaves C3 and script chapter 5; the Kern of C3 is finite-dimensional."
+  },
+  {
+   "item": "equation@14",
+   "what": "equation",
+   "status": "deferred",
+   "deferred_to": "C5 (Welcher Hilbertraum? Das Teilchen auf der Geraden) and script chapter 7 (vl07)",
+   "reason": "Decision D-POS (TJO, 2026-11-04, docs/plan/lec56/BRIEF.md): the position basis <x|, |x>, delta(x - y) on L^2(R) leaves C3 and script chapter 5; the Kern of C3 is finite-dimensional."
+  },
+  {
+   "item": "text@17",
+   "what": "definiert. Achten Sie hier auf eine Feinheit: $\\ell^2(\\mathb",
+   "status": "deferred",
+   "deferred_to": "C5 (Welcher Hilbertraum? Das Teilchen auf der Geraden) and script chapter 7 (vl07)",
+   "reason": "Decision D-POS (TJO, 2026-11-04, docs/plan/lec56/BRIEF.md): the position basis <x|, |x>, delta(x - y) on L^2(R) leaves C3 and script chapter 5; the Kern of C3 is finite-dimensional."
+  },
+  {
+   "item": "text@19",
+   "what": "Nun folgt die wichtigste und zugleich unangenehmste Definiti",
+   "status": "deferred",
+   "deferred_to": "C5 (Welcher Hilbertraum? Das Teilchen auf der Geraden) and script chapter 7 (vl07)",
+   "reason": "Decision D-POS (TJO, 2026-11-04, docs/plan/lec56/BRIEF.md): the position basis <x|, |x>, delta(x - y) on L^2(R) leaves C3 and script chapter 5; the Kern of C3 is finite-dimensional."
+  },
+  {
+   "item": "text@21",
+   "what": "Sei jetzt $\\mathcal{H}\\equiv L^2(\\mathbb{R})$. Dieser Hilber",
+   "status": "deferred",
+   "deferred_to": "C5 (Welcher Hilbertraum? Das Teilchen auf der Geraden) and script chapter 7 (vl07)",
+   "reason": "Decision D-POS (TJO, 2026-11-04, docs/plan/lec56/BRIEF.md): the position basis <x|, |x>, delta(x - y) on L^2(R) leaves C3 and script chapter 5; the Kern of C3 is finite-dimensional."
+  },
+  {
+   "item": "equation@22",
+   "what": "equation",
+   "status": "deferred",
+   "deferred_to": "C5 (Welcher Hilbertraum? Das Teilchen auf der Geraden) and script chapter 7 (vl07)",
+   "reason": "Decision D-POS (TJO, 2026-11-04, docs/plan/lec56/BRIEF.md): the position basis <x|, |x>, delta(x - y) on L^2(R) leaves C3 and script chapter 5; the Kern of C3 is finite-dimensional."
+  },
+  {
+   "item": "text@25",
+   "what": "erfüllen. Die Ket-Notation bedeutet in diesem Fall folgendes",
+   "status": "deferred",
+   "deferred_to": "C5 (Welcher Hilbertraum? Das Teilchen auf der Geraden) and script chapter 7 (vl07)",
+   "reason": "Decision D-POS (TJO, 2026-11-04, docs/plan/lec56/BRIEF.md): the position basis <x|, |x>, delta(x - y) on L^2(R) leaves C3 and script chapter 5; the Kern of C3 is finite-dimensional."
+  },
+  {
+   "item": "equation@26",
+   "what": "equation",
+   "status": "deferred",
+   "deferred_to": "C5 (Welcher Hilbertraum? Das Teilchen auf der Geraden) and script chapter 7 (vl07)",
+   "reason": "Decision D-POS (TJO, 2026-11-04, docs/plan/lec56/BRIEF.md): the position basis <x|, |x>, delta(x - y) on L^2(R) leaves C3 and script chapter 5; the Kern of C3 is finite-dimensional."
+  },
+  {
+   "item": "text@29",
+   "what": "definiert. Warnung: Das Bra $\\langle x|$ ist nun beim besten",
+   "status": "deferred",
+   "deferred_to": "C5 (Welcher Hilbertraum? Das Teilchen auf der Geraden) and script chapter 7 (vl07)",
+   "reason": "Decision D-POS (TJO, 2026-11-04, docs/plan/lec56/BRIEF.md): the position basis <x|, |x>, delta(x - y) on L^2(R) leaves C3 and script chapter 5; the Kern of C3 is finite-dimensional."
+  },
+  {
+   "item": "equation@30",
+   "what": "equation",
+   "status": "deferred",
+   "deferred_to": "C5 (Welcher Hilbertraum? Das Teilchen auf der Geraden) and script chapter 7 (vl07)",
+   "reason": "Decision D-POS (TJO, 2026-11-04, docs/plan/lec56/BRIEF.md): the position basis <x|, |x>, delta(x - y) on L^2(R) leaves C3 and script chapter 5; the Kern of C3 is finite-dimensional."
+  },
+  {
+   "item": "text@33",
+   "what": "gegeben, wobei $\\delta(z)$ die Dirac-Delta-Funktion darstell",
+   "status": "deferred",
+   "deferred_to": "C5 (Welcher Hilbertraum? Das Teilchen auf der Geraden) and script chapter 7 (vl07)",
+   "reason": "Decision D-POS (TJO, 2026-11-04, docs/plan/lec56/BRIEF.md): the position basis <x|, |x>, delta(x - y) on L^2(R) leaves C3 and script chapter 5; the Kern of C3 is finite-dimensional."
+  },
+  {
+   "item": "equation@34",
+   "what": "equation",
+   "status": "deferred",
+   "deferred_to": "C5 (Welcher Hilbertraum? Das Teilchen auf der Geraden) and script chapter 7 (vl07)",
+   "reason": "Decision D-POS (TJO, 2026-11-04, docs/plan/lec56/BRIEF.md): the position basis <x|, |x>, delta(x - y) on L^2(R) leaves C3 and script chapter 5; the Kern of C3 is finite-dimensional."
+  },
+  {
+   "item": "equation@37",
+   "what": "equation",
+   "status": "deferred",
+   "deferred_to": "C5 (Welcher Hilbertraum? Das Teilchen auf der Geraden) and script chapter 7 (vl07)",
+   "reason": "Decision D-POS (TJO, 2026-11-04, docs/plan/lec56/BRIEF.md): the position basis <x|, |x>, delta(x - y) on L^2(R) leaves C3 and script chapter 5; the Kern of C3 is finite-dimensional."
+  },
+  {
+   "item": "environment@40",
+   "what": "intuition",
+   "status": "deferred",
+   "deferred_to": "C5 (Welcher Hilbertraum? Das Teilchen auf der Geraden) and script chapter 7 (vl07)",
+   "reason": "Decision D-POS (TJO, 2026-11-04, docs/plan/lec56/BRIEF.md): the position basis <x|, |x>, delta(x - y) on L^2(R) leaves C3 and script chapter 5; the Kern of C3 is finite-dimensional."
+  },
+  {
+   "item": "text@41",
+   "what": "Was ist $|x\\rangle$ physikalisch? Der Zustand eines Teilchen",
+   "status": "deferred",
+   "deferred_to": "C5 (Welcher Hilbertraum? Das Teilchen auf der Geraden) and script chapter 7 (vl07)",
+   "reason": "Decision D-POS (TJO, 2026-11-04, docs/plan/lec56/BRIEF.md): the position basis <x|, |x>, delta(x - y) on L^2(R) leaves C3 and script chapter 5; the Kern of C3 is finite-dimensional."
+  },
+  {
+   "item": "text@44",
+   "what": "Diese Notation erlaubt uns mehrere Rechnungen analog mit dem",
+   "status": "deferred",
+   "deferred_to": "C5 (Welcher Hilbertraum? Das Teilchen auf der Geraden) and script chapter 7 (vl07)",
+   "reason": "Decision D-POS (TJO, 2026-11-04, docs/plan/lec56/BRIEF.md): the position basis <x|, |x>, delta(x - y) on L^2(R) leaves C3 and script chapter 5; the Kern of C3 is finite-dimensional."
+  },
+  {
+   "item": "equation@45",
+   "what": "equation",
+   "status": "deferred",
+   "deferred_to": "C5 (Welcher Hilbertraum? Das Teilchen auf der Geraden) and script chapter 7 (vl07)",
+   "reason": "Decision D-POS (TJO, 2026-11-04, docs/plan/lec56/BRIEF.md): the position basis <x|, |x>, delta(x - y) on L^2(R) leaves C3 and script chapter 5; the Kern of C3 is finite-dimensional."
+  },
+  {
+   "item": "section@57",
+   "what": "\\subsection{Spur}",
+   "status": "kept",
+   "destination": [
+    "c03.s13"
+   ]
+  },
+  {
+   "item": "text@58",
+   "what": "Die Spur eines Operators spielt in der Quantenmechanik eine ",
+   "status": "kept",
+   "destination": [
+    "D95",
+    "c03.s13"
+   ],
+   "note": "Definition of the trace (finite index set); the remark 'not the position basis' is moot after D-POS."
+  },
+  {
+   "item": "equation@59",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D95",
+    "c03.s13"
+   ],
+   "note": "Definition of the trace (finite index set); the remark 'not the position basis' is moot after D-POS."
+  },
+  {
+   "item": "text@62",
+   "what": "wobei $x$ über die Indizes einer Orthonormalbasis $\\{|\\phi_x",
+   "status": "kept",
+   "destination": [
+    "D95",
+    "c03.s13"
+   ],
+   "note": "Definition of the trace (finite index set); the remark 'not the position basis' is moot after D-POS."
+  },
+  {
+   "item": "equation@63",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.prop.spur",
+    "c03.eq.zyklisch"
+   ],
+   "note": "Cyclicity for maps between two Hilbert spaces, as in vl05; part 4 (trace of a ket-bra) added for Chapter 4."
+  },
+  {
+   "item": "text@66",
+   "what": "wobei der Index an der Spur nur daran erinnert, auf welchem ",
+   "status": "kept",
+   "destination": [
+    "c03.prop.spur",
+    "c03.eq.zyklisch"
+   ],
+   "note": "Cyclicity for maps between two Hilbert spaces, as in vl05; part 4 (trace of a ket-bra) added for Chapter 4."
+  },
+  {
+   "item": "equation@67",
+   "what": "equation",
+   "status": "deferred",
+   "deferred_to": "C5 (Welcher Hilbertraum? Das Teilchen auf der Geraden) and script chapter 7 (vl07)",
+   "reason": "Decision D-POS (TJO, 2026-11-04, docs/plan/lec56/BRIEF.md): the position basis <x|, |x>, delta(x - y) on L^2(R) leaves C3 and script chapter 5; the Kern of C3 is finite-dimensional."
+  },
+  {
+   "item": "text@70",
+   "what": "in der Literatur begegnet sie einem oft.",
+   "status": "deferred",
+   "deferred_to": "C5 (Welcher Hilbertraum? Das Teilchen auf der Geraden) and script chapter 7 (vl07)",
+   "reason": "Decision D-POS (TJO, 2026-11-04, docs/plan/lec56/BRIEF.md): the position basis <x|, |x>, delta(x - y) on L^2(R) leaves C3 and script chapter 5; the Kern of C3 is finite-dimensional."
+  },
+  {
+   "item": "section@72",
+   "what": "\\subsection{Diagonalisierung}",
+   "status": "kept",
+   "destination": [
+    "c03.s14"
+   ]
+  },
+  {
+   "item": "text@73",
+   "what": "Für viele Rechnungen in der Quantenmechanik müssen Operatore",
+   "status": "kept",
+   "destination": [
+    "c03.s14"
+   ],
+   "note": "Motivation ('diagonale Operatoren sind so gut wie Zahlen'; not all at once) kept."
+  },
+  {
+   "item": "equation@74",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D97"
+   ]
+  },
+  {
+   "item": "text@77",
+   "what": "wobei $a_1, \\ldots, a_N$ die diagonalen Matrixelemente sind.",
+   "status": "kept",
+   "destination": [
+    "D97"
+   ]
+  },
+  {
+   "item": "equation@78",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.diagonal-wirkung"
+   ]
+  },
+  {
+   "item": "text@81",
+   "what": "wobei $\\Psi(m) = \\langle m|\\Psi\\rangle$.",
+   "status": "kept",
+   "destination": [
+    "c03.eq.diagonal-wirkung"
+   ]
+  },
+  {
+   "item": "text@83",
+   "what": "\\emph{Diagonalisierung} bedeutet nun das Auffinden einer inv",
+   "status": "kept",
+   "destination": [
+    "D97"
+   ],
+   "note": "Unitary diagonalisation as the course's meaning of 'diagonalisieren'.",
+   "migration": [
+    "M-0065"
+   ]
+  },
+  {
+   "item": "equation@85",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.thm.spektral-allgemein",
+    "c03.v7"
+   ],
+   "note": "The multiplication-operator form is the general spectral theorem (Vertiefung).",
+   "migration": [
+    "M-0065"
+   ]
+  },
+  {
+   "item": "text@88",
+   "what": "Jeder hermitesche und jeder unitäre Operator ist diagonalisi",
+   "status": "kept",
+   "destination": [
+    "c03.thm.spektral",
+    "c03.v7"
+   ],
+   "note": "Scoped to finite dimension; the infinite-dimensional failure is c03.ex.ohne-eigen.",
+   "migration": [
+    "M-0066"
+   ]
+  },
+  {
+   "item": "section@90",
+   "what": "\\subsection{Eigenwert, Eigenvektor}",
+   "status": "kept",
+   "destination": [
+    "c03.s14"
+   ]
+  },
+  {
+   "item": "text@91",
+   "what": "Ist $V$ ein komplexer Vektorraum und $A:V\\rightarrow A$ eine",
+   "status": "kept",
+   "destination": [
+    "D96"
+   ],
+   "migration": [
+    "M-0064"
+   ]
+  },
+  {
+   "item": "equation@93",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D96"
+   ],
+   "migration": [
+    "M-0064"
+   ]
+  },
+  {
+   "item": "text@96",
+   "what": "Den Faktor $\\alpha$ nennt man dann den zugehörigen Eigenwert",
+   "status": "kept",
+   "destination": [
+    "D96"
+   ],
+   "migration": [
+    "M-0064"
+   ]
+  },
+  {
+   "item": "text@98",
+   "what": "Eine Diagonalisierung von einem Operator (Matrix) $A$ liefer",
+   "status": "kept",
+   "destination": [
+    "c03.prop.diagonal"
+   ],
+   "note": "Part 1 (diagonalisation gives an ONB of eigenvectors); the pmatrix columns become U^dagger|x>.",
+   "migration": [
+    "M-0067"
+   ]
+  },
+  {
+   "item": "equation@99",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.prop.diagonal"
+   ],
+   "note": "Part 1 (diagonalisation gives an ONB of eigenvectors); the pmatrix columns become U^dagger|x>.",
+   "migration": [
+    "M-0067"
+   ]
+  },
+  {
+   "item": "environment@100",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.prop.diagonal"
+   ],
+   "note": "Part 1 (diagonalisation gives an ONB of eigenvectors); the pmatrix columns become U^dagger|x>.",
+   "migration": [
+    "M-0067"
+   ]
+  },
+  {
+   "item": "environment@102",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.prop.diagonal"
+   ],
+   "note": "Part 1 (diagonalisation gives an ONB of eigenvectors); the pmatrix columns become U^dagger|x>.",
+   "migration": [
+    "M-0067"
+   ]
+  },
+  {
+   "item": "environment@104",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.prop.diagonal"
+   ],
+   "note": "Part 1 (diagonalisation gives an ONB of eigenvectors); the pmatrix columns become U^dagger|x>.",
+   "migration": [
+    "M-0067"
+   ]
+  },
+  {
+   "item": "text@108",
+   "what": "(Übung: Bildet diese Reihenfolge eine Basis?) Ein Hinweis: $",
+   "status": "kept",
+   "destination": [
+    "c03.prop.diagonal"
+   ],
+   "note": "Part 1 (diagonalisation gives an ONB of eigenvectors); the pmatrix columns become U^dagger|x>.",
+   "migration": [
+    "M-0067"
+   ]
+  },
+  {
+   "item": "equation@109",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.prop.diagonal"
+   ],
+   "note": "Part 1 (diagonalisation gives an ONB of eigenvectors); the pmatrix columns become U^dagger|x>.",
+   "migration": [
+    "M-0067"
+   ]
+  },
+  {
+   "item": "environment@110",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.prop.diagonal"
+   ],
+   "note": "Part 1 (diagonalisation gives an ONB of eigenvectors); the pmatrix columns become U^dagger|x>.",
+   "migration": [
+    "M-0067"
+   ]
+  },
+  {
+   "item": "environment@112",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.prop.diagonal"
+   ],
+   "note": "Part 1 (diagonalisation gives an ONB of eigenvectors); the pmatrix columns become U^dagger|x>.",
+   "migration": [
+    "M-0067"
+   ]
+  },
+  {
+   "item": "environment@114",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.prop.diagonal"
+   ],
+   "note": "Part 1 (diagonalisation gives an ONB of eigenvectors); the pmatrix columns become U^dagger|x>.",
+   "migration": [
+    "M-0067"
+   ]
+  },
+  {
+   "item": "environment@119",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.prop.diagonal"
+   ],
+   "note": "Part 1 (diagonalisation gives an ONB of eigenvectors); the pmatrix columns become U^dagger|x>.",
+   "migration": [
+    "M-0067"
+   ]
+  },
+  {
+   "item": "text@123",
+   "what": "Genau analog wirkt $A$ auf $\\phi_j$ als",
+   "status": "kept",
+   "destination": [
+    "c03.prop.diagonal"
+   ],
+   "note": "Part 1 (diagonalisation gives an ONB of eigenvectors); the pmatrix columns become U^dagger|x>.",
+   "migration": [
+    "M-0067"
+   ]
+  },
+  {
+   "item": "equation@124",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.prop.diagonal"
+   ],
+   "note": "Part 1 (diagonalisation gives an ONB of eigenvectors); the pmatrix columns become U^dagger|x>.",
+   "migration": [
+    "M-0067"
+   ]
+  },
+  {
+   "item": "text@127",
+   "what": "Nach dieser Art und Weise indentifiziert man $\\phi_j$ als di",
+   "status": "kept",
+   "destination": [
+    "c03.prop.diagonal"
+   ],
+   "note": "Part 1 (diagonalisation gives an ONB of eigenvectors); the pmatrix columns become U^dagger|x>.",
+   "migration": [
+    "M-0067"
+   ]
+  },
+  {
+   "item": "text@129",
+   "what": "Ebenso wichtig ist die Rückrichtung: aus einer Liste von Eig",
+   "status": "kept",
+   "destination": [
+    "c03.prop.diagonal",
+    "c03.eq.u-konstruktion"
+   ]
+  },
+  {
+   "item": "equation@130",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.prop.diagonal",
+    "c03.eq.u-konstruktion"
+   ]
+  },
+  {
+   "item": "text@133",
+   "what": "Zwei Vorbereitungen. Erstens die Normierung: ein aus einem G",
+   "status": "kept",
+   "destination": [
+    "c03.s14",
+    "c03.prop.eigen-hermitesch"
+   ],
+   "note": "Normalisation sentence in c03.s14 after D96; orthogonality in c03.prop.eigen-hermitesch."
+  },
+  {
+   "item": "equation@134",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.prop.eigen-hermitesch"
+   ],
+   "note": "The 'trick' (evaluate twice)."
+  },
+  {
+   "item": "text@137",
+   "what": "Der Trick ist, $A$ nach links wirken zu lassen. Dabei gehen ",
+   "status": "kept",
+   "destination": [
+    "c03.prop.eigen-hermitesch"
+   ],
+   "note": "The 'trick' (evaluate twice)."
+  },
+  {
+   "item": "equation@138",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.prop.eigen-hermitesch"
+   ],
+   "note": "The 'trick' (evaluate twice)."
+  },
+  {
+   "item": "text@141",
+   "what": "also $\\langle\\phi_j|A|\\phi_k\\rangle = a_j\\langle\\phi_j|\\phi_",
+   "status": "kept",
+   "destination": [
+    "c03.prop.eigen-hermitesch"
+   ],
+   "note": "The 'trick' (evaluate twice)."
+  },
+  {
+   "item": "equation@142",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.prop.eigen-hermitesch"
+   ],
+   "note": "The 'trick' (evaluate twice)."
+  },
+  {
+   "item": "text@145",
+   "what": "und da die Eigenwerte verschieden sind, bleibt nur $\\langle\\",
+   "status": "kept",
+   "destination": [
+    "c03.prop.eigen-hermitesch"
+   ],
+   "note": "The 'trick' (evaluate twice)."
+  },
+  {
+   "item": "equation@146",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.prop.diagonal",
+    "c03.eq.u-konstruktion",
+    "c03.eq.spektralzerlegung"
+   ],
+   "note": "Part 2 (U from the eigenvectors), with U^dagger U = I proved (vl05's exercise)."
+  },
+  {
+   "item": "text@149",
+   "what": "mit dem kanonischen Basisvektor $|j\\rangle$, der eine Eins i",
+   "status": "kept",
+   "destination": [
+    "c03.prop.diagonal",
+    "c03.eq.u-konstruktion",
+    "c03.eq.spektralzerlegung"
+   ],
+   "note": "Part 2 (U from the eigenvectors), with U^dagger U = I proved (vl05's exercise)."
+  },
+  {
+   "item": "equation@150",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.prop.diagonal",
+    "c03.eq.u-konstruktion",
+    "c03.eq.spektralzerlegung"
+   ],
+   "note": "Part 2 (U from the eigenvectors), with U^dagger U = I proved (vl05's exercise)."
+  },
+  {
+   "item": "text@153",
+   "what": "und dieselbe Rechnung mit $A$ in der Mitte ergibt",
+   "status": "kept",
+   "destination": [
+    "c03.prop.diagonal",
+    "c03.eq.u-konstruktion",
+    "c03.eq.spektralzerlegung"
+   ],
+   "note": "Part 2 (U from the eigenvectors), with U^dagger U = I proved (vl05's exercise)."
+  },
+  {
+   "item": "equation@154",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.prop.diagonal",
+    "c03.eq.u-konstruktion",
+    "c03.eq.spektralzerlegung"
+   ],
+   "note": "Part 2 (U from the eigenvectors), with U^dagger U = I proved (vl05's exercise)."
+  },
+  {
+   "item": "text@157",
+   "what": "also einen diagonalen Operator mit den Eigenwerten auf der D",
+   "status": "kept",
+   "destination": [
+    "c03.prop.diagonal",
+    "c03.eq.u-konstruktion",
+    "c03.eq.spektralzerlegung"
+   ],
+   "note": "Part 2 (U from the eigenvectors), with U^dagger U = I proved (vl05's exercise)."
+  },
+  {
+   "item": "environment@159",
+   "what": "beispiel",
+   "status": "kept",
+   "destination": [
+    "c03.ex.hadamard"
+   ],
+   "note": "Basis |0>, |1> instead of |1>, |2>; the matrix is sigma_x (no hat)."
+  },
+  {
+   "item": "text@160",
+   "what": "Sei $\\mathcal{H}\\equiv\\mathbb{C}^2$, in der Quanteninformati",
+   "status": "kept",
+   "destination": [
+    "c03.ex.hadamard"
+   ],
+   "note": "Basis |0>, |1> instead of |1>, |2>; the matrix is sigma_x (no hat)."
+  },
+  {
+   "item": "equation@161",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.ex.hadamard"
+   ],
+   "note": "Basis |0>, |1> instead of |1>, |2>; the matrix is sigma_x (no hat)."
+  },
+  {
+   "item": "environment@162",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.ex.hadamard"
+   ],
+   "note": "Basis |0>, |1> instead of |1>, |2>; the matrix is sigma_x (no hat)."
+  },
+  {
+   "item": "text@164",
+   "what": "Das charakteristische Polynom $\\det(A - \\lambda\\mathbb{I}) =",
+   "status": "kept",
+   "destination": [
+    "c03.ex.hadamard"
+   ],
+   "note": "Basis |0>, |1> instead of |1>, |2>; the matrix is sigma_x (no hat)."
+  },
+  {
+   "item": "equation@165",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.ex.hadamard"
+   ],
+   "note": "Basis |0>, |1> instead of |1>, |2>; the matrix is sigma_x (no hat)."
+  },
+  {
+   "item": "environment@166",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.ex.hadamard"
+   ],
+   "note": "Basis |0>, |1> instead of |1>, |2>; the matrix is sigma_x (no hat)."
+  },
+  {
+   "item": "text@168",
+   "what": "Ein Ket ist ein Spalten-, ein Bra ein Zeilenvektor, ihr Prod",
+   "status": "kept",
+   "destination": [
+    "c03.ex.hadamard"
+   ],
+   "note": "Basis |0>, |1> instead of |1>, |2>; the matrix is sigma_x (no hat)."
+  },
+  {
+   "item": "equation@169",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.ex.hadamard"
+   ],
+   "note": "Basis |0>, |1> instead of |1>, |2>; the matrix is sigma_x (no hat)."
+  },
+  {
+   "item": "environment@170",
+   "what": "pmatrix",
+   "status": "kept",
+   "destination": [
+    "c03.ex.hadamard"
+   ],
+   "note": "Basis |0>, |1> instead of |1>, |2>; the matrix is sigma_x (no hat)."
+  },
+  {
+   "item": "text@172",
+   "what": "die \\emph{Hadamard-Matrix}; man rechnet $UAU^\\dag = \\diag(1,",
+   "status": "kept",
+   "destination": [
+    "c03.ex.hadamard"
+   ],
+   "note": "Basis |0>, |1> instead of |1>, |2>; the matrix is sigma_x (no hat)."
+  },
+  {
+   "item": "figure@175",
+   "what": "\\input{figures/fig_vl05_diagonal}",
+   "status": "kept",
+   "destination": [
+    "c03.fig.diagonal"
+   ]
+  },
+  {
+   "item": "text@177",
+   "what": "Die Abbildung zeichnet dieses Beispiel, allerdings nicht $A$",
+   "status": "kept",
+   "destination": [
+    "c03.fig.diagonal",
+    "c03.s14"
+   ]
+  },
+  {
+   "item": "text@179",
+   "what": "Dieses Verfahren funktioniert auch im unendlichen dimensiona",
+   "status": "kept",
+   "destination": [
+    "c03.v7"
+   ],
+   "note": "'Works also in infinite dimension' corrected: c03.ex.ohne-eigen.",
+   "migration": [
+    "M-0066"
+   ]
+  },
+  {
+   "item": "section@181",
+   "what": "\\subsection{Funktionalkalkül}",
+   "status": "kept",
+   "destination": [
+    "c03.s15"
+   ]
+  },
+  {
+   "item": "text@182",
+   "what": "Wenn $H$ ein hermitescher Operator ist, dann ist die diagona",
+   "status": "kept",
+   "destination": [
+    "c03.prop.eigen-hermitesch",
+    "D98"
+   ],
+   "note": "Real eigenvalues of a Hermitian operator: c03.prop.eigen-hermitesch; the eigenbasis of H, not A.",
+   "migration": [
+    "M-0067"
+   ]
+  },
+  {
+   "item": "equation@183",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.prop.eigen-hermitesch",
+    "D98"
+   ],
+   "note": "Real eigenvalues of a Hermitian operator: c03.prop.eigen-hermitesch; the eigenbasis of H, not A.",
+   "migration": [
+    "M-0067"
+   ]
+  },
+  {
+   "item": "text@186",
+   "what": "wobei $|\\phi_x\\rangle$ die Eigenvektoren von $A$ mit dazugeh",
+   "status": "kept",
+   "destination": [
+    "c03.prop.eigen-hermitesch",
+    "D98"
+   ],
+   "note": "Real eigenvalues of a Hermitian operator: c03.prop.eigen-hermitesch; the eigenbasis of H, not A.",
+   "migration": [
+    "M-0067"
+   ]
+  },
+  {
+   "item": "text@189",
+   "what": "Wir definieren von diesem Operator die Funktion",
+   "status": "kept",
+   "destination": [
+    "D98",
+    "c03.eq.zeitentwicklung",
+    "c03.prop.funktion"
+   ],
+   "note": "General f (D98), the exponential and its unitarity ('Phasen').",
+   "migration": [
+    "M-0067",
+    "M-0068"
+   ]
+  },
+  {
+   "item": "equation@190",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D98",
+    "c03.eq.zeitentwicklung",
+    "c03.prop.funktion"
+   ],
+   "note": "General f (D98), the exponential and its unitarity ('Phasen').",
+   "migration": [
+    "M-0067",
+    "M-0068"
+   ]
+  },
+  {
+   "item": "text@193",
+   "what": "die durch",
+   "status": "kept",
+   "destination": [
+    "D98",
+    "c03.eq.zeitentwicklung",
+    "c03.prop.funktion"
+   ],
+   "note": "General f (D98), the exponential and its unitarity ('Phasen').",
+   "migration": [
+    "M-0067",
+    "M-0068"
+   ]
+  },
+  {
+   "item": "equation@194",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "D98",
+    "c03.eq.zeitentwicklung",
+    "c03.prop.funktion"
+   ],
+   "note": "General f (D98), the exponential and its unitarity ('Phasen').",
+   "migration": [
+    "M-0067",
+    "M-0068"
+   ]
+  },
+  {
+   "item": "text@197",
+   "what": "gegeben wird. (Wenn $A$ auf einen Eigenvektor angewandt wird",
+   "status": "kept",
+   "destination": [
+    "D98",
+    "c03.eq.zeitentwicklung",
+    "c03.prop.funktion"
+   ],
+   "note": "General f (D98), the exponential and its unitarity ('Phasen').",
+   "migration": [
+    "M-0067",
+    "M-0068"
+   ]
+  },
+  {
+   "item": "text@199",
+   "what": "Im Fall, dass $\\mathcal{H}$ endlich-dimensional ist, ist die",
+   "status": "kept",
+   "destination": [
+    "c03.eq.exp-reihe"
+   ],
+   "migration": [
+    "M-0068"
+   ]
+  },
+  {
+   "item": "equation@200",
+   "what": "equation",
+   "status": "kept",
+   "destination": [
+    "c03.eq.exp-reihe"
+   ],
+   "migration": [
+    "M-0068"
+   ]
+  },
+  {
+   "item": "text@203",
+   "what": "Übrigens ist die Definition der Exponentialfunktion durch Di",
+   "status": "deferred",
+   "deferred_to": "c04.v2 (Chapter 4, Vertiefung 'Unbeschränkte Hamiltonoperatoren')",
+   "reason": "The remark on unbounded self-adjoint operators belongs to the dynamics postulate (hazard H4.3); C4 states it with Stone's theorem."
+  },
+  {
+   "item": "environment@205",
+   "what": "merksatz",
+   "status": "kept",
+   "destination": [
+    "c03.s15"
+   ],
+   "note": "Merksatz 'Zeitentwicklung' at the end of c03.s15."
+  },
+  {
+   "item": "text@206",
+   "what": "Der Operator $U_t$ beschreibt die Zeitentwicklung eines Quan",
+   "status": "kept",
+   "destination": [
+    "c03.s15"
+   ],
+   "note": "Merksatz 'Zeitentwicklung' at the end of c03.s15."
+  }
+ ]
+}

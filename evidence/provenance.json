@@ -3365,6 +3365,168 @@
    "reviewer": null,
    "review_receipt": null,
    "notes": "The same sentence stands in latex/lectures/de/vl09.tex:25 (script v0.2, not a registered member). Backs the forward pointer after proposition c03.prop.positiv (G-0072 (b))."
+  },
+  {
+   "id": "P-0331",
+   "claim_ids": [
+    "c03.cl.spektral-allgemein"
+   ],
+   "locus": {
+    "page_index": 239,
+    "printed_page": "227"
+   },
+   "quote": "Theorem VII.3 (spectral theorem—multiplication operator form) Let $A$ be a bounded self-adjoint operator on $\\mathscr{H}$, a separable Hilbert space.",
+   "notes": "Section VII.2, Theorem VII.3: the bounded case (spectral representation on a direct sum of spaces $L^2(\\mathbb{R}, d\\mu_n)$). Read from the page image by the chapter author (Lecture 5, 2026-11-04): ddjvu -format=pnm -page=239 -scale=150; not from the text layer.",
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 5",
+   "review_receipt": "R-0154"
+  },
+  {
+   "id": "P-0332",
+   "claim_ids": [
+    "c03.cl.spektral-allgemein"
+   ],
+   "locus": {
+    "page_index": 272,
+    "printed_page": "260"
+   },
+   "quote": "Theorem VIII.4 (spectral theorem—multiplication operator form) Let $A$ be a self-adjoint operator on a separable Hilbert space $\\mathscr{H}$ with domain $D(A)$. Then there is a measure space $\\langle M, \\mu\\rangle$ with $\\mu$ a finite measure, a unitary",
+   "notes": "Section VIII.3, Theorem VIII.4, first page (the statement breaks across pp. 260-261; the book prints 'aseparable' without a space). Read from the page image by the chapter author (Lecture 5, 2026-11-04): ddjvu -format=pnm -page=272 -scale=150.",
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 5",
+   "review_receipt": "R-0154"
+  },
+  {
+   "id": "P-0333",
+   "claim_ids": [
+    "c03.cl.spektral-allgemein"
+   ],
+   "locus": {
+    "page_index": 273,
+    "printed_page": "261"
+   },
+   "quote": "operator $U\\colon \\mathscr{H} \\to L^2(M, d\\mu)$, and a real-valued function $f$ on $M$ which is finite a.e. so that (a) $\\psi \\in D(A)$ if and only if $f(\\cdot)(U\\psi)(\\cdot) \\in L^2(M, d\\mu)$. (b) If $\\varphi \\in U[D(A)]$, then $(UAU^{-1}\\varphi)(m) = f(m)\\varphi(m)$.",
+   "notes": "Section VIII.3, Theorem VIII.4, continued on p. 261: the unitary, the real-valued function finite a.e., parts (a) and (b). Read from the page image by the chapter author (Lecture 5, 2026-11-04): ddjvu -format=pnm -page=273 -scale=150.",
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c03 lecture 5",
+   "review_receipt": "R-0154"
+  },
+  {
+   "id": "P-0334",
+   "claim_ids": [
+    "c04.cl.singulaer"
+   ],
+   "source_key": "bratteli-robinson-1",
+   "member": "bratteli-robinson-1/bratteli-robinson-1.pdf",
+   "member_sha256": "b81856071260df71a8ab80fe91edcbaabdf245d0e183ce19f3cb04027ef34ce7",
+   "locus": {
+    "page_index": 63,
+    "printed_page": "49"
+   },
+   "quote": "Proposition 2.3.11. Let $\\omega$ be a linear functional over a $C^*$-algebra $\\mathfrak{A}$. The following conditions are equivalent: (1) $\\omega$ is positive; (2) $\\omega$ is continuous, and $\\|\\omega\\| = \\lim_\\alpha \\omega(E_\\alpha^2)$ for some approximate identity $\\{E_\\alpha\\}$ of $\\mathfrak{A}$.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c04 lecture 6",
+   "review_receipt": "R-0155",
+   "notes": "Section 2.3.2. For the unital algebra B(H) the constant net E = 1 is an approximate identity, so positive <=> ||omega|| = omega(1); used in c04.v1 ('Für ein positives Funktional ist ||omega|| = omega(1)') and in c04.ex.singulaer (norm one and omega(1) = 1 give positivity). Read from the page image by the chapter author (Lecture 6, 2026-11-04): pdftoppm -f 63 -l 63 -r 110."
+  },
+  {
+   "id": "P-0335",
+   "claim_ids": [
+    "c04.cl.normal"
+   ],
+   "source_key": "bratteli-robinson-1",
+   "member": "bratteli-robinson-1/bratteli-robinson-1.pdf",
+   "member_sha256": "b81856071260df71a8ab80fe91edcbaabdf245d0e183ce19f3cb04027ef34ce7",
+   "locus": {
+    "page_index": 90,
+    "printed_page": "76"
+   },
+   "quote": "Definition 2.4.20. Let $\\mathfrak{M}$ be a von Neumann algebra, and $\\omega$ a positive linear functional on $\\mathfrak{M}$. If $\\omega(\\mathrm{l.u.b.}_\\alpha A_\\alpha) = \\mathrm{l.u.b.}_\\alpha\\, \\omega(A_\\alpha)$ for all increasing nets $\\{A_\\alpha\\}$ in $\\mathfrak{M}_+$ with an upper bound then $\\omega$ is defined to be normal.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c04 lecture 6",
+   "review_receipt": "R-0155",
+   "notes": "Section 2.4.3, the definition of a normal functional, as used in c04.v1. Read from the page image by the chapter author (Lecture 6, 2026-11-04): pdftoppm -f 90 -l 90 -r 110."
+  },
+  {
+   "id": "P-0336",
+   "claim_ids": [
+    "c04.cl.normal"
+   ],
+   "source_key": "bratteli-robinson-1",
+   "member": "bratteli-robinson-1/bratteli-robinson-1.pdf",
+   "member_sha256": "b81856071260df71a8ab80fe91edcbaabdf245d0e183ce19f3cb04027ef34ce7",
+   "locus": {
+    "page_index": 90,
+    "printed_page": "76"
+   },
+   "quote": "Theorem 2.4.21. Let $\\omega$ be a state on a von Neumann algebra $\\mathfrak{M}$ acting on a Hilbert space $\\mathfrak{H}$. The following conditions are equivalent: (1) $\\omega$ is normal; (2) $\\omega$ is $\\sigma$-weakly continuous; (3) there exists a density matrix $\\rho$, i.e., a positive trace-class operator $\\rho$ on $\\mathfrak{H}$ with $\\mathrm{Tr}(\\rho) = 1$, such that $\\omega(A) = \\mathrm{Tr}(\\rho A)$.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c04 lecture 6",
+   "review_receipt": "R-0155",
+   "notes": "Section 2.4.3; B(H) is a von Neumann algebra. The course states (1) <=> (3). Read from the page image by the chapter author (Lecture 6, 2026-11-04)."
+  },
+  {
+   "id": "P-0337",
+   "claim_ids": [
+    "c04.cl.singulaer"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 89,
+    "printed_page": "77"
+   },
+   "quote": "Corollary 1 Let $X$ be a normed linear space, $Y$ a subspace of $X$, and $\\lambda$ an element of $Y^*$. Then there exists a $\\Lambda \\in X^*$ extending $\\lambda$ and satisfying $\\|\\Lambda\\|_{X^*} = \\|\\lambda\\|_{Y^*}$.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c04 lecture 6",
+   "review_receipt": "R-0155",
+   "notes": "Section III.3, first corollary to the Hahn-Banach theorem: the norm-preserving extension used in c04.ex.singulaer. Read from the page image by the chapter author (Lecture 6, 2026-11-04): ddjvu -format=pnm -page=89 -scale=150."
+  },
+  {
+   "id": "P-0338",
+   "claim_ids": [
+    "c04.cl.stone"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 279,
+    "printed_page": "265"
+   },
+   "quote": "Theorem VIII.7 Let $A$ be a self-adjoint operator and define $U(t) = e^{itA}$. Then (a) For each $t \\in \\mathbb{R}$, $U(t)$ is a unitary operator and $U(t+s) = U(t)U(s)$ for all $s, t \\in \\mathbb{R}$. (b) If $\\varphi \\in \\mathscr{H}$ and $t \\to t_0$, then $U(t)\\varphi \\to U(t_0)\\varphi$.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c04 lecture 6",
+   "review_receipt": "R-0155",
+   "notes": "Section VIII.4. Parts (c) and (d) on the same page (derivative; domain) back the remark that the generator is determined by the group. The same page says the functional calculus, not the power series, defines e^{itA} for unbounded self-adjoint A (backs the sentence on the power series in c04.v2). Read from the page image by the chapter author (Lecture 6, 2026-11-04): ddjvu -format=pnm -page=279 -scale=150."
+  },
+  {
+   "id": "P-0339",
+   "claim_ids": [
+    "c04.cl.stone"
+   ],
+   "source_key": "reed-simon-1",
+   "member": "reed-simon-1/reed-simon-1.djvu",
+   "member_sha256": "a9eb38970c669d4c315cba20580bc996eb024623af036c6c6d51bab1fdba9e36",
+   "locus": {
+    "page_index": 282,
+    "printed_page": "266"
+   },
+   "quote": "Theorem VIII.8 (Stone's theorem) Let $U(t)$ be a strongly continuous one-parameter unitary group on a Hilbert space $\\mathscr{H}$. Then, there is a self-adjoint operator $A$ on $\\mathscr{H}$ so that $U(t) = e^{itA}$.",
+   "read_from": "page-image",
+   "reviewer": "codex gpt-6.1-sol, independent review c04 lecture 6",
+   "review_receipt": "R-0155",
+   "notes": "Section VIII.4; DjVu page_index 282 is printed page 266. The scan is out of order here: page_index 279 is p. 265, 280 and 281 are pp. 270-271, 282 is p. 266. Read from the page image by the chapter author (Lecture 6, 2026-11-04): ddjvu -format=pnm -page=282 -scale=150."
   }
  ]
 }

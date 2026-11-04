@@ -15,9 +15,9 @@
 %         |phi_1> = (1,1)/sqrt2,  a_1 =  1 + 2 = 3
 %         |phi_2> = (1,-1)/sqrt2, a_2 = -1 + 2 = 1
 %         U Atilde U^dag = diag(3,1).
-%     Every label on the plate says \tilde A and never A, because the
-%     lecture's A is sigma_x and stands three lines above the figure; the
-%     prose that introduces the figure defines the shift.
+%     Script v0.3 (2026-11-04): the lecture calls sigma_x by its name and the
+%     drawn operator A = sigma_x + 2 I (hat, CONV-HAT); bases |0>, |1> and
+%     |phi_0>, |phi_1> as in the course figure c03.fig.diagonal.
 %     Every curve below is that matrix applied to the unit circle,
 %     plotted parametrically, not sketched:
 %         panel (a)  t |-> (2cos t + sin t,  cos t + 2 sin t)
@@ -109,9 +109,9 @@
   \draw[princ] (axis cs:-2.1213,-2.1213) -- (axis cs:2.1213,2.1213);
   \draw[princ] (axis cs:-0.7071,0.7071)  -- (axis cs:0.7071,-0.7071);
   \node[lbl, text=birrengray, font=\scriptsize, anchor=north east]
-    at (axis cs:-2.16,-2.16) {$|\phi_1\rangle$};
+    at (axis cs:-2.16,-2.16) {$|\phi_0\rangle$};
   \node[lbl, text=birrengray, font=\scriptsize, anchor=north west]
-    at (axis cs:0.74,-0.78) {$|\phi_2\rangle$};
+    at (axis cs:0.74,-0.78) {$|\phi_1\rangle$};
 
   % ---- image of the unit circle under A ----
   \addplot[imgcurve, variable=t, domain=0:360, samples=181]
@@ -130,21 +130,21 @@
   % |1> sits outside the ellipse to the lower right of its own arrowhead:
   % every spot nearer the origin is crossed by a ray or by the ellipse.
   \node[ketlbl, text=cgblue, anchor=north west]
-    at (axis cs:1.32,-0.08) {$|1\rangle$};
+    at (axis cs:1.32,-0.08) {$|0\rangle$};
   \node[ketlbl, text=birrenorange, anchor=east]
-    at (axis cs:-0.12,0.70) {$|2\rangle$};
+    at (axis cs:-0.12,0.70) {$|1\rangle$};
   \node[lbl, text=cgblue, font=\scriptsize, anchor=west]
-    at (axis cs:2.10,0.92) {$\tilde A|1\rangle$};
+    at (axis cs:2.10,0.92) {$\op{A}|0\rangle$};
   \node[lbl, text=birrenorange, font=\scriptsize, anchor=south]
-    at (axis cs:1.00,2.14) {$\tilde A|2\rangle$};
+    at (axis cs:1.00,2.14) {$\op{A}|1\rangle$};
 
   % ---- the matrix this frame produces ----
   % Two lines: on one line the definition and the matrix together reach
   % as far as the note in the opposite corner.
   \node[lbl, anchor=north west, align=left]
     at (axis cs:-3.30,3.22)
-    {$\tilde A = A + 2\mathbb{I}$\\[3pt]
-     $\phantom{\tilde A} = \begin{pmatrix} 2 & 1 \\ 1 & 2\end{pmatrix}$};
+    {$\op{A} = \pauli{x} + 2\mathbb{I}$\\[3pt]
+     $\phantom{\op{A}} = \begin{pmatrix} 2 & 1 \\ 1 & 2\end{pmatrix}$};
 
   \node[lbl, text=birrengray, font=\scriptsize, anchor=north east]
     at (axis cs:3.30,3.18)
@@ -192,18 +192,18 @@
   % Both labels are kept inside the unit circle: at their old places the
   % dashed circle ran straight through the ket brackets.
   \node[ketlbl, text=cgblue, anchor=north]
-    at (axis cs:0.45,-0.14) {$|\phi_1\rangle$};
+    at (axis cs:0.45,-0.14) {$|\phi_0\rangle$};
   \node[ketlbl, text=birrenorange, anchor=east]
-    at (axis cs:-0.10,0.58) {$|\phi_2\rangle$};
+    at (axis cs:-0.10,0.58) {$|\phi_1\rangle$};
 
   \node[lbl, text=cgblue, font=\scriptsize, anchor=north]
-    at (axis cs:1.75,-1.10) {$\tilde A|\phi_1\rangle = 3\,|\phi_1\rangle$};
+    at (axis cs:1.75,-1.10) {$\op{A}|\phi_0\rangle = 3\,|\phi_0\rangle$};
   \node[lbl, text=birrenorange, font=\scriptsize, anchor=south west]
-    at (axis cs:0.14,1.10) {$\tilde A|\phi_2\rangle = |\phi_2\rangle$};
+    at (axis cs:0.14,1.10) {$\op{A}|\phi_1\rangle = |\phi_1\rangle$};
 
   % ---- the matrix this frame produces ----
   \node[lbl, anchor=north west] at (axis cs:-3.30,3.22)
-    {$U\tilde AU^\dagger
+    {$\op{U}\op{A}\op{U}^\dagger
        = \begin{pmatrix} 3 & 0 \\ 0 & 1\end{pmatrix}$};
 
   \node[lbl, text=birrengray, font=\scriptsize, anchor=north]
@@ -219,7 +219,7 @@
 \draw[-{Stealth[length=5pt,width=3.5pt]}, spacecadet, line width=0.8pt]
   ([xshift=6mm,yshift=8mm]std.east) -- ([xshift=14mm,yshift=8mm]std.east);
 \node[lbl, font=\scriptsize, anchor=south]
-  at ([xshift=10mm,yshift=8.6mm]std.east) {$U$};
+  at ([xshift=10mm,yshift=8.6mm]std.east) {$\op{U}$};
 
 \end{tikzpicture}
 \end{center}
