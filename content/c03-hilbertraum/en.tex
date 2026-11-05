@@ -2,17 +2,21 @@
 % (English edition; the German de.tex leads, same constructs, IDs and displays)
 %
 % Scope: the material of the second, third and fourth lectures (latex/lectures/de/vl02.tex,
-% vl03.tex and vl04.tex, with the vl03 subsection on operators). New sections go between the
-% last core section and the Fundament blocks at the end.
+% vl03.tex and vl04.tex, with the vl03 subsection on operators) and of the fifth (vl05.tex,
+% "Position basis, trace, diagonalisation", as c03.s13 to c03.s15 and block c03.v7, 2026-11-04;
+% the position basis is deferred to C5, decision D-POS in docs/plan/lec56/BRIEF.md). New sections
+% go between the last core section and the Fundament blocks at the end.
 % Maps: evidence/migrations/maps/vl02-map.json, vl03-map.json, vl04-map.json (lane E). Defects:
 % M-0013 to M-0016 (vl02), M-0017 to M-0024 (vl03), M-0005 and docs/plan/lec34/NOTES-author.md
-% (vl04). Definitions D75 to D80, D81 to D86 and D14, D87 to D94, D17, D18, D20, convention
+% (vl04), M-0064 to M-0068 (vl05). Definitions D75 to D80, D81 to D86 and D14, D87 to D94, D95
+% to D98, D17, D18, D20, convention
 % CONV-HAT; derivations evidence/derivations/c03/DERIVATION.md; Reed-Simon page-image rows P-0140
 % to P-0150 (review receipt R-0140), P-0152 to P-0164 (review receipt R-0152), from P-0318 (vl04,
 % review receipt pending). Reviews of Lecture 3: docs/review/lectures/REVIEW-lec3.md,
 % evidence/derivations/c03/REVIEW-lec3.md and REVIEW-lec3-second.md. G-0072 (a) and (b) applied
 % after TJO's answer of 2026-10-29. Hats on every operator (D-HAT), except the identity, states and
-% the Pauli matrices (CONV-HAT; none of the latter two occurs in c03).
+% the Pauli matrices (CONV-HAT; no state occurs in c03, the Pauli matrix sigma_x does from
+% c03.ex.hadamard on).
 
 \chapter{The Hilbert-space toolkit}\label{c03}
 
@@ -1781,8 +1785,448 @@ $\melem{\psi}{\op{A}}{\psi} = -\sqrt{2}$.
     with a parameter to move and the computed class tests beside it.}
 \end{tpcfigure}
 
+\section{The trace}\label{c03.s13}
+
+% Voice: vl05.tex:57-70; v05 [82:29]-[88:15] ("a definition you probably know from matrix
+% calculus"; "we will use this property all the time").  The trace in the position basis
+% (vl05.tex:66-69, v05 [87:52]) is deferred to C5 with the position basis (decision D-POS,
+% docs/plan/lec56/BRIEF.md).  For cyclicity vl05 takes maps between two Hilbert spaces; Chapter 4
+% needs this for kets and bras (section c03.s11.1), which is why it is stated so generally here.
+One more number belongs to the toolkit: it is assigned to every operator and comes up in
+quantum mechanics all the time. You know it already from matrix algebra: the sum of the diagonal
+entries.
+
+\tpcdef{D95}
+
+The definition uses a basis, but the number does not depend on it. That, and the rule we will use
+all the time, is the content of the following proposition. For the third statement we admit, as in
+Section~\ref{c03.s11.1}, linear maps between two Hilbert spaces; the index on the trace then says
+in which space it is taken.
+
+\begin{proposition}[Rules for the trace]\label{c03.prop.spur}\claim[proof-included]{c03.cl.spur}{derived}
+  Let $\Hil$, $\Hil_1$ and $\Hil_2$ be Hilbert spaces with bases with a finite index set.
+  \begin{enumerate}
+    \item The trace of an operator $\op{A}$ on $\Hil$ does not depend on the orthonormal basis
+      with which it is computed.
+    \item The trace is linear: $\tr(\op{A} + \op{B}) = \tr(\op{A}) + \tr(\op{B})$ and
+      $\tr(z\op{A}) = z \tr(\op{A})$ for every number $z$.
+    \item If $\op{A}\colon \Hil_1 \to \Hil_2$ and $\op{B}\colon \Hil_2 \to \Hil_1$ are linear, then
+      \begin{equation}\label{c03.eq.zyklisch}
+        \tr_2(\op{A}\op{B}) = \tr_1(\op{B}\op{A}) .
+      \end{equation}
+    \item For two vectors $\ket{\Psi}, \ket{\Phi} \in \Hil$,
+      \begin{equation}\label{c03.eq.spur-ketbra}
+        \tr\bigl(\ketbra{\Psi}{\Phi}\bigr) = \braket{\Phi}{\Psi} .
+      \end{equation}
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  Let $\{\ket{x}\}$ and $\{\ket{y}\}$ be orthonormal bases. For~3, with $\ket{x}$ in $\Hil_1$ and
+  $\ket{y}$ in $\Hil_2$: we insert the completeness relation $\Id = \sum_x \ketbra{x}{x}$ of
+  $\Hil_1$ between $\op{A}$ and $\op{B}$ and exchange the two finite sums,
+  \begin{equation*}
+    \tr_2(\op{A}\op{B})
+    = \sum_{y} \sum_{x} \melem{y}{\op{A}}{x}\, \melem{x}{\op{B}}{y}
+    = \sum_{x} \sum_{y} \melem{x}{\op{B}}{y}\, \melem{y}{\op{A}}{x}
+    = \tr_1(\op{B}\op{A}) ;
+  \end{equation*}
+  the last step is the completeness relation of $\Hil_2$. For~1: if $\{\ket{x}\}$ and
+  $\{\ket{y}\}$ are two orthonormal bases of the same space, the same calculation gives
+  $\sum_x \melem{x}{\op{A}}{x} = \sum_{x,y} \braket{x}{y}\, \melem{y}{\op{A}}{x} = \sum_y \melem{y}{\op{A}}{y}$.
+  For~2: every summand $\melem{x}{\op{A}}{x}$ is linear in $\op{A}$. For~4: this is~3 with
+  $\op{A} = \ket{\Psi}\colon \mathbb{C} \to \Hil$ and $\op{B} = \bra{\Phi}\colon \Hil \to \mathbb{C}$
+  (Equations~\eqref{c03.eq.ket-op} and~\eqref{c03.eq.bra-op}). On $\mathbb{C}$ we choose the
+  orthonormal basis $\{1\}$; the trace of multiplication by a number is therefore that number, and
+  $\bra{\Phi}\,\ket{\Psi} = \braket{\Phi}{\Psi}$.
+\end{proof}
+
+% Voice: v05 [86:30] ("this property ... we will use all the time"); Chapter 4 (normalisation of
+% pure states, Born rule for pure states) uses part 4.
+Part~3 is called the cyclicity of the trace: under the trace one may bring the last factor to the
+front. Careful, exchanging arbitrary factors is not allowed; $\tr(\op{A}\op{B}\op{C})$ becomes
+$\tr(\op{C}\op{A}\op{B})$, but in general not $\tr(\op{B}\op{A}\op{C})$. Part~4 is the case that
+Chapter~4 needs most often: the trace of a ket-bra is a bra-ket.
+
+\begin{example}[Two traces]\label{c03.ex.spur}\claim{c03.cl.spur-beispiel}{derived}
+  For the operators of Example~\ref{c03.ex.drei} one reads off $\tr(\op{A}) = 0$, because all
+  three diagonal entries are zero, and $\tr(\op{B}) = \tfrac13 + \tfrac13 + \tfrac13 = 1$. With
+  the vector $\ket{u}$ with entries $\tfrac{1}{\sqrt{3}}, \tfrac{1}{\sqrt{3}}, \tfrac{1}{\sqrt{3}}$
+  we have $\op{B} = \ketbra{u}{u}$, and part~4 gives the same without a matrix:
+  $\tr(\op{B}) = \braket{u}{u} = 1$.
+\end{example}
+
+% The trace in infinite dimension (trace class, D21) is a deeper block in Chapter 4, where the
+% density operators need it (hazard H4.1).
+In a space with infinitely many dimensions the sum of the diagonal elements is a series, and it
+need not converge. There not every operator has a trace; Chapter~4 comes back to this.
+
+\section{Eigenvalues and diagonalisation}\label{c03.s14}
+
+% Voice: vl05.tex:72-75; v06 [00:12]-[00:58] ("after that you have all the mathematical
+% foundations quantum mechanics needs"), [11:15]-[12:07] ("diagonal operators are as good as
+% ordinary numbers"; "you cannot make everything diagonal at once").
+With this section and the next, the mathematical toolkit of quantum mechanics is complete. For many
+calculations we have to \emph{diagonalise} an operator. The reason: general matrices are
+cumbersome to work with, and they do not commute with each other. Diagonal operators, on the
+other hand, are as good as numbers. Making all operators diagonal at once is, however, usually
+impossible; we always diagonalise one particular operator.
+
+% Voice: vl05.tex:90-95; v06 [25:14]-[31:04], [26:52] ("for this we need no Hilbert space, only a
+% vector space").
+We now make precise the notion that Section~\ref{c03.s12} used informally. It needs no inner
+product, only the vector-space structure.
+
+\tpcdef{D96}
+
+A multiple $z\ket{v}$ with $z \neq 0$ is again an eigenvector with the same eigenvalue. An
+eigenvector obtained from a system of equations almost never has norm $1$; one then divides it by
+its norm. The eigenspace is a subspace: with $\ket{v}$ and $\ket{w}$, $\ket{v} + \ket{w}$ lies in it
+too.
+
+% Voice: vl05.tex:72-82; v06 [00:58]-[12:07] (diagonal operators through their matrix elements;
+% the action on a state vector), [15:59]-[19:22] (unitary).
+\tpcdef{D97}
+
+If $\op{A}$ is diagonal in the basis $\{\ket{x}\}$, it acts on every vector like a list of
+numbers: each component is multiplied by its own number,
+\begin{equation}\label{c03.eq.diagonal-wirkung}\claim{c03.cl.diagonal-wirkung}{derived}
+  \op{A}\ket{\Psi}
+  = \sum_{x,y} \ket{x}\melem{x}{\op{A}}{y}\braket{y}{\Psi}
+  = \sum_{x} a_x\, \braket{x}{\Psi}\, \ket{x} .
+\end{equation}
+Here the completeness relation appears twice, as in Equation~\eqref{c03.eq.wirkung}. Every basis
+vector $\ket{x}$ is therefore an eigenvector with eigenvalue $a_x$. The converse holds as well, and
+so diagonalising and finding eigenvectors are the same task.
+
+% Voice: vl05.tex:84-87 and 96-155; v06 [12:07]-[60:00] (both directions; "the converse is not in
+% the notes", [41:05]; "the trick", [48:26]).  vl05 writes the diagonalisation with S and S^{-1};
+% here only the unitary one (vl05.tex:84 "(almost) exclusively").
+\begin{proposition}[Diagonalising means finding eigenvectors]\label{c03.prop.diagonal}\claim[proof-included]{c03.cl.diagonal}{derived}
+  Let $\op{A}$ be an operator on $\Hil$, and let $\{\ket{x}\}_{x \in X}$ be an orthonormal basis
+  with a finite index set.
+  \begin{enumerate}
+    \item If $\op{U}$ is unitary and $\op{U}\op{A}\op{U}\adj = \sum_x a_x \ketbra{x}{x}$, then the
+      vectors $\ket{\phi_x} = \op{U}\adj\ket{x}$ form an orthonormal basis, and
+      $\op{A}\ket{\phi_x} = a_x\ket{\phi_x}$.
+    \item Conversely, if $\{\ket{\phi_x}\}_{x \in X}$ is an orthonormal basis of eigenvectors,
+      $\op{A}\ket{\phi_x} = a_x\ket{\phi_x}$, then
+      \begin{equation}\label{c03.eq.u-konstruktion}
+        \op{U} = \sum_{x} \ketbra{x}{\phi_x}
+      \end{equation}
+      is unitary, and $\op{U}\op{A}\op{U}\adj = \sum_x a_x \ketbra{x}{x}$.
+    \item In both cases
+      \begin{equation}\label{c03.eq.spektralzerlegung}
+        \op{A} = \sum_{x} a_x \ketbra{\phi_x}{\phi_x}
+        \qquad \text{\tpcifenglish{and}{und}} \qquad
+        \tr(\op{A}) = \sum_{x} a_x .
+      \end{equation}
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  For~1: $\braket{\phi_x}{\phi_y} = \melem{x}{\op{U}\op{U}\adj}{y} = \braket{x}{y} = \kron{x}{y}$;
+  this is where unitarity enters. Orthonormal vectors, as many as the basis has, form a basis.
+  Further,
+  $\op{A}\ket{\phi_x} = \op{U}\adj(\op{U}\op{A}\op{U}\adj)\ket{x} = \op{U}\adj a_x\ket{x} = a_x\ket{\phi_x}$.
+  For~2: with orthonormality and the completeness relation,
+  \begin{equation*}
+    \op{U}\op{U}\adj
+    = \sum_{x,y} \ket{x}\braket{\phi_x}{\phi_y}\bra{y}
+    = \sum_{x} \ketbra{x}{x} = \Id ,
+    \qquad
+    \op{U}\adj\op{U}
+    = \sum_{x,y} \ket{\phi_x}\braket{x}{y}\bra{\phi_y}
+    = \sum_{x} \ketbra{\phi_x}{\phi_x} = \Id ,
+  \end{equation*}
+  and with $\op{A}$ in the middle
+  $\op{U}\op{A}\op{U}\adj = \sum_{x,y} \ket{x}\melem{\phi_x}{\op{A}}{\phi_y}\bra{y} = \sum_x a_x \ketbra{x}{x}$,
+  because $\melem{\phi_x}{\op{A}}{\phi_y} = a_y\braket{\phi_x}{\phi_y} = a_y\kron{x}{y}$. For~3: both
+  sides of the first equation map every $\ket{\phi_y}$ to $a_y\ket{\phi_y}$; two operators that
+  agree on a basis are equal. We take the trace in the basis $\{\ket{\phi_x}\}$; by
+  Proposition~\ref{c03.prop.spur} we may.
+\end{proof}
+
+Equation~\eqref{c03.eq.spektralzerlegung} is called the \emph{spectral decomposition} of $\op{A}$.
+In it one sees what ``as good as numbers'' means: if also
+$\op{B} = \sum_x b_x \ketbra{\phi_x}{\phi_x}$ with the same $\ket{\phi_x}$, then
+$\op{A}\op{B} = \sum_x a_x b_x \ketbra{\phi_x}{\phi_x} = \op{B}\op{A}$.
+
+% Voice: vl05.tex:88; v06 [14:36]-[15:59] ("no, only for certain classes"; "luck").
+Not every operator can be diagonalised. The matrix with rows $(0, 1)$ and $(0, 0)$ has only the
+eigenvalue $0$, and its eigenvectors are the multiples of $(1, 0)$; that is not a basis of
+$\mathbb{C}^2$. In quantum mechanics we are lucky: the operators one has to diagonalise there, the
+Hermitian and the unitary ones, can always be diagonalised in finite dimension. The first step
+towards this is a calculation one does again and again in quantum mechanics: evaluate the same
+expression in two ways.
+
+\begin{proposition}[Eigenvectors of Hermitian operators]\label{c03.prop.eigen-hermitesch}\claim[proof-included]{c03.cl.eigen-hermitesch}{derived}
+  Let $\op{A}$ be Hermitian. Then every eigenvalue of $\op{A}$ is real, and eigenvectors with
+  different eigenvalues are orthogonal.
+\end{proposition}
+\begin{proof}
+  Real: Equation~\eqref{c03.eq.orte}. Let $\op{A}\ket{\phi} = a\ket{\phi}$ and
+  $\op{A}\ket{\psi} = b\ket{\psi}$ with $a \neq b$. We compute $\melem{\phi}{\op{A}}{\psi}$
+  twice. Acting to the right, it is $b\braket{\phi}{\psi}$. Acting to the left, it is
+  $\braket{\op{A}\adj\phi}{\psi} = \braket{\op{A}\phi}{\psi} = \braket{a\phi}{\psi} = a^*\braket{\phi}{\psi} = a\braket{\phi}{\psi}$;
+  here $\op{A}\adj = \op{A}$ and $a^* = a$ enter. The difference is
+  $(a - b)\braket{\phi}{\psi} = 0$, and because $a \neq b$, $\braket{\phi}{\psi} = 0$.
+\end{proof}
+
+So if all eigenvalues of a Hermitian operator on a space of dimension $n$ are different and one has
+an eigenvector for each, then after normalising one has an orthonormal basis of eigenvectors, and
+Proposition~\ref{c03.prop.diagonal} builds $\op{U}$ from it. That this always works, even when
+eigenvalues coincide, is what the spectral theorem says.
+
+% Not in vl05 (there: "every Hermitian and every unitary operator is diagonalisable", without
+% proof, vl05.tex:88).  Proof with Gram-Schmidt in the eigenspace (v06 [47:42]: the degenerate
+% case needs Gram-Schmidt, not carried out in the video).  Hazard H3.3: finite dimension only.
+\begin{theorem}[Spectral theorem in finite dimension]\label{c03.thm.spektral}\claim[proof-included]{c03.cl.spektral}{derived}
+  Let $\Hil$ be finite-dimensional and $\op{A}$ normal, in particular Hermitian or unitary. Then
+  $\Hil$ has an orthonormal basis of eigenvectors of $\op{A}$.
+\end{theorem}
+\begin{proof}
+  We use from linear algebra: the eigenvalues are the zeros of the polynomial
+  $\det(\op{A} - \lambda\Id)$, and over $\mathbb{C}$ every non-constant polynomial has a zero. So
+  $\op{A}$ has an eigenvalue $\lambda$. Let $E$ be its eigenspace. For $\ket{v} \in E$,
+  $\op{A}(\op{A}\adj\ket{v}) = \op{A}\adj\op{A}\ket{v} = \lambda\,\op{A}\adj\ket{v}$,
+  so $\op{A}\adj$ also maps the space $E$ into itself. Let $E^\perp$ be the set of vectors
+  orthogonal to all of $E$. For $\ket{w} \in E^\perp$ and $\ket{v} \in E$,
+  $\braket{v}{\op{A}w} = \braket{\op{A}\adj v}{w} = 0$ and
+  $\braket{v}{\op{A}\adj w} = \braket{\op{A}v}{w} = \lambda^*\braket{v}{w} = 0$; so $\op{A}$ and
+  $\op{A}\adj$ also map $E^\perp$ into itself, and there they are again adjoint to each other and
+  commute. By the Gram-Schmidt procedure (Proposition~\ref{c03.prop.gram-schmidt}), $E$ has an
+  orthonormal basis; if one extends it to an orthonormal basis of $\Hil$, the added vectors span
+  $E^\perp$, and $E^\perp$ has smaller dimension than $\Hil$. By induction on the dimension,
+  $E^\perp$ has an orthonormal basis of eigenvectors; together with that of $E$ this is one of
+  $\Hil$. If $E^\perp$ consists of the zero vector alone, the basis of $E$ is already one of $\Hil$.
+  For dimension $1$ every vector of norm $1$ is such a basis.
+\end{proof}
+
+Hermitian and unitary operators are normal (Proposition~\ref{c03.prop.isometrie}). So both can be
+diagonalised, and by Proposition~\ref{c03.prop.diagonal} that is the same as a spectral
+decomposition~\eqref{c03.eq.spektralzerlegung}. The finiteness of the dimension is
+essential here\zoomref{c03.v7}.
+
+% Voice: vl05.tex:159-175; v06 [61:21]-[79:06] ("the qubit"; "Hadamard matrix"; "write the result
+% down first, then derive it", [64:24]; "a ket-bra is column times row", [73:37]; "the order
+% matters", [77:18]).  vl05 calls the matrix A; it is the Pauli matrix of c02.eq.pauli and
+% therefore carries no hat (CONV-HAT).  Basis |0>, |1> as in Chapter 4 (vl06: Z measurement
+% |0><0|), not |1>, |2> as in vl05.
+\begin{example}[Diagonalising a qubit]\label{c03.ex.hadamard}\claim{c03.cl.hadamard}{derived}
+  Let $\Hil = \mathbb{C}^2$ with the canonical basis $\ket{0}, \ket{1}$, in quantum information
+  theory a \emph{qubit}, and let $\pauli{x}$ be the Pauli matrix of
+  Equation~\eqref{c02.eq.pauli}. Its eigenvalues are the zeros of
+  $\det(\pauli{x} - \lambda\Id) = \lambda^2 - 1$, that is $+1$ and $-1$. Substituting these eigenvalues gives the
+  normalised eigenvectors:
+  \begin{equation}\label{c03.eq.hadamard-eigen}
+    \ket{\phi_0} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ 1 \end{pmatrix} ,
+    \qquad
+    \ket{\phi_1} = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 \\ -1 \end{pmatrix} .
+  \end{equation}
+  A ket is a column, a bra a row, so a ket-bra is column times row, a matrix.
+  Equation~\eqref{c03.eq.u-konstruktion} gives
+  \begin{equation}\label{c03.eq.hadamard}
+    \op{U}
+    = \ketbra{0}{\phi_0} + \ketbra{1}{\phi_1}
+    = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 0 & 0 \end{pmatrix}
+    + \frac{1}{\sqrt{2}} \begin{pmatrix} 0 & 0 \\ 1 & -1 \end{pmatrix}
+    = \frac{1}{\sqrt{2}} \begin{pmatrix} 1 & 1 \\ 1 & -1 \end{pmatrix} ,
+  \end{equation}
+  the \emph{Hadamard matrix}. One checks that $\op{U}\pauli{x}\op{U}\adj = \diag(1, -1)$, and
+  the spectral decomposition reads
+  $\pauli{x} = \ketbra{\phi_0}{\phi_0} - \ketbra{\phi_1}{\phi_1}$. If one exchanges the two
+  eigenvectors, the same recipe gives a different unitary matrix $\op{U}'$ with
+  $\op{U}'\pauli{x}\op{U}'^{\dagger} = \diag(-1, 1)$: the diagonalisation is not unique.
+\end{example}
+
+% Voice: vl05.tex:175-177 (the figure and its paragraph).  A + 2I is drawn because A itself, a
+% reflection, maps the unit circle onto itself.
+Figure~\ref{c03.fig.diagonal} shows this example, though not $\pauli{x}$ itself: as a reflection,
+$\pauli{x}$ maps the unit circle onto itself, so there would be nothing to see. The figure shows
+$\op{A} = \pauli{x} + 2\Id$, with the same eigenvectors and the same matrix $\op{U}$; only the
+eigenvalues are raised by $2$, to $3$ and $1$.
+
+\begin{tpcfigure}{c03.fig.diagonal}
+  \caption{The same operator in two bases. It shows the image of the unit circle under
+    $\op{A} = \pauli{x} + 2\Id$, as an operator on $\mathbb{R}^2 \subset \mathbb{C}^2$. On the
+    left, in the canonical basis $\ket{0}, \ket{1}$, the matrix is
+    $\bigl(\begin{smallmatrix} 2 & 1 \\ 1 & 2 \end{smallmatrix}\bigr)$, and the image ellipse
+    lies askew. On the right, in the basis $\ket{\phi_0}, \ket{\phi_1}$ of
+    Equation~\eqref{c03.eq.hadamard-eigen}, the matrix is $\diag(3, 1)$, and the ellipse lies
+    on the axes. The principal axes lie along the eigenvectors, the semi-axes are the eigenvalues
+    $3$ and $1$. The change from left to right is the Hadamard matrix $\op{U}$ of
+    Equation~\eqref{c03.eq.hadamard}.}
+\end{tpcfigure}
+
+\begin{vertiefung}[id=c03.v7,
+    titel={A Hermitian operator without eigenvectors},
+    wozu={In the core every Hermitian operator can be diagonalised
+      (Theorem~\ref{c03.thm.spektral}). In infinitely many dimensions this is no longer true:
+      here is a bounded Hermitian operator on $\elltwo$ that has not a single eigenvector, and
+      what takes the place of the eigenbasis.},
+    voraussetzung={Theorem~\ref{c03.thm.spektral}; blocks~\ref{c03.v1}, \ref{c03.v5}
+      and~\ref{c03.v6} (the right shift). The core up to Chapter~4 does not need this block;
+      Chapter~5 takes the subject up again with position and momentum.},
+    zurueck={In finite dimension every Hermitian operator has an orthonormal basis of
+      eigenvectors. In infinitely many dimensions a Hermitian operator can be entirely without
+      eigenvectors; the general spectral theorem then replaces the eigenbasis.}]
+  % Hazard H3.3 (docs/plan/research/curriculum/REPORT.md): vl05.tex:88 "every Hermitian ...
+  % operator is diagonalisable" holds only in finite dimension.  The example uses the right
+  % shift of c03.v6; the conserved quantity Q_j is the author's derivation (DERIVATION.md,
+  % c03.cl.ohne-eigen).
+  \begin{example}[Without eigenvectors]\label{c03.ex.ohne-eigen}\claim{c03.cl.ohne-eigen}{derived}
+    Let $\op{S}$ be the right shift of Equation~\eqref{c03.eq.shift} and
+    $\op{T} = \op{S} + \op{S}\adj$, that is
+    \begin{equation}\label{c03.eq.t-shift}
+      (\op{T}\vb{v})_1 = v_2 ,
+      \qquad
+      (\op{T}\vb{v})_j = v_{j-1} + v_{j+1} \quad (j \geq 2) .
+    \end{equation}
+    $\op{T}$ is defined on all of $\elltwo$, bounded with
+    $\norm{\op{T}v} \leq \norm{\op{S}v} + \norm{\op{S}\adj v} \leq 2\norm{v}$, and Hermitian,
+    because $\op{T}\adj = \op{S}\adj + \op{S} = \op{T}$. Suppose $\op{T}\vb{v} = \lambda\vb{v}$
+    with $\vb{v} \neq 0$ in $\elltwo$. As in Equation~\eqref{c03.eq.orte}, $\lambda$ is real,
+    and because Equations~\eqref{c03.eq.t-shift} have real coefficients, the real part and the
+    imaginary part of $\vb{v}$ solve them too; one of them is not zero. So we may assume all
+    $v_j$ real. With $v_0 = 0$ we then have $v_{j+1} = \lambda v_j - v_{j-1}$ for all
+    $j \geq 1$, and the number
+    \begin{equation}\label{c03.eq.erhaltung}
+      Q_j = v_{j+1}^2 - \lambda\, v_{j+1} v_j + v_j^2
+    \end{equation}
+    does not depend on $j$: inserting $v_{j+2} = \lambda v_{j+1} - v_j$ into $Q_{j+1}$ gives
+    $Q_j$. So $Q_j = Q_0 = v_1^2$ for all $j$. Because $\vb{v}$ lies in $\elltwo$, the entries
+    tend to zero, and so does $Q_j$; hence $v_1 = 0$, and then by the recursion all entries are
+    zero. That is a contradiction: $\op{T}$ has no eigenvalue.
+  \end{example}
+
+  The recursion has a solution for every real $\lambda$; it just does not lie in $\elltwo$.
+  For $\lambda = 2\cos\theta$ with $0 < \theta < \pi$ it is $v_j = \sin(j\theta)$: the entries
+  oscillate without decaying. We will meet such ``improper eigenvectors'', which do not lie in the
+  Hilbert space, again in Chapter~5, for position and momentum. The general spectral theorem tells
+  us what takes the place of the eigenbasis. It holds for self-adjoint operators
+  (block~\ref{c03.v5}) on separable Hilbert spaces, that is, on spaces with an orthonormal basis
+  with a countable index set such as $\elltwo$ and $\Ltwo{\mathbb{R}}$.
+
+  \begin{theorem}[Spectral theorem, general form]\label{c03.thm.spektral-allgemein}\claim[proof-omitted]{c03.cl.spektral-allgemein}{source-quoted}
+    Let $\op{A}$ be a self-adjoint operator on a separable Hilbert space $\Hil$. Then there are a
+    set $M$ with a finite measure, a unitary operator $\op{U}\colon \Hil \to \Ltwo{M}$ and a real
+    function $a$ on $M$ such that $\op{U}\op{A}\op{U}\adj$ is multiplication by $a$:
+    $(\op{U}\op{A}\op{U}\adj g)(m) = a(m)\, g(m)$ for every $g$ in the image under $\op{U}$ of
+    the domain of $\op{A}$.
+  \end{theorem}
+
+  Reed and Simon prove the theorem first for bounded and then for unbounded self-adjoint
+  operators \srcref{reed-simon-1}{p.~227 and p.~260}. In finite dimension $M$ is the index set
+  of an eigenbasis and $a$ the list of eigenvalues; that is Theorem~\ref{c03.thm.spektral}. For
+  $\op{T}$ one can work it out: the map
+  $\vb{v} \mapsto g(\theta) = \sqrt{2/\pi}\, \sum_j v_j \sin(j\theta)$ is unitary from $\elltwo$
+  onto the square-integrable functions on $(0, \pi)$, because the functions
+  $\sqrt{2/\pi}\,\sin(j\theta)$ form an orthonormal basis there; that is a theorem of Fourier
+  analysis, which we only quote here. It turns $\op{T}$ into multiplication by $2\cos\theta$, and
+  the sequences $v_j = \sin(j\theta)$ take over the role of the missing eigenvectors.
+\end{vertiefung}
+
+\section{Functions of operators}\label{c03.s15}
+
+% Voice: vl05.tex:181-209; v06 [79:06]-[90:09] ("once we have an operator in diagonal form we
+% can define functions"; "real eigenvalues, phases, unitary", [85:00]; "that is really already
+% the Schroedinger equation", [88:44]).  vl05 writes the eigenbasis sometimes as eigenvectors of
+% H, sometimes of A (vl05.tex:186): migration record, see NOTES-ch5.md.
+Diagonal operators are as good as numbers; so one can apply functions to them by applying the
+function to the numbers. This is the \emph{functional calculus}. It yields the most important
+object of quantum dynamics.
+
+\tpcdef{D98}
+
+The definition uses an orthonormal basis of eigenvectors, and when eigenvalues coincide there are
+many of those. That $f(\op{A})$ nevertheless depends only on $\op{A}$ and $f$ is shown by the
+second part of the following proposition.
+
+\begin{proposition}[Functions of an operator]\label{c03.prop.funktion}\claim[proof-included]{c03.cl.funktion}{derived}
+  Let $\op{A} = \sum_x a_x \ketbra{\phi_x}{\phi_x}$ be a spectral decomposition, and let $f$ be a
+  complex function on the eigenvalues of $\op{A}$.
+  \begin{enumerate}
+    \item For a polynomial $p(z) = \sum_{k=0}^{m} c_k z^k$,
+      $p(\op{A}) = \sum_{k=0}^{m} c_k \op{A}^k$, with $\op{A}^0 = \Id$.
+    \item $f(\op{A})$ does not depend on the chosen orthonormal basis of eigenvectors.
+    \item $f(\op{A})\adj = f^*(\op{A})$, where $f^*$ is the conjugate function. If $f$ is real,
+      $f(\op{A})$ is Hermitian. If $\abs{f} = 1$ on all eigenvalues, $f(\op{A})$ is unitary.
+  \end{enumerate}
+\end{proposition}
+\begin{proof}
+  For~1: with $\braket{\phi_x}{\phi_y} = \kron{x}{y}$,
+  $\op{A}^2 = \sum_{x,y} a_x a_y \ket{\phi_x}\braket{\phi_x}{\phi_y}\bra{\phi_y} = \sum_x a_x^2 \ketbra{\phi_x}{\phi_x}$,
+  likewise $\op{A}^k = \sum_x a_x^k \ketbra{\phi_x}{\phi_x}$ for every $k$, and
+  $\Id = \sum_x \ketbra{\phi_x}{\phi_x}$ is the case $k = 0$. Summing gives the claim.
+  For~2: $\op{A}$ has only finitely many different eigenvalues $\lambda_1, \dots, \lambda_m$. The
+  polynomial
+  \begin{equation*}
+    p(z) = \sum_{k=1}^{m} f(\lambda_k) \prod_{l \neq k} \frac{z - \lambda_l}{\lambda_k - \lambda_l}
+  \end{equation*}
+  takes the value $f(\lambda_k)$ at every point $\lambda_k$. So $f(\op{A}) = p(\op{A})$ for
+  every choice of eigenbasis, and by~1, $p(\op{A})$ is computed from $\op{A}$ alone. For~3:
+  by Proposition~\ref{c03.prop.ketbra},
+  $f(\op{A})\adj = \sum_x f(a_x)^* \ketbra{\phi_x}{\phi_x} = f^*(\op{A})$. For real $f$ this is
+  $f(\op{A})$. For $\abs{f} = 1$ the calculation of~1 gives
+  $f(\op{A})\adj f(\op{A}) = \sum_x \abs{f(a_x)}^2 \ketbra{\phi_x}{\phi_x} = \Id$, and likewise in
+  the other order.
+\end{proof}
+
+% Voice: vl05.tex:189-205; v06 [82:45]-[88:44].  vl05 writes H for a Hermitian operator without
+% saying Hamiltonian; Chapter 4 calls it that (postulate 5).  The calculation "real eigenvalues ->
+% phases -> unitary" is part 3 of the proposition with f = exp(-i t a/hbar).
+The most important case is the exponential function. Let $\op{\Ham}$ be Hermitian with the
+spectral decomposition $\op{\Ham} = \sum_x E_x \ketbra{\phi_x}{\phi_x}$, and let $t$ be a real
+number. We set
+\begin{equation}\label{c03.eq.zeitentwicklung}\claim{c03.cl.zeitentwicklung}{derived}
+  \op{U}_t = e^{-\frac{i t}{\hbar}\op{\Ham}}
+  = \sum_{x} e^{-\frac{i t}{\hbar} E_x}\, \ketbra{\phi_x}{\phi_x} .
+\end{equation}
+On every eigenvector $\op{U}_t$ acts as multiplication by a \emph{phase}, a complex number of
+modulus $1$. Here the chain becomes visible: the eigenvalues $E_x$ are real because $\op{\Ham}$ is
+Hermitian; therefore the phases have modulus $1$; therefore $\op{U}_t$ is unitary by
+Proposition~\ref{c03.prop.funktion} and changes the norm of no vector. In finite dimension
+$\op{U}_t$ is also the sum of the exponential series,
+\begin{equation}\label{c03.eq.exp-reihe}\claim{c03.cl.exp-reihe}{derived}
+  e^{-\frac{i t}{\hbar}\op{\Ham}} = \sum_{n=0}^{\infty} \frac{1}{n!}\Bigl(\frac{-i t}{\hbar}\Bigr)^{n} \op{\Ham}^n ,
+\end{equation}
+because by part~1 of the proposition every partial sum of the series is a polynomial in
+$\op{\Ham}$ and therefore acts on $\ket{\phi_x}$ as the corresponding partial sum of the
+convergent scalar series for $e^{-i t E_x/\hbar}$.
+
+% Voice: vl06.tex:138-160 (there an example for postulate 5, here an example for the functional
+% calculus; Chapter 4 refers to it).  Corrected: vl06 writes H without a unit and obtains
+% cos(t/hbar); with an energy epsilon the unit is right (migration record, NOTES-ch6.md).
+\begin{example}[Time evolution of a qubit]\label{c03.ex.qubit-zeit}\claim{c03.cl.qubit-zeit}{derived}
+  Let $\op{\Ham} = \varepsilon\, \pauli{x}$ with an energy $\varepsilon > 0$. By
+  Example~\ref{c03.ex.hadamard} the eigenvalues are $\pm\varepsilon$ with the eigenvectors
+  $\ket{\phi_0}$, $\ket{\phi_1}$, so
+  \begin{equation}\label{c03.eq.qubit-zeit}
+    \op{U}_t
+    = e^{-i\varepsilon t/\hbar}\ketbra{\phi_0}{\phi_0} + e^{i\varepsilon t/\hbar}\ketbra{\phi_1}{\phi_1}
+    = \cos\Bigl(\frac{\varepsilon t}{\hbar}\Bigr) \Id - i \sin\Bigl(\frac{\varepsilon t}{\hbar}\Bigr) \pauli{x} .
+  \end{equation}
+  For the second form one inserts $\Id = \ketbra{\phi_0}{\phi_0} + \ketbra{\phi_1}{\phi_1}$ and
+  $\pauli{x} = \ketbra{\phi_0}{\phi_0} - \ketbra{\phi_1}{\phi_1}$ and uses
+  $e^{\mp i\varepsilon t/\hbar} = \cos(\varepsilon t/\hbar) \mp i\sin(\varepsilon t/\hbar)$. The
+  series~\eqref{c03.eq.exp-reihe} gives the same result: because $\pauli{x}^2 = \Id$,
+  $\pauli{x}^{2n} = \Id$ and $\pauli{x}^{2n+1} = \pauli{x}$, and if we collect these two kinds of
+  terms, the series for $\cos(\varepsilon t/\hbar)$ and $\sin(\varepsilon t/\hbar)$ are the
+  coefficients of $\Id$ and of $-i\pauli{x}$. This trick uses $\pauli{x}^2 = \Id$; in general $\op{\Ham}^2$ is
+  not a multiple of $\Id$, and one calculates with the spectral decomposition.
+\end{example}
+
+% Voice: vl05.tex:207-209 (Merksatz); v06 [88:44]-[90:09] ("I prefer to introduce the dynamics
+% through U_t"; "the Schroedinger equation ... is basically nothing but this line"); v06 [24:07]
+% (the examples of the course are diagonalisations).
+\begin{merksatz}[Time evolution]
+  The operator $\op{U}_t = e^{-\frac{i t}{\hbar}\op{\Ham}}$ describes how a quantum system
+  evolves over a time $t$; Chapter~4 makes a postulate of this. So the solution of the
+  Schrödinger equation is already here, before the equation itself has appeared. For the systems
+  of this course, ``solving the dynamics'' therefore means: diagonalising the Hamiltonian.
+\end{merksatz}
+
 % ── Fundament ─────────────────────────────────────────────────────────────────────────
-% New sections of the chapter (vl05) go BEFORE this line.
+% New sections of the chapter go BEFORE this line.
 
 \begin{fundament}[id=c03.f1,
     titel={The Cauchy-Schwarz inequality},
