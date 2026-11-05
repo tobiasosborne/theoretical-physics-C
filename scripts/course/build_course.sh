@@ -53,10 +53,11 @@ VERBOSE=0
 TEST_CHAPTER_RE='^c99-'
 MAX_PASSES=5
 
-RED='\033[0;31m'; GREEN='\033[0;32m'; BLUE='\033[0;34m'; NC='\033[0m'
+RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[0;33m'; BLUE='\033[0;34m'; NC='\033[0m'
 info() { echo -e "${BLUE}[info]${NC} $*"; }
 ok()   { echo -e "${GREEN}[ok]${NC}   $*"; }
 err()  { echo -e "${RED}[err]${NC}  $*" >&2; }
+warn() { echo -e "${YELLOW}[warn]${NC} $*" >&2; }
 usage() { sed -n '2,/^$/p' "$0" | sed 's/^# \?//'; }
 
 while [[ $# -gt 0 ]]; do
@@ -186,7 +187,20 @@ build_one() {
     local work="$OUT/$job"
     rm -rf "$work"; mkdir -p "$work"
 
-    local defs="\\def\\tpcchapterlist{$chapter_list}\\def\\tpccontentroot{$CONTENT}"
+    # A chapter is written German first; until its en.tex exists, the English
+    # editions leave it out (and say so) instead of failing on the missing file.
+    # The parity gates (check_levels.py K6, check_parity.py) still report it.
+    local lang_list="$chapter_list"
+    if [[ "$lang" != "de" ]]; then
+        local kept=() d
+        for d in "${selected[@]}"; do
+            if [[ -f "$CONTENT/$d/$lang.tex" ]]; then kept+=("$d")
+            else warn "$job: $d has no $lang.tex yet, left out of this edition"; fi
+        done
+        if [[ ${#kept[@]} -eq 0 ]]; then err "$job: no chapter has $lang.tex"; return 1; fi
+        lang_list="$(IFS=,; echo "${kept[*]}")"
+    fi
+    local defs="\\def\\tpcchapterlist{$lang_list}\\def\\tpccontentroot{$CONTENT}"
     defs+="\\def\\tpcpkg{$PKG}\\def\\tpcground{$GROUND}\\def\\tpcmath{$MATH}\\def\\tpcfonts{$FONTS}"
     [[ $partial -eq 1 ]] && defs+="\\def\\tpcpartialbuild{1}"
 
@@ -217,7 +231,7 @@ build_one() {
 
     python3 "$ROOT/scripts/course/build_record.py" --root "$ROOT" --content "$CONTENT" \
         --work "$work" --job "$job" --lang "$lang" --edition "$edition" \
-        --chapters "$chapter_list" --partial "$partial" --exit-status "$status" \
+        --chapters "$lang_list" --partial "$partial" --exit-status "$status" \
         --passes "$pass" --pkg "$PKG" --ground "$GROUND" --math "$MATH" --fonts "$FONTS"
 
     local errors undefined multiply external pages
