@@ -57,7 +57,7 @@ Ein Detektor ist ein Messapparat mit den Ansprechmöglichkeiten „ja“ (Treffe
 \end{merksatz}
 Für einen reinen Zustand ist das keine weitere Annahme, sondern eine Rechnung mit der Zyklizität der Spur aus Vorlesung~5; für einen Projektor $\op{F} = \ketbra{\phi}{\phi}$ wird daraus die Form, die man in jedem Lehrbuch findet:
 \begin{equation}
-	\tr\bigl(\ketbra{\psi}{\psi}\op{F}\bigr) = \tr\bigl(\bra{\psi}\op{F}\ket{\psi}\bigr) = \melem{\psi}{\op{F}}{\psi}, \qquad \melem{\psi}{\op{F}}{\psi} = \abs{\braket{\phi}{\psi}}^2 \text{ für } \op{F} = \ketbra{\phi}{\phi}.
+	\tr\bigl(\ketbra{\psi}{\psi}\op{F}\bigr) = \tr\bigl(\bra{\psi}\op{F}\ket{\psi}\bigr) = \melem{\psi}{\op{F}}{\psi}, \qquad \melem{\psi}{\op{F}}{\psi} = \abs{\braket{\phi}{\psi}}^2.
 \end{equation}
 Machen Sie es sich am Anfang zur Gewohnheit, bei jeder Rechnung ausdrücklich zu sagen, welches Postulat Sie gerade benutzen.
 
@@ -74,7 +74,7 @@ Ein Messapparat liefert oft eines von mehreren Ergebnissen $x$ aus einer Menge $
 	\op{F}_x \geq 0, \qquad \sum_{x\in X}\op{F}_x = \mathbb{I},
 \end{equation}
 eine \emph{Messung} (englisch POVM, \emph{positive operator-valued measure}). Nach P4 ist $x\mapsto\tr(\rho\,\op{F}_x)$ eine Wahrscheinlichkeitsverteilung. Ein Detektor, der den Zustand $\ket{0}$ nur mit Wahrscheinlichkeit $q$ meldet, $0 < q < 1$, und bei $\ket{1}$ nie anspricht, hat zum Beispiel $\op{F} = q\ketbra{0}{0}$; das ist kein Projektor. Ist dagegen jedes $\op{F}_x$ ein Projektor, so heißt die Messung \emph{projektorwertig}. Sind die Ergebnisse reelle Zahlen, so ist ihr Erwartungswert
-\begin{equation}
+\begin{equation}\label{eq:observableA}
 	\sum_x x\,\tr(\rho\,\op{F}_x) = \tr(\rho\,\op{A}), \qquad \op{A} = \sum_x x\,\op{F}_x,
 \end{equation}
 und $\op{A}$ ist hermitesch. Im projektorwertigen Fall ist die Messung umgekehrt schon durch $\op{A}$ bestimmt: Die $\op{F}_x$ sind die Projektoren auf die Eigenräume von $\op{A}$, und nach dem Spektralsatz gehört so zu jedem hermiteschen Operator eine projektorwertige Messung. Man liest deshalb häufig als Definition, dass die Observablen genau die hermiteschen Operatoren sind. Das ist der projektorwertige Spezialfall; der Detektor mit $\op{F} = q\ketbra{0}{0}$ ist darin nicht enthalten.
