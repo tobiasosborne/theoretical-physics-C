@@ -340,92 +340,97 @@
   {
    "id": "c04.cl.p1",
    "kind": "postulate",
-   "statement_de": "Jedem quantenmechanischen System ordnen wir einen Hilbertraum zu (das gehört dem Sinn nach zur Definition des Zustandsraums einer GPT).",
-   "statement_en": "To every quantum mechanical system we assign a Hilbert space (*) (this is morally part of the definition of the state space for a GPT).",
+   "statement_de": "Jeder Sorte quantenmechanischer Systeme wird ein Hilbertraum H zugeordnet.",
+   "statement_en": "Every kind of quantum mechanical system is assigned a Hilbert space H.",
    "depth": "kern",
    "evidence": "author-stipulated",
    "presentation": null,
-   "scope": "TJO's stipulation exactly as worded in docs/plan/BRIEF.md:51; no mathematical scope beyond the quoted words is asserted here.",
+   "scope": "TJO's postulate 1 exactly as worded in script v0.2 (vl06.tex, lec06.tex); no mathematical scope beyond the quoted words is asserted here. In the course and in script v0.3 the symbols are the course's (hats on operators, \\Hil; F for the effect operator; psi for the state vector).",
    "hypotheses": [],
    "provenance_ids": [
-    "P-0005"
+    "P-0005",
+    "P-0340",
+    "P-0345"
    ],
    "definition_ids": [],
    "review_receipt": null,
-   "gap_tjo": "statement_de is a translation by the chapter author (Lecture 6, 2026-11-04), not TJO's wording; the precise mathematical scope in the course is TJO's. c04.s1 states the Kern consequences in finite dimension.",
-   "notes": "statement_en is the brief's sentence verbatim (without the label 'Pn.'). Tagged in content/c04-quantentheorie (Lecture 6, 2026-11-04)."
+   "notes": "Wording of script v0.2 restored at TJO's request on 2026-11-06 (decision D-WORTLAUT, docs/plan/lec56/BRIEF.md); the brief's telegraphic line (docs/plan/BRIEF.md:51) is no longer printed. Tagged in content/c04-quantentheorie and stated in vl06.tex/lec06.tex (merksatz P1)."
   },
   {
    "id": "c04.cl.p2",
    "kind": "postulate",
-   "statement_de": "Zustandsraum = positive lineare Funktionale auf B(H) mit Norm 1. Im Spurklassenfall sind das Dichteoperatoren. Extremalpunkte ⇒ reine Zustände.",
-   "statement_en": "State space = positive linear functionals on B(H) with norm 1. In the trace-class case these are density operators. Extreme points => pure states.",
+   "statement_de": "Ein Präparierverfahren wird charakterisiert durch einen Zustand, bzw. eine Dichtematrix. Das ist ein positiver Operator ρ auf H, mit tr(ρ) = 1. Speziell für reine Zustände ist ρ ein eindimensionaler Projektor ρ = |Ψ⟩⟨ Ψ|, also gegeben durch einen Vektor |Ψ⟩ ∈ H.",
+   "statement_en": "A preparation procedure is characterised by a state, or density matrix. This is a positive operator ρ on H, with tr(ρ) = 1. For pure states in particular ρ is a one-dimensional projector ρ = |Ψ⟩⟨ Ψ|, hence given by a vector |Ψ⟩ ∈ H.",
    "depth": "kern",
    "evidence": "author-stipulated",
    "presentation": null,
-   "scope": "TJO's stipulation exactly as worded in docs/plan/BRIEF.md:52; no mathematical scope beyond the quoted words is asserted here.",
+   "scope": "TJO's postulate 2 exactly as worded in script v0.2 (vl06.tex, lec06.tex); no mathematical scope beyond the quoted words is asserted here. In the course and in script v0.3 the symbols are the course's (hats on operators, \\Hil; F for the effect operator; psi for the state vector).",
    "hypotheses": [],
    "provenance_ids": [
-    "P-0006"
+    "P-0006",
+    "P-0341",
+    "P-0346"
    ],
    "definition_ids": [],
    "review_receipt": null,
-   "gap_tjo": "statement_de is a translation by the chapter author (Lecture 6, 2026-11-04), not TJO's wording; the precise mathematical scope in the course is TJO's. c04.s1 states the Kern consequences in finite dimension.",
-   "notes": "statement_en is the brief's sentence verbatim (without the label 'Pn.'). Tagged in content/c04-quantentheorie (Lecture 6, 2026-11-04)."
+   "notes": "Wording of script v0.2 restored at TJO's request on 2026-11-06 (decision D-WORTLAUT, docs/plan/lec56/BRIEF.md); the brief's telegraphic line (docs/plan/BRIEF.md:52) is no longer printed. Tagged in content/c04-quantentheorie and stated in vl06.tex/lec06.tex (merksatz P2)."
   },
   {
    "id": "c04.cl.p3",
    "kind": "postulate",
-   "statement_de": "Detektoren = Dual des Zustandsraums = Operatoren E mit 0 ≤ E ≤ I.",
-   "statement_en": "Detectors = dual of state space = operators E with 0 <= E <= I.",
+   "statement_de": "Ein Detektor, das heisst ein Messapparat mit den beiden Ansprechmöglichkeiten „ja„ (Treffer) und „nein„, ist gegeben durch einen Operator F mit 0 ≤ F ≤ I.",
+   "statement_en": "A detector, that is a measuring apparatus with the two possible responses „yes“ (hit) and „no“, is given by an operator F with 0 ≤ F ≤ I.",
    "depth": "kern",
    "evidence": "author-stipulated",
    "presentation": null,
-   "scope": "TJO's stipulation exactly as worded in docs/plan/BRIEF.md:53; no mathematical scope beyond the quoted words is asserted here.",
+   "scope": "TJO's postulate 3 exactly as worded in script v0.2 (vl06.tex, lec06.tex); no mathematical scope beyond the quoted words is asserted here. In the course and in script v0.3 the symbols are the course's (hats on operators, \\Hil; F for the effect operator; psi for the state vector).",
    "hypotheses": [],
    "provenance_ids": [
-    "P-0007"
+    "P-0007",
+    "P-0342",
+    "P-0347"
    ],
    "definition_ids": [],
    "review_receipt": null,
-   "gap_tjo": "statement_de is a translation by the chapter author (Lecture 6, 2026-11-04), not TJO's wording; the precise mathematical scope in the course is TJO's. c04.s1 states the Kern consequences in finite dimension.",
-   "notes": "statement_en is the brief's sentence verbatim (without the label 'Pn.'). Tagged in content/c04-quantentheorie (Lecture 6, 2026-11-04)."
+   "notes": "Wording of script v0.2 restored at TJO's request on 2026-11-06 (decision D-WORTLAUT, docs/plan/lec56/BRIEF.md); the brief's telegraphic line (docs/plan/BRIEF.md:53) is no longer printed. Tagged in content/c04-quantentheorie and stated in vl06.tex/lec06.tex (merksatz P3)."
   },
   {
    "id": "c04.cl.p4",
    "kind": "postulate",
-   "statement_de": "Bornsche Regel = Wahrscheinlichkeit des Ansprechens für einen Zustand, präpariert als Dichteoperator ρ, ist tr(ρE).",
-   "statement_en": "Born rule = probability of detection for a state prepared as density operator rho is tr(rho E).",
+   "statement_de": "Die Ansprechhäufigkeit eines Detektors F an gemäß ρ präparierten System ist tr(ρ F). In einem reinen Zustand |Ψ⟩ spezialisiert sich dieser Ausdruck zu ⟨ Ψ|F|Ψ⟩.",
+   "statement_en": "The response frequency of a detector F on a system prepared according to ρ is tr(ρ F). In a pure state |Ψ⟩ this expression specialises to ⟨ Ψ|F|Ψ⟩.",
    "depth": "kern",
    "evidence": "author-stipulated",
    "presentation": null,
-   "scope": "TJO's stipulation exactly as worded in docs/plan/BRIEF.md:54; no mathematical scope beyond the quoted words is asserted here.",
+   "scope": "TJO's postulate 4 exactly as worded in script v0.2 (vl06.tex, lec06.tex); no mathematical scope beyond the quoted words is asserted here. In the course and in script v0.3 the symbols are the course's (hats on operators, \\Hil; F for the effect operator; psi for the state vector).",
    "hypotheses": [],
    "provenance_ids": [
-    "P-0008"
+    "P-0008",
+    "P-0343",
+    "P-0348"
    ],
    "definition_ids": [],
    "review_receipt": null,
-   "gap_tjo": "statement_de is a translation by the chapter author (Lecture 6, 2026-11-04), not TJO's wording; the precise mathematical scope in the course is TJO's. c04.s1 states the Kern consequences in finite dimension.",
-   "notes": "statement_en is the brief's sentence verbatim (without the label 'Pn.'). Tagged in content/c04-quantentheorie (Lecture 6, 2026-11-04)."
+   "notes": "Wording of script v0.2 restored at TJO's request on 2026-11-06 (decision D-WORTLAUT, docs/plan/lec56/BRIEF.md); the brief's telegraphic line (docs/plan/BRIEF.md:54) is no longer printed. Tagged in content/c04-quantentheorie and stated in vl06.tex/lec06.tex (merksatz P4)."
   },
   {
    "id": "c04.cl.p5",
    "kind": "postulate",
-   "statement_de": "Das ist alles; Dynamik sind Symmetrien. Fügen wir aber, wie im Skript, die Angabe der Heisenberg-/Schrödinger-Dynamik hinzu.",
-   "statement_en": "That is it; dynamics are symmetries. But let us add, as in the notes, the specification of the Heisenberg/Schroedinger dynamics.",
+   "statement_de": "Jede Systemsorte ist weiter charakterisiert durch einen Hamiltonoperator H, der den Zeitentwicklungsoperator U_t = e^{-frac{it}{hbar} H} bestimmt. Wendet man in einem Experiment mit gegebenem Präparier- und Messverfahren die Messung mit einer Verzögerung von t Sekunden an, so erhält man den Erwartungswert",
+   "statement_en": "Every kind of system is further characterised by a Hamiltonian H, which determines the time-evolution operator U_t = e^{-frac{it}{hbar} H}. If, in an experiment with a given preparation and measurement procedure, the measurement is applied with a delay of t seconds, one obtains the expectation value",
    "depth": "kern",
    "evidence": "author-stipulated",
    "presentation": null,
-   "scope": "TJO's stipulation exactly as worded in docs/plan/BRIEF.md:55; no mathematical scope beyond the quoted words is asserted here.",
+   "scope": "TJO's postulate 5 exactly as worded in script v0.2 (vl06.tex, lec06.tex); no mathematical scope beyond the quoted words is asserted here. In the course and in script v0.3 the symbols are the course's (hats on operators, \\Hil; F for the effect operator; psi for the state vector). The equation inside the postulate is c04.eq.dynamik (c04.cl.dynamik).",
    "hypotheses": [],
    "provenance_ids": [
-    "P-0009"
+    "P-0009",
+    "P-0344",
+    "P-0349"
    ],
    "definition_ids": [],
    "review_receipt": null,
-   "gap_tjo": "statement_de is a translation by the chapter author (Lecture 6, 2026-11-04), not TJO's wording; the precise mathematical scope in the course is TJO's. c04.s1 states the Kern consequences in finite dimension.",
-   "notes": "statement_en is the brief's sentence verbatim (without the label 'Pn.'). Tagged in content/c04-quantentheorie (Lecture 6, 2026-11-04)."
+   "notes": "Wording of script v0.2 restored at TJO's request on 2026-11-06 (decision D-WORTLAUT, docs/plan/lec56/BRIEF.md); the brief's telegraphic line (docs/plan/BRIEF.md:55) is no longer printed. Tagged in content/c04-quantentheorie and stated in vl06.tex/lec06.tex (merksatz P5)."
   },
   {
    "id": "c02.cl.rahmen-liefert",
@@ -6462,8 +6467,8 @@
   {
    "id": "c04.cl.dynamik",
    "kind": "equation",
-   "statement_de": "tr(Û_tρÛ_t†F̂) = tr(ρÛ_t†F̂Û_t), mit Û_t = e^{−itĤ/ħ} und hermiteschem Ĥ.",
-   "statement_en": "tr(Û_tρÛ_t†F̂) = tr(ρÛ_t†F̂Û_t), with Û_t = e^{−itĤ/ħ} and Hermitian Ĥ.",
+   "statement_de": "⟨Â⟩(t) = tr(Û_tρÛ_t†Â) = tr(ρÛ_t†ÂÛ_t), mit Û_t = e^{−itĤ/ħ} und hermiteschem Ĥ.",
+   "statement_en": "⟨Â⟩(t) = tr(Û_tρÛ_t†Â) = tr(ρÛ_t†ÂÛ_t), with Û_t = e^{−itĤ/ħ} and Hermitian Ĥ.",
    "depth": "kern",
    "evidence": "derived",
    "presentation": null,
@@ -6478,7 +6483,7 @@
     "D24"
    ],
    "review_receipt": null,
-   "notes": "vl06.tex:130-136 (Postulat 5) with the Hermiticity of H that vl06.tex:138 adds; the equality is cyclicity of the trace."
+   "notes": "vl06.tex:126-130 (Postulat 5: the equation of the postulate, for an observable A) with the Hermiticity of H that vl06.tex:136 adds; the equality is cyclicity of the trace. Written with A (observable) instead of F since 2026-11-06 (D-WORTLAUT)."
   },
   {
    "id": "c04.cl.dynamik-zulaessig",

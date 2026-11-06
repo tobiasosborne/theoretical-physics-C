@@ -3527,6 +3527,176 @@
    "reviewer": "codex gpt-6.1-sol, independent review c04 lecture 6",
    "review_receipt": "R-0155",
    "notes": "Section VIII.4; DjVu page_index 282 is printed page 266. The scan is out of order here: page_index 279 is p. 265, 280 and 281 are pp. 270-271, 282 is p. 266. Read from the page image by the chapter author (Lecture 6, 2026-11-04): ddjvu -format=pnm -page=282 -scale=150."
+  },
+  {
+   "id": "P-0340",
+   "claim_ids": [
+    "c04.cl.p1"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "tpc-script-v0.2/git/latex/lectures/en/lec06.tex",
+   "member_sha256": "7398af746d8746f00ab6b00583e98216af4338a650e8e14093525f30f5ad7d02",
+   "locus": {
+    "line_start": 22,
+    "line_end": 22
+   },
+   "quote": "Every kind of quantum mechanical system is assigned a Hilbert space $\\mathcal{H}$.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0341",
+   "claim_ids": [
+    "c04.cl.p2"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "tpc-script-v0.2/git/latex/lectures/en/lec06.tex",
+   "member_sha256": "7398af746d8746f00ab6b00583e98216af4338a650e8e14093525f30f5ad7d02",
+   "locus": {
+    "line_start": 36,
+    "line_end": 36
+   },
+   "quote": "A preparation procedure is characterised by a \\emph{state}, or \\emph{density matrix}. This is a positive operator $\\rho$ on $\\mathcal{H}$, with $\\tr(\\rho) = 1$. For pure states in particular $\\rho$ is a one-dimensional projector $\\rho = |\\Psi\\rangle\\langle \\Psi|$, hence given by a vector $|\\Psi\\rangle \\in \\mathcal{H}$.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0342",
+   "claim_ids": [
+    "c04.cl.p3"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "tpc-script-v0.2/git/latex/lectures/en/lec06.tex",
+   "member_sha256": "7398af746d8746f00ab6b00583e98216af4338a650e8e14093525f30f5ad7d02",
+   "locus": {
+    "line_start": 64,
+    "line_end": 64
+   },
+   "quote": "A detector, that is a measuring apparatus with the two possible responses ``yes'' (hit) and ``no'', is given by an operator $F$ with $0 \\le F \\le \\mathbb{I}$.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0343",
+   "claim_ids": [
+    "c04.cl.p4"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "tpc-script-v0.2/git/latex/lectures/en/lec06.tex",
+   "member_sha256": "7398af746d8746f00ab6b00583e98216af4338a650e8e14093525f30f5ad7d02",
+   "locus": {
+    "line_start": 82,
+    "line_end": 83
+   },
+   "quote": "The response frequency of a detector $F$ on a system prepared according to $\\rho$ is $\\tr(\\rho F)$. In a pure state $|\\Psi\\rangle$ this expression specialises to $\\langle \\Psi|F|\\Psi\\rangle$.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0344",
+   "claim_ids": [
+    "c04.cl.p5"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "tpc-script-v0.2/git/latex/lectures/en/lec06.tex",
+   "member_sha256": "7398af746d8746f00ab6b00583e98216af4338a650e8e14093525f30f5ad7d02",
+   "locus": {
+    "line_start": 125,
+    "line_end": 125
+   },
+   "quote": "Every kind of system is further characterised by a \\emph{Hamiltonian} $H$, which determines the \\emph{time-evolution operator} $U_t = e^{-\\frac{it}{\\hbar} H}$. If, in an experiment with a given preparation and measurement procedure, the measurement is applied with a delay of $t$ seconds, one obtains the expectation value",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0345",
+   "claim_ids": [
+    "c04.cl.p1"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "tpc-script-v0.2/git/latex/lectures/de/vl06.tex",
+   "member_sha256": "6abda03fd00b488fcf2968aff1295fcfcb89b4e93db086d969c6d96dcb034f6d",
+   "locus": {
+    "line_start": 22,
+    "line_end": 22
+   },
+   "quote": "Jeder Sorte quantenmechanischer Systeme wird ein Hilbertraum $\\mathcal{H}$ zugeordnet.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0346",
+   "claim_ids": [
+    "c04.cl.p2"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "tpc-script-v0.2/git/latex/lectures/de/vl06.tex",
+   "member_sha256": "6abda03fd00b488fcf2968aff1295fcfcb89b4e93db086d969c6d96dcb034f6d",
+   "locus": {
+    "line_start": 36,
+    "line_end": 36
+   },
+   "quote": "Ein Präparierverfahren wird charakterisiert durch einen \\emph{Zustand}, bzw. eine \\emph{Dichtematrix}. Das ist ein positiver Operator $\\rho$ auf $\\mathcal{H}$, mit $\\tr(\\rho) = 1$. Speziell für reine Zustände ist $\\rho$ ein eindimensionaler Projektor $\\rho = |\\Psi\\rangle\\langle \\Psi|$, also gegeben durch einen Vektor $|\\Psi\\rangle \\in \\mathcal{H}$.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0347",
+   "claim_ids": [
+    "c04.cl.p3"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "tpc-script-v0.2/git/latex/lectures/de/vl06.tex",
+   "member_sha256": "6abda03fd00b488fcf2968aff1295fcfcb89b4e93db086d969c6d96dcb034f6d",
+   "locus": {
+    "line_start": 64,
+    "line_end": 64
+   },
+   "quote": "Ein Detektor, das heisst ein Messapparat mit den beiden Ansprechmöglichkeiten ,,ja`` (Treffer) und ,,nein``, ist gegeben durch einen Operator $F$ mit $0 \\le F \\le \\mathbb{I}$.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0348",
+   "claim_ids": [
+    "c04.cl.p4"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "tpc-script-v0.2/git/latex/lectures/de/vl06.tex",
+   "member_sha256": "6abda03fd00b488fcf2968aff1295fcfcb89b4e93db086d969c6d96dcb034f6d",
+   "locus": {
+    "line_start": 82,
+    "line_end": 83
+   },
+   "quote": "Die Ansprechhäufigkeit eines Detektors $F$ an gemäß $\\rho$ präparierten System ist $\\tr(\\rho F)$. In einem reinen Zustand $|\\Psi\\rangle$ spezialisiert sich dieser Ausdruck zu $\\langle \\Psi|F|\\Psi\\rangle$.",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
+  },
+  {
+   "id": "P-0349",
+   "claim_ids": [
+    "c04.cl.p5"
+   ],
+   "source_key": "tpc-script-v0.2",
+   "member": "tpc-script-v0.2/git/latex/lectures/de/vl06.tex",
+   "member_sha256": "6abda03fd00b488fcf2968aff1295fcfcb89b4e93db086d969c6d96dcb034f6d",
+   "locus": {
+    "line_start": 126,
+    "line_end": 126
+   },
+   "quote": "Jede Systemsorte ist weiter charakterisiert durch einen \\emph{Hamiltonoperator} $H$, der den \\emph{Zeitentwicklungsoperator} $U_t = e^{-\\frac{it}{\\hbar} H}$ bestimmt. Wendet man in einem Experiment mit gegebenem Präparier- und Messverfahren die Messung mit einer Verzögerung von $t$ Sekunden an, so erhält man den Erwartungswert",
+   "read_from": "text",
+   "reviewer": null,
+   "review_receipt": null
   }
  ]
 }

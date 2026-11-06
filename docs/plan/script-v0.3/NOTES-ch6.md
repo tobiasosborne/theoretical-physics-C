@@ -3,10 +3,9 @@
 Brief: `docs/plan/lec56/BRIEF.md`. Sync table: `sync-ch6.md`. English (`lec06.tex`) follows later.
 
 ## What changed
-- Chapter 6 is the condensed Kern of the new chapter C4. The five boxed postulates of v0.2 are
-  replaced by TJO's P1-P5 (docs/plan/BRIEF.md:51-55), P0 inline. **The German wording of P0-P5
-  is a translation by the chapter author, not TJO's** (same text as content/c04 and the ledger
-  `statement_de`; GAP-TJO).
+- Chapter 6 is the condensed Kern of the new chapter C4. The five boxed postulates of v0.2 keep
+  their v0.2 wording as merksatz boxes P1-P5 (D-WORTLAUT, 2026-11-06; P0 inline from the brief).
+  The brief's telegraphic P1-P5 were printed from 2026-11-04 to 2026-11-06 and are withdrawn.
 - New, from the course: positive normalised functionals = density operators (proof idea in one
   sentence), pure states = rank-one projectors as extreme points, "Dual des Zustandsraums"
   explained, the efficiency detector as a measurement that is not projection-valued, PVM ↔
@@ -18,14 +17,15 @@ Brief: `docs/plan/lec56/BRIEF.md`. Sync table: `sync-ch6.md`. English (`lec06.te
   is an assumption); the efficiency detector never fires on |1⟩.
 
 ## Budgets (guides)
-- Words: 1866 after the muse repairs (v0.2: 2153). Displays: 8 (v0.2: 19). Examples: 3 (v0.2: 4). Definitions: 1
-  (Dichteoperator) plus the four postulate boxes. Pages: not measured yet (no TeX).
+- Words: 1866 after the muse repairs (v0.2: 2153). Displays: 9 after D-WORTLAUT (v0.2: 19; the
+  equation of P5 is back inside its box). Examples: 3 (v0.2: 4). Definitions: 0 (the definition
+  environment for Dichteoperator was dropped on 2026-11-06; P2 states it) plus the five postulate boxes. Pages: not measured yet (no TeX).
 
 ## Migration records
 M-0069 (P5 Hermiticity / self-adjointness), M-0070 (energy unit), M-0071 (typos), M-0072 (H4.1).
 
 ## For TJO
-1. The German wording of P0-P5 (yours to write).
+1. (closed 2026-11-06, D-WORTLAUT: P1-P5 in the v0.2 wording.)
 2. The closed-systems sentence was sharpened after review: your v0.2 text said "Reine Zustände
    beschreiben geschlossene Systeme, und die gibt es in der Physik nicht"; the reviewer objected
    that a closed system can be mixed and an interacting one need not be. New: "Ein System, das mit

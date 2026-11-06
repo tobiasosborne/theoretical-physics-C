@@ -2,8 +2,8 @@
  "mode": "private",
  "result": "pass",
  "inputs": {
-  "evidence/claims.json": "30b0cf5d1f72e160306f94485b27af1d4c5108dbe83294e93e7ad69607090e9a",
-  "evidence/provenance.json": "49ab9a6b0230b53a156961b3e102c968c3e0c4087259409ca6272c2f7c9ed14a",
+  "evidence/claims.json": "ae56816cf771ec8c05bd2e501602c11a1efd0f6681c3ab7d77d9b3ed5eb8b54b",
+  "evidence/provenance.json": "b1dd6c098780626e37655a30a26a124b1d108fd8b13a27f1aa06ce68bd07005f",
   "evidence/gaps.json": "961259c747cf149d633a32b8ddabd591f8d8213876807ca0ab2da7cc29854cd6",
   "evidence/migrations/M-0001.json": "05fb279f34750f7a3745807c3e870deb71d5d72e9a8a8d70b57746c3018268a4",
   "evidence/migrations/M-0002.json": "4409d6422a50499f0b6de0421b184dbb4f5fcb1819fb62fec918a34c2a57fe95",
@@ -48,7 +48,7 @@
   "evidence/migrations/M-0066.json": "768fc8eae8048ac95c68bd70b2a5603d5990490bb19c4ca32171afafb5f023f7",
   "evidence/migrations/M-0067.json": "63eeb642a63a97851d37f7344378d13d8cbeecb44c839944db5a9eef7a02c3e4",
   "evidence/migrations/M-0068.json": "a92b268a1e76be3cbd5ccdae7c44961d86db75e7af5a526d18bfc27a5a1380a5",
-  "evidence/migrations/M-0069.json": "2fde2904c1ddbae023386fa93612ac68ef045869c5a64a304f2c302888b18cda",
+  "evidence/migrations/M-0069.json": "e6017d768fca0582392c356cab585aa2964281266b50b03fece2aa76e433fa8f",
   "evidence/migrations/M-0070.json": "b85b0f4e65219f1fedff56132b54fd5409e7e9187647df3db41feb74510be257",
   "evidence/migrations/M-0071.json": "8e479d36025ad073787725ed512c9dfbb31ed1d7323cbc896096ce9c1a181b4e",
   "evidence/migrations/M-0072.json": "a0316f0fd439dbcc03a5fa9846e9e0fd682ffdd3b2ade8820a8d2aff74e82130",
@@ -111,7 +111,7 @@
   "evidence/derivations/c11/REVIEW.md": "c18afa04a943e260771103789781cbbfbc79c320f2e6a1d3a2af94db2338eceb",
   "evidence/derivations/c01/DERIVATION.md": "511fbcc4b308a7c1bae3f7e5c670b7ebfeb105106dcd98eef24012b046448720",
   "evidence/derivations/c03/DERIVATION.md": "850be5556ac4e53de42b54b18d76c941841c0f5f24bf63a1e114d0f24c11d0bb",
-  "evidence/derivations/c04/DERIVATION.md": "258f4e79e0c61b697e5eeafd3fd132687e1f4f41d978e71d73dbdb835ecfcdc2",
+  "evidence/derivations/c04/DERIVATION.md": "3e50b0de957acc9ebd4b2ad8a44d83a0eda19bcc9509dc1fd960ebf7579846a0",
   "checker:scripts/evidence/check_evidence.py": "3e65fad223239cc479eb6552146ce0335246efcb9245290c08d8d118f8380765",
   "schema:claims.schema.json": "5b799e97a72a4f787ae91159eb3ef27dbc6c081714fb7100e5fc51a38369b918",
   "schema:gaps.schema.json": "b87f200d0cdc1ce6c75b295031f4bfa5b66bfba0be326163bbad0597c9957e04",
@@ -131,10 +131,10 @@
   "numerics_not_run": 0,
   "numerics_run": 47,
   "page_image": 54,
-  "provenance": 204,
+  "provenance": 214,
   "sources": 17,
   "text_skipped": 0,
-  "text_verified": 150
+  "text_verified": 160
  },
  "numerics_run": true,
  "numerics_results": {
@@ -563,8 +563,8 @@
   }
  },
  "tools": {
-  "python": "3.12.3",
+  "python": "3.14.8",
   "hash": "sha256 (hashlib)"
  },
- "date": "2026-11-05"
+ "date": "2026-11-06"
 }

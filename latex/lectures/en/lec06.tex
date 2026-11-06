@@ -1,7 +1,8 @@
 %!TEX root = TheoreticalPhysicsC.tex
 % Core of content/c04-quantentheorie. Sources: docs/plan/script-v0.3/sync-ch6.md
-% The postulates P0 to P5 are TJO's wording (docs/plan/BRIEF.md:50-55), here verbatim, with the
-% course's symbols (F for E, \Hil, \mathbb{I}) as in content/c04-quantentheorie/en.tex.
+% P1 to P5 are worded as in script v0.2 (lec06.tex, TJO's text; decision D-WORTLAUT in
+% docs/plan/lec56/BRIEF.md, 2026-11-06), with the course's symbols (hats, \Hil). P0 is the
+% brief's sentence (docs/plan/BRIEF.md:50).
 \section{Lecture: The Postulates of Quantum Mechanics}
 The numbers that quantum mechanics delivers as results are probabilities or, somewhat more generally, expectation values. That the theory delivers only probabilities at all is the real break with classical physics. Classically a probability is always an expression of missing information; quantum mechanically it is fundamental, and there are measurements that cannot be carried out jointly with full precision.
 
@@ -16,20 +17,16 @@ You often hear that we do not understand quantum mechanics. That misses the poin
 We set up the postulates step by step, each more specialised than the one before. You know the first, P0, from Lecture~1: Physical theories are probabilistic theories: predictions in the form of probabilities.
 
 \begin{merksatz}[P1]
-	To every quantum mechanical system we assign a Hilbert space $\Hil$ (this is morally part of the definition of the state space for a GPT).
+	Every kind of quantum mechanical system is assigned a Hilbert space $\Hil$.
 \end{merksatz}
 For a \emph{qubit} $\Hil = \mathbb{C}^2$, for a \emph{qudit} $\Hil = \mathbb{C}^d$, for a particle in space the space $L^2(\mathbb{R}^3)$ of square-integrable functions. Which Hilbert space belongs to a system is determined by experiment, not by the theory. P1 speaks of \emph{one} system; the Hilbert space of several systems is built later with a further recipe, the tensor product. In this lecture $\Hil$ is finite-dimensional.
 
 \begin{merksatz}[P2]
-	State space = positive linear functionals on $\BdOp{\Hil}$ with norm 1. In the trace-class case these are density operators. Extreme points $\Rightarrow$ pure states.
+	A preparation procedure is characterised by a \emph{state}, or \emph{density matrix}. This is a positive operator $\rho$ on $\Hil$, with $\tr(\rho) = 1$. For pure states in particular $\rho$ is a one-dimensional projector $\rho = \ketbra{\psi}{\psi}$, hence given by a vector $\ket{\psi} \in \Hil$.
 \end{merksatz}
-Here $\BdOp{\Hil}$ is the set of operators on $\Hil$. A state thus assigns a number linearly to every operator: to every Hermitian quantity its expectation value, to positive operators a non-negative number and to the identity operator the number one; ``norm~1'' here means precisely: the value on $\mathbb{I}$ is $1$. In finite dimension every such assignment has the form $\op{A}\mapsto\tr(\rho\,\op{A})$ with exactly one operator $\rho$; the ``trace-class case'' needs attention only in infinitely many dimensions. One sets $\melem{y}{\rho}{x}$ equal to the value on $\ketbra{x}{y}$ (the indices chosen so that $\tr(\rho\,\op{A})$ comes out) and uses $\op{A} = \sum_{x,y}\melem{x}{\op{A}}{y}\ketbra{x}{y}$; the rest of the proof is in the web course.
-\begin{definition}
-	A \emph{density operator} (state, density matrix) is a positive operator $\rho$ on $\Hil$ with $\tr(\rho) = 1$.
-\end{definition}
-A warning is in order here: the Hilbert space does \emph{not} directly describe the states. Many books say the states are the wave functions; that is not quite right. The Hilbert space is the space \emph{in which} we define states; the states themselves are operators. A system that interacts with its environment is in general not in a pure state, and completely isolated systems do not exist in physics: the electromagnetic field always couples in. Mixed states are therefore the normal case.
+We also say \emph{density operator}. A warning is in order here: the Hilbert space does \emph{not} directly describe the states. Many books say the states are the wave functions; that is not quite right. The Hilbert space is the space \emph{in which} we define states; the states themselves are operators. A system that interacts with its environment is in general not in a pure state, and completely isolated systems do not exist in physics: the electromagnetic field always couples in. Mixed states are therefore the normal case.
 
-Mixtures $\lambda\rho_1 + (1-\lambda)\rho_2$ with $0\leq\lambda\leq 1$ are again density operators. With the spectral decomposition every density operator is a mixture $\rho = \sum_x p_x\ketbra{\phi_x}{\phi_x}$ with $p_x\geq 0$ and $\sum_x p_x = 1$. The \emph{pure} states, the extreme points, are the states that are not proper mixtures; these are exactly the $\rho = \ketbra{\psi}{\psi}$, so they are given by a vector $\ket{\psi}$, its \emph{wave function} (the converse is proved in the web course). $\ket{\psi}$ and $e^{i\alpha}\ket{\psi}$ give the same state. Because $\tr(\ketbra{\psi}{\psi}) = \braket{\psi}{\psi}$ (Lecture~5), only normalised vectors represent pure states. One also calls $\ketbra{\psi}{\psi}$ a one-dimensional projector; ``one-dimensional'' refers to no spatial dimension, but to its image being one-dimensional.
+Mixtures $\lambda\rho_1 + (1-\lambda)\rho_2$ with $0\leq\lambda\leq 1$ are again density operators. With the spectral decomposition every density operator is a mixture $\rho = \sum_x p_x\ketbra{\phi_x}{\phi_x}$ with $p_x\geq 0$ and $\sum_x p_x = 1$. The pure states of P2 are exactly the states that are not proper mixtures, the extreme points (the proof is in the web course). The vector $\ket{\psi}$ is called the \emph{wave function} of the pure state; $\ket{\psi}$ and $e^{i\alpha}\ket{\psi}$ give the same state. Because $\tr(\ketbra{\psi}{\psi}) = \braket{\psi}{\psi}$ (Lecture~5), only normalised vectors represent pure states. The word ``one-dimensional'' refers to no spatial dimension, but to the image of the projector being one-dimensional.
 
 \begin{example}[States of a qubit]
 For $\Hil = \mathbb{C}^2$, $\rho$ is a positive $2\times 2$ matrix with trace one. Positivity requires $\rho_{00} = p\geq 0$, the trace condition forces $\rho_{11} = 1-p$, and because $\rho_{11}\geq 0$ as well, $p$ lies between zero and one. Hermiticity makes the off-diagonal entries complex conjugates of each other:
@@ -48,14 +45,14 @@ Compute the two eigenvalues of the matrix in Eq.~(\ref{eq:qubitzustand}) and der
 \end{exercise}
 
 \begin{merksatz}[P3]
-	Detectors = dual of state space = operators $\op{F}$ with $0 \leq \op{F} \leq \mathbb{I}$.
+	A detector, that is a measuring apparatus with the two possible responses ``yes'' (hit) and ``no'', is given by an operator $\op{F}$ with $0 \leq \op{F} \leq \mathbb{I}$.
 \end{merksatz}
-A detector is a measuring apparatus with the possible responses ``yes'' (a hit) and ``no''. For operators, $\op{A}\leq\op{B}$ means that $\op{B}-\op{A}$ is positive. So P3 requires \emph{two} conditions, $\op{F}\geq 0$ \emph{and} $\mathbb{I}-\op{F}\geq 0$, and on the right stands the identity operator, not the number one. ``Dual of state space'' means: the functions $\rho\mapsto\tr(\rho\,\op{F})$ are exactly the functions $f$ on the density operators with values between $0$ and $1$ that respect mixtures, $f(\lambda\rho_1 + (1-\lambda)\rho_2) = \lambda f(\rho_1) + (1-\lambda)f(\rho_2)$.
+The notation $0 \leq \op{F} \leq \mathbb{I}$ calls for a word of explanation: for operators, $\op{A}\leq\op{B}$ means that $\op{B}-\op{A}$ is positive. So P3 requires \emph{two} conditions, $\op{F}\geq 0$ \emph{and} $\mathbb{I}-\op{F}\geq 0$, and on the right stands the identity operator, not the number one. The detectors are at the same time the dual of the state space: the functions $\rho\mapsto\tr(\rho\,\op{F})$ are exactly the functions $f$ on the density operators with values between $0$ and $1$ that respect mixtures, $f(\lambda\rho_1 + (1-\lambda)\rho_2) = \lambda f(\rho_1) + (1-\lambda)f(\rho_2)$.
 
 \begin{merksatz}[P4]
-	Born rule = probability of detection for a state prepared as density operator $\rho$ is $\tr(\rho\,\op{F})$.
+	The response frequency of a detector $\op{F}$ on a system prepared according to $\rho$ is $\tr(\rho\,\op{F})$. In a pure state $\ket{\psi}$ this expression specialises to $\melem{\psi}{\op{F}}{\psi}$.
 \end{merksatz}
-For a pure state this is not a further assumption but a calculation with the cyclicity of the trace of Lecture~5; for a projector $\op{F} = \ketbra{\phi}{\phi}$ it becomes the form found in every textbook:
+The addendum about pure states is not a further assumption, but a calculation with the cyclicity of the trace of Lecture~5; for a projector $\op{F} = \ketbra{\phi}{\phi}$ it becomes the form found in every textbook:
 \begin{equation}
 	\tr\bigl(\ketbra{\psi}{\psi}\op{F}\bigr) = \tr\bigl(\bra{\psi}\op{F}\ket{\psi}\bigr) = \melem{\psi}{\op{F}}{\psi}, \qquad \melem{\psi}{\op{F}}{\psi} = \abs{\braket{\phi}{\psi}}^2.
 \end{equation}
@@ -82,16 +79,17 @@ and $\op{A}$ is Hermitian. In the projection-valued case, conversely, the measur
 \subsection{Time Evolution}
 A state characterises not a single system but a preparation procedure that can be set going at any time. For a closed system whose conditions do not change with time, only the \emph{relative} time delay between preparation and measurement counts; that is an assumption about the system, not a consequence of reproducibility.
 
-\begin{merksatz}[P5]
-	That is it; dynamics are symmetries. But let us add, as in the notes, the specification of the Heisenberg/Schroedinger dynamics.
-\end{merksatz}
-``Dynamics are symmetries'' means: time evolutions are symmetries of the state space, as we shall see in a moment. An experiment with a delayed measurement is simply an experiment with a different measurement. The rule for it is itself a postulate, not provable from P0 to P4; for the reversible dynamics of a closed system it reads: every kind of system is further characterised by a Hermitian \emph{Hamiltonian} $\op{\Ham}$, which determines the \emph{time-evolution operator} $\op{U}_t = e^{-\frac{it}{\hbar}\op{\Ham}}$ of Lecture~5. If one applies the measurement with a delay $t$, one obtains
-\begin{equation}
-	\tr\bigl(\op{U}_t\rho\,\op{U}_t\adj\op{F}\bigr) = \tr\bigl(\rho\,\op{U}_t\adj\op{F}\op{U}_t\bigr).
-\end{equation}
-The equation follows from the cyclicity of the trace. On the left it is natural to introduce $\rho_t = \op{U}_t\rho\,\op{U}_t\adj$ as a time-dependent state, with fixed measurements; that is the \emph{Schrödinger picture}, for pure states $\ket{\psi_t} = \op{U}_t\ket{\psi}$. On the right it is natural to introduce time-dependent observables $\op{A}_t = \op{U}_t\adj\op{A}\op{U}_t$ with a fixed state; that is the \emph{Heisenberg picture}. Both pictures give the same probabilities.
+With P0 to P4 we would in principle be finished; but because shifts in time keep turning up, we want a convenient auxiliary postulate.
 
-That $\op{\Ham}$ is Hermitian is essential: it guarantees that $\op{U}_t$ is unitary for all $t$, and for unitary $\op{U}$, $\op{U}\rho\,\op{U}\adj$ is again a density operator and $0\leq\op{U}\adj\op{F}\op{U}\leq\mathbb{I}$ again a detector: $\melem{\psi}{\op{U}\rho\,\op{U}\adj}{\psi} = \melem{\op{U}\adj\psi}{\rho}{\op{U}\adj\psi}\geq 0$, $\tr(\op{U}\rho\,\op{U}\adj) = \tr(\rho\,\op{U}\adj\op{U}) = 1$, and the same calculation with $\op{F}$ and with $\mathbb{I}-\op{F}$ gives the two inequalities. $\op{U}_t$ maps the state space reversibly onto itself and preserves mixtures and pure states; in this sense dynamics is a symmetry. $\op{\Ham}$ is \emph{additional} information about the kind of system. For unbounded Hamiltonians, which occur in infinitely many dimensions, it has to say ``self-adjoint'' instead of ``Hermitian''; the web course treats this.
+\begin{merksatz}[P5]
+	Every kind of system is further characterised by a \emph{Hamiltonian} $\op{\Ham}$, which determines the \emph{time-evolution operator} $\op{U}_t = e^{-\frac{it}{\hbar}\op{\Ham}}$. If, in an experiment with a given preparation and measurement procedure, the measurement is applied with a delay of $t$ seconds, one obtains the expectation value
+	\begin{equation}
+		\langle\op{A}\rangle(t) = \tr\bigl(\op{U}_t\rho\,\op{U}_t\adj\op{A}\bigr) = \tr\bigl(\rho\,\op{U}_t\adj\op{A}\op{U}_t\bigr).
+	\end{equation}
+\end{merksatz}
+This equation follows simply from the cyclicity of the trace. It is included here because the two sides correspond to different, but evidently equivalent, conceptions of time evolution: on the left it is natural to introduce $\rho_t = \op{U}_t\rho\,\op{U}_t\adj$ as a time-dependent state, with fixed measurements; that is the \emph{Schrödinger picture}, for pure states $\ket{\psi_t} = \op{U}_t\ket{\psi}$. On the right it is natural to introduce time-dependent observables $\op{A}_t = \op{U}_t\adj\op{A}\op{U}_t$ with a fixed state; that is the \emph{Heisenberg picture}. Both pictures give the same probabilities.
+
+One prerequisite is missing from the postulate, and we supply it here: the Hamiltonian $\op{\Ham}$ is always \emph{Hermitian}. Only then is $\op{U}_t$ unitary for all $t$, and for unitary $\op{U}$, $\op{U}\rho\,\op{U}\adj$ is again a density operator and $0\leq\op{U}\adj\op{F}\op{U}\leq\mathbb{I}$ again a detector: $\melem{\psi}{\op{U}\rho\,\op{U}\adj}{\psi} = \melem{\op{U}\adj\psi}{\rho}{\op{U}\adj\psi}\geq 0$, $\tr(\op{U}\rho\,\op{U}\adj) = \tr(\rho\,\op{U}\adj\op{U}) = 1$, and the same calculation with $\op{F}$ and with $\mathbb{I}-\op{F}$ gives the two inequalities. An experiment with a delayed measurement is then simply an experiment with a different measurement; in that sense P5 is compatible with the rest. $\op{U}_t$ maps the state space reversibly onto itself and preserves mixtures and pure states; in this sense dynamics is a symmetry. Even so, P5 cannot be proved from the other postulates, and the essential point remains: $\op{\Ham}$ is an \emph{additional} piece of information about the kind of system. For unbounded Hamiltonians, which occur in infinitely many dimensions, it has to say ``self-adjoint'' instead of ``Hermitian''; the web course treats this.
 
 \begin{example}[A qubit under the Z measurement]
 With $\op{\Ham} = \varepsilon\pauli{x}$ and $\op{U}_t = \cos(\varepsilon t/\hbar)\mathbb{I} - i\sin(\varepsilon t/\hbar)\pauli{x}$ from Lecture~5, the Z measurement in the state $\ketbra{0}{0}$ gives after a time $t$

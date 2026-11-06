@@ -31,6 +31,13 @@
   round. Until then the parity gates (`check_parity.py`, check_levels K6/M1) are red for these
   files by design. **Nothing is pushed to master in between**: a push deploys the student site.
 
+- **D-WORTLAUT (2026-11-06).** The postulates P1 to P5 are printed in the wording of script v0.2
+  (`git show 90fe735d:latex/lectures/de/vl06.tex`, lines 22, 36, 64, 82-83, 126-128; English
+  `lec06.tex`), in the script and in the course, both languages, with the course's symbols (hats,
+  `\Hil`, `F`, `psi`). The brief's telegraphic lines (docs/plan/BRIEF.md:51-55) are not printed; P0
+  stays. TJO: "I really dont like the new wording. About this I am very particular." Two slips of
+  v0.2 were normalised: "heisst" to "heißt" (P3) and "an gemäß" to "an einem gemäß" (P4).
+
 Standing decisions that apply unchanged: D-HAT (hats on operators; none on 𝕀, states, Pauli
 matrices, ket-bras), D-BUDGET-FLEX (budgets are guides; exceptions stated with reasons; no
 counting hacks), the script-v0.3 rules 1-8 (`docs/plan/script-v0.3/BRIEF.md`), the authoring

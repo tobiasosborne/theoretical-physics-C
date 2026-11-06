@@ -102,7 +102,7 @@
    "destination": [
     "c04.eq.p1"
    ],
-   "note": "Postulat 1 becomes P1 in TJO's wording (BRIEF.md:51)."
+   "note": "Postulat 1 is P1, wording of v0.2 kept (TJO, 2026-11-06, D-WORTLAUT)."
   },
   {
    "item": "text@24",
@@ -172,7 +172,7 @@
     "c04.eq.p2",
     "D22"
    ],
-   "note": "Postulat 2 becomes P2 in TJO's wording (BRIEF.md:52) plus D22; equivalence in finite dimension c04.prop.funktionale.",
+   "note": "Postulat 2 is P2, wording of v0.2 kept (TJO, 2026-11-06, D-WORTLAUT) plus D22; equivalence in finite dimension c04.prop.funktionale.",
    "migration": [
     "M-0072"
    ]
@@ -302,7 +302,7 @@
     "c04.eq.p3",
     "D24"
    ],
-   "note": "Postulat 3 becomes P3 in TJO's wording (BRIEF.md:53); 'dual of the state space' is c04.prop.effekte."
+   "note": "Postulat 3 is P3, wording of v0.2 kept (TJO, 2026-11-06, D-WORTLAUT); 'dual of the state space' is c04.prop.effekte."
   },
   {
    "item": "text@67",
@@ -384,7 +384,7 @@
     "c04.eq.p4",
     "D26"
    ],
-   "note": "Postulat 4 becomes P4 in TJO's wording (BRIEF.md:54)."
+   "note": "Postulat 4 is P4, wording of v0.2 kept (TJO, 2026-11-06, D-WORTLAUT)."
   },
   {
    "item": "text@83",
@@ -394,7 +394,7 @@
     "c04.eq.p4",
     "D26"
    ],
-   "note": "Postulat 4 becomes P4 in TJO's wording (BRIEF.md:54)."
+   "note": "Postulat 4 is P4, wording of v0.2 kept (TJO, 2026-11-06, D-WORTLAUT)."
   },
   {
    "item": "environment@86",
@@ -584,7 +584,7 @@
     "c04.eq.p5",
     "c04.eq.dynamik"
    ],
-   "note": "Postulat 5 becomes P5 in TJO's wording (BRIEF.md:55) plus the rule with Hermitian H.",
+   "note": "Postulat 5 is P5, wording of v0.2 kept (TJO, 2026-11-06, D-WORTLAUT) plus the rule with Hermitian H.",
    "migration": [
     "M-0069"
    ]
@@ -597,7 +597,7 @@
     "c04.eq.p5",
     "c04.eq.dynamik"
    ],
-   "note": "Postulat 5 becomes P5 in TJO's wording (BRIEF.md:55) plus the rule with Hermitian H.",
+   "note": "Postulat 5 is P5, wording of v0.2 kept (TJO, 2026-11-06, D-WORTLAUT) plus the rule with Hermitian H.",
    "migration": [
     "M-0069"
    ]
@@ -610,7 +610,7 @@
     "c04.eq.p5",
     "c04.eq.dynamik"
    ],
-   "note": "Postulat 5 becomes P5 in TJO's wording (BRIEF.md:55) plus the rule with Hermitian H.",
+   "note": "Postulat 5 is P5, wording of v0.2 kept (TJO, 2026-11-06, D-WORTLAUT) plus the rule with Hermitian H.",
    "migration": [
     "M-0069"
    ]

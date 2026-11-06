@@ -60,7 +60,8 @@ its states and effects are built from a Hilbert space, with the tools of Chapter
 
 We set up the postulates step by step, each more specialised than the one before. You know the first
 from Chapter~\ref{c00}:
-% P0 repeats c00.eq.p0 word for word.
+% P0 repeats c00.eq.p0 word for word; P1 to P5 are worded as in script v0.2 (lec06.tex, TJO's
+% text; decision D-WORTLAUT in docs/plan/lec56/BRIEF.md, 2026-11-06).
 \begin{equation}\label{c04.eq.p0}\claim{c04.cl.p0}{author-stipulated}
   \begin{aligned}
     &\text{P0.\ \tpcifenglish{Physical theories are probabilistic theories:}{Physikalische Theorien sind probabilistische Theorien:}} \\
@@ -70,8 +71,7 @@ from Chapter~\ref{c00}:
 The next postulate fixes what the theory is built from.
 \begin{equation}\label{c04.eq.p1}\claim{c04.cl.p1}{author-stipulated}
   \begin{aligned}
-    &\text{P1.\ \tpcifenglish{To every quantum mechanical system we assign a Hilbert space}{Jedem quantenmechanischen System ordnen wir einen Hilbertraum zu}} \\
-    &\text{\tpcifenglish{(this is morally part of the definition of the state space for a GPT).}{(das gehört dem Sinn nach zur Definition des Zustandsraums einer GPT).}}
+    &\text{P1.\ \tpcifenglish{Every kind of quantum mechanical system is assigned a Hilbert space}{Jeder Sorte quantenmechanischer Systeme wird ein Hilbertraum}}\ \Hil\text{\tpcifenglish{.}{ zugeordnet.}}
   \end{aligned}
 \end{equation}
 
@@ -90,24 +90,28 @@ Chapter~12. In the core of this chapter $\Hil$ is finite-dimensional, as in Chap
 
 \begin{equation}\label{c04.eq.p2}\claim{c04.cl.p2}{author-stipulated}
   \begin{aligned}
-    &\text{P2.\ \tpcifenglish{State space = positive linear functionals on}{Zustandsraum = positive lineare Funktionale auf}}\ \BdOp{\Hil}\ \text{\tpcifenglish{with norm 1.}{mit Norm 1.}} \\
-    &\text{\tpcifenglish{In the trace-class case these are density operators.}{Im Spurklassenfall sind das Dichteoperatoren.}} \\
-    &\text{\tpcifenglish{Extreme points}{Extremalpunkte}}\ \Rightarrow\ \text{\tpcifenglish{pure states.}{reine Zustände.}}
+    &\text{P2.\ \tpcifenglish{A preparation procedure is characterised by a state, or density matrix.}{Ein Präparierverfahren wird charakterisiert durch einen Zustand, bzw. eine Dichtematrix.}} \\
+    &\text{\tpcifenglish{This is a positive operator}{Das ist ein positiver Operator}}\ \rho\ \text{\tpcifenglish{on}{auf}}\ \Hil\text{\tpcifenglish{, with}{, mit}}\ \tr(\rho) = 1 . \\
+    &\text{\tpcifenglish{For pure states in particular}{Speziell für reine Zustände ist}}\ \rho\ \text{\tpcifenglish{is a one-dimensional projector}{ein eindimensionaler Projektor}}\ \rho = \ketbra{\psi}{\psi} , \\
+    &\text{\tpcifenglish{hence given by a vector}{also gegeben durch einen Vektor}}\ \ket{\psi} \in \Hil .
   \end{aligned}
 \end{equation}
-Here $\BdOp{\Hil}$ is the set of operators on $\Hil$; in finite dimension these are all operators.
-A \emph{linear functional} $\AlgSt$ assigns a number $\AlgSt(\op{A})$ to every operator $\op{A}$,
-linearly. It is called \emph{positive} if $\AlgSt(\op{A}) \geq 0$ for every positive operator
-$\op{A}$. For a positive functional, ``norm~1'' is the same as $\AlgSt(\Id) = 1$; that is the
-normalisation we use. The state is thus a rule that assigns to every quantity its expectation
-value. In finite dimension every such rule is given by an operator that one evaluates with the
-trace.
-
-% Voice: vl06.tex:36-41 (postulate 2, "state, or density matrix").
+% Voice: vl06.tex:36-41 (postulate 2, "state, or density matrix").  D22 repeats the notion of the
+% postulate because the registry needs it for \defref.
 \tpcdef{D22}
 
-% Not in vl06: the equivalence with P2 in TJO's wording (BRIEF.md:52).  The chapter author's
-% derivation (DERIVATION.md, c04.cl.funktionale).
+Chapter~\ref{c02} introduced states more abstractly, as elements of a state space (\defref{D3})
+on which the effects are affine functions. P2 says which set that is for quantum theory: the
+density operators. One obtains the same set by introducing a state as a rule that assigns to
+every quantity its expectation value, that is, as a positive linear functional with norm~1 on the
+set $\BdOp{\Hil}$ of operators on $\Hil$. A \emph{linear functional} $\AlgSt$ assigns a number
+$\AlgSt(\op{A})$ to every operator $\op{A}$, linearly; it is called \emph{positive} if
+$\AlgSt(\op{A}) \geq 0$ for every positive operator $\op{A}$, and for a positive functional
+``norm~1'' is the same as $\AlgSt(\Id) = 1$. In finite dimension every such rule is given by a
+density operator that one evaluates with the trace:
+
+% Not in vl06: the equivalence with the brief's version (BRIEF.md:52, positive normalised
+% functionals).  The chapter author's derivation (DERIVATION.md, c04.cl.funktionale).
 \begin{proposition}[States are density operators]\label{c04.prop.funktionale}\claim[proof-included]{c04.cl.funktionale}{derived}
   Let $\Hil$ be finite-dimensional. For every positive linear functional $\AlgSt$ on the operators
   with $\AlgSt(\Id) = 1$ there is exactly one density operator $\rho$ with
@@ -131,15 +135,15 @@ trace.
   $\tr(\rho\,\op{A}) = \sum_x a_x \melem{\phi_x}{\rho}{\phi_x} \geq 0$.
 \end{proof}
 
-P2 speaks of the ``trace-class case''. In finite dimension that is no restriction; in infinitely
-many dimensions there are positive normalised functionals that come from no density
-operator\zoomref{c04.v1}.
+In finite dimension this says everything about the states. In infinitely many dimensions
+$\tr(\rho) = 1$ demands more, namely that $\rho$ belongs to the trace class, and there are
+positive normalised functionals that come from no density operator\zoomref{c04.v1}.
 
 \begin{vertiefung}[id=c04.v1,
     titel={States in infinitely many dimensions},
     wozu={In the core the positive normalised functionals are exactly the density operators
-      (Proposition~\ref{c04.prop.funktionale}). P2 says ``in the trace-class case'', and that is a
-      restriction: in infinitely many dimensions there are states that come from no density
+      (Proposition~\ref{c04.prop.funktionale}). P2 demands $\tr(\rho) = 1$; in infinitely many
+      dimensions that presupposes the trace class, and there are states that come from no density
       operator. This block identifies the states represented by density operators and gives a
       state that is not represented by one.},
     voraussetzung={Section~\ref{c04.s1.1}; blocks~\ref{c03.v1} and~\ref{c03.v5} (bounded
@@ -192,7 +196,8 @@ operator\zoomref{c04.v1}.
   dimensions. It is not a vector state on this Hilbert space and not a finite or countable mixture
   of such. The argument for its existence is not constructive: the Hahn-Banach extension is not
   given explicitly. For systems with finitely many particles the course uses only the normal
-  states, that is, the density operators; that is the ``trace-class case'' in P2.
+  states, that is, the density operators; that is the trace class which $\tr(\rho) = 1$ in P2
+  presupposes.
 \end{vertiefung}
 
 % Voice: vl06.tex:43-45; v07 [24:47]-[32:10] ("wave functions are not the states"; "there are no
@@ -205,12 +210,12 @@ a pure state, and completely isolated systems do not exist in physics: the elect
 always couples in. Mixed states are therefore the normal case, not a concession to mathematical
 generality.
 
-% BRIEF.md:52 "Extreme points => pure states"; D4 (Chapter 2): pure = extreme point.
+% P2 (pure states = one-dimensional projectors); D4 (Chapter 2): pure = extreme point.
 % vl06.tex:47-52 (one-dimensional projector, normalisation through the trace); v07 [32:10] (rank).
 The density operators form a state space in the sense of \defref{D3}: mixtures
 $\lambda\rho_1 + (1-\lambda)\rho_2$ with $0 \leq \lambda \leq 1$ are again density operators.
-The following proposition identifies which of them are pure, that is, which are not proper
-mixtures (\defref{D4}).
+P2 calls the one-dimensional projectors the pure states. That these are exactly the states that
+are not proper mixtures (\defref{D4}) is the content of the following proposition.
 
 \begin{proposition}[Pure states]\label{c04.prop.rein}\claim[proof-included]{c04.cl.rein}{derived}
   Let $\Hil$ be finite-dimensional. A density operator is pure if and only if it has the form
@@ -286,11 +291,11 @@ a preparation procedure, not a single system.
 
 \begin{equation}\label{c04.eq.p3}\claim{c04.cl.p3}{author-stipulated}
   \begin{aligned}
-    &\text{P3.\ \tpcifenglish{Detectors = dual of state space = operators}{Detektoren = Dual des Zustandsraums = Operatoren}}\ \op{\EffOp}\ \text{\tpcifenglish{with}{mit}}\ 0 \leq \op{\EffOp} \leq \Id .
+    &\text{P3.\ \tpcifenglish{A detector, that is a measuring apparatus with the two possible responses}{Ein Detektor, das heißt ein Messapparat mit den beiden Ansprechmöglichkeiten}} \\
+    &\text{\tpcifenglish{``yes'' (hit) and ``no'', is given by an operator}{„ja“ (Treffer) und „nein“, ist gegeben durch einen Operator}}\ \op{\EffOp}\ \text{\tpcifenglish{with}{mit}}\ 0 \leq \op{\EffOp} \leq \Id .
   \end{aligned}
 \end{equation}
-A detector is a measuring apparatus with the two possible responses ``yes'' (a hit) and ``no'',
-that is, a yes-no question in the sense of Chapter~\ref{c02}.
+A detector is thus a yes-no question in the sense of Chapter~\ref{c02}.
 % Voice: vl06.tex:66; v07 [52:53]-[57:08] ("operator inequalities are a generalisation"; "the one
 % is the identity operator").
 The notation $0 \leq \op{\EffOp} \leq \Id$ needs explaining. For operators, $\op{A} \leq \op{B}$
@@ -300,9 +305,10 @@ operator, not the number one.
 
 \tpcdef{D24}
 
-The first equals sign in P3 says where these operators come from. In Chapter~\ref{c02} an effect is
-an affine function on the state space with values between $0$ and $1$ (\defref{D2}). The effects
-of the state space of the density operators are exactly the effect operators:
+Where exactly these operators come from is said by Chapter~\ref{c02}: there an effect is an
+affine function on the state space with values between $0$ and $1$ (\defref{D2}); the detectors
+are thus the dual of the state space. The effects of the state space of the density operators
+are exactly the effect operators:
 
 % Not in vl06; the chapter author's derivation (DERIVATION.md, c04.cl.effekte).  GAP-TJO G-0011:
 % whether the no-restriction hypothesis (D12) is part of P3; the proposition shows only that the
@@ -356,16 +362,16 @@ of the state space of the density operators are exactly the effect operators:
 
 \begin{equation}\label{c04.eq.p4}\claim{c04.cl.p4}{author-stipulated}
   \begin{aligned}
-    &\text{P4.\ \tpcifenglish{Born rule = probability of detection for a state prepared}{Bornsche Regel = Wahrscheinlichkeit des Ansprechens für einen Zustand, präpariert}} \\
-    &\text{\tpcifenglish{as density operator}{als Dichteoperator}}\ \rho\ \text{\tpcifenglish{is}{, ist}}\ \tr(\rho\, \op{\EffOp}) .
+    &\text{P4.\ \tpcifenglish{The response frequency of a detector}{Die Ansprechhäufigkeit eines Detektors}}\ \op{\EffOp}\ \text{\tpcifenglish{on a system prepared according to}{an einem gemäß}}\ \rho\ \text{\tpcifenglish{is}{präparierten System ist}}\ \tr(\rho\, \op{\EffOp}) . \\
+    &\text{\tpcifenglish{In a pure state}{In einem reinen Zustand}}\ \ket{\psi}\ \text{\tpcifenglish{this expression specialises to}{spezialisiert sich dieser Ausdruck zu}}\ \melem{\psi}{\op{\EffOp}}{\psi} .
   \end{aligned}
 \end{equation}
 
 \tpcdef{D26}
 
 % vl06.tex:83 (addition on pure states) and 99-104 (calculation with cyclicity).
-For a pure state $\rho = \ketbra{\psi}{\psi}$ this is not a further assumption but a calculation
-with the cyclicity of the trace, Equation~\eqref{c03.eq.zyklisch}:
+The addendum about pure states is not a further assumption, but a calculation: with
+$\rho = \ketbra{\psi}{\psi}$ and the cyclicity of the trace, Equation~\eqref{c03.eq.zyklisch},
 \begin{equation}\label{c04.eq.born-rein}\claim{c04.cl.born-rein}{derived}
   \tr\bigl(\ketbra{\psi}{\psi}\op{\EffOp}\bigr) = \tr\bigl(\bra{\psi}\op{\EffOp}\ket{\psi}\bigr) = \melem{\psi}{\op{\EffOp}}{\psi} .
 \end{equation}
@@ -467,28 +473,25 @@ not change with time. Then it does not matter whether preparation and measuremen
 out somewhat later; the only thing that counts is the \emph{relative} time delay. That is an
 assumption about the system, not a consequence of reproducibility: a system driven from outside in
 a time-dependent way does not satisfy it.
+
+With P0 to P4 we would in principle be finished; but because shifts in time keep turning up, we
+want a convenient auxiliary postulate. It describes the reversible dynamics of a closed system
+with a time-independent Hamiltonian and uses the operator $\op{U}_t$ of
+Equation~\eqref{c03.eq.zeitentwicklung}.
+% vl06.tex:126-130 (postulate 5, wording of v0.2) and 136 (Hermiticity added afterwards); hazard H4.3.
 \begin{equation}\label{c04.eq.p5}\claim{c04.cl.p5}{author-stipulated}
   \begin{aligned}
-    &\text{P5.\ \tpcifenglish{That is it; dynamics are symmetries. But let us add, as in the notes,}{Das ist alles; Dynamik sind Symmetrien. Fügen wir aber, wie im Skript,}} \\
-    &\text{\tpcifenglish{the specification of the Heisenberg/Schroedinger dynamics.}{die Angabe der Heisenberg-/Schrödinger-Dynamik hinzu.}}
+    &\text{P5.\ \tpcifenglish{Every kind of system is further characterised by a Hamiltonian}{Jede Systemsorte ist weiter charakterisiert durch einen Hamiltonoperator}}\ \op{\Ham} , \\
+    &\text{\tpcifenglish{which determines the time-evolution operator}{der den Zeitentwicklungsoperator}}\ \op{U}_t = e^{-\frac{it}{\hbar}\op{\Ham}}\text{\tpcifenglish{.}{ bestimmt.}} \\
+    &\text{\tpcifenglish{If, in an experiment with a given preparation and measurement procedure,}{Wendet man in einem Experiment mit gegebenem Präparier- und Messverfahren}} \\
+    &\text{\tpcifenglish{the measurement is applied with a delay of}{die Messung mit einer Verzögerung von}}\ t\ \text{\tpcifenglish{seconds, one obtains the expectation value}{Sekunden an, so erhält man den Erwartungswert}}
   \end{aligned}
 \end{equation}
-With P0 to P4 we would in principle be done: an experiment with a delayed measurement is simply an
-experiment with a different measurement. But because time shifts come up all the time, we state
-the rule for them explicitly, for the reversible dynamics of a closed system with a
-time-independent Hamiltonian. It uses the operator $\op{U}_t$ of
-Equation~\eqref{c03.eq.zeitentwicklung}.
-
-% vl06.tex:130-136 (postulate 5) and 138 (Hermiticity added afterwards); hazard H4.3.
-Every kind of system is further characterised by a Hermitian operator $\op{\Ham}$, its
-\emph{Hamiltonian}, which determines the \emph{time-evolution operator}
-$\op{U}_t = e^{-\frac{it}{\hbar}\op{\Ham}}$. If in an experiment one applies the measurement with a
-delay $t$, one obtains instead of $\tr(\rho\,\op{\EffOp})$
 \begin{equation}\label{c04.eq.dynamik}\claim{c04.cl.dynamik}{derived}
-  \tr\bigl(\op{U}_t\, \rho\, \op{U}_t\adj\, \op{\EffOp}\bigr) = \tr\bigl(\rho\, \op{U}_t\adj \op{\EffOp}\, \op{U}_t\bigr) .
+  \langle \op{A} \rangle(t) = \tr\bigl(\op{U}_t\, \rho\, \op{U}_t\adj\, \op{A}\bigr) = \tr\bigl(\rho\, \op{U}_t\adj \op{A}\, \op{U}_t\bigr) .
 \end{equation}
-The equation follows from the cyclicity of the trace. Its two sides correspond to two equivalent
-views of time evolution. On the left it is natural to introduce
+This equation follows simply from the cyclicity of the trace. It is included here because the
+two sides correspond to different, but evidently equivalent, conceptions of time evolution. On the left it is natural to introduce
 $\rho_t = \op{U}_t\, \rho\, \op{U}_t\adj$ as a time-dependent state and to regard the
 measurements as time-independent; that is the \emph{Schrödinger picture}. For pure states this
 means $\ket{\psi_t} = \op{U}_t\ket{\psi}$. On the right it is natural to introduce time-dependent
@@ -496,9 +499,9 @@ effect operators and observables $\op{A}_t = \op{U}_t\adj \op{A}\, \op{U}_t$ wit
 that is the \emph{Heisenberg picture}. Both pictures give the same probabilities; which one uses is
 a matter of convenience.
 
-That $\op{\Ham}$ is Hermitian is essential\zoomref{c04.v2}: it guarantees that $\op{U}_t$ is
-unitary for all $t$. Then $\rho_t$ and $\op{U}_t\adj\op{\EffOp}\,\op{U}_t$ are again a state and
-a detector:
+One prerequisite is missing from the postulate, and we supply it here: the Hamiltonian $\op{\Ham}$
+is always \emph{Hermitian}\zoomref{c04.v2}. Only then is $\op{U}_t$ unitary for all $t$, and only
+then are $\rho_t$ and $\op{U}_t\adj\op{\EffOp}\,\op{U}_t$ again a state and a detector:
 
 \begin{proposition}[Time evolution preserves states and detectors]\label{c04.prop.dynamik}\claim[proof-included]{c04.cl.dynamik-zulaessig}{derived}
   Let $\op{U}$ be unitary. If $\rho$ is a density operator, so is $\op{U}\rho\,\op{U}\adj$; if
@@ -549,13 +552,16 @@ a detector:
   derivative exists
   \srcref{reed-simon-1}{p.~265 and p.~266}. With $\op{A} = -\op{\Ham}/\hbar$, $\op{U}(t) = \op{U}_t$.
   A symmetric operator that is not self-adjoint generates no such group; that is the reason why
-  postulate P5 has to say ``self-adjoint'' for unbounded Hamiltonians.
+  it has to say ``self-adjoint'' instead of ``Hermitian'' for unbounded Hamiltonians.
 \end{vertiefung}
 
-% Voice: vl06.tex:138 ("It still cannot be proved from them ... additional information about the
-% kind of system"); BRIEF.md:55 ("dynamics are symmetries").
-The rule still cannot be proved from P0 to P4, and what remains essential is this: $\op{\Ham}$ is
-\emph{additional} information about the kind of system. The proposition shows in what sense
+% Voice: vl06.tex:136 ("An experiment with a delayed measurement is then simply an experiment with
+% a different measurement ... additional piece of information about the kind of system");
+% BRIEF.md:55 ("dynamics are symmetries").
+An experiment with a delayed measurement is then simply an experiment with a different
+measurement; in that sense P5 is compatible with the other postulates. Even so, it cannot be
+proved from them, and the essential point remains: $\op{\Ham}$ is an \emph{additional} piece of
+information about the kind of system. The proposition shows in what sense
 dynamics is a symmetry: $\op{U}_t$ maps the state space reversibly onto itself and preserves
 mixtures and pure states. Chapters~8 and~9 turn this into the general notion.
 

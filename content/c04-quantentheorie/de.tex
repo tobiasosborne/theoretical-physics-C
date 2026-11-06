@@ -7,10 +7,10 @@
 % singuläre Zustände) und H4.3 (selbstadjungierter Hamiltonoperator).  Gleason und Busch,
 % Naimark, Instrumente und vollständige Positivität kommen später.
 % Wohin jede Zeile von vl06 gegangen ist: evidence/migrations/maps/vl06-map.json.
-% Die Postulate P0 bis P5 sind TJOs Wortlaut aus docs/plan/BRIEF.md:50-55 (Ledger c04.cl.p0 bis
-% c04.cl.p5, author-stipulated); die englische Fassung steht wörtlich in der englischen Ausgabe.
-% Die deutsche Fassung ist eine Übersetzung des Kapitelautors, nicht TJOs Wortlaut (GAP-TJO an
-% jeder Stelle).  Herleitungen: evidence/derivations/c04/DERIVATION.md, Zahlen nachgerechnet von
+% Die Postulate P1 bis P5 stehen im Wortlaut des Skripts v0.2 (TJOs Text: vl06.tex Zeilen 22, 36,
+% 64, 82-83, 126-128; englisch lec06.tex), Entscheidung D-WORTLAUT in docs/plan/lec56/BRIEF.md
+% (2026-11-06), mit den Symbolen des Kurses; P0 ist der Satz des Briefs (docs/plan/BRIEF.md:50).
+% Ledger c04.cl.p0 bis c04.cl.p5, author-stipulated.  Herleitungen: evidence/derivations/c04/DERIVATION.md, Zahlen nachgerechnet von
 % evidence/derivations/c04/check_c04.py.
 % Stimme: Sätze aus vl06.tex sind beibehalten, wo sie stimmen; Bemerkungen aus den Videos
 % (transcripts/clean/v07.md, v08.md bis 44:00) sind mit Zeitmarke kommentiert.
@@ -60,9 +60,7 @@ Werkzeug aus Kapitel~\ref{c03}.
 
 Wir stellen die Postulate Schritt für Schritt auf, jedes spezieller als das vorige. Das erste
 kennen Sie aus Kapitel~\ref{c00}:
-% GAP-TJO: Die deutschen Fassungen von P0 bis P5 sind Übersetzungen des Kapitelautors aus
-% docs/plan/BRIEF.md:50-55, nicht TJOs Wortlaut (Ledger c04.cl.p0 bis c04.cl.p5, gap_tjo).
-% P0 wiederholt c00.eq.p0 wörtlich.
+% P0 wiederholt c00.eq.p0 wörtlich; P1 bis P5 im Wortlaut des Skripts v0.2 (siehe Kopf).
 \begin{equation}\label{c04.eq.p0}\claim{c04.cl.p0}{author-stipulated}
   \begin{aligned}
     &\text{P0.\ \tpcifenglish{Physical theories are probabilistic theories:}{Physikalische Theorien sind probabilistische Theorien:}} \\
@@ -72,8 +70,7 @@ kennen Sie aus Kapitel~\ref{c00}:
 Das nächste Postulat legt fest, woraus die Theorie gebaut wird.
 \begin{equation}\label{c04.eq.p1}\claim{c04.cl.p1}{author-stipulated}
   \begin{aligned}
-    &\text{P1.\ \tpcifenglish{To every quantum mechanical system we assign a Hilbert space}{Jedem quantenmechanischen System ordnen wir einen Hilbertraum zu}} \\
-    &\text{\tpcifenglish{(this is morally part of the definition of the state space for a GPT).}{(das gehört dem Sinn nach zur Definition des Zustandsraums einer GPT).}}
+    &\text{P1.\ \tpcifenglish{Every kind of quantum mechanical system is assigned a Hilbert space}{Jeder Sorte quantenmechanischer Systeme wird ein Hilbertraum}}\ \Hil\text{\tpcifenglish{.}{ zugeordnet.}}
   \end{aligned}
 \end{equation}
 
@@ -93,24 +90,28 @@ Kapitel~\ref{c03} endlichdimensional.
 
 \begin{equation}\label{c04.eq.p2}\claim{c04.cl.p2}{author-stipulated}
   \begin{aligned}
-    &\text{P2.\ \tpcifenglish{State space = positive linear functionals on}{Zustandsraum = positive lineare Funktionale auf}}\ \BdOp{\Hil}\ \text{\tpcifenglish{with norm 1.}{mit Norm 1.}} \\
-    &\text{\tpcifenglish{In the trace-class case these are density operators.}{Im Spurklassenfall sind das Dichteoperatoren.}} \\
-    &\text{\tpcifenglish{Extreme points}{Extremalpunkte}}\ \Rightarrow\ \text{\tpcifenglish{pure states.}{reine Zustände.}}
+    &\text{P2.\ \tpcifenglish{A preparation procedure is characterised by a state, or density matrix.}{Ein Präparierverfahren wird charakterisiert durch einen Zustand, bzw. eine Dichtematrix.}} \\
+    &\text{\tpcifenglish{This is a positive operator}{Das ist ein positiver Operator}}\ \rho\ \text{\tpcifenglish{on}{auf}}\ \Hil\text{\tpcifenglish{, with}{, mit}}\ \tr(\rho) = 1 . \\
+    &\text{\tpcifenglish{For pure states in particular}{Speziell für reine Zustände ist}}\ \rho\ \text{\tpcifenglish{is a one-dimensional projector}{ein eindimensionaler Projektor}}\ \rho = \ketbra{\psi}{\psi} , \\
+    &\text{\tpcifenglish{hence given by a vector}{also gegeben durch einen Vektor}}\ \ket{\psi} \in \Hil .
   \end{aligned}
 \end{equation}
-Hier ist $\BdOp{\Hil}$ die Menge der Operatoren auf $\Hil$; in endlicher Dimension sind das alle
-Operatoren. Ein \emph{lineares Funktional} $\AlgSt$ ordnet jedem Operator $\op{A}$ linear eine Zahl
-$\AlgSt(\op{A})$ zu. Es heißt \emph{positiv}, wenn $\AlgSt(\op{A}) \geq 0$ für jeden positiven
-Operator $\op{A}$ ist. Für ein positives Funktional ist „Norm~1“ dasselbe wie $\AlgSt(\Id) = 1$;
-das ist die Normierung, die wir benutzen. Der Zustand ist also eine Vorschrift, die
-jeder Größe ihren Erwartungswert zuordnet. In endlicher Dimension ist jede solche Vorschrift durch
-einen Operator gegeben, den man mit der Spur auswertet.
-
-% Stimme: vl06.tex:36-41 (Postulat 2, „Zustand, bzw. Dichtematrix“).
+% Stimme: vl06.tex:36-41 (Postulat 2, „Zustand, bzw. Dichtematrix“).  D22 wiederholt den Begriff
+% des Postulats, weil die Registry ihn für \defref braucht.
 \tpcdef{D22}
 
-% Nicht in vl06: die Gleichwertigkeit mit P2 in TJOs Fassung (BRIEF.md:52).  Herleitung des
-% Kapitelautors (DERIVATION.md, c04.cl.funktionale).
+Kapitel~\ref{c02} hat Zustände abstrakter eingeführt, als Elemente eines Zustandsraums
+(\defref{D3}), auf dem die Effekte affine Funktionen sind. P2 sagt, welche Menge das für die
+Quantentheorie ist: die Dichteoperatoren. Dieselbe Menge erhält man, wenn man einen Zustand als
+Vorschrift einführt, die jeder Größe ihren Erwartungswert zuordnet, also als positives lineares
+Funktional mit Norm~1 auf der Menge $\BdOp{\Hil}$ der Operatoren auf $\Hil$. Ein \emph{lineares
+Funktional} $\AlgSt$ ordnet jedem Operator $\op{A}$ linear eine Zahl $\AlgSt(\op{A})$ zu; es heißt
+\emph{positiv}, wenn $\AlgSt(\op{A}) \geq 0$ für jeden positiven Operator $\op{A}$ ist, und für ein
+positives Funktional ist „Norm~1“ dasselbe wie $\AlgSt(\Id) = 1$. In endlicher Dimension ist jede
+solche Vorschrift durch einen Dichteoperator gegeben, den man mit der Spur auswertet:
+
+% Nicht in vl06: die Gleichwertigkeit mit der Fassung des Briefs (BRIEF.md:52, positive normierte
+% Funktionale).  Herleitung des Kapitelautors (DERIVATION.md, c04.cl.funktionale).
 \begin{proposition}[Zustände sind Dichteoperatoren]\label{c04.prop.funktionale}\claim[proof-included]{c04.cl.funktionale}{derived}
   Sei $\Hil$ endlichdimensional. Zu jedem positiven linearen Funktional $\AlgSt$ auf den Operatoren
   mit $\AlgSt(\Id) = 1$ gibt es genau einen Dichteoperator $\rho$ mit
@@ -134,15 +135,15 @@ einen Operator gegeben, den man mit der Spur auswertet.
   $\tr(\rho\,\op{A}) = \sum_x a_x \melem{\phi_x}{\rho}{\phi_x} \geq 0$.
 \end{proof}
 
-P2 spricht vom „Spurklassenfall“. In endlicher Dimension ist das keine Einschränkung; in unendlich
-vielen Dimensionen gibt es positive normierte Funktionale, die von keinem Dichteoperator
-kommen\zoomref{c04.v1}.
+In endlicher Dimension ist damit über die Zustände alles gesagt. In unendlich vielen Dimensionen
+verlangt $\tr(\rho) = 1$ mehr, nämlich dass $\rho$ zur Spurklasse gehört, und es gibt positive
+normierte Funktionale, die von keinem Dichteoperator kommen\zoomref{c04.v1}.
 
 \begin{vertiefung}[id=c04.v1,
     titel={Zustände in unendlich vielen Dimensionen},
     wozu={Im Kern sind die positiven normierten Funktionale genau die Dichteoperatoren
-      (Proposition~\ref{c04.prop.funktionale}). P2 sagt „im Spurklassenfall“, und das ist eine
-      Einschränkung: In unendlich vielen Dimensionen gibt es Zustände, die von keinem
+      (Proposition~\ref{c04.prop.funktionale}). P2 verlangt $\tr(\rho) = 1$; in unendlich vielen
+      Dimensionen setzt das die Spurklasse voraus, und es gibt Zustände, die von keinem
       Dichteoperator kommen. Hier steht, welche Zustände die Dichteoperatoren sind, und ein
       Zustand, der keiner ist.},
     voraussetzung={Abschnitt~\ref{c04.s1.1}; Vertiefungen~\ref{c03.v1} und~\ref{c03.v5}
@@ -196,7 +197,7 @@ kommen\zoomref{c04.v1}.
   abzählbare Mischung von solchen. Seine Existenzbegründung ist nicht konstruktiv: Die Fortsetzung
   nach Hahn und Banach wird nicht explizit angegeben. Für Systeme mit
   endlich vielen Teilchen benutzt der Kurs nur die normalen Zustände, also die Dichteoperatoren;
-  das ist der „Spurklassenfall“ in P2.
+  das ist die Spurklasse, die $\tr(\rho) = 1$ in P2 voraussetzt.
 \end{vertiefung}
 
 % Stimme: vl06.tex:43-45; v07 [24:47]-[32:10] („Wellenfunktionen sind nicht die Zustände“;
@@ -209,11 +210,12 @@ Umgebung wechselwirkt, ist im Allgemeinen nicht in einem reinen Zustand, und vö
 Systeme gibt es in der Physik nicht: Das elektromagnetische Feld koppelt immer an. Gemischte
 Zustände sind deshalb der Normalfall, nicht ein Zugeständnis an die mathematische Allgemeinheit.
 
-% BRIEF.md:52 „Extreme points => pure states“; D4 (Kapitel 2): rein = Extremalpunkt.
+% P2 (reine Zustände = eindimensionale Projektoren); D4 (Kapitel 2): rein = Extremalpunkt.
 % vl06.tex:47-52 (eindimensionaler Projektor, Normierung über die Spur); v07 [32:10] (Rang).
 Die Dichteoperatoren bilden einen Zustandsraum im Sinn von \defref{D3}: Mischungen
-$\lambda\rho_1 + (1-\lambda)\rho_2$ mit $0 \leq \lambda \leq 1$ sind wieder Dichteoperatoren. Welche
-davon rein sind, also nach \defref{D4} keine echten Mischungen, sagt die folgende Proposition.
+$\lambda\rho_1 + (1-\lambda)\rho_2$ mit $0 \leq \lambda \leq 1$ sind wieder Dichteoperatoren. P2
+nennt die eindimensionalen Projektoren die reinen Zustände. Dass das genau die Zustände sind, die
+nach \defref{D4} keine echten Mischungen sind, sagt die folgende Proposition.
 
 \begin{proposition}[Reine Zustände]\label{c04.prop.rein}\claim[proof-included]{c04.cl.rein}{derived}
   Sei $\Hil$ endlichdimensional. Ein Dichteoperator ist genau dann rein, wenn er die Form
@@ -288,11 +290,11 @@ charakterisiert ein Präparationsverfahren, kein einzelnes System.
 
 \begin{equation}\label{c04.eq.p3}\claim{c04.cl.p3}{author-stipulated}
   \begin{aligned}
-    &\text{P3.\ \tpcifenglish{Detectors = dual of state space = operators}{Detektoren = Dual des Zustandsraums = Operatoren}}\ \op{\EffOp}\ \text{\tpcifenglish{with}{mit}}\ 0 \leq \op{\EffOp} \leq \Id .
+    &\text{P3.\ \tpcifenglish{A detector, that is a measuring apparatus with the two possible responses}{Ein Detektor, das heißt ein Messapparat mit den beiden Ansprechmöglichkeiten}} \\
+    &\text{\tpcifenglish{``yes'' (hit) and ``no'', is given by an operator}{„ja“ (Treffer) und „nein“, ist gegeben durch einen Operator}}\ \op{\EffOp}\ \text{\tpcifenglish{with}{mit}}\ 0 \leq \op{\EffOp} \leq \Id .
   \end{aligned}
 \end{equation}
-Ein Detektor ist ein Messapparat mit den beiden Ansprechmöglichkeiten „ja“ (Treffer) und „nein“,
-also eine Ja-Nein-Frage im Sinn von Kapitel~\ref{c02}.
+Ein Detektor ist also eine Ja-Nein-Frage im Sinn von Kapitel~\ref{c02}.
 % Stimme: vl06.tex:66; v07 [52:53]-[57:08] („Operator-Ungleichungen sind eine
 % Verallgemeinerung“; „die Eins ist der Einsoperator“).
 Die Schreibweise $0 \leq \op{\EffOp} \leq \Id$ ist erklärungsbedürftig. Für Operatoren bedeutet
@@ -302,9 +304,10 @@ die Zahl eins.
 
 \tpcdef{D24}
 
-Das erste Gleichheitszeichen in P3 sagt, wo diese Operatoren herkommen. In Kapitel~\ref{c02} ist ein
-Effekt eine affine Funktion auf dem Zustandsraum mit Werten zwischen $0$ und $1$ (\defref{D2}). Die
-Effekte des Zustandsraums der Dichteoperatoren sind genau die Effektoperatoren:
+Woher gerade diese Operatoren kommen, sagt Kapitel~\ref{c02}: Dort ist ein Effekt eine affine
+Funktion auf dem Zustandsraum mit Werten zwischen $0$ und $1$ (\defref{D2}); die Detektoren sind
+also das Dual des Zustandsraums. Die Effekte des Zustandsraums der Dichteoperatoren sind genau
+die Effektoperatoren:
 
 % Nicht in vl06; Herleitung des Kapitelautors (DERIVATION.md, c04.cl.effekte).  GAP-TJO G-0011:
 % ob die Hypothese der Nichteinschränkung (D12) Teil von P3 ist; die Proposition zeigt nur, dass
@@ -356,16 +359,16 @@ Effekte des Zustandsraums der Dichteoperatoren sind genau die Effektoperatoren:
 
 \begin{equation}\label{c04.eq.p4}\claim{c04.cl.p4}{author-stipulated}
   \begin{aligned}
-    &\text{P4.\ \tpcifenglish{Born rule = probability of detection for a state prepared}{Bornsche Regel = Wahrscheinlichkeit des Ansprechens für einen Zustand, präpariert}} \\
-    &\text{\tpcifenglish{as density operator}{als Dichteoperator}}\ \rho\ \text{\tpcifenglish{is}{, ist}}\ \tr(\rho\, \op{\EffOp}) .
+    &\text{P4.\ \tpcifenglish{The response frequency of a detector}{Die Ansprechhäufigkeit eines Detektors}}\ \op{\EffOp}\ \text{\tpcifenglish{on a system prepared according to}{an einem gemäß}}\ \rho\ \text{\tpcifenglish{is}{präparierten System ist}}\ \tr(\rho\, \op{\EffOp}) . \\
+    &\text{\tpcifenglish{In a pure state}{In einem reinen Zustand}}\ \ket{\psi}\ \text{\tpcifenglish{this expression specialises to}{spezialisiert sich dieser Ausdruck zu}}\ \melem{\psi}{\op{\EffOp}}{\psi} .
   \end{aligned}
 \end{equation}
 
 \tpcdef{D26}
 
 % vl06.tex:83 (Zusatz über reine Zustände) und 99-104 (Rechnung mit der Zyklizität).
-Für einen reinen Zustand $\rho = \ketbra{\psi}{\psi}$ ist das keine weitere Annahme, sondern eine
-Rechnung mit der Zyklizität der Spur, Gleichung~\eqref{c03.eq.zyklisch}:
+Der Zusatz über reine Zustände ist keine weitere Annahme, sondern eine Rechnung: Mit
+$\rho = \ketbra{\psi}{\psi}$ und der Zyklizität der Spur, Gleichung~\eqref{c03.eq.zyklisch}, ist
 \begin{equation}\label{c04.eq.born-rein}\claim{c04.cl.born-rein}{derived}
   \tr\bigl(\ketbra{\psi}{\psi}\op{\EffOp}\bigr) = \tr\bigl(\bra{\psi}\op{\EffOp}\ket{\psi}\bigr) = \melem{\psi}{\op{\EffOp}}{\psi} .
 \end{equation}
@@ -468,28 +471,26 @@ Dann ist es egal, ob Präparation und Messung beide etwas später durchgeführt 
 Einzige, was zählt, ist der \emph{relative} Zeitversatz. Das ist eine Annahme über das System,
 keine Folge der Reproduzierbarkeit: Ein von außen zeitabhängig angetriebenes System erfüllt sie
 nicht.
+
+Mit P0 bis P4 wären wir im Prinzip fertig; weil aber ständig Zeitverschiebungen auftreten, wollen
+wir ein bequemes Hilfspostulat. Es beschreibt die umkehrbare Dynamik eines abgeschlossenen Systems
+mit zeitunabhängigem Hamiltonoperator und benutzt den Operator $\op{U}_t$ aus
+Gleichung~\eqref{c03.eq.zeitentwicklung}.
+% vl06.tex:126-130 (Postulat 5, Wortlaut v0.2) und 136 (Hermitezität nachgetragen); Gefahr H4.3.
 \begin{equation}\label{c04.eq.p5}\claim{c04.cl.p5}{author-stipulated}
   \begin{aligned}
-    &\text{P5.\ \tpcifenglish{That is it; dynamics are symmetries. But let us add, as in the notes,}{Das ist alles; Dynamik sind Symmetrien. Fügen wir aber, wie im Skript,}} \\
-    &\text{\tpcifenglish{the specification of the Heisenberg/Schroedinger dynamics.}{die Angabe der Heisenberg-/Schrödinger-Dynamik hinzu.}}
+    &\text{P5.\ \tpcifenglish{Every kind of system is further characterised by a Hamiltonian}{Jede Systemsorte ist weiter charakterisiert durch einen Hamiltonoperator}}\ \op{\Ham} , \\
+    &\text{\tpcifenglish{which determines the time-evolution operator}{der den Zeitentwicklungsoperator}}\ \op{U}_t = e^{-\frac{it}{\hbar}\op{\Ham}}\text{\tpcifenglish{.}{ bestimmt.}} \\
+    &\text{\tpcifenglish{If, in an experiment with a given preparation and measurement procedure,}{Wendet man in einem Experiment mit gegebenem Präparier- und Messverfahren}} \\
+    &\text{\tpcifenglish{the measurement is applied with a delay of}{die Messung mit einer Verzögerung von}}\ t\ \text{\tpcifenglish{seconds, one obtains the expectation value}{Sekunden an, so erhält man den Erwartungswert}}
   \end{aligned}
 \end{equation}
-Mit P0 bis P4 wären wir im Prinzip fertig: Ein Experiment mit verzögerter Messung ist einfach ein
-Experiment mit einer anderen Messung. Weil Zeitverschiebungen aber ständig auftreten, geben wir
-die Vorschrift dafür explizit an, für die umkehrbare Dynamik eines abgeschlossenen Systems mit
-zeitunabhängigem Hamiltonoperator. Sie benutzt den Operator $\op{U}_t$ aus
-Gleichung~\eqref{c03.eq.zeitentwicklung}.
-
-% vl06.tex:130-136 (Postulat 5) und 138 (Hermitezität nachgetragen); Gefahr H4.3.
-Jede Systemsorte ist weiter charakterisiert durch einen hermiteschen Operator $\op{\Ham}$, ihren
-\emph{Hamiltonoperator}, der den \emph{Zeitentwicklungsoperator}
-$\op{U}_t = e^{-\frac{it}{\hbar}\op{\Ham}}$ bestimmt. Wendet man in einem Experiment die Messung mit
-einer Verzögerung $t$ an, so erhält man statt $\tr(\rho\,\op{\EffOp})$
 \begin{equation}\label{c04.eq.dynamik}\claim{c04.cl.dynamik}{derived}
-  \tr\bigl(\op{U}_t\, \rho\, \op{U}_t\adj\, \op{\EffOp}\bigr) = \tr\bigl(\rho\, \op{U}_t\adj \op{\EffOp}\, \op{U}_t\bigr) .
+  \langle \op{A} \rangle(t) = \tr\bigl(\op{U}_t\, \rho\, \op{U}_t\adj\, \op{A}\bigr) = \tr\bigl(\rho\, \op{U}_t\adj \op{A}\, \op{U}_t\bigr) .
 \end{equation}
-Die Gleichung folgt aus der Zyklizität der Spur. Ihre beiden Seiten entsprechen zwei
-gleichwertigen Auffassungen der Zeitentwicklung. Links liegt es nahe,
+Diese Gleichung folgt einfach aus der Zyklizität der Spur. Sie ist hier aufgenommen, weil die
+beiden Seiten unterschiedlichen, aber offensichtlich äquivalenten Auffassungen der
+Zeitentwicklung entsprechen. Links liegt es nahe,
 $\rho_t = \op{U}_t\, \rho\, \op{U}_t\adj$ als zeitabhängigen Zustand einzuführen und die Messungen
 als zeitunabhängig zu betrachten; das ist das \emph{Schrödingerbild}. Für reine Zustände heißt das
 $\ket{\psi_t} = \op{U}_t\ket{\psi}$. Rechts liegt es nahe, zeitabhängige Effektoperatoren und
@@ -497,9 +498,9 @@ Observablen $\op{A}_t = \op{U}_t\adj \op{A}\, \op{U}_t$ bei festem Zustand einzu
 \emph{Heisenbergbild}. Beide Bilder liefern dieselben Wahrscheinlichkeiten; welches man benutzt,
 ist eine Frage der Bequemlichkeit.
 
-Dass $\op{\Ham}$ hermitesch ist, ist wesentlich\zoomref{c04.v2}: Es gewährleistet, dass $\op{U}_t$ für
-alle $t$ unitär ist. Dann sind $\rho_t$ und $\op{U}_t\adj\op{\EffOp}\,\op{U}_t$ wieder ein Zustand
-und ein Detektor:
+Im Postulat fehlt eine Voraussetzung, die wir hier nachtragen: Der Hamiltonoperator $\op{\Ham}$ ist
+stets \emph{hermitesch}\zoomref{c04.v2}. Nur dann ist $\op{U}_t$ für alle $t$ unitär, und nur dann
+sind $\rho_t$ und $\op{U}_t\adj\op{\EffOp}\,\op{U}_t$ wieder ein Zustand und ein Detektor:
 
 \begin{proposition}[Zeitentwicklung erhält Zustände und Detektoren]\label{c04.prop.dynamik}\claim[proof-included]{c04.cl.dynamik-zulaessig}{derived}
   Sei $\op{U}$ unitär. Ist $\rho$ ein Dichteoperator, so auch $\op{U}\rho\,\op{U}\adj$; ist
@@ -551,14 +552,17 @@ und ein Detektor:
   Ableitung existiert
   \srcref{reed-simon-1}{S.~265 und S.~266}. Mit $\op{A} = -\op{\Ham}/\hbar$ ist $\op{U}(t) = \op{U}_t$. Ein
   symmetrischer Operator, der nicht selbstadjungiert ist, erzeugt keine solche Gruppe; das ist der
-  Grund, warum es in Postulat P5 für unbeschränkte Hamiltonoperatoren „selbstadjungiert“ heißen
-  muss.
+  Grund, warum es für unbeschränkte Hamiltonoperatoren „selbstadjungiert“ statt „hermitesch“
+  heißen muss.
 \end{vertiefung}
 
-% Stimme: vl06.tex:138 („Beweisen lässt es sich aus ihnen trotzdem nicht ... zusätzliche
-% Information über die Systemsorte“); BRIEF.md:55 („dynamics are symmetries“).
-Beweisen lässt sich die Vorschrift aus P0 bis P4 trotzdem nicht, und wesentlich bleibt: $\op{\Ham}$
-ist eine \emph{zusätzliche} Information über die Systemsorte. Die Proposition zeigt, in welchem
+% Stimme: vl06.tex:136 („Ein Experiment mit verzögerter Messung ist damit einfach ein Experiment
+% mit einer anderen Messung ... zusätzliche Information über die Systemsorte“); BRIEF.md:55
+% („dynamics are symmetries“).
+Ein Experiment mit verzögerter Messung ist damit einfach ein Experiment mit einer anderen Messung;
+insofern ist P5 mit den übrigen Postulaten verträglich. Beweisen lässt es sich aus ihnen trotzdem
+nicht, und wesentlich bleibt: $\op{\Ham}$ ist eine \emph{zusätzliche} Information über die
+Systemsorte. Die Proposition zeigt, in welchem
 Sinn Dynamik eine Symmetrie ist: $\op{U}_t$ bildet den Zustandsraum umkehrbar auf sich ab und
 erhält Mischungen und reine Zustände. Kapitel~8 und~9 machen daraus den allgemeinen Begriff.
 

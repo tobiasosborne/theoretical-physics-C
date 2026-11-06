@@ -1,7 +1,8 @@
 %!TEX root = TheoretischePhysikC.tex
 % Kern von content/c04-quantentheorie. Quellen: docs/plan/script-v0.3/sync-ch6.md
-% Die Postulate P0 bis P5 sind TJOs Wortlaut (docs/plan/BRIEF.md:50-55); die deutsche Fassung ist
-% eine Übersetzung (GAP-TJO, NOTES-ch6.md).
+% P1 bis P5 stehen im Wortlaut des Skripts v0.2 (vl06.tex, TJOs Text; Entscheidung D-WORTLAUT in
+% docs/plan/lec56/BRIEF.md, 2026-11-06), mit den Symbolen des Kurses (Hüte, \Hil). P0 ist der
+% Satz des Briefs (docs/plan/BRIEF.md:50).
 \section{Vorlesung: Postulate der Quantenmechanik}
 Die Zahlen, die die Quantenmechanik als Ergebnis liefert, sind Wahrscheinlichkeiten oder, etwas allgemeiner, Erwartungswerte. Dass die Theorie überhaupt nur Wahrscheinlichkeiten liefert, ist der eigentliche Bruch mit der klassischen Physik. Klassisch ist eine Wahrscheinlichkeit stets Ausdruck fehlender Information; quantenmechanisch ist sie fundamental, und es gibt Messungen, die sich nicht gemeinsam mit voller Präzision durchführen lassen.
 
@@ -16,20 +17,16 @@ Man hört oft, wir verstünden die Quantenmechanik nicht. Das trifft es nicht: W
 Wir stellen die Postulate Schritt für Schritt auf, jedes spezieller als das vorige. Das erste, P0, kennen Sie aus Vorlesung~1: Physikalische Theorien sind probabilistische Theorien, Vorhersagen in Form von Wahrscheinlichkeiten.
 
 \begin{merksatz}[P1]
-	Jedem quantenmechanischen System ordnen wir einen Hilbertraum $\Hil$ zu (das gehört dem Sinn nach zur Definition des Zustandsraums einer probabilistischen Theorie).
+	Jeder Sorte quantenmechanischer Systeme wird ein Hilbertraum $\Hil$ zugeordnet.
 \end{merksatz}
 Für ein \emph{Qubit} ist $\Hil = \mathbb{C}^2$, für ein \emph{Qudit} $\Hil = \mathbb{C}^d$, für ein Teilchen im Raum der Raum $L^2(\mathbb{R}^3)$ der quadratintegrierbaren Funktionen. Welcher Hilbertraum zu einem System gehört, sagt das Experiment, nicht die Theorie. P1 spricht von \emph{einem} System; den Hilbertraum mehrerer Systeme baut man später mit einem weiteren Rezept, dem Tensorprodukt. In dieser Vorlesung ist $\Hil$ endlichdimensional.
 
 \begin{merksatz}[P2]
-	Zustandsraum = positive lineare Funktionale auf den Operatoren mit Norm 1. Im Spurklassenfall sind das Dichteoperatoren. Extremalpunkte $\Rightarrow$ reine Zustände.
+	Ein Präparierverfahren wird charakterisiert durch einen \emph{Zustand}, bzw. eine \emph{Dichtematrix}. Das ist ein positiver Operator $\rho$ auf $\Hil$, mit $\tr(\rho) = 1$. Speziell für reine Zustände ist $\rho$ ein eindimensionaler Projektor $\rho = \ketbra{\psi}{\psi}$, also gegeben durch einen Vektor $\ket{\psi} \in \Hil$.
 \end{merksatz}
-Ein Zustand ordnet also jedem Operator linear eine Zahl zu, jeder hermiteschen Größe ihren Erwartungswert, positiven Operatoren eine nicht negative Zahl und dem Einsoperator die Eins; „Norm~1“ heißt hier gerade: der Wert auf $\mathbb{I}$ ist $1$. In endlicher Dimension ist jede solche Zuordnung von der Form $\op{A}\mapsto\tr(\rho\,\op{A})$ mit genau einem Operator $\rho$; den „Spurklassenfall“ muss man erst in unendlich vielen Dimensionen beachten. Man setzt $\melem{y}{\rho}{x}$ gleich dem Wert auf $\ketbra{x}{y}$ (die Indizes so, dass $\tr(\rho\,\op{A})$ herauskommt) und benutzt $\op{A} = \sum_{x,y}\melem{x}{\op{A}}{y}\ketbra{x}{y}$; den Rest des Beweises gibt der Webkurs.
-\begin{definition}
-	Ein \emph{Dichteoperator} (Zustand, Dichtematrix) ist ein positiver Operator $\rho$ auf $\Hil$ mit $\tr(\rho) = 1$.
-\end{definition}
-Hier ist eine Warnung angebracht: Der Hilbertraum beschreibt \emph{nicht} unmittelbar die Zustände. Viele Bücher sagen, die Zustände seien die Wellenfunktionen; das stimmt so nicht. Der Hilbertraum ist der Raum, \emph{in dem} wir Zustände definieren; die Zustände selbst sind Operatoren. Ein System, das mit seiner Umgebung wechselwirkt, ist im Allgemeinen nicht in einem reinen Zustand, und völlig isolierte Systeme gibt es in der Physik nicht: Das elektromagnetische Feld koppelt immer an. Gemischte Zustände sind deshalb der Normalfall.
+Wir sagen auch \emph{Dichteoperator}. Hier ist eine Warnung angebracht: Der Hilbertraum beschreibt \emph{nicht} unmittelbar die Zustände. Viele Bücher sagen, die Zustände seien die Wellenfunktionen; das stimmt so nicht. Der Hilbertraum ist der Raum, \emph{in dem} wir Zustände definieren; die Zustände selbst sind Operatoren. Ein System, das mit seiner Umgebung wechselwirkt, ist im Allgemeinen nicht in einem reinen Zustand, und völlig isolierte Systeme gibt es in der Physik nicht: Das elektromagnetische Feld koppelt immer an. Gemischte Zustände sind deshalb der Normalfall.
 
-Mischungen $\lambda\rho_1 + (1-\lambda)\rho_2$ mit $0\leq\lambda\leq 1$ sind wieder Dichteoperatoren. Mit der Spektralzerlegung ist jeder Dichteoperator eine Mischung $\rho = \sum_x p_x\ketbra{\phi_x}{\phi_x}$ mit $p_x\geq 0$ und $\sum_x p_x = 1$. Die \emph{reinen} Zustände, die Extremalpunkte, sind die Zustände, die keine echten Mischungen sind; das sind genau die $\rho = \ketbra{\psi}{\psi}$, also durch einen Vektor $\ket{\psi}$, seine \emph{Wellenfunktion}, gegeben (die Rückrichtung beweist der Webkurs). $\ket{\psi}$ und $e^{i\alpha}\ket{\psi}$ geben denselben Zustand. Wegen $\tr(\ketbra{\psi}{\psi}) = \braket{\psi}{\psi}$ (Vorlesung~5) stellen nur normierte Vektoren reine Zustände dar. Man nennt $\ketbra{\psi}{\psi}$ auch einen eindimensionalen Projektor; „eindimensional“ meint dabei keine Raumdimension, sondern dass sein Bild eindimensional ist.
+Mischungen $\lambda\rho_1 + (1-\lambda)\rho_2$ mit $0\leq\lambda\leq 1$ sind wieder Dichteoperatoren. Mit der Spektralzerlegung ist jeder Dichteoperator eine Mischung $\rho = \sum_x p_x\ketbra{\phi_x}{\phi_x}$ mit $p_x\geq 0$ und $\sum_x p_x = 1$. Die reinen Zustände aus P2 sind genau die Zustände, die keine echten Mischungen sind, die Extremalpunkte (den Beweis gibt der Webkurs). Der Vektor $\ket{\psi}$ heißt die \emph{Wellenfunktion} des reinen Zustands; $\ket{\psi}$ und $e^{i\alpha}\ket{\psi}$ geben denselben Zustand. Wegen $\tr(\ketbra{\psi}{\psi}) = \braket{\psi}{\psi}$ (Vorlesung~5) stellen nur normierte Vektoren reine Zustände dar. Das Wort „eindimensional“ meint dabei keine Raumdimension, sondern dass das Bild des Projektors eindimensional ist.
 
 \begin{beispiel}[Zustände eines Qubits]
 Für $\Hil = \mathbb{C}^2$ ist $\rho$ eine positive $2\times 2$-Matrix mit Spur eins. Positivität verlangt $\rho_{00} = p\geq 0$, die Spurbedingung erzwingt $\rho_{11} = 1-p$, und weil auch $\rho_{11}\geq 0$ ist, liegt $p$ zwischen null und eins. Hermitizität macht die Nebendiagonaleinträge zueinander komplex konjugiert:
@@ -48,14 +45,14 @@ Berechnen Sie die beiden Eigenwerte der Matrix in Gl.~(\ref{eq:qubitzustand}) un
 \end{übung}
 
 \begin{merksatz}[P3]
-	Detektoren = Dual des Zustandsraums = Operatoren $\op{F}$ mit $0 \leq \op{F} \leq \mathbb{I}$.
+	Ein Detektor, das heißt ein Messapparat mit den beiden Ansprechmöglichkeiten „ja“ (Treffer) und „nein“, ist gegeben durch einen Operator $\op{F}$ mit $0 \leq \op{F} \leq \mathbb{I}$.
 \end{merksatz}
-Ein Detektor ist ein Messapparat mit den Ansprechmöglichkeiten „ja“ (Treffer) und „nein“. Für Operatoren bedeutet $\op{A}\leq\op{B}$, dass $\op{B}-\op{A}$ positiv ist. P3 verlangt also \emph{zwei} Bedingungen, $\op{F}\geq 0$ \emph{und} $\mathbb{I}-\op{F}\geq 0$, und rechts steht der Einsoperator, nicht die Zahl eins. „Dual des Zustandsraums“ heißt: Die Funktionen $\rho\mapsto\tr(\rho\,\op{F})$ sind genau die Funktionen $f$ auf den Dichteoperatoren mit Werten zwischen $0$ und $1$, die Mischungen respektieren, $f(\lambda\rho_1 + (1-\lambda)\rho_2) = \lambda f(\rho_1) + (1-\lambda)f(\rho_2)$.
+Die Schreibweise $0 \leq \op{F} \leq \mathbb{I}$ ist erklärungsbedürftig: Für Operatoren bedeutet $\op{A}\leq\op{B}$, dass $\op{B}-\op{A}$ positiv ist. P3 verlangt also \emph{zwei} Bedingungen, $\op{F}\geq 0$ \emph{und} $\mathbb{I}-\op{F}\geq 0$, und rechts steht der Einsoperator, nicht die Zahl eins. Die Detektoren sind zugleich das Dual des Zustandsraums: Die Funktionen $\rho\mapsto\tr(\rho\,\op{F})$ sind genau die Funktionen $f$ auf den Dichteoperatoren mit Werten zwischen $0$ und $1$, die Mischungen respektieren, $f(\lambda\rho_1 + (1-\lambda)\rho_2) = \lambda f(\rho_1) + (1-\lambda)f(\rho_2)$.
 
 \begin{merksatz}[P4]
-	Bornsche Regel = Wahrscheinlichkeit des Ansprechens für einen Zustand, präpariert als Dichteoperator $\rho$, ist $\tr(\rho\,\op{F})$.
+	Die Ansprechhäufigkeit eines Detektors $\op{F}$ an einem gemäß $\rho$ präparierten System ist $\tr(\rho\,\op{F})$. In einem reinen Zustand $\ket{\psi}$ spezialisiert sich dieser Ausdruck zu $\melem{\psi}{\op{F}}{\psi}$.
 \end{merksatz}
-Für einen reinen Zustand ist das keine weitere Annahme, sondern eine Rechnung mit der Zyklizität der Spur aus Vorlesung~5; für einen Projektor $\op{F} = \ketbra{\phi}{\phi}$ wird daraus die Form, die man in jedem Lehrbuch findet:
+Der Zusatz über reine Zustände ist keine weitere Annahme, sondern eine Rechnung mit der Zyklizität der Spur aus Vorlesung~5; für einen Projektor $\op{F} = \ketbra{\phi}{\phi}$ wird daraus die Form, die man in jedem Lehrbuch findet:
 \begin{equation}
 	\tr\bigl(\ketbra{\psi}{\psi}\op{F}\bigr) = \tr\bigl(\bra{\psi}\op{F}\ket{\psi}\bigr) = \melem{\psi}{\op{F}}{\psi}, \qquad \melem{\psi}{\op{F}}{\psi} = \abs{\braket{\phi}{\psi}}^2.
 \end{equation}
@@ -82,16 +79,17 @@ und $\op{A}$ ist hermitesch. Im projektorwertigen Fall ist die Messung umgekehrt
 \subsection{Zeitentwicklung}
 Ein Zustand charakterisiert nicht ein einzelnes System, sondern ein Präparationsverfahren, das zu jeder Zeit in Gang gesetzt werden kann. Für ein abgeschlossenes System, dessen Bedingungen sich nicht mit der Zeit ändern, zählt nur der \emph{relative} Zeitversatz zwischen Präparation und Messung; das ist eine Annahme über das System, keine Folge der Reproduzierbarkeit.
 
-\begin{merksatz}[P5]
-	Das ist alles; Dynamik sind Symmetrien. Fügen wir aber, wie im Skript, die Angabe der Heisenberg-/Schrödinger-Dynamik hinzu.
-\end{merksatz}
-„Dynamik sind Symmetrien“ heißt: Zeitentwicklungen sind Symmetrien des Zustandsraums, wie wir gleich sehen. Ein Experiment mit verzögerter Messung ist einfach ein Experiment mit einer anderen Messung. Die Vorschrift dafür ist selbst ein Postulat, aus P0 bis P4 nicht beweisbar; für die umkehrbare Dynamik eines abgeschlossenen Systems lautet sie: Jede Art von System ist weiter charakterisiert durch einen hermiteschen \emph{Hamiltonoperator} $\op{\Ham}$, der den \emph{Zeitentwicklungsoperator} $\op{U}_t = e^{-\frac{it}{\hbar}\op{\Ham}}$ aus Vorlesung~5 bestimmt. Wendet man die Messung mit einer Verzögerung $t$ an, so erhält man
-\begin{equation}
-	\tr\bigl(\op{U}_t\rho\,\op{U}_t\adj\op{F}\bigr) = \tr\bigl(\rho\,\op{U}_t\adj\op{F}\op{U}_t\bigr).
-\end{equation}
-Die Gleichung folgt aus der Zyklizität der Spur. Links liegt es nahe, $\rho_t = \op{U}_t\rho\,\op{U}_t\adj$ als zeitabhängigen Zustand einzuführen, bei festen Messungen; das ist das \emph{Schrödingerbild}, für reine Zustände $\ket{\psi_t} = \op{U}_t\ket{\psi}$. Rechts liegt es nahe, zeitabhängige Observablen $\op{A}_t = \op{U}_t\adj\op{A}\op{U}_t$ bei festem Zustand einzuführen; das ist das \emph{Heisenbergbild}. Beide Bilder liefern dieselben Wahrscheinlichkeiten.
+Mit P0 bis P4 wären wir im Prinzip fertig; weil aber ständig Zeitverschiebungen auftreten, wollen wir ein bequemes Hilfspostulat.
 
-Dass $\op{\Ham}$ hermitesch ist, ist wesentlich: Es gewährleistet, dass $\op{U}_t$ für alle $t$ unitär ist, und für unitäres $\op{U}$ ist $\op{U}\rho\,\op{U}\adj$ wieder ein Dichteoperator und $0\leq\op{U}\adj\op{F}\op{U}\leq\mathbb{I}$ wieder ein Detektor: $\melem{\psi}{\op{U}\rho\,\op{U}\adj}{\psi} = \melem{\op{U}\adj\psi}{\rho}{\op{U}\adj\psi}\geq 0$, $\tr(\op{U}\rho\,\op{U}\adj) = \tr(\rho\,\op{U}\adj\op{U}) = 1$, und dieselbe Rechnung mit $\op{F}$ und mit $\mathbb{I}-\op{F}$ gibt die beiden Ungleichungen. $\op{U}_t$ bildet den Zustandsraum umkehrbar auf sich ab und erhält Mischungen und reine Zustände; in diesem Sinn ist Dynamik eine Symmetrie. $\op{\Ham}$ ist eine \emph{zusätzliche} Information über die Art des Systems. Für unbeschränkte Hamiltonoperatoren, die in unendlich vielen Dimensionen auftreten, muss es „selbstadjungiert“ statt „hermitesch“ heißen; das behandelt der Webkurs.
+\begin{merksatz}[P5]
+	Jede Systemsorte ist weiter charakterisiert durch einen \emph{Hamiltonoperator} $\op{\Ham}$, der den \emph{Zeitentwicklungsoperator} $\op{U}_t = e^{-\frac{it}{\hbar}\op{\Ham}}$ bestimmt. Wendet man in einem Experiment mit gegebenem Präparier- und Messverfahren die Messung mit einer Verzögerung von $t$ Sekunden an, so erhält man den Erwartungswert
+	\begin{equation}
+		\langle\op{A}\rangle(t) = \tr\bigl(\op{U}_t\rho\,\op{U}_t\adj\op{A}\bigr) = \tr\bigl(\rho\,\op{U}_t\adj\op{A}\op{U}_t\bigr).
+	\end{equation}
+\end{merksatz}
+Diese Gleichung folgt einfach aus der Zyklizität der Spur. Sie ist hier aufgenommen, weil die beiden Seiten unterschiedlichen, aber offensichtlich äquivalenten Auffassungen der Zeitentwicklung entsprechen: Links liegt es nahe, $\rho_t = \op{U}_t\rho\,\op{U}_t\adj$ als zeitabhängigen Zustand einzuführen, bei festen Messungen; das ist das \emph{Schrödingerbild}, für reine Zustände $\ket{\psi_t} = \op{U}_t\ket{\psi}$. Rechts liegt es nahe, zeitabhängige Observablen $\op{A}_t = \op{U}_t\adj\op{A}\op{U}_t$ bei festem Zustand einzuführen; das ist das \emph{Heisenbergbild}. Beide Bilder liefern dieselben Wahrscheinlichkeiten.
+
+Im Postulat fehlt eine Voraussetzung, die wir hier nachtragen: Der Hamiltonoperator $\op{\Ham}$ ist stets \emph{hermitesch}. Nur dann ist $\op{U}_t$ für alle $t$ unitär, und für unitäres $\op{U}$ ist $\op{U}\rho\,\op{U}\adj$ wieder ein Dichteoperator und $0\leq\op{U}\adj\op{F}\op{U}\leq\mathbb{I}$ wieder ein Detektor: $\melem{\psi}{\op{U}\rho\,\op{U}\adj}{\psi} = \melem{\op{U}\adj\psi}{\rho}{\op{U}\adj\psi}\geq 0$, $\tr(\op{U}\rho\,\op{U}\adj) = \tr(\rho\,\op{U}\adj\op{U}) = 1$, und dieselbe Rechnung mit $\op{F}$ und mit $\mathbb{I}-\op{F}$ gibt die beiden Ungleichungen. Ein Experiment mit verzögerter Messung ist damit einfach ein Experiment mit einer anderen Messung; insofern ist P5 mit den übrigen verträglich. $\op{U}_t$ bildet den Zustandsraum umkehrbar auf sich ab und erhält Mischungen und reine Zustände; in diesem Sinn ist Dynamik eine Symmetrie. Beweisen lässt sich P5 aus den übrigen Postulaten trotzdem nicht, und wesentlich bleibt: $\op{\Ham}$ ist eine \emph{zusätzliche} Information über die Systemsorte. Für unbeschränkte Hamiltonoperatoren, die in unendlich vielen Dimensionen auftreten, muss es „selbstadjungiert“ statt „hermitesch“ heißen; das behandelt der Webkurs.
 
 \begin{beispiel}[Ein Qubit unter der Z-Messung]
 Mit $\op{\Ham} = \varepsilon\pauli{x}$ und $\op{U}_t = \cos(\varepsilon t/\hbar)\mathbb{I} - i\sin(\varepsilon t/\hbar)\pauli{x}$ aus Vorlesung~5 gibt die Z-Messung im Zustand $\ketbra{0}{0}$ nach der Zeit $t$
