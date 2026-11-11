@@ -5010,6 +5010,73 @@
    ],
    "legacy_aliases": [],
    "notes": "Added by the lane-G registry for Lecture 4 (2026-10-29). The macro already existed in latex/tpc-macros.sty and in registry/allowed-tex.json; it now belongs to the registry (removed from allowed-tex.json). Same expansion. The arguments are the labels of the ket and of the bra, not the delimiters. No hat (TJO 2026-10-29, CONV-HAT): a ket-bra is written bare, never wrapped in \\op{}."
+  },
+  {
+   "symbol_id": "sym.packet-width",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "pwidth",
+    "args": 0,
+    "expansion": "\\sigma"
+   },
+   "canonical_token": "\\sigma",
+   "unicode": "σ",
+   "mathml": "<math><mi>σ</mi></math>",
+   "name_de": "Breite des Wellenpakets",
+   "name_en": "width of the wave packet",
+   "meaning_de": "Standardabweichung der Ortsdichte eines Gaußschen Wellenpakets zur Zeit null; mit Index t zur Zeit t, mit Index p die der Impulsdichte",
+   "meaning_en": "standard deviation of the position density of a Gaussian wave packet at time zero; with index t at time t, with index p that of the momentum density",
+   "depth": "kern",
+   "first_fixed_in": "C5",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl08.tex:84",
+     "verified": true,
+     "how": "read in the script source at this line (script v0.3 text of lecture 8)",
+     "quote": "\\sigma_t = \\sigma\\sqrt{1+\\frac{t^2}{\\tau^2}}"
+    },
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl08.tex:125",
+     "verified": true,
+     "how": "read in the script source at this line (script v0.3 text of lecture 8)",
+     "quote": "\\sigma_p = \\frac{\\hbar}{2\\sigma}"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "Lecture 8 writes sigma, sigma_t, sigma_p for the widths of the Gaussian packet (decision of TJO, 2026-11-11: not the Delta x of sym.standard-deviation). The token sigma is also the Pauli matrix (sym.pauli-matrix, from C7) and the spectrum (sym.spectrum); the packet width is used in C5 only so far."
+  },
+  {
+   "symbol_id": "sym.spreading-time",
+   "preinventory_row": null,
+   "tex": {
+    "macro": "tspread",
+    "args": 0,
+    "expansion": "\\tau"
+   },
+   "canonical_token": "\\tau",
+   "unicode": "τ",
+   "mathml": "<math><mi>τ</mi></math>",
+   "name_de": "Zerfließzeit",
+   "name_en": "spreading time",
+   "meaning_de": "Zeit, nach der ein freies Gaußsches Wellenpaket um den Faktor Wurzel zwei breiter ist: 2mσ²/ħ",
+   "meaning_en": "time after which a free Gaussian wave packet is wider by the factor square root of two: 2mσ²/ħ",
+   "depth": "kern",
+   "first_fixed_in": "C5",
+   "status": "proposed",
+   "sources": [
+    {
+     "source": "tpc-script-v0.2",
+     "locus": "lectures/de/vl08.tex:80",
+     "verified": true,
+     "how": "read in the script source at this line (script v0.3 text of lecture 8)",
+     "quote": "\\tau = \\frac{2m\\sigma^2}{\\hbar}"
+    }
+   ],
+   "legacy_aliases": [],
+   "notes": "Lecture 8 (eq:gausspaket). The token tau is also the time automorphism tau_t (sym.time-automorphism, Fundament only)."
   }
  ],
  "collisions": [

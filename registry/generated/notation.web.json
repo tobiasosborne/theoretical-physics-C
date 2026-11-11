@@ -2,7 +2,7 @@
  "_generated": {
   "by": "scripts/registry/gen_registry.py",
   "inputs_sha256": {
-   "notation.json": "2207328dc3cbd0e265889db47f690ff131a3d2c527273fbb97a9666527daac94",
+   "notation.json": "c25c669409f2395b5d4279f3fdd5237fb62abb8ac6b84e8f3e7cff4e6867af43",
    "definitions.json": "8a784770d90e3e801edd0161e017c1262f8e266f4aee7e9239ba2e7b789751ee",
    "conventions.json": "4228c2a96f76fc654fc16ddba336dcebda035fe36d86efa866807ff52a10b5e7",
    "translation.json": "b6c82517800df4b56f6a23748542a780295112a32d409cb13b1a71e7c7268cf9"
@@ -3286,6 +3286,50 @@
    "depth": "kern",
    "first_fixed_in": "D94",
    "status": "blessed-provisional",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.packet-width",
+   "macro": "pwidth",
+   "args": 0,
+   "expansion": "\\sigma",
+   "tex": "\\sigma",
+   "usage": "\\pwidth",
+   "unicode": "σ",
+   "mathml": "<math><mi>σ</mi></math>",
+   "name": {
+    "de": "Breite des Wellenpakets",
+    "en": "width of the wave packet"
+   },
+   "meaning": {
+    "de": "Standardabweichung der Ortsdichte eines Gaußschen Wellenpakets zur Zeit null; mit Index t zur Zeit t, mit Index p die der Impulsdichte",
+    "en": "standard deviation of the position density of a Gaussian wave packet at time zero; with index t at time t, with index p that of the momentum density"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C5",
+   "status": "proposed",
+   "verified": true
+  },
+  {
+   "symbol_id": "sym.spreading-time",
+   "macro": "tspread",
+   "args": 0,
+   "expansion": "\\tau",
+   "tex": "\\tau",
+   "usage": "\\tspread",
+   "unicode": "τ",
+   "mathml": "<math><mi>τ</mi></math>",
+   "name": {
+    "de": "Zerfließzeit",
+    "en": "spreading time"
+   },
+   "meaning": {
+    "de": "Zeit, nach der ein freies Gaußsches Wellenpaket um den Faktor Wurzel zwei breiter ist: 2mσ²/ħ",
+    "en": "time after which a free Gaussian wave packet is wider by the factor square root of two: 2mσ²/ħ"
+   },
+   "depth": "kern",
+   "first_fixed_in": "C5",
+   "status": "proposed",
    "verified": true
   }
  ]
