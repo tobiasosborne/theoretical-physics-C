@@ -7,10 +7,18 @@ earlier versions of this file (`git log -p HANDOFF.md`).
 
 ## Status (2026-11-11)
 
-- **Script.** Chapters 1-6 are script v0.3, the compact kernel of the course in the course
-  design; chapters 7-22 are v0.2. The postulates P1-P5 in chapter 6 and in C4 carry the v0.2
-  wording (TJO's decision D-WORTLAUT, 2026-11-06). Operators carry hats in chapters 1-6
-  only; the seam is at chapter 6/7. Masters: German 84 pages, English 81, 0 errors.
+- **Script.** Chapters 1-8 are script v0.3; chapters 9-22 are v0.2. The postulates P1-P5 in
+  chapter 6 and in C4 carry the v0.2 wording (TJO's decision D-WORTLAUT, 2026-11-06).
+  Operators carry hats in chapters 1-8 only; the seam is at chapter 8/9. Masters: German 82
+  pages, English 80, 0 errors.
+- **Lectures 7 and 8 rewritten (2026-11-11), script only, German and English.** Chapter 7
+  now opens with the position basis (it had dropped out of the script when chapter 5 was
+  rewritten). Chapter 8 uses one Fourier convention, writes the free solution with
+  `\widetilde{\Psi}(k)`, builds momentum space on plane-wave kets normalised as in chapter
+  10, adds the momentum detector, and states `[x_j, p_k] = i hbar delta_jk`. One prose
+  reading each by gpt-6.1-sol and muse-wonder-full, one repair pass. No course chapter for
+  these lectures yet. Chapter 10 still has the one-dimensional prefactor on its
+  three-dimensional momentum wave function (its own footnote says so).
 - **Course.** Chapters c00 (Theorie), c01 (Wahrscheinlichkeit), c02 (GPT, with the game
   "Distinguish"), c03 (Hilbertraum, sections s1-s15 from lectures 2-5), c04
   (Quantentheorie, from lecture 6) and c11 (Wasserstoff), German and English, in four PDF

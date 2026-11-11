@@ -1,254 +1,218 @@
 %!TEX root = TheoreticalPhysicsC.tex
-
+% Script v0.3, rewritten on 2026-11-11 from the v0.2 text (TJO). One Fourier convention
+% throughout; the momentum wave function is the coefficient in the basis of plane waves,
+% normalised as in Lecture 10.
 \section{Lecture: The Schrödinger Equation}
-
-
+Of the postulates, P1 to P4 are usually set up quickly for a given system; the real work sits in P5. The time evolution can be solved analytically for only a handful of systems, some five of them. The simplest is the free particle of the last lecture, and with it we learn the tools.
 
 \subsection{The Schrödinger Equation}
-Of the five postulates the first four are usually identified quickly; the real work sits in Postulate 5, and there only a handful of systems -- some five of them -- can be solved analytically.
+According to P5 a pure state $\ket{\Psi}$ evolves with the time-evolution operator,
+\begin{equation}
+	\ket{\Psi(t)} = \op{U}_t\ket{\Psi}, \qquad \op{U}_t = e^{-\frac{it}{\hbar}\op{H}}.
+\end{equation}
+How does one compute this? The Hamiltonian now acts on an infinite-dimensional Hilbert space, and such operators are hard to diagonalise. So we take an indirect route and differentiate with respect to time:
+\begin{equation}
+	\frac{\partial}{\partial t}\ket{\Psi(t)} = \frac{\partial}{\partial t}\,e^{-\frac{it}{\hbar}\op{H}}\ket{\Psi} = -\frac{i}{\hbar}\op{H}\,e^{-\frac{it}{\hbar}\op{H}}\ket{\Psi} = -\frac{i}{\hbar}\op{H}\ket{\Psi(t)}.
+\end{equation}
+One may calculate in this way because one differentiates the power series of the exponential function term by term: $\op{H}$ commutes with each of its powers, and the factor $-i\op{H}/\hbar$ can be pulled to the front as for a number. Rearranged, this reads
+\begin{equation}\label{eq:schrallg}
+	\eqbox{i\hbar\frac{\partial}{\partial t}\ket{\Psi(t)} = \op{H}\ket{\Psi(t)},}
+\end{equation}
+the \emph{Schrödinger equation} in general form, one for every system. For us P5 remains fundamental; the equation is the means of working out $\op{U}_t\ket{\Psi}$.
 
-According to Postulate 5 the time evolution of a system is computed by means of the time-evolution operator
-\begin{equation}
-	U_t \equiv e^{-\frac{it}{\hbar}\widehat{H}}
+For the particle in one dimension we multiply both sides from the left by the bra $\bra{x}$. On the left $\bra{x}$ commutes with the time derivative; on the right we insert the matrix element~(\ref{eq:hfrei}) of $\op{H} = \op{p}^2/2m$. With $\Psi(x,t) = \braket{x}{\Psi(t)}$ the vector equation becomes a partial differential equation for the wave function:
+\begin{equation}\label{eq:1dfpschr}
+	\eqbox{i\hbar\frac{\partial}{\partial t}\Psi(x,t) = -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}\Psi(x,t).}
 \end{equation}
-Suppose the system is in a pure state $|\Psi\rangle$ with associated wave function $\Psi$: how is the time evolution 
-\begin{equation}
-	|\Psi(t)\rangle \equiv U_t|\Psi\rangle
-\end{equation}
-computed? In general the Hamiltonian $\widehat{H}$ is an operator acting on an infinite-dimensional Hilbert space. Such operators are hard to diagonalise, so we compute $|\Psi(t)\rangle$ indirectly, by differentiating it with respect to time:
-\begin{equation}
-	\frac{\partial}{\partial t} |\Psi(t)\rangle = \frac{\partial}{\partial t} e^{-\frac{it}{\hbar}\widehat{H}} |\Psi\rangle = -\frac{i}{\hbar}\widehat{H} e^{-\frac{it}{\hbar}\widehat{H}} |\Psi\rangle = -\frac{i}{\hbar}\widehat{H}|\Psi(t)\rangle.
-\end{equation}
-This step is justified by the power series: only the exponential function depends on time, and inside the series $\widehat{H}$ behaves like a number. Rearranged, this reads
-\begin{equation}
-	i\hbar\frac{\partial}{\partial t}|\Psi(t)\rangle = \widehat{H}|\Psi(t)\rangle,
-\end{equation}
-the Schrödinger equation in general form -- one for every system. For us, however, Postulate 5 is what is fundamental; the equation is merely the means of working out $U_t|\Psi\rangle$.
+This is the Schrödinger equation of the free particle in one dimension. It is worth dwelling on its form for a moment: strike out the $i$ and you are left, up to a sign, with the heat equation. The $i$ turns damping into oscillation, but the methods of solution are the same. Equations of this kind have been studied thoroughly, and that is the gain: we may apply the whole old toolbox. The most important tool is the Fourier transformation.
 
-To simplify the calculations, let us take the example of a particle in one dimension. Because the Schrödinger equation is a vector equation, we may multiply both sides by the same bra; on the left $\langle x|$ commutes with the time derivative. We now compute the scalar product of this equation with $|x\rangle$:
+\subsection{The Fourier Transformation}
+The Fourier transformation gives another representation of the same function: the same information in a different form, often more convenient for solving equations. In music the transform of a signal is called its \emph{spectrum}. For a function $f:\mathbb{R}\to\mathbb{C}$ the \emph{Fourier transform} $F$ and the \emph{inverse transformation} are
+\begin{equation}\label{eq:invfourier}
+	\eqbox{\begin{aligned}
+		F(k) &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} f(x)\,e^{-ikx}\,dx, \\
+		f(x) &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} F(k)\,e^{ikx}\,dk.
+	\end{aligned}}
+\end{equation}
+That the second formula inverts the first one sees by substitution:
 \begin{equation}
 	\begin{split}
-		i\hbar \langle x|\frac{\partial}{\partial t} |\Psi(t)\rangle  &= \langle x|\frac{\widehat{p}^2}{2m}|\Psi(t)\rangle \\
-		&= \frac{1}{2m}\langle x|\widehat{p}^2|\Psi(t)\rangle 
+		\frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} F(k)\,e^{ikx}\,dk &= \int_{-\infty}^{\infty} f(y)\Bigl(\frac{1}{2\pi}\int_{-\infty}^{\infty} e^{ik(x-y)}\,dk\Bigr)dy \\
+		&= \int_{-\infty}^{\infty} f(y)\,\delta(x-y)\,dy = f(x).
 	\end{split}
 \end{equation}
-We now apply the matrix elements of $\widehat{H}$ given by
+We have used the representation of the delta function
+\begin{equation}\label{eq:deltafourier}
+	\delta(x) = \frac{1}{2\pi}\int_{-\infty}^{\infty} e^{ikx}\,dk,
+\end{equation}
+which we adopt without proof; it is one of several possible ones. The same calculation shows that the transformation preserves the scalar product, $\int\abs{F(k)}^2\,dk = \int\abs{f(x)}^2\,dx$. Many conventions for the Fourier transformation are in circulation, with the factor $2\pi$ in a different place or the sign in the exponent swapped. When reading unfamiliar texts, first check which one applies.
+
+\subsection{Solution for the Free Particle}
+How does one solve Eq.~(\ref{eq:1dfpschr})? With linear differential equations the first step is always the same: try the exponential function, here the plane wave $\Psi(x,t) = e^{i(kx-\omega t)}$. Inserting it gives
 \begin{equation}
-	\langle x|\widehat{p}^2|\Psi\rangle = -\hbar^2\frac{d^2}{dx^2}\Psi(x)
+	i\hbar(-i\omega)\,e^{i(kx-\omega t)} = -\frac{\hbar^2}{2m}(-k^2)\,e^{i(kx-\omega t)},
 \end{equation}
-and insert the wave-function representation. The result,
-\begin{equation}\label{eq:1dfpschr}
-	\eqbox{i\hbar\frac{\partial}{\partial t}\Psi(x,t) = -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}\Psi(x,t)}
+and this is satisfied exactly when
+\begin{equation}\label{eq:dispersion}
+	\eqbox{\hbar\omega = \frac{\hbar^2k^2}{2m}.}
 \end{equation}
-is known as the \emph{Schrödinger equation} (for a free particle in one dimension).
+This condition is called the \emph{dispersion relation}. So for every real wave number $k$ there is a solution, infinitely many in all. Because the equation is linear, superpositions are solutions too, and the sum over $k$ becomes an integral:
+\begin{equation}\label{eq:freieloesung}
+	\eqbox{\Psi(x,t) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \widetilde{\Psi}(k)\,e^{i\left(kx-\frac{\hbar k^2}{2m}t\right)}\,dk.}
+\end{equation}
+The weights $\widetilde{\Psi}(k)$ are fixed by the initial condition. At $t = 0$ Eq.~(\ref{eq:freieloesung}) contains the inverse Fourier transformation of Eq.~(\ref{eq:invfourier}); so in a sense we have rediscovered the Fourier transformation, and $\widetilde{\Psi}$ is the Fourier transform of the initial wave function:
+\begin{equation}\label{eq:phik}
+	\widetilde{\Psi}(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \Psi(x,0)\,e^{-ikx}\,dx.
+\end{equation}
+\begin{merksatz}[The free particle in three steps]
+	Compute the Fourier transform $\widetilde{\Psi}(k)$ of the initial wave function $\Psi(x,0)$. Multiply each component $\widetilde{\Psi}(k)$ by its phase $e^{-i\hbar k^2t/2m}$. Transform back.
+\end{merksatz}
 
-It is worth dwelling on its form for a moment: strike out the $i$ and you are left -- up to a sign -- with the heat equation. Equations of that kind have been studied thoroughly, and that is what the derivation buys us: the whole of the old toolbox can be brought to bear.
+A warning belongs here. The single plane wave is \emph{not} an element of $L^2(\mathbb{R})$: its density $\abs{e^{i(kx-\omega t)}}^2 = 1$ is the same everywhere, the integral over it diverges, and no normalisation constant makes it finite. The plane wave is a solution of the equation, but not a state. Only superpositions~(\ref{eq:freieloesung}) with $\int\abs{\widetilde{\Psi}(k)}^2\,dk = 1$ are states.
 
-The solution of the Schrödinger equation describes the time evolution of the state of a particle. 
-\begin{example}
-	Suppose a particle is at time $t=0$ in a pure state -- a \emph{Gaussian wave packet}:
+\begin{example}[The Gaussian wave packet]
+	At time $t=0$ let the particle be in the pure state
 	\begin{equation}
-		\Psi(x,t=0) = \sqrt{\frac{1}{\sigma\sqrt{2\pi}}}e^{-\frac14 \frac{(x-a)^2}{\sigma^2}}.
+		\Psi(x,0) = \sqrt{\frac{1}{\sigma\sqrt{2\pi}}}\;e^{-\frac{(x-a)^2}{4\sigma^2}},
 	\end{equation}
-	How does the wave function evolve in time? The solution of the Schrödinger equation (\ref{eq:1dfpschr}) in this case reads
-	\begin{equation}
-		\Psi(x,t) = \sqrt{\frac{1}{\sigma(1+i(t/\tau))\sqrt{2\pi}}}e^{-\frac14 \frac{(x-a)^2}{\sigma^2(1+i(t/\tau))}},
+	a bell curve; the position density $p(x)$ is a Gaussian distribution with mean $a$ and standard deviation $\sigma$. The forward and backward transformations are here Gaussian integrals as in Eq.~(\ref{eq:gaussintegrale}), and the result is
+	\begin{equation}\label{eq:gausspaket}
+		\Psi(x,t) = \sqrt{\frac{1}{\sigma\left(1+it/\tau\right)\sqrt{2\pi}}}\;e^{-\frac{(x-a)^2}{4\sigma^2\left(1+it/\tau\right)}}, \qquad \tau = \frac{2m\sigma^2}{\hbar}.
 	\end{equation}
-	where
+	We start with a real wave function; the factor $1+it/\tau$ makes it complex. The modulus squared remains a bell curve about $a$:
 	\begin{equation}
-		\tau \equiv \frac{2m\sigma^2}{\hbar}.
-	\end{equation}	
+		\abs{\Psi(x,t)}^2 = \frac{1}{\sigma_t\sqrt{2\pi}}\;e^{-\frac{(x-a)^2}{2\sigma_t^2}}, \qquad \sigma_t = \sigma\sqrt{1+\frac{t^2}{\tau^2}}.
+	\end{equation}
+	The wave packet \emph{spreads}: after the time $\tau$ it is broader by a factor $\sqrt2$, and the narrower it was initially, the shorter $\tau$ is.
 \end{example}
 
-We start out with a real wave function; the factor $1+i(t/\tau)$ makes it complex. The modulus squared remains a bell curve, only an ever broader one -- the wave packet \emph{spreads}.
-
-For problems with particles moving in potentials it is often easier to work out their dynamics by solving the Schrödinger equation, as described above.
-
-
-\subsection{Fourier Transformation}
-In order to understand the dynamics of free particles in general, it is helpful to introduce a new mathematical method. Purely mathematically, the Fourier transformation supplies an \emph{alternative representation} of a function: the same information in a different shape -- often more convenient for solving equations. In music the transform of a signal is called its \emph{spectrum}. Suppose we have a function $f:\mathbb{R}\rightarrow\mathbb{C}$. The \emph{Fourier transform} of the function $f(x)$ is defined as 
-\begin{equation}
-	\eqbox{F(k)\equiv \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(x)e^{-ikx}\, dx.}
-\end{equation}
-The \emph{inverse transformation} reads
-\begin{equation}\label{eq:invfourier}
-	\eqbox{f(x)\equiv \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty F(k)e^{ikx}\, dk.}
-\end{equation}
-The functions $f(x)$ and $F(k)$ are \emph{Fourier pairs}. Both functions carry the same information. To show this equivalence, we substitute the two equations into one another:
-\begin{equation}
-	\begin{split}
-		f(x) &= \frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty \left(\frac{1}{\sqrt{2\pi}}\int_{-\infty}^\infty f(y)e^{-iky}\, dy\right)e^{ikx}\, dk \\
-		&= \int_{-\infty}^\infty f(y)\left(\frac{1}{2\pi}\int_{-\infty}^\infty e^{ik(x-y)}\, dk \right)dy \\
-		&= \int_{-\infty}^\infty f(y)\delta(x-y)\,dy.
-	\end{split}
-\end{equation}
-Here, in the second line, we have inserted the representation
-\begin{equation}
-	\delta(x) = \frac{1}{2\pi}\int_{-\infty}^\infty e^{ikx}\, dk
-\end{equation}
-of Dirac's delta function. This integral representation is only \emph{one} of several possible ones; we adopt it here without proof.
-
-\subsection{Solution of the Schrödinger Equation for a Free Particle in $1D$}
-The Schrödinger equation of a particle in one dimension reads
-\begin{equation}
-	i\hbar\frac{\partial}{\partial t}\Psi(x,t) = -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}\Psi(x,t).
-\end{equation}
-How does one solve an equation of this form? With differential equations the first step is always the same: try the exponential function. Because the Schrödinger equation is linear, we look for solutions in the form of plane waves: $\Psi(x,t) \propto e^{i(kx-\omega t)}$. Inserting this into the Schrödinger equation yields
-\begin{equation}
-	i\hbar (-i\omega)e^{i(kx-\omega t)} = -\frac{\hbar^2}{2m}(-k^2)e^{i(kx-\omega t)}.
-\end{equation}
-We obtain a plane-wave solution only if
-\begin{equation}
-	\eqbox{\hbar\omega = \frac{\hbar^2k^2}{2m}.}
-\end{equation} 
-This condition is called the \emph{dispersion relation}. Whenever the dispersion relation holds, 
-\begin{equation}
-	\Psi_{k}(x,t) = e^{i\left(kx-\frac{\hbar k^2}{2m} t\right)}
-\end{equation}
-forms a family of solutions labelled by $k$. For every $k$ there is one such solution, hence infinitely many; they are added up by replacing the sum with an integral -- and in doing so we all but rediscover the Fourier transformation.
-
-Because of the linearity of the Schrödinger equation we can build new solutions by the superposition principle:
-\begin{equation}
-	\eqbox{\Psi(x,t) = \int_{-\infty}^{\infty} \Phi(k)e^{i\left(kx-\frac{\hbar k^2}{2m} t\right)}\, dk.}
-\end{equation}
-To solve the Schrödinger equation completely, the initial conditions have to be taken into account:
-\begin{equation}
-	\Psi(x,t=0) = \int_{-\infty}^{\infty} \Phi(k)e^{ikx}\, dk.
-\end{equation}
-Here $\Psi(x,0)$ is prescribed and we have to solve for $\Phi(k)$. In order to do so we compare this equation with the inverse transformation Eq.~(\ref{eq:invfourier}): we regard $\Phi(k)$ as the Fourier transform of $\Psi(x,0)$ and apply the Fourier transformation, which gives
-\begin{equation}
-	\eqbox{\Phi(k) = \frac{1}{2\pi}\int_{-\infty}^{\infty} \Psi(x,0)e^{-ikx}\, dx}
-\end{equation}
-At first sight the comparison is spoilt by the prefactor $\frac{1}{\sqrt{2\pi}}$, which stands in front of the integral in Eq.~(\ref{eq:invfourier}) but is missing from the initial condition. The identification therefore reads $f(x)\equiv \Psi(x,0)$ and $F(k)\equiv \sqrt{2\pi}\,\Phi(k)$, and the forward transformation yields
-\begin{equation}
-	\sqrt{2\pi}\,\Phi(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \Psi(x,0)e^{-ikx}\, dx.
-\end{equation}
-The prefactor $\frac{1}{2\pi}$ above is therefore not guesswork but bookkeeping. Many conventions for the Fourier transformation are in circulation; when reading an unfamiliar text, check first which one it uses.
-
-A warning: a plane wave is \emph{not} an element of $L^2(\mathbb{R})$, because the wave function $\Psi_{k}(x,t)$ is not square-integrable. The function $\Psi_{k}(x,t)$ does form a solution, but is itself not an element of the Hilbert space $\mathcal{H}$. This observation does not rule out the possibility of building square-integrable functions out of linear combinations of plane waves. The failure of square-integrability is plain from the probability density: $|\Psi_{k}(x,t)|^2 = 1$, the same everywhere, so the integral over it diverges -- and no normalisation constant can make it finite.
-
-Although the ``stationary'' plane wave $\Psi_{k}(x) \equiv e^{ikx}$ corresponds to no vector in the Hilbert space, we can nevertheless introduce a ket notation: the ``ket vector'' $|\Psi_{k}\rangle$ stands for the plane wave. The associated wave function is given by
-\begin{equation}
-	\langle x| \Psi_{k}\rangle = e^{ikx}
-\end{equation} 
-
+\begin{exercise}
+	Check by substitution that Eq.~(\ref{eq:gausspaket}) solves the Schrödinger equation~(\ref{eq:1dfpschr}).
+\end{exercise}
 
 \subsection{Momentum Space}
-So far we have taken into account only measurements of the particle position. How can the statistics for \emph{momentum measurements}, or for quantities that depend on the momentum alone, be extracted from the wave function $\Psi(x,t)$? For a stationary plane wave $\Psi(x,t) = e^{ikx}$ the momentum is to be read off from
+So far we have considered only position measurements. How does one obtain the statistics of \emph{momentum measurements} from the wave function? Let us apply the momentum operator to a plane wave:
 \begin{equation}
-	\langle x|\widehat{p}|\Psi_k\rangle \overset{!}{=}  -i\hbar \frac{d}{dx} e^{ikx}  \overset{!}{=} \hbar k   e^{ikx} \overset{!}{=} \hbar k \langle x|\Psi_k\rangle
+	-i\hbar\frac{d}{dx}\,e^{ikx} = \hbar k\,e^{ikx}.
 \end{equation}
-in the following way: although the ket $|\Psi_k\rangle$ does not exist as an element of $\mathcal{H}$, we nevertheless treat it as a fictitious vector. After this calculation it makes good sense to read $|\Psi_k\rangle$ as a kind of ``eigenvector'' of $\widehat{p}$. It follows that a plane wave $\Psi(x,t) = e^{ikx}$ has a definite momentum $\hbar k$. The vector quantity $|\Psi_k\rangle$ plays for $\widehat{p}$ exactly the same role that $|x\rangle$ plays for $\widehat{x}$.
+The plane wave is an ``eigenvector'' of $\op{p}$ with eigenvalue $p = \hbar k$; it describes a particle with the sharp momentum $\hbar k$. We give it a ket, $\ket{\Psi_p}$, with the wave function
+\begin{equation}\label{eq:ebenewelle}
+	\braket{x}{\Psi_p} = \frac{1}{\sqrt{2\pi\hbar}}\,e^{\frac{i}{\hbar}px}, \qquad \op{p}\ket{\Psi_p} = p\ket{\Psi_p}, \qquad \braket{\Psi_p}{\Psi_{p'}} = \delta(p-p').
+\end{equation}
+The prefactor is chosen so that the third equation holds: $\braket{\Psi_p}{\Psi_{p'}} = \frac{1}{2\pi\hbar}\int e^{\frac{i}{\hbar}(p'-p)x}\,dx$, and this is Eq.~(\ref{eq:deltafourier}) with the integration variable $x/\hbar$. Like $\ket{x}$, $\ket{\Psi_p}$ is not an element of $\Hil$. The kets $\ket{\Psi_p}$ play for $\op{p}$ exactly the role that the $\ket{x}$ play for $\op{x}$: they form the \emph{momentum basis}.
 
 \begin{intuition}
-Think of an ordinary vector, decomposed with respect to two different bases: the same vector, two completely different lists of numbers. It is the same here -- in the position basis the coefficients of $|\Psi\rangle$ are called the \emph{wave function}, in the basis of plane waves the \emph{momentum wave function}.
+	Think of an ordinary vector, decomposed with respect to two different bases: the same vector, two completely different lists of numbers. It is the same here. The coefficients of $\ket{\Psi}$ are called the \emph{wave function} in the position basis and the \emph{momentum wave function} in the basis of plane waves.
 \end{intuition}
 
-With this in mind we now introduce the following wave function in momentum space:
-\begin{equation}
-	\Phi(p,t) \equiv \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^\infty \Psi(x,t)e^{-i\frac{px}{\hbar}}\,dx.	
-\end{equation} 
-One can see that this new \emph{momentum wave function} is given simply by the Fourier transform of the original position wave function. From this we conclude that the momentum wave function carries the same information as the position wave function; in different representations they describe the same state of the particle. If we are given only the momentum wave function, we can reconstruct the position wave function by the inverse Fourier transformation:
-\begin{equation}
-	\Psi(x,t) \equiv \frac{1}{\sqrt{2\pi\hbar}} \int_{-\infty}^\infty \Phi(p,t)e^{i\frac{px}{\hbar}}\,dp.	
-\end{equation} 
-The prefactor $\frac{1}{\sqrt{2\pi\hbar}}$ and the $\hbar$ in the exponent look unmotivated; they are the price of a pretty analogy: with this convention the mean momentum ends up in exactly the place occupied in position space by $\langle\widehat{x}\rangle = \int x|\Psi(x,t)|^2\,dx$.
+The momentum wave function is thus $\Phi(p,t) = \braket{\Psi_p}{\Psi(t)}$, written out
+\begin{equation}\label{eq:impulswf}
+	\eqbox{\begin{aligned}
+		\Phi(p,t) &= \frac{1}{\sqrt{2\pi\hbar}}\int_{-\infty}^{\infty} \Psi(x,t)\,e^{-\frac{i}{\hbar}px}\,dx, \\
+		\Psi(x,t) &= \frac{1}{\sqrt{2\pi\hbar}}\int_{-\infty}^{\infty} \Phi(p,t)\,e^{\frac{i}{\hbar}px}\,dp.
+	\end{aligned}}
+\end{equation}
+This is the Fourier transformation with $k = p/\hbar$; comparison with Eq.~(\ref{eq:phik}) gives $\Phi(p,0) = \widetilde{\Psi}(p/\hbar)/\sqrt{\hbar}$. The momentum wave function contains the same information as the position wave function; both describe the same state. For the free particle the time evolution in momentum space is particularly simple. From Eq.~(\ref{eq:freieloesung}) one reads off
+\begin{equation}\label{eq:impulszeit}
+	\Phi(p,t) = e^{-\frac{it}{\hbar}\frac{p^2}{2m}}\,\Phi(p,0), \qquad \abs{\Phi(p,t)}^2 = \abs{\Phi(p,0)}^2.
+\end{equation}
+In position space the packet spreads; in momentum space only a phase changes.
 
 \input{figures/fig_vl08_fourier}
 
-The figure shows the Gaussian wave packet from the start of the lecture -- three times over, with the widths $\sigma/2$, $\sigma$ and $2\sigma$ -- on the left in position space, on the right in momentum space. Compare the three bars above the curves: halve the width in position space, and it doubles in momentum space. The same colour means the same packet -- the ordering of the widths flips over, the product $\sigma_x\sigma_p$ does not.
-
+The figure shows the Gaussian wave packet at time $t=0$, three times over, with the widths $\sigma/2$, $\sigma$ and $2\sigma$, on the left in position space, on the right in momentum space. Compare the three bars above the curves: halve the width in position space, and it doubles in momentum space. The same colour means the same packet. The ordering of the widths flips over, the product stays. You can check this with Eq.~(\ref{eq:gaussintegrale}): for the packet of width $\sigma$,
+\begin{equation}
+	\abs{\Phi(p,0)}^2 = \frac{1}{\sigma_p\sqrt{2\pi}}\;e^{-\frac{p^2}{2\sigma_p^2}}, \qquad \sigma_p = \frac{\hbar}{2\sigma},
+\end{equation}
+a Gaussian distribution about $p = 0$, and the product of the two standard deviations is $\sigma\,\sigma_p = \hbar/2$.
 
 \subsubsection{Statistics of Momentum Measurements}
-The statistics of momentum measurements can be read off from the position-space wave function:
-\begin{align}
-	\langle \widehat{p}\rangle &= \int_{-\infty}^{\infty} \Psi^*(x,t) \left(-i\hbar \frac{\partial}{\partial x} \Psi(x,t)\right)\,dx \\
-	\langle \widehat{p}^2\rangle &= \int_{-\infty}^{\infty} \Psi^*(x,t) \left(-\hbar^2 \frac{\partial^2}{\partial x^2} \Psi(x,t)\right)\,dx.
-\end{align}
-Alternatively we can compute the momentum statistics with the help of the momentum wave function, e.g.:
-\begin{equation}
+The moments of the momentum measurement can be computed from the position wave function:
+\begin{equation}\label{eq:pmomenteort}
 	\begin{split}
-		\langle \widehat{p}\rangle &= \frac{1}{2\pi\hbar}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty} \Phi(p',t)e^{-i\frac{p'x}{\hbar}} \left(-i\hbar \frac{\partial}{\partial x} \Phi^*(p,t)e^{i\frac{px}{\hbar}}\right)\,dxdpdp' \\
-		&= \frac{1}{2\pi\hbar}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}\int_{-\infty}^{\infty} \Phi^*(p',t)e^{-i\frac{p'x}{\hbar}} \left(p \Phi(p,t)e^{i\frac{px}{\hbar}}\right)\,dxdpdp' \\
-		&= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty} p \Phi^*(p',t) \Phi(p,t) \left(\frac{1}{2\pi\hbar}\int_{-\infty}^{\infty} e^{i\frac{(p-p')x}{\hbar}}\,dx\right)\,dpdp' \\
-		&= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty} p \Phi^*(p',t) \Phi(p,t) \left(\frac{1}{2\pi}\int_{-\infty}^{\infty} e^{i{(p-p')x}}\,dx'\right)\,dpdp' \\
-		&= \int_{-\infty}^{\infty}\int_{-\infty}^{\infty} p \Phi^*(p',t) \Phi(p,t) \delta(p-p') \,dpdp'\\
-		&= \int_{-\infty}^{\infty} p |\Phi(p,t)|^2 \,dp.
+		\langle\op{p}\rangle &= \int_{-\infty}^{\infty} \Psi^*(x,t)\Bigl(-i\hbar\frac{\partial}{\partial x}\Bigr)\Psi(x,t)\,dx, \\
+		\langle\op{p}^2\rangle &= \int_{-\infty}^{\infty} \Psi^*(x,t)\Bigl(-\hbar^2\frac{\partial^2}{\partial x^2}\Bigr)\Psi(x,t)\,dx.
 	\end{split}
 \end{equation}
-By a similar procedure we obtain:
+In the momentum basis it is easier. In $\langle\op{p}\rangle$ we insert the expansion~(\ref{eq:impulswf}) for $\Psi$ and $\Psi^*$. The derivative acts only on the plane wave and gives the factor $p$, and the integral over $x$ gives the delta function of Eq.~(\ref{eq:ebenewelle}):
 \begin{equation}
-		\langle \widehat{p}^2\rangle = \int_{-\infty}^{\infty} p^2 |\Phi(p,t)|^2 \,dp.
+	\begin{split}
+		\langle\op{p}\rangle &= \int_{-\infty}^{\infty}\!\!\int_{-\infty}^{\infty} p\,\Phi^*(p',t)\,\Phi(p,t)\Bigl(\frac{1}{2\pi\hbar}\int_{-\infty}^{\infty} e^{\frac{i}{\hbar}(p-p')x}\,dx\Bigr)dp\,dp' \\
+		&= \int_{-\infty}^{\infty}\!\!\int_{-\infty}^{\infty} p\,\Phi^*(p',t)\,\Phi(p,t)\,\delta(p-p')\,dp\,dp' = \int_{-\infty}^{\infty} p\,\abs{\Phi(p,t)}^2\,dp.
+	\end{split}
 \end{equation}
-That is to say, the statistics of momentum measurements are substantially easier to compute in terms of momentum wave functions. Compare the effort: first differentiate, then multiply by $\Psi^*$, then integrate over $x$ -- or simply integrate $|\Phi(p,t)|^2$ with the weight $p$.
-
+In the same way one obtains
+\begin{equation}
+	\langle\op{p}^2\rangle = \int_{-\infty}^{\infty} p^2\,\abs{\Phi(p,t)}^2\,dp.
+\end{equation}
+These are the formulae for the moments of a probability density, just as $\langle\op{x}\rangle = \int x\,\abs{\Psi(x,t)}^2\,dx$ in position space. Behind them stands, as in Lecture~7, a detector: whether the momentum lies in the interval $[c,d]$ is measured by
+\begin{equation}
+	\begin{split}
+		\op{F}^{(p)}_{[c,d]} &= \int_c^d \ketbra{\Psi_p}{\Psi_p}\,dp, \\
+		\mathbb{P}\bigl[p\in[c,d]\bigr] &= \melem{\Psi(t)}{\op{F}^{(p)}_{[c,d]}}{\Psi(t)} = \int_c^d \abs{\Phi(p,t)}^2\,dp.
+	\end{split}
+\end{equation}
+\begin{merksatz}
+	$\abs{\Phi(p,t)}^2$ is the probability density of the momentum measurement, just as $\abs{\Psi(x,t)}^2$ is that of the position measurement.
+\end{merksatz}
+Compare the effort: first differentiate, multiply by $\Psi^*$ and integrate over $x$, or simply integrate $\abs{\Phi(p,t)}^2$ with the weight $p$. By Eq.~(\ref{eq:impulszeit}) the momentum statistics of the free particle do not change with time. This is the quantum mechanical version of momentum conservation.
 
 \subsection{A Particle in Three Dimensions}
-In fact the problem has already been solved: a free particle in three dimensions is nothing but three copies of a particle in one dimension, and the separation ansatz solves it along with the one-dimensional case. A particle in three dimensions is described in quantum mechanics as follows:
+In fact this problem has already been solved: for the free particle in three dimensions the calculation of one dimension repeats in each coordinate. The wave function $\Psi(x,y,z)$ itself need not be a product of three functions. With $\mathbf{x} = (x,y,z)$ and $d^3x = dx\,dy\,dz$ the postulates read:
 \begin{enumerate}
-	\item Hilbert space: $L^2(\mathbb{R}^3)$.
-	\item Preparations of pure states $\rho \equiv |\Psi\rangle\langle\Psi|$: wave functions $\Psi:\mathbb{R}^3\rightarrow \mathbb{C}$, where
+	\item Hilbert space: $\Hil = L^2(\mathbb{R}^3)$.
+	\item Pure states $\rho = \ketbra{\Psi}{\Psi}$: wave functions $\Psi:\mathbb{R}^3\to\mathbb{C}$ with
 	\begin{equation}
-		|\Psi\rangle \equiv \iiint_{-\infty}^\infty \Psi(x,y,z) |x,y,z\rangle \, dxdydz
+		\ket{\Psi} = \int_{\mathbb{R}^3} \Psi(\mathbf{x})\ket{\mathbf{x}}\,d^3x, \qquad \braket{\mathbf{x}'}{\mathbf{x}} = \delta(x'-x)\,\delta(y'-y)\,\delta(z'-z),
 	\end{equation}
-	and
+	normalised as in one dimension:
 	\begin{equation}
-		\langle x',y',z'|x,y,z\rangle = \delta(x'-x)\delta(y'-y)\delta(z'-z).
+		\braket{\Psi}{\Psi} = \int_{\mathbb{R}^3} \abs{\Psi(\mathbf{x})}^2\,d^3x = 1.
 	\end{equation}
-	For such a function to pass as a wave function it must -- exactly as in one dimension -- be normalised to one:
+	\item Detectors: whether the particle is in the region $S\subset\mathbb{R}^3$ is measured by
 	\begin{equation}
-		\langle\Psi|\Psi\rangle = \iiint_{-\infty}^\infty |\Psi(x,y,z)|^2 \, dxdydz = 1.
+		\op{F}_S = \int_S \ketbra{\mathbf{x}}{\mathbf{x}}\,d^3x.
 	\end{equation}
-	\item Detectors: let $S\subset \mathbb{R}^3$ be a region. The measurement operator that models the measurement of whether the particle lies in the region $S$ is 
+	\item Response frequency:
 	\begin{equation}
-		F_{S} \equiv \iiint_S  	|x,y,z\rangle \langle x,y,z|\, dxdydz
-	\end{equation} 
-	\item Response frequency of the detector $F_S$: 
-	\begin{equation}
-		\mathbb{P}[\text{``$(x,y,z)\in S$''}] \equiv \tr(\rho F_S) = \iiint_S |\Psi(x,y,z)|^2 \, dxdydz.
+		\mathbb{P}[\mathbf{x}\in S] = \tr(\rho\,\op{F}_S) = \int_S \abs{\Psi(\mathbf{x})}^2\,d^3x.
 	\end{equation}
-	\item Hamiltonian:
+	\item Hamiltonian of the free particle, with $\op{p}_x = -i\hbar\,\partial/\partial x$ and likewise for $y$ and $z$:
 	\begin{equation}
-		\begin{split}
-			\widehat{H} \equiv \frac{\widehat{P}^2_{\text{tot.}}}{2m} &= \frac{\widehat{p}_x^2}{2m}+\frac{\widehat{p}_y^2}{2m}+\frac{\widehat{p}_z^2}{2m} \\ &= -\frac{\hbar^2}{2m}\frac{\partial^2}{\partial x^2}-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial y^2}-\frac{\hbar^2}{2m}\frac{\partial^2}{\partial z^2}.
-		\end{split}
+		\op{H} = \frac{\op{p}_x^2 + \op{p}_y^2 + \op{p}_z^2}{2m} = -\frac{\hbar^2}{2m}\Bigl(\frac{\partial^2}{\partial x^2} + \frac{\partial^2}{\partial y^2} + \frac{\partial^2}{\partial z^2}\Bigr) = -\frac{\hbar^2}{2m}\nabla^2.
 	\end{equation}
 \end{enumerate}
-
+The Schrödinger equation is solved as before with plane waves $e^{i(\mathbf{k}\cdot\mathbf{x}-\omega t)}$, now with the dispersion relation $\hbar\omega = \hbar^2\abs{\mathbf{k}}^2/2m$. The momentum basis consists of the plane waves with momentum $\mathbf{p} = \hbar\mathbf{k}$,
+\begin{equation}
+	\braket{\mathbf{x}}{\Psi_{\mathbf{p}}} = \frac{1}{(2\pi\hbar)^{3/2}}\,e^{\frac{i}{\hbar}\mathbf{p}\cdot\mathbf{x}}.
+\end{equation}
 
 \subsection{The Quantisation Rules for the Particle}
-The derivation of the Hamiltonian for the free particle is an example of a procedure for obtaining
-``corresponding'' quantum-mechanical quantities from classical ones: in it, functions of the classical variables position and momentum become operators on the space of wave functions. The following correspondence table sets out a few quantisation rules for the particle (in three dimensions):
+The Hamiltonian of the free particle is an example of how one obtains ``corresponding'' quantum mechanical quantities from classical ones: functions of the classical variables position and momentum become operators on the wave functions. The following table collects the rules for the particle in three dimensions, with $(x_1,x_2,x_3) = (x,y,z)$.
 \begin{center}
-\begin{tabular}{lcc}    \toprule
-{\bf classical} & & {\bf quantum-mechanical operator acts as}  \\\midrule
-position ($j$-th coord.): &$x_j$ & $\widehat{x}_j \Psi(x,y,z) = x_j \Psi(x,y,z)$  \\ 
-\rowcolor{isabelline} momentum ($j$-th coord.):& $p_j$ & $\widehat{p}_j \Psi(x,y,z) = -i \hbar \frac{\partial}{\partial x_j}\Psi(x,y,z)$  \\ 
-kinetic energy: & $K$ & $\widehat{K}\Psi(x,y,z) = -\frac{\hbar^2}{2m} \nabla^2 \Psi(x,y,z)$ \\
-\rowcolor{isabelline} potential energy & $V(x,y,z)$ & $\widehat{V} \Psi(x,y,z) = V(x,y,z)\Psi(x,y,z)$ \\
-total energy & $E$ & $\widehat{H}\Psi(x,y,z) = \left(-\frac{\hbar^2}{2m} \nabla^2+ V(x,y,z)\right)\Psi(x,y,z)$ \\
-\rowcolor{isabelline} angular momentum & $\mathbf{L}$ & $\widehat{L}_1\Psi(x,y,z) = -i \hbar (y \frac{\partial}{\partial z} - z \frac{\partial}{\partial y})\Psi(x,y,z)$  \\
-in general & $f$ & ??? \\
+\small\begin{tabular}{@{}llc@{}}    \toprule
+\textbf{classical} & & \textbf{action of the operator on $\Psi(\mathbf{x})$}  \\\midrule
+position, $j$-th coord. & $x_j$ & $\op{x}_j\Psi = x_j\,\Psi$  \\
+\rowcolor{isabelline} momentum, $j$-th coord. & $p_j$ & $\op{p}_j\Psi = -i\hbar\,\frac{\partial\Psi}{\partial x_j}$  \\
+kinetic energy & $K$ & $\op{K}\Psi = -\frac{\hbar^2}{2m}\nabla^2\Psi$ \\
+\rowcolor{isabelline} potential energy & $V(\mathbf{x})$ & $\op{V}\Psi = V(\mathbf{x})\,\Psi$ \\
+total energy & $E$ & $\op{H}\Psi = \bigl(-\frac{\hbar^2}{2m}\nabla^2 + V(\mathbf{x})\bigr)\Psi$ \\
+\rowcolor{isabelline} ang. momentum, 1st coord. & $L_1$ & $\op{L}_1\Psi = -i\hbar\bigl(y\,\frac{\partial\Psi}{\partial z} - z\,\frac{\partial\Psi}{\partial y}\bigr)$  \\
+in general & $f(\mathbf{x},\mathbf{p})$ & ??? \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-Put briefly, then, the rule reads: in every classical expression, replace the position coordinates by multiplication operators, and the momentum coordinates by ($-i\hbar \times$) differentiation operators. This rule is rather useful, and you should certainly commit it to memory. A physical step always comes first: you have to understand the \emph{classical} energy, and only then can the operator be read off from it. And the rule is not a well-defined procedure but a rule of thumb -- each time a guess, and only comparison with experiment can decide whether it was the right one. There is, however, one decisive restriction: classically the expression is 
-\begin{equation*}
-	p_j x_k - x_k p_j = 0.
-\end{equation*}
-With the operators introduced above, by contrast, one obtains
+In short, the rule reads: in the classical expression, replace the position coordinates by multiplication operators and the momentum coordinates by $-i\hbar$ times differentiation. You should certainly commit this rule to memory. The rows with the potential $V$ and the angular momentum, classically $\mathbf{L} = \mathbf{x}\times\mathbf{p}$, are new guesses made by this rule and not results of this lecture; we need them from Lecture~11 on. A physical step always comes first: you must first understand the \emph{classical} energy, and only then do you obtain the operator from it. And as in the last lecture, the rule is a rule of thumb, whose result experiment decides.
+
+The last row of the table remains open, and there is a reason for that. Classically $x_jp_k - p_kx_j = 0$. For the operators, by contrast, the product rule gives
 \begin{equation}
-	\begin{split}
-		-i \hbar \left(\frac{\partial}{\partial x_j}x_k - x_k \frac{\partial}{\partial x_j}\right)\Psi(x,y,z) &= -i \hbar \left(x_k\frac{\partial}{\partial x_j}  + \delta_{jk} - x_k \frac{\partial}{\partial x_j} \right)\Psi(x,y,z) \\
-		&= -i\hbar \delta_{jk} \Psi(x,y,z).
-	\end{split}
+	\bigl(\op{x}_j\op{p}_k - \op{p}_k\op{x}_j\bigr)\Psi = -i\hbar\,x_j\,\frac{\partial\Psi}{\partial x_k} + i\hbar\,\frac{\partial}{\partial x_k}\bigl(x_j\Psi\bigr) = i\hbar\,\delta_{jk}\,\Psi.
 \end{equation}
-That is to say, the corresponding quantum-mechanical operator acts like $-i\hbar\delta_{jk}\mathbb{I}$. In summary, we write
-\begin{equation}
-	[\widehat{p}_j,\widehat{x}_k]\equiv\widehat{p}_j\widehat{x}_k - \widehat{x}_k  \widehat{p}_j = -i\hbar\delta_{jk}\mathbb{I},
-\end{equation} 
-where $[\widehat{A},\widehat{B}] = \widehat{A}\widehat{B} - \widehat{B}\widehat{A}$ denotes the \emph{commutator} of two operators. This operator equation is known as the canonical commutation relations. The whole difference lies in the Leibniz rule: in the one case you multiply by $x_k$ first and then differentiate the product, in the other you differentiate first and multiply afterwards -- and the term $\delta_{jk}$ that arises in this way is, up to the factor $-i\hbar$, the entire commutator.
+The whole difference is the Leibniz rule: in one case you differentiate first and multiply by $x_j$ afterwards, in the other you multiply first and then differentiate the product. With the \emph{commutator} $[\op{A},\op{B}] = \op{A}\op{B} - \op{B}\op{A}$ of two operators one writes the result as
+\begin{equation}\label{eq:ccr}
+	\eqbox{[\op{x}_j,\op{p}_k] = i\hbar\,\delta_{jk}\,\mathbb{I}.}
+\end{equation}
+These are the \emph{canonical commutation relations}; to them are added $[\op{x}_j,\op{x}_k] = 0$ and $[\op{p}_j,\op{p}_k] = 0$.
 
-When it comes to filling in the correspondence table above, these relations mean simply that there is no universally valid ``quantisation prescription'' for classical quantities. The concrete entries in the table are, incidentally, precisely those functions of $x$ and $p$ for which such \emph{operator-ordering problems} play no role. For the classical quantity $x\,p_x$, on the other hand, quantum mechanics offers three candidates side by side -- $\widehat{x}\widehat{p}_x$, $\widehat{p}_x\widehat{x}$ and the symmetrised mean -- and nothing singles out any one of them. The difference $\widehat{x}\widehat{p}_x-\widehat{p}_x\widehat{x}$ is classically exactly zero, and quantum-mechanically, with $\hbar\approx 10^{-34}\,\mathrm{J\,s}$, merely tiny -- but not zero, and that difference is observable. It goes under the heading of \emph{uncertainty}.
-
+For the table they mean that there is no universally valid ``quantisation prescription'' for classical quantities. The entries of the table are precisely those functions of position and momentum for which the order of the operators plays no role. For the classical quantity $x\,p_x$, by contrast, quantum mechanics offers three candidates side by side, $\op{x}\op{p}_x$, $\op{p}_x\op{x}$ and the symmetric mean $\tfrac12(\op{x}\op{p}_x + \op{p}_x\op{x})$, and all three are different operators. Here one more requirement helps: an observable should be Hermitian, and that is true only of the symmetric mean. For more complicated expressions even this requirement does not fix the order. This is the \emph{operator-ordering problem}. The difference $\op{x}\op{p}_x - \op{p}_x\op{x}$ is classically exactly zero and quantum mechanically equal to $i\hbar\,\mathbb{I}$. With $\hbar \approx 1.05\cdot10^{-34}\,\mathrm{J\,s}$ this is tiny by everyday standards, but not zero, and this difference is observable. It goes under the heading of \emph{uncertainty}, the topic of the next lecture.

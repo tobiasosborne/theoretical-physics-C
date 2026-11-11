@@ -102,6 +102,8 @@ MIGRATED_LECTURES = {
 # number, value: the date of the rewrite.  Their v0.2 text is read from Git at the
 # commit of the snapshot tpc-script-v0.2.
 REWRITTEN_LECTURES = {
+    7: "2026-11-11",
+    8: "2026-11-11",
 }
 
 # Departures from v0.1 that are intentional.  Keyed by lecture number;
