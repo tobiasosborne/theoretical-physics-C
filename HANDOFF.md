@@ -19,6 +19,12 @@ earlier versions of this file (`git log -p HANDOFF.md`).
   reading each by gpt-6.1-sol and muse-wonder-full, one repair pass. No course chapter for
   these lectures yet. Chapter 10 still has the one-dimensional prefactor on its
   three-dimensional momentum wave function (its own footnote says so).
+- **C5 started with two demos (2026-11-11).** `content/c05-teilchen/`: one Kern section with
+  the figures of lectures 7 and 8 (density, Fourier pair) and the demos `c05.demo.detektor`
+  and `c05.demo.zerfliessen` (design `docs/plan/lec78/DEMOS.md`; `kommutator` and
+  `wellenpaket` not built). Kernel `web/src/kernels/particle.ts`, Julia reference
+  `numerics/generate/particle_golden.jl`. New registry macros `\pwidth` (sigma) and
+  `\tspread` (tau). The rest of lectures 7 and 8 is not yet in C5; no review of the stub.
 - **Course.** Chapters c00 (Theorie), c01 (Wahrscheinlichkeit), c02 (GPT, with the game
   "Distinguish"), c03 (Hilbertraum, sections s1-s15 from lectures 2-5), c04
   (Quantentheorie, from lecture 6) and c11 (Wasserstoff), German and English, in four PDF
