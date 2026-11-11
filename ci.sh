@@ -312,6 +312,7 @@ start_julia_jobs() {
     job "$G" jl-gptg    run_gate "Julia GPT golden reproduced" julia --project=numerics/gpt numerics/gpt/generate.jl --check
     job "$G" jl-c00     gate_if "$CODATA" "Julia c00 golden reproduced" julia --project=numerics numerics/generate/c00_golden.jl --check
     job "$G" jl-c03     run_gate "Julia c03 golden reproduced" julia --project=numerics numerics/generate/hilbert_golden.jl --check
+    job "$G" jl-c05     run_gate "Julia c05 golden reproduced" julia --project=numerics numerics/generate/particle_golden.jl --check
     job "$G" jl-c01     run_gate "Julia c01 golden reproduced" julia --startup-file=no web/tests/golden/reference/prob.jl --check
 }
 
