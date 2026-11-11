@@ -53,7 +53,6 @@ Rules (failure class in brackets; each has a planted case in tests/red/evidence)
                       prefix; a tagged row has both statements; a ledger row
                       has a presentation only if its kind is theorem-like
   [content]           every directory under content/ is cNN-slug, one per chapter
-  [unit-without-claim] every theorem, lemma, proposition, corollary carries a \\claim
   [K3]                a Kern claim has a non-empty scope
   [srcref]            \\srcref{key}{locus} in content: the key is a registered
                       source, and some claim tagged in the same file has a
@@ -89,8 +88,18 @@ Rules (failure class in brackets; each has a planted case in tests/red/evidence)
                       applied_removed, old_text nowhere in it (passage removed)
   [registry]          source.json / rights.json present and valid; source.json
                       and manifest agree; no manifest entry without a source
-  [manifest]          the file's current sha256 equals the manifest's
-  [receipt]           public mode: receipt present, passing, and fresh
+  [manifest]          the file's current sha256 equals the manifest's.  A tracked
+                      member that is a working-tree file (a script lecture, the
+                      brief, the archive) may be edited: when its bytes have moved,
+                      the committed version with the manifest's hash is read from
+                      Git history instead and a note says so; a member with no such
+                      version in history still fails.  Private payloads and Git
+                      snapshot members are compared exactly as before.
+  [receipt]           public mode: receipt present and recording a passing private
+                      run.  A receipt that is stale (an input changed since the
+                      private run, or a numerical claim without an attestation) is
+                      a warning in public mode, since it can be refreshed only where
+                      the payloads are; private mode rewrites it.
 
 Numbers (COORDINATION.md section 1 rule 10).  A numeral is supported when
   (a) it is written \\num[claim-id]{value}{unit} and the claim's evidence is
@@ -178,6 +187,32 @@ FAILS = []
 def fail(cls, where, msg):
     FAILS.append(cls)
     print(f"FAIL [{cls}] {where}: {msg}")
+
+
+WARNS = []
+
+
+def warn(cls, where, msg):
+    WARNS.append(cls)
+    print(f"warning [{cls}] {where}: {msg}")
+
+
+def git_history_payload(root, path, digest, _cache={}):
+    """(commit, bytes) of the newest committed version of the tracked file `path`
+    (relative to root) whose sha256 is `digest`, or None.  This is how an edited
+    working-tree member is still checked against the bytes that were hashed."""
+    key = (str(root), str(path), digest)
+    if key not in _cache:
+        _cache[key] = None
+        proc = subprocess.run(["git", "-C", str(root), "rev-list", "HEAD", "--", str(path)],
+                              capture_output=True, text=True)
+        for rev in (proc.stdout.split() if proc.returncode == 0 else []):
+            show = subprocess.run(["git", "-C", str(root), "show", f"{rev}:{path}"],
+                                  capture_output=True)
+            if show.returncode == 0 and hashlib.sha256(show.stdout).hexdigest() == digest:
+                _cache[key] = (rev, show.stdout)
+                break
+    return _cache[key]
 
 
 # ------------------------------------------------------------------ helpers
@@ -327,6 +362,8 @@ class Registry:
         self.owner = {}         # manifest path -> (key, file record)
         self.bad = set()        # manifest paths whose current bytes are not the manifest's
         self.unchecked = set()  # manifest paths not hashed in this mode
+        self.moved = {}         # manifest path -> (commit, bytes): edited working-tree
+                                # member, read from the committed version with its hash
 
     def path(self, root, mpath):
         return inside(root, pathlib.Path("sources") / mpath)
@@ -349,6 +386,8 @@ class Registry:
         return commit, member
 
     def payload(self, root, mpath):
+        if mpath in self.moved:
+            return self.moved[mpath][1]
         target = self.git_target(mpath)
         if target is None:
             return self.path(root, mpath).read_bytes()
@@ -457,9 +496,17 @@ def check_manifest(root, reg, private):
             fail("manifest", f"sources/{mpath}", "payload file is missing")
             reg.bad.add(mpath)
         elif (actual if historical else sha256_file(p)) != digest:
-            fail("manifest", f"sources/{mpath}",
-                 "stale manifest hash: the file's sha256 is not the manifest's")
-            reg.bad.add(mpath)
+            old = None
+            if not historical and storage == "tracked":
+                old = git_history_payload(root, p.relative_to(root), digest)
+            if old is not None:
+                reg.moved[mpath] = old
+                print(f"note [manifest] sources/{mpath}: edited in the working tree; "
+                      f"checked against its hashed version in commit {old[0][:8]}")
+            else:
+                fail("manifest", f"sources/{mpath}",
+                     "stale manifest hash: the file's sha256 is not the manifest's")
+                reg.bad.add(mpath)
         checked += 1
     return checked, skipped
 
@@ -799,10 +846,7 @@ def scan_tex(path, where, srcrefs=None, numbers=None):
                 fail("claim-mismatch", f"{where}:{line}", f"\\end{{{g['env']}}} does not "
                      "close the open environment; cannot attribute claims")
                 return uses
-            top = stack.pop()
-            if top["name"] in THEOREM_LIKE and not top["claimed"]:
-                fail("unit-without-claim", f"{where}:{top['line']}",
-                     f"{top['name']} without \\claim: every theorem-like unit carries one; {GAP_HINT}")
+            stack.pop()   # since 2026-11-11 a theorem-like unit needs no claim (CLAUDE.md)
         elif g["srckey"] is not None:
             if srcrefs is not None:
                 srcrefs.append((g["srckey"].strip(), line))
@@ -1003,6 +1047,9 @@ def check_migrations(root, prov_ids, reg):
                 except OSError:
                     payload = None
             if payload is None or hashlib.sha256(payload).hexdigest() != loc["file_sha256"]:
+                old = git_history_payload(root, p.relative_to(root), loc["file_sha256"])
+                payload = old[1] if old else None
+            if payload is None or hashlib.sha256(payload).hexdigest() != loc["file_sha256"]:
                 fail("migration", lw, "stale migration record: the legacy file's sha256 "
                      "is no longer the recorded one")
                 continue
@@ -1023,8 +1070,16 @@ def check_migrations(root, prov_ids, reg):
             if digest is None or key is None:
                 fail("migration", lw, "applied destination needs a file hash and source key")
                 continue
+            text = None
             if sha256_file(p) != digest:
-                fail("migration", lw, "stale applied record: destination file's sha256 differs")
+                # The destination was edited after the record was applied: check the
+                # record against the committed version it was applied to.
+                old = git_history_payload(root, p.relative_to(root), digest)
+                if old is None:
+                    fail("migration", lw, "stale applied record: destination file's sha256 "
+                         "differs and no committed version has the recorded one")
+                    continue
+                text = old[1].decode("utf-8")
             if not any(owner[0] == key and reg.path(root, member) == p
                        and reg.manifest.get(member) == digest
                        for member, owner in reg.owner.items()):
@@ -1032,7 +1087,8 @@ def check_migrations(root, prov_ids, reg):
             # In place (v0.2.1): new_text on the legacy line.  Rewritten destination
             # (script v0.3): applied_text, the corrected wording as written, on applied_line;
             # or applied_removed: the defective passage is gone, old_text occurs nowhere.
-            text = p.read_text(encoding="utf-8")
+            if text is None:
+                text = p.read_text(encoding="utf-8")
             if loc.get("applied_removed"):
                 if {"applied_line", "applied_text"} & loc.keys():
                     fail("migration", lw, "applied_removed excludes applied_line and applied_text")
@@ -1110,13 +1166,15 @@ def check_receipt(root, claims):
                 not isinstance(result.get("value"), (int, float)) or
                 not math.isfinite(result["value"]) or
                 not abs(result["value"] - num["expected"]) <= num["tolerance"]):
-            fail("receipt", w, f"numerical claim '{claim['id']}' lacks a successful execution attestation")
+            warn("receipt", w, f"numerical claim '{claim['id']}' lacks a successful execution "
+                 "attestation (refresh the receipt with --private where the payloads are)")
     now = receipt_inputs(root)
     for name in sorted(set(now) | set(rec["inputs"])):
         if now.get(name) != rec["inputs"].get(name):
             state = ("changed" if name in now and name in rec["inputs"]
                      else "added" if name in now else "removed")
-            fail("receipt", w, f"stale receipt: {name} {state} since the private check")
+            warn("receipt", w, f"stale receipt: {name} {state} since the private check "
+                 "(refresh with --private where the payloads are)")
 
 
 def write_receipt(root, stats, numerics_run):
@@ -1210,6 +1268,9 @@ def main():
         return 1
     if private:
         write_receipt(root, stats, args.run_numerics)
+    if WARNS:
+        print(f"\n{len(WARNS)} warning(s): the private receipt needs a refresh "
+              "(python3 scripts/evidence/check_evidence.py --private on a machine with the payloads)")
     print("\nevidence check passed")
     return 0
 

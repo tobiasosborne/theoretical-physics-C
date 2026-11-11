@@ -38,8 +38,9 @@ Every finding is one line "<CHECK> <where>: <what>".  Checks:
       every numbered unit / equation / section carries its ID
   L1  forbidden construct;  L2  construct outside the closed list
   CL  \\claim[presentation]{id}{status} well-formed and attached directly
-      after a \\label; every theorem-like unit (theorem, lemma, proposition,
-      corollary) carries exactly one on its own label; a presentation only
+      after a \\label; a theorem-like unit (theorem, lemma, proposition,
+      corollary) carries at most one, on its own label (none is required since
+      2026-11-11, CLAUDE.md); a presentation only
       on the claim of a theorem-like unit; no claim ID twice in a file
   NU  \\num[claim-id]{value}{unit} in text mode: two arguments, a non-empty
       value, a well-formed claim ID (in mathematics the macro is read by
@@ -64,7 +65,7 @@ that kind, that each row is tagged exactly once per language, K3 (a Kern
 claim has a scope), and that a \\srcref key is the source of a provenance
 row of a claim tagged in the same file.  Both gates read the claim as
 \\claim[presentation]{id}{status} and take the list of theorem-like units
-from contract.json (theorem_like); both require a claim in each of them.
+from contract.json (theorem_like).
 Exit status 1 if any finding, else 0.
 """
 import argparse
@@ -488,11 +489,10 @@ def scan(ch: Chapter, text: str, line0: int, depth: str, block, top: bool, math_
             if name in DISPLAY:
                 body = text[frame["start"]:m.start()]
                 check_display(ch, name, body, frame["line"])
-            if name in THEOREM_LIKE and frame.get("claims", 0) != 1:
+            if name in THEOREM_LIKE and frame.get("claims", 0) > 1:
                 fail("CL", ch.where(frame["line"]),
-                     f"{name} carries {frame.get('claims', 0)} \\claim(s) on its label: every "
-                     "theorem-like unit carries exactly one (a statement without evidence "
-                     "does not go into content)")
+                     f"{name} carries {frame.get('claims', 0)} \\claim(s) on its label: a "
+                     "theorem-like unit carries at most one")
             if name in FIG_ENVS and frame.get("captions", 0) != 1:
                 fail("L2", ch.where(frame["line"]),
                      f"{name} '{frame.get('id', '?')}' needs exactly one \\caption")

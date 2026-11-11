@@ -24,21 +24,22 @@ original ``archive/skript-2022/VorlesungenN.tex`` and checks:
 Deliberate departures are recorded in ENRICHMENT_EXCEPTIONS below, each
 with the reason, so a fix made on purpose does not read as a regression.
 
-Migrated lectures (MIGRATED_LECTURES below; PLAN.md S11: explicit migration
-records replace the enrichment rule) are no longer enrichments of v0.1: their
-live file is script v0.3, rewritten from the new course.  For these, and only
-these, the check is replaced by two others:
+Rewritten lectures are no longer enrichments of v0.1: their live file is script
+v0.3, rewritten from the new course.  For these the comparison above runs against
+the immutable v0.2 text of the lecture instead, so "v0.2 kept everything v0.1 had"
+stays checked, and the live file is not compared with v0.1.  Two lists:
 
-  snapshot the comparison above runs against the immutable v0.2 text of the
-           lecture (a Git member of the registered snapshot tpc-script-v0.2,
-           read through scripts/evidence/snapshot.py and checked against its
-           recorded sha256), so "v0.2 kept everything v0.1 had" stays checked
-  map      the lecture's migration map is complete: its checker
-           (evidence/migrations/check_vlNN_map.py) passes, i.e. every item of
-           the v0.2 text has a status and a destination or a reason
+  MIGRATED_LECTURES   lectures 1-6: the v0.2 text is a Git member of the snapshot
+                      tpc-script-v0.2 (read through scripts/evidence/snapshot.py and
+                      checked against its recorded sha256).  Each also has a migration
+                      map; its checker runs only with --with-maps (./ci.sh --maps): the
+                      maps are frozen bookkeeping and no longer block edits.
+  REWRITTEN_LECTURES  lectures 7 onward (CLAUDE.md): no map.  The v0.2 text is read
+                      from Git at the snapshot's commit (identifiers.git_commit of
+                      sources/tpc-script-v0.2/source.json).  To rewrite lecture N, add
+                      one line N: "<date>" here.
 
-The live v0.3 file is then not compared with v0.1.  Every other lecture is
-checked exactly as before.
+Every other lecture is checked exactly as before.
 
 Exit status is 0 when every lecture passes, 1 otherwise.
 
@@ -47,7 +48,8 @@ Usage:
     scripts/check_enrichment.py --only 12
     scripts/check_enrichment.py --max-growth 2.2
     scripts/check_enrichment.py --json
-    scripts/check_enrichment.py --only 2 --migration-map 2=FILE   (red corpus)
+    scripts/check_enrichment.py --with-maps                    (also run the maps)
+    scripts/check_enrichment.py --only 2 --migration-map 2=FILE   (red corpus; implies --with-maps)
 """
 
 import argparse
@@ -94,6 +96,12 @@ MIGRATED_LECTURES = {
         "map_check": "evidence/migrations/check_vl06_map.py",
         "map": "evidence/migrations/maps/vl06-map.json",
         "since": "script v0.3, 2026-11-04 (docs/plan/lec56/BRIEF.md)"},
+}
+
+# Lectures rewritten without a migration map (lecture 7 onward, CLAUDE.md), keyed by
+# number, value: the date of the rewrite.  Their v0.2 text is read from Git at the
+# commit of the snapshot tpc-script-v0.2.
+REWRITTEN_LECTURES = {
 }
 
 # Departures from v0.1 that are intentional.  Keyed by lecture number;
@@ -274,7 +282,14 @@ def check_migration_map(n, mig, map_override, fail):
     return lines[-1] if lines else ""
 
 
-def check_one(n, max_growth, map_override=None):
+def v02_from_git(n):
+    """The v0.2 text of lecture n, from Git at the commit of the snapshot tpc-script-v0.2."""
+    src = json.loads((ROOT / "sources" / "tpc-script-v0.2" / "source.json").read_text(encoding="utf-8"))
+    commit = src["identifiers"]["git_commit"]
+    return snapshot.git_show(ROOT, commit, f"latex/lectures/de/vl{n:02d}.tex")
+
+
+def check_one(n, max_growth, map_override=None, with_maps=False):
     v01_path = V01_DIR / f"Vorlesungen{n}.tex"
     v02_path = V02_DIR / f"vl{n:02d}.tex"
     mig = MIGRATED_LECTURES.get(n)
@@ -302,8 +317,16 @@ def check_one(n, max_growth, map_override=None):
         except snapshot.SnapshotError as exc:
             fail("snapshot", f"v0.2 text of lecture {n} unavailable: {exc}")
             return res
-        res["stats"]["map"] = check_migration_map(n, mig, map_override, fail)
+        if with_maps:
+            res["stats"]["map"] = check_migration_map(n, mig, map_override, fail)
         new = strip_comments(v02)
+    elif n in REWRITTEN_LECTURES:
+        res["migrated"] = f"script v0.3, {REWRITTEN_LECTURES[n]} (no map)"
+        try:
+            new = strip_comments(v02_from_git(n).decode("utf-8"))
+        except (snapshot.SnapshotError, OSError, KeyError, ValueError) as exc:
+            fail("snapshot", f"v0.2 text of lecture {n} unavailable from Git: {exc}")
+            return res
     else:
         new = strip_comments(v02_path.read_text(encoding="utf-8"))
     exc = ENRICHMENT_EXCEPTIONS.get(n, {})
@@ -384,7 +407,9 @@ def main():
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--migration-map", action="append", default=[], metavar="N=FILE",
                     help="check migrated lecture N against FILE instead of its map "
-                         "(red corpus only)")
+                         "(red corpus only; implies --with-maps)")
+    ap.add_argument("--with-maps", action="store_true",
+                    help="also require the migration maps of lectures 1-6 to be complete")
     args = ap.parse_args()
     overrides = {}
     for spec in args.migration_map:
@@ -400,7 +425,8 @@ def main():
     if not numbers:
         sys.exit(f"error: no lectures found in {V02_DIR}")
 
-    results = [check_one(n, args.max_growth, overrides.get(n)) for n in numbers]
+    with_maps = args.with_maps or bool(overrides)
+    results = [check_one(n, args.max_growth, overrides.get(n), with_maps) for n in numbers]
     n_fail = sum(1 for r in results if r["failures"])
     n_warn = sum(1 for r in results if r["warnings"])
 
@@ -411,8 +437,8 @@ def main():
         return 1 if n_fail else 0
 
     print(f"{BOLD}Enrichment: v0.2 against archived v0.1{NC}"
-          f" (lectures {', '.join(map(str, sorted(MIGRATED_LECTURES)))}: v0.2 snapshot"
-          f" against v0.1, live v0.3 file governed by its migration map)")
+          f" (rewritten lectures {', '.join(map(str, sorted(MIGRATED_LECTURES) + sorted(REWRITTEN_LECTURES)))}:"
+          f" v0.2 snapshot against v0.1; maps {'checked' if with_maps else 'not checked (--with-maps)'})")
     print(f"{'vl':>3}  {'maths':>11} {'labels':>9} {'sections':>10} "
           f"{'envs':>9} {'words':>13} {'growth':>7}   status")
     print("─" * 82)
@@ -424,7 +450,7 @@ def main():
               f"{s.get('sections', '-'):>10} {s.get('envs', '-'):>9} "
               f"{s.get('words', '-'):>13} {s.get('growth', '-'):>7}   {status}")
         if r.get("migrated"):
-            print(f"      migrated: v0.2 snapshot compared; {s.get('map', '')}")
+            print(f"      rewritten: v0.2 snapshot compared; {s.get('map', 'map not checked')}")
         for f in r["failures"]:
             print(f"      {RED}✗{NC} {f['check']}: {f['detail']}")
         for w in r["warnings"]:

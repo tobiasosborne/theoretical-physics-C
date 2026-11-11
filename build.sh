@@ -111,6 +111,8 @@ build_one() {
     local passes=3
     [[ $DRAFT -eq 1 ]] && passes=1
 
+    # No stale output may pass for a build: start without log and PDF.
+    rm -f "$job.log" "$job.pdf"
     for ((i = 1; i <= passes; i++)); do
         info "$label: pass $i/$passes..."
         if [[ -n "$inject" ]]; then
@@ -122,6 +124,11 @@ build_one() {
 
     # Report
     local errors=0 pages="?"
+    if [[ ! -s "$job.log" || ! -s "$job.pdf" ]] || ! grep -q "^Output written" "$job.log"; then
+        err "$label: xelatex wrote no PDF (or no log) — see latex/$job.log"
+        cd "$PROJ_ROOT"
+        return 1
+    fi
     errors=$(grep -c "^!" "$job.log" 2>/dev/null) || errors=0
     pages=$(grep -oP 'Output written.*\(\K[0-9]+' "$job.log" 2>/dev/null | tail -1) || pages="?"
 
@@ -141,7 +148,7 @@ build_one() {
         return 1
     fi
 
-    cp "$job.pdf" "$PROJ_ROOT/$job.pdf" 2>/dev/null || true
+    cp "$job.pdf" "$PROJ_ROOT/$job.pdf"
     ok "Built ${BOLD}$job.pdf${NC} ($pages pages, 0 errors, 0 undefined references)"
     cd "$PROJ_ROOT"
 }

@@ -1,6 +1,12 @@
 <!-- ROLE: brief for bringing lectures 5 and 6 to the new level (German first), 2026-11-04.
      UPDATE POLICY: the coordinator only. -->
 
+> **Superseded in part (2026-11-11).** `CLAUDE.md` replaces the process parts of this brief:
+> the evidence list of D-EVID (one migration map per lecture, migration records, a ledger row
+> for every statement), the muse review, NOTES and sync files, and the gate commands. TJO's
+> decisions recorded here (D-POS, D-C4, D-DE, D-WORTLAUT) stand.
+
+
 # Brief: lectures 5 and 6, German script and German web course
 
 ## TJO's request (2026-11-04)

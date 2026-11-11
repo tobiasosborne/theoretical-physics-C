@@ -1,6 +1,12 @@
 <!-- ROLE: shared brief for bringing lectures 3 and 4 to the new level (course C3 and script v0.3),
      2026-10-29. Every lane reads this first. UPDATE POLICY: the coordinator only. -->
 
+> **Superseded in part (2026-11-11).** `CLAUDE.md` replaces the process parts of this brief:
+> lanes and file ownership, two reviews per chapter and the re-review, NOTES and sync files,
+> migration maps and records, and the gate commands. TJO's decisions recorded here (D-HAT,
+> D-BUDGET-FLEX, D-SPEKTREN, G-0072) stand.
+
+
 # Brief: lectures 3 and 4, course and script
 
 ## Goal

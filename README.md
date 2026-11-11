@@ -103,7 +103,8 @@ scripts/
   tikz-preview.sh             render one figure standalone
 
 build.sh                      build either or both editions
-ci.sh                         local CI: structure → parity → figures → build
+ci.sh                         the gates: --fast before each commit, full now and then
+CLAUDE.md                     workflow rules for authors and agents
 scripts/publish_pages.sh      open-fonts build of PDFs and web edition into
                               build/pages/ (the student links above)
 scripts/pages/index.html      the landing page of that site
@@ -146,11 +147,15 @@ language must agree — and `ci.sh` enforces that:
 | language | no untranslated German left in an English source |
 
 ```bash
-./ci.sh                 # everything
-./ci.sh --fast          # skip the PDF builds
-./ci.sh --parity        # parity check alone
-./ci.sh --install-hook  # run --fast on every commit
+./ci.sh --fast                    # fast tier: static gates + builds of what changed
+./ci.sh --fast --chapters c03,script   # same, for named chapters ('script' = masters)
+./ci.sh                           # full tier: everything, every chapter, web, Julia
+./ci.sh --parity                  # script parity check alone
+./ci.sh --red                     # red corpus, after changing a gate script
+./ci.sh --install-hook            # run --fast on every commit
 ```
+
+The tiers and when to run them are described in `CLAUDE.md`.
 
 ## Transcripts
 
