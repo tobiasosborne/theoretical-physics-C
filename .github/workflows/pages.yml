@@ -60,7 +60,7 @@ jobs:
           sudo apt-get update -q
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -q --no-install-recommends \
             texlive-xetex texlive-latex-recommended texlive-latex-extra texlive-pictures \
-            texlive-science texlive-fonts-extra texlive-fonts-extra-links \
+            texlive-science texlive-bibtex-extra texlive-fonts-extra texlive-fonts-extra-links \
             texlive-lang-german texlive-plain-generic preview-latex-style poppler-utils fontconfig
           dpkg-query -W -f='${Package}\n' | sort > /tmp/after
           comm -13 /tmp/before /tmp/after > /tmp/new
