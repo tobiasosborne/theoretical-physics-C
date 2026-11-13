@@ -47,6 +47,9 @@ while [[ $# -gt 0 ]]; do
     esac
 done
 
+# What a further pass could change: the .aux and .toc (absent on a clean tree).
+state() { { cat "$1.aux" "$1.toc" 2>/dev/null || true; } | sha256sum; }
+
 # $1 = job name, $2 = language.  Runs in a subshell, in parallel.
 build_one() {
     local job="$1" lang="$2" inject="" passes=4
@@ -58,10 +61,10 @@ build_one() {
     rm -f "$job.pdf"
     local i before after
     for ((i = 1; i <= passes; i++)); do
-        before=$(cat "$job.aux" "$job.toc" 2>/dev/null | sha256sum)
+        before=$(state "$job")
         xelatex -interaction=nonstopmode -halt-on-error -jobname="$job" \
             "${inject}\\input{$job.tex}" > "$job.stdout" 2>&1 || break
-        after=$(cat "$job.aux" "$job.toc" 2>/dev/null | sha256sum)
+        after=$(state "$job")
         [[ "$before" == "$after" ]] && break       # settled
     done
 
