@@ -31,6 +31,8 @@ A warning is in order here: the Hilbert space does \emph{not} directly describe 
 
 Mixtures $\lambda\rho_1 + (1-\lambda)\rho_2$ with $0\leq\lambda\leq 1$ are again density operators. With the spectral decomposition every density operator is a mixture $\rho = \sum_x p_x\ketbra{\phi_x}{\phi_x}$ with $p_x\geq 0$ and $\sum_x p_x = 1$. The \emph{pure} states, the extreme points, are the states that are not proper mixtures; these are exactly the $\rho = \ketbra{\psi}{\psi}$, so they are given by a vector $\ket{\psi}$, its \emph{wave function} (the converse is proved in the web course). $\ket{\psi}$ and $e^{i\alpha}\ket{\psi}$ give the same state. Because $\tr(\ketbra{\psi}{\psi}) = \braket{\psi}{\psi}$ (Lecture~5), only normalised vectors represent pure states. One also calls $\ketbra{\psi}{\psi}$ a one-dimensional projector; ``one-dimensional'' refers to no spatial dimension, but to its image being one-dimensional.
 
+\webdemo{c01.demo.mischung}{A die with weights $p$ on the outcomes $1,\dots,6$. If $p$ does not sit on a single outcome, then $p$ is the mixture $\tfrac12 q + \tfrac12 r$ of two other weights, obtained by shifting a little weight from one outcome to another. Drag $\lambda$ and watch the mixture $\lambda q + (1-\lambda) r$ run from $r$ through $p$ to $q$; a click on a bar chooses the two outcomes, and for a point weight $q$ and $r$ coincide with $p$. This is the classical counterpart of $\lambda\rho_1 + (1-\lambda)\rho_2$ in the text: here weights on outcomes, there density operators.}
+
 \begin{example}[States of a qubit]
 For $\Hil = \mathbb{C}^2$, $\rho$ is a positive $2\times 2$ matrix with trace one. Positivity requires $\rho_{00} = p\geq 0$, the trace condition forces $\rho_{11} = 1-p$, and because $\rho_{11}\geq 0$ as well, $p$ lies between zero and one. Hermiticity makes the off-diagonal entries complex conjugates of each other:
 \begin{equation}\label{eq:qubitzustand}
@@ -51,6 +53,12 @@ Compute the two eigenvalues of the matrix in Eq.~(\ref{eq:qubitzustand}) and der
 	Detectors = dual of state space = operators $\op{F}$ with $0 \leq \op{F} \leq \mathbb{I}$.
 \end{merksatz}
 A detector is a measuring apparatus with the possible responses ``yes'' (a hit) and ``no''. For operators, $\op{A}\leq\op{B}$ means that $\op{B}-\op{A}$ is positive. So P3 requires \emph{two} conditions, $\op{F}\geq 0$ \emph{and} $\mathbb{I}-\op{F}\geq 0$, and on the right stands the identity operator, not the number one. ``Dual of state space'' means: the functions $\rho\mapsto\tr(\rho\,\op{F})$ are exactly the functions $f$ on the density operators with values between $0$ and $1$ that respect mixtures, $f(\lambda\rho_1 + (1-\lambda)\rho_2) = \lambda f(\rho_1) + (1-\lambda)f(\rho_2)$.
+
+\begin{webonly}
+The script speaks here of density operators and detectors; the web course states both more generally. The set of all states of a system is called its \emph{state space}; states can be mixed, so it is convex. An \emph{effect} is a yes-no question put to the system: a function on the state space that respects mixtures (an affine function) and assigns to every state the probability of the answer ``yes'', with values between $0$ and $1$. For a qubit these are exactly the functions $\rho\mapsto\tr(\rho\,\op{F})$ with $0\leq\op{F}\leq\mathbb{I}$.
+\end{webonly}
+
+\webdemo{c02.demo.explorer}{Three state spaces side by side: the classical bit, the square bit and the qubit as a ball. You move two states and an effect $e$ and read the probability $p = e(\omega)$ off as an exact number; the mixture of the two states lies on the segment between them, and along it $p$ changes linearly with the mixing weight. Watch which effects are possible in the three state spaces. A cone view shows the same with the states at height one in the cone of unnormalised states.}
 
 \begin{merksatz}[P4]
 	Born rule = probability of detection for a state prepared as density operator $\rho$ is $\tr(\rho\,\op{F})$.
@@ -78,6 +86,12 @@ a \emph{measurement} (a POVM, \emph{positive operator-valued measure}). By P4, $
 	\sum_x x\,\tr(\rho\,\op{F}_x) = \tr(\rho\,\op{A}), \qquad \op{A} = \sum_x x\,\op{F}_x,
 \end{equation}
 and $\op{A}$ is Hermitian. In the projection-valued case, conversely, the measurement is already determined by $\op{A}$: the $\op{F}_x$ are the projectors onto the eigenspaces of $\op{A}$, and by the spectral theorem every Hermitian operator thus has a projection-valued measurement. One therefore often reads as a definition that the observables are exactly the Hermitian operators. That is the projection-valued special case; the detector with $\op{F} = q\ketbra{0}{0}$ is not contained in it.
+
+\begin{webonly}
+A measurement with two outcomes, $\{\op{F}, \mathbb{I}-\op{F}\}$, can also be tried out as a game; this is an optional exercise that the rest of the lecture does not need.
+\end{webonly}
+
+\webdemo{c02.demo.distinguish}{Two preparations $\omega_1$, $\omega_2$ are given, with known probabilities $\pi_1$, $\pi_2$. You move the effect $e$ and thereby fix the measurement $\{e, 1-e\}$: on ``yes'' you guess $\omega_1$, on ``no'' $\omega_2$. The game states the success probability $\pi_1\,e(\omega_1) + \pi_2\,(1-e(\omega_2))$ exactly and, once you confirm, shows the best possible value; the levels run in the classical bit, the square bit and the qubit.}
 
 \subsection{Time Evolution}
 A state characterises not a single system but a preparation procedure that can be set going at any time. For a closed system whose conditions do not change with time, only the \emph{relative} time delay between preparation and measurement counts; that is an assumption about the system, not a consequence of reproducibility.

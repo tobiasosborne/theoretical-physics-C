@@ -38,6 +38,8 @@ Das Kreuz steht immer auf dem ersten Vektor.
 
 \input{figures/fig_vl02_kreuz}
 
+\webdemo{c03.demo.kreuz}{Links die komplexe Ebene der Einträge, rechts die Ebene der Produkte $v_j^* w_j$, aneinandergelegt zu $\vb{v}\adj\vb{w}$. Ziehen Sie die Einträge von $\vb{v}$ und $\vb{w}$: Die Einträge der Zeile $\vb{v}\adj$ folgen als Spiegelbilder an der reellen Achse. Schalten Sie auf $\vb{w}=\vb{v}$, dann liegt jeder Summand auf der nichtnegativen reellen Achse; schalten Sie die Konjugation ab, dann bekommt $\vb{v}=(1,i)$ die Länge null. Die Voreinstellung ,,Abbildung (a)`` zeigt den Vektor der Abbildung.}
+
 Die Abbildung zeigt, was die Konjugation geometrisch tut: Sie spiegelt jeden Eintrag an der reellen Achse, hier für die Einträge $2+i$ und $-1+2i$. Man müsste nicht konjugieren, man könnte die Spalte auch einfach umlegen. Die Konjugation zahlt sich aber aus, sobald man einen Vektor mit sich selbst multipliziert. Weil $v_j^* v_j = \abs{v_j}^2$ ist, gilt
 \begin{equation}
 	\vb{v}\adj\vb{v} = \sum_{j=1}^{n} \abs{v_j}^2 \geq 0.
@@ -55,5 +57,37 @@ Das Skalarprodukt eines Vektors mit sich selbst ist also reell und nie negativ. 
 
 \subsection{Unendlich viele Einträge}
 An dieser Stelle könnte man endlichdimensionale Hilberträume schon definieren. Unendlichdimensionale Vektorräume spielen aber in der Physik eine sehr wichtige Rolle. Der Grund ist physikalisch: Unsere besten Modelle sind Felder, und Felder haben unendlich viele Freiheitsgrade. Man kann sich solche Vektoren als Spalten mit unendlich vielen Einträgen vorstellen oder als Funktionen, die jeder Stelle $x$ der reellen Achse eine komplexe Zahl $f(x)$ zuordnen; mit Funktionen beschreibt man etwa die reinen Zustände eines Teilchens ohne Spin in einer Dimension. Setzt man in den Formeln einfach $n=\infty$, so kann das Skalarprodukt divergieren; der Webkurs (Kapitel „Werkzeugkasten Hilbertraum“) zeigt, wie man das repariert, indem man nur Spalten mit endlicher Summe der Betragsquadrate (den Raum $\ell^2$) und Funktionen mit endlichem Integral des Betragsquadrats zulässt.
+
+\begin{webonly}
+Welche Spalten mit unendlich vielen Einträgen zugelassen sind, entscheidet das Skalarprodukt mit sich selbst. Der Vektor mit lauter Einsen, $v_j = 1$, ist als Liste völlig legal, aber seine Teilsummen $\sum_{j=1}^{N} \abs{v_j}^2 = N$ wachsen über alle Grenzen. Zugelassen sind nur Spalten mit
+\begin{equation*}
+	\sum_{j=1}^{\infty} \abs{v_j}^2 < \infty
+\end{equation*}
+sie bilden den Raum $\elltwo$. Dass die Einträge gegen null gehen, reicht nicht: $v_j = 1/j$ liegt in $\elltwo$, $u_j = 1/\sqrt{j}$ nicht, denn $\sum_{j=1}^{N} 1/j^2 < 2$ bleibt beschränkt, während $\sum_{j=1}^{N} 1/j \geq \ln(N+1)$ über alle Grenzen wächst.
+\end{webonly}
+
+\webdemo{c03.demo.partialsummen}{Oben die Betragsquadrate $\abs{v_j}^2 = j^{-2s}$ der Spalte $v_j = j^{-s}$ als Balken, unten ihre Teilsummen gegen $N$; gestrichelt und strichpunktiert die Spalten $1/\sqrt{j}$ und $1$ zum Vergleich. Verschieben Sie den Exponenten $s$ und lassen Sie $N$ wachsen. Beobachten Sie, ob die Teilsummen an einer Schranke haltmachen, wie für $s=1$, oder über alle Grenzen wachsen, wie für $s=1/2$ und $s=0$.}
+
+\begin{webonly}
+Auch Funktionen $f\colon \mathbb{R} \to \mathbb{C}$ sind Vektoren: Man addiert sie Stelle für Stelle, $(f+g)(x) = f(x) + g(x)$, und multipliziert sie Stelle für Stelle mit Zahlen. Grafisch ist das schwierig, denn für eine komplexe Zahl braucht man zwei Achsen, für die Funktion also eine dritte Dimension: Zu jedem $x$ gehört der Punkt $(\operatorname{Re} f(x), \operatorname{Im} f(x))$ einer komplexen Ebene, die senkrecht auf der $x$-Achse steht. Für $f(x) = e^{-x^2/2}\, e^{2ix}$ ist wegen $\abs{e^{2ix}} = 1$ das Betragsquadrat $\abs{f(x)}^2 = e^{-x^2}$, unabhängig von der Phase. An die Stelle der Summe über $j$ tritt das Integral über $x$.
+\end{webonly}
+
+\webdemo{c03.demo.komplex}{Die Kurve $x \mapsto (x, \operatorname{Re} f(x), \operatorname{Im} f(x))$ einer komplexwertigen Funktion; gestrichelt der Realteil allein. Wählen Sie den Betrag der Funktion und die Wellenzahl $k$ im Phasenfaktor $e^{ikx}$: Die Kurve windet sich schneller, ihr Abstand von der Achse bleibt $\abs{f(x)}$. Die Wiedergabe dreht die Kamera durch vier Ansichten; von vorn sieht man nur den Realteil, die gewohnte Zeichnung, der die Hälfte der Information fehlt. Auch die Maus dreht die Szene.}
+
+\begin{webonly}
+Für Funktionen gilt dieselbe Prüfung wie für Spalten: Eine Funktion heißt quadratintegrierbar, wenn
+\begin{equation*}
+	\int_{-\infty}^{\infty} \abs{f(x)}^2\, \dd x < \infty
+\end{equation*}
+ist. Diese Funktionen bilden den Raum $\Ltwo{\mathbb{R}}$ (dabei gelten Funktionen, die fast überall übereinstimmen, als derselbe Vektor). Wieder reicht es nicht, dass $f$ gegen null geht. Für $g(x) = e^{-x^2/2}$ ist $\int_{-\infty}^{\infty} e^{-x^2}\, \dd x = \sqrt{\pi}$, für $h(x) = 1/\sqrt{1+\abs{x}}$ dagegen $\int_{-X}^{X} \abs{h(x)}^2\, \dd x = 2\ln(1+X) \to \infty$, und die konstante Funktion $1$ ergibt $2X$.
+\end{webonly}
+
+\webdemo{c03.demo.partialintegrale}{Oben $\abs{f(x)}^2$ mit der Fläche zwischen $-X$ und $X$, unten das Integral $\int_{-X}^{X} \abs{f(x)}^2\, \dd x$ gegen $X$. Wählen Sie die Gauß-Funktion oder $f(x) = (1+\abs{x})^{-s}$ und verschieben Sie $X$ oder lassen Sie es wachsen. Das Integral der Gauß-Funktion nähert sich einer Schranke; für $s \leq 1/2$ wächst es über alle Grenzen, wie die Teilsummen der Spalten.}
+
+\begin{webonly}
+Damit stehen die Räume dieser Vorlesung nebeneinander, jeder mit dem System, zu dem er gehört: $\mathbb{C}^2$ gehört zum Qubit, $\elltwo$ zum harmonischen Oszillator und $\Ltwo{\mathbb{R}}$ zum Teilchen ohne Spin in einer Dimension. Der erste Raum ist endlichdimensional; die beiden anderen kommen später im Kurs vor. In jedem hat das Skalarprodukt eines Vektors mit sich selbst einen endlichen Wert: eine Summe aus zwei Beträgen, eine unendliche Summe, ein Integral.
+\end{webonly}
+
+\webdemo{c03.demo.raeume}{Je ein Vektor aus $\mathbb{C}^2$, $\elltwo$ und $\Ltwo{\mathbb{R}}$ mit seinen Betragsquadraten auf einer gemeinsamen senkrechten Skala. Die Wiedergabe baut das Skalarprodukt jedes Vektors mit sich selbst auf: in (a) eine Summe aus zwei Balken, in (b) eine Summe aus unendlich vielen, in (c) die Fläche unter der Kurve. Darunter zeigt je eine Anzeige den bisher aufsummierten Teil und den vollständigen Wert.}
 
 Ein komplexer Vektorraum mit Skalarprodukt ist fast schon ein Hilbertraum; es fehlt noch eine Bedingung, die Vollständigkeit, und die ist in $\mathbb{C}^n$ immer erfüllt. Bevor wir den Hilbertraum in der nächsten Vorlesung definieren, brauchen wir eine Schreibweise, die Rechnungen mit Skalarprodukten sehr viel leichter macht: die Notation von Dirac.

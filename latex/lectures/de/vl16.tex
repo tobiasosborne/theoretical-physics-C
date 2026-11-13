@@ -2,20 +2,7 @@
 
 \section{Vorlesung: Das Coulombpotential (Wasserstoffatom)}
 
-\begin{center}
-	\begin{tikzpicture}
-		\begin{axis}[width=\columnwidth, height=8cm,hide axis, tick style={color=black}, domain=0:12, xtick=\empty, ytick=\empty, samples =200, xmin = -0.5, xmax = 8, ymin = -3, ymax = 2]
-		\addplot[cgblue, dashed] {1/x^2-2/x};
-		\addplot[cgblue] {-2/x};
-		\draw[->] (axis cs: -0.5, 0) -- (axis cs: 8, 0);
-		\draw (axis cs: 7.8, -0.2) node[below] {$r$};
-		\draw (axis cs: 6, 1.5) node[below] {$U_\ell(r) = \frac{\hbar^2 \ell(\ell+1)}{2m_{\text{e}}r^2}+V(r)$};
-		\draw[->] (axis cs: 0, -3) -- (axis cs: 0, 2);
-    	\draw (axis cs: 0.5,1.5) node[right] {$\ell = 1$};
-   		\draw (axis cs:3.5,-1.25) node[above] {$\ell=0$};
-		\end{axis}
-	\end{tikzpicture}
-\end{center} 
+\input{figures/fig_vl16_coulomb}
 
 Das Wasserstoffatom besteht aus einem Proton und einem Elektron. Ein erstes grobes Modell für das Atom erfolgt indem man das Proton als eine unendlichen massiven Punktmasse annähert. Nach dieser Annäherung kann nun das Wasserstoffatom als ein Teilchen (das Elektron), das sich in einem Zentralpotential 
 \begin{equation}
@@ -77,6 +64,8 @@ Die vollständige Eigenfunktionen lauten
 \end{equation}
 Zu jedem $n$ gibt es mögliche Drehimpulsquantenzahlen $\ell = 0,1,2, \ldots, n-1$ ($\equiv \text{s}, \text{p}, \text{d}, \text{f}, \ldots $). Zu jedem $\ell$ gehören $2\ell +1$ mögliche Werte der magnetischen Quantenzahahl $m = -\ell, -\ell+1, \ldots, \ell$. Eine wichtige Bemerkung: die Energie ist von $m$ und $\ell$ unabhängig. 
 
+\webdemo{c11.demo.radial}{Der Radialanteil $R_{n\ell}(r)$, die radiale Dichte $P_{n\ell}(r) = r^2 R_{n\ell}(r)^2$ und ihre Verteilungsfunktion für 1s, 2s und 2p, mit den Knoten, dem Mittelwert $\langle r\rangle$ und dem wahrscheinlichsten Radius. Wählen Sie den Zustand und ziehen Sie den Probenradius $r$: Die Verteilungsfunktion ist die Fläche unter $P_{n\ell}$ bis zu diesem Radius, also die Wahrscheinlichkeit, das Elektron innerhalb von $r$ zu finden. Achten Sie darauf, dass $P_{n\ell}$ auch für die s-Zustände bei null beginnt und dass der 2s-Zustand einen Knoten hat, der 2p-Zustand keinen.}
+
 Die ersten Laguerre-Polynomen lauten
 \begin{equation}
 	\begin{split}
@@ -94,5 +83,9 @@ Daher erhalten wir die folgende Eigenwellenfunktionen $\psi_{n\ell m}(r,\theta,\
 	\psi_{21\pm1}(r,\theta,\phi) &= \mp\frac{1}{8\sqrt{\pi}}\left(\frac{Z}{a_0}\right)^{\frac{3}{2}}\frac{Zr}{a_0}e^{-\frac{Zr}{2a_0}}\sin(\theta)e^{\pm i\phi} &\quad & 2\text{p} \quad (m=\pm1). \\
 \end{align*}
 
+\webdemo{c11.demo.cloud}{Eine Punktwolke aus Stichproben der Dichte $\abs{\psi}^2$ der Relativkoordinate, für die Zustände mit $n \leq 2$; jeder Punkt hat dasselbe Gewicht, die Punktdichte ist also die Wahrscheinlichkeitsdichte. Wählen Sie den Zustand, drehen Sie die Wolke, sehen Sie sie von vorn oder von oben an und schneiden Sie mit dem Schieberegler eine Scheibe heraus, um ins Innere zu blicken. Im Labormodus sehen Sie stattdessen Elektron- und Protondichte für ein gaußförmiges Schwerpunktpaket.}
+
 Die üblichen bunten Orbitalbilder zeigen nur $|\psi_{n\ell m}|^2$, nicht die
 Phase.
+
+\webdemo{c11.demo.phase}{Ein ebener Schnitt durch $\psi$ für die Zustände mit $n \leq 2$: Die Helligkeit zeigt den Betrag $\abs{\psi}$, der Farbton die Phase $\arg\psi$; wo $\psi = 0$ ist, bleibt der Hintergrund, und die Knotenlinien sind eingezeichnet. Bewegen Sie den Zeitregler: Die Farben drehen sich, die Helligkeit nicht, denn ein stationärer Zustand ändert nur seine Phase. Vergleichen Sie $\psi_{210}$, dessen Phase nur zwei Werte annimmt, mit $\psi_{21\pm1}$, deren Phase um die Achse einmal herumläuft.}

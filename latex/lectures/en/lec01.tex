@@ -9,11 +9,15 @@ A remark on method, one that holds for the whole course: one can first work thro
 \subsection{Why a new theory was needed}
 The prehistory of quantum mechanics is a series of observations which gradually called into question the thesis that our universe is described by classical physics.
 \begin{enumerate}
-	\item \emph{Black-body radiation} (Planck, 1900). A black body reflects no incident radiation, yet at a temperature $T$ it radiates all the same. The spectrum of this radiation cannot be explained with classical physics. The right one follows from the assumption that light of frequency $\nu$ consists of \emph{light quanta} of energy $E = h\nu$. Planck originally postulated the constant $h$ as an ``auxiliary quantity'' in deriving the radiation law:
+	\item \emph{Black-body radiation} (Planck, 1900). A black body reflects no incident radiation, yet at a temperature $T$ it radiates all the same.
+\webdemo{c00.demo.hohlraum}{A black body as a box with a small hole. A ray enters through the hole and is thrown back at the walls by the law of reflection; at each reflection the wall throws back the fraction $r$ of the energy and swallows the rest, and the brightness of the ray shows how much is left after $n$ reflections, namely $r^n$. Change $r$ and the direction of the incoming ray. Watch how little of the ray is left when it finds the hole again.}
+	The spectrum of this radiation cannot be explained with classical physics. The right one follows from the assumption that light of frequency $\nu$ consists of \emph{light quanta} of energy $E = h\nu$. Planck originally postulated the constant $h$ as an ``auxiliary quantity'' in deriving the radiation law:
 	\begin{equation*}
 		u(\nu, T)\,\dd\nu = \frac{8\pi h \nu^3}{c^3}\,\frac{\dd\nu}{e^{h\nu/(\kB T)} - 1}
 	\end{equation*}
-	is the energy per volume in the frequency interval $\dd\nu$, with the speed of light $c$ and Boltzmann's constant $\kB$. We shall derive this law ourselves in the statistical part. Theoretical physics predominantly uses the \emph{reduced Planck constant}
+	is the energy per volume in the frequency interval $\dd\nu$, with the speed of light $c$ and Boltzmann's constant $\kB$. We shall derive this law ourselves in the statistical part.
+\webdemo{c00.demo.planck}{The radiation law and its limiting form for small frequencies. On the left the energy density $u$ is plotted against frequency, for three fixed temperatures and for a temperature $T$ that you choose with the slider; the thin dashed parabola is the corresponding limiting form. On the right the ratio of $u$ to the limiting form is plotted against $h\nu/(\kB T)$, one curve for all temperatures. Drag the frequency marker and change $T$: the same frequency slides along the right-hand curve, and the parabola lies on $u$ only at small frequencies.}
+	Theoretical physics predominantly uses the \emph{reduced Planck constant}
 	\begin{equation*}
 		\eqbox{\hbar = \frac{h}{2\pi}}
 	\end{equation*}
@@ -22,6 +26,7 @@ The prehistory of quantum mechanics is a series of observations which gradually 
 		E_{\mathrm{kin,max}} = \tfrac12 m_{\mathrm{e}} v_{\max}^2 = h\nu - W
 	\end{equation*}
 	with the binding energy $W$ of the material (written non-relativistically). Below the frequency $W/h$ a single light quantum releases no electron in this model.
+	\webdemo{c00.demo.photoeffekt}{Light of frequency $\nu$ falls on a plate, and each light quantum gives its energy to at most one electron; on the right $E_{\mathrm{kin,max}} = h\nu - W$ is drawn as a straight line for two materials. Set the frequency and change the material: below the threshold $W/h$ no electron leaves. The intensity slider changes only how many quanta arrive per second; the maximum speed of the electrons stays the same.}
 	\item \emph{Stability of atoms, line spectra, Franck-Hertz experiment}. By the Liénard-Wiechert potentials, every accelerated point charge radiates. An electron on an orbit around the nucleus would therefore lose energy all the time and fall into the nucleus, which it does not do. Line spectra and the Franck-Hertz experiment (1914) indicate that only certain, discrete energy levels are allowed in atoms.
 	\item \emph{Compton effect}. How energy and momentum are shared out when light scatters off electrons is described correctly with light quanta of energy $h\nu$ and momentum $p = h/\lambda$, together with conservation of energy and momentum.
 	\item \emph{Stern-Gerlach experiment} (1922). A beam of silver atoms passes through an inhomogeneous magnetic field. Classically it should fan out continuously; two separate beams are observed. For a fixed angular-momentum quantum number, the component of the angular momentum along the field takes only finitely many values. From such quantised angular momenta one can build qubits today.
@@ -47,10 +52,13 @@ From the second statement I make a principle for every physical theory: physical
 \begin{greybox}[Every experiment in three steps]
 To the theorist all experiments in physics look the same: something is \emph{prepared}, say a die or, in the laboratory, a beam of light; the experiment is \emph{run}; at the end we \emph{measure} and obtain one of the possible outcomes.
 \input{figures/fig_vl01_experiment}
+\webdemo[fig_vl01_experiment]{c00.demo.experiment}{The three stages of an experiment, from preparing through running to measuring and the outcome. When played, a marker runs through the stages and the sentence for each stage appears. The switch ``combine the first two steps'' merges the first two stages into a single, more complicated preparation.}
 The first two steps can be combined into \emph{one} more complicated preparation: a loaded die is nothing other than an ordinary die to which something was done beforehand. Where one draws the line is a matter of taste; often preparation and measurement suffice.
 \end{greybox}
 
 The order of the material is fixed too: we go from the microscopic to the macroscopic, from the quantum mechanics of single systems via many particles to statistical mechanics and thermodynamics. At each stage one learns that every theory is an effective theory of the one below it, an approximation to the fundamental physics underneath.
+
+\webdemo{c00.demo.leiter}{The ladder of theories of this course, the microscopic at the bottom and the macroscopic at the top. Click a rung or let the ladder run from bottom to top: for each rung it says that it is an effective theory of the rung below, reached by zooming out. The course starts at the bottom, with the quantum mechanics of single systems.}
 
 \subsection{Probability for physicists}
 The numbers that quantum mechanics delivers as its results are probabilities. Do not expect anything conceptually new: I take an intuitive understanding for granted; what matters is the \emph{notation} in which we shall later formulate quantum mechanics. We speak the language of physics: what mathematics calls a probability distribution is here a \emph{preparation} (state), and a random variable is a \emph{measurement}.
@@ -61,6 +69,20 @@ To model an experiment we need three things: the set of possible outcomes, the p
 	p(x) \geq 0 \quad \text{and} \quad \sum_{x \in X} p(x) = 1.
 \end{equation}
 The \emph{probability} of an event is $\mathbb{P}[S] = \sum_{x \in S} p(x)$.
+
+\webdemo{c01.demo.ereignis}{Outcome sets and events as sets. Above, one die: click cells to put them into the event $S$ or take them out; at first $S$ is the even numbers. Below, two dice, whose 36 outcomes are pairs $(x_1, x_2)$: the slider chooses the event ``sum equal to $s$'', ``doubles'' chooses the event $x_1 = x_2$, and by clicking you can assemble any other event. No probabilities appear here yet, only sets.}
+
+\webdemo{c01.demo.gewichte}{A weight on the outcomes of a die. Drag the top of a bar: the other bars share the rest, so that all heights stay $\geq 0$ and their sum is $1$, as the stacked column on the right shows. Choose the fair die, the loaded die, or the weight that lies entirely on one outcome.}
+
+\begin{webonly}
+A weight on $n$ outcomes is the list $(\pw(1), \dots, \pw(n))$ of its values, a vector in $\mathbb{R}^n$. For an outcome $a$ let $\pw_a$ be the \emph{point weight}: a $1$ at the place $a$ and zeros elsewhere. Every weight is a mixture of point weights,
+\begin{equation*}
+	\pw = \sum_{a \in X} \pw(a)\, \pw_a ,
+\end{equation*}
+and the numbers $\pw(a)$ are at once the probabilities of the outcomes and the mixing weights of the corners. Geometrically, the weights on $n$ outcomes therefore form a body with $n$ corners, the point weights: a segment, a triangle, a tetrahedron.
+\end{webonly}
+
+\webdemo{c01.demo.simplex}{The set of all weights on two or three outcomes: a segment, or a triangle whose corners are the point weights. Drag the point $\pw$ in the triangle or set $\pw(1)$ and $\pw(2)$ with the sliders; a corner glows the more strongly, the larger its mixing weight. Dragging elsewhere turns the scene, and the view as in the figure shows the triangle face on.}
 
 \begin{example}
 	For a die $X = \{1, 2, 3, 4, 5, 6\}$, and ``the number shown is even'' is the event $S = \{2, 4, 6\}$. For a fair die $p(x) = 1/6$ for all $x$, so $\mathbb{P}[S] = 1/2$.
@@ -83,11 +105,25 @@ A \emph{measurement} (observable, random variable) is a function $f\colon X \to 
 \end{equation}
 It is linear, $\mathbb{E}[\alpha f + \gamma g] = \alpha\,\mathbb{E}[f] + \gamma\,\mathbb{E}[g]$, and for a constant $\mathbb{E}[c] = c$.
 
+\webdemo{c01.demo.erwartung}{The expectation value as a centre of mass: the weights $\pw(x)$ are masses at the places $x$ of a beam that rests on a fulcrum at $c$. Move the fulcrum or drag the bars. The beam is level exactly when $c = \Ex[f]$, and the expectation value never lies outside the smallest and largest measured values.}
+
 Where does the formula come from? One repeats the experiment $N$ times with the same preparation and obtains the outcomes $x_1, \dots, x_N$. If $x$ occurs $N(x)$ times among them, $h_N(x) = N(x)/N$ is the \emph{relative frequency}; it is itself a weight, and the mean of the series satisfies the exact identity
 \begin{equation}
 	\frac{1}{N} \sum_{i=1}^{N} f(x_i) = \sum_{x \in X} h_N(x)\, f(x).
 \end{equation}
 With many independent repetitions $h_N(x)$ lies, with high probability, close to $p(x)$, and the mean of the series close to the expectation value. This reading is an interpretation: in a single series $h_N$ can deviate from $p$.
+
+\webdemo{c01.demo.haeufigkeit}{A simulated series of measurements: on the left the relative frequencies $h_N(x)$ of the first $N$ runs (hatched) beside the weights $\pw(x)$, on the right the mean of the measurement over the first $n$ runs beside the expectation value. Change $N$ and choose other weights; ``new series'' draws a different sequence. For small $N$ the bars deviate strongly, and every series is different.}
+
+\begin{webonly}
+How close $h_N$ lies to $\pw$ can be quantified in the model of independent repetitions of the same preparation. For an event $S$ let $H_N$ be the relative frequency of $S$ in $N$ repetitions. Then for every $\varepsilon > 0$
+\begin{equation*}
+	\Prob_N\bigl[\,\abs{H_N - \Prob[S]} \geq \varepsilon\,\bigr] \leq \frac{\Prob[S]\,(1 - \Prob[S])}{N\varepsilon^2} \leq \frac{1}{4N\varepsilon^2}.
+\end{equation*}
+The bound falls like $1/N$. It says nothing about a single series, only that series with a large deviation carry little weight in the model; and it is crude, the actual probability can be much smaller.
+\end{webonly}
+
+\webdemo{c01.demo.konzentration}{A coin whose event has probability $q$, and its relative frequency $H_N$ after $N$ repetitions. On the left run simulated series with the band $\abs{H - q} < \varepsilon$, on the right is the exact weight of $H_N$, below is the probability of a deviation of at least $\varepsilon$ beside the bounds, which fall like $1/N$. Set $N$, $q$ and $\varepsilon$: as $N$ grows the weight gathers around $q$, and the actual probability often lies far below the bounds.}
 
 \subsubsection{Yes-no measurements}
 The most important measurements take only the values $0$ and $1$. They are the model for detectors, such as a photon detector: click or no click. Quantum mechanics hinges on these two-valued measurements. Such a measurement is determined by the set $S = \{x \in X \colon f(x) = 1\}$; one writes
@@ -99,6 +135,8 @@ and calls $\chi_S$ the \emph{indicator function} of $S$. Hold on to this: indica
 	\mathbb{E}[\chi_S] = \sum_{x \in X} p(x)\, \chi_S(x) = \sum_{x \in S} p(x) = \mathbb{P}[S].
 \end{equation}
 Probabilities are therefore special expectation values. Conversely $\mathbb{P}$ fixes all expectation values, since $p(x) = \mathbb{P}[\{x\}]$.
+
+\webdemo{c01.demo.indikator}{A yes-no measurement. Above, the indicator function $\ind{S}$ of an event $S$; below, the weights $\pw(x)$ as an outline and the products $\pw(x)\,\ind{S}(x)$ hatched: the indicator function leaves only the bars over $S$ standing, and their heights add up to $\Ex[\ind{S}] = \Prob[S]$. Click outcomes to change $S$, take the complement, or choose another weight; with three outcomes all eight events appear in a table.}
 
 \begin{exercise}
 	Let $X = \{1, 2, 3\}$ and $p(x) = 1/3$ for all $x$. Compute $\mathbb{P}[S]$ for $S = \{1, 2\}$ and the expectation value of the measurement $f(x) = x^2$.
@@ -121,9 +159,17 @@ For a yes-no measurement $\chi_S^2 = \chi_S$, so
 \end{equation}
 It vanishes exactly when the answer is certain. If $p(a) = 1$ for an outcome $a$, then $\mathbb{E}[f] = f(a)$ for every measurement.
 
+\webdemo{c01.demo.varianz}{The variance of the number shown as the expectation value of the squared deviation: the products of weight and squared deviation are hatched, and their sum in the column is $\Var[f]$. Drag the bars, or use the mixing slider to move between the fair die and the weight with one half each on $3$ and $4$: the expectation value stays, the variance changes. On the right is $\Var[\ind{S}] = \Prob[S](1 - \Prob[S])$ for all events; for a point weight all points lie at zero.}
+
 \begin{merksatz}[Determinism is a special case]
 For a weight $p$ on a finite outcome set the following are equivalent: $p(a) = 1$ for an outcome $a$; every event has probability $0$ or $1$; every measurement has variance $0$. We call such preparations deterministic: the outcome of every measurement is fixed. This is how the definite predictions of classical physics fit into a probabilistic theory.
 \end{merksatz}
+
+\begin{webonly}
+That the point weights are exactly the weights without scatter can also be said in terms of mixtures: a point weight cannot be written as a mixture $\lambda q + (1-\lambda) r$ of other weights with $0<\lambda<1$, every other weight can. If $a \neq b$ are two outcomes with $\pw(a) > 0$ and $\pw(b) > 0$ and $\varepsilon$ is the smaller of the two numbers, then $q = \pw + \varepsilon(\pw_a - \pw_b)$ and $r = \pw - \varepsilon(\pw_a - \pw_b)$ are weights, $q \neq r$, and $\pw = \tfrac12 q + \tfrac12 r$.
+\end{webonly}
+
+\webdemo{c01.demo.mischung}{A weight that is not a point weight, as a proper mixture of two others: starting from $\pw$ (the loaded die), the weight $\varepsilon$ is moved once from $b$ to $a$ ($q$) and once from $a$ to $b$ ($r$). The slider $\lambda$ runs from $r$ through $\pw$ at $\lambda = \tfrac12$ to $q$. Choose the outcomes $a$ and $b$ and other weights; for a point weight there is no such decomposition, and $q$ and $r$ coincide with $\pw$.}
 
 \subsubsection{Continuous outcomes}
 For quantum mechanics $X = \mathbb{R}$ is decisive: a particle in one dimension has a position, and the possible positions are the real numbers. We consider only preparations with a \emph{probability density}, a function $p$ on $\mathbb{R}$ with
@@ -142,6 +188,8 @@ Here $a \leq b$, and we use the expectation value only if $\int p(x) \abs{f(x)}\
 	\end{equation}
 	is called the \emph{normal} or \emph{Gaussian distribution}; it is normalised. Is the particle to the left or to the right of the origin? Because $p(-x) = p(x)$, the areas to the left and to the right of the origin are equal, together $1$; so $\int_0^\infty p(x)\,\dd x = 1/2$. Be careful: the argument works \emph{only} for symmetric densities.
 \end{example}
+
+\webdemo{c01.demo.dichte}{Densities on the real line. For the Gaussian distribution drag the endpoints $a \leq b$: the probability is the hatched area, not the height of the curve, and for $a = b$ it is zero. For the uniform density on $[0, L]$ change $L$; the height $1/L$ can become arbitrarily large, while the area stays $1$. The third density, $1/x^2$, has no mean, because the integral of $x\,\pw(x)$ grows without bound.}
 
 The expectation values of the coordinate function and its powers are called \emph{moments}, provided the integrals $\int \abs{x}^n p(x)\,\dd x$ are finite:
 \begin{equation}

@@ -31,6 +31,8 @@ Hier ist eine Warnung angebracht: Der Hilbertraum beschreibt \emph{nicht} unmitt
 
 Mischungen $\lambda\rho_1 + (1-\lambda)\rho_2$ mit $0\leq\lambda\leq 1$ sind wieder Dichteoperatoren. Mit der Spektralzerlegung ist jeder Dichteoperator eine Mischung $\rho = \sum_x p_x\ketbra{\phi_x}{\phi_x}$ mit $p_x\geq 0$ und $\sum_x p_x = 1$. Die \emph{reinen} Zustände, die Extremalpunkte, sind die Zustände, die keine echten Mischungen sind; das sind genau die $\rho = \ketbra{\psi}{\psi}$, also durch einen Vektor $\ket{\psi}$, seine \emph{Wellenfunktion}, gegeben (die Rückrichtung beweist der Webkurs). $\ket{\psi}$ und $e^{i\alpha}\ket{\psi}$ geben denselben Zustand. Wegen $\tr(\ketbra{\psi}{\psi}) = \braket{\psi}{\psi}$ (Vorlesung~5) stellen nur normierte Vektoren reine Zustände dar. Man nennt $\ketbra{\psi}{\psi}$ auch einen eindimensionalen Projektor; „eindimensional“ meint dabei keine Raumdimension, sondern dass sein Bild eindimensional ist.
 
+\webdemo{c01.demo.mischung}{Ein Würfel mit Gewichten $p$ auf den Ergebnissen $1,\dots,6$. Sitzt $p$ nicht auf einem einzigen Ergebnis, so ist $p$ die Mischung $\tfrac12 q + \tfrac12 r$ zweier anderer Gewichte, die man erhält, wenn man ein wenig Gewicht von einem Ergebnis auf ein anderes verschiebt. Ziehen Sie $\lambda$ und sehen Sie die Mischung $\lambda q + (1-\lambda) r$ von $r$ über $p$ nach $q$ laufen; mit einem Klick auf einen Balken wählen Sie die beiden Ergebnisse, und bei einem Punktgewicht fallen $q$ und $r$ mit $p$ zusammen. Das ist das klassische Gegenstück zu $\lambda\rho_1 + (1-\lambda)\rho_2$ im Text: hier sind es Gewichte auf Ergebnissen, dort Dichteoperatoren.}
+
 \begin{beispiel}[Zustände eines Qubits]
 Für $\Hil = \mathbb{C}^2$ ist $\rho$ eine positive $2\times 2$-Matrix mit Spur eins. Positivität verlangt $\rho_{00} = p\geq 0$, die Spurbedingung erzwingt $\rho_{11} = 1-p$, und weil auch $\rho_{11}\geq 0$ ist, liegt $p$ zwischen null und eins. Hermitizität macht die Nebendiagonaleinträge zueinander komplex konjugiert:
 \begin{equation}\label{eq:qubitzustand}
@@ -51,6 +53,12 @@ Berechnen Sie die beiden Eigenwerte der Matrix in Gl.~(\ref{eq:qubitzustand}) un
 	Detektoren = Dual des Zustandsraums = Operatoren $\op{F}$ mit $0 \leq \op{F} \leq \mathbb{I}$.
 \end{merksatz}
 Ein Detektor ist ein Messapparat mit den Ansprechmöglichkeiten „ja“ (Treffer) und „nein“. Für Operatoren bedeutet $\op{A}\leq\op{B}$, dass $\op{B}-\op{A}$ positiv ist. P3 verlangt also \emph{zwei} Bedingungen, $\op{F}\geq 0$ \emph{und} $\mathbb{I}-\op{F}\geq 0$, und rechts steht der Einsoperator, nicht die Zahl eins. „Dual des Zustandsraums“ heißt: Die Funktionen $\rho\mapsto\tr(\rho\,\op{F})$ sind genau die Funktionen $f$ auf den Dichteoperatoren mit Werten zwischen $0$ und $1$, die Mischungen respektieren, $f(\lambda\rho_1 + (1-\lambda)\rho_2) = \lambda f(\rho_1) + (1-\lambda)f(\rho_2)$.
+
+\begin{webonly}
+Das Skript spricht hier von Dichteoperatoren und Detektoren; der Webkurs fasst beides allgemeiner. Die Menge aller Zustände eines Systems heißt sein \emph{Zustandsraum}; man kann Zustände mischen, er ist also konvex. Ein \emph{Effekt} ist eine Ja-Nein-Frage an das System: eine mit Mischungen verträgliche (affine) Funktion auf dem Zustandsraum, die jedem Zustand die Wahrscheinlichkeit der Antwort ,,ja`` zuordnet, mit Werten zwischen $0$ und $1$. Beim Qubit sind das genau die Funktionen $\rho\mapsto\tr(\rho\,\op{F})$ mit $0\leq\op{F}\leq\mathbb{I}$.
+\end{webonly}
+
+\webdemo{c02.demo.explorer}{Drei Zustandsräume nebeneinander: das klassische Bit, das Quadratbit und das Qubit als Kugel. Sie bewegen zwei Zustände und einen Effekt $e$ und lesen die Wahrscheinlichkeit $p = e(\omega)$ als exakte Zahl ab; die Mischung der beiden Zustände liegt auf ihrer Verbindungsstrecke, und $p$ ändert sich dort linear mit dem Mischungsgewicht. Achten Sie darauf, welche Effekte in den drei Zustandsräumen möglich sind. Eine Kegelansicht zeigt dasselbe mit den Zuständen auf Höhe eins im Kegel der nicht normierten Zustände.}
 
 \begin{merksatz}[P4]
 	Bornsche Regel = Wahrscheinlichkeit des Ansprechens für einen Zustand, präpariert als Dichteoperator $\rho$, ist $\tr(\rho\,\op{F})$.
@@ -78,6 +86,12 @@ eine \emph{Messung} (englisch POVM, \emph{positive operator-valued measure}). Na
 	\sum_x x\,\tr(\rho\,\op{F}_x) = \tr(\rho\,\op{A}), \qquad \op{A} = \sum_x x\,\op{F}_x,
 \end{equation}
 und $\op{A}$ ist hermitesch. Im projektorwertigen Fall ist die Messung umgekehrt schon durch $\op{A}$ bestimmt: Die $\op{F}_x$ sind die Projektoren auf die Eigenräume von $\op{A}$, und nach dem Spektralsatz gehört so zu jedem hermiteschen Operator eine projektorwertige Messung. Man liest deshalb häufig als Definition, dass die Observablen genau die hermiteschen Operatoren sind. Das ist der projektorwertige Spezialfall; der Detektor mit $\op{F} = q\ketbra{0}{0}$ ist darin nicht enthalten.
+
+\begin{webonly}
+Eine Messung mit zwei Ergebnissen, $\{\op{F}, \mathbb{I}-\op{F}\}$, kann man auch als Spiel ausprobieren; das ist eine freiwillige Übung, die der Rest der Vorlesung nicht braucht.
+\end{webonly}
+
+\webdemo{c02.demo.distinguish}{Gegeben sind zwei Präparationen $\omega_1$, $\omega_2$ mit bekannten Wahrscheinlichkeiten $\pi_1$, $\pi_2$. Sie ziehen den Effekt $e$ und legen damit die Messung $\{e, 1-e\}$ fest: bei ,,ja`` raten Sie $\omega_1$, bei ,,nein`` $\omega_2$. Das Spiel gibt die Erfolgswahrscheinlichkeit $\pi_1\,e(\omega_1) + \pi_2\,(1-e(\omega_2))$ exakt an und zeigt nach dem Bestätigen den besten möglichen Wert; die Level laufen im klassischen Bit, im Quadratbit und im Qubit.}
 
 \subsection{Zeitentwicklung}
 Ein Zustand charakterisiert nicht ein einzelnes System, sondern ein Präparationsverfahren, das zu jeder Zeit in Gang gesetzt werden kann. Für ein abgeschlossenes System, dessen Bedingungen sich nicht mit der Zeit ändern, zählt nur der \emph{relative} Zeitversatz zwischen Präparation und Messung; das ist eine Annahme über das System, keine Folge der Reproduzierbarkeit.

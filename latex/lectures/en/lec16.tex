@@ -2,20 +2,7 @@
 
 \section{Lecture: The Coulomb Potential (Hydrogen Atom)}
 
-\begin{center}
-	\begin{tikzpicture}
-		\begin{axis}[width=\columnwidth, height=8cm,hide axis, tick style={color=black}, domain=0:12, xtick=\empty, ytick=\empty, samples =200, xmin = -0.5, xmax = 8, ymin = -3, ymax = 2]
-		\addplot[cgblue, dashed] {1/x^2-2/x};
-		\addplot[cgblue] {-2/x};
-		\draw[->] (axis cs: -0.5, 0) -- (axis cs: 8, 0);
-		\draw (axis cs: 7.8, -0.2) node[below] {$r$};
-		\draw (axis cs: 6, 1.5) node[below] {$U_\ell(r) = \frac{\hbar^2 \ell(\ell+1)}{2m_{\text{e}}r^2}+V(r)$};
-		\draw[->] (axis cs: 0, -3) -- (axis cs: 0, 2);
-    	\draw (axis cs: 0.5,1.5) node[right] {$\ell = 1$};
-   		\draw (axis cs:3.5,-1.25) node[above] {$\ell=0$};
-		\end{axis}
-	\end{tikzpicture}
-\end{center} 
+\input{figures/fig_vl16_coulomb}
 
 The hydrogen atom consists of a proton and an electron. A first crude model of the atom is obtained by approximating the proton as an infinitely massive point mass. With this approximation the hydrogen atom can be modelled as a single particle (the electron) moving in the central potential 
 \begin{equation}
@@ -77,6 +64,8 @@ The complete eigenfunctions read
 \end{equation}
 For each $n$ the possible angular momentum quantum numbers are $\ell = 0,1,2, \ldots, n-1$ ($\equiv \text{s}, \text{p}, \text{d}, \text{f}, \ldots $). For each $\ell$ there are $2\ell +1$ possible values of the magnetic quantum number $m = -\ell, -\ell+1, \ldots, \ell$. One important remark: the energy is independent of $m$ and $\ell$. 
 
+\webdemo{c11.demo.radial}{The radial part $R_{n\ell}(r)$, the radial density $P_{n\ell}(r) = r^2 R_{n\ell}(r)^2$ and its distribution function for 1s, 2s and 2p, with the nodes, the mean $\langle r\rangle$ and the most probable radius. Choose the state and drag the probe radius $r$: the distribution function is the area under $P_{n\ell}$ up to that radius, that is, the probability of finding the electron within $r$. Note that $P_{n\ell}$ starts at zero even for the s states, and that the 2s state has a node and the 2p state has none.}
+
 The first few Laguerre polynomials read
 \begin{equation}
 	\begin{split}
@@ -94,5 +83,9 @@ We therefore obtain the following eigenfunctions $\psi_{n\ell m}(r,\theta,\phi)$
 	\psi_{21\pm1}(r,\theta,\phi) &= \mp\frac{1}{8\sqrt{\pi}}\left(\frac{Z}{a_0}\right)^{\frac{3}{2}}\frac{Zr}{a_0}e^{-\frac{Zr}{2a_0}}\sin(\theta)e^{\pm i\phi} &\quad & 2\text{p} \quad (m=\pm1). \\
 \end{align*}
 
+\webdemo{c11.demo.cloud}{A point cloud of samples of the density $\abs{\psi}^2$ of the relative coordinate, for the states with $n \leq 2$; every point has the same weight, so the density of points is the probability density. Choose the state, turn the cloud, look at it from the front or from above, and cut out a slab with the slider to see inside. In laboratory mode you see instead the electron and proton densities for a Gaussian centre-of-mass packet.}
+
 The usual colourful orbital pictures show only $|\psi_{n\ell m}|^2$, not the
 phase.
+
+\webdemo{c11.demo.phase}{A planar slice through $\psi$ for the states with $n \leq 2$: lightness shows the modulus $\abs{\psi}$, hue shows the phase $\arg\psi$; where $\psi = 0$ the background shows, and the nodal lines are drawn. Move the time slider: the colours turn, the lightness does not, because a stationary state changes only its phase. Compare $\psi_{210}$, whose phase takes only two values, with $\psi_{21\pm1}$, whose phase runs once around the axis.}

@@ -275,4 +275,19 @@
 % compare the two editions' \input{figures/...} sets directly.
 \newcommand{\tpcifenglish}[2]{\iftpc@english #1\else #2\fi}
 
+% ══════════════════════════════════════════════════════════════
+%  WEB-ONLY MATERIAL
+% ══════════════════════════════════════════════════════════════
+% The lecture files are also the source of the web pages
+% (web/tools/lecture/).  Two constructs exist for the web alone and
+% leave no trace in print:
+%   \webdemo{c03.demo.vollst}{caption}   an interactive figure
+%   \webdemo[fig_vl03_vollst]{...}{...}  the same; on the web it takes
+%                                        the place of that static figure
+%   \begin{webonly} ... \end{webonly}    extra prose; \begin and \end
+%                                        each alone on a line
+\newcommand{\webdemo}[3][]{}
+\RequirePackage{comment}
+\excludecomment{webonly}
+
 \endinput

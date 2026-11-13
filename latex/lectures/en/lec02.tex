@@ -38,6 +38,8 @@ The dagger always sits on the first vector.
 
 \input{figures/fig_vl02_kreuz}
 
+\webdemo{c03.demo.kreuz}{On the left the complex plane of the entries, on the right the plane of the products $v_j^* w_j$, laid head to tail to give $\vb{v}\adj\vb{w}$. Drag the entries of $\vb{v}$ and $\vb{w}$: the entries of the row $\vb{v}\adj$ follow as mirror images in the real axis. Switch to $\vb{w}=\vb{v}$ and every term lies on the non-negative real axis; switch the conjugation off and $\vb{v}=(1,i)$ gets length zero. The preset ``Figure (a)'' shows the vector of the figure.}
+
 The figure shows what conjugation does geometrically: it reflects every entry in the real axis, here for the entries $2+i$ and $-1+2i$. One would not have to conjugate; one could simply lay the column on its side. But conjugation pays off as soon as one multiplies a vector with itself. Since $v_j^* v_j = \abs{v_j}^2$, we have
 \begin{equation}
 	\vb{v}\adj\vb{v} = \sum_{j=1}^{n} \abs{v_j}^2 \geq 0.
@@ -55,5 +57,37 @@ The inner product of a vector with itself is therefore real and never negative. 
 
 \subsection{Infinitely many entries}
 At this point one could already define finite-dimensional Hilbert spaces. But infinite-dimensional vector spaces play a very important role in physics. The reason is a physical one: our best models are fields, and fields have infinitely many degrees of freedom. One can picture such vectors as columns with infinitely many entries, or as functions that assign a complex number $f(x)$ to every point $x$ of the real line; functions describe, for instance, the pure states of a spinless particle in one dimension. If one simply sets $n=\infty$ in the formulas, the inner product can diverge; the web course (chapter ``The Hilbert-space toolkit'') shows how to repair this, by admitting only columns with a finite sum of squared moduli (the space $\ell^2$) and functions with a finite integral of the squared modulus.
+
+\begin{webonly}
+Which columns with infinitely many entries are admitted is decided by the inner product of the column with itself. The column of all ones, $v_j = 1$, is perfectly legal as a list, but its partial sums $\sum_{j=1}^{N} \abs{v_j}^2 = N$ grow beyond all bounds. Only columns with
+\begin{equation*}
+	\sum_{j=1}^{\infty} \abs{v_j}^2 < \infty
+\end{equation*}
+are admitted; they form the space $\elltwo$. That the entries tend to zero is not enough: $v_j = 1/j$ lies in $\elltwo$, $u_j = 1/\sqrt{j}$ does not, since $\sum_{j=1}^{N} 1/j^2 < 2$ stays bounded, while $\sum_{j=1}^{N} 1/j \geq \ln(N+1)$ grows beyond all bounds.
+\end{webonly}
+
+\webdemo{c03.demo.partialsummen}{Above, the squared moduli $\abs{v_j}^2 = j^{-2s}$ of the column $v_j = j^{-s}$ as bars; below, their partial sums against $N$, with the columns $1/\sqrt{j}$ (dashed) and $1$ (dash-dotted) for comparison. Move the exponent $s$ and let $N$ grow. Watch whether the partial sums stop at a bound, as for $s=1$, or grow beyond all bounds, as for $s=1/2$ and $s=0$.}
+
+\begin{webonly}
+Functions $f\colon \mathbb{R} \to \mathbb{C}$ are vectors too: one adds them point by point, $(f+g)(x) = f(x) + g(x)$, and multiplies them point by point with numbers. Drawing this is hard, because a complex number needs two axes, so the function needs a third dimension: to each $x$ belongs the point $(\operatorname{Re} f(x), \operatorname{Im} f(x))$ of a complex plane that stands perpendicular to the $x$ axis. For $f(x) = e^{-x^2/2}\, e^{2ix}$, since $\abs{e^{2ix}} = 1$, the squared modulus is $\abs{f(x)}^2 = e^{-x^2}$, independent of the phase. The integral over $x$ takes the place of the sum over $j$.
+\end{webonly}
+
+\webdemo{c03.demo.komplex}{The curve $x \mapsto (x, \operatorname{Re} f(x), \operatorname{Im} f(x))$ of a complex-valued function; dashed, the real part alone. Choose the modulus of the function and the wave number $k$ in the phase factor $e^{ikx}$: the curve winds faster, its distance from the axis stays $\abs{f(x)}$. Play turns the camera through four views; from the front one sees only the real part, the usual drawing, which lacks half the information. The mouse also turns the scene.}
+
+\begin{webonly}
+For a function one makes the same test as for a column: it is called square-integrable if
+\begin{equation*}
+	\int_{-\infty}^{\infty} \abs{f(x)}^2\, \dd x < \infty
+\end{equation*}
+These functions form the space $\Ltwo{\mathbb{R}}$ (functions that agree almost everywhere count as the same vector). Again it is not enough that $f$ tends to zero. For $g(x) = e^{-x^2/2}$ one has $\int_{-\infty}^{\infty} e^{-x^2}\, \dd x = \sqrt{\pi}$, but for $h(x) = 1/\sqrt{1+\abs{x}}$ one has $\int_{-X}^{X} \abs{h(x)}^2\, \dd x = 2\ln(1+X) \to \infty$, and the constant function $1$ gives $2X$.
+\end{webonly}
+
+\webdemo{c03.demo.partialintegrale}{Above, $\abs{f(x)}^2$ with the area between $-X$ and $X$; below, the integral $\int_{-X}^{X} \abs{f(x)}^2\, \dd x$ against $X$. Choose the Gaussian or $f(x) = (1+\abs{x})^{-s}$ and move $X$ or let it grow. The integral of the Gaussian approaches a bound; for $s \leq 1/2$ it grows beyond all bounds, like the partial sums of the columns.}
+
+\begin{webonly}
+This puts the spaces of this lecture side by side, each with the system it belongs to: $\mathbb{C}^2$ belongs to the qubit, $\elltwo$ to the harmonic oscillator, and $\Ltwo{\mathbb{R}}$ to the spinless particle in one dimension. The first space is finite-dimensional; the other two come up later in the course. In each, the inner product of a vector with itself has a finite value: a sum of two moduli, an infinite sum, an integral.
+\end{webonly}
+
+\webdemo{c03.demo.raeume}{One vector each from $\mathbb{C}^2$, $\elltwo$ and $\Ltwo{\mathbb{R}}$, with its squared moduli on one common vertical scale. Play builds up the inner product of each vector with itself: in (a) a sum of two bars, in (b) a sum of infinitely many, in (c) the area under the curve. Below each panel a gauge shows the part summed so far and the complete value.}
 
 A complex vector space with an inner product is almost a Hilbert space; one condition is still missing, completeness, and in $\mathbb{C}^n$ it always holds. Before we define the Hilbert space in the next lecture, we need a notation that makes calculations with inner products much easier: Dirac's notation.

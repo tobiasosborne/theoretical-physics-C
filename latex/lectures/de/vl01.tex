@@ -9,11 +9,15 @@ Eine Bemerkung zur Methode, die für den ganzen Kurs gilt: Man kann erst die fal
 \subsection{Warum eine neue Theorie nötig war}
 Die Vorgeschichte der Quantenmechanik ist eine Reihe von Beobachtungen, die die These, unser Universum werde durch die klassische Physik beschrieben, allmählich in Frage stellten.
 \begin{enumerate}
-	\item \emph{Schwarzkörperstrahlung} (Planck, 1900). Ein Schwarzkörper reflektiert keine einfallende Strahlung, strahlt bei einer Temperatur $T$ aber dennoch. Das Spektrum dieser Strahlung ist mit klassischer Physik nicht erklärbar. Das richtige liefert die Annahme, dass Licht der Frequenz $\nu$ aus \emph{Lichtquanten} der Energie $E = h\nu$ besteht. Planck hat die Konstante $h$ ursprünglich als ,,Hilfsgröße`` postuliert, um das Strahlungsgesetz herzuleiten:
+	\item \emph{Schwarzkörperstrahlung} (Planck, 1900). Ein Schwarzkörper reflektiert keine einfallende Strahlung, strahlt bei einer Temperatur $T$ aber dennoch.
+\webdemo{c00.demo.hohlraum}{Ein Schwarzkörper als Kiste mit kleinem Loch. Ein Strahl tritt durch das Loch ein und wird an den Wänden nach dem Reflexionsgesetz zurückgeworfen; die Wand wirft bei jeder Reflexion den Bruchteil $r$ der Energie zurück und verschluckt den Rest, die Helligkeit des Strahls zeigt, wie viel nach $n$ Reflexionen noch übrig ist, nämlich $r^n$. Verändern Sie $r$ und die Richtung des einfallenden Strahls. Achten Sie darauf, wie viel vom Strahl übrig ist, wenn er das Loch wieder findet.}
+	Das Spektrum dieser Strahlung ist mit klassischer Physik nicht erklärbar. Das richtige liefert die Annahme, dass Licht der Frequenz $\nu$ aus \emph{Lichtquanten} der Energie $E = h\nu$ besteht. Planck hat die Konstante $h$ ursprünglich als ,,Hilfsgröße`` postuliert, um das Strahlungsgesetz herzuleiten:
 	\begin{equation*}
 		u(\nu, T)\,\dd\nu = \frac{8\pi h \nu^3}{c^3}\,\frac{\dd\nu}{e^{h\nu/(\kB T)} - 1}
 	\end{equation*}
-	ist die Energie pro Volumen im Frequenzintervall $\dd\nu$, mit der Lichtgeschwindigkeit $c$ und der Boltzmann-Konstante $\kB$. Dieses Gesetz leiten wir im statistischen Teil selbst her. In der theoretischen Physik verwendet man vorwiegend die \emph{reduzierte Planck-Konstante}
+	ist die Energie pro Volumen im Frequenzintervall $\dd\nu$, mit der Lichtgeschwindigkeit $c$ und der Boltzmann-Konstante $\kB$. Dieses Gesetz leiten wir im statistischen Teil selbst her.
+\webdemo{c00.demo.planck}{Das Strahlungsgesetz und seine Grenzform für kleine Frequenzen. Links steht die Energiedichte $u$ gegen die Frequenz, für drei feste Temperaturen und für eine Temperatur $T$, die Sie mit dem Regler wählen; dünn gestrichelt ist die zugehörige Parabel der Grenzform. Rechts steht das Verhältnis von $u$ zur Grenzform gegen $h\nu/(\kB T)$, auf einer einzigen Kurve für alle Temperaturen. Ziehen Sie den Frequenzmarker und ändern Sie $T$: Dieselbe Frequenz wandert auf der rechten Kurve, und die Parabel liegt nur bei kleinen Frequenzen auf $u$.}
+	In der theoretischen Physik verwendet man vorwiegend die \emph{reduzierte Planck-Konstante}
 	\begin{equation*}
 		\eqbox{\hbar = \frac{h}{2\pi}}
 	\end{equation*}
@@ -22,6 +26,7 @@ Die Vorgeschichte der Quantenmechanik ist eine Reihe von Beobachtungen, die die 
 		E_{\mathrm{kin,max}} = \tfrac12 m_{\mathrm{e}} v_{\max}^2 = h\nu - W
 	\end{equation*}
 	mit der Bindungsenergie $W$ des Materials (nichtrelativistisch geschrieben). Unterhalb der Frequenz $W/h$ löst in diesem Modell ein einzelnes Lichtquant kein Elektron aus.
+	\webdemo{c00.demo.photoeffekt}{Licht der Frequenz $\nu$ trifft auf eine Platte, und jedes Lichtquant gibt seine Energie an höchstens ein Elektron ab; rechts steht $E_{\mathrm{kin,max}} = h\nu - W$ als Gerade für zwei Materialien. Stellen Sie die Frequenz ein und wechseln Sie das Material: Unterhalb der Schwelle $W/h$ tritt kein Elektron aus. Der Intensitätsregler ändert nur, wie viele Quanten pro Sekunde ankommen, die maximale Geschwindigkeit der Elektronen bleibt dieselbe.}
 	\item \emph{Stabilität der Atome, Linienspektren, Franck-Hertz-Versuch}. Nach den Liénard-Wiechert-Potentialen strahlt jede beschleunigte Punktladung. Ein Elektron auf einer Bahn um den Kern müsste also ständig Energie verlieren und in den Kern stürzen, was es nicht tut. Linienspektren und der Franck-Hertz-Versuch (1914) deuten darauf hin, dass in Atomen nur bestimmte, diskrete Energieniveaus erlaubt sind.
 	\item \emph{Compton-Effekt}. Wie sich bei der Streuung von Licht an Elektronen Energie und Impuls verteilen, beschreibt man richtig mit Lichtquanten der Energie $h\nu$ und des Impulses $p = h/\lambda$ und mit Energie- und Impulserhaltung.
 	\item \emph{Stern-Gerlach-Versuch} (1922). Ein Strahl von Silberatomen läuft durch ein inhomogenes Magnetfeld. Klassisch sollte er sich kontinuierlich auffächern; beobachtet werden zwei getrennte Strahlen. Bei fester Drehimpulsquantenzahl nimmt die Komponente des Drehimpulses in Feldrichtung nur endlich viele Werte an. Aus solchen quantisierten Drehimpulsen kann man heute Qubits bauen.
@@ -47,10 +52,13 @@ Aus dem zweiten Merksatz mache ich einen Grundsatz für jede physikalische Theor
 \begin{greybox}[Jedes Experiment in drei Schritten]
 Für den Theoretiker sehen alle Experimente der Physik gleich aus: Etwas wird \emph{präpariert}, etwa ein Würfel oder im Labor ein Lichtstrahl; das Experiment wird \emph{durchgeführt}; am Ende \emph{messen} wir und erhalten eines der möglichen Ergebnisse.
 \input{figures/fig_vl01_experiment}
+\webdemo[fig_vl01_experiment]{c00.demo.experiment}{Die drei Stufen eines Experiments, vom Präparieren über das Durchführen bis zum Messen und zum Ergebnis. Beim Abspielen läuft eine Marke durch die Stufen, und der Satz der jeweiligen Stufe erscheint. Der Schalter ,,erste zwei Schritte zusammenfassen`` vereint die ersten beiden Stufen zu einer einzigen, komplizierteren Präparation.}
 Die ersten beiden Schritte lassen sich zu \emph{einer} komplizierteren Präparation zusammenfassen: Ein gezinkter Würfel ist nichts anderes als ein normaler Würfel, an dem man vorher etwas gemacht hat. Wo man die Grenze zieht, ist Geschmackssache; oft kommt man mit Präparation und Messung aus.
 \end{greybox}
 
 Auch die Reihenfolge des Stoffs ist festgelegt: Wir gehen vom Mikroskopischen zum Makroskopischen, von der Quantenmechanik einzelner Systeme über viele Teilchen zur statistischen Mechanik und Thermodynamik. Auf jeder Stufe lernt man, dass jede Theorie eine effektive Theorie der darunterliegenden ist, eine Näherung an die grundlegende Physik darunter.
+
+\webdemo{c00.demo.leiter}{Die Leiter der Theorien dieses Kurses, unten das Mikroskopische, oben das Makroskopische. Klicken Sie eine Stufe an oder lassen Sie die Leiter von unten nach oben durchlaufen: Zu jeder Stufe wird gesagt, dass sie eine effektive Theorie der Stufe darunter ist, erreicht durch Herauszoomen. Der Kurs beginnt unten, bei der Quantenmechanik einzelner Systeme.}
 
 \subsection{Wahrscheinlichkeit für Physiker}
 Die Zahlen, welche die Quantenmechanik als Ergebnis liefert, sind Wahrscheinlichkeiten. Erwarten Sie nichts konzeptionell Neues: Ein intuitives Verständnis setze ich voraus; es geht um die \emph{Notation}, in der wir später die Quantenmechanik formulieren. Wir sprechen dabei die Sprache der Physik: Was die Mathematik eine Wahrscheinlichkeitsverteilung nennt, heißt hier \emph{Präparation} (Zustand), und eine Zufallsvariable heißt \emph{Messung}.
@@ -61,6 +69,20 @@ Um ein Experiment zu modellieren, brauchen wir drei Dinge: die Menge der möglic
 	p(x) \geq 0 \quad \text{und} \quad \sum_{x \in X} p(x) = 1.
 \end{equation}
 Die \emph{Wahrscheinlichkeit} eines Ereignisses ist $\mathbb{P}[S] = \sum_{x \in S} p(x)$.
+
+\webdemo{c01.demo.ereignis}{Ergebnismengen und Ereignisse als Mengen. Oben ein Würfel: Klicken Sie auf Felder, um sie in das Ereignis $S$ aufzunehmen oder herauszunehmen; anfangs ist $S$ die gerade Augenzahl. Unten zwei Würfel, deren 36 Ergebnisse Paare $(x_1, x_2)$ sind: Der Regler wählt das Ereignis ,,Augensumme gleich $s$``, ,,Pasch`` das Ereignis $x_1 = x_2$, und durch Klicken lässt sich jedes andere Ereignis zusammenstellen. Hier kommen noch keine Wahrscheinlichkeiten vor, nur Mengen.}
+
+\webdemo{c01.demo.gewichte}{Ein Gewicht auf den Ergebnissen eines Würfels. Ziehen Sie an der Spitze eines Balkens: Die übrigen Balken teilen sich den Rest, sodass alle Höhen $\geq 0$ bleiben und ihre Summe $1$ ist, was die gestapelte Säule rechts zeigt. Wählen Sie den fairen oder den gezinkten Würfel oder das Gewicht, das ganz auf einem Ergebnis liegt.}
+
+\begin{webonly}
+Ein Gewicht auf $n$ Ergebnissen ist die Liste $(\pw(1), \dots, \pw(n))$ seiner Werte, ein Vektor im $\mathbb{R}^n$. Für ein Ergebnis $a$ sei $\pw_a$ das \emph{Punktgewicht}: eine $1$ an der Stelle $a$ und Nullen sonst. Jedes Gewicht ist eine Mischung von Punktgewichten,
+\begin{equation*}
+	\pw = \sum_{a \in X} \pw(a)\, \pw_a ,
+\end{equation*}
+und die Zahlen $\pw(a)$ sind zugleich die Wahrscheinlichkeiten der Ergebnisse und die Mischungsgewichte der Ecken. Geometrisch bilden die Gewichte auf $n$ Ergebnissen deshalb einen Körper mit $n$ Ecken, den Punktgewichten: eine Strecke, ein Dreieck, ein Tetraeder.
+\end{webonly}
+
+\webdemo{c01.demo.simplex}{Die Menge aller Gewichte auf zwei oder drei Ergebnissen: eine Strecke, ein Dreieck, dessen Ecken die Punktgewichte sind. Ziehen Sie den Punkt $\pw$ im Dreieck oder stellen Sie $\pw(1)$ und $\pw(2)$ mit den Reglern ein; die Ecken leuchten umso stärker, je größer ihr Mischungsgewicht ist. Mit einem Zug an anderer Stelle drehen Sie die Szene, und die Ansicht wie in der Abbildung zeigt das Dreieck von vorn.}
 
 \begin{beispiel}
 	Bei einem Würfel ist $X = \{1, 2, 3, 4, 5, 6\}$, und ,,die Augenzahl ist gerade`` ist das Ereignis $S = \{2, 4, 6\}$. Für einen fairen Würfel ist $p(x) = 1/6$ für alle $x$, also $\mathbb{P}[S] = 1/2$.
@@ -83,11 +105,25 @@ Eine \emph{Messung} (Observable, Zufallsvariable) ist eine Funktion $f\colon X \
 \end{equation}
 Er ist linear, $\mathbb{E}[\alpha f + \gamma g] = \alpha\,\mathbb{E}[f] + \gamma\,\mathbb{E}[g]$, und für eine Konstante ist $\mathbb{E}[c] = c$.
 
+\webdemo{c01.demo.erwartung}{Der Erwartungswert als Schwerpunkt: Die Gewichte $\pw(x)$ sind Massen an den Stellen $x$ eines Balkens, der auf einem Drehpunkt bei $c$ ruht. Verschieben Sie den Drehpunkt oder ziehen Sie an den Balken. Der Balken liegt genau dann waagerecht, wenn $c = \Ex[f]$ ist, und der Erwartungswert liegt nie außerhalb der kleinsten und größten Messwerte.}
+
 Woher kommt die Formel? Man wiederholt das Experiment $N$-mal mit derselben Präparation und erhält die Ergebnisse $x_1, \dots, x_N$. Kommt $x$ dabei $N(x)$-mal vor, so ist $h_N(x) = N(x)/N$ die \emph{relative Häufigkeit}; sie ist selbst ein Gewicht, und für den Mittelwert der Messreihe gilt exakt
 \begin{equation}
 	\frac{1}{N} \sum_{i=1}^{N} f(x_i) = \sum_{x \in X} h_N(x)\, f(x).
 \end{equation}
 Bei vielen unabhängigen Wiederholungen liegt $h_N(x)$ mit hoher Wahrscheinlichkeit nahe bei $p(x)$, und der Mittelwert der Messreihe nahe beim Erwartungswert. Diese Lesart ist eine Deutung: In einer einzelnen Messreihe kann $h_N$ von $p$ abweichen.
+
+\webdemo{c01.demo.haeufigkeit}{Eine simulierte Messreihe: Links stehen die relativen Häufigkeiten $h_N(x)$ der ersten $N$ Durchläufe (schraffiert) neben den Gewichten $\pw(x)$, rechts der Mittelwert der Messung über die ersten $n$ Durchläufe neben dem Erwartungswert. Verändern Sie $N$ und wählen Sie andere Gewichte; ,,neue Messreihe`` zieht eine andere Folge. Bei kleinem $N$ weichen die Balken stark ab, und jede Reihe ist eine andere.}
+
+\begin{webonly}
+Wie nah $h_N$ an $\pw$ liegt, lässt sich im Modell der unabhängigen Wiederholungen derselben Präparation beziffern. Für ein Ereignis $S$ sei $H_N$ die relative Häufigkeit von $S$ in $N$ Wiederholungen. Dann gilt für jedes $\varepsilon > 0$
+\begin{equation*}
+	\Prob_N\bigl[\,\abs{H_N - \Prob[S]} \geq \varepsilon\,\bigr] \leq \frac{\Prob[S]\,(1 - \Prob[S])}{N\varepsilon^2} \leq \frac{1}{4N\varepsilon^2}.
+\end{equation*}
+Die Schranke fällt wie $1/N$. Sie sagt nichts über eine einzelne Messreihe, nur dass Reihen mit großer Abweichung im Modell wenig Gewicht haben; und sie ist grob, die tatsächliche Wahrscheinlichkeit kann viel kleiner sein.
+\end{webonly}
+
+\webdemo{c01.demo.konzentration}{Eine Münze, deren Ereignis die Wahrscheinlichkeit $q$ hat, und ihre relative Häufigkeit $H_N$ nach $N$ Wiederholungen. Links laufen simulierte Reihen mit dem Band $\abs{H - q} < \varepsilon$, rechts steht das exakte Gewicht von $H_N$, unten die Wahrscheinlichkeit einer Abweichung von mindestens $\varepsilon$ neben den Schranken, die wie $1/N$ fallen. Stellen Sie $N$, $q$ und $\varepsilon$ ein: Mit wachsendem $N$ sammelt sich das Gewicht um $q$, und die tatsächliche Wahrscheinlichkeit liegt oft weit unter den Schranken.}
 
 \subsubsection{Ja-Nein-Messungen}
 Die wichtigsten Messungen nehmen nur die Werte $0$ und $1$ an. Sie sind das Modell für Detektoren, etwa einen Photonendetektor: Klick oder kein Klick. An diesen zweiwertigen Messungen hängt die Quantenmechanik. Eine solche Messung ist durch die Menge $S = \{x \in X \colon f(x) = 1\}$ bestimmt; man schreibt
@@ -99,6 +135,8 @@ und nennt $\chi_S$ die \emph{Indikatorfunktion} von $S$. Halten Sie fest: Indika
 	\mathbb{E}[\chi_S] = \sum_{x \in X} p(x)\, \chi_S(x) = \sum_{x \in S} p(x) = \mathbb{P}[S].
 \end{equation}
 Wahrscheinlichkeiten sind also besondere Erwartungswerte. Umgekehrt legt $\mathbb{P}$ alle Erwartungswerte fest, denn $p(x) = \mathbb{P}[\{x\}]$.
+
+\webdemo{c01.demo.indikator}{Eine Ja-Nein-Messung. Oben die Indikatorfunktion $\ind{S}$ eines Ereignisses $S$, unten die Gewichte $\pw(x)$ als Umriss und die Produkte $\pw(x)\,\ind{S}(x)$ schraffiert: Die Indikatorfunktion lässt nur die Balken über $S$ stehen, und deren Höhen ergeben $\Ex[\ind{S}] = \Prob[S]$. Klicken Sie Ergebnisse an, um $S$ zu ändern, bilden Sie das Komplement oder wählen Sie ein anderes Gewicht; bei drei Ergebnissen erscheinen alle acht Ereignisse in einer Tabelle.}
 
 \begin{übung}
 	Sei $X = \{1, 2, 3\}$ und $p(x) = 1/3$ für alle $x$. Berechnen Sie $\mathbb{P}[S]$ für $S = \{1, 2\}$ und den Erwartungswert der Messung $f(x) = x^2$.
@@ -121,9 +159,17 @@ Für eine Ja-Nein-Messung ist $\chi_S^2 = \chi_S$, also
 \end{equation}
 Sie verschwindet genau dann, wenn die Antwort feststeht. Ist $p(a) = 1$ für ein Ergebnis $a$, so ist $\mathbb{E}[f] = f(a)$ für jede Messung.
 
+\webdemo{c01.demo.varianz}{Die Varianz der Augenzahl als Erwartungswert der quadrierten Abweichung: Die Produkte aus Gewicht und quadrierter Abweichung stehen schraffiert, ihre Summe in der Säule ist $\Var[f]$. Ziehen Sie an den Balken oder verschieben Sie mit dem Mischungsregler zwischen dem fairen Würfel und dem Gewicht je zur Hälfte auf $3$ und $4$: Der Erwartungswert bleibt, die Varianz ändert sich. Rechts steht $\Var[\ind{S}] = \Prob[S](1 - \Prob[S])$ für alle Ereignisse; für ein Punktgewicht liegen alle Punkte bei null.}
+
 \begin{merksatz}[Determinismus ist ein Sonderfall]
 Für ein Gewicht $p$ auf einer endlichen Ergebnismenge sind gleichwertig: $p(a) = 1$ für ein Ergebnis $a$; jedes Ereignis hat die Wahrscheinlichkeit $0$ oder $1$; jede Messung hat die Varianz $0$. Solche Präparationen nennen wir deterministisch: Das Ergebnis jeder Messung steht fest. So passen die definitiven Vorhersagen der klassischen Physik in eine probabilistische Theorie.
 \end{merksatz}
+
+\begin{webonly}
+Dass die Punktgewichte genau die Gewichte ohne Streuung sind, lässt sich auch als Mischung sagen: Ein Punktgewicht ist nicht als Mischung $\lambda q + (1-\lambda) r$ anderer Gewichte mit $0<\lambda<1$ darstellbar, jedes andere Gewicht schon. Sind $a \neq b$ zwei Ergebnisse mit $\pw(a) > 0$ und $\pw(b) > 0$ und ist $\varepsilon$ die kleinere der beiden Zahlen, so sind $q = \pw + \varepsilon(\pw_a - \pw_b)$ und $r = \pw - \varepsilon(\pw_a - \pw_b)$ Gewichte, es ist $q \neq r$, und $\pw = \tfrac12 q + \tfrac12 r$.
+\end{webonly}
+
+\webdemo{c01.demo.mischung}{Ein Gewicht, das kein Punktgewicht ist, als echte Mischung zweier anderer: Von $\pw$ (der gezinkte Würfel) wird das Gewicht $\varepsilon$ einmal von $b$ nach $a$ verschoben ($q$) und einmal von $a$ nach $b$ ($r$). Der Regler $\lambda$ läuft von $r$ über $\pw$ bei $\lambda = \tfrac12$ bis $q$. Wählen Sie die Ergebnisse $a$ und $b$ und andere Gewichte; für ein Punktgewicht gibt es keine solche Zerlegung, und $q$ und $r$ fallen mit $\pw$ zusammen.}
 
 \subsubsection{Kontinuierliche Ergebnisse}
 Für die Quantenmechanik ist $X = \mathbb{R}$ entscheidend: Ein Teilchen in einer Dimension hat eine Position, und die möglichen Positionen sind die reellen Zahlen. Wir betrachten nur Präparationen mit einer \emph{Wahrscheinlichkeitsdichte}, einer Funktion $p$ auf $\mathbb{R}$ mit
@@ -142,6 +188,8 @@ Dabei ist $a \leq b$, und den Erwartungswert verwenden wir nur, sofern $\int p(x
 	\end{equation}
 	heißt \emph{Normal-} oder \emph{Gauß-Verteilung}; sie ist normiert. Ist das Teilchen links oder rechts vom Ursprung? Weil $p(-x) = p(x)$ ist, sind die Flächen links und rechts vom Nullpunkt gleich groß, zusammen $1$; also ist $\int_0^\infty p(x)\,\dd x = 1/2$. Vorsicht: Das Argument funktioniert \emph{nur} für symmetrische Dichten.
 \end{beispiel}
+
+\webdemo{c01.demo.dichte}{Dichten auf der reellen Achse. Bei der Gauß-Verteilung ziehen Sie die Endpunkte $a \leq b$: Die Wahrscheinlichkeit ist die schraffierte Fläche, nicht die Höhe der Kurve, und für $a = b$ ist sie null. Bei der gleichmäßigen Dichte auf $[0, L]$ ändern Sie $L$; die Höhe $1/L$ kann beliebig groß werden, die Fläche bleibt $1$. Die dritte Dichte, $1/x^2$, hat keinen Mittelwert, denn das Integral von $x\,\pw(x)$ wächst ohne Grenze.}
 
 Die Erwartungswerte der Koordinatenfunktion und ihrer Potenzen heißen \emph{Momente}, sofern die Integrale $\int \abs{x}^n p(x)\,\dd x$ endlich sind:
 \begin{equation}

@@ -19,6 +19,8 @@ The most important system to have been successfully modelled with quantum mechan
 \end{equation}
 The restriction to pure states is no arbitrary choice: every density matrix is a mixture of pure states. Only normalised vectors are allowed, $\langle \Psi|\Psi\rangle = 1$.
 
+\webdemo{c03.demo.komplex}{A wavefunction assigns a complex number to every position $x$; drawn as a curve it therefore needs three dimensions, the position $x$ and the complex plane perpendicular to it. Shown is $f(x) = m(x)\,e^{ikx}$ with an envelope $m(x)$. Change $k$: the curve winds around the $x$-axis, and its distance from the axis is $\abs{f(x)} = m(x)$, independent of $k$. The views from the front and from above show only the real part $\operatorname{Re} f$ and only the imaginary part $\operatorname{Im} f$, respectively.}
+
 So far the wavefunction is nothing but notation; it acquires meaning only through measurement. A theory needs both: states \emph{and} detectors.
 
 According to Postulate 3, detectors are modelled by operators. Here we describe position detectors only. Such detectors deliver ``yes''/``no'' results, i.e.\ either the particle is at a given location or it is not. In order to describe such detectors we need an interval $[a,b]\subset \mathbb{R}$, where $a<b$. The corresponding detector is defined by the operator
@@ -51,6 +53,8 @@ Since the quantity $|\Psi(x)|^2$ is non-negative, we may interpret the quantity
 \end{equation}
 as a probability density.
 
+\webdemo{c03.demo.partialintegrale}{The integral $\int_{-X}^{X}\abs{f(x)}^2\,dx$ as a function of $X$, for the Gaussian and for $f(x) = (1+\abs{x})^{-s}$. Let $X$ grow, also up to $10^6$ on a logarithmic axis. For the Gaussian and for $s > \tfrac12$ the integral stays below a limit; for $s \leq \tfrac12$, for instance $f = 1$, it grows without bound. Only in the first case can $f$ be normalised to $\langle\Psi|\Psi\rangle = 1$ and admitted as a wavefunction.}
+
 \begin{intuition}
 	The wavefunction assigns a \emph{complex} number to every possible position and delivers the position only indirectly: the probability of finding the particle between $a$ and $b$ is the area under the curve $p(x)$. You should resist the temptation to picture $\Psi$ itself as a density.
 \end{intuition}
@@ -58,6 +62,8 @@ as a probability density.
 \input{figures/fig_vl07_dichte}
 
 On the left of the figure $\Psi$ swings through zero and carries a sign; on the right only the smooth bell $p$ remains. Watch the narrow strip: as its width shrinks, the area shrinks with it.
+
+\webdemo{c01.demo.dichte}{Three probability densities, one at a time: the Gaussian density, the uniform density on $[0,L]$ and $p(x) = 1/x^2$ for $x \geq 1$. For the Gaussian, drag the endpoints $a \leq b$; the hatched area is the probability of finding the particle in $[a,b]$, and for $a = b$ it is zero. For the uniform density, change $L$: the height $1/L$ can become arbitrarily large while the area stays $1$, because a density is not a probability.}
 
 Warning: the object
 \begin{equation}

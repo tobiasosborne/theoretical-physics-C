@@ -1,0 +1,191 @@
+{
+ "c00.demo.hohlraum": {
+  "kind": "demo",
+  "title": {
+   "de": "Ein Strahl im Hohlraum",
+   "en": "A ray in the cavity"
+  }
+ },
+ "c00.demo.planck": {
+  "kind": "demo",
+  "title": {
+   "de": "Strahlungsgesetz und Grenzform",
+   "en": "Radiation law and limiting form"
+  }
+ },
+ "c00.demo.photoeffekt": {
+  "kind": "demo",
+  "title": {
+   "de": "Photoeffekt: Frequenz, Material, Intensität",
+   "en": "Photoelectric effect: frequency, material, intensity"
+  }
+ },
+ "c00.demo.experiment": {
+  "kind": "demo",
+  "title": {
+   "de": "Drei Schritte eines Experiments",
+   "en": "Three stages of an experiment"
+  }
+ },
+ "c00.demo.leiter": {
+  "kind": "demo",
+  "title": {
+   "de": "Die Leiter der Theorien",
+   "en": "The ladder of theories"
+  }
+ },
+ "c01.demo.haeufigkeit": {
+  "kind": "demo",
+  "title": {
+   "de": "Relative Häufigkeiten und Gewichte",
+   "en": "Relative frequencies and weights"
+  }
+ },
+ "c01.demo.gewichte": {
+  "kind": "demo",
+  "title": {
+   "de": "Ein Gewicht bleibt normiert",
+   "en": "A weight stays normalised"
+  }
+ },
+ "c01.demo.ereignis": {
+  "kind": "demo",
+  "title": {
+   "de": "Ereignisse sind Teilmengen",
+   "en": "Events are subsets"
+  }
+ },
+ "c01.demo.erwartung": {
+  "kind": "demo",
+  "title": {
+   "de": "Der Erwartungswert als Schwerpunkt",
+   "en": "The expectation value as a balance point"
+  }
+ },
+ "c01.demo.indikator": {
+  "kind": "demo",
+  "title": {
+   "de": "Ja-Nein-Messungen und ihre Erwartungswerte",
+   "en": "Yes-no measurements and their expectation values"
+  }
+ },
+ "c01.demo.varianz": {
+  "kind": "demo",
+  "title": {
+   "de": "Varianz als gewichtete Abweichungsquadrate",
+   "en": "Variance as weighted squared deviations"
+  }
+ },
+ "c01.demo.mischung": {
+  "kind": "demo",
+  "title": {
+   "de": "Ein Gewicht als echte Mischung",
+   "en": "A weight as a proper mixture"
+  }
+ },
+ "c01.demo.simplex": {
+  "kind": "demo",
+  "title": {
+   "de": "Das Simplex der Gewichte",
+   "en": "The simplex of weights"
+  }
+ },
+ "c01.demo.konzentration": {
+  "kind": "demo",
+  "title": {
+   "de": "Wie nah liegt die relative Häufigkeit?",
+   "en": "How close is the relative frequency?"
+  }
+ },
+ "c01.demo.dichte": {
+  "kind": "demo",
+  "title": {
+   "de": "Dichten: Flächen sind Wahrscheinlichkeiten",
+   "en": "Densities: areas are probabilities"
+  }
+ },
+ "c02.demo.explorer": {
+  "kind": "demo",
+  "title": {
+   "de": "Zustandsraum und Effekte: der Explorer",
+   "en": "State space and effects: the explorer"
+  }
+ },
+ "c02.demo.distinguish": {
+  "kind": "game",
+  "title": {
+   "de": "Distinguish: zwei Präparationen unterscheiden",
+   "en": "Distinguish: telling two preparations apart"
+  }
+ },
+ "c03.demo.kreuz": {
+  "kind": "demo",
+  "title": {
+   "de": "Kreuz-Operation und Skalarprodukt in ℂ²",
+   "en": "The dagger operation and the scalar product in ℂ²"
+  }
+ },
+ "c03.demo.partialsummen": {
+  "kind": "demo",
+  "title": {
+   "de": "Teilsummen: welche Spalten zugelassen sind",
+   "en": "Partial sums: which columns are admitted"
+  }
+ },
+ "c03.demo.partialintegrale": {
+  "kind": "demo",
+  "title": {
+   "de": "Teilintegrale: welche Funktionen zugelassen sind",
+   "en": "Partial integrals: which functions are admitted"
+  }
+ },
+ "c03.demo.komplex": {
+  "kind": "demo",
+  "title": {
+   "de": "Eine komplexwertige Funktion im Raum ℝ × ℂ",
+   "en": "A complex-valued function in the space ℝ × ℂ"
+  }
+ },
+ "c03.demo.raeume": {
+  "kind": "demo",
+  "title": {
+   "de": "Drei Räume, drei Skalarprodukte",
+   "en": "Three spaces, three scalar products"
+  }
+ },
+ "c03.demo.vollst": {
+  "kind": "demo",
+  "title": {
+   "de": "Vollständigkeit: ein Vektor, zwei Basen",
+   "en": "Completeness: one vector, two bases"
+  }
+ },
+ "c03.demo.spektren": {
+  "kind": "demo",
+  "title": {
+   "de": "Operatorklassen an ihren Eigenwerten",
+   "en": "Operator classes and their eigenvalues"
+  }
+ },
+ "c11.demo.cloud": {
+  "kind": "demo",
+  "title": {
+   "de": "Die Wolke der Relativkoordinate",
+   "en": "The cloud of the relative coordinate"
+  }
+ },
+ "c11.demo.phase": {
+  "kind": "demo",
+  "title": {
+   "de": "Phasenschnitt durch die 2p-Zustände",
+   "en": "Phase slice through the 2p states"
+  }
+ },
+ "c11.demo.radial": {
+  "kind": "demo",
+  "title": {
+   "de": "Radiale Aufenthaltsdichte und Knoten",
+   "en": "Radial probability density and nodes"
+  }
+ }
+}

@@ -8,7 +8,7 @@ import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { allHueChroma, decode, linearToOklab, makePhaseMap, oklchToLinear, type RGB } from '../../src/demos/c11/oklch';
 
-const REPO = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../../..');
+const REPO = path.resolve(path.dirname(new URL(import.meta.url).pathname), '../../../dev');
 const builds = fs.readdirSync(path.join(REPO, 'design/build')).filter((d) => /^pkg\d-(light|dark)$/.test(d)).sort();
 type Tok = { hex: string; oklch: [number, number, number]; linear: [number, number, number] };
 const load = (b: string) => (JSON.parse(fs.readFileSync(path.join(REPO, 'design/build', b, 'tokens.json'), 'utf8')) as { color: Record<string, Tok> }).color;

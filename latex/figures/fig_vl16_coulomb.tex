@@ -1,0 +1,18 @@
+% fig_vl16_coulomb.tex: the Coulomb potential V(r) = -2/r (solid) and the
+% effective radial potential U_l(r) for l = 1 with its centrifugal barrier
+% (dashed), in units where the curves are 1/r^2 - 2/r and -2/r.  Opens
+% lecture 16.  No prose, so nothing to switch by language.
+\begin{center}
+  \begin{tikzpicture}
+  	\begin{axis}[width=\textwidth, height=8cm,hide axis, tick style={color=black}, domain=0:12, xtick=\empty, ytick=\empty, samples =200, xmin = -0.5, xmax = 8, ymin = -3, ymax = 2]
+  	\addplot[cgblue, dashed] {1/x^2-2/x};
+  	\addplot[cgblue] {-2/x};
+  	\draw[->] (axis cs: -0.5, 0) -- (axis cs: 8, 0);
+  	\draw (axis cs: 7.8, -0.2) node[below] {$r$};
+  	\draw (axis cs: 6, 1.5) node[below] {$U_\ell(r) = \frac{\hbar^2 \ell(\ell+1)}{2m_{\text{e}}r^2}+V(r)$};
+  	\draw[->] (axis cs: 0, -3) -- (axis cs: 0, 2);
+    	\draw (axis cs: 0.5,1.5) node[right] {$\ell = 1$};
+   		\draw (axis cs:3.5,-1.25) node[above] {$\ell=0$};
+  	\end{axis}
+  \end{tikzpicture}
+\end{center}

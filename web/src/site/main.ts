@@ -3,6 +3,7 @@
 // the design switcher, popups for definitions and signposts, the language link that keeps
 // the anchor, and lazy mounting of demos.
 import './style.css';
+import './lecture.css';
 import '@gen/temml.css';
 import type { Lang } from '../demo/types';
 

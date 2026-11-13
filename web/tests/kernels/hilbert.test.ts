@@ -98,7 +98,7 @@ describe(`kernel hilbert against ${golden.reference.implementation}`, () => {
 });
 
 // ── the stills ─────────────────────────────────────────────────────────────────────────────
-const FIG = path.join(path.dirname(new URL(import.meta.url).pathname), '..', '..', '..', 'content', 'c03-hilbertraum', 'figures');
+const FIG = path.join(path.dirname(new URL(import.meta.url).pathname), '..', '..', '..', 'dev', 'content', 'c03-hilbertraum', 'figures');
 const coordinates = (tex: string, afterMarker: string): Array<[number, number]> => {
   const at = tex.indexOf(afterMarker);
   if (at < 0) throw new Error(`marker ${afterMarker} not found`);

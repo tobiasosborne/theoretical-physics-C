@@ -1,0 +1,44 @@
+/* Additions for the lecture pages (web/tools/lecture/build.ts). Tokens only, as in style.css. */
+
+.tpc-pdflink { font-weight: 600; }
+
+/* key equations (\eqbox in the script) */
+.tpc-eqbox { background: var(--tpc-highlight); padding: 0.45em 0.7em; }
+
+.tpc-box-postulat { background: var(--tpc-highlight); border-left-color: var(--tpc-accent); }
+
+.tpc-footnote { font-size: var(--tpc-size-small); color: var(--tpc-ink-muted); }
+
+.tpc-figure-demo figcaption { max-width: var(--tpc-measure-text); }
+
+/* previous / all / next */
+.tpc-lecnav {
+  display: grid; grid-template-columns: 1fr auto 1fr; align-items: start; gap: var(--tpc-space-s);
+  margin: var(--tpc-space-l) 0 var(--tpc-space-m);
+  padding-top: var(--tpc-space-s);
+  border-top: var(--tpc-stroke-hair) solid var(--tpc-rule);
+  font-family: var(--tpc-family-label);
+  font-size: var(--tpc-size-label);
+  line-height: var(--tpc-leading-label);
+}
+.tpc-lecnav a { text-decoration: none; }
+.tpc-lecnav a:hover .tpc-navtitle, .tpc-lecnav a.tpc-up:hover { text-decoration: underline; }
+.tpc-lecnav .tpc-next { text-align: right; }
+.tpc-navdir { display: block; color: var(--tpc-ink-muted); }
+.tpc-navtitle { display: block; font-weight: 600; }
+.tpc-up { color: var(--tpc-ink-muted); padding-top: 0.1em; }
+
+/* the list of lectures */
+.tpc-index-list a { display: flex; align-items: baseline; gap: var(--tpc-space-xs); text-decoration: none; padding: 0.2em 0; }
+.tpc-index-list a:hover .tpc-index-title { text-decoration: underline; }
+.tpc-index-list .tpc-secno { min-width: 1.8em; text-align: right; }
+.tpc-index-demos {
+  margin-left: auto; white-space: nowrap;
+  font-family: var(--tpc-family-label); font-size: var(--tpc-size-label);
+  color: var(--tpc-accent);
+}
+
+@media (max-width: 40rem) {
+  .tpc-lecnav { grid-template-columns: 1fr 1fr; }
+  .tpc-lecnav .tpc-up { grid-column: 1 / -1; grid-row: 2; text-align: center; }
+}

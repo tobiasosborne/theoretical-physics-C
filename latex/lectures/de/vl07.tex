@@ -19,6 +19,8 @@ Das wichtigste System, das erfolgreich mit der Quantenmechanik modelliert wurde,
 \end{equation}
 beschrieben. Die Beschränkung auf reine Zustände ist keine Willkür: Jede Dichtematrix ist ein Gemisch reiner Zustände. Erlaubt sind nur normierte Vektoren, $\langle \Psi|\Psi\rangle = 1$.
 
+\webdemo{c03.demo.komplex}{Eine Wellenfunktion ordnet jedem Ort $x$ eine komplexe Zahl zu; als Kurve gezeichnet braucht sie deshalb drei Dimensionen, den Ort $x$ und die komplexe Ebene senkrecht dazu. Gezeigt ist $f(x) = m(x)\,e^{ikx}$ mit einer Hüllkurve $m(x)$. Ändern Sie $k$: Die Kurve windet sich um die $x$-Achse, und ihr Abstand von der Achse ist $\abs{f(x)} = m(x)$, unabhängig von $k$. Die Ansichten von vorn und von oben zeigen nur den Realteil $\operatorname{Re} f$ beziehungsweise nur den Imaginärteil $\operatorname{Im} f$.}
+
 Die Wellenfunktion ist bislang nur Notation; Bedeutung bekommt sie erst durch die Messungen. Eine Theorie braucht beides, Zustände \emph{und} Detektoren.
 
 Gemäß Postulat 3 werden Detektoren mit Operatoren modelliert. Wir beschreiben hier nur Orts-Detektoren. Solche Detektoren liefern ,,ja``/,,nein``-Ergebnisse, d.H.\ das Teilchen befindet sich in einem gegebenem Ort oder nicht. Um solche Detektoren zu beschreiben benötigen wir ein Intervall $[a,b]\subset \mathbb{R}$, wobei $a<b$. Der entsprechende Detektor wird durch den Operator
@@ -51,6 +53,8 @@ Weil die Größe $|\Psi(x)|^2$ ist nicht negativ ist, können wir daher die Grö
 \end{equation}
 als eine Wahrscheinlichtkeitsdichte interpretieren.
 
+\webdemo{c03.demo.partialintegrale}{Das Integral $\int_{-X}^{X}\abs{f(x)}^2\,dx$ als Funktion von $X$, für die Gaußfunktion und für $f(x) = (1+\abs{x})^{-s}$. Lassen Sie $X$ wachsen, auch bis $10^6$ auf logarithmischer Achse. Bei der Gaußfunktion und bei $s > \tfrac12$ bleibt das Integral unter einer Grenze; bei $s \leq \tfrac12$, etwa für $f = 1$, wächst es ohne Grenze. Nur im ersten Fall lässt sich $f$ zu $\langle\Psi|\Psi\rangle = 1$ normieren und ist als Wellenfunktion zulässig.}
+
 \begin{intuition}
 	Die Wellenfunktion ordnet jeder möglichen Position eine \emph{komplexe} Zahl zu und liefert die Position nur indirekt: Die Wahrscheinlichkeit, das Teilchen zwischen $a$ und $b$ zu finden, ist die Fläche unter der Kurve $p(x)$. Der Versuchung, sich schon $\Psi$ selbst als Dichte vorzustellen, soll man widerstehen.
 \end{intuition}
@@ -58,6 +62,8 @@ als eine Wahrscheinlichtkeitsdichte interpretieren.
 \input{figures/fig_vl07_dichte}
 
 Links in der Abbildung schwingt $\Psi$ durch null und trägt ein Vorzeichen; rechts bleibt davon nur die glatte Glocke $p$. Achten Sie auf den schmalen Streifen: schrumpft seine Breite, so schrumpft die Fläche mit.
+
+\webdemo{c01.demo.dichte}{Drei Wahrscheinlichkeitsdichten, eine nach der anderen: die Gaußdichte, die gleichmäßige Dichte auf $[0,L]$ und $p(x) = 1/x^2$ für $x \geq 1$. Bei der Gaußdichte ziehen Sie die Enden $a \leq b$; die schraffierte Fläche ist die Wahrscheinlichkeit, das Teilchen in $[a,b]$ zu finden, und für $a = b$ ist sie null. Bei der gleichmäßigen Dichte verändern Sie $L$: Die Höhe $1/L$ kann beliebig groß werden, die Fläche bleibt $1$, denn eine Dichte ist keine Wahrscheinlichkeit.}
 
 Warnung: Das Objekt
 \begin{equation}

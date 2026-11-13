@@ -325,8 +325,10 @@ corations.softclip.code.tex))
 (/usr/share/texlive/texmf-dist/tex/generic/stringenc/stringenc.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 (/usr/share/texlive/texmf-dist/tex/latex/base/atveryend-ltx.sty)
-(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty))))
-(./tpc-macros.sty) (./tpc-design.sty (./tokens/pkg1-light/tpc-tokens.sty)
+(/usr/share/texlive/texmf-dist/tex/generic/uniquecounter/uniquecounter.sty)))
+(/usr/share/texlive/texmf-dist/tex/latex/comment/comment.sty
+Excluding comment 'comment') Excluding comment 'webonly') (./tpc-macros.sty)
+(./tpc-design.sty (./tokens/pkg1-light/tpc-tokens.sty)
 (/usr/share/texlive/texmf-dist/tex/latex/unicode-math/unicode-math.sty
 (/usr/share/texlive/texmf-dist/tex/latex/unicode-math/unicode-math-xetex.sty
 (/usr/share/texlive/texmf-dist/tex/latex/l3packages/l3keys2e/l3keys2e.sty)
@@ -384,14 +386,14 @@ LaTeX Font Warning: Font shape `U/rsfs/m/n' in size <5.5> not available
 (Font)              size <5> substituted on input line 38.
 
 (./TheoreticalPhysicsC.toc [1]) [2] (./lectures/en/lec01.tex
-Overfull \hbox (19.5443pt too wide) in paragraph at lines 23--25
+Overfull \hbox (19.5443pt too wide) in paragraph at lines 27--30
 \TU/STIXTwoText(0)/m/n/11 with the binding energy $[]$ of the material (written
  non-relativistically).
-[3] [4] [5]
-Overfull \hbox (16.2598pt too wide) in paragraph at lines 111--113
+[3] [4] Excluding 'webonly' comment. [5] Excluding 'webonly' comment.
+Overfull \hbox (16.2598pt too wide) in paragraph at lines 149--151
 \TU/STIXTwoText(0)/m/n/11 The second form follows from linearity. Written out, 
 $[][][][] [] [][] [][][][] [][][][][] []
-[6]) (./lectures/en/lec02.tex [7]
+[6] Excluding 'webonly' comment.) (./lectures/en/lec02.tex [7]
 
 LaTeX Font Warning: Font shape `TU/STIXTwoMath-Regular.otf(1)/b/n' undefined
 (Font)              using `TU/STIXTwoMath-Regular.otf(1)/m/n' instead on input 
@@ -408,17 +410,19 @@ LaTeX Font Warning: Font shape `TU/STIXTwoMath-Regular.otf(3)/b/n' undefined
 line 10.
 
 [8]
-Underfull \hbox (badness 2005) in paragraph at lines 57--58
+Underfull \hbox (badness 2005) in paragraph at lines 59--60
 []\TU/STIXTwoText(0)/m/n/11 At this point one could already define finite-dimen
 sional Hilbert
-) (./lectures/en/lec03.tex [9] [10] [11] [12]) (./lectures/en/lec04.tex
-[13] [14] [15] [16]) (./lectures/en/lec05.tex [17] [18] [19])
+Excluding 'webonly' comment. Excluding 'webonly' comment.
+Excluding 'webonly' comment. Excluding 'webonly' comment.)
+(./lectures/en/lec03.tex [9] [10] [11] [12]) (./lectures/en/lec04.tex [13]
+[14] [15] [16]) (./lectures/en/lec05.tex [17] [18] [19])
 (./lectures/en/lec06.tex [20] [21]
-Underfull \hbox (badness 1910) in paragraph at lines 42--44
+Underfull \hbox (badness 1910) in paragraph at lines 44--46
 \TU/STIXTwoText(0)/m/n/11 A qubit state thus depends on three real numbers, and
  the triples
-[22] [23]
-Underfull \hbox (badness 1168) in paragraph at lines 94--95
+Excluding 'webonly' comment. [22] Excluding 'webonly' comment. [23]
+Underfull \hbox (badness 1168) in paragraph at lines 108--109
 \TU/STIXTwoText(0)/m/n/11 for all $[]$, and for unitary $[]$, $[][] []$ is agai
 n a density operator and
 [24]) (./lectures/en/lec07.tex [25] [26] [27] [28] [29])
@@ -466,13 +470,8 @@ Overfull \hbox (24.92433pt too wide) detected at line 69
 [56] [57]) (./lectures/en/lec15.tex
 Overfull \hbox (55.47113pt too wide) detected at line 24
 []
-[58] [59]) (./lectures/en/lec16.tex
-NOTE: coordinate (0Y0.0e0],4Y0.0e0]) has been dropped because it is unbounded (
-in y). (see also unbounded coords=jump). 
-NOTE: coordinate (0Y0.0e0],5Y0.0e0]) has been dropped because it is unbounded (
-in y). (see also unbounded coords=jump). 
-[60] [61] [62]) (./lectures/en/lec17.tex [63] [64] [65] [66])
-(./lectures/en/lec18.tex [67] [68] [69]
+[58] [59]) (./lectures/en/lec16.tex [60] [61] [62]) (./lectures/en/lec17.tex
+[63] [64] [65] [66]) (./lectures/en/lec18.tex [67] [68] [69]
 Underfull \hbox (badness 1226) in paragraph at lines 118--119
 \TU/STIXTwoText(0)/m/n/11 microstate is given by, say, $[][][][][][][][][][]$; 
 that is, the microstate

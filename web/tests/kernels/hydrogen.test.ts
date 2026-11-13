@@ -16,7 +16,7 @@ import { expectGolden, loadGolden } from '../golden';
 
 type Kernel = typeof import('../../src/kernels/hydrogen');
 const HERE = path.dirname(new URL(import.meta.url).pathname);
-const REPO = path.resolve(HERE, '../../..');
+const REPO = path.resolve(HERE, '../../../dev');
 const kernelFile = process.env.HYDROGEN_KERNEL ? path.resolve(process.cwd(), process.env.HYDROGEN_KERNEL) : path.resolve(HERE, '../../src/kernels/hydrogen.ts');
 const K = (await import(kernelFile)) as Kernel;
 
