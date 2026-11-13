@@ -1,0 +1,111 @@
+% content/c05-teilchen/en.tex — Chapter 5: Which Hilbert space? The particle on a line
+% (English version; German leads)
+%
+% Status 2026-11-11: a beginning. One Kern section carries the two figures of lectures 7 and 8
+% and their demos (docs/plan/lec78/DEMOS.md). Prose and formulas from script v0.3:
+% latex/lectures/en/lec07.tex and lec08.tex. Notation as in lecture 8.
+
+\chapter{Which Hilbert space? The particle on a line}\label{c05}
+
+% Voice: lec07.tex.
+The postulates of Chapter~\ref{c04} do not say which Hilbert space, which Hamiltonian and which
+observables belong to a given system. For the most important system, the particle on a line,
+the Hilbert space is $\Hil = \Ltwo{\mathbb{R}}$, the space of square-integrable functions
+$\Psi\colon \mathbb{R} \to \mathbb{C}$ with the scalar product
+$\braket{\Phi}{\Psi} = \int \Phi^*(x)\Psi(x)\,dx$. One writes the value of the function at the
+point $x$ as $\Psi(x) = \braket{x}{\Psi}$ and calculates with the kets $\ket{x}$ as if they were
+an orthonormal basis, the \emph{position basis}; the Kronecker delta is replaced by the Dirac
+delta function, $\braket{x}{y} = \delta(x-y)$, and sums over the basis become integrals. The
+function $\Psi$ is the list of coefficients of $\ket{\Psi}$ in the position basis; it is called
+the \emph{wave function}.
+
+\section{Position density and the free particle}\label{c05.s1}
+
+A position detector monitors an interval $[a,b]$ and answers “yes” if it finds the particle
+there. Its operator is
+\begin{equation}\label{c05.eq.ortsdetektor}
+  \op{\EffOp}_{[a,b]} = \int_a^b \ketbra{x}{x}\,dx .
+\end{equation}
+It responds with probability
+\begin{equation}\label{c05.eq.intervall}
+  \Prob\bigl[x\in[a,b]\bigr] = \melem{\Psi}{\op{\EffOp}_{[a,b]}}{\Psi}
+  = \int_a^b \abs{\Psi(x)}^2\,dx
+\end{equation}
+in the pure state $\ket{\Psi}$. Since $\abs{\Psi(x)}^2$ is not negative, $p(x) = \abs{\Psi(x)}^2$ is a probability density, the
+density of the position measurement. The wave function itself assigns a \emph{complex} number
+to every position; you should resist the temptation to picture $\Psi$ itself as a density.
+
+\begin{tpcfigure}{c05.fig.dichte}
+  \demo{c05.demo.detektor}
+  \caption{The same wave function twice: the Gaussian wave packet
+    $\Psi(x) = (2\pi)^{-1/4} e^{-x^2/4} e^{3ix}$. (a) Real and imaginary part change sign all
+    the time; dotted, the envelope $\pm\abs{\Psi}$. (b) Of the factor $e^{3ix}$ nothing is left
+    in $p = \abs{\Psi}^2$. The area over $[a,b]$ is the response probability of the detector
+    $\op{\EffOp}_{[a,b]}$, Equation~\eqref{c05.eq.intervall}. The narrow strip of width
+    $\varepsilon$ at $c$ is the same construction, only narrower: as $\varepsilon$ shrinks, the
+    area shrinks with it.}
+\end{tpcfigure}
+
+Why an interval and not a point? The probability of finding the particle \emph{exactly} at the
+point $x$ is always zero. The object $\ketbra{x}{x}$, taken on its own, is not an operator:
+$(\ketbra{x}{x})^2 = \delta(0)\ketbra{x}{x}$, and $\delta(0)$ is not a number. For an interval
+the delta disposes of one of the two integrals, and
+$\op{\EffOp}_{[a,b]}^2 = \op{\EffOp}_{[a,b]}$ is a projector.
+
+How does a free particle of mass $m$ move? Its Schrödinger equation
+$i\hbar\,\partial_t\Psi = -\frac{\hbar^2}{2m}\,\partial_x^2\Psi$ is solved by every plane wave
+$e^{i(kx - \hbar k^2 t/2m)}$, and since it is linear, also by every superposition:
+\begin{equation}\label{c05.eq.freieloesung}
+  \Psi(x,t) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \widetilde{\Psi}(k)\,
+  e^{i\left(kx-\frac{\hbar k^2}{2m}t\right)}\,dk .
+\end{equation}
+The weights $\widetilde{\Psi}(k)$ are fixed by the initial condition: at $t = 0$ this is the
+inverse Fourier transformation, and $\widetilde{\Psi}$ is the Fourier transform of the initial
+wave function,
+\begin{equation}\label{c05.eq.phik}
+  \widetilde{\Psi}(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \Psi(x,0)\,e^{-ikx}\,dx .
+\end{equation}
+
+\begin{merksatz}[The free particle in three steps]
+  Compute the Fourier transform $\widetilde{\Psi}(k)$ of the initial wave function
+  $\Psi(x,0)$. Multiply each component $\widetilde{\Psi}(k)$ by its phase
+  $e^{-i\hbar k^2t/2m}$. Transform back.
+\end{merksatz}
+
+For the Gaussian wave packet
+$\Psi(x,0) = (\pwidth\sqrt{2\pi})^{-1/2}\, e^{-(x-a)^2/4\pwidth^2}$ the forward and backward
+transformations are Gaussian integrals. The squared modulus remains a bell curve about $a$,
+whose width grows:
+\begin{align}
+  \abs{\Psi(x,t)}^2 &= \frac{1}{\pwidth_t\sqrt{2\pi}}\;
+  e^{-\frac{(x-a)^2}{2\pwidth_t^2}}, \label{c05.eq.zerfliessen}\\
+  \pwidth_t &= \pwidth\sqrt{1+\frac{t^2}{\tspread^2}},
+  \qquad
+  \tspread = \frac{2m\pwidth^2}{\hbar}. \notag
+\end{align}
+The wave packet \emph{spreads}: after the time $\tspread$ it is broader by a factor $\sqrt{2}$,
+and the narrower it was initially, the shorter $\tspread$ is.
+
+The same information is contained in the \emph{momentum wave function} $\Phi(p,t)$, the
+coefficients of $\ket{\Psi}$ in the basis of plane waves with momentum $p = \hbar k$; at time
+zero $\Phi(p,0) = \widetilde{\Psi}(p/\hbar)/\sqrt{\hbar}$. For the free particle only a phase
+changes in momentum space,
+\begin{equation}\label{c05.eq.impulszeit}
+  \Phi(p,t) = e^{-\frac{it}{\hbar}\frac{p^2}{2m}}\,\Phi(p,0),
+  \qquad
+  \abs{\Phi(p,t)}^2 = \abs{\Phi(p,0)}^2 .
+\end{equation}
+For the Gaussian wave packet of width $\pwidth$, $\abs{\Phi(p,0)}^2$ is a Gaussian
+distribution about $p = 0$ with standard deviation $\pwidth_p = \hbar/2\pwidth$; at time zero
+the product of the two widths is $\pwidth\,\pwidth_p = \hbar/2$.
+
+\begin{tpcfigure}{c05.fig.fourier}
+  \demo{c05.demo.zerfliessen}
+  \caption{The Gaussian wave packet at time $t = 0$, three times, with widths $\pwidth/2$,
+    $\pwidth$ and $2\pwidth$, on the left in position space, on the right in momentum space;
+    the same line means the same packet. The bars above the curves mark $\pm$ one standard
+    deviation: halving the width in position space doubles it in momentum space. The order of
+    the widths is reversed, the product stays. In time the curves on the left spread according
+    to Equation~\eqref{c05.eq.zerfliessen}, those on the right stay put according to
+    Equation~\eqref{c05.eq.impulszeit}.}
+\end{tpcfigure}

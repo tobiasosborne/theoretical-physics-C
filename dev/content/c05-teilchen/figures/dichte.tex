@@ -1,0 +1,58 @@
+% c05.fig.dichte — why Psi is not a density and |Psi|^2 is one.
+% Adapted from latex/figures/fig_vl07_dichte.tex (script v0.3, lecture 7) to the course
+% conventions: plate tokens and data roles only, geometry from the formula, line style carries
+% the meaning (Re Psi solid, Im Psi dashed, envelope dotted).
+%
+% One normalised state in both panels, the Gaussian packet of the lecture 7 exercise:
+%   Psi(x) = (2 pi sigma^2)^(-1/4) exp(-(x - x0)^2 / (4 sigma^2)) exp(i k x),
+% sigma = 1, x0 = 0, k = 3. Hence
+%   Re Psi = A exp(-x^2/4) cos 3x,  Im Psi = A exp(-x^2/4) sin 3x,  A = (2 pi)^(-1/4) = 0.63162,
+%   |Psi|  = A exp(-x^2/4)  (the envelope),
+%   p(x)   = |Psi(x)|^2 = exp(-x^2/2)/sqrt(2 pi), maximum 0.39894.
+% The carrier exp(ikx) drops out of |Psi|^2 exactly.
+% Shaded: P[x in [a,b]] = Phi(1.5) - Phi(-0.5) = 0.62466 for a = -0.5, b = 1.5 (Phi the standard
+% normal distribution; recomputed by numerics/generate/particle_golden.jl).
+% The narrow strip at c = -1.8 has width eps = 0.2 and area close to p(c) eps = 0.0158.
+% Both panels share the x range and scale: the envelope is a Gaussian of width sqrt(2) sigma,
+% the density one of width sigma.
+% Scale: x: 1 = 0.6 cm in both panels; (a) Psi: 1 = 2.3 cm, raised by 1.75 cm; (b) p: 1 = 7.5 cm.
+\begin{tikzpicture}
+  % ---------------------------------------------------------------- (a) Psi is complex
+  \begin{scope}[yshift=1.75cm, x=0.6cm, y=2.3cm]
+    \draw[tpc axis, -{Stealth[length=4pt]}] (-3.9,0) -- (4.2,0);
+    \node[tpc label, anchor=north] at (4.0,-0.04) {$x$};
+    \draw[tpc-plate-muted, line width=0.7pt, densely dotted] plot[domain=-3.9:3.75, samples=120] (\x,{0.63162*exp(-\x*\x/4)});
+    \draw[tpc-plate-muted, line width=0.7pt, densely dotted] plot[domain=-3.9:3.75, samples=120] (\x,{-0.63162*exp(-\x*\x/4)});
+    \draw[tpc q1] plot[domain=-3.9:3.75, samples=400] (\x,{0.63162*exp(-\x*\x/4)*cos(deg(3*\x))});
+    \draw[tpc q2, dashed] plot[domain=-3.9:3.75, samples=400] (\x,{0.63162*exp(-\x*\x/4)*sin(deg(3*\x))});
+    \node[tpc label, anchor=south] at (0,0.66) {$\real\Psi$};
+    \node[tpc label, anchor=north] at (-0.524,-0.68) {$\imag\Psi$};
+    \node[tpc label, anchor=west] at (-3.85,0.46) {$\pm\abs{\Psi}$};
+    \draw[tpc leader] (-2.9,0.40) -- (-2.45,0.165);
+    \node[tpc label, anchor=south] at (0.15,1.1) {(a) $\Psi$ \tpcifenglish{is complex}{ist komplex}};
+  \end{scope}
+  % ---------------------------------------------------------------- (b) |Psi|^2 is the density
+  \begin{scope}[xshift=5.9cm, x=0.6cm, y=7.5cm]
+    \fill[tpc-q1!22!tpc-plate] (-0.5,0) -- plot[domain=-0.5:1.5, samples=60] (\x,{exp(-\x*\x/2)/sqrt(2*pi)}) -- (1.5,0) -- cycle;
+    \fill[tpc-q1!60!tpc-plate] (-1.9,0) -- plot[domain=-1.9:-1.7, samples=8] (\x,{exp(-\x*\x/2)/sqrt(2*pi)}) -- (-1.7,0) -- cycle;
+    \draw[tpc-q1, line width=0.5pt] (-0.5,0) -- (-0.5,0.35207);
+    \draw[tpc-q1, line width=0.5pt] (1.5,0) -- (1.5,0.12952);
+    \draw[tpc axis, -{Stealth[length=4pt]}] (-3.9,0) -- (4.2,0);
+    \draw[tpc axis, -{Stealth[length=4pt]}] (-3.9,0) -- (-3.9,0.5);
+    \foreach \v in {0.1,0.2,0.3,0.4}
+      \draw[tpc axis] (-3.9,\v) -- (-3.78,\v);
+    \node[tpc label, anchor=east] at (-3.9,0.4) {$0{,}4$};
+    \node[tpc label, anchor=east] at (-3.9,0.2) {$0{,}2$};
+    \node[tpc label, anchor=south] at (-3.9,0.5) {$p(x)$};
+    \foreach \v/\l in {-1.8/c, -0.5/a, 1.5/b}
+      \draw[tpc axis] (\v,0) -- (\v,-0.012) node[tpc label, anchor=north] {$\l$};
+    \node[tpc label, anchor=north] at (4.0,-0.012) {$x$};
+    \draw[tpc-plate-ink, line width=1.1pt] plot[domain=-3.9:3.75, samples=200] (\x,{exp(-\x*\x/2)/sqrt(2*pi)});
+    \node[tpc label] at (0.45,0.15) {$\int_a^b p\,dx$};
+    \node[tpc label, anchor=south] at (0.9,0.43) {$\Prob\bigl[x\in[a,b]\bigr] = \tpcifenglish{0.62}{0{,}62}$};
+    \node[tpc label, anchor=south east] at (-1.67,0.083) {$\varepsilon$};
+    \node[tpc label, anchor=west, align=left] at (-3.7,0.28) {$\varepsilon\to0$\\$\Rightarrow\Prob\to0$};
+    \draw[tpc leader] (-2.45,0.225) -- (-2.13,0.142);
+    \node[tpc label, anchor=south] at (0.15,0.573) {(b) $p = \abs{\Psi}^2$ \tpcifenglish{is the density}{ist die Dichte}};
+  \end{scope}
+\end{tikzpicture}

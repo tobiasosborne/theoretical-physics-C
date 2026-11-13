@@ -5,8 +5,8 @@
 # assembles build/pages/. Runs on every push to master that touches the notes
 # or the site, and on request.
 #
-# What keeps it fast: TeX Live comes from a cache of the installed apt
-# packages, the lecture figures (two minutes of TikZ) and the demo bundles are
+# What keeps it fast: TeX Live comes from a cache of the files its apt
+# packages install, the lecture figures (two minutes of TikZ) and the demo bundles are
 # cached by content hash, and nothing of the parked course in dev/ is built.
 name: pages
 
@@ -42,15 +42,40 @@ jobs:
           cache: npm
           cache-dependency-path: web/package-lock.json
 
-      - name: TeX Live and poppler (cached apt packages)
-        uses: awalsh128/cache-apt-pkgs-action@v1
+      # TeX Live from apt takes minutes to unpack and configure. On a miss it is
+      # installed and every file the new packages own, plus the generated TeX
+      # configuration, is packed into one archive; on a hit that archive is
+      # unpacked over the runner image instead.
+      - name: TeX cache
+        id: tex
+        uses: actions/cache@v4
         with:
-          packages: >-
-            texlive-xetex texlive-latex-recommended texlive-latex-extra texlive-pictures
-            texlive-science texlive-fonts-extra texlive-fonts-extra-links
+          path: ~/tex-cache.tar.zst
+          key: tex-apt-ubuntu-24.04-v1
+
+      - name: TeX Live and poppler from apt (cache miss)
+        if: steps.tex.outputs.cache-hit != 'true'
+        run: |
+          dpkg-query -W -f='${Package}\n' | sort > /tmp/before
+          sudo apt-get update -q
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -q --no-install-recommends \
+            texlive-xetex texlive-latex-recommended texlive-latex-extra texlive-pictures \
+            texlive-science texlive-fonts-extra texlive-fonts-extra-links \
             texlive-lang-german texlive-plain-generic preview-latex-style poppler-utils fontconfig
-          version: tex-1
-          execute_install_scripts: true
+          dpkg-query -W -f='${Package}\n' | sort > /tmp/after
+          comm -13 /tmp/before /tmp/after > /tmp/new
+          echo "$(wc -l < /tmp/new) new packages"
+          { xargs -a /tmp/new dpkg -L; sudo find /var/lib/texmf /etc/texmf /var/lib/tex-common; } | sort -u > /tmp/files
+          sudo tar --zstd --no-recursion -P -cf "$HOME/tex-cache.tar.zst" -T /tmp/files
+          sudo chown "$USER" "$HOME/tex-cache.tar.zst"
+          ls -lh "$HOME/tex-cache.tar.zst"
+
+      - name: TeX Live and poppler from the cache
+        if: steps.tex.outputs.cache-hit == 'true'
+        run: |
+          sudo tar --zstd -P -xf "$HOME/tex-cache.tar.zst"
+          sudo ldconfig
+          rm "$HOME/tex-cache.tar.zst"
 
       - name: Iosevka cache (the monospace face; OFL)
         id: iosevka
@@ -69,7 +94,7 @@ jobs:
 
       - name: Fonts and TeX file database
         run: |
-          sudo mktexlsr > /dev/null 2>&1 || true
+          sudo mktexlsr > /dev/null
           fc-cache -f
           fc-list | grep -c Iosevka
           xelatex --version | head -1

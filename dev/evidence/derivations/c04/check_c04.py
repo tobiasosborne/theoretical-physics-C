@@ -116,7 +116,7 @@ check("c04.cl.pvm  eigenprojectors of A: sum = I, P_l P_m = 0, sum l P_l = A",
 t, eps, hb, r, phi = sp.symbols('t epsilon hbar r varphi', real=True)
 s = eps * t / hb
 U = sp.cos(s) * sp.eye(2) - I * sp.sin(s) * sx
-check("c04.cl.dynamik  tr(U rho U^dag F) = tr(rho U^dag F U)", sp.simplify(tr(U * rho * herm(U) * Fg) - tr(rho * herm(U) * Fg * U)) == 0)
+check("c04.cl.dynamik  <A>(t) = tr(U rho U^dag A) = tr(rho U^dag A U) (checked for a generic 2x2 A)", sp.simplify(tr(U * rho * herm(U) * Fg) - tr(rho * herm(U) * Fg * U)) == 0)
 check("c04.cl.dynamik-zulaessig  U unitary, U rho U^dag has trace 1", is_zero(sp.simplify(herm(U) * U - sp.eye(2))) and sp.simplify(tr(U * rho * herm(U)) - 1) == 0)
 check("c04.cl.qubit-dynamik  |<0|U_t|0>|^2 = cos^2(eps t/hbar)", sp.simplify(sp.expand(U[0, 0] * sp.conjugate(U[0, 0])) - sp.cos(s) ** 2) == 0)
 rho_c = M([[sp.Rational(1, 2) + r * sp.cos(phi), I * r * sp.sin(phi)], [-I * r * sp.sin(phi), sp.Rational(1, 2) - r * sp.cos(phi)]])

@@ -1,3 +1,8 @@
+> **Superseded in part (2026-11-11).** `CLAUDE.md` replaces rules 1 (the sync tables; the
+> rule that the script makes no claim the course does not make stands), 6 (lanes), 7 (gate
+> commands) and 8 (NOTES files) of this brief. The budgets are guides (D-BUDGET-FLEX,
+> `docs/plan/lec34/BRIEF.md`); an exception is stated in the commit message.
+
 # Brief: script v0.3, chapters 1 and 2 as the kernel of the new course
 
 ## TJO's request (2026-10-22, verbatim)

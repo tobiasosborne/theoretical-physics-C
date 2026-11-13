@@ -10,7 +10,7 @@
    "line": 136,
    "file_sha256": "6abda03fd00b488fcf2968aff1295fcfcb89b4e93db086d969c6d96dcb034f6d",
    "old_text": "Im Postulat fehlt eine Voraussetzung, die wir hier nachtragen: Der Hamiltonoperator $H$ ist stets \\emph{hermitesch}.",
-   "new_text": "Jede Systemsorte ist weiter charakterisiert durch einen hermiteschen \\emph{Hamiltonoperator} $\\op{\\Ham}$"
+   "new_text": null
   }
  ],
  "reason": "Hazard H4.3: for unbounded H, symmetric (Hermitian) is not enough for U_t to be unitary; self-adjointness is required (Stone's theorem, c04.thm.stone). The Kern (finite dimension) keeps 'hermitesch' inside the rule; Vertiefung c04.v2 states the general condition.",
@@ -19,5 +19,5 @@
   "provenance_ids": []
  },
  "destination": "c04.thm.stone",
- "notes": "Lecture 5/6 round (docs/plan/lec56/BRIEF.md, 2026-11-04): applied in the German script v0.3 rewrite of chapters 5 and 6 and in the course; status stays 'recorded' until the English edition follows and the rewritten chapters are pinned in a script snapshot (then 'applied' with the applied_* fields)."
+ "notes": "Lecture 5/6 round (docs/plan/lec56/BRIEF.md, 2026-11-04). On 2026-11-06 TJO restored the v0.2 wording of Postulat 5 (D-WORTLAUT): as in v0.2, the Hermiticity of H is supplied in the sentence after the postulate ('Im Postulat fehlt eine Voraussetzung, die wir hier nachtragen'), in the script and in the Kern of c04; the hazard H4.3 is answered by Vertiefung c04.v2 (c04.thm.stone), to which that sentence points. Status stays 'recorded' until the rewritten chapters are pinned in a script snapshot (then 'applied' with the applied_* fields)."
 }

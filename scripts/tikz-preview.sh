@@ -38,6 +38,7 @@ cat > "$TMPDIR/preview.tex" <<HEREDOC
 \\documentclass[border=6pt,varwidth=17cm]{standalone}
 \\usepackage[german,cmfonts]{tpc-style}
 \\usepackage{tpc-macros}
+\\usepackage{tpc-notation}
 \\usepackage{tpc-tikz-templates}
 \\begin{document}
 \\input{$INPUT}
@@ -48,6 +49,8 @@ HEREDOC
 ln -sfn "$LATEX_DIR/data" "$TMPDIR/data"
 
 cd "$TMPDIR"
+# latex/tpc-notation.sty holds the registry macros (\op, \pauli, ...)
+# that the masters load through tpc-course.
 if ! TEXINPUTS=".:$LATEX_DIR:" xelatex -interaction=nonstopmode \
       -halt-on-error preview.tex > compile.log 2>&1; then
   echo "error: $BASENAME failed to compile" >&2

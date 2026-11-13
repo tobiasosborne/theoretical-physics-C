@@ -5,7 +5,8 @@
 The lecture notes of the course TJO is giving, in German (leading) and
 English, as a PDF and as one web page per lecture with interactive figures.
 The larger "ultimate course" project is parked in `dev/` (see
-`dev/README.md`; its own log up to 2026-10-29 is `dev/HANDOFF.md`).
+`dev/README.md`; its own status up to 2026-11-11 is `dev/HANDOFF.md`).
+Workflow rules: `CLAUDE.md`.
 
 Priority: material for the running lecture. Changes should reach the students
 in minutes.
@@ -21,7 +22,7 @@ in minutes.
   compiles each once per language into `build/figures/` (keyed by a hash of the
   figure and the style files) and the masters include the PDFs
   (`\tpcfigcache`, set by `build.sh`; a compile by hand still draws the TikZ).
-  Warm build: about 10 s. German 84 pages, English 82.
+  Warm build: about 10 s.
 - **Web pages.** `web/tools/lecture/` turns `latex/lectures/{de,en}` into one
   page per lecture and language (`build/site/<lang>/vlNN/`), an index, and
   redirects from the old chapter URLs. It counts equation, section and example
@@ -30,11 +31,14 @@ in minutes.
 - **Web-only material** is written in the lecture files: `\webdemo{id}{caption}`
   (optionally `[fig_...]` to take the place of a static figure) and the
   `webonly` environment; both are no-ops in print (`tpc-style.sty`).
-- **Demos.** The 27 demos of the chapter course are placed: lecture 1 (15),
-  2 (5), 3 (1), 4 (1), 6 (3), 7 (3, reused from lectures 1 and 2), 16 (3).
-  Captions and the `webonly` lead-ins were written by agents from the demo
-  sources and the chapter texts; TJO has not read them yet. All 62 demo mounts
-  (both languages) were checked in a headless browser.
+- **Demos.** All 29 demos are placed: lecture 1 (15), 2 (5), 3 (1), 4 (1),
+  6 (3), 7 (3: `c05.demo.detektor` in place of the density figure, and
+  `komplex` and `partialintegrale` reused from lecture 2), 8 (2:
+  `c05.demo.zerfliessen` in place of the Fourier figure, and `komplex` at the
+  plane wave), 16 (3). Captions and the `webonly` lead-ins of lectures 1 to 6
+  and 16 were written by agents from the demo sources and the chapter texts,
+  those of lectures 7 and 8 in the main session; TJO has not read them yet.
+  Every demo mount (both languages) was checked in a headless browser.
 - **Checks.** `./check.sh`: parity, figures, PDFs, site (about 15 s warm);
   `--tests` adds the kernel unit tests. The enrichment and migration-map gates
   went to `dev/` with the evidence they read.
@@ -46,7 +50,9 @@ in minutes.
 
 - Lectures 5, 8 to 15 and 17 to 22 have only their static figure. Candidates
   for new animations, lecture by lecture, are in the 2026-11-13 session report;
-  lectures 8 and 9 come first (the course is at lecture 7/8).
+  lectures 9 and 10 come next (the course was at lecture 7/8 on 2026-11-13).
+  Two more demos for lectures 7 and 8 are designed but not built
+  (`kommutator`, `wellenpaket`; `dev/docs/plan/lec78/DEMOS.md`).
 - Lectures 1 to 6 still say in a dozen places that a proof or an example
   "steht im Webkurs" / "is in the web course" (vl01:7, vl02:59, vl03:106,
   vl04:51, vl05:53, 57, 80, vl06:8, 26, 32, 108). The chapter pages they meant
@@ -54,5 +60,8 @@ in minutes.
   reword.
 - `web/assets/stills/` holds the demo posters as copies from the last chapter
   build (21 MB; three of them are 2 to 4 MB). They are not regenerated.
-- The hat seam (operators with hats in lectures 1 to 6, without from 7 on) and
-  the gaps for TJO listed in `dev/HANDOFF.md` are unchanged.
+- The hat seam is at lecture 8/9. The open points for TJO listed in
+  `dev/HANDOFF.md` are unchanged.
+- This restructure started from a local master that was nine commits behind
+  origin (the lecture 7/8 rewrite, C5, the lighter workflow of 2026-11-11);
+  they were merged in afterwards. Pull before starting.

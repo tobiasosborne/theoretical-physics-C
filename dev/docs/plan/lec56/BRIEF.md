@@ -1,6 +1,12 @@
 <!-- ROLE: brief for bringing lectures 5 and 6 to the new level (German first), 2026-11-04.
      UPDATE POLICY: the coordinator only. -->
 
+> **Superseded in part (2026-11-11).** `CLAUDE.md` replaces the process parts of this brief:
+> the evidence list of D-EVID (one migration map per lecture, migration records, a ledger row
+> for every statement), the muse review, NOTES and sync files, and the gate commands. TJO's
+> decisions recorded here (D-POS, D-C4, D-DE, D-WORTLAUT) stand.
+
+
 # Brief: lectures 5 and 6, German script and German web course
 
 ## TJO's request (2026-11-04)
@@ -30,6 +36,13 @@
   `content/c04-*/de.tex`. English (`lec05`, `lec06`, the `en.tex` files) follows in a later
   round. Until then the parity gates (`check_parity.py`, check_levels K6/M1) are red for these
   files by design. **Nothing is pushed to master in between**: a push deploys the student site.
+
+- **D-WORTLAUT (2026-11-06).** The postulates P1 to P5 are printed in the wording of script v0.2
+  (`git show 90fe735d:latex/lectures/de/vl06.tex`, lines 22, 36, 64, 82-83, 126-128; English
+  `lec06.tex`), in the script and in the course, both languages, with the course's symbols (hats,
+  `\Hil`, `F`, `psi`). The brief's telegraphic lines (docs/plan/BRIEF.md:51-55) are not printed; P0
+  stays. TJO: "I really dont like the new wording. About this I am very particular." Two slips of
+  v0.2 were normalised: "heisst" to "heißt" (P3) and "an gemäß" to "an einem gemäß" (P4).
 
 Standing decisions that apply unchanged: D-HAT (hats on operators; none on 𝕀, states, Pauli
 matrices, ket-bras), D-BUDGET-FLEX (budgets are guides; exceptions stated with reasons; no

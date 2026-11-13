@@ -99,7 +99,7 @@ definitions come from the registry (section 7).
 
 **Theorem-like units** are `theorem`, `lemma`, `proposition` and `corollary` (list
 `theorem_like` in `contract.json`). They share one number sequence, and each carries a
-`\label` and, directly after it, exactly one `\claim` (section 9). A corollary is numbered
+`\label`; directly after it stands at most one `\claim` (section 9). A corollary is numbered
 like the others ("Korollar 11.4"); the old script's unnumbered corollary does not exist here.
 
 **Nested proofs.** A `proof` may contain a labelled `lemma` with its own `proof`; one level
@@ -225,8 +225,11 @@ never restates it.
     admitted only on the claim of a theorem-like unit and is written exactly when the ledger
     row has one. The gates compare this declaration with the ledger; proof
     availability in the checked edition remains a reviewer obligation.
-  - Every theorem-like unit carries exactly one claim, on its own label. Equations and other
-    labelled units carry one where they state something.
+  - **When a claim is required** (rule of 2026-11-11, `CLAUDE.md`): for every number (by
+    `\num[id]`, below), every physical constant, and every formula or statement taken from an
+    external source. A theorem-like unit, equation or other unit that the text derives or
+    the author stipulates needs none. A theorem-like unit carries at most one claim, on its
+    own label. Claims already in content (lectures 1-6) stay.
   - The ledger `evidence/claims.json` is the authority; the values in the source are a
     declared copy. Status, presentation and the depth of the place where the tag stands must
     equal the row; a theorem-like unit is tagged with a row of that kind; every row of a

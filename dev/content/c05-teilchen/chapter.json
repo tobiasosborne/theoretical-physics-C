@@ -1,0 +1,47 @@
+{
+  "id": "c05",
+  "slug": "teilchen",
+  "title": {
+    "de": "Welcher Hilbertraum? Das Teilchen auf der Geraden",
+    "en": "Which Hilbert space? The particle on a line"
+  },
+  "effective_theory": {
+    "de": "Nicht eine Quantisierungsregel, sondern das Experiment legt für ein Teilchen auf der Geraden den Hilbertraum der quadratintegrierbaren Funktionen fest, mit Ortsdetektoren auf Intervallen und dem Impuls über die Fourier-Transformation.",
+    "en": "Not a quantisation rule but experiment fixes, for a particle on a line, the Hilbert space of square-integrable functions, with position detectors on intervals and momentum through the Fourier transform."
+  },
+  "zoom_scale": "single-system",
+  "prerequisites": [
+    "c03",
+    "c04"
+  ],
+  "assets": [
+    {
+      "id": "c05.fig.dichte",
+      "kind": "figure",
+      "file": "figures/dichte.tex"
+    },
+    {
+      "id": "c05.fig.fourier",
+      "kind": "figure",
+      "file": "figures/fourier.tex"
+    },
+    {
+      "id": "c05.demo.detektor",
+      "kind": "demo",
+      "still": "c05.fig.dichte",
+      "title": {
+        "de": "Der Ortsdetektor sieht nur die Fläche unter der Dichte",
+        "en": "The position detector sees only the area under the density"
+      }
+    },
+    {
+      "id": "c05.demo.zerfliessen",
+      "kind": "demo",
+      "still": "c05.fig.fourier",
+      "title": {
+        "de": "Das freie Wellenpaket zerfließt, die Impulsdichte bleibt",
+        "en": "The free wave packet spreads, the momentum density stays"
+      }
+    }
+  ]
+}

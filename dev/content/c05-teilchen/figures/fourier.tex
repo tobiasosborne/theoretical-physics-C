@@ -1,0 +1,68 @@
+% c05.fig.fourier — the Fourier pair: the same wave packet in position and in momentum space,
+% and the reciprocal widths of the two descriptions.
+% Adapted from latex/figures/fig_vl08_fourier.tex (script v0.3, lecture 8) to the course
+% conventions: plate tokens and data roles only, geometry from the closed forms.
+%
+% The packet of lecture 8 at t = 0, Psi(x,0) = (sigma sqrt(2 pi))^(-1/2) exp(-x^2/(4 sigma^2))
+% (centre a = 0: it only shifts panel (a) and drops out of |Phi|^2), has the Gaussian densities
+%   |Psi(x)|^2 = exp(-x^2/(2 s^2)) / (s sqrt(2 pi)),        s   = sigma_x,
+%   |Phi(p)|^2 = exp(-p^2/(2 s_p^2)) / (s_p sqrt(2 pi)),    s_p = hbar/(2 s).
+% Three packets, s = sigma/2, sigma, 2 sigma (roles q1, q2, q3; solid, dashed, dotted), so
+% that the reciprocal factor of two in (b) can be read off the rulers (+- one standard
+% deviation, in a strip above the curves). Peaks (axis units sigma and hbar/sigma):
+%   (a) 0.79788, 0.39894, 0.19947;   (b) 0.39894, 0.79788, 1.59577.
+% Panel (a) is drawn at twice the vertical unit of panel (b) (the factor 2 in the plot
+% expressions) so that both fill the same height; the y axes are unnumbered. Dotted leaders
+% take the middle packet's ruler down to its own flank (height e^(-1/2) of the peak).
+% Scale: (a) x/sigma: 1 = 0.42 cm; (b) p sigma/hbar: 1 = 0.84 cm, shifted by 6 cm; heights: 1 = 1.3 cm.
+\begin{tikzpicture}[y=1.3cm]
+  \tikzset{ruler/.style={line width=0.7pt, |<->|, >={Stealth[length=3.5pt,width=3pt]}}}
+  % ---------------------------------------------------------------- (a) position space
+  \begin{scope}[x=0.42cm]
+    \draw[tpc axis, -{Stealth[length=4pt]}] (-5,0) -- (5.4,0);
+    \draw[tpc axis, -{Stealth[length=4pt]}] (-5,0) -- (-5,3.0);
+    \foreach \v in {-4,-2,0,2,4}
+      \draw[tpc axis] (\v,0) -- (\v,-0.06) node[tpc label, anchor=north] {$\v$};
+    \node[tpc label, anchor=north] at (0,-0.4) {$x/\pwidth$};
+    \node[tpc label, anchor=south] at (-5,3.0) {$\abs{\Psi(x)}^2$};
+    \draw[tpc q1] plot[domain=-5:5, samples=201] (\x,{2*0.79788*exp(-2*\x*\x)});
+    \draw[tpc q2, dashed] plot[domain=-5:5, samples=201] (\x,{2*0.39894*exp(-0.5*\x*\x)});
+    \draw[tpc q3, densely dotted] plot[domain=-5:5, samples=201] (\x,{2*0.19947*exp(-0.125*\x*\x)});
+    \draw[ruler, tpc-q1] (-0.5,2.45) -- (0.5,2.45);
+    \draw[ruler, tpc-q2] (-1,2.20) -- (1,2.20);
+    \draw[ruler, tpc-q3] (-2,1.95) -- (2,1.95);
+    \node[tpc label, anchor=west] at (0.65,2.45) {$\pwidth/2$};
+    \node[tpc label, anchor=west] at (1.15,2.20) {$\pwidth$};
+    \node[tpc label, anchor=west] at (2.15,1.95) {$2\pwidth$};
+    \draw[tpc leader, densely dotted] (-1,2.20) -- (-1,0.484);
+    \draw[tpc leader, densely dotted] (1,2.20) -- (1,0.484);
+    \node[tpc label, anchor=south] at (0,2.65) {$\pm\pwidth_x$};
+    \node[tpc label, anchor=south] at (0,3.15) {(a) \tpcifenglish{position space}{Ortsraum}};
+  \end{scope}
+  % ---------------------------------------------------------------- (b) momentum space
+  \begin{scope}[xshift=6.0cm, x=0.84cm]
+    \draw[tpc axis, -{Stealth[length=4pt]}] (-2.5,0) -- (2.7,0);
+    \draw[tpc axis, -{Stealth[length=4pt]}] (-2.5,0) -- (-2.5,3.0);
+    \foreach \v in {-2,-1,0,1,2}
+      \draw[tpc axis] (\v,0) -- (\v,-0.06) node[tpc label, anchor=north] {$\v$};
+    \node[tpc label, anchor=north] at (0,-0.4) {$p\,\pwidth/\hbar$};
+    \node[tpc label, anchor=south] at (-2.5,3.0) {$\abs{\Phi(p)}^2$};
+    \draw[tpc q1] plot[domain=-2.5:2.5, samples=201] (\x,{0.39894*exp(-0.5*\x*\x)});
+    \draw[tpc q2, dashed] plot[domain=-2.5:2.5, samples=201] (\x,{0.79788*exp(-2*\x*\x)});
+    \draw[tpc q3, densely dotted] plot[domain=-2.5:2.5, samples=301] (\x,{1.59577*exp(-8*\x*\x)});
+    \draw[ruler, tpc-q1] (-1,2.45) -- (1,2.45);
+    \draw[ruler, tpc-q2] (-0.5,2.20) -- (0.5,2.20);
+    \draw[ruler, tpc-q3] (-0.25,1.95) -- (0.25,1.95);
+    \node[tpc label, anchor=west] at (1.15,2.45) {$\hbar/\pwidth$};
+    \node[tpc label, anchor=west] at (0.65,2.20) {$\hbar/(2\pwidth)$};
+    \node[tpc label, anchor=west] at (0.58,1.95) {$\hbar/(4\pwidth)$};
+    \draw[tpc leader, densely dotted] (-0.5,2.20) -- (-0.5,0.484);
+    \draw[tpc leader, densely dotted] (0.5,2.20) -- (0.5,0.484);
+    \node[tpc label, anchor=south] at (0,2.65) {$\pm\pwidth_p$};
+    \node[tpc label, anchor=south] at (0,3.15) {(b) \tpcifenglish{momentum space}{Impulsraum}};
+  \end{scope}
+  % one state, not two: the transform in the gap; the product the two rulers measure
+  \draw[tpc leader, {Stealth[length=4pt,width=3pt]}-{Stealth[length=4pt,width=3pt]}] (2.6,1.5) -- (3.4,1.5);
+  \node[tpc label, anchor=south] at (3.0,1.55) {$\mathcal{F}$};
+  \node[tpc label, anchor=north] at (3.0,-0.75) {$\pwidth_x\,\pwidth_p = \hbar/2$};
+\end{tikzpicture}

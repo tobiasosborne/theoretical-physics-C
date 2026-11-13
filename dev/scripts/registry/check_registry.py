@@ -165,17 +165,43 @@ def check_quote(rep, owner, key, locus, quote, info, root):
         else:
             rep.notes.append(message)
         return
-    lines = text.splitlines()
-    if m.group(2):
-        a, b = int(m.group(2)), int(m.group(3) or m.group(2))
-        if b > len(lines):
-            rep.err("quote not found", f"{owner}: {key} {locus}: line beyond end of file")
+    def at_locus(text):
+        lines = text.splitlines()
+        if m.group(2):
+            a, b = int(m.group(2)), int(m.group(3) or m.group(2))
+            if b > len(lines):
+                return None
+            text = " ".join(lines[a - 1:b])
+        else:
+            text = " ".join(lines)
+        return re.sub(r"\s+", " ", quote).strip() in re.sub(r"\s+", " ", text)
+
+    found = at_locus(text)
+    if not found:
+        # A script lecture rewritten since the snapshot: the quote is of the snapshot's text,
+        # so read that from Git at the snapshot's commit (CLAUDE.md: no re-pinning ceremony).
+        old = snapshot_text(root, key, m.group(1))
+        if old is not None and at_locus(old):
             return
-        text = " ".join(lines[a - 1:b])
-    else:
-        text = " ".join(lines)
-    if re.sub(r"\s+", " ", quote).strip() not in re.sub(r"\s+", " ", text):
+    if found is None:
+        rep.err("quote not found", f"{owner}: {key} {locus}: line beyond end of file")
+    elif not found:
         rep.err("quote not found", f"{owner}: quote is not at {key} {locus}: {quote[:70]!r}")
+
+
+def snapshot_text(root, key, rel):
+    """Text of latex/<rel> at the git_commit of tracked script snapshot key, or None."""
+    import json, pathlib, subprocess
+    try:
+        src = json.loads((pathlib.Path(root) / "sources" / key / "source.json").read_text())
+    except (OSError, ValueError):
+        return None
+    commit = src.get("identifiers", {}).get("git_commit", "")
+    if src.get("kind") != "script-snapshot" or not re.fullmatch(r"[0-9a-f]{40}", commit or ""):
+        return None
+    proc = subprocess.run(["git", "-C", str(root), "show", f"{commit}:latex/{rel}"],
+                          capture_output=True)
+    return proc.stdout.decode("utf-8", "replace") if proc.returncode == 0 else None
 
 
 def check_registry(rep, root, data, allowed):

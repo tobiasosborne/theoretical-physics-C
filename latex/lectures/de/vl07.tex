@@ -1,59 +1,66 @@
 %!TEX root = TheoretischePhysikC.tex
-\section{Vorlesung: ,,Quantisierung``}
+% Skript v0.3, neu gefasst am 2026-11-11 aus dem v0.2-Text (TJO). Die Positionsbasis, die in
+% v0.2 am Anfang von Vorlesung 5 stand, steht jetzt hier (Abschnitt 7.1).
+\section{Vorlesung: „Quantisierung“}
+Die Postulate der letzten Vorlesung lassen eine Lücke: Sie sagen nicht, welcher Hilbertraum, welcher Hamiltonoperator und welche Observablen zu einem gegebenen System gehören. Eine systematische Methode dafür gibt es nicht. Zu einer klassischen Beschreibung eines Systems gibt es keine wohldefinierte Abbildung, die ihr das richtige Quantensystem zuordnet.
 
-Wie indentifiziert man den richtigen Hilbertraum, Hamiltonoperator und Observablen für ein gegebenes System? Leider gibt es keine systematische Methode, um diese Information für ein physikalisches System zu bestimmen. Das bedeutet, dass es bei einer klassischen Beschreibung eines Systems keine mathematisch gut definierte Abbildung gibt, die ihm automatisch das richtige Quantensystem zuordnet. Der Grund dafür ist der folgende. Die klassische Physik stellt eine gute Annäherung an die Physik quantenmechanischer Systeme dar, die Wechselwirkungen mit der Umgebung ausgesetzt sind. Diese schädlichen Auswirkungen der Umwelt auf ein Quantensystem sind als Dekohärenz bekannt. Die Dekohärenz ist der Grund dafür, dass die klassische Mechanik eine so gute Annäherung an die Alltagsphysik darstellt. Geschlossene Systeme gibt es nämlich praktisch nicht: Alle geladenen Objekte koppeln an das elektromagnetische Feld, das selbst ein Quantensystem ist. Bewegen wir ein solches Objekt hin und her, so strahlt es, und die Strahlung trägt die Information mit Lichtgeschwindigkeit ins Unendliche.
-
-Im Idealfall möchte man eine Möglichkeit haben, das ursprüngliche Quantensystem allein aufgrund der Beschreibung des Systems durch die klassische Mechanik aufzudecken. Das heißt, wir wollen eine Möglichkeit, die Dekohärenz umzukehren. Leider ist dies im Allgemeinen unmöglich. Ein solches fiktives Umkehrverfahren ist unter dem Begriff ,,Quantisierung`` bekannt geworden.
+Der Grund ist die \emph{Dekohärenz}. Die klassische Physik ist eine gute Näherung für Quantensysteme, die mit ihrer Umgebung wechselwirken, und abgeschlossene Systeme gibt es praktisch nicht: Jedes geladene Objekt koppelt an das elektromagnetische Feld, das selbst ein Quantensystem ist. Bewegen wir ein solches Objekt hin und her, so strahlt es, und die Strahlung trägt Information mit Lichtgeschwindigkeit davon. Man möchte nun aus der klassischen Beschreibung allein das ursprüngliche Quantensystem zurückgewinnen, also die Dekohärenz umkehren. Dieses fiktive Umkehrverfahren heißt „Quantisierung“, und im Allgemeinen ist es unmöglich.
 
 \begin{greybox}[Ein inverses Problem]
-	Die Dekohärenz bildet verschiedene Quantensysteme auf dasselbe klassische System ab -- zwei Punkte landen auf einem. Ebenso wenig lässt sich aus dem verrauschten Bild einer Überwachungskamera ein Gesicht rekonstruieren.
+	Die Dekohärenz bildet verschiedene Quantensysteme auf dasselbe klassische System ab: Zwei Punkte landen auf einem. Ebenso wenig lässt sich aus dem verrauschten Bild einer Überwachungskamera ein Gesicht rekonstruieren.
 \end{greybox}
 
-Wir umgehen die Schwierigkeiten der Dekohärenz durch Versuch und Irrtum. Jahrzehntelange Erfahrung hat uns eine Liste von Hilberträumen, Hamiltonoperatoren und Observablen beschert, von denen wir inzwischen wissen, dass sie die korrekte physikalische Beschreibungen für breite Klassen von Systemen liefern. Tatsächlich sind alle fundamentalen Wechselwirkungen (mit Ausnahme der Gravitation) auf diese Weise verstanden worden. Ziel dieser Vorlesung ist es, eine Liste der grundlegenden Quantensysteme zu erstellen, von denen bekannt ist, dass sie bestimmte ideale Systeme korrekt modellieren. Denken Sie dabei nie, es gäbe ein einfaches Rezept dafür -- wäre es so leicht, bräuchten wir keine Experimentalphysik.
+Wir umgehen die Schwierigkeit durch Versuch und Irrtum. Jahrzehntelange Erfahrung hat eine Liste von Hilberträumen, Hamiltonoperatoren und Observablen ergeben, von denen wir wissen, dass sie breite Klassen von Systemen korrekt beschreiben; alle fundamentalen Wechselwirkungen außer der Gravitation sind so verstanden worden. In dieser und der nächsten Vorlesung stellen wir den wichtigsten Eintrag dieser Liste auf, das Teilchen. Denken Sie dabei nie, es gäbe ein einfaches Rezept: Wäre es so leicht, bräuchten wir keine Experimentalphysik.
 
+\subsection{Die Positionsbasis}
+Bisher war der Hilbertraum endlichdimensional. Für ein Teilchen auf der Geraden ist er es nicht mehr: $\Hil = L^2(\mathbb{R})$, der Raum der quadratintegrierbaren Funktionen $\Psi:\mathbb{R}\to\mathbb{C}$,
+\begin{equation}
+	\int_{-\infty}^{\infty} \abs{\Psi(x)}^2\,dx < \infty, \qquad \braket{\Phi}{\Psi} = \int_{-\infty}^{\infty} \Phi^*(x)\Psi(x)\,dx.
+\end{equation}
+Der Ket $\ket{\Psi}$ steht für die Funktion $\Psi$. Dirac und mit ihm die meisten Physiker gehen einen Schritt weiter und schreiben den Wert der Funktion an der Stelle $x$ als Skalarprodukt mit einem „uneigentlichen“ Bra,
+\begin{equation}
+	\braket{x}{\Psi} = \Psi(x).
+\end{equation}
+Bis hierher war alles mathematisch in Ordnung; ab hier verlassen wir den sicheren Boden bewusst. Das Bra $\bra{x}$ gehört zu keinem Vektor des Hilbertraums. Wir rechnen trotzdem mit den Kets $\ket{x} = (\bra{x})\adj$, $x\in\mathbb{R}$, als wären sie eine Orthonormalbasis, die \emph{Positionsbasis}, mit einer Änderung: An die Stelle des Kronecker-Deltas tritt die Diracsche Deltafunktion,
+\begin{equation}\label{eq:posbasis}
+	\braket{x}{y} = \delta(x-y), \qquad \int_{-\infty}^{\infty} f(y)\,\delta(x-y)\,dy = f(x).
+\end{equation}
+Die zweite Gleichung ist alles, was wir von $\delta$ brauchen: Unter einem Integral setzt sie $y = x$. Eine Funktion mit dieser Eigenschaft gibt es nicht; für $y = x$ steht rechts in der ersten Gleichung nicht eins, sondern $\delta(0)$, und solche Ausdrücke muss man vermeiden. Aus Summen über die Basis werden Integrale:
+\begin{equation}\label{eq:posentwicklung}
+	\ket{\Psi} = \int_{-\infty}^{\infty} \Psi(x)\ket{x}\,dx, \qquad \mathbb{I} = \int_{-\infty}^{\infty} \ketbra{x}{x}\,dx.
+\end{equation}
+Die Funktion $\Psi$ ist also die Liste der Koeffizienten von $\ket{\Psi}$ in der Positionsbasis; sie heißt die \emph{Wellenfunktion}. Mit Gl.~(\ref{eq:posbasis}) rechnet man wie im endlichdimensionalen Fall, zum Beispiel
+\begin{equation}
+	\braket{\Psi}{\Psi} = \int_{-\infty}^{\infty}\!\!\int_{-\infty}^{\infty} \Psi^*(x)\Psi(y)\braket{x}{y}\,dx\,dy = \int_{-\infty}^{\infty} \abs{\Psi(x)}^2\,dx.
+\end{equation}
+
+\webdemo{c03.demo.komplex}{Eine Wellenfunktion ordnet jedem Ort $x$ eine komplexe Zahl zu. Als Kurve braucht sie deshalb drei Dimensionen: die $x$-Achse und senkrecht dazu die komplexe Ebene. Gezeigt ist $f(x) = m(x)\,e^{ikx}$ mit einer Einhüllenden $m(x)$. Ändern Sie $k$: Die Kurve windet sich enger um die Achse, ihr Abstand $\abs{f(x)} = m(x)$ von der Achse bleibt. Die beiden Knöpfe zeigen den Realteil und den Imaginärteil für sich.}
 
 \subsection{Ein Teilchen in einer Dimension}
-Das wichtigste System, das erfolgreich mit der Quantenmechanik modelliert wurde, ist das Teilchen in einer Dimension. Wie immer gehen wir dabei pflichtgemäß alle fünf Postulate durch. Der Hilbertraum (Postulat 1) lautet in diesem Fall $\mathcal{H}\equiv L^2(\mathbb{R})$. Das heißt, wir beschreiben Präparationen (Postulat 2) von reinen Zuständen eines Teilchens mit Hilfe von komplexen Funktionen -- \emph{Wellenfunktionen} -- $\Psi:\mathbb{R}\rightarrow \mathbb{C}$. Wellenfunktionen werden mit der Ket-Notation nach
-\begin{equation}
-	|\Psi\rangle \equiv \int_{-\infty}^\infty \Psi(x) |x\rangle \, dx
+Das wichtigste System, das die Quantenmechanik erfolgreich beschreibt, ist das Teilchen in einer Dimension. Wie immer gehen wir pflichtgemäß die Postulate durch.
+
+\emph{P1 und P2.} Der Hilbertraum ist $\Hil = L^2(\mathbb{R})$. Wir rechnen zunächst nur mit reinen Zuständen $\rho = \ketbra{\Psi}{\Psi}$; jeder Dichteoperator ist eine Mischung reiner Zustände, und für Mischungen mittelt man die so erhaltenen Wahrscheinlichkeiten. Erlaubt sind nur normierte Wellenfunktionen, $\braket{\Psi}{\Psi} = 1$. Die Wellenfunktion ist damit bislang nur Notation; Bedeutung bekommt sie erst durch die Messungen.
+
+\webdemo{c03.demo.partialintegrale}{Welche Funktionen sind quadratintegrierbar? Aufgetragen ist $\int_{-X}^{X}\abs{f(x)}^2\,dx$ gegen $X$, für die Gaußfunktion und für $f(x) = (1+\abs{x})^{-s}$. Lassen Sie $X$ wachsen und ändern Sie $s$: Für $s > \tfrac12$ bleibt das Integral beschränkt, für $s \leq \tfrac12$ wächst es über jede Grenze. Nur im ersten Fall lässt sich $f$ normieren und ist als Wellenfunktion zulässig.}
+
+\emph{P3.} Wir beschreiben hier nur Ortsdetektoren. Ein solcher Detektor überwacht ein Intervall $[a,b]\subset\mathbb{R}$, $a<b$, und antwortet mit „ja“, wenn er das Teilchen dort findet. Sein Operator ist
+\begin{equation}\label{eq:ortsdetektor}
+	\op{F}_{[a,b]} = \int_a^b \ketbra{x}{x}\,dx.
 \end{equation}
-beschrieben. Die Beschränkung auf reine Zustände ist keine Willkür: Jede Dichtematrix ist ein Gemisch reiner Zustände. Erlaubt sind nur normierte Vektoren, $\langle \Psi|\Psi\rangle = 1$.
+Diese Operatoren decken nicht alle physikalisch möglichen Detektoren ab, sie sind aber die Grundlage für alles Weitere. Auf Intervalle sind wir nicht festgelegt: Für disjunkte Bereiche $S_1$, $S_2$ ist $\op{F}_{S_1\cup S_2} = \op{F}_{S_1} + \op{F}_{S_2}$.
 
-\webdemo{c03.demo.komplex}{Eine Wellenfunktion ordnet jedem Ort $x$ eine komplexe Zahl zu; als Kurve gezeichnet braucht sie deshalb drei Dimensionen, den Ort $x$ und die komplexe Ebene senkrecht dazu. Gezeigt ist $f(x) = m(x)\,e^{ikx}$ mit einer Hüllkurve $m(x)$. Ändern Sie $k$: Die Kurve windet sich um die $x$-Achse, und ihr Abstand von der Achse ist $\abs{f(x)} = m(x)$, unabhängig von $k$. Die Ansichten von vorn und von oben zeigen nur den Realteil $\operatorname{Re} f$ beziehungsweise nur den Imaginärteil $\operatorname{Im} f$.}
-
-Die Wellenfunktion ist bislang nur Notation; Bedeutung bekommt sie erst durch die Messungen. Eine Theorie braucht beides, Zustände \emph{und} Detektoren.
-
-Gemäß Postulat 3 werden Detektoren mit Operatoren modelliert. Wir beschreiben hier nur Orts-Detektoren. Solche Detektoren liefern ,,ja``/,,nein``-Ergebnisse, d.H.\ das Teilchen befindet sich in einem gegebenem Ort oder nicht. Um solche Detektoren zu beschreiben benötigen wir ein Intervall $[a,b]\subset \mathbb{R}$, wobei $a<b$. Der entsprechende Detektor wird durch den Operator
-\begin{equation}
-	F_{[a,b]} \equiv \int_{a}^b |x\rangle\langle x|\, dx
-\end{equation}
-definiert. Solche Operatoren decken zwar nicht alle physikalisch möglichen Detektoren ab, dienen aber als physikalisch relevante Grundlage. Warum ein Bereich und nicht ein Punkt? Weil die Frage nach der genauen Stelle immer die Antwort ,,Wahrscheinlichkeit null`` hat. Auf Intervalle sind wir nicht festgelegt: Für kompliziertere Bereiche sorgt die Additivität -- für disjunkte Mengen $S_1$, $S_2$ gilt $F(S_1\cup S_2) = F(S_1)+F(S_2)$.
-
-Angenommen, das System befindet sich in einem reinen Zustand $|\Psi\rangle$ und wir werden die Messung $F_{[a,b]}$ durchführen. Mit welcher Wahrscheinlichkeit werden wir das Teilchen im Bereich $a \le x \le b$ finden? Postulat 4 liefert uns die Ansprechhäufigkeit des Detektors $F_{[a,b]}$ gemäß einer Präparation $\rho \equiv |\Psi\rangle\langle \Psi|$ nach 
+\emph{P4.} Mit welcher Wahrscheinlichkeit finden wir das Teilchen im Zustand $\ket{\Psi}$ zwischen $a$ und $b$? Die Ansprechhäufigkeit ist $\tr(\rho\,\op{F}_{[a,b]}) = \melem{\Psi}{\op{F}_{[a,b]}}{\Psi}$, und mit den Gleichungen (\ref{eq:posentwicklung}) und (\ref{eq:posbasis}) wird daraus
 \begin{equation}
 	\begin{split}
-		\mathbb{P}[\text{,,$x\in [a,b]$``}] &= \tr(\rho F_{[a,b]}) \\
-		&= \tr (|\Psi\rangle\langle \Psi|F_{[a,b]})\\
-		&= \tr (\langle \Psi|F_{[a,b]}|\Psi\rangle) \\
-		&= \langle \Psi|F_{[a,b]}|\Psi\rangle \\
-		&= \int_{-\infty}^\infty dx \int_{-\infty}^\infty dy\, \Psi^*(x)\Psi(y) \langle x|F_{[a,b]}|y\rangle   \\
-		&= \int_{-\infty}^\infty dx \int_{-\infty}^\infty dy \int_{a}^b dz\, \Psi^*(x)\Psi(y) \langle x|z\rangle\langle z|y\rangle \\
-		&= \int_{-\infty}^\infty dx \int_{-\infty}^\infty dy \int_{a}^b dz\, \Psi^*(x)\Psi(y) \delta(x-z)\delta(z-y) \\
-		&= \int_{a}^b dz\, \Psi^*(z)\Psi(z) \\
-		&= \int_{a}^b |\Psi(z)|^2 \, dz.
+		\mathbb{P}\bigl[x\in[a,b]\bigr] &= \int_{-\infty}^{\infty}\!\!dx\int_{-\infty}^{\infty}\!\!dy\int_a^b\!dz\;\Psi^*(x)\Psi(y)\braket{x}{z}\braket{z}{y} \\
+		&= \int_a^b \abs{\Psi(z)}^2\,dz.
 	\end{split}
 \end{equation}
-Im Fall, dass $a\rightarrow -\infty$ und $b\rightarrow \infty$ erhalten wir die Bedingung
+Für $a\to-\infty$, $b\to\infty$ ist das die Normierung, $\mathbb{P}[x\in\mathbb{R}] = 1$. Weil $\abs{\Psi(x)}^2$ nicht negativ ist, ist
 \begin{equation}
-	1 = \mathbb{P}[\text{,,$x\in \mathbb{R}$``}].
-\end{equation} 
-Weil die Größe $|\Psi(x)|^2$ ist nicht negativ ist, können wir daher die Größe 
-\begin{equation}
-	\eqbox{p(x) \equiv |\Psi(x)|^2}
+	\eqbox{p(x) = \abs{\Psi(x)}^2}
 \end{equation}
-als eine Wahrscheinlichtkeitsdichte interpretieren.
-
-\webdemo{c03.demo.partialintegrale}{Das Integral $\int_{-X}^{X}\abs{f(x)}^2\,dx$ als Funktion von $X$, für die Gaußfunktion und für $f(x) = (1+\abs{x})^{-s}$. Lassen Sie $X$ wachsen, auch bis $10^6$ auf logarithmischer Achse. Bei der Gaußfunktion und bei $s > \tfrac12$ bleibt das Integral unter einer Grenze; bei $s \leq \tfrac12$, etwa für $f = 1$, wächst es ohne Grenze. Nur im ersten Fall lässt sich $f$ zu $\langle\Psi|\Psi\rangle = 1$ normieren und ist als Wellenfunktion zulässig.}
+eine Wahrscheinlichkeitsdichte, die Dichte der Ortsmessung.
 
 \begin{intuition}
 	Die Wellenfunktion ordnet jeder möglichen Position eine \emph{komplexe} Zahl zu und liefert die Position nur indirekt: Die Wahrscheinlichkeit, das Teilchen zwischen $a$ und $b$ zu finden, ist die Fläche unter der Kurve $p(x)$. Der Versuchung, sich schon $\Psi$ selbst als Dichte vorzustellen, soll man widerstehen.
@@ -61,98 +68,67 @@ als eine Wahrscheinlichtkeitsdichte interpretieren.
 
 \input{figures/fig_vl07_dichte}
 
-Links in der Abbildung schwingt $\Psi$ durch null und trägt ein Vorzeichen; rechts bleibt davon nur die glatte Glocke $p$. Achten Sie auf den schmalen Streifen: schrumpft seine Breite, so schrumpft die Fläche mit.
+\webdemo[fig_vl07_dichte]{c05.demo.detektor}{Dieselbe Wellenfunktion zweimal: (a) Real- und Imaginärteil von $\Psi$ mit der Einhüllenden $\pm\abs{\Psi}$, (b) die Dichte $p = \abs{\Psi}^2$. Ziehen Sie $a$ und $b$: Die Fläche über $[a,b]$ ist die Wahrscheinlichkeit, dass der Detektor $\op{F}_{[a,b]}$ anspricht. Ändern Sie die Wellenzahl $k$: In (a) ändert sich alles, in (b) nichts. Lassen Sie den Streifen bei $c$ schrumpfen: Seine Wahrscheinlichkeit geht gegen null, ihr Verhältnis zur Breite gegen $p(c)$. „Detektor anwenden“ lässt von $\Psi$ nur das Stück in $[a,b]$ übrig; ein zweites Mal ändert nichts mehr.}
 
-\webdemo{c01.demo.dichte}{Drei Wahrscheinlichkeitsdichten, eine nach der anderen: die Gaußdichte, die gleichmäßige Dichte auf $[0,L]$ und $p(x) = 1/x^2$ für $x \geq 1$. Bei der Gaußdichte ziehen Sie die Enden $a \leq b$; die schraffierte Fläche ist die Wahrscheinlichkeit, das Teilchen in $[a,b]$ zu finden, und für $a = b$ ist sie null. Bei der gleichmäßigen Dichte verändern Sie $L$: Die Höhe $1/L$ kann beliebig groß werden, die Fläche bleibt $1$, denn eine Dichte ist keine Wahrscheinlichkeit.}
+Links in der Abbildung wechseln Real- und Imaginärteil von $\Psi$ ständig ihr Vorzeichen; rechts bleibt davon nur die glatte Glocke $p$. Achten Sie auf den schmalen Streifen: Schrumpft seine Breite, so schrumpft die Fläche mit.
 
-Warnung: Das Objekt
+Warum ein Intervall und nicht ein Punkt? Die Wahrscheinlichkeit, das Teilchen \emph{genau} an der Stelle $x$ zu finden, ist immer null. Entsprechend ist das Objekt $\ketbra{x}{x}$, für sich genommen, kein Operator und erst recht kein Detektor. Man sieht es an der Projektoreigenschaft:
 \begin{equation}
-	F_{\{x\}} \equiv |x\rangle \langle x|,
+	\bigl(\ketbra{x}{x}\bigr)^2 = \ket{x}\braket{x}{x}\bra{x} = \delta(0)\,\ketbra{x}{x},
 \end{equation}
-stellt einen Operator \emph{nicht} dar. Dies hat mit der Interpretation von $p(x) \, (\equiv \tr(F_{\{x\}}\rho))$ zu tun: Die Wahrscheinlichkeit, dass wir das Teilchen \emph{genau} an der Stelle $x$ finden, ist immer gleich Null. Man muss immer ein Intervall angeben um eine nicht verschwindende Wahrscheinlichkeit zu erhalten.
-
-Mathematisch sieht man dasselbe daran, dass $F_{\{x\}}$ die Projektoreigenschaft $F^2 = F$ verfehlt:
+und $\delta(0)$ ist keine Zahl. Für ein Intervall steht in der Mitte dagegen $\braket{x}{y} = \delta(x-y)$ unter zwei Integralen, und eines davon wird erledigt:
 \begin{equation}
-	F_{\{x\}}^2 = |x\rangle \langle x|x\rangle \langle x| = \langle x|x\rangle\, |x\rangle\langle x| = \delta(0)\, F_{\{x\}},
+	\op{F}_{[a,b]}^2 = \int_a^b\!\!\int_a^b \ket{x}\braket{x}{y}\bra{y}\,dx\,dy = \int_a^b \ketbra{x}{x}\,dx = \op{F}_{[a,b]}.
 \end{equation}
-und $\delta(0)$ ist per Definition unendlich: Statt $F_{\{x\}}$ kommt $\infty\cdot F_{\{x\}}$ heraus. Für ein Intervall dagegen steht in der Mitte $\langle x|y\rangle = \delta(x-y)$:
-\begin{equation}
-	\begin{split}
-		F_{[a,b]}^2 &= \int_a^b \int_a^b |x\rangle \langle x|y\rangle \langle y|\, dx\, dy \\
-		&= \int_a^b \int_a^b |x\rangle\, \delta(x-y)\, \langle y|\, dx\, dy \\
-		&= \int_a^b |x\rangle\langle x|\, dx = F_{[a,b]}.
-	\end{split}
-\end{equation}
-Die Delta-Funktion erledigt eines der Integrale, und übrig bleibt der Ausgangsoperator: $F_{[a,b]}$ ist wirklich ein Projektor.
+$\op{F}_{[a,b]}$ ist wirklich ein Projektor, also ein Detektor im Sinne von P3.
 \begin{merksatz}
-	Alleinstehende Ket-Bra-Kombinationen der Positionsbasis sind zu vermeiden -- sie sind keine Operatoren. Unter einem Integral sind dieselben Ausdrücke harmlos.
+	Alleinstehende Ket-Bra-Kombinationen der Positionsbasis sind zu vermeiden; sie sind keine Operatoren. Unter einem Integral sind dieselben Ausdrücke harmlos.
 \end{merksatz}
-Trotzdem arbeitet man manchmal rein informell mit solchen ,,Projektoren``. Insbesondere ist es hilfreich, sich den ,,Projektor`` $|x\rangle\langle x|$ so vorzustellen, dass er das Ereignis darstellt, dass sich das Teilchen an der Position $x$ befindet. Nach dieser Art und Weise führt man die Positionsoperator (gemäß Gl.~(\ref{eq:observableA}))
-\begin{equation}
-	\eqbox{\widehat{x} \equiv \int_{-\infty}^{\infty} x |x\rangle \langle x|\, dx}
-\end{equation}
-ein. Man liest ihn als \emph{erstes Moment} der Ortsmessung; das Hütchen erinnert daran, dass hier ein Operator steht und keine Zahl. Er wirkt als Multiplikationsoperator,
-\begin{equation}
-	\widehat{x}|\Psi\rangle = \int_{-\infty}^{\infty} x\, |x\rangle \langle x|\Psi\rangle\, dx = \int_{-\infty}^{\infty} x\, \Psi(x)\, |x\rangle\, dx,
-\end{equation}
-aus $\Psi(x)$ wird also $x\,\Psi(x)$.
 
-Eine wichtige Bermerkung: Es ist physikalisch unmöglich, das Teilchen in dem ,,klassischem Zustand`` $|\Psi\rangle = |x\rangle$ zu präparieren. Man bräuchte ein Gerät mit unendlicher Präzision. Dasselbe sagt die Suche nach Eigenvektoren: Ein $|u\rangle$ mit $\widehat{x}|u\rangle = \lambda|u\rangle$ hätte als Wellenfunktion eine Delta-Funktion, wäre also ein Positionsbasiselement. Von ,,Positionseigenvektoren`` spricht man trotzdem ständig -- nur sind es idealisierte Objekte, keine Elemente von $\mathcal{H}$. Wir werden auf dieses Thema in einer späteren Vorlesung zurückkommen. Natürlich vorkommende reine Zustände befinden sich im Allgemeinen immer in Superposition:
+\subsection{Ort, Impuls und Energie}
+Informell darf man sich $\ketbra{x}{x}\,dx$ als das Ereignis vorstellen, dass das Teilchen in einem Streifen der Breite $dx$ bei $x$ gefunden wird. Die Ortsmessung hat reelle Ergebnisse, und nach Gl.~(\ref{eq:observableA}) gehört zu ihr der hermitesche Operator
 \begin{equation}
-	\Psi(x) \not= \delta(x-y).
+	\eqbox{\op{x} = \int_{-\infty}^{\infty} x\,\ketbra{x}{x}\,dx,}
 \end{equation}
+der \emph{Ortsoperator}. Er ist das erste Moment der Ortsmessung; der Hut erinnert daran, dass hier ein Operator steht und keine Zahl. Er wirkt als Multiplikationsoperator, aus $\Psi(x)$ wird $x\,\Psi(x)$:
+\begin{equation}\label{eq:xwirkung}
+	\melem{x}{\op{x}}{\Psi} = x\,\Psi(x), \qquad \langle\op{x}\rangle = \tr(\rho\,\op{x}) = \int_{-\infty}^{\infty} x\,\abs{\Psi(x)}^2\,dx = \int_{-\infty}^{\infty} x\,p(x)\,dx.
+\end{equation}
+Die zweite Gleichung gilt im reinen Zustand $\rho = \ketbra{\Psi}{\Psi}$ und ist die mittlere Position des Teilchens. Hinter dem Symbol $\langle\op{x}\rangle$ steckt ein ganzes Verfahren: präparieren, messen, notieren, viele Male, bis der Mittelwert steht.
 
+Ein Eigenvektor $\op{x}\ket{u} = \lambda\ket{u}$ hätte als Wellenfunktion eine Deltafunktion, wäre also ein Element der Positionsbasis. Von „Ortseigenvektoren“ spricht man deshalb ständig, nur sind es idealisierte Objekte und keine Elemente von $\Hil$. Physikalisch heißt das: Ein Teilchen lässt sich nicht im „klassischen Zustand“ $\ket{\Psi} = \ket{x}$ präparieren; man bräuchte ein Gerät mit unendlicher Präzision. Wirkliche reine Zustände sind immer Superpositionen über viele Orte.
 
-Der Erwartungswert von $\widehat{x}$ stellt die durchschnittliche Position des Teilchens dar:
+Der \emph{Impulsoperator} des Teilchens ist
 \begin{equation}
-	\begin{split}
-		\langle \widehat{x}\rangle &= \tr(\widehat{x}\rho) \\
-		&= \int x|\Psi(x)|^2\, dx,\\
-		&= \int x p(x)\, dx.
-	\end{split}
+	\eqbox{\op{p} = -i\hbar\frac{d}{dx},} \qquad \text{das heißt} \qquad \melem{x}{\op{p}}{\Psi} = -i\hbar\frac{d}{dx}\Psi(x).
 \end{equation}
-(Diese Gleichung gilt nur im Fall, dass sich das Teilchen in dem reinen Zustand $\rho \equiv |\Psi\rangle\langle \Psi|$ sich befindet.) Hinter dem Symbol $\langle \widehat{x}\rangle$ steckt ein ganzes Verfahren: präparieren, messen, notieren -- viele Male, bis der Mittelwert steht.
+Warum? Man kann viele heuristische Argumente für diese Wahl anführen, aber die ehrliche Antwort ist, dass die Natur es so gewollt hat. Anwenden lässt sich $\op{p}$ nicht auf jedes Element von $L^2(\mathbb{R})$; wir rechnen mit glatten Wellenfunktionen, die im Unendlichen schnell abfallen. Nachprüfen können wir, dass die Wahl zulässig ist: $\op{p}$ ist hermitesch. Für solche Wellenfunktionen gibt partielle Integration
+\begin{equation}\label{eq:phermitesch}
+	\melem{\Phi}{\op{p}}{\Psi} = \int_{-\infty}^{\infty} \Phi^*(x)\Bigl(-i\hbar\frac{d\Psi}{dx}\Bigr)dx = \int_{-\infty}^{\infty} \Bigl(-i\hbar\frac{d\Phi}{dx}\Bigr)^{\!*}\Psi(x)\,dx.
+\end{equation}
+Das Vorzeichen der partiellen Integration wird vom $i$ aufgefangen; ohne das $i$ wäre $d/dx$ antihermitesch.
 
-Der Impulsoperator eines eindimensionalen quantenmechanischen Teilchens wird durch
-\begin{equation}
-	\eqbox{\widehat{p} \equiv -i\hbar \frac{d}{dx}}
+\emph{P5.} Der Hamiltonoperator des freien Teilchens der Masse $m$ ist die kinetische Energie,
+\begin{equation}\label{eq:hfrei}
+	\op{H} = \frac{\op{p}^2}{2m}, \qquad \melem{x}{\op{H}}{\Psi} = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\Psi(x).
 \end{equation}
-definiert. Warum? Man kann zwar viele heuristische Argumente für diese Identifizierung anführen, aber die ehrliche Antwort ist, dass die Natur es einfach so gewollt hat.  Wie wirkt $\widehat{p}$ auf einen Zustand $|\Psi\rangle$? Diese Wirkung wird durch die folgende ,,Matrixelemente`` gegeben (diese gelten für alle $|\Psi\rangle \in \mathcal{H}$):
-\begin{equation}
-	\langle x|\widehat{p}|\Psi\rangle \equiv -i\hbar \frac{d}{dx}\Psi(x).
-\end{equation}
+Woher kommt dieser Ausdruck? Aus der einzigen Quantisierungsregel, die wir haben: Der Hamiltonoperator ist die klassische Energie, mit Hüten. Klassisch ist $E = p^2/2m$; wir setzen den Hut auf. Das ist eine Faustregel und kein Verfahren. Jede Quantisierung bleibt eine Vermutung, über die erst das Experiment entscheidet.
 
-Postulat 5: Zeitentwicklung eines Teilchens wird mit Hilfe des Hamiltonoperators (entspricht der \emph{kinetischen Energie})
-\begin{equation}
-	\widehat{H} \equiv \frac{\widehat{p}^2}{2m} = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}
-\end{equation}
-mit Matrixelemente
-\begin{equation}
-	\langle x|\widehat{H}|\Psi\rangle = -\frac{\hbar^2}{2m}\frac{d^2}{dx^2}\Psi(x)
-\end{equation}
-gegeben. Hierbei bezeichnet $m$ die Masse des Teilchens. Woher kommt dieser Ausdruck? Aus der einzigen Quantisierungsregel, die wir haben: Der Hamiltonoperator ist die klassische Energie, mit Hütchen. Klassisch ist $E = p^2/2m$; wir setzen das Hütchen auf. Das ist eine Faustregel, kein Verfahren -- jede Quantisierung bleibt eine Vermutung, über die erst das Experiment entscheidet.
-
-\begin{beispiel}
-	Angenommen, ein Teilchen wurde in \emph{gleicher Superposition} über ein Intervall $[-1,1]$ präpariert: Der entsprechende Zustand/Wellenfunktion lautet
+\begin{beispiel}[Gleiche Superposition über ein Intervall]
+	Ein Teilchen sei in gleicher Superposition über $[-1,1]$ präpariert:
 	\begin{equation}
-		\Psi(x) \equiv \begin{cases}
-			\frac{1}{\sqrt2}, \quad x\in [-1,1] \\
-			0, \quad \text{sonst}.
-		\end{cases}
+		\Psi(x) = \begin{cases} \frac{1}{\sqrt2}, & x\in[-1,1], \\ 0, & \text{sonst}. \end{cases}
 	\end{equation}
-	Bevor wir rechnen, raten wir: Aus Symmetriegründen sollte der Mittelwert genau null sein. Die Normierung $\tr(\rho) = \tr(|\Psi\rangle\langle \Psi|) = \langle \Psi|\Psi\rangle$ des Zustandes wird durch
+	Bevor wir rechnen, raten wir: Aus Symmetriegründen sollte die mittlere Position null sein. Zuerst die Normierung, dann die ersten beiden Momente:
 	\begin{equation}
-		\begin{split}
-			\langle \Psi|\Psi\rangle &= \int_{-\infty}^\infty |\Psi(x)|^2 \, dx \\
-			&= \int_{-1}^1  \frac{1}{2} \, dx \\
-			&= 1
-		\end{split}
-	\end{equation} 
-	gegeben. Den Erwartungswert des Positionsoperators $\widehat{x}$ berechnet man wie folgt:
-	\begin{equation}
-		\begin{split}
-			\langle \widehat{x}\rangle = \tr(\widehat{x}\rho) &= \langle \Psi|\widehat{x}|\Psi\rangle \\
-		&= \int_{-1}^1 x \times \frac{1}{2}\, dx = \frac12\left[\frac{x^2}{2}\right]_{x= -1}^1 = 0.
-		\end{split}
+		\braket{\Psi}{\Psi} = \int_{-1}^{1}\frac12\,dx = 1, \quad \langle\op{x}\rangle = \int_{-1}^{1}\frac{x}{2}\,dx = 0, \quad \langle\op{x}^2\rangle = \int_{-1}^{1}\frac{x^2}{2}\,dx = \frac13.
 	\end{equation}
+	Die Ortsmessung streut also um null, mit der Standardabweichung $\sqrt{\langle\op{x}^2\rangle - \langle\op{x}\rangle^2} = 1/\sqrt3$. Für den Impuls taugt dieses Beispiel nicht: $\Psi$ springt an den Rändern und lässt sich dort nicht ableiten.
 \end{beispiel}
+
+\begin{übung}
+	Berechnen Sie für das Gaußsche Wellenpaket $\Psi(x) = (2\pi\sigma^2)^{-1/4}\,e^{-x^2/(4\sigma^2)}\,e^{ikx}$ aus der Abbildung, mit der Breite $\sigma>0$ und der Wellenzahl $k\in\mathbb{R}$, die Dichte $p(x)$ und die Erwartungswerte $\langle\op{x}\rangle$, $\langle\op{x}^2\rangle$ und $\langle\op{p}\rangle$. Sie brauchen dazu die Gaußschen Integrale, für $\alpha>0$:
+	\begin{equation}\label{eq:gaussintegrale}
+		\int_{-\infty}^{\infty} e^{-\alpha x^2}\,dx = \sqrt{\frac{\pi}{\alpha}}, \qquad \int_{-\infty}^{\infty} x^2\,e^{-\alpha x^2}\,dx = \frac{1}{2\alpha}\sqrt{\frac{\pi}{\alpha}}.
+	\end{equation}
+\end{übung}

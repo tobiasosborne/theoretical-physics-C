@@ -1,0 +1,120 @@
+% content/c05-teilchen/de.tex — Kapitel 5: Welcher Hilbertraum? Das Teilchen auf der Geraden
+% (deutsche Leitfassung)
+%
+% Stand 2026-11-11: ein Anfang. Ein Kern-Abschnitt trägt die beiden Abbildungen zu den
+% Vorlesungen 7 und 8 und ihre Demos (docs/plan/lec78/DEMOS.md). Prosa und Formeln aus dem
+% Skript v0.3: latex/lectures/de/vl07.tex (Positionsbasis, Ortsdetektor, Dichte) und vl08.tex
+% (freies Teilchen, Gaußsches Wellenpaket, Impulsraum). Der übrige Stoff der beiden Vorlesungen
+% (Impuls- und Energieoperator, Momente, drei Dimensionen, Quantisierungsregeln) folgt.
+% Notation wie in vl08: Fourier-Transformierte mit Tilde (der Hut markiert Operatoren),
+% Breiten \pwidth, \pwidth_t, \pwidth_p, Zerfließzeit \tspread.
+
+\chapter{Welcher Hilbertraum? Das Teilchen auf der Geraden}\label{c05}
+
+% Stimme: vl07.tex:5, 16-35.
+Die Postulate aus Kapitel~\ref{c04} sagen nicht, welcher Hilbertraum, welcher
+Hamiltonoperator und welche Observablen zu einem gegebenen System gehören. Für das wichtigste
+System, das Teilchen auf der Geraden, ist der Hilbertraum $\Hil = \Ltwo{\mathbb{R}}$, der Raum
+der quadratintegrierbaren Funktionen $\Psi\colon \mathbb{R} \to \mathbb{C}$ mit dem
+Skalarprodukt $\braket{\Phi}{\Psi} = \int \Phi^*(x)\Psi(x)\,dx$. Man schreibt den Wert der
+Funktion an der Stelle $x$ als $\Psi(x) = \braket{x}{\Psi}$ und rechnet mit den Kets
+$\ket{x}$, als wären sie eine Orthonormalbasis, die \emph{Positionsbasis}; an die Stelle des
+Kronecker-Deltas tritt die Diracsche Deltafunktion, $\braket{x}{y} = \delta(x-y)$, und aus
+Summen über die Basis werden Integrale. Die Funktion $\Psi$ ist die Liste der Koeffizienten
+von $\ket{\Psi}$ in der Positionsbasis; sie heißt die \emph{Wellenfunktion}.
+
+\section{Ortsdichte und freies Teilchen}\label{c05.s1}
+
+% Stimme: vl07.tex:40-66.
+Ein Ortsdetektor überwacht ein Intervall $[a,b]$ und antwortet mit „ja“, wenn er das Teilchen
+dort findet. Sein Operator ist
+\begin{equation}\label{c05.eq.ortsdetektor}
+  \op{\EffOp}_{[a,b]} = \int_a^b \ketbra{x}{x}\,dx .
+\end{equation}
+Im reinen Zustand $\ket{\Psi}$ spricht er mit der Wahrscheinlichkeit
+\begin{equation}\label{c05.eq.intervall}
+  \Prob\bigl[x\in[a,b]\bigr] = \melem{\Psi}{\op{\EffOp}_{[a,b]}}{\Psi}
+  = \int_a^b \abs{\Psi(x)}^2\,dx
+\end{equation}
+an. Weil $\abs{\Psi(x)}^2$ nicht negativ ist, ist $p(x) = \abs{\Psi(x)}^2$ eine
+Wahrscheinlichkeitsdichte, die Dichte der Ortsmessung. Die Wellenfunktion selbst ordnet jeder
+Position eine \emph{komplexe} Zahl zu; der Versuchung, sich schon $\Psi$ als Dichte
+vorzustellen, soll man widerstehen.
+
+\begin{tpcfigure}{c05.fig.dichte}
+  \demo{c05.demo.detektor}
+  \caption{Dieselbe Wellenfunktion zweimal: das Gaußsche Wellenpaket
+    $\Psi(x) = (2\pi)^{-1/4} e^{-x^2/4} e^{3ix}$. (a) Real- und Imaginärteil wechseln ständig
+    ihr Vorzeichen; gepunktet die Einhüllende $\pm\abs{\Psi}$. (b) Vom Faktor $e^{3ix}$ bleibt
+    in $p = \abs{\Psi}^2$ nichts übrig. Die Fläche über $[a,b]$ ist die Ansprechwahrscheinlichkeit
+    des Detektors $\op{\EffOp}_{[a,b]}$, Gleichung~\eqref{c05.eq.intervall}. Der schmale Streifen
+    der Breite $\varepsilon$ bei $c$ ist dieselbe Konstruktion, nur schmaler: Schrumpft
+    $\varepsilon$, so schrumpft die Fläche mit.}
+\end{tpcfigure}
+
+% Stimme: vl07.tex:69-80.
+Warum ein Intervall und nicht ein Punkt? Die Wahrscheinlichkeit, das Teilchen \emph{genau} an
+der Stelle $x$ zu finden, ist immer null. Das Objekt $\ketbra{x}{x}$ ist für sich genommen kein
+Operator: $(\ketbra{x}{x})^2 = \delta(0)\ketbra{x}{x}$, und $\delta(0)$ ist keine Zahl. Für
+ein Intervall wird eines der beiden Integrale vom Delta erledigt, und
+$\op{\EffOp}_{[a,b]}^2 = \op{\EffOp}_{[a,b]}$ ist ein Projektor.
+
+% Stimme: vl08.tex:50-91.
+Wie bewegt sich ein freies Teilchen der Masse $m$? Seine Schrödingergleichung
+$i\hbar\,\partial_t\Psi = -\frac{\hbar^2}{2m}\,\partial_x^2\Psi$ wird von jeder ebenen Welle
+$e^{i(kx - \hbar k^2 t/2m)}$ gelöst, und weil sie linear ist, auch von jeder Superposition:
+\begin{equation}\label{c05.eq.freieloesung}
+  \Psi(x,t) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \widetilde{\Psi}(k)\,
+  e^{i\left(kx-\frac{\hbar k^2}{2m}t\right)}\,dk .
+\end{equation}
+Die Gewichte $\widetilde{\Psi}(k)$ legt die Anfangsbedingung fest: Bei $t = 0$ steht hier die
+inverse Fourier-Transformation, und $\widetilde{\Psi}$ ist die Fourier-Transformierte der
+Anfangswellenfunktion,
+\begin{equation}\label{c05.eq.phik}
+  \widetilde{\Psi}(k) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^{\infty} \Psi(x,0)\,e^{-ikx}\,dx .
+\end{equation}
+
+\begin{merksatz}[Das freie Teilchen in drei Schritten]
+  Berechnen Sie die Fourier-Transformierte $\widetilde{\Psi}(k)$ der Anfangswellenfunktion
+  $\Psi(x,0)$. Multiplizieren Sie jede Komponente $\widetilde{\Psi}(k)$ mit ihrer Phase
+  $e^{-i\hbar k^2t/2m}$. Transformieren Sie zurück.
+\end{merksatz}
+
+Für das Gaußsche Wellenpaket
+$\Psi(x,0) = (\pwidth\sqrt{2\pi})^{-1/2}\, e^{-(x-a)^2/4\pwidth^2}$ sind Hin- und
+Rücktransformation Gaußsche Integrale. Das Betragsquadrat bleibt eine Glockenkurve um~$a$,
+nur ihre Breite wächst:
+\begin{align}
+  \abs{\Psi(x,t)}^2 &= \frac{1}{\pwidth_t\sqrt{2\pi}}\;
+  e^{-\frac{(x-a)^2}{2\pwidth_t^2}}, \label{c05.eq.zerfliessen}\\
+  \pwidth_t &= \pwidth\sqrt{1+\frac{t^2}{\tspread^2}},
+  \qquad
+  \tspread = \frac{2m\pwidth^2}{\hbar}. \notag
+\end{align}
+Das Wellenpaket \emph{zerfließt}: Nach der Zeit $\tspread$ ist es um den Faktor $\sqrt{2}$
+breiter, und je schmaler es anfangs war, desto kürzer ist $\tspread$.
+
+% Stimme: vl08.tex:93-127.
+Dieselbe Information steckt in der \emph{Impulswellenfunktion} $\Phi(p,t)$, den
+Koeffizienten von $\ket{\Psi}$ in der Basis der ebenen Wellen zum Impuls $p = \hbar k$; zur
+Zeit null ist $\Phi(p,0) = \widetilde{\Psi}(p/\hbar)/\sqrt{\hbar}$. Für das freie Teilchen ändert sich im
+Impulsraum nur eine Phase,
+\begin{equation}\label{c05.eq.impulszeit}
+  \Phi(p,t) = e^{-\frac{it}{\hbar}\frac{p^2}{2m}}\,\Phi(p,0),
+  \qquad
+  \abs{\Phi(p,t)}^2 = \abs{\Phi(p,0)}^2 .
+\end{equation}
+Für das Gaußsche Wellenpaket der Breite $\pwidth$ ist $\abs{\Phi(p,0)}^2$ eine Gaußverteilung
+um $p = 0$ mit der Standardabweichung $\pwidth_p = \hbar/2\pwidth$; das Produkt der beiden
+Breiten ist zur Zeit null $\pwidth\,\pwidth_p = \hbar/2$.
+
+\begin{tpcfigure}{c05.fig.fourier}
+  \demo{c05.demo.zerfliessen}
+  \caption{Das Gaußsche Wellenpaket zur Zeit $t = 0$, dreimal, mit den Breiten $\pwidth/2$,
+    $\pwidth$ und $2\pwidth$, links im Orts-, rechts im Impulsraum; gleiche Linie heißt
+    dasselbe Paket. Die Balken über den Kurven markieren $\pm$ eine Standardabweichung:
+    Halbiert man die Breite im Ortsraum, so verdoppelt sie sich im Impulsraum. Die Reihenfolge
+    der Breiten kehrt sich um, das Produkt bleibt. Mit der Zeit zerfließen die Kurven links nach
+    Gleichung~\eqref{c05.eq.zerfliessen}, die rechts bleiben nach
+    Gleichung~\eqref{c05.eq.impulszeit} stehen.}
+\end{tpcfigure}

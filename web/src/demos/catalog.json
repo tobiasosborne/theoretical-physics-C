@@ -187,5 +187,19 @@
    "de": "Radiale Aufenthaltsdichte und Knoten",
    "en": "Radial probability density and nodes"
   }
+ },
+ "c05.demo.detektor": {
+  "kind": "demo",
+  "title": {
+   "de": "Der Ortsdetektor sieht nur die Fläche unter der Dichte",
+   "en": "The position detector sees only the area under the density"
+  }
+ },
+ "c05.demo.zerfliessen": {
+  "kind": "demo",
+  "title": {
+   "de": "Das freie Wellenpaket zerfließt, die Impulsdichte bleibt",
+   "en": "The free wave packet spreads, the momentum density stays"
+  }
  }
 }

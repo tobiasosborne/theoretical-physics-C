@@ -259,12 +259,21 @@ build_one() {
     fi
 }
 
+# The editions are independent (each has its own working directory under $OUT), so
+# they build in parallel; each one's output is printed in order when all are done.
 mkdir -p "$OUT"
 failed=0
+pids=(); outs=()
 for lang in $LANGS; do
     for edition in $EDITIONS; do
-        build_one "$lang" "$edition" || failed=1
+        o="$OUT/.tpc-$lang-$edition.out"
+        ( build_one "$lang" "$edition" || exit 1 ) > "$o" 2>&1 &
+        pids+=($!); outs+=("$o")
     done
+done
+for i in "${!pids[@]}"; do
+    wait "${pids[$i]}" || failed=1
+    cat "${outs[$i]}"; rm -f "${outs[$i]}"
 done
 if [[ $failed -ne 0 ]]; then
     err "course build FAILED"

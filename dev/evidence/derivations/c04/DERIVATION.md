@@ -113,8 +113,8 @@ $\sum_\lambda P_\lambda=\sum_x|\phi_x\rangle\langle\phi_x|=\mathbb I$; $\sum_\la
 $P_\lambda$ = eigenspace: $\supset$ by construction; $\subset$ by (1).
 
 <a id="c04.cl.dynamik"></a>
-**c04.cl.dynamik** (Kern). $\operatorname{tr}(U\rho U^\dagger F)=\operatorname{tr}(\rho U^\dagger FU)$: c03.prop.spur (3) with
-$A=U$, $B=\rho U^\dagger F$. $U_t$ unitary for Hermitian $H$: c03.cl.zeitentwicklung.
+**c04.cl.dynamik** (Kern). $\langle A\rangle(t)=\operatorname{tr}(U\rho U^\dagger A)=\operatorname{tr}(\rho U^\dagger AU)$: c03.prop.spur (3) with
+$U$ and $\rho U^\dagger A$ as the two factors (any operator $A$, in particular an effect operator $F$). $U_t$ unitary for Hermitian $H$: c03.cl.zeitentwicklung.
 
 <a id="c04.cl.dynamik-zulaessig"></a>
 **c04.cl.dynamik-zulaessig** (Kern). $\langle\psi|U\rho U^\dagger\psi\rangle=\langle U^\dagger\psi|\rho\,U^\dagger\psi\rangle\ge0$ (D17);
@@ -150,7 +150,9 @@ Hahn-Banach (Zorn's lemma in the general proof); stated as commentary.
 
 ### What is quoted, not derived
 
-- c04.cl.p0 to c04.cl.p5: TJO's stipulations, BRIEF.md:50-55 (author-stipulated).
+- c04.cl.p0: TJO's stipulation, BRIEF.md:50 (author-stipulated). c04.cl.p1 to c04.cl.p5: TJO's
+  postulates in the wording of script v0.2 (vl06.tex, lec06.tex; brief rows P-0005 to P-0009 and v0.2 quotes P-0340 to P-0349),
+  author-stipulated; restored on 2026-11-06 (D-WORTLAUT).
 - c04.cl.normal (source-quoted, P-0335, P-0336): Bratteli-Robinson I, Definition 2.4.20 and
   Theorem 2.4.21, p. 76.
 - c04.cl.stone (source-quoted, P-0338, P-0339): Reed-Simon I, Theorem VIII.7 (a), (b), p. 265, and

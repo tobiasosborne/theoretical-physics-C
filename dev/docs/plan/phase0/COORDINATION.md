@@ -1,6 +1,17 @@
 <!-- ROLE: working contract between the Phase 0 coordinator and its subagents (2026-10-11).
      Authored by the coordinator. Every Phase 0 brief points here. UPDATE POLICY: coordinator only. -->
 
+> **Superseded in part (2026-11-11).** `CLAUDE.md` at the repository root is now the single
+> source of workflow rules. It replaces here: the evidence rule of section 1 rule 1 (claims
+> are required only for numbers, constants and externally sourced statements, not for every
+> statement), the shared-tree and ownership rules of rule 7 (one author per lecture), the
+> red-corpus contract of section 4 (the corpus is frozen and runs behind `./ci.sh --red`),
+> and every gate command. Still in force: ground truth from sources (rule 1 apart from the
+> claim requirement), book formulas from page images (rule 2), the never-commit list
+> (rule 5), German first (rule 4), no estimates (rule 10), and the boundary of what the
+> gates establish (section 8).
+
+
 # Phase 0 coordination contract
 
 Authority, in order: `docs/plan/BRIEF.md` (TJO, verbatim), `docs/plan/PLAN.md` section 1.3
