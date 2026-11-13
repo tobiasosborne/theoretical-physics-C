@@ -10,17 +10,21 @@ web build turns the same PDFs into SVG.
     scripts/build_figures.py                 both languages, open fonts
     scripts/build_figures.py --lang de
     scripts/build_figures.py --fonts local   the commercial faces
-    scripts/build_figures.py --svg           also write an SVG beside each PDF
+    scripts/build_figures.py --svg           also write the web image beside each
+                                             PDF (SVG, or PNG when the SVG is huge)
     scripts/build_figures.py --force
 
-Output: build/figures/<fonts>-<lang>/figures/fig_vlNN_name.pdf (and .svg).
+Output: build/figures/<fonts>-<lang>/figures/fig_vlNN_name.pdf (and .svg or
+.png with a .json giving the file name and the size).
 Exit code 1 if any figure fails.
 """
 from __future__ import annotations
 
 import argparse
 import hashlib
+import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -53,6 +57,29 @@ def style_hash() -> str:
         h.update(f.read_bytes())
     h.update(WRAPPER.encode())
     return h.hexdigest()
+
+
+SVG_LIMIT = 1_500_000   # bytes; a hatched region can turn 30 kB of PDF into 10 MB of SVG
+
+
+def web_image(pdf: Path, outdir: Path, name: str, meta: Path) -> None:
+    """The figure for the web: SVG, or a 220 dpi PNG when the SVG is huge.
+    Writes <name>.json with the file name and the size in TeX points."""
+    svg = outdir / f"{name}.svg"
+    png = outdir / f"{name}.png"
+    subprocess.run(["pdftocairo", "-svg", str(pdf), str(svg)], check=True)
+    head = svg.read_text(errors="replace")[:600]
+    width = float(re.search(r'\bwidth="([0-9.]+)', head).group(1))
+    height = float(re.search(r'\bheight="([0-9.]+)', head).group(1))
+    file = svg.name
+    png.unlink(missing_ok=True)
+    if svg.stat().st_size > SVG_LIMIT:
+        subprocess.run(["pdftocairo", "-png", "-r", "220", "-singlefile",
+                        str(pdf), str(outdir / name)], check=True)
+        svg.unlink()
+        file = png.name
+    meta.write_text(json.dumps({"file": file, "width": width,
+                                "height": height}) + "\n")
 
 
 def build_one(fig: Path, lang: str, fonts: str, svg: bool, force: bool,
@@ -88,10 +115,9 @@ def build_one(fig: Path, lang: str, fonts: str, svg: bool, force: bool,
             shutil.copyfile(made, pdf)
         stamp.write_text(key + "\n")
     if svg:
-        out = outdir / f"{name}.svg"
-        if not fresh or not out.exists():
-            subprocess.run(["pdftocairo", "-svg", str(pdf), str(out)],
-                           check=True)
+        meta = outdir / f"{name}.json"
+        if not fresh or not meta.exists():
+            web_image(pdf, outdir, name, meta)
     return ("cached" if fresh else "built"), f"{name} [{lang}]"
 
 

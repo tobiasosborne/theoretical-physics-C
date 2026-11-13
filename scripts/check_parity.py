@@ -21,7 +21,7 @@ part of a lecture that carries no language:
   language     no untranslated German left in an English file
 
 Exit status is 0 when every check passes, 1 otherwise, so this drops
-straight into ./ci.sh or a git hook.
+straight into ./check.sh or a git hook.
 
 Usage:
     scripts/check_parity.py                 # check everything

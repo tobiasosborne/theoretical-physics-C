@@ -3,15 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "description": "Theoretische Physik C: converter (contract TeX -> HTML), site runtime, demo harness, gates",
+  "description": "Theoretische Physik C: lecture pages (lecture TeX -> HTML), site runtime, demo harness, kernel tests",
   "engines": {
     "node": ">=22"
   },
   "scripts": {
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "test": "vitest run",
-    "build": "tsx tools/build/main.ts",
-    "check": "bash check.sh"
+    "build": "tsx tools/lecture/build.ts"
   },
   "devDependencies": {
     "@types/node": "26.6.5",

@@ -1,15 +1,24 @@
-# Build the student-facing site on GitHub and deploy it to GitHub Pages.
+# Build the students' site on GitHub and deploy it to GitHub Pages.
 #
-# Everything is built with open fonts only (scripts/publish_pages.sh --no-push: the four
-# course editions, the two complete-script PDFs with Computer Modern, the chapter web
-# edition, the landing page); the commercial print fonts never leave TJO's machine. The
-# assembled build/pages/ tree is uploaded as the Pages artifact, so nothing large is ever
-# pushed from a slow connection. Runs on every push to master and on request.
+# scripts/publish_pages.sh builds the two script PDFs (open fonts only; the
+# commercial print fonts never leave TJO's machine) and the lecture pages, and
+# assembles build/pages/. Runs on every push to master that touches the notes
+# or the site, and on request.
+#
+# What keeps it fast: TeX Live comes from a cache of the installed apt
+# packages, the lecture figures (two minutes of TikZ) and the demo bundles are
+# cached by content hash, and nothing of the parked course in dev/ is built.
 name: pages
 
 on:
   push:
     branches: [master]
+    paths:
+      - 'latex/**'
+      - 'web/**'
+      - 'scripts/**'
+      - 'build.sh'
+      - '.github/workflows/pages.yml'
   workflow_dispatch:
 
 permissions:
@@ -18,7 +27,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: pages
+  group: pages-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -33,29 +42,61 @@ jobs:
           cache: npm
           cache-dependency-path: web/package-lock.json
 
-      - name: TeX Live, poppler, open fonts from the TeX tree
-        run: |
-          sudo apt-get update -q
-          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y -q --no-install-recommends \
-            texlive-xetex texlive-latex-recommended texlive-latex-extra texlive-pictures \
-            texlive-science texlive-bibtex-extra texlive-fonts-extra texlive-fonts-extra-links \
-            texlive-lang-german texlive-plain-generic preview-latex-style poppler-utils fontconfig unzip
-          xelatex --version | head -1
+      - name: TeX Live and poppler (cached apt packages)
+        uses: awalsh128/cache-apt-pkgs-action@v1
+        with:
+          packages: >-
+            texlive-xetex texlive-latex-recommended texlive-latex-extra texlive-pictures
+            texlive-science texlive-fonts-extra texlive-fonts-extra-links
+            texlive-lang-german texlive-plain-generic preview-latex-style poppler-utils fontconfig
+          version: tex-1
+          execute_install_scripts: true
 
-      - name: Iosevka (the monospace face of every design package; OFL)
+      - name: Iosevka cache (the monospace face; OFL)
+        id: iosevka
+        uses: actions/cache@v4
+        with:
+          path: ~/.local/share/fonts/iosevka
+          key: iosevka-34.9.0
+
+      - name: Iosevka download
+        if: steps.iosevka.outputs.cache-hit != 'true'
         run: |
           curl -sSL -o /tmp/iosevka.zip \
             https://github.com/be5invis/Iosevka/releases/download/v34.9.0/PkgTTC-SGr-Iosevka-34.9.0.zip
-          sudo mkdir -p /usr/local/share/fonts/iosevka
-          sudo unzip -q -o /tmp/iosevka.zip -d /usr/local/share/fonts/iosevka
-          sudo fc-cache -f
-          fc-list | grep -c Iosevka
+          mkdir -p ~/.local/share/fonts/iosevka
+          unzip -q -o /tmp/iosevka.zip -d ~/.local/share/fonts/iosevka
 
-      - name: npm ci (converter and bundler; no browser needed for the build)
+      - name: Fonts and TeX file database
+        run: |
+          sudo mktexlsr > /dev/null 2>&1 || true
+          fc-cache -f
+          fc-list | grep -c Iosevka
+          xelatex --version | head -1
+          kpsewhich STIXTwoText-Regular.otf tcolorbox.sty comment.sty varwidth.sty preview.sty
+
+      - name: Figure cache
+        uses: actions/cache@v4
+        with:
+          path: build/figures
+          key: figures-${{ hashFiles('latex/figures/**', 'latex/tpc-*', 'latex/tokens/**', 'scripts/build_figures.py') }}
+          restore-keys: figures-
+
+      - name: Demo bundle cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            build/site/assets/demos
+            build/site/assets/site.js
+            build/site/assets/site.js.sha256
+            build/site/assets/site.css
+          key: bundles-${{ hashFiles('web/src/**', 'web/vendor/**', 'web/package-lock.json') }}
+
+      - name: npm ci
         run: cd web && npm ci --no-audit --no-fund
 
-      - name: Build and assemble (open fonts only; the font gate is in the script)
-        run: scripts/publish_pages.sh --no-push
+      - name: Build and assemble
+        run: scripts/publish_pages.sh
 
       - name: What was built
         run: |
@@ -68,6 +109,8 @@ jobs:
           path: build/pages
 
   deploy:
+    # only master is published; a run on another branch is a dry run of the build
+    if: github.ref == 'refs/heads/master'
     needs: build
     runs-on: ubuntu-24.04
     environment:

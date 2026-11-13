@@ -58,6 +58,14 @@ function svgSize(file: string, pxPerPt: number): { width: number; height: number
   return { width: Math.round(Number(w[1]) * pxPerPt), height: Math.round(Number(h[1]) * pxPerPt) };
 }
 
+/** What scripts/build_figures.py --svg wrote for a figure: the image file and its size. */
+function figureMeta(lang: Lang, name: string, pxPerPt: number): { file: string; width: number; height: number } {
+  const f = path.join(ROOT, 'build/figures', `open-${lang}`, 'figures', `${name}.json`);
+  if (!fs.existsSync(f)) throw new Error(`figure ${name} [${lang}] has not been built (scripts/build_figures.py --svg)`);
+  const m = JSON.parse(fs.readFileSync(f, 'utf8')) as { file: string; width: number; height: number };
+  return { file: m.file, width: Math.round(m.width * pxPerPt), height: Math.round(m.height * pxPerPt) };
+}
+
 function copyIfNewer(from: string, to: string): void {
   if (fs.existsSync(to) && fs.statSync(to).mtimeMs >= fs.statSync(from).mtimeMs) return;
   fs.mkdirSync(path.dirname(to), { recursive: true });
@@ -170,7 +178,7 @@ async function main(): Promise<void> {
     const file = lectureFile(lang, n);
     const ctx: LectureCtx = {
       lang, n, file: path.relative(ROOT, file), src: stripComments(fs.readFileSync(file, 'utf8')), macros, demoCatalog: catalog,
-      figureSize: (name) => svgSize(path.join(ROOT, 'build/figures', `open-${lang}`, 'figures', `${name}.svg`), pxPerPt),
+      figureSize: (name) => figureMeta(lang, name, pxPerPt),
       stillSize: (id) => svgSize(path.join(WEB, 'assets/stills', `${id}.${lang}.svg`), pxPerPt),
       title: '', labels: labels[lang], toc: [], figures: [], demos: [], replaced: [], counters: {}, webonly: 0,
     };
@@ -206,7 +214,10 @@ async function main(): Promise<void> {
     else fs.cpSync(from, path.join(assets, 'fonts', f), { recursive: true });
   }
   for (const l of lectures) {
-    for (const name of l.figures) copyIfNewer(path.join(ROOT, 'build/figures', `open-${l.lang}`, 'figures', `${name}.svg`), path.join(assets, 'figures', l.lang, `${name}.svg`));
+    for (const name of l.figures) {
+      const file = figureMeta(l.lang, name, 1).file;
+      copyIfNewer(path.join(ROOT, 'build/figures', `open-${l.lang}`, 'figures', file), path.join(assets, 'figures', l.lang, file));
+    }
     for (const id of l.demos) copyIfNewer(path.join(WEB, 'assets/stills', `${id}.${l.lang}.svg`), path.join(assets, 'stills', `${id}.${l.lang}.svg`));
   }
 

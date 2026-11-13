@@ -74,3 +74,4 @@ archive/admin/
 # private folders; kept locally only
 dev/docs/plan/research/sources-inventory/REPORT.md
 *.pyc
+*.stdout

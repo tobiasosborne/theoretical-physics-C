@@ -19,8 +19,6 @@ import type { Lang } from '../paths.ts';
 
 export interface LabelInfo { number: string; lecture: number; anchor: string }
 export interface TocEntry { level: 2 | 3; id: string; number: string; html: string }
-export interface FigureUse { name: string }
-export interface DemoUse { id: string }
 
 export interface LectureCtx {
   lang: Lang;
@@ -29,7 +27,7 @@ export interface LectureCtx {
   src: string;
   macros: Record<string, string>;
   demoCatalog: Record<string, { kind: string; title: Record<Lang, string> }>;
-  figureSize: (name: string) => { width: number; height: number };
+  figureSize: (name: string) => { file: string; width: number; height: number };
   stillSize: (id: string) => { width: number; height: number };
   // results
   title: string;
@@ -389,7 +387,7 @@ export class Parser {
     const size = this.ctx.figureSize(name);
     this.ctx.figures.push(name);
     const alt = `${WORDS.figureAlt[this.ctx.lang]} ${this.ctx.n}`;
-    return `<figure class="tpc-figure" id="fig-${esc(name)}"><div class="tpc-plate"><img class="tpc-still" src="../../assets/figures/${this.ctx.lang}/${esc(name)}.svg"`
+    return `<figure class="tpc-figure" id="fig-${esc(name)}"><div class="tpc-plate"><img class="tpc-still" src="../../assets/figures/${this.ctx.lang}/${esc(size.file)}"`
       + ` width="${size.width}" height="${size.height}" alt="${esc(alt)}" loading="lazy" decoding="async"></div></figure>`;
   }
   private demo(): string {

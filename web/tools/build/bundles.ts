@@ -1,7 +1,10 @@
 // Bundles, built with Vite's JS API, each a single IIFE file (so pages work from file://):
 //   assets/site.js + site.css       page runtime
 //   assets/demos/<id>.js            one per demo: harness + web/src/demos/<id>.ts
-// A bundle is rebuilt only when a file under web/src/ or web/vendor/ is newer than it.
+// A bundle is rebuilt only when the content of web/src/, web/vendor/ or the lock file has
+// changed since it was built (a stamp file beside it carries the hash), so a restored CI
+// cache counts.
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { build } from 'vite';
@@ -9,22 +12,31 @@ import { VENDOR, WEB } from '../paths.ts';
 
 export function demoSource(id: string): string { return path.join(WEB, 'src/demos', `${id}.ts`); }
 
-function newestMtime(dir: string): number {
-  let t = 0;
-  for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
+/** One hash over everything a bundle can depend on: web/src, web/vendor, the lock file. */
+function hashDir(dir: string, h: crypto.Hash): void {
+  for (const e of fs.readdirSync(dir, { withFileTypes: true }).sort((x, y) => (x.name < y.name ? -1 : 1))) {
     const p = path.join(dir, e.name);
-    t = Math.max(t, e.isDirectory() ? newestMtime(p) : fs.statSync(p).mtimeMs);
+    if (e.isDirectory()) hashDir(p, h);
+    else { h.update(e.name); h.update(fs.readFileSync(p)); }
   }
-  return t;
 }
-let sourcesMtime = 0;
+let sources = '';
+function sourcesHash(): string {
+  if (!sources) {
+    const h = crypto.createHash('sha256');
+    hashDir(path.join(WEB, 'src'), h);
+    hashDir(VENDOR, h);
+    h.update(fs.readFileSync(path.join(WEB, 'package-lock.json')));
+    sources = h.digest('hex');
+  }
+  return sources;
+}
+/** A bundle is fresh when it exists and its stamp carries the hash of the current sources. */
 function fresh(out: string): boolean {
-  if (!sourcesMtime) {
-    sourcesMtime = Math.max(newestMtime(path.join(WEB, 'src')), newestMtime(VENDOR),
-      fs.statSync(path.join(WEB, 'package-lock.json')).mtimeMs);
-  }
-  return fs.existsSync(out) && fs.statSync(out).mtimeMs > sourcesMtime;
+  const stamp = `${out}.sha256`;
+  return fs.existsSync(out) && fs.existsSync(stamp) && fs.readFileSync(stamp, 'utf8') === sourcesHash();
 }
+function stamp(out: string): void { fs.writeFileSync(`${out}.sha256`, sourcesHash()); }
 
 function common(gen: string) {
   return {
@@ -38,7 +50,7 @@ function common(gen: string) {
 
 /** Returns true when the bundle was rebuilt. */
 export async function buildSiteBundle(gen: string, assetsDir: string): Promise<boolean> {
-  if (fresh(path.join(assetsDir, 'site.js')) && fresh(path.join(assetsDir, 'site.css'))) return false;
+  if (fresh(path.join(assetsDir, 'site.js')) && fs.existsSync(path.join(assetsDir, 'site.css'))) return false;
   await build({
     ...common(gen),
     build: {
@@ -46,6 +58,7 @@ export async function buildSiteBundle(gen: string, assetsDir: string): Promise<b
       lib: { entry: path.join(WEB, 'src/site/main.ts'), formats: ['iife'], name: 'tpcSite', fileName: () => 'site.js', cssFileName: 'site' },
     },
   });
+  stamp(path.join(assetsDir, 'site.js'));
   return true;
 }
 
@@ -69,5 +82,6 @@ export async function buildDemoBundle(gen: string, id: string, outDir: string): 
       lib: { entry, formats: ['iife'], name: 'tpcDemo_' + id.replace(/\W/g, '_'), fileName: () => `${id}.js` },
     },
   });
+  stamp(path.join(outDir, `${id}.js`));
   return true;
 }
