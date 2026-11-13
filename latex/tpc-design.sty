@@ -75,8 +75,10 @@
   \fi}
 \ifx\tpcd@root\@empty\else \tpcd@try{\tpcd@root/}\fi
 \ifdefined\CurrentFilePath
+  \ifx\CurrentFilePath\@empty\else \tpcd@try{\CurrentFilePath/tokens/}\fi
   \ifx\CurrentFilePath\@empty\else \tpcd@try{\CurrentFilePath/../design/build/}\fi
 \fi
+\tpcd@try{tokens/}
 \tpcd@try{design/build/}
 \tpcd@try{../design/build/}
 \tpcd@try{../../design/build/}

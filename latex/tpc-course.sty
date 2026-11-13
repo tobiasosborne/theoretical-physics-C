@@ -395,7 +395,18 @@
     \let\tpcscript@iinput\@iinput
     \def\@iinput#1{\tpcscript@isfigure{#1}%
       \iftpcscript@fig \expandafter\tpcscript@placefigure
-      \else \expandafter\@firstofone \fi {\tpcscript@iinput{#1}}}}
+      \else \expandafter\@firstofone \fi {\tpcscript@figcontent{#1}}}}
+  % A figure compiled once by scripts/build_figures.py is included as a
+  % PDF (TikZ costs two minutes a pass for the 22 figures).  Only when
+  % the build defines \tpcfigcache; a compile by hand draws the TikZ.
+  \newcommand{\tpcscript@figcontent}[1]{%
+    \ifdefined\tpcfigcache
+      \IfFileExists{\tpcfigcache/#1.pdf}%
+        {\includegraphics{\tpcfigcache/#1.pdf}}{\tpcscript@iinput{#1}}%
+    \else \tpcscript@iinput{#1}\fi}
+  % the same box, for the standalone figure compile
+  \newcommand{\tpcscriptfigurebox}[1]{%
+    \hbox{\begin{varwidth}{\tpcfigurewidth}\tpcscript@iinput{#1}\end{varwidth}}}
   % Colours of the v0.2 figures
   \iftpccourse@design
     \colorlet{birrenorange}{tpc-dynamics}
